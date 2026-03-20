@@ -95,7 +95,9 @@
         --pad-card:13px; --gap-card:12px;
       }
       .card { padding:13px 15px; }
-      .card-title { padding-bottom:6px; margin-bottom:11px; }
+      .card-title { padding-bottom:6px; margin-bottom:11px; flex-direction:row; align-items:center; }
+      .grid-2 { grid-template-columns:1fr 1fr; }
+      .grid-3 { grid-template-columns:1fr 1fr 1fr; }
       .box-blue,.box-gray { padding:9px 12px; }
       .avoid-break { break-inside:avoid; }
       .print-break-before { break-before:page; }
@@ -265,12 +267,12 @@
           <div class="grid-3-item">
             <div class="grid-3-title">症例報告</div>
             <div class="grid-3-num">10症例</div>
-            <div class="grid-3-text">高齢者の薬物療法に関するレポートを作成</div>
+            <div class="grid-3-text">高齢者の薬物療法に関する<br>レポートを作成</div>
           </div>
           <div class="grid-3-item">
             <div class="grid-3-title">単位取得</div>
             <div class="grid-3-num">30単位以上</div>
-            <div class="grid-3-text">学会指定研修等で取得（学術大会参加必須）</div>
+            <div class="grid-3-text">学会指定研修等で取得<br>（学術大会参加必須）</div>
           </div>
           <div class="grid-3-item">
             <div class="grid-3-title">実技実習</div>
