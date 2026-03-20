@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【新】服用薬剤調整支援料２　2026改定</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --text-xs: 13px; --text-sm: 15px; --text-md: 16px;
+      --text-lg: 18px; --text-xl: 22px;
+      --pad-card: 22px; --gap-card: 16px;
+      --blue: #1e5fa8; --red: #cc0000; --ink: #222222;
+      --bg: #f3f4f6; --white: #ffffff;
+      --box-blue: #e4f0f8; --box-gray: #f2f2f2;
+      --border: #d1d5db; --border-dk: #9ca3af;
+      --radius: 10px; --radius-sm: 6px;
+      --bw: 0.5px; --bw-h: 1px; --bw-a: 3px; --bw-t: 4px;
+    }
+    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+    .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+    .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--ink); padding-bottom:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+    .badge { font-size:var(--text-sm); font-weight:700; padding:3px 12px; border-radius:4px; }
+    .badge-red { background:#fde8e8; color:var(--red); }
+    .badge-blue { background:var(--box-blue); color:var(--blue); }
+    .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:var(--gap-card); }
+    .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:14px 18px; }
+    .box-gray { background:var(--box-gray); border-radius:var(--radius-sm); padding:14px 18px; border:var(--bw) solid var(--border); }
+    .em-red { color:var(--red); font-weight:900; }
+    .em-blue { color:var(--blue); font-weight:900; }
+    .change-badge { display:inline-flex; align-items:center; justify-content:center; color:var(--white); font-size:var(--text-xs); font-weight:900; padding:2px 10px; border-radius:3px; margin-right:8px; flex-shrink:0; }
+    .change-badge.up { background:var(--blue); }
+    .change-badge.strict { background:var(--red); }
+    .change-badge.new-req { background:#b45309; }
+    .section-title { font-weight:900; font-size:var(--text-md); margin-bottom:8px; }
+    .sub-title { font-weight:900; font-size:var(--text-md); padding:6px 0 6px 12px; border-left:var(--bw-t) solid var(--blue); margin-bottom:10px; }
+    table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+    th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
+    td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:middle; }
+    tr:last-child td { border-bottom:none; }
+    .divider { border:none; border-top:var(--bw-h) solid var(--border); margin:12px 0; }
+
+    /* ── ページタイトル（点数バッジ付き） ── */
+    .page-title-wrap {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 6px 0;
+    }
+    .page-title-left {
+      border-left: var(--bw-t) solid var(--blue);
+      padding: 4px 0 4px 18px;
+      flex: 1;
+    }
+    .page-title-left h1 { font-size: var(--text-xl); font-weight: 900; }
+    .page-title-left p  { font-size: var(--text-sm); font-weight: 500; margin-top: 4px; }
+    .score-block {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-shrink: 0;
+      border: var(--bw-h) solid var(--border-dk);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: var(--white);
+    }
+    .score-block .score-label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      padding: 6px 14px;
+      background: var(--box-gray);
+      border-right: var(--bw-h) solid var(--border-dk);
+      line-height: 1.5;
+      white-space: nowrap;
+    }
+    .score-block .score-num {
+      font-size: 28px;
+      font-weight: 900;
+      padding: 6px 18px;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+    .score-block .score-num span {
+      font-size: var(--text-md);
+      font-weight: 700;
+      margin-left: 2px;
+    }
+
+    @media (max-width:640px) { .grid-2 { grid-template-columns:1fr; } }
+    @media print {
+      @page { margin:11mm 10mm; size:A4; }
+      body { background:white; padding:0; font-size:12px; line-height:1.62; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .page { gap:10px; }
+      :root {
+        --text-xs:10.5px; --text-sm:11.5px; --text-md:12px;
+        --text-lg:13.5px; --text-xl:15.5px;
+        --pad-card:11px; --gap-card:10px;
+      }
+      .card { padding:11px 13px; }
+      .card-title { padding-bottom:5px; margin-bottom:9px; }
+      .box-blue,.box-gray { padding:8px 11px; }
+      .avoid-break { break-inside:avoid; }
+      .print-break-before { break-before:page; }
+      .grid-2 { gap:10px; }
+      th,td { padding:5px 8px; }
+      .divider { margin:8px 0; }
+      .score-block .score-num { font-size:21px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══ ページタイトル ══ -->
+  <div class="page-title-wrap">
+    <div class="page-title-left">
+      <h1>【新】服用薬剤調整支援料２</h1>
+      <p>かかりつけ薬剤師によるポリファーマシーの解消を評価</p>
+    </div>
+    <div class="score-block">
+      <div class="score-label">同一患者に<br>6月に1回に限り</div>
+      <div class="score-num">1,000<span>点</span></div>
+    </div>
+  </div>
+
+  <!-- ══ 算定の基本条件 ══ -->
+  <div class="card avoid-break">
+    <div class="card-title">算定の基本条件
+      <span class="badge badge-red">今改定で新設</span>
+    </div>
+
+    <div class="box-blue" style="font-size:var(--text-sm); margin-bottom:14px;">
+      <span style="font-weight:900;">対象患者：</span>複数の保険医療機関から内服薬が合計<span style="font-weight:900;">６種類以上</span>処方されている患者
+    </div>
+
+    <div class="grid-2" style="margin-bottom:14px;">
+      <div class="box-gray" style="font-size:var(--text-sm);">
+        <div style="font-weight:900; margin-bottom:4px;">算定回数の上限</div>
+        <div style="display:flex; gap:6px;">
+          <span style="flex-shrink:0;">・</span>
+          <span>同一患者につき <span style="font-weight:900;">6か月に1回</span> まで</span>
+        </div>
+        <div style="display:flex; gap:6px; margin-top:4px;">
+          <span style="flex-shrink:0;">・</span>
+          <span>かかりつけ薬剤師1人につき <span style="font-weight:900;">月4回</span> まで</span>
+        </div>
+      </div>
+      <div class="box-gray" style="font-size:var(--text-sm);">
+        <div style="font-weight:900; margin-bottom:4px;">算定開始時期</div>
+        <div><span style="font-weight:900;">令和9年6月</span>以降</div>
+        <div style="font-size:var(--text-sm); font-weight:500; margin-top:4px;">令和8年6月〜令和9年5月は<span style="font-weight:900;">旧・新ともに算定不可の空白期間</span></div>
+      </div>
+    </div>
+
+    <div class="box-gray" style="font-size:var(--text-sm);">
+      <span style="font-weight:900;">算定の対象外となる薬局：</span>調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局（特別調剤基本料Ｂ算定薬局）は算定不可
+    </div>
+  </div>
+
+  <!-- ══ 担当薬剤師の資格要件 ══ -->
+  <div class="card avoid-break">
+    <div class="card-title">担当薬剤師の資格要件
+      <span class="badge badge-red">通常のかかりつけ薬剤師では算定不可</span>
+    </div>
+
+    <div class="box-gray" style="font-size:var(--text-sm); margin-bottom:14px;">
+      算定を行う薬剤師は、<span style="font-weight:900;">服用薬剤総合評価を行うために必要な研修を修了したかかりつけ薬剤師</span>でなければならない。具体的には以下のいずれかに該当する者。
+    </div>
+
+    <div class="grid-2" style="margin-bottom:14px;">
+      <div class="box-gray">
+        <div style="font-weight:900; margin-bottom:6px; font-size:var(--text-sm);">資格①</div>
+        <div style="font-size:var(--text-sm);">日本老年薬学会の提供する<span style="font-weight:900;">「老年薬学服薬総合評価研修会」</span>を修了したかかりつけ薬剤師</div>
+      </div>
+      <div class="box-gray">
+        <div style="font-weight:900; margin-bottom:6px; font-size:var(--text-sm);">資格②</div>
+        <div style="font-size:var(--text-sm);">日本老年薬学会が定める<span style="font-weight:900;">「老年薬学認定薬剤師」</span>であるかかりつけ薬剤師</div>
+      </div>
+    </div>
+
+    <div class="box-gray" style="font-size:var(--text-sm);">
+      <div style="font-weight:900; margin-bottom:6px;">受講・取得のハードルについて</div>
+      <div style="display:flex; gap:6px;">
+        <span style="flex-shrink:0;">・</span>
+        <span>一般的な「研修認定薬剤師」の資格のみでは、資格①の研修を受講できない（受講にはJPALS認定薬剤師 CLレベル6等が前提条件となる）。</span>
+      </div>
+      <div style="display:flex; gap:6px; margin-top:4px;">
+        <span style="flex-shrink:0;">・</span>
+        <span>要件クリアには<span style="font-weight:900;">数年単位の準備と費用</span>を要することに留意が必要である。</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 旧報酬との比較（1ページ目補足） ══ -->
+  <div class="card avoid-break">
+    <div class="card-title">旧・服用薬剤調整支援料２との主な違い</div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:28%;"></th>
+          <th style="width:36%;">旧・支援料２（〜令和8年5月）</th>
+          <th style="width:36%;">新・支援料２（令和9年6月〜）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:900;">点数</td>
+          <td>90点（施設基準なし）<br>110点（施設基準あり）</td>
+          <td style="font-weight:900;">1,000点</td>
+        </tr>
+        <tr>
+          <td style="font-weight:900;">算定頻度</td>
+          <td>3月に1回</td>
+          <td style="font-weight:900;">6か月に1回</td>
+        </tr>
+        <tr>
+          <td style="font-weight:900;">担当薬剤師</td>
+          <td>特定の資格要件なし</td>
+          <td style="font-weight:900;">研修修了等の資格を持つかかりつけ薬剤師に限定</td>
+        </tr>
+        <tr>
+          <td style="font-weight:900;">提案内容</td>
+          <td>重複投薬等の解消に係る提案（別紙様式3）</td>
+          <td>服用薬剤総合評価に基づく薬剤調整の提案（別紙様式2）<br>※評価の深さ・内容は旧とは比較にならない</td>
+        </tr>
+        <tr>
+          <td style="font-weight:900;">算定タイミング</td>
+          <td colspan="2" style="text-align:center;">両者とも処方医への提案時点で算定可（薬剤が減少しなくても算定できる）</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══ 算定までの流れ（2ページ目） ══ -->
+  <div class="card print-break-before">
+    <div class="card-title">算定までの流れ</div>
+
+    <!-- Step 1 -->
+    <div class="avoid-break" style="margin-bottom:12px;">
+      <div class="sub-title">Step 1　同意取得</div>
+      <div class="box-gray" style="font-size:var(--text-sm);">
+        患者又はその家族等に対し、あらかじめ以下を説明し了解を得る。
+        <div style="display:flex; gap:6px; margin-top:6px;">
+          <span style="flex-shrink:0;">・</span>
+          <span>服用薬剤総合評価を実施する意義</span>
+        </div>
+        <div style="display:flex; gap:6px; margin-top:4px;">
+          <span style="flex-shrink:0;">・</span>
+          <span>服用薬剤調整支援料２により発生する患者自己負担額</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="avoid-break" style="margin-bottom:12px;">
+      <div class="sub-title">Step 2　情報収集（服用薬剤総合評価の実施）</div>
+      <div class="box-gray" style="font-size:var(--text-sm);">
+        <span style="font-weight:900;">別紙様式２</span>（情報提供書＋服用薬剤総合評価シート）を用いて以下をすべて実施し、薬剤服用歴に添付して保管する。「おくすり問診票」を必要に応じて活用する。
+        <div style="display:flex; gap:8px; margin-top:8px;">
+          <span style="flex-shrink:0; font-weight:900;">ア</span>
+          <span>薬物治療に関する患者又はその家族等からの<span style="font-weight:900;">主観的情報</span>の聴取</span>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:4px;">
+          <span style="flex-shrink:0; font-weight:900;">イ</span>
+          <span>検査値等の薬物治療に必要な<span style="font-weight:900;">客観的情報</span>の収集</span>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:4px;">
+          <span style="flex-shrink:0; font-weight:900;">ウ</span>
+          <span>服薬支援に必要な患者の<span style="font-weight:900;">生活状況及び意向</span>に関する情報の聴取</span>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:4px;">
+          <span style="flex-shrink:0; font-weight:900;">エ</span>
+          <span>各服用薬剤がもたらす<span style="font-weight:900;">治療効果及び有害事象</span>の評価</span>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:4px;">
+          <span style="flex-shrink:0; font-weight:900;">オ</span>
+          <span>解決すべき<span style="font-weight:900;">薬剤関連問題</span>の特定及び整理</span>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:4px;">
+          <span style="flex-shrink:0; font-weight:900;">カ</span>
+          <span>服用薬剤調整後の<span style="font-weight:900;">観察計画及び対応案</span>の立案</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="avoid-break" style="margin-bottom:12px;">
+      <div class="sub-title" style="border-left-color:var(--red);">Step 3　処方医への情報提供（文書）</div>
+      <div class="box-gray" style="font-size:var(--text-sm);">
+        服用薬剤総合評価の結果をもとに、処方医に対して<span style="font-weight:900;">別紙様式２（情報提供書）を用いて薬剤調整について情報提供</span>を行う。
+        <div style="margin-top:6px; font-weight:900;">※ 薬剤が実際に減少しなくても、この情報提供を行った時点で算定可能。</div>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="avoid-break">
+      <div class="sub-title">Step 4　結果伝達（患者・家族等へ）</div>
+      <div class="box-gray" style="font-size:var(--text-sm);">
+        患者・家族等との関係性等を踏まえ、<span style="font-weight:900;">一律ではなく個別に適宜内容を変更</span>して以下を伝達する。
+        <div style="display:flex; gap:8px; margin-top:8px;">
+          <span style="flex-shrink:0; font-weight:900;">ア</span>
+          <span>患者への聞き取り等により確認した内容</span>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:4px;">
+          <span style="flex-shrink:0; font-weight:900;">イ</span>
+          <span>薬物有害事象であると疑われる症状</span>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:4px;">
+          <span style="flex-shrink:0; font-weight:900;">ウ</span>
+          <span>服薬の状況（薬剤の管理状況等も含む）</span>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:4px;">
+          <span style="flex-shrink:0; font-weight:900;">エ</span>
+          <span>医療従事者と共有する内容</span>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:4px;">
+          <span style="flex-shrink:0; font-weight:900;">オ</span>
+          <span>今後生活を送る上での注意点</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══ 在宅患者・算定不可（最終） ══ -->
+  <div class="grid-2">
+
+    <div class="card avoid-break">
+      <div class="card-title">在宅患者への対応</div>
+      <div class="box-gray" style="font-size:var(--text-sm); line-height:1.8;">
+        在宅訪問中の患者（通院困難なもの）についても、<span style="font-weight:900;">かかりつけ薬剤師としての同意を別途取得した上で</span>服用薬剤総合評価を実施すれば算定可能。在宅患者訪問薬剤管理指導料等を算定している場合でも算定できる。
+      </div>
+    </div>
+
+    <div class="card avoid-break">
+      <div class="card-title">特別調剤基本料算定薬局の取扱い</div>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div class="box-gray" style="font-size:var(--text-sm);">
+          <div style="font-weight:900; margin-bottom:4px;">特別調剤基本料Ｂ算定薬局</div>
+          算定不可
+        </div>
+        <div class="box-gray" style="font-size:var(--text-sm);">
+          <div style="font-weight:900; margin-bottom:4px;">特別調剤基本料Ａ算定薬局</div>
+          不動産取引等「特別な関係」にある保険医療機関へ情報提供を行った場合は算定不可
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>
