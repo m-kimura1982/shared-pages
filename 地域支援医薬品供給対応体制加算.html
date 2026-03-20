@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>地域支援・医薬品供給対応体制加算　2026改定</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --text-xs: 13px; --text-sm: 15px; --text-md: 16px;
+      --text-lg: 18px; --text-xl: 22px;
+      --pad-card: 22px; --gap-card: 16px;
+      --blue: #1e5fa8; --red: #cc0000; --ink: #222222;
+      --bg: #f3f4f6; --white: #ffffff;
+      --box-blue: #e4f0f8; --box-gray: #f2f2f2;
+      --border: #d1d5db; --border-dk: #9ca3af;
+      --radius: 10px; --radius-sm: 6px;
+      --bw: 0.5px; --bw-h: 1px; --bw-a: 3px; --bw-t: 4px;
+    }
+    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+    .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+    .page-title { border-left:var(--bw-t) solid var(--blue); padding:6px 0 6px 18px; }
+    .page-title h1 { font-size:var(--text-xl); font-weight:900; }
+    .page-title p { font-size:var(--text-sm); font-weight:500; margin-top:4px; }
+    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+    .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--ink); padding-bottom:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+    .badge { font-size:var(--text-sm); font-weight:700; padding:3px 12px; border-radius:4px; }
+    .badge-red { background:#fde8e8; color:var(--red); }
+    .badge-blue { background:var(--box-blue); color:var(--blue); }
+    .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:var(--gap-card); }
+    .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:14px 18px; }
+    .box-gray { background:var(--box-gray); border-radius:var(--radius-sm); padding:14px 18px; border:var(--bw) solid var(--border); }
+    .em-red { color:var(--red); font-weight:900; }
+    .em-blue { color:var(--blue); font-weight:900; }
+    .change-badge { display:inline-flex; align-items:center; justify-content:center; color:var(--white); font-size:var(--text-xs); font-weight:900; padding:2px 10px; border-radius:3px; margin-right:8px; flex-shrink:0; }
+    .change-badge.up { background:var(--blue); }
+    .change-badge.strict { background:var(--red); }
+    .change-badge.new-req { background:#b45309; }
+    .section-title { font-weight:900; font-size:var(--text-md); margin-bottom:8px; }
+    .sub-title { font-weight:900; font-size:var(--text-md); padding:6px 0 6px 12px; border-left:var(--bw-t) solid var(--blue); margin-bottom:10px; }
+    table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+    th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
+    td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:middle; }
+    tr:last-child td { border-bottom:none; }
+    .divider { border:none; border-top:var(--bw-h) solid var(--border); margin:12px 0; }
+    @media (max-width:640px) {
+  .grid-2,.grid-3 { grid-template-columns:1fr; }
+  body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+  :root {
+    --text-xs:11px; --text-sm:12.5px; --text-md:13px;
+    --text-lg:15px; --text-xl:17px;
+    --pad-card:14px; --gap-card:11px;
+  }
+  .card { padding:14px; border-radius:8px; }
+  .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; flex-direction:column; align-items:flex-start; gap:6px; }
+  .box-blue,.box-gray { padding:10px 12px; }
+  .badge { font-size:12px; padding:3px 10px; }
+  .sub-title { font-size:13px; }
+  .page-title { padding:4px 0 4px 14px; }
+  .page-title h1 { font-size:17px; line-height:1.45; }
+  .page-title p { font-size:12.5px; }
+  /* ページタイトルに点数バッジがある場合 */
+  .page-title-wrap { flex-direction:column; gap:10px; }
+  .page-title-left { padding:4px 0 4px 14px; }
+  .page-title-left h1 { font-size:17px; line-height:1.45; }
+  .score-block { align-self:flex-start; }
+  .score-block .score-label { font-size:11px; padding:5px 10px; }
+  .score-block .score-num { font-size:22px; padding:5px 14px; }
+  /* テーブルがある場合は横スクロール対応 */
+  .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  table { font-size:11.5px; min-width:480px; }
+  th,td { padding:6px 8px; }
+}
+    @media print {
+      @page { margin:11mm 10mm; size:A4; }
+      body { background:white; padding:0; font-size:12.5px; line-height:1.65; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .page { gap:11px; }
+      :root { --text-xs:10.5px; --text-sm:12px; --text-md:12.5px; --text-lg:14px; --text-xl:16px; --pad-card:12px; --gap-card:11px; }
+      .card { padding:12px 14px; }
+      .card-title { padding-bottom:5px; margin-bottom:10px; }
+      .box-blue,.box-gray { padding:8px 11px; }
+      .avoid-break { break-inside:avoid; }
+      .print-break-before { break-before:page; }
+      .grid-2 { gap:12px; }
+      th,td { padding:5px 7px; }
+      .divider { margin:8px 0; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- タイトル -->
+  <div class="page-title">
+    <h1>地域支援・医薬品供給対応体制加算　2026改定</h1>
+    <p>地域支援体制加算からの名称変更・要件見直し</p>
+  </div>
+
+  <!-- ① 変更点まとめ（P1） -->
+  <div class="card">
+    <div class="card-title">地域支援体制加算からの主な変更点</div>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+
+      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+          <span class="change-badge up">名称変更</span>
+          <span style="font-weight:900;">地域支援体制加算 → 地域支援・医薬品供給対応体制加算</span>
+        </div>
+        <div style="font-size:var(--text-sm);">医薬品の安定供給への対応を加算名に明示。医薬品供給体制の整備が要件として加わった。</div>
+      </div>
+
+      <hr class="divider">
+
+      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+          <span class="change-badge up">区分変更</span>
+          <span style="font-weight:900;">4区分 → 5区分に変更・点数も見直し</span>
+        </div>
+        <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:10%;">区分</th>
+              <th style="width:35%;">新点数</th>
+              <th style="width:30%;">対応する旧加算</th>
+              <th style="width:25%;">算定できる<br>調剤基本料</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:900; text-align:center;">加算１</td>
+              <td><strong>27点</strong></td>
+              <td style="color:var(--border-dk); font-size:var(--text-xs);">後発医薬品調剤体制加算の後継</td>
+              <td>全薬局</td>
+            </tr>
+            <tr>
+              <td style="font-weight:900; text-align:center;">加算２</td>
+              <td><strong>59点</strong>　<span style="font-size:var(--text-xs);">（27＋32）</span></td>
+              <td style="color:var(--border-dk);">地域支援体制加算１（32点）</td>
+              <td rowspan="2" style="vertical-align:middle;">調剤基本料１</td>
+            </tr>
+            <tr>
+              <td style="font-weight:900; text-align:center;">加算３</td>
+              <td><strong>67点</strong>　<span style="font-size:var(--text-xs);">（27＋40）</span></td>
+              <td style="color:var(--border-dk);">地域支援体制加算２（40点）</td>
+            </tr>
+            <tr>
+              <td style="font-weight:900; text-align:center;">加算４</td>
+              <td><strong>37点</strong>　<span style="font-size:var(--text-xs);">（27＋10）</span></td>
+              <td style="color:var(--border-dk);">地域支援体制加算３（10点）</td>
+              <td rowspan="2" style="vertical-align:middle;">調剤基本料１以外</td>
+            </tr>
+            <tr>
+              <td style="font-weight:900; text-align:center;">加算５</td>
+              <td><strong>59点</strong>　<span style="font-size:var(--text-xs);">（27＋32）</span></td>
+              <td style="color:var(--border-dk);">地域支援体制加算４（32点）</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <div style="font-size:var(--text-xs); margin-top:6px;">※加算１の要件は全区分で必須。加算２〜５は加算１（27点）に旧加算の点数を上乗せした構造。</div>
+      </div>
+
+      <hr class="divider">
+
+      <div style="border-left:var(--bw-t) solid var(--red); padding-left:14px;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+          <span class="change-badge strict">加算統合・廃止</span>
+          <span style="font-weight:900;">後発医薬品調剤体制加算が廃止 → 加算１として統合</span>
+        </div>
+        <div style="font-size:var(--text-sm); margin-bottom:10px;">旧・後発医薬品調剤体制加算が廃止され、地域支援体制加算に統合された。新しい加算１（27点）がその後継にあたり、<strong>GE率85%以上が全区分の必須要件</strong>として引き継がれた。加算２〜５は旧・地域支援体制加算の点数に加算１（27点）を上乗せした形になっている。</div>
+        <div class="box-gray" style="font-size:var(--text-sm);">
+          <strong>【経過措置】</strong>　令和8年3月31日時点で後発医薬品調剤体制加算の届出を行っている薬局は、<span class="em-red">令和9年5月31日まで</span>加算１のGE率85%以上の要件を満たしているとみなす。
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+          <span class="change-badge up">要件緩和</span>
+          <span style="font-weight:900;">管理薬剤師の勤務時間：週32時間以上 → 週31時間以上（加算２〜５の要件）</span>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div style="border-left:var(--bw-t) solid var(--red); padding-left:14px;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+          <span class="change-badge strict">実績要件の組み替え</span>
+          <span style="font-weight:900;">重複投薬・相互作用等防止加算の廃止に伴う分離・細分化</span>
+        </div>
+        <div style="font-size:var(--text-sm); margin-bottom:8px;">重複投薬・相互作用等防止加算が廃止され、実質的にはその業務が2つの加算に分離・細分化された形で実績要件③に引き継がれた。合計回数の基準は旧加算と据え置き。</div>
+        <div class="box-gray" style="font-size:var(--text-sm);">
+          <div style="display:flex; gap:8px;"><span style="flex-shrink:0;">③</span><span><strong>調剤時残薬調整加算</strong>および<strong>薬学的有害事象等防止加算</strong>の算定回数の合計<br>（基本料１：20回以上、基本料１以外：40回以上）</span></div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div style="border-left:var(--bw-t) solid var(--red); padding-left:14px;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+          <span class="change-badge strict">実績要件から削除</span>
+          <span style="font-weight:900;">服用薬剤調整支援料２の廃止に伴い実績要件から削除</span>
+        </div>
+        <div style="font-size:var(--text-sm);">服用薬剤調整支援料２が廃止されたことに伴い、実績要件から削除された。これにより加算３・加算５の算定に必要な要件数が<span class="em-red">8項目から7項目</span>に変更された。</div>
+        <div class="box-gray" style="font-size:var(--text-sm); margin-top:6px;">
+          <strong>【実績カウントへの影響】</strong>　ただし、評価期間内（前年5月〜当年4月）に算定した服用薬剤調整支援料２は、実績要件⑦（服薬情報等提供料の相当業務）の回数として合算してカウントすることが可能。
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 実績要件テーブル＋算定条件（P2） -->
+  <div class="card avoid-break print-break-before">
+    <div style="display:flex; flex-direction:column; gap:14px; font-size:var(--text-sm);">
+
+      <div>
+        <div class="section-title">地域医療への貢献に係る実績要件（①〜⑨）</div>
+        <div style="font-size:var(--text-xs); margin-bottom:6px;">※①〜⑧は処方箋1万枚当たりの年間回数（1万回未満は1万回とみなす）。⑨のみ薬局当たりの年間回数。同一グループ職員・その家族の実績は除く。</div>
+        <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:4%;"></th>
+              <th style="width:44%;">要件</th>
+              <th style="width:24%;">調剤基本料１</th>
+              <th style="width:28%;">調剤基本料１以外</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align:center; font-weight:900;">①</td>
+              <td>時間外等加算・夜間休日等加算の算定回数の合計（薬剤調製料）</td>
+              <td>40回以上</td>
+              <td>400回以上</td>
+            </tr>
+            <tr>
+              <td style="text-align:center; font-weight:900;">②</td>
+              <td>麻薬の調剤実績</td>
+              <td>1回以上</td>
+              <td>10回以上</td>
+            </tr>
+            <tr style="background:#fef9f9;">
+              <td style="text-align:center; font-weight:900;">③</td>
+              <td><strong>調剤時残薬調整加算・薬学的有害事象等防止加算</strong>の合計<br><span style="font-size:var(--text-xs); color:var(--ink);">※NEW 合計回数で評価。旧・重複投薬等防止加算と同回数</span></td>
+              <td>20回以上</td>
+              <td>40回以上</td>
+            </tr>
+            <tr>
+              <td style="text-align:center; font-weight:900; white-space:nowrap;">④<br><span style="font-size:var(--text-xs); color:var(--red);">加算２・４は必須</span></td>
+              <td>服薬管理指導料１のイ・２のイ（かかりつけ）の算定実績</td>
+              <td>20回以上</td>
+              <td>40回以上</td>
+            </tr>
+            <tr>
+              <td style="text-align:center; font-weight:900; white-space:nowrap;">⑤</td>
+              <td>外来服薬支援料１の実績</td>
+              <td>1回以上</td>
+              <td>12回以上</td>
+            </tr>
+            <tr>
+              <td style="text-align:center; font-weight:900; white-space:nowrap;">⑥<br><span style="font-size:var(--text-xs); color:var(--red);">加算４は必須</span></td>
+              <td>単一建物1人の在宅患者管理の実績</td>
+              <td>24回以上</td>
+              <td>24回以上</td>
+            </tr>
+            <tr>
+              <td style="text-align:center; font-weight:900;">⑦</td>
+              <td>服薬情報等提供料<strong>に相当する</strong>実績<br><span style="font-size:var(--text-xs); color:var(--ink);">※表記変更。相当業務（特定薬剤管理指導加算２等）を含む</span></td>
+              <td>30回以上</td>
+              <td>60回以上</td>
+            </tr>
+            <tr>
+              <td style="text-align:center; font-weight:900;">⑧</td>
+              <td>小児特定加算の算定実績</td>
+              <td>1回以上</td>
+              <td>1回以上</td>
+            </tr>
+            <tr>
+              <td style="text-align:center; font-weight:900;">⑨</td>
+              <td>研修認定薬剤師による地域多職種連携会議への出席<br><span style="font-size:var(--text-xs); color:var(--ink);">※薬局当たりの年間回数</span></td>
+              <td>1回以上</td>
+              <td>5回以上</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div>
+        <div class="section-title">加算区分ごとの算定条件</div>
+        <div class="grid-2" style="gap:10px;">
+          <div>
+            <div class="sub-title">【調剤基本料１の薬局】</div>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <div class="box-gray">
+                <div style="font-weight:900; margin-bottom:3px;">加算２　59点</div>
+                ④を含む3項目以上（①〜⑨のうち）
+              </div>
+              <div class="box-gray">
+                <div style="font-weight:900; margin-bottom:3px;">加算３　67点</div>
+                ①〜⑨のうち<span class="em-red">7項目以上</span><br>
+                <span style="font-size:var(--text-xs);">※服用薬剤調整支援料２の削除により8項目から変更</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="sub-title">【調剤基本料１以外の薬局】</div>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <div class="box-gray">
+                <div style="font-weight:900; margin-bottom:3px;">加算４　37点</div>
+                ④・⑥を含む3項目以上（①〜⑨のうち）
+              </div>
+              <div class="box-gray">
+                <div style="font-weight:900; margin-bottom:3px;">加算５　59点</div>
+                ①〜⑨のうち<span class="em-red">7項目以上</span><br>
+                <span style="font-size:var(--text-xs);">※服用薬剤調整支援料２の削除により8項目から変更</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:var(--text-xs); margin-top:8px;">実績要件は前年5月1日〜当年4月末日の実績により判定し、当年6月1日から翌年5月末日まで算定できる。<br>届出様式：別添２の様式87の３の１・様式87の３の２</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 新規施設基準（P3） -->
+  <div class="card print-break-before">
+    <div class="card-title">今改定で追加された施設基準<span class="badge badge-red">今改定で新設</span></div>
+    <div style="display:flex; flex-direction:column; gap:10px; font-size:var(--text-sm);">
+      <div class="box-gray">
+        <div style="font-weight:900; margin-bottom:4px;">医薬品の分譲実績　（加算１施設基準）</div>
+        直近1年間において、他の保険薬局に医薬品を分譲した実績があること。分譲の際は<strong>伝票、医療用医薬品の譲渡書、または別紙様式4-1を2年間保存</strong>すること（同一開設者への分譲は実績に含まない）。
+      </div>
+      <div class="box-gray">
+        <div style="font-weight:900; margin-bottom:4px;">入手困難な医薬品への対応　（加算１施設基準）</div>
+        入手困難な医薬品を含む処方を応需した場合は、在庫を持つ薬局を探して確認の上、患者に案内するか処方医に変更可否を照会すること。案内の際は別紙様式4-2を用いること。<strong>患者から別紙様式4-2を受け取った保険薬局（案内された先の薬局）が2年間保管</strong>する義務がある。
+      </div>
+      <div class="grid-2">
+        <div class="box-gray">
+          <div style="font-weight:900; margin-bottom:4px;">セルフメディケーション機器の設置　<span style="font-weight:500; font-size:var(--text-xs);">（加算２〜５の施設基準）</span></div>
+          以下のうち少なくとも<strong>3つ</strong>を患者の求めに応じて使用できるよう設置すること。
+          <div style="margin-top:6px; font-size:var(--text-xs);">①体重計　②体温計　③血圧測定器　④体組成計　⑤パルスオキシメータ　⑥握力計　⑦骨密度測定器</div>
+        </div>
+        <div class="box-gray">
+          <div style="font-weight:900; margin-bottom:4px;">調剤室の面積　<span style="font-weight:500; font-size:var(--text-xs);">（加算２〜５の施設基準）</span></div>
+          令和8年6月以降に開設または改築・増築する保険薬局は、<strong>面積が16平方メートル以上の調剤室</strong>を有すること。
+        </div>
+      </div>
+      <div class="box-gray">
+        <div style="font-weight:900; margin-bottom:4px;">薬事未承認品の取り扱い禁止　<span style="font-weight:500; font-size:var(--text-xs);">（加算２〜５の施設基準）</span></div>
+        当該保険薬局および併設の店舗販売業において、<strong>薬事未承認の研究用試薬または検査サービスを販売・提供していないこと。</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 施設基準（加算１）（P3続き） -->
+  <div class="card">
+    <div class="card-title">施設基準　加算１</div>
+    <div style="display:flex; flex-direction:column; gap:10px; font-size:var(--text-sm);">
+
+      <div class="box-blue" style="font-weight:900;">全区分共通の必須要件</div>
+
+      <div class="box-gray">
+        <div style="font-weight:900; margin-bottom:4px;">GE率（必須）<span class="em-red">　旧・後発医薬品調剤体制加算から引き継いだ要件</span></div>
+        直近3月間の後発医薬品調剤割合が<span class="em-red">85%以上</span>であること。後発医薬品を積極的に調剤している旨を薬局の内外の見えやすい場所に掲示すること。
+      </div>
+
+      <div>
+        <div class="section-title">医薬品の安定供給体制（ア〜キを満たすこと・クは努力義務）</div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <div style="display:flex; gap:8px;"><span style="flex-shrink:0; font-weight:900;">ア</span><span>在庫を抑制した結果、頻繁な分譲受け・急配依頼に陥らないよう計画的な調達・在庫管理を行うこと</span></div>
+          <div style="display:flex; gap:8px;"><span style="flex-shrink:0; font-weight:900;">イ</span><span>直近1年間に他の保険薬局へ医薬品を<strong>分譲した実績</strong>があること（伝票・譲渡書・別紙様式4-1を2年間保存）</span></div>
+          <div style="display:flex; gap:8px;"><span style="flex-shrink:0; font-weight:900;">ウ</span><span>入手困難な医薬品を含む処方を応需した場合、在庫薬局を探して患者に案内（別紙様式4-2使用）または処方変更を照会すること（別紙様式4-2を受け取った先の薬局が2年間保存）</span></div>
+          <div style="display:flex; gap:8px;"><span style="flex-shrink:0; font-weight:900;">エ</span><span>重要供給確保医薬品（内用薬・外用薬）について<strong>1か月分程度備蓄</strong>するよう努めること</span></div>
+          <div style="display:flex; gap:8px;"><span style="flex-shrink:0; font-weight:900;">オ</span><span>個々の医薬品の価値や流通コストを無視した値引き交渉を慎むこと。原則として全品目について<strong>単品単価交渉</strong>とすること</span></div>
+          <div style="display:flex; gap:8px;"><span style="flex-shrink:0; font-weight:900;">カ</span><span>卸売販売業者への頻回配送・休日夜間配送・急配に係る<strong>過度な依頼を慎む</strong>こと</span></div>
+          <div style="display:flex; gap:8px;"><span style="flex-shrink:0; font-weight:900;">キ</span><span>厳格な温度管理を要する医薬品や、在庫調整を目的とした医薬品等については卸売販売業者への<strong>返品を慎む</strong>こと</span></div>
+          <div style="display:flex; gap:8px;"><span style="flex-shrink:0; font-weight:900;">ク</span><span>地域の保険医療機関・保険薬局・医療関係団体と連携し、取り扱う医薬品の品目についての<strong>情報共有や事前の取り決め</strong>を行うことが望ましい　<span style="font-size:var(--text-xs);">（努力義務）</span></span></div>
+        </div>
+        <div style="font-size:var(--text-xs); margin-top:8px; display:flex; flex-direction:column; gap:3px;">
+          <div>※オの「単品単価交渉」の確認：直近届出の様式85（妥結率等報告書）で「単品単価交渉を行っていない」に非該当であること。総価交渉・全国最低価格ベンチマーク等を用いた交渉は単品単価交渉とみなされない。</div>
+          <div>※エの「1か月分程度の備蓄」：各品目の直近1年間の調剤数量から割り出した1か月分を現物で保有すること。卸売販売業者が代わりに在庫確保するだけでは備蓄に該当しない。</div>
+        </div>
+      </div>
+
+      <div style="font-size:var(--text-xs);">※特別調剤基本料Bを算定している保険薬局は算定不可。特別調剤基本料Aの薬局は所定点数の10分の1（小数点以下四捨五入）。</div>
+    </div>
+  </div>
+
+  <!-- 施設基準（加算２〜５）体制要件（P4） -->
+  <div class="card print-break-before">
+    <div class="card-title">施設基準　加算２〜５</div>
+    <div style="display:flex; flex-direction:column; gap:14px; font-size:var(--text-sm);">
+
+      <div style="border-left:var(--bw-a) solid var(--blue); padding-left:12px;">
+        加算１の施設基準を全て満たした上で、以下を満たすこと。
+      </div>
+
+      <div>
+        <div class="section-title">体制要件（加算２〜５共通）</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div class="box-gray">
+            <div style="font-weight:900; margin-bottom:3px;">医薬品供給拠点としての体制</div>
+            <div style="display:flex; flex-direction:column; gap:4px; font-size:var(--text-sm);">
+              <div style="display:flex; gap:6px;"><span style="flex-shrink:0;">・</span><span>保険調剤に係る医薬品として<strong>1200品目以上を備蓄</strong>していること</span></div>
+              <div style="display:flex; gap:6px;"><span style="flex-shrink:0;">・</span><span>地域の保険医療機関・保険薬局（同一グループ除く）に対して在庫状況の共有・医薬品の融通を行っていること</span></div>
+              <div style="display:flex; gap:6px;"><span style="flex-shrink:0;">・</span><span>医療材料・衛生材料を供給できる体制を有していること</span></div>
+              <div style="display:flex; gap:6px;"><span style="flex-shrink:0;">・</span><span>麻薬小売業者の免許を取得していること</span></div>
+            </div>
+          </div>
+          <div class="grid-2" style="gap:10px;">
+            <div class="box-gray">
+              <div style="font-weight:900; margin-bottom:3px;">管理薬剤師の要件</div>
+              <div style="font-size:var(--text-sm);">
+                <div style="display:flex; gap:6px;"><span style="flex-shrink:0;">・</span><span>保険薬剤師として<strong>5年以上の勤務経験</strong>（医療機関薬剤師1年以上は1年を上限に含める可）</span></div>
+                <div style="display:flex; gap:6px;"><span style="flex-shrink:0;">・</span><span><strong>週31時間以上</strong>勤務していること</span></div>
+                <div style="display:flex; gap:6px;"><span style="flex-shrink:0;">・</span><span>継続して<strong>1年以上在籍</strong>していること</span></div>
+              </div>
+            </div>
+            <div class="box-gray">
+              <div style="font-weight:900; margin-bottom:3px;">セルフメディケーション機器・調剤室</div>
+              <div style="font-size:var(--text-sm);">
+                <div style="display:flex; gap:6px;"><span style="flex-shrink:0;">・</span><span>以下のうち少なくとも<strong>3つ</strong>を設置（体重計・体温計・血圧測定器・体組成計・パルスオキシメータ・握力計・骨密度測定器）</span></div>
+                <div style="display:flex; gap:6px;"><span style="flex-shrink:0;">・</span><span>令和8年6月以降の新規・改築・増築薬局は<strong>調剤室16㎡以上</strong></span></div>
+                <div style="display:flex; gap:6px;"><span style="flex-shrink:0;">・</span><span>薬事未承認の研究用試薬・検査サービスを販売または提供していないこと</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="box-gray" style="font-size:var(--text-sm);">
+            <div style="font-weight:900; margin-bottom:3px;">その他（開局体制・在宅・医療安全・地域医療）</div>
+            平日8時間以上・週45時間以上開局・時間外調剤対応体制・在宅患者訪問薬剤管理指導の届出・PMDAメディナビ登録・プレアボイド事例の収集・副作用報告体制・要指導医薬品等の取り扱い・健康相談の実施・緊急避妊薬の備蓄・禁煙区域の確保 等
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
