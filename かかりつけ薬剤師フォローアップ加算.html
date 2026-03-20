@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>かかりつけ薬剤師フォローアップ加算</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --text-xs:  13px;
+      --text-sm:  15px;
+      --text-md:  16px;
+      --text-lg:  18px;
+      --text-xl:  22px;
+      --pad-card: 22px;
+      --gap-card: 16px;
+      --blue:     #1e5fa8;
+      --red:      #cc0000;
+      --ink:      #222222;
+      --bg:       #f3f4f6;
+      --white:    #ffffff;
+      --box-blue: #e4f0f8;
+      --box-gray: #f2f2f2;
+      --border:   #d1d5db;
+      --border-dk:#9ca3af;
+      --radius:   10px;
+      --radius-sm:6px;
+      --bw:       0.5px;
+      --bw-h:     1px;
+      --bw-a:     3px;
+      --bw-t:     4px;
+    }
+
+    body {
+      font-family: "Noto Sans JP", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: var(--text-md);
+      line-height: 1.8;
+      padding: 32px 16px 60px;
+    }
+
+    .page { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--gap-card); }
+
+    .page-title { border-left: var(--bw-t) solid var(--blue); padding: 6px 0 6px 18px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .page-title h1 { font-size: var(--text-xl); font-weight: 900; }
+    .page-title p  { font-size: var(--text-sm); font-weight: 500; margin-top: 4px; }
+
+    .card { background: var(--white); border: var(--bw) solid var(--border); border-radius: var(--radius); padding: var(--pad-card); }
+    .card-title {
+      font-size: var(--text-lg); font-weight: 900;
+      border-bottom: var(--bw-h) solid var(--ink);
+      padding-bottom: 8px; margin-bottom: 16px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    }
+
+    .badge { font-size: var(--text-sm); font-weight: 700; padding: 3px 12px; border-radius: 4px; }
+    .badge-red  { background: #fde8e8; color: var(--red); }
+    .badge-blue { background: var(--box-blue); color: var(--blue); }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-card); }
+
+    .box-blue { background: var(--box-blue); border-radius: var(--radius-sm); padding: 14px 18px; }
+    .box-gray { background: var(--box-gray); border-radius: var(--radius-sm); padding: 14px 18px; border: var(--bw) solid var(--border); }
+
+    .em-red  { color: var(--red);  font-weight: 900; }
+    .em-blue { color: var(--blue); font-weight: 900; }
+
+    .pts-badge { display: flex; align-items: center; background: var(--white); border: var(--bw-h) solid var(--border-dk); border-radius: var(--radius-sm); overflow: hidden; flex-shrink: 0; }
+    .pts-label { background: var(--box-gray); padding: 8px 14px; font-size: var(--text-sm); font-weight: 700; border-right: var(--bw-h) solid var(--border-dk); }
+    .pts-num   { padding: 8px 18px; font-size: 32px; font-weight: 900; color: var(--ink); line-height: 1; }
+    .pts-unit  { font-size: var(--text-sm); font-weight: 700; }
+
+    .divider { border: none; border-top: var(--bw-h) solid var(--border); margin: 12px 0; }
+
+        @media (max-width:640px) {
+  .grid-2,.grid-3 { grid-template-columns:1fr; }
+  body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+  :root {
+    --text-xs:11px; --text-sm:12.5px; --text-md:13px;
+    --text-lg:15px; --text-xl:17px;
+    --pad-card:14px; --gap-card:11px;
+  }
+  .card { padding:14px; border-radius:8px; }
+  .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; flex-direction:column; align-items:flex-start; gap:6px; }
+  .box-blue,.box-gray { padding:10px 12px; }
+  .badge { font-size:12px; padding:3px 10px; }
+  .sub-title { font-size:13px; }
+  .page-title { padding:4px 0 4px 14px; }
+  .page-title h1 { font-size:17px; line-height:1.45; }
+  .page-title p { font-size:12.5px; }
+  /* ページタイトルに点数バッジがある場合 */
+  .page-title-wrap { flex-direction:column; gap:10px; }
+  .page-title-left { padding:4px 0 4px 14px; }
+  .page-title-left h1 { font-size:17px; line-height:1.45; }
+  .score-block { align-self:flex-start; }
+  .score-block .score-label { font-size:11px; padding:5px 10px; }
+  .score-block .score-num { font-size:22px; padding:5px 14px; }
+  /* テーブルがある場合は横スクロール対応 */
+  .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  table { font-size:11.5px; min-width:480px; }
+  th,td { padding:6px 8px; }
+}
+
+    @media print {
+      @page { margin: 12mm 10mm; size: A4; }
+      body { background: white; padding: 0; font-size: 15px; line-height: 1.8;
+        -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .page { gap: 16px; }
+      :root {
+        --text-xs: 12px; --text-sm: 14px; --text-md: 15px;
+        --text-lg: 17px; --text-xl: 19px;
+        --pad-card: 20px; --gap-card: 16px;
+      }
+      .card { padding: 20px 22px; }
+      .card-title { padding-bottom: 8px; margin-bottom: 15px; }
+      .box-blue, .box-gray { padding: 12px 15px; }
+      .avoid-break { break-inside: avoid; }
+      .print-break-before { break-before: page; }
+      .grid-2 { gap: 16px; }
+      .pts-num { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- タイトル -->
+  <div class="page-title">
+    <div>
+      <h1>かかりつけ薬剤師フォローアップ加算</h1>
+      <p>次回来局までの間に電話等でフォローアップを行った場合の評価</p>
+    </div>
+    <div class="pts-badge">
+      <span class="pts-label">3月に1回に限り</span>
+      <span class="pts-num">50<span class="pts-unit">点</span></span>
+    </div>
+  </div>
+
+  <!-- ① 算定対象と前提条件 -->
+  <div class="card avoid-break">
+    <div class="card-title">算定対象と前提条件</div>
+    <div style="display:flex; flex-direction:column; gap:12px; font-size:var(--text-md);">
+      <div class="box-blue">
+        <span style="font-weight:900;">対象患者：</span>以下の<strong>両方</strong>を満たす患者
+      </div>
+      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
+        <div style="font-weight:900; margin-bottom:4px;">条件① かかりつけを算定していること</div>
+        <div style="font-size:var(--text-sm);">服薬管理指導料「１のイ」または「２のイ」を算定していること</div>
+      </div>
+      <div style="border-left:var(--bw-t) solid var(--red); padding-left:14px;">
+        <div style="font-weight:900; margin-bottom:6px;">条件② 直近6月以内に以下のいずれかを算定していること</div>
+        <div class="box-gray" style="font-size:var(--text-sm);">
+          <div style="display:flex; flex-direction:column; gap:4px;">
+            <div>・ 外来服薬支援料１</div>
+            <div>・ 服用薬剤調整支援料１または２</div>
+            <div>・ 調剤管理料　調剤時残薬調整加算</div>
+            <div>・ 調剤管理料　薬学的有害事象等防止加算</div>
+          </div>
+          <div style="margin-top:10px; font-size:var(--text-sm);"><strong>例外：</strong>フォローアップにより残薬等の問題が解消された場合は、条件②を満たしていなくても算定可。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ② 算定の流れ -->
+  <div class="card avoid-break">
+    <div class="card-title">算定の流れ</div>
+    <div style="display:flex; flex-direction:column; gap:14px; font-size:var(--text-md);">
+      <div class="box-gray" style="display:flex; gap:14px; align-items:flex-start;">
+        <div style="background:var(--blue); color:var(--white); font-weight:900; font-size:var(--text-sm); padding:3px 10px; border-radius:4px; flex-shrink:0; margin-top:2px;">起点</div>
+        <div>患者・家族等の求め、または<span class="em-blue">かかりつけ薬剤師が必要と認めた場合</span></div>
+      </div>
+      <div style="border-left:var(--bw-a) solid var(--blue); padding-left:14px;">
+        <div style="font-weight:900; margin-bottom:8px;">前回調剤後〜次回来局前の間に電話等でフォローアップ</div>
+        <div style="font-size:var(--text-sm); margin-bottom:10px;">服薬状況・残薬状況等の確認および必要な指導を個別に実施。電話のほか情報通信機器（ビデオ通話等）を用いた方法も可。</div>
+        <div style="font-size:var(--text-sm); display:flex; flex-direction:column; gap:6px; margin-top:10px;">
+          <div>・ <strong>調剤当日は対象外</strong>　―　「前回調剤後」に調剤当日を含まない</div>
+          <div>・ <strong>処方箋持参当日は算定不可</strong>　―　「次回来局前」に持参当日を含まない</div>
+          <div>・ <strong>別医療機関の処方箋持参時は算定不可</strong>　―　フォローアップを実施した医療機関からの処方箋に限る</div>
+        </div>
+      </div>
+      <div style="border-left:var(--bw-a) solid var(--blue); padding-left:14px;">
+        <div style="font-weight:900; margin-bottom:4px;">次回処方箋持参時に算定</div>
+        <div style="font-size:var(--text-sm);">フォローアップを実施した医療機関からの処方箋受付時に算定する（3月に1回）。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ③ 実施方法・留意点 -->
+  <div class="card avoid-break print-break-before">
+    <div class="card-title">算定上の注意点</div>
+    <div style="display:flex; flex-direction:column; gap:12px; font-size:var(--text-md);">
+      <div style="border-left:var(--bw-t) solid var(--red); padding-left:14px;">
+        <div style="font-weight:900; margin-bottom:6px;"><span class="em-red">双方向性が必須</span>　―　以下は算定不可</div>
+        <div style="font-size:var(--text-sm); display:flex; flex-direction:column; gap:4px;">
+          <div>・ 一律の内容のメールを一斉送信するのみ</div>
+          <div>・ アプリで患者が定型チェックを行うだけで完結（個別の確認・助言が伴わない場合）</div>
+        </div>
+      </div>
+      <hr class="divider">
+      <div style="border-left:var(--bw-a) solid var(--blue); padding-left:14px;">
+        <div style="font-weight:900; margin-bottom:4px;">事前説明と同意</div>
+        <div style="font-size:var(--text-sm);">あらかじめ患者または家族等に、①実施する聞き取り・指導等の内容、②発生する患者自己負担額を説明し了解を得ること。</div>
+      </div>
+      <hr class="divider">
+      <div style="border-left:var(--bw-a) solid var(--blue); padding-left:14px;">
+        <div style="font-weight:900; margin-bottom:4px;">薬歴への記載</div>
+        <div style="font-size:var(--text-sm);">電話等によりフォローアップした旨・日時・実施した聞き取りや指導等の内容を記載。残薬が解消されない場合は、理由・背景の検証内容および改善策も記載すること。</div>
+      </div>
+      <hr class="divider">
+      <div style="border-left:var(--bw-a) solid var(--blue); padding-left:14px;">
+        <div style="font-weight:900; margin-bottom:4px;">体調変化等の情報提供</div>
+        <div style="font-size:var(--text-sm);">フォローアップ中に速やかに医療機関へ伝えるべき体調変化等を把握した場合は、当該医療機関へ情報提供し、必要に応じて受診勧奨を行うこと。</div>
+      </div>
+      <hr class="divider">
+      <div style="font-size:var(--text-sm);">
+        <div style="font-weight:900; margin-bottom:8px;">併算定不可（同月）</div>
+        <div class="box-gray" style="margin-bottom:10px;">調剤後薬剤管理指導料　／　在宅患者訪問薬剤管理指導料　／　居宅療養管理指導費（薬剤師）　／　介護予防居宅療養管理指導費（薬剤師）</div>
+        <div style="border-left:var(--bw-a) solid var(--border-dk); padding-left:10px; margin-bottom:6px;"><strong>複数の保険薬局でかかりつけを算定している場合、いずれの薬局も算定不可。</strong></div>
+        <div style="font-size:var(--text-xs);">※特別調剤基本料Ｂを算定している保険薬局は算定不可。</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
