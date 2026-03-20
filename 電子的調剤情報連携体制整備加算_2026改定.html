@@ -20,9 +20,6 @@
     }
     body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
     .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
-    .page-title { border-left:var(--bw-t) solid var(--blue); padding:6px 0 6px 18px; }
-    .page-title h1 { font-size:var(--text-xl); font-weight:900; }
-    .page-title p { font-size:var(--text-sm); font-weight:500; margin-top:4px; }
     .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
     .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--ink); padding-bottom:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
     .badge { font-size:var(--text-sm); font-weight:700; padding:3px 12px; border-radius:4px; }
@@ -44,18 +41,17 @@
     td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:middle; }
     tr:last-child td { border-bottom:none; }
     .divider { border:none; border-top:var(--bw-h) solid var(--border); margin:12px 0; }
-
     .page-title-wrap { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap; padding:6px 0; }
     .page-title-left { border-left:var(--bw-t) solid var(--blue); padding:4px 0 4px 18px; flex:1; }
     .page-title-left h1 { font-size:var(--text-xl); font-weight:900; }
-    .page-title-left p  { font-size:var(--text-sm); font-weight:500; margin-top:4px; }
+    .page-title-left p { font-size:var(--text-sm); font-weight:500; margin-top:4px; }
     .score-block { display:flex; align-items:center; gap:0; flex-shrink:0; border:var(--bw-h) solid var(--border-dk); border-radius:var(--radius-sm); overflow:hidden; background:var(--white); }
     .score-block .score-label { font-size:var(--text-xs); font-weight:700; padding:6px 14px; background:var(--box-gray); border-right:var(--bw-h) solid var(--border-dk); line-height:1.5; white-space:nowrap; }
     .score-block .score-num { font-size:28px; font-weight:900; padding:6px 18px; line-height:1.2; white-space:nowrap; }
     .score-block .score-num span { font-size:var(--text-md); font-weight:700; margin-left:2px; }
 
     @media (max-width:640px) {
-      .grid-2,.grid-3 { grid-template-columns:1fr; }
+      .grid-2 { grid-template-columns:1fr; }
       body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
       :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
       .card { padding:14px; border-radius:8px; }
@@ -76,19 +72,20 @@
     }
     @media print {
       @page { margin:11mm 10mm; size:A4; }
-      body { background:white; padding:0; font-size:12px; line-height:1.65; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-      .page { gap:11px; }
-      :root { --text-xs:10.5px; --text-sm:12px; --text-md:12px; --text-lg:13.5px; --text-xl:15.5px; --pad-card:11px; --gap-card:11px; }
-      .card { padding:11px 13px; }
+      body { background:white; padding:0; font-size:12.5px; line-height:1.65; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .page { gap:10px; }
+      :root { --text-xs:11px; --text-sm:12.5px; --text-md:12.5px; --text-lg:14px; --text-xl:16px; --pad-card:12px; --gap-card:10px; }
+      .card { padding:10px 12px; }
       .card-title { padding-bottom:5px; margin-bottom:9px; flex-direction:row; align-items:center; }
       .grid-2 { grid-template-columns:1fr 1fr; gap:10px; }
       .page-title-wrap { flex-direction:row; align-items:flex-start; }
-      .box-blue,.box-gray { padding:8px 11px; }
+      .box-blue,.box-gray { padding:7px 10px; }
       .avoid-break { break-inside:avoid; }
       .print-break-before { break-before:page; }
       th,td { padding:5px 8px; }
-      .divider { margin:8px 0; }
-      .score-block .score-num { font-size:21px; }
+      .divider { margin:6px 0; }
+      .score-block .score-num { font-size:20px; }
+      .score-block .score-label { font-size:10px; padding:5px 10px; }
     }
   </style>
 </head>
@@ -99,7 +96,7 @@
   <div class="page-title-wrap">
     <div class="page-title-left">
       <h1>電子的調剤情報連携体制整備加算</h1>
-      <p>名称変更・マイナ保険証利用率要件の一本化｜2026年調剤報酬改定</p>
+      <p>医療DX推進体制整備加算からの名称変更・利用率要件の一本化｜2026年調剤報酬改定</p>
     </div>
     <div class="score-block">
       <div class="score-label">月1回に限り</div>
@@ -107,75 +104,130 @@
     </div>
   </div>
 
-  <!-- ══ 医療DX関連加算の再編 ══ -->
+  <!-- ══ 新旧比較 ══ -->
   <div class="card avoid-break">
-    <div class="card-title">医療DX関連加算の再編（新旧比較）
-      <span class="badge badge-red">名称変更・統合</span>
+    <div class="card-title">医療DX関連加算の新旧比較</div>
+    <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:22%;"></th>
+          <th style="width:39%;">変更前（〜令和8年5月）</th>
+          <th style="width:39%;">変更後（令和8年6月〜）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:900;">医療情報取得加算</td>
+          <td>年1回　1点</td>
+          <td>
+            <span class="change-badge strict">廃止</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-weight:900;">加算名</td>
+          <td>医療DX推進体制整備加算</td>
+          <td style="font-weight:900;">電子的調剤情報連携体制整備加算<br><span style="font-size:var(--text-xs); font-weight:500;">（名称変更・施設基準の一部改正）</span></td>
+        </tr>
+        <tr>
+          <td style="font-weight:900;">点数・区分</td>
+          <td>
+            <div style="display:flex; gap:6px; margin-bottom:2px;"><span style="flex-shrink:0;">・</span><span>加算１（利用率70%以上）：10点</span></div>
+            <div style="display:flex; gap:6px; margin-bottom:2px;"><span style="flex-shrink:0;">・</span><span>加算２（利用率50%以上）：8点</span></div>
+            <div style="display:flex; gap:6px;"><span style="flex-shrink:0;">・</span><span>加算３（利用率30%以上）：6点</span></div>
+          </td>
+          <td>
+            <span style="font-weight:900;">一律 8点</span><br>
+            <span style="font-size:var(--text-xs);">利用率による区分を廃止・一本化</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-weight:900;">利用率要件</td>
+          <td>30% ／ 50% ／ 70% 以上（3区分）</td>
+          <td style="font-weight:900;">30% 以上（一律）</td>
+        </tr>
+        <tr>
+          <td style="font-weight:900;">算定頻度</td>
+          <td>月1回</td>
+          <td>月1回（変更なし）</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- ══ マイナ保険証利用率 ══ -->
+  <div class="card avoid-break">
+    <div class="card-title">マイナ保険証利用率の算定要件
+      <span class="badge badge-red">区分廃止・一本化</span>
     </div>
     <div class="grid-2">
-      <div class="box-gray">
-        <div class="section-title" style="margin-bottom:10px;">変更前（〜令和8年5月）</div>
-        <div style="font-size:var(--text-sm); margin-bottom:10px;">
-          <div style="font-weight:900; margin-bottom:4px;">① 医療情報取得加算</div>
-          <div style="display:flex; gap:6px;">
-            <span style="flex-shrink:0;">・</span>
-            <span>年1回　1点</span>
-          </div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div class="box-gray" style="font-size:var(--text-sm);">
+          <div style="font-weight:900; margin-bottom:6px;">算定に必要な利用率</div>
+          <div style="font-size:26px; font-weight:900; color:var(--red); line-height:1.3;">30%<span style="font-size:var(--text-md); color:var(--ink);">以上</span></div>
+          <div style="font-size:var(--text-xs); margin-top:4px;">算定月の3月前のレセプト件数ベースマイナ保険証利用率</div>
         </div>
-        <hr class="divider">
-        <div style="font-size:var(--text-sm);">
-          <div style="font-weight:900; margin-bottom:6px;">② 医療DX推進体制整備加算</div>
-          <div style="display:flex; gap:6px; margin-bottom:2px;">
-            <span style="flex-shrink:0;">・</span>
-            <span>加算１（利用率70%以上）：10点</span>
-          </div>
-          <div style="display:flex; gap:6px; margin-bottom:2px;">
-            <span style="flex-shrink:0;">・</span>
-            <span>加算２（利用率50%以上）：8点</span>
-          </div>
+        <div class="box-gray" style="font-size:var(--text-sm);">
+          <div style="font-weight:900; margin-bottom:4px;">代替月の使用が可能</div>
           <div style="display:flex; gap:6px;">
             <span style="flex-shrink:0;">・</span>
-            <span>加算３（利用率30%以上）：6点</span>
+            <span>3月前の利用率に代えて、<span style="font-weight:900;">前月</span>又は<span style="font-weight:900;">前々月</span>の利用率を用いることも可能</span>
           </div>
         </div>
       </div>
-
-      <div class="box-gray">
-        <div class="section-title" style="margin-bottom:10px;">変更後（令和8年6月〜）</div>
-        <div style="font-size:var(--text-sm); margin-bottom:10px;">
-          <div style="font-weight:900; margin-bottom:4px; text-decoration:line-through; opacity:0.55;">① 医療情報取得加算</div>
-          <div style="display:inline-block; font-size:var(--text-xs); font-weight:900; background:var(--ink); color:var(--white); padding:1px 10px; border-radius:3px;">廃止</div>
+      <div class="box-gray" style="font-size:var(--text-sm);">
+        <div style="font-weight:900; margin-bottom:8px;">「レセプト件数ベースマイナ保険証利用率」とは</div>
+        <div style="display:flex; gap:6px; margin-bottom:6px;">
+          <span style="flex-shrink:0;">・</span>
+          <span>同月における<span style="font-weight:900;">マイナ保険証利用者数</span>を、同月の<span style="font-weight:900;">患者数</span>で除した割合</span>
+        </div>
+        <div style="display:flex; gap:6px;">
+          <span style="flex-shrink:0;">・</span>
+          <span>社会保険診療報酬支払基金から報告される数値を使用</span>
         </div>
         <hr class="divider">
-        <div style="font-size:var(--text-sm);">
-          <div style="font-weight:900; margin-bottom:6px;">② 電子的調剤情報連携体制整備加算</div>
-          <div style="display:flex; gap:6px; margin-bottom:2px;">
-            <span style="flex-shrink:0;">・</span>
-            <span>月1回　<span style="font-weight:900;">8点</span>（利用率区分を廃止・一本化）</span>
-          </div>
-          <div style="display:flex; gap:6px;">
-            <span style="flex-shrink:0;">・</span>
-            <span>マイナ保険証利用率 <span style="font-weight:900;">30%以上</span> で算定可</span>
-          </div>
+        <div style="font-size:var(--text-xs);">
+          ※ この要件（利用率30%以上）は届出不要。基準を満たしていれば算定可。
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ══ 利用率の一本化 ══ -->
+  <!-- ══ 算定のポイント ══ -->
   <div class="card avoid-break">
-    <div class="card-title">マイナ保険証利用率による評価の一本化
-      <span class="badge badge-red">区分評価を廃止</span>
-    </div>
-    <div class="box-gray" style="font-size:var(--text-sm); margin-bottom:14px;">
-      これまで3区分（加算1〜3）に分かれていた評価を廃止し、以下の利用率要件を満たせば一律8点を算定。
-    </div>
-    <div style="text-align:center; padding:20px; background:var(--white); border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); margin-bottom:14px;">
-      <div style="font-size:var(--text-sm); font-weight:700; margin-bottom:8px;">算定月の3月前のレセプト件数ベースマイナ保険証利用率が</div>
-      <div style="font-size:34px; font-weight:900; color:var(--red);">30％ 以上</div>
-    </div>
-    <div class="box-gray" style="font-size:var(--text-sm);">
-      <span style="font-weight:900;">※ 算定月3月前の利用率が使えない場合：</span>その<span style="font-weight:900;">前月</span>又は<span style="font-weight:900;">前々月</span>のレセプト件数ベースマイナ保険証利用率を用いることも可能。
+    <div class="card-title">算定・届出のポイント</div>
+    <div class="grid-2">
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div class="box-blue" style="font-size:var(--text-sm);">
+          <div style="font-weight:900; margin-bottom:6px;">届出に関する重要事項</div>
+          現行の「医療DX推進体制整備加算」を既に算定している薬局は<span style="font-weight:900;">新たな届出は不要</span>。マイナ保険証利用率30%以上・マイナポータル健康相談体制の要件も届出不要であり、基準を満たしていればそのまま算定可能。
+        </div>
+        <div class="box-gray" style="font-size:var(--text-sm);">
+          <div style="font-weight:900; margin-bottom:6px;">算定の前提</div>
+          オンライン資格確認等システムや電子処方箋管理サービスで取得した患者の診療情報・薬剤情報等を<span style="font-weight:900;">実際に閲覧・活用して調剤・服薬指導等を行うこと</span>が算定の前提となる
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div class="box-gray" style="font-size:var(--text-sm);">
+          <div style="font-weight:900; margin-bottom:6px;">算定上の制限</div>
+          <div style="display:flex; gap:8px; margin-bottom:6px;">
+            <span style="flex-shrink:0;">・</span>
+            <span>患者1人につき同一月に2回以上調剤を行った場合でも<span style="font-weight:900;">月1回のみ</span>の算定</span>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <span style="flex-shrink:0;">・</span>
+            <span><span style="font-weight:900;">特別調剤基本料Ｂ</span>を算定している保険薬局は算定不可</span>
+          </div>
+        </div>
+        <div class="box-gray" style="font-size:var(--text-sm);">
+          <div style="font-weight:900; margin-bottom:6px;">施設基準の届出様式</div>
+          <div style="display:flex; gap:8px;">
+            <span style="flex-shrink:0;">・</span>
+            <span>届出が必要な場合は<span style="font-weight:900;">別添２の様式87の３の６</span>を使用</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -183,64 +235,57 @@
   <div class="card print-break-before">
     <div class="card-title">施設基準</div>
 
-    <div class="box-blue" style="margin-bottom:16px; font-size:var(--text-sm);">
-      <div style="font-weight:900; margin-bottom:4px;">届出に関する重要事項</div>
-      現行の「医療DX推進体制整備加算」を既に算定している薬局は、<span style="font-weight:900;">新たな届出は不要</span>。マイナ保険証利用率30%以上・マイナポータル健康相談体制などの新要件も個別届出は不要であり、基準を満たしていればそのまま算定可能。
-    </div>
-
     <div class="avoid-break" style="margin-bottom:12px;">
-      <div class="sub-title">電子化・情報活用体制</div>
+      <div class="sub-title">電子化・情報活用体制（施設基準①〜⑥）</div>
       <div class="box-gray" style="font-size:var(--text-sm);">
         <div style="display:flex; gap:8px; margin-bottom:6px;">
           <span style="flex-shrink:0; font-weight:900;">①</span>
-          <span>電子情報処理組織を使用した調剤報酬請求を行っていること。</span>
+          <span>電子情報処理組織を使用した調剤報酬請求を行っていること</span>
         </div>
         <div style="display:flex; gap:8px; margin-bottom:6px;">
           <span style="flex-shrink:0; font-weight:900;">②</span>
-          <span>健康保険法第3条第13項に規定する電子資格確認を行う体制を有していること。（導入時は医療機関等向けポータルサイトで運用開始日を登録すること）</span>
+          <span>健康保険法第3条第13項に規定する<span style="font-weight:900;">電子資格確認を行う体制</span>を有すること（導入時は医療機関等向けポータルサイトで運用開始日を登録すること）</span>
         </div>
         <div style="display:flex; gap:8px; margin-bottom:6px;">
           <span style="flex-shrink:0; font-weight:900;">③</span>
-          <span>オンライン資格確認等システムを通じて患者の診療情報・薬剤情報等を取得し、調剤・服薬指導等に活用できる体制を有していること。</span>
+          <span>オンライン資格確認等システムを通じて患者の診療情報・薬剤情報等を取得し、<span style="font-weight:900;">調剤・服薬指導等に閲覧・活用できる体制</span>を有すること</span>
         </div>
         <div style="display:flex; gap:8px; margin-bottom:6px;">
           <span style="flex-shrink:0; font-weight:900;">④</span>
-          <span>電子処方箋を受け付け、調剤する体制を有するとともに、紙処方箋を含む全てについて<span style="font-weight:900;">調剤結果を速やかに電子処方箋管理サービスに登録</span>すること。また、重複投薬等チェック機能を用いて不適切な組合せがないか確認できる体制を整備すること。</span>
+          <span>電子処方箋を受け付け調剤する体制を有するとともに、紙処方箋を含む全てについて<span style="font-weight:900;">調剤結果を速やかに電子処方箋管理サービスに登録</span>すること。また、<span style="font-weight:900;">重複投薬等チェック機能</span>を用いて不適切な組合せを確認できる体制を整備すること</span>
         </div>
         <div style="display:flex; gap:8px; margin-bottom:6px;">
           <span style="flex-shrink:0; font-weight:900;">⑤</span>
-          <span>電磁的記録による調剤録及び薬剤服用歴の管理体制を有していること。（紙媒体での保管も差し支えなし）</span>
+          <span>電磁的記録による<span style="font-weight:900;">調剤録及び薬剤服用歴の管理体制</span>を有すること（紙媒体処方箋・情報提供文書等の紙保管は差し支えなし）</span>
         </div>
         <div style="display:flex; gap:8px;">
           <span style="flex-shrink:0; font-weight:900;">⑥</span>
-          <span>国等が提供する<span style="font-weight:900;">電子カルテ情報共有サービス</span>により取得される診療情報等を活用する体制を有していること。（当面の間は満たしているものとみなす。運用開始時は速やかな導入に努めること）</span>
+          <span>国等が提供する<span style="font-weight:900;">電子カルテ情報共有サービス</span>により取得される診療情報等を活用する体制を有すること<br>
+          <span style="font-size:var(--text-xs);">※ 当面の間は満たしているものとみなす。全国で運用開始時は速やかな導入に努めること</span></span>
         </div>
       </div>
     </div>
 
-    <div class="avoid-break" style="margin-bottom:12px;">
-      <div class="sub-title">利用率・掲示・セキュリティ等</div>
+    <div class="avoid-break">
+      <div class="sub-title">掲示・セキュリティ・健康相談（施設基準⑦〜⑩）</div>
       <div class="box-gray" style="font-size:var(--text-sm);">
         <div style="display:flex; gap:8px; margin-bottom:6px;">
           <span style="flex-shrink:0; font-weight:900;">⑦</span>
-          <span>算定月の3月前（又は前月・前々月）のレセプト件数ベースマイナ保険証利用率が<span style="font-weight:900;">30%以上</span>であること。（届出不要・基準を満たせば算定可）</span>
-        </div>
-        <div style="display:flex; gap:8px; margin-bottom:4px;">
-          <span style="flex-shrink:0; font-weight:900;">⑧</span>
-          <span>以下の事項を薬局内の見やすい場所に掲示し、原則として<span style="font-weight:900;">ウェブサイトにも掲載</span>すること。（HPがない薬局は除く）</span>
+          <span>以下の事項を薬局内の見やすい場所に<span style="font-weight:900;">掲示</span>し、原則として<span style="font-weight:900;">ウェブサイトにも掲載</span>すること（HPがない薬局は除く）</span>
         </div>
         <div style="font-size:var(--text-xs); margin:0 0 8px 28px;">
-          <div style="display:flex; gap:8px; margin-bottom:2px;"><span style="flex-shrink:0; font-weight:900;">ア</span><span>オンライン資格確認等システムを通じて診療情報・薬剤情報等を取得・活用している薬局であること</span></div>
+          <div style="display:flex; gap:8px; margin-bottom:2px;"><span style="flex-shrink:0; font-weight:900;">ア</span><span>オンライン資格確認等システムを通じて診療情報・薬剤情報等を取得・閲覧し、調剤・服薬指導等に活用している薬局であること</span></div>
           <div style="display:flex; gap:8px; margin-bottom:2px;"><span style="flex-shrink:0; font-weight:900;">イ</span><span>マイナ保険証利用を促進するなど、医療DXを通じて質の高い医療を提供している薬局であること</span></div>
           <div style="display:flex; gap:8px;"><span style="flex-shrink:0; font-weight:900;">ウ</span><span>電子処方箋や電子カルテ情報共有サービスを活用するなど、医療DXに係る取組を実施している薬局であること</span></div>
         </div>
         <div style="display:flex; gap:8px; margin-bottom:6px;">
-          <span style="flex-shrink:0; font-weight:900;">⑨</span>
-          <span>最新の厚労省「医療情報システムの安全管理に関するガイドライン」を参照し、<span style="font-weight:900;">サイバー攻撃に対する対策を含めセキュリティ全般について適切な対応</span>を行う体制を有していること。</span>
+          <span style="flex-shrink:0; font-weight:900;">⑧</span>
+          <span>最新の厚労省「<span style="font-weight:900;">医療情報システムの安全管理に関するガイドライン</span>」を参照し、サイバー攻撃に対する対策を含め<span style="font-weight:900;">セキュリティ全般について適切な対応を行う体制</span>を有すること</span>
         </div>
         <div style="display:flex; gap:8px;">
-          <span style="flex-shrink:0; font-weight:900;">⑩</span>
-          <span>マイナポータルの医療情報等に基づき、<span style="font-weight:900;">患者からの健康管理に係る相談に応じる体制</span>を有していること。（届出不要・基準を満たせば算定可）</span>
+          <span style="flex-shrink:0; font-weight:900;">⑨</span>
+          <span>マイナポータルの医療情報等に基づき、<span style="font-weight:900;">患者からの健康管理に係る相談に応じる体制</span>を有すること<br>
+          <span style="font-size:var(--text-xs);">※ この要件は届出不要。基準を満たしていれば算定可</span></span>
         </div>
       </div>
     </div>
@@ -252,11 +297,15 @@
     <div class="box-gray" style="font-size:var(--text-sm);">
       <div style="display:flex; gap:8px; margin-bottom:8px;">
         <span style="flex-shrink:0;">・</span>
-        <span>患者1人につき同一月に2回以上調剤を行った場合でも、<span style="font-weight:900;">月1回のみの算定</span>とする。</span>
+        <span>患者1人につき同一月に2回以上調剤を行った場合でも、<span style="font-weight:900;">月1回のみの算定</span>となる</span>
+      </div>
+      <div style="display:flex; gap:8px; margin-bottom:8px;">
+        <span style="flex-shrink:0;">・</span>
+        <span>オンライン資格確認等システムや電子処方箋管理サービスの重複投薬等チェックを通じて取得した<span style="font-weight:900;">患者の診療情報・薬剤情報等を実際に閲覧・活用して調剤・服薬指導等を行うこと</span>が算定の前提となる</span>
       </div>
       <div style="display:flex; gap:8px;">
         <span style="flex-shrink:0;">・</span>
-        <span><span style="font-weight:900;">特別調剤基本料Ｂ</span>を算定している保険薬局は算定できない。</span>
+        <span><span style="font-weight:900;">特別調剤基本料Ｂ</span>を算定している保険薬局は算定できない</span>
       </div>
     </div>
   </div>
