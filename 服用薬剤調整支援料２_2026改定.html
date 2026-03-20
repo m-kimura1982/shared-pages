@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>【新】服用薬剤調整支援料２　2026改定</title>
+  <title>服用薬剤調整支援料２　2026改定</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -90,7 +90,26 @@
       margin-left: 2px;
     }
 
-    @media (max-width:640px) { .grid-2 { grid-template-columns:1fr; } }
+    @media (max-width:640px) {
+      .grid-2 { grid-template-columns:1fr; }
+      body { font-size:var(--text-sm); padding:16px 12px 40px; }
+      :root {
+        --text-xs:12px; --text-sm:13px; --text-md:14px;
+        --text-lg:16px; --text-xl:19px;
+        --pad-card:16px; --gap-card:12px;
+      }
+      .card { padding:16px; }
+      .card-title { font-size:var(--text-lg); padding-bottom:7px; margin-bottom:12px; flex-direction:column; align-items:flex-start; }
+      .box-blue,.box-gray { padding:10px 13px; }
+      .page-title-wrap { flex-direction:column; gap:10px; }
+      .score-block { align-self:flex-start; }
+      .score-block .score-num { font-size:24px; }
+      table { font-size:12px; }
+      th,td { padding:6px 8px; }
+      /* テーブルをスマホではスクロール対応 */
+      .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+      .sub-title { font-size:var(--text-sm); }
+    }
     @media print {
       @page { margin:11mm 10mm; size:A4; }
       body { background:white; padding:0; font-size:12px; line-height:1.62; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
@@ -118,7 +137,7 @@
   <!-- ══ ページタイトル ══ -->
   <div class="page-title-wrap">
     <div class="page-title-left">
-      <h1>【新】服用薬剤調整支援料２</h1>
+      <h1>服用薬剤調整支援料２</h1>
       <p>かかりつけ薬剤師によるポリファーマシーの解消を評価</p>
     </div>
     <div class="score-block">
@@ -198,6 +217,7 @@
   <!-- ══ 旧報酬との比較（1ページ目補足） ══ -->
   <div class="card avoid-break">
     <div class="card-title">旧・服用薬剤調整支援料２との主な違い</div>
+    <div class="table-wrap">
     <table>
       <thead>
         <tr>
@@ -233,7 +253,7 @@
         </tr>
       </tbody>
     </table>
-  </div>
+    </div>
 
   <!-- ══ 算定までの流れ（2ページ目） ══ -->
   <div class="card print-break-before">
