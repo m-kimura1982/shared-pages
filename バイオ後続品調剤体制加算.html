@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>バイオ後続品調剤体制加算</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --text-xs:  13px;
+      --text-sm:  15px;
+      --text-md:  16px;
+      --text-lg:  18px;
+      --text-xl:  22px;
+      --pad-card: 22px;
+      --gap-card: 16px;
+      --blue:     #1e5fa8;
+      --red:      #cc0000;
+      --ink:      #222222;
+      --bg:       #f3f4f6;
+      --white:    #ffffff;
+      --box-blue: #e4f0f8;
+      --box-gray: #f2f2f2;
+      --border:   #d1d5db;
+      --border-dk:#9ca3af;
+      --radius:   10px;
+      --radius-sm:6px;
+      --bw:       0.5px;
+      --bw-h:     1px;
+      --bw-a:     3px;
+      --bw-t:     4px;
+    }
+
+    body {
+      font-family: "Noto Sans JP", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: var(--text-md);
+      line-height: 1.8;
+      padding: 32px 16px 60px;
+    }
+
+    .page { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--gap-card); }
+
+    .page-title { border-left: var(--bw-t) solid var(--blue); padding: 6px 0 6px 18px; }
+    .page-title h1 { font-size: var(--text-xl); font-weight: 900; }
+    .page-title p  { font-size: var(--text-sm); font-weight: 500; margin-top: 4px; }
+
+    .card { background: var(--white); border: var(--bw) solid var(--border); border-radius: var(--radius); padding: var(--pad-card); }
+    .card-title {
+      font-size: var(--text-lg); font-weight: 900;
+      border-bottom: var(--bw-h) solid var(--ink);
+      padding-bottom: 8px; margin-bottom: 16px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    }
+
+    .badge { font-size: var(--text-sm); font-weight: 700; padding: 3px 12px; border-radius: 4px; }
+    .badge-red  { background: #fde8e8; color: var(--red); }
+    .badge-blue { background: var(--box-blue); color: var(--blue); }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-card); }
+
+    .box-blue { background: var(--box-blue); border-radius: var(--radius-sm); padding: 14px 18px; }
+    .box-gray { background: var(--box-gray); border-radius: var(--radius-sm); padding: 14px 18px; border: var(--bw) solid var(--border); }
+
+    .em-red  { color: var(--red);  font-weight: 900; }
+    .em-blue { color: var(--blue); font-weight: 900; }
+
+    .left-accent     { border-left: var(--bw-a) solid var(--blue); padding-left: 12px; }
+
+    .bullet-list { display: flex; flex-direction: column; gap: 8px; list-style: none; }
+    .bullet-list li { display: flex; align-items: flex-start; gap: 8px; font-size: var(--text-sm); }
+    .bullet-list li::before { content: "■"; color: var(--ink); flex-shrink: 0; margin-top: 2px; }
+
+    .pts-badge { display: flex; align-items: center; background: var(--white); border: var(--bw-h) solid var(--border-dk); border-radius: var(--radius-sm); overflow: hidden; flex-shrink: 0; }
+    .pts-label { background: var(--box-gray); padding: 8px 14px; font-size: var(--text-sm); font-weight: 700; border-right: var(--bw-h) solid var(--border-dk); }
+    .pts-num   { padding: 8px 18px; font-size: 32px; font-weight: 900; color: var(--ink); line-height: 1; }
+    .pts-unit  { font-size: var(--text-sm); font-weight: 700; color: var(--ink); }
+
+    .section-label { display: inline-block; font-size: var(--text-sm); font-weight: 900; padding: 2px 10px; border-radius: 4px; margin-bottom: 6px; }
+    .label-red  { background: #fde8e8; color: var(--red); }
+    .label-blue { background: var(--box-blue); color: var(--blue); }
+
+    .divider { border: none; border-top: var(--bw-h) solid var(--border); margin: 14px 0; }
+
+        @media (max-width:640px) {
+  .grid-2,.grid-3 { grid-template-columns:1fr; }
+  body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+  :root {
+    --text-xs:11px; --text-sm:12.5px; --text-md:13px;
+    --text-lg:15px; --text-xl:17px;
+    --pad-card:14px; --gap-card:11px;
+  }
+  .card { padding:14px; border-radius:8px; }
+  .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; flex-direction:column; align-items:flex-start; gap:6px; }
+  .box-blue,.box-gray { padding:10px 12px; }
+  .badge { font-size:12px; padding:3px 10px; }
+  .sub-title { font-size:13px; }
+  .page-title { padding:4px 0 4px 14px; }
+  .page-title h1 { font-size:17px; line-height:1.45; }
+  .page-title p { font-size:12.5px; }
+  /* ページタイトルに点数バッジがある場合 */
+  .page-title-wrap { flex-direction:column; gap:10px; }
+  .page-title-left { padding:4px 0 4px 14px; }
+  .page-title-left h1 { font-size:17px; line-height:1.45; }
+  .score-block { align-self:flex-start; }
+  .score-block .score-label { font-size:11px; padding:5px 10px; }
+  .score-block .score-num { font-size:22px; padding:5px 14px; }
+  /* テーブルがある場合は横スクロール対応 */
+  .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  table { font-size:11.5px; min-width:480px; }
+  th,td { padding:6px 8px; }
+}
+
+    @media print {
+      @page { margin: 11mm 10mm; size: A4; }
+      body { background: white; padding: 0; font-size: 12.5px; line-height: 1.65;
+        -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .page { gap: 12px; }
+      :root {
+        --text-xs: 10.5px; --text-sm: 12px; --text-md: 12.5px;
+        --text-lg: 14px; --text-xl: 17px;
+        --pad-card: 14px; --gap-card: 12px;
+      }
+      .card { padding: 14px 16px; }
+      .card-title { padding-bottom: 6px; margin-bottom: 12px; }
+      .box-blue, .box-gray { padding: 10px 13px; }
+      .bullet-list { gap: 8px; }
+      .avoid-break { break-inside: avoid; }
+      .print-break-before { break-before: page; }
+      .grid-2 { gap: 12px; }
+      .pts-num { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- タイトル -->
+  <div class="page-title">
+    <h1>バイオ後続品調剤体制加算</h1>
+    <p>バイオ後続品の調剤・説明を適切に行う体制に対する評価</p>
+  </div>
+
+  <!-- ① 算定対象と制限 -->
+  <div class="card avoid-break">
+    <div class="card-title">
+      算定対象と基本料による制限
+      <div class="pts-badge">
+        <span class="pts-label">調剤した場合に加算</span>
+        <span class="pts-num">50<span class="pts-unit">点</span></span>
+      </div>
+    </div>
+    <div style="font-size:var(--text-sm); margin-bottom:14px;">
+      <span class="em-blue">バイオ後続品</span>を調剤した場合に算定可能。ただし<span class="em-red">インスリン製剤は対象外</span>。
+    </div>
+    <div class="grid-2">
+      <div class="box-gray" style="font-size:var(--text-sm);">
+        <div style="font-weight:900; margin-bottom:6px;">特別調剤基本料Ａの薬局</div>
+        所定点数が<strong>100分の10</strong>に減算される（小数点以下第一位を四捨五入）
+      </div>
+      <div class="box-gray" style="font-size:var(--text-sm);">
+        <div style="font-weight:900; margin-bottom:6px;">特別調剤基本料Ｂの薬局</div>
+        本加算は<strong>算定不可</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- ② 処方箋の記載別対応ルール -->
+  <div class="card avoid-break">
+    <div class="card-title">
+      処方箋の記載に基づく対応ルール
+      <span class="badge badge-red">変更調剤の可否に注意</span>
+    </div>
+    <div class="grid-2" style="margin-bottom:16px;">
+      <!-- 一般名処方 -->
+      <div style="font-size:var(--text-md); display:flex; flex-direction:column; gap:8px;">
+        <div style="font-weight:900; font-size:var(--text-lg); text-align:center; padding-bottom:6px; border-bottom:var(--bw-h) solid var(--border-dk);">一般名処方の場合</div>
+        <div>原則として後発医薬品またはバイオ後続品を調剤すること。</div>
+        <div style="font-size:var(--text-sm); border-left:var(--bw-a) solid var(--blue); padding-left:10px;">
+          2026改定より、バイオ後続品のあるバイオ医薬品も<strong>一般名処方加算の対象に追加</strong>。これにより処方医は先行品を銘柄名処方し続けると加算が取れなくなるため、一般名処方への移行が促される。
+        </div>
+        <div class="box-gray">
+          <div style="font-weight:900; margin-bottom:4px;">未調剤の場合の対応</div>
+          有効性・安全性・品質等を説明した上でもバイオ後続品等を調剤しなかった場合は、<span class="em-red">その理由をレセプトの摘要欄に記載</span>すること。
+        </div>
+        <div class="box-gray">
+          バイオ後続品には「後続1」「後続2」等の番号があり、<strong>番号が異なると法律上別成分</strong>のため変更不可。処方箋の番号と在庫の番号が一致する場合のみ調剤できる。
+        </div>
+      </div>
+      <!-- 銘柄名処方 -->
+      <div style="font-size:var(--text-md); display:flex; flex-direction:column; gap:8px;">
+        <div style="font-weight:900; font-size:var(--text-lg); text-align:center; padding-bottom:6px; border-bottom:var(--bw-h) solid var(--border-dk);">銘柄名処方（先行品）の場合</div>
+        <div>先行バイオ医薬品の銘柄名が記載されている場合、<span class="em-red">処方医に事前に確認することなくバイオ後続品に変更して調剤することはできない</span>。</div>
+        <div class="box-gray">※必ず事前の疑義照会（同意取得）が必要。</div>
+      </div>
+    </div>
+    <div style="border-left:var(--bw-a) solid var(--blue); padding-left:12px; font-size:var(--text-sm);">
+      先行品とバイオ後続品の<span class="em-blue">効能・効果が異なる</span>バイオ医薬品の一般的名称が記載された処方箋を受け付けた場合は、後発医薬品の調剤と同様に適切な対応を行うこと。
+    </div>
+  </div>
+
+  <!-- ② 補足：後続番号と疑義照会対策 -->
+  <div class="card avoid-break">
+    <div class="card-title">補足：後続番号（後続1・後続2）について</div>
+    <div style="font-size:var(--text-sm); margin-bottom:14px;">
+      バイオ後続品には承認された順番に「後続1」「後続2」等の番号が付与され、<strong>番号が異なると法律上別成分</strong>のため変更不可。処方箋の番号と在庫の番号が一致する場合のみ調剤できる。<br>
+      <span style="font-size:var(--text-xs);">例）インフリキシマブ（遺伝子組換え）の場合：後続1＝インフリキシマブBS「日医工」等　／　後続2＝インフリキシマブBS「ファイザー」等</span>
+    </div>
+    <div class="grid-2">
+      <div class="box-gray" style="font-size:var(--text-md);">
+        <div style="font-weight:900; margin-bottom:8px;">ケースA：番号が一致する場合</div>
+        処方箋：インフリキシマブ（遺伝子組換え）<strong>［後続1］</strong><br>
+        在庫：<strong>「後続1」</strong>の承認を持つ製品（例：日医工）<br>
+        <div style="margin-top:10px; font-weight:900;">→ そのまま調剤可</div>
+      </div>
+      <div class="box-gray" style="font-size:var(--text-md);">
+        <div style="font-weight:900; margin-bottom:8px;">ケースB：番号が一致しない場合</div>
+        処方箋：インフリキシマブ（遺伝子組換え）<strong>［後続1］</strong><br>
+        在庫：<strong>「後続2」</strong>の承認を持つ製品（例：ファイザー）<br>
+        <div style="margin-top:10px;"><span class="em-red">→ そのまま調剤は不可。</span>疑義照会が必要。<br>
+        <span style="font-size:var(--text-sm); margin-top:4px; display:block;">「処方は［後続1］ですが、当薬局の採用は［後続2］です。変更して調剤してもよろしいでしょうか？」</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ③ 服薬指導・情報提供 -->
+  <div class="card avoid-break print-break-before">
+    <div class="card-title">服薬指導および薬剤情報提供文書への記載</div>
+    <div class="box-gray" style="font-size:var(--text-sm); margin-bottom:14px;">
+      <div style="font-weight:900; margin-bottom:8px;">薬剤情報提供文書の必須記載事項</div>
+      調剤した薬剤に対する後発医薬品・バイオ後続品について、以下の情報を文書で提供し説明を行うこと。可能であれば一般的名称も併記することが望ましい。
+      <ul class="bullet-list" style="margin-top:10px;">
+        <li><div>バイオ後続品等の<span class="em-blue">薬価基準への収載の有無</span></div></li>
+        <li><div>自局において支給可能または備蓄しているバイオ後続品等の<span class="em-blue">名称およびその価格</span></div></li>
+      </ul>
+      <div style="margin-top:8px; font-size:var(--text-xs);">※備蓄しておらず支給もできない場合はその旨を記載する。</div>
+    </div>
+    <div class="box-blue" style="font-size:var(--text-sm);">
+      <div style="font-weight:900; margin-bottom:6px;">【関連】特定薬剤管理指導加算３（ロ）の算定について</div>
+      バイオ医薬品の<strong>一般名処方</strong>による処方箋、またはバイオ後続品の<strong>銘柄名処方</strong>による処方箋を受け付けた患者に対し、<strong>バイオ後続品の品質・有効性・安全性等について説明を行った場合</strong>に算定対象となる。
+    </div>
+  </div>
+
+  <!-- ④ 施設基準と届出 -->
+  <div class="card avoid-break">
+    <div class="card-title">施設基準と届出</div>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div style="font-size:var(--text-sm);">
+        <span class="section-label label-red">必須要件</span>
+        <div style="font-weight:900; margin-bottom:4px;">院内外への掲示</div>
+        バイオ後続品の調剤を積極的に行っている旨を、当該保険薬局の<span class="em-red">内側および外側の見えやすい場所に掲示</span>すること。
+      </div>
+      <hr class="divider">
+      <div style="font-size:var(--text-sm);">
+        <span class="section-label label-blue">努力目標</span>
+        <div style="font-weight:900; margin-bottom:4px;">バイオ後続品の調剤割合に関する目標</div>
+        調剤したバイオ医薬品全体に占める後続品の規格単位数量の割合が<strong>80％以上</strong>となる成分数が、当該薬局で調剤実績のあるバイオ医薬品成分数の<strong>60％以上</strong>であることが望ましい。<span style="font-size:var(--text-xs);">（望ましいとされるが必須ではない）</span>
+      </div>
+      <hr class="divider">
+      <div class="box-gray" style="font-size:var(--text-sm);">
+        <span style="font-weight:900;">届出について：</span>バイオ後続品調剤体制加算の施設基準に係る届出は、<strong>別添２の様式87の３の７</strong>を用いること。<br>
+        <span style="font-size:var(--text-xs); margin-top:6px; display:block;">※様式には調剤割合の記載欄があるが、60%以上は「望ましい」とされる努力目標であり必須条件ではない。</span>
+      </div>
+      <hr class="divider">
+      <div style="border-left:var(--bw-a) solid var(--blue); padding-left:12px; font-size:var(--text-sm);">
+        <strong>加算の本質と届出の注意：</strong>本加算はバイオ後続品を適切に調剤・提供できる<strong>体制</strong>に対する評価であり、調剤のたびに必ず特定の説明を行うことを求めるものではない。個別の説明行為は別途、特定薬剤管理指導加算３（ロ）で評価される。なお、届出の必須要件は掲示のみだが、保管体制・説明記録が伴っていない状態での申請は指導時のリスクになりうるため、体制整備を前提に届出を検討すること。
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
