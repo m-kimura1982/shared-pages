@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>服用薬剤調整支援料２　資格取得ステップ解説</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --text-xs: 13px; --text-sm: 15px; --text-md: 16px;
+      --text-lg: 18px; --text-xl: 22px;
+      --pad-card: 22px; --gap-card: 16px;
+      --blue: #1e5fa8; --red: #cc0000; --ink: #222222;
+      --bg: #f3f4f6; --white: #ffffff;
+      --box-blue: #e4f0f8; --box-gray: #f2f2f2;
+      --border: #d1d5db; --border-dk: #9ca3af;
+      --radius: 10px; --radius-sm: 6px;
+      --bw: 0.5px; --bw-h: 1px; --bw-t: 4px;
+    }
+    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+    .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+    .page-title { border-left:var(--bw-t) solid var(--blue); padding:6px 0 6px 18px; }
+    .page-title h1 { font-size:var(--text-xl); font-weight:900; }
+    .page-title p { font-size:var(--text-sm); font-weight:500; margin-top:4px; }
+    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+    .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--ink); padding-bottom:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+    .badge { font-size:var(--text-sm); font-weight:700; padding:3px 12px; border-radius:4px; }
+    .badge-blue { background:var(--box-blue); color:var(--blue); }
+    .badge-gray { background:var(--box-gray); color:var(--ink); }
+    .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:var(--gap-card); }
+    .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:14px 18px; }
+    .box-gray { background:var(--box-gray); border-radius:var(--radius-sm); padding:14px 18px; border:var(--bw) solid var(--border); }
+    .em-red { color:var(--red); font-weight:900; }
+    .sub-title { font-weight:900; font-size:var(--text-md); padding:6px 0 6px 12px; border-left:var(--bw-t) solid var(--blue); margin-bottom:10px; }
+    .divider { border:none; border-top:var(--bw-h) solid var(--border); margin:12px 0; }
+
+    /* ステップ行 */
+    .step-row { display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; }
+    .step-row:last-child { margin-bottom:0; }
+    .step-num {
+      display:inline-flex; align-items:center; justify-content:center;
+      background:var(--blue); color:#fff;
+      font-size:var(--text-xs); font-weight:900;
+      min-width:28px; height:28px; border-radius:50%;
+      flex-shrink:0;
+    }
+    .step-body { flex:1; }
+    .step-title { font-size:var(--text-md); font-weight:900; margin-bottom:4px; }
+    .step-desc { font-size:var(--text-sm); font-weight:500; line-height:1.7; }
+
+    /* 箇条書き */
+    .bullet-list { list-style:none; padding:0; margin:0; }
+    .bullet-list li { display:flex; align-items:flex-start; gap:5px; font-size:var(--text-sm); font-weight:500; line-height:1.7; margin-top:5px; }
+    .bullet-list li::before { content:"・"; flex-shrink:0; font-weight:700; }
+
+    /* 注意ボックス */
+    .notice-box { border-left:var(--bw-t) solid var(--red); background:var(--box-gray); padding:10px 14px; border-radius:0 var(--radius-sm) var(--radius-sm) 0; font-size:var(--text-sm); font-weight:500; line-height:1.75; }
+
+    /* 3カラム */
+    .grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:8px; }
+    .grid-3-item { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:10px 12px; text-align:center; }
+    .grid-3-title { font-size:var(--text-sm); font-weight:900; padding-bottom:6px; margin-bottom:6px; border-bottom:var(--bw-h) solid var(--border-dk); }
+    .grid-3-num { font-size:var(--text-xl); font-weight:900; color:var(--blue); }
+    .grid-3-text { font-size:var(--text-xs); font-weight:500; margin-top:2px; }
+
+    @media (max-width:640px) {
+      .grid-2,.grid-3 { grid-template-columns:1fr; }
+      body { font-size:var(--text-sm); padding:16px 12px 40px; }
+      :root {
+        --text-xs:12px; --text-sm:13px; --text-md:14px;
+        --text-lg:16px; --text-xl:19px;
+        --pad-card:16px; --gap-card:12px;
+      }
+      .card { padding:16px; }
+      .card-title { font-size:var(--text-lg); padding-bottom:7px; margin-bottom:12px; flex-direction:column; align-items:flex-start; }
+      .box-blue,.box-gray { padding:10px 13px; }
+      .page-title h1 { font-size:var(--text-xl); }
+      .step-num { min-width:26px; height:26px; font-size:12px; }
+      .grid-3-num { font-size:var(--text-lg); }
+      .notice-box { padding:10px 13px; }
+    }
+    @media print {
+      @page { margin:11mm 10mm; size:A4; }
+      body { background:white; padding:0; font-size:12.5px; line-height:1.68; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .page { gap:12px; }
+      :root {
+        --text-xs:11px; --text-sm:12.5px; --text-md:13px;
+        --text-lg:14.5px; --text-xl:16.5px;
+        --pad-card:13px; --gap-card:12px;
+      }
+      .card { padding:13px 15px; }
+      .card-title { padding-bottom:6px; margin-bottom:11px; }
+      .box-blue,.box-gray { padding:9px 12px; }
+      .avoid-break { break-inside:avoid; }
+      .print-break-before { break-before:page; }
+      .grid-2,.grid-3 { gap:10px; }
+      .step-num { min-width:22px; height:22px; font-size:10px; }
+      .notice-box { padding:7px 11px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══ ページタイトル ══ -->
+  <div class="page-title">
+    <h1>服用薬剤調整支援料２　資格取得ステップ解説</h1>
+    <p>算定要件を満たすかかりつけ薬剤師になるための2つのルート</p>
+  </div>
+
+  <!-- ══ 前提の注意 ══ -->
+  <div class="notice-box avoid-break">
+    <span class="em-red" style="font-weight:900;">前提：</span>本資料では薬剤師実務経験5年以上・研修認定薬剤師を保有しているケースを想定している。<br>
+    しかし<span style="font-weight:900;">一般的な研修認定薬剤師のみではルート①の受講資格を満たすことができない。</span>どちらのルートでも、算定要件を満たすまでには<span style="font-weight:900;">数年単位の準備期間と段階的な費用</span>が必要となる。
+  </div>
+
+  <!-- ══ ルート① ══ -->
+  <div class="card avoid-break">
+    <div class="card-title">ルート①　老年薬学服薬総合評価研修会（修了）
+      <span class="badge badge-blue">早期取得可・費用明確</span>
+    </div>
+
+    <div style="font-size:var(--text-sm); margin-bottom:14px;">
+      指定されたハイレベルな認定資格と試験合格を前提とし、学会主催の研修を受講するルート。<span style="font-weight:900;">修了書の有効期間は5年間。</span>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:16px;">
+      <div class="box-gray">
+        <div style="font-weight:900; margin-bottom:4px; font-size:var(--text-sm);">取得期間の目安</div>
+        <div style="font-size:var(--text-lg); font-weight:900; margin-bottom:6px;">数年（指定資格等の取得期間）</div>
+        <div style="font-size:var(--text-sm); font-weight:500;">JPALS未登録などの場合、まず受講要件となる指定資格の取得と達成度確認試験の合格が必要なため、年単位の時間がかかる。</div>
+      </div>
+      <div class="box-gray">
+        <div style="font-weight:900; margin-bottom:4px; font-size:var(--text-sm);">研修自体の費用</div>
+        <div style="font-size:var(--text-lg); font-weight:900; margin-bottom:6px;">20,000〜25,000円＋交通費</div>
+        <div style="font-size:var(--text-sm); font-weight:500;">学会会員：20,000円／非会員：25,000円。演習研修は<span style="font-weight:900;">東京での現地開催のみ</span>のため、遠方の場合は別途交通費等が発生する。</div>
+      </div>
+    </div>
+
+    <div class="step-row avoid-break">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">受講資格の確認</div>
+        <div class="step-desc" style="margin-bottom:8px;"><span class="em-red">以下の1〜3のすべてを満たす必要がある。</span></div>
+        <div class="box-gray" style="font-size:var(--text-sm);">
+          <div style="display:flex; gap:8px; margin-bottom:6px;">
+            <span style="flex-shrink:0; font-weight:900;">1.</span>
+            <span><span style="font-weight:900;">薬剤師免許を有し、臨床における実務経験が5年以上</span>であること。</span>
+          </div>
+          <div style="display:flex; gap:8px; margin-bottom:6px;">
+            <span style="flex-shrink:0; font-weight:900;">2.</span>
+            <div>
+              <span style="font-weight:900;">次のいずれかの認定を有すること。</span><br>
+              <span class="em-red">※一般的な「研修認定薬剤師」は対象外</span>
+              <ul class="bullet-list" style="margin-top:4px;">
+                <li>Gマーク認定薬剤師のうち薬物療法に係る幅広い知識を確認するための試験合格を経て認定された者（2026年3月現在：<span style="font-weight:900;">JPALS認定薬剤師 CLレベル6</span>のみ指定。今後はアドバンスト相当へ変更予定）</li>
+                <li>日本医療薬学会認定「<span style="font-weight:900;">地域薬学ケア専門薬剤師</span>」または「<span style="font-weight:900;">薬物療法専門薬剤師</span>」</li>
+              </ul>
+            </div>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <span style="flex-shrink:0; font-weight:900;">3.</span>
+            <span><span style="font-weight:900;">薬剤師生涯学習達成度確認試験</span>に合格していること。上記「2」の資格を持っていても、別途この統一試験への合格が必須。</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="step-row avoid-break">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">研修の受講（WEB講義 ＋ 東京現地演習）</div>
+        <div class="grid-2" style="margin-top:8px; margin-bottom:0;">
+          <div class="box-gray" style="font-size:var(--text-sm);">
+            <div style="font-weight:900; margin-bottom:4px;">講義研修（WEBオンデマンド）</div>
+            <div style="display:flex; gap:6px; margin-top:4px;">
+              <span style="flex-shrink:0;">・</span>
+              <span>必須13項目（計約390分）＋選択2項目以上（計60分以上）</span>
+            </div>
+            <div style="display:flex; gap:6px; margin-top:4px;">
+              <span style="flex-shrink:0;">・</span>
+              <span>ポリファーマシーの概念・薬物有害事象の評価・高齢者総合機能評価・処方提案の具体例 など</span>
+            </div>
+          </div>
+          <div class="box-gray" style="font-size:var(--text-sm);">
+            <div style="font-weight:900; margin-bottom:4px;">演習研修（東京現地・終日）</div>
+            <div style="display:flex; gap:6px; margin-top:4px;">
+              <span style="flex-shrink:0;">・</span>
+              <span>症例を用いた薬物有害事象の評価・処方検討・医師への処方提案書作成の実技</span>
+            </div>
+            <div style="display:flex; gap:6px; margin-top:4px;">
+              <span style="flex-shrink:0;">・</span>
+              <span><span style="font-weight:900;">2026年は8月開催予定・募集開始6月予定・定員150名</span>（先着順）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="step-row avoid-break">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">レポートの提出・修了</div>
+        <div class="step-desc">研修終了後、所定のレポートを提出し、学会の評価を受けて「修了（有効期間5年）」となる。</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══ ルート② ══ -->
+  <div class="card avoid-break">
+    <div class="card-title">ルート②　老年薬学認定薬剤師（取得）
+      <span class="badge badge-gray">学会認定ルート・最低3年</span>
+    </div>
+
+    <div style="font-size:var(--text-sm); margin-bottom:14px;">
+      長期間の学会活動や実務実績（症例報告等）の証明が必要となる、学会認定ルート。
+    </div>
+
+    <div class="grid-2" style="margin-bottom:16px;">
+      <div class="box-gray">
+        <div style="font-weight:900; margin-bottom:4px; font-size:var(--text-sm);">取得期間の目安</div>
+        <div style="font-size:var(--text-lg); font-weight:900; margin-bottom:6px;">最低3年以上</div>
+        <div style="font-size:var(--text-sm); font-weight:500;">「日本老年薬学会への3年度以上の継続所属」が必須。未入会の場合は最低3年の待機期間が生じる。</div>
+      </div>
+      <div class="box-gray">
+        <div style="font-weight:900; margin-bottom:4px; font-size:var(--text-sm);">費用の目安</div>
+        <div style="font-size:var(--text-lg); font-weight:900; margin-bottom:6px;">累計50,000円〜＋学会参加費</div>
+        <div style="font-size:var(--text-sm); font-weight:500;">学会年会費10,000円/年（3年分で30,000円）＋認定審査料・登録料・学術大会参加費・指定研修受講料が都度発生する。</div>
+      </div>
+    </div>
+
+    <div class="step-row avoid-break">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">前提要件のクリア</div>
+        <div class="box-gray" style="font-size:var(--text-sm);">
+          <ul class="bullet-list">
+            <li>薬剤師免許取得後<span style="font-weight:900;">3年以上</span>経過していること</li>
+            <li><span style="font-weight:900;">日本老年薬学会への3年度以上の継続所属</span>（一般会員）</li>
+            <li>認定薬剤師資格を保有していること（研修認定薬剤師等）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="step-row avoid-break">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">実績と単位の蓄積（過去4年間）</div>
+        <div class="step-desc" style="margin-bottom:8px;">申請要件として、以下の実績を期間内に積む必要がある。</div>
+        <div class="grid-3">
+          <div class="grid-3-item">
+            <div class="grid-3-title">症例報告</div>
+            <div class="grid-3-num">10症例</div>
+            <div class="grid-3-text">高齢者の薬物療法に関するレポートを作成</div>
+          </div>
+          <div class="grid-3-item">
+            <div class="grid-3-title">単位取得</div>
+            <div class="grid-3-num">30単位以上</div>
+            <div class="grid-3-text">学会指定研修等で取得（学術大会参加必須）</div>
+          </div>
+          <div class="grid-3-item">
+            <div class="grid-3-title">実技実習</div>
+            <div class="grid-3-num">3項目以上</div>
+            <div class="grid-3-text">学会指定の実技実習を受講</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="step-row avoid-break">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">試験合格と申請</div>
+        <div class="step-desc">年1回開催される認定試験を受験・合格し、学会へ認定申請を行うことで取得となる。</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>
