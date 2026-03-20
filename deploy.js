@@ -40,8 +40,8 @@ function deploy(htmlSrc, displayName) {
           <span class="card-arrow">›</span>
         </a>`;
 
-    // card-list の閉じタグ直前に挿入
-    html = html.replace('      </div>\n    </main>', newCard + '\n      </div>\n    </main>');
+    // card-list の閉じタグ直前に挿入（CRLF/LF両対応）
+    html = html.replace(/      <\/div>\r?\n    <\/main>/, newCard + '\n      </div>\n    </main>');
     fs.writeFileSync(indexPath, html, 'utf8');
     console.log(`index.html: 「${displayName}」を追加しました`);
   }
