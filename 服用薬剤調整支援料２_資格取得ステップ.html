@@ -66,19 +66,24 @@
 
     @media (max-width:640px) {
       .grid-2,.grid-3 { grid-template-columns:1fr; }
-      body { font-size:var(--text-sm); padding:16px 12px 40px; }
+      body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
       :root {
-        --text-xs:12px; --text-sm:13px; --text-md:14px;
-        --text-lg:16px; --text-xl:19px;
-        --pad-card:16px; --gap-card:12px;
+        --text-xs:11px; --text-sm:12.5px; --text-md:13px;
+        --text-lg:15px; --text-xl:17px;
+        --pad-card:14px; --gap-card:11px;
       }
-      .card { padding:16px; }
-      .card-title { font-size:var(--text-lg); padding-bottom:7px; margin-bottom:12px; flex-direction:column; align-items:flex-start; }
-      .box-blue,.box-gray { padding:10px 13px; }
-      .page-title h1 { font-size:var(--text-xl); }
-      .step-num { min-width:26px; height:26px; font-size:12px; }
+      .card { padding:14px; border-radius:8px; }
+      .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; flex-direction:column; align-items:flex-start; gap:6px; }
+      .page-title { padding:4px 0 4px 14px; }
+      .page-title h1 { font-size:17px; line-height:1.45; }
+      .page-title p { font-size:12.5px; }
+      .box-blue,.box-gray { padding:10px 12px; }
+      .step-num { min-width:24px; height:24px; font-size:11px; flex-shrink:0; }
+      .step-title { font-size:14px; }
+      .step-desc { font-size:12.5px; }
       .grid-3-num { font-size:var(--text-lg); }
-      .notice-box { padding:10px 13px; }
+      .notice-box { padding:10px 12px; font-size:12.5px; }
+      .badge { font-size:12px; padding:3px 10px; }
     }
     @media print {
       @page { margin:11mm 10mm; size:A4; }
