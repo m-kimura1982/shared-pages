@@ -97,11 +97,11 @@
   /* ── 印刷対応（A4）：ワンサイズアップ ── */
   @media print {
     @page { margin:11mm 10mm; size:A4; }
-    body { background:white; padding:0; font-size:12.5px; line-height:1.65; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    body { background:white; padding:0; font-size:13px; line-height:1.65; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
     .page { gap:10px; }
     :root {
-      --text-xs:10.5px; --text-sm:12px; --text-md:12.5px;
-      --text-lg:14px; --text-xl:16px;
+      --text-xs:11px; --text-sm:12.5px; --text-md:13px;
+      --text-lg:15px; --text-xl:17px;
       --pad-card:11px; --gap-card:10px;
     }
     .card { padding:11px 13px; }
@@ -292,7 +292,7 @@
       <div class="divider"></div>
       <div>
         <div style="font-weight:900; font-size:var(--text-sm); margin-bottom:3px;">特別調剤基本料Bの薬局</div>
-        <p style="font-size:var(--text-sm);"><strong>訪問薬剤管理医師同時指導料</strong>については、特別調剤基本料Bを算定している保険薬局は算定不可。本加算自体の直接制限ではないが、関連点数として留意が必要。</p>
+        <p style="font-size:var(--text-sm);"><strong>訪問薬剤管理医師同時指導料</strong>については、特別調剤基本料Bを算定している保険薬局は算定不可。</p>
       </div>
     </div>
 
