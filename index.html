@@ -1,152 +1,401 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>調剤報酬改定2026 まとめ資料</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #f2f4f8;
-    --surface: #ffffff;
-    --accent: #1e5fa8;
-    --accent-light: #e8f0fb;
-    --accent-mid: #2d7dd6;
-    --text: #222222;
-    --text-sub: #666666;
-    --border: #d8dde8;
-    --radius: 8px;
-  }
-  body {
-    font-family: 'Noto Sans JP', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    padding: 0 0 4rem;
-  }
-  header {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 1.25rem 1.5rem;
-  }
-  .header-inner {
-    max-width: 720px;
-    margin: 0 auto;
-  }
-  header h1 {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--accent);
-    line-height: 1.4;
-  }
-  main { max-width: 720px; margin: 2rem auto 0; padding: 0 1rem; }
-  .section-title {
-    font-size: 13px; font-weight: 700; color: var(--accent);
-    border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 1rem;
-  }
-  .card-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 2rem; }
-  .card {
-    display: flex; align-items: center; gap: 14px;
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 14px 16px;
-    text-decoration: none; color: var(--text);
-    transition: border-color 0.15s, box-shadow 0.15s;
-  }
-  .card:hover { border-color: var(--accent-mid); box-shadow: 0 2px 8px rgba(30,95,168,0.10); }
-  .card-icon {
-    width: 36px; height: 36px; border-radius: 6px;
-    background: var(--accent-light); display: flex;
-    align-items: center; justify-content: center; flex-shrink: 0;
-  }
-  .card-icon svg { width: 18px; height: 18px; stroke: var(--accent); }
-  .card-title { font-size: 14px; font-weight: 500; flex: 1; line-height: 1.5; }
-  .card-arrow { font-size: 18px; color: var(--text-sub); flex-shrink: 0; }
-</style>
-</head>
-<body>
-<header>
-  <div class="header-inner">
-    <h1>調剤報酬改定2026 まとめ資料</h1>
-  </div>
-</header>
-<main>
-  <p class="section-title">資料一覧</p>
-  <div class="card-list">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>調剤報酬改定2026 まとめ資料</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #f2f4f8;
+        --surface: #ffffff;
+        --accent: #1e5fa8;
+        --accent-light: #e8f0fb;
+        --accent-mid: #2d7dd6;
+        --text: #222222;
+        --text-sub: #666666;
+        --border: #d8dde8;
+        --radius: 8px;
+      }
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        padding: 0 0 4rem;
+      }
+      header {
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 1.25rem 1.5rem;
+      }
+      .header-inner {
+        max-width: 720px;
+        margin: 0 auto;
+      }
+      header h1 {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--accent);
+        line-height: 1.4;
+      }
+      main {
+        max-width: 720px;
+        margin: 2rem auto 0;
+        padding: 0 1rem;
+      }
+      .section-title {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--accent);
+        border-left: 3px solid var(--accent);
+        padding-left: 10px;
+        margin-bottom: 1rem;
+      }
+      .card-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 2rem;
+      }
+      .card {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 14px 16px;
+        text-decoration: none;
+        color: var(--text);
+        transition:
+          border-color 0.15s,
+          box-shadow 0.15s;
+      }
+      .card:hover {
+        border-color: var(--accent-mid);
+        box-shadow: 0 2px 8px rgba(30, 95, 168, 0.1);
+      }
+      .card-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 6px;
+        background: var(--accent-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .card-icon svg {
+        width: 18px;
+        height: 18px;
+        stroke: var(--accent);
+      }
+      .card-title {
+        font-size: 14px;
+        font-weight: 500;
+        flex: 1;
+        line-height: 1.5;
+      }
+      .card-arrow {
+        font-size: 18px;
+        color: var(--text-sub);
+        flex-shrink: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-inner">
+        <h1>調剤報酬改定2026 まとめ資料</h1>
+      </div>
+    </header>
+    <main>
+      <p class="section-title">資料一覧</p>
+      <div class="card-list">
+        <a class="card" href="かかりつけ薬剤師フォローアップ加算.html">
+          <div class="card-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
+          </div>
+          <span class="card-title">かかりつけ薬剤師フォローアップ加算</span>
+          <span class="card-arrow">›</span>
+        </a>
 
-    <a class="card" href="かかりつけ薬剤師フォローアップ加算.html">
-      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-      <span class="card-title">かかりつけ薬剤師フォローアップ加算</span>
-      <span class="card-arrow">›</span>
-    </a>
+        <a class="card" href="かかりつけ薬剤師訪問加算.html">
+          <div class="card-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
+          </div>
+          <span class="card-title">かかりつけ薬剤師訪問加算</span>
+          <span class="card-arrow">›</span>
+        </a>
 
-    <a class="card" href="かかりつけ薬剤師訪問加算.html">
-      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-      <span class="card-title">かかりつけ薬剤師訪問加算</span>
-      <span class="card-arrow">›</span>
-    </a>
+        <a class="card" href="吸入薬指導加算2026.html">
+          <div class="card-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
+          </div>
+          <span class="card-title">吸入薬指導加算</span>
+          <span class="card-arrow">›</span>
+        </a>
 
-    <a class="card" href="吸入薬指導加算2026.html">
-      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-      <span class="card-title">吸入薬指導加算</span>
-      <span class="card-arrow">›</span>
-    </a>
+        <a class="card" href="在宅薬学総合体制加算2026.html">
+          <div class="card-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
+          </div>
+          <span class="card-title">在宅薬学総合体制加算</span>
+          <span class="card-arrow">›</span>
+        </a>
 
-    <a class="card" href="在宅薬学総合体制加算2026.html">
-      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-      <span class="card-title">在宅薬学総合体制加算</span>
-      <span class="card-arrow">›</span>
-    </a>
+        <a class="card" href="地域支援医薬品供給対応体制加算.html">
+          <div class="card-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
+          </div>
+          <span class="card-title">地域支援医薬品供給対応体制加算</span>
+          <span class="card-arrow">›</span>
+        </a>
 
-    <a class="card" href="地域支援医薬品供給対応体制加算.html">
-      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-      <span class="card-title">地域支援医薬品供給対応体制加算</span>
-      <span class="card-arrow">›</span>
-    </a>
+        <a class="card" href="調剤基本料_2026改定.html">
+          <div class="card-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
+          </div>
+          <span class="card-title">調剤基本料</span>
+          <span class="card-arrow">›</span>
+        </a>
 
-    <a class="card" href="調剤基本料_2026改定.html">
-      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-      <span class="card-title">調剤基本料</span>
-      <span class="card-arrow">›</span>
-    </a>
+        <a class="card" href="調剤基本料フローチャート.html">
+          <div class="card-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
+          </div>
+          <span class="card-title">調剤基本料フローチャート</span>
+          <span class="card-arrow">›</span>
+        </a>
 
-    <a class="card" href="調剤基本料フローチャート.html">
-      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-      <span class="card-title">調剤基本料フローチャート</span>
-      <span class="card-arrow">›</span>
-    </a>
+        <a class="card" href="バイオ後続品調剤体制加算.html">
+          <div class="card-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
+          </div>
+          <span class="card-title">バイオ後続品調剤体制加算</span>
+          <span class="card-arrow">›</span>
+        </a>
 
-    <a class="card" href="バイオ後続品調剤体制加算.html">
-      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-      <span class="card-title">バイオ後続品調剤体制加算</span>
-      <span class="card-arrow">›</span>
-    </a>
+        <a class="card" href="複数名薬剤管理指導訪問料.html">
+          <div class="card-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
+          </div>
+          <span class="card-title">複数名薬剤管理指導訪問料</span>
+          <span class="card-arrow">›</span>
+        </a>
 
-    <a class="card" href="服薬管理指導料.html">
-      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-      <span class="card-title">服薬管理指導料</span>
-      <span class="card-arrow">›</span>
-    </a>
+        <a class="card" href="服薬管理指導料.html">
+          <div class="card-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
+          </div>
+          <span class="card-title">服薬管理指導料</span>
+          <span class="card-arrow">›</span>
+        </a>
 
-    <a class="card" href="服用薬剤調整支援料２_2026改定.html">
-      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-      <span class="card-title">服用薬剤調整支援料２</span>
-      <span class="card-arrow">›</span>
-    </a>
+        <a class="card" href="服用薬剤調整支援料２_2026改定.html">
+          <div class="card-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
+          </div>
+          <span class="card-title">服用薬剤調整支援料２</span>
+          <span class="card-arrow">›</span>
+        </a>
 
-    <a class="card" href="服用薬剤調整支援料２_資格取得ステップ.html">
-      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-      <span class="card-title">服用薬剤調整支援料２ 資格取得ステップ</span>
-      <span class="card-arrow">›</span>
-    </a>
+        <a class="card" href="服用薬剤調整支援料２_資格取得ステップ.html">
+          <div class="card-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
+          </div>
+          <span class="card-title">服用薬剤調整支援料２ 資格取得ステップ</span>
+          <span class="card-arrow">›</span>
+        </a>
 
-    <a class="card" href="門前薬局等立地依存減算.html">
-      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-      <span class="card-title">門前薬局等立地依存減算</span>
-      <span class="card-arrow">›</span>
-    </a>
-
-  </div>
-</main>
-</body>
+        <a class="card" href="門前薬局等立地依存減算.html">
+          <div class="card-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
+          </div>
+          <span class="card-title">門前薬局等立地依存減算</span>
+          <span class="card-arrow">›</span>
+        </a>
+      </div>
+    </main>
+  </body>
 </html>
