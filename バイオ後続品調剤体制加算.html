@@ -115,27 +115,32 @@
 }
 
     @media print {
-      @page { margin: 11mm 10mm; size: A4; }
-      body { background: white; padding: 0; font-size: 12.5px; line-height: 1.65;
+      @page { margin: 9mm 9mm; size: A4; }
+      body { background: white; padding: 0; font-size: 12.5px; line-height: 1.62;
         -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .page { gap: 12px; }
+      .page { gap: 10px; }
       :root {
-        --text-xs: 10.5px; --text-sm: 12px; --text-md: 12.5px;
-        --text-lg: 14px; --text-xl: 17px;
-        --pad-card: 14px; --gap-card: 12px;
+        --text-xs: 10.5px; --text-sm: 11.5px; --text-md: 12.5px;
+        --text-lg: 14px; --text-xl: 16.5px;
+        --pad-card: 12px; --gap-card: 10px;
       }
-      .card { padding: 14px 16px; }
-      .card-title { flex-direction:row; align-items:center; }
-      .grid-2 { grid-template-columns:1fr 1fr; }
+      .card { padding: 12px 14px; }
+      .card-title { flex-direction:row; align-items:center; padding-bottom: 5px; margin-bottom: 10px; }
+      .grid-2 { grid-template-columns:1fr 1fr; gap: 10px; }
       .grid-3 { grid-template-columns:1fr 1fr 1fr; }
+      .page-title { padding: 5px 0 5px 13px; }
+      .page-title h1 { font-size: 16.5px; }
+      .page-title p { font-size: 11.5px; margin-top: 2px; }
       .page-title-wrap { flex-direction:row; align-items:flex-start; }
-      .card-title { padding-bottom: 6px; margin-bottom: 12px; }
-      .box-blue, .box-gray { padding: 10px 13px; }
-      .bullet-list { gap: 8px; }
+      .box-blue, .box-gray { padding: 9px 12px; }
+      .bullet-list { gap: 7px; }
       .avoid-break { break-inside: avoid; }
       .print-break-before { break-before: page; }
-      .grid-2 { gap: 12px; }
-      .pts-num { font-size: 24px; }
+      .pts-num { font-size: 23px; }
+      .pts-label { font-size: 10.5px; padding: 6px 11px; }
+      .divider { margin: 9px 0; }
+      .badge { font-size: 10.5px; padding: 2px 9px; }
+      .section-label { font-size: 10.5px; }
     }
   </style>
 </head>
