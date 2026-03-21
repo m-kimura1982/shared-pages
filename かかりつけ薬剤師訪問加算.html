@@ -130,27 +130,38 @@
 }
 
     @media print {
-      @page { margin: 11mm 10mm; size: A4; }
-      body { background: white; padding: 0; font-size: 13px; line-height: 1.7;
+      @page { margin: 9mm 9mm; size: A4; }
+      body { background: white; padding: 0; font-size: 13px; line-height: 1.65;
         -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .page { gap: 13px; }
+      .page { gap: 10px; }
       :root {
-        --text-xs: 11px; --text-sm: 12.5px; --text-md: 13px;
-        --text-lg: 15px; --text-xl: 17px;
-        --pad-card: 15px; --gap-card: 13px;
+        --text-xs: 11px; --text-sm: 12px; --text-md: 13px;
+        --text-lg: 14.5px; --text-xl: 17px;
+        --pad-card: 12px; --gap-card: 10px;
+        --radius: 8px; --radius-sm: 5px;
       }
-      .card { padding: 15px 17px; }
-      .card-title { flex-direction:row; align-items:center; }
-      .grid-2 { grid-template-columns:1fr 1fr; }
+      .card { padding: 12px 14px; }
+      .card-title { flex-direction:row; align-items:center; padding-bottom: 6px; margin-bottom: 10px; }
+      .grid-2 { grid-template-columns:1fr 1fr; gap: 10px; }
       .grid-3 { grid-template-columns:1fr 1fr 1fr; }
+      .page-title { padding: 5px 0 5px 14px; }
+      .page-title h1 { font-size: 17px; }
+      .page-title p  { font-size: 12px; margin-top: 3px; }
       .page-title-wrap { flex-direction:row; align-items:flex-start; }
-      .card-title { padding-bottom: 6px; margin-bottom: 12px; }
-      .box-blue, .box-gray { padding: 10px 13px; }
+      .box-blue, .box-gray { padding: 9px 12px; }
       .avoid-break { break-inside: avoid; }
-      .flow { gap: 9px; }
-      .flow-item { padding: 12px 10px; }
-      .pts-num { font-size: 26px; }
-      .ng-item { padding: 8px 11px; }
+      .flow { gap: 8px; }
+      .flow-item { padding: 11px 9px; }
+      .flow-step { font-size: 12px; margin-bottom: 4px; }
+      .flow-label { font-size: 12px; }
+      .flow-required { font-size: 10px; top: -9px; right: -7px; padding: 2px 7px; }
+      .pts-label { font-size: 11px; padding: 7px 11px; }
+      .pts-num { font-size: 26px; padding: 7px 14px; }
+      .pts-unit { font-size: 11px; }
+      .ng-item { padding: 7px 11px; }
+      .badge { font-size: 11px; padding: 2px 9px; }
+      .divider { margin: 9px 0; }
+      .section-label { font-size: 11px; }
     }
   </style>
 </head>
