@@ -73,22 +73,28 @@
   th,td { padding:6px 8px; }
 }
     @media print {
-      @page { margin:11mm 10mm; size:A4; }
-      body { background:white; padding:0; font-size:12.5px; line-height:1.65; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-      .page { gap:11px; }
-      :root { --text-xs:10.5px; --text-sm:12px; --text-md:12.5px; --text-lg:14px; --text-xl:16px; --pad-card:12px; --gap-card:11px; }
-      .card { padding:12px 14px; }
-      .card-title { flex-direction:row; align-items:center; }
-      .grid-2 { grid-template-columns:1fr 1fr; }
+      @page { margin:9mm 9mm; size:A4; }
+      body { background:white; padding:0; font-size:12px; line-height:1.6; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .page { gap:9px; }
+      :root { --text-xs:10px; --text-sm:11px; --text-md:12px; --text-lg:13.5px; --text-xl:16px; --pad-card:11px; --gap-card:9px; }
+      .card { padding:11px 13px; }
+      .card-title { flex-direction:row; align-items:center; padding-bottom:5px; margin-bottom:9px; }
+      .grid-2 { grid-template-columns:1fr 1fr; gap:9px; }
       .grid-3 { grid-template-columns:1fr 1fr 1fr; }
+      .page-title { padding:4px 0 4px 13px; }
+      .page-title h1 { font-size:16px; }
+      .page-title p { font-size:11px; margin-top:2px; }
       .page-title-wrap { flex-direction:row; align-items:flex-start; }
-      .card-title { padding-bottom:5px; margin-bottom:10px; }
       .box-blue,.box-gray { padding:8px 11px; }
       .avoid-break { break-inside:avoid; }
       .print-break-before { break-before:page; }
-      .grid-2 { gap:12px; }
-      th,td { padding:5px 7px; }
-      .divider { margin:8px 0; }
+      .grid-2 { gap:9px; }
+      th,td { padding:4px 7px; }
+      .divider { margin:7px 0; }
+      .change-badge { font-size:10px; padding:2px 7px; }
+      .badge { font-size:10px; padding:2px 7px; }
+      .section-title { font-size:12px; margin-bottom:6px; }
+      .sub-title { font-size:12px; padding:5px 0 5px 10px; margin-bottom:7px; }
     }
   </style>
 </head>
