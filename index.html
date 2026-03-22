@@ -42,6 +42,10 @@
       .header-inner {
         max-width: 720px;
         margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
       }
       header h1 {
         font-size: 16px;
@@ -49,11 +53,69 @@
         color: var(--accent);
         line-height: 1.4;
       }
+      .header-logo {
+        height: 26px;
+        opacity: 0.8;
+        flex-shrink: 0;
+      }
       main {
         max-width: 720px;
         margin: 2rem auto 0;
         padding: 0 1rem;
       }
+      /* ダイジェストカード */
+      .card-digest {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: var(--accent);
+        border: 1px solid var(--accent);
+        border-radius: var(--radius);
+        padding: 18px 20px;
+        text-decoration: none;
+        margin-bottom: 1.25rem;
+        transition: background 0.15s, box-shadow 0.15s;
+      }
+      .card-digest:hover {
+        background: var(--accent-mid);
+        border-color: var(--accent-mid);
+        box-shadow: 0 4px 14px rgba(30, 95, 168, 0.28);
+      }
+      .digest-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .digest-icon svg {
+        width: 20px;
+        height: 20px;
+        stroke: #ffffff;
+      }
+      .digest-body {
+        flex: 1;
+      }
+      .digest-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: #ffffff;
+        line-height: 1.4;
+      }
+      .digest-desc {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.78);
+        margin-top: 3px;
+      }
+      .digest-arrow {
+        font-size: 20px;
+        color: rgba(255, 255, 255, 0.65);
+        flex-shrink: 0;
+      }
+      /* 資料一覧 */
       .section-title {
         font-size: 13px;
         font-weight: 700;
@@ -112,15 +174,44 @@
         color: var(--text-sub);
         flex-shrink: 0;
       }
+      /* フッター */
+      footer {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        text-align: right;
+      }
+      .footer-note {
+        font-size: 11px;
+        color: var(--text-sub);
+      }
     </style>
   </head>
   <body>
     <header>
       <div class="header-inner">
         <h1>調剤報酬改定2026 まとめ資料</h1>
+        <img src="会社ロゴ.png" alt="Hello Group" class="header-logo" />
       </div>
     </header>
     <main>
+      <!-- ダイジェスト特別カード -->
+      <a class="card-digest" href="調剤報酬改定2026_ダイジェスト.html">
+        <div class="digest-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"/>
+            <rect x="14" y="3" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/>
+          </svg>
+        </div>
+        <div class="digest-body">
+          <div class="digest-title">2026改定 ダイジェスト</div>
+          <div class="digest-desc">全加算・減算の要点を一覧で確認</div>
+        </div>
+        <span class="digest-arrow">›</span>
+      </a>
+
       <p class="section-title">資料一覧</p>
       <div class="card-list">
         <a class="card" href="かかりつけ薬剤師フォローアップ加算.html">
@@ -345,5 +436,8 @@
         </a>
       </div>
     </main>
+    <footer>
+      <p class="footer-note">※本資料は情報管理室（木村）が独自にまとめたものです。公式の通知・告示ではありません。</p>
+    </footer>
   </body>
 </html>

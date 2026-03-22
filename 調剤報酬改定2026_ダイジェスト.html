@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026年調剤報酬改定 ダイジェスト</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --text-xs: 13px; --text-sm: 15px; --text-md: 16px; --text-lg: 18px; --text-xl: 22px;
+  --pad-card: 22px; --gap-card: 16px;
+  --blue: #1e5fa8; --red: #cc0000; --ink: #222222;
+  --bg: #f3f4f6; --white: #ffffff;
+  --box-blue: #e4f0f8; --box-gray: #f2f2f2;
+  --border: #d1d5db; --border-dk: #9ca3af;
+  --radius: 10px; --radius-sm: 6px;
+  --bw: 0.5px; --bw-h: 1px; --bw-t: 4px;
+}
+body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+.page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+/* ページタイトル */
+.page-title-wrap { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+.page-title-left { border-left:var(--bw-t) solid var(--blue); padding:6px 0 6px 18px; flex:1; }
+.page-title-left h1 { font-size:var(--text-xl); font-weight:900; }
+.page-title-left p { font-size:var(--text-sm); font-weight:500; margin-top:4px; }
+.digest-badge { background:var(--red); color:var(--white); font-size:var(--text-xs); font-weight:900; padding:4px 14px; border-radius:4px; }
+.date-tag { font-size:var(--text-xs); font-weight:700; background:var(--box-gray); color:#444; padding:3px 10px; border-radius:3px; border:0.5px solid var(--border-dk); }
+
+/* カード */
+.card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+.card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--ink); padding-bottom:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+
+/* バッジ */
+.badge { font-size:var(--text-sm); font-weight:700; padding:3px 12px; border-radius:4px; }
+.badge-red { background:#fde8e8; color:var(--red); }
+.badge-blue { background:var(--box-blue); color:var(--blue); }
+
+/* 点数ブロック：元資料準拠 横並び・グレーラベル＋白背景 */
+.score-block { display:flex; flex-direction:row; border:var(--bw) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; flex-shrink:0; }
+.score-label { background:var(--box-gray); color:#555; font-size:var(--text-xs); font-weight:700; padding:6px 12px; display:flex; align-items:center; justify-content:center; border-right:var(--bw) solid var(--border); white-space:nowrap; }
+.score-num { background:var(--white); font-size:22px; font-weight:900; color:var(--ink); padding:5px 16px; display:flex; align-items:center; white-space:nowrap; }
+
+/* グリッド */
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:var(--gap-card); align-items:start; }
+
+/* ボックス */
+.box-gray { background:var(--box-gray); border-radius:var(--radius-sm); padding:14px 18px; border:var(--bw) solid var(--border); }
+
+/* サブタイトル */
+.sub-title { font-weight:900; font-size:var(--text-md); padding:6px 0 6px 12px; border-left:var(--bw-t) solid var(--blue); margin-bottom:10px; }
+
+/* 箇条書き */
+.li { display:flex; gap:8px; margin-bottom:5px; font-size:var(--text-sm); line-height:1.7; }
+.li:last-child { margin-bottom:0; }
+.li-dot { flex-shrink:0; }
+
+/* 区切り */
+.divider { border:none; border-top:var(--bw-h) solid var(--border); margin:10px 0; }
+
+/* 変更前後 */
+.val-old { text-decoration:line-through; color:#888; }
+.val-new { font-weight:900; color:var(--red); }
+
+/* テキスト強調 */
+.em-red { color:var(--red); font-weight:900; }
+
+/* 詳細リンク */
+.link-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.detail-link { display:inline-flex; align-items:center; gap:4px; font-size:var(--text-xs); font-weight:700; color:var(--blue); text-decoration:none; padding:4px 12px; border:var(--bw-h) solid var(--blue); border-radius:4px; }
+.detail-link:hover { background:var(--box-blue); }
+
+/* ── スマホ対応 ── */
+@media (max-width:640px) {
+  .grid-2 { grid-template-columns:1fr; }
+  body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+  :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+  .card { padding:14px; }
+  .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; flex-direction:column; align-items:flex-start; gap:6px; }
+  .page-title-wrap { flex-direction:column; gap:10px; }
+  .page-title-left { padding:4px 0 4px 14px; }
+  .page-title-left h1 { font-size:17px; line-height:1.45; }
+  .score-num { font-size:18px; padding:4px 12px; }
+}
+
+/* ── 印刷対応（A4） ── */
+@media print {
+  @page { margin:10mm 9mm; size:A4; }
+  body { background:white; padding:0; font-size:11px; line-height:1.65; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .page { gap:7px; }
+  :root { --text-xs:9px; --text-sm:10.5px; --text-md:11px; --text-lg:12.5px; --text-xl:15px; --pad-card:9px; --gap-card:7px; }
+  .card { padding:9px 11px; }
+  .card-title { padding-bottom:4px; margin-bottom:8px; flex-direction:row; align-items:center; font-size:12.5px; }
+  .grid-2 { grid-template-columns:1fr 1fr; gap:8px; }
+  .box-gray { padding:7px 10px; }
+  .avoid-break { break-inside:avoid; }
+  .print-break-before { break-before:auto; }
+  .divider { margin:5px 0; }
+  .link-row { display:none; }
+  .score-label { font-size:8.5px; padding:3px 8px; }
+  .score-num { font-size:16px; padding:3px 10px; }
+  .sub-title { margin-bottom:6px; padding:3px 0 3px 9px; font-size:11px; }
+  .li { margin-bottom:3px; font-size:10.5px; line-height:1.65; }
+  .page-title-left h1 { font-size:15px; }
+  .page-title-left p { font-size:10px; }
+  .digest-badge { font-size:9px; padding:3px 9px; }
+  .date-tag { font-size:9px; padding:2px 8px; }
+  .badge { font-size:10px; padding:2px 9px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ページタイトル -->
+  <div class="page-title-wrap">
+    <div class="page-title-left">
+      <h1>2026年調剤報酬改定 ダイジェスト</h1>
+      <p>各項目の変更点とポイント｜令和8年6月1日施行</p>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;padding-top:4px;">
+      <span class="digest-badge">DIGEST版</span>
+      <span class="date-tag">令和8年6月1日 施行</span>
+    </div>
+  </div>
+
+  <!-- ① かかりつけ薬剤師フォローアップ加算 -->
+  <div class="card avoid-break">
+    <div class="card-title">
+      かかりつけ薬剤師フォローアップ加算
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <span class="badge badge-red">新設</span>
+        <div class="score-block">
+          <div class="score-label">3月に1回</div>
+          <div class="score-num">50点</div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="sub-title">何が変わった</div>
+        <div class="box-gray">
+          <div class="li"><span class="li-dot">・</span><span>調剤後〜次回来局前の間に電話等でフォローアップした場合の加算。次回の処方箋受付時に算定。</span></div>
+          <div class="divider"></div>
+          <div style="font-weight:700;font-size:var(--text-sm);margin-bottom:4px;">算定できる患者の条件</div>
+          <div class="li"><span class="li-dot">①</span><span>服薬管理指導料「１のイ」または「２のイ」（かかりつけ）算定中</span></div>
+          <div class="li"><span class="li-dot">②</span><span>直近6月以内に外来服薬支援料１・服用薬剤調整支援料・残薬調整加算等のいずれかを算定</span></div>
+          <div style="font-size:var(--text-xs);margin-top:4px;color:#555;">※フォローにより残薬等の問題が解消した場合は②不要</div>
+        </div>
+      </div>
+      <div>
+        <div class="sub-title">ここがポイント</div>
+        <div class="li"><span class="li-dot">・</span><span><strong>調剤当日・処方箋持参当日は算定不可。</strong>「前回調剤後〜次回来局前」の期間に限られる。</span></div>
+        <div class="li"><span class="li-dot">・</span><span><strong>双方向のやりとりが必須。</strong>一斉メール・定型チェックのみでは算定不可。個別の確認・助言が伴っていることが要件。</span></div>
+        <div class="li"><span class="li-dot">・</span><span>事前に患者への内容と自己負担額の説明と同意が必要。薬歴には日時・内容の記載が必要。</span></div>
+      </div>
+    </div>
+    <div class="link-row">
+      <a class="detail-link" href="https://m-kimura1982.github.io/shared-pages/かかりつけ薬剤師フォローアップ加算.html" target="_blank">→ 詳細資料を見る</a>
+    </div>
+  </div>
+
+  <!-- ② かかりつけ薬剤師訪問加算 -->
+  <div class="card avoid-break">
+    <div class="card-title">
+      かかりつけ薬剤師訪問加算
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <span class="badge badge-red">新設</span>
+        <div class="score-block">
+          <div class="score-label">6月に1回</div>
+          <div class="score-num">230点</div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="sub-title">何が変わった</div>
+        <div class="box-gray">
+          <div class="li"><span class="li-dot">・</span><span>かかりつけ患者の自宅へ訪問し、残薬整理・服薬指導を行った場合の加算。</span></div>
+          <div class="li"><span class="li-dot">・</span><span>対象：服薬管理指導料「１のイ」または「２のイ」算定患者</span></div>
+          <div class="li"><span class="li-dot">・</span><span>訪問後、保険医療機関への<strong>情報提供が必須</strong></span></div>
+          <div class="li"><span class="li-dot">・</span><span>交通費は患家の負担（実費）</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="sub-title">ここがポイント</div>
+        <div class="li"><span class="li-dot">・</span><span>外来服薬支援料１・服薬情報等提供料・居宅療養管理指導費等を算定している患者には<strong>算定不可。</strong></span></div>
+        <div class="li"><span class="li-dot">・</span><span>複数の薬局でかかりつけを算定している患者は<strong>いずれの薬局も算定不可。</strong></span></div>
+        <div class="li"><span class="li-dot">・</span><span>事前に患者への指導内容と自己負担額（交通費含む）の説明と同意が必要。</span></div>
+      </div>
+    </div>
+    <div class="link-row">
+      <a class="detail-link" href="https://m-kimura1982.github.io/shared-pages/かかりつけ薬剤師訪問加算.html" target="_blank">→ 詳細資料を見る</a>
+    </div>
+  </div>
+
+  <!-- ③ 吸入薬指導加算 -->
+  <div class="card avoid-break">
+    <div class="card-title">
+      吸入薬指導加算
+      <div class="score-block">
+        <div class="score-label">所定点数に加算</div>
+        <div class="score-num">30点</div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="sub-title">何が変わった</div>
+        <div class="box-gray">
+          <div class="li"><span class="li-dot">・</span><span>算定間隔：<span class="val-old">3月に1回</span> → <span class="val-new">6月に1回</span></span></div>
+          <div style="font-size:var(--text-xs);color:#555;margin:0 0 6px 0;">※他の吸入薬処方で別途指導した場合は6月以内でも算定可</div>
+          <div class="li"><span class="li-dot">・</span><span>対象疾患に<strong>インフルエンザウイルス感染症</strong>の吸入薬を追加（喘息・COPDに加えて）</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="sub-title">ここがポイント</div>
+        <div class="li"><span class="li-dot">・</span><span>インフルエンザの場合は指導方法が異なる。<strong>保険薬剤師が看視のもと、その場で実際に吸入させること</strong>が必須（練習用吸入器での確認では不可）。</span></div>
+        <div class="li"><span class="li-dot">・</span><span>風邪・咳喘息の吸入処方は今回も<strong>対象外。</strong>インフルエンザ追加と混同しないよう注意。</span></div>
+      </div>
+    </div>
+    <div class="link-row">
+      <a class="detail-link" href="https://m-kimura1982.github.io/shared-pages/吸入薬指導加算2026.html" target="_blank">→ 詳細資料を見る</a>
+    </div>
+  </div>
+
+  <!-- ④ 在宅薬学総合体制加算 -->
+  <div class="card avoid-break print-break-before">
+    <div class="card-title">
+      在宅薬学総合体制加算
+      <span class="badge badge-red">点数・要件の大幅見直し</span>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="sub-title">何が変わった</div>
+        <div class="box-gray">
+          <div style="font-weight:700;font-size:var(--text-sm);margin-bottom:5px;">加算１</div>
+          <div class="li"><span class="li-dot">・</span><span>点数：<span class="val-old">15点</span> → <span class="val-new">30点</span></span></div>
+          <div class="li"><span class="li-dot">・</span><span>在宅訪問回数：<span class="val-old">年24回以上</span> → <span class="val-new">年48回以上</span></span></div>
+          <div class="li"><span class="li-dot">・</span><span>かかりつけ薬剤師（服薬管理指導料「注１」）の届出が必須に</span></div>
+          <div class="divider"></div>
+          <div style="font-weight:700;font-size:var(--text-sm);margin-bottom:5px;">加算２</div>
+          <div class="li"><span class="li-dot">・</span><span>一律50点 → <strong>イ（単一建物1人）100点 ／ ロ（その他）50点</strong></span></div>
+          <div class="li"><span class="li-dot">・</span><span><strong>単一建物（個人宅等）への訪問回数と全在宅に占める割合</strong>の実績条件が新設</span></div>
+          <div class="li"><span class="li-dot">・</span><span>設備保有要件 → 麻薬・無菌・小児在宅の<strong>実績要件</strong>に変更</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="sub-title">ここがポイント</div>
+        <div class="li"><span class="li-dot">・</span><span>加算１の継続には在宅訪問回数が<strong>年間48回以上</strong>必要。現在の実績との乖離が大きい場合は体制の見直しが必要になる。</span></div>
+        <div class="li"><span class="li-dot">・</span><span>加算２は「個人宅等への訪問回数と全在宅に占める割合」が新たな要件に。施設在宅だけでなく<strong>個人宅訪問の実績</strong>が問われる。</span></div>
+        <div class="li"><span class="li-dot">・</span><span>加算２の実績要件が設備から実績に変更。麻薬10回以上 or 無菌1回以上 or 小児在宅6回以上のいずれかが必要（直近1年）。</span></div>
+        <div class="li"><span class="li-dot">・</span><span>実績の判定期間は<strong>前年5月〜当年4月。</strong></span></div>
+      </div>
+    </div>
+    <div class="link-row">
+      <a class="detail-link" href="https://m-kimura1982.github.io/shared-pages/在宅薬学総合体制加算2026.html" target="_blank">→ 詳細資料を見る</a>
+    </div>
+  </div>
+
+  <!-- ⑤ 地域支援・医薬品供給対応体制加算 -->
+  <div class="card avoid-break">
+    <div class="card-title">
+      地域支援・医薬品供給対応体制加算
+      <span class="badge badge-red">名称変更・後発品加算統合・5区分に</span>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="sub-title">何が変わった</div>
+        <div class="box-gray">
+          <div class="li"><span class="li-dot">・</span><span>名称変更（旧称：地域支援体制加算）</span></div>
+          <div class="li"><span class="li-dot">・</span><span>後発医薬品調剤体制加算を廃止し<strong>加算１（27点）として統合。</strong>GE率85%以上が全区分必須。</span></div>
+          <div class="li"><span class="li-dot">・</span><span>4区分 → <strong>5区分</strong>（加算１〜５）に再編</span></div>
+          <div class="divider"></div>
+          <div style="font-weight:700;font-size:var(--text-sm);margin-bottom:4px;">加算１の新規施設基準</div>
+          <div class="li"><span class="li-dot">・</span><span>他薬局への<strong>医薬品分譲実績</strong>（直近1年）および書類の2年間保存</span></div>
+          <div class="li"><span class="li-dot">・</span><span>入手困難医薬品を含む処方への対応（在庫薬局案内または処方変更照会）と<strong>書類の2年間保存</strong></span></div>
+        </div>
+      </div>
+      <div>
+        <div class="sub-title">ここがポイント</div>
+        <div class="li"><span class="li-dot">・</span><span>全区分で<strong>GE率85%以上が必須。</strong>現行の後発品加算届出済み薬局は令和9年5月末まで経過措置あり。</span></div>
+        <div class="li"><span class="li-dot">・</span><span>他薬局への<strong>分譲実績・入手困難対応</strong>ともに、専用書類の<strong>2年間保存</strong>が義務。書類管理の仕組みが必要になる。</span></div>
+        <div class="li"><span class="li-dot">・</span><span>重複投薬・相互作用等防止加算は廃止。同加算の業務は<strong>調剤時残薬調整加算・薬学的有害事象等防止加算</strong>に引き継がれ、合計回数で実績評価（基本料１：20回以上、基本料１以外：40回以上）。</span></div>
+      </div>
+    </div>
+    <div class="link-row">
+      <a class="detail-link" href="https://m-kimura1982.github.io/shared-pages/地域支援医薬品供給対応体制加算.html" target="_blank">→ 詳細資料を見る</a>
+    </div>
+  </div>
+
+  <!-- ⑥ 調剤基本料 -->
+  <div class="card avoid-break">
+    <div class="card-title">
+      調剤基本料
+      <span class="badge" style="background:var(--box-blue);color:var(--blue);">点数・算定基準の変更</span>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="sub-title">何が変わった</div>
+        <div class="box-gray">
+          <div class="li"><span class="li-dot">・</span><span><strong>調剤基本料１</strong>：<span class="val-old">45点</span> → <span class="val-new">47点</span></span></div>
+          <div class="li"><span class="li-dot">・</span><span><strong>調剤基本料３ ハ</strong>：<span class="val-old">35点</span> → <span class="val-new">37点</span></span></div>
+          <div class="li"><span class="li-dot">・</span><span>基本料２の基準：集中率85%超かつ月<span class="val-old">2,000回超</span> → <span class="val-new">1,800回超</span>に引き下げ</span></div>
+          <div class="li"><span class="li-dot">・</span><span>都市部（東京23区・政令市）の<strong>令和8年6月1日以降の新規開設薬局</strong>：集中率85%超・月600回超・他薬局から500m以内 → 調剤基本料２（新設）</span></div>
+          <div class="li"><span class="li-dot">・</span><span>集中率の計算方法を変更（医療モール合算・オンライン処方の除外等）</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="sub-title">ここがポイント</div>
+        <div class="li"><span class="li-dot">・</span><span>集中率が85%超で月の受付回数が1,800回に近い薬局は<strong>調剤基本料２になる可能性あり。</strong></span></div>
+        <div class="li"><span class="li-dot">・</span><span>都市部での新規開設・<strong>再指定（改築・開設者変更等）</strong>を予定している場合は立地と受付見込みの事前確認が必要になる。既存薬局は経過措置あり。</span></div>
+        <div class="li"><span class="li-dot">・</span><span>集中率の計算式が変わったため、フローチャート資料で自薬局の区分を確認できる。</span></div>
+      </div>
+    </div>
+    <div class="link-row">
+      <a class="detail-link" href="https://m-kimura1982.github.io/shared-pages/調剤基本料_2026改定.html" target="_blank">→ 詳細資料を見る</a>
+      <a class="detail-link" href="https://m-kimura1982.github.io/shared-pages/調剤基本料フローチャート.html" target="_blank">→ フローチャートを見る</a>
+    </div>
+  </div>
+
+  <!-- ⑦ 調剤時残薬調整加算 -->
+  <div class="card avoid-break print-break-before">
+    <div class="card-title">
+      調剤時残薬調整加算
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <span class="badge badge-red">新設</span>
+        <div class="score-block">
+          <div class="score-label">所定点数に加算</div>
+          <div class="score-num">30又は50点</div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="sub-title">何が変わった</div>
+        <div class="box-gray">
+          <div class="li"><span class="li-dot">・</span><span>重複投薬・相互作用等防止加算（残薬調整区分）と在宅患者重複投薬等防止管理料の残薬調整部分を統合・再編した新加算。</span></div>
+          <div class="divider"></div>
+          <div style="font-weight:700;font-size:var(--text-sm);margin-bottom:4px;">点数区分</div>
+          <div class="li"><span class="li-dot">・</span><span>在宅訪問の患者または服薬管理指導料「１のイ」「２のイ」算定患者（イ〜ハ）：<strong>50点</strong></span></div>
+          <div class="li"><span class="li-dot">・</span><span>上記以外（ニ）：<strong>30点</strong></span></div>
+          <div class="divider"></div>
+          <div style="font-weight:700;font-size:var(--text-sm);margin-bottom:4px;">算定条件</div>
+          <div class="li"><span class="li-dot">・</span><span>残薬確認に基づき処方医に照会し、<strong>調剤日数が7日分以上変更</strong>された場合に算定</span></div>
+          <div class="li"><span class="li-dot">・</span><span>がん化学療法薬等の高額医薬品・薬学的専門的観点による場合は<strong>6日分以下の変更でも算定可</strong>（レセプトへの理由記載が必要）</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="sub-title">ここがポイント</div>
+        <div class="li"><span class="li-dot">・</span><span>重複投薬・相互作用等防止加算（残薬調整20点）から点数が上がり（30〜50点）、かかりつけ患者や在宅患者は高い区分での評価になる。</span></div>
+        <div class="li"><span class="li-dot">・</span><span>算定には<strong>手帳活用率50%超</strong>の施設基準あり（3月以内再来局患者のうち手帳提示割合）。</span></div>
+        <div class="li"><span class="li-dot">・</span><span>単純に7日分以上残薬があれば算定できるわけではなく、<strong>残薬調整の必要性を患者・家族に確認</strong>してから行うことが要件。</span></div>
+        <div class="li"><span class="li-dot">・</span><span>地域支援・医薬品供給対応体制加算の<strong>実績要件（薬学的有害事象等防止加算との合計）にカウント。</strong></span></div>
+      </div>
+    </div>
+    <div class="link-row">
+      <a class="detail-link" href="https://m-kimura1982.github.io/shared-pages/調剤時残薬調整加算.html" target="_blank">→ 詳細資料を見る</a>
+    </div>
+  </div>
+
+  <!-- ⑧ 薬学的有害事象等防止加算 -->
+  <div class="card avoid-break">
+    <div class="card-title">
+      薬学的有害事象等防止加算
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <span class="badge badge-red">新設</span>
+        <div class="score-block">
+          <div class="score-label">所定点数に加算</div>
+          <div class="score-num">30又は50点</div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="sub-title">何が変わった</div>
+        <div class="box-gray">
+          <div class="li"><span class="li-dot">・</span><span>重複投薬・相互作用等防止加算（残薬調整以外の区分）と在宅患者重複投薬等防止管理料の疑義照会部分を統合・再編した新加算。</span></div>
+          <div class="divider"></div>
+          <div style="font-weight:700;font-size:var(--text-sm);margin-bottom:4px;">点数区分</div>
+          <div class="li"><span class="li-dot">・</span><span>在宅訪問の患者（イ・ロ）：<strong>50点</strong></span></div>
+          <div class="li"><span class="li-dot">・</span><span>服薬管理指導料「１のイ」「２のイ」（かかりつけ）算定患者（ハ）：<strong>50点</strong></span></div>
+          <div class="li"><span class="li-dot">・</span><span>上記以外（ニ）：<strong>30点</strong></span></div>
+          <div class="divider"></div>
+          <div class="li"><span class="li-dot">・</span><span>重複投薬・相互作用等について処方医に照会し、<strong>処方が変更</strong>された場合に算定</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="sub-title">ここがポイント</div>
+        <div class="li"><span class="li-dot">・</span><span>重複投薬・相互作用等防止加算（残薬調整以外40点）から再編。かかりつけ患者・在宅患者は50点での評価になる。</span></div>
+        <div class="li"><span class="li-dot">・</span><span><strong>残薬調整のみに係る照会は対象外。</strong>残薬調整の評価は「調剤時残薬調整加算」で別途行う。</span></div>
+        <div class="li"><span class="li-dot">・</span><span>算定には<strong>手帳活用率50%超</strong>の施設基準あり（調剤時残薬調整加算と同じ要件）。</span></div>
+        <div class="li"><span class="li-dot">・</span><span>地域支援・医薬品供給対応体制加算の<strong>実績要件（調剤時残薬調整加算との合計）にカウント。</strong></span></div>
+      </div>
+    </div>
+    <div class="link-row">
+      <a class="detail-link" href="https://m-kimura1982.github.io/shared-pages/薬学的有害事象等防止加算.html" target="_blank">→ 詳細資料を見る</a>
+    </div>
+  </div>
+
+  <!-- ⑨ 電子的調剤情報連携体制整備加算 -->
+  <div class="card avoid-break">
+    <div class="card-title">
+      電子的調剤情報連携体制整備加算
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <span class="badge badge-red">名称変更・点数一本化</span>
+        <div class="score-block">
+          <div class="score-label">月1回</div>
+          <div class="score-num">8点</div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="sub-title">何が変わった</div>
+        <div class="box-gray">
+          <div class="li"><span class="li-dot">・</span><span>名称変更（旧称：医療DX推進体制整備加算）</span></div>
+          <div class="li"><span class="li-dot">・</span><span>点数の3区分（6/8/10点）を<strong>一律8点に統一</strong></span></div>
+          <div class="li"><span class="li-dot">・</span><span>マイナ保険証利用率要件：3区分 → <span class="val-new">30%以上のみ</span>に一本化</span></div>
+          <div class="li"><span class="li-dot">・</span><span>医療情報取得加算（年1回1点）は廃止</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="sub-title">ここがポイント</div>
+        <div class="li"><span class="li-dot">・</span><span>現行の医療DX推進体制整備加算を算定中の薬局は<strong>新たな届出は不要。</strong>そのまま継続算定できる。</span></div>
+        <div class="li"><span class="li-dot">・</span><span>マイナ保険証利用率<strong>30%以上</strong>であれば算定可（利用率要件は届出不要）。支払基金から報告される数値で確認できる。</span></div>
+        <div class="li"><span class="li-dot">・</span><span>利用率70%以上だった薬局は10点から<strong>8点に減額</strong>となる点に注意。</span></div>
+      </div>
+    </div>
+    <div class="link-row">
+      <a class="detail-link" href="https://m-kimura1982.github.io/shared-pages/電子的調剤情報連携体制整備加算_2026改定.html" target="_blank">→ 詳細資料を見る</a>
+    </div>
+  </div>
+
+  <!-- ⑩ バイオ後続品調剤体制加算 -->
+  <div class="card avoid-break print-break-before">
+    <div class="card-title">
+      バイオ後続品調剤体制加算
+      <div class="score-block">
+        <div class="score-label">調剤時</div>
+        <div class="score-num">50点</div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="sub-title">何が変わった</div>
+        <div class="box-gray">
+          <div class="li"><span class="li-dot">・</span><span>一般名処方加算の対象に<strong>バイオ後続品のあるバイオ医薬品が追加。</strong>処方医の一般名処方への移行が進みやすくなり、バイオ後続品の処方が増加する見込み。</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="sub-title">ここがポイント</div>
+        <div class="li"><span class="li-dot">・</span><span>バイオ後続品には「後続1・後続2」等の番号があり<strong>番号が異なると法律上別成分のため変更不可。</strong>処方箋と在庫の番号が不一致の場合は<strong>疑義照会が必要。</strong></span></div>
+        <div class="li"><span class="li-dot">・</span><span>先行品の銘柄名処方をバイオ後続品に変更する場合は<strong>必ず事前疑義照会</strong>が必要。</span></div>
+      </div>
+    </div>
+    <div class="link-row">
+      <a class="detail-link" href="https://m-kimura1982.github.io/shared-pages/バイオ後続品調剤体制加算.html" target="_blank">→ 詳細資料を見る</a>
+    </div>
+  </div>
+
+  <!-- ⑪ 複数名薬剤管理指導訪問料 -->
+  <div class="card avoid-break">
+    <div class="card-title">
+      複数名薬剤管理指導訪問料
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <span class="badge badge-red">新設</span>
+        <div class="score-block">
+          <div class="score-label">訪問時</div>
+          <div class="score-num">300点</div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="sub-title">何が変わった</div>
+        <div class="box-gray">
+          <div class="li"><span class="li-dot">・</span><span>在宅訪問の際に同じ薬局または在宅協力薬局の職員（薬剤師以外も可）と2人体制で訪問した場合の加算。</span></div>
+          <div class="li"><span class="li-dot">・</span><span>対象：在宅訪問薬剤管理指導料等算定中の<strong>単一建物1人の患者</strong></span></div>
+          <div class="li"><span class="li-dot">・</span><span>処方医が複数名訪問の<strong>必要性を認めていること</strong>が条件</span></div>
+          <div class="li"><span class="li-dot">・</span><span>介護保険算定時も本加算は<strong>医療保険で請求</strong></span></div>
+        </div>
+      </div>
+      <div>
+        <div class="sub-title">ここがポイント</div>
+        <div class="li"><span class="li-dot">・</span><span>複数名訪問が必要な理由は<strong>患者の安全確保の観点</strong>（興奮・攻撃性等）に限られる。業務効率化など<strong>薬局側の都合では算定不可。</strong></span></div>
+        <div class="li"><span class="li-dot">・</span><span>処方箋備考欄等または疑義照会で確認できれば算定可。理由は<strong>薬歴への記録</strong>が必要。</span></div>
+        <div class="li"><span class="li-dot">・</span><span>事前に患者・家族等の<strong>同意</strong>が必要。交通費は患家の負担（実費）。</span></div>
+      </div>
+    </div>
+    <div class="link-row">
+      <a class="detail-link" href="https://m-kimura1982.github.io/shared-pages/複数名薬剤管理指導訪問料.html" target="_blank">→ 詳細資料を見る</a>
+    </div>
+  </div>
+
+  <!-- ⑫ 訪問薬剤管理医師同時指導料 -->
+  <div class="card avoid-break">
+    <div class="card-title">
+      訪問薬剤管理医師同時指導料
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <span class="badge badge-red">新設</span>
+        <div class="score-block">
+          <div class="score-label">6月に1回</div>
+          <div class="score-num">150点</div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="sub-title">何が変わった</div>
+        <div class="box-gray">
+          <div class="li"><span class="li-dot">・</span><span>在宅患者への訪問薬剤管理指導において、<strong>訪問診療を実施している保険医と同時に患家を訪問</strong>し薬学的管理指導を行った場合の新加算。</span></div>
+          <div class="li"><span class="li-dot">・</span><span>対象：在宅訪問薬剤管理指導料等算定中の<strong>単一建物1人の患者</strong></span></div>
+          <div class="li"><span class="li-dot">・</span><span>在宅患者緊急時等共同指導料または在宅移行初期管理料と<strong>同日算定不可</strong></span></div>
+        </div>
+      </div>
+      <div>
+        <div class="sub-title">ここがポイント</div>
+        <div class="li"><span class="li-dot">・</span><span>同行する医師が<strong>在宅時医学総合管理料（在医総管）を算定しており、かつ当該患者の主治医</strong>であることが条件。単発の往診医や他科専門医は対象外になる場合がある。</span></div>
+        <div class="li"><span class="li-dot">・</span><span>医師が在医総管を算定しているかどうかは、事前にクリニックの医療事務に確認が必要になる。</span></div>
+        <div class="li"><span class="li-dot">・</span><span>交通費は患家の負担（実費）。</span></div>
+      </div>
+    </div>
+    <div class="link-row">
+      <a class="detail-link" href="https://m-kimura1982.github.io/shared-pages/訪問薬剤管理医師同時指導料.html" target="_blank">→ 詳細資料を見る</a>
+    </div>
+  </div>
+
+  <!-- ⑬ 服薬管理指導料・かかりつけ薬剤師 -->
+  <div class="card avoid-break">
+    <div class="card-title">
+      服薬管理指導料・かかりつけ薬剤師
+      <span class="badge badge-red">かかりつけ指導料 廃止・統合</span>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="sub-title">何が変わった</div>
+        <div class="box-gray">
+          <div class="li"><span class="li-dot">・</span><span><strong>かかりつけ薬剤師指導料が廃止</strong>され服薬管理指導料に統合</span></div>
+          <div style="font-weight:700;font-size:var(--text-sm);margin:8px 0 4px;">新点数（主要区分）</div>
+          <div class="li"><span class="li-dot">・</span><span>１イ（かかりつけ・手帳あり・3月以内）＝ <strong>45点</strong></span></div>
+          <div class="li"><span class="li-dot">・</span><span>２イ（かかりつけ・3月超 or 手帳なし）＝ <strong>59点</strong></span></div>
+          <div class="divider"></div>
+          <div class="li"><span class="li-dot">・</span><span>書面の同意書廃止 → <strong>手帳への記入＋コピー保管</strong>に変更</span></div>
+          <div class="li"><span class="li-dot">・</span><span>勤務時間：<span class="val-old">週32時間以上</span> → <span class="val-new">週31時間以上</span></span></div>
+          <div class="li"><span class="li-dot">・</span><span>在籍期間：<span class="val-old">1年以上</span> → <span class="val-new">6ヶ月以上</span></span></div>
+        </div>
+      </div>
+      <div>
+        <div class="sub-title">ここがポイント</div>
+        <div class="li"><span class="li-dot">・</span><span>新しいルールは<strong>手帳の基本情報ページに「かかりつけ」と薬剤師名を記入し、コピー（写真可）を保管。薬歴表紙にも記録。</strong>同意書が未対応の患者については移行が必要。</span></div>
+        <div class="li"><span class="li-dot">・</span><span>5月末までに取得した従来の同意書は<strong>引き続き有効。</strong>手帳への記入・コピー保管が済んでいない場合は対応が必要になる。</span></div>
+        <div class="li"><span class="li-dot">・</span><span>やむを得ず他の薬剤師が対応した場合は「１のロ」または「２のロ」を算定し、かかりつけ薬剤師と<strong>情報共有</strong>が必要。</span></div>
+      </div>
+    </div>
+    <div class="link-row">
+      <a class="detail-link" href="https://m-kimura1982.github.io/shared-pages/服薬管理指導料.html" target="_blank">→ 詳細資料を見る</a>
+    </div>
+  </div>
+
+  <!-- ⑬ 服用薬剤調整支援料２ -->
+  <div class="card avoid-break">
+    <div class="card-title">
+      服用薬剤調整支援料２
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <span class="badge badge-red">実質新設・令和9年6月〜</span>
+        <div class="score-block">
+          <div class="score-label">6月に1回</div>
+          <div class="score-num">1,000点</div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="sub-title">何が変わった</div>
+        <div class="box-gray">
+          <div class="li"><span class="li-dot">・</span><span>旧90〜110点 → <span class="val-new">1,000点</span>（内容も実質別制度）</span></div>
+          <div class="li"><span class="li-dot">・</span><span>算定頻度：<span class="val-old">3月に1回</span> → <span class="val-new">6月に1回</span></span></div>
+          <div class="li"><span class="li-dot">・</span><span>担当薬剤師を<strong>資格を持つかかりつけ薬剤師</strong>に限定</span></div>
+          <div class="divider"></div>
+          <div style="font-weight:700;font-size:var(--text-sm);margin-bottom:4px;">必要な資格（どちらか）</div>
+          <div class="li"><span class="li-dot">①</span><span>日本老年薬学会「老年薬学服薬総合評価研修会」修了</span></div>
+          <div class="li"><span class="li-dot">②</span><span>日本老年薬学会「老年薬学認定薬剤師」</span></div>
+          <div style="font-size:var(--text-xs);margin-top:4px;color:var(--red);">※一般的な研修認定薬剤師では受講不可。準備に数年単位かかる場合がある。</div>
+        </div>
+      </div>
+      <div>
+        <div class="sub-title">ここがポイント</div>
+        <div class="li"><span class="li-dot">・</span><span><strong>算定開始は令和9年6月から。</strong>令和8年6月〜令和9年5月は旧・新ともに算定不可の<span class="em-red">空白期間あり。</span></span></div>
+        <div class="li"><span class="li-dot">・</span><span>対象は複数の医療機関から内服薬を<strong>合計6種類以上</strong>処方されている患者。</span></div>
+        <div class="li"><span class="li-dot">・</span><span>算定には資格取得が前提となる。一般的な研修認定薬剤師では受講不可で、<strong>準備に数年単位かかる</strong>場合がある。</span></div>
+      </div>
+    </div>
+    <div class="link-row">
+      <a class="detail-link" href="https://m-kimura1982.github.io/shared-pages/服用薬剤調整支援料２_2026改定.html" target="_blank">→ 詳細資料を見る</a>
+      <a class="detail-link" href="https://m-kimura1982.github.io/shared-pages/服用薬剤調整支援料２_資格取得ステップ.html" target="_blank">→ 資格取得ステップを見る</a>
+    </div>
+  </div>
+
+  <!-- ⑭ 門前薬局等立地依存減算 -->
+  <div class="card avoid-break">
+    <div class="card-title">
+      門前薬局等立地依存減算
+      <span class="badge badge-red">新設（既存薬局は当面対象外）</span>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="sub-title">何が変わった</div>
+        <div class="box-gray">
+          <div class="li"><span class="li-dot">・</span><span>特定医療機関への依存度が高い薬局に調剤基本料から<strong class="em-red">－15点</strong>減算（新設）。</span></div>
+          <div style="font-weight:700;font-size:var(--text-sm);margin:8px 0 4px;">減算対象（2パターン）</div>
+          <div class="li"><span class="li-dot">①</span><span>都市部（東京23区・政令市）で集中率85%超かつ近隣に薬局が密集している</span></div>
+          <div class="li"><span class="li-dot">②</span><span>医療機関と同一建物・同一敷地内で集中率85%超</span></div>
+          <div class="divider"></div>
+          <div class="li"><span class="li-dot">・</span><span>令和8年5月31日時点で開局中の薬局は<strong>当面の間は対象外</strong>（経過措置）</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="sub-title">ここがポイント</div>
+        <div class="li"><span class="li-dot">・</span><span>既存薬局は「当面の間」対象外。ただし<strong>新規開設・改築・開設者変更等による再指定</strong>の場合は適用対象になる。</span></div>
+        <div class="li"><span class="li-dot">・</span><span>「当面の間」は期間が明示されていない。将来的な適用拡大の可能性があり、自薬局の立地状況と集中率は把握しておきたい。</span></div>
+      </div>
+    </div>
+    <div class="link-row">
+      <a class="detail-link" href="https://m-kimura1982.github.io/shared-pages/門前薬局等立地依存減算.html" target="_blank">→ 詳細資料を見る</a>
+    </div>
+  </div>
+
+
+
+</div>
+</body>
+</html>
