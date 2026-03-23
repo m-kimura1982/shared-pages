@@ -123,6 +123,15 @@
       padding:2px 4px 4px;
     }
 
+    /* ── その他（第５節） ── */
+    .other-section { display:flex; flex-direction:column; }
+    .other-row {
+      display:flex; flex-direction:row; gap:8px;
+      padding:6px 8px 8px 10px;
+      border:1.5px solid var(--border-dk); border-top:none;
+      border-radius:0 0 6px 6px; background:var(--white);
+    }
+
     /* ── 下段（薬剤料等） ── */
     .bottom-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
     .bottom-box {
@@ -294,8 +303,6 @@
                 </div>
               </div>
               <div class="n1">薬剤調製料</div>
-              <div class="n1 new">調剤ベースアップ評価料</div>
-              <div class="n1 new">調剤物価対応料</div>
             </div>
           </div>
 
@@ -326,6 +333,13 @@
             </div>
           </div>
 
+        </div>
+        <div class="other-section">
+          <div class="cat-title">その他</div>
+          <div class="other-row">
+            <div class="n1 new">調剤ベースアップ評価料</div>
+            <div class="n1 new">調剤物価対応料</div>
+          </div>
         </div>
         <div class="bottom-row">
           <div class="bottom-box">薬剤料</div>
