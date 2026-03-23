@@ -154,6 +154,31 @@
       text-align:right; padding:0 2px;
     }
 
+    /* ── モバイル ── */
+    @media (max-width: 700px) {
+      body { font-size:13px; padding:12px 10px 40px; }
+      .page-header h1 { font-size:16px; }
+      .back-link { font-size:11px; }
+      .compare {
+        grid-template-columns: 1fr;
+      }
+      .arrow {
+        padding: 4px 0;
+        font-size: 22px;
+        justify-content: center;
+      }
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+      .era-head.before { font-size:14px; }
+      .era-head.after  { font-size:16px; }
+      .cat-title { font-size:13px; }
+      .n1 { font-size:12px; }
+      .n2 { font-size:12px; }
+      .bottom-row { grid-template-columns: 1fr 1fr; }
+      .legend { gap:12px; flex-direction:column; align-items:flex-start; }
+    }
+
     /* ── 印刷 ── */
     @media print {
       @page { margin:7mm 6mm; size:A4 landscape; }
