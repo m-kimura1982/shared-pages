@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>調剤ベースアップ評価料</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --text-xs: 13px; --text-sm: 15px; --text-md: 16px;
+      --text-lg: 18px; --text-xl: 22px;
+      --pad-card: 22px; --gap-card: 16px;
+      --blue: #1e5fa8; --red: #cc0000; --ink: #222222;
+      --bg: #f3f4f6; --white: #ffffff;
+      --box-blue: #e4f0f8; --box-gray: #f2f2f2;
+      --border: #d1d5db; --border-dk: #9ca3af;
+      --radius: 10px; --radius-sm: 6px;
+      --bw: 0.5px; --bw-h: 1px; --bw-a: 3px; --bw-t: 4px;
+    }
+    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+    .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+    .page-title-wrap { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+    .page-title-left { border-left:var(--bw-t) solid var(--blue); padding:6px 0 6px 18px; flex:1; min-width:0; }
+    .page-title-left h1 { font-size:var(--text-xl); font-weight:900; color:var(--ink); }
+    .page-title-left p { font-size:var(--text-sm); font-weight:500; margin-top:4px; color:var(--ink); }
+
+    .score-block { border:var(--bw) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; flex-shrink:0; background:var(--white); display:inline-flex; flex-direction:row; align-items:stretch; }
+    .score-label { background:var(--box-gray); color:var(--ink); font-size:var(--text-xs); font-weight:700; padding:6px 12px; display:flex; align-items:center; border-right:var(--bw) solid var(--border); white-space:nowrap; }
+    .score-num { font-size:26px; font-weight:900; color:var(--ink); padding:5px 16px; display:flex; align-items:center; white-space:nowrap; line-height:1.2; }
+    .score-num span { font-size:var(--text-sm); font-weight:500; margin-left:2px; }
+    .score-num.future { color:var(--blue); }
+
+    .badge-new { background:var(--red); color:var(--white); font-size:var(--text-xs); font-weight:900; padding:3px 10px; border-radius:3px; white-space:nowrap; }
+
+    .title-right { display:flex; gap:8px; align-items:flex-start; flex-shrink:0; flex-direction:column; }
+    .title-right-row { display:flex; gap:8px; align-items:center; }
+
+    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+    .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--ink); padding-bottom:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; color:var(--ink); }
+    .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:var(--gap-card); }
+    .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:16px 18px; }
+    .box-gray { background:var(--box-gray); border-radius:var(--radius-sm); padding:14px 18px; border:var(--bw) solid var(--border); }
+    .section-title { font-weight:900; font-size:var(--text-md); margin-bottom:8px; color:var(--ink); }
+    .divider { border:none; border-top:var(--bw-h) solid var(--border); margin:12px 0; }
+
+    .li { display:flex; gap:8px; font-size:var(--text-sm); line-height:1.75; color:var(--ink); }
+    .li + .li { margin-top:5px; }
+    .li-dot { flex-shrink:0; }
+    .li-sub { margin-left:20px; }
+
+    .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+    th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
+    td { padding:10px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:middle; color:var(--ink); }
+    tr:last-child td { border-bottom:none; }
+    .td-center { text-align:center; font-weight:900; }
+    .td-blue { color:var(--blue); font-weight:900; }
+
+    .note { font-size:var(--text-xs); color:var(--ink); line-height:1.7; margin-top:10px; }
+    .tag-excl { display:inline-block; background:#fff0f0; color:var(--red); font-size:var(--text-xs); font-weight:700; padding:2px 8px; border-radius:3px; border:0.5px solid #f5c6c6; white-space:nowrap; margin-left:4px; }
+    .tag-ok { display:inline-block; background:#e8f5e9; color:#2e7d32; font-size:var(--text-xs); font-weight:700; padding:2px 8px; border-radius:3px; border:0.5px solid #b2dfdb; white-space:nowrap; margin-left:4px; }
+    .inset { border-left:3px solid var(--border-dk); padding-left:14px; margin-top:10px; }
+
+    @media (max-width:640px) {
+      .grid-2 { grid-template-columns:1fr; }
+      body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+      :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+      .card { padding:14px; border-radius:8px; }
+      .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; flex-direction:column; align-items:flex-start; gap:6px; }
+      .box-blue,.box-gray { padding:10px 12px; }
+      .page-title-wrap { flex-direction:column; gap:10px; }
+      .page-title-left { padding:4px 0 4px 14px; }
+      .page-title-left h1 { font-size:17px; line-height:1.45; }
+      .score-num { font-size:20px; padding:4px 12px; }
+      table { font-size:11.5px; min-width:360px; }
+      th,td { padding:6px 8px; }
+      .title-right { flex-direction:row; flex-wrap:wrap; align-items:flex-start; }
+      .title-right-row { flex-wrap:wrap; }
+    }
+
+    @media print {
+      @page { margin:11mm 10mm; size:A4; }
+      body { background:white; padding:0; font-size:12.5px; line-height:1.65; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .page { gap:11px; }
+      :root { --text-xs:10.5px; --text-sm:12px; --text-md:12.5px; --text-lg:14px; --text-xl:16px; --pad-card:12px; --gap-card:11px; }
+      .card { padding:12px 14px; }
+      .card-title { padding-bottom:5px; margin-bottom:10px; }
+      .grid-2 { grid-template-columns:1fr 1fr; gap:10px; }
+      .page-title-wrap { flex-direction:row; align-items:flex-start; }
+      .box-blue,.box-gray { padding:8px 11px; }
+      .avoid-break { break-inside:avoid; }
+      th,td { padding:5px 7px; }
+      .divider { margin:8px 0; }
+      .table-wrap { overflow-x:visible; }
+      table { min-width:unset; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- タイトル -->
+  <div class="page-title-wrap">
+    <div class="page-title-left">
+      <h1>調剤ベースアップ評価料</h1>
+      <p>区分 ４０　調剤報酬点数表（第５節　その他）</p>
+    </div>
+    <div class="title-right">
+      <div class="title-right-row">
+        <span class="badge-new">新設</span>
+        <div class="score-block">
+          <div class="score-label">処方箋受付1回</div>
+          <div class="score-num">4<span>点</span></div>
+        </div>
+      </div>
+      <div class="title-right-row" style="font-size:13px; color:var(--blue); font-weight:700; align-items:center; gap:6px;">
+        <span>令和9年6月以降</span>
+        <div class="score-block">
+          <div class="score-label">同</div>
+          <div class="score-num future">8<span>点</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 概要 -->
+  <div class="card avoid-break">
+    <div class="card-title">概要</div>
+    <div class="box-blue">
+      <div class="li"><span class="li-dot">●</span><span>当該保険薬局に勤務する<strong>職員の賃金改善を図る体制</strong>（施設基準）を評価する点数として<strong>令和8年改定で新設</strong></span></div>
+      <div class="li" style="margin-top:8px;"><span class="li-dot">●</span><span>調剤ベースアップ評価料・調剤物価対応料ともに調剤報酬点数表 第５節「その他」に位置し、調剤技術料・薬学管理料とは独立した点数</span></div>
+      <div class="li" style="margin-top:8px;"><span class="li-dot">●</span><span>施設基準を届け出た保険薬局において、<strong>処方箋の受付1回につき</strong>算定（令和9年6月以降は現行の2倍 = 8点）</span></div>
+    </div>
+  </div>
+
+  <!-- 施設基準 -->
+  <div class="card avoid-break">
+    <div class="card-title">施設基準（主要要件）</div>
+    <div class="li"><span class="li-dot">①</span><span>調剤基本料に係る届出を実施している保険薬局であること</span></div>
+    <div class="li" style="margin-top:10px;"><span class="li-dot">②</span><span><strong>対象職員が存在すること</strong></span></div>
+    <div class="li" style="margin-top:10px;"><span class="li-dot">③</span><span>当該評価料による収入を<strong>対象職員の基本給等の引上げ</strong>に充てる体制があること</span></div>
+  </div>
+
+  <!-- 対象職員 -->
+  <div class="card avoid-break">
+    <div class="card-title">対象職員の範囲</div>
+    <p style="font-size:var(--text-sm); margin-bottom:12px;">「当該保険薬局に勤務する職員」のうち、以下を<strong>除いた</strong>者が対象職員となる。</p>
+
+    <div class="box-gray" style="margin-bottom:16px;">
+      <div class="section-title">対象外（除外）となる者</div>
+      <div class="li"><span class="li-dot">・</span><span>事業主・使用者・開設者・管理者</span></div>
+      <div class="li"><span class="li-dot">・</span><span><strong>40歳以上の薬剤師</strong></span></div>
+      <div class="li"><span class="li-dot">・</span><span>業務委託により勤務する者</span></div>
+      <div class="li"><span class="li-dot">・</span><span>他の保険薬局・事業所を主たる勤務先とし、当該薬局の調剤業務等に直接従事していない管理的業務専従者（本部職員・エリアマネージャー等）</span></div>
+    </div>
+
+    <div class="box-blue">
+      <div class="section-title">対象となる職員の例</div>
+      <div class="li"><span class="li-dot">・</span><span>40歳未満の薬剤師</span></div>
+      <div class="li"><span class="li-dot">・</span><span>事務員（調剤補助スタッフ等）</span></div>
+      <div class="li"><span class="li-dot">・</span><span>登録販売者（保険調剤業務に従事している場合）</span></div>
+    </div>
+    <p class="note">※ 店舗販売業を併設している薬局は、保険調剤に従事する職員のみを対象とする（区分けが困難な場合は保険調剤収入の割合で按分）</p>
+  </div>
+
+  <!-- 使途制限 -->
+  <div class="card avoid-break">
+    <div class="card-title">収入の使途制限</div>
+    <div class="box-blue" style="margin-bottom:14px;">
+      <div class="li"><span class="li-dot">●</span><span>当該評価料による収入は、対象職員の<strong>基本給または決まって毎月支払われる手当の引上げ（ベア等）</strong>およびそれに伴う賞与・時間外手当・法定福利費（事業者負担分含む）等の増加分にのみ使用できる</span></div>
+    </div>
+
+    <div class="section-title" style="margin-bottom:8px;">例外的に認められるケース</div>
+    <div class="li"><span class="li-dot">・</span><span>処方箋受付回数の変動等により収入がベア等の額を上回り、追加のベア等が困難な場合に限り、賞与等の手当など<strong>ベア等以外の方法による賃金改善も可</strong></span></div>
+
+    <hr class="divider">
+    <div class="li"><span class="li-dot">※</span><span style="font-size:var(--text-sm); color:#555;">当該評価料によって改善する賃金項目以外の賃金（業績連動を除く）の水準を引き下げてはならない</span></div>
+    <div class="li" style="margin-top:6px;"><span class="li-dot">※</span><span style="font-size:var(--text-sm); color:#555;">「令和7年度医療機関等における賃上げ・物価上昇に対する支援事業」の補助金分は賃金改善実績に含めない</span></div>
+  </div>
+
+  <!-- 点数の推移 -->
+  <div class="card avoid-break">
+    <div class="card-title">点数の推移</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>時期</th>
+            <th class="td-center">処方箋受付1回あたり</th>
+            <th>根拠</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>令和8年6月〜令和9年5月</td>
+            <td class="td-center">4点</td>
+            <td>令和8年改定（新設）</td>
+          </tr>
+          <tr>
+            <td class="td-blue">令和9年6月以降</td>
+            <td class="td-center td-blue">8点</td>
+            <td>所定点数の100分の200（注２）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">※ 令和9年6月以降の8点は告示上「100分の200に相当する点数により算定する」と規定されている</p>
+  </div>
+
+  <!-- 届出・報告 -->
+  <div class="card avoid-break">
+    <div class="card-title">届出・報告（概要）</div>
+    <div class="grid-2">
+      <div class="box-gray">
+        <div class="section-title">届出</div>
+        <div class="li"><span class="li-dot">・</span><span>様式103 により地方厚生（支）局長に届出</span></div>
+      </div>
+      <div class="box-gray">
+        <div class="section-title">毎年8月の報告（2種類）</div>
+        <div class="li"><span class="li-dot">①</span><span><strong>賃金改善実績報告書</strong>（前年度実績）</span></div>
+        <div class="li" style="margin-top:6px;"><span class="li-dot">②</span><span><strong>賃金改善中間報告書</strong>（当該年度進捗）</span></div>
+        <div class="li" style="margin-top:6px;"><span class="li-dot">　</span><span style="font-size:var(--text-xs);">様式104（複数薬局通算の場合は別添２）を使用</span></div>
+      </div>
+    </div>
+    <p class="note" style="margin-top:14px;">※ 賃金改善実績の判断基準：「令和8年3月時点の給与体系を当該年度職員に当てはめた場合の基本給等総額」と「当該年度の基本給等総額」との差分による</p>
+    <p class="note">※ 詳細な届出様式・手続きは特掲診療料施設基準通知（様式103・104・94）を参照</p>
+  </div>
+
+</div>
+</body>
+</html>
