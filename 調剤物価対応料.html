@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>調剤物価対応料</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --text-xs: 13px; --text-sm: 15px; --text-md: 16px;
+      --text-lg: 18px; --text-xl: 22px;
+      --pad-card: 22px; --gap-card: 16px;
+      --blue: #1e5fa8; --red: #cc0000; --ink: #222222;
+      --bg: #f3f4f6; --white: #ffffff;
+      --box-blue: #e4f0f8; --box-gray: #f2f2f2;
+      --border: #d1d5db; --border-dk: #9ca3af;
+      --radius: 10px; --radius-sm: 6px;
+      --bw: 0.5px; --bw-h: 1px; --bw-a: 3px; --bw-t: 4px;
+    }
+    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+    .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+    /* ── タイトル ── */
+    .page-title-wrap { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+    .page-title-left { border-left:var(--bw-t) solid var(--blue); padding:6px 0 6px 18px; flex:1; min-width:0; }
+    .page-title-left h1 { font-size:var(--text-xl); font-weight:900; color:var(--ink); }
+    .page-title-left p { font-size:var(--text-sm); font-weight:500; margin-top:4px; color:var(--ink); }
+
+    /* 点数バッジ：横並び（ラベル左・点数右） */
+    .score-block { border:var(--bw) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; flex-shrink:0; background:var(--white); display:inline-flex; flex-direction:row; align-items:stretch; }
+    .score-label { background:var(--box-gray); color:var(--ink); font-size:var(--text-xs); font-weight:700; padding:6px 12px; display:flex; align-items:center; border-right:var(--bw) solid var(--border); white-space:nowrap; }
+    .score-num { font-size:26px; font-weight:900; color:var(--ink); padding:5px 16px; display:flex; align-items:center; white-space:nowrap; line-height:1.2; }
+    .score-num span { font-size:var(--text-sm); font-weight:500; margin-left:2px; }
+
+    /* 新設バッジ：カード内用・赤背景白字 */
+    .badge-new { background:var(--red); color:var(--white); font-size:var(--text-xs); font-weight:900; padding:3px 10px; border-radius:3px; white-space:nowrap; }
+
+    /* タイトル右側 */
+    .title-right { display:flex; gap:8px; align-items:flex-start; flex-shrink:0; }
+
+    /* ── カード ── */
+    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+    .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--ink); padding-bottom:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; color:var(--ink); }
+    .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:var(--gap-card); }
+    .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:16px 18px; }
+    .box-gray { background:var(--box-gray); border-radius:var(--radius-sm); padding:14px 18px; border:var(--bw) solid var(--border); }
+    .section-title { font-weight:900; font-size:var(--text-md); margin-bottom:8px; color:var(--ink); }
+    .divider { border:none; border-top:var(--bw-h) solid var(--border); margin:12px 0; }
+
+    /* ── 箇条書き ── */
+    .li { display:flex; gap:8px; font-size:var(--text-sm); line-height:1.75; color:var(--ink); }
+    .li + .li { margin-top:5px; }
+    .li-dot { flex-shrink:0; }
+
+    /* ── テーブル ── */
+    .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+    th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
+    td { padding:10px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:middle; color:var(--ink); }
+    tr:last-child td { border-bottom:none; }
+    .td-center { text-align:center; font-weight:900; }
+    .td-blue { color:var(--blue); font-weight:900; }
+
+    /* ── 注釈 ── */
+    .note { font-size:var(--text-xs); color:var(--ink); line-height:1.7; margin-top:10px; }
+
+    /* ── スマホ ── */
+    @media (max-width:640px) {
+      .grid-2 { grid-template-columns:1fr; }
+      body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+      :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+      .card { padding:14px; border-radius:8px; }
+      .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; flex-direction:column; align-items:flex-start; gap:6px; }
+      .box-blue,.box-gray { padding:10px 12px; }
+      .page-title-wrap { flex-direction:column; gap:10px; }
+      .page-title-left { padding:4px 0 4px 14px; }
+      .page-title-left h1 { font-size:17px; line-height:1.45; }
+      .score-num { font-size:20px; padding:4px 12px; }
+      table { font-size:11.5px; min-width:360px; }
+      th,td { padding:6px 8px; }
+    }
+
+    /* ── 印刷 ── */
+    @media print {
+      @page { margin:11mm 10mm; size:A4; }
+      body { background:white; padding:0; font-size:12.5px; line-height:1.65; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .page { gap:11px; }
+      :root { --text-xs:10.5px; --text-sm:12px; --text-md:12.5px; --text-lg:14px; --text-xl:16px; --pad-card:12px; --gap-card:11px; }
+      .card { padding:12px 14px; }
+      .card-title { padding-bottom:5px; margin-bottom:10px; flex-direction:row; align-items:center; }
+      .grid-2 { grid-template-columns:1fr 1fr; gap:10px; }
+      .page-title-wrap { flex-direction:row; align-items:flex-start; }
+      .box-blue,.box-gray { padding:8px 11px; }
+      .avoid-break { break-inside:avoid; }
+      th,td { padding:5px 7px; }
+      .divider { margin:8px 0; }
+      .table-wrap { overflow-x:visible; }
+      table { min-width:unset; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- タイトル -->
+  <div class="page-title-wrap">
+    <div class="page-title-left">
+      <h1>調剤物価対応料</h1>
+      <p>物価上昇への対応として新設。令和9年6月より自動的に2点へ増点｜2026年調剤報酬改定</p>
+    </div>
+    <div class="score-block">
+      <div class="score-label">新設点数</div>
+      <div class="score-num">1<span>点</span></div>
+    </div>
+  </div>
+
+  <!-- ① 算定要件 -->
+  <div class="card avoid-break">
+    <div class="card-title">
+      算定要件
+      <span class="badge-new" style="background:#fde8e8; color:var(--red);">2026年新設</span>
+    </div>
+    <div class="box-blue" style="margin-bottom:14px;">
+      <div style="font-size:var(--text-md); font-weight:900;">処方箋を受け付けた場合に、３月に１回に限り算定する</div>
+    </div>
+    <div class="li"><span class="li-dot">・</span><span>施設基準・届出は<strong>不要</strong></span></div>
+    <div class="li"><span class="li-dot">・</span><span>対象患者の制限は<strong>なし</strong>（処方箋を受け付けたすべての患者）</span></div>
+    <div class="li"><span class="li-dot">・</span><span>調剤技術料・薬学管理料とは独立した点数として設けられた</span></div>
+  </div>
+
+  <!-- ② 点数の推移 -->
+  <div class="card avoid-break">
+    <div class="card-title">点数の推移</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>時期</th>
+            <th style="text-align:center;">点数</th>
+            <th>備考</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>令和8年6月〜令和9年5月</td>
+            <td class="td-center">1点</td>
+            <td>新設・開始</td>
+          </tr>
+          <tr>
+            <td>令和9年6月〜</td>
+            <td class="td-center td-blue">2点</td>
+            <td>所定点数の100分の200（届出不要・自動増点）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">※ 令和9年6月からの増点は法令上の規定によるもの。改めて届出等の手続きは不要。</div>
+  </div>
+
+  <!-- ③ 新設の背景 -->
+  <div class="card avoid-break">
+    <div class="card-title">新設の背景</div>
+    <div class="box-gray">
+      <div class="li"><span class="li-dot">・</span><span>光熱費・医療材料費・委託費等の物価上昇が薬局経営に影響している</span></div>
+      <div class="li"><span class="li-dot">・</span><span>令和８・９年度の物価上昇分に対応するため、今改定で新設された</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
