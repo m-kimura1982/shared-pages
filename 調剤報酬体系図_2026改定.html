@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>調剤報酬の構成（令和８年改定後）</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    :root {
+      --blue:#1e5fa8; --blue-dk:#1a3a5c;
+      --red:#cc0000; --red-light:#fff0f0;
+      --ink:#222222;
+      --bg:#f3f4f6; --white:#ffffff;
+      --box-gray:#f2f2f2; --box-blue:#eef3fa;
+      --border:#d1d5db; --border-dk:#9ca3af;
+      --del-color:#4a6f9c;
+    }
+    body {
+      font-family:"Noto Sans JP",sans-serif;
+      background:var(--bg); color:var(--ink);
+      font-size:14px; line-height:1.65;
+      padding:20px 16px 60px;
+    }
+    .page { max-width:1200px; margin:0 auto; display:flex; flex-direction:column; gap:10px; }
+
+    /* ── ページタイトル ── */
+    .page-header {
+      display:flex; align-items:flex-start; justify-content:space-between;
+      border-left:4px solid var(--blue); padding:6px 0 6px 14px;
+    }
+    .page-header h1 { font-size:20px; font-weight:900; }
+    .page-header p  { font-size:12px; color:#666; margin-top:3px; }
+    .back-link {
+      font-size:12px; color:var(--blue); text-decoration:none;
+      white-space:nowrap; padding-top:4px; flex-shrink:0;
+    }
+    .back-link:hover { text-decoration:underline; }
+
+    /* ── 比較レイアウト ── */
+    .compare {
+      display:grid; grid-template-columns:1fr 28px 1fr;
+      gap:8px; align-items:stretch;
+    }
+    .era { display:flex; flex-direction:column; gap:6px; }
+    .era-head { text-align:center; padding:6px 0 10px; }
+    .era-head.before { font-weight:500; color:#555; font-size:16px; }
+    .era-head.after  { font-weight:900; color:var(--ink); font-size:19px; }
+    .era-body {
+      border:2px solid var(--border); border-radius:8px;
+      background:var(--white); padding:12px;
+      display:flex; flex-direction:column; gap:10px; flex:1;
+    }
+    .era.after-era .era-body {
+      border-color:var(--border);
+      background:#fafcff;
+    }
+
+    /* ── 2列 ── */
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:10px; flex:1; }
+    .col-wrap { display:flex; flex-direction:column; }
+
+    /* ── カテゴリ見出し ── */
+    .cat-title {
+      font-weight:900; font-size:14px; padding:6px 12px;
+      color:#fff; border-radius:6px 6px 0 0; text-align:center;
+      background:var(--blue-dk);
+    }
+
+    /* ── ツリー枠 ── */
+    .tree {
+      border:1.5px solid var(--border-dk); border-top:none;
+      border-radius:0 0 6px 6px;
+      padding:10px 10px 10px 12px;
+      background:var(--white); flex:1;
+      display:flex; flex-direction:column; gap:8px;
+    }
+
+    /* ── L1ノード ── */
+    .n1-wrap { display:flex; flex-direction:column; }
+    .n1 {
+      border-radius:5px; padding:5px 10px;
+      font-weight:900; font-size:13px;
+      background:var(--box-gray); text-align:center;
+    }
+    .n1 a { color:inherit; text-decoration:none; }
+    .n1 a:hover { text-decoration:underline; }
+    .n1.new { color:var(--red); background:var(--red-light); }
+    .n1.del { color:var(--del-color); background:var(--box-blue); }
+    .n1.chg { color:var(--ink); }
+
+    /* ── 加算ブロック（縦線なし、インデントのみ） ── */
+    .sub-block {
+      margin-top:5px; margin-left:12px;
+      padding:6px 8px 6px 10px;
+      border-left:2px solid var(--border);
+      display:flex; flex-direction:column; gap:3px;
+    }
+    .sub-head {
+      font-size:11px; color:#777; font-weight:700;
+      padding:1px 0 2px;
+    }
+    .n2 {
+      font-size:13px; padding:3px 8px 3px 10px;
+      border-radius:4px; font-weight:700;
+      background:var(--box-gray);
+      position:relative;
+    }
+    .n2::before {
+      content:'›'; position:absolute;
+      left:1px; top:2px; color:var(--border-dk);
+      font-size:13px;
+    }
+    .n2 a { color:inherit; text-decoration:none; }
+    .n2 a:hover { text-decoration:underline; }
+    .n2.new { color:var(--red); background:var(--red-light); }
+    .n2.del { color:var(--del-color); background:var(--box-blue); }
+    .n2.chg { color:var(--ink); background:#f5f5f5; }
+
+    /* ── など ── */
+    .etc-note {
+      text-align:right; font-size:12px; color:var(--border-dk);
+      padding:2px 4px 4px;
+    }
+
+    /* ── 下段（薬剤料等） ── */
+    .bottom-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .bottom-box {
+      border:1.5px solid var(--border-dk); border-radius:5px;
+      padding:7px 10px; font-weight:900; font-size:13px;
+      background:var(--box-gray); text-align:center; color:var(--border-dk);
+    }
+
+    /* ── 矢印 ── */
+    .arrow {
+      display:flex; align-items:center; justify-content:center;
+      font-size:26px; color:var(--ink); padding-top:32px;
+    }
+
+    /* ── 凡例 ── */
+    .legend {
+      display:flex; gap:20px; font-size:12px; padding:7px 14px;
+      background:var(--white); border:1px solid var(--border);
+      border-radius:6px; align-items:center; flex-wrap:wrap;
+    }
+    .legend-item { display:flex; align-items:center; gap:5px; }
+    .dot-new { width:10px; height:10px; border-radius:2px; background:var(--red-light); border:1.5px solid var(--red); }
+    .dot-del { width:10px; height:10px; border-radius:2px; background:var(--box-blue); border:1.5px solid var(--del-color); }
+    .dot-chg { width:10px; height:10px; border-radius:2px; background:#f5f5f5; border:1.5px solid var(--border-dk); }
+
+    /* ── フッター ── */
+    .footer-note {
+      font-size:11px; color:#888;
+      text-align:right; padding:0 2px;
+    }
+
+    /* ── 印刷 ── */
+    @media print {
+      @page { margin:7mm 6mm; size:A4 landscape; }
+      body { background:white; padding:0; font-size:10.5px; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .page { gap:7px; max-width:100%; }
+      .back-link { display:none; }
+      .era-body { padding:8px; gap:8px; }
+      .two-col { gap:8px; }
+      .cat-title { font-size:11px; padding:4px 8px; }
+      .tree { padding:7px 7px 7px 10px; gap:6px; }
+      .n1 { font-size:11px; padding:4px 8px; }
+      .sub-block { margin-left:8px; padding:4px 6px 4px 8px; }
+      .sub-head { font-size:10px; }
+      .n2 { font-size:10px; padding:2px 6px 2px 8px; }
+      .bottom-box { font-size:11px; padding:5px 8px; }
+      .legend { font-size:10px; gap:14px; padding:4px 10px; }
+      .footer-note { font-size:10px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ページヘッダー -->
+  <div class="page-header">
+    <div>
+      <h1>調剤報酬の構成（令和８年改定）</h1>
+      <p>改正点を中心に掲載</p>
+    </div>
+    <a class="back-link" href="index.html">← 資料一覧へ</a>
+  </div>
+
+  <div class="compare">
+
+    <!-- 改定前 -->
+    <div class="era">
+      <div class="era-head before">改定前（〜2026年5月）</div>
+      <div class="era-body">
+        <div class="two-col">
+
+          <div class="col-wrap">
+            <div class="cat-title">調剤技術料</div>
+            <div class="tree">
+              <div class="n1-wrap">
+                <div class="n1">調剤基本料</div>
+                <div class="sub-block">
+                  <div class="sub-head">（加算）</div>
+                  <div class="n2 del">地域支援体制加算</div>
+                  <div class="n2 del">後発医薬品調剤体制加算</div>
+                  <div class="n2 del">医療DX推進体制整備加算</div>
+                  <div class="n2">在宅薬学総合体制加算</div>
+                </div>
+              </div>
+              <div class="n1">薬剤調製料</div>
+            </div>
+          </div>
+
+          <div class="col-wrap">
+            <div class="cat-title">薬学管理料</div>
+            <div class="tree">
+              <div class="n1-wrap">
+                <div class="n1 chg">調剤管理料</div>
+                <div class="sub-block">
+                  <div class="sub-head">（加算）</div>
+                  <div class="n2 del">重複投薬・相互作用等防止加算</div>
+                  <div class="n2 del">調剤管理加算 イ・ロ</div>
+                  <div class="n2 del">医療情報取得加算 1・2</div>
+                </div>
+              </div>
+              <div class="n1">服薬管理指導料</div>
+              <div class="n1 del">かかりつけ薬剤師指導料</div>
+              <div class="n1 del">かかりつけ薬剤師包括管理料</div>
+              <div class="n1">服用薬剤調整支援料</div>
+              <div class="n1">在宅患者訪問薬剤管理指導料</div>
+              <div class="n1 del">在宅患者重複投薬・相互作用等防止管理料</div>
+              <div class="n1 del">在宅患者オンライン薬剤管理指導料</div>
+            </div>
+          </div>
+
+        </div>
+        <div class="bottom-row">
+          <div class="bottom-box">薬剤料</div>
+          <div class="bottom-box">特定保険医療材料料</div>
+        </div>
+        <div class="etc-note">など</div>
+      </div>
+    </div>
+
+    <!-- 矢印 -->
+    <div class="arrow">→</div>
+
+    <!-- 改定後 -->
+    <div class="era after-era">
+      <div class="era-head after">改定後（2026年6月〜）</div>
+      <div class="era-body">
+        <div class="two-col">
+
+          <div class="col-wrap">
+            <div class="cat-title">調剤技術料</div>
+            <div class="tree">
+              <div class="n1-wrap">
+                <div class="n1 chg"><a href="調剤基本料_2026改定.html">調剤基本料</a></div>
+                <div class="sub-block">
+                  <div class="sub-head">（加算）</div>
+                  <div class="n2 new"><a href="地域支援医薬品供給対応体制加算.html">地域支援・医薬品供給対応体制加算</a></div>
+                  <div class="n2 new"><a href="バイオ後続品調剤体制加算.html">バイオ後続品使用体制加算</a></div>
+                  <div class="n2 chg"><a href="在宅薬学総合体制加算2026.html">在宅薬学総合体制加算</a></div>
+                  <div class="n2 new"><a href="電子的調剤情報連携体制整備加算_2026改定.html">電子的調剤情報連携体制整備加算</a></div>
+                  <div class="sub-head">（減算）</div>
+                  <div class="n2 new"><a href="門前薬局等立地依存減算.html">門前薬局等立地依存減算</a></div>
+                </div>
+              </div>
+              <div class="n1">薬剤調製料</div>
+              <div class="n1 new">調剤ベースアップ評価料</div>
+              <div class="n1 new">調剤物価対応料</div>
+            </div>
+          </div>
+
+          <div class="col-wrap">
+            <div class="cat-title">薬学管理料</div>
+            <div class="tree">
+              <div class="n1-wrap">
+                <div class="n1 chg">調剤管理料</div>
+                <div class="sub-block">
+                  <div class="sub-head">（加算）</div>
+                  <div class="n2 new"><a href="調剤時残薬調整加算.html">調剤時残薬調整加算</a></div>
+                  <div class="n2 new"><a href="薬学的有害事象等防止加算.html">薬学的有害事象等防止加算</a></div>
+                </div>
+              </div>
+              <div class="n1-wrap">
+                <div class="n1 chg"><a href="服薬管理指導料.html">服薬管理指導料</a></div>
+                <div class="sub-block">
+                  <div class="sub-head">（加算）</div>
+                  <div class="n2 chg"><a href="吸入薬指導加算2026.html">吸入薬指導加算</a></div>
+                  <div class="n2 new"><a href="かかりつけ薬剤師フォローアップ加算.html">かかりつけ薬剤師フォローアップ加算</a></div>
+                  <div class="n2 new"><a href="かかりつけ薬剤師訪問加算.html">かかりつけ薬剤師訪問加算</a></div>
+                </div>
+              </div>
+              <div class="n1 chg"><a href="服用薬剤調整支援料２_2026改定.html">服用薬剤調整支援料２</a></div>
+              <div class="n1">在宅患者訪問薬剤管理指導料</div>
+              <div class="n1 new"><a href="複数名薬剤管理指導訪問料.html">複数名薬剤管理指導訪問料</a></div>
+              <div class="n1 new"><a href="訪問薬剤管理医師同時指導料.html">訪問薬剤管理医師同時指導料</a></div>
+            </div>
+          </div>
+
+        </div>
+        <div class="bottom-row">
+          <div class="bottom-box">薬剤料</div>
+          <div class="bottom-box">特定保険医療材料料</div>
+        </div>
+        <div class="etc-note">など</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 凡例 -->
+  <div class="legend">
+    <span style="font-weight:700; font-size:12px; color:#666;">凡例：</span>
+    <div class="legend-item"><div class="dot-new"></div><span style="color:var(--red); font-weight:700;">新設</span>　今改定で新たに設けられた項目</div>
+    <div class="legend-item"><div class="dot-del"></div><span style="color:var(--del-color); font-weight:700;">廃止</span>　今改定で廃止・統合された項目</div>
+    <div class="legend-item"><div class="dot-chg"></div><span style="font-weight:700;">変更</span>　要件・名称・点数が変更された項目</div>
+  </div>
+
+  <!-- フッター -->
+  <p class="footer-note">※本資料は情報管理室（木村）が独自にまとめたものです。公式の通知・告示ではありません。</p>
+
+</div>
+</body>
+</html>
