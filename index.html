@@ -181,6 +181,23 @@
         flex-shrink: 0;
       }
 
+      .card-disabled {
+        opacity: 0.6;
+        cursor: default;
+        pointer-events: none;
+      }
+      .badge-wip {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 700;
+        color: #fff;
+        background: #b45309;
+        padding: 1px 8px;
+        border-radius: 3px;
+        margin-left: 8px;
+        vertical-align: middle;
+      }
+
       /* ── フッター ── */
       footer {
         max-width: 960px;
@@ -334,6 +351,20 @@
           <span class="card-title">薬学的有害事象等防止加算</span>
           <span class="card-arrow">›</span>
         </a>
+      </div>
+
+      <!-- 参考資料 -->
+      <p class="section-title">参考資料（原文）</p>
+      <div class="card-list">
+        <a class="card" href="別表第三_調剤報酬点数表2026.html">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <span class="card-title">別表第三　調剤報酬点数表</span>
+          <span class="card-arrow">›</span>
+        </a>
+        <span class="card card-disabled">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <span class="card-title">別添３　調剤報酬点数表に関する事項<span class="badge-wip">作成中</span></span>
+        </span>
       </div>
 
     </main>

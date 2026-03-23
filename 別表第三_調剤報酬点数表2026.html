@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>別表第三 調剤報酬点数表（2026年改定版）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --text-xs: 13px; --text-sm: 15px; --text-md: 16px;
+  --text-lg: 18px; --text-xl: 22px;
+  --pad-card: 22px; --gap-card: 16px;
+  --blue: #1e5fa8; --red: #cc0000; --ink: #222222;
+  --bg: #f3f4f6; --white: #ffffff;
+  --box-blue: #e4f0f8; --box-gray: #f2f2f2;
+  --border: #d1d5db; --border-dk: #9ca3af;
+  --radius: 10px; --radius-sm: 6px;
+  --bw: 0.5px; --bw-h: 1px; --bw-a: 3px; --bw-t: 4px;
+}
+body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+.page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+.page-title { border-left:var(--bw-t) solid var(--blue); padding:6px 0 6px 18px; }
+.page-title h1 { font-size:var(--text-xl); font-weight:900; }
+.page-title p { font-size:var(--text-sm); font-weight:500; margin-top:4px; }
+.card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+.card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--ink); padding-bottom:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+.badge { font-size:var(--text-sm); font-weight:700; padding:3px 12px; border-radius:4px; }
+.badge-red { background:#fde8e8; color:var(--red); }
+.badge-blue { background:var(--box-blue); color:var(--blue); }
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:var(--gap-card); }
+.box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:14px 18px; }
+.box-gray { background:var(--box-gray); border-radius:var(--radius-sm); padding:14px 18px; border:var(--bw) solid var(--border); }
+.em-red { color:var(--red); font-weight:900; }
+.em-blue { color:var(--blue); font-weight:900; }
+.change-badge { display:inline-flex; align-items:center; justify-content:center; color:var(--white); font-size:var(--text-xs); font-weight:900; padding:2px 10px; border-radius:3px; margin-right:8px; flex-shrink:0; }
+.change-badge.up { background:var(--blue); }
+.change-badge.strict { background:var(--red); }
+.change-badge.new-req { background:#b45309; }
+.section-title { font-weight:900; font-size:var(--text-md); margin-bottom:8px; }
+.sub-title { font-weight:900; font-size:var(--text-md); padding:6px 0 6px 12px; border-left:var(--bw-t) solid var(--blue); margin-bottom:10px; }
+table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
+td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:middle; }
+tr:last-child td { border-bottom:none; }
+.divider { border:none; border-top:var(--bw-h) solid var(--border); margin:12px 0; }
+/* ページタイトル（点数バッジ付き） */
+.page-title-wrap { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap; padding:6px 0; }
+.page-title-left { border-left:var(--bw-t) solid var(--blue); padding:4px 0 4px 18px; flex:1; }
+.page-title-left h1 { font-size:var(--text-xl); font-weight:900; }
+.page-title-left p { font-size:var(--text-sm); font-weight:500; margin-top:4px; }
+.score-block { display:flex; align-items:center; gap:0; flex-shrink:0; border:var(--bw-h) solid var(--border-dk); border-radius:var(--radius-sm); overflow:hidden; background:var(--white); }
+.score-block .score-label { font-size:var(--text-xs); font-weight:700; padding:6px 14px; background:var(--box-gray); border-right:var(--bw-h) solid var(--border-dk); line-height:1.5; white-space:nowrap; }
+.score-block .score-num { font-size:28px; font-weight:900; padding:6px 18px; line-height:1.2; white-space:nowrap; }
+.score-block .score-num span { font-size:var(--text-md); font-weight:700; margin-left:2px; }
+
+/* 追加スタイル */
+.notes-block { margin-top:16px; display:flex; flex-direction:column; gap:10px; }
+.note-item { font-size:var(--text-sm); line-height:1.8; }
+.note-label { font-weight:900; display:inline; margin-right:4px; }
+.score-table-wrap { margin-top:12px; overflow-x:auto; }
+.toc-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+.toc-list li a { color:var(--blue); text-decoration:none; font-weight:700; font-size:var(--text-sm); display:flex; align-items:center; gap:8px; }
+.toc-list li a:hover { text-decoration:underline; }
+.toc-num { font-size:var(--text-xs); background:var(--blue); color:#fff; padding:2px 8px; border-radius:3px; font-weight:900; white-space:nowrap; }
+.deleted-note { color:#888; font-size:var(--text-sm); font-style:italic; }
+ol.reg-list { padding-left:1.5em; display:flex; flex-direction:column; gap:10px; }
+ol.reg-list li { font-size:var(--text-sm); line-height:1.8; }
+.section-header { padding:6px 0 6px 18px; border-left:var(--bw-t) solid var(--blue); }
+.section-header h2 { font-size:var(--text-xl); font-weight:900; }
+
+@media print {
+  body { background: white; padding: 0; font-size: 12px; }
+  .page { gap: 12px; }
+  .card { break-inside: avoid; }
+}
+@media (max-width: 640px) {
+  body { padding: 16px 10px 40px; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .page-title-wrap { flex-direction: column; }
+  .score-block .score-num { font-size: 22px; }
+  table { font-size: 12px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ページタイトル -->
+  <div class="page-title">
+    <h1>別表第三　調剤報酬点数表</h1>
+    <p>2026年（令和８年）調剤報酬改定版</p>
+  </div>
+
+  <!-- 目次カード -->
+  <div class="card">
+    <div class="card-title">目次</div>
+    <ul class="toc-list">
+      <li><a href="#tsusoku"><span class="toc-num">通則</span> 通則</a></li>
+      <li><a href="#sec1"><span class="toc-num">第１節</span> 調剤技術料</a></li>
+      <li><a href="#sec2"><span class="toc-num">第２節</span> 薬学管理料</a></li>
+      <li><a href="#sec3"><span class="toc-num">第３節</span> 薬剤料</a></li>
+      <li><a href="#sec4"><span class="toc-num">第４節</span> 特定保険医療材料料</a></li>
+      <li><a href="#sec5"><span class="toc-num">第５節</span> その他</a></li>
+      <li><a href="#sec6"><span class="toc-num">第６節</span> 経過措置</a></li>
+    </ul>
+  </div>
+
+  <!-- 通則 -->
+  <div id="tsusoku" class="card">
+    <div class="card-title">通則</div>
+    <ol class="reg-list">
+      <li>投薬の費用は、第１節から第３節まで及び第５節の各区分の所定点数を合算した点数により算定する。</li>
+      <li>第１節の各区分の所定単位を超えて調剤した場合の薬剤調製料は、特段の定めのある場合を除き、当該所定単位又はその端数を増すごとに同節の各区分の所定点数を加算する。</li>
+      <li>投薬に当たって、別に厚生労働大臣が定める保険医療材料（以下この表において「特定保険医療材料」という。）を支給した場合は、前２号により算定した所定点数及び第４節の所定点数を合算した点数により算定する。</li>
+    </ol>
+  </div>
+
+  <!-- 第１節 調剤技術料 -->
+  <div id="sec1" class="section-header">
+    <h2>第１節　調剤技術料</h2>
+  </div>
+
+  <!-- 区分00 調剤基本料 -->
+  <div class="card">
+    <div class="card-title">
+      <span>区分　００　調剤基本料（処方箋の受付１回につき）</span>
+    </div>
+
+    <div class="score-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>区分</th>
+            <th style="text-align:right;">点数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>１　調剤基本料１</td><td style="text-align:right;">47点</td></tr>
+          <tr><td>２　調剤基本料２</td><td style="text-align:right;">30点</td></tr>
+          <tr><td>３　調剤基本料３　イ</td><td style="text-align:right;">25点</td></tr>
+          <tr><td>　　調剤基本料３　ロ</td><td style="text-align:right;">20点</td></tr>
+          <tr><td>　　調剤基本料３　ハ</td><td style="text-align:right;">37点</td></tr>
+          <tr><td>４　特別調剤基本料Ａ</td><td style="text-align:right;">５点</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notes-block">
+      <div class="box-gray">
+        <div class="note-item"><span class="note-label">注１</span>別に厚生労働大臣が定める施設基準に適合しているものとして地方厚生局長等に届け出た保険薬局において調剤した場合には、処方箋の受付１回につき、当該基準に係る区分に従い、それぞれ所定点数を算定する。ただし、別に厚生労働大臣が定める施設基準に適合しているものとして地方厚生局長等に届け出たものについては、本文の規定にかかわらず、調剤基本料１により算定する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注２</span>別に厚生労働大臣が定める保険薬局においては、注１本文の規定にかかわらず、特別調剤基本料Ｂとして、処方箋の受付１回につき３点を算定する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注３</span>複数の保険医療機関から交付された処方箋を同時に受け付けた場合にあっては、当該処方箋のうち一の処方箋について受付１回につき所定点数の100分の100に相当する点数により算定し、他の処方箋について受付１回につき所定点数の100分の80に相当する点数により算定する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注４</span>別に厚生労働大臣が定める保険薬局においては、所定点数の100分の50に相当する点数により算定する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注５</span>別に厚生労働大臣が定める施設基準に適合しているものとして地方厚生局長等に届け出た保険薬局（注２に規定する別に厚生労働大臣が定める保険薬局を除く。）において調剤した場合には、当該基準に係る区分に従い、次に掲げる点数（特別調剤基本料Ａを算定する保険薬局において調剤した場合には、100分の10に相当する点数）を所定点数に加算する。</div>
+        <div style="margin-top:8px;">
+          <table>
+            <thead>
+              <tr>
+                <th>地域支援・医薬品供給対応体制加算</th>
+                <th style="text-align:right;">点数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>イ　地域支援・医薬品供給対応体制加算１</td><td style="text-align:right;">27点</td></tr>
+              <tr><td>ロ　地域支援・医薬品供給対応体制加算２</td><td style="text-align:right;">59点</td></tr>
+              <tr><td>ハ　地域支援・医薬品供給対応体制加算３</td><td style="text-align:right;">67点</td></tr>
+              <tr><td>ニ　地域支援・医薬品供給対応体制加算４</td><td style="text-align:right;">37点</td></tr>
+              <tr><td>ホ　地域支援・医薬品供給対応体制加算５</td><td style="text-align:right;">59点</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注６</span>別に厚生労働大臣が定める施設基準に適合しているものとして地方厚生局長等に届け出た保険薬局（注２に規定する別に厚生労働大臣が定める保険薬局を除く。）において調剤を行った場合は、連携強化加算として、５点を所定点数に加算する。また、特別調剤基本料Ａを算定する保険薬局において、別に厚生労働大臣が定める保険医療機関が、組織的な感染防止対策につき医科点数表の区分番号Ａ０００に掲げる初診料の注11、Ａ００１に掲げる再診料の注15又は医科点数表の区分番号Ａ２３４－２若しくは歯科点数表の区分番号Ａ２２４－２に掲げる感染対策向上加算の施設基準に適合しているものとして地方厚生局長等に届け出た保険医療機関である場合は、算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注７</span>別に厚生労働大臣が定める施設基準に適合しているものとして地方厚生局長等に届け出た保険薬局（注２に規定する別に厚生労働大臣が定める保険薬局を除く。）において、保険薬局及び保険薬剤師療養担当規則（昭和32年厚生省令第16号。以下「薬担規則」という。）第７条の２第２号に規定するバイオ後続品（インスリン製剤を除く。）を調剤した場合には、バイオ後続品調剤体制加算として、50点（特別調剤基本料Ａを算定する保険薬局において調剤した場合には、100分の10に相当する点数）を所定点数に加算する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注８</span>薬担規則第７条の２第１号に規定する後発医薬品（以下この表において「後発医薬品」という。）の調剤に関して別に厚生労働大臣が定める保険薬局において調剤した場合には、所定点数から５点を減算する。ただし、処方箋の受付回数が１月に600回以下の保険薬局を除く。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注９</span>14日分を超える投薬に係る処方箋受付において、薬剤の保存が困難であること等の理由により分割して調剤を行った場合、当該処方箋に基づく当該保険薬局における２回目以降の調剤については、１分割調剤につき５点を算定する。なお、当該調剤においては、第２節薬学管理料（区分番号１０の２に掲げる調剤管理料及び区分番号１４の２に掲げる外来服薬支援料の２を除く。）は算定しない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注10</span>後発医薬品に係る処方箋受付において、当該処方箋の発行を受けた患者が初めて当該後発医薬品を服用することとなること等の理由により分割して調剤を行った場合、当該処方箋に基づく当該保険薬局における２回目の調剤に限り、５点を算定する。なお、当該調剤においては、第２節薬学管理料（区分番号１０の２に掲げる調剤管理料、区分番号１０の３に掲げる服薬管理指導料及び区分番号１４の２に掲げる外来服薬支援料の２を除く。）は算定しない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注11</span>医師の分割指示に係る処方箋受付（注９及び注10に掲げるものを除く。）において、１回目の調剤については当該指示に基づき分割して調剤を行った場合に、２回目以降の調剤については投薬中の患者の服薬状況等を確認し、処方箋を交付した保険医（以下この表において「処方医」という。）に対して情報提供を行った場合に算定する。この場合において、区分番号００に掲げる調剤基本料及びその加算、区分番号０１に掲げる薬剤調製料及びその加算並びに第２節に掲げる薬学管理料（区分番号１５の５に掲げる服薬情報等提供料を除く。）は、それぞれの所定点数を分割回数で除した点数を１分割調剤につき算定する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注12</span>別に厚生労働大臣が定める施設基準に適合しているものとして地方厚生局長等に届け出た保険薬局（注２に規定する別に厚生労働大臣が定める保険薬局を除く。）において、厚生労働大臣が定める患者に対する調剤を行った場合は、在宅薬学総合体制加算１として、30点（特別調剤基本料Ａを算定する保険薬局において調剤した場合には、所定点数の100分の10に相当する点数）を所定点数に加算する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注13</span>別に厚生労働大臣が定める施設基準に適合しているものとして地方厚生局長等に届け出た保険薬局（注２に規定する別に厚生労働大臣が定める保険薬局を除く。）において、厚生労働大臣が定める患者に対する調剤を行った場合は、在宅薬学総合体制加算２として、次に掲げる区分に従い当該区分に掲げる点数（特別調剤基本料Ａを算定する保険薬局において調剤した場合には、それぞれの点数の100分の10に相当する点数）を所定点数に加算する。</div>
+        <div style="margin-top:8px;">
+          <table>
+            <thead>
+              <tr>
+                <th>区分</th>
+                <th style="text-align:right;">点数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>イ　単一建物診療患者が１人又は単一建物居住者が１人の場合</td><td style="text-align:right;">100点</td></tr>
+              <tr><td>ロ　イ以外の場合</td><td style="text-align:right;">50点</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注14</span>医療ＤＸ推進に係る体制として別に厚生労働大臣が定める施設基準に適合しているものとして地方厚生局長等に届け出た保険薬局（注２に規定する別に厚生労働大臣が定める保険薬局を除く。）において調剤を行った場合は、電子的調剤情報連携体制整備加算として、月１回に限り、８点を所定点数に加算する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注15</span>別に厚生労働大臣が定める保険薬局において調剤をした場合には、門前薬局等立地依存減算として、所定点数から15点を減算する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注16</span>注３又は注４と、注５から注８まで又は注12から注15までに規定する点数とを合算した点数が３点を下回る場合は、３点を算定する。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区分01 薬剤調製料 -->
+  <div class="card">
+    <div class="card-title">区分　０１　薬剤調製料</div>
+
+    <div class="score-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>区分・剤形</th>
+            <th style="text-align:right;">点数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>１　内服薬（浸煎薬及び湯薬を除く。）（１剤につき）<br><small style="color:#555;">服用時点が同一であるものについては投与日数にかかわらず１剤として算定。４剤分以上の部分については算定しない。</small></td>
+            <td style="text-align:right;">24点</td>
+          </tr>
+          <tr>
+            <td>２　屯服薬<br><small style="color:#555;">１回の処方箋受付において屯服薬を調剤した場合は、剤数にかかわらず所定点数を算定。</small></td>
+            <td style="text-align:right;">21点</td>
+          </tr>
+          <tr>
+            <td>３　浸煎薬（１調剤につき）<br><small style="color:#555;">４調剤以上の部分については算定しない。</small></td>
+            <td style="text-align:right;">190点</td>
+          </tr>
+          <tr>
+            <td>４　湯薬　イ　７日分以下の場合（１調剤につき）</td>
+            <td style="text-align:right;">190点</td>
+          </tr>
+          <tr>
+            <td>　　湯薬　ロ(1)　８日分以上28日分以下・７日目以下の部分（１調剤につき）</td>
+            <td style="text-align:right;">190点</td>
+          </tr>
+          <tr>
+            <td>　　湯薬　ロ(2)　８日分以上28日分以下・８日目以上の部分（１日分につき）</td>
+            <td style="text-align:right;">10点</td>
+          </tr>
+          <tr>
+            <td>　　湯薬　ハ　29日分以上の場合<br><small style="color:#555;">４調剤以上の部分については算定しない。</small></td>
+            <td style="text-align:right;">400点</td>
+          </tr>
+          <tr>
+            <td>５　注射薬<br><small style="color:#555;">１回の処方箋受付において注射薬を調剤した場合は、調剤数にかかわらず所定点数を算定。</small></td>
+            <td style="text-align:right;">26点</td>
+          </tr>
+          <tr>
+            <td>６　外用薬（１調剤につき）<br><small style="color:#555;">４調剤以上の部分については算定しない。</small></td>
+            <td style="text-align:right;">10点</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notes-block">
+      <div class="box-gray">
+        <div class="note-item"><span class="note-label">注１</span>１の内服薬について、内服用滴剤を調剤した場合は、１調剤につき10点を算定する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注２</span>５の注射薬について、別に厚生労働大臣が定める施設基準に適合しているものとして地方厚生局長等に届け出た保険薬局において、中心静脈栄養法用輸液、抗悪性腫瘍剤又は麻薬につき無菌製剤処理を行った場合は、無菌製剤処理加算として、１日につきそれぞれ69点、79点又は69点（15歳未満の小児の場合にあっては、１日につきそれぞれ237点、147点又は137点）を所定点数に加算する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注３</span>麻薬を調剤した場合は各区分の所定点数に１調剤につき70点を加算し、向精神薬、覚醒剤原料又は毒薬を調剤した場合は、１調剤につき８点を各区分の所定点数に加算する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注４</span>保険薬局が開局時間以外の時間（深夜（午後10時から午前６時までをいう。以下この表において同じ。）及び休日を除く。）、休日（深夜を除く。以下この表において同じ。）又は深夜において調剤を行った場合は、時間外加算、休日加算又は深夜加算として、それぞれ所定点数の100分の100、100分の140又は100分の200に相当する点数を所定点数に加算する。ただし、専ら夜間における救急医療の確保のために設けられている保険薬局において別に厚生労働大臣が定める時間において調剤を行った場合は、所定点数の100分の100に相当する点数を所定点数に加算する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注５</span>午後７時（土曜日にあっては午後１時）から午前８時までの間（深夜及び休日を除く。）、休日又は深夜であって、当該保険薬局が表示する開局時間内の時間において調剤を行った場合は、夜間・休日等加算として、処方箋受付１回につき40点を所定点数に加算する。ただし、注４のただし書に規定する場合にあっては、この限りでない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注６</span>次の薬剤を自家製剤の上調剤した場合は、自家製剤加算として、１調剤につき（イの(1)に掲げる場合にあっては、投与日数が７又はその端数を増すごとに）、それぞれ次の点数（予製剤による場合又は錠剤を分割する場合はそれぞれ次に掲げる点数の100分の20に相当する点数）を各区分の所定点数に加算する。ただし、別に厚生労働大臣が定める薬剤については、この限りでない。</div>
+        <div style="margin-top:8px;">
+          <table>
+            <thead>
+              <tr>
+                <th>剤形</th>
+                <th style="text-align:right;">点数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>イ(1)　内服薬・屯服薬　錠剤、丸剤、カプセル剤、散剤、顆粒剤又はエキス剤の内服薬</td><td style="text-align:right;">20点</td></tr>
+              <tr><td>イ(2)　錠剤、丸剤、カプセル剤、散剤、顆粒剤又はエキス剤の屯服薬</td><td style="text-align:right;">90点</td></tr>
+              <tr><td>イ(3)　液剤（内服・屯服）</td><td style="text-align:right;">45点</td></tr>
+              <tr><td>ロ(1)　外用薬　錠剤、トローチ剤、軟・硬膏剤、パップ剤、リニメント剤、坐剤</td><td style="text-align:right;">90点</td></tr>
+              <tr><td>ロ(2)　外用薬　点眼剤、点鼻・点耳剤、浣腸剤</td><td style="text-align:right;">75点</td></tr>
+              <tr><td>ロ(3)　外用薬　液剤</td><td style="text-align:right;">45点</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注７</span>２種以上の薬剤（液剤、散剤若しくは顆粒剤又は軟・硬膏剤に限る。）を計量し、かつ、混合して、内服薬若しくは屯服薬又は外用薬を調剤した場合は、計量混合調剤加算として、１調剤につきそれぞれ次の点数（予製剤による場合はそれぞれ次に掲げる点数の100分の20に相当する点数）を各区分の所定点数に加算する。ただし、注６に規定する加算のある場合又は当該薬剤が注６のただし書に規定する別に厚生労働大臣が定める薬剤である場合は、この限りでない。</div>
+        <div style="margin-top:8px;">
+          <table>
+            <thead>
+              <tr>
+                <th>剤形</th>
+                <th style="text-align:right;">点数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>イ　液剤の場合</td><td style="text-align:right;">35点</td></tr>
+              <tr><td>ロ　散剤又は顆粒剤の場合</td><td style="text-align:right;">45点</td></tr>
+              <tr><td>ハ　軟・硬膏剤の場合</td><td style="text-align:right;">80点</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第２節 薬学管理料 -->
+  <div id="sec2" class="section-header">
+    <h2>第２節　薬学管理料</h2>
+  </div>
+
+  <!-- 区分10 削除 -->
+  <div class="card">
+    <div class="card-title">区分　１０</div>
+    <p class="deleted-note">（削除）</p>
+  </div>
+
+  <!-- 区分10の2 調剤管理料 -->
+  <div class="card">
+    <div class="card-title">区分　１０の２　調剤管理料</div>
+
+    <div class="score-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>区分</th>
+            <th style="text-align:right;">点数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>１　内服薬（内服用滴剤、浸煎薬、湯薬及び屯服薬を除く。）を調剤した場合（１剤につき）<br>
+                &nbsp;&nbsp;イ　長期処方（28日分以上）の場合</td>
+            <td style="text-align:right;">60点</td>
+          </tr>
+          <tr>
+            <td>&nbsp;&nbsp;ロ　イ以外の場合</td>
+            <td style="text-align:right;">10点</td>
+          </tr>
+          <tr>
+            <td>２　１以外の場合</td>
+            <td style="text-align:right;">10点</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notes-block">
+      <div class="box-gray">
+        <div class="note-item"><span class="note-label">注１</span>処方された薬剤について、患者又はその家族等から服薬状況等の情報を収集し、必要な薬学的分析を行った上で、薬剤服用歴への記録その他の管理を行った場合に、調剤の内容に応じ、処方箋受付１回につき所定点数を算定する。ただし、区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注２</span>１については、服用時点が同一である内服薬は、投与日数にかかわらず、１剤として算定する。なお、４剤分以上の部分については算定しない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注３（調剤時残薬調整加算）</span>患者又はその家族等から収集した情報等に基づいて残薬が確認された患者において、処方医の指示又は処方医に対する照会の結果に基づき、残薬の調整のために７日分以上相当の調剤日数の変更が行われた場合（別に厚生労働大臣が定める保険薬局において行われた場合を除く。）は、調剤時残薬調整加算として、次に掲げる点数をそれぞれ所定点数に加算する。ただし、保険薬剤師が患者の服薬状況等により必要性があると判断し、処方医の指示又は処方医に対する照会の結果に基づき、６日分以下相当の調剤日数の変更が行われた場合には、その理由を調剤報酬明細書に記載することで算定可能とする。</div>
+        <div style="margin-top:8px;">
+          <table>
+            <thead>
+              <tr>
+                <th>区分</th>
+                <th style="text-align:right;">点数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>イ　在宅患者へ処方箋交付前に処方内容を相談し提案が反映された処方箋を受け付けた場合</td><td style="text-align:right;">50点</td></tr>
+              <tr><td>ロ　在宅患者について調剤日数の変更が行われた場合（イの場合を除く。）</td><td style="text-align:right;">50点</td></tr>
+              <tr><td>ハ　かかりつけ薬剤師により調剤日数の変更が行われた場合（イ及びロの場合を除く。）</td><td style="text-align:right;">50点</td></tr>
+              <tr><td>ニ　イからハまで以外の場合</td><td style="text-align:right;">30点</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注４（薬学的有害事象等防止加算）</span>薬剤服用歴、電磁的記録をもって作成された処方箋の仕組みを用いた重複投薬の確認等に基づき、処方医に対する照会（残薬調整に係るものを除く。）の結果、処方に変更が行われた場合（別に厚生労働大臣が定める保険薬局において行われた場合を除く。）は、薬学的有害事象等防止加算として、次に掲げる点数をそれぞれ所定点数に加算する。</div>
+        <div style="margin-top:8px;">
+          <table>
+            <thead>
+              <tr>
+                <th>区分</th>
+                <th style="text-align:right;">点数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>イ　在宅患者へ処方箋交付前に処方内容を相談し提案が反映された処方箋を受け付けた場合</td><td style="text-align:right;">50点</td></tr>
+              <tr><td>ロ　在宅患者について処方に変更が行われた場合（イの場合を除く。）</td><td style="text-align:right;">50点</td></tr>
+              <tr><td>ハ　かかりつけ薬剤師による照会の結果、処方に変更が行われた場合（イ及びロの場合を除く。）</td><td style="text-align:right;">50点</td></tr>
+              <tr><td>ニ　イからハまで以外の場合</td><td style="text-align:right;">30点</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区分10の3 服薬管理指導料 -->
+  <div class="card">
+    <div class="card-title">区分　１０の３　服薬管理指導料</div>
+
+    <div class="score-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>区分</th>
+            <th style="text-align:right; white-space:nowrap;">点数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="font-weight:700;">１　原則３月以内に再度処方箋を持参し手帳を提示した患者に対して行った場合</td><td></td></tr>
+          <tr><td style="padding-left:2em;">イ　かかりつけ薬剤師が行った場合</td><td style="text-align:right; white-space:nowrap;">45点</td></tr>
+          <tr><td style="padding-left:2em;">ロ　イ以外の場合</td><td style="text-align:right; white-space:nowrap;">45点</td></tr>
+          <tr><td style="font-weight:700;">２　１の患者以外の患者に対して行った場合</td><td></td></tr>
+          <tr><td style="padding-left:2em;">イ　かかりつけ薬剤師が行った場合</td><td style="text-align:right; white-space:nowrap;">59点</td></tr>
+          <tr><td style="padding-left:2em;">ロ　イ以外の場合</td><td style="text-align:right; white-space:nowrap;">59点</td></tr>
+          <tr><td>３　介護老人福祉施設等に入所している患者に訪問して行った場合</td><td style="text-align:right; white-space:nowrap;">45点</td></tr>
+          <tr><td style="font-weight:700;">４　情報通信機器を用いた服薬指導を行った場合</td><td></td></tr>
+          <tr><td style="padding-left:2em;">イ　原則３月以内に再度処方箋を提出した患者に対して行った場合</td><td style="text-align:right; white-space:nowrap;">45点</td></tr>
+          <tr><td style="padding-left:2em;">ロ　在宅で療養を行っている患者であって通院が困難なものに対して行った場合（ハの場合を除く。）</td><td style="text-align:right; white-space:nowrap;">59点</td></tr>
+          <tr><td style="padding-left:2em;">ハ　ロのうち、患者の状態の急変等に伴い行った場合</td><td style="text-align:right; white-space:nowrap;">59点</td></tr>
+          <tr><td style="padding-left:2em;">ニ　イからハまで以外の場合</td><td style="text-align:right; white-space:nowrap;">59点</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notes-block">
+      <div class="box-gray">
+        <div class="note-item"><span class="note-label">注１</span>１のイ及び２のイについては、別に厚生労働大臣が定める施設基準に適合しているものとして、あらかじめ当該算定項目に係る服薬管理指導を行う旨を地方厚生局長等に届け出た保険薬局において、患者又はその家族等が選択する当該保険薬局の特定の保険薬剤師（以下この表において「かかりつけ薬剤師」という。）が当該患者又はその家族等に対して必要な指導等を行った場合に、処方箋受付１回につき所定点数を算定する。なお、区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注２</span>１のロ及び２のロについては、かかりつけ薬剤師以外の保険薬剤師が必要な指導等を行った場合に、処方箋受付１回につき所定点数を算定する。なお、区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注３</span>１の患者であって手帳を提示しないものに対して、必要な指導等を行った場合は、２により算定する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注４</span>３については、保険薬剤師が別に厚生労働大臣が定める患者を訪問し、服薬状況等を把握した上で、必要に応じて当該施設職員と協力し、必要な指導等を行った場合に、月４回に限り、処方箋受付１回につき所定点数を算定する。ただし、区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注５</span>４のイ及びニについては、情報通信機器を用いた必要な指導等を行った場合に、処方箋受付１回につき所定点数を算定する。４のロについては、訪問薬剤管理指導と同日に行う場合を除き、情報通信機器を用いた必要な指導等を行った場合に、患者１人につき、区分番号１５に掲げる在宅患者訪問薬剤管理指導料と合わせて、月４回（末期の悪性腫瘍の患者、注射による麻薬の投与が必要な患者又は中心静脈栄養法の対象患者にあっては、週２回かつ月８回）に限り、所定点数を算定する。４のハについては、患者１人につき、情報通信機器を用いた必要な指導等を行った場合に、区分番号１５の２に掲げる在宅患者緊急訪問薬剤管理指導料と合わせて、月４回（末期の悪性腫瘍の患者、注射による麻薬の投与が必要な患者又は中心静脈栄養法の対象患者にあっては、週２回かつ月８回）に限り、所定点数を算定する。ただし、４のイの患者であって手帳を提示しないものに対して、情報通信機器を用いた必要な指導等を行った場合は、４のニにより算定する。なお、区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注６（麻薬管理指導加算）</span>麻薬を調剤した場合であって、麻薬の服用に関し、その服用及び保管の状況、副作用の有無等について患者又はその家族等に確認し、必要な指導等を行ったときは、麻薬管理指導加算として、22点を所定点数に加算する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注７（特定薬剤管理指導加算１）</span>特に安全管理が必要な医薬品として別に厚生労働大臣が定めるものを調剤した場合であって、当該医薬品の服用に関し、その服用状況、副作用の有無等について患者又はその家族等に確認し、必要な指導等を行ったときには、特定薬剤管理指導加算１として、次に掲げる点数をそれぞれ所定点数に加算する。ただし、４のロ又はハを算定する場合においては、次に掲げる加算は算定しない。</div>
+        <div style="margin-top:8px;">
+          <table>
+            <thead>
+              <tr>
+                <th>区分</th>
+                <th style="text-align:right;">点数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>イ　特に安全管理が必要な医薬品が新たに処方された患者に対して行った場合</td><td style="text-align:right;">10点</td></tr>
+              <tr><td>ロ　用法又は用量の変更、患者の副作用の発現状況等に基づき保険薬剤師が必要と認めて行った場合</td><td style="text-align:right;">５点</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注８（特定薬剤管理指導加算２）</span>別に厚生労働大臣が定める施設基準に適合しているものとして地方厚生局長等に届け出た保険薬局において、別に厚生労働大臣が定める患者に対して、当該患者の副作用の発現状況、治療計画等を文書により確認し、必要な指導等を行った上で、当該患者又はその家族等の同意を得て、悪性腫瘍の治療に係る薬剤の投薬又は注射に関し、電話等により、その服用状況、副作用の有無等について患者又はその家族等に確認し、保険医療機関に必要な情報を文書により提供した場合には、特定薬剤管理指導加算２として、月１回に限り100点を所定点数に加算する。この場合において、区分番号１５の５に掲げる服薬情報等提供料は算定できない。また、４のロ又はハを算定する場合においては、当該加算は算定しない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注９（特定薬剤管理指導加算３）</span>次のイ又はロに掲げる場合には、特定薬剤管理指導加算３として、患者１人につき当該品目に関して最初に処方された１回に限り、次に掲げる点数をそれぞれ所定点数に加算する。ただし、４のロ又はハを算定する場合においては、当該加算は算定しない。</div>
+        <div style="margin-top:8px;">
+          <table>
+            <thead>
+              <tr>
+                <th>区分</th>
+                <th style="text-align:right;">点数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>イ　医薬品リスク管理計画に基づき製造販売業者が作成した安全管理等に関する資料を最初に用いて必要な指導等を行った場合</td><td style="text-align:right;">５点</td></tr>
+              <tr><td>ロ　調剤前に医薬品の選択に係る情報が特に必要な患者に対して必要な指導等を行った場合</td><td style="text-align:right;">10点</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注10（乳幼児服薬指導加算）</span>６歳未満の乳幼児に係る調剤に際して必要な情報等を直接患者又はその家族等に確認した上で、服用に関して必要な指導等を行い、かつ、当該指導等の内容等を手帳に記載した場合には、乳幼児服薬指導加算として、12点を所定点数に加算する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注11（小児特定加算）</span>児童福祉法第56条の６第２項に規定する障害児である患者に係る調剤に際して必要な情報等を直接当該患者又はその家族等に確認した上で、当該患者又はその家族等に対し、服用に関して必要な指導等を行い、かつ、当該指導等の内容等を手帳に記載した場合には、小児特定加算として、350点を所定点数に加算する。この場合において、注10に規定する加算は算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注12（吸入薬指導加算）</span>吸入薬の投薬が行われている患者に対して、当該患者若しくはその家族等又は保険医療機関の求めに応じて、当該患者又はその家族等の同意を得た上で、文書及び練習用吸入器等を用いて、必要な指導等を行うとともに、保険医療機関に必要な情報を文書により提供した場合には、吸入薬指導加算として、６月に１回に限り30点を所定点数に加算する。この場合において、区分番号１５の５に掲げる服薬情報等提供料は算定できない。また、４のロ又はハを算定する場合においては、当該加算は算定しない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注13（かかりつけ薬剤師フォローアップ加算）</span>１のイ又は２のイを算定している患者であって、外来服薬支援料１、服用薬剤調整支援料１若しくは２又は調剤管理料の調剤時残薬調整加算若しくは薬学的有害事象等防止加算を算定したものに対し、患者又はその家族等の求めに応じて、前回の調剤後に、かかりつけ薬剤師が電話等により、服薬状況、残薬状況等の継続的な確認及び必要な指導等を個別に実施していた場合には、再度処方箋を受け付けたときに、かかりつけ薬剤師フォローアップ加算として、３月に１回に限り50点を所定点数に加算する。ただし、調剤後薬剤管理指導料、在宅患者訪問薬剤管理指導料又は居宅療養管理指導費等を算定している患者については、当該加算は算定しない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注14（かかりつけ薬剤師訪問加算）</span>１のイ又は２のイを算定している患者に対し、患者又はその家族等の求めに応じて、かかりつけ薬剤師が患家に訪問して、残薬の整理、服用薬の管理方法の指導等を行い、その結果を保険医療機関に情報提供した場合には、かかりつけ薬剤師訪問加算として、６月に１回に限り230点を所定点数に加算する。ただし、外来服薬支援料の１若しくは施設連携加算、在宅患者訪問薬剤管理指導料、服薬情報等提供料又は居宅療養管理指導費等を算定している患者については、かかりつけ薬剤師訪問加算は算定しない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注15</span>区分番号１５に掲げる在宅患者訪問薬剤管理指導料を算定している患者については、情報通信機器を用いた場合及び当該患者の薬学的管理指導計画に係る疾病と別の疾病又は負傷に係る臨時の投薬が行われた場合を除き、算定しない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注16</span>３及び注14に規定するかかりつけ薬剤師訪問加算に係る業務に要した交通費は、患家の負担とする。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注17（服薬管理指導料の特例）</span>別に厚生労働大臣が定める保険薬局において、注１、注２、注４又は注５に規定する必要な指導等を行った場合には、服薬管理指導料の特例として、処方箋受付１回につき13点を算定する。この場合において、注６から注14までに規定する加算は算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注18</span>区分番号００に掲げる特別調剤基本料Ａを算定する保険薬局において、区分番号００に掲げる調剤基本料の注６に規定する厚生労働大臣が定める保険医療機関への情報提供を行った場合は、注８、注12及び注14に規定する加算は、算定できない。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区分11〜14 削除 -->
+  <div class="card">
+    <div class="card-title">区分　１１から１４まで</div>
+    <p class="deleted-note">（削除）</p>
+  </div>
+
+  <!-- 区分14の2 外来服薬支援料 -->
+  <div class="card">
+    <div class="card-title">区分　１４の２　外来服薬支援料</div>
+
+    <div class="score-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>区分</th>
+            <th style="text-align:right;">点数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>１　外来服薬支援料１</td>
+            <td style="text-align:right;">185点</td>
+          </tr>
+          <tr>
+            <td>２　外来服薬支援料２　イ　42日分以下の場合</td>
+            <td style="text-align:right;">投与日数が７又はその端数を増すごとに34点を加算して得た点数</td>
+          </tr>
+          <tr>
+            <td>　　外来服薬支援料２　ロ　43日分以上の場合</td>
+            <td style="text-align:right;">240点</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notes-block">
+      <div class="box-gray">
+        <div class="note-item"><span class="note-label">注１</span>１については、自己による服薬管理が困難な患者若しくはその家族等又は保険医療機関の求めに応じて、当該患者が服薬中の薬剤について、当該薬剤を処方した保険医に当該薬剤の治療上の必要性及び服薬管理に係る支援の必要性の了解を得た上で、患者の服薬管理を支援した場合に月１回に限り算定する。ただし、区分番号１５に掲げる在宅患者訪問薬剤管理指導料を算定している患者については、算定しない。なお、区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注２</span>１については、患者若しくはその家族等又は保険医療機関の求めに応じて、患者又はその家族等が保険薬局に持参した服用薬の整理等の服薬管理を行い、その結果を保険医療機関に情報提供した場合についても、所定点数を算定できる。ただし、区分番号００に掲げる特別調剤基本料Ａを算定する保険薬局において、調剤基本料の注６に規定する厚生労働大臣が定める保険医療機関への情報提供を行った場合は、算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注３</span>２については、多種類の薬剤を投与されている患者又は自ら被包を開いて薬剤を服用することが困難な患者に対して、処方医に当該薬剤の治療上の必要性及び服薬管理に係る支援の必要性の了解を得た上で、２剤以上の内服薬又は１剤で３種類以上の内服薬の服用時点ごとの一包化及び必要な指導等を行い、かつ、患者の服薬管理を支援した場合に、当該内服薬の投与日数に応じて算定する。ただし、区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注４（施設連携加算）</span>介護保険法第８条第22項に規定する地域密着型介護老人福祉施設又は同条第27項に規定する介護老人福祉施設に入所中の患者を訪問し、注３に係る業務に加えて、当該施設職員と協働し当該患者が服薬中の薬剤を含めた服薬管理を支援した場合に、施設連携加算として月に１回に限り50点を所定点数に加算する。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区分14の3 服用薬剤調整支援料 -->
+  <div class="card">
+    <div class="card-title">区分　１４の３　服用薬剤調整支援料</div>
+
+    <div class="score-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>区分</th>
+            <th style="text-align:right;">点数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>１　服用薬剤調整支援料１</td><td style="text-align:right;">125点</td></tr>
+          <tr><td>２　服用薬剤調整支援料２</td><td style="text-align:right;">1,000点</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notes-block">
+      <div class="box-gray">
+        <div class="note-item"><span class="note-label">注１</span>１については、６種類以上の内服薬が処方されている患者について、処方医に対して、保険薬剤師が文書を用いて提案し、当該患者に調剤する内服薬が２種類以上減少した場合に、月１回に限り所定点数を算定する。ただし、区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注２</span>２については、複数の保険医療機関から６種類以上の内服薬が処方されている患者について、患者又はその家族等の求めに応じ、かかりつけ薬剤師（患者の服薬状況等に係る総合的な管理及び評価を行うために必要な研修を受けたものに限る。）が、当該患者の服用中の薬剤を継続的及び一元的に把握した結果、服用中の薬剤の調整を必要と認める場合であって、必要な評価等を実施した上で、処方医に対して、当該調整について文書を用いて提案した場合には、同一の患者に対して６月に１回に限り、かかりつけ薬剤師１人につき月４回まで所定点数を算定する。ただし、区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注３</span>２については、区分番号００に掲げる特別調剤基本料Ａを算定する保険薬局において、別に厚生労働大臣が定める保険医療機関への情報提供を行った場合は、算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注４</span>２については、令和９年６月以降において算定する。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区分14の4 調剤後薬剤管理指導料 -->
+  <div class="card">
+    <div class="card-title">区分　１４の４　調剤後薬剤管理指導料</div>
+
+    <div class="score-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>区分</th>
+            <th style="text-align:right;">点数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>１　糖尿病患者に対して行った場合</td><td style="text-align:right;">60点</td></tr>
+          <tr><td>２　慢性心不全患者に対して行った場合</td><td style="text-align:right;">60点</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notes-block">
+      <div class="box-gray">
+        <div class="note-item"><span class="note-label">注１</span>区分番号００に掲げる調剤基本料の注５に規定する施設基準に適合しているものとして地方厚生局長等に届け出た保険薬局において、１については糖尿病患者であって別に厚生労働大臣が定めるものに対して、２については心疾患による入院の経験がある患者であって、作用機序が異なる循環器官用薬等の複数の治療薬の処方を受けている慢性心不全のものに対して、患者又はその家族等の求めがあり、保険薬剤師が必要性を認め、処方医の了解を得た場合又は保険医療機関の求めがあった場合に当該患者又はその家族等の同意を得て、調剤後に次に掲げる業務等の全てを行った場合には、調剤後薬剤管理指導料として、月１回に限り算定できる。この場合において、区分番号１５の５に掲げる服薬情報等提供料は算定できない。</div>
+        <div style="margin-top:8px; padding-left:8px;">
+          <p style="font-size:var(--text-sm);">イ　調剤後に当該薬剤の服用に関し、その服用状況、副作用の有無等について当該患者又はその家族等へ電話等により確認すること（当該調剤と同日に行う場合を除く。）。</p>
+          <p style="font-size:var(--text-sm);">ロ　必要な指導等を継続して実施すること。</p>
+          <p style="font-size:var(--text-sm);">ハ　処方医へ必要な情報を文書により提供すること。</p>
+        </div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注２</span>区分番号００に掲げる特別調剤基本料Ａを算定する保険薬局において、区分番号００に掲げる調剤基本料の注６に規定する別に厚生労働大臣が定める保険医療機関への情報提供を行った場合は、算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注３</span>区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区分15 在宅患者訪問薬剤管理指導料 -->
+  <div class="card">
+    <div class="card-title">区分　１５　在宅患者訪問薬剤管理指導料</div>
+
+    <div class="score-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>区分</th>
+            <th style="text-align:right;">点数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>１　単一建物診療患者が１人の場合</td><td style="text-align:right;">650点</td></tr>
+          <tr><td>２　単一建物診療患者が２人以上９人以下の場合</td><td style="text-align:right;">320点</td></tr>
+          <tr><td>３　１及び２以外の場合</td><td style="text-align:right;">290点</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notes-block">
+      <div class="box-gray">
+        <div class="note-item"><span class="note-label">注１</span>あらかじめ在宅患者訪問薬剤管理指導を行う旨を地方厚生局長等に届け出た保険薬局において、在宅で療養を行っている患者であって通院が困難なものに対して、医師の指示に基づき、保険薬剤師が薬学的管理指導計画を策定し、患家を訪問して、患者又はその家族等に対して必要な指導等を行った場合に、単一建物診療患者の人数に従い、患者１人につき区分番号１０の３に掲げる服薬管理指導料の４のロと合わせて月４回（末期の悪性腫瘍の患者、注射による麻薬の投与が必要な患者及び中心静脈栄養法の対象患者にあっては、週２回かつ月８回）に限り算定する。この場合において、１から３まで及び区分番号１０の３に掲げる服薬管理指導料の４のロを合わせて保険薬剤師１人につき週40回に限り算定できる。ただし、区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注２（麻薬管理指導加算）</span>麻薬の投薬が行われている患者に対して、麻薬の使用に関し、その服用及び保管の状況、副作用の有無等について患者又はその家族等に確認し、必要な指導等を行った場合は、麻薬管理指導加算として、１回につき100点を所定点数に加算する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注３（在宅患者医療用麻薬持続注射療法加算）</span>別に厚生労働大臣が定める施設基準に適合しているものとして地方厚生局長等に届け出た保険薬局において、在宅で医療用麻薬持続注射療法を行っている患者に対して、その投与及び保管の状況、副作用の有無等について患者又はその家族等に確認し、必要な指導等を行った場合は、在宅患者医療用麻薬持続注射療法加算として、１回につき250点を所定点数に加算する。この場合において、注２に規定する加算は算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注４（乳幼児加算）</span>在宅で療養を行っている６歳未満の乳幼児であって、通院が困難なものに対して、患家を訪問して、直接患者又はその家族等に対して必要な指導等を行った場合は、乳幼児加算として、１回につき100点を所定点数に加算する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注５（小児特定加算）</span>児童福祉法第56条の６第２項に規定する障害児である患者又はその家族等に対して、必要な指導等を行った場合は、小児特定加算として、１回につき450点を所定点数に加算する。この場合において、注４に規定する加算は算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注６（在宅中心静脈栄養法加算）</span>別に厚生労働大臣が定める施設基準に適合しているものとして地方厚生局長等に届け出た保険薬局において、在宅中心静脈栄養法を行っている患者又はその家族等に対して、その投与及び保管の状況、配合変化の有無について確認し、必要な指導等を行った場合は、在宅中心静脈栄養法加算として、１回につき150点を所定点数に加算する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注７</span>保険薬局の所在地と患家の所在地との距離が16キロメートルを超えた場合にあっては、特殊の事情があった場合を除き算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注８</span>在宅患者訪問薬剤管理指導に要した交通費は、患家の負担とする。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区分15の2 在宅患者緊急訪問薬剤管理指導料 -->
+  <div class="card">
+    <div class="card-title">区分　１５の２　在宅患者緊急訪問薬剤管理指導料</div>
+
+    <div class="score-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>区分</th>
+            <th style="text-align:right;">点数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>１　計画的な訪問薬剤管理指導に係る疾患の急変に伴うものの場合</td><td style="text-align:right;">500点</td></tr>
+          <tr><td>２　１以外の場合</td><td style="text-align:right;">200点</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notes-block">
+      <div class="box-gray">
+        <div class="note-item"><span class="note-label">注１</span>１及び２について、訪問薬剤管理指導を実施している保険薬局の保険薬剤師が、在宅での療養を行っている患者であって通院が困難なものの状態の急変等に伴い、当該患者の在宅療養を担う保険医療機関の保険医又は当該保険医療機関と連携する他の保険医療機関の保険医の求めにより、当該患者に係る計画的な訪問薬剤管理指導とは別に、緊急に患家を訪問して、患者又はその家族等に対して必要な指導等を行った場合に、１及び２並びに区分番号１０の３に掲げる服薬管理指導料の４のハを合わせて月４回（末期の悪性腫瘍の患者又は注射による麻薬の投与が必要な患者にあっては、原則として月８回）に限り算定する。なお、区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注２（麻薬管理指導加算）</span>麻薬の投薬が行われている患者に対して、麻薬の使用に関し、その服用及び保管の状況、副作用の有無等について患者又はその家族等に確認し、必要な指導等を行った場合は、麻薬管理指導加算として、１回につき100点を所定点数に加算する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注３（在宅患者医療用麻薬持続注射療法加算）</span>別に厚生労働大臣が定める施設基準に適合しているものとして地方厚生局長等に届け出た保険薬局において、在宅で医療用麻薬持続注射療法を行っている患者に対して、その投与及び保管の状況、副作用の有無等について患者又はその家族等に確認し、必要な指導等を行った場合は、在宅患者医療用麻薬持続注射療法加算として、１回につき250点を所定点数に加算する。この場合において、注２に規定する加算は算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注４（乳幼児加算）</span>在宅で療養を行っている６歳未満の乳幼児であって、通院が困難なものに対して、患家を訪問して、直接患者又はその家族等に対して必要な指導等を行った場合は、乳幼児加算として、１回につき100点を所定点数に加算する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注５（小児特定加算）</span>児童福祉法第56条の６第２項に規定する障害児である患者又はその家族等に対して、必要な指導等を行った場合は、小児特定加算として、１回につき450点を所定点数に加算する。この場合において、注４に規定する加算は算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注６（在宅中心静脈栄養法加算）</span>別に厚生労働大臣が定める施設基準に適合しているものとして地方厚生局長等に届け出た保険薬局において、在宅中心静脈栄養法を行っている患者に対して、その投与及び保管の状況、配合変化の有無について確認し、患者又はその家族等に対して必要な指導等を行った場合は、在宅中心静脈栄養法加算として、１回につき150点を所定点数に加算する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注７</span>保険薬局の所在地と患家の所在地との距離が16キロメートルを超えた場合にあっては、特殊の事情があった場合を除き算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注８</span>在宅患者緊急訪問薬剤管理指導に要した交通費は、患家の負担とする。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注９（夜間・休日・深夜訪問加算）</span>１について、末期の悪性腫瘍の患者又は注射による麻薬の投与が必要な患者に対して、保険医の求めにより開局時間以外の夜間、休日又は深夜に、緊急に患家を訪問して、患者又はその家族等に対して必要な指導等を行った場合は、次に掲げる点数をそれぞれ所定点数に加算する。</div>
+        <div style="margin-top:8px;">
+          <table>
+            <thead>
+              <tr>
+                <th>加算区分</th>
+                <th style="text-align:right;">点数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>イ　夜間訪問加算</td><td style="text-align:right;">400点</td></tr>
+              <tr><td>ロ　休日訪問加算</td><td style="text-align:right;">600点</td></tr>
+              <tr><td>ハ　深夜訪問加算</td><td style="text-align:right;">1,000点</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注10</span>注１の規定にかかわらず、感染症法第６条第７項に規定する新型インフルエンザ等感染症、同条第８項に規定する指定感染症、同条第９項に規定する新感染症の患者であって、患家又は宿泊施設で療養するもの、介護老人保健施設、介護医療院、地域密着型介護老人福祉施設又は介護老人福祉施設に入所するものに対して交付された処方箋を受け付けた場合において、処方医の指示により、当該保険薬局の保険薬剤師が患家又は当該施設を緊急に訪問し、当該患者又はその家族等に対して対面による服薬指導その他の必要な指導等を実施し、薬剤を交付した場合には、１を算定する。この場合において、注10については、区分番号１０の３に掲げる服薬管理指導料は、別に算定できない。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区分15の3 在宅患者緊急時等共同指導料 -->
+  <div class="card">
+    <div class="card-title">
+      <span>区分　１５の３　在宅患者緊急時等共同指導料</span>
+      <div class="score-block">
+        <div class="score-label">所定点数</div>
+        <div class="score-num">700<span>点</span></div>
+      </div>
+    </div>
+
+    <div class="notes-block">
+      <div class="box-gray">
+        <div class="note-item"><span class="note-label">注１</span>訪問薬剤管理指導を実施している保険薬局の保険薬剤師が、在宅での療養を行っている患者であって通院が困難なものの状態の急変等に伴い、当該患者の在宅療養を担う保険医療機関の保険医又は当該保険医療機関と連携する他の保険医療機関の保険医の求めにより、当該保険医療機関の保険医等、歯科訪問診療を実施している保険医療機関の保険医である歯科医師等、訪問看護ステーションの保健師、助産師、看護師、理学療法士、作業���法士若しくは言語聴覚士、介護支援専門員又は相談支援専門員と共同でカンファレンスに参加し、それらの者と共同で療養上必要な指導等を行った場合に、月２回に限り算定する。ただし、区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注２（麻薬管理指導加算）</span>麻薬の投薬が行われている患者に対して、麻薬の使用に関し、その服用及び保管の状況、副作用の有無等について患者又はその家族等に確認し、必要な指導等を行った場合は、麻薬管理指導加算として、１回につき100点を所定点数に加算する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注３（在宅患者医療用麻薬持続注射療法加算）</span>別に厚生労働大臣が定める施設基準に適合しているものとして地方厚生局長等に届け出た保険薬局において、在宅で医療用麻薬持続注射療法を行っている患者に対して、その投与及び保管の状況、副作用の有無等について患者又はその家族等に確認し、必要な指導等を行った場合は、在宅患者医療用麻薬持続注射療法加算として、１回につき250点を所定点数に加算する。この場合において、注２に規定する加算は算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注４（乳幼児加算）</span>在宅で療養を行っている６歳未満の乳幼児であって、通院が困難なものに対して、患家を訪問して、直接患者又はその家族等に対して必要な指導等を行った場合は、乳幼児加算として、１回につき100点を所定点数に加算する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注５（小児特定加算）</span>児童福祉法第56条の６第２項に規定する障害児である患者又はその家族等に対して、必要な指導等を行った場合は、小児特定加算として、１回につき450点を所定点数に加算する。この場合において、注４に規定する加算は算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注６（在宅中心静脈栄養法加算）</span>別に厚生労働大臣が定める施設基準に適合しているものとして地方厚生局長等に届け出た保険薬局において、在宅中心静脈栄養法を行っている患者に対して、その投与及び保管の状況、配合変化の有無について確認し、患者又はその家族等に対して必要な指導等を行った場合は、在宅中心静脈栄養法加算として、１回につき150点を所定点数に加算する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注７</span>保険薬局の所在地と患家の所在地との距離が16キロメートルを超えた場合にあっては、特殊の事情があった場合を除き算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注８</span>区分番号１５の２に掲げる在宅患者緊急訪問薬剤管理指導料は、別に算定できない。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区分15の4 退院時共同指導料 -->
+  <div class="card">
+    <div class="card-title">
+      <span>区分　１５の４　退院時共同指導料</span>
+      <div class="score-block">
+        <div class="score-label">所定点数</div>
+        <div class="score-num">600<span>点</span></div>
+      </div>
+    </div>
+
+    <div class="notes-block">
+      <div class="box-gray">
+        <div class="note-item"><span class="note-label">注</span>保険医療機関に入院中の患者について、当該患者の退院後の訪問薬剤管理指導を担う保険薬局として当該患者が指定する保険薬局の保険薬剤師が、当該患者又はその家族等の同意を得て、退院後の在宅での療養上必要な薬剤に関する必要な指導等を、入院中の保険医療機関の保険医又は保健師、助産師、看護師、准看護師、薬剤師、管理栄養士、理学療法士、作業療法士、言語聴覚士若しくは社会福祉士と共同して行った上で、文書により情報提供した場合に、当該入院中１回に限り算定する。ただし、別に厚生労働大臣が定める疾病等の患者については、当該入院中２回に限り算定できる。なお、区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区分15の5 服薬情報等提供料 -->
+  <div class="card">
+    <div class="card-title">区分　１５の５　服薬情報等提供料</div>
+
+    <div class="score-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>区分</th>
+            <th style="text-align:right;">点数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>１　服薬情報等提供料１</td><td style="text-align:right;">30点</td></tr>
+          <tr><td>２　服薬情報等提供料２　イ　保険医療機関に必要な情報を文書により提供した場合</td><td style="text-align:right;">20点</td></tr>
+          <tr><td>　　服薬情報等提供料２　ロ　リフィル処方箋による調剤後、処方医に必要な情報を文書により提供した場合</td><td style="text-align:right;">20点</td></tr>
+          <tr><td>　　服薬情報等提供料２　ハ　介護支援専門員に必要な情報を文書により提供した場合</td><td style="text-align:right;">20点</td></tr>
+          <tr><td>３　服薬情報等提供料３</td><td style="text-align:right;">50点</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notes-block">
+      <div class="box-gray">
+        <div class="note-item"><span class="note-label">注１</span>１については、保険医療機関の求めがあった場合において、患者又はその家族等の同意を得た上で、薬剤の使用が適切に行われるよう、調剤後も当該患者の服用薬の情報等について把握し、保険医療機関に必要な情報を文書により提供等した場合に月１回に限り算定する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注２</span>２については、保険薬剤師がその必要性を認めた場合において、患者又はその家族等の同意を得た上で、薬剤の使用が適切に行われるよう、調剤後も当該患者の服用薬の情報等について把握し、保険医療機関又は介護支援専門員に必要な情報を文書により提供等した場合に月１回に限り算定する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注３</span>３については、入院前の患者に係る保険医療機関の求めがあった場合において、当該患者又はその家族等の同意を得た上で、当該患者の服用薬の情報等について一元的に把握し、必要に応じて当該患者が保険薬局に持参した服用薬の整理を行うとともに、保険医療機関に必要な情報を文書により提供等した場合に３月に１回に限り算定する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注４</span>区分番号００に掲げる特別調剤基本料Ａを算定する保険薬局において、調剤基本料の注６に規定する厚生労働大臣が定める保険医療機関への情報提供を行った場合は、算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注５</span>区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注６</span>区分番号１５に掲げる在宅患者訪問薬剤管理指導料又は区分番号１５の９に掲げる訪問薬剤管理医師同時指導料を算定している患者については、算定しない。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区分15の6 削除 -->
+  <div class="card">
+    <div class="card-title">区分　１５の６</div>
+    <p class="deleted-note">（削除）</p>
+  </div>
+
+  <!-- 区分15の7 経管投薬支援料 -->
+  <div class="card">
+    <div class="card-title">
+      <span>区分　１５の７　経管投薬支援料</span>
+      <div class="score-block">
+        <div class="score-label">所定点数</div>
+        <div class="score-num">100<span>点</span></div>
+      </div>
+    </div>
+
+    <div class="notes-block">
+      <div class="box-gray">
+        <div class="note-item"><span class="note-label">注</span>胃瘻若しくは腸瘻による経管投薬又は経鼻経管投薬を行っている患者若しくはその家族等又は保険医療機関の求めに応じて、当該患者又はその家族等の同意を得た上で、簡易懸濁法による薬剤の服用に関して必要な支援を行った場合に、初回に限り算定する。ただし、区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区分15の8 在宅移行初期管理料 -->
+  <div class="card">
+    <div class="card-title">
+      <span>区分　１５の８　在宅移行初期管理料</span>
+      <div class="score-block">
+        <div class="score-label">所定点数</div>
+        <div class="score-num">230<span>点</span></div>
+      </div>
+    </div>
+
+    <div class="notes-block">
+      <div class="box-gray">
+        <div class="note-item"><span class="note-label">注１</span>在宅療養へ移行が予定されている患者であって通院が困難なもののうち、服薬管理に係る支援が必要なものに対して、当該患者の訪問薬剤管理指導を担う保険薬局として当該患者が指定する保険薬局の保険薬剤師が、当該患者又はその家族等の同意を得て、当該患者の在宅療養を担う保険医療機関等と連携して、在宅療養を開始するに当たり必要な指導等を行った場合に、当該患者において区分番号１５に掲げる在宅患者訪問薬剤管理指導料の１その他厚生労働大臣が定める費用を算定した初回算定日の属する月に１回に限り算定する。ただし、在宅移行初期管理料を算定した日には、区分番号１４の２に掲げる外来服薬支援料１は算定できない。なお、区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注２</span>在宅移行初期管理に要した交通費は、患家の負担とする。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区分15の9 訪問薬剤管理医師同時指導料 -->
+  <div class="card">
+    <div class="card-title">
+      <span>区分　１５の９　訪問薬剤管理医師同時指導料</span>
+      <div class="score-block">
+        <div class="score-label">所定点数</div>
+        <div class="score-num">150<span>点</span></div>
+      </div>
+    </div>
+
+    <div class="notes-block">
+      <div class="box-gray">
+        <div class="note-item"><span class="note-label">注１</span>区分番号１５に掲げる在宅患者訪問薬剤管理指導料の１を算定している患者その他厚生労働大臣が定める患者に対し、当該患者又はその家族等の同意を得て、当該患者に対して訪問薬剤管理指導を実施している保険薬剤師が、訪問診療を実施している保険医療機関の保険医と同時に訪問を行うとともに、必要な指導等を行った場合に、６月に１回に限り算定する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注２</span>区分番号１５の３に掲げる在宅患者緊急時等共同指導料又は区分番号１５の８に掲げる在宅移行初期管理料に係る必要な指導等を同日に行った場合は、算定しない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注３</span>訪問薬剤管理医師同時指導に要した交通費は、患家の負担とする。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区分15の10 複数名薬剤管理指導訪問料 -->
+  <div class="card">
+    <div class="card-title">
+      <span>区分　１５の１０　複数名薬剤管理指導訪問料</span>
+      <div class="score-block">
+        <div class="score-label">所定点数</div>
+        <div class="score-num">300<span>点</span></div>
+      </div>
+    </div>
+
+    <div class="notes-block">
+      <div class="box-gray">
+        <div class="note-item"><span class="note-label">注１</span>区分番号１５に掲げる在宅患者訪問薬剤管理指導料の１を算定している患者その他厚生労働大臣が定める患者に対し、当該患者の訪問薬剤管理指導を実施している保険薬局の保険薬剤師が、当該患者又はその家族等の同意を得て、当該保険薬局又は在宅協力薬局に勤務する職員とともに複数名で訪問した上で、必要な指導等を行った場合に算定する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注２</span>区分番号１５の３に掲げる在宅患者緊急時等共同指導料、区分番号１５の８に掲げる在宅移行初期管理料又は区分番号１５の９に掲げる訪問薬剤管理医師同時指導料に係る必要な指導等を同日に行った場合は、算定しない。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注３</span>複数名薬剤管理指導訪問に要した交通費は、患家の負担とする。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第３節 薬剤料 -->
+  <div id="sec3" class="section-header">
+    <h2>第３節　薬剤料</h2>
+  </div>
+
+  <!-- 区分20 使用薬剤料 -->
+  <div class="card">
+    <div class="card-title">区分　２０　使用薬剤料</div>
+
+    <div class="score-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>区分</th>
+            <th style="text-align:right;">点数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>１　使用薬剤の薬価が区分番号０１に掲げる薬剤調製料の所定単位につき15円以下の場合</td>
+            <td style="text-align:right;">１点</td>
+          </tr>
+          <tr>
+            <td>２　使用薬剤の薬価が区分番号０１に掲げる薬剤調製料の所定単位につき15円を超える場合の加算</td>
+            <td style="text-align:right;">10円又はその端数を増すごとに１点</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notes-block">
+      <div class="box-gray">
+        <div class="note-item"><span class="note-label">注１</span>使用薬剤の薬価は、別に厚生労働大臣が定める。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注２</span>区分番号００に掲げる特別調剤基本料Ａを算定する保険薬局及び区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局において、１処方につき７種類以上の内服薬（特に規定するものを除く。）の調剤を行った場合には、所定点数の100分の90に相当する点数により算定する。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第４節 特定保険医療材料料 -->
+  <div id="sec4" class="section-header">
+    <h2>第４節　特定保険医療材料料</h2>
+  </div>
+
+  <!-- 区分30 特定保険医療材料 -->
+  <div class="card">
+    <div class="card-title">区分　３０　特定保険医療材料</div>
+    <p style="font-size:var(--text-sm);">材料価格を10円で除して得た点数</p>
+    <div class="notes-block">
+      <div class="box-gray">
+        <div class="note-item"><span class="note-label">注</span>使用した特定保険医療材料の材料価格は、別に厚生労働大臣が定める。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第５節 その他 -->
+  <div id="sec5" class="section-header">
+    <h2>第５節　その他</h2>
+  </div>
+
+  <!-- 区分40 調剤ベースアップ評価料 -->
+  <div class="card">
+    <div class="card-title">
+      <span>区分　４０　調剤ベースアップ評価料</span>
+      <div class="score-block">
+        <div class="score-label">所定点数</div>
+        <div class="score-num">４<span>点</span></div>
+      </div>
+    </div>
+
+    <div class="notes-block">
+      <div class="box-gray">
+        <div class="note-item"><span class="note-label">注１</span>当該保険薬局において勤務する職員の賃金の改善を図る体制につき別に厚生労働大臣が定める施設基準に適合しているものとして地方厚生局長等に届け出た保険薬局において調剤した場合には、処方箋の受付１回につき、所定点数を算定する。</div>
+        <hr class="divider">
+        <div class="note-item"><span class="note-label">注２</span>令和９年６月以降においては、所定点数の100分の200に相当する点数により算定する。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区分41 調剤物価対応料 -->
+  <div class="card">
+    <div class="card-title">
+      <span>区分　４１　調剤物価対応料</span>
+      <div class="score-block">
+        <div class="score-label">所定点数</div>
+        <div class="score-num">１<span>点</span></div>
+      </div>
+    </div>
+
+    <div class="notes-block">
+      <div class="box-gray">
+        <div class="note-item"><span class="note-label">注</span>処方箋を受け付けた場合に、３月に１回に限り、所定点数を算定する。ただし、令和９年６月以降は、所定点数の100分の200に相当する点数を算定する。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第６節 経過措置 -->
+  <div id="sec6" class="section-header">
+    <h2>第６節　経過措置</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-title">経過措置</div>
+    <p style="font-size:var(--text-sm); line-height:1.8;">平成24年３月31日以前に区分番号１５の注１に規定する医師の指示があった患者については、区分番号１５の注７、区分番号１５の２の注７及び区分番号１５の３の注７の規定は適用しない。</p>
+  </div>
+
+</div><!-- /.page -->
+</body>
+</html>
