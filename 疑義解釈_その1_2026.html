@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>疑義解釈資料の送付について（その１）　2026年調剤報酬改定</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --text-xs: 13px; --text-sm: 15px; --text-md: 16px;
+      --text-lg: 18px; --text-xl: 22px;
+      --pad-card: 22px; --gap-card: 16px;
+      --blue: #1e5fa8; --red: #cc0000; --ink: #222222;
+      --bg: #f3f4f6; --white: #ffffff;
+      --box-blue: #e4f0f8; --box-gray: #f2f2f2;
+      --border: #d1d5db; --border-dk: #9ca3af;
+      --radius: 10px; --radius-sm: 6px;
+      --bw: 0.5px; --bw-h: 1px; --bw-a: 3px; --bw-t: 4px;
+    }
+    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+    .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+    .page-title { border-left:var(--bw-t) solid var(--blue); padding:6px 0 6px 18px; }
+    .page-title h1 { font-size:var(--text-xl); font-weight:900; }
+    .page-title p { font-size:var(--text-sm); font-weight:500; margin-top:4px; }
+    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+    .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--ink); padding-bottom:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+    .badge { font-size:var(--text-sm); font-weight:700; padding:3px 12px; border-radius:4px; }
+    .badge-red { background:#fde8e8; color:var(--red); }
+    .badge-blue { background:var(--box-blue); color:var(--blue); }
+    .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:var(--gap-card); }
+    .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:14px 18px; }
+    .box-gray { background:var(--box-gray); border-radius:var(--radius-sm); padding:14px 18px; border:var(--bw) solid var(--border); }
+    .em-red { color:var(--red); font-weight:900; }
+    .em-blue { color:var(--blue); font-weight:900; }
+    .change-badge { display:inline-flex; align-items:center; justify-content:center; color:var(--white); font-size:var(--text-xs); font-weight:900; padding:2px 10px; border-radius:3px; margin-right:8px; flex-shrink:0; }
+    .change-badge.up { background:var(--blue); }
+    .change-badge.strict { background:var(--red); }
+    .change-badge.new-req { background:#b45309; }
+    .section-title { font-weight:900; font-size:var(--text-md); margin-bottom:8px; }
+    .sub-title { font-weight:900; font-size:var(--text-md); padding:6px 0 6px 12px; border-left:var(--bw-t) solid var(--blue); margin-bottom:10px; }
+    table { width:100%; border-collapse:collapse; font-size:var(--text-sm); table-layout:fixed; }
+    th { color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); width:50%; }
+    th.th-before { background:var(--box-gray); border-right:var(--bw-h) solid var(--border-dk); }
+    th.th-after  { background:var(--box-blue); }
+    td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
+    td:first-child { border-right:var(--bw-h) solid var(--border); }
+    tr:last-child td { border-bottom:none; }
+
+    /* 補足ボックス */
+    .note-box { margin-top:12px; border-left:var(--bw-t) solid var(--border-dk); padding:10px 14px; background:var(--box-gray); border-radius:0 var(--radius-sm) var(--radius-sm) 0; }
+    .note-label { font-size:var(--text-xs); font-weight:900; margin-bottom:4px; letter-spacing:0.04em; }
+    .divider { border:none; border-top:var(--bw-h) solid var(--border); margin:12px 0; }
+
+    /* Q&A レイアウト */
+    .qa-block { display:flex; flex-direction:column; gap:10px; }
+    .qa-block + .qa-block { margin-top:20px; padding-top:20px; border-top:var(--bw-h) solid var(--border); }
+    .qa-q { background:var(--box-gray); border-radius:var(--radius-sm); padding:14px 18px; }
+    .qa-a { background:var(--box-blue); border-radius:var(--radius-sm); padding:14px 18px; }
+    .qa-label { font-size:var(--text-xs); font-weight:900; margin-bottom:6px; }
+    /* box内では色なしテキストのみ */
+    .qa-big-ans { font-size:var(--text-lg); font-weight:900; margin-bottom:6px; }
+
+    @media (max-width:640px) {
+      .grid-2,.grid-3 { grid-template-columns:1fr; }
+      body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+      :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+      .card { padding:14px; border-radius:8px; }
+      .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; flex-direction:column; align-items:flex-start; gap:6px; }
+      .box-blue,.box-gray { padding:10px 12px; }
+      .badge { font-size:12px; padding:3px 10px; }
+      .sub-title { font-size:13px; }
+      .page-title { padding:4px 0 4px 14px; }
+      .page-title h1 { font-size:17px; line-height:1.45; }
+      .page-title p { font-size:12.5px; }
+      .page-title-wrap { flex-direction:column; gap:10px; }
+      .page-title-left { padding:4px 0 4px 14px; }
+      .page-title-left h1 { font-size:17px; line-height:1.45; }
+      .score-block { align-self:flex-start; }
+      .score-block .score-label { font-size:11px; padding:5px 10px; }
+      .score-block .score-num { font-size:22px; padding:5px 14px; }
+      .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+      table { font-size:11.5px; min-width:480px; }
+      th,td { padding:6px 8px; }
+    }
+    @media print {
+      @page { margin:11mm 10mm; size:A4; }
+      body { background:white; padding:0; font-size:12.5px; line-height:1.65; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .page { gap:11px; }
+      :root { --text-xs:10.5px; --text-sm:12px; --text-md:12.5px; --text-lg:14px; --text-xl:16px; --pad-card:12px; --gap-card:11px; }
+      .card { padding:12px 14px; }
+      .card-title { padding-bottom:5px; margin-bottom:10px; flex-direction:row; align-items:center; }
+      .grid-2 { grid-template-columns:1fr 1fr; gap:10px; }
+      .page-title-wrap { flex-direction:row; align-items:flex-start; }
+      .box-blue,.box-gray { padding:8px 11px; }
+      .avoid-break { break-inside:avoid; }
+      .print-break-before { break-before:page; }
+      th,td { padding:5px 7px; }
+      .divider { margin:8px 0; }
+      .table-wrap { overflow-x:visible; }
+      table { min-width:unset; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="page-title">
+    <h1>疑義解釈資料の送付について（その１）</h1>
+    <p>令和８年３月23日 保険局医療課事務連絡｜2026年調剤報酬改定</p>
+  </div>
+
+  <!-- 地域支援・医薬品供給対応体制加算 -->
+  <div class="card avoid-break">
+    <div class="card-title">地域支援・医薬品供給対応体制加算</div>
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問１</div>
+        <p>地域支援・医薬品供給対応体制加算の施設基準のうち、<strong>「調剤時残薬調整加算及び薬学的有害事象等防止加算の算定回数の合計が20回以上であること」</strong>及び<strong>「服薬管理指導料１のイ及び２のイの算定回数の合計が20回以上であること」</strong>について、それぞれ令和８年度調剤報酬改定前の「調剤管理料の重複投薬・相互作用等防止加算及び在宅患者重複投薬・相互作用等防止管理料の算定回数の合計が20回以上であること」及び「かかりつけ薬剤師指導料及びかかりつけ薬剤師包括管理料の算定回数の合計が20回以上であること」とみなして判断してよいか。</p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p><strong>よい。</strong>令和９年６月１日までに行う届出にあたっては、「調剤管理料の重複投薬・相互作用等防止加算及び在宅患者重複投薬・相互作用等防止管理料の算定回数の合計」及び「かかりつけ薬剤師指導料及びかかりつけ薬剤師包括管理料の算定回数の合計」とみなす。</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="sub-title" style="display:flex;align-items:center;gap:10px;">
+      みなし対応の対照表
+      <span class="badge badge-blue" style="font-size:var(--text-xs);">補足</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="th-before">改定前（みなし対象）</th>
+            <th class="th-after">改定後（新基準）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>調剤管理料の重複投薬・相互作用等防止加算＋在宅患者重複投薬・相互作用等防止管理料　20回以上</td>
+            <td>調剤時残薬調整加算＋薬学的有害事象等防止加算　20回以上</td>
+          </tr>
+          <tr>
+            <td>かかりつけ薬剤師指導料＋かかりつけ薬剤師包括管理料　20回以上</td>
+            <td>服薬管理指導料１のイ及び２のイ　20回以上</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 電子的調剤情報連携体制整備加算 -->
+  <div class="card avoid-break">
+    <div class="card-title">電子的調剤情報連携体制整備加算</div>
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問２</div>
+        <p>令和８年５月31日時点で既に<strong>医療DX推進体制整備加算の施設基準を届け出ている保険薬局</strong>は、令和８年度診療報酬改定に係る見直しに伴い、同年６月１日からの電子的調剤情報連携体制整備加算の算定にあたり、電子的調剤情報連携体制整備加算に係る施設基準の届出を改めて行う必要があるか。</p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p class="qa-big-ans">不要である。</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
