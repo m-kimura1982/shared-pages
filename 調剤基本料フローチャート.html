@@ -244,7 +244,7 @@ strong { font-weight: 900; }
 
   /* ── STEPノード：コンパクト化 ── */
   .step-node {
-    min-width: 400px;
+    min-width: 500px;
     padding: 10px 12px;
   }
   .step-label    { font-size:12px; margin-bottom:4px; }
@@ -283,7 +283,9 @@ strong { font-weight: 900; }
   .continue-bar { font-size: 10px; padding: 6px 10px; }
 
   /* ── STEP間矢印 ── */
-  .step-arrow { min-width: 400px; }
+  .step-arrow { min-width: 500px; }
+  /* ── STEP2・3 のいいえ側説明文は不要なので非表示 ── */
+  .arm-skip-desc { display: none; }
 
   /* ── 補足セクション ── */
   .supplement  { margin-top: 14px; gap: 8px; padding: 0 10px; }
@@ -441,7 +443,7 @@ strong { font-weight: 900; }
         <!-- いいえ側 -->
         <div class="arm">
           <div class="arm-label arm-label-no">いいえ（40万回以下）</div>
-          <div class="cond-box">
+          <div class="cond-box arm-skip-desc">
             同一グループ全体の処方箋受付回数が月<span class="em-num">40万回</span>以下の薬局。<br><br>
             グループ規模が小さい薬局、または単独店舗・少数店舗のグループはここに該当する。<br><br>
             → <strong>STEP 3 へ進む</strong>
@@ -480,7 +482,7 @@ strong { font-weight: 900; }
         <!-- いいえ側 -->
         <div class="arm">
           <div class="arm-label arm-label-no">いいえ（3.5万回以下）</div>
-          <div class="cond-box">
+          <div class="cond-box arm-skip-desc">
             同一グループ全体の処方箋受付回数が月<span class="em-num">3万5千回</span>以下の薬局。<br><br>
             一般的な地域密着型薬局や中小グループはここに該当することが多い。<br><br>
             → <strong>STEP 4 へ進む</strong>
