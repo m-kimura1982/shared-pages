@@ -62,6 +62,26 @@
         padding: 0 1rem;
       }
 
+      /* ── 更新情報 ── */
+      .news-box {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--accent);
+        border-radius: var(--radius);
+        padding: 12px 16px;
+        margin-bottom: 1.5rem;
+      }
+      .news-title {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--accent);
+        margin-bottom: 7px;
+        letter-spacing: .04em;
+      }
+      .news-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+      .news-list li { display: flex; gap: 10px; font-size: 12px; line-height: 1.6; color: var(--text); }
+      .news-date { color: var(--text-sub); white-space: nowrap; min-width: 32px; }
+
       /* ── 特別カード（ダイジェスト・体系図） ── */
       .overview-cards {
         display: grid;
@@ -227,6 +247,18 @@
       </div>
     </header>
     <main>
+
+      <!-- 更新情報 -->
+      <div class="news-box">
+        <div class="news-title">更新情報</div>
+        <ul class="news-list">
+          <li><span class="news-date">3/26</span>特掲診療料の施設基準等及びその届出に関する手続きの取扱いについて 追加（様式除く）</li>
+          <li><span class="news-date">3/24</span>別添３ 調剤報酬点数表に関する事項 追加（印刷不可）</li>
+          <li><span class="news-date">3/24</span>調剤ベースアップ評価料 追加</li>
+          <li><span class="news-date">3/23</span>調剤物価対応料 追加</li>
+          <li><span class="news-date">3/23</span>別表第三 調剤報酬点数表 追加（印刷不可）</li>
+        </ul>
+      </div>
 
       <!-- 概要資料 -->
       <div class="overview-cards">
