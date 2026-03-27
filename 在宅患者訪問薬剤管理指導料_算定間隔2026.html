@@ -119,9 +119,7 @@
       /* 具体例：ラベルと本文を縦並びに */
       .example-row { flex-direction: column; gap: 2px; }
       .example-label { min-width: unset; }
-      /* テーブルは横スクロール可能に */
-      .limit-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-      .limit-table { min-width: 320px; }
+      .limit-table col.col-num { width: 56px; }
     }
 
     @media print {
@@ -215,6 +213,11 @@
 
     <div class="limit-table-wrap">
     <table class="limit-table">
+      <colgroup>
+        <col>
+        <col class="col-num">
+        <col class="col-num">
+      </colgroup>
       <thead>
         <tr>
           <th>対象患者</th>
