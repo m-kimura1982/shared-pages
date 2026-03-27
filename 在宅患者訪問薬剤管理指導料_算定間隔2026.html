@@ -116,6 +116,12 @@
       .card { padding: 14px; border-radius: 8px; }
       .card-title { font-size: 15px; padding-bottom: 6px; margin-bottom: 10px; flex-direction: column; align-items: flex-start; gap: 6px; }
       .box-blue, .box-gray { padding: 10px 12px; }
+      /* 具体例：ラベルと本文を縦並びに */
+      .example-row { flex-direction: column; gap: 2px; }
+      .example-label { min-width: unset; }
+      /* テーブルは横スクロール可能に */
+      .limit-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .limit-table { min-width: 320px; }
     }
 
     @media print {
@@ -207,6 +213,7 @@
 
     <div style="font-size:var(--text-sm); margin-bottom:14px;">在宅患者訪問薬剤管理指導料（１〜３）と服薬管理指導料「４のロ」（オンライン）の合算で管理する。</div>
 
+    <div class="limit-table-wrap">
     <table class="limit-table">
       <thead>
         <tr>
@@ -231,6 +238,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
     <p class="note">※ 保険薬剤師１人あたり、在宅患者訪問薬剤管理指導料＋服薬管理指導料「４のロ」を合わせて<strong>週40回まで</strong>（薬剤師単位の上限）。</p>
   </div>
