@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>かかりつけ薬剤師に関わる管理料・加算一覧　2026年調剤報酬改定</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #1e5fa8; --red: #cc0000; --ink: #222222;
+      --bg: #f3f4f6; --white: #ffffff;
+      --box-blue: #e4f0f8; --box-gray: #f2f2f2;
+      --border: #d1d5db; --border-dk: #9ca3af;
+      --radius: 10px; --radius-sm: 6px;
+      --bw: 0.5px; --bw-h: 1px; --bw-t: 4px;
+    }
+    body {
+      font-family: "Noto Sans JP", sans-serif;
+      background: var(--bg); color: var(--ink);
+      font-size: 15px; line-height: 1.8;
+      padding: 32px 16px 60px;
+    }
+    .page { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+
+    .page-title { border-left: var(--bw-t) solid var(--blue); padding: 6px 0 6px 18px; }
+    .page-title h1 { font-size: 20px; font-weight: 900; }
+    .page-title p { font-size: 14px; color: #555; margin-top: 4px; }
+
+    .card { background: var(--white); border: var(--bw) solid var(--border); border-radius: var(--radius); padding: 20px; }
+    .card-title {
+      font-size: 16px; font-weight: 900;
+      border-bottom: var(--bw-h) solid var(--ink);
+      padding-bottom: 8px; margin-bottom: 16px;
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    }
+    .cat-badge {
+      font-size: 12px; font-weight: 700;
+      padding: 2px 10px; border-radius: 3px;
+    }
+    .cat-new { background: #fde8e8; color: var(--red); }
+    .cat-up  { background: var(--box-blue); color: var(--blue); }
+
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 560px; }
+    th {
+      background: var(--box-gray); color: var(--ink);
+      font-weight: 900; padding: 8px 12px;
+      text-align: left; border-bottom: 2px solid var(--border-dk);
+      vertical-align: middle;
+    }
+    td { padding: 9px 12px; border-bottom: var(--bw-h) solid var(--border); vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    /* .row-kakari は使用しない */
+    .pts { font-weight: 900; font-size: 16px; white-space: nowrap; }
+    .pts-blue { color: var(--blue); }
+    .pts-red  { color: var(--red); }
+    .pts-small { font-weight: 400; font-size: 12px; color: #666; }
+    .badge-new { display: inline-block; font-size: 11px; font-weight: 900; background: var(--red); color: #fff; padding: 1px 7px; border-radius: 3px; margin-left: 6px; vertical-align: middle; }
+    .badge-kakari { display: inline-block; font-size: 11px; font-weight: 900; background: var(--blue); color: #fff; padding: 1px 7px; border-radius: 3px; margin-left: 6px; vertical-align: middle; }
+    .note { font-size: 12px; color: #666; margin-top: 10px; }
+    .note strong { color: var(--ink); }
+
+    .compare-row td { padding: 6px 12px; }
+    .arrow-col { text-align: center; color: var(--border-dk); font-size: 16px; width: 32px; }
+    .before-col { color: #888; }
+    .after-col { font-weight: 900; }
+    td.condition { font-size: 13px; color: #444; }
+
+    @media (max-width: 640px) {
+      body { font-size: 13px; padding: 14px 10px 40px; }
+      .pts { font-size: 14px; }
+      th, td { padding: 7px 8px; }
+    }
+
+    @media print {
+      @page { margin: 12mm 10mm; size: A4; }
+      body { background: white; padding: 0; font-size: 11px; line-height: 1.65; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .page { gap: 10px; }
+      .card { padding: 12px 14px; border-radius: 7px; }
+      .card-title { font-size: 13px; padding-bottom: 6px; margin-bottom: 10px; }
+      th { font-size: 11px; padding: 5px 8px; }
+      td { padding: 5px 8px; font-size: 11px; }
+      .pts { font-size: 13px; }
+      .page-title h1 { font-size: 16px; }
+      .page-title p { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="page-title">
+    <h1>かかりつけ薬剤師に関わる管理料・加算一覧</h1>
+    <p>令和８年６月１日施行｜2026年調剤報酬改定</p>
+  </div>
+
+  <!-- 1. 服薬管理指導料（かかりつけ区分） -->
+  <div class="card">
+    <div class="card-title">
+      服薬管理指導料（かかりつけ区分）
+      <span class="cat-badge cat-up">基本料</span>
+    </div>
+    <div class="table-wrap"><table>
+      <colgroup>
+        <col style="width:170px;">
+        <col style="width:58px;">
+        <col>
+        <col style="width:140px;">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>区分</th>
+          <th style="text-align:center;">点数</th>
+          <th>算定条件</th>
+          <th>旧区分</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row-kakari">
+          <td style="white-space: nowrap;"><strong>服薬管理指導料　１のイ</strong></td>
+          <td style="text-align:center;"><span class="pts pts-blue">45点</span></td>
+          <td class="condition">３月以内の再来局・手帳あり・かかりつけ薬剤師が指導</td>
+          <td>かかりつけ薬剤師指導料</td>
+        </tr>
+        <tr class="row-kakari">
+          <td style="white-space: nowrap;"><strong>服薬管理指導料　２のイ</strong></td>
+          <td style="text-align:center;"><span class="pts pts-blue">59点</span></td>
+          <td class="condition">①３月超の来局 または ②３月以内でも手帳なし・かかりつけ薬剤師が指導</td>
+          <td>かかりつけ薬剤師指導料</td>
+        </tr>
+      </tbody>
+    </table></div>
+    <p class="note">※「かかりつけ薬剤師指導料」「かかりつけ薬剤師包括管理料」は廃止され、服薬管理指導料に統合。レセプト上の名称が変わる。<br>
+    ※ かかりつけ薬剤師以外が担当した場合は１のロ（45点）・２のロ（59点）となり、点数は同じだが区分が異なる。</p>
+  </div>
+
+  <!-- 2. かかりつけ専用の新設加算 -->
+  <div class="card">
+    <div class="card-title">
+      かかりつけ薬剤師専用の加算
+      <span class="cat-badge cat-new">新設</span>
+    </div>
+    <div class="table-wrap"><table>
+      <thead>
+        <tr>
+          <th>加算名</th>
+          <th style="text-align:center;">点数</th>
+          <th>算定頻度</th>
+          <th>算定タイミング・条件</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row-kakari">
+          <td><strong>かかりつけ薬剤師フォローアップ加算</strong><span class="badge-new">新設</span></td>
+          <td style="text-align:center;"><span class="pts pts-blue">50点</span></td>
+          <td>３月に１回</td>
+          <td class="condition">前回来局時に<strong>外来服薬支援料１・服用薬剤調整支援料１または２・調剤時残薬調整加算・薬学的有害事象等防止加算のいずれか</strong>を算定した患者に対し、次回来局前に電話等でフォローアップし問題を解消した場合に、次回来局時に算定。<br><span class="pts-small">【併算定不可（同月）】調剤後薬剤管理指導料・在宅患者訪問薬剤管理指導料・居宅療養管理指導費（薬剤師）・介護予防居宅療養管理指導費（薬剤師）</span></td>
+        </tr>
+        <tr class="row-kakari">
+          <td><strong>かかりつけ薬剤師訪問加算</strong><span class="badge-new">新設</span></td>
+          <td style="text-align:center;"><span class="pts pts-blue">230点</span></td>
+          <td>６月に１回</td>
+          <td class="condition">患者・家族の求めに応じて、かかりつけ薬剤師が患家を訪問し、残薬整理・服薬管理指導等を行い、保険医療機関に情報提供した場合。交通費は患者実費負担。<br><span class="pts-small">【算定対象外患者】外来服薬支援料１（施設連携加算含む）・服薬情報等提供料・居宅療養管理指導費（薬剤師）・介護予防居宅療養管理指導費（薬剤師）・在宅患者訪問薬剤管理指導料を算定している患者</span></td>
+        </tr>
+      </tbody>
+    </table></div>
+    <p class="note">※ いずれも服薬管理指導料１のイ または ２のイを算定している患者が対象。事前の説明・同意が必要。</p>
+  </div>
+
+  <!-- 3. かかりつけが行うと点数が高くなる加算 -->
+  <div class="card">
+    <div class="card-title">
+      かかりつけ薬剤師が行うと区分が上がる加算
+      <span class="cat-badge cat-up">点数アップ</span>
+    </div>
+    <div class="table-wrap"><table>
+      <thead>
+        <tr>
+          <th>加算名</th>
+          <th>かかりつけ薬剤師の場合（ハ）</th>
+          <th>その他の場合（ニ）</th>
+          <th>算定条件（ハ）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row-kakari">
+          <td><strong>調剤時残薬調整加算</strong></td>
+          <td><span class="pts pts-blue">50点</span><br><span class="pts-small">区分ハ</span></td>
+          <td><span class="pts">30点</span><br><span class="pts-small">区分ニ</span></td>
+          <td class="condition">服薬管理指導料１のイ・２のイの患者で、かかりつけ薬剤師による残薬確認に基づく照会または処方箋指示により調剤日数の変更が行われた場合</td>
+        </tr>
+        <tr class="row-kakari">
+          <td><strong>薬学的有害事象等防止加算</strong></td>
+          <td><span class="pts pts-blue">50点</span><br><span class="pts-small">区分ハ</span></td>
+          <td><span class="pts">30点</span><br><span class="pts-small">区分ニ</span></td>
+          <td class="condition">服薬管理指導料１のイ・２のイの患者で、かかりつけ薬剤師による照会の結果、処方に変更が行われた場合</td>
+        </tr>
+      </tbody>
+    </table></div>
+    <p class="note">※ いずれもイ（在宅患者・処方前照会）・ロ（在宅患者・その他）もあり、それらも50点。かかりつけ以外でも在宅患者では同等の点数が得られる場合がある。</p>
+  </div>
+
+  <!-- 4. 施設基準の要件として使われる実績 -->
+  <div class="card">
+    <div class="card-title">施設基準・届出要件としての関わり</div>
+    <div class="table-wrap"><table>
+      <thead>
+        <tr>
+          <th style="width:35%;">届出加算・区分</th>
+          <th>かかりつけ関連の要件</th>
+          <th style="width:18%;">基準値</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>地域支援・医薬品供給対応体制加算２・３</strong><br><span class="pts-small">調剤基本料１の薬局が対象</span></td>
+          <td class="condition">服薬管理指導料１のイ及び２のイの算定回数の合計（処方箋受付回数１万回当たり）が基準値以上であること（９項目中エを含む３項目以上）</td>
+          <td><strong>20回以上</strong><br><span class="pts-small">（加算３は7項目以上）</span></td>
+        </tr>
+        <tr>
+          <td><strong>地域支援・医薬品供給対応体制加算４・５</strong><br><span class="pts-small">調剤基本料２・３等の薬局が対象</span></td>
+          <td class="condition">服薬管理指導料１のイ及び２のイの算定回数の合計（処方箋受付回数１万回当たり）が基準値以上であること（エ・カを含む３項目以上）</td>
+          <td><strong>40回以上</strong><br><span class="pts-small">（加算５は7項目以上）</span></td>
+        </tr>
+        <tr>
+          <td><strong>在宅薬学総合体制加算１・２</strong></td>
+          <td class="condition">施設基準(8)として、<strong>服薬管理指導料の注１（かかりつけ薬剤師）の届出を行っていること</strong>が必須要件。加算１を取得していることが加算２の前提にもなる。</td>
+          <td><span class="pts-small">かかりつけ届出が前提</span></td>
+        </tr>
+        <tr>
+          <td><strong>服薬管理指導料の注１届出</strong><br><span class="pts-small">かかりつけ薬剤師要件</span></td>
+          <td class="condition">かかりつけ薬剤師として届け出る薬剤師個人の要件（保険薬局勤務３年以上・週31時間以上勤務・継続６か月以上在籍・研修認定取得・地域活動参加）を満たす必要がある。</td>
+          <td><span class="pts-small">薬剤師個人の要件</span></td>
+        </tr>
+        <tr>
+          <td><strong>調剤基本料の減算回避</strong><br><span class="pts-small">注４：かかりつけ機能要件</span></td>
+          <td class="condition">「薬剤師のかかりつけ機能に係る基本的な業務」の一つとして、<strong>服薬管理指導料１のイ・２のイの算定</strong>がカウントされる。対象業務の合計が年間10回未満（特別調剤基本料の薬局は100回未満）の場合、調剤基本料が減算。</td>
+          <td><strong>年10回以上</strong><br><span class="pts-small">（他業務との合算）</span></td>
+        </tr>
+      </tbody>
+    </table></div>
+    <p class="note">※ <strong>令和９年６月１日までの経過措置：</strong>地域支援加算の届出にあたり、改定前の「かかりつけ薬剤師指導料＋かかりつけ薬剤師包括管理料」の算定回数を、服薬管理指導料１のイ及び２のイとみなすことができる（疑義解釈その１）。</p>
+  </div>
+
+  <p style="font-size:12px; color:#888; text-align:right;">2026年調剤報酬改定（令和８年６月１日施行）</p>
+
+</div>
+</body>
+</html>
