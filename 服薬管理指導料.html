@@ -137,30 +137,40 @@
         border-collapse: collapse;
         font-size: var(--text-md);
         font-weight: 700;
-        text-align: center;
+        text-align: left;
       }
       th,
       td {
-        border: var(--bw) solid var(--border-dk);
-        padding: 10px 12px;
+        border-top: var(--bw) solid var(--border);
+        border-bottom: var(--bw) solid var(--border);
+        border-left: none;
+        border-right: var(--bw) solid var(--border);
+        padding: 10px 14px;
         vertical-align: middle;
       }
+      th:last-child,
+      td:last-child {
+        border-right: none;
+      }
       thead th {
-        background: #3d6a96;
-        color: var(--white);
+        background: var(--box-gray);
+        color: var(--ink);
         font-weight: 900;
+        border-top: none;
+        border-bottom: 1.5px solid var(--border-dk);
       }
       .pts-cell {
         font-size: var(--text-pts);
         font-weight: 900;
         background: var(--white) !important;
+        text-align: center !important;
       }
       .pts-unit {
         font-size: var(--text-sm);
         font-weight: 700;
       }
       tr.row-kakari {
-        background: var(--box-blue);
+        background: #eef5fb;
       } /* かかりつけ行：薄青 */
       tr.row-general {
         background: var(--white);
@@ -475,7 +485,7 @@
             <tbody>
               <!-- 45点 -->
               <tr class="row-kakari">
-                <td rowspan="2" class="pts-cell">
+                <td rowspan="2" class="pts-cell" style="text-align:center">
                   45<span class="pts-unit">点</span>
                 </td>
                 <td>服薬管理指導料 １イ</td>
@@ -493,7 +503,7 @@
               </tr>
               <!-- 59点 -->
               <tr class="row-kakari">
-                <td rowspan="4" class="pts-cell">
+                <td rowspan="4" class="pts-cell" style="text-align:center">
                   59<span class="pts-unit">点</span>
                 </td>
                 <td rowspan="2">服薬管理指導料 ２イ</td>
@@ -505,7 +515,7 @@
               <tr class="row-kakari">
                 <td>3月以内</td>
                 <td class="blue-text">かかりつけ</td>
-                <td>手帳なし</td>
+                <td style="border-right: var(--bw) solid var(--border);">手帳なし</td>
               </tr>
               <tr class="row-general">
                 <td rowspan="2">服薬管理指導料 ２ロ</td>
