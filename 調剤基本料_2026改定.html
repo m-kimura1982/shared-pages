@@ -294,76 +294,48 @@
       }
 
       /* ─── 印刷 ─── */
+      @page {
+        margin: 0mm 3mm;
+        size: A4;
+      }
       @media print {
-        @page {
-          margin: 8mm 8mm;
-          size: A4;
-        }
-        body {
+        html, body {
           background: white;
           padding: 0;
-          font-size: 11.5px;
-          line-height: 1.53;
+          margin: 0;
           -webkit-print-color-adjust: exact;
           print-color-adjust: exact;
         }
         .page {
-          gap: 8px;
+          gap: 6px;
+          max-width: 100%;
         }
-        .page-break-label {
-          display: none;
-        }
-        .page-break {
-          display: none;
-        }
+        .page-break-label { display: none; }
+        .page-break { display: none; }
         :root {
-          --text-xs: 9.5px;
-          --text-sm: 10.5px;
-          --text-md: 11.5px;
-          --text-lg: 13px;
-          --text-xl: 15.5px;
-          --text-pts: 19px;
-          --pad-card: 10px;
-          --gap-card: 8px;
-          --radius: 5px;
-          --radius-sm: 3px;
+          --pad-card: 12px;
+          --gap-card: 6px;
         }
-        .card {
-          padding: 10px 12px;
-        }
-        .card-title { flex-direction:row; align-items:center; padding-bottom:4px; margin-bottom:8px; }
-        .grid-2 { grid-template-columns:1fr 1fr; gap: 8px; }
-        .grid-3 { grid-template-columns:1fr 1fr 1fr; gap: 8px; }
-        .page-title-wrap { flex-direction:row; align-items:flex-start; }
-        th, td {
-          padding: 5px 7px;
-          border: none;
-          border-bottom: 1px solid var(--border);
-          font-size: var(--text-md);
-        }
-        thead th {
-          background: var(--box-gray);
-          border-bottom: 2px solid var(--border-dk);
-        }
-        .box-blue, .box-gray {
-          padding: 7px 10px;
-        }
-        .bullet-list {
-          gap: 5px;
-        }
-        .page-title {
-          margin-bottom: 1px;
-        }
-        .print-break-before {
-          break-before: page;
-        }
-        .avoid-break {
-          break-inside: avoid;
-        }
-        .change-row { gap: 8px; }
-        .change-after { font-size: var(--text-md); }
-        .badge { font-size: 9.5px; padding: 2px 7px; }
-        .divider { margin: 5px 0; }
+        .card { padding: 10px 14px; }
+        .card-title { padding-bottom: 4px; margin-bottom: 8px; }
+        .box-blue, .box-gray { padding: 8px 12px; }
+        .bullet-list { gap: 4px; }
+        .page-title { margin-bottom: 2px; }
+        thead th { background: var(--box-gray); border-bottom: 2px solid var(--border-dk); }
+        .avoid-break { break-inside: avoid; }
+        div[style*="margin-bottom:16px"] { margin-bottom: 6px !important; }
+        div[style*="margin-bottom:14px"] { margin-bottom: 6px !important; }
+        div[style*="margin-bottom:12px"] { margin-bottom: 5px !important; }
+        div[style*="margin-bottom:8px"]  { margin-bottom: 4px !important; }
+        div[style*="margin-bottom:6px"]  { margin-bottom: 3px !important; }
+        div[style*="margin-top:14px"]    { margin-top: 5px !important; }
+        div[style*="margin-top:12px"]    { margin-top: 4px !important; }
+        .box-gray[style*="margin-top:12px"] { margin-top: 5px !important; }
+        .box-gray[style*="margin-top:14px"] { margin-top: 5px !important; }
+        .grid-3 [style*="margin-bottom:10px"] { margin-bottom: 4px !important; }
+        .change-row { margin-bottom: 6px !important; }
+        .tbl-city table { font-size: 10px !important; }
+        .tbl-city th, .tbl-city td { padding: 3px 5px !important; }
       }
 
       /* ─── レスポンシブ ─── */
@@ -524,7 +496,7 @@
         <div style="margin-bottom:12px; font-size:var(--text-sm);">
           「都市部」とは、<span class="em-blue">東京都の特別区の地域</span>および<span class="em-blue">政令指定都市の地域</span>をいう（施設基準より）。
         </div>
-        <div class="tbl-wrap">
+        <div class="tbl-wrap tbl-city">
 <table style="font-size:var(--text-sm); font-weight:500;">
             <thead>
               <tr>
@@ -565,7 +537,7 @@
       <div class="page-break"></div>
 
       <!-- ④ 調剤基本料３ イの施設基準の変更 -->
-      <div class="card avoid-break print-break-before">
+      <div class="card avoid-break">
         <div class="card-title">
           調剤基本料３ イの施設基準の変更
           <span class="badge badge-blue">チェーン薬局</span>
