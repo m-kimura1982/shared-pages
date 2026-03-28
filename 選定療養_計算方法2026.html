@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>選定療養（薬価差の自己負担）計算方法｜2026年調剤報酬改定</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --text-xs: 13px; --text-sm: 15px; --text-md: 16px;
+      --text-lg: 18px; --text-xl: 22px;
+      --pad-card: 22px; --gap-card: 16px;
+      --blue: #1e5fa8; --red: #cc0000; --ink: #222222;
+      --bg: #f3f4f6; --white: #ffffff;
+      --box-blue: #e4f0f8; --box-gray: #f2f2f2;
+      --border: #d1d5db; --border-dk: #9ca3af;
+      --radius: 10px; --radius-sm: 6px;
+      --bw: 0.5px; --bw-h: 1px; --bw-a: 3px; --bw-t: 4px;
+    }
+    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+    .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+    /* タイトル */
+    .page-title-wrap { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+    .page-title-left { border-left:var(--bw-t) solid var(--blue); padding:6px 0 6px 18px; }
+    .page-title-left h1 { font-size:var(--text-xl); font-weight:900; }
+    .page-title-left p { font-size:var(--text-sm); font-weight:500; margin-top:4px; }
+
+    /* カード */
+    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+    .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--ink); padding-bottom:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+    .badge { font-size:var(--text-sm); font-weight:700; padding:3px 12px; border-radius:4px; }
+    .badge-red { background:#fde8e8; color:var(--red); }
+    .badge-blue { background:var(--box-blue); color:var(--blue); }
+    .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:var(--gap-card); }
+    .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:14px 18px; }
+    .box-gray { background:var(--box-gray); border-radius:var(--radius-sm); padding:14px 18px; border:var(--bw) solid var(--border); }
+    .em-red { color:var(--red); font-weight:900; }
+    .em-blue { color:var(--blue); font-weight:900; }
+    .section-title { font-weight:900; font-size:var(--text-md); margin-bottom:8px; }
+    .sub-title { font-weight:900; font-size:var(--text-md); padding:6px 0 6px 12px; border-left:var(--bw-t) solid var(--blue); margin-bottom:10px; }
+    table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+    th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
+    td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:middle; }
+    tr:last-child td { border-bottom:none; }
+    .divider { border:none; border-top:var(--bw-h) solid var(--border); margin:12px 0; }
+
+    /* 変更前後比較 */
+    .compare-row { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+    .compare-old { font-size:var(--text-sm); font-weight:700; color:var(--border-dk); text-decoration:line-through; }
+    .compare-arrow { font-size:var(--text-lg); color:var(--border-dk); flex-shrink:0; }
+    .compare-new { font-size:var(--text-xl); font-weight:900; color:var(--red); }
+
+    /* 箇条書き */
+    .bullet { display:flex; gap:6px; }
+    .bullet > span:first-child { flex-shrink:0; }
+
+    /* 計算式ブロック */
+    .formula-block { background:var(--box-gray); border:var(--bw-h) solid var(--border-dk); border-radius:var(--radius-sm); padding:14px 18px; font-family:monospace; font-size:var(--text-sm); line-height:2; }
+    .formula-block .formula-line { display:flex; gap:8px; align-items:baseline; flex-wrap:wrap; }
+    .formula-var { font-weight:900; font-size:17px; }
+
+    /* 計算例ステップ */
+    .calc-step { display:flex; flex-direction:column; gap:6px; }
+    .calc-row { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; font-size:var(--text-sm); }
+    .calc-label { font-weight:700; min-width:7em; flex-shrink:0; }
+    .calc-val { font-weight:700; color:var(--blue); }
+    .calc-val.red { color:var(--red); }
+    .calc-note { font-size:var(--text-xs); color:#666; }
+
+    /* 結果行 */
+    .result-row { display:flex; gap:14px; align-items:center; flex-wrap:wrap; padding:10px 14px; border-radius:var(--radius-sm); background:var(--box-blue); margin-top:8px; }
+    .result-row .result-label { font-weight:700; font-size:var(--text-sm); }
+    .result-row .result-num { font-size:22px; font-weight:900; }
+    .result-row .result-num.red { color:var(--red); }
+    .result-row .result-num.gray { color:var(--border-dk); }
+
+    /* 比較テーブル装飾 */
+    .td-change { color:var(--red); font-weight:900; }
+    .td-same { color:var(--border-dk); }
+    .td-highlight { background:#fff8e1; }
+    .th-2024 { background:#f0f0f0; }
+    .th-2026 { background:#fde8e8; }
+
+    /* 注釈 */
+    .note { font-size:var(--text-xs); color:#666; margin-top:6px; }
+
+    @media (max-width:640px) {
+      .grid-2 { grid-template-columns:1fr; }
+      body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+      :root {
+        --text-xs:11px; --text-sm:12.5px; --text-md:13px;
+        --text-lg:15px; --text-xl:17px;
+        --pad-card:14px; --gap-card:11px;
+      }
+      .card { padding:14px; border-radius:8px; }
+      .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; flex-direction:column; align-items:flex-start; gap:6px; }
+      .box-blue,.box-gray { padding:10px 12px; }
+      .badge { font-size:12px; padding:3px 10px; }
+      .compare-new { font-size:18px; }
+      .result-row .result-num { font-size:18px; }
+      .page-title-left h1 { font-size:17px; }
+      .formula-block { font-size:12px; padding:10px 12px; }
+      .score-block { margin-top:4px; }
+    }
+
+    @media print {
+      body { background:white; padding:8mm; font-size:12px; line-height:1.7; }
+      .page { gap:8px; max-width:100%; }
+      .card { border:0.5px solid #ccc; border-radius:6px; padding:12px; break-inside:avoid; }
+      .card-title { font-size:14px; padding-bottom:6px; margin-bottom:10px; }
+      .result-row { padding:8px 12px; }
+      .result-row .result-num { font-size:18px; }
+      a { color:inherit; text-decoration:none; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- タイトル -->
+  <div class="page-title-wrap">
+    <div class="page-title-left">
+      <h1>選定療養（薬価差の自己負担）計算方法</h1>
+      <p>特別の料金の算出方法が変更｜2026年調剤報酬改定</p>
+    </div>
+  </div>
+
+  <!-- 変更点概要 -->
+  <div class="card">
+    <div class="card-title">変更点 <span class="badge badge-red">改定</span></div>
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <p>長期収載品を希望した際の<strong>「特別の料金（選定療養費）」の算出に用いる薬価差の割合</strong>が変更された。</p>
+      <div class="box-gray">
+        <div style="display:flex; gap:20px; align-items:center; flex-wrap:wrap;">
+          <div>
+            <div style="font-size:var(--text-xs); color:#888; font-weight:700; margin-bottom:2px;">2024年（変更前）</div>
+            <div style="font-size:20px; font-weight:900; color:var(--border-dk); text-decoration:line-through;">薬価差の <span style="font-size:24px;">4</span> 分の <span style="font-size:24px;">1</span>（×0.25）</div>
+          </div>
+          <div style="font-size:24px; color:var(--border-dk);">→</div>
+          <div>
+            <div style="font-size:var(--text-xs); color:var(--red); font-weight:700; margin-bottom:2px;">2026年（変更後）</div>
+            <div style="font-size:24px; font-weight:900; color:var(--red);">薬価差の <span style="font-size:30px;">2</span> 分の <span style="font-size:30px;">1</span>（×0.5）</div>
+          </div>
+        </div>
+      </div>
+      <div class="bullet"><span>※</span><span>「薬価差」＝ 長期収載品の薬価（c）－ 後発医薬品の最高価格（d）</span></div>
+      <div class="bullet"><span>※</span><span>後発医薬品を選択した場合は選定療養の対象外（変更なし）</span></div>
+    </div>
+  </div>
+
+  <!-- 計算方法 -->
+  <div class="card">
+    <div class="card-title">計算方法（2026年）</div>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+
+      <div>
+        <div class="sub-title">① 選定療養分・保険対象分に分ける</div>
+        <div class="formula-block">
+          <div class="formula-line"><span class="formula-var">a</span>（選定療養分の薬価）＝（c − d）<span class="em-red">× 0.5</span></div>
+          <div class="formula-line"><span class="formula-var">b</span>（保険対象分の薬価）＝ c − a</div>
+          <div style="font-size:var(--text-xs); color:#666; margin-top:4px; font-family:'Noto Sans JP',sans-serif;">c＝長期収載品の薬価　d＝後発医薬品の最高価格</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sub-title">② 薬剤料ルールで点数に変換（五捨五超入）</div>
+        <div class="box-gray" style="font-size:var(--text-sm);">
+          <div class="bullet"><span>・</span><span>所定単位の薬価が <strong>15円以下</strong> → <strong>1点（最低1点）</strong></span></div>
+          <div class="bullet"><span>・</span><span>15円超 → 10円またはその端数を増すごとに1点（÷10して丸める）</span></div>
+          <div class="bullet" style="margin-top:4px;"><span>・</span><span>端数処理：0.5以下は切り捨て、0.5超は切り上げ（0.5ちょうどは切り捨て）</span></div>
+          <div class="bullet" style="margin-top:4px; color:#666;"><span>・</span><span>内服薬の所定単位＝1剤の1日分　外用剤の所定単位＝1調剤分</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sub-title">③ 患者負担額を計算</div>
+        <div class="formula-block">
+          <div class="formula-line"><strong>選定療養費（A）</strong>＝ aの点数 × 10円 × 1.1（消費税込み）</div>
+          <div class="formula-line"><strong>保険対象費用（B）</strong>＝ bの点数 × 10円</div>
+          <div class="formula-line"><strong>患者負担合計</strong>＝ A ＋ B × 自己負担率</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 計算例① ヒルドイドソフト軟膏 -->
+  <div class="card">
+    <div class="card-title">
+      計算例①　ヒルドイドソフト軟膏0.3%　100g　3割負担
+      <span class="badge badge-red">変化あり</span>
+    </div>
+
+    <div style="margin-bottom:14px;">
+      <div class="box-gray" style="font-size:var(--text-sm); display:flex; gap:24px; flex-wrap:wrap;">
+        <div><span style="color:#888;">先発品薬価（c）</span>　<strong>17.70円/g</strong></div>
+        <div><span style="color:#888;">後発最高価格（d）</span>　<strong>6.30円/g</strong></div>
+        <div><span style="color:#888;">薬価差（c−d）</span>　<strong>11.40円/g</strong></div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="gap:14px;">
+
+      <!-- 2024年 -->
+      <div>
+        <div style="font-size:var(--text-sm); font-weight:900; color:var(--border-dk); margin-bottom:8px; padding-bottom:4px; border-bottom:1px solid var(--border);">2024年（× 0.25）</div>
+        <div class="calc-step">
+          <div class="calc-row">
+            <span class="calc-label">a / g</span>
+            <span>11.40 × 0.25 ＝ <strong>2.85円</strong></span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">a × 100g</span>
+            <span>285円 → <strong>28点</strong> <span class="calc-note">（28.5→五捨）</span></span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">選定療養費</span>
+            <span>28 × 10 × 1.1 ＝ <strong>308円</strong></span>
+          </div>
+          <hr class="divider">
+          <div class="calc-row">
+            <span class="calc-label">b / g</span>
+            <span>17.70 − 2.85 ＝ <strong>14.85円</strong></span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">b × 100g</span>
+            <span>1,485円 → <strong>148点</strong> <span class="calc-note">（148.5→五捨）</span></span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">保険分（3割）</span>
+            <span>148 × 10 × 0.3 ＝ <strong>444円</strong></span>
+          </div>
+        </div>
+        <div class="result-row" style="background:var(--box-gray);">
+          <span class="result-label">患者負担合計</span>
+          <span class="result-num gray">752円</span>
+        </div>
+      </div>
+
+      <!-- 2026年 -->
+      <div>
+        <div style="font-size:var(--text-sm); font-weight:900; color:var(--red); margin-bottom:8px; padding-bottom:4px; border-bottom:1px solid var(--border);">2026年（× 0.5）</div>
+        <div class="calc-step">
+          <div class="calc-row">
+            <span class="calc-label">a / g</span>
+            <span>11.40 × 0.5 ＝ <strong>5.70円</strong></span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">a × 100g</span>
+            <span>570円 → <strong>57点</strong></span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">選定療養費</span>
+            <span>57 × 10 × 1.1 ＝ <strong>627円</strong></span>
+          </div>
+          <hr class="divider">
+          <div class="calc-row">
+            <span class="calc-label">b / g</span>
+            <span>17.70 − 5.70 ＝ <strong>12.00円</strong></span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">b × 100g</span>
+            <span>1,200円 → <strong>120点</strong></span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">保険分（3割）</span>
+            <span>120 × 10 × 0.3 ＝ <strong>360円</strong></span>
+          </div>
+        </div>
+        <div class="result-row">
+          <span class="result-label">患者負担合計</span>
+          <span class="result-num red">987円</span>
+          <span style="font-size:var(--text-xs); color:var(--red); font-weight:700;">（前年比 +235円）</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:12px; font-size:var(--text-sm);">
+      <div class="box-blue">
+        <span style="font-weight:900;">後発品を選択した場合：</span>
+        6.30円 × 100g ＝ 630円 → 63点 → 3割負担 <strong>189円</strong>（先発希望で 2024年 +563円　→　2026年 <span class="em-red">+798円</span>）
+      </div>
+    </div>
+    <p class="note">※ ヒルドイドソフト軟膏0.3%（マルホ）2026年4月改定薬価。後発最高価格はヘパリン類似物質油性クリーム0.3%各社</p>
+  </div>
+
+  <!-- 計算例② ハルシオン -->
+  <div class="card">
+    <div class="card-title">
+      計算例②　ハルシオン0.25mg錠（トリアゾラム）　1錠 × 14日　3割負担
+      <span class="badge badge-blue">変化なし</span>
+    </div>
+
+    <div style="margin-bottom:14px;">
+      <div class="box-gray" style="font-size:var(--text-sm); display:flex; gap:24px; flex-wrap:wrap;">
+        <div><span style="color:#888;">先発品薬価（c）</span>　<strong>6.40円/錠</strong></div>
+        <div><span style="color:#888;">後発最高価格（d）</span>　<strong>6.30円/錠</strong></div>
+        <div><span style="color:#888;">薬価差（c−d）</span>　<strong>0.10円/錠</strong></div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="gap:14px;">
+      <!-- 2024年 -->
+      <div>
+        <div style="font-size:var(--text-sm); font-weight:900; color:var(--border-dk); margin-bottom:8px; padding-bottom:4px; border-bottom:1px solid var(--border);">2024年（× 0.25）</div>
+        <div class="calc-step">
+          <div class="calc-row">
+            <span class="calc-label">a / 1日分</span>
+            <span>0.10 × 0.25 ＝ 0.025円 → <strong>1点</strong> <span class="calc-note">（15円以下）</span></span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">選定療養費</span>
+            <span>1 × 14 × 10 × 1.1 ＝ <strong>154円</strong></span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">保険分（3割）</span>
+            <span>1 × 14 × 10 × 0.3 ＝ <strong>42円</strong></span>
+          </div>
+        </div>
+        <div class="result-row" style="background:var(--box-gray);">
+          <span class="result-label">患者負担合計</span>
+          <span class="result-num gray">196円</span>
+        </div>
+      </div>
+
+      <!-- 2026年 -->
+      <div>
+        <div style="font-size:var(--text-sm); font-weight:900; color:var(--red); margin-bottom:8px; padding-bottom:4px; border-bottom:1px solid var(--border);">2026年（× 0.5）</div>
+        <div class="calc-step">
+          <div class="calc-row">
+            <span class="calc-label">a / 1日分</span>
+            <span>0.10 × 0.5 ＝ 0.05円 → <strong>1点</strong> <span class="calc-note">（15円以下）</span></span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">選定療養費</span>
+            <span>1 × 14 × 10 × 1.1 ＝ <strong>154円</strong></span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">保険分（3割）</span>
+            <span>1 × 14 × 10 × 0.3 ＝ <strong>42円</strong></span>
+          </div>
+        </div>
+        <div class="result-row" style="background:var(--box-gray);">
+          <span class="result-label">患者負担合計</span>
+          <span class="result-num gray">196円</span>
+          <span style="font-size:var(--text-xs); color:var(--border-dk); font-weight:700;">（変化なし）</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:12px;">
+      <div class="box-blue" style="font-size:var(--text-sm);">
+        <strong>薬価差が小さい場合は変化しない。</strong>
+        どちらの計算でも a が 15円以下となり、最低1点/日が適用されるため選定療養費は変わらない。
+      </div>
+    </div>
+    <p class="note">※ ハルシオン0.25mg錠（ファイザー）2026年4月改定薬価。後発最高価格はトリアゾラム錠0.25mg各社</p>
+  </div>
+
+  <!-- 計算例③ オルメテック -->
+  <div class="card">
+    <div class="card-title">
+      計算例③　オルメテックOD錠20mg　1錠 × 30日　3割負担
+      <span class="badge badge-blue">変化なし</span>
+    </div>
+
+    <div style="margin-bottom:14px;">
+      <div class="box-gray" style="font-size:var(--text-sm); display:flex; gap:24px; flex-wrap:wrap;">
+        <div><span style="color:#888;">先発品薬価（c）</span>　<strong>23.90円/錠</strong></div>
+        <div><span style="color:#888;">後発最高価格（d）</span>　<strong>16.60円/錠</strong></div>
+        <div><span style="color:#888;">薬価差（c−d）</span>　<strong>7.30円/錠</strong></div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="gap:14px;">
+      <!-- 2024年 -->
+      <div>
+        <div style="font-size:var(--text-sm); font-weight:900; color:var(--border-dk); margin-bottom:8px; padding-bottom:4px; border-bottom:1px solid var(--border);">2024年（× 0.25）</div>
+        <div class="calc-step">
+          <div class="calc-row">
+            <span class="calc-label">a / 1日分</span>
+            <span>7.30 × 0.25 ＝ 1.83円 → <strong>1点</strong> <span class="calc-note">（15円以下）</span></span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">選定療養費</span>
+            <span>1 × 30 × 10 × 1.1 ＝ <strong>330円</strong></span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">b / 1日分</span>
+            <span>23.90 − 1.83 ＝ 22.08円 → <strong>2点</strong></span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">保険分（3割）</span>
+            <span>2 × 30 × 10 × 0.3 ＝ <strong>180円</strong></span>
+          </div>
+        </div>
+        <div class="result-row" style="background:var(--box-gray);">
+          <span class="result-label">患者負担合計</span>
+          <span class="result-num gray">510円</span>
+        </div>
+      </div>
+
+      <!-- 2026年 -->
+      <div>
+        <div style="font-size:var(--text-sm); font-weight:900; color:var(--red); margin-bottom:8px; padding-bottom:4px; border-bottom:1px solid var(--border);">2026年（× 0.5）</div>
+        <div class="calc-step">
+          <div class="calc-row">
+            <span class="calc-label">a / 1日分</span>
+            <span>7.30 × 0.5 ＝ 3.65円 → <strong>1点</strong> <span class="calc-note">（15円以下）</span></span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">選定療養費</span>
+            <span>1 × 30 × 10 × 1.1 ＝ <strong>330円</strong></span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">b / 1日分</span>
+            <span>23.90 − 3.65 ＝ 20.25円 → <strong>2点</strong></span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">保険分（3割）</span>
+            <span>2 × 30 × 10 × 0.3 ＝ <strong>180円</strong></span>
+          </div>
+        </div>
+        <div class="result-row" style="background:var(--box-gray);">
+          <span class="result-label">患者負担合計</span>
+          <span class="result-num gray">510円</span>
+          <span style="font-size:var(--text-xs); color:var(--border-dk); font-weight:700;">（変化なし）</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:12px;">
+      <div class="box-blue" style="font-size:var(--text-sm);">
+        <strong>内服薬（標準量）では変化しないケースが多い。</strong>
+        1錠あたりの薬価差が 30円未満であれば、×0.5 でも a が 15円以下に収まり最低1点/日となる。
+        この例ではどちらも <strong>330円/月の選定療養費</strong>。
+      </div>
+    </div>
+    <p class="note">※ オルメテックOD錠20mg（第一三共）2026年4月改定薬価。後発最高価格はオルメサルタン錠20mg（ツルハラ・JG）</p>
+  </div>
+
+  <!-- まとめ -->
+  <div class="card">
+    <div class="card-title">ここがポイント</div>
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <div class="bullet">
+        <span class="em-red">▶</span>
+        <span><strong>外用剤・薬価差が大きい薬剤：実際に負担増。</strong>
+        薬価差×使用量が大きいため a 値が15円を超えやすく、×0.5の影響がそのまま出る。</span>
+      </div>
+      <div class="bullet">
+        <span style="color:var(--border-dk);">▶</span>
+        <span><strong>内服薬・標準量・薬価差が小さい薬剤：変化なしのケースも多い。</strong>
+        1日1〜数錠で薬価差が30円未満であれば、×0.25でも×0.5でも最低1点/日に収まる。</span>
+      </div>
+      <div class="bullet">
+        <span style="color:var(--border-dk);">▶</span>
+        <span><strong>計算はレセコンが自動処理。</strong>
+        実務上、手計算が必要な場面は少ないが、患者説明の際に「なぜ増えたか・増えなかったか」を説明するための理解として有用。</span>
+      </div>
+      <hr class="divider">
+      <div style="font-size:var(--text-sm);">
+        <div class="section-title">変化する・しない 判断の目安</div>
+        <table>
+          <thead>
+            <tr>
+              <th>条件</th>
+              <th>判断</th>
+              <th>具体例</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>薬価差 × 1日量 &gt; 30円</td>
+              <td class="td-change">負担増</td>
+              <td>外用剤・使用量の多い製剤</td>
+            </tr>
+            <tr>
+              <td>薬価差 × 1日量 が 15〜30円</td>
+              <td class="td-change">負担増の可能性あり</td>
+              <td>薬価差が大きい内服薬（多錠）</td>
+            </tr>
+            <tr>
+              <td>薬価差 × 1日量 ≤ 15円</td>
+              <td class="td-same">変化なし</td>
+              <td>標準量の内服薬・薬価差の小さい薬</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="note" style="margin-top:6px;">※「薬価差 × 1日量」が 30円超 → ×0.5で15円超 → 最低1点を超え変化あり。15円以下 → どちらも最低1点で変化なし。</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
