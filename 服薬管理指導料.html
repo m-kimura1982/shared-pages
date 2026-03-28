@@ -139,6 +139,8 @@
         font-weight: 700;
         text-align: left;
       }
+      .ku-nowrap { white-space: nowrap; }
+      .ryaku-nowrap { white-space: nowrap; }
       th,
       td {
         border-top: var(--bw) solid var(--border);
@@ -479,58 +481,62 @@
               <tr>
                 <th>点数</th>
                 <th>区分名称</th>
-                <th colspan="3">条件</th>
-                <th>旧略称</th>
+                <th>来局間隔</th>
+                <th>担当</th>
+                <th>手帳</th>
+                <th style="white-space:nowrap;">新略称</th>
+                <th style="white-space:nowrap;">旧略称</th>
               </tr>
             </thead>
             <tbody>
               <!-- 45点 -->
               <tr class="row-kakari">
-                <td rowspan="2" class="pts-cell" style="text-align:center">
+                <td rowspan="2" class="pts-cell" style="text-align:center;white-space:nowrap;">
                   45<span class="pts-unit">点</span>
                 </td>
-                <td>服薬管理指導料 １イ</td>
+                <td class="ku-nowrap">服薬管理指導料 １イ</td>
                 <td>3月以内</td>
-                <td class="blue-text">かかりつけ</td>
+                <td class="blue-text">かかりつけ薬剤師</td>
                 <td>手帳あり</td>
-                <td>薬指</td>
+                <td class="blue-text">薬Aイ</td>
+                <td style="color:#888;font-size:var(--text-sm);">薬指</td>
               </tr>
               <tr class="row-general">
-                <td>服薬管理指導料 １ロ</td>
+                <td class="ku-nowrap">服薬管理指導料 １ロ</td>
                 <td>3月以内</td>
-                <td>一般</td>
+                <td>かかりつけ以外</td>
                 <td>手帳あり</td>
-                <td>薬A</td>
+                <td>薬Aロ</td>
+                <td style="color:#888;font-size:var(--text-sm);">薬A</td>
               </tr>
               <!-- 59点 -->
               <tr class="row-kakari">
-                <td rowspan="4" class="pts-cell" style="text-align:center">
+                <td rowspan="2" class="pts-cell" style="text-align:center;white-space:nowrap;">
                   59<span class="pts-unit">点</span>
                 </td>
-                <td rowspan="2">服薬管理指導料 ２イ</td>
+                <td class="ku-nowrap">服薬管理指導料 ２イ</td>
                 <td>3月超</td>
-                <td class="blue-text">かかりつけ</td>
+                <td class="blue-text">かかりつけ薬剤師</td>
                 <td>－</td>
-                <td rowspan="2">薬指</td>
+                <td class="blue-text">薬Bイ</td>
+                <td style="color:#888;font-size:var(--text-sm);">薬指</td>
               </tr>
               <tr class="row-kakari">
+                <td class="ku-nowrap">服薬管理指導料 ２イ</td>
                 <td>3月以内</td>
-                <td class="blue-text">かかりつけ</td>
-                <td style="border-right: var(--bw) solid var(--border);">手帳なし</td>
-              </tr>
-              <tr class="row-general">
-                <td rowspan="2">服薬管理指導料 ２ロ</td>
-                <td>3月以内</td>
-                <td>かかりつけなし</td>
+                <td class="blue-text">かかりつけ薬剤師</td>
                 <td>手帳なし</td>
-                <td>薬B</td>
+                <td class="blue-text" style="white-space:nowrap;">薬Bイ無</td>
+                <td style="color:#888;font-size:var(--text-sm);">薬指</td>
               </tr>
               <tr class="row-general">
-                <td colspan="2">
-                  初来局、またはその他<br />１イ・１ロ・２イのいずれにも非該当
+                <td class="pts-cell" style="text-align:center;white-space:nowrap;">
+                  59<span class="pts-unit">点</span>
                 </td>
-                <td>－</td>
-                <td>薬C</td>
+                <td class="ku-nowrap">服薬管理指導料 ２ロ</td>
+                <td colspan="3">初めて処方箋を持参した患者等、１イ・１ロ・２イのいずれにも非該当</td>
+                <td>薬Bロ</td>
+                <td style="color:#888;font-size:var(--text-sm);white-space:nowrap;">薬B・薬C</td>
               </tr>
             </tbody>
           </table>
