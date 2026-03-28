@@ -67,15 +67,10 @@ table.main-tbl td { border: 1px solid var(--border); padding: 8px 10px; vertical
   body { font-size: 13px; padding: 14px 10px 40px; }
   .title-wrap h1 { font-size: 16px; }
   .sum-label { border-right: none; width: 100%; }
-  .tbl-wrap { border-radius: 0; border: none; background: transparent; }
-  table.main-tbl, table.main-tbl thead, table.main-tbl tbody,
-  table.main-tbl tr, table.main-tbl th, table.main-tbl td { display: block; width: 100%; }
-  table.main-tbl thead { display: none; }
-  table.main-tbl tr { background: var(--white); border: 1px solid var(--border); border-radius: 6px; margin-bottom: 8px; padding: 8px; }
-  table.main-tbl td { border: none; border-bottom: 1px solid var(--box-gray); padding: 5px 4px; font-size: 13px; }
-  table.main-tbl td:last-child { border-bottom: none; }
-  .row-new  tr { border-color: var(--new-bd); background: var(--new-bg); }
-  .row-changed tr { border-color: var(--chg-bd); background: var(--chg-bg); }
+  .tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table.main-tbl { font-size: 12px; min-width: 520px; }
+  table.main-tbl thead th { font-size: 11px; padding: 6px 8px; }
+  table.main-tbl td { font-size: 12px; padding: 6px 8px; }
 }
 
 @media print {
