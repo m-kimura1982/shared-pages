@@ -359,18 +359,18 @@
     <p class="note">※ ハルシオン0.25mg錠（ファイザー）2026年4月改定薬価。後発最高価格はトリアゾラム錠0.25mg各社</p>
   </div>
 
-  <!-- 計算例③ オルメテック -->
+  <!-- 計算例③ ジプレキサ -->
   <div class="card">
     <div class="card-title">
-      計算例③　オルメテックOD錠20mg　1錠 × 30日　3割負担
-      <span class="badge badge-blue">変化なし</span>
+      計算例③　ジプレキサ錠5mg（オランザピン）　1錠 × 30日　3割負担
+      <span class="badge badge-red">変化あり</span>
     </div>
 
     <div style="margin-bottom:14px;">
       <div class="box-gray" style="font-size:var(--text-sm); display:flex; gap:24px; flex-wrap:wrap;">
-        <div><span style="color:#888;">先発品薬価（c）</span>　<strong>23.90円/錠</strong></div>
-        <div><span style="color:#888;">後発最高価格（d）</span>　<strong>16.60円/錠</strong></div>
-        <div><span style="color:#888;">薬価差（c−d）</span>　<strong>7.30円/錠</strong></div>
+        <div><span style="color:#888;">先発品薬価（c）</span>　<strong>52.10円/錠</strong></div>
+        <div><span style="color:#888;">後発最高価格（d）</span>　<strong>16.00円/錠</strong></div>
+        <div><span style="color:#888;">薬価差（c−d）</span>　<strong>36.10円/錠</strong></div>
       </div>
     </div>
 
@@ -381,24 +381,25 @@
         <div class="calc-step">
           <div class="calc-row">
             <span class="calc-label">a / 1日分</span>
-            <span>7.30 × 0.25 ＝ 1.83円 → <strong>1点</strong> <span class="calc-note">（15円以下）</span></span>
+            <span>36.10 × 0.25 ＝ 9.03円 → <strong>1点</strong> <span class="calc-note">（15円以下）</span></span>
           </div>
           <div class="calc-row">
             <span class="calc-label">選定療養費</span>
             <span>1 × 30 × 10 × 1.1 ＝ <strong>330円</strong></span>
           </div>
+          <hr class="divider">
           <div class="calc-row">
             <span class="calc-label">b / 1日分</span>
-            <span>23.90 − 1.83 ＝ 22.08円 → <strong>2点</strong></span>
+            <span>52.10 − 9.03 ＝ 43.08円 → <strong>4点</strong></span>
           </div>
           <div class="calc-row">
             <span class="calc-label">保険分（3割）</span>
-            <span>2 × 30 × 10 × 0.3 ＝ <strong>180円</strong></span>
+            <span>4 × 30 × 10 × 0.3 ＝ <strong>360円</strong></span>
           </div>
         </div>
         <div class="result-row" style="background:var(--box-gray);">
           <span class="result-label">患者負担合計</span>
-          <span class="result-num gray">510円</span>
+          <span class="result-num gray">690円</span>
         </div>
       </div>
 
@@ -408,37 +409,44 @@
         <div class="calc-step">
           <div class="calc-row">
             <span class="calc-label">a / 1日分</span>
-            <span>7.30 × 0.5 ＝ 3.65円 → <strong>1点</strong> <span class="calc-note">（15円以下）</span></span>
+            <span>36.10 × 0.5 ＝ 18.05円 → <strong>2点</strong> <span class="calc-note">（15円超）</span></span>
           </div>
           <div class="calc-row">
             <span class="calc-label">選定療養費</span>
-            <span>1 × 30 × 10 × 1.1 ＝ <strong>330円</strong></span>
+            <span>2 × 30 × 10 × 1.1 ＝ <strong>660円</strong></span>
           </div>
+          <hr class="divider">
           <div class="calc-row">
             <span class="calc-label">b / 1日分</span>
-            <span>23.90 − 3.65 ＝ 20.25円 → <strong>2点</strong></span>
+            <span>52.10 − 18.05 ＝ 34.05円 → <strong>3点</strong></span>
           </div>
           <div class="calc-row">
             <span class="calc-label">保険分（3割）</span>
-            <span>2 × 30 × 10 × 0.3 ＝ <strong>180円</strong></span>
+            <span>3 × 30 × 10 × 0.3 ＝ <strong>270円</strong></span>
           </div>
         </div>
-        <div class="result-row" style="background:var(--box-gray);">
+        <div class="result-row">
           <span class="result-label">患者負担合計</span>
-          <span class="result-num gray">510円</span>
-          <span style="font-size:var(--text-xs); color:var(--border-dk); font-weight:700;">（変化なし）</span>
+          <span class="result-num red">930円</span>
+          <span style="font-size:var(--text-xs); color:var(--red); font-weight:700;">（前年比 +240円）</span>
         </div>
       </div>
     </div>
 
-    <div style="margin-top:12px;">
-      <div class="box-blue" style="font-size:var(--text-sm);">
-        <strong>内服薬（標準量）では変化しないケースが多い。</strong>
-        1錠あたりの薬価差が 30円未満であれば、×0.5 でも a が 15円以下に収まり最低1点/日となる。
-        この例ではどちらも <strong>330円/月の選定療養費</strong>。
+    <div style="margin-top:12px; font-size:var(--text-sm);">
+      <div class="box-blue">
+        <span style="font-weight:900;">後発品を選択した場合：</span>
+        16.00円 → 2点 → 2 × 30 × 10 × 0.3 ＝ <strong>180円</strong>（先発希望で 2024年 +510円　→　2026年 <span class="em-red">+750円</span>）
       </div>
     </div>
-    <p class="note">※ オルメテックOD錠20mg（第一三共）2026年4月改定薬価。後発最高価格はオルメサルタン錠20mg（ツルハラ・JG）</p>
+    <div style="margin-top:8px;">
+      <div class="box-gray" style="font-size:var(--text-sm);">
+        <strong>薬価差が30円超の内服薬では変化が出る。</strong>
+        a が 15円を超えると最低1点ルールが外れ、×0.5の影響がそのまま点数に反映される。
+        この例では選定療養費が <strong>1点/日 → 2点/日</strong>（330円 → 660円/月）と倍増。
+      </div>
+    </div>
+    <p class="note">※ ジプレキサ錠5mg（チェプラファーム）2026年4月改定薬価。後発最高価格はオランザピン錠5mg（サワイ・トーワ・日新・YD）</p>
   </div>
 
   <!-- まとめ -->
@@ -452,8 +460,8 @@
       </div>
       <div class="bullet">
         <span style="color:var(--border-dk);">▶</span>
-        <span><strong>内服薬・標準量・薬価差が小さい薬剤：変化なしのケースも多い。</strong>
-        1日1〜数錠で薬価差が30円未満であれば、×0.25でも×0.5でも最低1点/日に収まる。</span>
+        <span><strong>薬価差が30円未満の内服薬（標準量）：変化なしのケースが多い。</strong>
+        a が 15円以下に収まると最低1点/日が適用され、×0.25でも×0.5でも選定療養費は同じになる。</span>
       </div>
       <div class="bullet">
         <span style="color:var(--border-dk);">▶</span>
@@ -495,6 +503,5 @@
   </div>
 
 </div>
-<script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
