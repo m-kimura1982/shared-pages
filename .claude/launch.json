@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "GitHub Pages ローカルプレビュー",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "D:\\☆shared-pages", "-p", "3000", "--no-clipboard"],
+      "port": 3000
+    }
+  ]
+}
