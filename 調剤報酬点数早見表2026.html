@@ -139,26 +139,36 @@
         font-family: inherit;
         font-size: var(--text-sm);
         font-weight: 700;
-        padding: 6px 16px;
+        padding: 5px 14px;
         border-radius: 20px;
-        border: 1.5px solid var(--border-dk);
+        border: 1.5px solid var(--border);
         background: var(--white);
         color: var(--ink);
         cursor: pointer;
-        transition:
-          background 0.15s,
-          color 0.15s,
-          border-color 0.15s;
+        transition: background 0.15s, color 0.15s, border-color 0.15s, opacity 0.15s;
       }
-      .tab:hover {
-        border-color: var(--blue);
-        color: var(--blue);
+      .tab:hover { border-color: var(--border-dk); opacity: 0.8; }
+
+      /* すべて系：アクティブはグレー濃いめ */
+      #cat-tab-bar .tab.active,
+      #chg-tab-bar .tab[data-chg="all"].active {
+        background: #d1d5db;
+        color: var(--ink);
       }
-      .tab.active {
-        background: var(--blue);
-        color: #fff;
-        border-color: var(--blue);
-      }
+
+      /* 変更バッジタブ：本文バッジと同配色・枠線なし */
+      #chg-tab-bar .tab[data-chg="new"]        { background: #fde8e8; color: var(--red);   border-color: transparent; }
+      #chg-tab-bar .tab[data-chg="up"]         { background: #e8f0fb; color: var(--blue);  border-color: transparent; }
+      #chg-tab-bar .tab[data-chg="dn"]         { background: #f3e8ff; color: #6b21a8;      border-color: transparent; }
+      #chg-tab-bar .tab[data-chg="rfm"]        { background: #e6f4ea; color: #0d652d;      border-color: transparent; }
+      #chg-tab-bar .tab[data-chg="abol"]       { background: transparent; border-color: #9ca3af; color: #6b7280; }
+
+      /* アクティブ時：やや濃く */
+      #chg-tab-bar .tab[data-chg="new"].active  { background: #f8b4b4; color: var(--red); }
+      #chg-tab-bar .tab[data-chg="up"].active   { background: #c2d6f5; color: var(--blue); }
+      #chg-tab-bar .tab[data-chg="dn"].active   { background: #ddb6f7; color: #6b21a8; }
+      #chg-tab-bar .tab[data-chg="rfm"].active  { background: #b7e1c0; color: #0d652d; }
+      #chg-tab-bar .tab[data-chg="abol"].active { background: #e5e7eb; border-color: #9ca3af; color: #6b7280; }
       .tbl-wrap {
         overflow-x: auto;
       }
@@ -225,7 +235,7 @@
       .nm-sub {
         display: block;
         font-size: 11px;
-        color: #888;
+        color: #666;
         font-weight: 400;
         line-height: 1.5;
         margin-top: 1px;
@@ -250,7 +260,7 @@
       }
       .note-foot {
         font-size: var(--text-xs);
-        color: #666;
+        color: #555;
         line-height: 1.8;
       }
       @media print {
@@ -285,7 +295,12 @@
           display: table-row !important;
         }
       }
-      @media (max-width: 640px) {
+      tbody tr.ka-row td:first-child {
+        padding-left: 22px;
+        border-left: 3px solid #9ca3af;
+      }
+
+            @media (max-width: 640px) {
         body {
           padding: 16px 8px 40px;
         }
@@ -328,20 +343,29 @@
           <div class="legend-item">
             <span class="cb abol">廃止</span>廃止・統合
           </div>
-          <div class="legend-item" style="color: #999">（空欄）変更なし</div>
-          <div class="legend-item" style="margin-left: auto; color: #999">
-            旧＝令和6年（2024年）、新＝令和8年（2026年）6月〜
+          <div class="legend-item" style="color: #777">（空欄）変更なし</div>
+          <div class="legend-item" style="margin-left: auto; color: #777">
+            旧＝2024年、新＝2026年6月〜
           </div>
         </div>
       </div>
 
-      <div class="tab-bar">
+      <div class="tab-bar" id="cat-tab-bar">
         <button class="tab active" data-filter="all">すべて</button>
         <button class="tab" data-filter="tech">調剤技術料</button>
         <button class="tab" data-filter="out">薬学管理料（外来）</button>
         <button class="tab" data-filter="home">薬学管理料（在宅）</button>
         <button class="tab" data-filter="drug">薬剤料・材料料</button>
         <button class="tab" data-filter="other">ベースアップ等</button>
+      </div>
+
+      <div class="tab-bar" id="chg-tab-bar">
+        <button class="tab active" data-chg="all">変更：すべて</button>
+        <button class="tab" data-chg="new">新設</button>
+        <button class="tab" data-chg="up">増点</button>
+        <button class="tab" data-chg="dn">減点</button>
+        <button class="tab" data-chg="rfm">改編</button>
+        <button class="tab" data-chg="abol">廃止</button>
       </div>
 
       <div class="card-nopad">
@@ -447,7 +471,7 @@
                   調剤基本料への加算　地域支援・医薬品供給対応体制加算（旧：地域支援体制加算）
                 </td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>
                   地域支援・医薬品供給対応体制加算１<span class="nm-sub"
                     >旧・後発医薬品調剤体制加算等を統合・改編</span
@@ -462,7 +486,7 @@
                   <a href="地域支援医薬品供給対応体制加算.html">詳細→</a>
                 </td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>
                   地域支援・医薬品供給対応体制加算２<span class="nm-sub"
                     >旧・地域支援体制加算１（32点）から新設</span
@@ -477,7 +501,7 @@
                   <a href="地域支援医薬品供給対応体制加算.html">詳細→</a>
                 </td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>
                   地域支援・医薬品供給対応体制加算３<span class="nm-sub"
                     >旧・地域支援体制加算２（40点）から新設</span
@@ -492,7 +516,7 @@
                   <a href="地域支援医薬品供給対応体制加算.html">詳細→</a>
                 </td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>
                   地域支援・医薬品供給対応体制加算４<span class="nm-sub"
                     >旧・地域支援体制加算３（10点）から新設</span
@@ -507,7 +531,7 @@
                   <a href="地域支援医薬品供給対応体制加算.html">詳細→</a>
                 </td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>
                   地域支援・医薬品供給対応体制加算５<span class="nm-sub"
                     >旧・地域支援体制加算４（32点）から新設</span
@@ -526,7 +550,7 @@
               <tr class="sh" data-cat="tech">
                 <td colspan="7">調剤基本料への加算　その他</td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>
                   連携強化加算<span class="nm-sub">施設基準の一部見直し</span>
                 </td>
@@ -537,7 +561,7 @@
                 <td class="c req-y">○</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>
                   バイオ後続品調剤体制加算<span class="nm-sub"
                     >新設（インスリン製剤を除くバイオ後続品の調剤体制）</span
@@ -552,7 +576,7 @@
                   <a href="バイオ後続品調剤体制加算.html">詳細→</a>
                 </td>
               </tr>
-              <tr data-cat="tech" class="abol">
+              <tr data-cat="tech" class="abol ka-row">
                 <td>
                   後発医薬品調剤体制加算１<span class="nm-sub"
                     >廃止　→ 地域支援・医薬品供給対応体制加算へ統合</span
@@ -565,7 +589,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech" class="abol">
+              <tr data-cat="tech" class="abol ka-row">
                 <td>
                   後発医薬品調剤体制加算２<span class="nm-sub"
                     >廃止　→ 地域支援・医薬品供給対応体制加算へ統合</span
@@ -578,7 +602,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech" class="abol">
+              <tr data-cat="tech" class="abol ka-row">
                 <td>
                   後発医薬品調剤体制加算３<span class="nm-sub"
                     >廃止　→ 地域支援・医薬品供給対応体制加算へ統合</span
@@ -591,7 +615,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>
                   後発医薬品調剤体制加算減算<span class="nm-sub"
                     >GE調剤割合が低い薬局への減算</span
@@ -622,7 +646,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>在宅薬学総合体制加算１</td>
                 <td class="r">15点</td>
                 <td class="r">30点</td>
@@ -633,7 +657,7 @@
                   <a href="在宅薬学総合体制加算2026.html">詳細→</a>
                 </td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>
                   在宅薬学総合体制加算２イ（単一建物患者1人）<span
                     class="nm-sub"
@@ -649,7 +673,7 @@
                   <a href="在宅薬学総合体制加算2026.html">詳細→</a>
                 </td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>
                   在宅薬学総合体制加算２ロ（その他）<span class="nm-sub"
                     >旧：在宅薬学総合体制加算２（50点）を継承</span
@@ -664,7 +688,7 @@
                   <a href="在宅薬学総合体制加算2026.html">詳細→</a>
                 </td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>
                   電子的調剤情報連携体制整備加算<span class="nm-sub"
                     >旧：医療DX推進体制整備加算（6〜10点・3区分）から名称変更・一本化</span
@@ -681,7 +705,7 @@
                   >
                 </td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>
                   門前薬局等立地依存減算<span class="nm-sub"
                     >新設（特定の立地条件に依存した集中受付薬局への減算）</span
@@ -785,7 +809,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>無菌製剤処理加算　中心静脈栄養法用輸液（15歳以上）</td>
                 <td class="r">69点</td>
                 <td class="r">69点</td>
@@ -794,7 +818,7 @@
                 <td class="c req-y">○</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>無菌製剤処理加算　抗悪性腫瘍剤（15歳以上）</td>
                 <td class="r">79点</td>
                 <td class="r">79点</td>
@@ -803,7 +827,7 @@
                 <td class="c req-y">○</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>無菌製剤処理加算　麻薬（15歳以上）</td>
                 <td class="r">69点</td>
                 <td class="r">69点</td>
@@ -812,7 +836,7 @@
                 <td class="c req-y">○</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>
                   無菌製剤処理加算　中心静脈栄養法用輸液（15歳未満）<span
                     class="nm-sub"
@@ -826,7 +850,7 @@
                 <td class="c req-y">○</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>
                   無菌製剤処理加算　抗悪性腫瘍剤（15歳未満）<span class="nm-sub"
                     >旧：6歳未満乳幼児から15歳未満に対象拡大</span
@@ -839,7 +863,7 @@
                 <td class="c req-y">○</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>
                   無菌製剤処理加算　麻薬（15歳未満）<span class="nm-sub"
                     >旧：6歳未満乳幼児から15歳未満に対象拡大</span
@@ -852,7 +876,7 @@
                 <td class="c req-y">○</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>麻薬加算</td>
                 <td class="r">70点</td>
                 <td class="r">70点</td>
@@ -861,7 +885,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>向精神薬・覚醒剤原料・毒薬加算</td>
                 <td class="r">8点</td>
                 <td class="r">8点</td>
@@ -870,7 +894,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>時間外加算</td>
                 <td class="r">100/100</td>
                 <td class="r">100/100</td>
@@ -879,7 +903,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>休日加算</td>
                 <td class="r">140/100</td>
                 <td class="r">140/100</td>
@@ -888,7 +912,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>深夜加算</td>
                 <td class="r">200/100</td>
                 <td class="r">200/100</td>
@@ -897,7 +921,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>夜間・休日等加算</td>
                 <td class="r">40点</td>
                 <td class="r">40点</td>
@@ -906,7 +930,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>
                   自家製剤加算（内服・屯服　錠・丸・カプセル・散・顆粒等）
                 </td>
@@ -917,7 +941,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>自家製剤加算（屯服　各剤形）</td>
                 <td class="r">90点</td>
                 <td class="r">90点</td>
@@ -926,7 +950,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>自家製剤加算（内服・屯服　液剤）</td>
                 <td class="r">45点</td>
                 <td class="r">45点</td>
@@ -935,7 +959,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>自家製剤加算（外用　錠・トローチ・軟硬膏・パップ等）</td>
                 <td class="r">90点</td>
                 <td class="r">90点</td>
@@ -944,7 +968,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>自家製剤加算（外用　点眼・点鼻・点耳・浣腸）</td>
                 <td class="r">75点</td>
                 <td class="r">75点</td>
@@ -953,7 +977,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>自家製剤加算（外用　液剤）</td>
                 <td class="r">45点</td>
                 <td class="r">45点</td>
@@ -962,7 +986,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>計量混合調剤加算（液剤）</td>
                 <td class="r">35点</td>
                 <td class="r">35点</td>
@@ -971,7 +995,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>計量混合調剤加算（散剤・顆粒剤）</td>
                 <td class="r">45点</td>
                 <td class="r">45点</td>
@@ -980,7 +1004,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="tech">
+              <tr data-cat="tech" class="ka-row">
                 <td>計量混合調剤加算（軟・硬膏剤）</td>
                 <td class="r">80点</td>
                 <td class="r">80点</td>
@@ -1081,7 +1105,7 @@
                   <a href="調剤管理料_2026改定.html">詳細→</a>
                 </td>
               </tr>
-              <tr data-cat="out">
+              <tr data-cat="out" class="ka-row">
                 <td>
                   調剤時残薬調整加算 イ〜ハ（在宅患者・かかりつけ薬剤師等）<span
                     class="nm-sub"
@@ -1091,21 +1115,21 @@
                 </td>
                 <td class="r">20点</td>
                 <td class="r">50点</td>
-                <td class="c"><span class="cb rfm">改編</span></td>
+                <td class="c"><span class="cb new">新設</span></td>
                 <td>処方箋1回</td>
                 <td class="c req-n">−</td>
                 <td class="lnk"><a href="調剤時残薬調整加算.html">詳細→</a></td>
               </tr>
-              <tr data-cat="out">
+              <tr data-cat="out" class="ka-row">
                 <td>調剤時残薬調整加算 ニ（その他）</td>
                 <td class="r">20点</td>
                 <td class="r">30点</td>
-                <td class="c"><span class="cb rfm">改編</span></td>
+                <td class="c"><span class="cb new">新設</span></td>
                 <td>処方箋1回</td>
                 <td class="c req-n">−</td>
                 <td class="lnk"><a href="調剤時残薬調整加算.html">詳細→</a></td>
               </tr>
-              <tr data-cat="out">
+              <tr data-cat="out" class="ka-row">
                 <td>
                   薬学的有害事象等防止加算
                   イ〜ハ（在宅患者・かかりつけ薬剤師等）<span class="nm-sub"
@@ -1115,14 +1139,14 @@
                 </td>
                 <td class="r">40点</td>
                 <td class="r">50点</td>
-                <td class="c"><span class="cb rfm">改編</span></td>
+                <td class="c"><span class="cb new">新設</span></td>
                 <td>処方箋1回</td>
                 <td class="c req-n">−</td>
                 <td class="lnk">
                   <a href="薬学的有害事象等防止加算.html">詳細→</a>
                 </td>
               </tr>
-              <tr data-cat="out">
+              <tr data-cat="out" class="ka-row">
                 <td>
                   薬学的有害事象等防止加算 ニ（その他）<span class="nm-sub"
                     >旧：重複投薬・相互作用等防止加算（残薬調整以外
@@ -1131,14 +1155,14 @@
                 </td>
                 <td class="r">40点</td>
                 <td class="r">30点</td>
-                <td class="c"><span class="cb rfm">改編</span></td>
+                <td class="c"><span class="cb new">新設</span></td>
                 <td>処方箋1回</td>
                 <td class="c req-n">−</td>
                 <td class="lnk">
                   <a href="薬学的有害事象等防止加算.html">詳細→</a>
                 </td>
               </tr>
-              <tr data-cat="out" class="abol">
+              <tr data-cat="out" class="abol ka-row">
                 <td>
                   重複投薬・相互作用等防止加算（廃止）<span class="nm-sub"
                     >→ 調剤時残薬調整加算・薬学的有害事象等防止加算に改編</span
@@ -1151,7 +1175,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="out" class="abol">
+              <tr data-cat="out" class="abol ka-row">
                 <td>調剤管理加算（廃止）<span class="nm-sub">→ 廃止</span></td>
                 <td class="r">3点</td>
                 <td class="r pt-abol">廃止</td>
@@ -1160,7 +1184,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="out" class="abol">
+              <tr data-cat="out" class="abol ka-row">
                 <td>
                   医療情報取得加算（廃止）<span class="nm-sub">→ 廃止</span>
                 </td>
@@ -1192,9 +1216,9 @@
                 <td>
                   服薬管理指導料１ロ（原則3月以内・手帳あり・かかりつけ以外）
                 </td>
+                <td class="r pt-dash">—</td>
                 <td class="r">45点</td>
-                <td class="r">45点</td>
-                <td class="c"><span class="cb rfm">改編</span></td>
+                <td class="c"><span class="cb new">新設</span></td>
                 <td>処方箋受付1回</td>
                 <td class="c req-n">−</td>
                 <td class="lnk"><a href="服薬管理指導料.html">詳細→</a></td>
@@ -1218,9 +1242,9 @@
                     >初めての患者等</span
                   >
                 </td>
+                <td class="r pt-dash">—</td>
                 <td class="r">59点</td>
-                <td class="r">59点</td>
-                <td class="c"><span class="cb rfm">改編</span></td>
+                <td class="c"><span class="cb new">新設</span></td>
                 <td>処方箋受付1回</td>
                 <td class="c req-n">−</td>
                 <td class="lnk"><a href="服薬管理指導料.html">詳細→</a></td>
@@ -1240,9 +1264,9 @@
                     >旧4区分から「イ：3月以内(45点)」「ロ：それ以外(59点)」に簡略化</span
                   >
                 </td>
-                <td class="r">45〜59点</td>
+                <td class="r pt-dash">—</td>
                 <td class="r">45/59点</td>
-                <td class="c"><span class="cb rfm">改編</span></td>
+                <td class="c"><span class="cb new">新設</span></td>
                 <td>処方箋受付1回等</td>
                 <td class="c req-n">−</td>
                 <td class="lnk"><a href="服薬管理指導料.html">詳細→</a></td>
@@ -1287,7 +1311,7 @@
                   <a href="かかりつけ薬剤師_算定一覧2026.html">詳細→</a>
                 </td>
               </tr>
-              <tr data-cat="out">
+              <tr data-cat="out" class="ka-row">
                 <td>麻薬管理指導加算</td>
                 <td class="r">22点</td>
                 <td class="r">22点</td>
@@ -1296,7 +1320,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="out">
+              <tr data-cat="out" class="ka-row">
                 <td>特定薬剤管理指導加算１イ（ハイリスク薬　新規処方時）</td>
                 <td class="r">10点</td>
                 <td class="r">10点</td>
@@ -1305,7 +1329,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="out">
+              <tr data-cat="out" class="ka-row">
                 <td>
                   特定薬剤管理指導加算１ロ（ハイリスク薬の用量変更・副作用対応時）
                 </td>
@@ -1316,7 +1340,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="out">
+              <tr data-cat="out" class="ka-row">
                 <td>特定薬剤管理指導加算２（悪性腫瘍・外来化学療法）</td>
                 <td class="r">100点</td>
                 <td class="r">100点</td>
@@ -1325,7 +1349,7 @@
                 <td class="c req-y">○</td>
                 <td></td>
               </tr>
-              <tr data-cat="out">
+              <tr data-cat="out" class="ka-row">
                 <td>特定薬剤管理指導加算３イ（RMP資料を用いた指導等）</td>
                 <td class="r">5点</td>
                 <td class="r">5点</td>
@@ -1334,7 +1358,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="out">
+              <tr data-cat="out" class="ka-row">
                 <td>
                   特定薬剤管理指導加算３ロ（医薬品の選択に係る情報提供等）
                 </td>
@@ -1345,7 +1369,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="out">
+              <tr data-cat="out" class="ka-row">
                 <td>乳幼児服薬指導加算（6歳未満）</td>
                 <td class="r">12点</td>
                 <td class="r">12点</td>
@@ -1354,7 +1378,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="out">
+              <tr data-cat="out" class="ka-row">
                 <td>小児特定加算（障害児）</td>
                 <td class="r">350点</td>
                 <td class="r">350点</td>
@@ -1363,7 +1387,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="out">
+              <tr data-cat="out" class="ka-row">
                 <td>
                   吸入薬指導加算<span class="nm-sub"
                     >算定間隔が3月→6月に1回へ変更</span
@@ -1376,7 +1400,7 @@
                 <td class="c req-n">−</td>
                 <td class="lnk"><a href="吸入薬指導加算2026.html">詳細→</a></td>
               </tr>
-              <tr data-cat="out">
+              <tr data-cat="out" class="ka-row">
                 <td>
                   かかりつけ薬剤師フォローアップ加算<span class="nm-sub"
                     >新設（外来服薬支援等算定後の継続フォローアップを評価）</span
@@ -1391,7 +1415,7 @@
                   <a href="かかりつけ薬剤師フォローアップ加算.html">詳細→</a>
                 </td>
               </tr>
-              <tr data-cat="out">
+              <tr data-cat="out" class="ka-row">
                 <td>
                   かかりつけ薬剤師訪問加算<span class="nm-sub"
                     >新設（患家訪問・残薬整理・服薬管理指導）</span
@@ -1444,7 +1468,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="out">
+              <tr data-cat="out" class="ka-row">
                 <td>
                   施設連携加算<span class="nm-sub"
                     >（外来服薬支援料２への加算）</span
@@ -1625,7 +1649,7 @@
                 <td class="c req-y">○</td>
                 <td></td>
               </tr>
-              <tr data-cat="home">
+              <tr data-cat="home" class="ka-row">
                 <td>麻薬管理指導加算（在宅訪問時）</td>
                 <td class="r">100点</td>
                 <td class="r">100点</td>
@@ -1634,7 +1658,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="home">
+              <tr data-cat="home" class="ka-row">
                 <td>在宅患者医療用麻薬持続注射療法加算（在宅訪問時）</td>
                 <td class="r">250点</td>
                 <td class="r">250点</td>
@@ -1643,7 +1667,7 @@
                 <td class="c req-y">○</td>
                 <td></td>
               </tr>
-              <tr data-cat="home">
+              <tr data-cat="home" class="ka-row">
                 <td>乳幼児加算（在宅訪問時・6歳未満）</td>
                 <td class="r">100点</td>
                 <td class="r">100点</td>
@@ -1652,7 +1676,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="home">
+              <tr data-cat="home" class="ka-row">
                 <td>小児特定加算（在宅訪問時・障害児）</td>
                 <td class="r">450点</td>
                 <td class="r">450点</td>
@@ -1661,7 +1685,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="home">
+              <tr data-cat="home" class="ka-row">
                 <td>在宅中心静脈栄養法加算（在宅訪問時）</td>
                 <td class="r">150点</td>
                 <td class="r">150点</td>
@@ -1704,7 +1728,7 @@
                   <a href="在宅患者訪問薬剤管理指導料_算定間隔2026.html">詳細→</a>
                 </td>
               </tr>
-              <tr data-cat="home" class="abol">
+              <tr data-cat="home" class="abol ka-row">
                 <td>
                   在宅患者緊急オンライン薬剤管理指導料（廃止）<span
                     class="nm-sub"
@@ -1718,7 +1742,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="home">
+              <tr data-cat="home" class="ka-row">
                 <td>夜間訪問加算</td>
                 <td class="r">400点</td>
                 <td class="r">400点</td>
@@ -1727,7 +1751,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="home">
+              <tr data-cat="home" class="ka-row">
                 <td>休日訪問加算</td>
                 <td class="r">600点</td>
                 <td class="r">600点</td>
@@ -1736,7 +1760,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="home">
+              <tr data-cat="home" class="ka-row">
                 <td>深夜訪問加算</td>
                 <td class="r">1,000点</td>
                 <td class="r">1,000点</td>
@@ -1745,7 +1769,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="home">
+              <tr data-cat="home" class="ka-row">
                 <td>麻薬管理指導加算（緊急訪問時）</td>
                 <td class="r">100点</td>
                 <td class="r">100点</td>
@@ -1754,7 +1778,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="home">
+              <tr data-cat="home" class="ka-row">
                 <td>在宅患者医療用麻薬持続注射療法加算（緊急訪問時）</td>
                 <td class="r">250点</td>
                 <td class="r">250点</td>
@@ -1763,7 +1787,7 @@
                 <td class="c req-y">○</td>
                 <td></td>
               </tr>
-              <tr data-cat="home">
+              <tr data-cat="home" class="ka-row">
                 <td>乳幼児加算（緊急訪問時・6歳未満）</td>
                 <td class="r">100点</td>
                 <td class="r">100点</td>
@@ -1772,7 +1796,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="home">
+              <tr data-cat="home" class="ka-row">
                 <td>小児特定加算（緊急訪問時・障害児）</td>
                 <td class="r">450点</td>
                 <td class="r">450点</td>
@@ -1781,7 +1805,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="home">
+              <tr data-cat="home" class="ka-row">
                 <td>在宅中心静脈栄養法加算（緊急訪問時）</td>
                 <td class="r">150点</td>
                 <td class="r">150点</td>
@@ -1805,7 +1829,7 @@
                 <td class="c req-y">○</td>
                 <td></td>
               </tr>
-              <tr data-cat="home">
+              <tr data-cat="home" class="ka-row">
                 <td>麻薬管理指導加算（緊急時等共同指導時）</td>
                 <td class="r">100点</td>
                 <td class="r">100点</td>
@@ -1814,7 +1838,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="home">
+              <tr data-cat="home" class="ka-row">
                 <td>
                   在宅患者医療用麻薬持続注射療法加算（緊急時等共同指導時）
                 </td>
@@ -1825,7 +1849,7 @@
                 <td class="c req-y">○</td>
                 <td></td>
               </tr>
-              <tr data-cat="home">
+              <tr data-cat="home" class="ka-row">
                 <td>乳幼児加算（緊急時等共同指導時・6歳未満）</td>
                 <td class="r">100点</td>
                 <td class="r">100点</td>
@@ -1834,7 +1858,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="home">
+              <tr data-cat="home" class="ka-row">
                 <td>小児特定加算（緊急時等共同指導時・障害児）</td>
                 <td class="r">450点</td>
                 <td class="r">450点</td>
@@ -1843,7 +1867,7 @@
                 <td class="c req-n">−</td>
                 <td></td>
               </tr>
-              <tr data-cat="home">
+              <tr data-cat="home" class="ka-row">
                 <td>在宅中心静脈栄養法加算（緊急時等共同指導時）</td>
                 <td class="r">150点</td>
                 <td class="r">150点</td>
@@ -1992,23 +2016,50 @@
         ※4
         「改編」バッジは点数が同じでも区分・名称・要件が変更された項目に表示。<br />
         ※5
-        医師の分割指示による分割調剤は、固定点数ではなく「所定点数を分割回数で除した点数」を算定します（改定による変更なし）。
+        医師の分割指示による分割調剤は、固定点数ではなく「所定点数を分割回数で除した点数」を算定（改定による変更なし）。
       </p>
     </div>
     <script>
-      const tabs = document.querySelectorAll(".tab");
-      const rows = document.querySelectorAll("#main-tbl tbody tr");
-      tabs.forEach((tab) => {
-        tab.addEventListener("click", () => {
-          tabs.forEach((t) => t.classList.remove("active"));
-          tab.classList.add("active");
-          const f = tab.dataset.filter;
-          rows.forEach((row) => {
-            row.style.display =
-              f === "all" || row.dataset.cat === f ? "" : "none";
-          });
+      const catTabs = document.querySelectorAll('#cat-tab-bar .tab');
+      const chgTabs = document.querySelectorAll('#chg-tab-bar .tab');
+      const rows    = document.querySelectorAll('#main-tbl tbody tr');
+
+      let curCat = 'all';
+      let curChg = 'all';
+
+      function getBadge(row) {
+        const b = row.querySelector('.cb');
+        if (!b) return '';
+        if (b.classList.contains('new'))  return 'new';
+        if (b.classList.contains('up'))   return 'up';
+        if (b.classList.contains('dn'))   return 'dn';
+        if (b.classList.contains('rfm'))  return 'rfm';
+        if (b.classList.contains('abol')) return 'abol';
+        return '';
+      }
+
+      function applyFilters() {
+        rows.forEach(row => {
+          if (row.classList.contains('sh')) { row.style.display = ''; return; }
+          const catOk = curCat === 'all' || row.dataset.cat === curCat;
+          const chgOk = curChg === 'all' || getBadge(row) === curChg;
+          row.style.display = (catOk && chgOk) ? '' : 'none';
         });
-      });
+      }
+
+      catTabs.forEach(t => t.addEventListener('click', () => {
+        catTabs.forEach(x => x.classList.remove('active'));
+        t.classList.add('active');
+        curCat = t.dataset.filter;
+        applyFilters();
+      }));
+
+      chgTabs.forEach(t => t.addEventListener('click', () => {
+        chgTabs.forEach(x => x.classList.remove('active'));
+        t.classList.add('active');
+        curChg = t.dataset.chg;
+        applyFilters();
+      }));
     </script>
   </body>
 </html>
