@@ -77,12 +77,22 @@ tr:last-child td { border-bottom:none; }
 }
 
 @media (max-width:640px) {
+  body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+  :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
   .before-after-wrap { grid-template-columns:1fr; }
   .ba-before { border-right:none; border-bottom:var(--bw-h) solid var(--border-dk); }
   .ba-header.before { border-right:none; border-bottom:var(--bw-h) solid var(--border-dk); }
   .medicine-list { grid-template-columns:1fr 1fr; }
   .grid-2 { grid-template-columns:1fr; }
   .page-title-wrap { flex-direction:column; }
+  .card { padding:14px; }
+  .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; }
+  .flow-box { padding:10px 12px; }
+  table { font-size:12px; }
+  th, td { padding:6px 8px; }
+  th { font-size:11.5px; }
+  .sub-title { font-size:13px; padding:4px 0 4px 10px; margin-bottom:8px; }
+  .box-gray, .box-blue { padding:10px 12px; }
 }
 </style>
 </head>
@@ -134,42 +144,34 @@ tr:last-child td { border-bottom:none; }
       <table style="margin-top:10px;">
         <thead>
           <tr>
-            <th style="width:42%;">処方箋に記載されている内容</th>
-            <th>患者の状態（参考）</th>
-            <th style="width:28%;">レセプト摘要欄の入力</th>
+            <th>処方箋に記載されている内容</th>
+            <th style="width:32%;">レセプト摘要欄への入力<br><span style="font-weight:700;font-size:11px;color:#555;">（2026年改定より新設）</span></th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>「手術後の患者である旨」＋手術年月日</td>
-            <td>手術後で経口栄養補給が必要な患者</td>
             <td rowspan="3" style="vertical-align:middle; text-align:center;">
               <strong>「処方箋記載により確認」</strong>
             </td>
           </tr>
           <tr>
             <td>「経管により栄養補給を行っている旨」＋チューブ等の処置日</td>
-            <td>胃瘻・経鼻チューブ等で栄養補給中の患者</td>
           </tr>
           <tr>
             <td>「食事による摂取が困難な理由」（医師の判断理由）</td>
-            <td>上記以外で医師が必要と判断した患者</td>
           </tr>
         </tbody>
       </table>
-      <p style="font-size:var(--text-sm); margin-top:10px;">→ 上記の記載が確認できれば、その医薬品は保険給付の対象となる。</p>
+      <p style="font-size:var(--text-sm); margin-top:10px;">→ 上記の記載が確認できれば、保険給付の対象として請求できる。</p>
     </div>
 
     <!-- 記載なし -->
     <div class="flow-box alert" style="margin-bottom:16px;">
       <div class="flow-label" style="color:var(--ink);">② 処方箋に記載がない場合</div>
       <p style="font-size:var(--text-sm); margin-top:8px; line-height:1.9;">
-        処方医に疑義照会を行い、患者が①の3区分のいずれに該当するかを確認する。確認が取れた場合は、保険給付の対象となる。
+        処方医に疑義照会を行い、①の3区分のいずれかに該当することを確認する。確認できれば、レセプト摘要欄へ<strong>「疑義照会により確認」</strong>と入力して保険請求する。
       </p>
-      <div style="margin-top:10px; padding:10px 14px; background:var(--white); border-radius:var(--radius-sm);">
-        <strong style="font-size:var(--text-sm);">レセプト摘要欄の入力：</strong>
-        <span style="font-size:var(--text-sm);">「疑義照会により確認」</span>
-      </div>
     </div>
 
     <!-- 該当しない場合 -->
