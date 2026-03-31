@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>疑義解釈資料の送付について（その２）　2026年調剤報酬改定</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --text-xs: 13px; --text-sm: 15px; --text-md: 16px;
+      --text-lg: 18px; --text-xl: 22px;
+      --pad-card: 22px; --gap-card: 16px;
+      --blue: #1e5fa8; --red: #cc0000; --ink: #222222;
+      --bg: #f3f4f6; --white: #ffffff;
+      --box-blue: #e4f0f8; --box-gray: #f2f2f2;
+      --border: #d1d5db; --border-dk: #9ca3af;
+      --radius: 10px; --radius-sm: 6px;
+      --bw: 0.5px; --bw-h: 1px; --bw-a: 3px; --bw-t: 4px;
+    }
+    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+    .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+    .page-title { border-left:var(--bw-t) solid var(--blue); padding:6px 0 6px 18px; }
+    .page-title h1 { font-size:var(--text-xl); font-weight:900; }
+    .page-title p { font-size:var(--text-sm); font-weight:500; margin-top:4px; }
+    .section-header { border-left:var(--bw-t) solid var(--border-dk); padding:4px 0 4px 14px; margin-top:4px; }
+    .section-header p { font-size:var(--text-sm); font-weight:700; color:#555; }
+    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+    .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--ink); padding-bottom:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+    .badge { font-size:var(--text-sm); font-weight:700; padding:3px 12px; border-radius:4px; }
+    .badge-red { background:#fde8e8; color:var(--red); }
+    .badge-blue { background:var(--box-blue); color:var(--blue); }
+    .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:var(--gap-card); }
+    .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:14px 18px; }
+    .box-gray { background:var(--box-gray); border-radius:var(--radius-sm); padding:14px 18px; border:var(--bw) solid var(--border); }
+    .em-red { color:var(--red); font-weight:900; }
+    .em-blue { color:var(--blue); font-weight:900; }
+    .change-badge { display:inline-flex; align-items:center; justify-content:center; color:var(--white); font-size:var(--text-xs); font-weight:900; padding:2px 10px; border-radius:3px; margin-right:8px; flex-shrink:0; }
+    .change-badge.up { background:var(--blue); }
+    .change-badge.strict { background:var(--red); }
+    .section-title { font-weight:900; font-size:var(--text-md); margin-bottom:8px; }
+    .sub-title { font-weight:900; font-size:var(--text-md); padding:6px 0 6px 12px; border-left:var(--bw-t) solid var(--blue); margin-bottom:10px; }
+    table { width:100%; border-collapse:collapse; font-size:var(--text-sm); table-layout:fixed; }
+    th { color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
+    th.th-before { background:var(--box-gray); border-right:var(--bw-h) solid var(--border-dk); width:50%; }
+    th.th-after  { background:var(--box-blue); width:50%; }
+    td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
+    td:first-child { border-right:var(--bw-h) solid var(--border); }
+    tr:last-child td { border-bottom:none; }
+    .note-box { margin-top:12px; border-left:var(--bw-t) solid var(--border-dk); padding:10px 14px; background:var(--box-gray); border-radius:0 var(--radius-sm) var(--radius-sm) 0; }
+    .note-label { font-size:var(--text-xs); font-weight:900; margin-bottom:4px; letter-spacing:0.04em; }
+    .divider { border:none; border-top:var(--bw-h) solid var(--border); margin:12px 0; }
+    /* Q&A レイアウト */
+    .qa-block { display:flex; flex-direction:column; gap:10px; }
+    .qa-block + .qa-block { margin-top:20px; padding-top:20px; border-top:var(--bw-h) solid var(--border); }
+    .qa-q { background:var(--box-gray); border-radius:var(--radius-sm); padding:16px 20px; font-size:var(--text-md); }
+    .qa-a { background:var(--box-blue); border-radius:var(--radius-sm); padding:16px 20px; font-size:var(--text-md); }
+    .qa-label { font-size:var(--text-md); font-weight:900; margin-bottom:8px; color:var(--blue); letter-spacing:0.05em; }
+    .qa-q .qa-label { color:var(--ink); }
+    ul.qa-list { margin:6px 0 0 1.2em; }
+    ul.qa-list li { margin-bottom:4px; }
+    /* 参照ボックス（過去の疑義解釈引用） */
+    .ref-box { margin-top:12px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:12px 16px; background:#fafafa; }
+    .ref-label { font-size:var(--text-xs); font-weight:900; color:var(--border-dk); margin-bottom:6px; letter-spacing:0.04em; }
+
+    @media (max-width:640px) {
+      .grid-2 { grid-template-columns:1fr; }
+      body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+      :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+      .card { padding:14px; border-radius:8px; }
+      .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; flex-direction:column; align-items:flex-start; gap:6px; }
+      .box-blue,.box-gray { padding:10px 12px; }
+      .qa-q,.qa-a { padding:12px 14px; font-size:var(--text-md); }
+      .qa-label { font-size:var(--text-sm); margin-bottom:6px; }
+      .badge { font-size:12px; padding:3px 10px; }
+      .sub-title { font-size:13px; }
+      .page-title { padding:4px 0 4px 14px; }
+      .page-title h1 { font-size:17px; line-height:1.45; }
+      .page-title p { font-size:12.5px; }
+      .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+      table { font-size:11.5px; min-width:480px; }
+      th,td { padding:6px 8px; }
+    }
+    @media print {
+      @page { margin:11mm 10mm; size:A4; }
+      body { background:white; padding:0; font-size:12.5px; line-height:1.65; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .page { gap:11px; }
+      :root { --text-xs:10.5px; --text-sm:12px; --text-md:12.5px; --text-lg:14px; --text-xl:16px; --pad-card:12px; --gap-card:11px; }
+      .card { padding:12px 14px; }
+      .card-title { padding-bottom:5px; margin-bottom:10px; flex-direction:row; align-items:center; }
+      .grid-2 { grid-template-columns:1fr 1fr; gap:10px; }
+      .box-blue,.box-gray { padding:8px 11px; }
+      .avoid-break { break-inside:avoid; }
+      .print-break-before { break-before:page; }
+      th,td { padding:5px 7px; }
+      .divider { margin:8px 0; }
+      .table-wrap { overflow-x:visible; }
+      table { min-width:unset; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="page-title">
+    <h1>疑義解釈資料の送付について（その２）</h1>
+    <p>令和８年３月31日 保険局医療課事務連絡｜2026年調剤報酬改定</p>
+  </div>
+
+  <!-- ========== 別添５ 調剤報酬点数表関係 ========== -->
+
+  <div class="section-header">
+    <p>別添５　調剤報酬点数表関係</p>
+  </div>
+
+  <!-- 調剤基本料 -->
+  <div class="card avoid-break">
+    <div class="card-title">調剤基本料</div>
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問１</div>
+        <p>特掲施設基準通知の第88の2 調剤基本料2の2（3）にある「いわゆる医療モールの場合においては、当該医療モールにある全ての保険医療機関に係る処方箋の受付回数を合算し、特定の保険医療機関に係る処方箋の受付回数とみなして、処方箋集中率を算出する」という計算方法は、<strong>いわゆる医療モールである建物又は敷地の外にある保険薬局が集中率を計算する場合にも適用されるのか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p>そのとおり。</p>
+        <div class="note-box">
+          <div class="note-label"><span class="badge badge-blue" style="font-size:var(--text-xs);">補足</span></div>
+          <p style="font-size:var(--text-sm);">医療モールの敷地・建物の<strong>中にある</strong>薬局だけでなく、<strong>外にある薬局が処方箋集中率を計算する場合にも</strong>この合算ルールが適用される。敷地内か否かにかかわらず、医療モール内の全医療機関の受付回数を合算して集中率を算出する。</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問２</div>
+        <p>特掲施設基準通知の第88の2 調剤基本料2の2（6）のエ「保険医療機関、保険薬局等を複数集合させることを目的として、不動産開発業者等が開発の企画、不動産の取得、建築物の建設、入居の募集等を行った敷地又は建物である場合」について、<strong>医療モールや医療ビレッジ等と称している又は称させている場合</strong>は、これに該当するか。</p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p>一連の保険医療機関等の群とみなされるように称している又は称させている場合には、特掲施設基準通知の第88の2 調剤基本料2の2（6）のエに該当する。</p>
+        <div class="note-box">
+          <div class="note-label"><span class="badge badge-blue" style="font-size:var(--text-xs);">補足</span></div>
+          <p style="font-size:var(--text-sm);">「医療モール」「医療ビレッジ」等の名称を使っていたり、使わせている場合は、開発経緯にかかわらず（6）のエの要件に該当する。名称を用いることで一群の医療機関として見せている実態があれば該当しうる。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 地域支援・医薬品供給対応体制加算 -->
+  <div class="card avoid-break">
+    <div class="card-title">地域支援・医薬品供給対応体制加算</div>
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問３</div>
+        <p>地域における医薬品の安定供給を確保するために必要な体制として、「直近1年間において、他の保険薬局に医薬品を分譲した実績があること。また、分譲を行った際には分譲に係る伝票又は医療用医薬品の譲渡書を2年間保存すること。ただし、同一開設者の保険薬局への医薬品の分譲は、当該実績に含めない。」とあるが、<strong>別紙様式4-1により保存する必要があるか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p>別紙様式4-1に示す医薬品の販売授与証明書の他、<strong>任意の様式の伝票又は譲渡書を2年間保存することで差し支えない。</strong></p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問４</div>
+        <p>地域支援・医薬品供給対応体制加算１の施設基準として、「医薬品を分譲した実績」とあるが、<strong>保険医療機関への医薬品の分譲も含まれるか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p>含まれる。</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問５</div>
+        <p>第92 地域支援・医薬品供給対応体制加算の2（3）コ（へ）に規定されるセルフメディケーション関連医療機器は、<strong>承認又は認証を得た医療機器である必要があるか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p><strong>体重計、握力計を除き、承認又は認証を得た医療機器である必要がある。</strong></p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問６</div>
+        <p>第92 地域支援・医薬品供給対応体制加算の2（3）コ（へ）について、1製品が複数の機能を兼ね備えている場合、①から⑦までのうち3つの機能を果たせるのであれば、<strong>3製品未満の設置でも要件を満たすものと考えてよいか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p>よい。</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問７</div>
+        <p>地域支援・医薬品供給対応体制加算の施設基準として、「薬剤師認定制度認証機構が認証している研修認定制度等の研修認定を取得した保険薬剤師が、<strong>地域の多職種と連携する会議へ出席すること</strong>」とあるが、具体的にどのような会議への出席を指すか。</p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p>「疑義解釈資料の送付について（その1）」（令和2年3月31日付事務連絡）別添4の問4で示すものの他、以下のような会議も対象となる。また、これに限定するものではなく、<strong>地域医療に貢献するような多職種連携会議であれば対象となり得る。</strong></p>
+        <ul class="qa-list">
+          <li>在宅療養中の小児が学校生活を送るにあたり、医師、教員、看護師、相談支援専門員、リハビリテーション専門職、管理栄養士等が参加して多職種で支援内容を協議する連携会議</li>
+          <li>小児在宅医療に関して、医師、看護師、病院薬剤師、相談支援専門員、リハビリテーション専門職等が参加する多職種連携会議</li>
+          <li>障害者福祉支援に関する多職種連携会議（サービス管理責任者等が主催するものを含む。）</li>
+        </ul>
+        <div class="ref-box">
+          <div class="ref-label">参照：令和２年３月31日 疑義解釈（その１）別添４ 問４</div>
+          <p style="font-size:var(--text-sm);">「地域の多職種と連携する会議」の例：<br>
+          ア 介護保険法第115条の48で規定される、市町村又は地域包括支援センターが主催する<strong>地域ケア会議</strong><br>
+          イ 省令第13条第9号で規定される、介護支援専門員が主催する<strong>サービス担当者会議</strong><br>
+          ウ 地域の多職種が参加する<strong>退院時カンファレンス</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 門前薬局等立地依存減算 -->
+  <div class="card avoid-break">
+    <div class="card-title">門前薬局等立地依存減算</div>
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問８</div>
+        <p>令和８年６月以降に新規開設する保険薬局にて、開設時点で処方箋集中率以外の要件を全て満たしている場合、<strong>いつから門前薬局等立地依存減算が適用されるか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p><strong>開設する日が属する月の翌月１日から３か月間の処方箋集中率で判定し、当該３か月間の最終月の翌々月１日から適用する。</strong></p>
+        <div class="note-box">
+          <div class="note-label"><span class="badge badge-blue" style="font-size:var(--text-xs);">例</span></div>
+          <p style="font-size:var(--text-sm);">６月１日に開設した場合 → ７〜９月の処方箋集中率を判定 → 要件を満たす場合は<strong>11月１日から</strong>適用</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問９</div>
+        <p>「令和８年５月31日において現に保険指定を受けている保険薬局については、当面の間、門前薬局等立地依存減算に該当しないものとする。」とあるが、令和８年５月31日以前に指定を受けている保険薬局において、移転・法人化・開設者の交代に伴い改めて保険薬局の指定を受け、<strong>指定年月日が令和８年６月１日以降となった場合</strong>、門前薬局等立地依存減算に該当しうるか。</p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p><strong>門前薬局等立地依存減算には該当しない。</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 調剤時残薬調整加算 -->
+  <div class="card avoid-break">
+    <div class="card-title">調剤時残薬調整加算</div>
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問10</div>
+        <p>「調剤する薬剤を減量した上で保険医療機関に情報提供」の欄にその旨の記載がある処方箋を受け付け、減数調剤を行った際に、残薬が生じている理由を薬学的に分析した上で、処方箋を発行した保険医療機関に対して文書により情報提供を行った場合、<strong>服薬情報等提供料１を算定することはできるか。また、調剤時残薬調整加算を併せて算定することは可能か。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p><strong>いずれも可能。</strong></p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問11</div>
+        <p>残薬発見時の減数調剤に係る対応が問合せの簡素化プロトコルとして地域で策定されており、当該プロトコルどおりに減数調剤した後に事後報告のみで差し支えないと定められている場合、<strong>当該減数調剤について調剤時残薬調整加算を算定することができるか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p><strong>７日分以上相当の調剤日数の変更が行われた場合は、算定可能。</strong>また、６日分以下相当の調剤日数の変更を行う場合には、残薬が７日分を超えないにもかかわらず調整する必要性を調剤報酬明細書に記載することで算定可能である。<strong>ただし、簡素化プロトコルに策定されていることを理由にすることは不可とする。</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 薬学的有害事象等防止加算 -->
+  <div class="card avoid-break">
+    <div class="card-title">薬学的有害事象等防止加算</div>
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問12</div>
+        <p>重複投薬を検知した際の対応等が問合せの簡素化プロトコルとして地域で策定されており、当該プロトコルどおりに薬剤調整した後に事後報告のみで差し支えないと定められている場合、<strong>当該調整について薬学的有害事象等防止加算を算定することができるか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p><strong>薬学的有害事象等防止加算は疑義照会に係る対応を評価するものであるため、算定不可。</strong></p>
+        <div class="note-box">
+          <div class="note-label"><span class="badge badge-blue" style="font-size:var(--text-xs);">ポイント</span></div>
+          <p style="font-size:var(--text-sm);">本加算は「疑義照会を行った上での薬剤調整」を評価するもの。プロトコルによる事後報告のみの対応は疑義照会に該当しないため算定できない。調剤時残薬調整加算（問11）とは扱いが異なる。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 服薬管理指導料 -->
+  <div class="card avoid-break">
+    <div class="card-title">服薬管理指導料</div>
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問13</div>
+        <p>かかりつけ薬剤師に関して、患者又はその家族等から受け取った、患者の署名がある同意書を保存している場合は、<strong>お薬手帳にかかりつけ薬剤師の氏名を記入する必要はないか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p>患者又はその家族等からの署名がある同意書の有無にかかわらず、<strong>原則としてお薬手帳に記入しなければならない。</strong></p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問14</div>
+        <p>服薬管理指導料の2（2）ウについて、「<strong>原則として、別の保険薬局のかかりつけ薬剤師の氏名が記載されている手帳に上書きしてはならない</strong>こと」とあるが、<strong>かかりつけ薬剤師を変更する場合はどのように対応すべきか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p>かかりつけ薬剤師の<strong>離職又は患者の希望によりかかりつけ薬剤師を変更する場合は、お薬手帳に上書きを行い、変更の旨と日付を薬剤服用歴に明記すること。</strong></p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問15</div>
+        <p>服薬管理指導料の注1に規定する保険薬局の2（2）について、「当該保険薬局に勤務する常勤の保険薬剤師について、<strong>当該保険薬局に継続的に在籍している期間が平均して1年以上であること</strong>」とあるが、「当該保険薬局に継続的に在籍している期間」に、<strong>週31時間未満の勤務である期間も計上してよいか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p><strong>週31時間以上勤務した期間のみを通算すること。</strong></p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問16</div>
+        <p>在宅患者訪問薬剤管理指導料を算定している患者又は介護保険における要介護被保険者若しくは居宅要支援被保険者については、<strong>かかりつけ薬剤師に関する患者又はその家族等からの同意を得た旨をお薬手帳に記入する必要はあるのか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p><strong>お薬手帳を活用している場合は、記入すること。</strong></p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問17</div>
+        <p>かかりつけ薬剤師について、<strong>お薬手帳のコピー等は、紙媒体の情報の保管が必要か。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p><strong>必ずしも紙媒体での保管を要さず、スキャンデータや写真を電子データとして保管することでも差し支えない。</strong>この場合において、データ管理については、サイバー攻撃に対する対策を含めセキュリティ全般について適切な対応を行うこと。</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問18</div>
+        <p>かかりつけ薬剤師について、<strong>電子版お薬手帳の場合、コピー等の保管はどのように行えばよいか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p>例えば、以下のような手法が考えられる。</p>
+        <ul class="qa-list">
+          <li>電子お薬手帳相互閲覧サービス等により、薬局の端末に表示された電子版お薬手帳の該当情報を、<strong>画像データとして保管</strong>する。</li>
+          <li>患者のスマートフォンの画面のスクリーンショットを当該保険薬局に送信し、<strong>画像データとして保管</strong>する。</li>
+          <li>患者のスマートフォンの画面を<strong>撮影し、写真を保管</strong>する。</li>
+          <li>患者の電子版お薬手帳を閲覧し、必要な情報を<strong>紙媒体や文書編集ソフト等に転記して保管</strong>する。このとき、患者にその写しを交付することが望ましい。</li>
+        </ul>
+        <p style="margin-top:8px;">なお、電子版お薬手帳の場合のコピー等の保管については、<strong>紙媒体・電子データのいずれでも差し支えない。</strong>電子データの管理においては、サイバー攻撃に対する対策を含めセキュリティ全般について適切な対応を行うこと。</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問19</div>
+        <p>かかりつけ薬剤師について、電子版お薬手帳の場合、かかりつけ薬剤師の氏名が記載されている手帳に上書きしないことを担保すること等のために、<strong>何らかのシステム的な対応が必要か。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p><strong>必ずしもシステム改修は要さない。</strong>また、「薬剤師の氏名の近傍に「かかりつけ」の文字を記入」することについても、電子版お薬手帳上でかかりつけ薬剤師の氏名等を容易に確認することが可能であれば、必ずしも「かかりつけ」の文字を記入できるようにするようなシステム改修は要さない。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 特定薬剤管理指導加算3 -->
+  <div class="card avoid-break">
+    <div class="card-title">特定薬剤管理指導加算３</div>
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問20</div>
+        <p>令和８年６月以降、<strong>長期収載品の選定療養に係る特別の料金について、先発医薬品と後発医薬品の薬価の差額の２分の１相当の徴収</strong>となる変更を踏まえ、過去に長期収載品の選定療養に関する説明を既に行っている患者に対し、当該変更について改めて説明を実施した場合、<strong>特定薬剤管理指導加算３（口）を算定することは可能か。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p><strong>自己負担額が変更となる医薬品に関して、最初に処方された１回に限り算定可能。</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- かかりつけ薬剤師フォローアップ加算 -->
+  <div class="card avoid-break">
+    <div class="card-title">かかりつけ薬剤師フォローアップ加算</div>
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問21</div>
+        <p>調剤を実施し、後日、かかりつけ薬剤師フォローアップ加算に係る業務を行い、同一保険薬局で再度処方箋を受け付けた際、<strong>当該患者のかかりつけ薬剤師が不在であった場合も、かかりつけ薬剤師フォローアップ加算を算定可能であるか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p>算定可能。ただし、服薬管理指導料１のイ又は２のイと併せて算定する際には、<strong>電話等によりフォローアップした旨及び日時、実施した聞き取りや指導等の内容等に加え、かかりつけ薬剤師の氏名を薬剤服用歴等に記載すること。</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- かかりつけ薬剤師訪問加算 -->
+  <div class="card avoid-break">
+    <div class="card-title">かかりつけ薬剤師訪問加算</div>
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問22</div>
+        <p>患者又はその家族等の求めに応じて、患家を訪問して、服用薬の管理方法の指導及び残薬の整理等を行い、その結果を保険医療機関に情報提供した場合に、<strong>かかりつけ薬剤師訪問加算の算定はどの時点で行えばよいか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p><strong>患家への訪問後に、当該患者から再度処方箋を受け付けたときに算定すること。</strong></p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問23</div>
+        <p>調剤を実施し、後日、かかりつけ薬剤師訪問加算に係る業務を行い、同一保険薬局で再度処方箋を受け付けた際、<strong>当該患者のかかりつけ薬剤師が不在であった場合も、かかりつけ薬剤師訪問加算は算定可能か。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p>算定可能。ただし、服薬管理指導料１のイ又は２のイと併せて算定する際には、<strong>患家を訪問した旨、患家における残薬状況、実施した指導等の内容等に加え、かかりつけ薬剤師の氏名を薬剤服用歴等に記載すること。</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 届出関係 -->
+  <div class="card avoid-break">
+    <div class="card-title">届出関係</div>
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問24</div>
+        <p>令和８年度診療報酬改定の内容を適用する前の、後発医薬品使用体制加算等の施設基準においては、前月までの実績を用いて届け出ることとされているが、<strong>令和８年５月１日に、５月に適用する後発医薬品使用体制加算等の届出をする場合、４月実績のカットオフ値はどのように算出すればよいか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p>令和８年５月１日に、５月に適用する後発医薬品使用体制加算等の届出をする場合に限り、<strong>カットオフ値の算出については令和８年３月までの実績を用いることとし、４月実績は用いないこと。</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 別添２ ベースアップ評価料関係 ========== -->
+
+  <div class="section-header" style="margin-top:8px;">
+    <p>別添２　看護職員処遇改善評価料及びベースアップ評価料関係</p>
+  </div>
+
+  <!-- 派遣職員の取扱い -->
+  <div class="card avoid-break">
+    <div class="card-title">派遣職員の取扱い</div>
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問２</div>
+        <p>看護職員処遇改善評価料を用いた賃金の改善措置の対象者及びベースアップ評価料の対象職員には、<strong>派遣職員など、当該保険医療機関又は当該訪問看護ステーション等に直接雇用されていないものも含むのか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p>以下の要件を満たす医療機関等（訪問看護ステーション、保険薬局）については、<strong>派遣職員（労働者派遣法第２条第２項に該当する職員）に限り対象とすることを可能とする。</strong>なお、<strong>業務委託職員（請負業務を行う職員）については対象外とする。</strong></p>
+        <ul class="qa-list">
+          <li><strong>派遣元と相談・協力した上で</strong>、当該保険医療機関に勤務する職員と<strong>同程度以上の賃金改善</strong>を行う。</li>
+          <li>外来・在宅ベースアップ評価料（II）等における区分計算にあたって、<strong>当該派遣職員についても対象職員に含めて計算を行う。</strong>なお、「月額賃金総額」の算出にあたっては、原則として派遣元から派遣職員の賃金に関する情報提供を受けることとし、<strong>派遣元に支払う費用を月額賃金としてそのまま記載することはできない。</strong></li>
+          <li>賃金改善を実施した場合、その実績については、<strong>「賃金改善実績報告書」及び「賃金改善中間報告書」に当該派遣職員を含めて作成・提出すること。</strong>報告書の作成にあたっては、派遣元と相談した上で、実際の賃金の改善額等の記載に必要な情報の提供を受けること。</li>
+        </ul>
+        <div class="note-box">
+          <div class="note-label"><span class="badge badge-blue" style="font-size:var(--text-xs);">廃止通知</span></div>
+          <p style="font-size:var(--text-sm);"><strong>派遣職員を賃金改善の対象に含めることが可能になったため、</strong>従来「派遣職員は対象外」としていた以下の通知は廃止。<br>令和６年３月28日事務連絡（その1）別添２ 問12・令和６年４月26日事務連絡（その3）別添２ 問7</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 新設薬局の届出 -->
+  <div class="card avoid-break">
+    <div class="card-title">新設保険薬局における届出</div>
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問３</div>
+        <p>新設した保険医療機関、保険薬局又は訪問看護ステーションにおいて、各ベースアップ評価料の届出を行うにあたって、<strong>対象職員に対する給与の支払い実績は必要か。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p><strong>必要。</strong>ベースアップ評価料の種類に応じて、給与の支払い実績として必要な期間は以下のとおりである。</p>
+        <div class="note-box" style="margin-top:10px;">
+          <div class="note-label"><span class="badge badge-blue" style="font-size:var(--text-xs);">必要期間まとめ</span></div>
+          <p style="font-size:var(--text-sm);"><strong>届出前１か月分の実績が必要：</strong><br>
+          外来・在宅ベースアップ評価料（I）、歯科外来・在宅ベースアップ評価料（I）、調剤ベースアップ評価料、訪問看護ベースアップ評価料（I）</p>
+          <p style="font-size:var(--text-sm);margin-top:8px;"><strong>届出前３か月分の実績が必要：</strong><br>
+          外来・在宅ベースアップ評価料（II）、歯科外来・在宅ベースアップ評価料（II）、入院ベースアップ評価料、訪問看護ベースアップ評価料（II）</p>
+        </div>
+        <div class="note-box" style="margin-top:8px;">
+          <div class="note-label"><span class="badge badge-blue" style="font-size:var(--text-xs);">廃止通知</span></div>
+          <p style="font-size:var(--text-sm);"><strong>新設時も給与支払い実績が必要と明確化されたため、</strong>従来の取扱いを定めた以下の通知は廃止。<br>令和６年４月26日事務連絡（その3）別添２ 問1</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 調剤ベースアップ評価料 -->
+  <div class="card avoid-break">
+    <div class="card-title">調剤ベースアップ評価料</div>
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問８</div>
+        <p>当該評価料の収入を用いた賃金改善の対象職員からは、「事業主、使用者、開設者、管理者、40歳以上の薬剤師及び業務委託により勤務する者を除く」とのことであるが、<strong>管理薬剤師は対象となるか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p><strong>対象とならない。</strong></p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問９</div>
+        <p>特掲施設基準通知に「当該保険薬局における調剤業務等に直接従事していない管理的業務に専従する者（本部職員、エリアマネージャー等）は、対象職員に含めない。」とあるが、<strong>保険薬局における調剤業務や保険請求事務等を主として実施しつつ、本部やエリアの管理業務を兼務する者については対象職員として取り扱ってよいか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p>よい。ただし、<strong>主として保険薬局の調剤業務等に直接従事した実績のある月のみ当該保険薬局の対象職員として取り扱うこと。</strong>なお、<strong>１人の本部職員やエリアマネージャー等が複数の保険薬局で調剤業務等に直接従事した場合においては、重複して対象職員として取り扱ってはならない。</strong></p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問10</div>
+        <p>調剤ベースアップ評価料について、<strong>出向元が賃金を支払って出向先の保険薬局に勤務する対象職員の賃金改善を実施するにあたり、どのように賃金改善報告書を作成すればよいか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p><strong>出向先の保険薬局が出向元と協議して、当該対象職員の賃金及び賃金改善の額を把握し、出向先における賃金改善の実績に含めてよい。</strong>なお、出向先がベースアップ評価料で得た収入については、<strong>出向先から出向元に支払うなど、合議で適切に精算することとなる。</strong></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+<!-- TOPに戻るリンク -->
+<div style="text-align:center; padding:32px 16px 16px;">
+  <a href="index.html" style="display:inline-block; color:#1e5fa8; text-decoration:none; font-size:14px; border:1px solid #1e5fa8; border-radius:6px; padding:8px 20px;">← 資料一覧（TOP）に戻る</a>
+</div>
+</body>
+</html>
