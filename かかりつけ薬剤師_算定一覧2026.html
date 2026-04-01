@@ -25,7 +25,7 @@
 
     .page-title { border-left: var(--bw-t) solid var(--blue); padding: 6px 0 6px 18px; }
     .page-title h1 { font-size: 20px; font-weight: 900; }
-    .page-title p { font-size: 14px; color: #555; margin-top: 4px; }
+    .page-title p { font-size: 14px; color: #333; margin-top: 4px; }
 
     .card { background: var(--white); border: var(--bw) solid var(--border); border-radius: var(--radius); padding: 20px; }
     .card-title {
@@ -55,17 +55,17 @@
     .pts { font-weight: 900; font-size: 16px; white-space: nowrap; }
     .pts-blue { color: var(--blue); }
     .pts-red  { color: var(--red); }
-    .pts-small { font-weight: 400; font-size: 12px; color: #666; }
+    .pts-small { font-weight: 400; font-size: 12px; color: #444; }
     .badge-new { display: inline-block; font-size: 11px; font-weight: 900; background: var(--red); color: #fff; padding: 1px 7px; border-radius: 3px; margin-left: 6px; vertical-align: middle; }
     .badge-kakari { display: inline-block; font-size: 11px; font-weight: 900; background: var(--blue); color: #fff; padding: 1px 7px; border-radius: 3px; margin-left: 6px; vertical-align: middle; }
-    .note { font-size: 12px; color: #666; margin-top: 10px; }
+    .note { font-size: 12px; color: #333; margin-top: 10px; }
     .note strong { color: var(--ink); }
 
     .compare-row td { padding: 6px 12px; }
     .arrow-col { text-align: center; color: var(--border-dk); font-size: 16px; width: 32px; }
-    .before-col { color: #888; }
+    .before-col { color: #555; }
     .after-col { font-weight: 900; }
-    td.condition { font-size: 13px; color: #444; }
+    td.condition { font-size: 13px; color: #222; }
 
     @media (max-width: 640px) {
       body { font-size: 13px; padding: 14px 10px 40px; }
@@ -130,7 +130,7 @@
         </tr>
       </tbody>
     </table></div>
-    <p class="note">※「かかりつけ薬剤師指導料」「かかりつけ薬剤師包括管理料」は廃止され、服薬管理指導料に統合。レセプト上の名称が変わる。<br>
+    <p class="note">※「かかりつけ薬剤師指導料」「かかりつけ薬剤師包括管理料」は廃止され、服薬管理指導料に統合。<br>
     ※ かかりつけ薬剤師以外が担当した場合は１のロ（45点）・２のロ（59点）となり、点数は同じだが区分が異なる。</p>
   </div>
 
@@ -143,7 +143,7 @@
       <colgroup>
         <col style="width:160px;">
         <col style="width:58px;">
-        <col style="width:74px;">
+        <col style="width:100px;">
         <col>
       </colgroup>
       <thead>
@@ -156,16 +156,16 @@
       </thead>
       <tbody>
         <tr class="row-kakari">
-          <td><strong>かかりつけ薬剤師フォローアップ加算</strong></td>
+          <td><strong>かかりつけ薬剤師<br>フォローアップ加算</strong></td>
           <td style="text-align:center;"><span class="pts pts-blue">50点</span></td>
           <td>３月に１回</td>
-          <td class="condition"><strong>直近6月以内に外来服薬支援料１・服用薬剤調整支援料１または２・調剤時残薬調整加算・薬学的有害事象等防止加算のいずれかを算定している患者</strong>に対し、前回調剤後〜次回来局前の間に電話等でフォローアップを実施した場合に、次回来局時に算定。<br><span class="pts-small">【併算定不可（同月）】調剤後薬剤管理指導料・在宅患者訪問薬剤管理指導料・居宅療養管理指導費（薬剤師）・介護予防居宅療養管理指導費（薬剤師）</span></td>
+          <td class="condition">直近6月以内に<strong>外来服薬支援料１・服用薬剤調整支援料１または２・調剤時残薬調整加算・薬学的有害事象等防止加算</strong>のいずれかを算定している患者に対し、<strong>前回調剤後〜次回来局前の間に</strong><strong>かかりつけ薬剤師が電話等でフォローアップを実施</strong>した場合に、次回来局時に算定。<br><span class="pts-small">【併算定不可（同月）】調剤後薬剤管理指導料・在宅患者訪問薬剤管理指導料・居宅療養管理指導費・介護予防居宅療養管理指導費</span></td>
         </tr>
         <tr class="row-kakari">
-          <td><strong>かかりつけ薬剤師訪問加算</strong></td>
+          <td><strong>かかりつけ薬剤師<br>訪問加算</strong></td>
           <td style="text-align:center;"><span class="pts pts-blue">230点</span></td>
           <td>６月に１回</td>
-          <td class="condition"><strong>患者・家族の求めに応じて</strong>、かかりつけ薬剤師が患家を訪問し、残薬整理・服薬管理指導等を行い、<strong>保険医療機関に情報提供</strong>した場合。交通費は患者実費負担。<br><span class="pts-small">【算定対象外患者】外来服薬支援料１（施設連携加算含む）・服薬情報等提供料・居宅療養管理指導費（薬剤師）・介護予防居宅療養管理指導費（薬剤師）・在宅患者訪問薬剤管理指導料を算定している患者</span></td>
+          <td class="condition">患者・家族の求めに応じて、<strong>かかりつけ薬剤師が患家を訪問</strong>し、<strong>残薬整理・服薬管理指導等</strong>を行い、<strong>保険医療機関に情報提供</strong>した場合。交通費は患者実費負担。<br><span class="pts-small">【算定対象外患者】外来服薬支援料１（施設連携加算含む）・服薬情報等提供料・居宅療養管理指導費・介護予防居宅療養管理指導費・在宅患者訪問薬剤管理指導料を算定している患者</span></td>
         </tr>
         <tr class="row-kakari">
           <td><strong>服用薬剤調整支援料２</strong></td>
@@ -199,13 +199,13 @@
           <td><strong>調剤時残薬調整加算</strong></td>
           <td><span class="pts pts-blue">50点</span><br><span class="pts-small">区分ハ</span></td>
           <td><span class="pts">30点</span><br><span class="pts-small">区分ニ</span></td>
-          <td class="condition">服薬管理指導料１のイ・２のイの患者で、かかりつけ薬剤師による残薬確認に基づく照会または処方箋指示により<strong>調剤日数の変更が行われた場合</strong></td>
+          <td class="condition"><strong>服薬管理指導料１のイ・２のイ</strong>を算定している患者で、残薬確認に基づく照会または処方箋指示により<strong>調剤日数の変更が行われた場合</strong></td>
         </tr>
         <tr class="row-kakari">
           <td><strong>薬学的有害事象等防止加算</strong></td>
           <td><span class="pts pts-blue">50点</span><br><span class="pts-small">区分ハ</span></td>
           <td><span class="pts">30点</span><br><span class="pts-small">区分ニ</span></td>
-          <td class="condition">服薬管理指導料１のイ・２のイの患者で、かかりつけ薬剤師による照会の結果、<strong>処方に変更が行われた場合</strong></td>
+          <td class="condition"><strong>服薬管理指導料１のイ・２のイ</strong>を算定している患者で、照会の結果、<strong>処方に変更が行われた場合</strong></td>
         </tr>
       </tbody>
     </table></div>
@@ -226,12 +226,12 @@
       <tbody>
         <tr>
           <td><strong>地域支援・医薬品供給対応体制加算２・３</strong><br><span class="pts-small">調剤基本料１の薬局が対象</span></td>
-          <td class="condition">服薬管理指導料１のイ及び２のイの算定回数の合計（処方箋受付回数１万回当たり）が基準値以上であること（ア〜ケのうち<strong>エを含む３項目以上</strong>）</td>
+          <td class="condition"><strong>服薬管理指導料１のイ及び２のイ</strong>の算定回数の合計（処方箋受付回数１万回当たり）が基準値以上であること（ア〜ケのうち<strong>エを含む３項目以上</strong>）</td>
           <td><strong>20回以上</strong><br><span class="pts-small">（加算３は7項目以上）</span></td>
         </tr>
         <tr>
           <td><strong>地域支援・医薬品供給対応体制加算４・５</strong><br><span class="pts-small">調剤基本料１以外の薬局が対象</span></td>
-          <td class="condition">服薬管理指導料１のイ及び２のイの算定回数の合計（処方箋受付回数１万回当たり）が基準値以上であること（ア〜ケのうち<strong>エ・カを含む３項目以上</strong>）</td>
+          <td class="condition"><strong>服薬管理指導料１のイ及び２のイ</strong>の算定回数の合計（処方箋受付回数１万回当たり）が基準値以上であること（ア〜ケのうち<strong>エ・カを含む３項目以上</strong>）</td>
           <td><strong>40回以上</strong><br><span class="pts-small">（加算５は7項目以上）</span></td>
         </tr>
         <tr>
@@ -254,7 +254,7 @@
     <p class="note">※ <strong>令和９年６月１日までの経過措置：</strong>地域支援加算の届出にあたり、改定前の「かかりつけ薬剤師指導料＋かかりつけ薬剤師包括管理料」の算定回数を、服薬管理指導料１のイ及び２のイとみなすことができる（疑義解釈その１）。</p>
   </div>
 
-  <p style="font-size:12px; color:#888; text-align:right;">2026年調剤報酬改定（令和８年６月１日施行）</p>
+  <p style="font-size:12px; color:#555; text-align:right;">2026年調剤報酬改定（令和８年６月１日施行）</p>
 
 </div>
 <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
