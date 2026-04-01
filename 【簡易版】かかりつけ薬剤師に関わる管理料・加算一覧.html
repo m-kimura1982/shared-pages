@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>かかりつけ薬剤師に関わる管理料・加算　簡易版　2026年調剤報酬改定</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #1e5fa8; --red: #cc0000; --ink: #222222;
+      --bg: #f3f4f6; --white: #ffffff;
+      --box-blue: #e4f0f8; --box-gray: #f2f2f2;
+      --border: #d1d5db; --border-dk: #9ca3af;
+      --radius: 10px;
+      --bw: 0.5px; --bw-h: 1px; --bw-t: 4px;
+    }
+    body {
+      font-family: "Noto Sans JP", sans-serif;
+      background: var(--bg); color: var(--ink);
+      font-size: 15px; line-height: 1.8;
+      padding: 32px 16px 60px;
+    }
+    .page { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+
+    /* ページタイトル */
+    .page-title { border-left: var(--bw-t) solid var(--blue); padding: 6px 0 6px 18px; }
+    .page-title h1 { font-size: 22px; font-weight: 900; }
+    .page-title p { font-size: 14px; color: #333; margin-top: 4px; }
+
+    /* セクションカード */
+    .section { background: var(--white); border: var(--bw) solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .section-header {
+      font-size: 16px; font-weight: 900; color: var(--ink);
+      border-bottom: var(--bw-h) solid var(--ink);
+      padding: 16px 20px 10px;
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    }
+    .section-header .count {
+      font-size: 12px; font-weight: 700; color: #555;
+      background: var(--box-gray);
+      padding: 1px 8px; border-radius: 10px;
+    }
+    .section-header.gray { }
+    .section-header.teal { }
+
+    /* アイテムグリッド */
+    .items { display: flex; flex-direction: column; padding: 4px 0; }
+    .item {
+      display: grid;
+      grid-template-columns: 200px 80px 1fr;
+      align-items: center;
+      gap: 0;
+      border-bottom: var(--bw-h) solid var(--border);
+      padding: 10px 16px;
+    }
+    .item:last-child { border-bottom: none; }
+    .item-name { font-size: 15px; font-weight: 700; line-height: 1.5; }
+    .item-pts {
+      font-size: 15px; font-weight: 700; color: #555;
+      text-align: center; white-space: nowrap;
+    }
+    .item-pts.red { color: var(--red); }
+    .item-pts.gray { color: #888; font-size: 13px; }
+    .item-summary { font-size: 14px; color: #333; line-height: 1.7; padding-left: 12px; border-left: 2px solid var(--box-blue); }
+
+    /* バッジ */
+    .badge {
+      display: inline-block; font-size: 10px; font-weight: 900;
+      padding: 1px 6px; border-radius: 3px; margin-left: 5px; vertical-align: middle;
+    }
+    .badge-new { background: var(--red); color: #fff; }
+    .badge-up  { background: var(--box-blue); color: var(--blue); }
+
+    /* 施設基準は2カラム */
+    .item-2col {
+      grid-template-columns: 200px 1fr;
+    }
+    .item-2col .item-summary { border-left: 2px solid #e0e0e0; color: #444; }
+
+    /* 注釈 */
+    .note { font-size: 12px; color: #444; padding: 8px 16px 10px; background: var(--box-gray); border-top: var(--bw-h) solid var(--border); line-height: 1.7; }
+    .note-target { font-size: 13px; color: #444; padding: 8px 16px 10px; background: var(--box-gray); border-top: var(--bw-h) solid var(--border); line-height: 1.7; }
+
+    /* かかりつけ強調 */
+    .kk { color: var(--blue); font-weight: 700; }
+
+    /* フッター */
+    .footer { font-size: 12px; color: #555; text-align: right; }
+
+    @media (max-width: 640px) {
+      body { font-size: 13px; padding: 16px 12px 40px; }
+      .page { gap: 12px; }
+      .page-title h1 { font-size: 16px; }
+      .section-header { font-size: 14px; padding: 12px 14px 8px; }
+      .item { grid-template-columns: 1fr; gap: 3px; padding: 10px 14px; }
+      .item-pts { text-align: left; font-size: 13px; }
+      .item-summary { padding-left: 0; border-left: none; border-top: 2px solid var(--box-blue); padding-top: 6px; margin-top: 3px; font-size: 12px; }
+      .item-2col { grid-template-columns: 1fr; }
+      .item-2col .item-summary { border-top: 2px solid #e0e0e0; border-left: none; padding-left: 0; padding-top: 6px; margin-top: 3px; }
+      .note { font-size: 11px; }
+      .note-target { font-size: 12px; }
+    }
+
+    @media print {
+      @page { margin: 12mm 10mm; size: A4; }
+      body { background: white; padding: 0; font-size: 11px; line-height: 1.6; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .page { gap: 10px; }
+      .section-header { font-size: 13px; padding: 9px 14px 7px; }
+      .items { padding: 2px 0; }
+      .item { padding: 7px 12px; }
+      .item-name { font-size: 12px; }
+      .item-pts { font-size: 13px; }
+      .item-summary { font-size: 11px; line-height: 1.55; }
+      .page-title h1 { font-size: 15px; }
+      .page-title p { font-size: 11px; }
+      .note { font-size: 10px; padding: 6px 12px; }
+      .note-target { font-size: 11px; padding: 6px 12px; }
+      .footer { font-size: 10px; margin-top: 4px; }
+      .badge { font-size: 9px; }
+      .section-header .count { font-size: 10px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="page-title">
+    <h1>かかりつけ薬剤師に関わる管理料・加算　簡易版</h1>
+    <p>令和８年６月１日施行｜2026年調剤報酬改定</p>
+  </div>
+
+  <!-- 1. 服薬管理指導料（かかりつけ区分） -->
+  <div class="section">
+    <div class="section-header">
+      服薬管理指導料（かかりつけ区分）
+      <span class="count">2項目</span>
+    </div>
+    <div class="items">
+      <div class="item">
+        <div class="item-name"><span class="kk">服薬管理指導料　１のイ</span></div>
+        <div class="item-pts">45点</div>
+        <div class="item-summary">３月以内の再来局・手帳あり・<span class="kk">かかりつけ薬剤師が指導</span></div>
+      </div>
+      <div class="item">
+        <div class="item-name"><span class="kk">服薬管理指導料　２のイ</span></div>
+        <div class="item-pts">59点</div>
+        <div class="item-summary">３月超の来局、または手帳なし・<span class="kk">かかりつけ薬剤師が指導</span></div>
+      </div>
+    </div>
+    <div class="note">※ 旧「かかりつけ薬剤師指導料」「かかりつけ薬剤師包括管理料」が統合された区分。かかりつけ以外が担当した場合はイではなくロとなる（点数は同じ）。</div>
+  </div>
+
+  <!-- 2. かかりつけ専用の加算・支援料 -->
+  <div class="section">
+    <div class="section-header">
+      かかりつけ薬剤師専用の加算・支援料
+      <span class="count">3項目</span>
+    </div>
+    <div class="items">
+      <div class="item">
+        <div class="item-name">かかりつけ薬剤師<br>フォローアップ加算</div>
+        <div class="item-pts">50点</div>
+        <div class="item-summary">対象加算を直近6月以内に算定中の患者に対し、来局前に<span class="kk">かかりつけ薬剤師</span>が電話等でフォローアップ。次回来局時に算定（３月に１回）。</div>
+      </div>
+      <div class="item">
+        <div class="item-name">かかりつけ薬剤師<br>訪問加算</div>
+        <div class="item-pts">230点</div>
+        <div class="item-summary">患者・家族の求めに応じ、<span class="kk">かかりつけ薬剤師が患家を訪問</span>し、残薬整理・服薬管理指導等を実施。保険医療機関へ情報提供（６月に１回）。</div>
+      </div>
+      <div class="item">
+        <div class="item-name">服用薬剤<br>調整支援料２</div>
+        <div class="item-pts">1,000点</div>
+        <div class="item-summary">内服薬６種類以上の患者に対し、服用薬剤総合評価を行うために必要な研修を修了した<span class="kk">かかりつけ薬剤師</span>が総合評価を実施し、処方医へ文書で情報提供（６月に１回）。令和９年６月〜算定開始。</div>
+      </div>
+    </div>
+    <div class="note-target">※ いずれも<span class="kk">服薬管理指導料１のイまたは２のイ</span>を算定中の患者が対象。事前の説明・同意が必要。</div>
+  </div>
+
+  <!-- 3. かかりつけが行うと点数が上がる加算 -->
+  <div class="section">
+    <div class="section-header teal">
+      かかりつけ薬剤師が行うと区分が上がる加算
+      <span class="count">2項目</span>
+      <span class="badge badge-up">点数アップ</span>
+    </div>
+    <div class="items">
+      <div class="item">
+        <div class="item-name">調剤時残薬調整加算<br><span style="font-size:11px;font-weight:400;color:#555;">（かかりつけ：区分ハ）</span></div>
+        <div class="item-pts">50点<br><span style="font-size:11px;font-weight:400;color:#888;">その他：30点</span></div>
+        <div class="item-summary"><span class="kk">服薬管理指導料１のイ・２のイ</span>を算定中の患者で、残薬確認に基づく疑義照会または処方箋指示により調剤日数の変更が行われた場合。</div>
+      </div>
+      <div class="item">
+        <div class="item-name">薬学的有害事象等<br>防止加算<br><span style="font-size:11px;font-weight:400;color:#555;">（かかりつけ：区分ハ）</span></div>
+        <div class="item-pts">50点<br><span style="font-size:11px;font-weight:400;color:#888;">その他：30点</span></div>
+        <div class="item-summary"><span class="kk">服薬管理指導料１のイ・２のイ</span>を算定中の患者で、疑義照会の結果、処方に変更が行われた場合。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. 施設基準・届出要件 -->
+  <div class="section">
+    <div class="section-header gray">
+      施設基準・届出要件としての関わり
+      <span class="count">5項目</span>
+    </div>
+    <div class="items">
+      <div class="item item-2col">
+        <div class="item-name">地域支援・医薬品供給<br>対応体制加算２・３<br><span style="font-size:11px;font-weight:400;color:#555;">調剤基本料１の薬局</span></div>
+        <div class="item-summary"><span class="kk">服薬管理指導料１のイ・２のイ</span>の算定回数（処方箋受付１万回当たり）が<strong>20回以上</strong>であることが要件の一つ。</div>
+      </div>
+      <div class="item item-2col">
+        <div class="item-name">地域支援・医薬品供給<br>対応体制加算４・５<br><span style="font-size:11px;font-weight:400;color:#555;">調剤基本料１以外の薬局</span></div>
+        <div class="item-summary"><span class="kk">服薬管理指導料１のイ・２のイ</span>の算定回数（処方箋受付１万回当たり）が<strong>40回以上</strong>であることが要件の一つ。</div>
+      </div>
+      <div class="item item-2col">
+        <div class="item-name">在宅薬学総合体制加算<br>１・２</div>
+        <div class="item-summary"><span class="kk">かかりつけ薬剤師</span>（服薬管理指導料の注１）の届出が必須要件。加算１が加算２取得の前提にもなる。</div>
+      </div>
+      <div class="item item-2col">
+        <div class="item-name">服薬管理指導料<br>注１届出<br><span style="font-size:11px;font-weight:400;color:#555;">かかりつけ薬剤師要件</span></div>
+        <div class="item-summary"><span class="kk">かかりつけ薬剤師</span>として届け出る薬剤師個人の要件（保険薬局勤務３年以上・週31時間以上・６か月以上在籍・研修認定取得・地域活動参加）を満たす必要がある。</div>
+      </div>
+      <div class="item item-2col">
+        <div class="item-name">調剤基本料の減算回避<br><span style="font-size:11px;font-weight:400;color:#555;">注４：かかりつけ機能要件</span></div>
+        <div class="item-summary"><span class="kk">服薬管理指導料１のイ・２のイ</span>は対象業務の一つとしてカウント。他の対象業務と合わせて<strong>年10回以上</strong>で減算を回避できる。</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="footer">2026年調剤報酬改定（令和８年６月１日施行）</p>
+
+</div>
+
+<!-- TOPに戻るリンク -->
+<div style="text-align:center; padding:32px 16px 16px;">
+  <a href="index.html" style="display:inline-block; color:#1e5fa8; text-decoration:none; font-size:14px; border:1px solid #1e5fa8; border-radius:6px; padding:8px 20px;">← 資料一覧（TOP）に戻る</a>
+</div>
+</body>
+</html>
