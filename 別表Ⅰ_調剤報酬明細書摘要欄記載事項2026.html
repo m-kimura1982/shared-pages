@@ -36,6 +36,42 @@ body {
 }
 .page { max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
 
+/* フィルターバー */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+.filter-label { font-size: 13px; font-weight: 700; color: var(--blue); white-space: nowrap; }
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border: 1px solid var(--border-dk);
+  border-radius: 20px;
+  background: var(--white);
+  color: var(--ink);
+  cursor: pointer;
+  transition: all .15s;
+  font-family: inherit;
+}
+.filter-btn:hover { border-color: var(--blue); color: var(--blue); }
+.filter-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+.filter-btn .leg-box { width: 12px; height: 12px; }
+.filter-count { margin-left: auto; font-size: 12px; color: #555; white-space: nowrap; }
+
+/* フィルター非表示 */
+tr.filter-hidden { display: none; }
+.section-hidden { display: none; }
+
 /* タイトル */
 .title-wrap { border-left: 4px solid var(--blue); padding: 6px 0 6px 14px; }
 .title-wrap h1 { font-size: 20px; font-weight: 900; color: var(--ink); }
@@ -205,10 +241,14 @@ table.main-tbl td {
   <div class="r8note">「令和8年6月1日適用」欄の ※ は段階的施行項目</div>
 </div>
 
-<div class="legend">
-  <div class="leg-item"><span class="leg-box lb-new"></span>新設</div>
-  <div class="leg-item"><span class="leg-box lb-chg"></span>変更</div>
-  <div class="leg-item"><span class="leg-box lb-del"></span>廃止（末尾掲載）</div>
+<div class="filter-bar">
+  <span class="filter-label">絞り込み：</span>
+  <button class="filter-btn active" data-filter="all">すべて表示</button>
+  <button class="filter-btn" data-filter="new"><span class="leg-box lb-new"></span>新設のみ</button>
+  <button class="filter-btn" data-filter="changed"><span class="leg-box lb-chg"></span>変更のみ</button>
+  <button class="filter-btn" data-filter="deleted"><span class="leg-box lb-del"></span>廃止のみ</button>
+  <button class="filter-btn" data-filter="unchanged">変更なしのみ</button>
+  <span class="filter-count" id="filter-count"></span>
 </div>
 
 <div class="tbl-wrap">
@@ -231,9 +271,9 @@ table.main-tbl td {
 <tr class=""><td class="c-code">820100368</td><td class="c-disp">薬剤調製料（内服薬）：内服用固形剤（錠剤、カプセル剤、散剤等）と内服用液剤の場合</td><td class="c-kami"></td></tr>
 <tr class=""><td class="c-code">820100369</td><td class="c-disp">薬剤調製料（内服薬）：内服錠、チュアブル錠及び舌下錠等のように服用方法が異なる場合</td><td class="c-kami"></td></tr>
 <tr class=""><td class="c-code">830100001</td><td class="c-disp">薬剤調製料（内服薬）：その他理由；******</td><td class="c-kami"></td></tr>
-<tr class=""><td rowspan="4" class="c-no">3</td><td rowspan="4" class="c-ku">01</td><td rowspan="4" class="c-act">自家製剤加算</td><td rowspan="4" class="c-desc">（自家製剤加算を算定した場合であって「処方」欄の記載内容からは加算理由が不明のとき）<br>算定理由が明確となるように記載すること。</td><td class="c-code">830100438</td><td class="c-disp">算定理由（自家製剤加算）；******</td><td class="c-kami"></td><td rowspan="4" class="c-r8"></td></tr>
-<tr class=""><td class="c-code">830100908</td><td class="c-disp"><span class="sub-note">（医薬品の供給上の問題により当該加算を算定する場合）<br>調剤に必要な数量が確保できなかった薬剤名を記載すること。 </span><br>調剤に必要な数量が確保できなかった薬剤名（自家製剤加算）；******</td><td class="c-kami"></td></tr>
-<tr class=""><td class="c-code">820101255</td><td class="c-disp"><span class="sub-note">（医薬品の供給上の問題により当該加算を算定する場合）<br>調剤に必要な数量が確保できなかったやむを得ない事情を記載すること。 </span><br>調剤に必要な数量が確保できなかったやむを得ない事情（自家製剤加算）：医薬品の供給上の問題</td><td class="c-kami"></td></tr>
+<tr class=""><td rowspan="4" class="c-no">3</td><td rowspan="4" class="c-ku">01</td><td rowspan="4" class="c-act">自家製剤加算</td><td class="c-desc">（自家製剤加算を算定した場合であって「処方」欄の記載内容からは加算理由が不明のとき）<br>算定理由が明確となるように記載すること。</td><td class="c-code">830100438</td><td class="c-disp">算定理由（自家製剤加算）；******</td><td class="c-kami"></td><td rowspan="4" class="c-r8"></td></tr>
+<tr class=""><td class="c-desc">（医薬品の供給上の問題により当該加算を算定する場合）<br>調剤に必要な数量が確保できなかった薬剤名を記載すること。</td><td class="c-code">830100908</td><td class="c-disp">調剤に必要な数量が確保できなかった薬剤名（自家製剤加算）；******</td><td class="c-kami"></td></tr>
+<tr class=""><td rowspan="2" class="c-desc">（医薬品の供給上の問題により当該加算を算定する場合）<br>調剤に必要な数量が確保できなかったやむを得ない事情を記載すること。</td><td class="c-code">820101255</td><td class="c-disp">調剤に必要な数量が確保できなかったやむを得ない事情（自家製剤加算）：医薬品の供給上の問題</td><td class="c-kami"></td></tr>
 <tr class=""><td class="c-code">830100909</td><td class="c-disp">調剤に必要な数量が確保できなかったやむを得ない事情（自家製剤加算）；その他；******</td><td class="c-kami"></td></tr>
 <tr class=""><td rowspan="2" class="c-no">4</td><td rowspan="2" class="c-ku">01</td><td rowspan="2" class="c-act">自家製剤加算<br>計量混合調剤加算</td><td rowspan="2" class="c-desc">（同一の保険医療機関で一連の診療に基づいて同一の患者に対して交付され、受付回数１回とされた異なる保険医の発行する処方箋に係る調剤については、同一調剤であっても、それぞれ別の「処方」欄に記載することとされているが、このことにより、自家製剤加算及び計量混合調剤加算を算定した場合であって「処方」欄の記載内容からは加算理由が不明のとき）<br>算定理由が明確となるように記載すること。</td><td class="c-code">830100439</td><td class="c-disp">異なる保険医の発行する処方箋に係る算定理由（自家製剤加算）；*******</td><td class="c-kami"></td><td rowspan="2" class="c-r8"></td></tr>
 <tr class=""><td class="c-code">830100441</td><td class="c-disp">異なる保険医の発行する処方箋に係る算定理由（計量混合調剤加算）；******</td><td class="c-kami"></td></tr>
@@ -253,8 +293,8 @@ table.main-tbl td {
 <tr class="row-new"><td class="c-code">820101909</td><td class="c-disp">調整した残薬日数が６日以下の場合残薬調整をする理由（調剤時残薬調整加算）：投与間隔が長い薬剤のため</td><td class="c-kami"></td></tr>
 <tr class="row-new"><td class="c-code">830100982</td><td class="c-disp">調整した残薬日数が６日以下の場合、残薬調整をする理由（調剤時残薬調整加算）；**********</td><td class="c-kami"></td></tr>
 <tr class="row-new"><td class="c-code">830100983</td><td class="c-disp">変更のあった薬剤名（調剤時残薬調整加算）；****</td><td class="c-kami"></td></tr>
-<tr class="row-new"><td rowspan="8" class="c-no">7 <span class="badge badge-new">新設</span></td><td rowspan="8" class="c-ku">10の２</td><td rowspan="8" class="c-act">調剤時残薬調整加算のイ</td><td rowspan="8" class="c-desc">処方箋が交付される前に処方内容を処方医に相談した年月日を記載すること。</td><td class="c-code">850100600</td><td class="c-disp">相談年月日（調剤時残薬調整加算のイ）；（元号）ｙｙ“年”ｍｍ“月”ｄｄ“日”</td><td class="c-kami"></td><td rowspan="8" class="c-r8">※</td></tr>
-<tr class="row-new"><td class="c-code">820101910</td><td class="c-disp"><span class="sub-note">処方医に連絡・確認を行った内容の要点を記載すること。</span><br>内容の要点（薬学的有害事象等防止加算）：同種・同効の併用薬との重複投薬</td><td class="c-kami"></td></tr>
+<tr class="row-new"><td rowspan="8" class="c-no">7 <span class="badge badge-new">新設</span></td><td rowspan="8" class="c-ku">10の２</td><td rowspan="8" class="c-act">調剤時残薬調整加算のイ</td><td class="c-desc">処方箋が交付される前に処方内容を処方医に相談した年月日を記載すること。</td><td class="c-code">850100600</td><td class="c-disp">相談年月日（調剤時残薬調整加算のイ）；（元号）ｙｙ“年”ｍｍ“月”ｄｄ“日”</td><td class="c-kami"></td><td rowspan="8" class="c-r8">※</td></tr>
+<tr class="row-new"><td rowspan="7" class="c-desc">処方医に連絡・確認を行った内容の要点を記載すること。</td><td class="c-code">820101910</td><td class="c-disp">内容の要点（薬学的有害事象等防止加算）：同種・同効の併用薬との重複投薬</td><td class="c-kami"></td></tr>
 <tr class="row-new"><td class="c-code">820101911</td><td class="c-disp">内容の要点（薬学的有害事象等防止加算）：併用薬・飲食物等との相互作用</td><td class="c-kami"></td></tr>
 <tr class="row-new"><td class="c-code">820101912</td><td class="c-disp">内容の要点（薬学的有害事象等防止加算）：過去のアレルギー歴、副作用歴</td><td class="c-kami"></td></tr>
 <tr class="row-new"><td class="c-code">820101913</td><td class="c-disp">内容の要点（薬学的有害事象等防止加算）：年齢や体重による影響</td><td class="c-kami"></td></tr>
@@ -262,7 +302,7 @@ table.main-tbl td {
 <tr class="row-new"><td class="c-code">820101915</td><td class="c-disp">内容の要点（薬学的有害事象等防止加算）：授乳・妊婦への影響</td><td class="c-kami"></td></tr>
 <tr class="row-new"><td class="c-code">830100984</td><td class="c-disp">内容の要点（薬学的有害事象等防止加算）：その他薬学的観点から必要と認める事項；**********</td><td class="c-kami"></td></tr>
 <tr class="row-new"><td rowspan="7" class="c-no">8 <span class="badge badge-new">新設</span></td><td rowspan="7" class="c-ku">10の２</td><td rowspan="7" class="c-act">薬学的有害事象等防止加算のイ</td><td rowspan="7" class="c-desc">処方医に対する照会（残薬調整に係るものを除く。）を行った年月日を記載すること。</td><td class="c-code">850100601</td><td class="c-disp">照会年月日（薬学的有害事象等防止加算のイ）；（元号）ｙｙ“年”ｍｍ“月”ｄｄ“日”</td><td class="c-kami"></td><td rowspan="7" class="c-r8">※</td></tr>
-<tr class="row-new"><td class="c-code">820101916</td><td class="c-disp"><span class="sub-note">薬剤の変更内容について選択し記載すること。<br>また、「変更のあった薬剤名」の記載をすること。</span><br>薬剤の変更内容（薬学的有害事象等防止加算のイ）：同種同効薬への変更</td><td class="c-kami"></td></tr>
+<tr class="row-new"><td class="c-code">820101916</td><td class="c-disp">薬剤の変更内容（薬学的有害事象等防止加算のイ）：同種同効薬への変更</td><td class="c-kami"></td></tr>
 <tr class="row-new"><td class="c-code">820101917</td><td class="c-disp">薬剤の変更内容（薬学的有害事象等防止加算のイ）：剤形の変更</td><td class="c-kami"></td></tr>
 <tr class="row-new"><td class="c-code">820101918</td><td class="c-disp">薬剤の変更内容（薬学的有害事象等防止加算のイ）：用量の変更</td><td class="c-kami"></td></tr>
 <tr class="row-new"><td class="c-code">820101919</td><td class="c-disp">薬剤の変更内容（薬学的有害事象等防止加算のイ）：用法の変更</td><td class="c-kami"></td></tr>
@@ -274,10 +314,10 @@ table.main-tbl td {
 <tr class=""><td rowspan="2" class="c-no">11</td><td rowspan="2" class="c-ku">10の３</td><td rowspan="2" class="c-act">吸入薬指導加算</td><td rowspan="2" class="c-desc">対象となる吸入薬の調剤年月日及び吸入薬の名称を記載すること。　</td><td class="c-code">850100480</td><td class="c-disp">吸入薬の調剤年月日（吸入薬指導加算）；（元号）ｙｙ“年”ｍｍ“月”ｄｄ“日”</td><td class="c-kami"></td><td rowspan="2" class="c-r8"></td></tr>
 <tr class=""><td class="c-code">830100446</td><td class="c-disp">吸入薬の名称（吸入薬指導加算）；******</td><td class="c-kami"></td></tr>
 <tr class="row-new"><td rowspan="3" class="c-no">12 <span class="badge badge-new">新設</span></td><td rowspan="3" class="c-ku">10の３</td><td rowspan="3" class="c-act">かかりつけ薬剤師フォローアップ加算</td><td rowspan="3" class="c-desc">電話等により、服薬状況、残薬状況等の継続的な確認及び必要な指導等を個別に実施した年月日を記載すること。</td><td class="c-code">850100602</td><td class="c-disp">フォローアップ年月日（かかりつけ薬剤師フォローアップ加算）；（元号）ｙｙ“年”ｍｍ“月”ｄｄ“日”</td><td class="c-kami"></td><td rowspan="3" class="c-r8">※</td></tr>
-<tr class="row-new"><td class="c-code">820101920</td><td class="c-disp"><span class="sub-note">前回算定年月（初回であれば初回の旨）を記載すること。</span><br>初回（かかりつけ薬剤師フォローアップ加算）</td><td class="c-kami"></td></tr>
+<tr class="row-new"><td class="c-code">820101920</td><td class="c-disp">初回（かかりつけ薬剤師フォローアップ加算）</td><td class="c-kami"></td></tr>
 <tr class="row-new"><td class="c-code">850100603</td><td class="c-disp">前回算定年月（かかりつけ薬剤師フォローアップ加算）；（元号）ｙｙ“年”ｍｍ“月”</td><td class="c-kami"></td></tr>
 <tr class="row-new"><td rowspan="3" class="c-no">13 <span class="badge badge-new">新設</span></td><td rowspan="3" class="c-ku">10の3</td><td rowspan="3" class="c-act">かかりつけ薬剤<br>師訪問加算</td><td rowspan="3" class="c-desc">患家に訪問して、残薬の整理、服用薬の管理方法の指導等を行い、その結果を保険医療機関に情報提供した年月日を記載すること。<br></td><td class="c-code">850100604</td><td class="c-disp">保険医療機関に情報提供した年月日（かかりつけ薬剤師訪問加算）；（元号）ｙｙ“年”ｍｍ“月”ｄｄ“日”</td><td class="c-kami"></td><td rowspan="3" class="c-r8">※</td></tr>
-<tr class="row-new"><td class="c-code">820101921</td><td class="c-disp"><span class="sub-note">前回算定年月（初回であれば初回の旨）を記載すること。</span><br>初回（かかりつけ薬剤師訪問加算）</td><td class="c-kami"></td></tr>
+<tr class="row-new"><td class="c-code">820101921</td><td class="c-disp">初回（かかりつけ薬剤師訪問加算）</td><td class="c-kami"></td></tr>
 <tr class="row-new"><td class="c-code">850100605</td><td class="c-disp">前回算定年月（かかりつけ薬剤師訪問加算）；（元号）ｙｙ“年”ｍｍ“月”</td><td class="c-kami"></td></tr>
 <tr class="row-changed"><td rowspan="2" class="c-no">14 <span class="badge badge-changed">変更</span></td><td rowspan="2" class="c-ku">14の3</td><td rowspan="2" class="c-act">服用薬剤調整支援料２</td><td rowspan="2" class="c-desc">前回算定年月（初回であれば初回の旨）を記載すること。</td><td class="c-code">820101922</td><td class="c-disp">初回（服用薬剤調整支援料２）</td><td class="c-kami"></td><td rowspan="2" class="c-r8">※</td></tr>
 <tr class="row-changed"><td class="c-code">850100606</td><td class="c-disp">前回算定年月（服用薬剤調整支援料２）；（元号）ｙｙ“年”ｍｍ“月”</td><td class="c-kami"></td></tr>
@@ -304,8 +344,8 @@ table.main-tbl td {
 <tr class="row-changed"><td rowspan="2" class="c-no">24 <span class="badge badge-changed">変更</span></td><td rowspan="2" class="c-ku">15<br>15の２<br>15の３<br>15の５</td><td rowspan="2" class="c-act">在宅患者訪問薬剤管理指導料<br>在宅患者緊急訪問薬剤管理指導料<br>在宅患者緊急時等共同指導料<br>服薬情報等提供料（服薬情報等提供料３を除く）</td><td rowspan="2" class="c-desc">（調剤を行っていない月に在宅患者訪問薬剤管理指導料、在宅患者緊急訪問薬剤管理指導料又は在宅患者緊急時等共同指導料又は服薬情報等提供料（服薬情報等提供料３を除く）を算定した場合）<br><br>情報提供又は訪問の対象となる調剤の年月日及び投薬日数を記載すること。</td><td class="c-code">基本料・薬学管理料レコード<br>「前回調剤年月日」</td><td class="c-disp">（元号）ｙｙ“年”ｍｍ“月”ｄｄ“日調剤”</td><td class="c-kami">○</td><td rowspan="2" class="c-r8"></td></tr>
 <tr class="row-changed"><td class="c-code">基本料・薬学管理料レコード<br>「前回調剤数量」</td><td class="c-disp">ｄｄｄ”日分投薬”</td><td class="c-kami">○</td></tr>
 <tr class="row-changed"><td rowspan="6" class="c-no">25 <span class="badge badge-changed">変更</span></td><td rowspan="6" class="c-ku">15</td><td rowspan="6" class="c-act">在宅患者訪問薬剤管理指導料</td><td rowspan="6" class="c-desc">算定の対象となる訪問指導を行った日を記載すること。（特養のがん末期の患者の場合は、項番28（特養のがん末期の患者）のコードにより記載すること。）</td><td class="c-code">850100378</td><td class="c-disp">訪問指導年月日（在宅患者訪問薬剤管理指導料）；（元号）ｙｙ“年”ｍｍ“月”ｄｄ“日”</td><td class="c-kami"></td><td rowspan="6" class="c-r8"></td></tr>
-<tr class="row-changed"><td class="c-code">842100071</td><td class="c-disp"><span class="sub-note">（単一建物診療患者が２人以上の場合）<br>その人数を記載すること。</span><br>単一建物診療患者人数（在宅患者訪問薬剤管理指導料）；******</td><td class="c-kami"></td></tr>
-<tr class="row-changed"><td class="c-code">820100103</td><td class="c-disp"><span class="sub-note">（１つの患家に当該指導料の対象となる同居する同一世帯の患者が２人以上いる場合、保険薬局が在宅患者訪問薬剤管理指導料を算定する患者数が当該建築物の戸数の10％以下の場合、当該建築物の戸数が20戸未満で保険薬局が在宅患者訪問薬剤管理指導料を算定する患者が２人以下の場合又はユニット数が３以下の認知症対応型共同生活介護事業所のそれぞれのユニットにおいて在宅患者訪問薬剤管理指導料を算定する人数を単一建物診療患者の人数とみなす場合）<br><br>「同居する同一世帯の患者が２人以上」、「訪問薬剤管理指導を行う患者数が当該建築物の戸数の10％以下」、「当該建築物の戸数が20戸未満で訪問薬剤管理指導を行う患者が２人以下」又は「ユニット数が３以下の認知症対応型共同生活介護事業所」の中から、該当するものを選択して記載すること。</span><br>同居する同一世帯の患者が２人以上</td><td class="c-kami"></td></tr>
+<tr class="row-changed"><td class="c-code">842100071</td><td class="c-disp">単一建物診療患者人数（在宅患者訪問薬剤管理指導料）；******</td><td class="c-kami"></td></tr>
+<tr class="row-changed"><td class="c-code">820100103</td><td class="c-disp">同居する同一世帯の患者が２人以上</td><td class="c-kami"></td></tr>
 <tr class="row-changed"><td class="c-code">820100371</td><td class="c-disp">訪問薬剤管理指導を行う患者数が当該建築物の戸数の１０％以下</td><td class="c-kami"></td></tr>
 <tr class="row-changed"><td class="c-code">820100372</td><td class="c-disp">当該建築物戸数が２０戸未満で訪問薬剤管理指導を行う患者が２人以下</td><td class="c-kami"></td></tr>
 <tr class="row-changed"><td class="c-code">820100094</td><td class="c-disp">ユニット数が３以下の認知症対応型共同生活介護事業所</td><td class="c-kami"></td></tr>
@@ -339,7 +379,7 @@ table.main-tbl td {
 <tr class=""><td class="c-code">851100075</td><td class="c-disp">保険医から訪問指示があった時刻（深夜訪問加算）；ｈｈ“時”ｍｍ“分”</td><td class="c-kami"></td></tr>
 <tr class=""><td class="c-code">850190267</td><td class="c-disp">訪問指導年月日（深夜訪問加算）；（元号）ｙｙ“年”ｍｍ“月”ｄｄ“日”</td><td class="c-kami"></td></tr>
 <tr class=""><td class="c-code">851100076</td><td class="c-disp">訪問指導時刻（深夜訪問加算）；ｈｈ“時”ｍｍ“分”</td><td class="c-kami"></td></tr>
-<tr class=""><td class="c-code">820101271</td><td class="c-disp"><span class="sub-note"><br>当該訪問が必要であった理由を選択し記載すること。</span><br>訪問が必要であった理由（夜間・休日・深夜訪問加算）：末期の悪性腫瘍患者であるため</td><td class="c-kami"></td></tr>
+<tr class=""><td class="c-code">820101271</td><td class="c-disp">訪問が必要であった理由（夜間・休日・深夜訪問加算）：末期の悪性腫瘍患者であるため</td><td class="c-kami"></td></tr>
 <tr class=""><td class="c-code">820101272</td><td class="c-disp">訪問が必要であった理由（夜間・休日・深夜訪問加算）：注射による麻薬の投与が必要な患者であるため</td><td class="c-kami"></td></tr>
 <tr class=""><td rowspan="4" class="c-no">32</td><td rowspan="4" class="c-ku">15の４</td><td rowspan="4" class="c-act">退院時共同指導料</td><td rowspan="4" class="c-desc">指導年月日、共同して指導を行った患者が入院する保険医療機関の保険医等の氏名及び保険医療機関の名称並びに退院後の在宅医療を担う保険医療機関の名称を記載すること。</td><td class="c-code">850100385</td><td class="c-disp">指導年月日（退院時共同指導料）；（元号）ｙｙ“年”ｍｍ“月”ｄｄ“日”</td><td class="c-kami"></td><td rowspan="4" class="c-r8"></td></tr>
 <tr class=""><td class="c-code">830100450</td><td class="c-disp">患者が入院している保険医療機関の保険医等の氏名（退院時共同指導料）；****</td><td class="c-kami"></td></tr>
@@ -347,10 +387,10 @@ table.main-tbl td {
 <tr class=""><td class="c-code">830100452</td><td class="c-disp">退院後の在宅医療を担う保険医療機関名（退院時共同指導料）；******</td><td class="c-kami"></td></tr>
 <tr class="row-changed"><td rowspan="4" class="c-no">33 <span class="badge badge-changed">変更</span></td><td rowspan="4" class="c-ku">15の5</td><td rowspan="4" class="c-act">服薬情報等提供料３</td><td rowspan="4" class="c-desc">　情報提供先の保険医療機関の名称及び診療科名を記載すること。<br>　なお、情報提供先の保険医療機関の名称について、複数の保険医療機関に対して服薬情報等の提供を行った場合は各保険医療機関の名称を記載すること。診療科名については、同一保険医療機関の複数の診療科に対して服薬情報等の提供を行った場合に各診療科名を記載すること。</td><td class="c-code">830100638</td><td class="c-disp">情報提供先の保険医療機関名（服薬情報等提供料３）；******</td><td class="c-kami"></td><td rowspan="4" class="c-r8"></td></tr>
 <tr class="row-changed"><td class="c-code">830100639</td><td class="c-disp">情報提供先の診療科名（服薬情報等提供料３）；******</td><td class="c-kami"></td></tr>
-<tr class="row-changed"><td class="c-code">820101923</td><td class="c-disp"><span class="sub-note">前回算定年月（初回であれば初回の旨）を記載すること。</span><br>初回（服薬情報等提供料３）</td><td class="c-kami"></td></tr>
+<tr class="row-changed"><td class="c-code">820101923</td><td class="c-disp">初回（服薬情報等提供料３）</td><td class="c-kami"></td></tr>
 <tr class="row-changed"><td class="c-code">850100607</td><td class="c-disp">前回算定年月（服薬情報等提供料３）；（元号）ｙｙ“年”ｍｍ“月”</td><td class="c-kami"></td></tr>
 <tr class=""><td rowspan="6" class="c-no">34</td><td rowspan="6" class="c-ku">15の８</td><td rowspan="6" class="c-act">在宅移行初期管理料</td><td rowspan="6" class="c-desc">（計画的な訪問薬剤管理指導を実施する前であって別の日に患家を訪問して実施した場合）<br>訪問を実施した日付について、記載すること。</td><td class="c-code">850190270</td><td class="c-disp">訪問を実施した年月日（在宅移行初期管理料）；（元号）ｙｙ“年”ｍｍ“月”ｄｄ“日”</td><td class="c-kami"></td><td rowspan="6" class="c-r8"></td></tr>
-<tr class=""><td class="c-code">820101289</td><td class="c-disp"><span class="sub-note">特に重点的な服薬支援を行う必要性があると判断した対象患者を選択し記載すること。</span><br>対象患者（在宅移行初期管理料）：認知症患者、精神障害者である患者など自己による服薬管理が困難な患者</td><td class="c-kami"></td></tr>
+<tr class=""><td class="c-code">820101289</td><td class="c-disp">対象患者（在宅移行初期管理料）：認知症患者、精神障害者である患者など自己による服薬管理が困難な患者</td><td class="c-kami"></td></tr>
 <tr class=""><td class="c-code">820101290</td><td class="c-disp">対象患者（在宅移行初期管理料）：障害児である１８歳未満の患者</td><td class="c-kami"></td></tr>
 <tr class=""><td class="c-code">820101291</td><td class="c-disp">対象患者（在宅移行初期管理料）：６歳未満の乳幼児</td><td class="c-kami"></td></tr>
 <tr class=""><td class="c-code">820101292</td><td class="c-disp">対象患者（在宅移行初期管理料）：末期のがん患者</td><td class="c-kami"></td></tr>
@@ -358,7 +398,7 @@ table.main-tbl td {
 <tr class="row-new"><td rowspan="5" class="c-no">35 <span class="badge badge-new">新設</span></td><td rowspan="5" class="c-ku">15の９</td><td rowspan="5" class="c-act">訪問薬剤管理医師同時指導料</td><td rowspan="5" class="c-desc">算定の対象となる訪問指導を行った年月日を記載すること。また、同時訪問した保険医の保険医療機関の名称及び保険医の氏名を記載すること。</td><td class="c-code">850100608</td><td class="c-disp">訪問指導年月日（訪問薬剤管理医師同時指導料）；（元号）ｙｙ“年”ｍｍ“月”ｄｄ“日”</td><td class="c-kami"></td><td rowspan="5" class="c-r8">※</td></tr>
 <tr class="row-new"><td class="c-code">830100987</td><td class="c-disp">同時訪問した保険医の保険医療機関の名称（訪問薬剤管理医師同時指導料）；******</td><td class="c-kami"></td></tr>
 <tr class="row-new"><td class="c-code">830100988</td><td class="c-disp">同時訪問した保険医氏名（訪問薬剤管理医師同時指導料）；****</td><td class="c-kami"></td></tr>
-<tr class="row-new"><td class="c-code">820101924</td><td class="c-disp"><span class="sub-note">前回算定年月（初回であれば初回の旨）を記載すること。</span><br>初回（訪問薬剤管理医師同時指導料）</td><td class="c-kami"></td></tr>
+<tr class="row-new"><td class="c-code">820101924</td><td class="c-disp">初回（訪問薬剤管理医師同時指導料）</td><td class="c-kami"></td></tr>
 <tr class="row-new"><td class="c-code">850100609</td><td class="c-disp">前回算定年月（訪問薬剤管理医師同時指導料）；（元号）ｙｙ“年”ｍｍ“月”</td><td class="c-kami"></td></tr>
 <tr class="row-new"><td rowspan="2" class="c-no">36 <span class="badge badge-new">新設</span></td><td rowspan="2" class="c-ku">15の10</td><td rowspan="2" class="c-act">複数名薬剤管理指導訪問料</td><td rowspan="2" class="c-desc">算定の対象となる訪問指導を行った年月日を記載すること。<br>また、処方医が複数名訪問の必要性があると認めた理由を記載すること。</td><td class="c-code">850100610</td><td class="c-disp">訪問指導年月日（複数名薬剤管理指導訪問料）；（元号）ｙｙ“年”ｍｍ“月”ｄｄ“日”</td><td class="c-kami"></td><td rowspan="2" class="c-r8">※</td></tr>
 <tr class="row-new"><td class="c-code">830100989</td><td class="c-disp">複数名の訪問が必要な理由；****</td><td class="c-kami"></td></tr>
@@ -379,7 +419,7 @@ table.main-tbl td {
 <tr class="row-new"><td rowspan="2" class="c-no">42 <span class="badge badge-new">新設</span></td><td rowspan="2" class="c-ku">―</td><td rowspan="2" class="c-act">栄養保持を目的とした医薬品が処方されている処方箋に基づき調剤を行った場合</td><td rowspan="2" class="c-desc">栄養保持を目的とした医薬品が処方されている処方箋に基づき調剤を行った場合は、手術後の患者に栄養保持を目的とした医薬品を投与した旨又は経管により栄養補給を行っている患者に栄養保持を目的とした医薬品を投与した旨、処方医が当該栄養保持を目的とした医薬品の投与が必要であると判断した理由について処方箋の記載により確認した患者はその旨又は疑義照会により確認した旨を記載すること。</td><td class="c-code">820100377</td><td class="c-disp">処方箋記載により確認</td><td class="c-kami"></td><td rowspan="2" class="c-r8">※</td></tr>
 <tr class="row-new"><td class="c-code">820100378</td><td class="c-disp">疑義照会により確認</td><td class="c-kami"></td></tr>
 <tr class=""><td rowspan="8" class="c-no">43</td><td rowspan="8" class="c-ku">－</td><td rowspan="8" class="c-act">介護保険に相当するサービスを行った場合に、当該患者が要介護者又は要支援者である場合</td><td rowspan="8" class="c-desc"><br>居宅療養管理指導費及び介護予防居宅療養管理指導費により訪問指導を行った日を記載すること。</td><td class="c-code">850190271</td><td class="c-disp"><br>訪問指導年月日（居宅療養管理指導費等）；（元号）ｙｙ“年”ｍｍ“月”ｄｄ“日”</td><td class="c-kami"></td><td rowspan="8" class="c-r8"></td></tr>
-<tr class=""><td class="c-code">820101294</td><td class="c-disp"><span class="sub-note">要支援度及び要介護度（月末時点）を選択し、記載すること。</span><br>要支援１</td><td class="c-kami"></td></tr>
+<tr class=""><td class="c-code">820101294</td><td class="c-disp">要支援１</td><td class="c-kami"></td></tr>
 <tr class=""><td class="c-code">820101295</td><td class="c-disp">要支援２</td><td class="c-kami"></td></tr>
 <tr class=""><td class="c-code">820101296</td><td class="c-disp">要介護１</td><td class="c-kami"></td></tr>
 <tr class=""><td class="c-code">820101297</td><td class="c-disp">要介護２</td><td class="c-kami"></td></tr>
@@ -432,8 +472,8 @@ table.main-tbl td {
 <tr class="row-deleted"><td class="c-code">820101281</td><td class="c-disp">内容の要点（在宅患者重複投薬・相互作用等防止管理料：前）：肝機能、腎機能等による影響</td><td class="c-kami"></td></tr>
 <tr class="row-deleted"><td class="c-code">820101282</td><td class="c-disp">内容の要点（在宅患者重複投薬・相互作用等防止管理料：前）：授乳・妊婦への影響</td><td class="c-kami"></td></tr>
 <tr class="row-deleted"><td class="c-code">830100915</td><td class="c-disp">内容の要点（在宅患者重複投薬・相互作用等防止管理料：前）：その他薬学的観点から必要と認める事項；******</td><td class="c-kami"></td></tr>
-<tr class="row-deleted"><td class="c-code">850190268</td><td class="c-disp"><span class="sub-note">患者へ処方箋を交付する前に処方医と処方内容を相談した年月日を記載すること。</span><br>相談年月日（在宅患者重複投薬・相互作用等防止管理料：前）；（元号）ｙｙ“年”ｍｍ“月”ｄｄ“日”</td><td class="c-kami"></td></tr>
-<tr class="row-deleted"><td class="c-code">820101283</td><td class="c-disp"><span class="sub-note">薬剤の変更内容について選択し記載すること。</span><br>薬剤の変更内容（在宅患者重複投薬・相互作用等防止管理料：前）：薬剤の追加</td><td class="c-kami"></td></tr>
+<tr class="row-deleted"><td class="c-code">850190268</td><td class="c-disp">相談年月日（在宅患者重複投薬・相互作用等防止管理料：前）；（元号）ｙｙ“年”ｍｍ“月”ｄｄ“日”</td><td class="c-kami"></td></tr>
+<tr class="row-deleted"><td class="c-code">820101283</td><td class="c-disp">薬剤の変更内容（在宅患者重複投薬・相互作用等防止管理料：前）：薬剤の追加</td><td class="c-kami"></td></tr>
 <tr class="row-deleted"><td class="c-code">820101284</td><td class="c-disp">薬剤の変更内容（在宅患者重複投薬・相互作用等防止管理料：前）：薬剤の削減</td><td class="c-kami"></td></tr>
 <tr class="row-deleted"><td class="c-code">820101285</td><td class="c-disp">薬剤の変更内容（在宅患者重複投薬・相互作用等防止管理料：前）：同種同効薬への変更</td><td class="c-kami"></td></tr>
 <tr class="row-deleted"><td class="c-code">820101286</td><td class="c-disp">薬剤の変更内容（在宅患者重複投薬・相互作用等防止管理料：前）：剤形の変更</td><td class="c-kami"></td></tr>
@@ -456,6 +496,83 @@ table.main-tbl td {
 
 </div>
 <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+(function() {
+  // 各テーブルのtbodyからグループを構築
+  // グループ = c-noセルを持つ先頭行 + その後のc-noなし行（rowspanの続き行）
+  function buildGroups(tbody) {
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    const groups = [];
+    let current = null;
+    rows.forEach(tr => {
+      const hasNo = tr.querySelector('td.c-no');
+      if (hasNo) {
+        current = { type: tr.className || 'unchanged', rows: [tr] };
+        groups.push(current);
+      } else if (current) {
+        current.rows.push(tr);
+      }
+    });
+    return groups;
+  }
+
+  function getType(group) {
+    const cls = group.type;
+    if (cls.includes('row-new'))     return 'new';
+    if (cls.includes('row-changed')) return 'changed';
+    if (cls.includes('row-deleted')) return 'deleted';
+    return 'unchanged';
+  }
+
+  // 全テーブルのグループを収集
+  const tables = Array.from(document.querySelectorAll('table.main-tbl tbody'));
+  const allGroups = tables.flatMap(buildGroups);
+
+  // 廃止セクション（section-del + 次のtbl-wrap）
+  const sectionDel = document.querySelector('.section-del');
+  const deletedWrap = sectionDel ? sectionDel.nextElementSibling : null;
+
+  function applyFilter(filter) {
+    let visible = 0;
+    allGroups.forEach(group => {
+      const type = getType(group);
+      const show = filter === 'all' || type === filter;
+      group.rows.forEach(tr => {
+        tr.classList.toggle('filter-hidden', !show);
+      });
+      if (show) visible++;
+    });
+
+    // 廃止セクションの見出しも制御
+    if (sectionDel) {
+      const hideDel = (filter !== 'all' && filter !== 'deleted');
+      sectionDel.classList.toggle('section-hidden', hideDel);
+      if (deletedWrap) deletedWrap.classList.toggle('section-hidden', hideDel);
+    }
+
+    // カウント表示
+    const total = allGroups.length;
+    const countEl = document.getElementById('filter-count');
+    if (filter === 'all') {
+      countEl.textContent = `全 ${total} 項目`;
+    } else {
+      countEl.textContent = `${visible} / ${total} 項目を表示中`;
+    }
+  }
+
+  // ボタンイベント
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      applyFilter(this.dataset.filter);
+    });
+  });
+
+  // 初期カウント表示
+  applyFilter('all');
+})();
+</script>
 
 <!-- TOPに戻るリンク -->
 <div style="text-align:center; padding:32px 16px 16px;">
