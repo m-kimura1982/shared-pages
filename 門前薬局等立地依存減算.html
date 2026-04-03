@@ -240,35 +240,42 @@
 
       <!-- パターン２：敷地内・同一建物 -->
       <div class="cond-block">
-        <div class="cond-block-hd cond-block-hd-blue" style="color:var(--blue);">
+        <div class="cond-block-hd cond-block-hd-gray">
           <span style="font-size:var(--text-md);">パターン２</span>
           <span>敷地内・同一建物（医療モール等）　―　以下の<span class="em-red">全て</span>に該当</span>
         </div>
         <div class="cond-block-body">
           <div class="cond-row">
-            <span class="cond-label label-blue">ア</span>
+            <span class="cond-label label-gray">ア</span>
             <div>処方箋集中率が <span class="big-num">85%</span> 超</div>
           </div>
           <div class="cond-row">
-            <span class="cond-label label-blue">イ</span>
+            <span class="cond-label label-gray">イ</span>
             <div style="width:100%;">
-              保険医療機関が所在する建物または敷地と<strong>同一の建物内</strong>もしくは<strong>同一敷地内</strong>に所在する
-              <div class="grid-2" style="margin-top:10px;">
+              保険医療機関が所在する建物または敷地と<strong class="em-red">同一の建物内</strong>もしくは<strong class="em-red">同一敷地内</strong>に所在する
+              <div style="margin-top:10px;">
                 <div class="box-gray">
-                  <div style="font-weight:900; margin-bottom:6px; font-size:var(--text-xs);">「同一敷地内」とみなす場合（いずれかに該当）</div>
+                  <div style="font-weight:900; margin-bottom:8px; font-size:var(--text-xs);">「同一の建物内・同一敷地内」とみなす場合（いずれかに該当）</div>
                   <div class="sub-list">
-                    <div class="sub-item"><span class="sub-item-label">①</span><span>不動産登記法上、同一地番または一団の土地として取り扱われている</span></div>
-                    <div class="sub-item"><span class="sub-item-label">②</span><span>共用通路・エントランス・駐車場・案内表示等の共用部分を有し、外形上一体的に利用されている</span></div>
+                    <div class="sub-item">
+                      <span class="sub-item-label">①</span>
+                      <span>不動産登記法上、同一地番または一団の土地として取り扱われている建物または敷地</span>
+                    </div>
+                    <div class="sub-item">
+                      <span class="sub-item-label">②</span>
+                      <span>外観上分離されておらず、外壁・床・天井・屋根等の主要部分が構造上一体として連結または密接に接続している</span>
+                    </div>
+                    <div class="sub-item">
+                      <span class="sub-item-label">③</span>
+                      <span>共用通路・エントランス・駐車場・案内表示等の共用部分を有し、外形上一体的に利用されている<span style="font-size:var(--text-xs);">（フェンス等で区切られていても実質的に共用であれば含む）</span></span>
+                    </div>
+                    <div class="sub-item">
+                      <span class="sub-item-label">④</span>
+                      <span>医療機関・薬局等を複数集合させることを目的として、不動産開発業者等が企画・土地取得・建設・入居募集等を行った敷地または建物</span>
+                    </div>
                   </div>
                 </div>
-                <div class="box-gray">
-                  <div style="font-weight:900; margin-bottom:6px; font-size:var(--text-xs);">例外（全てを満たす場合は同一敷地内とみなさない）</div>
-                  <div class="sub-list">
-                    <div class="sub-item"><span class="sub-item-label">・</span><span>公道その他これに準ずる通路を挟んでいる</span></div>
-                    <div class="sub-item"><span class="sub-item-label">・</span><span>共用部分がなく構造上一体性が認められない</span></div>
-                    <div class="sub-item"><span class="sub-item-label">・</span><span>不動産登記法上、異なる地番として取り扱われている</span></div>
-                  </div>
-                </div>
+
               </div>
             </div>
           </div>
