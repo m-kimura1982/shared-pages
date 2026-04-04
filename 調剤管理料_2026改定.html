@@ -129,25 +129,25 @@
             <td>〜 7日分</td>
             <td class="pt">4点</td>
             <td class="pt">10点</td>
-            <td class="pt" style="color:var(--blue); font-weight:700;">↑ +6点</td>
+            <td class="pt" style="color:var(--red); font-weight:700;">↑ +6点</td>
           </tr>
           <tr>
             <td>8〜14日分</td>
             <td class="pt">28点</td>
             <td class="pt">10点</td>
-            <td class="pt" style="color:var(--red); font-weight:700;">↓ −18点</td>
+            <td class="pt" style="color:var(--blue); font-weight:700;">↓ −18点</td>
           </tr>
           <tr>
             <td>15〜27日分</td>
             <td class="pt">50点</td>
             <td class="pt">10点</td>
-            <td class="pt" style="color:var(--red); font-weight:700;">↓ −40点</td>
+            <td class="pt" style="color:var(--blue); font-weight:700;">↓ −40点</td>
           </tr>
           <tr>
             <td>28日分　※</td>
             <td class="pt">50点</td>
             <td class="pt">60点</td>
-            <td class="pt" style="color:var(--blue); font-weight:700;">↑ +10点</td>
+            <td class="pt" style="color:var(--red); font-weight:700;">↑ +10点</td>
           </tr>
           <tr>
             <td>29日分〜</td>
@@ -159,7 +159,7 @@
             <td>２ 内服薬以外</td>
             <td class="pt">4点</td>
             <td class="pt">10点</td>
-            <td class="pt" style="color:var(--blue); font-weight:700;">↑ +6点</td>
+            <td class="pt" style="color:var(--red); font-weight:700;">↑ +6点</td>
           </tr>
         </tbody>
       </table>
@@ -212,7 +212,6 @@
   <!-- Card 4: 算定の注意点 -->
   <div class="card avoid-break">
     <div class="card-title">算定の注意点</div>
-
     <div class="li"><span>・</span><span>服用時点が同一の内服薬は投与日数にかかわらず<strong>１剤</strong>として算定。<strong>４剤以上の部分は算定不可</strong>（上限３剤）。</span></div>
     <div class="li"><span>・</span><span>調剤管理料１を算定した場合、調剤管理料２は算定不可。</span></div>
     <div class="li"><span>・</span><span>隔日投与等で服用しない日がある場合は<strong>実際の投与日数</strong>により算定（長期処方か否かの判定も同様）。</span></div>
@@ -220,7 +219,282 @@
     <div class="li" style="font-size:var(--text-xs); color:#888;"><span>・</span><span>特別調剤基本料Ｂを算定している保険薬局は調剤管理料を算定できない。</span></div>
   </div>
 
+
+  <!-- Card 5: 改定影響シミュレーション -->
+  <div class="card avoid-break" id="sim-card">
+    <div class="card-title">
+      改定影響シミュレーション
+      <span class="badge badge-blue">計算ツール</span>
+    </div>
+
+    <div class="box-gray" style="margin-bottom:16px;">
+      <div class="li"><span>・</span><span>各処方日数区分の<strong>現行の調剤管理料（円）</strong>を入力してください。改定後の金額・増減額・増減率を自動計算します。</span></div>
+    </div>
+
+    <div style="overflow-x:auto;">
+      <table id="sim-table" style="width:100%; border-collapse:collapse; font-size:var(--text-sm);">
+        <thead>
+          <tr>
+            <th class="sth sth-gray" style="text-align:left;">処方日数</th>
+            <th class="sth sth-gray" style="width:160px;">現行<br><span class="sth-sub">調剤管理料（円）</span></th>
+            <th class="sth sth-gray">改定後<br><span class="sth-sub">調剤管理料（円）</span></th>
+            <th class="sth sth-gray">増減額<br><span class="sth-sub">（円）</span></th>
+            <th class="sth sth-gray" style="border-right:none;">増減率<br><span class="sth-sub">（％）</span></th>
+          </tr>
+        </thead>
+        <tbody id="sim-tbody"></tbody>
+        <tfoot>
+          <tr>
+            <td class="stf">合　計</td>
+            <td class="stf" id="total-current">—</td>
+            <td class="stf stf-blue" id="total-after">—</td>
+            <td class="stf" id="total-diff">—</td>
+            <td class="stf" style="border-right:none;" id="total-rate">—</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div style="margin-top:14px; text-align:right;">
+      <button onclick="resetSim()" style="font-size:var(--text-sm); color:var(--white); background:var(--blue); border:none; border-radius:var(--radius-sm); padding:7px 20px; cursor:pointer; font-family:inherit; font-weight:700; letter-spacing:0.03em; transition:opacity 0.15s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">リセット</button>
+    </div>
+  </div>
+
 </div>
+
+<style>
+  /* ── シミュレーション ── */
+  .sth {
+    font-weight:700; padding:8px 12px; text-align:right;
+    border-bottom:1.5px solid var(--border-dk); border-right:1px solid var(--border);
+    white-space:nowrap; line-height:1.6;
+  }
+  .sth-gray { background:var(--box-gray); }
+  .sth-blue { background:var(--box-blue); color:var(--blue); }
+  .sth-sub  { font-size:var(--text-xs); font-weight:400; color:#666; }
+  .sth-blue .sth-sub { color:var(--blue); opacity:0.85; }
+
+  /* データセル */
+  .std {
+    padding:8px 12px; border-bottom:1px solid var(--border);
+    border-right:1px solid var(--border); text-align:right;
+    color:var(--ink); font-weight:700; vertical-align:middle;
+  }
+  .std-label { text-align:left; font-weight:700; white-space:nowrap; width:110px; }
+
+  /* 行背景のみで色分け、文字は黒統一 */
+  .row-up   { background:#fde8ef; }   /* ピンク：増加 */
+  .row-down { background:#ddf0f7; }   /* 水色：減少  */
+  .row-same { background:var(--white); }
+
+  /* 改定後列：増加→赤、減少→青、同→黒 */
+  .val-after-red  { color:var(--red);  font-weight:900; }
+  .val-after-blue { color:var(--blue); font-weight:900; }
+  .val-after-same { color:var(--ink);  font-weight:900; }
+
+  /* 増減額・率：増加→赤、減少→青、同→黒 */
+  .val-num     { color:var(--ink);  font-weight:700; }
+  .val-num-up  { color:var(--red);  font-weight:700; }
+  .val-num-dn  { color:var(--blue); font-weight:700; }
+
+  /* 合計行 */
+  .stf {
+    padding:9px 12px; font-weight:900; text-align:right;
+    border-top:2px solid var(--border-dk); border-right:1px solid var(--border);
+    color:var(--ink);
+  }
+  .stf-blue { color:var(--blue); }
+  .stf-red  { color:var(--red);  }
+  .stf-same { color:var(--ink);  }
+
+  /* 入力欄 */
+  .sim-input {
+    width:90px; text-align:right; padding:4px 7px;
+    font-size:var(--text-sm); font-family:inherit; font-weight:700;
+    border:1.5px solid var(--border); border-radius:var(--radius-sm);
+    background:#fffde7;   /* 薄い黄色 */
+    color:var(--ink); outline:none;
+    transition:background 0.15s;
+    -moz-appearance:textfield;
+  }
+  .sim-input::-webkit-outer-spin-button,
+  .sim-input::-webkit-inner-spin-button { -webkit-appearance:none; }
+  .sim-input:focus { border-color:var(--blue); }
+  .sim-input.has-value { background:var(--white); }  /* 入力済み→白 */
+  .sim-input::placeholder { color:#bbb; font-weight:400; }
+
+  @media (max-width:640px) {
+    .sim-input { width:72px; font-size:12px; }
+    .sth, .std, .stf { padding:6px 8px; }
+  }
+</style>
+
+<script>
+/* ── シミュレーション ── */
+(function() {
+  const SIM_KEY = 'chozai_sim_2026';
+  const rows = [
+    { label:'7日以内',      multiplier:10/4  },
+    { label:'8〜14日以内',  multiplier:10/28 },
+    { label:'15〜27日以内', multiplier:10/50 },
+    { label:'28日',         multiplier:60/50 },
+    { label:'29日以上',     multiplier:1     },
+    { label:'内服以外',     multiplier:10/4  },
+  ];
+
+  const fmtN    = n => Math.abs(n).toLocaleString('ja-JP');
+  const fmtRate = r => {
+    if (!isFinite(r)) return '—';
+    return (r > 0 ? '+' : r < 0 ? '−' : '') + Math.abs(r).toFixed(1) + '%';
+  };
+  /* diff>0→row-up／diff<0→row-down／同→row-same */
+  const rowCls  = n => n > 0 ? 'row-up'  : n < 0 ? 'row-down'  : 'row-same';
+  /* 増減額・率: diff>0→val-up(青)／diff<0→val-down(赤)／同→val-same */
+  const dirCls  = n => n > 0 ? 'val-up'  : n < 0 ? 'val-down'  : 'val-same';
+
+  function build() {
+    const tbody = document.getElementById('sim-tbody');
+    tbody.innerHTML = '';
+    rows.forEach((row, i) => {
+      const tr = document.createElement('tr');
+      tr.id = 'row-' + i;
+      tr.className = 'row-same';
+
+      const tdLabel = document.createElement('td');
+      tdLabel.className = 'std std-label';
+      tdLabel.textContent = row.label;
+
+      const tdInp = document.createElement('td');
+      tdInp.className = 'std';
+      tdInp.style.paddingRight = '8px';
+      const inp = document.createElement('input');
+      inp.className = 'sim-input';
+      inp.type = 'number';
+      inp.min = '0';
+      inp.step = '1';
+      inp.id = 'inp-' + i;
+      inp.placeholder = '金額入力';
+      inp.addEventListener('input', function() {
+        this.classList.toggle('has-value', this.value !== '');
+        calc();
+        saveSim();
+      });
+      tdInp.appendChild(inp);
+
+      const tdAfter = document.createElement('td');
+      tdAfter.className = 'std val-after-blue';
+      tdAfter.id = 'after-' + i;
+      tdAfter.textContent = '—';
+
+      const tdDiff = document.createElement('td');
+      tdDiff.className = 'std';
+      tdDiff.id = 'diff-' + i;
+      tdDiff.textContent = '—';
+
+      const tdRate = document.createElement('td');
+      tdRate.className = 'std';
+      tdRate.style.borderRight = 'none';
+      tdRate.id = 'rate-' + i;
+      tdRate.textContent = '—';
+
+      tr.appendChild(tdLabel);
+      tr.appendChild(tdInp);
+      tr.appendChild(tdAfter);
+      tr.appendChild(tdDiff);
+      tr.appendChild(tdRate);
+      tbody.appendChild(tr);
+    });
+  }
+
+  function setRow(i, cur, aft, diff, rate) {
+    const tr  = document.getElementById('row-'   + i);
+    const aEl = document.getElementById('after-' + i);
+    const dEl = document.getElementById('diff-'  + i);
+    const rEl = document.getElementById('rate-'  + i);
+    tr.className  = rowCls(diff);
+    aEl.textContent = fmtN(aft);
+    aEl.className   = 'std ' + (diff > 0 ? 'val-after-red' : diff < 0 ? 'val-after-blue' : 'val-after-same'); /* 増加→赤、減少→青、同→黒 */
+    dEl.textContent = diff > 0 ? fmtN(diff) : diff < 0 ? '▲ ' + fmtN(-diff) : '0';
+    dEl.className   = 'std ' + (diff > 0 ? 'val-num-up' : diff < 0 ? 'val-num-dn' : 'val-num');
+    rEl.textContent = isFinite(rate) ? fmtRate(rate) : '—';
+    rEl.className   = 'std ' + (diff > 0 ? 'val-num-up' : diff < 0 ? 'val-num-dn' : 'val-num');
+  }
+
+  function clearRow(i) {
+    document.getElementById('row-'   + i).className   = 'row-same';
+    const aEl = document.getElementById('after-' + i);
+    aEl.textContent = '—'; aEl.className = 'std val-after-same';
+    const dEl = document.getElementById('diff-'  + i);
+    dEl.textContent = '—'; dEl.className = 'std';
+    const rEl = document.getElementById('rate-'  + i);
+    rEl.textContent = '—'; rEl.className = 'std';
+  }
+
+  window.calc = function() {
+    let sumCur = 0, sumAft = 0, sumDiff = 0, any = false;
+    rows.forEach((row, i) => {
+      const v = parseFloat(document.getElementById('inp-' + i).value);
+      if (isNaN(v) || document.getElementById('inp-' + i).value === '') { clearRow(i); return; }
+      any = true;
+      const aft  = Math.round(v * row.multiplier);
+      const diff = aft - v;
+      const rate = v !== 0 ? diff / v * 100 : Infinity;
+      sumCur += v; sumAft += aft; sumDiff += diff;
+      setRow(i, v, aft, diff, rate);
+    });
+    const tc = document.getElementById('total-current');
+    const ta = document.getElementById('total-after');
+    const td = document.getElementById('total-diff');
+    const tr = document.getElementById('total-rate');
+    if (!any) {
+      [tc,ta,td,tr].forEach(el => { el.textContent = '—'; el.className = 'stf'; });
+      ta.className = 'stf stf-same'; tr.style.borderRight = 'none';
+      return;
+    }
+    tc.textContent = fmtN(sumCur); tc.className = 'stf';
+    ta.textContent = fmtN(sumAft); ta.className = 'stf ' + (sumDiff > 0 ? 'stf-red' : sumDiff < 0 ? 'stf-blue' : '');
+    td.textContent = sumDiff > 0 ? fmtN(sumDiff) : sumDiff < 0 ? '▲ ' + fmtN(-sumDiff) : '0';
+    td.className   = 'stf ' + (sumDiff > 0 ? 'stf-red' : sumDiff < 0 ? 'stf-blue' : '');
+    const rt = sumCur !== 0 ? sumDiff / sumCur * 100 : Infinity;
+    tr.textContent = isFinite(rt) ? fmtRate(rt) : '—';
+    tr.className   = 'stf ' + (sumDiff > 0 ? 'stf-red' : sumDiff < 0 ? 'stf-blue' : '');
+    tr.style.borderRight = 'none';
+  };
+
+  function saveSim() {
+    const vals = rows.map((_, i) => document.getElementById('inp-' + i).value);
+    try { localStorage.setItem(SIM_KEY, JSON.stringify(vals)); } catch(e) {}
+  }
+  window.saveSim = saveSim;
+
+  function loadSim() {
+    let vals = [];
+    try { vals = JSON.parse(localStorage.getItem(SIM_KEY) || '[]'); } catch(e) {}
+    vals.forEach((v, i) => {
+      const el = document.getElementById('inp-' + i);
+      if (el && v !== '') { el.value = v; el.classList.add('has-value'); }
+    });
+    calc();
+  }
+
+  window.resetSim = function() {
+    rows.forEach((_, i) => {
+      const inp = document.getElementById('inp-' + i); inp.value = ''; inp.classList.remove('has-value');
+      clearRow(i);
+    });
+    ['total-current','total-after','total-diff','total-rate'].forEach(id => {
+      const el = document.getElementById(id);
+      el.textContent = '—'; el.className = 'stf';
+    });
+    document.getElementById('total-after').className = 'stf stf-same';
+    document.getElementById('total-rate').style.borderRight = 'none';
+    try { localStorage.removeItem(SIM_KEY); } catch(e) {}
+  };
+
+  document.addEventListener('DOMContentLoaded', () => { build(); loadSim(); });
+})();
+</script>
+
 <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
 <!-- TOPに戻るリンク -->
