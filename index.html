@@ -94,26 +94,24 @@
         display: flex;
         align-items: center;
         gap: 14px;
-        background: var(--accent);
-        border: 1px solid var(--accent);
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-left: 4px solid var(--accent);
         border-radius: var(--radius);
-        padding: 18px 20px;
+        padding: 16px 20px;
         text-decoration: none;
-        transition: background 0.15s, box-shadow 0.15s;
-      }
-      .card-digest.alt {
-        background: var(--accent-mid);
-        border-color: var(--accent-mid);
+        transition: border-color 0.15s, box-shadow 0.15s;
       }
       .card-digest:hover {
-        filter: brightness(1.08);
-        box-shadow: 0 4px 14px rgba(30, 95, 168, 0.28);
+        border-color: var(--accent-mid);
+        border-left-color: var(--accent-mid);
+        box-shadow: 0 2px 8px rgba(30, 95, 168, 0.12);
       }
       .digest-icon {
-        width: 42px;
-        height: 42px;
+        width: 40px;
+        height: 40px;
         border-radius: 8px;
-        background: rgba(255, 255, 255, 0.18);
+        background: var(--accent-light);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -122,23 +120,23 @@
       .digest-icon svg {
         width: 20px;
         height: 20px;
-        stroke: #ffffff;
+        stroke: var(--accent);
       }
       .digest-body { flex: 1; }
       .digest-title {
-        font-size: 15px;
+        font-size: 16px;
         font-weight: 700;
-        color: #ffffff;
+        color: var(--accent);
         line-height: 1.4;
       }
       .digest-desc {
         font-size: 12px;
-        color: rgba(255, 255, 255, 0.78);
+        color: var(--text-sub);
         margin-top: 3px;
       }
       .digest-arrow {
         font-size: 20px;
-        color: rgba(255, 255, 255, 0.65);
+        color: var(--text-sub);
         flex-shrink: 0;
       }
 
