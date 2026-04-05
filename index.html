@@ -242,6 +242,51 @@
         color: var(--text-sub);
       }
 
+      /* ── 検索窓 ── */
+      .search-box { margin-bottom: 1.5rem; }
+      .search-inner {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--surface);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        padding: 10px 14px;
+        transition: border-color 0.15s;
+      }
+      .search-inner:focus-within {
+        border-color: var(--accent-mid);
+        box-shadow: 0 0 0 3px rgba(45, 125, 214, 0.1);
+      }
+      .search-inner svg { width: 16px; height: 16px; stroke: var(--text-sub); flex-shrink: 0; }
+      #search-input {
+        flex: 1;
+        border: none;
+        outline: none;
+        font-size: 14px;
+        font-family: inherit;
+        color: var(--text);
+        background: transparent;
+      }
+      #search-input::placeholder { color: #aaa; }
+      #search-clear {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text-sub);
+        font-size: 16px;
+        line-height: 1;
+        padding: 0 2px;
+        display: none;
+      }
+      #search-count {
+        font-size: 12px;
+        color: var(--text-sub);
+        margin-top: 6px;
+        padding-left: 2px;
+        min-height: 18px;
+      }
+
       /* ── モバイル ── */
       @media (max-width: 640px) {
         .card-list { grid-template-columns: 1fr; }
@@ -293,6 +338,18 @@
           </div>
           <span class="digest-arrow">›</span>
         </a>
+      </div>
+
+      <!-- 検索窓 -->
+      <div class="search-box">
+        <div class="search-inner">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input id="search-input" type="text" placeholder="資料名で検索（例：かかりつけ、在宅）" autocomplete="off" />
+          <button id="search-clear" onclick="clearSearch()" title="クリア">✕</button>
+        </div>
+        <div id="search-count"></div>
       </div>
 
       <!-- ポイント整理 -->
@@ -496,6 +553,58 @@
     <footer>
       <p class="footer-note">※各加算のまとめ資料は情報管理室（木村）が独自に作成したものです。公式の通知・告示ではありません。参考資料（原文）セクションの資料は厚生労働省の告示・事務連絡の原文をHTML化したものです。</p>
     </footer>
+  <script>
+    const searchInput = document.getElementById('search-input');
+    const searchClear = document.getElementById('search-clear');
+    const searchCount = document.getElementById('search-count');
+
+    searchInput.addEventListener('input', function () {
+      const query = this.value.trim().toLowerCase();
+      searchClear.style.display = query ? 'block' : 'none';
+      filterCards(query);
+    });
+
+    function clearSearch() {
+      searchInput.value = '';
+      searchClear.style.display = 'none';
+      filterCards('');
+      searchInput.focus();
+    }
+
+    function filterCards(query) {
+      if (!query) {
+        document.querySelectorAll('.card').forEach(c => c.style.display = '');
+        document.querySelectorAll('.card-list').forEach(cl => cl.style.display = '');
+        document.querySelectorAll('.section-title').forEach(st => st.style.display = '');
+        document.querySelector('.point-seiri-wrap').style.display = '';
+        searchCount.textContent = '';
+        return;
+      }
+
+      let total = 0;
+      document.querySelectorAll('.card').forEach(card => {
+        const title = card.querySelector('.card-title');
+        const match = title && title.textContent.toLowerCase().includes(query);
+        card.style.display = match ? '' : 'none';
+        if (match) total++;
+      });
+
+      document.querySelectorAll('.card-list').forEach(cardList => {
+        const hasVisible = Array.from(cardList.querySelectorAll('.card')).some(c => c.style.display !== 'none');
+        cardList.style.display = hasVisible ? '' : 'none';
+        const prev = cardList.previousElementSibling;
+        if (prev && prev.classList.contains('section-title')) {
+          prev.style.display = hasVisible ? '' : 'none';
+        }
+      });
+
+      const pointWrap = document.querySelector('.point-seiri-wrap');
+      const pointHasVisible = Array.from(pointWrap.querySelectorAll('.card')).some(c => c.style.display !== 'none');
+      pointWrap.style.display = pointHasVisible ? '' : 'none';
+
+      searchCount.textContent = total > 0 ? `${total}件の資料が見つかりました` : '該当する資料が見つかりませんでした';
+    }
+  </script>
   <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
