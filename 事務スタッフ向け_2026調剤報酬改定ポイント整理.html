@@ -72,9 +72,25 @@ tr:last-child td { border-bottom:none; }
   .score-block .score-num { font-size:20px; }
 }
 @media (max-width:640px) {
+  body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+  :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+  .card { padding:14px; border-radius:8px; }
+  .card-title { font-size:15px; flex-direction:column; align-items:flex-start; gap:6px; padding-bottom:6px; margin-bottom:10px; }
   .grid-2 { grid-template-columns:1fr; }
-  .page-title-wrap { flex-direction:column; }
-  body { padding:16px 12px 40px; }
+  .toc-grid { grid-template-columns:1fr !important; }
+  .page-title-wrap { flex-direction:column; gap:10px; }
+  .page-title-left { padding:4px 0 4px 14px; }
+  .page-title-left h1 { font-size:17px; line-height:1.45; }
+  .page-title-left p { font-size:12.5px; }
+  .box-blue, .box-gray { padding:10px 12px; }
+  .badge { font-size:12px; padding:2px 8px; }
+  .sub-title { font-size:13px; }
+  .score-block { align-self:flex-start; }
+  .score-block .score-label { font-size:11px; padding:5px 10px; }
+  .score-block .score-num { font-size:22px; padding:5px 14px; }
+  .check-label { min-width:68px; font-size:12px; }
+  table { font-size:12px; }
+  td, th { padding:6px 8px; word-break:break-all; }
 }
 </style>
 </head>
@@ -108,7 +124,7 @@ tr:last-child td { border-bottom:none; }
   <!-- 目次 -->
   <div class="card avoid-break">
     <div class="card-title">目次<span style="font-size:var(--text-xs); font-weight:400; color:#555; margin-left:12px;">項目をクリックするとその箇所へジャンプします</span></div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px 24px; font-size:var(--text-sm);">
+    <div class="toc-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:4px 24px; font-size:var(--text-sm);">
       <div><a href="#s01" style="color:var(--blue); text-decoration:none;">名称変更・廃止・再編されたもの</a></div>
       <div><a href="#s02" style="color:var(--blue); text-decoration:none;">栄養保持を目的とした医薬品</a></div>
       <div><a href="#s03" style="color:var(--blue); text-decoration:none;">調剤物価対応料</a></div>
