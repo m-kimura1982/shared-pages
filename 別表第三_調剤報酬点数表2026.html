@@ -83,10 +83,117 @@ ol.reg-list li { font-size:var(--text-sm); line-height:1.8; }
   .score-block .score-num { font-size: 22px; }
   table { font-size: 12px; }
 }
+
+/* ===== アコーディオン目次 ===== */
+.toc-search-wrap { margin-bottom: 12px; position: relative; }
+.toc-search-wrap input {
+  width: 100%; padding: 9px 14px 9px 38px;
+  border: 1.5px solid var(--border-dk); border-radius: var(--radius-sm);
+  font-size: var(--text-sm); font-family: inherit; outline: none;
+  transition: border-color 0.15s; background: var(--white);
+}
+.toc-search-wrap input:focus { border-color: var(--blue); }
+.toc-search-icon {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  color: #888; pointer-events: none; line-height: 1;
+}
+.toc-no-result { font-size: var(--text-sm); color: #888; padding: 8px 4px; display: none; }
+
+.toc-group { border-radius: var(--radius-sm); overflow: hidden; margin-bottom: 2px; }
+.toc-parent {
+  display: flex; align-items: center; gap: 10px;
+  padding: 5px 8px; cursor: pointer;
+  border-radius: var(--radius-sm); transition: background 0.1s;
+  user-select: none; list-style: none; border: none; background: none; width: 100%;
+}
+.toc-parent:hover { background: var(--box-blue); }
+.toc-parent .toc-num-badge {
+  flex-shrink: 0; font-weight: 900; background: var(--box-blue); color: var(--blue);
+  padding: 2px 8px; border-radius: 3px; font-size: var(--text-xs); white-space: nowrap;
+}
+.toc-parent .toc-name { flex: 1; font-weight: 700; color: var(--blue); font-size: var(--text-sm); text-align: left; }
+.toc-parent-link { flex: 1; display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
+.toc-arrow {
+  flex-shrink: 0; width: 18px; height: 18px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--blue); font-size: 11px; transition: transform 0.2s;
+}
+.toc-group.open .toc-arrow { transform: rotate(90deg); }
+.toc-arrow.hidden { visibility: hidden; }
+
+.toc-children {
+  display: none; flex-direction: column; gap: 1px;
+  padding: 2px 0 4px 16px; border-left: 2px solid var(--box-blue); margin-left: 12px;
+}
+.toc-group.open .toc-children { display: flex; }
+.toc-child {
+  display: flex; align-items: center; gap: 8px;
+  color: var(--blue); text-decoration: none;
+  font-size: calc(var(--text-xs) + 0.5px); padding: 4px 8px;
+  border-radius: var(--radius-sm); transition: background 0.1s;
+}
+.toc-child:hover { background: var(--box-blue); }
+.toc-child-badge {
+  flex-shrink: 0; font-size: 10px; font-weight: 700;
+  background: #eef4fb; color: var(--blue); padding: 1px 6px;
+  border-radius: 3px; white-space: nowrap;
+}
+.toc-child-name { flex: 1; font-weight: 500; }
+.toc-highlight { background: #fff176; border-radius: 2px; }
+
+@media print {
+  .toc-search-wrap { display: none; }
+  .toc-children { display: flex !important; }
+  .toc-arrow { display: none; }
+}
+@media (max-width:640px) { .toc-child { font-size: 11px; } }
+
+
+/* ===== 入れ子アコーディオン（第２節内） ===== */
+.toc-child-group { margin: 1px 0; }
+.toc-child-parent {
+  display: flex; align-items: center; gap: 8px;
+  color: var(--blue); font-size: calc(var(--text-xs) + 0.5px);
+  padding: 4px 8px; border-radius: var(--radius-sm);
+  cursor: pointer; border: none; background: none; width: 100%;
+  transition: background 0.1s;
+}
+.toc-child-parent:hover { background: var(--box-blue); }
+.toc-child-parent .toc-child-badge { flex-shrink:0; font-size:10px; font-weight:700; background:#eef4fb; color:var(--blue); padding:1px 6px; border-radius:3px; white-space:nowrap; }
+.toc-child-parent .toc-child-name { flex:1; font-weight:700; text-align:left; }
+.toc-child-arrow { flex-shrink:0; font-size:9px; color:var(--blue); transition: transform 0.2s; }
+.toc-child-group.open .toc-child-arrow { transform: rotate(90deg); }
+.toc-child-arrow.hidden { visibility: hidden; }
+
+.toc-grandchildren {
+  display: none; flex-direction: column; gap: 1px;
+  padding: 2px 0 4px 14px; border-left: 2px solid #d0e8f5; margin-left: 10px;
+}
+.toc-child-group.open .toc-grandchildren { display: flex; }
+.toc-grandchild {
+  display: flex; align-items: center; gap: 6px;
+  color: var(--blue); text-decoration: none;
+  font-size: 11.5px; padding: 3px 8px;
+  border-radius: var(--radius-sm); transition: background 0.1s;
+}
+.toc-grandchild:hover { background: var(--box-blue); }
+.toc-grandchild-badge { flex-shrink:0; font-size:10px; font-weight:700; background:#f3f8fd; color:#4a7fc1; padding:1px 5px; border-radius:3px; white-space:nowrap; }
+.toc-grandchild-name { flex:1; font-weight:400; color: #2a5a9f; }
+
+@media print {
+  .toc-grandchildren { display: flex !important; }
+  .toc-child-arrow { display: none; }
+}
+
 </style>
 </head>
 <body>
 <div class="page">
+
+  <!-- TOPリンク（上部） -->
+  <div style="text-align:left; padding-bottom:4px;">
+    <a href="index.html" style="display:inline-block; color:#1e5fa8; text-decoration:none; font-size:14px; border:1px solid #1e5fa8; border-radius:6px; padding:6px 16px;">← 資料一覧（TOP）に戻る</a>
+  </div>
 
   <!-- ページタイトル -->
   <div class="page-title">
@@ -95,18 +202,354 @@ ol.reg-list li { font-size:var(--text-sm); line-height:1.8; }
   </div>
 
   <!-- 目次カード -->
-  <div class="card">
+  <div class="card" id="toc">
     <div class="card-title">目次</div>
-    <ul class="toc-list">
-      <li><a href="#tsusoku"><span class="toc-num">通則</span> 通則</a></li>
-      <li><a href="#sec1"><span class="toc-num">第１節</span> 調剤技術料</a></li>
-      <li><a href="#sec2"><span class="toc-num">第２節</span> 薬学管理料</a></li>
-      <li><a href="#sec3"><span class="toc-num">第３節</span> 薬剤料</a></li>
-      <li><a href="#sec4"><span class="toc-num">第４節</span> 特定保険医療材料料</a></li>
-      <li><a href="#sec5"><span class="toc-num">第５節</span> その他</a></li>
-      <li><a href="#sec6"><span class="toc-num">第６節</span> 経過措置</a></li>
-    </ul>
-  </div>
+
+    <!-- 検索ボックス -->
+    <div class="toc-search-wrap">
+      <input type="text" id="tocSearch" placeholder="キーワードで絞り込み（例：加算、在宅、かかりつけ）" autocomplete="off">
+      <span class="toc-search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+    </div>
+    <p style="font-size:11px;color:#999;margin:-4px 0 10px 2px;">▶ を押すと詳細が開きます</p>
+    <div class="toc-no-result" id="tocNoResult">一致する項目が見つかりません</div>
+
+    <div class="toc-grid" id="tocGrid">
+
+    <!-- 通則 -->
+    <div class="toc-group" data-group>
+      <button class="toc-parent" onclick="toggleGroup(this)">
+        <span class="toc-num-badge">通則</span>
+        <a class="toc-parent-link" href="#tsusoku" onclick="event.stopPropagation()"><span class="toc-name">通則</span></a>
+        <span class="toc-arrow hidden">▶</span>
+      </button>
+    </div>
+
+    <!-- 第１節 調剤技術料 -->
+    <div class="toc-group" data-group>
+      <button class="toc-parent" onclick="toggleGroup(this)">
+        <span class="toc-num-badge">第１節</span>
+        <a class="toc-parent-link" href="#sec1" onclick="event.stopPropagation()"><span class="toc-name">調剤技術料</span></a>
+        <span class="toc-arrow">▶</span>
+      </button>
+      <div class="toc-children">
+        <a class="toc-child" href="#sec1"><span class="toc-child-badge">区分００</span><span class="toc-child-name">調剤基本料</span></a>
+        <a class="toc-child" href="#sec1"><span class="toc-child-badge">区分０１</span><span class="toc-child-name">薬剤調製料</span></a>
+        <a class="toc-child" href="#sec1"><span class="toc-child-badge">区分１０</span><span class="toc-child-name">調剤基本料の特例</span></a>
+      </div>
+    </div>
+
+    <!-- 第２節 薬学管理料 -->
+    <div class="toc-group" data-group>
+      <button class="toc-parent" onclick="toggleGroup(this)">
+        <span class="toc-num-badge">第２節</span>
+        <a class="toc-parent-link" href="#sec2" onclick="event.stopPropagation()"><span class="toc-name">薬学管理料</span></a>
+        <span class="toc-arrow">▶</span>
+      </button>
+      <div class="toc-children">
+
+        <!-- 区分１０の２ 調剤管理料 -->
+        <div class="toc-child-group" data-child-group>
+          <button class="toc-child-parent" onclick="toggleChildGroup(this)">
+            <span class="toc-child-badge">区分１０の２</span>
+            <a class="toc-parent-link" href="#sec2" onclick="event.stopPropagation()"><span class="toc-child-name">調剤管理料</span></a>
+            <span class="toc-child-arrow">▶</span>
+          </button>
+          <div class="toc-grandchildren">
+            <a class="toc-grandchild" href="#sec2"><span class="toc-grandchild-badge">注３</span><span class="toc-grandchild-name">調剤時残薬調整加算</span></a>
+            <a class="toc-grandchild" href="#sec2"><span class="toc-grandchild-badge">注４</span><span class="toc-grandchild-name">薬学的有害事象等防止加算</span></a>
+          </div>
+        </div>
+
+        <!-- 区分１０の３ 服薬管理指導料 -->
+        <div class="toc-child-group" data-child-group>
+          <button class="toc-child-parent" onclick="toggleChildGroup(this)">
+            <span class="toc-child-badge">区分１０の３</span>
+            <a class="toc-parent-link" href="#sec2" onclick="event.stopPropagation()"><span class="toc-child-name">服薬管理指導料</span></a>
+            <span class="toc-child-arrow">▶</span>
+          </button>
+          <div class="toc-grandchildren">
+            <a class="toc-grandchild" href="#sec2"><span class="toc-grandchild-badge">注６</span><span class="toc-grandchild-name">麻薬管理指導加算</span></a>
+            <a class="toc-grandchild" href="#sec2"><span class="toc-grandchild-badge">注７</span><span class="toc-grandchild-name">特定薬剤管理指導加算１</span></a>
+            <a class="toc-grandchild" href="#sec2"><span class="toc-grandchild-badge">注８</span><span class="toc-grandchild-name">特定薬剤管理指導加算２</span></a>
+            <a class="toc-grandchild" href="#sec2"><span class="toc-grandchild-badge">注９</span><span class="toc-grandchild-name">特定薬剤管理指導加算３</span></a>
+            <a class="toc-grandchild" href="#sec2"><span class="toc-grandchild-badge">注10</span><span class="toc-grandchild-name">乳幼児服薬指導加算</span></a>
+            <a class="toc-grandchild" href="#sec2"><span class="toc-grandchild-badge">注11</span><span class="toc-grandchild-name">小児特定加算</span></a>
+            <a class="toc-grandchild" href="#sec2"><span class="toc-grandchild-badge">注12</span><span class="toc-grandchild-name">吸入薬指導加算</span></a>
+            <a class="toc-grandchild" href="#sec2"><span class="toc-grandchild-badge">注13</span><span class="toc-grandchild-name">かかりつけ薬剤師フォローアップ加算</span></a>
+            <a class="toc-grandchild" href="#sec2"><span class="toc-grandchild-badge">注14</span><span class="toc-grandchild-name">かかりつけ薬剤師訪問加算</span></a>
+            <a class="toc-grandchild" href="#sec2"><span class="toc-grandchild-badge">注17</span><span class="toc-grandchild-name">服薬管理指導料の特例</span></a>
+          </div>
+        </div>
+
+        <!-- 区分１１〜１４ -->
+        <div class="toc-child-group" data-child-group>
+          <button class="toc-child-parent" onclick="toggleChildGroup(this)">
+            <span class="toc-child-badge">区分１１〜１４</span>
+            <a class="toc-parent-link" href="#sec2" onclick="event.stopPropagation()"><span class="toc-child-name">削除区分</span></a>
+            <span class="toc-child-arrow hidden">▶</span>
+          </button>
+        </div>
+
+        <!-- 区分１４の２ 外来服薬支援料 -->
+        <div class="toc-child-group" data-child-group>
+          <button class="toc-child-parent" onclick="toggleChildGroup(this)">
+            <span class="toc-child-badge">区分１４の２</span>
+            <a class="toc-parent-link" href="#sec2" onclick="event.stopPropagation()"><span class="toc-child-name">外来服薬支援料</span></a>
+            <span class="toc-child-arrow">▶</span>
+          </button>
+          <div class="toc-grandchildren">
+            <a class="toc-grandchild" href="#sec2"><span class="toc-grandchild-badge">注４</span><span class="toc-grandchild-name">施設連携加算</span></a>
+          </div>
+        </div>
+
+        <!-- 区分１４の３ 服用薬剤調整支援料 -->
+        <div class="toc-child-group" data-child-group>
+          <button class="toc-child-parent" onclick="toggleChildGroup(this)">
+            <span class="toc-child-badge">区分１４の３</span>
+            <a class="toc-parent-link" href="#sec2" onclick="event.stopPropagation()"><span class="toc-child-name">服用薬剤調整支援料</span></a>
+            <span class="toc-child-arrow hidden">▶</span>
+          </button>
+        </div>
+
+        <!-- 区分１４の４ 調剤後薬剤管理指導料 -->
+        <div class="toc-child-group" data-child-group>
+          <button class="toc-child-parent" onclick="toggleChildGroup(this)">
+            <span class="toc-child-badge">区分１４の４</span>
+            <a class="toc-parent-link" href="#sec2" onclick="event.stopPropagation()"><span class="toc-child-name">調剤後薬剤管理指導料</span></a>
+            <span class="toc-child-arrow hidden">▶</span>
+          </button>
+        </div>
+
+        <!-- 区分１５ 在宅患者訪問薬剤管理指導料 -->
+        <div class="toc-child-group" data-child-group>
+          <button class="toc-child-parent" onclick="toggleChildGroup(this)">
+            <span class="toc-child-badge">区分１５</span>
+            <a class="toc-parent-link" href="#sec2" onclick="event.stopPropagation()"><span class="toc-child-name">在宅患者訪問薬剤管理指導料</span></a>
+            <span class="toc-child-arrow">▶</span>
+          </button>
+          <div class="toc-grandchildren">
+            <a class="toc-grandchild" href="#sec2"><span class="toc-grandchild-badge">注２</span><span class="toc-grandchild-name">麻薬管理指導加算</span></a>
+            <a class="toc-grandchild" href="#sec2"><span class="toc-grandchild-badge">注３</span><span class="toc-grandchild-name">在宅患者医療用麻薬持続注射療法加算</span></a>
+            <a class="toc-grandchild" href="#sec2"><span class="toc-grandchild-badge">注４</span><span class="toc-grandchild-name">乳幼児加算</span></a>
+            <a class="toc-grandchild" href="#sec2"><span class="toc-grandchild-badge">注５</span><span class="toc-grandchild-name">小児特定加算</span></a>
+            <a class="toc-grandchild" href="#sec2"><span class="toc-grandchild-badge">注６</span><span class="toc-grandchild-name">在宅中心静脈栄養法加算</span></a>
+          </div>
+        </div>
+
+        <!-- 区分１５の２ -->
+        <div class="toc-child-group" data-child-group>
+          <button class="toc-child-parent" onclick="toggleChildGroup(this)">
+            <span class="toc-child-badge">区分１５の２</span>
+            <a class="toc-parent-link" href="#sec2" onclick="event.stopPropagation()"><span class="toc-child-name">在宅患者緊急訪問薬剤管理指導料</span></a>
+            <span class="toc-child-arrow hidden">▶</span>
+          </button>
+        </div>
+
+        <!-- 区分１５の３ -->
+        <div class="toc-child-group" data-child-group>
+          <button class="toc-child-parent" onclick="toggleChildGroup(this)">
+            <span class="toc-child-badge">区分１５の３</span>
+            <a class="toc-parent-link" href="#sec2" onclick="event.stopPropagation()"><span class="toc-child-name">在宅患者緊急時等共同指導料</span></a>
+            <span class="toc-child-arrow hidden">▶</span>
+          </button>
+        </div>
+
+        <!-- 区分１５の４ -->
+        <div class="toc-child-group" data-child-group>
+          <button class="toc-child-parent" onclick="toggleChildGroup(this)">
+            <span class="toc-child-badge">区分１５の４</span>
+            <a class="toc-parent-link" href="#sec2" onclick="event.stopPropagation()"><span class="toc-child-name">退院時共同指導料</span></a>
+            <span class="toc-child-arrow hidden">▶</span>
+          </button>
+        </div>
+
+        <!-- 区分１５の５ -->
+        <div class="toc-child-group" data-child-group>
+          <button class="toc-child-parent" onclick="toggleChildGroup(this)">
+            <span class="toc-child-badge">区分１５の５</span>
+            <a class="toc-parent-link" href="#sec2" onclick="event.stopPropagation()"><span class="toc-child-name">服薬情報等提供料</span></a>
+            <span class="toc-child-arrow hidden">▶</span>
+          </button>
+        </div>
+
+        <!-- 区分１５の６ -->
+        <div class="toc-child-group" data-child-group>
+          <button class="toc-child-parent" onclick="toggleChildGroup(this)">
+            <span class="toc-child-badge">区分１５の６</span>
+            <a class="toc-parent-link" href="#sec2" onclick="event.stopPropagation()"><span class="toc-child-name">削除区分</span></a>
+            <span class="toc-child-arrow hidden">▶</span>
+          </button>
+        </div>
+
+        <!-- 区分１５の７ -->
+        <div class="toc-child-group" data-child-group>
+          <button class="toc-child-parent" onclick="toggleChildGroup(this)">
+            <span class="toc-child-badge">区分１５の７</span>
+            <a class="toc-parent-link" href="#sec2" onclick="event.stopPropagation()"><span class="toc-child-name">経管投薬支援料</span></a>
+            <span class="toc-child-arrow hidden">▶</span>
+          </button>
+        </div>
+
+        <!-- 区分１５の８ -->
+        <div class="toc-child-group" data-child-group>
+          <button class="toc-child-parent" onclick="toggleChildGroup(this)">
+            <span class="toc-child-badge">区分１５の８</span>
+            <a class="toc-parent-link" href="#sec2" onclick="event.stopPropagation()"><span class="toc-child-name">在宅移行初期管理料</span></a>
+            <span class="toc-child-arrow hidden">▶</span>
+          </button>
+        </div>
+
+        <!-- 区分１５の９ -->
+        <div class="toc-child-group" data-child-group>
+          <button class="toc-child-parent" onclick="toggleChildGroup(this)">
+            <span class="toc-child-badge">区分１５の９</span>
+            <a class="toc-parent-link" href="#sec2" onclick="event.stopPropagation()"><span class="toc-child-name">訪問薬剤管理医師同時指導料</span></a>
+            <span class="toc-child-arrow hidden">▶</span>
+          </button>
+        </div>
+
+        <!-- 区分１５の１０ -->
+        <div class="toc-child-group" data-child-group>
+          <button class="toc-child-parent" onclick="toggleChildGroup(this)">
+            <span class="toc-child-badge">区分１５の１０</span>
+            <a class="toc-parent-link" href="#sec2" onclick="event.stopPropagation()"><span class="toc-child-name">複数名薬剤管理指導訪問料</span></a>
+            <span class="toc-child-arrow hidden">▶</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 第３節 薬剤料 -->
+    <div class="toc-group" data-group>
+      <button class="toc-parent" onclick="toggleGroup(this)">
+        <span class="toc-num-badge">第３節</span>
+        <a class="toc-parent-link" href="#sec3" onclick="event.stopPropagation()"><span class="toc-name">薬剤料</span></a>
+        <span class="toc-arrow">▶</span>
+      </button>
+      <div class="toc-children">
+        <a class="toc-child" href="#sec3"><span class="toc-child-badge">区分２０</span><span class="toc-child-name">使用薬剤料</span></a>
+      </div>
+    </div>
+
+    <!-- 第４節 特定保険医療材料料 -->
+    <div class="toc-group" data-group>
+      <button class="toc-parent" onclick="toggleGroup(this)">
+        <span class="toc-num-badge">第４節</span>
+        <a class="toc-parent-link" href="#sec4" onclick="event.stopPropagation()"><span class="toc-name">特定保険医療材料料</span></a>
+        <span class="toc-arrow">▶</span>
+      </button>
+      <div class="toc-children">
+        <a class="toc-child" href="#sec4"><span class="toc-child-badge">区分３０</span><span class="toc-child-name">特定保険医療材料</span></a>
+      </div>
+    </div>
+
+    <!-- 第５節 その他 -->
+    <div class="toc-group" data-group>
+      <button class="toc-parent" onclick="toggleGroup(this)">
+        <span class="toc-num-badge">第５節</span>
+        <a class="toc-parent-link" href="#sec5" onclick="event.stopPropagation()"><span class="toc-name">その他</span></a>
+        <span class="toc-arrow">▶</span>
+      </button>
+      <div class="toc-children">
+        <a class="toc-child" href="#sec5"><span class="toc-child-badge">区分４０</span><span class="toc-child-name">調剤ベースアップ評価料</span></a>
+        <a class="toc-child" href="#sec5"><span class="toc-child-badge">区分４１</span><span class="toc-child-name">調剤物価対応料</span></a>
+      </div>
+    </div>
+
+    <!-- 第６節 経過措置 -->
+    <div class="toc-group" data-group>
+      <button class="toc-parent" onclick="toggleGroup(this)">
+        <span class="toc-num-badge">第６節</span>
+        <a class="toc-parent-link" href="#sec6" onclick="event.stopPropagation()"><span class="toc-name">経過措置</span></a>
+        <span class="toc-arrow hidden">▶</span>
+      </button>
+    </div>
+
+    </div><!-- /toc-grid -->
+  </div><!-- /card#toc -->
+
+  <script>
+  function toggleChildGroup(btn) {
+    const group = btn.closest('.toc-child-group');
+    group.classList.toggle('open');
+  }
+  function toggleGroup(btn) {
+    const group = btn.closest('.toc-group');
+    group.classList.toggle('open');
+  }
+  (function() {
+    const input = document.getElementById('tocSearch');
+    const noResult = document.getElementById('tocNoResult');
+    const grid = document.getElementById('tocGrid');
+
+    function highlight(el, q) {
+      if (!el) return;
+      const idx = el.textContent.indexOf(q); if (idx === -1) return;
+      const b = el.textContent.slice(0,idx), m = el.textContent.slice(idx,idx+q.length), a = el.textContent.slice(idx+q.length);
+      el.innerHTML = b + '<span class="toc-highlight">' + m + '</span>' + a;
+    }
+
+    input.addEventListener('input', function() {
+      const q = this.value.trim();
+      const groups = grid.querySelectorAll('.toc-group');
+      let anyVisible = false;
+
+      groups.forEach(function(group) {
+        // ハイライト除去
+        group.querySelectorAll('.toc-highlight').forEach(function(el) {
+          el.parentNode.replaceChild(document.createTextNode(el.textContent), el);
+          el.parentNode && el.parentNode.normalize();
+        });
+
+        if (!q) {
+          group.style.display = '';
+          group.classList.remove('open');
+          group.querySelectorAll('.toc-child-group').forEach(function(cg){ cg.classList.remove('open'); });
+          return;
+        }
+
+        const pNum  = group.querySelector('.toc-num-badge') ? group.querySelector('.toc-num-badge').textContent : '';
+        const pName = group.querySelector(':scope > button > .toc-parent-link > .toc-name') ? group.querySelector(':scope > button > .toc-parent-link > .toc-name').textContent : '';
+        const parentHit = pNum.includes(q) || pName.includes(q);
+
+        // 子グループ（第２層）を検索
+        const childGroups = group.querySelectorAll('.toc-child-group');
+        let childGroupHit = false;
+        childGroups.forEach(function(cg) {
+          const cgNum  = cg.querySelector('.toc-child-badge') ? cg.querySelector('.toc-child-badge').textContent : '';
+          const cgName = cg.querySelector('.toc-child-name') ? cg.querySelector('.toc-child-name').textContent : '';
+          const gcHit  = Array.from(cg.querySelectorAll('.toc-grandchild')).some(function(gc){ return gc.textContent.includes(q); });
+          const cgHit  = cgNum.includes(q) || cgName.includes(q) || gcHit;
+          if (cgHit) { childGroupHit = true; cg.classList.add('open'); } else { cg.classList.remove('open'); }
+        });
+
+        // 通常の子（toc-childで直接いるもの）
+        const directChildren = Array.from(group.querySelectorAll('.toc-children > .toc-child'));
+        const directHit = directChildren.some(function(c){ return c.textContent.includes(q); });
+
+        const anyHit = parentHit || childGroupHit || directHit;
+        if (anyHit) {
+          group.style.display = ''; anyVisible = true;
+          if (childGroupHit || directHit) group.classList.add('open'); else group.classList.remove('open');
+
+          highlight(group.querySelector(':scope > button .toc-num-badge'), q);
+          highlight(group.querySelector(':scope > button > .toc-parent-link > .toc-name'), q);
+
+          childGroups.forEach(function(cg) {
+            highlight(cg.querySelector('.toc-child-badge'), q);
+            highlight(cg.querySelector('.toc-child-name'), q);
+            cg.querySelectorAll('.toc-grandchild-name').forEach(function(el){ highlight(el, q); });
+          });
+          directChildren.forEach(function(c){ highlight(c.querySelector('.toc-child-name'), q); });
+        } else {
+          group.style.display = 'none';
+        }
+      });
+      noResult.style.display = (!q || anyVisible) ? 'none' : 'block';
+    });
+  })();
+  </script>
 
   <!-- 通則 -->
   <div id="tsusoku" class="card">
