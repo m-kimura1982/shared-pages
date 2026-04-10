@@ -63,6 +63,42 @@ table.main-tbl td { border: 1px solid var(--border); padding: 8px 10px; vertical
 .notes { font-size: 12px; color: #555; border-top: 1px solid var(--border); padding-top: 8px; }
 .notes p { margin-bottom: 4px; }
 
+/* フィルターバー */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+.filter-label { font-size: 13px; font-weight: 700; color: var(--blue); white-space: nowrap; }
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border: 1px solid var(--border-dk);
+  border-radius: 20px;
+  background: var(--white);
+  color: var(--ink);
+  cursor: pointer;
+  transition: all .15s;
+  font-family: inherit;
+}
+.filter-btn:hover { border-color: var(--blue); color: var(--blue); }
+.filter-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+.filter-btn .leg-box { width: 12px; height: 12px; }
+.filter-count { margin-left: auto; font-size: 12px; color: #555; white-space: nowrap; }
+
+/* フィルター非表示 */
+tr.filter-hidden { display: none; }
+.section-hidden { display: none; }
+
 @media (max-width: 768px) {
   body { font-size: 13px; padding: 14px 10px 40px; }
   .title-wrap h1 { font-size: 16px; }
@@ -121,6 +157,15 @@ table.main-tbl td { border: 1px solid var(--border); padding: 8px 10px; vertical
   <div class="leg-item"><span class="leg-box lb-new"></span>新設</div>
   <div class="leg-item"><span class="leg-box lb-chg"></span>変更</div>
   <div class="leg-item"><span class="leg-box lb-del"></span>廃止（末尾掲載）</div>
+</div>
+
+<div class="filter-bar">
+  <span class="filter-label">絞り込み：</span>
+  <button class="filter-btn active" data-filter="all">すべて表示</button>
+  <button class="filter-btn" data-filter="new"><span class="leg-box lb-new"></span>新設のみ</button>
+  <button class="filter-btn" data-filter="deleted"><span class="leg-box lb-del"></span>廃止のみ</button>
+  <button class="filter-btn" data-filter="unchanged">変更なしのみ</button>
+  <span class="filter-count" id="filter-count"></span>
 </div>
 
 <div class="tbl-wrap">
@@ -275,8 +320,8 @@ table.main-tbl td { border: 1px solid var(--border); padding: 8px 10px; vertical
 </div>
 
 
-<div class="section-del">廃止項目（改定前のみ）</div>
-<div class="tbl-wrap">
+<div class="section-del" id="section-del">廃止項目（改定前のみ）</div>
+<div class="tbl-wrap" id="deleted-wrap">
 <table class="main-tbl"><thead><tr>
   <th class="c-no">項番</th>
   <th class="c-ku">区分</th>
@@ -359,6 +404,75 @@ table.main-tbl td { border: 1px solid var(--border); padding: 8px 10px; vertical
 
 </div>
 <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+(function() {
+  function buildGroups(tbody) {
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    const groups = [];
+    let current = null;
+    rows.forEach(tr => {
+      const hasNo = tr.querySelector('td.c-no');
+      if (hasNo) {
+        current = { type: tr.className || 'unchanged', rows: [tr] };
+        groups.push(current);
+      } else if (current) {
+        current.rows.push(tr);
+      }
+    });
+    return groups;
+  }
+
+  function getType(group) {
+    const cls = group.type;
+    if (cls.includes('row-new'))     return 'new';
+    if (cls.includes('row-changed')) return 'changed';
+    if (cls.includes('row-deleted')) return 'deleted';
+    return 'unchanged';
+  }
+
+  const tables = Array.from(document.querySelectorAll('table.main-tbl tbody'));
+  const allGroups = tables.flatMap(buildGroups);
+
+  const sectionDel  = document.getElementById('section-del');
+  const deletedWrap = document.getElementById('deleted-wrap');
+
+  function applyFilter(filter) {
+    let visible = 0;
+    allGroups.forEach(group => {
+      const type = getType(group);
+      const show = filter === 'all' || type === filter;
+      group.rows.forEach(tr => {
+        tr.classList.toggle('filter-hidden', !show);
+      });
+      if (show) visible++;
+    });
+
+    if (sectionDel) {
+      const hideDel = (filter !== 'all' && filter !== 'deleted');
+      sectionDel.classList.toggle('section-hidden', hideDel);
+      if (deletedWrap) deletedWrap.classList.toggle('section-hidden', hideDel);
+    }
+
+    const total = allGroups.length;
+    const countEl = document.getElementById('filter-count');
+    if (filter === 'all') {
+      countEl.textContent = `全 ${total} 項目`;
+    } else {
+      countEl.textContent = `${visible} / ${total} 項目を表示中`;
+    }
+  }
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      applyFilter(this.dataset.filter);
+    });
+  });
+
+  applyFilter('all');
+})();
+</script>
 
 <!-- TOPに戻るリンク -->
 <div style="text-align:center; padding:32px 16px 16px;">
