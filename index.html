@@ -241,7 +241,7 @@
       }
 
       /* ── 検索窓 ── */
-      .search-box { margin-bottom: 1.5rem; }
+      .search-box { margin-bottom: .3rem; }
       .search-inner {
         display: flex;
         align-items: center;
@@ -311,6 +311,7 @@
         <div class="news-title">更新情報</div>
         <ul class="news-list">
           <!-- 公開時にコメント解除 -->
+          <li><span class="news-date">4/15</span>疑義解釈 検索ツールを追加（平成18年度〜令和8年度 全7,341件収録）</li>
           <li><span class="news-date">4/13</span>調剤基本料　調剤基本料３ イの集中率に関する表現を修正しました。</li>
           <li><span class="news-date">4/12</span>各資料ページに原文参照リンク（別添３・別表第三・施設基準届出）を追加しました。</li>
           <li><span class="news-date">4/10</span>別表Ⅴ（調剤行為名称等の略号一覧）に絞り込みボタンを追加</li>
@@ -362,6 +363,15 @@
           <button id="search-clear" onclick="clearSearch()" title="クリア">✕</button>
         </div>
         <div id="search-count"></div>
+      </div>
+
+      <!-- 疑義解釈ツール -->
+      <div class="card-list" style="margin-top:0;margin-bottom:1.75rem;grid-template-columns:1fr">
+        <a class="card" href="疑義解釈検索ツール.html">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          <span class="card-title">疑義解釈 検索ツール　<small style="font-weight:400;color:#888;">H18〜R8年度 全7,341件</small></span>
+          <span class="card-arrow">›</span>
+        </a>
       </div>
 
       <!-- ポイント整理 -->
