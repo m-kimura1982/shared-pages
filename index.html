@@ -179,7 +179,9 @@ footer {
 }
 
 /* ── Mobile ── */
+.sp-br { display: none; }
 @media (max-width: 700px) {
+  .sp-br { display: inline; }
   .hero { padding: 52px 20px 60px; }
   .hero h1 { font-size: 26px; }
   .hero-desc { font-size: 14px; }
@@ -199,8 +201,8 @@ footer {
 
 <div class="hero">
   <div class="hero-inner">
-    <h1>調剤報酬を<em>「現場で使える形」</em>に。</h1>
-    <p class="hero-desc">改定の要点から疑義解釈まで。業務に必要な情報を、ひとまとめに。</p>
+    <h1>調剤報酬を<br class="sp-br"><em>「現場で使える形」</em>に。</h1>
+    <p class="hero-desc">改定の要点から疑義解釈まで。<br class="sp-br">業務に必要な情報を、ひとまとめに。</p>
   </div>
 </div>
 
@@ -287,7 +289,7 @@ footer {
 </main>
 
 <footer>
-  <p>※各加算のまとめ資料は情報管理室（木村）が独自に作成したものです。公式の通知・告示ではありません。</p>
+  <p>※各加算のまとめ資料は情報管理室（木村）が<br class="sp-br">独自に作成したものです。公式の通知・告示ではありません。</p>
 </footer>
 
 <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
