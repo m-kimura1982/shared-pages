@@ -1,637 +1,291 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2026改定 調剤報酬まとめ</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-      :root {
-        --bg: #f2f4f8;
-        --surface: #ffffff;
-        --accent: #1e5fa8;
-        --accent-light: #e8f0fb;
-        --accent-mid: #2d7dd6;
-        --text: #222222;
-        --text-sub: #666666;
-        --border: #d8dde8;
-        --radius: 8px;
-      }
-      body {
-        font-family: "Noto Sans JP", sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        min-height: 100vh;
-        padding: 0 0 4rem;
-      }
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>調剤薬局 実務支援サイト</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blue: #1e5fa8;
+  --blue-mid: #2d7dd6;
+  --blue-light: #e8f0fb;
+  --ink: #222222;
+  --sub: #666666;
+  --border: #d8dde8;
+  --white: #ffffff;
+  --bg: #f5f7fa;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: var(--ink); line-height: 1.7; }
 
-      /* ── ヘッダー ── */
-      header {
-        background: var(--surface);
-        border-bottom: 1px solid var(--border);
-        padding: 1.2rem 1.5rem;
-        text-align: center;
-      }
-      .header-inner {
-        max-width: 960px;
-        margin: 0 auto;
-        position: relative;
-      }
-      header h1 {
-        font-size: 28px;
-        font-weight: 700;
-        color: var(--accent);
-        letter-spacing: .06em;
-        line-height: 1.3;
-      }
-      .header-logo {
-        position: absolute;
-        top: 1rem;
-        right: 1.5rem;
-        height: 26px;
-        opacity: 0.8;
-      }
+/* ── Header ── */
+header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 24px;
+  position: sticky; top: 0; z-index: 10;
+}
+.header-inner {
+  max-width: 1000px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.header-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.header-logo-mark {
+  width: 34px; height: 34px; background: var(--blue); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.header-logo-mark svg { width: 18px; height: 18px; stroke: white; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.header-logo-text { font-size: 15px; font-weight: 700; color: var(--ink); }
+.header-img { height: 24px; opacity: 0.75; }
 
-      /* ── メイン ── */
-      main {
-        max-width: 960px;
-        margin: 2rem auto 0;
-        padding: 0 1rem;
-      }
+/* ── Hero ── */
+.hero {
+  background: var(--white);
+  padding: 56px 24px 60px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.hero-inner { max-width: 620px; margin: 0 auto; }
+.hero-label {
+  display: inline-block;
+  font-size: 12px; font-weight: 700; letter-spacing: .1em;
+  color: var(--blue); background: var(--blue-light);
+  padding: 5px 16px; border-radius: 100px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 38px; font-weight: 900; line-height: 1.3;
+  color: var(--ink); margin-bottom: 20px; letter-spacing: -.02em;
+}
+.hero h1 em { color: var(--blue); font-style: normal; }
+.hero-desc { font-size: 15px; color: var(--sub); line-height: 1.9; }
 
-      /* ── 更新情報 ── */
-      .news-box {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-left: 3px solid var(--accent);
-        border-radius: var(--radius);
-        padding: 12px 16px;
-        margin-bottom: 1.5rem;
-      }
-      .news-title {
-        font-size: 12px;
-        font-weight: 700;
-        color: var(--accent);
-        margin-bottom: 7px;
-        letter-spacing: .04em;
-      }
-      .news-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
-      .news-list li { display: flex; gap: 10px; font-size: 12px; line-height: 1.6; color: var(--text); }
-      .news-date { color: var(--text-sub); white-space: nowrap; min-width: 32px; }
+/* ── Main ── */
+main { max-width: 1000px; margin: 0 auto; padding: 52px 24px 60px; display: flex; flex-direction: column; gap: 52px; }
 
-      /* ── 特別カード（ダイジェスト） ── */
-      .overview-cards {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 10px;
-        margin-bottom: 1.5rem;
-      }
-      .card-digest {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-left: 4px solid var(--accent);
-        border-radius: var(--radius);
-        padding: 16px 20px;
-        text-decoration: none;
-        transition: border-color 0.15s, box-shadow 0.15s;
-      }
-      .card-digest:hover {
-        border-color: var(--accent-mid);
-        border-left-color: var(--accent-mid);
-        box-shadow: 0 2px 8px rgba(30, 95, 168, 0.12);
-      }
-      .digest-icon {
-        width: 40px;
-        height: 40px;
-        border-radius: 8px;
-        background: var(--accent-light);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-      }
-      .digest-icon svg {
-        width: 20px;
-        height: 20px;
-        stroke: var(--accent);
-      }
-      .digest-body { flex: 1; }
-      .digest-title {
-        font-size: 16px;
-        font-weight: 700;
-        color: var(--accent);
-        line-height: 1.4;
-      }
-      .digest-desc {
-        font-size: 12px;
-        color: var(--text-sub);
-        margin-top: 3px;
-      }
-      .digest-arrow {
-        font-size: 20px;
-        color: var(--text-sub);
-        flex-shrink: 0;
-      }
+/* ── Section header ── */
+.sec-tag { font-size: 11px; font-weight: 700; color: var(--blue); letter-spacing: .14em; margin-bottom: 8px; }
+.sec-heading { font-size: 22px; font-weight: 900; margin-bottom: 28px; }
 
-      /* ── セクションタイトル ── */
-      .section-title {
-        font-size: 13px;
-        font-weight: 700;
-        color: var(--accent);
-        border-left: 3px solid var(--accent);
-        padding-left: 10px;
-        margin-bottom: 0.75rem;
-      }
+/* ── Contents cards ── */
+.contents-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.content-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px 24px;
+  text-decoration: none;
+  color: var(--ink);
+  display: flex; flex-direction: column; gap: 14px;
+  transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+}
+.content-card:not(.disabled):hover {
+  border-color: var(--blue);
+  box-shadow: 0 6px 24px rgba(30, 95, 168, 0.13);
+  transform: translateY(-3px);
+}
+.content-card.disabled { opacity: 0.45; cursor: default; pointer-events: none; }
+.card-icon-wrap {
+  width: 52px; height: 52px; border-radius: 12px;
+  background: var(--blue-light);
+  display: flex; align-items: center; justify-content: center;
+}
+.card-icon-wrap svg { width: 26px; height: 26px; stroke: var(--blue); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.card-name { font-size: 17px; font-weight: 700; line-height: 1.4; }
+.card-desc { font-size: 13px; color: var(--sub); line-height: 1.75; flex: 1; }
+.card-meta { font-size: 12px; font-weight: 700; color: var(--blue); }
+.card-cta {
+  margin-top: 4px; font-size: 13px; font-weight: 700; color: var(--blue);
+  display: flex; align-items: center; gap: 4px;
+}
+.card-cta svg { width: 14px; height: 14px; stroke: var(--blue); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.15s; }
+.content-card:hover .card-cta svg { transform: translateX(3px); }
+.badge-soon {
+  display: inline-block; font-size: 11px; font-weight: 700;
+  color: #fff; background: #9ca3af;
+  padding: 2px 10px; border-radius: 4px; width: fit-content;
+}
 
-      /* ── カードリスト（2列グリッド） ── */
-      .card-list {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-        margin-bottom: 1.75rem;
-      }
-      .card {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 14px 16px;
-        text-decoration: none;
-        color: var(--text);
-        transition: border-color 0.15s, box-shadow 0.15s;
-      }
-      .card:hover {
-        border-color: var(--accent-mid);
-        box-shadow: 0 2px 8px rgba(30, 95, 168, 0.1);
-      }
-      .card-icon {
-        width: 36px;
-        height: 36px;
-        border-radius: 6px;
-        background: var(--accent-light);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-      }
-      .card-icon svg {
-        width: 18px;
-        height: 18px;
-        stroke: var(--accent);
-      }
-      .card-title {
-        font-size: 14px;
-        font-weight: 500;
-        flex: 1;
-        line-height: 1.5;
-      }
-      .card-arrow {
-        font-size: 18px;
-        color: var(--text-sub);
-        flex-shrink: 0;
-      }
+/* ── Pickup cards ── */
+.pickup-list { display: flex; flex-direction: column; gap: 10px; }
+.pickup-card {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--white); border: 1.5px solid var(--blue);
+  border-radius: var(--radius); padding: 16px 20px;
+  text-decoration: none; color: var(--ink);
+  transition: box-shadow 0.15s;
+}
+.pickup-card:hover { box-shadow: 0 4px 16px rgba(30,95,168,0.12); }
+.pickup-icon {
+  background: var(--blue-light); border-radius: 8px;
+  width: 40px; height: 40px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.pickup-icon svg { width: 20px; height: 20px; stroke: var(--blue); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.pickup-body { flex: 1; }
+.pickup-name { font-size: 15px; font-weight: 700; }
+.pickup-desc { font-size: 12px; color: var(--sub); margin-top: 2px; }
+.pickup-arrow { font-size: 20px; color: var(--sub); flex-shrink: 0; }
 
-      /* ── ポイント整理セクション ── */
-      .point-seiri-wrap {
-        background: #e6e9ef;
-        border-radius: var(--radius);
-        padding: 16px 18px;
-        margin-bottom: 1.75rem;
-      }
-      .point-seiri-wrap .card-list {
-        margin-bottom: 0;
-      }
+/* ── Updates ── */
+.updates-box {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.updates-head {
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px; font-weight: 700;
+  display: flex; align-items: center; gap: 8px; color: var(--ink);
+}
+.updates-head svg { width: 15px; height: 15px; stroke: var(--blue); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.updates-list { list-style: none; }
+.updates-list li {
+  display: flex; gap: 16px; align-items: baseline;
+  padding: 11px 22px; border-bottom: 1px solid #f0f2f5;
+  font-size: 13px; line-height: 1.6;
+}
+.updates-list li:last-child { border-bottom: none; }
+.updates-date { color: var(--sub); white-space: nowrap; font-size: 12px; min-width: 30px; }
+.updates-all {
+  display: flex; justify-content: flex-end;
+  padding: 10px 22px;
+  border-top: 1px solid var(--border);
+}
+.updates-all a {
+  font-size: 12px; color: var(--blue); text-decoration: none; font-weight: 700;
+}
+.updates-all a:hover { text-decoration: underline; }
 
-      .card-disabled {
-        opacity: 0.6;
-        cursor: default;
-        pointer-events: none;
-      }
-      .badge-wip {
-        display: inline-block;
-        font-size: 11px;
-        font-weight: 700;
-        color: #fff;
-        background: #b45309;
-        padding: 1px 8px;
-        border-radius: 3px;
-        margin-left: 8px;
-        vertical-align: middle;
-      }
+/* ── Footer ── */
+footer {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  padding: 28px 24px;
+  text-align: center;
+  font-size: 11px; color: var(--sub); line-height: 1.8;
+}
 
-      /* ── フッター ── */
-      footer {
-        max-width: 960px;
-        margin: 0 auto;
-        padding: 0 1rem;
-        text-align: right;
-      }
-      .footer-note {
-        font-size: 11px;
-        color: var(--text-sub);
-      }
+/* ── Mobile ── */
+@media (max-width: 700px) {
+  .hero { padding: 52px 20px 60px; }
+  .hero h1 { font-size: 26px; }
+  .hero-desc { font-size: 14px; }
+  .contents-grid { grid-template-columns: 1fr; gap: 12px; }
+  main { padding: 48px 16px 60px; gap: 52px; }
+  .sec-heading { font-size: 18px; }
+}
+</style>
+</head>
+<body>
 
-      /* ── 検索窓 ── */
-      .search-box { margin-bottom: .3rem; }
-      .search-inner {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        background: var(--surface);
-        border: 1.5px solid var(--border);
-        border-radius: var(--radius);
-        padding: 10px 14px;
-        transition: border-color 0.15s;
-      }
-      .search-inner:focus-within {
-        border-color: var(--accent-mid);
-        box-shadow: 0 0 0 3px rgba(45, 125, 214, 0.1);
-      }
-      .search-inner svg { width: 16px; height: 16px; stroke: var(--text-sub); flex-shrink: 0; }
-      #search-input {
-        flex: 1;
-        border: none;
-        outline: none;
-        font-size: 14px;
-        font-family: inherit;
-        color: var(--text);
-        background: transparent;
-      }
-      #search-input::placeholder { color: #aaa; }
-      #search-clear {
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: var(--text-sub);
-        font-size: 16px;
-        line-height: 1;
-        padding: 0 2px;
-        display: none;
-      }
-      #search-count {
-        font-size: 12px;
-        color: var(--text-sub);
-        margin-top: 6px;
-        padding-left: 2px;
-        min-height: 18px;
-      }
+<header>
+  <div class="header-inner">
+    <img src="会社ロゴ.png" alt="Hello Group" class="header-img">
+  </div>
+</header>
 
-      /* ── モバイル ── */
-      @media (max-width: 640px) {
-        .card-list { grid-template-columns: 1fr; }
-        .card-digest { padding: 14px 16px; }
-        .digest-title { font-size: 14px; }
-        header { padding: 0.8rem 1rem; text-align: left; }
-        .header-inner { display: flex; align-items: center; justify-content: space-between; }
-        header h1 { font-size: 16px; }
-        .header-logo { position: static; height: 22px; opacity: 0.8; }
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <div class="header-inner">
-        <h1>2026改定 調剤報酬まとめ</h1>
-        <img src="会社ロゴ.png" alt="Hello Group" class="header-logo" />
-      </div>
-    </header>
-    <main>
+<div class="hero">
+  <div class="hero-inner">
+    <h1>調剤報酬を<em>「現場で使える形」</em>に。</h1>
+    <p class="hero-desc">改定の要点から疑義解釈まで。業務に必要な情報を、ひとまとめに。</p>
+  </div>
+</div>
 
-      <!-- 更新情報 -->
-      <div class="news-box">
-        <div class="news-title">更新情報</div>
-        <ul class="news-list">
-          <!-- 公開時にコメント解除 -->
-          <li><span class="news-date">4/15</span>疑義解釈 検索ツールを追加（平成18年度〜令和8年度 全7,341件収録）</li>
-          <li><span class="news-date">4/13</span>調剤基本料　調剤基本料３ イの集中率に関する表現を修正しました。</li>
-          <li><span class="news-date">4/12</span>各資料ページに原文参照リンク（別添３・別表第三・施設基準届出）を追加しました。</li>
-          <li><span class="news-date">4/10</span>別表Ⅴ（調剤行為名称等の略号一覧）に絞り込みボタンを追加</li>
-          <li><span class="news-date">4/10</span>別添3（調剤報酬点数表に関する事項）・別表第三（調剤報酬点数表）の目次を折りたたみ式に改善</li>
-          <li><span class="news-date">4/6</span>地域支援・医薬品供給対応体制加算　施設基準・届出判定ツールを追加</li>
-          <li><span class="news-date">4/5</span>事務スタッフ向け 2026調剤報酬改定ポイント整理を追加</li>
-        </ul>
-      </div>
+<main>
 
-      <!-- 概要資料 -->
-      <div class="overview-cards">
-        <a class="card-digest" href="調剤報酬改定2026_ダイジェスト.html">
-          <div class="digest-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
-              <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
-            </svg>
-          </div>
-          <div class="digest-body">
-            <div class="digest-title">2026改定 ダイジェスト</div>
-            <div class="digest-desc">改定項目の要点を一覧で確認</div>
-          </div>
-          <span class="digest-arrow">›</span>
-        </a>
-        <a class="card-digest" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html">
-          <div class="digest-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-          </div>
-          <div class="digest-body">
-            <div class="digest-title">事務スタッフ向け 改定ポイント整理</div>
-            <div class="digest-desc">受付・入力・会計に関わる改定を整理　摘要欄入力対応表付き</div>
-          </div>
-          <span class="digest-arrow">›</span>
-        </a>
-      </div>
+  <section>
+    <p class="sec-tag">CONTENTS</p>
+    <h2 class="sec-heading">コンテンツ一覧</h2>
+    <div class="contents-grid">
 
-      <!-- 検索窓 -->
-      <div class="search-box">
-        <div class="search-inner">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
-          <input id="search-input" type="text" placeholder="資料名で検索（例：かかりつけ、在宅）" autocomplete="off" />
-          <button id="search-clear" onclick="clearSearch()" title="クリア">✕</button>
+      <a class="content-card" href="kaitei2026.html">
+        <div class="card-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
-        <div id="search-count"></div>
-      </div>
+        <div class="card-name">2026年 調剤報酬改定</div>
+        <div class="card-desc">加算・管理料の改定ポイントを解説。ダイジェスト・算定フロー・早見表・別表など30資料収録。</div>
+        <div class="card-meta">30資料収録</div>
+        <div class="card-cta">資料一覧を見る <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
 
-      <!-- 疑義解釈ツール -->
-      <div class="card-list" style="margin-top:0;margin-bottom:1.75rem;grid-template-columns:1fr">
-        <a class="card" href="gigi-search.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-          <span class="card-title">疑義解釈 検索ツール　<small style="font-weight:400;color:#888;">H18〜R8年度 全7,341件</small></span>
-          <span class="card-arrow">›</span>
-        </a>
-      </div>
-
-      <!-- ポイント整理 -->
-      <div class="point-seiri-wrap">
-        <p class="section-title">ポイント整理</p>
-        <div class="card-list">
-          <a class="card" href="調剤報酬体系図_2026改定.html">
-            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
-            <span class="card-title">調剤報酬の体系図</span>
-            <span class="card-arrow">›</span>
-          </a>
-          <a class="card" href="かかりつけ薬剤師_算定一覧2026.html">
-            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="9" x2="9" y2="21"/></svg></div>
-            <span class="card-title">かかりつけ薬剤師に関わる管理料・加算一覧</span>
-            <span class="card-arrow">›</span>
-          </a>
-          <a class="card" href="【簡易版】かかりつけ薬剤師に関わる管理料・加算一覧.html">
-            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="9" x2="9" y2="21"/></svg></div>
-            <span class="card-title">【簡易版】かかりつけ薬剤師に関わる管理料・加算一覧</span>
-            <span class="card-arrow">›</span>
-          </a>
-          <a class="card" href="調剤報酬点数早見表2026.html">
-            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="9" x2="9" y2="21"/></svg></div>
-            <span class="card-title">調剤報酬点数早見表（2026年改定）</span>
-            <span class="card-arrow">›</span>
-          </a>
+      <a class="content-card" href="tools.html">
+        <div class="card-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
         </div>
+        <div class="card-name">実務ツール集</div>
+        <div class="card-desc">疑義解釈検索・届出判定・併算定可否チェックなど、現場ですぐ使えるツールをまとめています。</div>
+        <div class="card-meta">3ツール収録</div>
+        <div class="card-cta">ツール一覧を見る <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+
+    </div>
+  </section>
+
+  <section>
+    <p class="sec-tag">PICKUP</p>
+    <h2 class="sec-heading">おすすめコンテンツ</h2>
+    <div class="pickup-list">
+      <a class="pickup-card" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html">
+        <div class="pickup-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="pickup-body">
+          <div class="pickup-name">事務スタッフ向け 改定ポイント整理</div>
+          <div class="pickup-desc">受付・入力・会計に関わる改定を整理。摘要欄入力対応表付き。</div>
+        </div>
+        <span class="pickup-arrow">›</span>
+      </a>
+      <a class="pickup-card" href="調剤報酬改定2026_ダイジェスト.html">
+        <div class="pickup-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+        <div class="pickup-body">
+          <div class="pickup-name">2026改定 ダイジェスト</div>
+          <div class="pickup-desc">改定項目の要点を一覧で確認。まずここから。</div>
+        </div>
+        <span class="pickup-arrow">›</span>
+      </a>
+      <a class="pickup-card" href="調剤報酬体系図_2026改定.html">
+        <div class="pickup-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+        <div class="pickup-body">
+          <div class="pickup-name">調剤報酬の体系図</div>
+          <div class="pickup-desc">2026改定後の点数体系を図で整理。全体像の確認に。</div>
+        </div>
+        <span class="pickup-arrow">›</span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <p class="sec-tag">UPDATES</p>
+    <h2 class="sec-heading">更新情報</h2>
+    <div class="updates-box">
+      <div class="updates-head">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        最近の更新
       </div>
+      <ul class="updates-list">
+        <li><span class="updates-date">4/16</span>別表１（１）服薬管理指導料等　他の薬学管理料との算定可否表を追加</li>
+        <li><span class="updates-date">4/15</span>疑義解釈 検索ツールを追加（平成18年度〜令和8年度 全7,341件収録）</li>
+        <li><span class="updates-date">4/13</span>調剤基本料　調剤基本料３ イの集中率に関する表現を修正</li>
+        <li><span class="updates-date">4/12</span>各資料ページに原文参照リンクを追加（別添３・別表第三・施設基準届出）</li>
+        <li><span class="updates-date">4/10</span>別表Ⅴ（調剤行為名称等の略号一覧）に絞り込みボタンを追加</li>
+      </ul>
+      <div class="updates-all"><a href="kaitei2026.html">2026改定の資料一覧を見る →</a></div>
+    </div>
+  </section>
 
-      <!-- 調剤技術料 -->
-      <p class="section-title">調剤技術料</p>
-      <div class="card-list">
-        <a class="card" href="在宅薬学総合体制加算2026.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">在宅薬学総合体制加算</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="地域支援医薬品供給対応体制加算.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">地域支援医薬品供給対応体制加算</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="地域支援医薬品供給対応体制加算_届出判定ツール.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">地域支援・医薬品供給対応体制加算　施設基準・届出判定ツール</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="調剤基本料_2026改定.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">調剤基本料</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="調剤基本料フローチャート.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">調剤基本料フローチャート</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="電子的調剤情報連携体制整備加算_2026改定.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">電子的調剤情報連携体制整備加算</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="バイオ後続品調剤体制加算.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">バイオ後続品調剤体制加算</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="門前薬局等立地依存減算.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">門前薬局等立地依存減算</span>
-          <span class="card-arrow">›</span>
-        </a>
-      </div>
+</main>
 
-      <!-- 薬学管理料 -->
-      <p class="section-title">薬学管理料</p>
-      <div class="card-list">
-        <a class="card" href="かかりつけ薬剤師フォローアップ加算.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">かかりつけ薬剤師フォローアップ加算</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="かかりつけ薬剤師訪問加算.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">かかりつけ薬剤師訪問加算</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="吸入薬指導加算2026.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">吸入薬指導加算</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="調剤管理料_2026改定.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">調剤管理料</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="調剤時残薬調整加算.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">調剤時残薬調整加算</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="複数名薬剤管理指導訪問料.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">複数名薬剤管理指導訪問料</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="服薬管理指導料.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">服薬管理指導料</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="服用薬剤調整支援料２_2026改定.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">服用薬剤調整支援料２</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="服用薬剤調整支援料２_資格取得ステップ.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">服用薬剤調整支援料２ 資格取得ステップ</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="訪問薬剤管理医師同時指導料.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">訪問薬剤管理医師同時指導料</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="在宅患者訪問薬剤管理指導料_算定間隔2026.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">在宅患者訪問薬剤管理指導料　算定間隔の見直し</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="薬学的有害事象等防止加算.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">薬学的有害事象等防止加算</span>
-          <span class="card-arrow">›</span>
-        </a>
-      </div>
+<footer>
+  <p>※各加算のまとめ資料は情報管理室（木村）が独自に作成したものです。公式の通知・告示ではありません。</p>
+</footer>
 
-      <!-- その他 -->
-      <p class="section-title">その他</p>
-      <div class="card-list">
-        <a class="card" href="選定療養_概要2026.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">選定療養の改定ポイント</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="栄養保持を目的とした医薬品の保険給付の適正化.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">栄養保持を目的とした医薬品の保険給付の適正化</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="調剤物価対応料.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">調剤物価対応料</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="調剤ベースアップ評価料.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">調剤ベースアップ評価料</span>
-          <span class="card-arrow">›</span>
-        </a>
-      </div>
-
-      <!-- 参考資料 -->
-      <p class="section-title">参考資料（原文）</p>
-      <div class="card-list">
-        <a class="card" href="別表第三_調剤報酬点数表2026.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">別表第三　調剤報酬点数表</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="別添3_調剤報酬点数表に関する事項2026.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">別添３　調剤報酬点数表に関する事項</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="特掲診療料_施設基準届出_調剤関係2026.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">特掲診療料の施設基準等及びその届出に関する手続きの取扱いについて（調剤関係）</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="疑義解釈_その1_2026.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">疑義解釈資料の送付について（その１）</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="疑義解釈_その2_2026.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">疑義解釈資料の送付について（その２）</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="別表Ⅴ_調剤行為名称等の略号一覧2026改定.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">別表Ⅴ　調剤行為名称等の略号一覧</span>
-          <span class="card-arrow">›</span>
-        </a>
-        <a class="card" href="別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <span class="card-title">別表Ⅰ　調剤報酬明細書の「摘要」欄への記載事項等一覧</span>
-          <span class="card-arrow">›</span>
-        </a>
-      </div>
-
-    </main>
-    <footer>
-      <p class="footer-note">※各加算のまとめ資料は情報管理室（木村）が独自に作成したものです。公式の通知・告示ではありません。参考資料（原文）セクションの資料は厚生労働省の告示・事務連絡の原文をHTML化したものです。</p>
-    </footer>
-  <script>
-    const searchInput = document.getElementById('search-input');
-    const searchClear = document.getElementById('search-clear');
-    const searchCount = document.getElementById('search-count');
-
-    searchInput.addEventListener('input', function () {
-      const query = this.value.trim().toLowerCase();
-      searchClear.style.display = query ? 'block' : 'none';
-      filterCards(query);
-    });
-
-    function clearSearch() {
-      searchInput.value = '';
-      searchClear.style.display = 'none';
-      filterCards('');
-      searchInput.focus();
-    }
-
-    function filterCards(query) {
-      if (!query) {
-        document.querySelectorAll('.card').forEach(c => c.style.display = '');
-        document.querySelectorAll('.card-list').forEach(cl => cl.style.display = '');
-        document.querySelectorAll('.section-title').forEach(st => st.style.display = '');
-        document.querySelector('.point-seiri-wrap').style.display = '';
-        searchCount.textContent = '';
-        return;
-      }
-
-      let total = 0;
-      document.querySelectorAll('.card').forEach(card => {
-        const title = card.querySelector('.card-title');
-        const match = title && title.textContent.toLowerCase().includes(query);
-        card.style.display = match ? '' : 'none';
-        if (match) total++;
-      });
-
-      document.querySelectorAll('.card-list').forEach(cardList => {
-        const hasVisible = Array.from(cardList.querySelectorAll('.card')).some(c => c.style.display !== 'none');
-        cardList.style.display = hasVisible ? '' : 'none';
-        const prev = cardList.previousElementSibling;
-        if (prev && prev.classList.contains('section-title')) {
-          prev.style.display = hasVisible ? '' : 'none';
-        }
-      });
-
-      const pointWrap = document.querySelector('.point-seiri-wrap');
-      const pointHasVisible = Array.from(pointWrap.querySelectorAll('.card')).some(c => c.style.display !== 'none');
-      pointWrap.style.display = pointHasVisible ? '' : 'none';
-
-      searchCount.textContent = total > 0 ? `${total}件の資料が見つかりました` : '該当する資料が見つかりませんでした';
-    }
-  </script>
-  <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

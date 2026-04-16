@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>実務ツール集｜調剤薬局 実務支援サイト</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blue: #1e5fa8; --blue-light: #e8f0fb; --ink: #222222; --sub: #666666;
+  --border: #d8dde8; --white: #ffffff; --bg: #f5f7fa;
+  --radius: 10px; --radius-sm: 6px;
+  --text-xs: 13px; --text-sm: 15px; --text-md: 16px; --text-lg: 18px; --text-xl: 22px;
+}
+body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: var(--ink); font-size: var(--text-md); line-height: 1.8; padding: 32px 16px 60px; }
+.page { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+
+.page-title { border-left: 4px solid var(--blue); padding: 6px 0 6px 18px; }
+.page-title h1 { font-size: var(--text-xl); font-weight: 900; }
+.page-title p { font-size: var(--text-sm); font-weight: 500; margin-top: 4px; color: var(--sub); }
+
+.tool-list { display: flex; flex-direction: column; gap: 12px; }
+
+.tool-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.tool-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 3px 12px rgba(30, 95, 168, 0.1);
+}
+.tool-icon {
+  width: 48px; height: 48px; flex-shrink: 0;
+  background: var(--blue-light);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+}
+.tool-icon svg { width: 24px; height: 24px; stroke: var(--blue); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.tool-body { flex: 1; }
+.tool-name { font-size: var(--text-lg); font-weight: 700; margin-bottom: 4px; }
+.tool-desc { font-size: var(--text-xs); color: var(--sub); }
+.tool-arrow { font-size: 20px; color: var(--sub); flex-shrink: 0; }
+
+.note { font-size: 12px; color: var(--sub); padding: 0 2px; }
+
+@media (max-width: 640px) {
+  body { padding: 14px 12px 40px; }
+  .tool-card { padding: 16px; gap: 14px; }
+  .tool-name { font-size: var(--text-md); }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div style="padding: 4px 0 0;">
+    <a href="index.html" style="color:#1e5fa8;text-decoration:none;font-size:13px;border:1px solid #1e5fa8;border-radius:6px;padding:4px 14px;background:#fff;">← トップに戻る</a>
+  </div>
+
+  <div class="page-title">
+    <h1>実務ツール集</h1>
+    <p>業務でそのまま使えるツール・チェック表をまとめています</p>
+  </div>
+
+  <div class="tool-list">
+
+    <a class="tool-card" href="gigi-search.html">
+      <div class="tool-icon">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+      <div class="tool-body">
+        <div class="tool-name">疑義解釈 検索ツール</div>
+        <div class="tool-desc">平成18年度〜令和8年度の疑義解釈を全文検索。キーワードで即座に確認できます。全7,341件収録。</div>
+      </div>
+      <span class="tool-arrow">›</span>
+    </a>
+
+    <a class="tool-card" href="地域支援医薬品供給対応体制加算_届出判定ツール.html">
+      <div class="tool-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 0 2 2h11"/></svg>
+      </div>
+      <div class="tool-body">
+        <div class="tool-name">地域支援・医薬品供給対応体制加算　届出判定ツール</div>
+        <div class="tool-desc">施設基準の要件を確認しながら、届出の可否を判定します。</div>
+      </div>
+      <span class="tool-arrow">›</span>
+    </a>
+
+    <a class="tool-card" href="服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html">
+      <div class="tool-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="9" x2="9" y2="21"/></svg>
+      </div>
+      <div class="tool-body">
+        <div class="tool-name">服薬管理指導料等　併算定可否チェック表</div>
+        <div class="tool-desc">服薬管理指導料等を算定する場合に、他の薬学管理料が算定できるかを一覧で確認できます。（別表１（１））</div>
+      </div>
+      <span class="tool-arrow">›</span>
+    </a>
+
+  </div>
+
+  <p class="note">※ ツールは随時追加予定です。</p>
+
+</div>
+<script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
