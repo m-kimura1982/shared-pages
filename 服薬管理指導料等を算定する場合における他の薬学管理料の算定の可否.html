@@ -142,6 +142,22 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
 /* カテゴリ境界 */
 .beppyo-table .cat-border-top td { border-top: 2px solid var(--border-dk); }
 
+/* ===== 使い方ヒント ===== */
+.usage-hint {
+  display: flex; gap: 20px; flex-wrap: wrap;
+  font-size: 12px; color: #555;
+  padding: 9px 16px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.hint-item { display: flex; align-items: center; gap: 6px; }
+.hint-item svg {
+  width: 13px; height: 13px; flex-shrink: 0;
+  stroke: var(--blue); fill: none;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+
 /* 注釈 */
 .note-mark { font-size: 9px; font-weight: 900; color: #b45309; vertical-align: super; margin-left: 2px; }
 .val-note { display: block; font-size: 8px; font-weight: 700; line-height: 1; color: #b45309; }
@@ -185,6 +201,8 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
   body { font-size:13px; padding:14px 12px 40px; }
   :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; }
   .col-select { min-width: 160px; }
+  .table-scroll { max-height: none; overflow-y: visible; }
+  .usage-hint { gap: 12px; }
 }
 </style>
 </head>
@@ -231,6 +249,21 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
   <button class="print-btn" onclick="window.print()">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>印刷
   </button>
+</div>
+
+<div class="usage-hint">
+  <div class="hint-item">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <span>項目名で行を絞り込めます</span>
+  </div>
+  <div class="hint-item">
+    <svg viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+    <span>指導料を選ぶと対象列を強調・他列を薄く表示</span>
+  </div>
+  <div class="hint-item">
+    <svg viewBox="0 0 24 24"><path d="M4 4l7.07 17 2.51-7.39L21 11.07z"/></svg>
+    <span>行をクリックすると黄色でハイライトされます</span>
+  </div>
 </div>
 
 <div class="row-highlight-banner" id="rowBanner">
