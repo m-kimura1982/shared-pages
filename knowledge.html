@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>実務ナレッジ集｜調剤報酬まとめ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blue: #1e5fa8; --blue-light: #e8f0fb; --ink: #222222; --sub: #666666;
+  --border: #d8dde8; --white: #ffffff; --bg: #f5f7fa;
+  --radius: 10px; --radius-sm: 6px;
+  --text-xs: 13px; --text-sm: 15px; --text-md: 16px; --text-lg: 18px; --text-xl: 22px;
+}
+body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: var(--ink); font-size: var(--text-md); line-height: 1.8; padding: 32px 16px 60px; }
+.page { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+
+.page-title { border-left: 4px solid var(--blue); padding: 6px 0 6px 18px; }
+.page-title h1 { font-size: var(--text-xl); font-weight: 900; }
+.page-title p { font-size: var(--text-sm); font-weight: 500; margin-top: 4px; color: var(--sub); }
+
+.tool-list { display: flex; flex-direction: column; gap: 12px; }
+
+.tool-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.tool-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 3px 12px rgba(30, 95, 168, 0.1);
+}
+.tool-icon {
+  width: 48px; height: 48px; flex-shrink: 0;
+  background: var(--blue-light);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+}
+.tool-icon svg { width: 24px; height: 24px; stroke: var(--blue); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.tool-body { flex: 1; }
+.tool-name { font-size: var(--text-lg); font-weight: 700; margin-bottom: 4px; }
+.tool-desc { font-size: var(--text-xs); color: var(--sub); }
+.tool-arrow { font-size: 20px; color: var(--sub); flex-shrink: 0; }
+
+.note { font-size: 12px; color: var(--sub); padding: 0 2px; }
+
+@media (max-width: 640px) {
+  body { padding: 14px 12px 40px; }
+  .tool-card { padding: 16px; gap: 14px; }
+  .tool-name { font-size: var(--text-md); }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div style="padding: 4px 0 0;">
+    <a href="index.html" style="color:#1e5fa8;text-decoration:none;font-size:13px;border:1px solid #1e5fa8;border-radius:6px;padding:4px 14px;background:#fff;">← トップに戻る</a>
+  </div>
+
+  <div class="page-title">
+    <h1>実務ナレッジ集</h1>
+    <p>日々の業務で役立つ実務知識・Q&amp;Aをまとめています</p>
+  </div>
+
+  <div class="tool-list">
+
+    <a class="tool-card" href="変更調剤について.html">
+      <div class="tool-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9c2.5 0 4.8 1 6.5 2.6"/><polyline points="21 4 21 10 15 10"/></svg>
+      </div>
+      <div class="tool-body">
+        <div class="tool-name">変更調剤の取り扱い（後発品が先発品と同額になった場合）</div>
+        <div class="tool-desc">★印・基礎的医薬品への移行で変更調剤・調剤率がどう変わるかを整理。</div>
+      </div>
+      <span class="tool-arrow">›</span>
+    </a>
+
+  </div>
+
+  <p class="note">※ ナレッジは随時追加予定です。</p>
+
+</div>
+<script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

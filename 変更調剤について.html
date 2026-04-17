@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>後発品が先発品と同額になった場合の変更調剤の取り扱い</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --text-xs: 13px; --text-sm: 15px; --text-md: 16px;
+  --text-lg: 18px; --text-xl: 22px;
+  --pad-card: 22px; --gap-card: 16px;
+  --blue: #1e5fa8; --red: #cc0000; --ink: #222222;
+  --bg: #f3f4f6; --white: #ffffff;
+  --box-blue: #e4f0f8; --box-gray: #f2f2f2;
+  --border: #d1d5db; --border-dk: #9ca3af;
+  --radius: 10px; --radius-sm: 6px;
+  --bw: 0.5px; --bw-h: 1px; --bw-t: 4px;
+}
+body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+.page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+.page-title { border-left:var(--bw-t) solid var(--blue); padding:6px 0 6px 18px; }
+.page-title h1 { font-size:var(--text-xl); font-weight:900; }
+.card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+.card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--ink); padding-bottom:8px; margin-bottom:16px; }
+.em-red { color:var(--red); font-weight:900; }
+.em-blue { color:var(--blue); font-weight:900; }
+.box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:14px 18px; }
+.box-gray { background:var(--box-gray); border-radius:var(--radius-sm); padding:14px 18px; border:var(--bw) solid var(--border); }
+.sub-title { font-weight:900; font-size:var(--text-md); padding:6px 0 6px 12px; border-left:var(--bw-t) solid var(--blue); margin-bottom:10px; }
+table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
+td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:middle; }
+tr:last-child td { border-bottom:none; }
+.point-box { border-left:var(--bw-t) solid var(--blue); padding:10px 16px; background:var(--white); }
+.example-box { background:var(--box-blue); border-radius:var(--radius-sm); padding:12px 16px; font-size:var(--text-sm); margin-top:12px; line-height:1.9; }
+.example-label { font-weight:900; font-size:var(--text-xs); color:var(--blue); margin-bottom:4px; }
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:var(--gap-card); }
+.lead { background:var(--box-blue); border-radius:var(--radius-sm); padding:14px 18px; font-weight:700; font-size:var(--text-md); line-height:1.9; }
+@media (max-width:640px) {
+  body { font-size:13px; padding:14px 12px 40px; }
+  :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+  .grid-2 { grid-template-columns:1fr; }
+  table { font-size:12px; }
+  th, td { padding:6px 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- TOPへ戻る（上部） -->
+  <div style="padding: 4px 16px 0;">
+    <a href="knowledge.html" style="color: #1e5fa8; text-decoration: none; font-size: 13px; border: 1px solid #1e5fa8; border-radius: 6px; padding: 4px 14px; background: #fff;">← 実務ナレッジ集に戻る</a>
+  </div>
+
+  <!-- タイトル -->
+  <div class="page-title">
+    <h1>後発品が先発品と同額になった場合の変更調剤の取り扱い</h1>
+  </div>
+
+  <!-- 結論先出し -->
+  <div class="card">
+    <div class="card-title">まず結論</div>
+    <div class="lead">
+      薬価改定で後発品が先発品と同額（または以上）になっても、<br>
+      <strong>変更調剤は従来通りできる。</strong>
+    </div>
+  </div>
+
+  <!-- 判断の原則 -->
+  <div class="card">
+    <div class="card-title">判断のしかた</div>
+    <p style="font-size:var(--text-sm); margin-bottom:12px; color:#555;">
+      「変更調剤できるか」と「調剤率にカウントできるか」は使う基準が違う。ここを混ぜると間違える。
+    </p>
+    <table>
+      <thead>
+        <tr><th>何を判断したいか</th><th>使う基準</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="em-blue">変更調剤の可否</span></td>
+          <td><strong>薬機法上の承認区分</strong>（後発品として承認されていればOK）</td>
+        </tr>
+        <tr>
+          <td><span class="em-red">後発品調剤率のカウント</span></td>
+          <td><strong>診療報酬上の区分</strong>（薬価改定で外れることがある）</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="box-gray" style="font-size:var(--text-sm); margin-top:14px;">
+      薬価が先発品と並んでも、<strong>薬機法上は後発品のまま</strong>。だから変更調剤は引き続き可能。<br>
+      一方、診療報酬上は「後発品」から外れるため、調剤率の分子に入れられなくなる。
+    </div>
+  </div>
+
+  <!-- 2つの注意パターン -->
+  <div class="card">
+    <div class="card-title">よくある2つのパターン</div>
+    <p style="font-size:var(--text-sm); margin-bottom:16px; color:#555;">薬価改定で「調剤率に算入できなくなる」のは主に次の2つ。いずれも<strong>変更調剤は可能</strong>。</p>
+
+    <div class="grid-2">
+
+      <!-- ★ パターン -->
+      <div>
+        <div class="sub-title">① ★　後発品が先発品と同額以上になった場合</div>
+        <p style="font-size:var(--text-sm); color:#555; margin-bottom:10px;">後発品の欄に「★」が付く。診療報酬上は後発品から除外される（分子に入らない）。</p>
+        <table>
+          <thead><tr><th>項目</th><th>取り扱い</th></tr></thead>
+          <tbody>
+            <tr><td>後発品調剤率カウント</td><td><span class="em-red">対象外（分子に入らない）</span></td></tr>
+            <tr><td>変更調剤</td><td><span class="em-blue">従来通り可</span></td></tr>
+          </tbody>
+        </table>
+        <div class="example-box">
+          <div class="example-label">具体例</div>
+          <strong>ソラナックス錠0.4mg</strong>（先発品／6.30円）<br>
+          　　↓　変更調剤<br>
+          <strong>アルプラゾラム錠0.4mg</strong>（後発品／6.30円）<br>
+          薬価が同額になり、今回から<strong>黒★</strong>が付いた。<br>
+          → 調剤率の<strong>分子には入らない</strong>が、<strong>変更調剤自体は可能</strong>。
+        </div>
+      </div>
+
+      <!-- 基礎的医薬品 パターン -->
+      <div>
+        <div class="sub-title">② 基礎的医薬品に移行した場合</div>
+        <p style="font-size:var(--text-sm); color:#555; margin-bottom:10px;">後発品のうち長期収載・安定供給が必要なものは「基礎的医薬品」に移行し、加算計算の対象から完全に外れる。</p>
+        <table>
+          <thead><tr><th>項目</th><th>取り扱い</th></tr></thead>
+          <tbody>
+            <tr><td>後発品調剤率カウント</td><td><span class="em-red">対象外（母集団から除外）</span></td></tr>
+            <tr><td>変更調剤</td><td><span class="em-blue">従来通り可</span></td></tr>
+          </tbody>
+        </table>
+        <div class="example-box">
+          <div class="example-label">具体例</div>
+          <strong>リーマス錠200mg</strong>（先発品／10.80円）<br>
+          　　↓　変更調剤<br>
+          <strong>炭酸リチウム錠200mg</strong>（後発品／10.80円）<br>
+          炭酸リチウム錠200mgは今回から<strong>基礎的医薬品</strong>に移行。<br>
+          → 加算の<strong>計算対象からは外れる</strong>（分子にも分母にも入らないので割合には影響しない）が、<strong>変更調剤は引き続き可能</strong>。
+          <div style="margin-top:8px; font-size:var(--text-xs); color:#666;">
+            ※参考：200mgは従来★　→　今回基礎的医薬品／100mgは従来後発品　→　今回基礎的医薬品
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 先発品・準先発品の違い -->
+  <div class="card">
+    <div class="card-title">対照品が「先発品」か「準先発品」かで扱いが異なる</div>
+    <p style="font-size:var(--text-sm); margin-bottom:12px; color:#555;">
+      同じ「後発品が同額になった」ケースでも、対照が<strong>先発品</strong>か<strong>準先発品</strong>かで調剤率への影響が違う。
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>後発品の対照</th>
+          <th>同額以下になった場合の変化</th>
+          <th>後発品調剤率カウント</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>先発品</strong></td>
+          <td>診療報酬上の後発品から除外（★印が付く）</td>
+          <td><span class="em-red">対象外</span></td>
+        </tr>
+        <tr>
+          <td><strong>準先発品</strong></td>
+          <td>準先発品の分類はなくなるが、後発品の位置づけ（区分「3」）は維持</td>
+          <td><span class="em-blue">対象のまま</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:var(--text-xs); color:#666; margin-top:8px;">※ 薬価基準収載品目リスト上、先発品のある後発品には「3」、後発品のある先発品には「2」が付く。準先発品には記載なし。</p>
+  </div>
+
+  <!-- 根拠 -->
+  <div class="card">
+    <div class="card-title">根拠となる疑義解釈</div>
+    <div class="box-gray" style="font-size:var(--text-sm); line-height:2.0; margin-bottom:14px;">
+      <strong>厚労省 疑義解釈（その7）2016年9月15日</strong><br>
+      基礎的医薬品であって平成28年3月31日まで変更調剤が認められていたもの（「診療報酬における加算等の算定対象となる後発医薬品」<strong>等</strong>）については、<u>従来と同様に変更調剤を行うことができる</u>。
+    </div>
+    <div class="point-box" style="font-size:var(--text-sm);">
+      <strong>ポイント：「等」の解釈</strong><br>
+      「等」には<strong>診療報酬上の後発品ではないが、薬機法上は後発品である品目</strong>が含まれる。<br>
+      → 先発品と薬価が同額（または高い）になって★が付いた後発品、および基礎的医薬品に移行した後発品も、<span class="em-blue">従来通り変更調剤が可能</span>。
+    </div>
+  </div>
+
+  <!-- 実務チェック -->
+  <div class="card">
+    <div class="card-title">実務上の確認ポイント</div>
+    <table>
+      <thead>
+        <tr><th>確認事項</th><th>判断軸</th><th>結論</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>変更調剤できるか？</td>
+          <td>薬機法上の承認区分</td>
+          <td><span class="em-blue">★印・基礎的医薬品ともに可</span></td>
+        </tr>
+        <tr>
+          <td>後発品調剤率に算入できるか？</td>
+          <td>診療報酬上の区分</td>
+          <td><span class="em-red">★印・基礎的医薬品は対象外</span>（準先発品対照の★は対象）</td>
+        </tr>
+        <tr>
+          <td>一般名処方加算2を算定できるか？</td>
+          <td>一般名処方マスタへの収載</td>
+          <td>先発品と後発品が同額になった品目はマスタから削除　→　<span class="em-red">対象外</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<div style="text-align:center; padding:32px 16px 16px;">
+  <a href="knowledge.html" style="display:inline-block; color:#1e5fa8; text-decoration:none; font-size:14px; border:1px solid #1e5fa8; border-radius:6px; padding:8px 20px;">← 実務ナレッジ集に戻る</a>
+</div>
+
+<script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -76,7 +76,7 @@ main { max-width: 1000px; margin: 0 auto; padding: 52px 24px 60px; display: flex
 /* ── Contents cards ── */
 .contents-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 16px;
 }
 .content-card {
@@ -241,6 +241,16 @@ footer {
         <div class="card-cta">ツール一覧を見る <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
       </a>
 
+      <a class="content-card" href="knowledge.html">
+        <div class="card-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <div class="card-name">実務ナレッジ集</div>
+        <div class="card-desc">日々の業務で役立つ実務知識・Q&amp;Aをまとめています。</div>
+        <div class="card-meta">1資料収録</div>
+        <div class="card-cta">ナレッジ一覧を見る <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+
     </div>
   </section>
 
@@ -284,6 +294,7 @@ footer {
         最近の更新
       </div>
       <ul class="updates-list">
+        <li><span class="updates-date">4/17</span><a href="変更調剤について.html">実務ナレッジに「変更調剤の取り扱い（後発品が先発品と同額になった場合）」を追加</a></li>
         <li><span class="updates-date">4/16</span><a href="服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html">別表１（１）服薬管理指導料等　他の薬学管理料との算定可否表を追加</a></li>
         <li><span class="updates-date">4/15</span><a href="gigi-search.html">疑義解釈 検索ツールを追加（平成18年度〜令和8年度 全7,341件収録）</a></li>
         <li><span class="updates-date">4/13</span><a href="調剤基本料_2026改定.html">調剤基本料　調剤基本料３ イの集中率に関する表現を修正</a></li>
