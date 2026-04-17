@@ -1,605 +1,1291 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>別表１（１）服薬管理指導料等・他の薬学管理料 算定可否表</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --text-xs: 13px; --text-sm: 15px; --text-md: 16px; --text-lg: 18px; --text-xl: 22px;
-  --pad-card: 22px; --gap-card: 16px;
-  --blue: #1e5fa8; --ink: #222222;
-  --bg: #f3f4f6; --white: #ffffff;
-  --box-blue: #e4f0f8; --box-gray: #f2f2f2;
-  --border: #d1d5db; --border-dk: #9ca3af;
-  --radius: 10px; --radius-sm: 6px;
-  --bw: 0.5px; --bw-h: 1px; --bw-t: 4px;
-}
-body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.85; padding:32px 16px 60px; }
-.page { max-width:1200px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
-
-/* ===== タイトル ===== */
-.page-title { border-left:var(--bw-t) solid var(--blue); padding:6px 0 6px 18px; }
-.page-title h1 { font-size:var(--text-xl); font-weight:900; }
-.page-title p { font-size:var(--text-sm); font-weight:500; margin-top:4px; color:#555; }
-
-/* ===== コントロールバー ===== */
-.controls {
-  background: var(--white);
-  border: var(--bw) solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 10px 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-}
-.controls-label { font-size: 12px; font-weight: 700; color: #555; white-space: nowrap; }
-
-.search-wrap { position: relative; flex: 1; min-width: 160px; max-width: 260px; }
-.search-wrap svg { position: absolute; left: 8px; top: 50%; transform: translateY(-50%); opacity: 0.4; pointer-events: none; }
-.search-input {
-  width: 100%; padding: 5px 10px 5px 28px;
-  border: 1px solid var(--border-dk); border-radius: var(--radius-sm);
-  font-size: 12px; font-family: inherit; background: var(--bg); outline: none;
-  transition: border-color 0.15s;
-}
-.search-input:focus { border-color: var(--blue); background: var(--white); }
-
-.col-select {
-  padding: 5px 28px 5px 10px;
-  border: 1px solid var(--border-dk); border-radius: var(--radius-sm);
-  font-size: 12px; font-family: inherit; background: var(--white);
-  color: var(--ink); outline: none; cursor: pointer;
-  appearance: none; -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 8px center;
-  transition: border-color 0.15s; min-width: 220px;
-}
-.col-select:focus { border-color: var(--blue); }
-.col-select.active { border-color: var(--blue); color: var(--blue); font-weight: 700; }
-
-.result-count { font-size: 12px; color: #555; margin-left: auto; white-space: nowrap; }
-.result-count strong { color: var(--blue); }
-
-/* ===== 凡例 ===== */
-.legend { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; font-size: 12px; color: #555; padding: 0 2px; }
-
-/* ===== テーブル ===== */
-.table-scroll { overflow-x: auto; overflow-y: auto; max-height: 70vh; -webkit-overflow-scrolling: touch; }
-
-.beppyo-table { width: 100%; border-collapse: collapse; font-size: 11px; min-width: 700px; }
-.beppyo-table thead th {
-  position: sticky; top: 0; z-index: 2;
-}
-.beppyo-table th {
-  background: var(--box-gray); color: var(--ink); font-weight: 900;
-  padding: 5px 6px; text-align: center;
-  border: 1px solid var(--border-dk); font-size: 10px; line-height: 1.4;
-}
-/* 在宅グループヘッダー：やや濃いグレーのみ、黄色なし */
-.beppyo-table th.grp-zaitaku { background: #e6e6e6; }
-.beppyo-table td { padding: 4px 6px; border: 1px solid var(--border); vertical-align: middle; }
-.beppyo-table .cat-cell { background: var(--box-gray); font-weight: 900; font-size: 11px; text-align: center; vertical-align: middle; white-space: pre-line; }
-.beppyo-table .item-cell { white-space: nowrap; font-size: 12px; font-weight: 700; }
-.beppyo-table .freq-cell { text-align: center; white-space: nowrap; font-size: 11px; font-weight: 700; color: var(--ink); }
-.beppyo-table .val-cell { text-align: center; font-weight: 900; font-size: 13px; }
-.beppyo-table .val-cell.ok { color: var(--blue); }
-.beppyo-table .val-cell.ng { color: #bbb; }
-.beppyo-table .val-cell.partial { color: #b45309; }
-
-/* 在宅区切り：濃いグレーの縦線のみ */
-.beppyo-table .zaitaku-col { border-left: 2px solid #888 !important; }
-.beppyo-table th.zaitaku-col { border-left: 2px solid #888 !important; }
-
-/* 選択列ハイライト */
-.beppyo-table th.col-selected { background: var(--box-blue) !important; color: var(--blue) !important; outline: none; z-index: 3; }
-.beppyo-table td.col-selected { background: #eef4fb !important; }
-
-/* 非選択列を薄く */
-.beppyo-table th.col-dimmed { opacity: 0.4; }
-.beppyo-table td.col-dimmed { opacity: 0.3; }
-
-/* ホバー */
-.beppyo-table tbody tr:hover td { background: #ddeeff !important; cursor: pointer; }
-.beppyo-table tbody tr.hidden-row { display: none; }
-
-/* 行選択ハイライト */
-.beppyo-table tbody tr.row-selected td {
-  background: #fff3cd !important;
-  border-top: 2px solid #f59e0b !important;
-  border-bottom: 2px solid #f59e0b !important;
-}
-.beppyo-table tbody tr.row-selected .item-cell {
-  font-weight: 900 !important;
-  color: #92400e;
-}
-
-/* 選択中バナー */
-.row-highlight-banner {
-  display: none;
-  background: #fffbeb;
-  border: 1.5px solid #f59e0b;
-  border-radius: var(--radius-sm);
-  padding: 8px 14px;
-  font-size: 12px;
-  color: #92400e;
-  align-items: center;
-  gap: 10px;
-}
-.row-highlight-banner.visible { display: flex; }
-.row-highlight-banner strong { font-weight: 900; }
-.row-highlight-banner .clear-btn {
-  margin-left: auto; padding: 3px 10px;
-  border: 1px solid #f59e0b; border-radius: 4px;
-  background: white; color: #92400e; font-size: 11px;
-  font-family: inherit; cursor: pointer; white-space: nowrap;
-}
-.row-highlight-banner .clear-btn:hover { background: #fef3c7; }
-
-/* カテゴリ境界 */
-.beppyo-table .cat-border-top td { border-top: 2px solid var(--border-dk); }
-
-/* ===== 使い方ヒント ===== */
-.usage-hint {
-  display: flex; gap: 20px; flex-wrap: wrap;
-  font-size: 12px; color: #555;
-  padding: 9px 16px;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-}
-.hint-item { display: flex; align-items: center; gap: 6px; }
-.hint-item svg {
-  width: 13px; height: 13px; flex-shrink: 0;
-  stroke: var(--blue); fill: none;
-  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
-}
-
-/* 注釈 */
-.note-mark { font-size: 9px; font-weight: 900; color: #b45309; vertical-align: super; margin-left: 2px; }
-.val-note { display: block; font-size: 8px; font-weight: 700; line-height: 1; color: #b45309; }
-.beppyo-note { font-size: 11px; color: var(--ink); margin-top: 2px; }
-
-/* 印刷ボタン */
-.print-btn {
-  display: flex; align-items: center; gap: 5px;
-  padding: 5px 12px; border: 1px solid var(--border-dk); border-radius: var(--radius-sm);
-  background: var(--white); color: var(--ink); font-size: 12px; font-family: inherit;
-  cursor: pointer; white-space: nowrap; transition: border-color 0.15s, color 0.15s;
-}
-.print-btn:hover { border-color: var(--blue); color: var(--blue); }
-
-/* 列解除ボタン */
-.col-clear-btn {
-  display: none; align-items: center; gap: 4px;
-  padding: 5px 10px; border: 1px solid var(--blue); border-radius: var(--radius-sm);
-  background: var(--white); color: var(--blue); font-size: 12px; font-family: inherit;
-  cursor: pointer; white-space: nowrap;
-}
-.col-clear-btn.visible { display: flex; }
-.col-clear-btn:hover { background: var(--box-blue); }
-
-.empty-msg { text-align: center; padding: 32px; color: #555; font-size: 13px; display: none; }
-
-@media print {
-  body { padding: 0; background: white; }
-  .page { gap: 8px; }
-  .controls, .row-highlight-banner { display: none !important; }
-  .table-scroll { max-height: none; overflow: visible; }
-  a[href="kaitei2026.html"] { display: none !important; }
-  .beppyo-table { font-size: 10px; }
-  .beppyo-table .item-cell { font-size: 11px; }
-  .beppyo-table .val-cell { font-size: 12px; }
-  .beppyo-table tbody tr:hover td { background: transparent !important; }
-  .beppyo-table tbody tr.row-selected td { background: transparent !important; border-top: 1px solid var(--border) !important; border-bottom: 1px solid var(--border) !important; }
-}
-
-@media (max-width:640px) {
-  body { font-size:13px; padding:14px 12px 40px; }
-  :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; }
-  .col-select { min-width: 160px; }
-  .table-scroll { max-height: none; overflow-y: visible; }
-  .usage-hint { gap: 12px; }
-}
-</style>
-</head>
-<body>
-<div class="page">
-
-<div style="padding: 4px 0 0;">
-  <a href="kaitei2026.html" style="color: #1e5fa8; text-decoration: none; font-size: 13px; border: 1px solid #1e5fa8; border-radius: 6px; padding: 4px 14px; background: #fff;">← 資料一覧（TOP）に戻る</a>
-</div>
-
-<div class="page-title">
-  <h1>別表１（１）　服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否</h1>
-  <p>令和8年6月1日施行｜2026年調剤報酬改定　※ 4月2日通知の修正を反映済み</p>
-</div>
-
-<div class="controls">
-  <span class="controls-label">項目検索：</span>
-  <div class="search-wrap">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <input class="search-input" id="searchInput" type="search" placeholder="項目名で検索…" oninput="applySearch()">
-  </div>
-  <span class="controls-label">算定する指導料：</span>
-  <select class="col-select" id="colSelect" onchange="applyColFilter()">
-    <option value="all">── すべての列を表示 ──</option>
-    <optgroup label="服薬管理指導料（外来系）">
-      <option value="0">1イ・2イ　かかりつけ</option>
-      <option value="1">1ロ・2ロ　通常対面</option>
-      <option value="2">３　施設訪問</option>
-      <option value="3">4イ・4ニ　オンライン（一般）</option>
-      <option value="4">4ロ・4ハ　オンライン（在宅）</option>
-    </optgroup>
-    <optgroup label="在宅・訪問系">
-      <option value="5">在宅患者訪問薬剤管理指導料１</option>
-      <option value="6">在宅患者訪問薬剤管理指導料２・３</option>
-      <option value="7">在宅患者緊急訪問薬剤管理指導料</option>
-      <option value="8">在宅患者緊急時等共同指導料</option>
-      <option value="9">訪問薬剤管理医師同時指導料</option>
-    </optgroup>
-  </select>
-  <button class="col-clear-btn" id="colClearBtn" onclick="clearColFilter()">
-    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>列選択解除
-  </button>
-  <span class="result-count"><strong id="visibleCount">26</strong> / 26 件</span>
-  <button class="print-btn" onclick="window.print()">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>印刷
-  </button>
-</div>
-
-<div class="usage-hint">
-  <div class="hint-item">
-    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <span>項目名で行を絞り込めます</span>
-  </div>
-  <div class="hint-item">
-    <svg viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
-    <span>指導料を選ぶと対象列を強調・他列を薄く表示</span>
-  </div>
-  <div class="hint-item">
-    <svg viewBox="0 0 24 24"><path d="M4 4l7.07 17 2.51-7.39L21 11.07z"/></svg>
-    <span>行をクリックすると黄色でハイライトされます</span>
-  </div>
-</div>
-
-<div class="row-highlight-banner" id="rowBanner">
-  <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px;margin-right:5px"><path d="M12 2l3 7h5l-4 4 2 7-6-4-6 4 2-7-4-4h5z"/></svg>選択中：<strong id="bannerItemName"></strong></span>
-  <button class="clear-btn" onclick="clearRowSelect()">選択解除</button>
-</div>
-
-<div class="legend">
-  <span style="font-weight:700">凡例：</span>
-  <span style="color:var(--blue)">○ 算定可</span>
-  <span style="color:#b45309">×<sup style="font-size:8px;font-weight:900">※</sup> 条件付き可（※参照）</span>
-  <span style="color:#bbb">× 算定不可</span>
-  <span style="font-size:11px;color:#888;margin-left:4px">※ 列は横スクロールで確認できます</span>
-</div>
-
-<div class="table-scroll">
-<table class="beppyo-table" id="mainTable">
-<thead>
-<tr>
-  <th rowspan="2">カテゴリ</th>
-  <th rowspan="2" style="text-align:left;padding-left:8px;min-width:190px">項目</th>
-  <th rowspan="2">算定回数</th>
-  <th colspan="5">服薬管理指導料（外来系）</th>
-  <th colspan="5" class="grp-zaitaku zaitaku-col">在宅・訪問系</th>
-</tr>
-<tr id="colHeaderRow">
-  <th data-colidx="0" title="服薬管理指導料１イ・２イ（かかりつけ）">1イ・2イ<br><small>かかりつけ</small></th>
-  <th data-colidx="1" title="服薬管理指導料１ロ・２ロ（通常対面）">1ロ・2ロ<br><small>通常対面</small></th>
-  <th data-colidx="2" title="服薬管理指導料３（施設訪問）">３<br><small>施設訪問</small></th>
-  <th data-colidx="3" title="服薬管理指導料４イ・４ニ（オンライン一般）">4イ・4ニ<br><small>オンライン</small></th>
-  <th data-colidx="4" title="服薬管理指導料４ロ・４ハ（オンライン在宅）">4ロ・4ハ<br><small>在宅ｵﾝﾗｲﾝ</small></th>
-  <th data-colidx="5" class="grp-zaitaku zaitaku-col" title="在宅患者訪問薬剤管理指導料１">在宅訪問<br>指導料１</th>
-  <th data-colidx="6" class="grp-zaitaku" title="在宅患者訪問薬剤管理指導料２・３">在宅訪問<br>指導料2・3</th>
-  <th data-colidx="7" class="grp-zaitaku" title="在宅患者緊急訪問薬剤管理指導料">在宅緊急<br>訪問指導料</th>
-  <th data-colidx="8" class="grp-zaitaku" title="在宅患者緊急時等共同指導料">緊急時等<br>共同指導料</th>
-  <th data-colidx="9" class="grp-zaitaku" title="訪問薬剤管理医師同時指導料">医師同時<br>指導料</th>
-</tr>
-</thead>
-<tbody id="tableBody">
-
-<!-- 調剤管理料等の加算 -->
-<tr data-vals="1,1,1,1,1,1,1,1,1,1">
-  <td class="cat-cell" rowspan="2">調剤管理料等の加算</td>
-  <td class="item-cell">調剤時残薬調整加算</td>
-  <td class="freq-cell">処方箋受付ごと</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell ok" data-colidx="1">○</td><td class="val-cell ok" data-colidx="2">○</td><td class="val-cell ok" data-colidx="3">○</td><td class="val-cell ok" data-colidx="4">○</td>
-  <td class="val-cell ok zaitaku-col" data-colidx="5">○</td><td class="val-cell ok" data-colidx="6">○</td><td class="val-cell ok" data-colidx="7">○</td><td class="val-cell ok" data-colidx="8">○</td><td class="val-cell ok" data-colidx="9">○</td>
-</tr>
-<tr data-vals="1,1,1,1,1,1,1,1,1,1">
-  <td class="item-cell">薬学的有害事象等防止加算</td>
-  <td class="freq-cell">処方箋受付ごと</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell ok" data-colidx="1">○</td><td class="val-cell ok" data-colidx="2">○</td><td class="val-cell ok" data-colidx="3">○</td><td class="val-cell ok" data-colidx="4">○</td>
-  <td class="val-cell ok zaitaku-col" data-colidx="5">○</td><td class="val-cell ok" data-colidx="6">○</td><td class="val-cell ok" data-colidx="7">○</td><td class="val-cell ok" data-colidx="8">○</td><td class="val-cell ok" data-colidx="9">○</td>
-</tr>
-
-<!-- 服薬管理指導料の加算等 -->
-<tr class="cat-border-top" data-vals="1,1,1,1,0,0,0,0,0,0">
-  <td class="cat-cell" rowspan="22">服薬管理指導料の加算・<br>在宅患者訪問薬剤管理<br>指導料の加算</td>
-  <td class="item-cell">特定薬剤管理指導加算１</td>
-  <td class="freq-cell">処方箋受付ごと</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell ok" data-colidx="1">○</td><td class="val-cell ok" data-colidx="2">○</td><td class="val-cell ok" data-colidx="3">○</td><td class="val-cell ng" data-colidx="4">×</td>
-  <td class="val-cell ng zaitaku-col" data-colidx="5">×</td><td class="val-cell ng" data-colidx="6">×</td><td class="val-cell ng" data-colidx="7">×</td><td class="val-cell ng" data-colidx="8">×</td><td class="val-cell ng" data-colidx="9">×</td>
-</tr>
-<tr data-vals="1,1,1,1,0,0,0,0,0,0">
-  <td class="item-cell">特定薬剤管理指導加算２</td>
-  <td class="freq-cell">月１回まで</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell ok" data-colidx="1">○</td><td class="val-cell ok" data-colidx="2">○</td><td class="val-cell ok" data-colidx="3">○</td><td class="val-cell ng" data-colidx="4">×</td>
-  <td class="val-cell ng zaitaku-col" data-colidx="5">×</td><td class="val-cell ng" data-colidx="6">×</td><td class="val-cell ng" data-colidx="7">×</td><td class="val-cell ng" data-colidx="8">×</td><td class="val-cell ng" data-colidx="9">×</td>
-</tr>
-<tr data-vals="1,1,1,1,0,0,0,0,0,0">
-  <td class="item-cell">特定薬剤管理指導加算３</td>
-  <td class="freq-cell">処方箋受付ごと</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell ok" data-colidx="1">○</td><td class="val-cell ok" data-colidx="2">○</td><td class="val-cell ok" data-colidx="3">○</td><td class="val-cell ng" data-colidx="4">×</td>
-  <td class="val-cell ng zaitaku-col" data-colidx="5">×</td><td class="val-cell ng" data-colidx="6">×</td><td class="val-cell ng" data-colidx="7">×</td><td class="val-cell ng" data-colidx="8">×</td><td class="val-cell ng" data-colidx="9">×</td>
-</tr>
-<tr data-vals="1,1,1,0,0,0,0,0,0,0">
-  <td class="item-cell">吸入薬指導加算</td>
-  <td class="freq-cell">６月に１回まで</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell ok" data-colidx="1">○</td><td class="val-cell ok" data-colidx="2">○</td><td class="val-cell ng" data-colidx="3">×</td><td class="val-cell ng" data-colidx="4">×</td>
-  <td class="val-cell ng zaitaku-col" data-colidx="5">×</td><td class="val-cell ng" data-colidx="6">×</td><td class="val-cell ng" data-colidx="7">×</td><td class="val-cell ng" data-colidx="8">×</td><td class="val-cell ng" data-colidx="9">×</td>
-</tr>
-<tr data-vals="1,2,0,0,0,0,0,0,0,0">
-  <td class="item-cell">かかりつけ薬剤師フォローアップ加算</td>
-  <td class="freq-cell">３月に１回まで</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell partial" data-colidx="1">×<span class="val-note">※３</span></td><td class="val-cell ng" data-colidx="2">×</td><td class="val-cell ng" data-colidx="3">×</td><td class="val-cell ng" data-colidx="4">×</td>
-  <td class="val-cell ng zaitaku-col" data-colidx="5">×</td><td class="val-cell ng" data-colidx="6">×</td><td class="val-cell ng" data-colidx="7">×</td><td class="val-cell ng" data-colidx="8">×</td><td class="val-cell ng" data-colidx="9">×</td>
-</tr>
-<tr data-vals="1,2,0,0,0,0,0,0,0,0">
-  <td class="item-cell">かかりつけ薬剤師訪問加算</td>
-  <td class="freq-cell">６月に１回まで</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell partial" data-colidx="1">×<span class="val-note">※３</span></td><td class="val-cell ng" data-colidx="2">×</td><td class="val-cell ng" data-colidx="3">×</td><td class="val-cell ng" data-colidx="4">×</td>
-  <td class="val-cell ng zaitaku-col" data-colidx="5">×</td><td class="val-cell ng" data-colidx="6">×</td><td class="val-cell ng" data-colidx="7">×</td><td class="val-cell ng" data-colidx="8">×</td><td class="val-cell ng" data-colidx="9">×</td>
-</tr>
-<tr data-vals="1,1,1,1,1,1,1,1,1,0">
-  <td class="item-cell">麻薬管理指導加算</td>
-  <td class="freq-cell">処方箋受付ごと</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell ok" data-colidx="1">○</td><td class="val-cell ok" data-colidx="2">○</td><td class="val-cell ok" data-colidx="3">○</td><td class="val-cell ok" data-colidx="4">○</td>
-  <td class="val-cell ok zaitaku-col" data-colidx="5">○</td><td class="val-cell ok" data-colidx="6">○</td><td class="val-cell ok" data-colidx="7">○</td><td class="val-cell ok" data-colidx="8">○</td><td class="val-cell ng" data-colidx="9">×</td>
-</tr>
-<tr data-vals="1,1,1,1,1,1,1,1,1,0">
-  <td class="item-cell">乳幼児服薬指導加算</td>
-  <td class="freq-cell">処方箋受付ごと</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell ok" data-colidx="1">○</td><td class="val-cell ok" data-colidx="2">○</td><td class="val-cell ok" data-colidx="3">○</td><td class="val-cell ok" data-colidx="4">○</td>
-  <td class="val-cell ok zaitaku-col" data-colidx="5">○</td><td class="val-cell ok" data-colidx="6">○</td><td class="val-cell ok" data-colidx="7">○</td><td class="val-cell ok" data-colidx="8">○</td><td class="val-cell ng" data-colidx="9">×</td>
-</tr>
-<tr data-vals="1,1,1,1,1,1,1,1,1,0">
-  <td class="item-cell">小児特定加算</td>
-  <td class="freq-cell">処方箋受付ごと</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell ok" data-colidx="1">○</td><td class="val-cell ok" data-colidx="2">○</td><td class="val-cell ok" data-colidx="3">○</td><td class="val-cell ok" data-colidx="4">○</td>
-  <td class="val-cell ok zaitaku-col" data-colidx="5">○</td><td class="val-cell ok" data-colidx="6">○</td><td class="val-cell ok" data-colidx="7">○</td><td class="val-cell ok" data-colidx="8">○</td><td class="val-cell ng" data-colidx="9">×</td>
-</tr>
-<tr data-vals="0,0,0,0,0,1,1,1,1,0">
-  <td class="item-cell">在宅患者医療用麻薬持続注射療法加算</td>
-  <td class="freq-cell">１回ごと</td>
-  <td class="val-cell ng" data-colidx="0">×</td><td class="val-cell ng" data-colidx="1">×</td><td class="val-cell ng" data-colidx="2">×</td><td class="val-cell ng" data-colidx="3">×</td><td class="val-cell ng" data-colidx="4">×</td>
-  <td class="val-cell ok zaitaku-col" data-colidx="5">○</td><td class="val-cell ok" data-colidx="6">○</td><td class="val-cell ok" data-colidx="7">○</td><td class="val-cell ok" data-colidx="8">○</td><td class="val-cell ng" data-colidx="9">×</td>
-</tr>
-<tr data-vals="0,0,0,0,0,1,1,1,1,0">
-  <td class="item-cell">在宅中心静脈栄養法加算</td>
-  <td class="freq-cell">１回ごと</td>
-  <td class="val-cell ng" data-colidx="0">×</td><td class="val-cell ng" data-colidx="1">×</td><td class="val-cell ng" data-colidx="2">×</td><td class="val-cell ng" data-colidx="3">×</td><td class="val-cell ng" data-colidx="4">×</td>
-  <td class="val-cell ok zaitaku-col" data-colidx="5">○</td><td class="val-cell ok" data-colidx="6">○</td><td class="val-cell ok" data-colidx="7">○</td><td class="val-cell ok" data-colidx="8">○</td><td class="val-cell ng" data-colidx="9">×</td>
-</tr>
-<tr data-vals="1,1,1,1,0,0,0,0,0,0">
-  <td class="item-cell">外来服薬支援料１</td>
-  <td class="freq-cell">月１回まで</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell ok" data-colidx="1">○</td><td class="val-cell ok" data-colidx="2">○</td><td class="val-cell ok" data-colidx="3">○</td><td class="val-cell ng" data-colidx="4">×</td>
-  <td class="val-cell ng zaitaku-col" data-colidx="5">×</td><td class="val-cell ng" data-colidx="6">×</td><td class="val-cell ng" data-colidx="7">×</td><td class="val-cell ng" data-colidx="8">×</td><td class="val-cell ng" data-colidx="9">×</td>
-</tr>
-<tr data-vals="1,1,1,1,1,1,1,1,1,0">
-  <td class="item-cell">外来服薬支援料２</td>
-  <td class="freq-cell">処方箋受付ごと</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell ok" data-colidx="1">○</td><td class="val-cell ok" data-colidx="2">○</td><td class="val-cell ok" data-colidx="3">○</td><td class="val-cell ok" data-colidx="4">○</td>
-  <td class="val-cell ok zaitaku-col" data-colidx="5">○</td><td class="val-cell ok" data-colidx="6">○</td><td class="val-cell ok" data-colidx="7">○</td><td class="val-cell ok" data-colidx="8">○</td><td class="val-cell ng" data-colidx="9">×</td>
-</tr>
-<tr data-vals="1,1,1,1,1,1,1,1,1,0">
-  <td class="item-cell">服用薬剤調整支援料１</td>
-  <td class="freq-cell">月１回まで</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell ok" data-colidx="1">○</td><td class="val-cell ok" data-colidx="2">○</td><td class="val-cell ok" data-colidx="3">○</td><td class="val-cell ok" data-colidx="4">○</td>
-  <td class="val-cell ok zaitaku-col" data-colidx="5">○</td><td class="val-cell ok" data-colidx="6">○</td><td class="val-cell ok" data-colidx="7">○</td><td class="val-cell ok" data-colidx="8">○</td><td class="val-cell ng" data-colidx="9">×</td>
-</tr>
-<tr data-vals="1,2,0,1,1,0,1,1,1,0">
-  <td class="item-cell">服用薬剤調整支援料２<span class="note-mark">※1</span></td>
-  <td class="freq-cell">６月に１回まで</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell partial" data-colidx="1">×<span class="val-note">※３</span></td><td class="val-cell ng" data-colidx="2">×</td><td class="val-cell ok" data-colidx="3">○</td><td class="val-cell ok" data-colidx="4">○</td>
-  <td class="val-cell ng zaitaku-col" data-colidx="5">×</td><td class="val-cell ok" data-colidx="6">○</td><td class="val-cell ok" data-colidx="7">○</td><td class="val-cell ok" data-colidx="8">○</td><td class="val-cell ng" data-colidx="9">×</td>
-</tr>
-<tr data-vals="1,1,1,1,1,1,1,1,1,0">
-  <td class="item-cell">調剤後薬剤管理指導料１</td>
-  <td class="freq-cell">月１回まで</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell ok" data-colidx="1">○</td><td class="val-cell ok" data-colidx="2">○</td><td class="val-cell ok" data-colidx="3">○</td><td class="val-cell ok" data-colidx="4">○</td>
-  <td class="val-cell ok zaitaku-col" data-colidx="5">○</td><td class="val-cell ok" data-colidx="6">○</td><td class="val-cell ok" data-colidx="7">○</td><td class="val-cell ok" data-colidx="8">○</td><td class="val-cell ng" data-colidx="9">×</td>
-</tr>
-<tr data-vals="1,1,1,1,1,1,1,1,1,0">
-  <td class="item-cell">調剤後薬剤管理指導料２</td>
-  <td class="freq-cell">月１回まで</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell ok" data-colidx="1">○</td><td class="val-cell ok" data-colidx="2">○</td><td class="val-cell ok" data-colidx="3">○</td><td class="val-cell ok" data-colidx="4">○</td>
-  <td class="val-cell ok zaitaku-col" data-colidx="5">○</td><td class="val-cell ok" data-colidx="6">○</td><td class="val-cell ok" data-colidx="7">○</td><td class="val-cell ok" data-colidx="8">○</td><td class="val-cell ng" data-colidx="9">×</td>
-</tr>
-<tr data-vals="1,1,1,1,1,0,0,0,0,0">
-  <td class="item-cell">服薬情報等提供料１</td>
-  <td class="freq-cell">月１回まで</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell ok" data-colidx="1">○</td><td class="val-cell ok" data-colidx="2">○</td><td class="val-cell ok" data-colidx="3">○</td><td class="val-cell ok" data-colidx="4">○</td>
-  <td class="val-cell ng zaitaku-col" data-colidx="5">×</td><td class="val-cell ng" data-colidx="6">×</td><td class="val-cell ng" data-colidx="7">×</td><td class="val-cell ng" data-colidx="8">×</td><td class="val-cell ng" data-colidx="9">×</td>
-</tr>
-<tr data-vals="1,1,1,1,1,0,0,0,0,0">
-  <td class="item-cell">服薬情報等提供料２</td>
-  <td class="freq-cell">月１回まで</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell ok" data-colidx="1">○</td><td class="val-cell ok" data-colidx="2">○</td><td class="val-cell ok" data-colidx="3">○</td><td class="val-cell ok" data-colidx="4">○</td>
-  <td class="val-cell ng zaitaku-col" data-colidx="5">×</td><td class="val-cell ng" data-colidx="6">×</td><td class="val-cell ng" data-colidx="7">×</td><td class="val-cell ng" data-colidx="8">×</td><td class="val-cell ng" data-colidx="9">×</td>
-</tr>
-<tr data-vals="1,1,1,1,1,0,0,0,0,0">
-  <td class="item-cell">服薬情報等提供料３</td>
-  <td class="freq-cell">３月に１回まで</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell ok" data-colidx="1">○</td><td class="val-cell ok" data-colidx="2">○</td><td class="val-cell ok" data-colidx="3">○</td><td class="val-cell ok" data-colidx="4">○</td>
-  <td class="val-cell ng zaitaku-col" data-colidx="5">×</td><td class="val-cell ng" data-colidx="6">×</td><td class="val-cell ng" data-colidx="7">×</td><td class="val-cell ng" data-colidx="8">×</td><td class="val-cell ng" data-colidx="9">×</td>
-</tr>
-<tr data-vals="1,1,1,1,1,1,1,1,1,0">
-  <td class="item-cell">経管投薬支援料</td>
-  <td class="freq-cell">１回まで</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell ok" data-colidx="1">○</td><td class="val-cell ok" data-colidx="2">○</td><td class="val-cell ok" data-colidx="3">○</td><td class="val-cell ok" data-colidx="4">○</td>
-  <td class="val-cell ok zaitaku-col" data-colidx="5">○</td><td class="val-cell ok" data-colidx="6">○</td><td class="val-cell ok" data-colidx="7">○</td><td class="val-cell ok" data-colidx="8">○</td><td class="val-cell ng" data-colidx="9">×</td>
-</tr>
-<tr data-vals="0,0,0,0,0,1,0,1,0,0">
-  <td class="item-cell">複数名薬剤管理指導訪問料<span class="note-mark">※2</span></td>
-  <td class="freq-cell">１回ごと</td>
-  <td class="val-cell ng" data-colidx="0">×</td><td class="val-cell ng" data-colidx="1">×</td><td class="val-cell ng" data-colidx="2">×</td><td class="val-cell ng" data-colidx="3">×</td><td class="val-cell ng" data-colidx="4">×</td>
-  <td class="val-cell ok zaitaku-col" data-colidx="5">○</td><td class="val-cell ng" data-colidx="6">×</td><td class="val-cell ok" data-colidx="7">○</td><td class="val-cell ng" data-colidx="8">×</td><td class="val-cell ng" data-colidx="9">×</td>
-</tr>
-
-<!-- 居宅療養管理指導費等 -->
-<tr class="cat-border-top" data-vals="1,1,1,1,1,1,1,1,1,1">
-  <td class="cat-cell" rowspan="2">居宅療養管理指導費等</td>
-  <td class="item-cell">居宅療養管理指導費</td>
-  <td class="freq-cell">１回ごと</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell ok" data-colidx="1">○</td><td class="val-cell ok" data-colidx="2">○</td><td class="val-cell ok" data-colidx="3">○</td><td class="val-cell ok" data-colidx="4">○</td>
-  <td class="val-cell ok zaitaku-col" data-colidx="5">○</td><td class="val-cell ok" data-colidx="6">○</td><td class="val-cell ok" data-colidx="7">○</td><td class="val-cell ok" data-colidx="8">○</td><td class="val-cell ok" data-colidx="9">○</td>
-</tr>
-<tr data-vals="1,1,1,1,1,1,1,1,1,1">
-  <td class="item-cell">介護予防居宅療養管理指導費</td>
-  <td class="freq-cell">１回ごと</td>
-  <td class="val-cell ok" data-colidx="0">○</td><td class="val-cell ok" data-colidx="1">○</td><td class="val-cell ok" data-colidx="2">○</td><td class="val-cell ok" data-colidx="3">○</td><td class="val-cell ok" data-colidx="4">○</td>
-  <td class="val-cell ok zaitaku-col" data-colidx="5">○</td><td class="val-cell ok" data-colidx="6">○</td><td class="val-cell ok" data-colidx="7">○</td><td class="val-cell ok" data-colidx="8">○</td><td class="val-cell ok" data-colidx="9">○</td>
-</tr>
-
-</tbody>
-</table>
-</div>
-
-<div class="empty-msg" id="emptyMsg">該当する項目が見つかりません</div>
-
-<div>
-  <p class="beppyo-note">※1　かかりつけ薬剤師のみ算定可能</p>
-  <p class="beppyo-note">※2　単一建物診療患者１名のみ算定可能</p>
-  <p class="beppyo-note">※3　かかりつけ薬剤師が指導や訪問等を実施し、その後の服薬管理指導を当該保険薬局の他の保険薬剤師が実施した場合については、併算定可能</p>
-</div>
-
-</div>
-
-<div style="padding: 8px 0 0; text-align: right;">
-  <a href="kaitei2026.html" style="color: #1e5fa8; text-decoration: none; font-size: 13px; border: 1px solid #1e5fa8; border-radius: 6px; padding: 4px 14px; background: #fff;">← 資料一覧（TOP）に戻る</a>
-</div>
-
-<script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
-<script>
-// ===== 検索 =====
-function applySearch() { applyRowFilters(); }
-
-function applyRowFilters() {
-  const query = document.getElementById('searchInput').value.trim().toLowerCase();
-
-  const rows = document.querySelectorAll('#tableBody tr');
-  let visible = 0;
-  rows.forEach(row => {
-    const itemCell = row.querySelector('.item-cell');
-    if (!itemCell) { row.classList.add('hidden-row'); return; }
-
-    const textMatch = !query || itemCell.textContent.toLowerCase().includes(query);
-
-    if (textMatch) { row.classList.remove('hidden-row'); visible++; }
-    else { row.classList.add('hidden-row'); }
-  });
-
-  document.getElementById('visibleCount').textContent = visible;
-  document.getElementById('emptyMsg').style.display = visible === 0 ? 'block' : 'none';
-  fixCatCells();
-}
-
-// ===== 列選択（ハイライト＋非選択を薄く）=====
-function applyColFilter() {
-  const val = document.getElementById('colSelect').value;
-  document.getElementById('colSelect').classList.toggle('active', val !== 'all');
-
-  document.querySelectorAll('#colHeaderRow th').forEach(th => {
-    const idx = th.dataset.colidx;
-    th.classList.remove('col-selected', 'col-dimmed');
-    if (val !== 'all') {
-      idx === val ? th.classList.add('col-selected') : th.classList.add('col-dimmed');
-    }
-  });
-
-  document.querySelectorAll('#tableBody td[data-colidx]').forEach(td => {
-    const idx = td.dataset.colidx;
-    td.classList.remove('col-selected', 'col-dimmed');
-    if (val !== 'all') {
-      idx === val ? td.classList.add('col-selected') : td.classList.add('col-dimmed');
-    }
-  });
-
-  // 列解除ボタンの表示切替
-  document.getElementById('colClearBtn').classList.toggle('visible', val !== 'all');
-
-  // 列が変わったら行フィルターも再計算
-  applyRowFilters();
-}
-
-function clearColFilter() {
-  document.getElementById('colSelect').value = 'all';
-  applyColFilter();
-}
-
-// ===== カテゴリrowspan調整 =====
-function fixCatCells() {
-  const rows = Array.from(document.querySelectorAll('#tableBody tr'));
-  let currentCatCell = null;
-  let count = 0;
-  rows.forEach(row => {
-    const catCell = row.querySelector('.cat-cell');
-    if (catCell) {
-      if (currentCatCell) {
-        currentCatCell.rowSpan = Math.max(1, count);
-        currentCatCell.style.display = count === 0 ? 'none' : '';
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>別表１（１）服薬管理指導料等・他の薬学管理料 算定可否表</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
-      currentCatCell = catCell;
-      count = row.classList.contains('hidden-row') ? 0 : 1;
-    } else if (currentCatCell) {
-      if (!row.classList.contains('hidden-row')) count++;
-    }
-  });
-  if (currentCatCell) {
-    currentCatCell.rowSpan = Math.max(1, count);
-    currentCatCell.style.display = count === 0 ? 'none' : '';
-  }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  fixCatCells();
-
-  // 各行にクリックで選択ハイライト
-  document.querySelectorAll('#tableBody tr').forEach(row => {
-    row.addEventListener('click', () => {
-      const itemCell = row.querySelector('.item-cell');
-      if (!itemCell) return;
-      const isSelected = row.classList.contains('row-selected');
-
-      // 全行の選択を解除
-      document.querySelectorAll('#tableBody tr.row-selected').forEach(r => r.classList.remove('row-selected'));
-
-      if (!isSelected) {
-        row.classList.add('row-selected');
-        document.getElementById('bannerItemName').textContent = itemCell.textContent.trim();
-        document.getElementById('rowBanner').classList.add('visible');
-        // 選択行が見えるようスクロール
-        row.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-      } else {
-        clearRowSelect();
+      :root {
+        --text-xs: 13px;
+        --text-sm: 15px;
+        --text-md: 16px;
+        --text-lg: 18px;
+        --text-xl: 22px;
+        --pad-card: 22px;
+        --gap-card: 16px;
+        --blue: #1e5fa8;
+        --ink: #222222;
+        --bg: #f3f4f6;
+        --white: #ffffff;
+        --box-blue: #e4f0f8;
+        --box-gray: #f2f2f2;
+        --border: #d1d5db;
+        --border-dk: #9ca3af;
+        --radius: 10px;
+        --radius-sm: 6px;
+        --bw: 0.5px;
+        --bw-h: 1px;
+        --bw-t: 4px;
       }
-    });
-  });
-});
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        font-size: var(--text-md);
+        line-height: 1.85;
+        padding: 32px 16px 60px;
+      }
+      .page {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-card);
+      }
 
-function clearRowSelect() {
-  document.querySelectorAll('#tableBody tr.row-selected').forEach(r => r.classList.remove('row-selected'));
-  document.getElementById('rowBanner').classList.remove('visible');
-}
-</script>
-</body>
+      /* ===== タイトル ===== */
+      .page-title {
+        border-left: var(--bw-t) solid var(--blue);
+        padding: 6px 0 6px 18px;
+      }
+      .page-title h1 {
+        font-size: var(--text-xl);
+        font-weight: 900;
+      }
+      .page-title p {
+        font-size: var(--text-sm);
+        font-weight: 500;
+        margin-top: 4px;
+        color: #555;
+      }
+
+      /* ===== コントロールバー ===== */
+      .controls {
+        background: var(--white);
+        border: var(--bw) solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 10px 16px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+      }
+      .controls-label {
+        font-size: 12px;
+        font-weight: 700;
+        color: #555;
+        white-space: nowrap;
+      }
+
+      .search-wrap {
+        position: relative;
+        flex: 1;
+        min-width: 160px;
+        max-width: 260px;
+      }
+      .search-wrap svg {
+        position: absolute;
+        left: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0.4;
+        pointer-events: none;
+      }
+      .search-input {
+        width: 100%;
+        padding: 5px 10px 5px 28px;
+        border: 1px solid var(--border-dk);
+        border-radius: var(--radius-sm);
+        font-size: 12px;
+        font-family: inherit;
+        background: var(--bg);
+        outline: none;
+        transition: border-color 0.15s;
+      }
+      .search-input:focus {
+        border-color: var(--blue);
+        background: var(--white);
+      }
+
+      .col-select {
+        padding: 5px 28px 5px 10px;
+        border: 1px solid var(--border-dk);
+        border-radius: var(--radius-sm);
+        font-size: 12px;
+        font-family: inherit;
+        background: var(--white);
+        color: var(--ink);
+        outline: none;
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 8px center;
+        transition: border-color 0.15s;
+        min-width: 220px;
+      }
+      .col-select:focus {
+        border-color: var(--blue);
+      }
+      .col-select.active {
+        border-color: var(--blue);
+        color: var(--blue);
+        font-weight: 700;
+      }
+
+      .result-count {
+        font-size: 12px;
+        color: #555;
+        margin-left: auto;
+        white-space: nowrap;
+      }
+      .result-count strong {
+        color: var(--blue);
+      }
+
+      /* ===== 凡例 ===== */
+      .legend {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        align-items: center;
+        font-size: 12px;
+        color: #555;
+        padding: 0 2px;
+      }
+
+      /* ===== テーブル ===== */
+      .table-scroll {
+        overflow-x: auto;
+        overflow-y: auto;
+        max-height: 70vh;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .beppyo-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 11px;
+        min-width: 700px;
+      }
+      .beppyo-table thead th {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+      }
+      .beppyo-table th {
+        background: var(--box-gray);
+        color: var(--ink);
+        font-weight: 900;
+        padding: 5px 6px;
+        text-align: center;
+        border: 1px solid var(--border-dk);
+        font-size: 10px;
+        line-height: 1.4;
+      }
+      /* 在宅グループヘッダー：やや濃いグレーのみ、黄色なし */
+      .beppyo-table th.grp-zaitaku {
+        background: #e6e6e6;
+      }
+      .beppyo-table td {
+        padding: 4px 6px;
+        border: 1px solid var(--border);
+        vertical-align: middle;
+      }
+      .beppyo-table .cat-cell {
+        background: var(--box-gray);
+        font-weight: 900;
+        font-size: 11px;
+        text-align: center;
+        vertical-align: middle;
+        white-space: pre-line;
+      }
+      .beppyo-table .item-cell {
+        white-space: nowrap;
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .beppyo-table .freq-cell {
+        text-align: center;
+        white-space: nowrap;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .beppyo-table .val-cell {
+        text-align: center;
+        font-weight: 900;
+        font-size: 13px;
+      }
+      .beppyo-table .val-cell.ok {
+        color: var(--blue);
+      }
+      .beppyo-table .val-cell.ng {
+        color: #bbb;
+      }
+      .beppyo-table .val-cell.partial {
+        color: #b45309;
+      }
+
+      /* 在宅区切り：濃いグレーの縦線のみ */
+      .beppyo-table .zaitaku-col {
+        border-left: 2px solid #888 !important;
+      }
+      .beppyo-table th.zaitaku-col {
+        border-left: 2px solid #888 !important;
+      }
+
+      /* 選択列ハイライト */
+      .beppyo-table th.col-selected {
+        background: var(--box-blue) !important;
+        color: var(--blue) !important;
+        outline: none;
+        z-index: 3;
+      }
+      .beppyo-table td.col-selected {
+        background: #eef4fb !important;
+      }
+
+      /* 非選択列を薄く */
+      .beppyo-table th.col-dimmed {
+        opacity: 0.4;
+      }
+      .beppyo-table td.col-dimmed {
+        opacity: 0.3;
+      }
+
+      /* ホバー */
+      .beppyo-table tbody tr:hover td {
+        background: #ddeeff !important;
+        cursor: pointer;
+      }
+      .beppyo-table tbody tr.hidden-row {
+        display: none;
+      }
+
+      /* 行選択ハイライト */
+      .beppyo-table tbody tr.row-selected td {
+        background: #fff3cd !important;
+        border-top: 2px solid #f59e0b !important;
+        border-bottom: 2px solid #f59e0b !important;
+      }
+      .beppyo-table tbody tr.row-selected .item-cell {
+        font-weight: 900 !important;
+        color: #92400e;
+      }
+
+      /* 選択中バナー */
+      .row-highlight-banner {
+        display: none;
+        background: #fffbeb;
+        border: 1.5px solid #f59e0b;
+        border-radius: var(--radius-sm);
+        padding: 8px 14px;
+        font-size: 12px;
+        color: #92400e;
+        align-items: center;
+        gap: 10px;
+      }
+      .row-highlight-banner.visible {
+        display: flex;
+      }
+      .row-highlight-banner strong {
+        font-weight: 900;
+      }
+      .row-highlight-banner .clear-btn {
+        margin-left: auto;
+        padding: 3px 10px;
+        border: 1px solid #f59e0b;
+        border-radius: 4px;
+        background: white;
+        color: #92400e;
+        font-size: 11px;
+        font-family: inherit;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      .row-highlight-banner .clear-btn:hover {
+        background: #fef3c7;
+      }
+
+      /* カテゴリ境界 */
+      .beppyo-table .cat-border-top td {
+        border-top: 2px solid var(--border-dk);
+      }
+
+      /* ===== 使い方ヒント ===== */
+      .usage-hint {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        font-size: 12px;
+        color: #555;
+        padding: 9px 16px;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+      }
+      .hint-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .hint-item svg {
+        width: 13px;
+        height: 13px;
+        flex-shrink: 0;
+        stroke: var(--blue);
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      /* 注釈 */
+      .note-mark {
+        font-size: 9px;
+        font-weight: 900;
+        color: #b45309;
+        vertical-align: super;
+        margin-left: 2px;
+      }
+      .val-note {
+        display: block;
+        font-size: 8px;
+        font-weight: 700;
+        line-height: 1;
+        color: #b45309;
+      }
+      .beppyo-note {
+        font-size: 11px;
+        color: var(--ink);
+        margin-top: 2px;
+      }
+
+      /* 印刷ボタン */
+      .print-btn {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 5px 12px;
+        border: 1px solid var(--border-dk);
+        border-radius: var(--radius-sm);
+        background: var(--white);
+        color: var(--ink);
+        font-size: 12px;
+        font-family: inherit;
+        cursor: pointer;
+        white-space: nowrap;
+        transition:
+          border-color 0.15s,
+          color 0.15s;
+      }
+      .print-btn:hover {
+        border-color: var(--blue);
+        color: var(--blue);
+      }
+
+      /* 列解除ボタン */
+      .col-clear-btn {
+        display: none;
+        align-items: center;
+        gap: 4px;
+        padding: 5px 10px;
+        border: 1px solid var(--blue);
+        border-radius: var(--radius-sm);
+        background: var(--white);
+        color: var(--blue);
+        font-size: 12px;
+        font-family: inherit;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      .col-clear-btn.visible {
+        display: flex;
+      }
+      .col-clear-btn:hover {
+        background: var(--box-blue);
+      }
+
+      .empty-msg {
+        text-align: center;
+        padding: 32px;
+        color: #555;
+        font-size: 13px;
+        display: none;
+      }
+
+      @media print {
+        body {
+          padding: 0;
+          background: white;
+        }
+        .page {
+          gap: 8px;
+        }
+        .controls,
+        .row-highlight-banner {
+          display: none !important;
+        }
+        .table-scroll {
+          max-height: none;
+          overflow: visible;
+        }
+        a[href="kaitei2026.html"] {
+          display: none !important;
+        }
+        .beppyo-table {
+          font-size: 10px;
+        }
+        .beppyo-table .item-cell {
+          font-size: 11px;
+        }
+        .beppyo-table .val-cell {
+          font-size: 12px;
+        }
+        .beppyo-table tbody tr:hover td {
+          background: transparent !important;
+        }
+        .beppyo-table tbody tr.row-selected td {
+          background: transparent !important;
+          border-top: 1px solid var(--border) !important;
+          border-bottom: 1px solid var(--border) !important;
+        }
+      }
+
+      @media (max-width: 640px) {
+        body {
+          font-size: 13px;
+          padding: 14px 12px 40px;
+        }
+        :root {
+          --text-xs: 11px;
+          --text-sm: 12.5px;
+          --text-md: 13px;
+          --text-lg: 15px;
+          --text-xl: 17px;
+        }
+        .col-select {
+          min-width: 160px;
+        }
+        .table-scroll {
+          max-height: none;
+          overflow-y: visible;
+        }
+        .usage-hint {
+          gap: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div style="padding: 4px 0 0">
+        <a
+          href="kaitei2026.html"
+          style="
+            color: #1e5fa8;
+            text-decoration: none;
+            font-size: 13px;
+            border: 1px solid #1e5fa8;
+            border-radius: 6px;
+            padding: 4px 14px;
+            background: #fff;
+          "
+          >← 資料一覧（TOP）に戻る</a
+        >
+      </div>
+
+      <div class="page-title">
+        <h1>
+          別表１（１）　服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否
+        </h1>
+        <p>
+          令和8年6月1日施行｜2026年調剤報酬改定　※ 4月2日通知の修正を反映済み
+        </p>
+      </div>
+
+      <div class="controls">
+        <span class="controls-label">項目検索：</span>
+        <div class="search-wrap">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input
+            class="search-input"
+            id="searchInput"
+            type="search"
+            placeholder="項目名で検索…"
+            oninput="applySearch()"
+          />
+        </div>
+        <span class="controls-label">算定する指導料：</span>
+        <select class="col-select" id="colSelect" onchange="applyColFilter()">
+          <option value="all">── すべての列を表示 ──</option>
+          <optgroup label="服薬管理指導料（外来系）">
+            <option value="0">1イ・2イ　かかりつけ</option>
+            <option value="1">1ロ・2ロ　通常対面</option>
+            <option value="2">３　施設訪問</option>
+            <option value="3">4イ・4ニ　オンライン（一般）</option>
+            <option value="4">4ロ・4ハ　オンライン（在宅）</option>
+          </optgroup>
+          <optgroup label="在宅・訪問系">
+            <option value="5">在宅患者訪問薬剤管理指導料１</option>
+            <option value="6">在宅患者訪問薬剤管理指導料２・３</option>
+            <option value="7">在宅患者緊急訪問薬剤管理指導料</option>
+            <option value="8">在宅患者緊急時等共同指導料</option>
+            <option value="9">訪問薬剤管理医師同時指導料</option>
+          </optgroup>
+        </select>
+        <button
+          class="col-clear-btn"
+          id="colClearBtn"
+          onclick="clearColFilter()"
+        >
+          <svg
+            width="11"
+            height="11"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" /></svg
+          >列選択解除
+        </button>
+        <span class="result-count"
+          ><strong id="visibleCount">26</strong> / 26 件</span
+        >
+        <button class="print-btn" onclick="window.print()">
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+          >
+            <polyline points="6 9 6 2 18 2 18 9" />
+            <path
+              d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"
+            />
+            <rect x="6" y="14" width="12" height="8" /></svg
+          >印刷
+        </button>
+      </div>
+
+      <div class="usage-hint">
+        <div class="hint-item">
+          <svg viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <span>項目名で行を絞り込めます</span>
+        </div>
+        <div class="hint-item">
+          <svg viewBox="0 0 24 24">
+            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+          </svg>
+          <span>指導料を選ぶと対象列を強調・他列を薄く表示</span>
+        </div>
+        <div class="hint-item">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 4l7.07 17 2.51-7.39L21 11.07z" />
+          </svg>
+          <span>行をクリックすると黄色でハイライトされます</span>
+        </div>
+      </div>
+
+      <div class="row-highlight-banner" id="rowBanner">
+        <span
+          ><svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            style="vertical-align: -1px; margin-right: 5px"
+          >
+            <path d="M12 2l3 7h5l-4 4 2 7-6-4-6 4 2-7-4-4h5z" /></svg
+          >選択中：<strong id="bannerItemName"></strong
+        ></span>
+        <button class="clear-btn" onclick="clearRowSelect()">選択解除</button>
+      </div>
+
+      <div class="legend">
+        <span style="font-weight: 700">凡例：</span>
+        <span style="color: var(--blue)">○ 算定可</span>
+        <span style="color: #b45309"
+          >×<sup style="font-size: 8px; font-weight: 900">※</sup>
+          条件付き可（※参照）</span
+        >
+        <span style="color: #bbb">× 算定不可</span>
+        <span style="font-size: 11px; color: #888; margin-left: 4px"
+          >※ 列は横スクロールで確認できます</span
+        >
+      </div>
+
+      <div class="table-scroll">
+        <table class="beppyo-table" id="mainTable">
+          <thead>
+            <tr>
+              <th rowspan="2">カテゴリ</th>
+              <th
+                rowspan="2"
+                style="text-align: left; padding-left: 8px; min-width: 190px"
+              >
+                項目
+              </th>
+              <th rowspan="2">算定回数</th>
+              <th colspan="5">服薬管理指導料（外来系）</th>
+              <th colspan="5" class="grp-zaitaku zaitaku-col">在宅・訪問系</th>
+            </tr>
+            <tr id="colHeaderRow">
+              <th
+                data-colidx="0"
+                title="服薬管理指導料１イ・２イ（かかりつけ）"
+              >
+                1イ・2イ<br /><small>かかりつけ</small>
+              </th>
+              <th data-colidx="1" title="服薬管理指導料１ロ・２ロ（通常対面）">
+                1ロ・2ロ<br /><small>通常対面</small>
+              </th>
+              <th data-colidx="2" title="服薬管理指導料３（施設訪問）">
+                ３<br /><small>施設訪問</small>
+              </th>
+              <th
+                data-colidx="3"
+                title="服薬管理指導料４イ・４ニ（オンライン一般）"
+              >
+                4イ・4ニ<br /><small>オンライン</small>
+              </th>
+              <th
+                data-colidx="4"
+                title="服薬管理指導料４ロ・４ハ（オンライン在宅）"
+              >
+                4ロ・4ハ<br /><small>在宅ｵﾝﾗｲﾝ</small>
+              </th>
+              <th
+                data-colidx="5"
+                class="grp-zaitaku zaitaku-col"
+                title="在宅患者訪問薬剤管理指導料１"
+              >
+                在宅訪問<br />指導料１
+              </th>
+              <th
+                data-colidx="6"
+                class="grp-zaitaku"
+                title="在宅患者訪問薬剤管理指導料２・３"
+              >
+                在宅訪問<br />指導料2・3
+              </th>
+              <th
+                data-colidx="7"
+                class="grp-zaitaku"
+                title="在宅患者緊急訪問薬剤管理指導料"
+              >
+                在宅緊急<br />訪問指導料
+              </th>
+              <th
+                data-colidx="8"
+                class="grp-zaitaku"
+                title="在宅患者緊急時等共同指導料"
+              >
+                緊急時等<br />共同指導料
+              </th>
+              <th
+                data-colidx="9"
+                class="grp-zaitaku"
+                title="訪問薬剤管理医師同時指導料"
+              >
+                医師同時<br />指導料
+              </th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- 調剤管理料等の加算 -->
+            <tr data-vals="1,1,1,1,1,1,1,1,1,1">
+              <td class="cat-cell" rowspan="2">調剤管理料等の加算</td>
+              <td class="item-cell">調剤時残薬調整加算</td>
+              <td class="freq-cell">処方箋受付ごと</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell ok" data-colidx="1">○</td>
+              <td class="val-cell ok" data-colidx="2">○</td>
+              <td class="val-cell ok" data-colidx="3">○</td>
+              <td class="val-cell ok" data-colidx="4">○</td>
+              <td class="val-cell ok zaitaku-col" data-colidx="5">○</td>
+              <td class="val-cell ok" data-colidx="6">○</td>
+              <td class="val-cell ok" data-colidx="7">○</td>
+              <td class="val-cell ok" data-colidx="8">○</td>
+              <td class="val-cell ok" data-colidx="9">○</td>
+            </tr>
+            <tr data-vals="1,1,1,1,1,1,1,1,1,1">
+              <td class="item-cell">薬学的有害事象等防止加算</td>
+              <td class="freq-cell">処方箋受付ごと</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell ok" data-colidx="1">○</td>
+              <td class="val-cell ok" data-colidx="2">○</td>
+              <td class="val-cell ok" data-colidx="3">○</td>
+              <td class="val-cell ok" data-colidx="4">○</td>
+              <td class="val-cell ok zaitaku-col" data-colidx="5">○</td>
+              <td class="val-cell ok" data-colidx="6">○</td>
+              <td class="val-cell ok" data-colidx="7">○</td>
+              <td class="val-cell ok" data-colidx="8">○</td>
+              <td class="val-cell ok" data-colidx="9">○</td>
+            </tr>
+
+            <!-- 服薬管理指導料の加算等 -->
+            <tr class="cat-border-top" data-vals="1,1,1,1,0,0,0,0,0,0">
+              <td class="cat-cell" rowspan="22">
+                服薬管理指導料の加算・<br />在宅患者訪問薬剤管理<br />指導料の加算
+              </td>
+              <td class="item-cell">特定薬剤管理指導加算１</td>
+              <td class="freq-cell">処方箋受付ごと</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell ok" data-colidx="1">○</td>
+              <td class="val-cell ok" data-colidx="2">○</td>
+              <td class="val-cell ok" data-colidx="3">○</td>
+              <td class="val-cell ng" data-colidx="4">×</td>
+              <td class="val-cell ng zaitaku-col" data-colidx="5">×</td>
+              <td class="val-cell ng" data-colidx="6">×</td>
+              <td class="val-cell ng" data-colidx="7">×</td>
+              <td class="val-cell ng" data-colidx="8">×</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="1,1,1,1,0,0,0,0,0,0">
+              <td class="item-cell">特定薬剤管理指導加算２</td>
+              <td class="freq-cell">月１回まで</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell ok" data-colidx="1">○</td>
+              <td class="val-cell ok" data-colidx="2">○</td>
+              <td class="val-cell ok" data-colidx="3">○</td>
+              <td class="val-cell ng" data-colidx="4">×</td>
+              <td class="val-cell ng zaitaku-col" data-colidx="5">×</td>
+              <td class="val-cell ng" data-colidx="6">×</td>
+              <td class="val-cell ng" data-colidx="7">×</td>
+              <td class="val-cell ng" data-colidx="8">×</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="1,1,1,1,0,0,0,0,0,0">
+              <td class="item-cell">特定薬剤管理指導加算３</td>
+              <td class="freq-cell">処方箋受付ごと</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell ok" data-colidx="1">○</td>
+              <td class="val-cell ok" data-colidx="2">○</td>
+              <td class="val-cell ok" data-colidx="3">○</td>
+              <td class="val-cell ng" data-colidx="4">×</td>
+              <td class="val-cell ng zaitaku-col" data-colidx="5">×</td>
+              <td class="val-cell ng" data-colidx="6">×</td>
+              <td class="val-cell ng" data-colidx="7">×</td>
+              <td class="val-cell ng" data-colidx="8">×</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="1,1,1,0,0,0,0,0,0,0">
+              <td class="item-cell">吸入薬指導加算</td>
+              <td class="freq-cell">６月に１回まで</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell ok" data-colidx="1">○</td>
+              <td class="val-cell ok" data-colidx="2">○</td>
+              <td class="val-cell ng" data-colidx="3">×</td>
+              <td class="val-cell ng" data-colidx="4">×</td>
+              <td class="val-cell ng zaitaku-col" data-colidx="5">×</td>
+              <td class="val-cell ng" data-colidx="6">×</td>
+              <td class="val-cell ng" data-colidx="7">×</td>
+              <td class="val-cell ng" data-colidx="8">×</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="1,2,0,0,0,0,0,0,0,0">
+              <td class="item-cell">かかりつけ薬剤師フォローアップ加算</td>
+              <td class="freq-cell">３月に１回まで</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell partial" data-colidx="1">
+                ×<span class="val-note">※３</span>
+              </td>
+              <td class="val-cell ng" data-colidx="2">×</td>
+              <td class="val-cell ng" data-colidx="3">×</td>
+              <td class="val-cell ng" data-colidx="4">×</td>
+              <td class="val-cell ng zaitaku-col" data-colidx="5">×</td>
+              <td class="val-cell ng" data-colidx="6">×</td>
+              <td class="val-cell ng" data-colidx="7">×</td>
+              <td class="val-cell ng" data-colidx="8">×</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="1,2,0,0,0,0,0,0,0,0">
+              <td class="item-cell">かかりつけ薬剤師訪問加算</td>
+              <td class="freq-cell">６月に１回まで</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell partial" data-colidx="1">
+                ×<span class="val-note">※３</span>
+              </td>
+              <td class="val-cell ng" data-colidx="2">×</td>
+              <td class="val-cell ng" data-colidx="3">×</td>
+              <td class="val-cell ng" data-colidx="4">×</td>
+              <td class="val-cell ng zaitaku-col" data-colidx="5">×</td>
+              <td class="val-cell ng" data-colidx="6">×</td>
+              <td class="val-cell ng" data-colidx="7">×</td>
+              <td class="val-cell ng" data-colidx="8">×</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="1,1,1,1,1,1,1,1,1,0">
+              <td class="item-cell">麻薬管理指導加算</td>
+              <td class="freq-cell">処方箋受付ごと</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell ok" data-colidx="1">○</td>
+              <td class="val-cell ok" data-colidx="2">○</td>
+              <td class="val-cell ok" data-colidx="3">○</td>
+              <td class="val-cell ok" data-colidx="4">○</td>
+              <td class="val-cell ok zaitaku-col" data-colidx="5">○</td>
+              <td class="val-cell ok" data-colidx="6">○</td>
+              <td class="val-cell ok" data-colidx="7">○</td>
+              <td class="val-cell ok" data-colidx="8">○</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="1,1,1,1,1,1,1,1,1,0">
+              <td class="item-cell">乳幼児服薬指導加算</td>
+              <td class="freq-cell">処方箋受付ごと</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell ok" data-colidx="1">○</td>
+              <td class="val-cell ok" data-colidx="2">○</td>
+              <td class="val-cell ok" data-colidx="3">○</td>
+              <td class="val-cell ok" data-colidx="4">○</td>
+              <td class="val-cell ok zaitaku-col" data-colidx="5">○</td>
+              <td class="val-cell ok" data-colidx="6">○</td>
+              <td class="val-cell ok" data-colidx="7">○</td>
+              <td class="val-cell ok" data-colidx="8">○</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="1,1,1,1,1,1,1,1,1,0">
+              <td class="item-cell">小児特定加算</td>
+              <td class="freq-cell">処方箋受付ごと</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell ok" data-colidx="1">○</td>
+              <td class="val-cell ok" data-colidx="2">○</td>
+              <td class="val-cell ok" data-colidx="3">○</td>
+              <td class="val-cell ok" data-colidx="4">○</td>
+              <td class="val-cell ok zaitaku-col" data-colidx="5">○</td>
+              <td class="val-cell ok" data-colidx="6">○</td>
+              <td class="val-cell ok" data-colidx="7">○</td>
+              <td class="val-cell ok" data-colidx="8">○</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="0,0,0,0,0,1,1,1,1,0">
+              <td class="item-cell">在宅患者医療用麻薬持続注射療法加算</td>
+              <td class="freq-cell">１回ごと</td>
+              <td class="val-cell ng" data-colidx="0">×</td>
+              <td class="val-cell ng" data-colidx="1">×</td>
+              <td class="val-cell ng" data-colidx="2">×</td>
+              <td class="val-cell ng" data-colidx="3">×</td>
+              <td class="val-cell ng" data-colidx="4">×</td>
+              <td class="val-cell ok zaitaku-col" data-colidx="5">○</td>
+              <td class="val-cell ok" data-colidx="6">○</td>
+              <td class="val-cell ok" data-colidx="7">○</td>
+              <td class="val-cell ok" data-colidx="8">○</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="0,0,0,0,0,1,1,1,1,0">
+              <td class="item-cell">在宅中心静脈栄養法加算</td>
+              <td class="freq-cell">１回ごと</td>
+              <td class="val-cell ng" data-colidx="0">×</td>
+              <td class="val-cell ng" data-colidx="1">×</td>
+              <td class="val-cell ng" data-colidx="2">×</td>
+              <td class="val-cell ng" data-colidx="3">×</td>
+              <td class="val-cell ng" data-colidx="4">×</td>
+              <td class="val-cell ok zaitaku-col" data-colidx="5">○</td>
+              <td class="val-cell ok" data-colidx="6">○</td>
+              <td class="val-cell ok" data-colidx="7">○</td>
+              <td class="val-cell ok" data-colidx="8">○</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="1,1,1,1,0,0,0,0,0,0">
+              <td class="item-cell">外来服薬支援料１</td>
+              <td class="freq-cell">月１回まで</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell ok" data-colidx="1">○</td>
+              <td class="val-cell ok" data-colidx="2">○</td>
+              <td class="val-cell ok" data-colidx="3">○</td>
+              <td class="val-cell ng" data-colidx="4">×</td>
+              <td class="val-cell ng zaitaku-col" data-colidx="5">×</td>
+              <td class="val-cell ng" data-colidx="6">×</td>
+              <td class="val-cell ng" data-colidx="7">×</td>
+              <td class="val-cell ng" data-colidx="8">×</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="1,1,1,1,1,1,1,1,1,0">
+              <td class="item-cell">外来服薬支援料２</td>
+              <td class="freq-cell">処方箋受付ごと</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell ok" data-colidx="1">○</td>
+              <td class="val-cell ok" data-colidx="2">○</td>
+              <td class="val-cell ok" data-colidx="3">○</td>
+              <td class="val-cell ok" data-colidx="4">○</td>
+              <td class="val-cell ok zaitaku-col" data-colidx="5">○</td>
+              <td class="val-cell ok" data-colidx="6">○</td>
+              <td class="val-cell ok" data-colidx="7">○</td>
+              <td class="val-cell ok" data-colidx="8">○</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="1,1,1,1,1,1,1,1,1,0">
+              <td class="item-cell">服用薬剤調整支援料１</td>
+              <td class="freq-cell">月１回まで</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell ok" data-colidx="1">○</td>
+              <td class="val-cell ok" data-colidx="2">○</td>
+              <td class="val-cell ok" data-colidx="3">○</td>
+              <td class="val-cell ok" data-colidx="4">○</td>
+              <td class="val-cell ok zaitaku-col" data-colidx="5">○</td>
+              <td class="val-cell ok" data-colidx="6">○</td>
+              <td class="val-cell ok" data-colidx="7">○</td>
+              <td class="val-cell ok" data-colidx="8">○</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="1,2,0,1,1,1,1,1,1,0">
+              <td class="item-cell">
+                服用薬剤調整支援料２<span class="note-mark">※1</span>
+              </td>
+              <td class="freq-cell">６月に１回まで</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell partial" data-colidx="1">
+                ×<span class="val-note">※３</span>
+              </td>
+              <td class="val-cell ng" data-colidx="2">×</td>
+              <td class="val-cell ok" data-colidx="3">○</td>
+              <td class="val-cell ok" data-colidx="4">○</td>
+              <td class="val-cell ok zaitaku-col" data-colidx="5">○</td>
+              <td class="val-cell ok" data-colidx="6">○</td>
+              <td class="val-cell ok" data-colidx="7">○</td>
+              <td class="val-cell ok" data-colidx="8">○</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="1,1,1,1,1,1,1,1,1,0">
+              <td class="item-cell">調剤後薬剤管理指導料１</td>
+              <td class="freq-cell">月１回まで</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell ok" data-colidx="1">○</td>
+              <td class="val-cell ok" data-colidx="2">○</td>
+              <td class="val-cell ok" data-colidx="3">○</td>
+              <td class="val-cell ok" data-colidx="4">○</td>
+              <td class="val-cell ok zaitaku-col" data-colidx="5">○</td>
+              <td class="val-cell ok" data-colidx="6">○</td>
+              <td class="val-cell ok" data-colidx="7">○</td>
+              <td class="val-cell ok" data-colidx="8">○</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="1,1,1,1,1,1,1,1,1,0">
+              <td class="item-cell">調剤後薬剤管理指導料２</td>
+              <td class="freq-cell">月１回まで</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell ok" data-colidx="1">○</td>
+              <td class="val-cell ok" data-colidx="2">○</td>
+              <td class="val-cell ok" data-colidx="3">○</td>
+              <td class="val-cell ok" data-colidx="4">○</td>
+              <td class="val-cell ok zaitaku-col" data-colidx="5">○</td>
+              <td class="val-cell ok" data-colidx="6">○</td>
+              <td class="val-cell ok" data-colidx="7">○</td>
+              <td class="val-cell ok" data-colidx="8">○</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="1,1,1,1,1,0,0,0,0,0">
+              <td class="item-cell">服薬情報等提供料１</td>
+              <td class="freq-cell">月１回まで</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell ok" data-colidx="1">○</td>
+              <td class="val-cell ok" data-colidx="2">○</td>
+              <td class="val-cell ok" data-colidx="3">○</td>
+              <td class="val-cell ok" data-colidx="4">○</td>
+              <td class="val-cell ng zaitaku-col" data-colidx="5">×</td>
+              <td class="val-cell ng" data-colidx="6">×</td>
+              <td class="val-cell ng" data-colidx="7">×</td>
+              <td class="val-cell ng" data-colidx="8">×</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="1,1,1,1,1,0,0,0,0,0">
+              <td class="item-cell">服薬情報等提供料２</td>
+              <td class="freq-cell">月１回まで</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell ok" data-colidx="1">○</td>
+              <td class="val-cell ok" data-colidx="2">○</td>
+              <td class="val-cell ok" data-colidx="3">○</td>
+              <td class="val-cell ok" data-colidx="4">○</td>
+              <td class="val-cell ng zaitaku-col" data-colidx="5">×</td>
+              <td class="val-cell ng" data-colidx="6">×</td>
+              <td class="val-cell ng" data-colidx="7">×</td>
+              <td class="val-cell ng" data-colidx="8">×</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="1,1,1,1,1,0,0,0,0,0">
+              <td class="item-cell">服薬情報等提供料３</td>
+              <td class="freq-cell">３月に１回まで</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell ok" data-colidx="1">○</td>
+              <td class="val-cell ok" data-colidx="2">○</td>
+              <td class="val-cell ok" data-colidx="3">○</td>
+              <td class="val-cell ok" data-colidx="4">○</td>
+              <td class="val-cell ng zaitaku-col" data-colidx="5">×</td>
+              <td class="val-cell ng" data-colidx="6">×</td>
+              <td class="val-cell ng" data-colidx="7">×</td>
+              <td class="val-cell ng" data-colidx="8">×</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="1,1,1,1,1,1,1,1,1,0">
+              <td class="item-cell">経管投薬支援料</td>
+              <td class="freq-cell">１回まで</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell ok" data-colidx="1">○</td>
+              <td class="val-cell ok" data-colidx="2">○</td>
+              <td class="val-cell ok" data-colidx="3">○</td>
+              <td class="val-cell ok" data-colidx="4">○</td>
+              <td class="val-cell ok zaitaku-col" data-colidx="5">○</td>
+              <td class="val-cell ok" data-colidx="6">○</td>
+              <td class="val-cell ok" data-colidx="7">○</td>
+              <td class="val-cell ok" data-colidx="8">○</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="0,0,0,0,0,1,0,1,0,0">
+              <td class="item-cell">
+                複数名薬剤管理指導訪問料<span class="note-mark">※2</span>
+              </td>
+              <td class="freq-cell">１回ごと</td>
+              <td class="val-cell ng" data-colidx="0">×</td>
+              <td class="val-cell ng" data-colidx="1">×</td>
+              <td class="val-cell ng" data-colidx="2">×</td>
+              <td class="val-cell ng" data-colidx="3">×</td>
+              <td class="val-cell ng" data-colidx="4">×</td>
+              <td class="val-cell ok zaitaku-col" data-colidx="5">○</td>
+              <td class="val-cell ng" data-colidx="6">×</td>
+              <td class="val-cell ok" data-colidx="7">○</td>
+              <td class="val-cell ng" data-colidx="8">×</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+
+            <!-- 居宅療養管理指導費等 -->
+            <tr class="cat-border-top" data-vals="1,1,1,1,1,1,1,1,1,1">
+              <td class="cat-cell" rowspan="2">居宅療養管理指導費等</td>
+              <td class="item-cell">居宅療養管理指導費</td>
+              <td class="freq-cell">１回ごと</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell ok" data-colidx="1">○</td>
+              <td class="val-cell ok" data-colidx="2">○</td>
+              <td class="val-cell ok" data-colidx="3">○</td>
+              <td class="val-cell ok" data-colidx="4">○</td>
+              <td class="val-cell ok zaitaku-col" data-colidx="5">○</td>
+              <td class="val-cell ok" data-colidx="6">○</td>
+              <td class="val-cell ok" data-colidx="7">○</td>
+              <td class="val-cell ok" data-colidx="8">○</td>
+              <td class="val-cell ok" data-colidx="9">○</td>
+            </tr>
+            <tr data-vals="1,1,1,1,1,1,1,1,1,1">
+              <td class="item-cell">介護予防居宅療養管理指導費</td>
+              <td class="freq-cell">１回ごと</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell ok" data-colidx="1">○</td>
+              <td class="val-cell ok" data-colidx="2">○</td>
+              <td class="val-cell ok" data-colidx="3">○</td>
+              <td class="val-cell ok" data-colidx="4">○</td>
+              <td class="val-cell ok zaitaku-col" data-colidx="5">○</td>
+              <td class="val-cell ok" data-colidx="6">○</td>
+              <td class="val-cell ok" data-colidx="7">○</td>
+              <td class="val-cell ok" data-colidx="8">○</td>
+              <td class="val-cell ok" data-colidx="9">○</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="empty-msg" id="emptyMsg">該当する項目が見つかりません</div>
+
+      <div>
+        <p class="beppyo-note">※1　かかりつけ薬剤師のみ算定可能</p>
+        <p class="beppyo-note">※2　単一建物診療患者１名のみ算定可能</p>
+        <p class="beppyo-note">
+          ※3　かかりつけ薬剤師が指導や訪問等を実施し、その後の服薬管理指導を当該保険薬局の他の保険薬剤師が実施した場合については、併算定可能
+        </p>
+      </div>
+    </div>
+
+    <div style="padding: 8px 0 0; text-align: right">
+      <a
+        href="kaitei2026.html"
+        style="
+          color: #1e5fa8;
+          text-decoration: none;
+          font-size: 13px;
+          border: 1px solid #1e5fa8;
+          border-radius: 6px;
+          padding: 4px 14px;
+          background: #fff;
+        "
+        >← 資料一覧（TOP）に戻る</a
+      >
+    </div>
+
+    <script
+      data-goatcounter="https://kimura-chozai.goatcounter.com/count"
+      async
+      src="//gc.zgo.at/count.js"
+    ></script>
+
+    <script>
+      // ===== 検索 =====
+      function applySearch() {
+        applyRowFilters();
+      }
+
+      function applyRowFilters() {
+        const query = document
+          .getElementById("searchInput")
+          .value.trim()
+          .toLowerCase();
+
+        const rows = document.querySelectorAll("#tableBody tr");
+        let visible = 0;
+        rows.forEach((row) => {
+          const itemCell = row.querySelector(".item-cell");
+          if (!itemCell) {
+            row.classList.add("hidden-row");
+            return;
+          }
+
+          const textMatch =
+            !query || itemCell.textContent.toLowerCase().includes(query);
+
+          if (textMatch) {
+            row.classList.remove("hidden-row");
+            visible++;
+          } else {
+            row.classList.add("hidden-row");
+          }
+        });
+
+        document.getElementById("visibleCount").textContent = visible;
+        document.getElementById("emptyMsg").style.display =
+          visible === 0 ? "block" : "none";
+        fixCatCells();
+      }
+
+      // ===== 列選択（ハイライト＋非選択を薄く）=====
+      function applyColFilter() {
+        const val = document.getElementById("colSelect").value;
+        document
+          .getElementById("colSelect")
+          .classList.toggle("active", val !== "all");
+
+        document.querySelectorAll("#colHeaderRow th").forEach((th) => {
+          const idx = th.dataset.colidx;
+          th.classList.remove("col-selected", "col-dimmed");
+          if (val !== "all") {
+            idx === val
+              ? th.classList.add("col-selected")
+              : th.classList.add("col-dimmed");
+          }
+        });
+
+        document
+          .querySelectorAll("#tableBody td[data-colidx]")
+          .forEach((td) => {
+            const idx = td.dataset.colidx;
+            td.classList.remove("col-selected", "col-dimmed");
+            if (val !== "all") {
+              idx === val
+                ? td.classList.add("col-selected")
+                : td.classList.add("col-dimmed");
+            }
+          });
+
+        // 列解除ボタンの表示切替
+        document
+          .getElementById("colClearBtn")
+          .classList.toggle("visible", val !== "all");
+
+        // 列が変わったら行フィルターも再計算
+        applyRowFilters();
+      }
+
+      function clearColFilter() {
+        document.getElementById("colSelect").value = "all";
+        applyColFilter();
+      }
+
+      // ===== カテゴリrowspan調整 =====
+      function fixCatCells() {
+        const rows = Array.from(document.querySelectorAll("#tableBody tr"));
+        let currentCatCell = null;
+        let count = 0;
+        rows.forEach((row) => {
+          const catCell = row.querySelector(".cat-cell");
+          if (catCell) {
+            if (currentCatCell) {
+              currentCatCell.rowSpan = Math.max(1, count);
+              currentCatCell.style.display = count === 0 ? "none" : "";
+            }
+            currentCatCell = catCell;
+            count = row.classList.contains("hidden-row") ? 0 : 1;
+          } else if (currentCatCell) {
+            if (!row.classList.contains("hidden-row")) count++;
+          }
+        });
+        if (currentCatCell) {
+          currentCatCell.rowSpan = Math.max(1, count);
+          currentCatCell.style.display = count === 0 ? "none" : "";
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        fixCatCells();
+
+        // 各行にクリックで選択ハイライト
+        document.querySelectorAll("#tableBody tr").forEach((row) => {
+          row.addEventListener("click", () => {
+            const itemCell = row.querySelector(".item-cell");
+            if (!itemCell) return;
+            const isSelected = row.classList.contains("row-selected");
+
+            // 全行の選択を解除
+            document
+              .querySelectorAll("#tableBody tr.row-selected")
+              .forEach((r) => r.classList.remove("row-selected"));
+
+            if (!isSelected) {
+              row.classList.add("row-selected");
+              document.getElementById("bannerItemName").textContent =
+                itemCell.textContent.trim();
+              document.getElementById("rowBanner").classList.add("visible");
+              // 選択行が見えるようスクロール
+              row.scrollIntoView({ block: "nearest", behavior: "smooth" });
+            } else {
+              clearRowSelect();
+            }
+          });
+        });
+      });
+
+      function clearRowSelect() {
+        document
+          .querySelectorAll("#tableBody tr.row-selected")
+          .forEach((r) => r.classList.remove("row-selected"));
+        document.getElementById("rowBanner").classList.remove("visible");
+      }
+    </script>
+  </body>
 </html>
