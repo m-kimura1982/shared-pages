@@ -85,7 +85,7 @@ tr:last-child td { border-bottom:none; }
           <td><strong>薬機法上の承認区分</strong>（後発品として承認されていればOK）</td>
         </tr>
         <tr>
-          <td><span class="em-red">後発品調剤率のカウント</span></td>
+          <td><span class="em-red">後発医薬品調剤率のカウント</span></td>
           <td><strong>診療報酬上の区分</strong>（薬価改定で外れることがある）</td>
         </tr>
       </tbody>
@@ -98,7 +98,7 @@ tr:last-child td { border-bottom:none; }
 
   <!-- 2つの注意パターン -->
   <div class="card">
-    <div class="card-title">よくある2つのパターン</div>
+    <div class="card-title">薬価改定で生じる2つのパターン</div>
     <p style="font-size:var(--text-sm); margin-bottom:16px; color:#555;">薬価改定で「調剤率に算入できなくなる」のは主に次の2つ。いずれも<strong>変更調剤は可能</strong>。</p>
 
     <div class="grid-2">
@@ -110,7 +110,7 @@ tr:last-child td { border-bottom:none; }
         <table>
           <thead><tr><th>項目</th><th>取り扱い</th></tr></thead>
           <tbody>
-            <tr><td>後発品調剤率カウント</td><td><span class="em-red">対象外（分子に入らない）</span></td></tr>
+            <tr><td>後発医薬品調剤率カウント</td><td><span class="em-red">対象外（分子に入らない）</span></td></tr>
             <tr><td>変更調剤</td><td><span class="em-blue">従来通り可</span></td></tr>
           </tbody>
         </table>
@@ -131,7 +131,7 @@ tr:last-child td { border-bottom:none; }
         <table>
           <thead><tr><th>項目</th><th>取り扱い</th></tr></thead>
           <tbody>
-            <tr><td>後発品調剤率カウント</td><td><span class="em-red">対象外（母集団から除外）</span></td></tr>
+            <tr><td>後発医薬品調剤率カウント</td><td><span class="em-red">対象外（母集団から除外）</span></td></tr>
             <tr><td>変更調剤</td><td><span class="em-blue">従来通り可</span></td></tr>
           </tbody>
         </table>
@@ -162,7 +162,7 @@ tr:last-child td { border-bottom:none; }
         <tr>
           <th>後発品の対照</th>
           <th>同額以下になった場合の変化</th>
-          <th>後発品調剤率カウント</th>
+          <th>後発医薬品調剤率カウント</th>
         </tr>
       </thead>
       <tbody>
@@ -195,6 +195,17 @@ tr:last-child td { border-bottom:none; }
     </div>
   </div>
 
+  <!-- 補足：計算式 -->
+  <div class="card">
+    <div class="card-title">補足：後発医薬品調剤率とは</div>
+    <div class="box-gray" style="font-size:var(--text-sm); line-height:2.0;">
+      <strong>後発医薬品調剤率（数量シェア／置換え率）</strong><br>
+      ＝〔後発医薬品の数量〕 ÷（〔後発医薬品のある先発医薬品の数量〕＋〔後発医薬品の数量〕）<br>
+      ＝〔区分「3」の品目の数量（★を除く）〕 ÷（〔区分「2」の品目の数量（☆を除く）〕＋〔区分「3」の品目の数量（★を除く）〕）
+    </div>
+    <p style="font-size:var(--text-xs); color:#666; margin-top:8px;">※ ★印の後発品は分子から、☆印の先発品は分母から除外される。基礎的医薬品は分子・分母のいずれにも入らない。</p>
+  </div>
+
   <!-- 実務チェック -->
   <div class="card">
     <div class="card-title">実務上の確認ポイント</div>
@@ -209,7 +220,7 @@ tr:last-child td { border-bottom:none; }
           <td><span class="em-blue">★印・基礎的医薬品ともに可</span></td>
         </tr>
         <tr>
-          <td>後発品調剤率に算入できるか？</td>
+          <td>後発医薬品調剤率に算入できるか？</td>
           <td>診療報酬上の区分</td>
           <td><span class="em-red">★印・基礎的医薬品は対象外</span>（準先発品対照の★は対象）</td>
         </tr>
