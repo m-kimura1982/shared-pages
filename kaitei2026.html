@@ -227,6 +227,17 @@
         margin-left: 8px;
         vertical-align: middle;
       }
+      .badge-update {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 700;
+        color: #fff;
+        background: #2563eb;
+        padding: 1px 8px;
+        border-radius: 3px;
+        margin-left: 8px;
+        vertical-align: middle;
+      }
       .badge-wip {
         display: inline-block;
         font-size: 11px;
@@ -486,7 +497,7 @@
           <span class="card-title">複数名薬剤管理指導訪問料</span>
           <span class="card-arrow">›</span>
         </a>
-        <a class="card" href="服薬管理指導料.html" data-new-until="2026-05-03">
+        <a class="card" href="服薬管理指導料.html" data-update-until="2026-05-03">
           <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
           <span class="card-title">服薬管理指導料</span>
           <span class="card-arrow">›</span>
@@ -644,6 +655,12 @@
     if (new Date() <= new Date(card.dataset.newUntil)) {
       const arrowEl = card.querySelector('.card-arrow');
       if (arrowEl) arrowEl.insertAdjacentHTML('beforebegin', '<span class="badge-new">NEW</span>');
+    }
+  });
+  document.querySelectorAll('.card[data-update-until]').forEach(card => {
+    if (new Date() <= new Date(card.dataset.updateUntil)) {
+      const arrowEl = card.querySelector('.card-arrow');
+      if (arrowEl) arrowEl.insertAdjacentHTML('beforebegin', '<span class="badge-update">更新</span>');
     }
   });
   </script>
