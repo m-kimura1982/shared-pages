@@ -1,7 +1,35 @@
 {
   "permissions": {
     "allow": [
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "Bash(ls \"D:/☆shared-pages\"/*.html)",
+      "Bash(grep -l 'index.html\\\\|TOPに戻る\\\\|トップに戻る\\\\|インデックス' \"D:/☆shared-pages\"/*.html)",
+      "Bash(node add_back_links.js)",
+      "Bash(python -c \"print\\(''ok''\\)\")",
+      "Bash(py -c \"print\\(''ok''\\)\")",
+      "Bash(node -e \"console.log\\(''node ok''\\)\")",
+      "Bash(node -e \":*)",
+      "Bash(ls D:/*.html D:/*.pptx D:/*.pdf)",
+      "Bash(ls D:/slides*.html)",
+      "Bash(powershell -command \"Get-Content ''D:\\\\☆shared-pages\\\\別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html'' | Select-Object -Index \\(260..300\\) | ForEach-Object { $_}\")",
+      "Bash(npm --version)",
+      "Bash(powershell.exe -Command \"Write-Host 'PS OK'\")",
+      "Bash(npx playwright:*)",
+      "Read(//d//**)",
+      "Read(//mnt/**)",
+      "Bash(mkdir -p /d/xps_work)",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(node convert.js)",
+      "Bash(node -e ':*)",
+      "Bash(powershell.exe -Command ':*)",
+      "Bash(powershell.exe -NoProfile -Command ':*)",
+      "Bash(powershell.exe -Command 'Add-Type -AssemblyName '\\\\''System.IO.Compression.FileSystem'\\\\''; $zip=[System.IO.Compression.ZipFile]::OpenRead\\('\\\\''D:\\\\relenza.oxps'\\\\''\\); $e=$zip.Entries|?{$_.FullName -like '\\\\''*.png'\\\\''}|Select -First 1; $s=$e.Open\\(\\); $m=New-Object System.IO.MemoryStream; $s.CopyTo\\($m\\); [System.IO.File]::WriteAllBytes\\('\\\\''D:\\\\relenza_preview2.png'\\\\'',$m.ToArray\\(\\)\\); $zip.Dispose\\(\\); '\\\\''Done'\\\\''')",
+      "Read(//d/xps_work/**)",
+      "Bash(powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"D:\\\\xps_work\\\\make_xps.ps1\" -PngPath \"D:\\\\relenza_label.png\" -OutputPath \"D:\\\\relenza.oxps\" -WidthDip 340.16 -HeightDip 248.0)",
+      "Bash(powershell.exe -STA -NoProfile -ExecutionPolicy Bypass -File \"D:\\\\xps_work\\\\make_xps.ps1\" -PngPath \"D:\\\\relenza_label.png\" -OutputPath \"D:\\\\relenza_test.xps\" -WidthDip 340.16 -HeightDip 248.0)",
+      "Bash(powershell.exe -STA -NoProfile -Command ':*)",
+      "Bash(powershell.exe -STA -NoProfile -ExecutionPolicy Bypass -File \"D:\\\\xps_work\\\\make_xps.ps1\")"
     ]
   }
 }

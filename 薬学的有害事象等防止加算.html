@@ -38,12 +38,15 @@
     .badge-blue { background:var(--box-blue); color:var(--blue); }
     .box-blue { background:var(--box-gray); border-radius:var(--radius-sm); padding:14px 18px; border:var(--bw) solid var(--border); }
     .box-outline { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:14px 18px; }
+    .lead { border-left:var(--bw-t) solid var(--blue); background:#eef4fb; padding:12px 16px; border-radius:0 var(--radius-sm) var(--radius-sm) 0; font-size:var(--text-sm); line-height:1.75; margin-bottom:14px; }
     .sub-title { font-weight:900; font-size:var(--text-md); padding:6px 0 6px 12px; border-left:var(--bw-t) solid var(--blue); margin-bottom:10px; }
     table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
     th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
     td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
     tr:last-child td { border-bottom:none; }
     .divider { border:none; border-top:var(--bw-h) solid var(--border); margin:10px 0; }
+    .price-up { color:var(--red); font-weight:900; font-size:17px; }
+    .price-old { color:#888; text-decoration:line-through; font-size:var(--text-sm); }
     /* グループ区分ブロック */
     .grp-block { border-radius:var(--radius-sm); overflow:hidden; margin-bottom:10px; }
     .grp-block .grp-rows { border:var(--bw-h) solid var(--border); border-top:none; border-radius:0 0 var(--radius-sm) var(--radius-sm); }
@@ -53,6 +56,12 @@
     .kana-body { flex:1; padding:10px 14px; }
     .kana-head { display:flex; align-items:center; justify-content:space-between; gap:8px; flex-wrap:wrap; margin-bottom:3px; }
     .kana-ttl { font-weight:900; font-size:var(--text-md); }
+    .qa-block { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; margin-bottom:10px; }
+    .qa-q { background:#f7f9fc; padding:10px 14px; font-size:var(--text-sm); border-bottom:var(--bw-h) solid var(--border); }
+    .qa-q .qa-label { display:inline-block; font-weight:900; color:var(--ink); margin-right:6px; }
+    .qa-a { padding:10px 14px; font-size:var(--text-sm); }
+    .qa-a .qa-label { display:inline-block; font-weight:900; color:var(--ink); margin-right:6px; }
+    .qa-src { font-size:var(--text-xs); color:#666; margin-top:6px; }
 
     @media (max-width:640px) {
       body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
@@ -71,8 +80,8 @@
       table { font-size:11.5px; min-width:420px; }
       th,td { padding:6px 8px; }
       .kana-label { font-size:11px; padding:8px 6px; min-width:26px; }
-      /* グループヘッダーの点数が狭い画面で詰まらないよう */
       .kana-body { padding:9px 11px; }
+      .price-up { font-size:14px; }
     }
 
     @media print {
@@ -93,6 +102,7 @@
       .score-block .score-num { font-size:22px; padding:5px 16px; }
       .grp-grid { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
       .grp-grid-full { grid-column:1 / -1; }
+      .price-up { font-size:14px; }
     }
   </style>
 </head>
@@ -116,14 +126,37 @@
     </div>
   </div>
 
-  <!-- 新設背景 -->
+  <!-- 概要リード -->
   <div class="card avoid-break">
     <div class="card-title">
-      新設背景
+      改定のポイント
       <span class="badge badge-red">新設（2026年6月〜）</span>
     </div>
+    <div class="lead">
+      従来の <strong>重複投薬・相互作用等防止加算（残薬調整以外 40点）</strong> と <strong>在宅患者重複投薬・相互作用等防止管理料</strong> を、<strong>調剤管理料の加算として一本化</strong>し、新加算として整理。<br>
+      <strong>業務フロー自体は従来とほぼ同じ</strong>（重複・相互作用・薬学的観点からの照会→処方変更）。主な変更は以下3点。
+    </div>
 
-    <div class="table-wrap" style="margin-bottom:14px;">
+    <div style="display:flex; flex-direction:column; gap:10px; font-size:var(--text-sm);">
+      <div style="display:flex; gap:10px;">
+        <span style="flex-shrink:0; font-weight:900; color:var(--blue);">①</span>
+        <span><strong>点数アップ</strong>：従来40点 → <span class="price-up">最大50点</span>（区分ニのみ30点）</span>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <span style="flex-shrink:0; font-weight:900; color:var(--blue);">②</span>
+        <span><strong>かかりつけ区分（ハ）新設</strong>：かかりつけ薬剤師による照会が独立区分で評価</span>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <span style="flex-shrink:0; font-weight:900; color:var(--blue);">③</span>
+        <span><strong>残薬調整は別加算に分離</strong>：残薬のみの照会は「調剤時残薬調整加算」で算定</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 改定前後の点数比較 -->
+  <div class="card avoid-break">
+    <div class="card-title">改定前後の点数比較</div>
+    <div class="table-wrap">
       <table>
         <thead>
           <tr>
@@ -135,47 +168,29 @@
           <tr>
             <td>
               <div style="font-weight:900; margin-bottom:1px; font-size:var(--text-sm);">重複投薬・相互作用等防止加算</div>
-              <div style="font-size:var(--text-sm); margin-bottom:5px;">調剤管理料の加算</div>
+              <div style="font-size:var(--text-sm); margin-bottom:5px; color:#666;">調剤管理料の加算</div>
               <div style="font-size:var(--text-sm); padding-left:8px; margin-bottom:10px;">
-                <div style="display:flex; gap:6px; margin-bottom:2px;"><span style="flex-shrink:0;">・</span><span><strong>残薬調整以外：40点</strong></span></div>
-                <div style="display:flex; gap:6px; color:#888;"><span style="flex-shrink:0;">・</span><span>残薬調整：20点</span></div>
+                <div style="display:flex; gap:6px; margin-bottom:2px;"><span style="flex-shrink:0;">・</span><span>残薬調整以外：<strong>40点</strong></span></div>
+                <div style="display:flex; gap:6px; color:#888;"><span style="flex-shrink:0;">・</span><span>残薬調整：20点（→残薬加算へ）</span></div>
               </div>
               <div style="font-weight:900; margin-bottom:1px; font-size:var(--text-sm);">在宅患者重複投薬・相互作用等防止管理料</div>
-              <div style="font-size:var(--text-sm); margin-bottom:5px;">在宅訪問薬剤管理指導料等の算定患者が対象</div>
               <div style="font-size:var(--text-sm); padding-left:8px;">
-                <div style="display:flex; gap:6px; margin-bottom:2px;"><span style="flex-shrink:0;">・</span><span>管理料１（処方箋交付後・疑義照会）<br>　<strong>残薬以外 40点</strong> / <span style="color:#888;">残薬 20点</span></span></div>
-                <div style="display:flex; gap:6px;"><span style="flex-shrink:0;">・</span><span>管理料２（処方箋交付前・提案）<br>　<strong>残薬以外 40点</strong> / <span style="color:#888;">残薬 20点</span></span></div>
+                <div style="display:flex; gap:6px; margin-bottom:2px;"><span style="flex-shrink:0;">・</span><span>残薬以外 <strong>40点</strong> / <span style="color:#888;">残薬 20点</span></span></div>
               </div>
             </td>
             <td>
-              <div style="font-weight:900; margin-bottom:1px; font-size:var(--text-sm);">薬学的有害事象等防止加算（本加算・新設）</div>
-              <div style="font-size:var(--text-sm); margin-bottom:5px;">調剤管理料の加算</div>
+              <div style="font-weight:900; margin-bottom:1px; font-size:var(--text-sm);">薬学的有害事象等防止加算（本加算）</div>
+              <div style="font-size:var(--text-sm); margin-bottom:5px; color:#666;">調剤管理料の加算として一本化</div>
               <div style="font-size:var(--text-sm); padding-left:8px; margin-bottom:10px;">
-                <div style="display:flex; gap:6px; margin-bottom:2px;"><span style="flex-shrink:0;">・</span><span>イ〜ハ：<strong>50点</strong></span></div>
-                <div style="display:flex; gap:6px;"><span style="flex-shrink:0;">・</span><span>ニ：<strong>30点</strong></span></div>
+                <div style="display:flex; gap:6px; margin-bottom:2px;"><span style="flex-shrink:0;">・</span><span>イ〜ハ：<span class="price-up">50点</span></span></div>
+                <div style="display:flex; gap:6px;"><span style="flex-shrink:0;">・</span><span>ニ：<span class="price-up">30点</span></span></div>
               </div>
-              <div style="font-weight:900; margin-bottom:1px; font-size:var(--text-sm);">調剤時残薬調整加算（新設）</div>
-              <div style="font-size:var(--text-sm);">残薬調整の評価は別加算で</div>
+              <div style="font-weight:900; margin-bottom:1px; font-size:var(--text-sm);">調剤時残薬調整加算（別加算・新設）</div>
+              <div style="font-size:var(--text-sm); color:#666;">残薬のみの照会・変更はこちらで算定</div>
             </td>
           </tr>
         </tbody>
       </table>
-    </div>
-
-    <div class="box-blue" style="font-size:var(--text-sm);">
-      <div style="font-weight:900; margin-bottom:6px;">再編のポイント</div>
-      <div style="display:flex; gap:8px; margin-bottom:4px;">
-        <span style="flex-shrink:0; font-weight:900;">①</span>
-        <span>重複投薬等防止加算（調剤管理料の加算）と在宅患者重複投薬等防止管理料を、<strong>調剤管理料の加算として一本化</strong></span>
-      </div>
-      <div style="display:flex; gap:8px; margin-bottom:4px;">
-        <span style="flex-shrink:0; font-weight:900;">②</span>
-        <span>かかりつけ薬剤師機能の評価見直しにあわせ、<strong>かかりつけ薬剤師による照会（区分ハ）</strong>が算定区分に加えられた</span>
-      </div>
-      <div style="display:flex; gap:8px;">
-        <span style="flex-shrink:0; font-weight:900;">③</span>
-        <span>有害事象防止と残薬調整を<strong>別加算に分離</strong>し、それぞれ目的に応じた評価体系に整理</span>
-      </div>
     </div>
   </div>
 
@@ -223,6 +238,7 @@
           <div class="kana-body">
             <div style="font-weight:900; font-size:var(--text-md); margin-bottom:3px;">疑義照会による処方変更</div>
             <div style="font-size:var(--text-sm);">服薬管理指導料「１のイ」又は「２のイ」を算定する患者で、重複投薬・相互作用等について処方医への照会を行い、処方が変更された場合（イ・ロを除く）</div>
+            <div style="font-size:var(--text-xs); color:#666; margin-top:4px;">※ かかりつけ担当でも、他の薬剤師が対応した回（１ロ／２ロ算定）は区分ニ（30点）となる</div>
           </div>
         </div>
       </div>
@@ -261,24 +277,33 @@
     <div class="card-title">
       疑義照会の対象となる薬学的事項（ロ・ハ・ニ共通）
     </div>
-    <div class="box-blue" style="margin-bottom:12px;">
-      <div style="font-weight:900; margin-bottom:6px;">以下のいずれかの事項について処方医に照会を行い、処方が変更されること</div>
-      <div style="display:flex; gap:8px; margin-bottom:4px;">
-        <span style="flex-shrink:0; font-weight:900;">①</span>
-        <span>併用薬との<strong>重複投薬</strong>（薬理作用が類似する場合を含む）</span>
-      </div>
-      <div style="display:flex; gap:8px; margin-bottom:4px;">
-        <span style="flex-shrink:0; font-weight:900;">②</span>
-        <span>併用薬・飲食物等との<strong>相互作用</strong></span>
-      </div>
-      <div style="display:flex; gap:8px;">
-        <span style="flex-shrink:0; font-weight:900;">③</span>
-        <span>その他<strong>薬学的観点から必要と認める事項</strong></span>
-      </div>
+    <div class="lead" style="margin-bottom:12px;">
+      以下のいずれかについて処方医に<strong>照会を行い、処方が変更</strong>されることが算定の条件。<strong>残薬調整のみ</strong>に係る照会・変更は本加算の対象外（→「調剤時残薬調整加算」で算定）。
     </div>
-    <div style="font-size:var(--text-sm); display:flex; gap:6px; align-items:flex-start;">
-      <span style="flex-shrink:0;">※</span>
-      <span><strong>残薬調整のみ</strong>に係る照会・処方変更は算定対象外（区分イ〜ニのいずれも不可）。残薬調整の評価は「調剤時残薬調整加算」で別途行う。</span>
+
+    <div style="display:flex; flex-direction:column; gap:10px;">
+
+      <div class="box-outline" style="font-size:var(--text-sm);">
+        <div style="font-weight:900; color:var(--blue);">① 併用薬との重複投薬（薬理作用が類似する場合を含む）</div>
+      </div>
+
+      <div class="box-outline" style="font-size:var(--text-sm);">
+        <div style="font-weight:900; margin-bottom:4px; color:var(--blue);">② 併用薬・飲食物等との相互作用</div>
+        <div style="color:#555; font-size:var(--text-xs);">例：デエビゴ＋クラリスロマイシン併用時は、原則としてデエビゴを1日1回2.5mgに減量 など</div>
+      </div>
+
+      <div class="box-outline" style="font-size:var(--text-sm);">
+        <div style="font-weight:900; margin-bottom:4px; color:var(--blue);">③ その他 薬学的観点から必要と認める事項</div>
+        <div style="font-size:var(--text-xs); color:#555; display:grid; grid-template-columns:1fr 1fr; gap:4px 14px; margin-top:6px;">
+          <div>・<strong>体質への配慮</strong>：胃が弱い患者のロキソプロフェン単独処方 → レバミピド追加／下痢しやすい患者のセフカペンピボキシル → 耐性乳酸菌製剤（ビオフェルミンR）追加</div>
+          <div>・<strong>嚥下困難</strong>：普通錠 → OD錠へ変更</div>
+          <div>・<strong>腎機能低下</strong>：セフカペンピボキシル3錠分3 → 2錠分2へ減量</div>
+          <div>・<strong>ライフスタイル</strong>：タクシー運転手にオロパタジン → 眠気の出にくいデスロラタジンへ変更</div>
+          <div>・<strong>禁忌薬の削除</strong>：緑内障患者へのPL配合顆粒（プロメタジン含有）削除／前立腺肥大患者へのd-クロルフェニラミン削除</div>
+          <div>・<strong>副作用歴</strong>：ツロブテロール2mgで動悸歴 → 削除または1mgへ変更／トラマドール・アセトアミノフェン配合錠で便秘歴 → 変更</div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -311,7 +336,7 @@
       <div style="display:flex; gap:10px; padding:10px 0;">
         <span style="flex-shrink:0; margin-top:1px;">・</span>
         <div style="font-size:var(--text-sm);">
-          同時に複数の処方箋を受け付け、複数について薬剤を変更した場合であっても、<strong>1回に限り</strong>算定する
+          同時に複数の処方箋を受け付け、複数について薬剤を変更した場合であっても、<strong>1回に限り</strong>算定（同日に複数科の処方箋を受付け、複数で変更した場合でも処方箋受付1回として1算定）
         </div>
       </div>
 
@@ -369,6 +394,18 @@
 
   </div>
 
+  <!-- Q&A -->
+  <div class="card">
+    <div class="card-title">Q&amp;A</div>
+    <div style="font-size:var(--text-xs); color:#666; margin-bottom:10px;">── 疑義解釈（その２）より ──</div>
+
+    <div class="qa-block">
+      <div class="qa-q"><span class="qa-label">Q</span>重複投薬を検知した際の対応が問合せの簡素化プロトコルとして地域で策定されており、そのプロトコル通りに薬剤調整した後に<strong>事後報告のみで差し支えない</strong>と定められている場合、本加算は算定できるか。</div>
+      <div class="qa-a"><span class="qa-label">A</span><strong>算定不可。</strong> 本加算は「疑義照会を行った上での薬剤調整」を評価するもの。プロトコルによる事後報告のみの対応は疑義照会に該当しないため算定できない。<span style="color:#666;">（調剤時残薬調整加算とは扱いが異なる点に注意）</span><div class="qa-src">疑義解釈（その２）問12</div></div>
+    </div>
+
+  </div>
+
 </div>
 <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
@@ -385,11 +422,11 @@
         <span style="font-size: 12px; color: #555; white-space: nowrap; font-weight: bold;">原文参照：</span>
         <a href="別添3_調剤報酬点数表に関する事項2026.html#kub-10-2-3" style="display: inline-block; color: #1e5fa8; text-decoration: none; font-size: 13px; border: 1px solid #a0b8d8; border-radius: 6px; padding: 4px 12px; background: #fff;">別添３ › 薬学的有害事象等防止加算</a>
         <a href="別表第三_調剤報酬点数表2026.html#ku10-2" style="display: inline-block; color: #1e5fa8; text-decoration: none; font-size: 13px; border: 1px solid #a0b8d8; border-radius: 6px; padding: 4px 12px; background: #fff;">別表第三 › 調剤管理料（注４）</a>
+        <a href="疑義解釈_その2_2026.html#yugai" style="display: inline-block; color: #1e5fa8; text-decoration: none; font-size: 13px; border: 1px solid #a0b8d8; border-radius: 6px; padding: 4px 12px; background: #fff;">疑義解釈（その２）› 薬学的有害事象等防止加算</a>
       </div>
     </div>
 <!-- フッターリンク -->
 <div style="max-width:900px; margin:0 auto; padding:16px 16px 32px; display:flex; flex-wrap:wrap; justify-content:center; gap:8px;">
-  <a href="疑義解釈_その2_2026.html#yugai" style="display:inline-block; color:#1e5fa8; text-decoration:none; font-size:13px; border:1px solid #1e5fa8; border-radius:6px; padding:6px 16px; background:#fff;">疑義解釈（その２）› 薬学的有害事象等防止加算</a>
   <a href="kaitei2026.html" style="display:inline-block; color:#1e5fa8; text-decoration:none; font-size:13px; border:1px solid #1e5fa8; border-radius:6px; padding:6px 16px; background:#fff;">← 資料一覧（TOP）に戻る</a>
 </div>
 </body>
