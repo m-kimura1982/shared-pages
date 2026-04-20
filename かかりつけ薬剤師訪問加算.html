@@ -62,8 +62,9 @@
 
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-card); }
 
-    .box-blue { background: var(--box-blue); border-radius: var(--radius-sm); padding: 14px 18px; }
+    .box-blue { background: var(--box-gray); border-radius: var(--radius-sm); padding: 14px 18px; border: var(--bw) solid var(--border); }
     .box-gray { background: var(--box-gray); border-radius: var(--radius-sm); padding: 14px 18px; border: var(--bw) solid var(--border); }
+    .lead { border-left: var(--bw-t) solid var(--blue); background:#eef4fb; padding:12px 16px; border-radius:0 var(--radius-sm) var(--radius-sm) 0; font-size:var(--text-sm); line-height:1.75; }
 
     .em-red  { color: var(--red);  font-weight: 900; }
     .em-blue { color: var(--blue); font-weight: 900; }
@@ -76,21 +77,17 @@
     /* フローステップ */
     .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; align-items: start; }
     .flow-item { background: var(--box-gray); border: var(--bw-h) solid var(--border); border-radius: var(--radius-sm); padding: 14px 12px; text-align: center; font-size: var(--text-sm); position: relative; }
-    .flow-item.accent { background: var(--box-gray); border-color: var(--border); border-left: var(--bw-t) solid var(--blue); }
-    .flow-item.highlight { background: var(--box-gray); border-color: var(--border); border-left: var(--bw-t) solid var(--red); }
-    .flow-step { font-size: var(--text-md); font-weight: 700; color: var(--ink); margin-bottom: 6px; }
-    .flow-label { font-weight: 900; font-size: var(--text-md); line-height: 1.5; }
-    .flow-required {
-      position: absolute; top: -10px; right: -8px;
-      background: var(--red); color: var(--white);
-      font-size: var(--text-xs); font-weight: 900;
-      padding: 2px 8px; border-radius: 10px;
-    }
+    .flow-item.accent { border-left: var(--bw-t) solid var(--blue); }
+    .flow-item.highlight { border-left: var(--bw-t) solid var(--blue); }
+    .flow-step { font-size: var(--text-xs); font-weight: 700; color: #666; margin-bottom: 4px; }
+    .flow-label { font-weight: 900; font-size: var(--text-sm); line-height: 1.5; }
 
-    /* NGリスト */
-    .ng-list { display: flex; flex-direction: column; gap: 5px; }
-    .ng-item { display: flex; align-items: flex-start; gap: 10px; font-size: var(--text-sm); padding: 8px 12px; background: var(--box-gray); border-radius: var(--radius-sm); border: var(--bw) solid var(--border); }
-    .ng-mark { color: var(--red); font-weight: 900; flex-shrink: 0; font-size: var(--text-lg); line-height: 1.3; }
+    /* Q&A（残薬ページ準拠） */
+    .qa-block { border: var(--bw-h) solid var(--border); border-radius: var(--radius-sm); overflow: hidden; margin-bottom: 10px; }
+    .qa-q { background: #f7f9fc; padding: 10px 14px; font-size: var(--text-sm); border-bottom: var(--bw-h) solid var(--border); }
+    .qa-a { padding: 10px 14px; font-size: var(--text-sm); }
+    .qa-label { display: inline-block; font-weight: 900; color: var(--ink); margin-right: 6px; }
+    .qa-src { font-size: var(--text-xs); color: #666; margin-top: 6px; }
 
     .divider { border: none; border-top: var(--bw-h) solid var(--border); margin: 12px 0; }
 
@@ -110,20 +107,10 @@
   .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; flex-direction:column; align-items:flex-start; gap:6px; }
   .box-blue,.box-gray { padding:10px 12px; }
   .badge { font-size:12px; padding:3px 10px; }
-  .sub-title { font-size:13px; }
   .page-title { padding:4px 0 4px 14px; }
   .page-title h1 { font-size:17px; line-height:1.45; }
   .page-title p { font-size:12.5px; }
-  /* ページタイトルに点数バッジがある場合 */
-  .page-title-wrap { flex-direction:column; gap:10px; }
-  .page-title-left { padding:4px 0 4px 14px; }
-  .page-title-left h1 { font-size:17px; line-height:1.45; }
-  .score-block { align-self:flex-start; }
-  .score-block .score-label { font-size:11px; padding:5px 10px; }
-  .score-block .score-num { font-size:22px; padding:5px 14px; }
-  /* フロー図は2カラムに */
   .flow { grid-template-columns:1fr 1fr; }
-  /* テーブルがある場合は横スクロール対応 */
   .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
   table { font-size:11.5px; min-width:480px; }
   th,td { padding:6px 8px; }
@@ -143,11 +130,9 @@
       .card { padding: 12px 14px; }
       .card-title { flex-direction:row; align-items:center; padding-bottom: 6px; margin-bottom: 10px; }
       .grid-2 { grid-template-columns:1fr 1fr; gap: 10px; }
-      .grid-3 { grid-template-columns:1fr 1fr 1fr; }
       .page-title { padding: 5px 0 5px 14px; }
       .page-title h1 { font-size: 17px; }
       .page-title p  { font-size: 12px; margin-top: 3px; }
-      .page-title-wrap { flex-direction:row; align-items:flex-start; }
       .box-blue, .box-gray { padding: 9px 12px; }
       .avoid-break { break-inside: avoid; }
       .flow { gap: 8px; }
@@ -158,10 +143,8 @@
       .pts-label { font-size: 11px; padding: 7px 11px; }
       .pts-num { font-size: 26px; padding: 7px 14px; }
       .pts-unit { font-size: 11px; }
-      .ng-item { padding: 7px 11px; }
       .badge { font-size: 11px; padding: 2px 9px; }
       .divider { margin: 9px 0; }
-      .section-label { font-size: 11px; }
     }
   </style>
 </head>
@@ -176,7 +159,7 @@
   <div class="page-title">
     <div>
       <h1>かかりつけ薬剤師訪問加算</h1>
-      <p>かかりつけ患者の自宅へ訪問し、残薬整理・服薬指導を行った場合の評価</p>
+      <p>かかりつけ患者の自宅を訪問し、残薬整理・服薬指導を行って医療機関へ情報提供した場合の評価</p>
     </div>
     <div class="pts-badge">
       <span class="pts-label">6月に1回に限り</span>
@@ -184,14 +167,36 @@
     </div>
   </div>
 
+  <!-- 加算の位置づけ -->
+  <div class="card avoid-break">
+    <div class="card-title">加算の位置づけ<span class="badge badge-red">新設（2026年6月〜）</span></div>
+    <div class="lead" style="margin-bottom:12px;">
+      かかりつけ薬剤師が<strong>患家に出向いて残薬整理と服薬指導</strong>を行い、その結果を<strong>医療機関に情報提供</strong>することを評価する加算。在宅患者訪問薬剤管理指導料（居宅療養管理指導費）とは算定ルートが異なる。
+    </div>
+    <div style="display:flex; flex-direction:column; gap:8px; font-size:var(--text-sm);">
+      <div style="display:flex; gap:10px;">
+        <span style="flex-shrink:0; font-weight:900; color:var(--blue);">①</span>
+        <span>対象は<strong>服薬管理指導料「１のイ」または「２のイ」</strong>を算定しているかかりつけ患者に限る</span>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <span style="flex-shrink:0; font-weight:900; color:var(--blue);">②</span>
+        <span><strong>６月に１回</strong>が上限。頻回の訪問は想定されていない</span>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <span style="flex-shrink:0; font-weight:900; color:var(--blue);">③</span>
+        <span>訪問時の<strong>交通費は実費（患家負担）</strong>として別途徴収（※会社方針により徴収しない場合もあり）</span>
+      </div>
+    </div>
+  </div>
+
   <!-- ① 算定対象と流れ -->
   <div class="card avoid-break">
     <div class="card-title">算定対象と算定の流れ</div>
-    <div class="box-blue" style="margin-bottom:16px; font-size:var(--text-md);">
+    <div class="box-gray" style="margin-bottom:16px; font-size:var(--text-sm);">
       <span style="font-weight:900;">対象患者：</span>服薬管理指導料「１のイ」または「２のイ」を算定している患者
     </div>
     <div class="flow">
-      <div class="flow-item">
+      <div class="flow-item accent">
         <div class="flow-step">Step 1</div>
         <div class="flow-label">患者・家族等からの求めに応じる</div>
       </div>
@@ -203,11 +208,14 @@
         <div class="flow-step">Step 3</div>
         <div class="flow-label">残薬の整理・服用薬の管理指導等を実施</div>
       </div>
-      <div class="flow-item highlight" style="position:relative;">
-        <span class="flow-required">必須</span>
+      <div class="flow-item accent">
         <div class="flow-step">Step 4</div>
-        <div class="flow-label">その結果を<span class="em-red">保険医療機関へ情報提供</span></div>
+        <div class="flow-label">その結果を<span class="em-blue">保険医療機関へ情報提供</span></div>
       </div>
+    </div>
+    <div class="box-gray" style="margin-top:12px; font-size:var(--text-sm);">
+      <div style="font-weight:900; margin-bottom:4px;">算定のタイミング（疑義解釈 問22）</div>
+      <div>患家訪問そのものでは算定せず、<span class="em-blue">訪問後に患者が再度処方箋を持参したとき</span>に算定する。</div>
     </div>
     <div style="font-size:var(--text-xs); margin-top:8px; padding-left:4px;">※ 原文は「患者・家族等の求めに応じて」だが、実務上は薬剤師から「一度お薬を整理しに伺いましょうか」と提案するケースが多い。</div>
   </div>
@@ -217,20 +225,16 @@
 
     <!-- 併算定不可 -->
     <div class="card avoid-break">
-      <div class="card-title">
-        併算定不可
-        <span class="badge badge-red">以下を算定している患者はNG</span>
-      </div>
+      <div class="card-title">併算定不可</div>
       <div style="font-size:var(--text-sm); margin-bottom:10px;">以下のいずれかを算定している患者には算定できない。</div>
       <div class="box-gray" style="font-size:var(--text-sm);">
         <div style="display:flex; flex-direction:column; gap:5px;">
           <div>・ 外来服薬支援料１　／　施設連携加算</div>
           <div>・ 服薬情報等提供料</div>
+          <div>・ 在宅患者訪問薬剤管理指導料</div>
           <div>・ 居宅療養管理指導費（薬剤師）</div>
           <div>・ 介護予防居宅療養管理指導費（薬剤師）</div>
-          <div>・ 在宅患者訪問薬剤管理指導料</div>
         </div>
-        <div style="font-size:var(--text-xs); margin-top:8px; border-left:var(--bw-a) solid var(--border-dk); padding-left:8px;">※在宅患者訪問薬剤管理指導料については、情報通信機器を用いた場合、または当該患者の薬学的管理指導計画に係る疾病と別の疾病・負傷に係る臨時の投薬が行われた場合を除く。</div>
       </div>
     </div>
 
@@ -239,8 +243,8 @@
       <div class="card-title">その他の算定不可パターン</div>
       <div style="display:flex; flex-direction:column; gap:8px;">
         <div class="box-gray" style="font-size:var(--text-sm);">
-          <div style="font-weight:900; margin-bottom:4px;">① 複数薬局での指導</div>
-          複数の保険薬局で服薬管理指導料「１のイ」または「２のイ」を算定している場合、<span class="em-red">いずれの薬局も算定不可</span>。
+          <div style="font-weight:900; margin-bottom:4px;">① 複数薬局でかかりつけを算定</div>
+          複数の保険薬局で服薬管理指導料「１のイ」または「２のイ」を算定している場合、<strong>いずれの薬局も算定不可</strong>。
         </div>
         <div style="font-size:var(--text-xs); padding:8px 12px; border-left:var(--bw-a) solid var(--border-dk);">
           <strong>② 特別な関係の医療機関への情報提供：</strong>特別調剤基本料Ａを算定する薬局が、不動産取引等で特別な関係を有する医療機関へ情報提供した場合は算定不可。
@@ -257,24 +261,42 @@
   <div class="card avoid-break">
     <div class="card-title">実施にあたっての留意点</div>
     <div style="display:flex; flex-direction:column; gap:12px; font-size:var(--text-md);">
-      <div style="border-left:var(--bw-a) solid var(--blue); padding-left:14px;">
+      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
         <div style="font-weight:900; margin-bottom:4px;">事前説明と同意</div>
-        あらかじめ患者または家族等に対し、以下を説明し了解を得ること。
+        <div style="font-size:var(--text-sm);">あらかじめ患者または家族等に対し、以下を説明し了解を得ること。</div>
         <div class="box-gray" style="margin-top:8px; font-size:var(--text-sm);">
           <div>① 訪問して実施する指導等の内容</div>
-          <div>② 発生する患者自己負担額（<span class="em-red">交通費を含む</span>）</div>
+          <div>② 発生する患者自己負担額（<strong>交通費を含む</strong>）</div>
         </div>
       </div>
       <hr class="divider">
-      <div style="border-left:var(--bw-a) solid var(--blue); padding-left:14px;">
+      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
         <div style="font-weight:900; margin-bottom:4px;">交通費の取り扱い</div>
-        訪問に要した交通費は<span class="em-red">実費（患家の負担）</span>とする。
+        <div style="font-size:var(--text-sm);">訪問に要した交通費は<strong>実費（患家の負担）</strong>とする（自費で徴収する場合は領収書を発行）。</div>
       </div>
       <hr class="divider">
-      <div style="border-left:var(--bw-a) solid var(--blue); padding-left:14px;">
+      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
         <div style="font-weight:900; margin-bottom:4px;">薬歴への記載</div>
-        患家を訪問した旨・患家における残薬状況・実施した指導等の内容について、薬剤服用歴等に記載すること。
+        <div style="font-size:var(--text-sm);"><strong>① 患家を訪問した旨　② 患家における残薬状況　③ 実施した指導等の内容</strong>を薬剤服用歴等に記載すること。</div>
       </div>
+    </div>
+  </div>
+
+  <!-- Q&A -->
+  <div class="card avoid-break">
+    <div class="card-title">Q&amp;A</div>
+    <div style="font-size:var(--text-xs); color:#666; margin-bottom:10px;">── 疑義解釈（その２）より ──</div>
+
+    <div class="qa-block">
+      <div class="qa-q"><span class="qa-label">Q</span>患家を訪問して残薬整理・服薬指導・医療機関への情報提供を行った。<strong>加算はどの時点で算定するのか？</strong>（問22）</div>
+      <div class="qa-a"><span class="qa-label">A</span><strong>患家への訪問後、当該患者から再度処方箋を受け付けたときに算定する</strong>。訪問当日ではなく次回受付時点。</div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="qa-block">
+      <div class="qa-q"><span class="qa-label">Q</span>後日に再度処方箋を受け付けた際、<strong>かかりつけ薬剤師が不在だった場合も算定できるか？</strong>（問23）</div>
+      <div class="qa-a"><span class="qa-label">A</span><strong>算定可能</strong>。ただし服薬管理指導料「１のイ」または「２のイ」と併せて算定する際は、患家を訪問した旨・残薬状況・実施した指導内容等に加えて、<strong>かかりつけ薬剤師の氏名</strong>を薬剤服用歴等に記載すること。</div>
     </div>
   </div>
 
@@ -293,12 +315,14 @@
       <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px;">
         <span style="font-size: 12px; color: #555; white-space: nowrap; font-weight: bold;">原文参照：</span>
         <a href="別添3_調剤報酬点数表に関する事項2026.html#kub-10-3-13" style="display: inline-block; color: #1e5fa8; text-decoration: none; font-size: 13px; border: 1px solid #a0b8d8; border-radius: 6px; padding: 4px 12px; background: #fff;">別添３ › かかりつけ薬剤師訪問加算</a>
-        <a href="別表第三_調剤報酬点数表2026.html#ku10-3" style="display: inline-block; color: #1e5fa8; text-decoration: none; font-size: 13px; border: 1px solid #a0b8d8; border-radius: 6px; padding: 4px 12px; background: #fff;">別表第三 › 服薬管理指導料（注14）</a>
+        <a href="別表第三_調剤報酬点数表2026.html#ku10-3" style="display: inline-block; color: #1e5fa8; text-decoration: none; font-size: 13px; border: 1px solid #a0b8d8; border-radius: 6px; padding: 4px 12px; background: #fff;">別表第三 › 服薬管理指導料（注16）</a>
+        <a href="疑義解釈_その2_2026.html#homon" style="display: inline-block; color: #1e5fa8; text-decoration: none; font-size: 13px; border: 1px solid #a0b8d8; border-radius: 6px; padding: 4px 12px; background: #fff;">疑義解釈（その２）› 訪問加算</a>
       </div>
     </div>
 <!-- フッターリンク -->
 <div style="max-width:900px; margin:0 auto; padding:16px 16px 32px; display:flex; flex-wrap:wrap; justify-content:center; gap:8px;">
-  <a href="疑義解釈_その2_2026.html#homon" style="display:inline-block; color:#1e5fa8; text-decoration:none; font-size:13px; border:1px solid #1e5fa8; border-radius:6px; padding:6px 16px; background:#fff;">疑義解釈（その２）› かかりつけ薬剤師訪問加算</a>
+  <a href="かかりつけ薬剤師フォローアップ加算.html" style="display:inline-block; color:#1e5fa8; text-decoration:none; font-size:13px; border:1px solid #1e5fa8; border-radius:6px; padding:6px 16px; background:#fff;">関連 › かかりつけ薬剤師フォローアップ加算</a>
+  <a href="服薬管理指導料.html" style="display:inline-block; color:#1e5fa8; text-decoration:none; font-size:13px; border:1px solid #1e5fa8; border-radius:6px; padding:6px 16px; background:#fff;">関連 › 服薬管理指導料</a>
   <a href="kaitei2026.html" style="display:inline-block; color:#1e5fa8; text-decoration:none; font-size:13px; border:1px solid #1e5fa8; border-radius:6px; padding:6px 16px; background:#fff;">← 資料一覧（TOP）に戻る</a>
 </div>
 </body>

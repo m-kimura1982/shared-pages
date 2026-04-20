@@ -62,8 +62,9 @@
 
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-card); }
 
-    .box-blue { background: var(--box-blue); border-radius: var(--radius-sm); padding: 14px 18px; }
+    .box-blue { background: var(--box-gray); border-radius: var(--radius-sm); padding: 14px 18px; border: var(--bw) solid var(--border); }
     .box-gray { background: var(--box-gray); border-radius: var(--radius-sm); padding: 14px 18px; border: var(--bw) solid var(--border); }
+    .lead { border-left: var(--bw-t) solid var(--blue); background:#eef4fb; padding:12px 16px; border-radius:0 var(--radius-sm) var(--radius-sm) 0; font-size:var(--text-sm); line-height:1.75; }
 
     .em-red  { color: var(--red);  font-weight: 900; }
     .em-blue { color: var(--blue); font-weight: 900; }
@@ -72,6 +73,17 @@
     .pts-label { background: var(--box-gray); padding: 8px 14px; font-size: var(--text-sm); font-weight: 700; border-right: var(--bw-h) solid var(--border-dk); }
     .pts-num   { padding: 8px 18px; font-size: 32px; font-weight: 900; color: var(--ink); line-height: 1; }
     .pts-unit  { font-size: var(--text-sm); font-weight: 700; }
+
+    /* NGリスト */
+    .ng-list { display: flex; flex-direction: column; gap: 6px; }
+    .ng-item { display: flex; align-items: flex-start; gap: 10px; font-size: var(--text-sm); padding: 9px 12px; background: var(--box-gray); border-radius: var(--radius-sm); border: var(--bw) solid var(--border); }
+    .ng-mark { color: #555; font-weight: 900; flex-shrink: 0; line-height: 1.5; }
+
+    /* Q&A（残薬ページ準拠） */
+    .qa-block { border: var(--bw-h) solid var(--border); border-radius: var(--radius-sm); overflow: hidden; margin-bottom: 10px; }
+    .qa-q { background: #f7f9fc; padding: 10px 14px; font-size: var(--text-sm); border-bottom: var(--bw-h) solid var(--border); }
+    .qa-a { padding: 10px 14px; font-size: var(--text-sm); }
+    .qa-label { display: inline-block; font-weight: 900; color: var(--ink); margin-right: 6px; }
 
     .divider { border: none; border-top: var(--bw-h) solid var(--border); margin: 12px 0; }
 
@@ -87,44 +99,36 @@
   .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; flex-direction:column; align-items:flex-start; gap:6px; }
   .box-blue,.box-gray { padding:10px 12px; }
   .badge { font-size:12px; padding:3px 10px; }
-  .sub-title { font-size:13px; }
   .page-title { padding:4px 0 4px 14px; }
   .page-title h1 { font-size:17px; line-height:1.45; }
   .page-title p { font-size:12.5px; }
-  /* ページタイトルに点数バッジがある場合 */
-  .page-title-wrap { flex-direction:column; gap:10px; }
-  .page-title-left { padding:4px 0 4px 14px; }
-  .page-title-left h1 { font-size:17px; line-height:1.45; }
-  .score-block { align-self:flex-start; }
-  .score-block .score-label { font-size:11px; padding:5px 10px; }
-  .score-block .score-num { font-size:22px; padding:5px 14px; }
-  /* テーブルがある場合は横スクロール対応 */
   .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
   table { font-size:11.5px; min-width:480px; }
   th,td { padding:6px 8px; }
 }
 
     @media print {
-      @page { margin: 12mm 10mm; size: A4; }
-      body { background: white; padding: 0; font-size: 15px; line-height: 1.8;
+      @page { margin: 9mm 9mm; size: A4; }
+      body { background: white; padding: 0; font-size: 13px; line-height: 1.65;
         -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .page { gap: 16px; }
+      .page { gap: 10px; }
       :root {
-        --text-xs: 12px; --text-sm: 14px; --text-md: 15px;
-        --text-lg: 17px; --text-xl: 19px;
-        --pad-card: 20px; --gap-card: 16px;
+        --text-xs: 11px; --text-sm: 12px; --text-md: 13px;
+        --text-lg: 14.5px; --text-xl: 17px;
+        --pad-card: 12px; --gap-card: 10px;
+        --radius: 8px; --radius-sm: 5px;
       }
-      .card { padding: 20px 22px; }
-      .card-title { flex-direction:row; align-items:center; }
-      .grid-2 { grid-template-columns:1fr 1fr; }
-      .grid-3 { grid-template-columns:1fr 1fr 1fr; }
-      .page-title-wrap { flex-direction:row; align-items:flex-start; }
-      .card-title { padding-bottom: 8px; margin-bottom: 15px; }
-      .box-blue, .box-gray { padding: 12px 15px; }
+      .card { padding: 12px 14px; }
+      .card-title { flex-direction:row; align-items:center; padding-bottom: 6px; margin-bottom: 10px; }
+      .grid-2 { grid-template-columns:1fr 1fr; gap: 10px; }
+      .page-title { padding: 5px 0 5px 14px; }
+      .page-title h1 { font-size: 17px; }
+      .page-title p  { font-size: 12px; margin-top: 3px; }
+      .box-blue, .box-gray { padding: 9px 12px; }
       .avoid-break { break-inside: avoid; }
-      .print-break-before { break-before: page; }
-      .grid-2 { gap: 16px; }
-      .pts-num { font-size: 30px; }
+      .badge { font-size: 11px; padding: 2px 9px; }
+      .pts-num { font-size: 26px; }
+      .divider { margin: 9px 0; }
     }
   </style>
 </head>
@@ -139,11 +143,33 @@
   <div class="page-title">
     <div>
       <h1>かかりつけ薬剤師フォローアップ加算</h1>
-      <p>次回来局までの間に電話等でフォローアップを行った場合の評価</p>
+      <p>次回来局までの間に電話等で服薬状況・残薬状況を継続的に確認した場合の評価</p>
     </div>
     <div class="pts-badge">
       <span class="pts-label">3月に1回に限り</span>
       <span class="pts-num">50<span class="pts-unit">点</span></span>
+    </div>
+  </div>
+
+  <!-- 加算の位置づけ -->
+  <div class="card avoid-break">
+    <div class="card-title">加算の位置づけ<span class="badge badge-red">新設（2026年6月〜）</span></div>
+    <div class="lead" style="margin-bottom:12px;">
+      かかりつけ患者に対し、<strong>前回調剤後〜次回来局前</strong>の間に<strong>電話等で服薬状況・残薬状況を継続的に確認</strong>し、必要な指導を行ったことを評価する加算。
+    </div>
+    <div style="display:flex; flex-direction:column; gap:8px; font-size:var(--text-sm);">
+      <div style="display:flex; gap:10px;">
+        <span style="flex-shrink:0; font-weight:900; color:var(--blue);">①</span>
+        <span>対象は<strong>服薬管理指導料「１のイ」または「２のイ」</strong>を算定しているかかりつけ患者</span>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <span style="flex-shrink:0; font-weight:900; color:var(--blue);">②</span>
+        <span><strong>３月に１回</strong>が上限。次回処方箋を受け付けたときに算定</span>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <span style="flex-shrink:0; font-weight:900; color:var(--blue);">③</span>
+        <span><strong>双方向性</strong>が必須。一斉送信メールやアプリ定型チェックのみでは算定不可</span>
+      </div>
     </div>
   </div>
 
@@ -158,7 +184,7 @@
         <div style="font-weight:900; margin-bottom:4px;">条件① かかりつけを算定していること</div>
         <div style="font-size:var(--text-sm);">服薬管理指導料「１のイ」または「２のイ」を算定していること</div>
       </div>
-      <div style="border-left:var(--bw-t) solid var(--red); padding-left:14px;">
+      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
         <div style="font-weight:900; margin-bottom:6px;">条件② 直近6月以内に以下のいずれかを算定していること</div>
         <div class="box-gray" style="font-size:var(--text-sm);">
           <div style="display:flex; flex-direction:column; gap:4px;">
@@ -167,7 +193,7 @@
             <div>・ 調剤管理料　調剤時残薬調整加算</div>
             <div>・ 調剤管理料　薬学的有害事象等防止加算</div>
           </div>
-          <div style="margin-top:10px; font-size:var(--text-sm);"><strong>例外：</strong>フォローアップにより残薬等の問題が解消された場合は、条件②を満たしていなくても算定可。</div>
+          <div style="margin-top:10px; font-size:var(--text-sm); border-top:var(--bw-h) solid var(--border); padding-top:8px;"><strong>例外：</strong>フォローアップ業務により残薬等の問題が解消された場合は、条件②を満たしていなくても算定可。</div>
         </div>
       </div>
     </div>
@@ -177,59 +203,114 @@
   <div class="card avoid-break">
     <div class="card-title">算定の流れ</div>
     <div style="display:flex; flex-direction:column; gap:14px; font-size:var(--text-md);">
-      <div class="box-gray" style="display:flex; gap:14px; align-items:flex-start;">
-        <div style="background:var(--blue); color:var(--white); font-weight:900; font-size:var(--text-sm); padding:3px 10px; border-radius:4px; flex-shrink:0; margin-top:2px;">起点</div>
-        <div>患者・家族等の求め、または<span class="em-blue">かかりつけ薬剤師が必要と認めた場合</span></div>
+      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
+        <div style="font-weight:900; margin-bottom:4px;">起点</div>
+        <div style="font-size:var(--text-sm);">患者・家族等の求め、または<strong>かかりつけ薬剤師が必要と認めた場合</strong></div>
       </div>
-      <div style="border-left:var(--bw-a) solid var(--blue); padding-left:14px;">
-        <div style="font-weight:900; margin-bottom:8px;">前回調剤後〜次回来局前の間に電話等でフォローアップ</div>
-        <div style="font-size:var(--text-sm); margin-bottom:10px;">服薬状況・残薬状況等の確認および必要な指導を個別に実施。電話のほか情報通信機器（ビデオ通話等）を用いた方法も可。</div>
-        <div style="font-size:var(--text-sm); display:flex; flex-direction:column; gap:6px; margin-top:10px;">
-          <div>・ <strong>調剤当日は対象外</strong>　―　「前回調剤後」に調剤当日を含まない</div>
-          <div>・ <strong>処方箋持参当日は算定不可</strong>　―　「次回来局前」に持参当日を含まない</div>
-          <div>・ <strong>別医療機関の処方箋持参時は算定不可</strong>　―　フォローアップを実施した医療機関からの処方箋に限る</div>
-        </div>
+      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
+        <div style="font-weight:900; margin-bottom:4px;">前回調剤後〜次回来局前の間に電話等でフォローアップ</div>
+        <div style="font-size:var(--text-sm); margin-bottom:8px;">服薬状況・残薬状況等の確認および必要な指導を<strong>個別に</strong>実施。電話のほか情報通信機器（ビデオ通話等）を用いた方法も可。</div>
+        <div style="font-size:var(--text-xs); color:#555;">※ 前回調剤日ではなく、<strong>受診間隔（調剤間隔）等を考慮して薬学的観点から適切と考えられる時期</strong>に実施すること。</div>
       </div>
-      <div style="border-left:var(--bw-a) solid var(--blue); padding-left:14px;">
+      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
         <div style="font-weight:900; margin-bottom:4px;">次回処方箋持参時に算定</div>
         <div style="font-size:var(--text-sm);">フォローアップを実施した医療機関からの処方箋受付時に算定する（3月に1回）。</div>
       </div>
     </div>
   </div>
 
-  <!-- ③ 実施方法・留意点 -->
-  <div class="card avoid-break print-break-before">
+  <!-- ③ タイミングのNG -->
+  <div class="card avoid-break">
+    <div class="card-title">
+      タイミング上の注意（算定不可パターン）
+    </div>
+    <div class="ng-list">
+      <div class="ng-item">
+        <span class="ng-mark">・</span>
+        <div><span class="em-red">調剤当日</span>に実施　―　「前回調剤後」に調剤当日は含まれない</div>
+      </div>
+      <div class="ng-item">
+        <span class="ng-mark">・</span>
+        <div><span class="em-red">処方箋持参当日</span>に実施　―　「次回来局前」に持参当日は含まれない</div>
+      </div>
+      <div class="ng-item">
+        <span class="ng-mark">・</span>
+        <div><strong>別医療機関の処方箋を持参</strong>　―　フォローアップ要因となった医療機関からの処方箋受付時のみ算定可</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ④ 方法のNG -->
+  <div class="card avoid-break">
+    <div class="card-title">
+      実施方法の要件
+      <span class="badge badge-blue">双方向性が必須</span>
+    </div>
+    <div style="font-size:var(--text-sm); margin-bottom:12px;">
+      個々の患者の状況に応じて、<span class="em-blue">双方向性を有する方法</span>で確認・指導を行う必要がある。以下のような一方通行の対応は算定対象外。
+    </div>
+    <div class="ng-list">
+      <div class="ng-item">
+        <span class="ng-mark">・</span>
+        <div>一律の内容の<strong>電子メールを一斉送信</strong>するのみ（画一的な通知のみ）</div>
+      </div>
+      <div class="ng-item">
+        <span class="ng-mark">・</span>
+        <div>アプリ上で患者が<strong>定型的な設問にチェック・入力するのみ</strong>で完結し、個別具体的な確認・助言等を伴わない</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑤ 算定上の注意点 -->
+  <div class="card avoid-break">
     <div class="card-title">算定上の注意点</div>
     <div style="display:flex; flex-direction:column; gap:12px; font-size:var(--text-md);">
-      <div style="border-left:var(--bw-t) solid var(--red); padding-left:14px;">
-        <div style="font-weight:900; margin-bottom:6px;"><span class="em-red">双方向性が必須</span>　―　以下は算定不可</div>
-        <div style="font-size:var(--text-sm); display:flex; flex-direction:column; gap:4px;">
-          <div>・ 一律の内容のメールを一斉送信するのみ</div>
-          <div>・ アプリで患者が定型チェックを行うだけで完結（個別の確認・助言が伴わない場合）</div>
-        </div>
-      </div>
-      <hr class="divider">
-      <div style="border-left:var(--bw-a) solid var(--blue); padding-left:14px;">
+      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
         <div style="font-weight:900; margin-bottom:4px;">事前説明と同意</div>
         <div style="font-size:var(--text-sm);">あらかじめ患者または家族等に、①実施する聞き取り・指導等の内容、②発生する患者自己負担額を説明し了解を得ること。</div>
       </div>
       <hr class="divider">
-      <div style="border-left:var(--bw-a) solid var(--blue); padding-left:14px;">
+      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
         <div style="font-weight:900; margin-bottom:4px;">薬歴への記載</div>
-        <div style="font-size:var(--text-sm);">電話等によりフォローアップした旨・日時・実施した聞き取りや指導等の内容を記載。残薬が解消されない場合は、理由・背景の検証内容および改善策も記載すること。</div>
+        <div style="font-size:var(--text-sm);">電話等によりフォローアップした旨・日時・実施した聞き取りや指導等の内容を記載。<strong>残薬等の問題が解消されない場合は、理由・背景の検証内容および改善策も記載</strong>すること。</div>
       </div>
       <hr class="divider">
-      <div style="border-left:var(--bw-a) solid var(--blue); padding-left:14px;">
+      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
         <div style="font-weight:900; margin-bottom:4px;">体調変化等の情報提供</div>
-        <div style="font-size:var(--text-sm);">フォローアップ中に速やかに医療機関へ伝えるべき体調変化等を把握した場合は、当該医療機関へ情報提供し、必要に応じて受診勧奨を行うこと。</div>
+        <div style="font-size:var(--text-sm);">フォローアップ中に速やかに医療機関へ伝えるべき体調変化等を把握した場合は、医療機関へ情報提供し、必要に応じて受診勧奨を行うこと。</div>
       </div>
       <hr class="divider">
-      <div style="font-size:var(--text-sm);">
-        <div style="font-weight:900; margin-bottom:8px;">併算定不可（同月）</div>
-        <div class="box-gray" style="margin-bottom:10px;">調剤後薬剤管理指導料　／　在宅患者訪問薬剤管理指導料　／　居宅療養管理指導費（薬剤師）　／　介護予防居宅療養管理指導費（薬剤師）</div>
-        <div style="border-left:var(--bw-a) solid var(--border-dk); padding-left:10px; margin-bottom:6px;"><strong>複数の保険薬局でかかりつけを算定している場合、いずれの薬局も算定不可。</strong></div>
-        <div style="font-size:var(--text-xs);">※特別調剤基本料Ｂを算定している保険薬局は算定不可。</div>
+      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
+        <div style="font-weight:900; margin-bottom:4px;">みだりに算定しない</div>
+        <div style="font-size:var(--text-sm);">業務を行っても残薬等の問題が解消されないときは、<strong>みだりにフォローアップを繰り返すのではなく、解消されない理由・背景等を検証し改善策を講じる</strong>こと。</div>
       </div>
+    </div>
+  </div>
+
+  <!-- ⑥ 併算定不可 -->
+  <div class="card avoid-break">
+    <div class="card-title">併算定不可</div>
+    <div style="font-size:var(--text-sm); margin-bottom:10px;">以下を算定している患者には、同月において算定できない。</div>
+    <div class="box-gray" style="font-size:var(--text-sm); margin-bottom:10px;">
+      <div style="display:flex; flex-direction:column; gap:5px;">
+        <div>・ 調剤後薬剤管理指導料</div>
+        <div>・ 在宅患者訪問薬剤管理指導料</div>
+        <div>・ 居宅療養管理指導費（薬剤師）</div>
+        <div>・ 介護予防居宅療養管理指導費（薬剤師）</div>
+      </div>
+    </div>
+    <div style="font-size:var(--text-sm); padding:8px 12px; border-left:var(--bw-a) solid var(--border-dk); margin-bottom:6px;"><strong>複数の保険薬局でかかりつけを算定している場合、いずれの薬局も算定不可。</strong></div>
+    <div style="font-size:var(--text-xs); color:#555;">※特別調剤基本料Ｂを算定している保険薬局は算定不可。</div>
+  </div>
+
+  <!-- Q&A -->
+  <div class="card avoid-break">
+    <div class="card-title">Q&amp;A</div>
+    <div style="font-size:var(--text-xs); color:#666; margin-bottom:10px;">── 疑義解釈（その２）より ──</div>
+
+    <div class="qa-block">
+      <div class="qa-q"><span class="qa-label">Q</span>後日フォローアップを実施し、同一薬局で再度処方箋を受け付けた際、<strong>かかりつけ薬剤師が不在だった場合も算定できるか？</strong>（問21）</div>
+      <div class="qa-a"><span class="qa-label">A</span><strong>算定可能</strong>。ただし服薬管理指導料「１のイ」または「２のイ」と併せて算定する際は、フォローアップした旨・日時・実施した聞き取りや指導内容等に加えて、<strong>かかりつけ薬剤師の氏名</strong>を薬剤服用歴等に記載すること。</div>
     </div>
   </div>
 
@@ -248,12 +329,14 @@
       <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px;">
         <span style="font-size: 12px; color: #555; white-space: nowrap; font-weight: bold;">原文参照：</span>
         <a href="別添3_調剤報酬点数表に関する事項2026.html#kub-10-3-12" style="display: inline-block; color: #1e5fa8; text-decoration: none; font-size: 13px; border: 1px solid #a0b8d8; border-radius: 6px; padding: 4px 12px; background: #fff;">別添３ › かかりつけ薬剤師フォローアップ加算</a>
-        <a href="別表第三_調剤報酬点数表2026.html#ku10-3" style="display: inline-block; color: #1e5fa8; text-decoration: none; font-size: 13px; border: 1px solid #a0b8d8; border-radius: 6px; padding: 4px 12px; background: #fff;">別表第三 › 服薬管理指導料（注13）</a>
+        <a href="別表第三_調剤報酬点数表2026.html#ku10-3" style="display: inline-block; color: #1e5fa8; text-decoration: none; font-size: 13px; border: 1px solid #a0b8d8; border-radius: 6px; padding: 4px 12px; background: #fff;">別表第三 › 服薬管理指導料（注15）</a>
+        <a href="疑義解釈_その2_2026.html#followup" style="display: inline-block; color: #1e5fa8; text-decoration: none; font-size: 13px; border: 1px solid #a0b8d8; border-radius: 6px; padding: 4px 12px; background: #fff;">疑義解釈（その２）› フォローアップ加算</a>
       </div>
     </div>
 <!-- フッターリンク -->
 <div style="max-width:900px; margin:0 auto; padding:16px 16px 32px; display:flex; flex-wrap:wrap; justify-content:center; gap:8px;">
-  <a href="疑義解釈_その2_2026.html#followup" style="display:inline-block; color:#1e5fa8; text-decoration:none; font-size:13px; border:1px solid #1e5fa8; border-radius:6px; padding:6px 16px; background:#fff;">疑義解釈（その２）› かかりつけ薬剤師フォローアップ加算</a>
+  <a href="かかりつけ薬剤師訪問加算.html" style="display:inline-block; color:#1e5fa8; text-decoration:none; font-size:13px; border:1px solid #1e5fa8; border-radius:6px; padding:6px 16px; background:#fff;">関連 › かかりつけ薬剤師訪問加算</a>
+  <a href="服薬管理指導料.html" style="display:inline-block; color:#1e5fa8; text-decoration:none; font-size:13px; border:1px solid #1e5fa8; border-radius:6px; padding:6px 16px; background:#fff;">関連 › 服薬管理指導料</a>
   <a href="kaitei2026.html" style="display:inline-block; color:#1e5fa8; text-decoration:none; font-size:13px; border:1px solid #1e5fa8; border-radius:6px; padding:6px 16px; background:#fff;">← 資料一覧（TOP）に戻る</a>
 </div>
 </body>
