@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>疑義解釈資料の送付について（その３）　2026年調剤報酬改定</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --text-xs: 13px; --text-sm: 15px; --text-md: 16px;
+      --text-lg: 18px; --text-xl: 22px;
+      --pad-card: 22px; --gap-card: 16px;
+      --blue: #1e5fa8; --red: #cc0000; --ink: #222222;
+      --bg: #f3f4f6; --white: #ffffff;
+      --box-blue: #e4f0f8; --box-gray: #f2f2f2;
+      --border: #d1d5db; --border-dk: #9ca3af;
+      --radius: 10px; --radius-sm: 6px;
+      --bw: 0.5px; --bw-h: 1px; --bw-a: 3px; --bw-t: 4px;
+    }
+    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+    .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+    .page-title { border-left:var(--bw-t) solid var(--blue); padding:6px 0 6px 18px; }
+    .page-title h1 { font-size:var(--text-xl); font-weight:900; }
+    .page-title p { font-size:var(--text-sm); font-weight:500; margin-top:4px; }
+    .section-header { border-left:var(--bw-t) solid var(--border-dk); padding:4px 0 4px 14px; margin-top:4px; }
+    .section-header p { font-size:var(--text-sm); font-weight:700; color:#555; }
+    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+    .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--ink); padding-bottom:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+    .badge { font-size:var(--text-sm); font-weight:700; padding:3px 12px; border-radius:4px; }
+    .badge-red { background:#fde8e8; color:var(--red); }
+    .badge-blue { background:var(--box-blue); color:var(--blue); }
+    .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:14px 18px; }
+    .box-gray { background:var(--box-gray); border-radius:var(--radius-sm); padding:14px 18px; border:var(--bw) solid var(--border); }
+    .em-red { color:var(--red); font-weight:900; }
+    .em-blue { color:var(--blue); font-weight:900; }
+    .section-title { font-weight:900; font-size:var(--text-md); margin-bottom:8px; }
+    .sub-title { font-weight:900; font-size:var(--text-md); padding:6px 0 6px 12px; border-left:var(--bw-t) solid var(--blue); margin-bottom:10px; }
+    /* Q&A レイアウト */
+    .qa-block { display:flex; flex-direction:column; gap:10px; }
+    .qa-block + .qa-block { margin-top:20px; padding-top:20px; border-top:var(--bw-h) solid var(--border); }
+    .qa-q { background:var(--box-gray); border-radius:var(--radius-sm); padding:16px 20px; font-size:var(--text-md); }
+    .qa-a { background:var(--box-blue); border-radius:var(--radius-sm); padding:16px 20px; font-size:var(--text-md); }
+    .qa-label { font-size:var(--text-md); font-weight:900; margin-bottom:8px; color:var(--blue); letter-spacing:0.05em; }
+    .qa-q .qa-label { color:var(--ink); }
+    ul.qa-list { margin:6px 0 0 1.2em; }
+    ul.qa-list li { margin-bottom:4px; }
+    .note-box { margin-top:12px; border-left:var(--bw-t) solid var(--border-dk); padding:10px 14px; background:var(--box-gray); border-radius:0 var(--radius-sm) var(--radius-sm) 0; }
+    .note-label { font-size:var(--text-xs); font-weight:900; margin-bottom:4px; letter-spacing:0.04em; }
+    .divider { border:none; border-top:var(--bw-h) solid var(--border); margin:12px 0; }
+
+    @media (max-width:640px) {
+      body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+      :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+      .card { padding:14px; border-radius:8px; }
+      .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; flex-direction:column; align-items:flex-start; gap:6px; }
+      .box-blue,.box-gray { padding:10px 12px; }
+      .qa-q,.qa-a { padding:12px 14px; font-size:var(--text-md); }
+      .qa-label { font-size:var(--text-sm); margin-bottom:6px; }
+      .badge { font-size:12px; padding:3px 10px; }
+      .page-title { padding:4px 0 4px 14px; }
+      .page-title h1 { font-size:17px; line-height:1.45; }
+      .page-title p { font-size:12.5px; }
+    }
+    @media print {
+      @page { margin:11mm 10mm; size:A4; }
+      body { background:white; padding:0; font-size:12.5px; line-height:1.65; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .page { gap:11px; }
+      :root { --text-xs:10.5px; --text-sm:12px; --text-md:12.5px; --text-lg:14px; --text-xl:16px; --pad-card:12px; --gap-card:11px; }
+      .card { padding:12px 14px; }
+      .card-title { padding-bottom:5px; margin-bottom:10px; flex-direction:row; align-items:center; }
+      .box-blue,.box-gray { padding:8px 11px; }
+      .avoid-break { break-inside:avoid; }
+      th,td { padding:5px 7px; }
+      .divider { margin:8px 0; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- TOPへ戻る（上部） -->
+  <div style="padding: 4px 0 0;">
+    <a href="kaitei2026.html" style="color:#1e5fa8;text-decoration:none;font-size:13px;border:1px solid #1e5fa8;border-radius:6px;padding:4px 14px;background:#fff;">← 資料一覧（TOP）に戻る</a>
+  </div>
+
+  <div class="page-title">
+    <h1>疑義解釈資料の送付について（その３）</h1>
+    <p>令和８年４月20日 保険局医療課事務連絡｜2026年調剤報酬改定</p>
+  </div>
+
+  <!-- 目次 -->
+  <div class="card" style="padding:16px 22px;">
+    <div class="section-title" style="margin-bottom:10px;">目次</div>
+    <div style="font-size:var(--text-xs); font-weight:700; color:#555; margin-bottom:6px; padding-left:4px; letter-spacing:0.03em;">別添４　調剤報酬点数表関係</div>
+    <ul style="list-style:none; display:flex; flex-direction:column; gap:5px; padding-left:4px;">
+      <li><a href="#kihonryo" style="color:var(--blue); text-decoration:none; font-size:var(--text-sm);">▸ 調剤基本料（問１）</a></li>
+      <li><a href="#chiki-kyokyuu" style="color:var(--blue); text-decoration:none; font-size:var(--text-sm);">▸ 地域支援・医薬品供給対応体制加算（問２・３）</a></li>
+      <li><a href="#sonota" style="color:var(--blue); text-decoration:none; font-size:var(--text-sm);">▸ その他（問４）</a></li>
+    </ul>
+  </div>
+
+  <!-- ========== 別添４ 調剤報酬点数表関係 ========== -->
+
+  <div class="section-header">
+    <p>別添４　調剤報酬点数表関係</p>
+  </div>
+
+  <!-- 調剤基本料 -->
+  <div class="card avoid-break" id="kihonryo">
+    <div class="card-title">調剤基本料</div>
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問１</div>
+        <p>「特掲診療料の施設基準等及びその届出に関する手続きの取扱いについて」（令和８年３月５日付け保医発 0305 第８号。以下「特掲施設基準通知」という。）の第 88 の２ 調剤基本料２の２（４）エで示す「介護保険法で定める介護老人福祉施設、介護老人保健施設及び介護医療院、高齢者住まい法で定めるサービス付き高齢者向け住宅並びに老人福祉法で定める有料老人ホーム、養護老人ホーム、軽費老人ホーム及び認知症高齢者グループホームに入居する患者に係る処方箋」については、<strong>服薬管理指導料又は在宅患者訪問薬剤管理指導料のいずれを算定したかにかかわらず、特定の保険医療機関に係る処方箋の受付回数及び当該期間に受け付けた全ての処方箋の受付回数のいずれからも除いて処方箋集中率を計算するのか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p>そのとおり。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 地域支援・医薬品供給対応体制加算 -->
+  <div class="card avoid-break" id="chiki-kyokyuu">
+    <div class="card-title">地域支援・医薬品供給対応体制加算</div>
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問２</div>
+        <p>特掲施設基準通知の第92 地域支援・医薬品供給対応体制加算の２（３）コ（ト）の「薬事未承認の研究用試薬又は検査サービス」とは、<strong>具体的にはどのようなものを指すのか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p>公衆衛生の向上及び増進の観点から、</p>
+        <ul class="qa-list">
+          <li>「医薬品、医療機器等の品質、有効性及び安全性の確保等に関する法律」（薬機法）等に抵触するおそれのある、疾病の診断や罹患リスクの判定を行うことができると標榜する研究用試薬又は検査用試薬や、</li>
+          <li>医師法等に抵触するおそれのある、疾患の罹患可能性の提示や診断等の医学的判断を行う検査サービス</li>
+        </ul>
+        <p style="margin-top:8px;">を指す。</p>
+        <div class="note-box">
+          <div class="note-label"><span class="badge badge-blue" style="font-size:var(--text-xs);">補足</span></div>
+          <p style="font-size:var(--text-sm);">本問は地域支援・医薬品供給対応体制加算の算定要件として「薬事未承認の研究用試薬又は検査サービス」を販売・提供していないことが求められていることを前提とした質問。問３（次問）と合わせて参照のこと。</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問３</div>
+        <p>問２に関し、地域支援・医薬品供給対応体制加算を算定するに当たり、<strong>薬機法等に抵触するおそれのない研究用試薬又は検査用試薬や、医師法等に抵触するおそれのない検査サービスを販売又は提供をしても差し支えないか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p>差し支えない。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- その他 -->
+  <div class="card avoid-break" id="sonota">
+    <div class="card-title">その他</div>
+
+    <div class="qa-block">
+      <div class="qa-q">
+        <div class="qa-label">問４</div>
+        <p>「「療養の給付と直接関係ないサービス等の取扱いについて」の一部改正について」（令和８年３月 27 日付け保医発 0327 第７号）の２ 療養の給付と直接関係ないサービス等(５)エの「在留外国人の診療に当たり必要となる多言語対応に要する費用（通訳の手配料や翻訳機の使用料等）」について、<strong>保険薬局における調剤時に当該対応に要する費用についても費用徴収の対象として差し支えないか。</strong></p>
+      </div>
+      <div class="qa-a">
+        <div class="qa-label">答</div>
+        <p>差し支えない。なお、当該サービスに限らず、本通知に掲載されている療養の給付と直接関係ないサービス等であって、保険薬局において提供しうるものについては、<strong>保険薬局における当該提供に要する費用についても費用徴収の対象として差し支えない。</strong></p>
+        <div class="note-box" style="margin-top:12px;">
+          <div class="note-label"><span class="badge badge-blue" style="font-size:var(--text-xs);">補足　保険薬局で徴収しうる費用の例</span></div>
+          <p style="font-size:var(--text-sm); margin-bottom:8px;">令和８年３月27日付け保医発0327第７号「『療養の給付と直接関係ないサービス等の取扱いについて』の一部改正について」に列挙されている費用のうち、保険薬局で提供しうるものの例。</p>
+          <ul class="qa-list" style="font-size:var(--text-sm);">
+            <li><strong>在宅医療に係る交通費</strong>（2(3)ア）　※従来から徴収可</li>
+            <li><strong>薬剤の容器代</strong>（2(3)イ）　※従来から徴収可</li>
+            <li><strong>調剤した医薬品の持参料及び郵送代</strong>（2(5)ア）</li>
+            <li><strong>多言語対応に要する費用</strong>（通訳の手配料、翻訳機の使用料等／2(5)エ）　← 本問の論点</li>
+            <li><strong>Wi-Fi利用料</strong>（2(1)ケ）</li>
+            <li><strong>予約やオンライン受診に係るシステム利用料</strong>（2(5)セ）</li>
+            <li><strong>予約に基づく患者都合のキャンセル料</strong>（2(5)ク／直前キャンセルに限る。事前に費用徴収の旨を説明し同意を得ること）</li>
+          </ul>
+          <p style="font-size:var(--text-sm); margin-top:10px;"><span class="em-red">留意点：</span>①徴収額は<strong>社会的にみて妥当適切なもの</strong>とすること。②他の費用と区別した<strong>領収証を発行</strong>すること。③「お世話料」「施設管理料」「雑費」等の<strong>曖昧な名目での費用徴収は不可</strong>。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- TOPに戻るリンク -->
+<div style="text-align:center; padding:32px 16px 16px;">
+  <a href="kaitei2026.html" style="display:inline-block; color:#1e5fa8; text-decoration:none; font-size:14px; border:1px solid #1e5fa8; border-radius:6px; padding:8px 20px;">← 資料一覧（TOP）に戻る</a>
+</div>
+<script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
