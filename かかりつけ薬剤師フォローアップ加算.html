@@ -221,23 +221,51 @@
 
   <!-- ③ タイミングのNG -->
   <div class="card avoid-break">
-    <div class="card-title">
-      実施タイミングの要件
-      <span class="badge badge-red">算定不可パターン</span>
+    <div class="card-title">実施タイミングの要件</div>
+    <div class="lead" style="margin-bottom:14px;">
+      フォローアップは、<strong>前回調剤日の翌日から、次回処方箋持参日の前日まで</strong>の間に実施する。<br>
+      「前回調剤後」には調剤当日は含まれず、「再度処方箋を持参するまでの間」には持参当日は含まれない。
     </div>
+
+    <!-- タイムライン図 -->
+    <div style="background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:18px 16px 14px; margin-bottom:16px;">
+      <div style="display:grid; grid-template-columns:1fr 2.2fr 1fr; align-items:center; gap:0;">
+        <!-- 左：前回調剤日 -->
+        <div style="text-align:center;">
+          <div style="font-size:var(--text-xs); font-weight:700; color:var(--ink); margin-bottom:6px;">前回調剤日</div>
+          <div style="background:var(--white); color:var(--red); font-size:var(--text-xs); font-weight:900; padding:7px 0; border:var(--bw-h) solid var(--border-dk);">当日 ✕</div>
+        </div>
+        <!-- 中央：実施可能期間 -->
+        <div style="text-align:center;">
+          <div style="font-size:var(--text-xs); font-weight:700; color:var(--blue); margin-bottom:6px;">実施可能期間</div>
+          <div style="background:var(--box-blue); color:var(--blue); font-size:var(--text-sm); font-weight:900; padding:7px 0; border-top:var(--bw-h) solid #a9c8e4; border-bottom:var(--bw-h) solid #a9c8e4;">翌日 ─────────── 前日</div>
+        </div>
+        <!-- 右：次回持参日 -->
+        <div style="text-align:center;">
+          <div style="font-size:var(--text-xs); font-weight:700; color:var(--ink); margin-bottom:6px;">次回持参日</div>
+          <div style="background:var(--white); color:var(--red); font-size:var(--text-xs); font-weight:900; padding:7px 0; border:var(--bw-h) solid var(--border-dk);">当日 ✕</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="font-size:var(--text-sm); font-weight:900; margin-bottom:8px;">算定不可となる例</div>
     <div class="ng-list">
       <div class="ng-item">
         <span class="ng-mark">・</span>
-        <div><span class="em-red">調剤当日</span>に実施　―　「前回調剤後」に調剤当日は含まれない</div>
+        <div><span class="em-red">前回調剤当日</span>に実施した場合</div>
       </div>
       <div class="ng-item">
         <span class="ng-mark">・</span>
-        <div><span class="em-red">処方箋持参当日</span>に実施　―　「次回来局前」に持参当日は含まれない</div>
+        <div><span class="em-red">次回処方箋持参当日</span>に実施した場合</div>
       </div>
-      <div class="ng-item">
-        <span class="ng-mark">・</span>
-        <div><strong>別医療機関の処方箋を持参</strong>　―　フォローアップを実施した医療機関からの処方箋受付時のみ算定可</div>
-      </div>
+    </div>
+  </div>
+
+  <!-- ③-2 対象処方箋の要件 -->
+  <div class="card avoid-break">
+    <div class="card-title">対象処方箋に関する注意</div>
+    <div style="font-size:var(--text-sm);">
+      算定できるのは、<strong>フォローアップのきっかけとなった医療機関の処方箋を次回受け付けた場合</strong>に限られる。別の医療機関の処方箋を持参した場合は算定できない。
     </div>
   </div>
 
