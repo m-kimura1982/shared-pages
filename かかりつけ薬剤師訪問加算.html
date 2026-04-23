@@ -196,16 +196,16 @@
       <span style="font-weight:900;">対象患者：</span>服薬管理指導料「１のイ」または「２のイ」を算定している患者
     </div>
     <div style="display:flex; flex-direction:column; gap:14px; font-size:var(--text-md);">
-      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
+      <div>
         <div style="font-weight:900; margin-bottom:4px;"><span style="color:var(--blue); margin-right:6px;">①</span>実施のきっかけ</div>
         <div style="font-size:var(--text-sm);">患者・家族等からの求めに応じて実施する。</div>
         <div style="font-size:var(--text-xs); color:#555; margin-top:4px;">※ 原文は「患者・家族等の求めに応じて」だが、実際には薬剤師から「一度お薬を整理しに伺いましょうか」と働きかけて訪問につなげる形が現実的。</div>
       </div>
-      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
+      <div>
         <div style="font-weight:900; margin-bottom:4px;"><span style="color:var(--blue); margin-right:6px;">②</span>患家訪問〜医療機関への情報提供</div>
         <div style="font-size:var(--text-sm);">かかりつけ薬剤師が患家（自宅）に出向いて<strong>残薬整理・服薬指導等</strong>を行い、その結果を<span class="em-blue">保険医療機関へ情報提供</span>する。</div>
       </div>
-      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
+      <div>
         <div style="font-weight:900; margin-bottom:4px;"><span style="color:var(--blue); margin-right:6px;">③</span>次回処方箋持参時に算定</div>
         <div style="font-size:var(--text-sm);">患家訪問そのものでは算定せず、<strong>訪問後に患者が再度処方箋を持参したとき</strong>に算定する。</div>
       </div>
@@ -252,8 +252,11 @@
   <!-- ③ 留意点 -->
   <div class="card avoid-break">
     <div class="card-title">算定上の注意点</div>
-    <div style="display:flex; flex-direction:column; gap:12px; font-size:var(--text-md);">
-      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
+
+    <!-- グループ1：実施にあたって -->
+    <div style="font-weight:900; color:var(--blue); font-size:var(--text-sm); margin-bottom:10px; padding-bottom:4px; border-bottom:var(--bw-h) solid var(--border);">■ 実施にあたって</div>
+    <div style="display:flex; flex-direction:column; gap:12px; font-size:var(--text-md); margin-bottom:20px;">
+      <div>
         <div style="font-weight:900; margin-bottom:4px;">事前説明と同意</div>
         <div style="font-size:var(--text-sm);">あらかじめ患者または家族等に対し、以下を説明し、了解を得る。</div>
         <div class="box-gray" style="margin-top:8px; font-size:var(--text-sm);">
@@ -261,15 +264,26 @@
           <div>② 発生する患者自己負担額（<strong>交通費を含む</strong>）</div>
         </div>
       </div>
-      <hr class="divider">
-      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
+      <div>
         <div style="font-weight:900; margin-bottom:4px;">交通費の取り扱い</div>
         <div style="font-size:var(--text-sm);">訪問に要した交通費は<strong>実費（患家の負担）</strong>とする（自費で徴収する場合は領収書を発行）。</div>
       </div>
-      <hr class="divider">
-      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
+    </div>
+
+    <!-- グループ2：記録要件 -->
+    <div style="font-weight:900; color:var(--blue); font-size:var(--text-sm); margin-bottom:10px; padding-bottom:4px; border-bottom:var(--bw-h) solid var(--border);">■ 記録要件</div>
+    <div style="display:flex; flex-direction:column; gap:12px; font-size:var(--text-md);">
+      <div>
         <div style="font-weight:900; margin-bottom:4px;">薬歴への記載</div>
         <div style="font-size:var(--text-sm);"><strong>① 患家を訪問した旨　② 患家における残薬状況　③ 実施した指導等の内容</strong>を薬剤服用歴等に記載する。</div>
+      </div>
+      <div>
+        <div style="font-weight:900; margin-bottom:6px;">レセプト摘要欄の記載</div>
+        <div class="box-gray" style="font-size:var(--text-sm);">
+          <div>・ <strong>保険医療機関へ情報提供した年月日</strong>（※訪問日ではない）</div>
+          <div>・ 初回該当（初回算定時のみ）</div>
+          <div>・ 前回算定年月（2回目以降）</div>
+        </div>
       </div>
     </div>
   </div>

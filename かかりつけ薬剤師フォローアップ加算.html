@@ -157,6 +157,7 @@
     <div class="lead" style="margin-bottom:12px;">
       かかりつけ患者に対し、<strong>前回調剤後〜次回来局前</strong>の間に<strong>電話等で服薬状況・残薬状況を継続的に確認</strong>し、必要な指導を行ったことを評価する加算。
     </div>
+
     <div style="display:flex; flex-direction:column; gap:8px; font-size:var(--text-sm);">
       <div style="display:flex; gap:10px;">
         <span style="flex-shrink:0; font-weight:900; color:var(--blue);">①</span>
@@ -177,6 +178,9 @@
   <div class="card avoid-break">
     <div class="card-title">算定対象と前提条件</div>
     <div style="display:flex; flex-direction:column; gap:12px; font-size:var(--text-md);">
+      <div style="font-size:var(--text-sm);">
+        <span style="font-weight:900;">実施のきっかけ：</span>患者・家族等の求め、または<strong>かかりつけ薬剤師が必要と認めた場合</strong>
+      </div>
       <div class="box-blue">
         <span style="font-weight:900;">対象患者：</span>以下の<span class="em-red">両方</span>を満たす患者
       </div>
@@ -199,26 +203,6 @@
     </div>
   </div>
 
-  <!-- ② 算定の流れ -->
-  <div class="card avoid-break">
-    <div class="card-title">算定の流れ</div>
-    <div style="display:flex; flex-direction:column; gap:14px; font-size:var(--text-md);">
-      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
-        <div style="font-weight:900; margin-bottom:4px;"><span style="color:var(--blue); margin-right:6px;">①</span>実施のきっかけ</div>
-        <div style="font-size:var(--text-sm);">患者・家族等の求め、または<strong>かかりつけ薬剤師が必要と認めた場合</strong></div>
-      </div>
-      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
-        <div style="font-weight:900; margin-bottom:4px;"><span style="color:var(--blue); margin-right:6px;">②</span>前回調剤後〜次回来局前の間に電話等でフォローアップ</div>
-        <div style="font-size:var(--text-sm); margin-bottom:8px;">服薬状況・残薬状況等の確認および必要な指導を<strong>個別に</strong>実施。電話のほか情報通信機器（ビデオ通話等）を用いた方法も可。</div>
-        <div style="font-size:var(--text-xs); color:#555;">※ 前回調剤日ではなく、<strong>受診間隔（調剤間隔）等を考慮して薬学的観点から適切と考えられる時期</strong>に実施する。</div>
-      </div>
-      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
-        <div style="font-weight:900; margin-bottom:4px;"><span style="color:var(--blue); margin-right:6px;">③</span>次回処方箋持参時に算定</div>
-        <div style="font-size:var(--text-sm);">フォローアップを実施した医療機関からの処方箋受付時に算定する（3月に1回）。</div>
-      </div>
-    </div>
-  </div>
-
   <!-- ③ タイミングのNG -->
   <div class="card avoid-break">
     <div class="card-title">実施タイミングの要件</div>
@@ -226,6 +210,7 @@
       フォローアップは、<strong>前回調剤日の翌日から、次回処方箋持参日の前日まで</strong>の間に実施する。<br>
       「前回調剤後」には調剤当日は含まれず、「再度処方箋を持参するまでの間」には持参当日は含まれない。
     </div>
+    <div style="font-size:var(--text-xs); color:#555; margin-bottom:14px;">※ 前回調剤日ではなく、<strong>受診間隔（調剤間隔）等を考慮して薬学的観点から適切と考えられる時期</strong>に実施する。</div>
 
     <!-- タイムライン図 -->
     <div style="background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:18px 16px 14px; margin-bottom:16px;">
@@ -276,7 +261,7 @@
       <span class="badge badge-blue">双方向性が必須</span>
     </div>
     <div style="font-size:var(--text-sm); margin-bottom:12px;">
-      個々の患者の状況に応じて、<span class="em-blue">双方向性を有する方法</span>で確認・指導を行う必要がある。以下のような一方通行の対応は算定対象外。
+      個々の患者の状況に応じて、<span class="em-blue">双方向性を有する方法</span>で確認・指導を行う必要がある。<strong>電話のほか情報通信機器（ビデオ通話等）</strong>も可。以下のような一方通行の対応は算定対象外。
     </div>
     <div class="ng-list">
       <div class="ng-item">
@@ -293,25 +278,38 @@
   <!-- ⑤ 算定上の注意点 -->
   <div class="card avoid-break">
     <div class="card-title">算定上の注意点</div>
-    <div style="display:flex; flex-direction:column; gap:12px; font-size:var(--text-md);">
-      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
+
+    <!-- グループ1：実施にあたって -->
+    <div style="font-weight:900; color:var(--blue); font-size:var(--text-sm); margin-bottom:10px; padding-bottom:4px; border-bottom:var(--bw-h) solid var(--border);">■ 実施にあたって</div>
+    <div style="display:flex; flex-direction:column; gap:12px; font-size:var(--text-md); margin-bottom:20px;">
+      <div>
         <div style="font-weight:900; margin-bottom:4px;">事前説明と同意</div>
         <div style="font-size:var(--text-sm);">あらかじめ患者または家族等に、①実施する聞き取り・指導等の内容、②発生する患者自己負担額を説明し、了解を得る。</div>
       </div>
-      <hr class="divider">
-      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
-        <div style="font-weight:900; margin-bottom:4px;">薬歴への記載</div>
-        <div style="font-size:var(--text-sm);">電話等によりフォローアップした旨・日時・実施した聞き取りや指導等の内容を記載。残薬等の問題が解消されない場合は、<span class="em-blue">理由・背景の検証内容および改善策も記載</span>する。</div>
+      <div>
+        <div style="font-weight:900; margin-bottom:4px;">みだりに繰り返さない</div>
+        <div style="font-size:var(--text-sm);">業務を行っても残薬等の問題が解消されないときは、<strong>みだりにフォローアップを繰り返すのではなく、解消されない理由・背景等を検証し改善策を講じる</strong>。</div>
       </div>
-      <hr class="divider">
-      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
+      <div>
         <div style="font-weight:900; margin-bottom:4px;">体調変化等の情報提供</div>
         <div style="font-size:var(--text-sm);">フォローアップ中に、医療機関へ伝えるべき体調変化等を把握した場合は、速やかに医療機関へ情報提供し、必要に応じて受診勧奨を行う。</div>
       </div>
-      <hr class="divider">
-      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
-        <div style="font-weight:900; margin-bottom:4px;">みだりに繰り返さない</div>
-        <div style="font-size:var(--text-sm);">業務を行っても残薬等の問題が解消されないときは、<strong>みだりにフォローアップを繰り返すのではなく、解消されない理由・背景等を検証し改善策を講じる</strong>。</div>
+    </div>
+
+    <!-- グループ2：記録要件 -->
+    <div style="font-weight:900; color:var(--blue); font-size:var(--text-sm); margin-bottom:10px; padding-bottom:4px; border-bottom:var(--bw-h) solid var(--border);">■ 記録要件</div>
+    <div style="display:flex; flex-direction:column; gap:12px; font-size:var(--text-md);">
+      <div>
+        <div style="font-weight:900; margin-bottom:4px;">薬歴への記載</div>
+        <div style="font-size:var(--text-sm);">電話等によりフォローアップした旨・日時・実施した聞き取りや指導等の内容を記載。残薬等の問題が解消されない場合は、<span class="em-blue">理由・背景の検証内容および改善策も記載</span>する。</div>
+      </div>
+      <div>
+        <div style="font-weight:900; margin-bottom:6px;">レセプト摘要欄の記載</div>
+        <div class="box-gray" style="font-size:var(--text-sm);">
+          <div>・ フォローアップを実施した年月日</div>
+          <div>・ 初回該当（初回算定時のみ）</div>
+          <div>・ 前回算定年月（2回目以降）</div>
+        </div>
       </div>
     </div>
   </div>
