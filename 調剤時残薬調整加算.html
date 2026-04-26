@@ -905,6 +905,14 @@
           算定できるのは次の2つのいずれか。<strong>0日に変更できるかどうかがパターンで違う</strong>ので注意。
         </div>
 
+        <div class="box-gray" style="margin-bottom:14px; font-size:var(--text-sm);">
+          <div style="font-weight:900; margin-bottom:4px;">両パターン共通の大前提</div>
+          <div style="line-height:1.7;">
+            残薬調整の必要性（次回受診日を考慮した意図的な残薬かどうか等）を<strong>患者又はその家族等に確認してから</strong>行う。<br />
+            <span class="em-red">単に7日分以上の残薬があったことをもって機械的に行ってはならない。</span>
+          </div>
+        </div>
+
         <!-- パターン1 -->
         <div style="margin-bottom: 16px">
           <div
@@ -1282,13 +1290,35 @@
               font-size: var(--text-xs);
               display: flex;
               gap: 6px;
-              margin-bottom: 12px;
+              margin-bottom: 10px;
             "
           >
             <span style="flex-shrink: 0">※</span>
             <span
               >いずれの場合も、<strong>レセプト（調剤報酬明細書）摘要欄にその理由の記載</strong>が必要</span
             >
+          </div>
+
+          <div style="font-weight:900; font-size:var(--text-sm); margin-bottom:6px;">
+            6日以下で算定する場合に必要な追加手順 <span style="font-size:var(--text-xs); font-weight:700; color:#666;">（両パターン共通）</span>
+          </div>
+          <div class="box-outline" style="font-size:var(--text-sm); margin-bottom:12px;">
+            <div style="display:flex; gap:6px; margin-bottom:5px;">
+              <span style="flex-shrink:0; font-weight:900; color:var(--blue);">①</span>
+              <span><strong>次回受診日（調剤日）</strong>を患者又はその家族等に確認</span>
+            </div>
+            <div style="display:flex; gap:6px; margin-bottom:5px;">
+              <span style="flex-shrink:0; font-weight:900; color:var(--blue);">②</span>
+              <span>残薬が7日分を超えないにもかかわらず<strong>調整する必要性</strong>を患者又はその家族等に説明</span>
+            </div>
+            <div style="display:flex; gap:6px; margin-bottom:5px;">
+              <span style="flex-shrink:0; font-weight:900; color:var(--blue);">③</span>
+              <span>①②の<strong>概要を薬剤服用歴へ記録</strong></span>
+            </div>
+            <div style="display:flex; gap:6px;">
+              <span style="flex-shrink:0; font-weight:900; color:var(--blue);">④</span>
+              <span>レセプト摘要欄に<strong>必要性の理由を記載</strong>（上記※と同じ）</span>
+            </div>
           </div>
 
           <div
