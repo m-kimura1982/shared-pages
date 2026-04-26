@@ -659,94 +659,6 @@
         </div>
       </div>
 
-      <!-- 従来との違い一覧 -->
-      <div class="card avoid-break">
-        <div class="card-title">
-          従来との違い（要件面）
-          <span class="badge badge-red">ここが要注意</span>
-        </div>
-        <div class="lead">
-          改定前のルールは「処方医に連絡・確認して処方が変更された場合に算定する」の1文のみで、<strong>7日分以上のルール、0日調整の可否、剤形ごとの数え方、6日以下の特例などはいずれも規定されていなかった</strong>。改定後に、以下の要件がまとめて追加された。
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th style="width: 26%">項目</th>
-                <th style="width: 32%">従来（〜2026.5）</th>
-                <th>改定後（2026.6〜）</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>7日分以上相当の条件</td>
-                <td style="color: #888">なし</td>
-                <td>
-                  <span class="diff-new">新設</span
-                  >：7日分以上ルール（7日未満は原則算定不可）
-                </td>
-              </tr>
-              <tr>
-                <td>剤形別の定義</td>
-                <td style="color: #888">なし</td>
-                <td>
-                  <span class="diff-new">新設</span
-                  >：内服＝7日分／屯服＝7回分／外用＝1回使用量×7回相当／隔日投与＝実服薬日数
-                </td>
-              </tr>
-              <tr>
-                <td>6日以下の特例</td>
-                <td style="color: #888">なし</td>
-                <td>
-                  <span class="diff-new">新設</span
-                  >：高額医薬品等の場合に限り可（レセ摘要欄に理由記載必須）
-                </td>
-              </tr>
-              <tr>
-                <td>「0日」への変更可否</td>
-                <td style="color: #888">制限規定なし</td>
-                <td>
-                  <span class="diff-new">明文化</span
-                  >：疑義照会は<strong>可</strong>／処方箋指示の減数は<strong>不可</strong>（最低1日分は調剤）
-                </td>
-              </tr>
-              <tr>
-                <td>処方箋指示による減数</td>
-                <td style="color: #888">明確なルールなし（各薬局の判断）</td>
-                <td>
-                  <span class="diff-new">要件明文化</span
-                  >：原則翌営業日までに保険医療機関へ情報提供
-                </td>
-              </tr>
-              <tr>
-                <td>減数時の対応</td>
-                <td style="color: #888">薬歴記載のみ</td>
-                <td>
-                  <span class="diff-new">4項目</span
-                  >：情報提供＋患者への促し＋手帳記載＋薬歴記録
-                </td>
-              </tr>
-              <tr>
-                <td>残薬が生じる理由の分析</td>
-                <td style="color: #888">あり（必要に応じて）</td>
-                <td>
-                  <span class="diff-new">要件化</span
-                  >：分析を行い、照会時に必要に応じて処方医へ情報提供
-                </td>
-              </tr>
-              <tr>
-                <td>機械的な減薬</td>
-                <td style="color: #888">制限なし</td>
-                <td>
-                  <span class="diff-new">禁止</span
-                  >：患者・家族等への必要性確認が必須
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
       <!-- 算定区分と点数 -->
       <div class="card avoid-break">
         <div class="card-title">算定区分と点数（処方箋受付1回につき）</div>
@@ -988,7 +900,7 @@
 
       <!-- 算定の2つのパターン -->
       <div class="card">
-        <div class="card-title">算定できるのはこの2つの場面</div>
+        <div class="card-title">算定できる2つのパターン</div>
         <div class="lead">
           算定できるのは次の2つのいずれか。<strong>0日に変更できるかどうかがパターンで違う</strong>ので注意。
         </div>
@@ -1038,7 +950,7 @@
             <div style="display: flex; gap: 6px; margin-bottom: 5px">
               <span style="flex-shrink: 0">・</span>
               <span
-                >残薬状況を確認し、処方医への疑義照会の結果、<strong>7日分以上相当の調剤日数の変更</strong>が行われた場合</span
+                >残薬状況を確認し、処方医への疑義照会の結果、<strong>7日分以上相当の調剤日数の変更</strong>が行われた場合<br /><span style="font-size:var(--text-xs); color:var(--blue); font-weight:700;">※ 6日以下でも要件を満たせば算定可（後述）</span></span
               >
             </div>
             <div style="display: flex; gap: 6px; margin-bottom: 5px">
@@ -1165,7 +1077,7 @@
             <div style="display: flex; gap: 6px; margin-bottom: 5px">
               <span style="flex-shrink: 0">・</span>
               <span
-                >処方箋の事前指示に基づき、薬局の判断で<strong>7日分以上相当の調剤日数を減数</strong>した場合</span
+                >処方箋の事前指示に基づき、薬局の判断で<strong>7日分以上相当の調剤日数を減数</strong>した場合<br /><span style="font-size:var(--text-xs); color:var(--blue); font-weight:700;">※ 6日以下でも要件を満たせば算定可（後述）</span></span
               >
             </div>
             <div style="display: flex; gap: 6px; margin-bottom: 10px">
@@ -1185,127 +1097,6 @@
               <div style="font-weight: 900">
                 処方箋指示による減数では、調剤日数・数量を「0」にすることはできない（最低1日分の調剤が必要）
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 減数時の4項目 -->
-      <div class="card avoid-break">
-        <div class="card-title">
-          数量を減らした後にやること（4つ）
-          <span class="badge" style="background: #fde8e8; color: var(--red)"
-            >疑義照会・処方箋指示とも共通</span
-          >
-        </div>
-        <div class="lead">
-          残薬を確認して調剤数量を減らした場合は、以下の4項目をすべて実施する。<strong>疑義照会で減らした場合も、処方箋指示で減らした場合も、どちらも対象</strong>。<br />
-          改定前は「要点を薬歴に記載」＋「必要に応じて処方医に情報提供」の2項目のみだった。改定後は
-          <span class="diff-new">新設2項目</span
-          >（手帳記載・患者から処方医への報告を促す）と
-          <span class="diff-new">拡充2項目</span
-          >（情報提供の期限明文化・薬歴記載の具体化）が追加された。
-        </div>
-
-        <div style="display: flex; flex-direction: column; gap: 10px">
-          <div class="box-outline" style="font-size: var(--text-sm)">
-            <div
-              style="font-weight: 900; margin-bottom: 4px; color: var(--blue)"
-            >
-              ① 処方医への情報提供（原則 翌営業日まで）　<span
-                style="
-                  font-size: var(--text-xs);
-                  background: #ffe7e7;
-                  color: var(--red);
-                  padding: 1px 6px;
-                  border-radius: 3px;
-                  font-weight: 700;
-                "
-                >拡充</span
-              >
-            </div>
-            <div style="color: #555; margin-bottom: 6px">
-              残薬量、残薬が生じた理由、調整後に交付した薬剤量、患者への説明内容等を、処方医療機関へ情報提供する。手段は電話・文書・<strong>電子処方箋管理サービスのコメント機能</strong>のいずれでもよい。
-            </div>
-            <div
-              style="
-                color: #555;
-                font-size: var(--text-xs);
-                background: #f7f9fc;
-                padding: 8px 10px;
-                border-radius: var(--radius-sm);
-              "
-            >
-              <strong>情報提供パターン：</strong><br />
-              ・疑義照会パターン：照会の電話自体が情報提供に該当。追加の文書は不要なことが多い。<br />
-              ・処方箋指示パターン：事後報告のため、文書または電子処方箋コメント機能での情報提供が中心。<br />
-              <strong
-                >※
-                文書で情報提供した場合は、服薬情報等提供料１を併算定可</strong
-              >（疑義解釈 問10）
-            </div>
-          </div>
-
-          <div class="box-outline" style="font-size: var(--text-sm)">
-            <div
-              style="font-weight: 900; margin-bottom: 4px; color: var(--blue)"
-            >
-              ② 次回受診時に患者から処方医へ報告するよう促す　<span
-                style="
-                  font-size: var(--text-xs);
-                  background: #ffe7e7;
-                  color: var(--red);
-                  padding: 1px 6px;
-                  border-radius: 3px;
-                  font-weight: 700;
-                "
-                >新設</span
-              >
-            </div>
-            <div style="color: #555">
-              患者に対して、次回受診時に処方医へ残薬の状況を報告するよう口頭で促す。
-            </div>
-          </div>
-
-          <div class="box-outline" style="font-size: var(--text-sm)">
-            <div
-              style="font-weight: 900; margin-bottom: 4px; color: var(--blue)"
-            >
-              ③ お薬手帳への記載　<span
-                style="
-                  font-size: var(--text-xs);
-                  background: #ffe7e7;
-                  color: var(--red);
-                  padding: 1px 6px;
-                  border-radius: 3px;
-                  font-weight: 700;
-                "
-                >新設</span
-              >
-            </div>
-            <div style="color: #555">
-              残薬調整した旨（品目・変更内容等）を手帳に記載する。<strong>疑義照会パターンでも記載が必要</strong>（原文上は減数した場合全般が対象）。
-            </div>
-          </div>
-
-          <div class="box-outline" style="font-size: var(--text-sm)">
-            <div
-              style="font-weight: 900; margin-bottom: 4px; color: var(--blue)"
-            >
-              ④ 薬剤服用歴への記録　<span
-                style="
-                  font-size: var(--text-xs);
-                  background: #ffe7e7;
-                  color: var(--red);
-                  padding: 1px 6px;
-                  border-radius: 3px;
-                  font-weight: 700;
-                "
-                >拡充</span
-              >
-            </div>
-            <div style="color: #555">
-              処方医に連絡・確認した内容の要点、<strong>変更した医薬品の品目名と数量等</strong>を薬歴に記載。従来も「要点の記載」はあったが、改定後は品目名・数量まで明記が求められる。
             </div>
           </div>
         </div>
@@ -1432,6 +1223,127 @@
         </div>
       </div>
 
+      <!-- 減数時の4項目 -->
+      <div class="card avoid-break">
+        <div class="card-title">
+          数量を減らした後にやること（4つ）
+          <span class="badge" style="background: #fde8e8; color: var(--red)"
+            >疑義照会・処方箋指示とも共通</span
+          >
+        </div>
+        <div class="lead">
+          残薬を確認して調剤数量を減らした場合は、以下の4項目をすべて実施する。<strong>疑義照会で減らした場合も、処方箋指示で減らした場合も、どちらも対象</strong>。<br />
+          改定前は「要点を薬歴に記載」＋「必要に応じて処方医に情報提供」の2項目のみだった。改定後は
+          <span class="diff-new">新設2項目</span
+          >（手帳記載・患者から処方医への報告を促す）と
+          <span class="diff-new">拡充2項目</span
+          >（情報提供の期限明文化・薬歴記載の具体化）が追加された。
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <div class="box-outline" style="font-size: var(--text-sm)">
+            <div
+              style="font-weight: 900; margin-bottom: 4px; color: var(--blue)"
+            >
+              ① 処方医への情報提供（原則 翌営業日まで）　<span
+                style="
+                  font-size: var(--text-xs);
+                  background: #ffe7e7;
+                  color: var(--red);
+                  padding: 1px 6px;
+                  border-radius: 3px;
+                  font-weight: 700;
+                "
+                >拡充</span
+              >
+            </div>
+            <div style="color: #555; margin-bottom: 6px">
+              残薬量、残薬が生じた理由、調整後に交付した薬剤量、患者への説明内容等を、処方医療機関へ情報提供する。手段は電話・文書・<strong>電子処方箋管理サービスのコメント機能</strong>のいずれでもよい。
+            </div>
+            <div
+              style="
+                color: #555;
+                font-size: var(--text-xs);
+                background: #f7f9fc;
+                padding: 8px 10px;
+                border-radius: var(--radius-sm);
+              "
+            >
+              <strong>情報提供パターン：</strong><br />
+              ・疑義照会パターン：照会の電話自体が情報提供に該当。追加の文書は不要なことが多い。<br />
+              ・処方箋指示パターン：事後報告のため、文書または電子処方箋コメント機能での情報提供が中心。<br />
+              <strong
+                >※
+                文書で情報提供した場合は、服薬情報等提供料１を併算定可</strong
+              >（疑義解釈 問10）
+            </div>
+          </div>
+
+          <div class="box-outline" style="font-size: var(--text-sm)">
+            <div
+              style="font-weight: 900; margin-bottom: 4px; color: var(--blue)"
+            >
+              ② 次回受診時に患者から処方医へ報告するよう促す　<span
+                style="
+                  font-size: var(--text-xs);
+                  background: #ffe7e7;
+                  color: var(--red);
+                  padding: 1px 6px;
+                  border-radius: 3px;
+                  font-weight: 700;
+                "
+                >新設</span
+              >
+            </div>
+            <div style="color: #555">
+              患者に対して、次回受診時に処方医へ残薬の状況を報告するよう口頭で促す。
+            </div>
+          </div>
+
+          <div class="box-outline" style="font-size: var(--text-sm)">
+            <div
+              style="font-weight: 900; margin-bottom: 4px; color: var(--blue)"
+            >
+              ③ お薬手帳への記載　<span
+                style="
+                  font-size: var(--text-xs);
+                  background: #ffe7e7;
+                  color: var(--red);
+                  padding: 1px 6px;
+                  border-radius: 3px;
+                  font-weight: 700;
+                "
+                >新設</span
+              >
+            </div>
+            <div style="color: #555">
+              残薬調整した旨（品目・変更内容等）を手帳に記載する。<strong>疑義照会パターンでも記載が必要</strong>（原文上は減数した場合全般が対象）。
+            </div>
+          </div>
+
+          <div class="box-outline" style="font-size: var(--text-sm)">
+            <div
+              style="font-weight: 900; margin-bottom: 4px; color: var(--blue)"
+            >
+              ④ 薬剤服用歴への記録　<span
+                style="
+                  font-size: var(--text-xs);
+                  background: #ffe7e7;
+                  color: var(--red);
+                  padding: 1px 6px;
+                  border-radius: 3px;
+                  font-weight: 700;
+                "
+                >拡充</span
+              >
+            </div>
+            <div style="color: #555">
+              処方医に連絡・確認した内容の要点、<strong>変更した医薬品の品目名と数量等</strong>を薬歴に記載。従来も「要点の記載」はあったが、改定後は品目名・数量まで明記が求められる。
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- 算定要件 -->
       <div class="card avoid-break">
         <div class="card-title">算定要件（共通）</div>
@@ -1552,6 +1464,55 @@
         </div>
       </div>
 
+      <!-- 算定要件チェックリスト -->
+      <div class="card avoid-break">
+        <div class="card-title">算定要件チェックリスト</div>
+
+        <div style="display:flex; flex-direction:column; gap:10px;">
+
+          <div class="box-outline" style="font-size:var(--text-sm);">
+            <div style="font-weight:900;">□ 7日分以上が基本（屯服7回／外用7回相当／隔日投与は実服薬日数）</div>
+            <div style="font-size:var(--text-xs); color:#777; margin-top:2px; padding-left:1em;">※従来は規定なし</div>
+          </div>
+
+          <div class="box-outline" style="font-size:var(--text-sm);">
+            <div style="font-weight:900;">□ 6日以下の特例（高額医薬品等＋レセ摘要欄に理由記載）</div>
+            <div style="font-size:var(--text-xs); color:#777; margin-top:2px; padding-left:1em;">※従来は規定なし</div>
+          </div>
+
+          <div class="box-outline" style="font-size:var(--text-sm);">
+            <div style="font-weight:900;">□ 0日への変更は<strong style="color:var(--blue);">疑義照会のみ可</strong>／処方箋指示は最低1日分</div>
+            <div style="font-size:var(--text-xs); color:#777; margin-top:2px; padding-left:1em;">※従来は明確な制限規定なし</div>
+          </div>
+
+          <div class="box-outline" style="font-size:var(--text-sm);">
+            <div style="font-weight:900;">□ 残薬が生じた理由を分析し、必要に応じて処方医に情報提供</div>
+            <div style="font-size:var(--text-xs); color:#777; margin-top:2px; padding-left:1em;">※従来は「必要に応じて」のみ → 要件化</div>
+          </div>
+
+          <div class="box-outline" style="font-size:var(--text-sm);">
+            <div style="font-weight:900;">□ 減数後の4項目すべて実施（情報提供＋患者促し＋手帳記載＋薬歴記録）</div>
+            <div style="font-size:var(--text-xs); color:#777; margin-top:2px; padding-left:1em;">※従来は薬歴記載＋必要時の情報提供のみ</div>
+          </div>
+
+          <div class="box-outline" style="font-size:var(--text-sm);">
+            <div style="font-weight:900;">□ 処方箋指示パターンは原則 翌営業日までに保険医療機関へ情報提供</div>
+            <div style="font-size:var(--text-xs); color:#777; margin-top:2px; padding-left:1em;">※従来は明確なルールなし（薬局判断）</div>
+          </div>
+
+          <div class="box-outline" style="font-size:var(--text-sm);">
+            <div style="font-weight:900;">□ 機械的な減薬はNG（患者・家族等への必要性確認が必須）</div>
+            <div style="font-size:var(--text-xs); color:#777; margin-top:2px; padding-left:1em;">※従来は制限なし</div>
+          </div>
+
+          <div class="box-outline" style="font-size:var(--text-sm);">
+            <div style="font-weight:900;">□ 簡素化プロトコルでの事後報告でも算定可（疑義解釈問11）</div>
+            <div style="font-size:var(--text-xs); color:#777; margin-top:2px; padding-left:1em;">※薬学的有害事象等防止加算とは扱いが逆なので注意</div>
+          </div>
+
+        </div>
+      </div>
+
       <!-- Q&A -->
       <div class="card">
         <div class="card-title">Q&amp;A</div>
@@ -1588,15 +1549,10 @@
           </div>
         </div>
 
-        <div class="qa-block">
-          <div class="qa-q">
-            <span class="qa-label">Q</span
-            >薬学的有害事象等防止加算と、プロトコル対応の扱いが異なるのはなぜか。
-          </div>
-          <div class="qa-a">
-            <span class="qa-label">A</span
-            >本加算は「残薬確認→処方変更」が要件の中核のため、<strong>プロトコル遵守による事後報告でも算定可</strong>。一方、薬学的有害事象等防止加算は「<strong>疑義照会</strong>を行った上での薬剤調整」を評価するため、プロトコル事後報告では算定不可。両加算で扱いが逆になるので注意。
-            <div class="qa-src">疑義解釈（その２）問12</div>
+        <div style="margin-top:14px; padding:12px 16px; background:#f7f9fc; border-left:4px solid var(--blue); border-radius:0 6px 6px 0;">
+          <div style="font-weight:900; font-size:var(--text-sm); color:var(--blue); margin-bottom:6px;">補足：薬学的有害事象等防止加算とプロトコル対応の扱いが異なる理由</div>
+          <div style="font-size:var(--text-sm); line-height:1.7;">
+            本加算は「残薬確認→処方変更」が要件の中核のため、<strong>プロトコル遵守による事後報告でも算定可</strong>。一方、薬学的有害事象等防止加算は「<strong>疑義照会</strong>を行った上での薬剤調整」を評価するため、プロトコル事後報告では算定不可（疑義解釈その２問12）。両加算で扱いが逆になるので注意。
           </div>
         </div>
       </div>
