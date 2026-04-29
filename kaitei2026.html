@@ -322,6 +322,8 @@
   </head>
   <body>
     <script src="assets/site-header.js" defer></script>
+    <script src="assets/page-meta.js" defer></script>
+    <script src="assets/last-updated.js" defer></script>
     <main>
 
       
@@ -662,20 +664,6 @@
 
       searchCount.textContent = total > 0 ? `${total}件の資料が見つかりました` : '該当する資料が見つかりませんでした';
     }
-  </script>
-  <script>
-  document.querySelectorAll('.card[data-new-until]').forEach(card => {
-    if (new Date() <= new Date(card.dataset.newUntil)) {
-      const arrowEl = card.querySelector('.card-arrow');
-      if (arrowEl) arrowEl.insertAdjacentHTML('beforebegin', '<span class="badge-new">NEW</span>');
-    }
-  });
-  document.querySelectorAll('.card[data-update-until]').forEach(card => {
-    if (new Date() <= new Date(card.dataset.updateUntil)) {
-      const arrowEl = card.querySelector('.card-arrow');
-      if (arrowEl) arrowEl.insertAdjacentHTML('beforebegin', '<span class="badge-update">更新</span>');
-    }
-  });
   </script>
   <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
