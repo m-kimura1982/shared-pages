@@ -146,6 +146,7 @@
 
   // ── HTML 構築 ──
   const navItems = [
+    { cat: 'home', label: 'ホーム' },
     { cat: 'kaitei', label: '改定資料' },
     { cat: 'tools', label: 'ツール' },
     { cat: 'knowledge', label: 'ナレッジ' },
