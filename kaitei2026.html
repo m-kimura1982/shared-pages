@@ -614,6 +614,29 @@
       <p class="footer-note">※各加算のまとめ資料は情報管理室（木村）が独自に作成したものです。公式の通知・告示ではありません。参考資料（原文）セクションの資料は厚生労働省の告示・事務連絡の原文をHTML化したものです。</p>
     </footer>
   <script>
+    // NEW / 更新 バッジの自動付与
+    (function () {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      document.querySelectorAll('.card[data-new-until], .card[data-update-until]').forEach(card => {
+        const newUntil = card.dataset.newUntil;
+        const updateUntil = card.dataset.updateUntil;
+        const title = card.querySelector('.card-title');
+        if (!title) return;
+        if (newUntil && new Date(newUntil) >= today) {
+          const b = document.createElement('span');
+          b.className = 'badge-new';
+          b.textContent = 'NEW';
+          title.appendChild(b);
+        } else if (updateUntil && new Date(updateUntil) >= today) {
+          const b = document.createElement('span');
+          b.className = 'badge-update';
+          b.textContent = '更新';
+          title.appendChild(b);
+        }
+      });
+    })();
+
     const searchInput = document.getElementById('search-input');
     const searchClear = document.getElementById('search-clear');
     const searchCount = document.getElementById('search-count');
