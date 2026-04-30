@@ -20,8 +20,8 @@
   "特掲診療料_施設基準届出_調剤関係2026.html": {
     "lastUpdated": "2026-04-03"
   },
-  "kaitei2026.html": {
-    "lastUpdated": "2026-04-29"
+  "tools.html": {
+    "lastUpdated": "2026-04-30"
   },
   "調剤基本料フローチャート.html": {
     "lastUpdated": "2026-03-26"
@@ -45,7 +45,7 @@
     "lastUpdated": "2026-04-10"
   },
   "かかりつけ薬剤師訪問加算.html": {
-    "lastUpdated": "2026-04-29"
+    "lastUpdated": "2026-05-01"
   },
   "かかりつけ薬剤師フォローアップ加算.html": {
     "lastUpdated": "2026-04-30"
@@ -86,6 +86,9 @@
   "疑義解釈_その1_2026.html": {
     "lastUpdated": "2026-04-01"
   },
+  "index.html": {
+    "lastUpdated": "2026-05-01"
+  },
   "服用薬剤調整支援料２_資格取得ステップ.html": {
     "lastUpdated": "2026-03-23"
   },
@@ -116,8 +119,8 @@
   "基礎的医薬品追加リストR8_4.html": {
     "lastUpdated": "2026-04-19"
   },
-  "index.html": {
-    "lastUpdated": "2026-04-30"
+  "kaitei2026.html": {
+    "lastUpdated": "2026-05-01"
   },
   "地域支援医薬品供給対応体制加算_届出判定ツール.html": {
     "lastUpdated": "2026-04-06"
@@ -134,10 +137,7 @@
   "疑義解釈_その2_2026.html": {
     "lastUpdated": "2026-04-29"
   },
-  "tools.html": {
-    "lastUpdated": "2026-04-17"
-  },
   "knowledge.html": {
-    "lastUpdated": "2026-04-19"
+    "lastUpdated": "2026-04-30"
   }
 }
