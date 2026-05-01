@@ -14,6 +14,7 @@
   const PAGES = {
     // サイト構造
     'index.html': { category: 'home', title: 'ホーム' },
+    'updates.html': { category: 'home', title: '更新履歴' },
     'kaitei2026.html': { category: 'kaitei', title: '2026改定資料' },
     'tools.html': { category: 'tools', title: '実務ツール集' },
     'knowledge.html': { category: 'knowledge', title: '実務ナレッジ集' },
