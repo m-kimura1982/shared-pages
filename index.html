@@ -237,33 +237,33 @@ footer {
     <h2 class="sec-heading">コンテンツ一覧</h2>
     <div class="contents-grid">
 
-      <a class="content-card" href="kaitei2026.html">
+      <a class="content-card" href="kaitei2026.html" data-count-from="kaitei2026.html" data-count-selector=".card,.card-digest" data-count-suffix="資料収録">
         <div class="card-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
         <div class="card-name">2026年 調剤報酬改定</div>
-        <div class="card-desc">加算・管理料の改定ポイントを解説。ダイジェスト・算定フロー・早見表・別表など30資料収録。</div>
-        <div class="card-meta">30資料収録</div>
+        <div class="card-desc">加算・管理料の改定ポイントを解説。ダイジェスト・算定フロー・早見表・別表などを収録。</div>
+        <div class="card-meta">資料収録</div>
         <div class="card-cta">資料一覧を見る <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
       </a>
 
-      <a class="content-card" href="tools.html">
+      <a class="content-card" href="tools.html" data-count-from="tools.html" data-count-selector=".tool-card" data-count-suffix="ツール収録">
         <div class="card-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
         </div>
         <div class="card-name">実務ツール集</div>
         <div class="card-desc">疑義解釈検索・届出判定・併算定可否チェックなど、現場ですぐ使えるツールをまとめています。</div>
-        <div class="card-meta">3ツール収録</div>
+        <div class="card-meta">ツール収録</div>
         <div class="card-cta">ツール一覧を見る <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
       </a>
 
-      <a class="content-card" href="knowledge.html">
+      <a class="content-card" href="knowledge.html" data-count-from="knowledge.html" data-count-selector=".tool-card" data-count-suffix="資料収録">
         <div class="card-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
         </div>
         <div class="card-name">実務ナレッジ集</div>
         <div class="card-desc">日々の業務で役立つ実務知識・Q&amp;Aをまとめています。</div>
-        <div class="card-meta">2資料収録</div>
+        <div class="card-meta">資料収録</div>
         <div class="card-cta">ナレッジ一覧を見る <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
       </a>
 
@@ -356,6 +356,36 @@ footer {
   <p>※各加算のまとめ資料は情報管理室（木村）が<br class="sp-br">独自に作成したものです。公式の通知・告示ではありません。</p>
 </footer>
 
+<script>
+// ── コンテンツカードの収録数を自動カウント ──
+// data-count-from / data-count-selector / data-count-suffix 属性を持つ要素について、
+// 対象ページをフェッチして指定セレクタの内部リンクカード数をカウントし、
+// .card-meta に「N◯◯」と表示する。
+(function () {
+  const cards = document.querySelectorAll('[data-count-from]');
+  cards.forEach(card => {
+    const url = card.dataset.countFrom;
+    const selector = card.dataset.countSelector || '.card';
+    const suffix = card.dataset.countSuffix || '件';
+    const meta = card.querySelector('.card-meta');
+    if (!meta) return;
+
+    fetch(url)
+      .then(res => res.text())
+      .then(html => {
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        const items = doc.querySelectorAll(selector);
+        // 内部リンクのみカウント（http/https始まりの外部リンクは除外）
+        const count = Array.from(items).filter(el => {
+          const href = el.getAttribute('href') || '';
+          return !/^https?:\/\//i.test(href);
+        }).length;
+        meta.textContent = count + suffix;
+      })
+      .catch(() => { /* 失敗時はデフォルトテキストのまま */ });
+  });
+})();
+</script>
 <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
