@@ -43,21 +43,18 @@
       }
       .header-logo { position: absolute; top: 1rem; right: 1.5rem; height: 26px; opacity: 0.8; }
 
-      /* ── ページタイトル ── */
+      /* ── ページタイトル（page-main 内に配置） ── */
       .page-head {
-        background: var(--surface);
-        border-bottom: 1px solid var(--border);
-        padding: 36px 24px 32px;
+        margin-bottom: 1.25rem;
       }
-      .page-head-inner { max-width: 1180px; margin: 0 auto; padding: 0 1rem; }
       .page-tag {
         display: inline-block;
         font-size: 12px; font-weight: 700; letter-spacing: .14em;
         color: var(--accent); background: var(--accent-light);
-        padding: 4px 14px; border-radius: 100px; margin-bottom: 14px;
+        padding: 4px 14px; border-radius: 100px; margin-bottom: 12px;
       }
-      .page-title { font-size: 26px; font-weight: 900; margin-bottom: 8px; letter-spacing: -.01em; color: var(--text); }
-      .page-desc { font-size: 13px; color: var(--text-sub); }
+      .page-title { font-size: 24px; font-weight: 900; margin-bottom: 6px; letter-spacing: -.01em; color: var(--text); line-height: 1.4; }
+      .page-desc { font-size: 13px; color: var(--text-sub); line-height: 1.7; }
 
       /* ── メイン（2カラムレイアウト） ── */
       main.page-shell {
@@ -261,9 +258,7 @@
 
       /* ── モバイル ── */
       @media (max-width: 640px) {
-        .page-head { padding: 28px 16px 24px; }
-        .page-head-inner { padding: 0; }
-        .page-title { font-size: 22px; }
+        .page-title { font-size: 20px; }
         .card-list { grid-template-columns: 1fr; }
         .overview-cards { grid-template-columns: 1fr; }
         .card-digest { padding: 14px 16px; }
@@ -280,14 +275,6 @@
     <script src="assets/page-meta.js" defer></script>
     <script src="assets/last-updated.js" defer></script>
 
-    <div class="page-head">
-      <div class="page-head-inner">
-        <p class="page-tag">2026改定</p>
-        <h1 class="page-title">調剤報酬改定 資料一覧</h1>
-        <p class="page-desc">改定の要点から原文資料まで、業務で確認しやすいカテゴリ別にまとめています。</p>
-      </div>
-    </div>
-
     <main class="page-shell">
       <aside class="side-index" aria-label="資料カテゴリ">
         <p class="side-label">CONTENTS</p>
@@ -301,6 +288,12 @@
       </aside>
 
       <div class="page-main">
+
+      <div class="page-head">
+        <p class="page-tag">2026改定</p>
+        <h1 class="page-title">調剤報酬改定 資料一覧</h1>
+        <p class="page-desc">改定の要点から原文資料まで、業務で確認しやすいカテゴリ別にまとめています。</p>
+      </div>
 
       <!-- 概要資料 -->
       <div class="overview-cards">
