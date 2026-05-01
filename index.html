@@ -141,7 +141,7 @@ main { max-width: 1000px; margin: 0 auto; padding: 52px 24px 60px; display: flex
 .pickup-desc { font-size: 12px; color: var(--sub); margin-top: 2px; }
 .pickup-arrow { font-size: 20px; color: var(--sub); flex-shrink: 0; }
 
-/* ── Updates ── */
+/* ── Updates（リニューアル：2段組・5件・短文） ── */
 .updates-box {
   background: var(--white);
   border: 1px solid var(--border);
@@ -157,28 +157,43 @@ main { max-width: 1000px; margin: 0 auto; padding: 52px 24px 60px; display: flex
 .updates-head svg { width: 15px; height: 15px; stroke: var(--blue); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .updates-list { list-style: none; }
 .updates-list li {
-  display: flex; gap: 16px; align-items: baseline;
-  padding: 11px 22px; border-bottom: 1px solid #f0f2f5;
-  font-size: 13px; line-height: 1.6;
+  padding: 14px 22px;
+  border-bottom: 1px solid #f0f2f5;
 }
 .updates-list li:last-child { border-bottom: none; }
-.updates-date { color: var(--sub); white-space: nowrap; font-size: 12px; min-width: 30px; }
+.update-line1 {
+  display: flex; align-items: baseline; gap: 12px;
+  margin-bottom: 2px;
+}
+.update-date {
+  color: var(--sub); white-space: nowrap;
+  font-size: 12px; font-weight: 700;
+  min-width: 32px;
+}
+.update-name {
+  font-size: 14px; font-weight: 700; color: var(--ink);
+  text-decoration: none;
+  line-height: 1.5;
+}
+.update-name:hover { color: var(--blue); text-decoration: underline; }
+.update-desc {
+  font-size: 12.5px; color: var(--sub);
+  margin-left: 44px; line-height: 1.6;
+}
+.badge-new {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  color: #fff; background: var(--blue);
+  padding: 1px 7px; border-radius: 4px; margin-left: 6px; vertical-align: middle;
+}
 .updates-all {
   display: flex; justify-content: flex-end;
-  padding: 10px 22px;
+  padding: 12px 22px;
   border-top: 1px solid var(--border);
 }
 .updates-all a {
   font-size: 12px; color: var(--blue); text-decoration: none; font-weight: 700;
 }
 .updates-all a:hover { text-decoration: underline; }
-.updates-list a { color: inherit; text-decoration: none; }
-.updates-list a:hover { color: var(--blue); text-decoration: underline; }
-.badge-new {
-  display: inline-block; font-size: 10px; font-weight: 700;
-  color: #fff; background: var(--blue);
-  padding: 1px 7px; border-radius: 4px; margin-left: 6px; vertical-align: middle;
-}
 
 /* ── Footer ── */
 footer {
@@ -199,6 +214,7 @@ footer {
   .contents-grid { grid-template-columns: 1fr; gap: 12px; }
   main { padding: 48px 16px 60px; gap: 52px; }
   .sec-heading { font-size: 18px; }
+  .update-desc { margin-left: 0; margin-top: 4px; }
 }
 </style>
 </head>
@@ -294,21 +310,43 @@ footer {
         最近の更新
       </div>
       <ul class="updates-list">
-        <li><span class="updates-date">5/1</span><a href="かかりつけ薬剤師訪問加算.html">かかりつけ薬剤師訪問加算</a>　残薬整理を前面に出した表現を「服用薬の管理方法の指導・残薬整理等」に改め、訪問時の業務内容を4分類で例示するカードを新設</li>
-        <li><span class="updates-date">4/30</span><a href="かかりつけ薬剤師フォローアップ加算.html">かかりつけ薬剤師フォローアップ加算</a>　条件①の表現を「フォローアップのきっかけとなった調剤時」に明確化</li>
-        <li><span class="updates-date">4/29</span><a href="かかりつけ薬剤師フォローアップ加算.html">かかりつけ薬剤師フォローアップ加算</a>　間に別医療機関の処方箋を挟んだ場合の取り扱いを追記</li>
-        <li><span class="updates-date">4/29</span><a href="服薬管理指導料.html">服薬管理指導料</a>・<a href="かかりつけ薬剤師フォローアップ加算.html">かかりつけ薬剤師フォローアップ加算</a>　服薬情報等提供料との併算定について追記</li>
-        <li><span class="updates-date">4/26</span><a href="薬学的有害事象等防止加算.html">薬学的有害事象等防止加算</a>・<a href="調剤時残薬調整加算.html">調剤時残薬調整加算</a>・<a href="別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html">別表Ⅰ</a>　情報を整理して更新</li>
-        <li><span class="updates-date">4/29</span><a href="かかりつけ薬剤師フォローアップ加算.html">かかりつけ薬剤師フォローアップ加算</a>・<a href="かかりつけ薬剤師訪問加算.html">訪問加算</a>　疑義解釈の補足表を追加</li>
-        <li><span class="updates-date">4/22</span><a href="疑義解釈_その3_2026.html">疑義解釈資料の送付について（その３）を追加</a></li>
-        <li><span class="updates-date">4/20</span><a href="調剤時残薬調整加算.html">調剤時残薬調整加算</a>・<a href="薬学的有害事象等防止加算.html">薬学的有害事象等防止加算</a>　情報を追加して更新</li>
-        <li><span class="updates-date">4/19</span><a href="基礎的医薬品追加リストR8_4.html">基礎的医薬品 追加品目一覧（R8.4改定）を追加</a></li>
-        <li><span class="updates-date">4/19</span><a href="服薬管理指導料.html">服薬管理指導料（かかりつけ統合）の資料をリニューアル</a></li>
-        <li><span class="updates-date">4/17</span><a href="変更調剤について.html">変更調剤の取り扱い（後発品が先発品と同額になった場合）を追加</a></li>
-        <li><span class="updates-date">4/16</span><a href="服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html">別表１（１）他の薬学管理料との算定可否表を追加</a></li>
-        <li><span class="updates-date">4/15</span><a href="gigi-search.html">疑義解釈 検索ツールを追加（平成18年度〜令和8年度 全7,341件収録）</a></li>
+        <li>
+          <div class="update-line1">
+            <span class="update-date">5/1</span>
+            <a class="update-name" href="かかりつけ薬剤師訪問加算.html">かかりつけ薬剤師訪問加算<span class="badge-new">NEW</span></a>
+          </div>
+          <p class="update-desc">訪問時の業務内容を4分類で整理</p>
+        </li>
+        <li>
+          <div class="update-line1">
+            <span class="update-date">4/30</span>
+            <a class="update-name" href="かかりつけ薬剤師フォローアップ加算.html">かかりつけ薬剤師フォローアップ加算<span class="badge-new">NEW</span></a>
+          </div>
+          <p class="update-desc">算定条件の表現を明確化</p>
+        </li>
+        <li>
+          <div class="update-line1">
+            <span class="update-date">4/29</span>
+            <a class="update-name" href="かかりつけ薬剤師フォローアップ加算.html">かかりつけ薬剤師フォローアップ加算</a>
+          </div>
+          <p class="update-desc">別医療機関の処方箋を挟んだ場合の取り扱い・服薬情報等提供料との併算定・疑義解釈の補足表を追記</p>
+        </li>
+        <li>
+          <div class="update-line1">
+            <span class="update-date">4/26</span>
+            <a class="update-name" href="薬学的有害事象等防止加算.html">薬学的有害事象等防止加算ほか</a>
+          </div>
+          <p class="update-desc">調剤時残薬調整加算・別表Ⅰとあわせて情報を整理</p>
+        </li>
+        <li>
+          <div class="update-line1">
+            <span class="update-date">4/22</span>
+            <a class="update-name" href="疑義解釈_その3_2026.html">疑義解釈資料の送付について（その３）</a>
+          </div>
+          <p class="update-desc">新規追加</p>
+        </li>
       </ul>
-      <div class="updates-all"><a href="kaitei2026.html">2026改定の資料一覧を見る →</a></div>
+      <div class="updates-all"><a href="updates.html">すべての更新履歴を見る →</a></div>
     </div>
   </section>
 

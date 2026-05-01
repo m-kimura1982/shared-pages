@@ -36,70 +36,83 @@
         padding: 1.2rem 1.5rem;
         text-align: center;
       }
-      .header-inner {
-        max-width: 960px;
-        margin: 0 auto;
-        position: relative;
-      }
+      .header-inner { max-width: 960px; margin: 0 auto; position: relative; }
       header h1 {
-        font-size: 28px;
-        font-weight: 700;
-        color: var(--accent);
-        letter-spacing: .06em;
-        line-height: 1.3;
+        font-size: 28px; font-weight: 700; color: var(--accent);
+        letter-spacing: .06em; line-height: 1.3;
       }
-      .header-logo {
-        position: absolute;
-        top: 1rem;
-        right: 1.5rem;
-        height: 26px;
-        opacity: 0.8;
-      }
+      .header-logo { position: absolute; top: 1rem; right: 1.5rem; height: 26px; opacity: 0.8; }
 
-      /* ── メイン ── */
-      main {
-        max-width: 960px;
+      /* ── メイン（2カラムレイアウト） ── */
+      main.page-shell {
+        max-width: 1180px;
         margin: 2rem auto 0;
         padding: 0 1rem;
+        display: grid;
+        grid-template-columns: 180px minmax(0, 1fr);
+        gap: 28px;
+        align-items: start;
+      }
+      .page-main { min-width: 0; }
+
+      /* ── サイドCONTENTSナビ ── */
+      .side-index {
+        position: sticky;
+        top: 70px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 12px 10px;
+      }
+      .side-label {
+        color: var(--accent);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .14em;
+        margin: 2px 8px 8px;
+      }
+      .side-index a {
+        display: block;
+        color: var(--text);
+        text-decoration: none;
+        border-radius: 6px;
+        padding: 7px 10px;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.4;
+        border-left: 3px solid transparent;
+        transition: background 0.15s, color 0.15s, border-color 0.15s;
+      }
+      .side-index a:hover {
+        color: var(--accent);
+        background: var(--accent-light);
+      }
+      .side-index a.is-active {
+        color: var(--accent);
+        background: var(--accent-light);
+        font-weight: 700;
       }
 
       /* ── 更新情報 ── */
       .news-box {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-left: 3px solid var(--accent);
-        border-radius: var(--radius);
-        padding: 12px 16px;
-        margin-bottom: 1.5rem;
+        background: var(--surface); border: 1px solid var(--border);
+        border-left: 3px solid var(--accent); border-radius: var(--radius);
+        padding: 12px 16px; margin-bottom: 1.5rem;
       }
-      .news-title {
-        font-size: 12px;
-        font-weight: 700;
-        color: var(--accent);
-        margin-bottom: 7px;
-        letter-spacing: .04em;
-      }
+      .news-title { font-size: 12px; font-weight: 700; color: var(--accent); margin-bottom: 7px; letter-spacing: .04em; }
       .news-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
       .news-list li { display: flex; gap: 10px; font-size: 12px; line-height: 1.6; color: var(--text); }
       .news-date { color: var(--text-sub); white-space: nowrap; min-width: 32px; }
 
       /* ── 特別カード（ダイジェスト） ── */
       .overview-cards {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        margin-bottom: 1.5rem;
+        display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.5rem;
       }
       .card-digest {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-left: 4px solid var(--accent);
-        border-radius: var(--radius);
-        padding: 16px 20px;
-        text-decoration: none;
+        display: flex; align-items: center; gap: 14px;
+        background: var(--surface); border: 1px solid var(--border);
+        border-left: 4px solid var(--accent); border-radius: var(--radius);
+        padding: 16px 20px; text-decoration: none;
         transition: border-color 0.15s, box-shadow 0.15s;
       }
       .card-digest:hover {
@@ -108,170 +121,75 @@
         box-shadow: 0 2px 8px rgba(30, 95, 168, 0.12);
       }
       .digest-icon {
-        width: 40px;
-        height: 40px;
-        border-radius: 8px;
+        width: 40px; height: 40px; border-radius: 8px;
         background: var(--accent-light);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
+        display: flex; align-items: center; justify-content: center; flex-shrink: 0;
       }
-      .digest-icon svg {
-        width: 20px;
-        height: 20px;
-        stroke: var(--accent);
-      }
+      .digest-icon svg { width: 20px; height: 20px; stroke: var(--accent); }
       .digest-body { flex: 1; }
-      .digest-title {
-        font-size: 16px;
-        font-weight: 700;
-        color: var(--accent);
-        line-height: 1.4;
-      }
-      .digest-desc {
-        font-size: 12px;
-        color: var(--text-sub);
-        margin-top: 3px;
-      }
-      .digest-arrow {
-        font-size: 20px;
-        color: var(--text-sub);
-        flex-shrink: 0;
-      }
+      .digest-title { font-size: 16px; font-weight: 700; color: var(--accent); line-height: 1.4; }
+      .digest-desc { font-size: 12px; color: var(--text-sub); margin-top: 3px; }
+      .digest-arrow { font-size: 20px; color: var(--text-sub); flex-shrink: 0; }
 
       /* ── セクションタイトル ── */
       .section-title {
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 700;
         color: var(--accent);
         border-left: 3px solid var(--accent);
         padding-left: 10px;
         margin-bottom: 0.75rem;
+        scroll-margin-top: 80px;
       }
 
       /* ── カードリスト（2列グリッド） ── */
       .card-list {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-        margin-bottom: 1.75rem;
+        display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 1.75rem;
       }
       .card {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 14px 16px;
-        text-decoration: none;
-        color: var(--text);
+        display: flex; align-items: center; gap: 14px;
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: var(--radius); padding: 14px 16px;
+        text-decoration: none; color: var(--text);
         transition: border-color 0.15s, box-shadow 0.15s;
       }
-      .card:hover {
-        border-color: var(--accent-mid);
-        box-shadow: 0 2px 8px rgba(30, 95, 168, 0.1);
-      }
+      .card:hover { border-color: var(--accent-mid); box-shadow: 0 2px 8px rgba(30, 95, 168, 0.1); }
       .card-icon {
-        width: 36px;
-        height: 36px;
-        border-radius: 6px;
+        width: 36px; height: 36px; border-radius: 6px;
         background: var(--accent-light);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
+        display: flex; align-items: center; justify-content: center; flex-shrink: 0;
       }
-      .card-icon svg {
-        width: 18px;
-        height: 18px;
-        stroke: var(--accent);
-      }
-      .card-title {
-        font-size: 14px;
-        font-weight: 500;
-        flex: 1;
-        line-height: 1.5;
-      }
-      .card-arrow {
-        font-size: 18px;
-        color: var(--text-sub);
-        flex-shrink: 0;
-      }
+      .card-icon svg { width: 18px; height: 18px; stroke: var(--accent); }
+      .card-title { font-size: 14px; font-weight: 500; flex: 1; line-height: 1.5; }
+      .card-arrow { font-size: 18px; color: var(--text-sub); flex-shrink: 0; }
 
       /* ── ポイント整理セクション ── */
       .point-seiri-wrap {
-        background: #e6e9ef;
-        border-radius: var(--radius);
-        padding: 16px 18px;
-        margin-bottom: 1.75rem;
+        background: #e6e9ef; border-radius: var(--radius);
+        padding: 16px 18px; margin-bottom: 1.75rem;
       }
-      .point-seiri-wrap .card-list {
-        margin-bottom: 0;
-      }
+      .point-seiri-wrap .card-list { margin-bottom: 0; }
 
-      .card-disabled {
-        opacity: 0.6;
-        cursor: default;
-        pointer-events: none;
+      .card-disabled { opacity: 0.6; cursor: default; pointer-events: none; }
+      .badge-new, .badge-update, .badge-wip {
+        display: inline-block; font-size: 11px; font-weight: 700;
+        color: #fff; padding: 1px 8px; border-radius: 3px;
+        margin-left: 8px; vertical-align: middle;
       }
-      .badge-new {
-        display: inline-block;
-        font-size: 11px;
-        font-weight: 700;
-        color: #fff;
-        background: var(--accent);
-        padding: 1px 8px;
-        border-radius: 3px;
-        margin-left: 8px;
-        vertical-align: middle;
-      }
-      .badge-update {
-        display: inline-block;
-        font-size: 11px;
-        font-weight: 700;
-        color: #fff;
-        background: #2563eb;
-        padding: 1px 8px;
-        border-radius: 3px;
-        margin-left: 8px;
-        vertical-align: middle;
-      }
-      .badge-wip {
-        display: inline-block;
-        font-size: 11px;
-        font-weight: 700;
-        color: #fff;
-        background: #b45309;
-        padding: 1px 8px;
-        border-radius: 3px;
-        margin-left: 8px;
-        vertical-align: middle;
-      }
+      .badge-new { background: var(--accent); }
+      .badge-update { background: #2563eb; }
+      .badge-wip { background: #b45309; }
 
       /* ── フッター ── */
-      footer {
-        max-width: 960px;
-        margin: 0 auto;
-        padding: 0 1rem;
-        text-align: right;
-      }
-      .footer-note {
-        font-size: 11px;
-        color: var(--text-sub);
-      }
+      footer { max-width: 1180px; margin: 0 auto; padding: 0 1rem; text-align: right; }
+      .footer-note { font-size: 11px; color: var(--text-sub); }
 
       /* ── 検索窓 ── */
-      .search-box { margin-bottom: .3rem; }
+      .search-box { margin-bottom: 1rem; }
       .search-inner {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        background: var(--surface);
-        border: 1.5px solid var(--border);
-        border-radius: var(--radius);
-        padding: 10px 14px;
+        display: flex; align-items: center; gap: 8px;
+        background: var(--surface); border: 1.5px solid var(--border);
+        border-radius: var(--radius); padding: 10px 14px;
         transition: border-color 0.15s;
       }
       .search-inner:focus-within {
@@ -280,31 +198,47 @@
       }
       .search-inner svg { width: 16px; height: 16px; stroke: var(--text-sub); flex-shrink: 0; }
       #search-input {
-        flex: 1;
-        border: none;
-        outline: none;
-        font-size: 14px;
-        font-family: inherit;
-        color: var(--text);
-        background: transparent;
+        flex: 1; border: none; outline: none; font-size: 14px;
+        font-family: inherit; color: var(--text); background: transparent;
       }
       #search-input::placeholder { color: #aaa; }
       #search-clear {
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: var(--text-sub);
-        font-size: 16px;
-        line-height: 1;
-        padding: 0 2px;
-        display: none;
+        background: none; border: none; cursor: pointer;
+        color: var(--text-sub); font-size: 16px; line-height: 1;
+        padding: 0 2px; display: none;
       }
       #search-count {
-        font-size: 12px;
-        color: var(--text-sub);
-        margin-top: 6px;
-        padding-left: 2px;
-        min-height: 18px;
+        font-size: 12px; color: var(--text-sub);
+        margin-top: 6px; padding-left: 2px; min-height: 18px;
+      }
+
+      /* ── タブレット〜モバイル：サイドナビを横スクロール化 ── */
+      @media (max-width: 900px) {
+        main.page-shell {
+          display: block;
+          max-width: 960px;
+        }
+        .side-index {
+          position: static;
+          display: flex;
+          gap: 4px;
+          overflow-x: auto;
+          padding: 8px;
+          margin-bottom: 14px;
+          -webkit-overflow-scrolling: touch;
+        }
+        .side-label { display: none; }
+        .side-index a {
+          flex: 0 0 auto;
+          white-space: nowrap;
+          border-left: none;
+          border-bottom: 2px solid transparent;
+          padding: 6px 12px;
+        }
+        .side-index a.is-active {
+          border-left: none;
+          border-bottom-color: var(--accent);
+        }
       }
 
       /* ── モバイル ── */
@@ -324,9 +258,19 @@
     <script src="assets/site-header.js" defer></script>
     <script src="assets/page-meta.js" defer></script>
     <script src="assets/last-updated.js" defer></script>
-    <main>
+    <main class="page-shell">
+      <aside class="side-index" aria-label="資料カテゴリ">
+        <p class="side-label">CONTENTS</p>
+        <a href="#tools">便利ツール</a>
+        <a href="#points">ポイント整理</a>
+        <a href="#tech">調剤技術料</a>
+        <a href="#management">薬学管理料</a>
+        <a href="#other">その他</a>
+        <a href="#source">参考資料</a>
+        <a href="#links">関連リンク</a>
+      </aside>
 
-      
+      <div class="page-main">
 
       <!-- 概要資料 -->
       <div class="overview-cards">
@@ -373,7 +317,7 @@
       </div>
 
       <!-- 便利ツール -->
-      <p class="section-title">便利ツール</p>
+      <p class="section-title" id="tools">便利ツール</p>
       <div class="card-list" style="margin-top:0">
         <a class="card" href="gigi-search.html" data-new-until="2026-04-29">
           <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
@@ -389,7 +333,7 @@
 
       <!-- ポイント整理 -->
       <div class="point-seiri-wrap">
-        <p class="section-title">ポイント整理</p>
+        <p class="section-title" id="points">ポイント整理</p>
         <div class="card-list">
           <a class="card" href="調剤報酬体系図_2026改定.html">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
@@ -415,7 +359,7 @@
       </div>
 
       <!-- 調剤技術料 -->
-      <p class="section-title">調剤技術料</p>
+      <p class="section-title" id="tech">調剤技術料</p>
       <div class="card-list">
         <a class="card" href="在宅薬学総合体制加算2026.html">
           <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
@@ -460,7 +404,7 @@
       </div>
 
       <!-- 薬学管理料 -->
-      <p class="section-title">薬学管理料</p>
+      <p class="section-title" id="management">薬学管理料</p>
       <div class="card-list">
         <a class="card" href="かかりつけ薬剤師フォローアップ加算.html" data-update-until="2026-05-13">
           <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
@@ -525,7 +469,7 @@
       </div>
 
       <!-- その他 -->
-      <p class="section-title">その他</p>
+      <p class="section-title" id="other">その他</p>
       <div class="card-list">
         <a class="card" href="選定療養_概要2026.html">
           <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
@@ -550,7 +494,7 @@
       </div>
 
       <!-- 参考資料 -->
-      <p class="section-title">参考資料（原文）</p>
+      <p class="section-title" id="source">参考資料（原文）</p>
       <div class="card-list">
         <a class="card" href="別表第三_調剤報酬点数表2026.html">
           <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
@@ -595,7 +539,7 @@
       </div>
 
       <!-- 関連リンク -->
-      <p class="section-title">関連リンク</p>
+      <p class="section-title" id="links">関連リンク</p>
       <div class="card-list">
         <a class="card" href="https://www.mhlw.go.jp/stf/newpage_67729.html" target="_blank" rel="noopener">
           <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
@@ -609,6 +553,7 @@
         </a>
       </div>
 
+      </div>
     </main>
     <footer>
       <p class="footer-note">※各加算のまとめ資料は情報管理室（木村）が独自に作成したものです。公式の通知・告示ではありません。参考資料（原文）セクションの資料は厚生労働省の告示・事務連絡の原文をHTML化したものです。</p>
@@ -664,6 +609,26 @@
 
       searchCount.textContent = total > 0 ? `${total}件の資料が見つかりました` : '該当する資料が見つかりませんでした';
     }
+
+    // ── サイドナビのスクロールスパイ（アクティブ表示）
+    (function () {
+      const navLinks = document.querySelectorAll('.side-index a');
+      const sections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+      if (!sections.length) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            navLinks.forEach(a => {
+              a.classList.toggle('is-active', a.getAttribute('href') === '#' + id);
+            });
+          }
+        });
+      }, { rootMargin: '-80px 0px -70% 0px', threshold: 0 });
+
+      sections.forEach(s => observer.observe(s));
+    })();
   </script>
   <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

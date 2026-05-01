@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>更新履歴｜調剤報酬まとめ</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blue: #1e5fa8;
+  --blue-mid: #2d7dd6;
+  --blue-light: #e8f0fb;
+  --ink: #222222;
+  --sub: #666666;
+  --border: #d8dde8;
+  --white: #ffffff;
+  --bg: #f5f7fa;
+  --radius: 12px;
+}
+body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: var(--ink); line-height: 1.7; }
+
+/* ── Page header ── */
+.page-head {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 40px 24px 36px;
+}
+.page-head-inner { max-width: 760px; margin: 0 auto; }
+.page-tag {
+  display: inline-block;
+  font-size: 12px; font-weight: 700; letter-spacing: .14em;
+  color: var(--blue); background: var(--blue-light);
+  padding: 4px 14px; border-radius: 100px; margin-bottom: 14px;
+}
+.page-title { font-size: 26px; font-weight: 900; margin-bottom: 8px; letter-spacing: -.01em; }
+.page-desc { font-size: 13px; color: var(--sub); }
+
+/* ── Main ── */
+main { max-width: 760px; margin: 0 auto; padding: 36px 24px 60px; }
+
+/* ── Year group ── */
+.year-group { margin-bottom: 32px; }
+.year-label {
+  font-size: 14px; font-weight: 700; color: var(--blue);
+  margin-bottom: 12px;
+  padding-left: 10px;
+  border-left: 3px solid var(--blue);
+}
+
+/* ── Updates list ── */
+.updates-box {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.updates-list { list-style: none; }
+.updates-list li {
+  padding: 14px 22px;
+  border-bottom: 1px solid #f0f2f5;
+}
+.updates-list li:last-child { border-bottom: none; }
+.update-line1 {
+  display: flex; align-items: baseline; gap: 12px;
+  margin-bottom: 2px;
+}
+.update-date {
+  color: var(--sub); white-space: nowrap;
+  font-size: 12px; font-weight: 700;
+  min-width: 36px;
+}
+.update-name {
+  font-size: 14px; font-weight: 700; color: var(--ink);
+  text-decoration: none;
+  line-height: 1.5;
+}
+.update-name:hover { color: var(--blue); text-decoration: underline; }
+.update-desc {
+  font-size: 12.5px; color: var(--sub);
+  margin-left: 48px; line-height: 1.6;
+}
+
+/* ── Back link ── */
+.back-link {
+  margin-top: 24px;
+  text-align: center;
+}
+.back-link a {
+  display: inline-block;
+  font-size: 13px; color: var(--blue); text-decoration: none; font-weight: 700;
+  padding: 10px 18px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  background: var(--white);
+  transition: border-color 0.15s, background 0.15s;
+}
+.back-link a:hover { border-color: var(--blue); background: var(--blue-light); }
+
+/* ── Footer ── */
+footer {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  padding: 28px 24px;
+  text-align: center;
+  font-size: 11px; color: var(--sub); line-height: 1.8;
+}
+
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  .page-head { padding: 32px 18px 28px; }
+  .page-title { font-size: 22px; }
+  main { padding: 28px 16px 60px; }
+  .updates-list li { padding: 13px 16px; }
+  .update-desc { margin-left: 0; margin-top: 4px; }
+}
+</style>
+</head>
+<body>
+
+<script src="assets/site-header.js" defer></script>
+
+<div class="page-head">
+  <div class="page-head-inner">
+    <p class="page-tag">UPDATES</p>
+    <h1 class="page-title">更新履歴</h1>
+    <p class="page-desc">資料の追加・更新の履歴をまとめています。</p>
+  </div>
+</div>
+
+<main>
+
+  <div class="year-group">
+    <p class="year-label">2026年</p>
+    <div class="updates-box">
+      <ul class="updates-list">
+        <li>
+          <div class="update-line1">
+            <span class="update-date">5/1</span>
+            <a class="update-name" href="かかりつけ薬剤師訪問加算.html">かかりつけ薬剤師訪問加算</a>
+          </div>
+          <p class="update-desc">残薬整理を前面に出した表現を「服用薬の管理方法の指導・残薬整理等」に改め、訪問時の業務内容を4分類で例示するカードを新設</p>
+        </li>
+        <li>
+          <div class="update-line1">
+            <span class="update-date">4/30</span>
+            <a class="update-name" href="かかりつけ薬剤師フォローアップ加算.html">かかりつけ薬剤師フォローアップ加算</a>
+          </div>
+          <p class="update-desc">条件①の表現を「フォローアップのきっかけとなった調剤時」に明確化</p>
+        </li>
+        <li>
+          <div class="update-line1">
+            <span class="update-date">4/29</span>
+            <a class="update-name" href="かかりつけ薬剤師フォローアップ加算.html">かかりつけ薬剤師フォローアップ加算</a>
+          </div>
+          <p class="update-desc">間に別医療機関の処方箋を挟んだ場合の取り扱いを追記</p>
+        </li>
+        <li>
+          <div class="update-line1">
+            <span class="update-date">4/29</span>
+            <a class="update-name" href="服薬管理指導料.html">服薬管理指導料</a>・<a class="update-name" href="かかりつけ薬剤師フォローアップ加算.html">かかりつけ薬剤師フォローアップ加算</a>
+          </div>
+          <p class="update-desc">服薬情報等提供料との併算定について追記</p>
+        </li>
+        <li>
+          <div class="update-line1">
+            <span class="update-date">4/29</span>
+            <a class="update-name" href="かかりつけ薬剤師フォローアップ加算.html">かかりつけ薬剤師フォローアップ加算</a>・<a class="update-name" href="かかりつけ薬剤師訪問加算.html">かかりつけ薬剤師訪問加算</a>
+          </div>
+          <p class="update-desc">疑義解釈の補足表を追加</p>
+        </li>
+        <li>
+          <div class="update-line1">
+            <span class="update-date">4/26</span>
+            <a class="update-name" href="薬学的有害事象等防止加算.html">薬学的有害事象等防止加算</a>・<a class="update-name" href="調剤時残薬調整加算.html">調剤時残薬調整加算</a>・<a class="update-name" href="別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html">別表Ⅰ</a>
+          </div>
+          <p class="update-desc">情報を整理して更新</p>
+        </li>
+        <li>
+          <div class="update-line1">
+            <span class="update-date">4/22</span>
+            <a class="update-name" href="疑義解釈_その3_2026.html">疑義解釈資料の送付について（その３）</a>
+          </div>
+          <p class="update-desc">新規追加</p>
+        </li>
+        <li>
+          <div class="update-line1">
+            <span class="update-date">4/20</span>
+            <a class="update-name" href="調剤時残薬調整加算.html">調剤時残薬調整加算</a>・<a class="update-name" href="薬学的有害事象等防止加算.html">薬学的有害事象等防止加算</a>
+          </div>
+          <p class="update-desc">情報を追加して更新</p>
+        </li>
+        <li>
+          <div class="update-line1">
+            <span class="update-date">4/19</span>
+            <a class="update-name" href="基礎的医薬品追加リストR8_4.html">基礎的医薬品 追加品目一覧（R8.4改定）</a>
+          </div>
+          <p class="update-desc">新規追加</p>
+        </li>
+        <li>
+          <div class="update-line1">
+            <span class="update-date">4/19</span>
+            <a class="update-name" href="服薬管理指導料.html">服薬管理指導料（かかりつけ統合）</a>
+          </div>
+          <p class="update-desc">資料をリニューアル</p>
+        </li>
+        <li>
+          <div class="update-line1">
+            <span class="update-date">4/17</span>
+            <a class="update-name" href="変更調剤について.html">変更調剤の取り扱い</a>
+          </div>
+          <p class="update-desc">後発品が先発品と同額になった場合の取り扱いを追加</p>
+        </li>
+        <li>
+          <div class="update-line1">
+            <span class="update-date">4/16</span>
+            <a class="update-name" href="服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html">別表１（１）他の薬学管理料との算定可否表</a>
+          </div>
+          <p class="update-desc">新規追加</p>
+        </li>
+        <li>
+          <div class="update-line1">
+            <span class="update-date">4/15</span>
+            <a class="update-name" href="gigi-search.html">疑義解釈 検索ツール</a>
+          </div>
+          <p class="update-desc">平成18年度〜令和8年度 全7,341件を収録して新規追加</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="back-link">
+    <a href="index.html">← トップに戻る</a>
+  </div>
+
+</main>
+
+<footer>
+  <p>※各加算のまとめ資料は情報管理室（木村）が独自に作成したものです。公式の通知・告示ではありません。</p>
+</footer>
+
+<script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
