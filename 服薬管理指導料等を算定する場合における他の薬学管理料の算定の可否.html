@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>別表１（１）服薬管理指導料等・他の薬学管理料 算定可否表</title>
+    <title>別表１　服薬管理指導料等・他の薬学管理料 算定可否表</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
       rel="stylesheet"
@@ -497,10 +497,10 @@
 
       <div class="page-title">
         <h1>
-          別表１（１）　服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否
+          別表１　服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否
         </h1>
         <p>
-          令和8年6月1日施行｜2026年調剤報酬改定　※ 4月2日通知の修正を反映済み
+          令和8年6月1日施行｜2026年調剤報酬改定　※ 5月1日修正版（厚労省告知）反映済み
         </p>
       </div>
 
@@ -562,7 +562,7 @@
           >列選択解除
         </button>
         <span class="result-count"
-          ><strong id="visibleCount">26</strong> / 26 件</span
+          ><strong id="visibleCount">28</strong> / 28 件</span
         >
         <button class="print-btn" onclick="window.print()">
           <svg
@@ -654,7 +654,7 @@
                 data-colidx="0"
                 title="服薬管理指導料１イ・２イ（かかりつけ）"
               >
-                1イ・2イ<br /><small>かかりつけ</small>
+                1イ<span class="note-mark">※1</span>・2イ<br /><small>かかりつけ</small>
               </th>
               <th data-colidx="1" title="服薬管理指導料１ロ・２ロ（通常対面）">
                 1ロ・2ロ<br /><small>通常対面</small>
@@ -745,7 +745,7 @@
 
             <!-- 服薬管理指導料の加算等 -->
             <tr class="cat-border-top" data-vals="1,1,1,1,0,0,0,0,0,0">
-              <td class="cat-cell" rowspan="22">
+              <td class="cat-cell" rowspan="24">
                 服薬管理指導料の加算・<br />在宅患者訪問薬剤管理<br />指導料の加算
               </td>
               <td class="item-cell">特定薬剤管理指導加算１</td>
@@ -777,7 +777,7 @@
             </tr>
             <tr data-vals="1,1,1,1,0,0,0,0,0,0">
               <td class="item-cell">特定薬剤管理指導加算３</td>
-              <td class="freq-cell">処方箋受付ごと</td>
+              <td class="freq-cell">１回まで</td>
               <td class="val-cell ok" data-colidx="0">○</td>
               <td class="val-cell ok" data-colidx="1">○</td>
               <td class="val-cell ok" data-colidx="2">○</td>
@@ -789,13 +789,27 @@
               <td class="val-cell ng" data-colidx="8">×</td>
               <td class="val-cell ng" data-colidx="9">×</td>
             </tr>
-            <tr data-vals="1,1,1,0,0,0,0,0,0,0">
+            <tr data-vals="1,1,1,1,1,0,0,0,0,0">
+              <td class="item-cell">乳幼児服薬指導加算</td>
+              <td class="freq-cell">処方箋受付ごと</td>
+              <td class="val-cell ok" data-colidx="0">○</td>
+              <td class="val-cell ok" data-colidx="1">○</td>
+              <td class="val-cell ok" data-colidx="2">○</td>
+              <td class="val-cell ok" data-colidx="3">○</td>
+              <td class="val-cell ok" data-colidx="4">○</td>
+              <td class="val-cell ng zaitaku-col" data-colidx="5">×</td>
+              <td class="val-cell ng" data-colidx="6">×</td>
+              <td class="val-cell ng" data-colidx="7">×</td>
+              <td class="val-cell ng" data-colidx="8">×</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="1,1,1,1,0,0,0,0,0,0">
               <td class="item-cell">吸入薬指導加算</td>
               <td class="freq-cell">６月に１回まで</td>
               <td class="val-cell ok" data-colidx="0">○</td>
               <td class="val-cell ok" data-colidx="1">○</td>
               <td class="val-cell ok" data-colidx="2">○</td>
-              <td class="val-cell ng" data-colidx="3">×</td>
+              <td class="val-cell ok" data-colidx="3">○</td>
               <td class="val-cell ng" data-colidx="4">×</td>
               <td class="val-cell ng zaitaku-col" data-colidx="5">×</td>
               <td class="val-cell ng" data-colidx="6">×</td>
@@ -837,7 +851,7 @@
             </tr>
             <tr data-vals="1,1,1,1,1,1,1,1,1,0">
               <td class="item-cell">麻薬管理指導加算</td>
-              <td class="freq-cell">処方箋受付ごと</td>
+              <td class="freq-cell">１回ごと</td>
               <td class="val-cell ok" data-colidx="0">○</td>
               <td class="val-cell ok" data-colidx="1">○</td>
               <td class="val-cell ok" data-colidx="2">○</td>
@@ -849,14 +863,14 @@
               <td class="val-cell ok" data-colidx="8">○</td>
               <td class="val-cell ng" data-colidx="9">×</td>
             </tr>
-            <tr data-vals="1,1,1,1,1,1,1,1,1,0">
-              <td class="item-cell">乳幼児服薬指導加算</td>
-              <td class="freq-cell">処方箋受付ごと</td>
-              <td class="val-cell ok" data-colidx="0">○</td>
-              <td class="val-cell ok" data-colidx="1">○</td>
-              <td class="val-cell ok" data-colidx="2">○</td>
-              <td class="val-cell ok" data-colidx="3">○</td>
-              <td class="val-cell ok" data-colidx="4">○</td>
+            <tr data-vals="0,0,0,0,0,1,1,1,1,0">
+              <td class="item-cell">乳幼児加算</td>
+              <td class="freq-cell">１回ごと</td>
+              <td class="val-cell ng" data-colidx="0">×</td>
+              <td class="val-cell ng" data-colidx="1">×</td>
+              <td class="val-cell ng" data-colidx="2">×</td>
+              <td class="val-cell ng" data-colidx="3">×</td>
+              <td class="val-cell ng" data-colidx="4">×</td>
               <td class="val-cell ok zaitaku-col" data-colidx="5">○</td>
               <td class="val-cell ok" data-colidx="6">○</td>
               <td class="val-cell ok" data-colidx="7">○</td>
@@ -865,7 +879,7 @@
             </tr>
             <tr data-vals="1,1,1,1,1,1,1,1,1,0">
               <td class="item-cell">小児特定加算</td>
-              <td class="freq-cell">処方箋受付ごと</td>
+              <td class="freq-cell">１回ごと</td>
               <td class="val-cell ok" data-colidx="0">○</td>
               <td class="val-cell ok" data-colidx="1">○</td>
               <td class="val-cell ok" data-colidx="2">○</td>
@@ -1047,6 +1061,20 @@
               <td class="val-cell ok" data-colidx="6">○</td>
               <td class="val-cell ok" data-colidx="7">○</td>
               <td class="val-cell ok" data-colidx="8">○</td>
+              <td class="val-cell ng" data-colidx="9">×</td>
+            </tr>
+            <tr data-vals="0,0,0,0,0,1,0,0,0,0">
+              <td class="item-cell">在宅移行初期管理料</td>
+              <td class="freq-cell">１回まで</td>
+              <td class="val-cell ng" data-colidx="0">×</td>
+              <td class="val-cell ng" data-colidx="1">×</td>
+              <td class="val-cell ng" data-colidx="2">×</td>
+              <td class="val-cell ng" data-colidx="3">×</td>
+              <td class="val-cell ng" data-colidx="4">×</td>
+              <td class="val-cell ok zaitaku-col" data-colidx="5">○</td>
+              <td class="val-cell ng" data-colidx="6">×</td>
+              <td class="val-cell ng" data-colidx="7">×</td>
+              <td class="val-cell ng" data-colidx="8">×</td>
               <td class="val-cell ng" data-colidx="9">×</td>
             </tr>
             <tr data-vals="0,0,0,0,0,1,0,1,0,0">
