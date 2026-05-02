@@ -1,391 +1,767 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>調剤報酬まとめ</title>
-<meta property="og:title" content="調剤報酬まとめ">
-<meta property="og:description" content="改定の要点から疑義解釈まで。業務に必要な情報を、ひとまとめに。">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://m-kimura1982.github.io/shared-pages/index.html">
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --blue: #1e5fa8;
-  --blue-mid: #2d7dd6;
-  --blue-light: #e8f0fb;
-  --ink: #222222;
-  --sub: #666666;
-  --border: #d8dde8;
-  --white: #ffffff;
-  --bg: #f5f7fa;
-  --radius: 12px;
-  --radius-sm: 8px;
-}
-body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: var(--ink); line-height: 1.7; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>調剤報酬まとめ</title>
+    <meta property="og:title" content="調剤報酬まとめ" />
+    <meta
+      property="og:description"
+      content="改定の要点から疑義解釈まで。業務に必要な情報を、ひとまとめに。"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://m-kimura1982.github.io/shared-pages/index.html"
+    />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --blue: #1e5fa8;
+        --blue-mid: #2d7dd6;
+        --blue-light: #e8f0fb;
+        --ink: #222222;
+        --sub: #666666;
+        --border: #d8dde8;
+        --white: #ffffff;
+        --bg: #f5f7fa;
+        --radius: 12px;
+        --radius-sm: 8px;
+      }
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        line-height: 1.7;
+      }
 
-/* ── Header ── */
-header {
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
-  padding: 14px 24px;
-  position: sticky; top: 0; z-index: 10;
-}
-.header-inner {
-  max-width: 1000px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between; gap: 16px;
-}
-.header-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.header-logo-mark {
-  width: 34px; height: 34px; background: var(--blue); border-radius: 8px;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.header-logo-mark svg { width: 18px; height: 18px; stroke: white; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.header-logo-text { font-size: 15px; font-weight: 700; color: var(--ink); }
-.header-img { height: 24px; opacity: 0.75; }
+      /* ── Header ── */
+      header {
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 14px 24px;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .header-inner {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .header-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+      .header-logo-mark {
+        width: 34px;
+        height: 34px;
+        background: var(--blue);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .header-logo-mark svg {
+        width: 18px;
+        height: 18px;
+        stroke: white;
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .header-logo-text {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .header-img {
+        height: 24px;
+        opacity: 0.75;
+      }
 
-/* ── Hero ── */
-.hero {
-  background: var(--white);
-  padding: 56px 24px 60px;
-  text-align: center;
-  border-bottom: 1px solid var(--border);
-}
-.hero-inner { max-width: 620px; margin: 0 auto; }
-.hero-label {
-  display: inline-block;
-  font-size: 14px; font-weight: 700; letter-spacing: .1em;
-  color: var(--blue); background: var(--blue-light);
-  padding: 5px 16px; border-radius: 100px; margin-bottom: 24px;
-}
-.hero h1 {
-  font-size: 38px; font-weight: 900; line-height: 1.3;
-  color: var(--ink); margin-bottom: 20px; letter-spacing: -.02em;
-}
-.hero h1 em { color: var(--blue); font-style: normal; }
-.hero-desc { font-size: 15px; color: var(--sub); line-height: 1.9; }
+      /* ── Hero ── */
+      .hero {
+        background: var(--white);
+        padding: 56px 24px 60px;
+        text-align: center;
+        border-bottom: 1px solid var(--border);
+      }
+      .hero-inner {
+        max-width: 620px;
+        margin: 0 auto;
+      }
+      .hero-label {
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        color: var(--blue);
+        background: var(--blue-light);
+        padding: 5px 16px;
+        border-radius: 100px;
+        margin-bottom: 24px;
+      }
+      .hero h1 {
+        font-size: 38px;
+        font-weight: 900;
+        line-height: 1.3;
+        color: var(--ink);
+        margin-bottom: 20px;
+        letter-spacing: -0.02em;
+      }
+      .hero h1 em {
+        color: var(--blue);
+        font-style: normal;
+      }
+      .hero-desc {
+        font-size: 15px;
+        color: var(--sub);
+        line-height: 1.9;
+      }
 
-/* ── Main ── */
-main { max-width: 1000px; margin: 0 auto; padding: 52px 24px 60px; display: flex; flex-direction: column; gap: 52px; }
+      /* ── Main ── */
+      main {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 52px 24px 60px;
+        display: flex;
+        flex-direction: column;
+        gap: 52px;
+      }
 
-/* ── Section header ── */
-.sec-tag { font-size: 11px; font-weight: 700; color: var(--blue); letter-spacing: .14em; margin-bottom: 8px; }
-.sec-heading { font-size: 22px; font-weight: 900; margin-bottom: 28px; }
+      /* ── Section header ── */
+      .sec-tag {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--blue);
+        letter-spacing: 0.14em;
+        margin-bottom: 8px;
+      }
+      .sec-heading {
+        font-size: 22px;
+        font-weight: 900;
+        margin-bottom: 28px;
+      }
 
-/* ── Contents cards ── */
-.contents-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
-}
-.content-card {
-  background: var(--white);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius);
-  padding: 28px 24px 24px;
-  text-decoration: none;
-  color: var(--ink);
-  display: flex; flex-direction: column; gap: 14px;
-  transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
-}
-.content-card:not(.disabled):hover {
-  border-color: var(--blue);
-  box-shadow: 0 6px 24px rgba(30, 95, 168, 0.13);
-  transform: translateY(-3px);
-}
-.content-card.disabled { opacity: 0.45; cursor: default; pointer-events: none; }
-.card-icon-wrap {
-  width: 52px; height: 52px; border-radius: 12px;
-  background: var(--blue-light);
-  display: flex; align-items: center; justify-content: center;
-}
-.card-icon-wrap svg { width: 26px; height: 26px; stroke: var(--blue); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-.card-name { font-size: 17px; font-weight: 700; line-height: 1.4; }
-.card-desc { font-size: 13px; color: var(--sub); line-height: 1.75; flex: 1; }
-.card-meta { font-size: 12px; font-weight: 700; color: var(--blue); }
-.card-cta {
-  margin-top: 4px; font-size: 13px; font-weight: 700; color: var(--blue);
-  display: flex; align-items: center; gap: 4px;
-}
-.card-cta svg { width: 14px; height: 14px; stroke: var(--blue); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.15s; }
-.content-card:hover .card-cta svg { transform: translateX(3px); }
-.badge-soon {
-  display: inline-block; font-size: 11px; font-weight: 700;
-  color: #fff; background: #9ca3af;
-  padding: 2px 10px; border-radius: 4px; width: fit-content;
-}
+      /* ── Contents cards ── */
+      .contents-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
+      }
+      .content-card {
+        background: var(--white);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        padding: 28px 24px 24px;
+        text-decoration: none;
+        color: var(--ink);
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        transition:
+          border-color 0.18s,
+          box-shadow 0.18s,
+          transform 0.18s;
+      }
+      .content-card:not(.disabled):hover {
+        border-color: var(--blue);
+        box-shadow: 0 6px 24px rgba(30, 95, 168, 0.13);
+        transform: translateY(-3px);
+      }
+      .content-card.disabled {
+        opacity: 0.45;
+        cursor: default;
+        pointer-events: none;
+      }
+      .card-icon-wrap {
+        width: 52px;
+        height: 52px;
+        border-radius: 12px;
+        background: var(--blue-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .card-icon-wrap svg {
+        width: 26px;
+        height: 26px;
+        stroke: var(--blue);
+        fill: none;
+        stroke-width: 1.7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .card-name {
+        font-size: 17px;
+        font-weight: 700;
+        line-height: 1.4;
+      }
+      .card-desc {
+        font-size: 13px;
+        color: var(--sub);
+        line-height: 1.75;
+        flex: 1;
+      }
+      .card-meta {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--blue);
+      }
+      .card-cta {
+        margin-top: 4px;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--blue);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .card-cta svg {
+        width: 14px;
+        height: 14px;
+        stroke: var(--blue);
+        fill: none;
+        stroke-width: 2.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        transition: transform 0.15s;
+      }
+      .content-card:hover .card-cta svg {
+        transform: translateX(3px);
+      }
+      .badge-soon {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 700;
+        color: #fff;
+        background: #9ca3af;
+        padding: 2px 10px;
+        border-radius: 4px;
+        width: fit-content;
+      }
 
-/* ── Pickup cards ── */
-.pickup-list { display: flex; flex-direction: column; gap: 10px; }
-.pickup-card {
-  display: flex; align-items: center; gap: 16px;
-  background: var(--white); border: 1.5px solid var(--blue);
-  border-radius: var(--radius); padding: 16px 20px;
-  text-decoration: none; color: var(--ink);
-  transition: box-shadow 0.15s;
-}
-.pickup-card:hover { box-shadow: 0 4px 16px rgba(30,95,168,0.12); }
-.pickup-icon {
-  background: var(--blue-light); border-radius: 8px;
-  width: 40px; height: 40px; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-}
-.pickup-icon svg { width: 20px; height: 20px; stroke: var(--blue); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.pickup-body { flex: 1; }
-.pickup-name { font-size: 15px; font-weight: 700; }
-.pickup-desc { font-size: 12px; color: var(--sub); margin-top: 2px; }
-.pickup-arrow { font-size: 20px; color: var(--sub); flex-shrink: 0; }
+      /* ── Pickup cards ── */
+      .pickup-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .pickup-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background: var(--white);
+        border: 1.5px solid var(--blue);
+        border-radius: var(--radius);
+        padding: 16px 20px;
+        text-decoration: none;
+        color: var(--ink);
+        transition: box-shadow 0.15s;
+      }
+      .pickup-card:hover {
+        box-shadow: 0 4px 16px rgba(30, 95, 168, 0.12);
+      }
+      .pickup-icon {
+        background: var(--blue-light);
+        border-radius: 8px;
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .pickup-icon svg {
+        width: 20px;
+        height: 20px;
+        stroke: var(--blue);
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .pickup-body {
+        flex: 1;
+      }
+      .pickup-name {
+        font-size: 15px;
+        font-weight: 700;
+      }
+      .pickup-desc {
+        font-size: 12px;
+        color: var(--sub);
+        margin-top: 2px;
+      }
+      .pickup-arrow {
+        font-size: 20px;
+        color: var(--sub);
+        flex-shrink: 0;
+      }
 
-/* ── Updates（リニューアル：2段組・5件・短文） ── */
-.updates-box {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-.updates-head {
-  padding: 14px 22px;
-  border-bottom: 1px solid var(--border);
-  font-size: 14px; font-weight: 700;
-  display: flex; align-items: center; gap: 8px; color: var(--ink);
-}
-.updates-head svg { width: 15px; height: 15px; stroke: var(--blue); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.updates-list { list-style: none; }
-.updates-list li {
-  padding: 14px 22px;
-  border-bottom: 1px solid #f0f2f5;
-}
-.updates-list li:last-child { border-bottom: none; }
-.update-line1 {
-  display: flex; align-items: baseline; gap: 12px;
-  margin-bottom: 2px;
-}
-.update-date {
-  color: var(--sub); white-space: nowrap;
-  font-size: 12px; font-weight: 700;
-  min-width: 32px;
-}
-.update-name {
-  font-size: 14px; font-weight: 700; color: var(--ink);
-  text-decoration: none;
-  line-height: 1.5;
-}
-.update-name:hover { color: var(--blue); text-decoration: underline; }
-.update-desc {
-  font-size: 12.5px; color: var(--sub);
-  margin-left: 44px; line-height: 1.6;
-}
-.badge-new {
-  display: inline-block; font-size: 10px; font-weight: 700;
-  color: #fff; background: var(--blue);
-  padding: 1px 7px; border-radius: 4px; margin-left: 6px; vertical-align: middle;
-}
-.updates-all {
-  display: flex; justify-content: flex-end;
-  padding: 12px 22px;
-  border-top: 1px solid var(--border);
-}
-.updates-all a {
-  font-size: 12px; color: var(--blue); text-decoration: none; font-weight: 700;
-}
-.updates-all a:hover { text-decoration: underline; }
+      /* ── Updates（リニューアル：2段組・5件・短文） ── */
+      .updates-box {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+      .updates-head {
+        padding: 14px 22px;
+        border-bottom: 1px solid var(--border);
+        font-size: 14px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--ink);
+      }
+      .updates-head svg {
+        width: 15px;
+        height: 15px;
+        stroke: var(--blue);
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .updates-list {
+        list-style: none;
+      }
+      .updates-list li {
+        padding: 14px 22px;
+        border-bottom: 1px solid #f0f2f5;
+      }
+      .updates-list li:last-child {
+        border-bottom: none;
+      }
+      .update-line1 {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        margin-bottom: 2px;
+      }
+      .update-date {
+        color: var(--sub);
+        white-space: nowrap;
+        font-size: 12px;
+        font-weight: 700;
+        min-width: 32px;
+      }
+      .update-name {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--ink);
+        text-decoration: none;
+        line-height: 1.5;
+      }
+      .update-name:hover {
+        color: var(--blue);
+        text-decoration: underline;
+      }
+      .update-desc {
+        font-size: 12.5px;
+        color: var(--sub);
+        margin-left: 44px;
+        line-height: 1.6;
+      }
+      .badge-new {
+        display: inline-block;
+        font-size: 10px;
+        font-weight: 700;
+        color: #fff;
+        background: var(--blue);
+        padding: 1px 7px;
+        border-radius: 4px;
+        margin-left: 6px;
+        vertical-align: middle;
+      }
+      .updates-all {
+        display: flex;
+        justify-content: flex-end;
+        padding: 12px 22px;
+        border-top: 1px solid var(--border);
+      }
+      .updates-all a {
+        font-size: 12px;
+        color: var(--blue);
+        text-decoration: none;
+        font-weight: 700;
+      }
+      .updates-all a:hover {
+        text-decoration: underline;
+      }
 
-/* ── Footer ── */
-footer {
-  background: var(--white);
-  border-top: 1px solid var(--border);
-  padding: 28px 24px;
-  text-align: center;
-  font-size: 11px; color: var(--sub); line-height: 1.8;
-}
+      /* ── Footer ── */
+      footer {
+        background: var(--white);
+        border-top: 1px solid var(--border);
+        padding: 28px 24px;
+        text-align: center;
+        font-size: 11px;
+        color: var(--sub);
+        line-height: 1.8;
+      }
 
-/* ── Mobile ── */
-.sp-br { display: none; }
-@media (max-width: 700px) {
-  .sp-br { display: inline; }
-  .hero { padding: 52px 20px 60px; }
-  .hero h1 { font-size: 26px; }
-  .hero-desc { font-size: 14px; }
-  .contents-grid { grid-template-columns: 1fr; gap: 12px; }
-  main { padding: 48px 16px 60px; gap: 52px; }
-  .sec-heading { font-size: 18px; }
-  .update-desc { margin-left: 0; margin-top: 4px; }
-}
-</style>
-</head>
-<body>
+      /* ── Mobile ── */
+      .sp-br {
+        display: none;
+      }
+      @media (max-width: 700px) {
+        .sp-br {
+          display: inline;
+        }
+        .hero {
+          padding: 52px 20px 60px;
+        }
+        .hero h1 {
+          font-size: 26px;
+        }
+        .hero-desc {
+          font-size: 14px;
+        }
+        .contents-grid {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+        main {
+          padding: 48px 16px 60px;
+          gap: 52px;
+        }
+        .sec-heading {
+          font-size: 18px;
+        }
+        .update-desc {
+          margin-left: 0;
+          margin-top: 4px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <script src="assets/site-header.js" defer></script>
 
-<script src="assets/site-header.js" defer></script>
-
-<div class="hero">
-  <div class="hero-inner">
-    <p class="hero-label">調剤報酬まとめ</p>
-    <h1>調剤報酬を<br class="sp-br"><em>「現場で使える形」</em>に。</h1>
-    <p class="hero-desc">改定の要点から疑義解釈まで。<br class="sp-br">業務に必要な情報を、ひとまとめに。</p>
-  </div>
-</div>
-
-<main>
-
-  <section>
-    <p class="sec-tag">CONTENTS</p>
-    <h2 class="sec-heading">コンテンツ一覧</h2>
-    <div class="contents-grid">
-
-      <a class="content-card" href="kaitei2026.html" data-count-from="kaitei2026.html" data-count-selector=".card,.card-digest" data-count-suffix="資料収録">
-        <div class="card-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        </div>
-        <div class="card-name">2026年 調剤報酬改定</div>
-        <div class="card-desc">加算・管理料の改定ポイントを解説。ダイジェスト・算定フロー・早見表・別表などを収録。</div>
-        <div class="card-meta">資料収録</div>
-        <div class="card-cta">資料一覧を見る <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-      </a>
-
-      <a class="content-card" href="tools.html" data-count-from="tools.html" data-count-selector=".tool-card" data-count-suffix="ツール収録">
-        <div class="card-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-        </div>
-        <div class="card-name">実務ツール集</div>
-        <div class="card-desc">疑義解釈検索・届出判定・併算定可否チェックなど、現場ですぐ使えるツールをまとめています。</div>
-        <div class="card-meta">ツール収録</div>
-        <div class="card-cta">ツール一覧を見る <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-      </a>
-
-      <a class="content-card" href="knowledge.html" data-count-from="knowledge.html" data-count-selector=".tool-card" data-count-suffix="資料収録">
-        <div class="card-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-        </div>
-        <div class="card-name">実務ナレッジ集</div>
-        <div class="card-desc">日々の業務で役立つ実務知識・Q&amp;Aをまとめています。</div>
-        <div class="card-meta">資料収録</div>
-        <div class="card-cta">ナレッジ一覧を見る <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-      </a>
-
-    </div>
-  </section>
-
-  <section>
-    <p class="sec-tag">PICKUP</p>
-    <h2 class="sec-heading">おすすめコンテンツ</h2>
-    <div class="pickup-list">
-      <a class="pickup-card" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html">
-        <div class="pickup-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <div class="pickup-body">
-          <div class="pickup-name">事務スタッフ向け 改定ポイント整理</div>
-          <div class="pickup-desc">受付・入力・会計に関わる改定を整理。摘要欄入力対応表付き。</div>
-        </div>
-        <span class="pickup-arrow">›</span>
-      </a>
-      <a class="pickup-card" href="調剤報酬改定2026_ダイジェスト.html">
-        <div class="pickup-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
-        <div class="pickup-body">
-          <div class="pickup-name">2026改定 ダイジェスト</div>
-          <div class="pickup-desc">改定項目の要点を一覧で確認。まずここから。</div>
-        </div>
-        <span class="pickup-arrow">›</span>
-      </a>
-      <a class="pickup-card" href="調剤報酬体系図_2026改定.html">
-        <div class="pickup-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
-        <div class="pickup-body">
-          <div class="pickup-name">調剤報酬の体系図</div>
-          <div class="pickup-desc">2026改定後の点数体系を図で整理。全体像の確認に。</div>
-        </div>
-        <span class="pickup-arrow">›</span>
-      </a>
-    </div>
-  </section>
-
-  <section>
-    <p class="sec-tag">UPDATES</p>
-    <h2 class="sec-heading">更新情報</h2>
-    <div class="updates-box">
-      <div class="updates-head">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        最近の更新
+    <div class="hero">
+      <div class="hero-inner">
+        <p class="hero-label">調剤報酬まとめ</p>
+        <h1>調剤報酬を<br class="sp-br" /><em>「現場で使える形」</em>に。</h1>
+        <p class="hero-desc">
+          改定の要点から疑義解釈まで。<br
+            class="sp-br"
+          />業務に必要な情報を、ひとまとめに。
+        </p>
       </div>
-      <ul class="updates-list">
-        <li>
-          <div class="update-line1">
-            <span class="update-date">5/3</span>
-            <a class="update-name" href="服薬管理指導料3・4_施設訪問・オンライン.html">服薬管理指導料 ３・４</a>・<a class="update-name" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html">事務スタッフ向けポイント整理</a><span class="badge-new">NEW</span>
-          </div>
-          <p class="update-desc">服薬管理指導料 ３・４（施設訪問・オンライン）を新規追加。事務スタッフ向けにも同セクション追加＋目次をサイドスティッキー化</p>
-        </li>
-        <li>
-          <div class="update-line1">
-            <span class="update-date">5/2</span>
-            <a class="update-name" href="別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html">別表Ⅰ 摘要欄記載事項</a>・<a class="update-name" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html">事務スタッフ向けポイント整理</a><span class="badge-new">NEW</span>
-          </div>
-          <p class="update-desc">R8.5.1修正版を反映＋使いやすさ改善（コード折りたたみ・目次強化・入力位置の表示）</p>
-        </li>
-        <li>
-          <div class="update-line1">
-            <span class="update-date">5/2</span>
-            <a class="update-name" href="別添3_調剤報酬点数表に関する事項2026.html">別添3 点数表事項</a>・<a class="update-name" href="服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html">別表１ 算定可否表</a>
-          </div>
-          <p class="update-desc">5月1日付の厚労省修正版（R8.5.1修正）を反映</p>
-        </li>
-        <li>
-          <div class="update-line1">
-            <span class="update-date">5/1</span>
-            <a class="update-name" href="かかりつけ薬剤師訪問加算.html">かかりつけ薬剤師訪問加算</a>
-          </div>
-          <p class="update-desc">訪問時の業務内容を4分類で整理</p>
-        </li>
-        <li>
-          <div class="update-line1">
-            <span class="update-date">4/30</span>
-            <a class="update-name" href="かかりつけ薬剤師フォローアップ加算.html">かかりつけ薬剤師フォローアップ加算</a>
-          </div>
-          <p class="update-desc">算定条件の表現を明確化</p>
-        </li>
-      </ul>
-      <div class="updates-all"><a href="updates.html">すべての更新履歴を見る →</a></div>
     </div>
-  </section>
 
-</main>
+    <main>
+      <section>
+        <p class="sec-tag">CONTENTS</p>
+        <h2 class="sec-heading">コンテンツ一覧</h2>
+        <div class="contents-grid">
+          <a
+            class="content-card"
+            href="kaitei2026.html"
+            data-count-from="kaitei2026.html"
+            data-count-selector=".card,.card-digest"
+            data-count-suffix="資料収録"
+          >
+            <div class="card-icon-wrap">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+              </svg>
+            </div>
+            <div class="card-name">2026年 調剤報酬改定</div>
+            <div class="card-desc">
+              加算・管理料の改定ポイントを解説。ダイジェスト・算定フロー・早見表・別表などを収録。
+            </div>
+            <div class="card-meta">資料収録</div>
+            <div class="card-cta">
+              資料一覧を見る
+              <svg viewBox="0 0 24 24">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </div>
+          </a>
 
-<footer>
-  <p>※各加算のまとめ資料は情報管理室（木村）が<br class="sp-br">独自に作成したものです。公式の通知・告示ではありません。</p>
-</footer>
+          <a
+            class="content-card"
+            href="tools.html"
+            data-count-from="tools.html"
+            data-count-selector=".tool-card"
+            data-count-suffix="ツール収録"
+          >
+            <div class="card-icon-wrap">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+                />
+              </svg>
+            </div>
+            <div class="card-name">実務ツール集</div>
+            <div class="card-desc">
+              疑義解釈検索・届出判定・併算定可否チェックなど、現場ですぐ使えるツールをまとめています。
+            </div>
+            <div class="card-meta">ツール収録</div>
+            <div class="card-cta">
+              ツール一覧を見る
+              <svg viewBox="0 0 24 24">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </div>
+          </a>
 
-<script>
-// ── コンテンツカードの収録数を自動カウント ──
-// data-count-from / data-count-selector / data-count-suffix 属性を持つ要素について、
-// 対象ページをフェッチして指定セレクタの内部リンクカード数をカウントし、
-// .card-meta に「N◯◯」と表示する。
-(function () {
-  const cards = document.querySelectorAll('[data-count-from]');
-  cards.forEach(card => {
-    const url = card.dataset.countFrom;
-    const selector = card.dataset.countSelector || '.card';
-    const suffix = card.dataset.countSuffix || '件';
-    const meta = card.querySelector('.card-meta');
-    if (!meta) return;
+          <a
+            class="content-card"
+            href="knowledge.html"
+            data-count-from="knowledge.html"
+            data-count-selector=".tool-card"
+            data-count-suffix="資料収録"
+          >
+            <div class="card-icon-wrap">
+              <svg viewBox="0 0 24 24">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+              </svg>
+            </div>
+            <div class="card-name">実務ナレッジ集</div>
+            <div class="card-desc">
+              日々の業務で役立つ実務知識・Q&amp;Aをまとめています。
+            </div>
+            <div class="card-meta">資料収録</div>
+            <div class="card-cta">
+              ナレッジ一覧を見る
+              <svg viewBox="0 0 24 24">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </div>
+          </a>
+        </div>
+      </section>
 
-    fetch(url)
-      .then(res => res.text())
-      .then(html => {
-        const doc = new DOMParser().parseFromString(html, 'text/html');
-        const items = doc.querySelectorAll(selector);
-        // 内部リンクのみカウント（http/https始まりの外部リンクは除外）
-        const count = Array.from(items).filter(el => {
-          const href = el.getAttribute('href') || '';
-          return !/^https?:\/\//i.test(href);
-        }).length;
-        meta.textContent = count + suffix;
-      })
-      .catch(() => { /* 失敗時はデフォルトテキストのまま */ });
-  });
-})();
-</script>
-<script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-</body>
+      <section>
+        <p class="sec-tag">PICKUP</p>
+        <h2 class="sec-heading">おすすめコンテンツ</h2>
+        <div class="pickup-list">
+          <a
+            class="pickup-card"
+            href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html"
+          >
+            <div class="pickup-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <div class="pickup-body">
+              <div class="pickup-name">事務スタッフ向け 改定ポイント整理</div>
+              <div class="pickup-desc">
+                受付・入力・会計に関わる改定を整理。摘要欄入力対応表付き。
+              </div>
+            </div>
+            <span class="pickup-arrow">›</span>
+          </a>
+          <a class="pickup-card" href="調剤報酬改定2026_ダイジェスト.html">
+            <div class="pickup-icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="7" height="7" />
+                <rect x="14" y="3" width="7" height="7" />
+                <rect x="3" y="14" width="7" height="7" />
+                <rect x="14" y="14" width="7" height="7" />
+              </svg>
+            </div>
+            <div class="pickup-body">
+              <div class="pickup-name">2026改定 ダイジェスト</div>
+              <div class="pickup-desc">
+                改定項目の要点を一覧で確認。まずここから。
+              </div>
+            </div>
+            <span class="pickup-arrow">›</span>
+          </a>
+          <a class="pickup-card" href="調剤報酬体系図_2026改定.html">
+            <div class="pickup-icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="7" height="7" />
+                <rect x="14" y="3" width="7" height="7" />
+                <rect x="3" y="14" width="7" height="7" />
+                <rect x="14" y="14" width="7" height="7" />
+              </svg>
+            </div>
+            <div class="pickup-body">
+              <div class="pickup-name">調剤報酬の体系図</div>
+              <div class="pickup-desc">
+                2026改定後の点数体系を図で整理。全体像の確認に。
+              </div>
+            </div>
+            <span class="pickup-arrow">›</span>
+          </a>
+        </div>
+      </section>
+
+      <section>
+        <p class="sec-tag">UPDATES</p>
+        <h2 class="sec-heading">更新情報</h2>
+        <div class="updates-box">
+          <div class="updates-head">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            最近の更新
+          </div>
+          <ul class="updates-list">
+            <li>
+              <div class="update-line1">
+                <span class="update-date">5/3</span>
+                <a
+                  class="update-name"
+                  href="服薬管理指導料3・4_施設訪問・オンライン.html"
+                  >服薬管理指導料 ３・４</a
+                >・<a
+                  class="update-name"
+                  href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html"
+                  >事務スタッフ向けポイント整理</a
+                ><span class="badge-new">NEW</span>
+              </div>
+              <p class="update-desc">
+                服薬管理指導料
+                ３・４（施設訪問・オンライン）を新規追加。事務スタッフ向けにも同セクション追加＋目次をサイドスティッキー化
+              </p>
+            </li>
+            <li>
+              <div class="update-line1">
+                <span class="update-date">5/2</span>
+                <a
+                  class="update-name"
+                  href="別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html"
+                  >別表Ⅰ 摘要欄記載事項</a
+                >・<a
+                  class="update-name"
+                  href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html"
+                  >事務スタッフ向けポイント整理</a
+                ><span class="badge-new">NEW</span>
+              </div>
+              <p class="update-desc">
+                R8.5.1修正版を反映＋両資料とも見やすく改善
+              </p>
+            </li>
+            <li>
+              <div class="update-line1">
+                <span class="update-date">5/2</span>
+                <a
+                  class="update-name"
+                  href="別添3_調剤報酬点数表に関する事項2026.html"
+                  >別添3 点数表事項</a
+                >・<a
+                  class="update-name"
+                  href="服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html"
+                  >別表１ 算定可否表</a
+                >
+              </div>
+              <p class="update-desc">
+                5月1日付の厚労省修正版（R8.5.1修正）を反映
+              </p>
+            </li>
+            <li>
+              <div class="update-line1">
+                <span class="update-date">5/1</span>
+                <a class="update-name" href="かかりつけ薬剤師訪問加算.html"
+                  >かかりつけ薬剤師訪問加算</a
+                >
+              </div>
+              <p class="update-desc">訪問時の業務内容を4分類で整理</p>
+            </li>
+            <li>
+              <div class="update-line1">
+                <span class="update-date">4/30</span>
+                <a
+                  class="update-name"
+                  href="かかりつけ薬剤師フォローアップ加算.html"
+                  >かかりつけ薬剤師フォローアップ加算</a
+                >
+              </div>
+              <p class="update-desc">算定条件の表現を明確化</p>
+            </li>
+          </ul>
+          <div class="updates-all">
+            <a href="updates.html">すべての更新履歴を見る →</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        ※各加算のまとめ資料は情報管理室（木村）が<br
+          class="sp-br"
+        />独自に作成したものです。公式の通知・告示ではありません。
+      </p>
+    </footer>
+
+    <script>
+      // ── コンテンツカードの収録数を自動カウント ──
+      // data-count-from / data-count-selector / data-count-suffix 属性を持つ要素について、
+      // 対象ページをフェッチして指定セレクタの内部リンクカード数をカウントし、
+      // .card-meta に「N◯◯」と表示する。
+      (function () {
+        const cards = document.querySelectorAll("[data-count-from]");
+        cards.forEach((card) => {
+          const url = card.dataset.countFrom;
+          const selector = card.dataset.countSelector || ".card";
+          const suffix = card.dataset.countSuffix || "件";
+          const meta = card.querySelector(".card-meta");
+          if (!meta) return;
+
+          fetch(url)
+            .then((res) => res.text())
+            .then((html) => {
+              const doc = new DOMParser().parseFromString(html, "text/html");
+              const items = doc.querySelectorAll(selector);
+              // 内部リンクのみカウント（http/https始まりの外部リンクは除外）
+              const count = Array.from(items).filter((el) => {
+                const href = el.getAttribute("href") || "";
+                return !/^https?:\/\//i.test(href);
+              }).length;
+              meta.textContent = count + suffix;
+            })
+            .catch(() => {
+              /* 失敗時はデフォルトテキストのまま */
+            });
+        });
+      })();
+    </script>
+    <script
+      data-goatcounter="https://kimura-chozai.goatcounter.com/count"
+      async
+      src="//gc.zgo.at/count.js"
+    ></script>
+  </body>
 </html>
