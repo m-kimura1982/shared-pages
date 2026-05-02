@@ -462,11 +462,11 @@ tr:last-child td { border-bottom:none; }
         <div class="box-gray">
           <div class="check-row"><span class="check-label">タイミング</span><span>調剤日数が変更された処方箋の受付時。<strong>7日分以上の変更が必要</strong>（6日分以下は特別な理由がある場合のみ可）</span></div>
           <div class="check-row"><span class="check-label">摘要欄</span><span>
-            <div class="li"><span class="li-dot">・</span><span>確認した残薬日数</span></div>
-            <div class="li"><span class="li-dot">・</span><span>調整した残薬日数</span></div>
-            <div class="li"><span class="li-dot">・</span><span>変更薬剤名</span></div>
-            <div class="li"><span class="li-dot">・</span><span>調整理由</span></div>
-            <div class="li"><span class="li-dot">・</span><span>区分イの場合は相談年月日も入力</span></div>
+            <div style="font-size:var(--text-xs);font-weight:700;color:var(--blue);margin:2px 0 4px;">区分イのみ</div>
+            <div class="li"><span class="li-dot">・</span><span>相談年月日</span></div>
+            <div style="font-size:var(--text-xs);font-weight:700;color:var(--blue);margin:8px 0 4px;">区分ロ〜ニ・６日分以下の変更の場合</div>
+            <div class="li"><span class="li-dot">・</span><span>調整する必要性（高額医薬品・治療終了日調整・投与間隔が長い薬剤　等から選択）</span></div>
+            <div class="li"><span class="li-dot">・</span><span>変更のあった主な薬剤名</span></div>
           </span></div>
           <div class="check-row"><span class="check-label">回数制限</span><span>複数の処方箋でも処方箋受付1回につき1回のみ</span></div>
           <div class="check-row"><span class="check-label">算定不可</span><span>手帳活用率50%以下の薬局は算定不可</span></div>
@@ -516,10 +516,11 @@ tr:last-child td { border-bottom:none; }
         <div class="box-gray">
           <div class="check-row"><span class="check-label">タイミング</span><span>処方変更が行われた処方箋の受付時</span></div>
           <div class="check-row"><span class="check-label">摘要欄</span><span>
-            <div class="li"><span class="li-dot">・</span><span>照会内容の要点</span></div>
-            <div class="li"><span class="li-dot">・</span><span>変更内容</span></div>
-            <div class="li"><span class="li-dot">・</span><span>変更薬剤名</span></div>
-            <div class="li"><span class="li-dot">・</span><span>区分イの場合は照会年月日も入力</span></div>
+            <div style="font-size:var(--text-xs);font-weight:700;color:var(--blue);margin:2px 0 4px;">区分イのみ</div>
+            <div class="li"><span class="li-dot">・</span><span>相談年月日</span></div>
+            <div class="li"><span class="li-dot">・</span><span>変更内容（同種同効薬・剤形・用量・用法　等から選択）</span></div>
+            <div style="font-size:var(--text-xs);font-weight:700;color:var(--blue);margin:8px 0 4px;">区分ロ〜ニ</div>
+            <div class="li"><span class="li-dot">・</span><span>照会内容の要点（重複投薬・相互作用・アレルギー歴・年齢/体重・肝腎機能・授乳妊婦　等から選択）</span></div>
           </span></div>
           <div class="check-row"><span class="check-label">回数制限</span><span>複数の処方箋でも処方箋受付1回につき1回のみ</span></div>
           <div class="check-row"><span class="check-label">算定不可</span><span>手帳活用率50%以下の薬局は算定不可</span></div>
@@ -773,7 +774,6 @@ tr:last-child td { border-bottom:none; }
           <div class="box-gray">
             <div class="check-row"><span class="check-label">月・週上限</span><span>月4回・週1回（特例患者は月8回・週2回）<br>在宅訪問と服薬管理指導料４のロ（オンライン）の<strong>合算</strong>で週1回・月4回が上限</span></div>
             <div class="check-row"><span class="check-label">摘要欄</span><span>
-            <div class="li"><span class="li-dot">・</span><span>訪問年月日</span></div>
             <div class="li"><span class="li-dot">・</span><span>単一建物患者数等</span></div>
           </span></div>
           </div>
