@@ -75,7 +75,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-04-19"
   },
   "事務スタッフ向け_2026調剤報酬改定ポイント整理.html": {
-    "lastUpdated": "2026-04-06"
+    "lastUpdated": "2026-05-03"
   },
   "調剤基本料_2026改定.html": {
     "lastUpdated": "2026-04-22"
@@ -117,7 +117,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-04-19"
   },
   "別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html": {
-    "lastUpdated": "2026-04-26"
+    "lastUpdated": "2026-05-02"
   },
   "index.html": {
     "lastUpdated": "2026-05-02"
