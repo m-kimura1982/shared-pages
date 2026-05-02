@@ -64,6 +64,20 @@ tr:last-child td { border-bottom:none; }
 .score-up { font-weight:900; color:var(--red); }
 .score-down { font-weight:900; color:var(--blue); }
 
+/* 入力位置（サイトのsub-titleパターンに揃える・左に青バー） */
+.input-loc { font-size:var(--text-sm); margin:-4px 0 14px; padding:4px 0 4px 12px; border-left:3px solid var(--blue); }
+.input-loc-label { font-weight:700; color:var(--blue); margin-right:10px; }
+.input-loc-value { color:var(--ink); font-weight:500; }
+@media (max-width:640px) { .input-loc { font-size:12.5px; } }
+
+/* 目次（☑＝レセコメ入力あり） */
+.toc-grid { display:grid; grid-template-columns:1fr 1fr; gap:0 24px; }
+.toc-item { display:flex; align-items:center; padding:7px 4px; font-size:var(--text-sm); color:var(--blue); text-decoration:none; border-bottom:var(--bw-h) solid var(--border); transition:background 0.1s; }
+.toc-item::before { content:""; display:inline-block; width:18px; flex-shrink:0; }
+.toc-item.reseko::before { content:"☑"; color:var(--blue); font-weight:700; }
+.toc-item:hover { background:var(--box-blue); }
+@media (max-width:640px) { .toc-grid { grid-template-columns:1fr; } }
+
 @media print {
   body { font-size:12px; padding:0; background:white; }
   .page { gap:10px; }
@@ -128,32 +142,32 @@ tr:last-child td { border-bottom:none; }
     </div>
   </div>
 
-  <!-- 目次 -->
+  <!-- 目次（☑＝レセコメ入力あり） -->
   <div class="card avoid-break">
-    <div class="card-title">目次<span style="font-size:var(--text-xs); font-weight:400; color:#555; margin-left:12px;">項目をクリックするとその箇所へジャンプします</span></div>
-    <div class="toc-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:4px 24px; font-size:var(--text-sm);">
-      <div><a href="#s01" style="color:var(--blue); text-decoration:none;">名称変更・廃止・再編されたもの</a></div>
-      <div><a href="#s02" style="color:var(--blue); text-decoration:none;">栄養保持を目的とした医薬品</a></div>
-      <div><a href="#s03" style="color:var(--blue); text-decoration:none;">調剤物価対応料</a></div>
-      <div><a href="#s04" style="color:var(--blue); text-decoration:none;">調剤ベースアップ評価料</a></div>
-      <div><a href="#s05" style="color:var(--blue); text-decoration:none;">電子的調剤情報連携体制整備加算</a></div>
-      <div><a href="#s06" style="color:var(--blue); text-decoration:none;">調剤管理料</a></div>
-      <div><a href="#s07" style="color:var(--blue); text-decoration:none;">調剤時残薬調整加算</a></div>
-      <div><a href="#s08" style="color:var(--blue); text-decoration:none;">薬学的有害事象等防止加算</a></div>
-      <div><a href="#s09" style="color:var(--blue); text-decoration:none;">かかりつけ薬剤師フォローアップ加算</a></div>
-      <div><a href="#s10" style="color:var(--blue); text-decoration:none;">かかりつけ薬剤師訪問加算</a></div>
-      <div><a href="#s11" style="color:var(--blue); text-decoration:none;">服薬管理指導料（区分・略称の変更）</a></div>
-      <div><a href="#s12" style="color:var(--blue); text-decoration:none;">服用薬剤調整支援料２</a></div>
-      <div><a href="#s13" style="color:var(--blue); text-decoration:none;">訪問薬剤管理医師同時指導料</a></div>
-      <div><a href="#s14" style="color:var(--blue); text-decoration:none;">複数名薬剤管理指導訪問料</a></div>
-      <div><a href="#s15" style="color:var(--blue); text-decoration:none;">在宅患者訪問薬剤管理指導料（算定間隔）</a></div>
-      <div><a href="#s_zaitaku_taisei" style="color:var(--blue); text-decoration:none;">在宅薬学総合体制加算</a></div>
-      <div><a href="#s16" style="color:var(--blue); text-decoration:none;">バイオ後続品調剤体制加算</a></div>
-      <div><a href="#s17" style="color:var(--blue); text-decoration:none;">吸入薬指導加算</a></div>
-      <div><a href="#s18" style="color:var(--blue); text-decoration:none;">調剤基本料の点数変更</a></div>
-      <div><a href="#s19" style="color:var(--blue); text-decoration:none;">長期収載品の選定療養</a></div>
-      <div><a href="#s_chiki" style="color:var(--blue); text-decoration:none;">地域支援・医薬品供給対応体制加算</a></div>
-      <div></div>
+    <div class="card-title">目次<span style="font-size:var(--text-xs); font-weight:400; color:#555; margin-left:12px;">☑ はレセプト摘要欄への入力が必要な項目</span></div>
+    <p style="font-size:var(--text-xs); color:#777; margin-bottom:10px;">2026改定で追加・変更された項目のみ。全レセコメ一覧は<a href="別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html" style="color:var(--blue);">別表Ⅰ</a>を参照。</p>
+    <div class="toc-grid">
+      <a href="#s01" class="toc-item">名称変更・廃止・再編されたもの</a>
+      <a href="#s02" class="toc-item reseko">栄養保持を目的とした医薬品</a>
+      <a href="#s19" class="toc-item reseko">長期収載品の選定療養</a>
+      <a href="#s03" class="toc-item">調剤物価対応料</a>
+      <a href="#s04" class="toc-item">調剤ベースアップ評価料</a>
+      <a href="#s05" class="toc-item">電子的調剤情報連携体制整備加算</a>
+      <a href="#s06" class="toc-item">調剤管理料</a>
+      <a href="#s07" class="toc-item reseko">調剤時残薬調整加算</a>
+      <a href="#s08" class="toc-item reseko">薬学的有害事象等防止加算</a>
+      <a href="#s09" class="toc-item reseko">かかりつけ薬剤師フォローアップ加算</a>
+      <a href="#s10" class="toc-item reseko">かかりつけ薬剤師訪問加算</a>
+      <a href="#s11" class="toc-item">服薬管理指導料（区分・略称の変更）</a>
+      <a href="#s12" class="toc-item reseko">服用薬剤調整支援料２</a>
+      <a href="#s13" class="toc-item reseko">訪問薬剤管理医師同時指導料</a>
+      <a href="#s14" class="toc-item reseko">複数名薬剤管理指導訪問料</a>
+      <a href="#s15" class="toc-item reseko">在宅患者訪問薬剤管理指導料（算定間隔）</a>
+      <a href="#s_zaitaku_taisei" class="toc-item">在宅薬学総合体制加算</a>
+      <a href="#s16" class="toc-item reseko">バイオ後続品調剤体制加算</a>
+      <a href="#s17" class="toc-item reseko">吸入薬指導加算</a>
+      <a href="#s18" class="toc-item">調剤基本料の点数変更</a>
+      <a href="#s_chiki" class="toc-item">地域支援・医薬品供給対応体制加算</a>
     </div>
   </div>
 
@@ -217,6 +231,7 @@ tr:last-child td { border-bottom:none; }
         <span class="badge badge-red">新設要件</span>
       </div>
     </div>
+    <div class="input-loc"><span class="input-loc-label">入力位置</span><span class="input-loc-value">処方入力時の摘要欄</span></div>
     <div class="box-blue" style="margin-bottom:16px; font-size:var(--text-sm);">
       以下の経腸栄養剤については、<strong>保険給付の対象となる患者が限定</strong>された。処方箋に所定の記載がない場合は保険請求できないため、受付時に必ず確認が必要。
     </div>
@@ -262,6 +277,7 @@ tr:last-child td { border-bottom:none; }
         <span class="badge badge-blue">算出割合変更</span>
       </div>
     </div>
+    <div class="input-loc"><span class="input-loc-label">入力位置</span><span class="input-loc-value">処方入力時の摘要欄</span></div>
     <div class="box-gray">
       <div class="li"><span class="li-dot">・</span><span>患者負担の算出割合：薬価差の<span class="val-old">1/4</span> → <span class="val-new">1/2</span>に変更。薬価差が大きい先発品は自己負担が増える</span></div>
       <div class="li"><span class="li-dot">・</span><span>過去に説明済みでも算出割合の改定で負担額が変わる薬は、薬剤師が再度説明した場合に特定薬剤管理指導加算３（ロ）を1回限り再算定可</span></div>
@@ -274,7 +290,6 @@ tr:last-child td { border-bottom:none; }
     <div class="card-title">
       調剤物価対応料
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-        <span class="tag tag-摘要あり">摘要欄あり</span>
         <span class="tag tag-interval">算定間隔注意</span>
         <span class="badge badge-red">新設</span>
         <div class="score-block">
@@ -283,6 +298,7 @@ tr:last-child td { border-bottom:none; }
         </div>
       </div>
     </div>
+    <div class="input-loc"><span class="input-loc-label">入力位置</span><span class="input-loc-value">自動算定</span></div>
     <div class="grid-2">
       <div>
         <div class="sub-title">概要</div>
@@ -295,10 +311,7 @@ tr:last-child td { border-bottom:none; }
         <div class="sub-title">算定・入力のポイント</div>
         <div class="box-gray">
           <div class="check-row"><span class="check-label">タイミング</span><span>処方箋受付時（同一患者に3月に1回）。算定間隔の管理はレセコンが行う</span></div>
-          <div class="check-row"><span class="check-label">摘要欄</span><span>
-            <div class="li"><span class="li-dot">・</span><span>初回の場合は「初回」</span></div>
-            <div class="li"><span class="li-dot">・</span><span>2回目以降は前回算定年月</span></div>
-          </span></div>
+          <div class="check-row"><span class="check-label">摘要欄</span><span>摘要欄への入力は不要</span></div>
         </div>
       </div>
     </div>
@@ -316,6 +329,7 @@ tr:last-child td { border-bottom:none; }
         </div>
       </div>
     </div>
+    <div class="input-loc"><span class="input-loc-label">入力位置</span><span class="input-loc-value">自動算定</span></div>
     <div class="grid-2">
       <div>
         <div class="sub-title">概要</div>
@@ -348,6 +362,7 @@ tr:last-child td { border-bottom:none; }
         </div>
       </div>
     </div>
+    <div class="input-loc"><span class="input-loc-label">入力位置</span><span class="input-loc-value">自動算定</span></div>
     <div class="grid-2">
       <div>
         <div class="sub-title">変更のポイント</div>
@@ -375,6 +390,7 @@ tr:last-child td { border-bottom:none; }
         <span class="badge badge-blue">点数・区分変更</span>
       </div>
     </div>
+    <div class="input-loc"><span class="input-loc-label">入力位置</span><span class="input-loc-value">自動算定</span></div>
     <div class="grid-2">
       <div>
         <div class="sub-title">点数の変化（内服薬・1剤につき）</div>
@@ -419,6 +435,7 @@ tr:last-child td { border-bottom:none; }
         </div>
       </div>
     </div>
+    <div class="input-loc"><span class="input-loc-label">入力位置</span><span class="input-loc-value">調剤管理料の加算</span></div>
     <div class="grid-2">
       <div>
         <div class="sub-title">概要</div>
@@ -471,6 +488,7 @@ tr:last-child td { border-bottom:none; }
         </div>
       </div>
     </div>
+    <div class="input-loc"><span class="input-loc-label">入力位置</span><span class="input-loc-value">調剤管理料の加算</span></div>
     <div class="grid-2">
       <div>
         <div class="sub-title">概要</div>
@@ -524,6 +542,7 @@ tr:last-child td { border-bottom:none; }
         </div>
       </div>
     </div>
+    <div class="input-loc"><span class="input-loc-label">入力位置</span><span class="input-loc-value">服薬管理指導料１イ・２イ（かかりつけ）の加算</span></div>
     <div class="grid-2">
       <div>
         <div class="sub-title">概要</div>
@@ -539,10 +558,7 @@ tr:last-child td { border-bottom:none; }
         <div class="sub-title">算定・入力のポイント</div>
         <div class="box-gray">
           <div class="check-row"><span class="check-label">タイミング</span><span><strong>フォローアップ後、次回に同じ医療機関の処方箋を持参したときに算定</strong>（3月に1回）。処方箋を持たずに来局した日は算定不可。別の医療機関の処方箋持参時も算定不可</span></div>
-          <div class="check-row"><span class="check-label">摘要欄</span><span>
-            <div class="li"><span class="li-dot">・</span><span>フォローアップを行った年月日</span></div>
-            <div class="li"><span class="li-dot">・</span><span>初回の場合は「初回」、2回目以降は前回算定年月</span></div>
-          </span></div>
+          <div class="check-row"><span class="check-label">摘要欄</span><span>フォローアップを行った年月日</span></div>
           <div class="check-row"><span class="check-label">算定不可</span><span>同月に在宅訪問薬剤管理指導料・居宅療養管理指導費等を算定している場合</span></div>
         </div>
       </div>
@@ -563,6 +579,7 @@ tr:last-child td { border-bottom:none; }
         </div>
       </div>
     </div>
+    <div class="input-loc"><span class="input-loc-label">入力位置</span><span class="input-loc-value">服薬管理指導料１イ・２イ（かかりつけ）の加算</span></div>
     <div class="grid-2">
       <div>
         <div class="sub-title">概要</div>
@@ -575,11 +592,8 @@ tr:last-child td { border-bottom:none; }
       <div>
         <div class="sub-title">算定・入力のポイント</div>
         <div class="box-gray">
-          <div class="check-row"><span class="check-label">タイミング</span><span>訪問・情報提供後、<strong>次回処方箋を持参したときに算定</strong>（6月に1回）</span></div>
-          <div class="check-row"><span class="check-label">摘要欄</span><span>
-            <div class="li"><span class="li-dot">・</span><span>情報提供した年月日</span></div>
-            <div class="li"><span class="li-dot">・</span><span>初回の場合は「初回」、2回目以降は前回算定年月</span></div>
-          </span></div>
+          <div class="check-row"><span class="check-label">タイミング</span><span>訪問指導後、<strong>次回処方箋を持参したときに算定</strong>（6月に1回）</span></div>
+          <div class="check-row"><span class="check-label">摘要欄</span><span>訪問指導した年月日</span></div>
           <div class="check-row"><span class="check-label">算定不可</span><span>在宅訪問薬剤管理指導料・外来服薬支援料１・服薬情報等提供料・居宅療養管理指導費等を算定している患者は不可。複数薬局でかかりつけを算定中の患者も不可</span></div>
         </div>
       </div>
@@ -591,10 +605,10 @@ tr:last-child td { border-bottom:none; }
     <div class="card-title">
       服薬管理指導料（区分・略称の変更）
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-        <span class="tag tag-摘要あり">摘要欄あり</span>
         <span class="badge badge-blue">改編</span>
       </div>
     </div>
+    <div class="input-loc"><span class="input-loc-label">入力位置</span><span class="input-loc-value">薬学管理料</span></div>
     <p style="font-size:var(--text-sm); margin-bottom:12px;">かかりつけ薬剤師指導料が廃止され、服薬管理指導料に統合。レセコンで選ぶ区分が変わる。以前「薬指」で算定していた患者は、新たに「薬Aイ」または「薬Bイ」を選ぶ。</p>
     <table>
       <thead>
@@ -630,6 +644,7 @@ tr:last-child td { border-bottom:none; }
         </div>
       </div>
     </div>
+    <div class="input-loc"><span class="input-loc-label">入力位置</span><span class="input-loc-value">薬学管理料</span></div>
     <div class="grid-2">
       <div>
         <div class="sub-title">概要</div>
@@ -643,10 +658,7 @@ tr:last-child td { border-bottom:none; }
         <div class="sub-title">算定・入力のポイント</div>
         <div class="box-gray">
           <div class="check-row"><span class="check-label">タイミング</span><span>処方医への情報提供時（6月に1回）<br><strong>令和8年6月〜令和9年5月は算定不可（空白期間）。令和9年6月〜算定開始</strong></span></div>
-          <div class="check-row"><span class="check-label">摘要欄</span><span>
-            <div class="li"><span class="li-dot">・</span><span>提案を行った医療機関名</span></div>
-            <div class="li"><span class="li-dot">・</span><span>初回の場合は「初回」、2回目以降は前回算定年月</span></div>
-          </span></div>
+          <div class="check-row"><span class="check-label">摘要欄</span><span>処方医に文書を用いて提案した年月日</span></div>
           <div class="check-row"><span class="check-label">回数制限</span><span>同一患者6月に1回・担当薬剤師1人につき月4回まで</span></div>
         </div>
       </div>
@@ -670,6 +682,7 @@ tr:last-child td { border-bottom:none; }
           </div>
         </div>
       </div>
+      <div class="input-loc"><span class="input-loc-label">入力位置</span><span class="input-loc-value">在宅関連の薬学管理料</span></div>
       <div class="grid-2">
         <div>
           <div class="sub-title">概要</div>
@@ -686,8 +699,7 @@ tr:last-child td { border-bottom:none; }
             <div class="check-row"><span class="check-label">タイミング</span><span>訪問時（6月に1回）</span></div>
             <div class="check-row"><span class="check-label">摘要欄</span><span>
             <div class="li"><span class="li-dot">・</span><span>訪問年月日</span></div>
-            <div class="li"><span class="li-dot">・</span><span>同時訪問した医師名・医療機関名</span></div>
-            <div class="li"><span class="li-dot">・</span><span>初回の場合は「初回」、2回目以降は前回算定年月</span></div>
+            <div class="li"><span class="li-dot">・</span><span>同時訪問した医師の医療機関名</span></div>
           </span></div>
             <div class="check-row"><span class="check-label">算定不可</span><span>在宅患者緊急時等共同指導料・在宅移行初期管理料と同日不可</span></div>
           </div>
@@ -708,6 +720,7 @@ tr:last-child td { border-bottom:none; }
           </div>
         </div>
       </div>
+      <div class="input-loc"><span class="input-loc-label">入力位置</span><span class="input-loc-value">在宅関連の薬学管理料</span></div>
       <div class="grid-2">
         <div>
           <div class="sub-title">概要</div>
@@ -724,7 +737,7 @@ tr:last-child td { border-bottom:none; }
             <div class="check-row"><span class="check-label">タイミング</span><span>訪問時</span></div>
             <div class="check-row"><span class="check-label">摘要欄</span><span>
             <div class="li"><span class="li-dot">・</span><span>訪問年月日</span></div>
-            <div class="li"><span class="li-dot">・</span><span>複数名訪問が必要な理由</span></div>
+            <div class="li"><span class="li-dot">・</span><span>処方箋記載により確認 または 疑義照会により確認 のいずれかを選択</span></div>
           </span></div>
             <div class="check-row"><span class="check-label">算定不可</span><span>緊急時等共同指導料・在宅移行初期管理料・訪問薬剤管理医師同時指導料と同日不可</span></div>
           </div>
@@ -741,6 +754,7 @@ tr:last-child td { border-bottom:none; }
           <span class="badge badge-blue">変更</span>
         </div>
       </div>
+      <div class="input-loc"><span class="input-loc-label">入力位置</span><span class="input-loc-value">在宅関連の薬学管理料</span></div>
       <div class="grid-2">
         <div>
           <div class="sub-title">算定間隔の変更</div>
@@ -773,6 +787,7 @@ tr:last-child td { border-bottom:none; }
         <span>在宅薬学総合体制加算（点数・区分変更）</span>
         <span class="badge badge-blue">点数・区分変更</span>
       </div>
+      <div class="input-loc"><span class="input-loc-label">入力位置</span><span class="input-loc-value">在宅向けの調剤基本料の加算</span></div>
       <div class="box-gray">
         <table style="table-layout:auto;">
           <thead>
@@ -811,6 +826,7 @@ tr:last-child td { border-bottom:none; }
         </div>
       </div>
     </div>
+    <div class="input-loc"><span class="input-loc-label">入力位置</span><span class="input-loc-value">調剤基本料の加算</span></div>
     <div class="grid-2">
       <div>
         <div class="sub-title">受付時の確認ポイント</div>
@@ -844,6 +860,7 @@ tr:last-child td { border-bottom:none; }
         </div>
       </div>
     </div>
+    <div class="input-loc"><span class="input-loc-label">入力位置</span><span class="input-loc-value">服薬管理指導料の加算</span></div>
     <div class="grid-2">
       <div>
         <div class="sub-title">変更のポイント</div>
@@ -902,6 +919,7 @@ tr:last-child td { border-bottom:none; }
         <span class="badge badge-blue">名称変更・再編</span>
       </div>
     </div>
+    <div class="input-loc"><span class="input-loc-label">入力位置</span><span class="input-loc-value">調剤基本料の加算</span></div>
     <div class="box-gray">
       <table style="table-layout:auto;">
         <thead>
