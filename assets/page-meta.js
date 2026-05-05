@@ -47,8 +47,8 @@ window.__pageMeta = {
   "かかりつけ薬剤師訪問加算.html": {
     "lastUpdated": "2026-05-01"
   },
-  "かかりつけ薬剤師フォローアップ加算.html": {
-    "lastUpdated": "2026-04-30"
+  "updates.html": {
+    "lastUpdated": "2026-05-03"
   },
   "別表Ⅴ_調剤行為名称等の略号一覧2026改定.html": {
     "lastUpdated": "2026-04-10"
@@ -86,6 +86,9 @@ window.__pageMeta = {
   "疑義解釈_その1_2026.html": {
     "lastUpdated": "2026-04-01"
   },
+  "index.html": {
+    "lastUpdated": "2026-05-03"
+  },
   "服用薬剤調整支援料２_資格取得ステップ.html": {
     "lastUpdated": "2026-03-23"
   },
@@ -119,9 +122,6 @@ window.__pageMeta = {
   "別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html": {
     "lastUpdated": "2026-05-02"
   },
-  "updates.html": {
-    "lastUpdated": "2026-05-03"
-  },
   "地域支援医薬品供給対応体制加算_届出判定ツール.html": {
     "lastUpdated": "2026-04-06"
   },
@@ -137,8 +137,8 @@ window.__pageMeta = {
   "疑義解釈_その2_2026.html": {
     "lastUpdated": "2026-04-29"
   },
-  "index.html": {
-    "lastUpdated": "2026-05-03"
+  "かかりつけ薬剤師フォローアップ加算.html": {
+    "lastUpdated": "2026-04-30"
   },
   "knowledge.html": {
     "lastUpdated": "2026-04-30"
