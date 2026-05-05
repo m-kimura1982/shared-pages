@@ -48,7 +48,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-05-01"
   },
   "updates.html": {
-    "lastUpdated": "2026-05-03"
+    "lastUpdated": "2026-05-05"
   },
   "別表Ⅴ_調剤行為名称等の略号一覧2026改定.html": {
     "lastUpdated": "2026-04-10"
@@ -60,7 +60,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-04-19"
   },
   "薬学的有害事象等防止加算.html": {
-    "lastUpdated": "2026-04-26"
+    "lastUpdated": "2026-05-04"
   },
   "kaitei2026.html": {
     "lastUpdated": "2026-05-03"
@@ -80,14 +80,14 @@ window.__pageMeta = {
   "事務スタッフ向け_2026調剤報酬改定ポイント整理.html": {
     "lastUpdated": "2026-05-03"
   },
+  "index.html": {
+    "lastUpdated": "2026-05-05"
+  },
   "調剤基本料_2026改定.html": {
     "lastUpdated": "2026-04-22"
   },
   "疑義解釈_その1_2026.html": {
     "lastUpdated": "2026-04-01"
-  },
-  "index.html": {
-    "lastUpdated": "2026-05-03"
   },
   "服用薬剤調整支援料２_資格取得ステップ.html": {
     "lastUpdated": "2026-03-23"
@@ -137,11 +137,11 @@ window.__pageMeta = {
   "疑義解釈_その2_2026.html": {
     "lastUpdated": "2026-04-29"
   },
-  "かかりつけ薬剤師フォローアップ加算.html": {
-    "lastUpdated": "2026-04-30"
-  },
   "knowledge.html": {
     "lastUpdated": "2026-04-30"
+  },
+  "かかりつけ薬剤師フォローアップ加算.html": {
+    "lastUpdated": "2026-05-05"
   },
   "別添3_調剤報酬点数表に関する事項2026.html": {
     "lastUpdated": "2026-05-02"
