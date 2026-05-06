@@ -1070,6 +1070,105 @@
         </div>
       </div>
 
+      <!-- レセプト摘要欄記載事項 -->
+      <div class="card avoid-break">
+        <div class="card-title">レセプト摘要欄記載事項</div>
+        <div class="lead" style="margin-bottom: 14px">
+          区分により記載内容が異なる。<strong>イ</strong>は事前提案の<strong>相談年月日</strong>と<strong>変更内容（選択式）</strong>、<strong>ロ〜ニ</strong>は<strong>連絡確認を行った内容の要点（選択式）</strong>を記載する。
+        </div>
+
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+          "
+        >
+          <!-- 区分イ -->
+          <div>
+            <div
+              style="
+                font-weight: 900;
+                font-size: var(--text-sm);
+                margin-bottom: 6px;
+              "
+            >
+              イ　処方箋交付前の事前提案（在宅）
+            </div>
+            <div class="box-blue" style="font-size: var(--text-sm)">
+              <div
+                style="
+                  font-weight: 900;
+                  color: var(--blue);
+                  margin-bottom: 8px;
+                "
+              >
+                相談年月日
+              </div>
+              <div
+                style="
+                  font-weight: 900;
+                  color: var(--blue);
+                  margin-bottom: 4px;
+                "
+              >
+                薬剤の変更内容を選択して記載
+              </div>
+              <div style="padding-left: 14px; color: #444; line-height: 1.9">
+                <div>同種同効薬への変更</div>
+                <div>剤形の変更</div>
+                <div>用量の変更</div>
+                <div>用法の変更</div>
+                <div>その他；****</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 区分ロ〜ニ -->
+          <div>
+            <div
+              style="
+                font-weight: 900;
+                font-size: var(--text-sm);
+                margin-bottom: 6px;
+              "
+            >
+              ロ〜ニ　疑義照会による処方変更
+            </div>
+            <div class="box-blue" style="font-size: var(--text-sm)">
+              <div
+                style="
+                  font-weight: 900;
+                  color: var(--blue);
+                  margin-bottom: 4px;
+                "
+              >
+                連絡確認を行った内容の要点
+              </div>
+              <div style="padding-left: 14px; color: #444; line-height: 1.9">
+                <div>同種・同効の併用薬との重複投薬</div>
+                <div>併用薬・飲食物等との相互作用</div>
+                <div>過去のアレルギー歴、副作用歴</div>
+                <div>年齢や体重による影響</div>
+                <div>肝機能、腎機能等による影響</div>
+                <div>授乳・妊婦への影響</div>
+                <div>その他薬学的観点から必要と認める事項；****</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          style="
+            font-size: var(--text-xs);
+            color: #666;
+            margin-top: 10px;
+          "
+        >
+          ※ 「****」は自由記述欄。原文（別表Ⅰ）に基づき、選択肢のみを抜粋して掲載。
+        </div>
+      </div>
+
       <!-- 施設基準：手帳活用実績 -->
       <div class="card">
         <div class="card-title">
