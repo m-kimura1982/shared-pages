@@ -76,6 +76,10 @@
     knowledge: { name: '実務ナレッジ集', url: 'knowledge.html' },
   };
 
+  // サイト内検索（site-search.js）から参照
+  window.SITE_PAGES = PAGES;
+  window.SITE_CATEGORIES = CATEGORIES;
+
   // ── 現在のページ判定 ──
   const path = location.pathname;
   const rawFile = path.split('/').pop() || 'index.html';
@@ -108,6 +112,7 @@
     }
     .sn-nav a:hover { background: #f0f4fa; color: #1e5fa8; }
     .sn-nav a.sn-active { color: #1e5fa8; font-weight: 700; }
+    .sn-actions { display: flex; align-items: center; gap: 8px; }
     .sn-toggle {
       display: none; background: none; border: none; cursor: pointer;
       width: 36px; height: 36px; padding: 0;
@@ -194,9 +199,16 @@
             <img src="${getLogoPath()}" alt="Hello Group">
           </a>
           <nav class="sn-nav" id="sn-nav">${navHtml}</nav>
-          <button class="sn-toggle" id="sn-toggle" aria-label="メニュー">
-            <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-          </button>
+          <div class="sn-actions">
+            <button class="sn-search-btn" id="sn-search-btn" aria-label="サイト内検索">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <span class="sn-search-label">資料を検索</span>
+              <kbd>/</kbd>
+            </button>
+            <button class="sn-toggle" id="sn-toggle" aria-label="メニュー">
+              <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+          </div>
         </div>
       </header>
       ${crumbHtml}
@@ -243,5 +255,23 @@
   const nav = document.getElementById('sn-nav');
   if (toggle && nav) {
     toggle.addEventListener('click', () => nav.classList.toggle('sn-open'));
+  }
+
+  // ── サイト内検索スクリプトを自動ロード ──
+  if (!document.querySelector('script[data-site-search]')) {
+    const s = document.createElement('script');
+    s.src = 'assets/site-search.js';
+    s.defer = true;
+    s.dataset.siteSearch = '1';
+    document.head.appendChild(s);
+  }
+
+  // ── トップへ戻るFABを自動ロード ──
+  if (!document.querySelector('script[data-site-fab]')) {
+    const s = document.createElement('script');
+    s.src = 'assets/site-fab.js';
+    s.defer = true;
+    s.dataset.siteFab = '1';
+    document.head.appendChild(s);
   }
 })();
