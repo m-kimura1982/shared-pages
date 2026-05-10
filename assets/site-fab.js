@@ -10,8 +10,8 @@
   const css = `
     .sf-top {
       position: fixed;
-      /* 本文（max-width:1000px）の右側ガター内に配置。狭い画面では端から14px。 */
-      right: max(14px, calc((100vw - 1000px) / 2 - 88px));
+      /* right はJSで動的に設定（本文の右端＋余白に合わせる） */
+      right: 14px;
       bottom: 24px;
       height: 38px;
       padding: 0 14px 0 11px;
@@ -69,7 +69,29 @@
   document.body.appendChild(btn);
 
   const THRESHOLD = 400;
+  const MIN_RIGHT = 14;
+  const BTN_GAP = 88; // ボタン幅80px + 余白8px の見積り
   let ticking = false;
+
+  function getContentRect() {
+    // 主要コンテナを順に探す。最初に見つかったものを本文領域とみなす。
+    const selectors = ['main', '.layout-outer', '.layout', '.page-shell', '.container', '.page-wrap'];
+    for (const sel of selectors) {
+      const el = document.querySelector(sel);
+      if (el) return el.getBoundingClientRect();
+    }
+    return null;
+  }
+
+  function updatePosition() {
+    const rect = getContentRect();
+    let rightOffset = MIN_RIGHT;
+    if (rect) {
+      const gutterRight = window.innerWidth - rect.right;
+      rightOffset = Math.max(MIN_RIGHT, gutterRight - BTN_GAP);
+    }
+    btn.style.right = rightOffset + 'px';
+  }
 
   function update() {
     if ((window.scrollY || document.documentElement.scrollTop) > THRESHOLD) {
@@ -96,5 +118,9 @@
     window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
   });
 
+  // リサイズに追従
+  window.addEventListener('resize', updatePosition, { passive: true });
+
+  updatePosition();
   update();
 })();
