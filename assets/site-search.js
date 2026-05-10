@@ -63,7 +63,8 @@
         flex-shrink: 0;
       }
       .ss-input {
-        flex: 1; border: none; outline: none;
+        flex: 1 1 0; min-width: 0;
+        border: none; outline: none;
         font-size: 16px; font-family: inherit;
         background: transparent; color: #222;
         padding: 4px 0;
@@ -159,6 +160,11 @@
         .ss-overlay { padding: 12px; }
         .ss-modal { max-height: calc(100vh - 24px); border-radius: 10px; }
         .ss-input { font-size: 16px; } /* iOSズーム防止 */
+        .ss-input-wrap { padding: 12px 12px; gap: 8px; }
+        .ss-close {
+          width: 36px; height: 36px;
+          font-size: 22px; font-weight: 700;
+        }
       }
     `;
 
@@ -169,7 +175,7 @@
           <div class="ss-input-wrap">
             <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             <input class="ss-input" id="ss-input" type="search"
-              placeholder="資料名・キーワードで検索（例：在宅、立地依存、疑義解釈）"
+              placeholder="資料名・キーワードで検索"
               autocomplete="off" spellcheck="false" />
             <button class="ss-close" id="ss-close" aria-label="閉じる">×</button>
           </div>
