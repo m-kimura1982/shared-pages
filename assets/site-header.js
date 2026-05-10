@@ -274,4 +274,13 @@
     s.dataset.siteFab = '1';
     document.head.appendChild(s);
   }
+
+  // ── 最近見たページ（履歴記録＋index描画）を自動ロード ──
+  if (!document.querySelector('script[data-site-recents]')) {
+    const s = document.createElement('script');
+    s.src = 'assets/site-recents.js';
+    s.defer = true;
+    s.dataset.siteRecents = '1';
+    document.head.appendChild(s);
+  }
 })();

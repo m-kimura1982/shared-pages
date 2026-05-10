@@ -224,7 +224,16 @@
     function search(q) {
       q = q.trim().toLowerCase();
       if (!q) {
-        // 空クエリ：カテゴリ別に主要ページを少しだけ
+        // 空クエリ：履歴があれば履歴を、無ければ主要ページを表示
+        const recents = (window.SITE_RECENTS && window.SITE_RECENTS.get()) || [];
+        if (recents.length > 0) {
+          const byFile = Object.create(null);
+          for (const item of index) byFile[item.file] = item;
+          return recents
+            .map((r) => byFile[r.file])
+            .filter(Boolean)
+            .slice(0, 10);
+        }
         return index.slice(0, 12);
       }
       const tokens = q.split(/\s+/).filter(Boolean);
@@ -268,8 +277,12 @@
         return;
       }
       const isEmpty = !q.trim();
+      const hasRecents =
+        isEmpty &&
+        window.SITE_RECENTS &&
+        window.SITE_RECENTS.get().length > 0;
       const label = isEmpty
-        ? '<div class="ss-section-label">主要ページ</div>'
+        ? `<div class="ss-section-label">${hasRecents ? '最近見たページ' : '主要ページ'}</div>`
         : `<div class="ss-section-label">${currentResults.length} 件の候補</div>`;
       results.innerHTML =
         label +
