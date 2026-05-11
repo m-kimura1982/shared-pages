@@ -120,6 +120,36 @@
     }
     .sn-toggle svg { width: 22px; height: 22px; stroke: #222; stroke-width: 2; fill: none; stroke-linecap: round; }
 
+    /* 検索ボタン（ヘッダー埋め込み用：FOUC防止のためここで定義） */
+    .sn-search-btn {
+      background: #e8f0fb; border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 6px 12px 6px 10px;
+      cursor: pointer;
+      display: flex; align-items: center; gap: 8px;
+      font-family: inherit; font-size: 13px; font-weight: 700;
+      color: #1e5fa8;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .sn-search-btn:hover { background: #d6e4f6; border-color: #1e5fa8; }
+    .sn-search-btn svg {
+      width: 14px; height: 14px;
+      stroke: currentColor; fill: none; stroke-width: 2.2;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .sn-search-btn kbd {
+      background: #fff; border: 1px solid #c9d8ee;
+      border-radius: 3px; padding: 0 5px;
+      font-family: inherit; font-size: 10px; font-weight: 700;
+      color: #1e5fa8;
+    }
+    @media (max-width: 700px) {
+      .sn-search-btn span.sn-search-label,
+      .sn-search-btn kbd { display: none; }
+      .sn-search-btn { padding: 8px; }
+      .sn-search-btn svg { width: 18px; height: 18px; }
+    }
+
     /* パンくず */
     .sn-crumb {
       max-width: 1000px; margin: 0 auto;
