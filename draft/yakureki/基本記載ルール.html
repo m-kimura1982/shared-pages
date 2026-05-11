@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>基本記載ルール｜薬歴マニュアル</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="yakureki.css" />
+    <style>
+      /* ── ページ内ナビ（ア〜オ） ── */
+      .item-nav {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 14px 18px;
+        margin-bottom: 28px;
+      }
+      .item-nav-label {
+        font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+        color: var(--blue); margin-bottom: 8px;
+      }
+      .item-nav-list {
+        display: flex; flex-wrap: wrap; gap: 6px;
+      }
+      .item-nav-list a {
+        display: inline-flex; align-items: center; gap: 6px;
+        background: var(--blue-light);
+        color: var(--blue);
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 500;
+        padding: 6px 12px;
+        border-radius: 100px;
+        line-height: 1.4;
+        transition: background 0.15s;
+      }
+      .item-nav-list a:hover { background: var(--blue); color: var(--white); }
+      .item-nav-list a.draft { opacity: 0.45; }
+
+      /* ── 項目セクション ── */
+      .item-section {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 28px 28px 24px;
+        margin-bottom: 22px;
+        scroll-margin-top: 16px;
+      }
+      .item-section.stub { opacity: 0.55; }
+      .item-head {
+        display: flex; align-items: baseline; gap: 10px;
+        border-bottom: 1px solid var(--ink);
+        padding-bottom: 10px; margin-bottom: 18px;
+      }
+      .item-head-tag {
+        background: var(--blue-light);
+        color: var(--blue);
+        font-size: 15px;
+        font-weight: 700;
+        padding: 2px 12px;
+        border-radius: 4px;
+        line-height: 1.4;
+      }
+      .item-head-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--ink);
+        line-height: 1.4;
+      }
+
+      .field-list {
+        list-style: none; padding: 0; margin: 0;
+      }
+      .field-list li {
+        position: relative;
+        padding: 4px 0 4px 22px;
+        font-size: 14px;
+        line-height: 1.75;
+      }
+      .field-list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0; top: 4px;
+        color: var(--blue);
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="draft-banner">⚠ 非公開作業中ページ｜内容は精査中のため公開ナビゲーションには掲載していません</div>
+
+    <header>
+      <div class="header-inner">
+        <a href="index.html" class="back-link">← 薬歴マニュアルに戻る</a>
+        <span class="site-title">調剤報酬まとめ</span>
+      </div>
+    </header>
+
+    <div class="page-head">
+      <span class="page-tag">BASIC RULE</span>
+      <h1 class="page-title">基本記載ルール</h1>
+      <p class="page-desc">
+        薬歴10項目（ア〜オ）ごとに、記載のポイント・記載例・社内ルールを整理しています。<br />
+        原典：令和8年3月5日 保医発0305第4号 別添3 ／ 薬学管理料 通則(4)
+      </p>
+    </div>
+
+    <main>
+      <!-- ── ページ内ナビ ── -->
+      <div class="item-nav">
+        <div class="item-nav-label">JUMP TO</div>
+        <div class="item-nav-list">
+          <a href="#ア">ア 基礎情報</a>
+          <a href="#イ" class="draft">イ 処方・調剤内容</a>
+          <a href="#ウ" class="draft">ウ 患者情報・指導の要点</a>
+          <a href="#エ" class="draft">エ 継続的管理の留意点</a>
+          <a href="#オ" class="draft">オ 薬剤師氏名</a>
+        </div>
+      </div>
+
+      <!-- ─────────────────────────────── -->
+      <!-- ア 患者の基礎情報 -->
+      <!-- ─────────────────────────────── -->
+      <section id="ア" class="item-section">
+        <div class="item-head">
+          <span class="item-head-tag">ア</span>
+          <h2 class="item-head-title">患者の基礎情報</h2>
+        </div>
+
+        <div class="source-box">
+          <span class="source-box-label">原典</span>
+          <p>患者の基礎情報（氏名、生年月日、性別、被保険者証の記号番号、住所、必要に応じて緊急連絡先）</p>
+          <p class="source-cite">令和8年3月5日 保医発0305第4号 別添3 ／ 薬学管理料 通則(4) ア</p>
+        </div>
+
+        <h3 class="subsection-title">記載すべき事項</h3>
+        <ul class="field-list">
+          <li>氏名（フリガナを含む）</li>
+          <li>生年月日</li>
+          <li>性別</li>
+          <li>被保険者証の記号番号</li>
+          <li>住所</li>
+          <li>緊急連絡先（必要に応じて — 後述）</li>
+        </ul>
+
+        <h3 class="subsection-title">緊急連絡先の判断</h3>
+        <p style="font-size:14px; line-height:1.85; margin-bottom:10px;">
+          通知上は「必要に応じて」とあるが、以下のような患者では原則として記載しておく。
+          改正薬機法（2020年9月施行）で継続的な服薬支援が義務化されたことも踏まえる。
+        </p>
+        <ul class="field-list">
+          <li>独居高齢者</li>
+          <li>認知機能低下が疑われる患者</li>
+          <li>在宅・ハイリスク薬を継続使用中の患者</li>
+          <li>継続的な薬学的管理が必要な患者（フォローアップ対象患者など）</li>
+        </ul>
+
+        <h3 class="subsection-title">記載例</h3>
+        <div class="example-pair">
+          <div class="example-box good">
+            <span class="example-label">○ 良い例</span>
+<pre>緊急連絡先：長女（同居） 090-XXXX-XXXX
+（独居・認知機能低下のため記載）</pre>
+          </div>
+          <div class="example-box bad">
+            <span class="example-label">× 不十分な例</span>
+<pre>緊急連絡先：（空欄）
+※独居・要介護2 だが連絡先未確認</pre>
+          </div>
+        </div>
+
+        <h3 class="subsection-title">問診票の記入を拒否された場合</h3>
+        <p style="font-size:14px; line-height:1.85; margin-bottom:10px;">
+          単に「拒否」と書くだけでは不十分。<strong>拒否された旨とその理由</strong>を残し、口頭で聴取した内容や次回確認する事項も合わせて記載する。
+        </p>
+        <div class="example-pair">
+          <div class="example-box good">
+            <span class="example-label">○ 良い例</span>
+<pre>問診票記入を希望されず。
+「以前の薬局で書いたので不要」とのこと。
+次回、副作用歴・併用薬の口頭確認を実施予定。</pre>
+          </div>
+          <div class="example-box bad">
+            <span class="example-label">× 不十分な例</span>
+<pre>問診票拒否。</pre>
+          </div>
+        </div>
+
+        <h3 class="subsection-title">空欄を作らない</h3>
+        <p style="font-size:14px; line-height:1.85;">
+          表紙に空欄があると、個別指導で「未確認」と判断される。確認した結果が「該当なし」「不明」であっても、その旨を必ず書き残す。
+        </p>
+        <div class="example-pair">
+          <div class="example-box good">
+            <span class="example-label">○ 良い例</span>
+<pre>副作用歴：特になし（本人確認）
+アレルギー歴：不明（本人記憶なし、家族にも確認予定）</pre>
+          </div>
+          <div class="example-box bad">
+            <span class="example-label">× 不十分な例</span>
+<pre>副作用歴：（空欄）
+アレルギー歴：（空欄）</pre>
+          </div>
+        </div>
+
+        <div class="rule-box">
+          <div class="rule-box-title">社内ルール</div>
+          <ul class="field-list" style="margin-top:4px;">
+            <li>表紙は <strong>3ヶ月に1回</strong> を目安に内容を見直し、変更がない場合も確認日を残す</li>
+            <li>独居・認知機能低下・ハイリスク薬使用者は<strong>緊急連絡先を必ず記載</strong>する</li>
+            <li>項目が「該当なし」「不明」の場合も<strong>その旨を明記</strong>し、空欄にしない</li>
+            <li>問診票拒否時は<strong>拒否の旨と理由</strong>を残し、口頭聴取で代替する</li>
+          </ul>
+        </div>
+
+        <div class="warn-box" style="margin-top:14px;">
+          <div class="warn-box-title">個別指導でよく見られる点</div>
+          <p>
+            表紙の空欄や緊急連絡先の記載漏れは、個別指導で指摘されやすい代表的な項目。とくに独居高齢者・在宅患者・ハイリスク薬を使用している患者で緊急連絡先が空欄だと、継続的な薬学的管理体制の不備を疑われやすい。
+          </p>
+        </div>
+      </section>
+
+      <!-- ─────────────────────────────── -->
+      <!-- イ〜オ：プレースホルダー -->
+      <!-- ─────────────────────────────── -->
+      <section id="イ" class="item-section stub">
+        <div class="item-head">
+          <span class="item-head-tag">イ</span>
+          <h2 class="item-head-title">処方及び調剤内容等</h2>
+        </div>
+        <p style="font-size:14px; color:var(--sub);">作成中：処方医療機関名、処方医氏名、処方日、調剤日、調剤薬剤、処方内容に関する照会の要点 等。</p>
+      </section>
+
+      <section id="ウ" class="item-section stub">
+        <div class="item-head">
+          <span class="item-head-tag">ウ</span>
+          <h2 class="item-head-title">患者情報並びに薬学的管理及び指導の要点</h2>
+        </div>
+        <p style="font-size:14px; color:var(--sub);">
+          作成中：(イ) 体質・生活像・後発意向／(ロ) 疾患情報／(ハ) 併用薬・相互作用飲食物／(ニ) 服薬状況・残薬／(ホ) 体調変化・相談事項／(ヘ) 手帳活用<br />
+          ※「生活像」と「継続的な薬学的管理」は別途独立ページあり。
+        </p>
+      </section>
+
+      <section id="エ" class="item-section stub">
+        <div class="item-head">
+          <span class="item-head-tag">エ</span>
+          <h2 class="item-head-title">今後の継続的な薬学的管理及び指導の留意点</h2>
+        </div>
+        <p style="font-size:14px; color:var(--sub);">作成中：次回確認事項・申し送り・継続管理の方針。詳細は <a href="継続的な管理.html">継続的な管理</a> ページ参照。</p>
+      </section>
+
+      <section id="オ" class="item-section stub">
+        <div class="item-head">
+          <span class="item-head-tag">オ</span>
+          <h2 class="item-head-title">指導した保険薬剤師の氏名</h2>
+        </div>
+        <p style="font-size:14px; color:var(--sub);">作成中：算定根拠としての記名、勤務ローテーション時の取り扱い 等。</p>
+      </section>
+    </main>
+
+    <footer>調剤報酬まとめ ／ 薬歴マニュアル ／ 非公開作業中</footer>
+  </body>
+</html>

@@ -1,0 +1,341 @@
+/* ============================================================
+   薬歴マニュアル 共通スタイル
+   非公開作業中 — draft/yakureki/ 配下の全ページで共有
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue: #1e5fa8;
+  --blue-mid: #2d7dd6;
+  --blue-light: #e8f0fb;
+  --ink: #222222;
+  --sub: #666666;
+  --border: #d8dde8;
+  --white: #ffffff;
+  --bg: #f5f7fa;
+  --red: #cc0000;
+  --warn-bg: #fff7e6;
+  --warn-border: #e6c068;
+  --warn-ink: #6b5500;
+  --warn-title: #8a6800;
+  --good-bg: #eaf5ea;
+  --good-border: #7cba7c;
+  --good-ink: #2e6b2e;
+  --bad-bg: #fcecec;
+  --bad-border: #d97070;
+  --bad-ink: #8a2020;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.7;
+  padding: 0 0 60px;
+}
+
+/* ── 非公開バナー ── */
+.draft-banner {
+  background: #fff3cd;
+  border-bottom: 2px solid #e6c068;
+  color: #6b5500;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  padding: 8px 16px;
+  letter-spacing: 0.04em;
+}
+
+/* ── ヘッダー ── */
+header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 24px;
+}
+.header-inner {
+  max-width: 1000px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.back-link {
+  color: var(--blue);
+  text-decoration: none;
+  font-size: 13px;
+  border: 1px solid var(--blue);
+  border-radius: 6px;
+  padding: 4px 14px;
+  background: var(--white);
+}
+.back-link:hover { background: var(--blue-light); }
+.site-title { font-size: 14px; color: var(--sub); font-weight: 500; }
+
+/* ── ページタイトル ── */
+.page-head {
+  max-width: 1000px; margin: 32px auto 24px; padding: 0 20px;
+}
+.page-tag {
+  display: inline-block;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.14em;
+  color: var(--blue); background: var(--blue-light);
+  padding: 4px 14px; border-radius: 100px; margin-bottom: 12px;
+}
+.page-title { font-size: 28px; font-weight: 900; color: var(--ink); line-height: 1.4; margin-bottom: 10px; }
+.page-desc { font-size: 14px; color: var(--sub); line-height: 1.8; }
+
+/* ── メイン ── */
+main { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+section { margin-bottom: 40px; }
+.section-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+  color: var(--blue); margin-bottom: 12px;
+}
+.section-title {
+  font-size: 20px; font-weight: 700; color: var(--ink);
+  border-left: 4px solid var(--blue); padding-left: 12px;
+  margin-bottom: 16px; line-height: 1.5;
+}
+.subsection-title {
+  font-size: 16px; font-weight: 700; color: var(--ink);
+  margin: 20px 0 10px;
+}
+
+/* ── 原典引用ボックス ── */
+.source-box {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--blue);
+  border-radius: var(--radius-sm);
+  padding: 18px 22px;
+  font-size: 14px;
+}
+.source-box-label {
+  display: inline-block;
+  background: var(--blue);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 3px 10px;
+  border-radius: 100px;
+  margin-bottom: 10px;
+}
+.source-box .source-cite {
+  font-size: 12px; color: var(--sub); margin-top: 10px;
+}
+
+/* ── 10項目 一覧 ── */
+.ten-items {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 0;
+}
+.ten-items dt {
+  background: #f2f4f8;
+  padding: 10px 22px;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ink);
+}
+.ten-items dd {
+  padding: 8px 22px 8px 50px;
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.7;
+}
+.item-tag {
+  display: inline-block;
+  background: var(--blue-light);
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 8px;
+  border-radius: 4px;
+  margin-right: 6px;
+  min-width: 36px;
+  text-align: center;
+}
+/* ── カードグリッド ── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+.card {
+  display: block;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+}
+.card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 2px 8px rgba(30, 95, 168, 0.08);
+  transform: translateY(-1px);
+}
+.card-num {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  color: var(--blue); margin-bottom: 6px;
+}
+.card-title {
+  font-size: 16px; font-weight: 700; color: var(--ink);
+  margin-bottom: 6px; line-height: 1.4;
+}
+.card-desc {
+  font-size: 13px; color: var(--sub); line-height: 1.7;
+}
+.card-stub {
+  display: inline-block;
+  background: #f2f4f8;
+  color: var(--sub);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 6px;
+}
+
+/* ── 注意ボックス（lead 風：青の左ボーダー＋薄青背景） ── */
+.warn-box {
+  background: #eef4fb;
+  border-left: 4px solid var(--blue);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 14px 18px;
+  font-size: 14px;
+}
+.warn-box-title {
+  font-weight: 700; color: var(--ink); margin-bottom: 6px;
+  font-size: 14px;
+}
+.warn-box p { color: var(--ink); line-height: 1.75; }
+
+/* ── 良い例／不十分な例
+   方針：ボックスは中立色（薄グレー）。色はラベルのみ。 */
+.example-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 14px 0;
+}
+@media (max-width: 640px) {
+  .example-pair { grid-template-columns: 1fr; }
+}
+.example-box {
+  background: #f2f2f2;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  font-size: 14px;
+  line-height: 1.75;
+}
+.example-label {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.example-box.good .example-label { color: var(--blue); }
+.example-box.bad  .example-label { color: var(--red); }
+.example-box pre {
+  font-family: "Noto Sans JP", sans-serif;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 13px;
+  color: var(--ink);
+}
+
+/* ── 社内ルールボックス（lead 風） ── */
+.rule-box {
+  background: #eef4fb;
+  border-left: 4px solid var(--blue);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 14px 18px;
+  font-size: 14px;
+  margin: 14px 0;
+}
+.rule-box-title {
+  font-weight: 700; color: var(--blue);
+  margin-bottom: 6px; font-size: 14px;
+}
+
+/* ── テーブル ── */
+.gtable {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  font-size: 14px;
+}
+.gtable th, .gtable td {
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.65;
+}
+.gtable th {
+  background: var(--blue-light);
+  color: var(--blue);
+  font-weight: 700;
+  font-size: 13px;
+}
+.gtable tr:nth-child(even) td { background: #fafbfc; }
+
+/* ── コピーボタン付きテンプレ ── */
+.tpl-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  position: relative;
+}
+.tpl-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ink);
+  margin-bottom: 8px;
+  padding-right: 80px;
+}
+.tpl-body {
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.75;
+  white-space: pre-wrap;
+  background: #fafbfc;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+}
+.copy-btn {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: var(--blue);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 12px;
+  cursor: pointer;
+  font-family: "Noto Sans JP", sans-serif;
+  transition: background 0.15s;
+}
+.copy-btn:hover { background: var(--blue-mid); }
+.copy-btn.copied { background: var(--good-border); }
+
+/* ── フッター ── */
+footer {
+  max-width: 1000px; margin: 60px auto 0; padding: 24px 20px;
+  font-size: 12px; color: var(--sub);
+  border-top: 1px solid var(--border);
+  text-align: center;
+}

@@ -103,6 +103,30 @@ npx serve "D:/☆shared-pages" -p 3000
 - ユーザーが「公開お願いします」と言ったら push する
 - `.claude/` の設定ファイル（settings.local.json, launch.json）はコミットしない
 
+## 薬歴マニュアル プロジェクト（**非公開作業中**）
+
+**現状：** `draft/yakureki/` 配下で開発中。完成まで非公開。
+
+**非公開化の3層構造：**
+1. `robots.txt` で `/draft/` を Disallow
+2. 各HTMLの `<head>` に `<meta name="robots" content="noindex,nofollow,noarchive">`
+3. index.html・kaitei2026.html・tools.html・updates.html から `draft/` への導線は作らない（**厳守**）
+
+**ファイル名は日本語で運用**（サブフォルダ隔離なので視認性優先）：
+`draft/yakureki/基本記載ルール.html`, `生活像.html`, `継続的な管理.html`, `加算別記載一覧.html`, `個別指導指摘事項.html`, `テンプレート集.html` 等。入口のみ `index.html`。
+公開時は `git mv draft/yakureki yakureki` 一発でフォルダ昇格できる設計。
+
+**薬歴10項目（ア〜オ）：** 令和8年3月5日保医発0305第4号 別添3（2026年改定）
+原典：`別添3_調剤報酬点数表に関する事項2026.html`「薬学管理料 通則(4)(5)(6)」
+- ア 基礎情報／イ 処方・調剤内容／ウ 患者情報（(イ)〜(ヘ)）／エ 継続的な薬学的管理及び指導の留意点／オ 薬剤師氏名
+- 葉ノード合計10 ＝「10項目」
+
+**重要：** 通則(5)「定型文を用いて画一的に記載するのではなく」→ テンプレ集ページには免責ボックスを必ず入れる。
+
+**個人情報：** 載せない。原資料に誤って含まれていた場合は削除する。
+
+詳細は memory `project_yakureki.md` 参照。
+
 ## 公開済みページ数（2026-04-17 時点）
 - 構造ページ: 3（index, kaitei2026, tools）
 - ツール: 3（疑義解釈検索、届出判定、別表１（１））
