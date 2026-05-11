@@ -115,10 +115,10 @@
         <div class="item-nav-label">JUMP TO</div>
         <div class="item-nav-list">
           <a href="#ア">ア 基礎情報</a>
-          <a href="#イ" class="draft">イ 処方・調剤内容</a>
-          <a href="#ウ" class="draft">ウ 患者情報・指導の要点</a>
-          <a href="#エ" class="draft">エ 継続的管理の留意点</a>
-          <a href="#オ" class="draft">オ 薬剤師氏名</a>
+          <a href="#イ">イ 処方・調剤内容</a>
+          <a href="#ウ">ウ 患者情報・指導の要点</a>
+          <a href="#エ">エ 継続的管理の留意点</a>
+          <a href="#オ">オ 薬剤師氏名</a>
         </div>
       </div>
 
@@ -226,41 +226,306 @@
       </section>
 
       <!-- ─────────────────────────────── -->
-      <!-- イ〜オ：プレースホルダー -->
+      <!-- イ 処方及び調剤内容等 -->
       <!-- ─────────────────────────────── -->
-      <section id="イ" class="item-section stub">
+      <section id="イ" class="item-section">
         <div class="item-head">
           <span class="item-head-tag">イ</span>
           <h2 class="item-head-title">処方及び調剤内容等</h2>
         </div>
-        <p style="font-size:14px; color:var(--sub);">作成中：処方医療機関名、処方医氏名、処方日、調剤日、調剤薬剤、処方内容に関する照会の要点 等。</p>
+
+        <div class="source-box">
+          <span class="source-box-label">原典</span>
+          <p>処方及び調剤内容等（処方医療機関名、処方医氏名、処方日、調剤日、調剤薬剤（薬品名、規格、用量、調剤量）及び処方内容に関する照会の要点）</p>
+          <p class="source-cite">令和8年3月5日 保医発0305第4号 別添3 ／ 薬学管理料 通則(4) イ</p>
+        </div>
+
+        <h3 class="subsection-title">記載すべき事項</h3>
+        <ul class="field-list">
+          <li>処方医療機関名</li>
+          <li>処方医氏名</li>
+          <li>処方日・調剤日</li>
+          <li>調剤薬剤（薬品名・規格・用量・調剤量）</li>
+          <li>処方内容に関する照会の要点（照会が発生した場合）</li>
+        </ul>
+
+        <h3 class="subsection-title">照会の要点の記載</h3>
+        <p style="font-size:14px; line-height:1.85; margin-bottom:10px;">
+          薬品名・用量・用法に疑義があり処方医に照会した場合は、<strong>照会内容・理由・回答・対応結果</strong>を必ず記録する。
+          電算システムで処方内容が自動転記される場合も、照会欄は手動記入になるケースが多い。記録漏れは個別指導の指摘につながりやすい。
+        </p>
+        <div class="example-pair">
+          <div class="example-box good">
+            <span class="example-label">○ 良い例</span>
+<pre>疑義照会：Rp.2 ロキソプロフェン錠 用量が「1回2錠」と記載されているが過量の可能性。処方医（田中先生）に確認→「1回1錠の誤記」とのこと。処方箋修正後に調剤。</pre>
+          </div>
+          <div class="example-box bad">
+            <span class="example-label">× 不十分な例</span>
+<pre>疑義照会：あり</pre>
+          </div>
+        </div>
+
+        <div class="rule-box">
+          <div class="rule-box-title">社内ルール</div>
+          <ul class="field-list" style="margin-top:4px;">
+            <li>照会が発生した場合は<strong>内容・理由・回答・対応結果</strong>をすべて記録する</li>
+            <li>電算システム転記項目であっても、照会欄の記入漏れがないか毎回確認する</li>
+          </ul>
+        </div>
       </section>
 
-      <section id="ウ" class="item-section stub">
+      <!-- ─────────────────────────────── -->
+      <!-- ウ 患者情報並びに薬学的管理及び指導の要点 -->
+      <!-- ─────────────────────────────── -->
+      <section id="ウ" class="item-section">
         <div class="item-head">
           <span class="item-head-tag">ウ</span>
           <h2 class="item-head-title">患者情報並びに薬学的管理及び指導の要点</h2>
         </div>
-        <p style="font-size:14px; color:var(--sub);">
-          作成中：(イ) 体質・生活像・後発意向／(ロ) 疾患情報／(ハ) 併用薬・相互作用飲食物／(ニ) 服薬状況・残薬／(ホ) 体調変化・相談事項／(ヘ) 手帳活用<br />
-          ※「生活像」と「継続的な薬学的管理」は別途独立ページあり。
-        </p>
+
+        <div class="source-box">
+          <span class="source-box-label">原典</span>
+          <p>患者情報並びに薬学的管理及び指導の要点（(イ)〜(ヘ)の各事項）</p>
+          <p class="source-cite">令和8年3月5日 保医発0305第4号 別添3 ／ 薬学管理料 通則(4) ウ</p>
+        </div>
+
+        <!-- (イ) 体質・生活像・後発意向 -->
+        <h3 class="subsection-title">(イ) 体質・生活像・後発医薬品への意向</h3>
+        <div class="source-box" style="margin-bottom:14px;">
+          <span class="source-box-label">原典</span>
+          <p>患者の体質（アレルギー歴、副作用歴等）、生活像（生活習慣、職業等）及び後発医薬品の使用に関する患者の意向</p>
+        </div>
+        <ul class="field-list">
+          <li>アレルギー歴・副作用歴（「特になし（本人確認）」でも必ず記載）</li>
+          <li>生活像（職業・生活リズム・嗜好品など服薬指導に関わる情報）</li>
+          <li>後発医薬品の使用意向（希望する・しない・どちらでもよい、を明記）</li>
+        </ul>
+        <div class="example-pair">
+          <div class="example-box good">
+            <span class="example-label">○ 良い例</span>
+<pre>アレルギー歴：ペニシリン系（発疹）
+副作用歴：特になし（本人確認）
+生活像：日勤の会社員。昼食は外食が多い。
+後発意向：ジェネリック希望</pre>
+          </div>
+          <div class="example-box bad">
+            <span class="example-label">× 不十分な例</span>
+<pre>アレルギー歴：（空欄）
+副作用歴：（空欄）</pre>
+          </div>
+        </div>
+        <p style="font-size:13px; color:var(--sub); margin-bottom:20px;">※ 生活像の詳細な記載例は <a href="生活像.html" style="color:var(--blue);">生活像の記載</a> ページを参照。</p>
+
+        <!-- (ロ) 疾患情報 -->
+        <h3 class="subsection-title">(ロ) 疾患情報</h3>
+        <div class="source-box" style="margin-bottom:14px;">
+          <span class="source-box-label">原典</span>
+          <p>疾患に関する情報（既往歴、合併症及び他科受診において投薬されている薬剤に関する情報を含む。）</p>
+        </div>
+        <ul class="field-list">
+          <li>当薬局で把握している疾患・既往歴</li>
+          <li>合併症</li>
+          <li>他科受診の状況と処方薬（「なし（本人確認）」でも必ず記載）</li>
+        </ul>
+        <div class="example-pair">
+          <div class="example-box good">
+            <span class="example-label">○ 良い例</span>
+<pre>疾患：高血圧症、2型糖尿病
+既往：胃潰瘍（5年前）
+他科受診：△△整形外科（腰痛）→NSAIDs処方あり</pre>
+          </div>
+          <div class="example-box bad">
+            <span class="example-label">× 不十分な例</span>
+<pre>疾患：（空欄）</pre>
+          </div>
+        </div>
+
+        <!-- (ハ) 併用薬・相互作用 -->
+        <h3 class="subsection-title">(ハ) 併用薬・相互作用・飲食物</h3>
+        <div class="source-box" style="margin-bottom:14px;">
+          <span class="source-box-label">原典</span>
+          <p>併用薬（要指導医薬品、一般用医薬品、医薬部外品及びいわゆる健康食品を含む。）、相互作用及び飲食物を含む禁忌に関する情報</p>
+        </div>
+        <ul class="field-list">
+          <li>他院処方薬・OTC薬・サプリ・健康食品（「なし（本人確認）」でも記載）</li>
+          <li>確認した相互作用・飲食物（グレープフルーツ、納豆、アルコール等）</li>
+          <li>禁忌事項を指導した場合はその内容も記録</li>
+        </ul>
+        <div class="example-pair">
+          <div class="example-box good">
+            <span class="example-label">○ 良い例</span>
+<pre>他院処方：△△整形よりロキソプロフェン（服用中）
+OTC・サプリ：なし（本人確認）
+相互作用：NSAIDs重複→処方医に情報提供済み</pre>
+          </div>
+          <div class="example-box bad">
+            <span class="example-label">× 不十分な例</span>
+<pre>併用薬：なし</pre>
+          </div>
+        </div>
+
+        <!-- (ニ) 服薬状況・残薬 -->
+        <h3 class="subsection-title">(ニ) 服薬状況・残薬</h3>
+        <div class="source-box" style="margin-bottom:14px;">
+          <span class="source-box-label">原典</span>
+          <p>服薬状況（残薬の状況を含む。）</p>
+        </div>
+        <ul class="field-list">
+          <li>服薬アドヒアランス（飲み忘れの有無・頻度・パターン）</li>
+          <li>残薬の有無・量・原因</li>
+          <li>残薬がある場合は次回調剤量への反映と記録</li>
+        </ul>
+        <div class="example-pair">
+          <div class="example-box good">
+            <span class="example-label">○ 良い例</span>
+<pre>服薬状況：朝の飲み忘れが週2〜3回。「仕事が忙しい朝は忘れる」とのこと。
+残薬：約10日分。今回調剤量を調整（−10日分）。次回確認予定。</pre>
+          </div>
+          <div class="example-box bad">
+            <span class="example-label">× 不十分な例</span>
+<pre>服薬状況：良好</pre>
+          </div>
+        </div>
+
+        <!-- (ホ) 体調変化・相談事項 -->
+        <h3 class="subsection-title">(ホ) 体調変化・相談事項</h3>
+        <div class="source-box" style="margin-bottom:14px;">
+          <span class="source-box-label">原典</span>
+          <p>患者の体調の変化（副作用が疑われる症状を含む。）及び服薬中の体調に関する相談事項</p>
+        </div>
+        <ul class="field-list">
+          <li>前回来局以降の体調変化</li>
+          <li>副作用が疑われる症状（症状・発現時期・対応を記録）</li>
+          <li>患者から相談された内容とその対応</li>
+        </ul>
+        <div class="example-pair">
+          <div class="example-box good">
+            <span class="example-label">○ 良い例</span>
+<pre>体調変化：服薬開始1週後から胃部不快感。
+副作用疑い：NSAIDsによる胃障害の可能性。
+対応：食後服用を再指導、症状続くようなら受診勧奨。次回確認予定。</pre>
+          </div>
+          <div class="example-box bad">
+            <span class="example-label">× 不十分な例</span>
+<pre>体調変化：特になし</pre>
+          </div>
+        </div>
+
+        <!-- (ヘ) 手帳活用 -->
+        <h3 class="subsection-title">(ヘ) 薬剤服用歴の記録の活用状況（手帳）</h3>
+        <div class="source-box" style="margin-bottom:14px;">
+          <span class="source-box-label">原典</span>
+          <p>薬剤服用歴の記録の活用状況（手帳活用の有無）</p>
+        </div>
+        <ul class="field-list">
+          <li>お薬手帳の持参・提出の有無</li>
+          <li>手帳への記録・貼付の実施</li>
+          <li>持参しない場合の対応（案内・次回持参依頼・電子版手帳の確認等）</li>
+        </ul>
+        <div class="example-pair">
+          <div class="example-box good">
+            <span class="example-label">○ 良い例</span>
+<pre>手帳：持参あり。今回調剤内容を記録・貼付。
+（電子版の場合）電子版手帳に記録済み。</pre>
+          </div>
+          <div class="example-box bad">
+            <span class="example-label">× 不十分な例</span>
+<pre>手帳：持参なし</pre>
+          </div>
+        </div>
+
+        <div class="rule-box">
+          <div class="rule-box-title">社内ルール（ウ全体）</div>
+          <ul class="field-list" style="margin-top:4px;">
+            <li>アレルギー歴・副作用歴・疾患情報・併用薬は「特になし・なし」でも<strong>確認した旨を必ず記載</strong>する</li>
+            <li>残薬がある場合は<strong>量・原因・対応・次回への反映</strong>まで記録する</li>
+            <li>副作用疑い症状は<strong>症状・発現時期・対応・フォロー予定</strong>をセットで残す</li>
+            <li>手帳持参がない場合も<strong>その旨と対応内容</strong>（案内・次回持参依頼等）を記録する</li>
+          </ul>
+        </div>
       </section>
 
-      <section id="エ" class="item-section stub">
+      <!-- ─────────────────────────────── -->
+      <!-- エ 継続的な薬学的管理及び指導の留意点 -->
+      <!-- ─────────────────────────────── -->
+      <section id="エ" class="item-section">
         <div class="item-head">
           <span class="item-head-tag">エ</span>
           <h2 class="item-head-title">今後の継続的な薬学的管理及び指導の留意点</h2>
         </div>
-        <p style="font-size:14px; color:var(--sub);">作成中：次回確認事項・申し送り・継続管理の方針。詳細は <a href="継続的な管理.html">継続的な管理</a> ページ参照。</p>
+
+        <div class="source-box">
+          <span class="source-box-label">原典</span>
+          <p>今後の継続的な薬学的管理及び指導の留意点</p>
+          <p class="source-cite">令和8年3月5日 保医発0305第4号 別添3 ／ 薬学管理料 通則(4) エ</p>
+        </div>
+
+        <h3 class="subsection-title">記載すべき事項</h3>
+        <ul class="field-list">
+          <li>次回来局時に確認すべき事項（検査値・副作用症状の経過など）</li>
+          <li>他のスタッフへの申し送り事項</li>
+          <li>フォローアップの予定（電話確認の時期・内容など）</li>
+          <li>処方医への情報提供予定</li>
+        </ul>
+
+        <div class="example-pair">
+          <div class="example-box good">
+            <span class="example-label">○ 良い例</span>
+<pre>次回確認：胃部不快感の経過・NSAIDs中止の有無
+申し送り：残薬あり。次回も服薬状況を確認すること。
+フォロー：2週後に電話確認（副作用症状の継続有無）予定。</pre>
+          </div>
+          <div class="example-box bad">
+            <span class="example-label">× 不十分な例</span>
+<pre>（空欄）</pre>
+          </div>
+        </div>
+
+        <div class="rule-box">
+          <div class="rule-box-title">社内ルール</div>
+          <ul class="field-list" style="margin-top:4px;">
+            <li>「特に問題なし」で終わらせず、<strong>次回に何を確認するか</strong>を1点でも必ず残す</li>
+            <li>フォローアップを行う場合は<strong>時期・方法・確認内容</strong>を記録する</li>
+          </ul>
+        </div>
+
+        <p style="font-size:13px; color:var(--sub); margin-top:14px;">※ 詳細は <a href="継続的な管理.html" style="color:var(--blue);">継続的な薬学的管理</a> ページを参照。</p>
       </section>
 
-      <section id="オ" class="item-section stub">
+      <!-- ─────────────────────────────── -->
+      <!-- オ 指導した保険薬剤師の氏名 -->
+      <!-- ─────────────────────────────── -->
+      <section id="オ" class="item-section">
         <div class="item-head">
           <span class="item-head-tag">オ</span>
           <h2 class="item-head-title">指導した保険薬剤師の氏名</h2>
         </div>
-        <p style="font-size:14px; color:var(--sub);">作成中：算定根拠としての記名、勤務ローテーション時の取り扱い 等。</p>
+
+        <div class="source-box">
+          <span class="source-box-label">原典</span>
+          <p>指導した保険薬剤師の氏名</p>
+          <p class="source-cite">令和8年3月5日 保医発0305第4号 別添3 ／ 薬学管理料 通則(4) オ</p>
+        </div>
+
+        <h3 class="subsection-title">記載すべき事項</h3>
+        <ul class="field-list">
+          <li>実際に服薬指導を行った保険薬剤師の氏名</li>
+          <li>加算を算定した場合はその算定根拠となる薬剤師の氏名</li>
+        </ul>
+
+        <h3 class="subsection-title">ローテーション勤務時の取扱い</h3>
+        <p style="font-size:14px; line-height:1.85; margin-bottom:10px;">
+          複数の薬剤師が交互に担当する場合でも、<strong>その日指導した薬剤師が自署または記名</strong>する。
+          前回の記録をそのまま流用したり、ログイン薬剤師と指導薬剤師が異なったままになっていないかに注意する。
+        </p>
+
+        <div class="rule-box">
+          <div class="rule-box-title">社内ルール</div>
+          <ul class="field-list" style="margin-top:4px;">
+            <li>電算システムへのログイン薬剤師と実際の指導薬剤師が<strong>一致しているか</strong>毎回確認する</li>
+            <li>代行入力した場合は<strong>指導薬剤師名を明記</strong>し、混同が生じないようにする</li>
+          </ul>
+        </div>
       </section>
     </main>
 
