@@ -2,11 +2,11 @@ window.__pageMeta = {
   "変更調剤について.html": {
     "lastUpdated": "2026-04-18"
   },
-  "複数名薬剤管理指導訪問料.html": {
-    "lastUpdated": "2026-04-19"
+  "在宅患者訪問薬剤管理指導料_算定間隔2026.html": {
+    "lastUpdated": "2026-05-06"
   },
-  "訪問薬剤管理医師同時指導料.html": {
-    "lastUpdated": "2026-04-19"
+  "複数名薬剤管理指導訪問料.html": {
+    "lastUpdated": "2026-05-06"
   },
   "調剤物価対応料.html": {
     "lastUpdated": "2026-04-19"
@@ -14,41 +14,38 @@ window.__pageMeta = {
   "門前薬局等立地依存減算.html": {
     "lastUpdated": "2026-04-19"
   },
-  "吸入薬指導加算2026.html": {
-    "lastUpdated": "2026-04-19"
+  "薬学的有害事象等防止加算.html": {
+    "lastUpdated": "2026-05-06"
   },
   "特掲診療料_施設基準届出_調剤関係2026.html": {
     "lastUpdated": "2026-04-03"
   },
-  "tools.html": {
-    "lastUpdated": "2026-04-30"
+  "index.html": {
+    "lastUpdated": "2026-05-11"
   },
   "調剤基本料フローチャート.html": {
     "lastUpdated": "2026-03-26"
   },
-  "服用薬剤調整支援料２_2026改定.html": {
-    "lastUpdated": "2026-04-19"
+  "訪問薬剤管理医師同時指導料.html": {
+    "lastUpdated": "2026-05-06"
   },
   "調剤報酬点数早見表2026.html": {
     "lastUpdated": "2026-03-31"
   },
-  "選定療養_概要2026.html": {
-    "lastUpdated": "2026-04-03"
-  },
   "調剤報酬改定2026_ダイジェスト.html": {
     "lastUpdated": "2026-04-05"
   },
-  "調剤報酬体系図_2026改定.html": {
-    "lastUpdated": "2026-03-28"
+  "gigi-search.html": {
+    "lastUpdated": "2026-04-15"
   },
   "別表第三_調剤報酬点数表2026.html": {
     "lastUpdated": "2026-04-10"
   },
-  "かかりつけ薬剤師訪問加算.html": {
-    "lastUpdated": "2026-05-01"
+  "服薬管理指導料.html": {
+    "lastUpdated": "2026-05-06"
   },
-  "updates.html": {
-    "lastUpdated": "2026-05-05"
+  "疑義解釈_その5_2026.html": {
+    "lastUpdated": "2026-05-09"
   },
   "別表Ⅴ_調剤行為名称等の略号一覧2026改定.html": {
     "lastUpdated": "2026-04-10"
@@ -59,14 +56,11 @@ window.__pageMeta = {
   "バイオ後続品調剤体制加算.html": {
     "lastUpdated": "2026-04-19"
   },
-  "薬学的有害事象等防止加算.html": {
-    "lastUpdated": "2026-05-04"
+  "調剤時残薬調整加算.html": {
+    "lastUpdated": "2026-05-06"
   },
-  "kaitei2026.html": {
-    "lastUpdated": "2026-05-03"
-  },
-  "在宅患者訪問薬剤管理指導料_算定間隔2026.html": {
-    "lastUpdated": "2026-04-19"
+  "選定療養_概要2026.html": {
+    "lastUpdated": "2026-05-07"
   },
   "在宅薬学総合体制加算2026.html": {
     "lastUpdated": "2026-04-19"
@@ -77,11 +71,11 @@ window.__pageMeta = {
   "調剤ベースアップ評価料.html": {
     "lastUpdated": "2026-04-19"
   },
-  "事務スタッフ向け_2026調剤報酬改定ポイント整理.html": {
-    "lastUpdated": "2026-05-03"
+  "調剤報酬体系図_2026改定.html": {
+    "lastUpdated": "2026-03-28"
   },
-  "index.html": {
-    "lastUpdated": "2026-05-05"
+  "かかりつけ薬剤師フォローアップ加算.html": {
+    "lastUpdated": "2026-05-06"
   },
   "調剤基本料_2026改定.html": {
     "lastUpdated": "2026-04-22"
@@ -89,14 +83,14 @@ window.__pageMeta = {
   "疑義解釈_その1_2026.html": {
     "lastUpdated": "2026-04-01"
   },
+  "tools.html": {
+    "lastUpdated": "2026-05-11"
+  },
   "服用薬剤調整支援料２_資格取得ステップ.html": {
     "lastUpdated": "2026-03-23"
   },
   "栄養保持を目的とした医薬品の保険給付の適正化.html": {
-    "lastUpdated": "2026-03-30"
-  },
-  "gigi-search.html": {
-    "lastUpdated": "2026-04-15"
+    "lastUpdated": "2026-05-07"
   },
   "調剤管理料_2026改定.html": {
     "lastUpdated": "2026-04-19"
@@ -110,14 +104,14 @@ window.__pageMeta = {
   "電子的調剤情報連携体制整備加算_2026改定.html": {
     "lastUpdated": "2026-04-19"
   },
-  "服薬管理指導料.html": {
-    "lastUpdated": "2026-04-29"
+  "updates.html": {
+    "lastUpdated": "2026-05-11"
   },
   "かかりつけ薬剤師_算定一覧2026.html": {
     "lastUpdated": "2026-04-01"
   },
-  "基礎的医薬品追加リストR8_4.html": {
-    "lastUpdated": "2026-04-19"
+  "kaitei2026.html": {
+    "lastUpdated": "2026-05-11"
   },
   "別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html": {
     "lastUpdated": "2026-05-02"
@@ -125,25 +119,37 @@ window.__pageMeta = {
   "地域支援医薬品供給対応体制加算_届出判定ツール.html": {
     "lastUpdated": "2026-04-06"
   },
-  "調剤時残薬調整加算.html": {
-    "lastUpdated": "2026-04-27"
+  "かかりつけ薬剤師訪問加算.html": {
+    "lastUpdated": "2026-05-06"
   },
   "【簡易版】かかりつけ薬剤師に関わる管理料・加算一覧.html": {
     "lastUpdated": "2026-04-02"
   },
-  "服薬管理指導料3・4_施設訪問・オンライン.html": {
-    "lastUpdated": "2026-05-03"
+  "吸入薬指導加算2026.html": {
+    "lastUpdated": "2026-05-06"
   },
   "疑義解釈_その2_2026.html": {
     "lastUpdated": "2026-04-29"
   },
+  "服用薬剤調整支援料２_2026改定.html": {
+    "lastUpdated": "2026-05-06"
+  },
   "knowledge.html": {
     "lastUpdated": "2026-04-30"
   },
-  "かかりつけ薬剤師フォローアップ加算.html": {
-    "lastUpdated": "2026-05-05"
+  "服薬管理指導料3・4_施設訪問・オンライン.html": {
+    "lastUpdated": "2026-05-06"
   },
   "別添3_調剤報酬点数表に関する事項2026.html": {
     "lastUpdated": "2026-05-02"
+  },
+  "基礎的医薬品追加リストR8_4.html": {
+    "lastUpdated": "2026-04-19"
+  },
+  "事務スタッフ向け_2026調剤報酬改定ポイント整理.html": {
+    "lastUpdated": "2026-05-11"
+  },
+  "_notice_followup_homon_heisanntei.html": {
+    "lastUpdated": "2026-05-11"
   }
 };
