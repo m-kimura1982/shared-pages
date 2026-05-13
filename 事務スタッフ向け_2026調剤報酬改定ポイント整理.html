@@ -388,10 +388,10 @@ tr:last-child td { border-bottom:none; }
       <div>
         <div class="sub-title">受付時の確認フロー</div>
         <div class="box-gray">
-          <div style="font-weight:700; font-size:var(--text-sm); margin-bottom:6px;">処方箋に以下のいずれかの記載があるか確認</div>
-          <div class="li"><span class="li-dot">①</span><span>手術後の患者である旨＋手術年月日</span></div>
-          <div class="li"><span class="li-dot">②</span><span>経管により栄養補給を行っている旨＋処置日</span></div>
-          <div class="li"><span class="li-dot">③</span><span>食事による摂取が困難な理由（医師の判断理由）</span></div>
+          <div style="font-weight:700; font-size:var(--text-sm); margin-bottom:6px;">処方箋備考欄に以下のいずれかの記載があるか確認</div>
+          <div class="li"><span class="li-dot">①</span><span>手術後の患者である旨</span></div>
+          <div class="li"><span class="li-dot">②</span><span>経管により栄養補給を行っている旨</span></div>
+          <div class="li"><span class="li-dot">③</span><span>投与が必要と判断した理由</span></div>
           <div class="divider"></div>
           <div class="li"><span class="li-dot">▶</span><span>記載あり → そのまま受付・保険請求OK</span></div>
           <div class="li"><span class="li-dot">▶</span><span><strong>記載なし → 疑義照会が必要</strong></span></div>
@@ -739,7 +739,7 @@ tr:last-child td { border-bottom:none; }
       <div>
         <div class="sub-title">概要</div>
         <div class="box-gray">
-          <div class="li"><span class="li-dot">・</span><span>かかりつけ薬剤師が患者の自宅を訪問し、残薬整理・服薬指導を行い、保険医療機関に情報提供した場合に算定</span></div>
+          <div class="li"><span class="li-dot">・</span><span>かかりつけ薬剤師が患者の自宅を訪問し、服薬管理の指導・残薬整理等を行い、保険医療機関に情報提供した場合に算定</span></div>
           <div class="li"><span class="li-dot">・</span><span>対象：服薬管理指導料１イまたは２イを算定している患者</span></div>
           <div class="li"><span class="li-dot">・</span><span>交通費は実費を患家から徴収できる（当社の取り扱いは各店舗の運用による）</span></div>
         </div>
@@ -892,7 +892,7 @@ tr:last-child td { border-bottom:none; }
           <div class="box-gray">
             <div class="li"><span class="li-dot">・</span><span>在宅訪問時に、<strong>訪問診療を行っている主治医と同時に</strong>患家を訪問した場合の新加算</span></div>
             <div class="li"><span class="li-dot">・</span><span>対象：単一建物1人の在宅患者</span></div>
-            <div class="li"><span class="li-dot">・</span><span>同行する医師が<strong>在宅時医学総合管理料（在医総管）を算定している主治医</strong>であることが条件（単発の往診医・他科専門医は対象外の場合あり）</span></div>
+            <div class="li"><span class="li-dot">・</span><span>同行する医師が<strong>在宅時医学総合管理料を算定している主治医</strong>であることが条件（単発の往診医・他科専門医は対象外の場合あり）</span></div>
             <div class="li"><span class="li-dot">・</span><span>交通費は実費を患家から徴収できる（当社の取り扱いは各店舗の運用による）</span></div>
           </div>
         </div>
@@ -1016,6 +1016,32 @@ tr:last-child td { border-bottom:none; }
             </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+
+    <div id="s_shoni_mukin" style="margin-top:20px; padding-top:20px; border-top:var(--bw-h) solid var(--border);">
+      <div style="font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--ink); padding-bottom:6px; margin-bottom:12px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+        <span>小児用無菌製剤処理加算（対象年齢拡大）</span>
+        <span class="badge badge-blue">変更</span>
+      </div>
+      <div class="input-loc"><span class="input-loc-label">入力位置</span><span class="input-loc-value">在宅関連の薬学管理料</span></div>
+      <div class="grid-2">
+        <div>
+          <div class="sub-title">何が変わった</div>
+          <div class="box-gray">
+            <div class="li"><span class="li-dot">・</span><span>小児加算の対象年齢：<span class="val-old">６歳未満の乳幼児</span> → <span class="val-new">15歳未満の小児</span></span></div>
+            <div class="divider"></div>
+            <div class="li"><span class="li-dot">・</span><span>中心静脈栄養法用輸液（小児）：<span class="val-old">137点</span> → <span class="val-new">237点</span>（引き上げ）</span></div>
+            <div class="li"><span class="li-dot">・</span><span>抗悪性腫瘍剤・麻薬：点数据え置き（対象年齢のみ拡大）</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="sub-title">受付・確認のポイント</div>
+          <div class="box-gray">
+            <div class="li"><span class="li-dot">・</span><span>15歳未満まで対象が拡大したことで、これまで対象外だった<strong>小学生・中学生</strong>も加算算定が可能に。</span></div>
+            <div class="li"><span class="li-dot">・</span><span>在宅でIVH・抗がん剤・麻薬の無菌調製を行っている薬局は、対象患者の年齢を改めて確認。</span></div>
+          </div>
+        </div>
       </div>
     </div>
 
