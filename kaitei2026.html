@@ -119,7 +119,7 @@
 
       /* ── 特別カード（ダイジェスト） ── */
       .overview-cards {
-        display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.5rem;
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 1.5rem;
       }
       .card-digest {
         display: flex; align-items: center; gap: 14px;
@@ -322,8 +322,25 @@
             </svg>
           </div>
           <div class="digest-body">
-            <div class="digest-title">事務スタッフ向け 改定ポイント整理</div>
+            <div class="digest-title">事務スタッフ向け<br>改定ポイント整理</div>
             <div class="digest-desc">受付・入力・会計に関わる改定を整理　摘要欄入力対応表付き</div>
+          </div>
+          <span class="digest-arrow">›</span>
+        </a>
+        <a class="card-digest" href="事務スタッフ向け_2026改定サマリ.html" data-new-until="2026-05-28">
+          <div class="digest-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="8" y1="6" x2="21" y2="6"/>
+              <line x1="8" y1="12" x2="21" y2="12"/>
+              <line x1="8" y1="18" x2="21" y2="18"/>
+              <line x1="3" y1="6" x2="3.01" y2="6"/>
+              <line x1="3" y1="12" x2="3.01" y2="12"/>
+              <line x1="3" y1="18" x2="3.01" y2="18"/>
+            </svg>
+          </div>
+          <div class="digest-body">
+            <div class="digest-title">事務スタッフ向け<br>改定サマリ</div>
+            <div class="digest-desc">各項目の「何が変わったか」を要点のみ抜粋した一覧</div>
           </div>
           <span class="digest-arrow">›</span>
         </a>

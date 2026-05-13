@@ -88,8 +88,21 @@
     // 91日以上前は表示しない
     if (diffDays > 90) return;
 
+    // newUntil が設定されており今日以前 → NEW バッジを優先表示
+    let isNewActive = false;
+    if (entry.newUntil) {
+      const newUntil = new Date(entry.newUntil + 'T23:59:59');
+      if (!isNaN(newUntil.getTime()) && today <= newUntil) {
+        isNewActive = true;
+      }
+    }
+
     let el;
-    if (diffDays <= 1) {
+    if (isNewActive) {
+      el = document.createElement('span');
+      el.className = 'lu-pill';
+      el.innerHTML = `<span class="lu-pill-badge">NEW</span>`;
+    } else if (diffDays <= 1) {
       // 今日 / 昨日 → ピル型バッジ + 相対表記
       const when = diffDays <= 0 ? '今日' : '昨日';
       el = document.createElement('span');

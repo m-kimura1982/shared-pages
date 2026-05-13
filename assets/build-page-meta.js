@@ -33,6 +33,17 @@ for (const hash of allCommits) {
   } catch (e) {}
 }
 
+// 既存の page-meta.json から手動メタ（newUntil 等）を読み込んで保持
+const jsonPathExisting = path.join(__dirname, 'page-meta.json');
+let existingMeta = {};
+try {
+  if (fs.existsSync(jsonPathExisting)) {
+    existingMeta = JSON.parse(fs.readFileSync(jsonPathExisting, 'utf8'));
+  }
+} catch (e) {
+  console.warn(`既存 page-meta.json の読み込みに失敗: ${e.message}`);
+}
+
 const meta = {};
 for (const f of files) {
   try {
@@ -52,7 +63,16 @@ for (const f of files) {
     }
     // 全部 bulk だった場合は最新を採用
     if (!date && log.length > 0) date = log[0].split(' ')[1];
-    if (date) meta[f] = { lastUpdated: date };
+    if (date) {
+      meta[f] = { lastUpdated: date };
+      // 既存の newUntil 等の手動フィールドを引き継ぐ
+      const prev = existingMeta[f];
+      if (prev) {
+        for (const key of Object.keys(prev)) {
+          if (key !== 'lastUpdated') meta[f][key] = prev[key];
+        }
+      }
+    }
   } catch (e) {
     console.warn(`skip ${f}: ${e.message}`);
   }
