@@ -364,7 +364,7 @@
               <div class="card-title">実績要件チェック：加算２・３（調剤基本料１）</div>
               <div style="font-size:var(--text-sm);margin-bottom:8px">計算期間：<strong>前年5月1日〜当年4月末日</strong>（同一グループ勤務者・その家族に係る実績・処方箋受付回数を除く）</div>
               <div class="box-gray" style="font-size:var(--text-xs);margin-bottom:12px;">
-                <strong>1万回換算ルール（ケを除く全項目）：</strong>各項目の判定回数 ＝ 基準回数 × 直近1年間の処方箋受付回数 ÷ 10,000。処方箋受付回数が<strong>1万回未満の場合は1万回とみなして計算</strong>（判定回数 ＝ 基準回数のまま）。ケのみ処方箋受付回数に関係なく薬局全体の1年間の実績で判定。
+                <strong>1万回換算ルール（ケを除く全項目）：</strong>各項目の判定回数 ＝ 基準回数 × 直近1年間の処方箋受付回数 ÷ 10,000。処方箋受付回数が<strong>1万回未満の場合は1万回とみなして計算</strong>（判定回数 ＝ 基準回数のまま）。ケのみ処方箋受付回数に関係なく薬局全体の1年間の実績で判定。<br><strong>表記ルール：</strong>判定回数は<strong>小数点第2位を四捨五入し小数点第1位まで</strong>記載する（令和6年告示の様式87の3の2 記載要領による。令和8年改定で明記は省かれているが変更通知がないため従前ルールを踏襲）。
               </div>
               <div class="rxcount-wrap">
                 <label for="rx2">直近1年間の処方箋受付回数：</label>
@@ -498,7 +498,7 @@
               <div class="card-title">実績要件チェック：加算４・５（調剤基本料１以外）</div>
               <div style="font-size:var(--text-sm);margin-bottom:8px">計算期間：<strong>前年5月1日〜当年4月末日</strong>（同一グループ勤務者・その家族に係る実績・処方箋受付回数を除く）</div>
               <div class="box-gray" style="font-size:var(--text-xs);margin-bottom:12px;">
-                <strong>1万回換算ルール（ケを除く全項目）：</strong>各項目の判定回数 ＝ 基準回数 × 直近1年間の処方箋受付回数 ÷ 10,000。処方箋受付回数が<strong>1万回未満の場合は1万回とみなして計算</strong>（判定回数 ＝ 基準回数のまま）。ケのみ処方箋受付回数に関係なく薬局全体の1年間の実績で判定。
+                <strong>1万回換算ルール（ケを除く全項目）：</strong>各項目の判定回数 ＝ 基準回数 × 直近1年間の処方箋受付回数 ÷ 10,000。処方箋受付回数が<strong>1万回未満の場合は1万回とみなして計算</strong>（判定回数 ＝ 基準回数のまま）。ケのみ処方箋受付回数に関係なく薬局全体の1年間の実績で判定。<br><strong>表記ルール：</strong>判定回数は<strong>小数点第2位を四捨五入し小数点第1位まで</strong>記載する（令和6年告示の様式87の3の2 記載要領による。令和8年改定で明記は省かれているが変更通知がないため従前ルールを踏襲）。
               </div>
               <div class="rxcount-wrap">
                 <label for="rx4">直近1年間の処方箋受付回数：</label>
@@ -1096,7 +1096,11 @@
     function calcTh(base, rx, isKe) {
       if (isKe) return base;
       const r = (!rx || rx < 10000) ? 10000 : rx;
-      return Math.ceil(base * r / 10000);
+      // 届出は小数点第2位を四捨五入し小数点第1位まで記載
+      return Math.round(base * r / 10000 * 10) / 10;
+    }
+    function fmtTh(th, isKe) {
+      return isKe ? th + '回' : th.toFixed(1) + '回';
     }
 
     function getJisseki2() {
@@ -1144,7 +1148,7 @@
         const th = calcTh(BASE2[k], rx, isKe);
         const thEl = document.getElementById('th2-'+k);
         if (thEl && !isKe) {
-          thEl.textContent = th+'回';
+          thEl.textContent = fmtTh(th, isKe);
           const thSpan = thEl.closest('.count-threshold');
           if (thSpan) thSpan.classList.toggle('has-val', rx !== null);
         }
@@ -1173,7 +1177,7 @@
         const th = calcTh(BASE4[k], rx, isKe);
         const thEl = document.getElementById('th4-'+k);
         if (thEl && !isKe) {
-          thEl.textContent = th+'回';
+          thEl.textContent = fmtTh(th, isKe);
           const thSpan = thEl.closest('.count-threshold');
           if (thSpan) thSpan.classList.toggle('has-val', rx !== null);
         }
@@ -1379,7 +1383,7 @@
         const th = calcTh(BASE2[k], rx2, k==='i');
         const v = getVal('c2-'+k);
         const ok = v !== null && v >= th;
-        html += `<tr><td>${LABELS[k]}　${itemNames[k]}</td><td>${BASE2[k]}回</td><td>${k==='i'?BASE2[k]+'回':th+'回'}</td>
+        html += `<tr><td>${LABELS[k]}　${itemNames[k]}</td><td>${BASE2[k]}回</td><td>${fmtTh(th, k==='i')}</td>
           <td>${v !== null ? v+'回' : '—'}</td><td class="${v===null?'':'(ok?\'ok\':\'ng\')'}">${v===null?'—':ok?'達成':'未達'}</td></tr>`;
       });
       html += `</table>`;
@@ -1392,7 +1396,7 @@
         const th = calcTh(BASE4[k], rx4, k==='i');
         const v = getVal('c4-'+k);
         const ok = v !== null && v >= th;
-        html += `<tr><td>${LABELS[k]}　${itemNames[k]}</td><td>${BASE4[k]}回</td><td>${k==='i'?BASE4[k]+'回':th+'回'}</td>
+        html += `<tr><td>${LABELS[k]}　${itemNames[k]}</td><td>${BASE4[k]}回</td><td>${fmtTh(th, k==='i')}</td>
           <td>${v !== null ? v+'回' : '—'}</td><td>${v===null?'—':ok?'✅ 達成':'✗ 未達'}</td></tr>`;
       });
       html += `</table></body></html>`;
