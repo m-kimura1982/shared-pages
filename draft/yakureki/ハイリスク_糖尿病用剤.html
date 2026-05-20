@@ -237,6 +237,23 @@
       .tpl-mini .copy-mini:hover { background: #e5e7eb; border-color: #9ca3af; }
       .tpl-mini .copy-mini.copied { background: var(--good-border); color: #fff; border-color: var(--good-border); }
 
+      /* モバイル：tpl-mini を縦積みにする（タグが横圧縮で縦長になる対策） */
+      @media (max-width: 640px) {
+        .tpl-mini {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 6px;
+          padding-bottom: 30px;
+        }
+        .tpl-mini .tpl-tag {
+          align-self: flex-start;
+          max-width: 100%;
+          white-space: normal;
+        }
+        .tpl-mini .tpl-text { padding-right: 0; }
+        .tpl-mini .copy-mini { top: auto; bottom: 6px; right: 8px; }
+      }
+
       /* インスリン誘導 */
       .pivot-box {
         display: block;
