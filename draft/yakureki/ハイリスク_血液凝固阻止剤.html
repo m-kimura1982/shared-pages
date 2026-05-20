@@ -1,0 +1,931 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>ハイリスク薬｜血液凝固阻止剤｜薬歴マニュアル</title>
+    <meta property="og:title" content="ハイリスク薬の薬歴記載｜血液凝固阻止剤" />
+    <meta property="og:description" content="特定薬剤管理指導加算1の薬歴記載例。血液凝固阻止剤（ワーファリン／DOAC／抗血小板薬）について、薬効群ごとに「何を確認し、どう指導し、薬歴にどう残すか」を整理した試作ページ。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://m-kimura1982.github.io/shared-pages/draft/yakureki/ハイリスク_血液凝固阻止剤.html" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="yakureki.css" />
+    <style>
+      /* 薬剤群ブロック */
+      .drug-block {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-left: 3px solid #d1d5db;
+        border-radius: var(--radius-sm);
+        padding: 16px 18px;
+        margin-bottom: 16px;
+      }
+      .drug-block-head {
+        display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+        margin-bottom: 8px; padding-bottom: 6px;
+        border-bottom: 1px dashed var(--border);
+      }
+      .drug-block-name { font-size: 16px; font-weight: 700; color: var(--ink); }
+      .drug-block-sub  { font-size: 12px; color: var(--sub); }
+
+      /* テンプレ直上の注意（重要語のみ赤） */
+      .tpl-warn {
+        background: #fafafa;
+        border-left: 3px solid #cc0000;
+        border-radius: 4px;
+        padding: 10px 14px;
+        margin: 12px 0 8px;
+        font-size: 12.5px;
+        line-height: 1.7;
+        color: var(--ink);
+      }
+      .tpl-warn-title {
+        font-weight: 700; color: var(--ink);
+        font-size: 13px; margin-bottom: 4px;
+      }
+      .tpl-warn ul { margin: 4px 0 0 20px; padding: 0; }
+      .tpl-warn ul li { margin-bottom: 2px; }
+      .tpl-warn strong { color: #cc0000; font-weight: 700; }
+
+      /* 短文テンプレ（基本 / 追記） */
+      .tpl-set { margin-top: 8px; }
+      .tpl-mini {
+        display: flex; align-items: flex-start; gap: 8px;
+        background: #fff; border: 1px solid #dfe4ea;
+        border-radius: 6px; padding: 8px 12px; margin-bottom: 6px;
+        position: relative;
+      }
+      .tpl-mini .tpl-tag {
+        flex-shrink: 0; font-size: 10px; font-weight: 700;
+        padding: 2px 8px; border-radius: 100px;
+        letter-spacing: .04em; line-height: 1.6;
+        white-space: nowrap;
+      }
+      .tpl-mini .tpl-tag.base   { background: var(--blue-light); color: var(--blue); }
+      .tpl-mini .tpl-tag.init   { background: var(--blue-light); color: var(--blue); }
+      .tpl-mini .tpl-tag.change { background: #e0f2f1; color: #0d9488; border: none; }
+      .tpl-mini .tpl-tag.add    { background: #f2f4f8; color: #4b5563; border: 1px solid #d7dce3; }
+      .tpl-mini .tpl-tag.se     { background: #fef3e8; color: #c2701c; border: 1px solid #f5d4a1; }
+
+      /* 薬剤ブロック内：この薬で確認すること */
+      .drug-check-box {
+        background: #f7f8fa;
+        border: 1px solid #e1e5ea;
+        border-left: 3px solid var(--blue);
+        border-radius: 4px;
+        padding: 10px 14px;
+        margin: 8px 0 12px;
+      }
+      .drug-check-box-title {
+        font-weight: 700; color: var(--blue);
+        font-size: 12px; letter-spacing: .04em;
+        margin-bottom: 4px;
+      }
+      .drug-check-box ul { margin: 0; padding-left: 20px; }
+      .drug-check-box ul li { font-size: 12.5px; line-height: 1.7; margin-bottom: 2px; }
+
+      /* 折りたたみ式 指導補足 */
+      .guide-details {
+        margin: 10px 0 14px;
+        border: 1px solid #c9def5;
+        border-radius: 4px;
+        background: #fafcff;
+      }
+      .guide-details summary {
+        cursor: pointer; padding: 10px 14px;
+        font-size: 13px; font-weight: 700;
+        color: var(--blue);
+        background: #eff5fc;
+        list-style: none;
+        border-radius: 4px;
+        display: flex; align-items: center; gap: 8px;
+      }
+      .guide-details[open] summary {
+        border-radius: 4px 4px 0 0;
+        border-bottom: 1px solid #c9def5;
+      }
+      .guide-details summary:hover { background: #e3edf8; }
+      .guide-details summary::-webkit-details-marker { display: none; }
+      .guide-details summary::before {
+        content: "▶";
+        font-size: 11px;
+        display: inline-block;
+        transition: transform 0.15s;
+      }
+      .guide-details[open] summary::before { transform: rotate(90deg); }
+      .guide-details summary::after {
+        content: "クリックで展開";
+        margin-left: auto;
+        font-size: 11px; font-weight: 400;
+        color: var(--sub);
+      }
+      .guide-details[open] summary::after { content: "クリックで閉じる"; }
+      .guide-details-body {
+        padding: 0 16px 12px; font-size: 13px; line-height: 1.75;
+      }
+      .guide-details-body h4 {
+        font-size: 13px; font-weight: 700;
+        margin: 8px 0 4px; color: var(--ink);
+      }
+      .guide-details-body p { margin: 4px 0; }
+      .guide-details-body ul { margin: 4px 0; padding-left: 22px; }
+      .guide-details-body ul li { margin-bottom: 2px; }
+      .guide-details-body .patient-say {
+        background: #fff; border-left: 3px solid #c9def5;
+        padding: 6px 10px; margin-top: 6px;
+        font-size: 12.5px; color: var(--sub);
+      }
+
+      /* 薬剤名索引 */
+      .drug-index {
+        background: #fafbfc;
+        border: 1px solid #e1e5ea;
+        border-radius: 6px;
+        padding: 12px 16px;
+        margin-bottom: 16px;
+      }
+      .drug-index-title {
+        font-size: 12px; font-weight: 700;
+        color: var(--blue);
+        letter-spacing: .04em;
+        margin-bottom: 8px;
+      }
+      .drug-index-row {
+        display: flex; align-items: baseline; gap: 6px;
+        flex-wrap: wrap; margin-bottom: 4px; font-size: 12px;
+      }
+      .drug-index-row .di-group {
+        color: var(--sub); font-weight: 700;
+        min-width: 5.5em; flex-shrink: 0;
+      }
+      .drug-index-row a {
+        background: #fff; border: 1px solid #d7dce3;
+        border-radius: 100px; padding: 2px 9px;
+        color: var(--ink); text-decoration: none;
+        white-space: nowrap;
+      }
+      .drug-index-row a:hover {
+        background: var(--blue); color: #fff; border-color: var(--blue);
+      }
+
+      .tag-legend {
+        display: flex; flex-wrap: wrap; gap: 10px;
+        margin: 8px 0 16px; font-size: 12px; color: var(--sub);
+      }
+      .tag-legend span { display: inline-flex; align-items: center; gap: 4px; }
+      .tag-legend i {
+        display: inline-block; width: 10px; height: 10px; border-radius: 2px;
+      }
+      .tpl-mini .tpl-text {
+        flex: 1; font-size: 13px; line-height: 1.7;
+        padding-right: 56px; white-space: pre-wrap;
+      }
+      .tpl-mini .copy-mini {
+        position: absolute; top: 7px; right: 8px;
+        background: #f3f4f6; color: #374151; border: 1px solid #d1d5db;
+        border-radius: 4px; font-size: 11px; font-weight: 700;
+        padding: 3px 8px; cursor: pointer;
+        font-family: "Noto Sans JP", sans-serif;
+      }
+      .tpl-mini .copy-mini:hover { background: #e5e7eb; border-color: #9ca3af; }
+      .tpl-mini .copy-mini.copied { background: var(--good-border); color: #fff; border-color: var(--good-border); }
+
+      /* モバイル：tpl-mini を縦積みにする */
+      @media (max-width: 640px) {
+        .tpl-mini {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 6px;
+          padding-bottom: 30px;
+        }
+        .tpl-mini .tpl-tag {
+          align-self: flex-start;
+          max-width: 100%;
+          white-space: normal;
+        }
+        .tpl-mini .tpl-text { padding-right: 0; }
+        .tpl-mini .copy-mini { top: auto; bottom: 6px; right: 8px; }
+      }
+
+      .warn-box ul { padding-left: 22px; margin-top: 4px; }
+      .warn-box ul li { margin-bottom: 4px; line-height: 1.7; }
+
+      /* SECTION 1 確認事項 - 簡潔dl */
+      .ci-list dt {
+        font-size: 14px; font-weight: 700; color: var(--ink);
+        background: #f2f4f8; padding: 8px 14px; border-radius: 4px;
+        margin-top: 10px;
+      }
+      .ci-list dd {
+        padding: 6px 14px 6px 14px; font-size: 13px; line-height: 1.75;
+      }
+      .ci-list dd .ci-l { display: inline-block; min-width: 4.5em; font-weight: 700; color: var(--blue); }
+
+      /* ===== サイドスティッキー目次（PC 880px+） ===== */
+      [id] { scroll-margin-top: 16px; }
+      .sticky-toc { display: none; }
+
+      @media (min-width: 880px) {
+        .layout-outer {
+          max-width: 1240px;
+          margin: 0 auto;
+          padding: 28px 20px 0;
+          display: grid;
+          grid-template-columns: 220px minmax(0, 1fr);
+          gap: 28px;
+          align-items: start;
+        }
+        .layout-outer .page-head { max-width: none; margin: 0 0 16px; padding: 0; }
+        .layout-outer main { max-width: none; margin: 0; padding: 0; }
+
+        .sticky-toc {
+          display: block;
+          position: sticky;
+          top: 20px;
+          background: var(--white);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-sm);
+          padding: 12px 8px 14px;
+          max-height: calc(100vh - 40px);
+          overflow-y: auto;
+          scrollbar-width: thin;
+          scrollbar-color: var(--border) transparent;
+        }
+        .sticky-toc::-webkit-scrollbar { width: 4px; }
+        .sticky-toc::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+        .sticky-toc-head {
+          padding: 0 8px 8px;
+          margin-bottom: 6px;
+          border-bottom: 1px solid var(--border);
+        }
+        .sticky-toc-label {
+          display: block;
+          font-size: 11px;
+          font-weight: 700;
+          color: var(--blue);
+          letter-spacing: 0.12em;
+        }
+        .sticky-toc-group {
+          font-size: 10px;
+          font-weight: 700;
+          color: var(--sub);
+          letter-spacing: 0.08em;
+          padding: 10px 10px 4px;
+          margin-top: 4px;
+        }
+        .sticky-toc a {
+          display: block;
+          font-size: 13px;
+          color: var(--ink);
+          text-decoration: none;
+          padding: 5px 10px;
+          border-radius: 4px;
+          line-height: 1.45;
+          border-left: 3px solid transparent;
+          margin-bottom: 1px;
+          transition: background 0.12s, color 0.12s, border-color 0.12s;
+        }
+        .sticky-toc a:hover {
+          background: var(--blue-light);
+          color: var(--blue);
+        }
+        .sticky-toc a.is-active {
+          background: var(--blue-light);
+          color: var(--blue);
+          font-weight: 700;
+          border-left-color: var(--blue);
+        }
+      }
+      @media print {
+        .sticky-toc { display: none !important; }
+        .layout-outer { display: block !important; padding: 0; }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="draft-banner">⚠ 非公開作業中ページ｜内容は精査中のため公開ナビゲーションには掲載していません</div>
+
+    <header>
+      <div class="header-inner">
+        <a href="../../index.html" class="back-link">← 調剤報酬まとめTOP</a>
+        <span class="site-title">調剤報酬まとめ</span>
+      </div>
+    </header>
+
+    <div class="layout-outer">
+
+    <nav class="sticky-toc" aria-label="目次">
+      <div class="sticky-toc-head">
+        <span class="sticky-toc-label">CONTENTS</span>
+      </div>
+      <a href="#section1">共通確認ポイント</a>
+      <a href="#section2">薬剤群別テンプレート</a>
+      <div class="sticky-toc-group">▼ 薬剤群</div>
+      <a href="#warfarin">ワーファリン</a>
+      <a href="#doac">DOAC</a>
+      <a href="#antiplatelet">抗血小板薬</a>
+      <div class="sticky-toc-group">▼ その他</div>
+      <a href="#heparin-note">ヘパリン類の扱い</a>
+      <a href="#section3">変化に基づくロ（判断理由）</a>
+    </nav>
+
+    <div>
+
+    <div class="page-head">
+      <span class="page-tag">HIGH-RISK 05</span>
+      <h1 class="page-title">血液凝固阻止剤</h1>
+      <p class="page-desc">
+        特定薬剤管理指導加算1の対象となる血液凝固阻止剤（ワーファリン／DOAC／抗血小板薬）について、<strong>新規処方（イ）・用法用量変更（ロ）・副作用や服薬状況等の変化に基づくロ</strong>の薬歴記載例を整理したページです。<br />
+        変更のあった薬から、確認事項・指導内容・薬歴記載例を探せるようにしています。<br />
+        日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」血液凝固阻止剤の確認事項を参考にしています。
+      </p>
+    </div>
+
+    <main>
+
+      <!-- ============================================================
+           § 1  共通確認ポイント
+           ============================================================ -->
+      <section id="section1">
+        <div class="section-label">SECTION 1</div>
+        <h2 class="section-title">血液凝固阻止剤の共通確認ポイント</h2>
+        <p style="font-size:13px;color:var(--sub);margin-bottom:12px;">
+          血液凝固阻止剤に共通する確認・指導の考え方を整理しています。<br />
+          具体的な確認事項と記載例は、SECTION 2 の薬剤群別ブロックにまとめています。
+        </p>
+
+        <details class="guide-details">
+          <summary>共通確認ポイント（日薬GL 6項目）を見る</summary>
+          <div class="guide-details-body">
+            <dl class="ci-list" style="margin:0;">
+              <dt>① 患者に対する処方内容の確認</dt>
+              <dd>薬剤名・用法・用量・服用タイミング等を確認</dd>
+
+              <dt>② アドヒアランスの確認</dt>
+              <dd>飲み忘れ・残薬の有無、服薬の継続状況／自己判断で中止していないかを確認</dd>
+
+              <dt>③ 副作用モニタリング・重篤副作用発生時の対処方法の教育</dt>
+              <dd>出血症状（鼻血・歯ぐき出血・あざ・血尿・黒色便・止まりにくい出血等）の自覚と、出現時の対処（自己判断で中止せず医療機関または薬局へ連絡）の指導を確認</dd>
+
+              <dt>④ 効果の確認</dt>
+              <dd>適正な用量、可能な場合は検査値（PT-INR等）のモニター。年齢・腎機能・体重等に応じた用量妥当性も確認</dd>
+
+              <dt>⑤ 併用薬・食事との相互作用の確認</dt>
+              <dd>抗血小板薬・抗凝固薬・NSAIDs・抗菌薬・OTC・サプリメント等の併用、ワーファリンの場合は納豆・クロレラ・青汁等のビタミンK含有食品の摂取状況を確認</dd>
+
+              <dt>⑥ 抜歯・手術・内視鏡時の対応の確認</dt>
+              <dd>処置予定の有無を確認し、自己判断で中止せず、事前に主治医・処置施行医へ服用中であることを伝えるよう指導</dd>
+            </dl>
+            <p style="font-size:12px;color:var(--sub);margin-top:8px;">※ 出典：日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」(5)血液凝固阻止剤</p>
+            <p style="font-size:12px;color:var(--blue);margin-top:8px;font-weight:700;">→ 各薬剤群ごとの具体的な指導内容は SECTION 2 を参照</p>
+          </div>
+        </details>
+
+        <p style="font-size:12px;color:var(--sub);margin-top:8px;">
+          ※ ヘパリン類（自己注射）は処方頻度が低く、注射手技・HIT等の別論点があるため、本ページの定型テンプレ対象外としています（末尾の注記を参照）。
+        </p>
+        <p style="font-size:12px;color:var(--sub);margin-top:6px;">
+          出典：日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」血液凝固阻止剤
+        </p>
+      </section>
+
+      <!-- ============================================================
+           § 2  薬剤群別テンプレート（初回イ／変更ロ／副作用説明の追記／必要時追記）
+           ============================================================ -->
+      <section id="section2">
+        <div class="section-label">SECTION 2</div>
+        <h2 class="section-title">薬剤群別テンプレート</h2>
+        <p style="font-size:13px;color:var(--sub);margin-bottom:8px;">
+          薬歴を作成する際は、<strong>新規処方または変更があった薬剤群</strong>を確認し、患者の状況に近い記載例を参考にしてください。必要に応じて、確認した内容や追加で行った指導を追記してください。<br />
+          本ページは、特定薬剤管理指導加算1のうち、<strong>新規処方時のイ、用法・用量変更時のロ、副作用や服薬状況等の変化に基づくロ</strong>を想定した薬歴記載例です。継続処方時の通常確認を記録するためのテンプレートではありません。<br />
+          <span style="font-size:12px;">※ 出血症状・自己判断で中止しないこと・抜歯/手術/内視鏡時の事前相談は、全薬剤群共通の核として初回イ本体に含めています。</span><br />
+          <span style="font-size:12px;">※ 抜歯・手術・内視鏡前の休薬日数は患者ごと・処置ごとに異なるため、テンプレには入れず「自己判断で中止せず事前相談」にとどめています。</span>
+        </p>
+        <div class="tpl-warn" style="margin:12px 0;">
+          <div class="tpl-warn-title">副作用説明の記載について</div>
+          副作用に関する記載例は、<strong>実際に説明した内容に応じて追記</strong>してください。出血症状は全薬剤群共通の核として初回イ本体に含めています。<strong>まれな重篤副作用</strong>（ワーファリンの皮膚壊死、抗血小板薬のTTP等）は、患者さんへ不安を与えすぎないよう、<strong>症状と相談・受診の目安を中心に説明</strong>します。薬歴上で説明内容を明確に残したい場合は、<strong>「副作用説明の追記」から該当するものを追加</strong>してください。
+        </div>
+        <div class="tag-legend">
+          <span><i style="background:var(--blue-light);border:1px solid var(--blue)"></i>初回イ（新規／併用下追加／高齢例 など）</span>
+          <span><i style="background:#e0f2f1;border:1px solid #0d9488"></i>変更ロ（用量変更／PT-INR変動／腎機能変化 など）</span>
+          <span><i style="background:#f2f4f8;border:1px solid #d7dce3"></i>必要時追記</span>
+          <span><i style="background:#fef3e8;border:1px solid #f5d4a1"></i>副作用説明の追記（説明した分だけ追加）</span>
+        </div>
+
+        <div class="drug-index">
+          <div class="drug-index-title">薬剤名から探す</div>
+          <div class="drug-index-row">
+            <span class="di-group">ワーファリン</span>
+            <a href="#warfarin">ワーファリン</a>
+          </div>
+          <div class="drug-index-row">
+            <span class="di-group">DOAC</span>
+            <a href="#doac">リクシアナ</a><a href="#doac">エリキュース</a><a href="#doac">イグザレルト</a><a href="#doac">プラザキサ</a>
+          </div>
+          <div class="drug-index-row">
+            <span class="di-group">抗血小板薬</span>
+            <a href="#antiplatelet">バイアスピリン</a><a href="#antiplatelet">プラビックス</a><a href="#antiplatelet">エフィエント</a><a href="#antiplatelet">ブリリンタ</a><a href="#antiplatelet">プレタール</a>
+          </div>
+        </div>
+
+        <!-- ワーファリン -->
+        <div class="drug-block" id="warfarin">
+          <div class="drug-block-head">
+            <span class="drug-block-name">ワーファリン</span>
+            <span class="drug-block-sub">ワルファリンカリウム（ワーファリン）</span>
+          </div>
+
+          <div class="drug-check-box">
+            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
+            <ul>
+              <li>処方内容・用法用量／PT-INRの推移・目標値（年齢・適応で異なる）</li>
+              <li>出血症状（鼻血・歯ぐき出血・あざ・血尿・黒色便・止まりにくい出血等）の有無</li>
+              <li>食事（<strong>納豆・クロレラ・青汁の摂取</strong>／緑黄色野菜の大量摂取／飲酒）</li>
+              <li>併用薬（抗血小板薬・NSAIDs・抗菌薬・OTC・サプリメント等）の有無</li>
+              <li>抜歯・手術・内視鏡予定の有無</li>
+              <li>飲み忘れ時の対応理解／服薬の継続状況</li>
+              <li>高齢・腎機能・肝機能／家族支援の有無</li>
+            </ul>
+            <p style="font-size:11px;color:var(--sub);margin-top:6px;">※ 日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」血液凝固阻止剤 を参考</p>
+          </div>
+
+          <details class="guide-details">
+            <summary>指導時の補足</summary>
+            <div class="guide-details-body">
+              <h4>薬効の説明ポイント</h4>
+              <p>ビタミンKの働きを抑えることで凝固因子の合成を妨げ、<strong>血液を固まりにくくして血栓を防ぐ薬</strong>。効果はPT-INRで評価する。食事・併用薬の影響を受けやすく、自己判断で中止すると血栓リスクが上がるため継続が重要。</p>
+
+              <h4>患者への伝え方</h4>
+              <ul>
+                <li>毎日決まった時間に服用、自己判断で中止しない</li>
+                <li>鼻血・歯ぐき出血・あざ・血尿・黒色便・止まりにくい出血があれば早めに連絡</li>
+                <li>納豆・クロレラ・青汁は摂取を避ける（ビタミンKで効果が弱まる）</li>
+                <li>緑黄色野菜は普段通りの量を意識（急に大量摂取・急に止めると効果変動）</li>
+                <li>抜歯・手術・内視鏡予定があれば事前に主治医・施行医に服用中であることを伝える</li>
+                <li>OTC・サプリ・他院処方は薬剤師に必ず確認</li>
+              </ul>
+
+              <h4>PT-INR目標値（背景知識）</h4>
+              <p>PT-INRの目標域は<strong>適応疾患・年齢・塞栓リスク・出血リスクにより異なる</strong>。テンプレでは固定値を書かず<strong>「目標値・直近値を確認」</strong>にとどめ、薬歴では<strong>医師の設定した目標値と直近値を確認して記載</strong>するのが安全。</p>
+              <ul>
+                <li>非弁膜症性心房細動（NVAF）：1.6〜2.6 が目安となる場面（年齢・出血リスクで2.0〜3.0も考慮）</li>
+                <li>機械弁置換後：弁の位置・種類で目標域が異なるため、主治医の設定した目標値を確認する</li>
+                <li>僧帽弁狭窄症に伴う心房細動：2.0〜3.0 を目標とする記載がある</li>
+                <li>静脈血栓塞栓症：2.0〜3.0</li>
+              </ul>
+              <p>※ 上記は一般的な目安。患者ごとの目標値は主治医の判断に従う。</p>
+
+              <h4>出血症状（背景知識）</h4>
+              <p>軽い出血（鼻血・歯ぐき出血・あざ）は服用中に起こりうるが、<strong>止まりにくい・量が多い・繰り返す</strong>場合は要相談。<strong>黒色便・血尿・激しい頭痛・嘔吐・視力異常・麻痺</strong>等は重篤な出血（消化管出血・脳出血等）の可能性があるため、速やかに受診するよう伝える。</p>
+
+              <h4>食品・サプリの相互作用（背景知識）</h4>
+              <p><strong>納豆・クロレラ・青汁</strong>はビタミンKを多量に含み、ワーファリンの効果を顕著に減弱させるため摂取を避けるよう指導（PMDAも注意喚起）。緑黄色野菜は普段通りの量なら問題ないが、急な大量摂取・急な中止は避ける。<strong>セイヨウオトギリソウ（セントジョーンズワート）</strong>等のサプリもワーファリン作用を変動させる可能性があるため、新たに始める場合は相談を促す。飲酒も作用変動の原因になる。</p>
+
+              <h4>皮膚壊死（背景知識）</h4>
+              <p>ワーファリン開始初期にプロテインC欠乏等が背景で<strong>皮膚壊死</strong>を生じることがある（稀）。皮膚の急な発赤・水疱・強い痛み・暗赤色変化等が出た場合は、速やかに主治医に相談するよう伝える。</p>
+
+              <h4>患者説明のスタンス</h4>
+              <p>重篤な出血・皮膚壊死はいずれも頻度としては稀。患者には病名を前面に出さず、症状（止まりにくい出血・黒色便・激しい頭痛・皮膚の急な発赤や水疱）と相談・受診の目安を中心に説明する。薬歴上で病名と症状をセットで残したい場合は<strong>「副作用説明の追記」から追加コピー</strong>。</p>
+
+              <div class="patient-say">患者への伝え方の例：<br />「毎日決まった時間に飲んでください。鼻血や歯ぐきからの出血が止まりにくい時、便が黒い時、強い頭痛が続く時は早めに連絡してください。納豆・クロレラ・青汁は避けてください。歯医者さんや手術の予定があれば、事前にこの薬を飲んでいると伝えてください。」</div>
+            </div>
+          </details>
+
+          <div class="tpl-warn">
+            <div class="tpl-warn-title">コピーする前に必ず確認</div>
+            下のテンプレは「指導・説明」部分の記載例です。そのままコピペすると要件不足になるので、以下を確認してください。
+            <ul>
+              <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（例：「ワーファリン：PT-INR推移と出血症状の確認、食事制限と抜歯時対応を指導…」）</li>
+              <li><strong>確認した内容（PT-INR・症状・聞き取り結果）</strong>もテンプレに足す</li>
+              <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
+              <li>抜歯・手術・内視鏡前の<strong>休薬日数はテンプレに入れず、自己判断で中止せず事前相談</strong>にとどめる</li>
+              <li>副作用説明を行った場合は、<strong>「副作用説明の追記」</strong>から該当する記載例を追加（説明していない副作用は追加しない）</li>
+            </ul>
+          </div>
+
+          <div class="tpl-set">
+            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
+              <div class="tpl-text">新規処方。PT-INR目標値・推移、出血症状の有無、併用薬、食事内容を確認。血液を固まりにくくして血栓を防ぐ薬であることを説明。鼻血・歯ぐき出血・あざ・血尿・黒色便などの出血症状があれば自己判断で中止せず連絡、納豆・クロレラ・青汁の摂取は避け、緑黄色野菜の大量摂取・急な中止に注意するよう指導。抜歯・手術・内視鏡予定がある場合は事前に主治医・施行医に服用中であることを伝えるよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag init">初回イ：抗血小板薬等併用下追加</span>
+              <div class="tpl-text">他剤併用下（抗血小板薬・NSAIDs等）でワーファリン新規追加。併用薬を確認。出血リスクが上がるため、出血症状の観察を重点指導。食事制限（納豆・クロレラ・青汁回避、緑黄色野菜の大量摂取・急な中止に注意）、抜歯・手術・内視鏡時は事前相談を説明。自己判断で中止しないよう指導。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
+              <div class="tpl-text">高齢者へのワーファリン新規処方。PT-INR目標値・直近値を確認。出血症状の自覚が遅れる可能性があるため、家族支援の有無も確認し、出血症状の観察を本人・家族に説明。食事制限・併用薬・抜歯時対応も指導、自己判断で中止しないよう注意喚起。転倒時の頭部打撲は症状がなくても受診するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更・PT-INR変動</span>
+              <div class="tpl-text">PT-INR変動による用量変更を確認。変更前後の出血症状・食事・併用薬の変化を確認。新用量での服用方法を再説明、PT-INRの推移と出血症状の観察を継続するよう指導。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
+              <div class="tpl-text">重篤な出血（消化管出血・脳出血等）について、まれではあるが、激しい頭痛・嘔吐・視力異常・麻痺・大量の黒色便等があれば速やかに受診するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
+              <div class="tpl-text">皮膚壊死について、まれではあるが、皮膚の急な発赤・水疱・強い痛みが出た場合は早めに相談・受診するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">抜歯・手術・内視鏡予定あり。自己判断で中止せず、事前に主治医・処置施行医にワーファリン服用中であることを伝え、休薬の要否を確認するよう指導。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">出血症状（鼻血・歯ぐき出血・あざ等）あり。自己判断で中止せず主治医に相談、止まりにくい出血や黒色便がある場合は速やかに受診するよう指導。PT-INRの再確認も併せて主治医に相談するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">食事・サプリ変更あり（〇〇）。納豆・クロレラ・青汁等のビタミンK含有食品はワーファリン作用を減弱、セイヨウオトギリソウ等のサプリも作用変動の原因になるため、変更時はPT-INRの再確認を主治医に相談するよう指導。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">抗菌薬・NSAIDs等の併用変更あり（〇〇）。ワーファリン作用変動・出血リスク増加の可能性があるため、出血症状の観察と、PT-INRの再確認を主治医に相談するよう指導。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">飲み忘れあり。気付いた時点での対応は医師の指示に従い、自己判断で2回分をまとめて服用しないよう再指導。頻繁な場合は服用タイミングを生活動線で再確認。</div>
+              <button class="copy-mini">コピー</button></div>
+          </div>
+        </div>
+
+        <!-- DOAC -->
+        <div class="drug-block" id="doac">
+          <div class="drug-block-head">
+            <span class="drug-block-name">DOAC（直接経口抗凝固薬）</span>
+            <span class="drug-block-sub">リクシアナ（エドキサバン）／エリキュース（アピキサバン）／イグザレルト（リバーロキサバン）／プラザキサ（ダビガトラン）</span>
+          </div>
+
+          <div class="drug-check-box">
+            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
+            <ul>
+              <li>処方内容・用法用量（1日1回／1日2回／食後の有無）／服薬タイミング</li>
+              <li><strong>年齢・腎機能（主にCCr：Cockcroft-Gault式）・体重</strong>に応じた用量の妥当性</li>
+              <li>出血症状（鼻血・歯ぐき出血・あざ・血尿・黒色便・止まりにくい出血等）の有無</li>
+              <li>併用薬（抗血小板薬・NSAIDs・DOACの作用変動や出血リスク増加に注意が必要な薬剤・OTC・サプリメント等）の有無</li>
+              <li>抜歯・手術・内視鏡予定の有無</li>
+              <li>飲み忘れ時の対応理解／服薬の継続状況</li>
+              <li>家族支援の有無（高齢例）／プラザキサは吸湿性のため保管方法も確認</li>
+            </ul>
+            <p style="font-size:11px;color:var(--sub);margin-top:6px;">※ 日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」血液凝固阻止剤 を参考</p>
+          </div>
+
+          <details class="guide-details">
+            <summary>指導時の補足</summary>
+            <div class="guide-details-body">
+              <h4>薬効の説明ポイント</h4>
+              <p>凝固因子（第Xa因子またはトロンビン）を直接阻害して<strong>血液を固まりにくくして血栓を防ぐ薬</strong>。ワーファリンと違いPT-INRでのモニタリング不要だが、<strong>半減期が短いため飲み忘れの影響が大きい</strong>。自己判断で中止すると血栓リスクが上がるため継続が重要。</p>
+
+              <h4>用法のポイント（製剤別）</h4>
+              <ul>
+                <li><strong>リクシアナ</strong>（エドキサバン）：1日1回</li>
+                <li><strong>エリキュース</strong>（アピキサバン）：1日2回</li>
+                <li><strong>イグザレルト</strong>（リバーロキサバン）：1日1回（<strong>食後</strong>服用が原則）</li>
+                <li><strong>プラザキサ</strong>（ダビガトラン）：1日2回（カプセル、<strong>吸湿性のためPTPシートから出したらすぐ服用</strong>、ヒート保管）</li>
+              </ul>
+
+              <h4>用量調整（背景知識）</h4>
+              <p>DOACは<strong>年齢・腎機能・体重</strong>に応じて用量調整が必要。薬剤ごとに基準が異なるため、処方箋の用量が患者背景に照らして妥当か確認する。腎機能の評価は<strong>主にCockcroft-Gault式によるクレアチニンクリアランス（CCr）</strong>で行うのが原則（添付文書・適正使用ガイドでもeGFRではなくCCrが推奨されている）。腎機能の経時変化（脱水・新規併用薬・加齢）で用量変更が必要になる場合がある。</p>
+              <ul>
+                <li><strong>リクシアナ</strong>：CCr 30〜50／体重60kg以下／P-gp阻害薬併用のいずれかで減量、CCr 15未満は禁忌</li>
+                <li><strong>エリキュース</strong>：80歳以上／体重60kg以下／血清Cr 1.5mg/dL以上のうち<strong>2つ以上</strong>該当で減量</li>
+                <li><strong>イグザレルト</strong>：CCr 15〜50で減量、CCr 15未満は禁忌</li>
+                <li><strong>プラザキサ</strong>：CCr 30〜50で慎重投与（減量考慮）、CCr 30未満は禁忌</li>
+              </ul>
+
+              <h4>患者への伝え方</h4>
+              <ul>
+                <li>毎日決まった時間・タイミングで服用、自己判断で中止しない</li>
+                <li>鼻血・歯ぐき出血・あざ・血尿・黒色便・止まりにくい出血があれば早めに連絡</li>
+                <li>抗血小板薬・NSAIDs・痛み止め・OTC・サプリは薬剤師に必ず確認</li>
+                <li>抜歯・手術・内視鏡予定があれば事前に主治医・施行医に服用中であることを伝える</li>
+                <li>食事制限はワーファリンより少ない（ただしイグザレルトは食後服用）</li>
+                <li>飲み忘れに気付いた時の対応を製剤ごとに確認しておく</li>
+              </ul>
+
+              <h4>出血症状（背景知識）</h4>
+              <p>軽い出血は服用中に起こりうるが、<strong>止まりにくい・量が多い・繰り返す</strong>場合は要相談。<strong>黒色便・血尿・激しい頭痛・嘔吐・視力異常・麻痺</strong>等は重篤な出血（消化管出血・脳出血等）の可能性があるため、速やかに受診するよう伝える。一部DOACには中和薬があるが、<strong>患者説明では「重い出血が疑われる場合はすぐ受診」を優先</strong>する。</p>
+
+              <h4>腎機能低下時の蓄積リスク（背景知識）</h4>
+              <p>DOACは多かれ少なかれ腎排泄されるため、<strong>腎機能低下時は薬剤が蓄積し出血リスクが上がる</strong>。脱水・発熱・下痢・嘔吐等で急性に腎機能が低下する状況や、新たな腎毒性薬（NSAIDs等）の併用、高齢化に伴う腎機能変化に注意。定期的な血液検査結果（eGFR・Cr）を薬局でも確認できると安心。</p>
+
+              <h4>患者説明のスタンス</h4>
+              <p>重篤な出血は頻度としては稀。患者には病名を前面に出さず、症状（止まりにくい出血・黒色便・激しい頭痛）と相談・受診の目安を中心に説明する。脱水・発熱・体調変化時は腎機能悪化により出血リスクが上がるため、早めに相談するよう伝える。薬歴上で病名と症状をセットで残したい場合は<strong>「副作用説明の追記」から追加コピー</strong>。</p>
+
+              <div class="patient-say">患者への伝え方の例：<br />「決まった時間に飲んでください。鼻血や歯ぐきの出血が止まりにくい時、便が黒い時、強い頭痛が続く時は早めに連絡してください。痛み止めやサプリを新しく始める時は薬剤師に確認してください。歯医者さんや手術の予定があれば、事前にこの薬を飲んでいると伝えてください。」</div>
+            </div>
+          </details>
+
+          <div class="tpl-warn">
+            <div class="tpl-warn-title">コピーする前に必ず確認</div>
+            下のテンプレは「指導・説明」部分の記載例です。そのままコピペすると要件不足になるので、以下を確認してください。
+            <ul>
+              <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（例：「リクシアナ：腎機能・体重に応じた用量妥当性と出血症状の確認、抜歯時対応を指導…」）</li>
+              <li><strong>確認した内容（腎機能・症状・聞き取り結果）</strong>もテンプレに足す</li>
+              <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
+              <li>抜歯・手術・内視鏡前の<strong>休薬日数はテンプレに入れず、自己判断で中止せず事前相談</strong>にとどめる</li>
+              <li>副作用説明を行った場合は、<strong>「副作用説明の追記」</strong>から該当する記載例を追加（説明していない副作用は追加しない）</li>
+            </ul>
+          </div>
+
+          <div class="tpl-set">
+            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
+              <div class="tpl-text">新規処方。出血症状の有無、腎機能（主にCCr）・年齢・体重に応じた用量妥当性、併用薬（抗血小板薬・NSAIDs等）を確認。血液を固まりにくくして血栓を防ぐ薬であることを説明。鼻血・歯ぐき出血・あざ・血尿・黒色便などの出血症状があれば自己判断で中止せず連絡、飲み忘れ時の対応、抜歯・手術・内視鏡時は事前に主治医・施行医へ服用中であることを伝えるよう指導。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢・腎機能低下例</span>
+              <div class="tpl-text">高齢・腎機能低下例へのDOAC新規処方。腎機能（主にCCr）・体重・年齢に応じた用量妥当性を確認・説明。出血リスクが上がるため出血症状の観察を本人・家族に説明、脱水・発熱・下痢嘔吐時は腎機能悪化により蓄積リスクが上がる旨を指導。抜歯・手術時は事前相談、自己判断で中止しないよう注意喚起。転倒時の頭部打撲は症状がなくても受診するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag init">初回イ：抗血小板薬・NSAIDs等併用下追加</span>
+              <div class="tpl-text">他剤併用下（抗血小板薬・NSAIDs等）でDOAC新規追加。併用薬を確認。出血リスクが上がるため、出血症状の観察を重点指導。抜歯・手術・内視鏡時は事前相談、自己判断で中止しないよう説明。OTC・サプリ追加時は薬剤師に確認するよう指導。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更・腎機能変化</span>
+              <div class="tpl-text">腎機能変化または年齢・体重に応じた用量変更を確認。新用量での服用方法を再説明、出血症状の観察を継続するよう指導。脱水・発熱等で腎機能が変動しやすい状況では早めに相談するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
+              <div class="tpl-text">重篤な出血（消化管出血・脳出血等）について、まれではあるが、激しい頭痛・嘔吐・視力異常・麻痺・大量の黒色便等があれば速やかに受診するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">脱水・発熱・下痢嘔吐等で体調が大きく変化。腎機能悪化によりDOACの蓄積・出血リスク増加の可能性があるため、症状時は早めに相談するよう指導。長引く場合は主治医に腎機能の再評価を相談するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">抜歯・手術・内視鏡予定あり。自己判断で中止せず、事前に主治医・処置施行医にDOAC服用中であることを伝え、休薬の要否を確認するよう指導。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">出血症状（鼻血・歯ぐき出血・あざ等）あり。自己判断で中止せず主治医に相談、止まりにくい出血や黒色便がある場合は速やかに受診するよう指導。腎機能の再確認も併せて主治医に相談するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">併用薬変更あり（〇〇）。DOACの作用変動や出血リスク増加に注意が必要な可能性があるため、出血症状の観察を強化するよう指導。新たなOTC・サプリも薬剤師に確認するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">飲み忘れあり。DOACは服薬間隔の乱れが出血・血栓リスクに影響する旨を説明。製剤ごとの飲み忘れ時対応を再確認、自己判断で2回分をまとめて服用しないよう指導。頻繁な場合は服用タイミングを生活動線で再確認。</div>
+              <button class="copy-mini">コピー</button></div>
+          </div>
+        </div>
+
+        <!-- 抗血小板薬 -->
+        <div class="drug-block" id="antiplatelet">
+          <div class="drug-block-head">
+            <span class="drug-block-name">抗血小板薬</span>
+            <span class="drug-block-sub">バイアスピリン（アスピリン）／プラビックス（クロピドグレル）／エフィエント（プラスグレル）／ブリリンタ（チカグレロル）／プレタール（シロスタゾール）</span>
+          </div>
+
+          <div class="drug-check-box">
+            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
+            <ul>
+              <li>処方内容・用法用量／<strong>単剤かDAPT（2剤併用）か</strong></li>
+              <li>出血症状（鼻血・歯ぐき出血・あざ・血尿・黒色便・止まりにくい出血等）の有無</li>
+              <li>消化器症状（胃痛・胸やけ・黒色便 等）の有無／PPI併用の有無</li>
+              <li>併用薬（抗凝固薬・NSAIDs・OTC・サプリメント等）の有無</li>
+              <li>抜歯・手術・内視鏡予定の有無</li>
+              <li>飲み忘れ時の対応理解／自己判断で中止していないかの確認</li>
+              <li>プレタール服用時：動悸・頻脈・頭痛・心不全既往の有無</li>
+            </ul>
+            <p style="font-size:11px;color:var(--sub);margin-top:6px;">※ 日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」血液凝固阻止剤 を参考</p>
+          </div>
+
+          <details class="guide-details">
+            <summary>指導時の補足</summary>
+            <div class="guide-details-body">
+              <h4>薬効の説明ポイント</h4>
+              <p>血小板の働きを抑えて<strong>血栓をできにくくする薬</strong>。心筋梗塞・脳梗塞・PCI後等の再発予防に用いる。自己判断で中止するとステント血栓症等の重大な事象に繋がるため、継続が特に重要。</p>
+
+              <h4>薬剤ごとの特徴</h4>
+              <ul>
+                <li><strong>バイアスピリン</strong>（アスピリン）：低用量。消化性潰瘍リスクがありPPI併用が多い。解熱目的での通常用量使用は別物（小児はライ症候群リスク）</li>
+                <li><strong>プラビックス</strong>（クロピドグレル）：CYP2C19で活性化されるプロドラッグ。PPI（特にオメプラゾール）併用で効果減弱の可能性。TTPに注意</li>
+                <li><strong>エフィエント</strong>（プラスグレル）：プラビックスより速効性・確実だが出血リスクも高め。TTP・肝機能障害に注意</li>
+                <li><strong>ブリリンタ</strong>（チカグレロル）：1日2回。<strong>呼吸困難</strong>が特徴的副作用、TTP・腎障害にも注意</li>
+                <li><strong>プレタール</strong>（シロスタゾール）：血管拡張作用があり<strong>頭痛・動悸・頻脈</strong>が出やすい。<strong>うっ血性心不全には禁忌</strong></li>
+              </ul>
+
+              <h4>患者への伝え方</h4>
+              <ul>
+                <li>毎日決まった時間に服用、自己判断で中止しない（特にステント留置後・PCI後）</li>
+                <li>鼻血・歯ぐき出血・あざ・血尿・黒色便・止まりにくい出血があれば早めに連絡</li>
+                <li>胃痛・胸やけ・黒色便は消化管出血の可能性、PPIが処方されていれば一緒に継続</li>
+                <li>NSAIDs（市販の痛み止め含む）・OTC・サプリは薬剤師に必ず確認</li>
+                <li>抜歯・手術・内視鏡予定があれば事前に主治医・施行医に服用中であることを伝える</li>
+              </ul>
+
+              <h4>DAPT（抗血小板薬2剤併用）の出血リスク（背景知識）</h4>
+              <p>PCI後等で<strong>アスピリン＋P2Y12阻害薬（プラビックス／エフィエント／ブリリンタ）</strong>の併用を一定期間行う。<strong>単剤より出血リスクが上がる</strong>ため、出血症状の観察強化・PPI併用の検討・抜歯/手術時の事前相談を徹底する。DAPTの期間・中止判断は適応・ステント・出血リスクで個別に判断されるため、薬歴ではDAPT継続中であることと出血症状を確認・記録する。</p>
+
+              <h4>TTP・血液障害（背景知識）</h4>
+              <p>クロピドグレル・プラスグレル・チカグレロル等のP2Y12阻害薬で、稀に<strong>血栓性血小板減少性紫斑病（TTP）</strong>を起こすことがある。<strong>発熱・紫斑・倦怠感・意識障害・乏尿</strong>等が出た場合は速やかに受診するよう伝える。プラスグレルでは肝機能障害、チカグレロルでは腎障害にも注意。</p>
+
+              <h4>プレタール特有の注意（背景知識）</h4>
+              <p>シロスタゾールは血管拡張作用により<strong>頭痛（特に開始初期）・動悸・頻脈・ほてり</strong>が出やすい。多くは継続で軽快するが強い場合は相談を促す。<strong>うっ血性心不全には禁忌</strong>、心疾患既往の確認は必須。</p>
+
+              <h4>患者説明のスタンス</h4>
+              <p>TTP・重篤な出血はいずれも頻度としては稀。患者には病名を前面に出さず、症状（止まりにくい出血・黒色便・激しい頭痛・発熱と紫斑・呼吸困難等）と相談・受診の目安を中心に説明する。プレタールの動悸・頭痛は開始初期に出やすい旨を伝えると不安を減らせる。薬歴上で病名と症状をセットで残したい場合は<strong>「副作用説明の追記」から追加コピー</strong>。</p>
+
+              <div class="patient-say">患者への伝え方の例：<br />「自己判断で止めないでください。止めると血の塊ができて重い病気に繋がることがあります。鼻血や歯ぐきの出血が止まりにくい時、便が黒い時、強い頭痛が続く時は早めに連絡してください。市販の痛み止めは薬剤師に確認してください。歯医者さんや手術の予定があれば、事前にこの薬を飲んでいると伝えてください。」</div>
+            </div>
+          </details>
+
+          <div class="tpl-warn">
+            <div class="tpl-warn-title">コピーする前に必ず確認</div>
+            下のテンプレは「指導・説明」部分の記載例です。そのままコピペすると要件不足になるので、以下を確認してください。
+            <ul>
+              <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（例：「プラビックス：DAPT中の出血症状確認と抜歯時対応を指導…」）</li>
+              <li><strong>確認した内容（症状・聞き取り結果・併用薬）</strong>もテンプレに足す</li>
+              <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
+              <li>抜歯・手術・内視鏡前の<strong>休薬日数はテンプレに入れず、自己判断で中止せず事前相談</strong>にとどめる</li>
+              <li>副作用説明を行った場合は、<strong>「副作用説明の追記」</strong>から該当する記載例を追加（説明していない副作用は追加しない）</li>
+            </ul>
+          </div>
+
+          <div class="tpl-set">
+            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
+              <div class="tpl-text">新規処方。出血症状・消化器症状の有無、併用薬（抗凝固薬・NSAIDs等）、抜歯・手術予定を確認。血小板の働きを抑えて血栓をできにくくする薬であることを説明。鼻血・歯ぐき出血・あざ・血尿・黒色便などの出血症状があれば自己判断で中止せず連絡、市販の痛み止めやサプリは薬剤師に確認するよう指導。抜歯・手術・内視鏡時は事前に主治医・施行医へ服用中であることを伝えるよう説明。自己判断で中止しないよう注意喚起。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag init">初回イ：抗凝固薬併用／DAPT</span>
+              <div class="tpl-text">抗凝固薬併用下またはDAPT（2剤併用）で新規追加。併用薬を確認。出血リスクが上がるため、出血症状の観察を重点指導。胃痛・胸やけ・黒色便があれば消化管出血の可能性として早めに連絡、PPI併用がある場合は一緒に継続するよう説明。抜歯・手術・内視鏡時は事前相談、自己判断で中止しないよう徹底指導。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag init">初回イ：プレタール</span>
+              <div class="tpl-text">プレタール新規処方。心不全既往なしを確認（禁忌のため）。血管拡張作用により頭痛・動悸・頻脈・ほてりが開始初期に出やすいが多くは継続で軽快する旨を説明、強い場合は相談するよう指導。出血症状・併用薬・抜歯時対応も併せて指導。自己判断で中止しないよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更・追加/中止後の注意</span>
+              <div class="tpl-text">用量変更または併用薬追加・中止を確認。出血リスク・血栓リスクのバランスが変わるため、出血症状の観察と自己判断で中止しないことを再指導。DAPT解除時は単剤継続の重要性を説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
+              <div class="tpl-text">重篤な出血（消化管出血・脳出血等）について、まれではあるが、激しい頭痛・嘔吐・視力異常・麻痺・大量の黒色便等があれば速やかに受診するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
+              <div class="tpl-text">血栓性血小板減少性紫斑病（TTP）・血液障害について、まれではあるが、発熱・紫斑（皮膚の点状出血）・倦怠感・意識のもうろう・尿量減少等が出た場合は速やかに受診するよう説明（クロピドグレル・プラスグレル・チカグレロル等のP2Y12阻害薬で注意）。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
+              <div class="tpl-text">ブリリンタ服用例：息切れ・呼吸困難の有無を確認。症状が強い、持続する、胸痛等を伴う場合は早めに相談・受診するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">抜歯・手術・内視鏡予定あり。自己判断で中止せず、事前に主治医・処置施行医に抗血小板薬服用中であることを伝え、休薬の要否を確認するよう指導。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">出血症状（鼻血・歯ぐき出血・あざ等）あり。自己判断で中止せず主治医に相談、止まりにくい出血や黒色便がある場合は速やかに受診するよう指導。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">NSAIDs・OTC追加あり（〇〇）。出血リスクが上がるため、出血症状の観察を強化するよう指導。市販薬・サプリは事前に薬剤師に確認するよう再説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">プレタール服用例：頭痛・動悸・頻脈の訴えあり。開始初期に出やすく多くは継続で軽快する旨を説明、強い場合や続く場合は主治医に相談するよう指導。</div>
+              <button class="copy-mini">コピー</button></div>
+          </div>
+        </div>
+
+        <!-- ヘパリン類の扱い -->
+        <div class="drug-block" id="heparin-note" style="border-left-color:#9ca3af;">
+          <div class="drug-block-head">
+            <span class="drug-block-name">ヘパリン類（参考）</span>
+            <span class="drug-block-sub">ヘパリンカルシウム皮下注 等</span>
+          </div>
+          <p style="font-size:13px;line-height:1.75;color:var(--ink);">
+            ヘパリン類（自己注射）は、薬局での処方頻度が低く、<strong>注射手技・保管・HIT（ヘパリン起因性血小板減少症）・妊娠関連</strong>など別の論点が増えるため、本ページの定型テンプレ対象外としています。処方がある場合は、注射手技・出血症状・併用薬・腎機能・妊娠の有無等を個別に確認・指導してください。
+          </p>
+        </div>
+
+        <p style="font-size:12px;color:var(--sub);margin-top:8px;">
+          ※ 「変更のあった薬」を起点に、状況に最も近いバリエーションを1つ選び、必要なら必要時追記から該当するものを足す想定。<br />
+          ※ 併用薬がある場合は薬歴冒頭に併用薬名を明記。<strong>追加された薬がハイリスク薬なら、その追加薬について「新規イ」として扱う</strong>のが基本。既存ハイリスク薬の相互作用・リスクが変化した場合は「必要時追記」で「併用薬変更あり」として記載するか、必要に応じて<strong>「変化に基づくロ」</strong>として個別判断する。
+        </p>
+      </section>
+
+      <!-- ============================================================
+           § 3  副作用・服薬状況等の変化に基づくロ — 判断理由の書き方例
+           ============================================================ -->
+      <section id="section3">
+        <div class="section-label">SECTION 3</div>
+        <h2 class="section-title">副作用・服薬状況等の変化に基づくロ — 判断理由の書き方例</h2>
+
+        <div class="warn-box">
+          <div class="warn-box-title">判断理由の書き方</div>
+          <p>
+            この区分は患者の変化に基づき薬剤師が必要性を判断する場面のため、テンプレ化せず<strong>「変化の確認 → 指導の方向性を判断 → 指導」</strong>の型で短く残します。<br />
+            以下は<strong>判断理由の書き方の例</strong>であり、テンプレとしてそのまま使うものではありません。
+          </p>
+        </div>
+
+        <div class="tpl-warn">
+          <div class="tpl-warn-title">コピーする前に必ず確認</div>
+          <ul>
+            <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（書き方例では薬効群名で書いているが、実運用では具体薬剤名で始める）</li>
+            <li><strong>変化の具体内容・確認した内容</strong>を患者の状況に合わせて書き換える（「指導が必要と判断」のフレーズは加算根拠として残す）</li>
+            <li>説明・指導していない項目は<strong>削除</strong>する</li>
+          </ul>
+        </div>
+
+        <div class="tpl-set" style="margin-top:14px;">
+          <div class="tpl-mini">
+            <span class="tpl-tag base">書き方例</span>
+            <div class="tpl-text">鼻血・歯ぐき出血が以前より増えたとの訴え。抗凝固薬服用下の出血傾向増強が疑われるため指導が必要と判断。自己判断で中止せず主治医に相談するよう指導、止まりにくい出血や黒色便がある場合は早めに連絡するよう説明。</div>
+            <button class="copy-mini">コピー</button>
+          </div>
+          <div class="tpl-mini">
+            <span class="tpl-tag base">書き方例</span>
+            <div class="tpl-text">他院で抗菌薬の追加処方あり。ワーファリン作用増強の可能性があるため指導が必要と判断。出血症状の観察を強化し、PT-INRの再確認を主治医に相談するよう指導。</div>
+            <button class="copy-mini">コピー</button>
+          </div>
+          <div class="tpl-mini">
+            <span class="tpl-tag base">書き方例</span>
+            <div class="tpl-text">納豆を食べ始めたとの訴え。ワーファリン作用減弱の可能性があるため指導が必要と判断。納豆・クロレラ・青汁の摂取は避けるよう再指導、PT-INRの再確認を主治医に相談するよう説明。</div>
+            <button class="copy-mini">コピー</button>
+          </div>
+          <div class="tpl-mini">
+            <span class="tpl-tag base">書き方例</span>
+            <div class="tpl-text">抜歯予定ありとの情報。自己判断で休薬すると血栓リスクが上がるため指導が必要と判断。自己判断で中止せず、抜歯前に歯科医師と主治医に服用中であることを伝え、休薬の要否を確認するよう指導。</div>
+            <button class="copy-mini">コピー</button>
+          </div>
+          <div class="tpl-mini">
+            <span class="tpl-tag base">書き方例</span>
+            <div class="tpl-text">黒色便ありとの訴え。消化管出血の可能性があり指導が必要と判断。自己判断で中止せず、速やかに医療機関を受診するよう指導。</div>
+            <button class="copy-mini">コピー</button>
+          </div>
+          <div class="tpl-mini">
+            <span class="tpl-tag base">書き方例</span>
+            <div class="tpl-text">残薬確認で飲み忘れが増加。血栓リスク増加の懸念があるため指導が必要と判断。服用タイミングを生活動線で確認、飲み忘れ時の対応を再指導。</div>
+            <button class="copy-mini">コピー</button>
+          </div>
+          <div class="tpl-mini">
+            <span class="tpl-tag base">書き方例</span>
+            <div class="tpl-text">高齢患者で転倒の既往あり。DOAC服用下の出血リスクが上がるため指導が必要と判断。頭部打撲時は症状がなくても受診するよう指導、家族にも出血症状の観察を依頼するよう説明。</div>
+            <button class="copy-mini">コピー</button>
+          </div>
+          <div class="tpl-mini">
+            <span class="tpl-tag base">書き方例</span>
+            <div class="tpl-text">腎機能低下の血液検査結果あり。DOAC蓄積による出血リスクが上がるため指導が必要と判断。出血症状の観察を強化、用量妥当性について主治医に相談するよう指導。</div>
+            <button class="copy-mini">コピー</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           § SOURCE（折りたたみ）
+           ============================================================ -->
+      <section>
+        <details class="guide-details">
+          <summary>本ページの根拠（出典・通知）</summary>
+          <div class="guide-details-body">
+            <div class="source-box">
+              <span class="source-box-label">ガイドライン</span>
+              <div>日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」血液凝固阻止剤</div>
+              <div class="source-cite">→ 確認・指導事項の根拠</div>
+            </div>
+            <div class="source-box" style="margin-top:12px;">
+              <span class="source-box-label">通知</span>
+              <div>令和8年3月5日 保医発0305第4号 別添3「調剤報酬点数表に関する事項」 特定薬剤管理指導加算1</div>
+              <div class="source-cite">→ 算定要件・薬歴記載要件の原文</div>
+            </div>
+            <p style="font-size:12px;color:var(--sub);margin-top:14px;">※ ヘパリン類は本ページの定型テンプレ対象外としています（処方時は個別に確認・指導）。</p>
+          </div>
+        </details>
+      </section>
+
+    </main>
+
+    </div><!-- /右カラム -->
+    </div><!-- /.layout-outer -->
+
+    <footer>調剤報酬まとめ ／ 薬歴マニュアル ／ ハイリスク薬指導 ／ 血液凝固阻止剤 ／ 非公開作業中</footer>
+
+    <script>
+      document.querySelectorAll('.copy-mini').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const parent = btn.parentElement;
+          const tplText = parent.querySelector('.tpl-text');
+          let text;
+          if (tplText) {
+            text = tplText.innerText;
+          } else {
+            const spans = parent.querySelectorAll('span:not(.dcb-label)');
+            text = Array.from(spans).map(s => s.innerText).join('\n');
+          }
+          navigator.clipboard.writeText(text).then(() => {
+            btn.classList.add('copied');
+            const orig = btn.textContent;
+            btn.textContent = '済';
+            setTimeout(() => { btn.classList.remove('copied'); btn.textContent = orig; }, 1200);
+          });
+        });
+      });
+    </script>
+    <script>
+      // サイドスティッキーTOC アクティブハイライト
+      (function () {
+        const navLinks = document.querySelectorAll('.sticky-toc a[href^="#"]');
+        const sections = Array.from(navLinks)
+          .map(a => document.querySelector(a.getAttribute('href')))
+          .filter(Boolean);
+        if (!sections.length) return;
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const id = entry.target.id;
+              navLinks.forEach(a => {
+                a.classList.toggle('is-active', a.getAttribute('href') === '#' + id);
+              });
+            }
+          });
+        }, { rootMargin: '-40px 0px -70% 0px', threshold: 0 });
+        sections.forEach(s => observer.observe(s));
+      })();
+    </script>
+    <script src="../../assets/site-fab.js" defer></script>
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>
