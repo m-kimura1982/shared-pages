@@ -214,6 +214,24 @@
       .warn-box ul { padding-left: 22px; margin-top: 4px; }
       .warn-box ul li { margin-bottom: 4px; line-height: 1.7; }
 
+      /* 注意バナー（黄色：禁忌・処方確認系） */
+      .caveat-box {
+        background: #fff8e6;
+        border: 1px solid #f3d58a;
+        border-left: 4px solid #d97706;
+        border-radius: 6px;
+        padding: 10px 14px;
+        margin: 10px 0 14px;
+        font-size: 13px;
+        line-height: 1.75;
+      }
+      .caveat-box-title {
+        font-weight: 700;
+        color: #9a5a00;
+        margin-bottom: 4px;
+      }
+      .caveat-box p { margin: 0; }
+
       /* SECTION 1 確認事項 - 簡潔dl */
       .ci-list dt {
         font-size: 14px; font-weight: 700; color: var(--ink);
@@ -326,8 +344,12 @@
       </div>
       <a href="#section1">共通確認ポイント</a>
       <a href="#section2">薬剤群別テンプレート</a>
+      <a href="#common-se">共通の副作用説明の追記</a>
       <div class="sticky-toc-group">▼ 薬剤群</div>
-      <a href="#antipsychotic">抗精神病薬</a>
+      <a href="#sda">非定型 SDA</a>
+      <a href="#marta">非定型 MARTA</a>
+      <a href="#dss-dsam">非定型 DSS/DSAM</a>
+      <a href="#typical">定型抗精神病薬</a>
       <div class="sticky-toc-group">▼ その他</div>
       <a href="#clozapine-note">クロザピンの扱い</a>
       <a href="#section3">変化に基づくロ（判断理由）</a>
@@ -406,7 +428,8 @@
         <p style="font-size:13px;color:var(--sub);margin-bottom:8px;">
           薬歴を作成する際は、<strong>新規処方または変更があった薬剤</strong>を確認し、患者の状況に近い記載例を参考にしてください。必要に応じて、確認した内容や追加で行った指導を追記してください。<br />
           本ページは、特定薬剤管理指導加算1のうち、<strong>新規処方時のイ、用法・用量変更時のロ、副作用や服薬状況等の変化に基づくロ</strong>を想定した薬歴記載例です。継続処方時の通常確認を記録するためのテンプレートではありません。<br />
-          <span style="font-size:12px;">※ 抗精神病薬は定型／非定型・薬剤ごとの副作用差はあるものの、<strong>共通確認事項が大きく重なるため1ブロックにまとめ、MARTA系・定型薬・高齢例などの薬剤特性は必要時追記で拾う</strong>構成にしています。</span><br />
+          <span style="font-size:12px;">※ 抗精神病薬は<strong>副作用プロファイルが分類ごとに大きく異なる</strong>ため、SDA／MARTA／DSS/DSAM／定型の4ブロックに分けています。特にMARTA系（オランザピン・クエチアピン）は<strong>糖尿病・糖尿病既往歴のある患者には禁忌</strong>となるため、独立したブロックで扱います。</span><br />
+          <span style="font-size:12px;">※ <strong>悪性症候群・QT延長・SJS/TEN</strong>は分類を問わず注意が必要な共通の重篤副作用のため、各ブロックではなく「共通の副作用説明の追記」セクションに置いています。</span><br />
           <span style="font-size:12px;">※ 自己判断で中止しないこと・眠気/危険作業の注意は、すべての薬剤に共通の核として初回イ本体に含めています。</span>
         </p>
         <div class="tpl-warn" style="margin:12px 0;">
@@ -423,115 +446,49 @@
         <div class="drug-index">
           <div class="drug-index-title">薬剤名から探す</div>
           <div class="drug-index-row">
-            <span class="di-group">非定型（SDA）</span>
-            <a href="#antipsychotic">リスパダール</a><a href="#antipsychotic">ルーラン</a><a href="#antipsychotic">ロナセン</a><a href="#antipsychotic">インヴェガ</a><a href="#antipsychotic">ラツーダ</a>
+            <span class="di-group">非定型 SDA</span>
+            <a href="#sda">リスパダール</a><a href="#sda">ルーラン</a><a href="#sda">ロナセン</a><a href="#sda">インヴェガ</a><a href="#sda">ラツーダ</a>
           </div>
           <div class="drug-index-row">
-            <span class="di-group">非定型（MARTA）</span>
-            <a href="#antipsychotic">ジプレキサ</a><a href="#antipsychotic">セロクエル</a><a href="#antipsychotic">ビプレッソ</a>
+            <span class="di-group">非定型 MARTA</span>
+            <a href="#marta">ジプレキサ</a><a href="#marta">セロクエル</a><a href="#marta">ビプレッソ</a>
           </div>
           <div class="drug-index-row">
-            <span class="di-group">非定型（DSS/DSAM）</span>
-            <a href="#antipsychotic">エビリファイ</a><a href="#antipsychotic">レキサルティ</a>
+            <span class="di-group">非定型 DSS/DSAM</span>
+            <a href="#dss-dsam">エビリファイ</a><a href="#dss-dsam">レキサルティ</a>
           </div>
           <div class="drug-index-row">
             <span class="di-group">定型</span>
-            <a href="#antipsychotic">セレネース</a><a href="#antipsychotic">コントミン</a><a href="#antipsychotic">ヒルナミン</a>
+            <a href="#typical">セレネース</a><a href="#typical">コントミン</a><a href="#typical">ヒルナミン</a>
           </div>
         </div>
 
-        <!-- 抗精神病薬 -->
-        <div class="drug-block" id="antipsychotic">
+        <!-- 共通の副作用説明の追記 -->
+        <div class="drug-block" id="common-se" style="border-left-color:#c2701c;">
           <div class="drug-block-head">
-            <span class="drug-block-name">抗精神病薬</span>
-            <span class="drug-block-sub">非定型（リスパダール／ルーラン／ロナセン／インヴェガ／ラツーダ／ジプレキサ／セロクエル／ビプレッソ／エビリファイ／レキサルティ 等）／定型（セレネース／コントミン／ヒルナミン 等）</span>
+            <span class="drug-block-name">共通の副作用説明の追記</span>
+            <span class="drug-block-sub">分類を問わず注意が必要な重篤副作用</span>
           </div>
-
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容・用法用量／服用タイミング</li>
-              <li>服薬の継続状況／<strong>自己判断で中止していないか</strong>（中断による症状再発リスク）</li>
-              <li>眠気・ふらつき／<strong>錐体外路症状</strong>（手の震え・じっとしていられない・体のこわばり・嚥下障害）の有無</li>
-              <li>便秘・口渇・尿閉等の抗コリン作用症状の有無</li>
-              <li>体重変化／口渇・多飲・多尿等の血糖上昇を疑う症状（特にMARTA系）</li>
-              <li>併用薬（他の中枢抑制薬・抗コリン薬重複・CYP3A4阻害薬・OTC・サプリ）／アルコール</li>
-              <li>自動車運転等の危険作業の従事状況／高齢者は転倒・誤嚥リスク・家族支援の有無</li>
-            </ul>
-            <p style="font-size:11px;color:var(--sub);margin-top:6px;">※ 日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」精神神経用剤 を参考</p>
-          </div>
-
+          <p style="font-size:13px;line-height:1.75;color:var(--ink);margin-bottom:8px;">
+            <strong>悪性症候群・QT延長・SJS/TEN</strong>は抗精神病薬全般で注意が必要な重篤副作用です。説明した場合は以下のテンプレを薬剤群別ブロックの初回イ等の薬歴記録に追記してください。
+          </p>
           <details class="guide-details">
-            <summary>指導時の補足</summary>
+            <summary>共通重篤副作用の背景知識</summary>
             <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p>脳内のドパミン等の神経伝達物質の働きを調整して<strong>症状の安定を助ける薬</strong>。効果発現には時間がかかることがあり、症状が安定した後も自己判断で中止すると<strong>症状の再発・再悪化リスク</strong>がある。継続が重要。</p>
-
-              <h4>薬剤分類の概要</h4>
-              <ul>
-                <li><strong>非定型 SDA</strong>（リスパダール／ルーラン／ロナセン／インヴェガ／ラツーダ等）：錐体外路症状は定型より少なめ。リスペリドン・パリペリドンは<strong>高プロラクチン血症</strong>に注意</li>
-                <li><strong>非定型 MARTA</strong>（ジプレキサ／セロクエル／ビプレッソ）：<strong>体重増加・血糖上昇・脂質異常</strong>のリスクが特に高い。糖尿病既往は禁忌（オランザピン・クエチアピン）</li>
-                <li><strong>非定型 DSS/DSAM</strong>（エビリファイ／レキサルティ）：ドパミン部分作動薬／セロトニン・ドパミン作動薬。アカシジア・不眠が出やすい場合あり</li>
-                <li><strong>定型</strong>（セレネース／コントミン／ヒルナミン）：錐体外路症状・遅発性ジスキネジアのリスクが非定型より高め</li>
-              </ul>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li>毎日決まった時間に服用、<strong>自己判断で中止しない</strong>（症状が安定しても継続が必要）</li>
-                <li>眠気・ふらつきが出ることがあるため、<strong>自動車運転等の危険作業に従事しないよう説明</strong></li>
-                <li>手の震え・じっとしていられない・体のこわばりが出たら早めに相談</li>
-                <li>便秘・口渇は出やすい副作用、続く場合は相談</li>
-                <li>体重変化、口渇・多飲・多尿など血糖上昇を疑う症状があれば相談（特にMARTA系）</li>
-                <li>市販の風邪薬・睡眠改善薬・サプリは薬剤師に確認（抗コリン重複・中枢抑制重複に注意）</li>
-              </ul>
-
-              <h4>錐体外路症状（背景知識）</h4>
-              <p>抗精神病薬で<strong>パーキンソン症状（手の震え・動作緩慢・筋固縮）・アカシジア（じっとしていられない）・ジストニア（首・舌のこわばり）・遅発性ジスキネジア（口・舌の不随意運動）</strong>が出ることがある。定型薬や高用量・長期使用でリスクが上がる。出現時は用量調整・抗パーキンソン薬の併用・薬剤変更等を処方医と相談。</p>
-
-              <h4>体重・血糖変化（背景知識）</h4>
-              <p>抗精神病薬全般で体重増加・脂質異常がみられるが、<strong>MARTA系（オランザピン・クエチアピン）は特に高血糖・糖尿病性ケトアシドーシス・糖尿病性昏睡のリスクが高い</strong>（PMDA注意喚起あり、糖尿病既往は禁忌）。口渇・多飲・多尿・頻尿等の異常があれば中断して医師の診察を受けるよう指導。MARTA系では体重・血糖値・HbA1cの推移を定期的に確認できると安心。</p>
-
-              <h4>抗コリン作用（背景知識）</h4>
-              <p>便秘・口渇・尿閉・霧視・認知機能低下等。<strong>他の抗コリン薬（過活動膀胱治療薬・抗ヒスタミン薬・三環系抗うつ薬・パーキンソン病治療薬等）との重複</strong>でリスクが上がる。特に高齢者では認知機能低下・転倒・麻痺性イレウスに注意。</p>
-
-              <h4>高齢者特有の注意（背景知識）</h4>
-              <p>高齢者では<strong>転倒・誤嚥・抗コリン負荷・起立性低血圧</strong>に注意。認知症患者への抗精神病薬使用では脳血管事故・死亡リスク増加が報告されており、適応・用量・期間を慎重に確認する。家族支援の有無と症状観察を依頼するのが安心。</p>
-
-              <h4>悪性症候群（背景知識）</h4>
+              <h4>悪性症候群</h4>
               <p>稀ではあるが、<strong>高熱・強い筋肉のこわばり・意識のもうろう・発汗・頻脈</strong>が急速に出現する重篤な副作用。発症時は速やかに受診し、抗精神病薬の中止を含めた対応が必要。</p>
 
-              <h4>患者説明のスタンス</h4>
-              <p>悪性症候群・QT延長・SJS/TEN・糖尿病性ケトアシドーシス・遅発性ジスキネジアはいずれも頻度としては稀。患者には病名を前面に出さず、症状（高熱とこわばり・動悸や失神・全身性の皮疹と発熱・口渇/多飲/多尿の急増・口や舌の不随意運動）と相談・受診の目安を中心に説明する。薬歴上で病名と症状をセットで残したい場合は<strong>「副作用説明の追記」から追加コピー</strong>。</p>
+              <h4>QT延長</h4>
+              <p>抗精神病薬の多くで報告。動悸・めまい・失神等が出た場合は早めに相談・受診を促す。CYP3A4阻害薬・他のQT延長薬との併用、電解質異常（低K・低Mg）で増悪することがある。</p>
 
-              <div class="patient-say">患者への伝え方の例：<br />「毎日決まった時間に飲んでください。症状が落ち着いてからも、自己判断で止めずに必ず先生と相談してください。眠気やふらつきが出ることがあるので、車の運転や危険な作業は避けてください。手の震え、じっとしていられない、体のこわばり、便秘や口の渇きが強い、急に体重が増えた・喉が渇いて水をたくさん飲むようになったときは、早めに教えてください。」</div>
+              <h4>皮膚粘膜眼症候群・中毒性表皮壊死症（SJS/TEN）</h4>
+              <p>頻度は稀だが、発熱を伴う全身性の皮疹・口や眼の粘膜びらん・水ぶくれ等が出た場合は速やかに受診するよう伝える。</p>
+
+              <h4>患者説明のスタンス</h4>
+              <p>いずれも頻度としては稀。患者には病名を前面に出さず、症状（高熱とこわばり／動悸・めまい・失神／発熱と全身性の皮疹・粘膜びらん）と相談・受診の目安を中心に説明する。薬歴上で病名と症状をセットで残したい場合は下記の追記テンプレを使用。</p>
             </div>
           </details>
-
-          <div class="tpl-warn">
-            <div class="tpl-warn-title">コピーする前に必ず確認</div>
-            下のテンプレは「指導・説明」部分の記載例です。そのままコピペすると要件不足になるので、以下を確認してください。
-            <ul>
-              <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（例：「リスパダール：眠気・錐体外路症状の確認と自動車運転回避を指導…」）</li>
-              <li><strong>確認した内容（症状・体重・聞き取り結果）</strong>もテンプレに足す</li>
-              <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
-              <li>「自動車運転等の危険作業に従事しないよう説明」は添付文書ベースの表現として残し、患者背景に応じて表現を調整</li>
-              <li>副作用説明を行った場合は、<strong>「副作用説明の追記」</strong>から該当する記載例を追加（説明していない副作用は追加しない）</li>
-            </ul>
-          </div>
-
           <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
-              <div class="tpl-text">新規処方。眠気・ふらつき・錐体外路症状・便秘・口渇の自覚なしを確認。症状の安定を助ける薬であることを説明、症状が落ち着いてからも自己判断で中止しないよう指導。眠気・ふらつきが出ることがあるため、自動車運転等の危険作業に従事しないよう説明。手の震え・体のこわばり・じっとしていられない、便秘・口渇が強い・続く場合は相談するよう指導。体重変化や口渇・多飲・多尿など血糖上昇を疑う症状があれば相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：他剤併用下追加</span>
-              <div class="tpl-text">他剤併用下で抗精神病薬を新規追加。併用薬を確認。他の中枢抑制薬・抗コリン薬の重複により眠気・ふらつき・便秘・口渇・認知機能低下のリスクが上がるため、症状の観察を重点指導。自動車運転等の危険作業に従事しないよう説明。市販薬・サプリは薬剤師に確認するよう指導、自己判断で中止しないよう注意喚起。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
-              <div class="tpl-text">高齢者への抗精神病薬新規処方。転倒・誤嚥・抗コリン負荷・起立性低血圧のリスクが上がる旨を本人・家族に説明。家族支援の有無を確認、症状観察を依頼。眠気・ふらつき出現時は無理せず休むこと、立ち上がりはゆっくり段階的に行うよう指導。便秘・口渇・尿閉等の症状や、嚥下が悪くなった場合は早めに相談するよう説明。自己判断で中止しないよう注意喚起。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
-              <div class="tpl-text">用量変更を確認。変更前後の症状の安定状況・眠気・錐体外路症状・体重変化を確認。新用量での服用方法を再説明、症状出現時は早めに相談するよう再指導。自己判断で中止しないよう注意喚起。</div>
-              <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
               <div class="tpl-text">悪性症候群について、まれではあるが、高熱・強い筋肉のこわばり・意識のもうろう・発汗・頻脈が急に出現した場合は速やかに受診するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
@@ -541,32 +498,339 @@
             <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
               <div class="tpl-text">皮膚粘膜眼症候群・中毒性表皮壊死症（SJS/TEN）について、まれではあるが、発熱を伴う全身性の皮疹・口や眼の粘膜びらん・水ぶくれが出た場合は速やかに受診するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">高血糖・糖尿病性ケトアシドーシスについて、まれではあるが、口渇・多飲・多尿・頻尿・倦怠感等の急な出現があれば、自己判断で様子を見ず速やかに受診するよう説明（特にMARTA系）。</div>
+          </div>
+        </div>
+
+        <!-- 非定型 SDA -->
+        <div class="drug-block" id="sda">
+          <div class="drug-block-head">
+            <span class="drug-block-name">非定型 SDA（セロトニン・ドパミン拮抗薬）</span>
+            <span class="drug-block-sub">リスパダール（リスペリドン）／ルーラン（ペロスピロン）／ロナセン（ブロナンセリン）／インヴェガ（パリペリドン）／ラツーダ（ルラシドン）</span>
+          </div>
+
+          <div class="drug-check-box">
+            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
+            <ul>
+              <li>処方内容・用法用量／服用タイミング</li>
+              <li>服薬の継続状況／<strong>自己判断で中止していないか</strong></li>
+              <li><strong>錐体外路症状</strong>（手の震え・じっとしていられない・体のこわばり・嚥下障害）の有無</li>
+              <li>眠気・ふらつき／立ちくらみの有無</li>
+              <li><strong>月経異常・乳汁分泌・性機能障害</strong>（高プロラクチン血症、特にリスペリドン・パリペリドン）</li>
+              <li>併用薬（CYP3A4阻害薬等）／アルコール</li>
+              <li>自動車運転等の危険作業の従事状況／高齢者は転倒・誤嚥リスク</li>
+            </ul>
+            <p style="font-size:11px;color:var(--sub);margin-top:6px;">※ 日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」精神神経用剤 を参考</p>
+          </div>
+
+          <details class="guide-details">
+            <summary>指導時の補足</summary>
+            <div class="guide-details-body">
+              <h4>薬効の説明ポイント</h4>
+              <p>セロトニン（5-HT2A）とドパミン（D2）の両方に作用して<strong>症状の安定を助ける薬</strong>。定型薬より錐体外路症状は少なめ。リスペリドン・パリペリドンは<strong>プロラクチン上昇</strong>が出やすい点に注意。</p>
+
+              <h4>患者への伝え方</h4>
+              <ul>
+                <li>毎日決まった時間に服用、<strong>自己判断で中止しない</strong>（症状が安定しても継続が必要）</li>
+                <li>眠気・ふらつきが出ることがあるため、<strong>自動車運転等の危険作業に従事しないよう説明</strong></li>
+                <li>手の震え・じっとしていられない・体のこわばりが出たら早めに相談</li>
+                <li>月経異常・乳汁分泌・性機能の変化があれば（恥ずかしがらず）早めに相談</li>
+                <li>市販の風邪薬・睡眠改善薬・サプリは薬剤師に確認</li>
+              </ul>
+
+              <h4>高プロラクチン血症（背景知識）</h4>
+              <p>リスペリドン・パリペリドンは<strong>強いD2拮抗作用</strong>によりプロラクチンが上昇しやすい。<strong>月経異常・無月経・乳汁分泌・性機能障害（性欲低下・勃起障害）</strong>として現れることがある。患者からは自発的に訴えにくいため、聞き取りで拾うことが重要。長期では骨密度低下のリスクもあるため、症状があれば処方医に伝えるよう促す。</p>
+
+              <h4>錐体外路症状（背景知識）</h4>
+              <p>定型薬より少ないとはいえ、<strong>パーキンソン症状・アカシジア・ジストニア</strong>は出ることがある。出現時は用量調整・抗パーキンソン薬の併用・薬剤変更を処方医と相談。</p>
+
+              <div class="patient-say">患者への伝え方の例：<br />「毎日決まった時間に飲んでください。眠気やふらつき、手の震え、体のこわばりが気になるときは早めに教えてください。月経の乱れや、お乳が出る・性機能の変化なども薬の影響かもしれないので、遠慮なく相談してください。」</div>
+            </div>
+          </details>
+
+          <div class="tpl-warn">
+            <div class="tpl-warn-title">コピーする前に必ず確認</div>
+            下のテンプレは「指導・説明」部分の記載例です。そのままコピペすると要件不足になるので、以下を確認してください。
+            <ul>
+              <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（例：「リスパダール：眠気・錐体外路症状の確認と自動車運転回避を指導…」）</li>
+              <li><strong>確認した内容（症状・聞き取り結果）</strong>もテンプレに足す</li>
+              <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
+              <li>共通重篤副作用（悪性症候群・QT延長・SJS/TEN）を説明した場合は、<strong>「共通の副作用説明の追記」</strong>から該当する記載例を追加</li>
+            </ul>
+          </div>
+
+          <div class="tpl-set">
+            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
+              <div class="tpl-text">SDA系新規処方。眠気・ふらつき・錐体外路症状の自覚なしを確認。症状の安定を助ける薬であることを説明、症状が落ち着いてからも自己判断で中止しないよう指導。眠気・ふらつきが出ることがあるため、自動車運転等の危険作業に従事しないよう説明。手の震え・体のこわばり・じっとしていられない、月経異常・乳汁分泌・性機能の変化があれば早めに相談するよう指導。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
+              <div class="tpl-text">高齢者へのSDA系新規処方。転倒・誤嚥・起立性低血圧のリスクが上がる旨を本人・家族に説明。家族支援の有無を確認、症状観察を依頼。眠気・ふらつき出現時は無理せず休むこと、立ち上がりはゆっくり段階的に行うよう指導。錐体外路症状や嚥下障害があれば早めに相談、自己判断で中止しないよう注意喚起。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
+              <div class="tpl-text">用量変更を確認。変更前後の症状の安定状況・眠気・錐体外路症状を確認。新用量での服用方法を再説明、症状出現時は早めに相談するよう再指導。自己判断で中止しないよう注意喚起。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">遅発性ジスキネジアについて、まれではあるが、長期服用中に口・舌の不随意運動（モグモグ・舌を出す等）が出た場合は主治医に相談するよう説明。</div>
+              <div class="tpl-text">高プロラクチン血症について、まれではあるが、月経異常・無月経・乳汁分泌・性機能障害（性欲低下・勃起障害等）が続く場合は主治医に相談するよう説明（特にリスペリドン・パリペリドン）。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">錐体外路症状（手の震え・じっとしていられない・体のこわばり・嚥下障害等）の訴えあり。自己判断で中止せず主治医に症状を伝えるよう指導、用量調整・抗パーキンソン薬の必要性は処方医と相談するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">MARTA系（オランザピン・クエチアピン等）服用例。体重増加・血糖上昇に注意が必要なため、体重変化、口渇・多飲・多尿、血糖値・HbA1cの推移を継続的に確認するよう説明。糖尿病または糖尿病既往がある場合は、禁忌該当の可能性があるため処方医へ確認。</div>
+              <div class="tpl-text">月経異常・乳汁分泌・性機能障害等の訴え。高プロラクチン血症が疑われるため、症状を主治医に伝えて評価・処方検討を相談するよう指導。長期では骨密度低下のリスクもある旨を必要に応じて説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">便秘悪化の訴え。抗コリン作用による腸蠕動低下が疑われるため、水分・食物繊維摂取の工夫を説明、続く場合は主治医に相談するよう指導。腹痛・嘔吐がある場合は麻痺性イレウスの可能性もあるため早めに受診するよう説明。</div>
+              <div class="tpl-text">妊娠・授乳希望／妊娠判明の情報あり。リスペリドン・パリペリドンはプロラクチン上昇により受胎に影響することがあり、また妊娠中・授乳中の使用は個別判断が必要なため、自己判断で中止せず主治医に相談するよう指導。</div>
+              <button class="copy-mini">コピー</button></div>
+          </div>
+        </div>
+
+        <!-- 非定型 MARTA -->
+        <div class="drug-block" id="marta">
+          <div class="drug-block-head">
+            <span class="drug-block-name">非定型 MARTA（多元受容体作用薬）</span>
+            <span class="drug-block-sub">ジプレキサ（オランザピン）／セロクエル・ビプレッソ（クエチアピン）</span>
+          </div>
+
+          <div class="drug-check-box">
+            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
+            <ul>
+              <li>処方内容・用法用量／服用タイミング</li>
+              <li><strong>糖尿病・糖尿病既往歴の有無</strong>（オランザピン・クエチアピンは糖尿病・既往歴のある患者には禁忌）</li>
+              <li><strong>体重変化／口渇・多飲・多尿・頻尿・倦怠感</strong>等の血糖上昇を疑う症状の有無</li>
+              <li>服薬の継続状況／<strong>自己判断で中止していないか</strong></li>
+              <li>眠気・ふらつき／立ちくらみの有無</li>
+              <li>便秘・口渇等の抗コリン作用症状の有無</li>
+              <li>併用薬（CYP3A4阻害薬・他の血糖上昇薬等）／アルコール</li>
+              <li>自動車運転等の危険作業の従事状況／効果指標：体重・血糖値・HbA1c の推移</li>
+            </ul>
+            <p style="font-size:11px;color:var(--sub);margin-top:6px;">※ 日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」精神神経用剤 を参考</p>
+          </div>
+
+          <div class="caveat-box">
+            <div class="caveat-box-title">処方確認のポイント（重要）</div>
+            <p>オランザピン・クエチアピンは<strong>糖尿病患者・糖尿病既往歴のある患者には禁忌</strong>（PMDA注意喚起あり）。新規処方時は病歴・現病歴を必ず確認し、糖尿病・糖尿病既往がある場合は処方医に確認する。継続処方でも、新たに糖尿病が判明した場合は処方医への情報提供を検討する。</p>
+          </div>
+
+          <details class="guide-details">
+            <summary>指導時の補足</summary>
+            <div class="guide-details-body">
+              <h4>薬効の説明ポイント</h4>
+              <p>セロトニン・ドパミン以外の多くの受容体にも作用して<strong>症状の安定を助ける薬</strong>。錐体外路症状は出にくい一方で、<strong>体重増加・血糖上昇・脂質異常</strong>のリスクが特に高い。</p>
+
+              <h4>糖尿病禁忌（背景知識）</h4>
+              <p>オランザピン・クエチアピンは<strong>糖尿病性ケトアシドーシス・糖尿病性昏睡の発現リスクから、糖尿病患者・糖尿病既往歴のある患者には禁忌</strong>とされている（PMDA注意喚起）。新規処方時の病歴確認、継続中の血糖モニタリングが特に重要。</p>
+
+              <h4>高血糖・糖尿病性ケトアシドーシス（背景知識）</h4>
+              <p>口渇・多飲・多尿・頻尿・倦怠感等の急な出現は高血糖の徴候。<strong>自己判断で様子を見ず、速やかに受診</strong>するよう指導。MARTA系では体重・血糖値・HbA1cの推移を定期的に確認できると安心。</p>
+
+              <h4>患者への伝え方</h4>
+              <ul>
+                <li>毎日決まった時間に服用、<strong>自己判断で中止しない</strong></li>
+                <li>体重変化、口渇・多飲・多尿・頻尿・倦怠感など血糖上昇を疑う症状があれば、<strong>自己判断で様子を見ず早めに受診</strong></li>
+                <li>眠気・ふらつきが出ることがあるため、<strong>自動車運転等の危険作業に従事しないよう説明</strong></li>
+                <li>糖尿病と診断されたことがある／血糖が高めと言われたことがある場合は薬剤師・主治医に必ず伝える</li>
+                <li>定期的な血液検査（血糖値・HbA1c）を受けるよう促す</li>
+              </ul>
+
+              <div class="patient-say">患者への伝え方の例：<br />「この薬は糖の代謝に影響することがあります。喉が渇いて水をたくさん飲む、おしっこの回数が増える、急に体重が増える、強い疲れが続く—こういうことがあれば、自己判断で様子を見ずに早めに受診してください。糖尿病と言われたことがあれば必ず教えてください。」</div>
+            </div>
+          </details>
+
+          <div class="tpl-warn">
+            <div class="tpl-warn-title">コピーする前に必ず確認</div>
+            下のテンプレは「指導・説明」部分の記載例です。そのままコピペすると要件不足になるので、以下を確認してください。
+            <ul>
+              <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（例：「ジプレキサ：糖尿病既往なしを確認、血糖上昇を疑う症状時の受診を指導…」）</li>
+              <li><strong>糖尿病・糖尿病既往歴・血糖値・HbA1c・体重等の聞き取り結果</strong>もテンプレに足す</li>
+              <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
+              <li>共通重篤副作用（悪性症候群・QT延長・SJS/TEN）を説明した場合は、<strong>「共通の副作用説明の追記」</strong>から該当する記載例を追加</li>
+            </ul>
+          </div>
+
+          <div class="tpl-set">
+            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
+              <div class="tpl-text">MARTA系新規処方。糖尿病・糖尿病既往・血糖高値指摘なしを確認、眠気・ふらつき・体重変化・口渇等の自覚なしを確認。症状の安定を助ける薬であることを説明、自己判断で中止しないよう指導。眠気・ふらつきが出ることがあるため自動車運転等の危険作業に従事しないよう説明。体重変化、口渇・多飲・多尿・頻尿・倦怠感など血糖上昇を疑う症状があれば、自己判断で様子を見ず早めに受診するよう指導。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
+              <div class="tpl-text">高齢者へのMARTA系新規処方。糖尿病・糖尿病既往なしを確認。転倒・誤嚥・抗コリン負荷・起立性低血圧のリスクが上がる旨を本人・家族に説明。家族支援の有無を確認、症状観察と血糖上昇を疑う症状時の受診を依頼。自己判断で中止しないよう注意喚起。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
+              <div class="tpl-text">用量変更を確認。変更前後の体重・血糖関連症状・眠気の変化を確認。新用量での服用方法を再説明、血糖上昇を疑う症状時の受診目安を再指導。自己判断で中止しないよう注意喚起。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
+              <div class="tpl-text">高血糖・糖尿病性ケトアシドーシスについて、まれではあるが、口渇・多飲・多尿・頻尿・倦怠感等の急な出現があれば、自己判断で様子を見ず速やかに受診するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">糖尿病または糖尿病既往あり。MARTA系は禁忌に該当する可能性があるため、処方内容・病歴を確認し、処方医へ情報提供して確認を依頼。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">体重増加／食欲増加の訴え。MARTA系は体重増加・脂質異常のリスクが高いため、体重・血糖値・HbA1cの推移を継続的に確認するよう説明。生活習慣（食事・運動）にも配慮するよう指導。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">口渇・多飲・多尿等の訴え。高血糖を疑う症状のため指導が必要と判断。自己判断で様子を見ず速やかに受診するよう指導、血糖値・HbA1cの確認を主治医に相談するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+          </div>
+        </div>
+
+        <!-- 非定型 DSS/DSAM -->
+        <div class="drug-block" id="dss-dsam">
+          <div class="drug-block-head">
+            <span class="drug-block-name">非定型 DSS／DSAM（ドパミン部分作動／セロトニン・ドパミン作動薬）</span>
+            <span class="drug-block-sub">エビリファイ（アリピプラゾール／DSS）／レキサルティ（ブレクスピプラゾール／DSAM）</span>
+          </div>
+
+          <div class="drug-check-box">
+            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
+            <ul>
+              <li>処方内容・用法用量／服用タイミング</li>
+              <li>服薬の継続状況／<strong>自己判断で中止していないか</strong></li>
+              <li><strong>アカシジア</strong>（じっとしていられない・そわそわ・足を動かしたくなる）の有無</li>
+              <li>不眠・焦燥感・興奮感の有無（特に開始初期）</li>
+              <li>眠気・ふらつきの有無</li>
+              <li>併用薬（CYP3A4阻害薬・CYP2D6阻害薬等）／アルコール</li>
+              <li>自動車運転等の危険作業の従事状況</li>
+            </ul>
+            <p style="font-size:11px;color:var(--sub);margin-top:6px;">※ 日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」精神神経用剤 を参考</p>
+          </div>
+
+          <details class="guide-details">
+            <summary>指導時の補足</summary>
+            <div class="guide-details-body">
+              <h4>薬効の説明ポイント</h4>
+              <p>ドパミンD2受容体を完全に遮断するのではなく、<strong>部分作動（DSS）または機能調整（DSAM）</strong>することで症状の安定を助ける薬。錐体外路症状・プロラクチン上昇は出にくい一方、<strong>アカシジア（じっとしていられない感覚）・不眠・焦燥感</strong>が開始初期に出やすい場合がある。</p>
+
+              <h4>アカシジア・不眠（背景知識）</h4>
+              <p>DSS/DSAMでは開始初期や増量時に<strong>アカシジア（静坐不能：じっとしていられない、足がそわそわ）・不眠・焦燥感</strong>が出やすいことがある。患者が「落ち着かない」「やる気が出すぎる」と表現することも。出現時は用量調整・服用時刻の変更・薬剤変更を処方医と相談。</p>
+
+              <h4>患者への伝え方</h4>
+              <ul>
+                <li>毎日決まった時間に服用、<strong>自己判断で中止しない</strong></li>
+                <li>眠気・ふらつきが出ることがあるため、<strong>自動車運転等の危険作業に従事しないよう説明</strong></li>
+                <li>じっとしていられない・足がそわそわする・寝つきが悪い・興奮感が出るときは早めに相談</li>
+                <li>市販薬・サプリ追加時は薬剤師に確認</li>
+              </ul>
+
+              <div class="patient-say">患者への伝え方の例：<br />「飲み始めや増量した時に、じっとしていられない感じ・足がそわそわする・寝つきが悪い・気持ちが高ぶる、といった変化が出ることがあります。気になるときは早めに教えてください。自己判断で止めずに相談してください。」</div>
+            </div>
+          </details>
+
+          <div class="tpl-warn">
+            <div class="tpl-warn-title">コピーする前に必ず確認</div>
+            下のテンプレは「指導・説明」部分の記載例です。そのままコピペすると要件不足になるので、以下を確認してください。
+            <ul>
+              <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（例：「エビリファイ：開始初期のアカシジア・不眠の説明と自動車運転回避を指導…」）</li>
+              <li><strong>確認した内容（症状・聞き取り結果）</strong>もテンプレに足す</li>
+              <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
+              <li>共通重篤副作用（悪性症候群・QT延長・SJS/TEN）を説明した場合は、<strong>「共通の副作用説明の追記」</strong>から該当する記載例を追加</li>
+            </ul>
+          </div>
+
+          <div class="tpl-set">
+            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
+              <div class="tpl-text">DSS/DSAM系新規処方。眠気・ふらつき・アカシジア・不眠の自覚なしを確認。症状の安定を助ける薬であることを説明、自己判断で中止しないよう指導。眠気・ふらつきが出ることがあるため自動車運転等の危険作業に従事しないよう説明。開始初期や増量時はじっとしていられない感覚・足のそわそわ・寝つきの悪さ・興奮感が出ることがあるため、気になる場合は早めに相談するよう指導。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
+              <div class="tpl-text">高齢者へのDSS/DSAM系新規処方。転倒・起立性低血圧のリスクが上がる旨を本人・家族に説明。家族支援の有無を確認、アカシジア・不眠・焦燥感の出現を観察してもらうよう依頼。自己判断で中止しないよう注意喚起。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
+              <div class="tpl-text">用量変更を確認。変更前後の症状の安定状況・アカシジア・不眠・焦燥感の変化を確認。新用量での服用方法を再説明、症状出現時は早めに相談するよう再指導。自己判断で中止しないよう注意喚起。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">アカシジア（じっとしていられない・足のそわそわ感）の訴え。開始初期や増量時に出やすい旨を説明、自己判断で中止せず主治医に症状を伝えて用量調整・服用時刻の変更・薬剤変更等を相談するよう指導。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">不眠・焦燥感・興奮感の訴え。DSS/DSAM系で出やすい症状であり、自己判断で中止せず主治医に伝えるよう指導。服用時刻の変更や用量調整で改善することがある旨を説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">CYP3A4阻害薬・CYP2D6阻害薬等の併用変更あり（〇〇）。血中濃度の変動により症状・副作用が変化する可能性があるため、症状観察を強化するよう指導。両処方医に併用事実を伝えるよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+          </div>
+        </div>
+
+        <!-- 定型抗精神病薬 -->
+        <div class="drug-block" id="typical">
+          <div class="drug-block-head">
+            <span class="drug-block-name">定型抗精神病薬</span>
+            <span class="drug-block-sub">セレネース（ハロペリドール）／コントミン・ウインタミン（クロルプロマジン）／ヒルナミン・レボトミン（レボメプロマジン） 等</span>
+          </div>
+
+          <div class="drug-check-box">
+            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
+            <ul>
+              <li>処方内容・用法用量／服用タイミング</li>
+              <li>服薬の継続状況／<strong>自己判断で中止していないか</strong></li>
+              <li><strong>錐体外路症状</strong>（手の震え・じっとしていられない・体のこわばり・嚥下障害）の有無</li>
+              <li><strong>遅発性ジスキネジア</strong>（長期服用時の口・舌の不随意運動）の有無</li>
+              <li>眠気・ふらつき／<strong>起立性低血圧</strong>（立ちくらみ・めまい）の有無</li>
+              <li>便秘・口渇・尿閉・霧視等の抗コリン作用症状の有無</li>
+              <li>併用薬（他のQT延長薬・中枢抑制薬・抗コリン薬重複）／アルコール</li>
+              <li>自動車運転等の危険作業の従事状況／高齢者は転倒・誤嚥リスク</li>
+            </ul>
+            <p style="font-size:11px;color:var(--sub);margin-top:6px;">※ 日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」精神神経用剤 を参考</p>
+          </div>
+
+          <details class="guide-details">
+            <summary>指導時の補足</summary>
+            <div class="guide-details-body">
+              <h4>薬効の説明ポイント</h4>
+              <p>ドパミンD2受容体を強く遮断して<strong>症状の安定を助ける薬</strong>。非定型より<strong>錐体外路症状・遅発性ジスキネジア・抗コリン作用・起立性低血圧</strong>が出やすい傾向。処方頻度は減ったが、興奮・激越時に短期使用される場合や、長期服用例で継続中の患者がいる。</p>
+
+              <h4>錐体外路症状・遅発性ジスキネジア（背景知識）</h4>
+              <p>定型薬では<strong>パーキンソン症状（手の震え・動作緩慢・筋固縮）・アカシジア・ジストニア</strong>が出やすい。長期使用では<strong>遅発性ジスキネジア</strong>（口をモグモグする・舌を出す等の不随意運動）が出ることがあり、中止しても改善しないことがある。早期発見が重要なため、定期的な観察と聞き取りを心がける。</p>
+
+              <h4>抗コリン作用・起立性低血圧（背景知識）</h4>
+              <p>クロルプロマジン・レボメプロマジン等のフェノチアジン系では<strong>抗コリン作用（便秘・口渇・尿閉・霧視）・起立性低血圧</strong>が出やすい。特に高齢者では認知機能低下・転倒・麻痺性イレウスに注意。</p>
+
+              <h4>患者への伝え方</h4>
+              <ul>
+                <li>毎日決まった時間に服用、<strong>自己判断で中止しない</strong></li>
+                <li>眠気・ふらつきが出ることがあるため、<strong>自動車運転等の危険作業に従事しないよう説明</strong></li>
+                <li>手の震え・体のこわばり・じっとしていられない・口や舌のモグモグした動きがあれば早めに相談</li>
+                <li>立ちくらみ・めまいが出る場合は急に立ち上がらず段階的に動作</li>
+                <li>便秘・口渇・尿が出にくいときは相談</li>
+                <li>市販の風邪薬・睡眠改善薬・サプリは薬剤師に確認（抗コリン重複に注意）</li>
+              </ul>
+
+              <div class="patient-say">患者への伝え方の例：<br />「毎日決まった時間に飲んでください。眠気やふらつきが出ることがあるので、車の運転は避けてください。手の震え、体のこわばり、口や舌が勝手に動く感じ、立ちくらみ、便秘や口の渇きが強い—こういうことがあれば早めに教えてください。自己判断で止めずに相談してください。」</div>
+            </div>
+          </details>
+
+          <div class="tpl-warn">
+            <div class="tpl-warn-title">コピーする前に必ず確認</div>
+            下のテンプレは「指導・説明」部分の記載例です。そのままコピペすると要件不足になるので、以下を確認してください。
+            <ul>
+              <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（例：「セレネース：錐体外路症状の確認と自動車運転回避を指導…」）</li>
+              <li><strong>確認した内容（症状・聞き取り結果）</strong>もテンプレに足す</li>
+              <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
+              <li>共通重篤副作用（悪性症候群・QT延長・SJS/TEN）を説明した場合は、<strong>「共通の副作用説明の追記」</strong>から該当する記載例を追加</li>
+            </ul>
+          </div>
+
+          <div class="tpl-set">
+            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
+              <div class="tpl-text">定型抗精神病薬新規処方。眠気・ふらつき・錐体外路症状・便秘・口渇・立ちくらみの自覚なしを確認。症状の安定を助ける薬であることを説明、自己判断で中止しないよう指導。眠気・ふらつきが出ることがあるため自動車運転等の危険作業に従事しないよう説明。手の震え・体のこわばり・じっとしていられない、便秘・口渇・尿が出にくい、立ちくらみ・めまいがある場合は早めに相談するよう指導。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
+              <div class="tpl-text">高齢者への定型抗精神病薬新規処方。転倒・誤嚥・抗コリン負荷・起立性低血圧のリスクが上がる旨を本人・家族に説明。認知症患者では脳血管事故・死亡リスク増加の報告があり、適応・用量・期間を慎重に確認。家族支援の有無を確認、症状観察を依頼。立ち上がりはゆっくり段階的に行うよう指導、嚥下が悪くなった場合は早めに相談するよう説明。自己判断で中止しないよう注意喚起。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
+              <div class="tpl-text">用量変更を確認。変更前後の症状の安定状況・眠気・錐体外路症状・抗コリン症状の変化を確認。新用量での服用方法を再説明、症状出現時は早めに相談するよう再指導。自己判断で中止しないよう注意喚起。</div>
+              <button class="copy-mini">コピー</button></div>
+
+            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
+              <div class="tpl-text">遅発性ジスキネジアについて、まれではあるが、長期服用中に口・舌の不随意運動（モグモグ・舌を出す等）が出た場合は主治医に相談するよう説明。中止しても改善しにくいことがあるため早期の相談が重要な旨を伝える。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">錐体外路症状（手の震え・じっとしていられない・体のこわばり・嚥下障害等）の訴えあり。自己判断で中止せず主治医に症状を伝えるよう指導、用量調整・抗パーキンソン薬の併用・薬剤変更の必要性は処方医と相談するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">立ちくらみ・めまい（起立性低血圧疑い）の訴え。急に立ち上がらず段階的に動作するよう指導、頻繁な場合や転倒した場合は主治医に相談するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">抗コリン薬（過活動膀胱治療薬・抗ヒスタミン薬・三環系抗うつ薬・パーキンソン病治療薬等）併用あり。抗コリン作用の重複により便秘・口渇・尿閉・認知機能低下のリスクが上がるため、症状の観察を強化するよう指導。両処方医に併用事実を伝えるよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">月経異常・乳汁分泌・性機能障害等の訴え。高プロラクチン血症（特にリスペリドン・パリペリドン等で生じやすい）が疑われるため、症状を主治医に伝えて評価・処方検討を相談するよう指導。</div>
+              <div class="tpl-text">抗コリン症状（便秘・口渇・尿が出にくい・霧視等）の訴え。続く場合は主治医に相談するよう指導、特に他の抗コリン薬（過活動膀胱治療薬・抗ヒスタミン薬・三環系抗うつ薬等）併用時はリスクが上がる旨を説明。腹痛・嘔吐がある場合は麻痺性イレウスの可能性もあるため早めに受診するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
           </div>
         </div>
+
 
 
         <!-- クロザピンの扱い -->
