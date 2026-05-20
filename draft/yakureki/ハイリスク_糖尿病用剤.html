@@ -69,6 +69,7 @@
       .tpl-mini .tpl-tag.init   { background: var(--blue-light); color: var(--blue); }
       .tpl-mini .tpl-tag.change { background: #e0f2f1; color: #0d9488; border: none; }
       .tpl-mini .tpl-tag.add    { background: #f2f4f8; color: #4b5563; border: 1px solid #d7dce3; }
+      .tpl-mini .tpl-tag.se     { background: #fef3e8; color: #c2701c; border: 1px solid #f5d4a1; }
 
       /* 薬剤ブロック内：この薬で確認すること */
       .drug-check-box {
@@ -471,10 +472,15 @@
           <span style="font-size:12px;">※ 併用薬については、各薬剤群で<strong>低血糖リスクに関係する代表的な組み合わせ</strong>を中心に記載しています。その他の相互作用や注意すべき併用薬がある場合は、確認した内容と患者へ説明した内容を個別に追記してください。</span><br />
           <span style="font-size:12px;">※ 薬剤群の並びは、日薬ガイドライン順ではなく、現場での探しやすさを優先し、処方頻度・指導上の重要度・薬歴記載で迷いやすい薬剤を考慮して配置しています。</span>
         </p>
+        <div class="tpl-warn" style="margin:12px 0;">
+          <div class="tpl-warn-title">副作用説明の記載について</div>
+          副作用に関する記載例は、<strong>実際に説明した内容に応じて追記</strong>してください。まれな重篤副作用は、患者さんへ不安を与えすぎないよう、<strong>症状と相談・受診の目安を中心に説明</strong>します。薬歴上で説明内容を明確に残したい場合は、<strong>「副作用説明の追記」から該当するものを追加</strong>してください。
+        </div>
         <div class="tag-legend">
           <span><i style="background:var(--blue-light);border:1px solid var(--blue)"></i>初回イ（単剤新規／併用下追加／高齢例 など）</span>
           <span><i style="background:#e0f2f1;border:1px solid #0d9488"></i>変更ロ（増量／減量／用量変更 など）</span>
           <span><i style="background:#f2f4f8;border:1px solid #d7dce3"></i>必要時追記</span>
+          <span><i style="background:#fef3e8;border:1px solid #f5d4a1"></i>副作用説明の追記（説明した分だけ追加）</span>
         </div>
 
         <div class="drug-index">
@@ -561,6 +567,9 @@
               <h4>類天疱瘡様症状（背景知識）</h4>
               <p>DPP-4阻害薬の使用中に、<strong>水疱・びらん</strong>などの類天疱瘡様の皮膚病変を起こすことがある。皮膚に変化が出た場合は早めに主治医または薬剤師に相談するよう伝える。</p>
 
+              <h4>患者説明のスタンス</h4>
+              <p>急性膵炎・類天疱瘡はいずれも頻度としては稀。患者には病名を前面に出さず、症状（強い腹痛・嘔吐、皮膚の水疱・ただれ）と相談・受診の目安を中心に説明する。薬歴上で病名と症状をセットで残したい場合は<strong>「副作用説明の追記」から追加コピー</strong>。</p>
+
               <h4>腎機能による用量調整（薬剤別）</h4>
               <p>DPP-4阻害薬は薬剤ごとに腎機能調整の必要性が異なる。用量変更の理由として腎機能変化が関わることもあるため、定期的な血液検査結果は薬局でも見せてもらうよう促す。</p>
               <ul>
@@ -577,34 +586,35 @@
             <div class="tpl-warn-title">コピーする前に必ず確認</div>
             下のテンプレは「指導・説明」部分の記載例です。そのままコピペすると要件不足になるので、以下を確認してください。
             <ul>
-              <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（例：「ジャヌビア：急性膵炎・類天疱瘡の説明…」）</li>
+              <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（例：「ジャヌビア：低血糖リスク併用薬なし。強い腹痛・嘔吐、皮膚の水疱・ただれ等があれば早めに相談するよう説明…」）</li>
               <li><strong>確認した内容（検査値・症状・聞き取り結果）</strong>もテンプレに足す</li>
               <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
               <li>相互作用に注意すべき併用薬がある場合は、<strong>相互作用の内容と患者への指導内容を個別に記載</strong></li>
+              <li>副作用説明を行った場合は、<strong>「副作用説明の追記」</strong>から該当する記載例を追加（説明していない副作用は追加しない）</li>
             </ul>
           </div>
 
           <div class="tpl-set">
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：単剤新規</span>
-              <div class="tpl-text">新規処方。低血糖リスクを高める併用薬なし、急性膵炎様症状・類天疱瘡様症状の自覚なしを確認。食事に合わせて血糖を下げる体の働きを助ける薬であることを説明。強い腹痛・嘔吐・圧痛（急性膵炎様症状）、皮膚の水疱・びらん（類天疱瘡様症状）が出た場合は速やかに受診するよう指導。</div>
+              <div class="tpl-text">新規処方。低血糖リスクを高める併用薬なしを確認。食事に合わせて血糖を下げる体の働きを助ける薬であることを説明。まれではあるが、強い腹痛・嘔吐や皮膚の水疱・ただれ等が出た場合は早めに相談・受診するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：SU・インスリン併用下追加</span>
-              <div class="tpl-text">他剤併用下（SU/インスリン）でDPP-4新規追加。併用薬を確認。SU/インスリン併用で低血糖リスクが上がるため、低血糖症状と対処（ブドウ糖摂取）を指導。急性膵炎様症状・類天疱瘡様症状の出現時は速やかに受診するよう説明。</div>
+              <div class="tpl-text">他剤併用下（SU/インスリン）でDPP-4新規追加。併用薬を確認。SU/インスリン併用で低血糖リスクが上がるため、低血糖症状と対処（ブドウ糖摂取）を指導。まれではあるが、強い腹痛・嘔吐や皮膚の水疱・ただれ等が出た場合は早めに相談・受診するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
-              <div class="tpl-text">用量変更内容を確認。強い腹痛・嘔吐、皮膚の水疱・びらん等の症状が出た場合は速やかに相談・受診するよう再指導。</div>
+              <div class="tpl-text">用量変更内容を確認し服用方法を再説明。気になる腹部症状や皮膚症状が出た場合は早めに相談するよう再指導。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
+              <div class="tpl-text">急性膵炎様症状（強い腹痛・嘔吐）について、まれではあるが症状が出た場合は早めに相談・受診するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
+              <div class="tpl-text">類天疱瘡様症状（皮膚の水疱・ただれ）について、まれではあるが症状が出た場合は早めに相談・受診するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">併用薬変更あり（薬剤名：〇〇）。既存薬との相互作用・低血糖リスクを確認、SU/インスリン追加時は低血糖症状と対処を再指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">SU・インスリン併用あり。低血糖リスクが上がるため、低血糖症状と対処（ブドウ糖摂取）を再指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">急性膵炎を疑う症状（強い腹痛・嘔吐・圧痛）が出現した場合は、速やかに受診し、服用継続の可否を含めて主治医に相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">類天疱瘡を疑う症状（皮膚の水疱・びらん）が出現した場合は、早めに主治医に相談するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
           </div>
         </div>
@@ -660,6 +670,9 @@
               <h4>陰部症状（背景知識）</h4>
               <p>排尿時痛・陰部の痛み・腫れ・発赤・発熱は尿路感染・性器感染のほか、<strong>まれに会陰部の重篤な感染症（フルニエ壊疽）</strong>に至ることがある。急速に進行するため、症状があれば早めの受診を強く伝える。</p>
 
+              <h4>患者説明のスタンス</h4>
+              <p>フルニエ壊疽は頻度としては稀。患者には病名を前面に出さず、症状（陰部の痛み・腫れ・発赤・発熱）と早めの受診を中心に説明する。薬歴上で病名と症状をセットで残したい場合は<strong>「副作用説明の追記」から追加コピー</strong>。</p>
+
               <div class="patient-say">患者への伝え方の例：<br />「水分を多めに取ってください。発熱や下痢でご飯が食べられない日は、薬を飲んだ方がいいか相談してください。食欲がなくてもおかゆやジュースで糖質と水分は取ってください。陰部に痛みや腫れ、発熱があったら、様子を見ずにすぐ受診してください。」</div>
             </div>
           </details>
@@ -672,12 +685,13 @@
               <li><strong>確認した内容（検査値・症状・聞き取り結果）</strong>もテンプレに足す</li>
               <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
               <li>相互作用に注意すべき併用薬がある場合は、<strong>相互作用の内容と患者への指導内容を個別に記載</strong></li>
+              <li>副作用説明を行った場合は、<strong>「副作用説明の追記」</strong>から該当する記載例を追加（説明していない副作用は追加しない）</li>
             </ul>
           </div>
 
           <div class="tpl-set">
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：単剤新規</span>
-              <div class="tpl-text">新規処方。低血糖リスクを高める併用薬なし、脱水症状・陰部症状の自覚なしを確認。尿から余分な糖を排泄して血糖を下げる薬であることを説明。こまめな水分補給を指導。排尿時痛・陰部症状・発熱時は早めに受診、発熱・下痢・嘔吐・食事摂取不良時は自己判断で継続・中止せず相談するよう説明。</div>
+              <div class="tpl-text">新規処方。低血糖リスクを高める併用薬なし、脱水症状・陰部症状の自覚なしを確認。尿から余分な糖を排泄して血糖を下げる薬であることを説明。こまめな水分補給を指導。陰部の痛み・腫れ・発赤・発熱が出た場合は早めに相談・受診、発熱・下痢・嘔吐・食事摂取不良時は自己判断で継続・中止せず相談するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：SU・インスリン併用下追加</span>
               <div class="tpl-text">他剤併用下（SU/インスリン）でSGLT2新規追加。併用薬を確認。脱水＋低血糖リスク上昇のため、こまめな水分補給と低血糖症状の観察を指導。陰部症状・Sick day時の対応も説明。</div>
@@ -688,6 +702,9 @@
             <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
               <div class="tpl-text">増量前の脱水症状・陰部症状の訴えなしを確認。増量に伴い脱水傾向に注意し、こまめな水分補給を再指導。陰部症状・Sick day時の対応も再確認。</div>
               <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
+              <div class="tpl-text">フルニエ壊疽（会陰部の重篤な感染症）について、まれではあるが陰部の痛み・腫れ・発赤・発熱が出た場合は、急速に進行することもあるため様子を見ず早めに受診するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">併用薬変更あり（薬剤名：〇〇）。SU/インスリン追加時は脱水＋低血糖の重複リスクを説明・指導。利尿薬追加時は脱水傾向に注意するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
@@ -696,9 +713,6 @@
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">利尿薬併用あり。脱水傾向に注意し、こまめな水分補給を再指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">尿路感染・性器感染を疑う症状（陰部の痛み・腫れ・発赤・発熱）が出現した場合は、フルニエ壊疽など重篤化リスクもあるため、様子を見ず速やかに受診するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
           </div>
         </div>
@@ -835,6 +849,9 @@
               <h4>乳酸アシドーシスとは（背景知識）</h4>
               <p>BG使用中、<strong>脱水・低酸素・腎機能低下・多量飲酒</strong>などが重なると、体内に乳酸がたまって重篤な状態（倦怠感・嘔気・過呼吸・意識障害）になることがある。発症すれば致死的になりうるため、リスク状況を避けるよう日頃から伝える。</p>
 
+              <h4>患者説明のスタンス</h4>
+              <p>乳酸アシドーシス自体は頻度としては稀。患者にはSick day・造影剤・多量飲酒などのリスク状況を避ける行動と、強い倦怠感・嘔気・過呼吸が出た場合の相談を中心に説明する。</p>
+
               <h4>Sick day</h4>
               <p><strong>Sick day とは：</strong>糖尿病の方が、発熱・下痢・嘔吐などで食事や水分を十分に取れない状態、または骨折など大きな外傷があった場合のこと。病気のストレスや脱水で血糖が上昇する一方、食事量低下で低血糖のリスクもあり、血糖コントロールが難しい状態。</p>
               <ul>
@@ -863,15 +880,16 @@
               <li><strong>確認した内容（検査値・症状・聞き取り結果）</strong>もテンプレに足す</li>
               <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
               <li>相互作用に注意すべき併用薬がある場合は、<strong>相互作用の内容と患者への指導内容を個別に記載</strong></li>
+              <li>副作用説明を行った場合は、<strong>「副作用説明の追記」</strong>から該当する記載例を追加（説明していない副作用は追加しない）</li>
             </ul>
           </div>
 
           <div class="tpl-set">
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：単剤新規</span>
-              <div class="tpl-text">新規処方。低血糖リスクを高める併用薬なし、消化器症状の自覚なしを確認。肝臓での糖新生を抑えインスリンの効きを良くする薬であることを説明。消化器症状（食欲不振・下痢・嘔気）は服用初期に出やすく続く場合は相談するよう指導。Sick day時・造影剤検査時は自己判断で継続・中止せず医師の指示を確認するよう説明。</div>
+              <div class="tpl-text">新規処方。低血糖リスクを高める併用薬なし、消化器症状の自覚なし、腎機能・脱水傾向を確認。肝臓での糖新生を抑えインスリンの効きを良くする薬であることを説明。消化器症状（食欲不振・下痢・嘔気）は服用初期に出やすく続く場合は相談するよう指導。乳酸アシドーシス様症状（強い倦怠感・嘔気・過呼吸）について、まれではあるが症状時は早めに相談・受診するよう説明。Sick day時・造影剤検査時・多量飲酒は乳酸アシドーシスのリスクが上がるため、自己判断で継続・中止せず医師の指示を確認するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：併用下追加</span>
-              <div class="tpl-text">他剤併用下でメトホルミン新規追加。併用薬（〇〇）の相互作用注意点（〇〇）について患者に説明・指導。単剤では低血糖リスクは低いが、SU/インスリン併用時は低血糖症状と対処を指導。Sick day・造影剤検査時の対応も指導。</div>
+              <div class="tpl-text">他剤併用下でメトホルミン新規追加。併用薬（〇〇）の相互作用注意点（〇〇）について患者に説明・指導。単剤では低血糖リスクは低いが、SU/インスリン併用時は低血糖症状と対処を指導。乳酸アシドーシス様症状（強い倦怠感・嘔気・過呼吸）について、まれではあるが症状時は早めに相談・受診するよう説明。Sick day・造影剤検査時・多量飲酒は乳酸アシドーシスのリスクが上がるため、自己判断で継続・中止せず医師の指示を確認するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
               <div class="tpl-text">増量前の消化器症状の訴えなし、腎機能経過を確認。増量に伴い消化器症状の出現に注意し、続く場合は相談するよう再指導。</div>
@@ -934,6 +952,9 @@
               <h4>急性膵炎様症状（背景知識）</h4>
               <p>GLP-1作動薬の使用中に、稀に<strong>急性膵炎</strong>を起こすことがある（添付文書で警告あり）。<strong>強い腹痛・嘔吐・圧痛</strong>などが出現した場合は速やかに受診し、服用継続の可否を含めて主治医に相談するよう伝える。</p>
 
+              <h4>患者説明のスタンス</h4>
+              <p>急性膵炎は頻度としては稀。患者には病名を前面に出さず、強い腹痛・嘔吐が続く場合の相談・受診を中心に説明する。薬歴上で病名と症状をセットで残したい場合は<strong>「副作用説明の追記」から追加コピー</strong>。</p>
+
               <div class="patient-say">患者への伝え方の例：<br />「朝起きてすぐ、コップ半分の水で飲んでください。その後30分は何も食べたり飲んだりしないでください。最初の数週間は気持ち悪さが出ることもありますが、たいてい治まります。強く続く場合や、お腹を強く痛がる・吐き気が止まらない場合は連絡してください。」</div>
             </div>
           </details>
@@ -946,12 +967,13 @@
               <li><strong>確認した内容（検査値・症状・聞き取り結果）</strong>もテンプレに足す</li>
               <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
               <li>相互作用に注意すべき併用薬がある場合は、<strong>相互作用の内容と患者への指導内容を個別に記載</strong></li>
+              <li>副作用説明を行った場合は、<strong>「副作用説明の追記」</strong>から該当する記載例を追加（説明していない副作用は追加しない）</li>
             </ul>
           </div>
 
           <div class="tpl-set">
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：単剤新規</span>
-              <div class="tpl-text">新規処方。低血糖リスクを高める併用薬なし、消化器症状の自覚なしを確認。食事に合わせて血糖を下げる働きを助け、食欲も抑える内服薬であることを説明。起床時・コップ約半分の水・服用後30分は飲食他剤不可の服用ルールを厳守するよう指導。悪心は初期に多く軽快することが多い旨を説明、強い場合や続く場合は相談するよう指導。</div>
+              <div class="tpl-text">新規処方。低血糖リスクを高める併用薬なし、消化器症状の自覚なしを確認。食事に合わせて血糖を下げる働きを助け、食欲も抑える内服薬であることを説明。起床時・コップ約半分の水・服用後30分は飲食他剤不可の服用ルールを厳守するよう指導。悪心は初期に多く軽快することが多い旨を説明、強い場合や続く場合は相談するよう指導。まれではあるが、強い腹痛・嘔吐が続く場合は早めに相談・受診するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：SU・インスリン併用下追加</span>
               <div class="tpl-text">他剤併用下（SU/インスリン）で経口セマグルチド新規追加。併用薬を確認。服用ルール（起床時・コップ半分の水・30分絶食）を厳格に指導。SU/インスリン併用で低血糖リスクが上がるため、低血糖症状と対処を指導。</div>
@@ -959,14 +981,14 @@
             <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
               <div class="tpl-text">増量前に悪心・食欲低下の訴えなし。増量後は消化器症状に注意し、強い場合や食事量低下が続く場合は相談するよう再指導。服用ルールも再確認。</div>
               <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
+              <div class="tpl-text">急性膵炎様症状（強い腹痛・嘔吐）について、まれではあるが症状が出た場合は早めに相談・受診するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">食欲低下強い／持続あり。脱水・栄養不良に注意し、医療機関に相談するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">服用ルールの理解不十分。起床時・コップ半分の水・服用後30分絶食を再指導。守れないと吸収が下がり効果が出ない旨を説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">急性膵炎を疑う症状（強い腹痛・嘔吐・圧痛）が出現した場合は、速やかに受診し、服用継続の可否を含めて主治医に相談するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
           </div>
         </div>
@@ -1014,6 +1036,9 @@
               <h4>急性膵炎様症状（背景知識）</h4>
               <p>GLP-1作動薬の使用中に、稀に<strong>急性膵炎</strong>を起こすことがある（添付文書で警告あり）。<strong>強い腹痛・嘔吐・圧痛</strong>などが出現した場合は速やかに受診し、使用継続の可否を含めて主治医に相談するよう伝える。</p>
 
+              <h4>患者説明のスタンス</h4>
+              <p>急性膵炎は頻度としては稀。患者には病名を前面に出さず、強い腹痛・嘔吐が続く場合の相談・受診を中心に説明する。薬歴上で病名と症状をセットで残したい場合は<strong>「副作用説明の追記」から追加コピー</strong>。</p>
+
               <div class="patient-say">患者への伝え方の例：<br />「週1回、決まった曜日に打ちましょう。打つ場所は毎回ずらしてください。最初は気持ち悪くなることもありますが、たいてい慣れていきます。強く続く場合や、お腹を強く痛がる・吐き気が止まらない場合は連絡してください。」</div>
             </div>
           </details>
@@ -1026,18 +1051,22 @@
               <li><strong>確認した内容（検査値・症状・聞き取り結果）</strong>もテンプレに足す</li>
               <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
               <li>相互作用に注意すべき併用薬がある場合は、<strong>相互作用の内容と患者への指導内容を個別に記載</strong></li>
+              <li>副作用説明を行った場合は、<strong>「副作用説明の追記」</strong>から該当する記載例を追加（説明していない副作用は追加しない）</li>
             </ul>
           </div>
 
           <div class="tpl-set">
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：単剤新規</span>
-              <div class="tpl-text">新規処方。低血糖リスクを高める併用薬なし、消化器症状の自覚なしを確認。食事に合わせて血糖を下げる働きを助け、食欲も抑える注射薬であることを説明。注射手技・投与部位ローテーション・保管・打ち忘れ時対応を実演で確認・指導。週1回製剤は曜日固定で習慣化、悪心は初期に多く軽快する旨を説明。</div>
+              <div class="tpl-text">新規処方。低血糖リスクを高める併用薬なし、消化器症状の自覚なしを確認。食事に合わせて血糖を下げる働きを助け、食欲も抑える注射薬であることを説明。注射手技・投与部位ローテーション・保管・打ち忘れ時対応を実演で確認・指導。週1回製剤は曜日固定で習慣化、悪心は初期に多く軽快する旨を説明。まれではあるが、強い腹痛・嘔吐が続く場合は早めに相談・受診するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：SU・インスリン併用下追加</span>
               <div class="tpl-text">他剤併用下（SU/インスリン）でGLP-1注射新規追加。併用薬を確認。注射手技を実演で確認・指導。SU/インスリン併用で低血糖リスクが上がるため、低血糖症状と対処を指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
               <div class="tpl-text">増量前に悪心・食欲低下の訴えなし。増量後は消化器症状に注意し、強い場合や食事量低下が続く場合は相談するよう再指導。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
+              <div class="tpl-text">急性膵炎様症状（強い腹痛・嘔吐）について、まれではあるが症状が出た場合は早めに相談・受診するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">併用薬変更あり（薬剤名：〇〇）。SU/インスリン追加時は低血糖症状と対処を指導。</div>
@@ -1050,9 +1079,6 @@
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">注射部位の皮膚硬結・しこりあり。投与部位のローテーションを再指導、症状が続く場合は主治医に相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">急性膵炎を疑う症状（強い腹痛・嘔吐・圧痛）が出現した場合は、速やかに受診し、使用継続の可否を含めて主治医に相談するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
           </div>
         </div>
@@ -1099,6 +1125,9 @@
               <h4>急性膵炎様症状（背景知識）</h4>
               <p>GLP-1／GIP関連薬の使用中に、稀に<strong>急性膵炎</strong>を起こすことがある（添付文書で警告あり）。<strong>強い腹痛・嘔吐・圧痛</strong>などが出現した場合は速やかに受診し、使用継続の可否を含めて主治医に相談するよう伝える。</p>
 
+              <h4>患者説明のスタンス</h4>
+              <p>急性膵炎は頻度としては稀。患者には病名を前面に出さず、強い腹痛・嘔吐が続く場合の相談・受診を中心に説明する。薬歴上で病名と症状をセットで残したい場合は<strong>「副作用説明の追記」から追加コピー</strong>。</p>
+
               <div class="patient-say">患者への伝え方の例：<br />「週1回、決まった曜日に打ちましょう。食欲が落ちる方が多いですが、急に体重が落ちる・ご飯が食べられない状態が続く場合は連絡してください。お腹を強く痛がる・吐き気が止まらない場合もすぐ連絡を。」</div>
             </div>
           </details>
@@ -1111,18 +1140,22 @@
               <li><strong>確認した内容（検査値・症状・聞き取り結果）</strong>もテンプレに足す</li>
               <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
               <li>相互作用に注意すべき併用薬がある場合は、<strong>相互作用の内容と患者への指導内容を個別に記載</strong></li>
+              <li>副作用説明を行った場合は、<strong>「副作用説明の追記」</strong>から該当する記載例を追加（説明していない副作用は追加しない）</li>
             </ul>
           </div>
 
           <div class="tpl-set">
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：単剤新規</span>
-              <div class="tpl-text">マンジャロ新規処方。低血糖リスクを高める併用薬なし、消化器症状の自覚なしを確認。GLP-1作用に加えてGIP作用も持ち、血糖改善と食欲低下・体重減少がみられることがある注射薬であることを説明。注射手技・投与曜日・保管・打ち忘れ時の対応を実演で確認・指導。悪心は初期に多く軽快、食欲低下・体重減少が強い場合は栄養不良・脱水に注意し相談するよう指導。</div>
+              <div class="tpl-text">マンジャロ新規処方。低血糖リスクを高める併用薬なし、消化器症状の自覚なしを確認。血糖を下げ、食欲低下・体重減少もみられることがある週1回注射薬（GIP／GLP-1作用）であることを説明。注射手技・投与曜日・保管・打ち忘れ時の対応を実演で確認・指導。悪心は初期に多く軽快、食欲低下・体重減少が強い場合は栄養不良・脱水に注意し相談するよう指導。まれではあるが、強い腹痛・嘔吐が続く場合は早めに相談・受診するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：SU・インスリン併用下追加</span>
               <div class="tpl-text">他剤併用下（SU/インスリン）でマンジャロ新規追加。併用薬を確認。SU/インスリン併用で低血糖リスクが上がるため、低血糖症状と対処（ブドウ糖摂取）を指導。注射手技・投与曜日も実演で確認・指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
               <div class="tpl-text">増量前に悪心・食欲低下の訴えなし、体重変化を確認。増量後は悪心・食欲低下が強く出る場合があるため、食事量低下が続く場合は相談するよう再指導。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
+              <div class="tpl-text">急性膵炎様症状（強い腹痛・嘔吐）について、まれではあるが症状が出た場合は早めに相談・受診するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">体重減少が強い／食欲低下持続あり。栄養不良・脱水に注意し、医療機関に相談するよう指導。</div>
@@ -1132,9 +1165,6 @@
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">注射部位の皮膚硬結・しこりあり。投与部位のローテーションを再指導、症状が続く場合は主治医に相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">急性膵炎を疑う症状（強い腹痛・嘔吐・圧痛）が出現した場合は、速やかに受診し、使用継続の可否を含めて主治医に相談するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
           </div>
         </div>
@@ -1173,6 +1203,9 @@
               <h4>肝機能障害（背景知識）</h4>
               <p>α-GIは稀に肝機能障害を起こすことがある。<strong>倦怠感・発熱・黄疸</strong>などが出現した場合は速やかに受診し、服用継続の可否を含めて主治医に相談するよう伝える。定期的な血液検査結果は薬局でも見せてもらうよう促す。</p>
 
+              <h4>患者説明のスタンス</h4>
+              <p>肝機能障害・腸閉塞はいずれも頻度としては稀。患者には病名を前面に出さず、強いだるさ・黄疸・褐色尿や、強い腹痛・嘔吐・排ガスや排便の停止などが出た場合の相談・受診を中心に説明する。薬歴上で病名と症状をセットで残したい場合は<strong>「副作用説明の追記」から追加コピー</strong>。</p>
+
               <h4>Sick day</h4>
               <p>α-GIは食直前服用が前提のため、食事を摂らない回に服用する意義は乏しい。自己判断で対応せず、<strong>食事摂取状況に応じた服用可否を医師・薬局に確認</strong>するよう説明。Sick day時の対応を普段から医師と話し合っておくよう伝える。</p>
 
@@ -1188,18 +1221,25 @@
               <li><strong>確認した内容（検査値・症状・聞き取り結果）</strong>もテンプレに足す</li>
               <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
               <li>相互作用に注意すべき併用薬がある場合は、<strong>相互作用の内容と患者への指導内容を個別に記載</strong></li>
+              <li>副作用説明を行った場合は、<strong>「副作用説明の追記」</strong>から該当する記載例を追加（説明していない副作用は追加しない）</li>
             </ul>
           </div>
 
           <div class="tpl-set">
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：単剤新規</span>
-              <div class="tpl-text">新規処方。低血糖リスクを高める併用薬なし、腹部症状の自覚なしを確認。食事中の糖の吸収を遅らせ食後の血糖上昇を抑える薬であることを説明。食直前（食事を口に入れる直前）服用の意義と、飲み忘れた回はスキップするよう指導。初期は腹部膨満・放屁・下痢が出やすいが服用継続で軽快することが多い旨を説明、続く場合は相談するよう指導。</div>
+              <div class="tpl-text">新規処方。低血糖リスクを高める併用薬なし、腹部症状の自覚なしを確認。食事中の糖の吸収を遅らせ食後の血糖上昇を抑える薬であることを説明。食直前（食事を口に入れる直前）服用の意義と、飲み忘れ時は食後時間が経っていればその回は服用しないよう説明。初期は腹部膨満・放屁・下痢が出やすいが服用継続で軽快することが多い旨を説明、続く場合は相談するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：SU・インスリン併用下追加</span>
               <div class="tpl-text">他剤併用下（SU/インスリン）でα-GI新規追加。併用薬を確認。低血糖時はショ糖（砂糖）では分解されにくいためブドウ糖で対応するよう指導、ブドウ糖を常備するよう説明。食直前服用を徹底。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
               <div class="tpl-text">増量前の腹部症状の訴えなしを確認。増量に伴い腹部症状の出現に注意し、続く場合は相談するよう再指導。食直前服用の徹底も再確認。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
+              <div class="tpl-text">肝機能障害（強いだるさ・黄疸・褐色尿）について、まれではあるが症状が出た場合は早めに相談・受診するよう説明。定期的な血液検査結果は薬局でも提示するよう併せて指導。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
+              <div class="tpl-text">腸閉塞様症状（強い腹痛・嘔吐・排ガスや排便の停止）について、まれではあるが症状が出た場合は早めに相談・受診するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">併用薬変更あり（薬剤名：〇〇）。SU/インスリン追加時は低血糖時のブドウ糖対応（ショ糖不可）を再指導。</div>
@@ -1209,9 +1249,6 @@
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">腹部症状（膨満・放屁・下痢）の持続あり。通常は時間経過で軽減するが、症状が続く場合は主治医に相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">肝機能障害を疑う症状（倦怠感・発熱・黄疸）が出現した場合は、速やかに受診し、服用継続の可否を含めて主治医に相談するよう指導。定期的な血液検査結果は薬局でも提示するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">Sick day（発熱・下痢・嘔吐・食事摂取不良）あり。食事を摂らない場合の服用可否は自己判断せず、医師の指示を確認するよう説明。</div>
@@ -1357,7 +1394,7 @@
               <div class="tpl-text">ツイミーグ新規処方。低血糖リスクを高める併用薬なし、消化器症状の自覚なしを確認。インスリンの分泌と効きの両方を整える薬であることを説明。1日2回継続して服用するよう指導。消化器症状（悪心・下痢等）は服用初期に出やすく、続く場合は相談するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：メトホルミン併用下追加</span>
-              <div class="tpl-text">メトホルミン継続中にツイミーグ新規追加。併用薬を確認。両剤併用で消化器症状（悪心・下痢等）が増悪しやすい旨を説明、続く場合は処方医に相談するよう指導。1日2回継続服用も指導。</div>
+              <div class="tpl-text">メトホルミン継続中にツイミーグ新規追加。併用薬を確認。両剤併用で消化器症状（悪心・下痢等）が増悪しやすい旨を説明、続く場合は処方医に相談するよう指導。乳酸アシドーシス様症状（強い倦怠感・嘔気・過呼吸）にも注意し、症状時は早めに相談・受診するよう説明。1日2回継続服用も指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：SU・インスリン併用下追加</span>
               <div class="tpl-text">他剤併用下（SU/インスリン）でツイミーグ新規追加。併用薬を確認。SU/インスリン併用で低血糖リスクが上がるため、低血糖症状と対処（ブドウ糖摂取）を指導。1日2回継続服用も指導。</div>
