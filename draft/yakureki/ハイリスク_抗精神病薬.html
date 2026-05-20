@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>ハイリスク薬｜抗精神病薬｜薬歴マニュアル</title>
+    <meta property="og:title" content="ハイリスク薬の薬歴記載｜抗精神病薬" />
+    <meta property="og:description" content="特定薬剤管理指導加算1の薬歴記載例。精神神経用剤のうち抗精神病薬について「何を確認し、どう指導し、薬歴にどう残すか」を整理した試作ページ。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://m-kimura1982.github.io/shared-pages/draft/yakureki/ハイリスク_抗精神病薬.html" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="yakureki.css" />
+    <style>
+      /* 薬剤群ブロック */
+      .drug-block {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-left: 3px solid #d1d5db;
+        border-radius: var(--radius-sm);
+        padding: 16px 18px;
+        margin-bottom: 16px;
+      }
+      .drug-block-head {
+        display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+        margin-bottom: 8px; padding-bottom: 6px;
+        border-bottom: 1px dashed var(--border);
+      }
+      .drug-block-name { font-size: 16px; font-weight: 700; color: var(--ink); }
+      .drug-block-sub  { font-size: 12px; color: var(--sub); }
+
+      /* テンプレ直上の注意（重要語のみ赤） */
+      .tpl-warn {
+        background: #fafafa;
+        border-left: 3px solid #cc0000;
+        border-radius: 4px;
+        padding: 10px 14px;
+        margin: 12px 0 8px;
+        font-size: 12.5px;
+        line-height: 1.7;
+        color: var(--ink);
+      }
+      .tpl-warn-title {
+        font-weight: 700; color: var(--ink);
+        font-size: 13px; margin-bottom: 4px;
+      }
+      .tpl-warn ul { margin: 4px 0 0 20px; padding: 0; }
+      .tpl-warn ul li { margin-bottom: 2px; }
+      .tpl-warn strong { color: #cc0000; font-weight: 700; }
+
+      /* 短文テンプレ（基本 / 追記） */
+      .tpl-set { margin-top: 8px; }
+      .tpl-mini {
+        display: flex; align-items: flex-start; gap: 8px;
+        background: #fff; border: 1px solid #dfe4ea;
+        border-radius: 6px; padding: 8px 12px; margin-bottom: 6px;
+        position: relative;
+      }
+      .tpl-mini .tpl-tag {
+        flex-shrink: 0; font-size: 10px; font-weight: 700;
+        padding: 2px 8px; border-radius: 100px;
+        letter-spacing: .04em; line-height: 1.6;
+        white-space: nowrap;
+      }
+      .tpl-mini .tpl-tag.base   { background: var(--blue-light); color: var(--blue); }
+      .tpl-mini .tpl-tag.init   { background: var(--blue-light); color: var(--blue); }
+      .tpl-mini .tpl-tag.change { background: #e0f2f1; color: #0d9488; border: none; }
+      .tpl-mini .tpl-tag.add    { background: #f2f4f8; color: #4b5563; border: 1px solid #d7dce3; }
+      .tpl-mini .tpl-tag.se     { background: #fef3e8; color: #c2701c; border: 1px solid #f5d4a1; }
+
+      /* 薬剤ブロック内：この薬で確認すること */
+      .drug-check-box {
+        background: #f7f8fa;
+        border: 1px solid #e1e5ea;
+        border-left: 3px solid var(--blue);
+        border-radius: 4px;
+        padding: 10px 14px;
+        margin: 8px 0 12px;
+      }
+      .drug-check-box-title {
+        font-weight: 700; color: var(--blue);
+        font-size: 12px; letter-spacing: .04em;
+        margin-bottom: 4px;
+      }
+      .drug-check-box ul { margin: 0; padding-left: 20px; }
+      .drug-check-box ul li { font-size: 12.5px; line-height: 1.7; margin-bottom: 2px; }
+
+      /* 折りたたみ式 指導補足 */
+      .guide-details {
+        margin: 10px 0 14px;
+        border: 1px solid #c9def5;
+        border-radius: 4px;
+        background: #fafcff;
+      }
+      .guide-details summary {
+        cursor: pointer; padding: 10px 14px;
+        font-size: 13px; font-weight: 700;
+        color: var(--blue);
+        background: #eff5fc;
+        list-style: none;
+        border-radius: 4px;
+        display: flex; align-items: center; gap: 8px;
+      }
+      .guide-details[open] summary {
+        border-radius: 4px 4px 0 0;
+        border-bottom: 1px solid #c9def5;
+      }
+      .guide-details summary:hover { background: #e3edf8; }
+      .guide-details summary::-webkit-details-marker { display: none; }
+      .guide-details summary::before {
+        content: "▶";
+        font-size: 11px;
+        display: inline-block;
+        transition: transform 0.15s;
+      }
+      .guide-details[open] summary::before { transform: rotate(90deg); }
+      .guide-details summary::after {
+        content: "クリックで展開";
+        margin-left: auto;
+        font-size: 11px; font-weight: 400;
+        color: var(--sub);
+      }
+      .guide-details[open] summary::after { content: "クリックで閉じる"; }
+      .guide-details-body {
+        padding: 0 16px 12px; font-size: 13px; line-height: 1.75;
+      }
+      .guide-details-body h4 {
+        font-size: 13px; font-weight: 700;
+        margin: 8px 0 4px; color: var(--ink);
+      }
+      .guide-details-body p { margin: 4px 0; }
+      .guide-details-body ul { margin: 4px 0; padding-left: 22px; }
+      .guide-details-body ul li { margin-bottom: 2px; }
+      .guide-details-body .patient-say {
+        background: #fff; border-left: 3px solid #c9def5;
+        padding: 6px 10px; margin-top: 6px;
+        font-size: 12.5px; color: var(--sub);
+      }
+
+      /* 薬剤名索引 */
+      .drug-index {
+        background: #fafbfc;
+        border: 1px solid #e1e5ea;
+        border-radius: 6px;
+        padding: 12px 16px;
+        margin-bottom: 16px;
+      }
+      .drug-index-title {
+        font-size: 12px; font-weight: 700;
+        color: var(--blue);
+        letter-spacing: .04em;
+        margin-bottom: 8px;
+      }
+      .drug-index-row {
+        display: flex; align-items: baseline; gap: 6px;
+        flex-wrap: wrap; margin-bottom: 4px; font-size: 12px;
+      }
+      .drug-index-row .di-group {
+        color: var(--sub); font-weight: 700;
+        min-width: 5.5em; flex-shrink: 0;
+      }
+      .drug-index-row a {
+        background: #fff; border: 1px solid #d7dce3;
+        border-radius: 100px; padding: 2px 9px;
+        color: var(--ink); text-decoration: none;
+        white-space: nowrap;
+      }
+      .drug-index-row a:hover {
+        background: var(--blue); color: #fff; border-color: var(--blue);
+      }
+
+      .tag-legend {
+        display: flex; flex-wrap: wrap; gap: 10px;
+        margin: 8px 0 16px; font-size: 12px; color: var(--sub);
+      }
+      .tag-legend span { display: inline-flex; align-items: center; gap: 4px; }
+      .tag-legend i {
+        display: inline-block; width: 10px; height: 10px; border-radius: 2px;
+      }
+      .tpl-mini .tpl-text {
+        flex: 1; font-size: 13px; line-height: 1.7;
+        padding-right: 56px; white-space: pre-wrap;
+      }
+      .tpl-mini .copy-mini {
+        position: absolute; top: 7px; right: 8px;
+        background: #f3f4f6; color: #374151; border: 1px solid #d1d5db;
+        border-radius: 4px; font-size: 11px; font-weight: 700;
+        padding: 3px 8px; cursor: pointer;
+        font-family: "Noto Sans JP", sans-serif;
+      }
+      .tpl-mini .copy-mini:hover { background: #e5e7eb; border-color: #9ca3af; }
+      .tpl-mini .copy-mini.copied { background: var(--good-border); color: #fff; border-color: var(--good-border); }
+
+      /* モバイル：tpl-mini を縦積みにする */
+      @media (max-width: 640px) {
+        .tpl-mini {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 6px;
+          padding-bottom: 30px;
+        }
+        .tpl-mini .tpl-tag {
+          align-self: flex-start;
+          max-width: 100%;
+          white-space: normal;
+        }
+        .tpl-mini .tpl-text { padding-right: 0; }
+        .tpl-mini .copy-mini { top: auto; bottom: 6px; right: 8px; }
+      }
+
+      .warn-box ul { padding-left: 22px; margin-top: 4px; }
+      .warn-box ul li { margin-bottom: 4px; line-height: 1.7; }
+
+      /* SECTION 1 確認事項 - 簡潔dl */
+      .ci-list dt {
+        font-size: 14px; font-weight: 700; color: var(--ink);
+        background: #f2f4f8; padding: 8px 14px; border-radius: 4px;
+        margin-top: 10px;
+      }
+      .ci-list dd {
+        padding: 6px 14px 6px 14px; font-size: 13px; line-height: 1.75;
+      }
+      .ci-list dd .ci-l { display: inline-block; min-width: 4.5em; font-weight: 700; color: var(--blue); }
+
+      /* ===== サイドスティッキー目次（PC 880px+） ===== */
+      [id] { scroll-margin-top: 16px; }
+      .sticky-toc { display: none; }
+
+      @media (min-width: 880px) {
+        .layout-outer {
+          max-width: 1240px;
+          margin: 0 auto;
+          padding: 28px 20px 0;
+          display: grid;
+          grid-template-columns: 220px minmax(0, 1fr);
+          gap: 28px;
+          align-items: start;
+        }
+        .layout-outer .page-head { max-width: none; margin: 0 0 16px; padding: 0; }
+        .layout-outer main { max-width: none; margin: 0; padding: 0; }
+
+        .sticky-toc {
+          display: block;
+          position: sticky;
+          top: 20px;
+          background: var(--white);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-sm);
+          padding: 12px 8px 14px;
+          max-height: calc(100vh - 40px);
+          overflow-y: auto;
+          scrollbar-width: thin;
+          scrollbar-color: var(--border) transparent;
+        }
+        .sticky-toc::-webkit-scrollbar { width: 4px; }
+        .sticky-toc::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+        .sticky-toc-head {
+          padding: 0 8px 8px;
+          margin-bottom: 6px;
+          border-bottom: 1px solid var(--border);
+        }
+        .sticky-toc-label {
+          display: block;
+          font-size: 11px;
+          font-weight: 700;
+          color: var(--blue);
+          letter-spacing: 0.12em;
+        }
+        .sticky-toc-group {
+          font-size: 10px;
+          font-weight: 700;
+          color: var(--sub);
+          letter-spacing: 0.08em;
+          padding: 10px 10px 4px;
+          margin-top: 4px;
+        }
+        .sticky-toc a {
+          display: block;
+          font-size: 13px;
+          color: var(--ink);
+          text-decoration: none;
+          padding: 5px 10px;
+          border-radius: 4px;
+          line-height: 1.45;
+          border-left: 3px solid transparent;
+          margin-bottom: 1px;
+          transition: background 0.12s, color 0.12s, border-color 0.12s;
+        }
+        .sticky-toc a:hover {
+          background: var(--blue-light);
+          color: var(--blue);
+        }
+        .sticky-toc a.is-active {
+          background: var(--blue-light);
+          color: var(--blue);
+          font-weight: 700;
+          border-left-color: var(--blue);
+        }
+      }
+      @media print {
+        .sticky-toc { display: none !important; }
+        .layout-outer { display: block !important; padding: 0; }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="draft-banner">⚠ 非公開作業中ページ｜内容は精査中のため公開ナビゲーションには掲載していません</div>
+
+    <header>
+      <div class="header-inner">
+        <a href="../../index.html" class="back-link">← 調剤報酬まとめTOP</a>
+        <span class="site-title">調剤報酬まとめ</span>
+      </div>
+    </header>
+
+    <div class="layout-outer">
+
+    <nav class="sticky-toc" aria-label="目次">
+      <div class="sticky-toc-head">
+        <span class="sticky-toc-label">CONTENTS</span>
+      </div>
+      <a href="#section1">共通確認ポイント</a>
+      <a href="#section2">薬剤群別テンプレート</a>
+      <div class="sticky-toc-group">▼ 薬剤群</div>
+      <a href="#antipsychotic">抗精神病薬</a>
+      <div class="sticky-toc-group">▼ その他</div>
+      <a href="#clozapine-note">クロザピンの扱い</a>
+      <a href="#section3">変化に基づくロ（判断理由）</a>
+    </nav>
+
+    <div>
+
+    <div class="page-head">
+      <span class="page-tag">HIGH-RISK 08-1</span>
+      <h1 class="page-title">抗精神病薬</h1>
+      <p class="page-desc">
+        特定薬剤管理指導加算1の対象となる精神神経用剤のうち、<strong>抗精神病薬</strong>について、新規処方（イ）・用法用量変更（ロ）・副作用や服薬状況等の変化に基づくロの薬歴記載例を整理したページです。<br />
+        変更のあった薬から、確認事項・指導内容・薬歴記載例を探せるようにしています。<br />
+        抗うつ薬・気分安定薬・抗てんかん薬は別ページで扱います。BZD系・睡眠薬など薬効分類112に該当する薬剤は、本ページでは特定薬剤管理指導加算1の精神神経用剤としては扱いません。<br />
+        日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」精神神経用剤の確認事項を参考にしています。
+      </p>
+    </div>
+
+    <main>
+
+      <!-- ============================================================
+           § 1  共通確認ポイント
+           ============================================================ -->
+      <section id="section1">
+        <div class="section-label">SECTION 1</div>
+        <h2 class="section-title">抗精神病薬の共通確認ポイント</h2>
+        <p style="font-size:13px;color:var(--sub);margin-bottom:12px;">
+          抗精神病薬に共通する確認・指導の考え方を整理しています。<br />
+          具体的な確認事項と記載例は、SECTION 2 の薬剤群別ブロックにまとめています。
+        </p>
+
+        <details class="guide-details">
+          <summary>共通確認ポイント（日薬GL 6項目）を見る</summary>
+          <div class="guide-details-body">
+            <dl class="ci-list" style="margin:0;">
+              <dt>① 患者に対する処方内容の確認</dt>
+              <dd>薬剤名・用法・用量・服用タイミング等を確認</dd>
+
+              <dt>② アドヒアランスの確認</dt>
+              <dd>飲み忘れ・残薬の有無、服薬の継続状況／<strong>自己判断で中止していないか</strong>を確認（中断による症状再発リスクを説明）</dd>
+
+              <dt>③ 副作用モニタリング・重篤副作用発生時の対処方法の教育</dt>
+              <dd>眠気・ふらつき・錐体外路症状（手の震え・じっとしていられない・体のこわばり）・便秘・口渇・体重変化・血糖変化等の自覚と、強い場合や続く場合は相談するよう指導したかを確認</dd>
+
+              <dt>④ 効果の確認</dt>
+              <dd>症状の安定状況、適正な用量、可能な場合は検査値（体重・血糖・HbA1c等、特にMARTA系や糖尿病リスク患者でのモニター）</dd>
+
+              <dt>⑤ 併用薬・食事との相互作用の確認</dt>
+              <dd>他の中枢抑制薬・抗コリン薬の重複、CYP3A4等の代謝阻害薬、OTC・サプリメント等の併用、アルコール摂取の確認</dd>
+
+              <dt>⑥ 危険作業従事・家族支援の確認</dt>
+              <dd>自動車運転等の危険を伴う作業に従事しないよう指導／高齢者では転倒・誤嚥リスク、家族支援の有無を確認</dd>
+            </dl>
+            <p style="font-size:12px;color:var(--sub);margin-top:8px;">※ 出典：日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」精神神経用剤</p>
+            <p style="font-size:12px;color:var(--blue);margin-top:8px;font-weight:700;">→ 抗精神病薬の具体的な指導内容は SECTION 2 を参照</p>
+          </div>
+        </details>
+
+        <p style="font-size:12px;color:var(--sub);margin-top:8px;">
+          ※ <strong>クロザピン</strong>はCPMS登録医療機関・登録保険薬局での管理が必要な薬剤のため、本ページの定型テンプレ対象外としています（末尾の注記を参照）。<br />
+          ※ <strong>抗うつ薬・気分安定薬・抗てんかん薬</strong>は別ページで扱います。<br />
+          ※ <strong>BZD系・睡眠薬</strong>など薬効分類112に該当する薬剤は、本ページでは特定薬剤管理指導加算1の精神神経用剤としては扱いません。<br />
+          ※ <strong>抗ADHD薬</strong>は薬効分類・管理制度が絡むため本ページでは扱いません。
+        </p>
+        <p style="font-size:12px;color:var(--sub);margin-top:6px;">
+          出典：日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」精神神経用剤
+        </p>
+      </section>
+
+      <!-- ============================================================
+           § 2  薬剤群別テンプレート（初回イ／変更ロ／副作用説明の追記／必要時追記）
+           ============================================================ -->
+      <section id="section2">
+        <div class="section-label">SECTION 2</div>
+        <h2 class="section-title">薬剤群別テンプレート</h2>
+        <p style="font-size:13px;color:var(--sub);margin-bottom:8px;">
+          薬歴を作成する際は、<strong>新規処方または変更があった薬剤</strong>を確認し、患者の状況に近い記載例を参考にしてください。必要に応じて、確認した内容や追加で行った指導を追記してください。<br />
+          本ページは、特定薬剤管理指導加算1のうち、<strong>新規処方時のイ、用法・用量変更時のロ、副作用や服薬状況等の変化に基づくロ</strong>を想定した薬歴記載例です。継続処方時の通常確認を記録するためのテンプレートではありません。<br />
+          <span style="font-size:12px;">※ 抗精神病薬は定型／非定型・薬剤ごとの副作用差はあるものの、<strong>共通確認事項が大きく重なるため1ブロックにまとめ、MARTA系・定型薬・高齢例などの薬剤特性は必要時追記で拾う</strong>構成にしています。</span><br />
+          <span style="font-size:12px;">※ 自己判断で中止しないこと・眠気/危険作業の注意は、すべての薬剤に共通の核として初回イ本体に含めています。</span>
+        </p>
+        <div class="tpl-warn" style="margin:12px 0;">
+          <div class="tpl-warn-title">副作用説明の記載について</div>
+          副作用に関する記載例は、<strong>実際に説明した内容に応じて追記</strong>してください。日常的な副作用（眠気・錐体外路症状・便秘・口渇・体重変化等）は初回イ本体に含めています。<strong>まれな重篤副作用</strong>（悪性症候群・QT延長・SJS/TEN・高血糖性ケトアシドーシス・遅発性ジスキネジア等）は、患者さんへ不安を与えすぎないよう、<strong>症状と相談・受診の目安を中心に説明</strong>します。薬歴上で説明内容を明確に残したい場合は、<strong>「副作用説明の追記」から該当するものを追加</strong>してください。
+        </div>
+        <div class="tag-legend">
+          <span><i style="background:var(--blue-light);border:1px solid var(--blue)"></i>初回イ（新規／併用下追加／高齢例 など）</span>
+          <span><i style="background:#e0f2f1;border:1px solid #0d9488"></i>変更ロ（用量変更／製剤切替 など）</span>
+          <span><i style="background:#f2f4f8;border:1px solid #d7dce3"></i>必要時追記</span>
+          <span><i style="background:#fef3e8;border:1px solid #f5d4a1"></i>副作用説明の追記（説明した分だけ追加）</span>
+        </div>
+
+        <div class="drug-index">
+          <div class="drug-index-title">薬剤名から探す</div>
+          <div class="drug-index-row">
+            <span class="di-group">非定型（SDA）</span>
+            <a href="#antipsychotic">リスパダール</a><a href="#antipsychotic">ルーラン</a><a href="#antipsychotic">ロナセン</a><a href="#antipsychotic">インヴェガ</a><a href="#antipsychotic">ラツーダ</a>
+          </div>
+          <div class="drug-index-row">
+            <span class="di-group">非定型（MARTA）</span>
+            <a href="#antipsychotic">ジプレキサ</a><a href="#antipsychotic">セロクエル</a><a href="#antipsychotic">ビプレッソ</a>
+          </div>
+          <div class="drug-index-row">
+            <span class="di-group">非定型（DSS/DSAM）</span>
+            <a href="#antipsychotic">エビリファイ</a><a href="#antipsychotic">レキサルティ</a>
+          </div>
+          <div class="drug-index-row">
+            <span class="di-group">定型</span>
+            <a href="#antipsychotic">セレネース</a><a href="#antipsychotic">コントミン</a><a href="#antipsychotic">ヒルナミン</a>
+          </div>
+        </div>
+
+        <!-- 抗精神病薬 -->
+        <div class="drug-block" id="antipsychotic">
+          <div class="drug-block-head">
+            <span class="drug-block-name">抗精神病薬</span>
+            <span class="drug-block-sub">非定型（リスパダール／ルーラン／ロナセン／インヴェガ／ラツーダ／ジプレキサ／セロクエル／ビプレッソ／エビリファイ／レキサルティ 等）／定型（セレネース／コントミン／ヒルナミン 等）</span>
+          </div>
+
+          <div class="drug-check-box">
+            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
+            <ul>
+              <li>処方内容・用法用量／服用タイミング</li>
+              <li>服薬の継続状況／<strong>自己判断で中止していないか</strong>（中断による症状再発リスク）</li>
+              <li>眠気・ふらつき／<strong>錐体外路症状</strong>（手の震え・じっとしていられない・体のこわばり・嚥下障害）の有無</li>
+              <li>便秘・口渇・尿閉等の抗コリン作用症状の有無</li>
+              <li>体重変化／口渇・多飲・多尿等の血糖上昇を疑う症状（特にMARTA系）</li>
+              <li>併用薬（他の中枢抑制薬・抗コリン薬重複・CYP3A4阻害薬・OTC・サプリ）／アルコール</li>
+              <li>自動車運転等の危険作業の従事状況／高齢者は転倒・誤嚥リスク・家族支援の有無</li>
+            </ul>
+            <p style="font-size:11px;color:var(--sub);margin-top:6px;">※ 日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」精神神経用剤 を参考</p>
+          </div>
+
+          <details class="guide-details">
+            <summary>指導時の補足</summary>
+            <div class="guide-details-body">
+              <h4>薬効の説明ポイント</h4>
+              <p>脳内のドパミン等の神経伝達物質の働きを調整して<strong>症状の安定を助ける薬</strong>。効果発現には時間がかかることがあり、症状が安定した後も自己判断で中止すると<strong>症状の再発・再悪化リスク</strong>がある。継続が重要。</p>
+
+              <h4>薬剤分類の概要</h4>
+              <ul>
+                <li><strong>非定型 SDA</strong>（リスパダール／ルーラン／ロナセン／インヴェガ／ラツーダ等）：錐体外路症状は定型より少なめ。リスペリドン・パリペリドンは<strong>高プロラクチン血症</strong>に注意</li>
+                <li><strong>非定型 MARTA</strong>（ジプレキサ／セロクエル／ビプレッソ）：<strong>体重増加・血糖上昇・脂質異常</strong>のリスクが特に高い。糖尿病既往は禁忌（オランザピン・クエチアピン）</li>
+                <li><strong>非定型 DSS/DSAM</strong>（エビリファイ／レキサルティ）：ドパミン部分作動薬／セロトニン・ドパミン作動薬。アカシジア・不眠が出やすい場合あり</li>
+                <li><strong>定型</strong>（セレネース／コントミン／ヒルナミン）：錐体外路症状・遅発性ジスキネジアのリスクが非定型より高め</li>
+              </ul>
+
+              <h4>患者への伝え方</h4>
+              <ul>
+                <li>毎日決まった時間に服用、<strong>自己判断で中止しない</strong>（症状が安定しても継続が必要）</li>
+                <li>眠気・ふらつきが出ることがあるため、<strong>自動車運転等の危険作業に従事しないよう説明</strong></li>
+                <li>手の震え・じっとしていられない・体のこわばりが出たら早めに相談</li>
+                <li>便秘・口渇は出やすい副作用、続く場合は相談</li>
+                <li>体重変化、口渇・多飲・多尿など血糖上昇を疑う症状があれば相談（特にMARTA系）</li>
+                <li>市販の風邪薬・睡眠改善薬・サプリは薬剤師に確認（抗コリン重複・中枢抑制重複に注意）</li>
+              </ul>
+
+              <h4>錐体外路症状（背景知識）</h4>
+              <p>抗精神病薬で<strong>パーキンソン症状（手の震え・動作緩慢・筋固縮）・アカシジア（じっとしていられない）・ジストニア（首・舌のこわばり）・遅発性ジスキネジア（口・舌の不随意運動）</strong>が出ることがある。定型薬や高用量・長期使用でリスクが上がる。出現時は用量調整・抗パーキンソン薬の併用・薬剤変更等を処方医と相談。</p>
+
+              <h4>体重・血糖変化（背景知識）</h4>
+              <p>抗精神病薬全般で体重増加・脂質異常がみられるが、<strong>MARTA系（オランザピン・クエチアピン）は特に高血糖・糖尿病性ケトアシドーシス・糖尿病性昏睡のリスクが高い</strong>（PMDA注意喚起あり、糖尿病既往は禁忌）。口渇・多飲・多尿・頻尿等の異常があれば中断して医師の診察を受けるよう指導。MARTA系では体重・血糖値・HbA1cの推移を定期的に確認できると安心。</p>
+
+              <h4>抗コリン作用（背景知識）</h4>
+              <p>便秘・口渇・尿閉・霧視・認知機能低下等。<strong>他の抗コリン薬（過活動膀胱治療薬・抗ヒスタミン薬・三環系抗うつ薬・パーキンソン病治療薬等）との重複</strong>でリスクが上がる。特に高齢者では認知機能低下・転倒・麻痺性イレウスに注意。</p>
+
+              <h4>高齢者特有の注意（背景知識）</h4>
+              <p>高齢者では<strong>転倒・誤嚥・抗コリン負荷・起立性低血圧</strong>に注意。認知症患者への抗精神病薬使用では脳血管事故・死亡リスク増加が報告されており、適応・用量・期間を慎重に確認する。家族支援の有無と症状観察を依頼するのが安心。</p>
+
+              <h4>悪性症候群（背景知識）</h4>
+              <p>稀ではあるが、<strong>高熱・強い筋肉のこわばり・意識のもうろう・発汗・頻脈</strong>が急速に出現する重篤な副作用。発症時は速やかに受診し、抗精神病薬の中止を含めた対応が必要。</p>
+
+              <h4>患者説明のスタンス</h4>
+              <p>悪性症候群・QT延長・SJS/TEN・糖尿病性ケトアシドーシス・遅発性ジスキネジアはいずれも頻度としては稀。患者には病名を前面に出さず、症状（高熱とこわばり・動悸や失神・全身性の皮疹と発熱・口渇/多飲/多尿の急増・口や舌の不随意運動）と相談・受診の目安を中心に説明する。薬歴上で病名と症状をセットで残したい場合は<strong>「副作用説明の追記」から追加コピー</strong>。</p>
+
+              <div class="patient-say">患者への伝え方の例：<br />「毎日決まった時間に飲んでください。症状が落ち着いてからも、自己判断で止めずに必ず先生と相談してください。眠気やふらつきが出ることがあるので、車の運転や危険な作業は避けてください。手の震え、じっとしていられない、体のこわばり、便秘や口の渇きが強い、急に体重が増えた・喉が渇いて水をたくさん飲むようになったときは、早めに教えてください。」</div>
+            </div>
+          </details>
+
+          <div class="tpl-warn">
+            <div class="tpl-warn-title">コピーする前に必ず確認</div>
+            下のテンプレは「指導・説明」部分の記載例です。そのままコピペすると要件不足になるので、以下を確認してください。
+            <ul>
+              <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（例：「リスパダール：眠気・錐体外路症状の確認と自動車運転回避を指導…」）</li>
+              <li><strong>確認した内容（症状・体重・聞き取り結果）</strong>もテンプレに足す</li>
+              <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
+              <li>「自動車運転等の危険作業に従事しないよう説明」は添付文書ベースの表現として残し、患者背景に応じて表現を調整</li>
+              <li>副作用説明を行った場合は、<strong>「副作用説明の追記」</strong>から該当する記載例を追加（説明していない副作用は追加しない）</li>
+            </ul>
+          </div>
+
+          <div class="tpl-set">
+            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
+              <div class="tpl-text">新規処方。眠気・ふらつき・錐体外路症状・便秘・口渇の自覚なしを確認。症状の安定を助ける薬であることを説明、症状が落ち着いてからも自己判断で中止しないよう指導。眠気・ふらつきが出ることがあるため、自動車運転等の危険作業に従事しないよう説明。手の震え・体のこわばり・じっとしていられない、便秘・口渇が強い・続く場合は相談するよう指導。体重変化や口渇・多飲・多尿など血糖上昇を疑う症状があれば相談するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag init">初回イ：他剤併用下追加</span>
+              <div class="tpl-text">他剤併用下で抗精神病薬を新規追加。併用薬を確認。他の中枢抑制薬・抗コリン薬の重複により眠気・ふらつき・便秘・口渇・認知機能低下のリスクが上がるため、症状の観察を重点指導。自動車運転等の危険作業に従事しないよう説明。市販薬・サプリは薬剤師に確認するよう指導、自己判断で中止しないよう注意喚起。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
+              <div class="tpl-text">高齢者への抗精神病薬新規処方。転倒・誤嚥・抗コリン負荷・起立性低血圧のリスクが上がる旨を本人・家族に説明。家族支援の有無を確認、症状観察を依頼。眠気・ふらつき出現時は無理せず休むこと、立ち上がりはゆっくり段階的に行うよう指導。便秘・口渇・尿閉等の症状や、嚥下が悪くなった場合は早めに相談するよう説明。自己判断で中止しないよう注意喚起。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
+              <div class="tpl-text">用量変更を確認。変更前後の症状の安定状況・眠気・錐体外路症状・体重変化を確認。新用量での服用方法を再説明、症状出現時は早めに相談するよう再指導。自己判断で中止しないよう注意喚起。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
+              <div class="tpl-text">悪性症候群について、まれではあるが、高熱・強い筋肉のこわばり・意識のもうろう・発汗・頻脈が急に出現した場合は速やかに受診するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
+              <div class="tpl-text">QT延長について、まれではあるが、動悸・めまい・失神等が出た場合は早めに相談・受診するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
+              <div class="tpl-text">皮膚粘膜眼症候群・中毒性表皮壊死症（SJS/TEN）について、まれではあるが、発熱を伴う全身性の皮疹・口や眼の粘膜びらん・水ぶくれが出た場合は速やかに受診するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
+              <div class="tpl-text">高血糖・糖尿病性ケトアシドーシスについて、まれではあるが、口渇・多飲・多尿・頻尿・倦怠感等の急な出現があれば、自己判断で様子を見ず速やかに受診するよう説明（特にMARTA系）。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
+              <div class="tpl-text">遅発性ジスキネジアについて、まれではあるが、長期服用中に口・舌の不随意運動（モグモグ・舌を出す等）が出た場合は主治医に相談するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">錐体外路症状（手の震え・じっとしていられない・体のこわばり・嚥下障害等）の訴えあり。自己判断で中止せず主治医に症状を伝えるよう指導、用量調整・抗パーキンソン薬の必要性は処方医と相談するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">MARTA系（オランザピン・クエチアピン等）服用例。体重増加・血糖上昇に注意が必要なため、体重変化、口渇・多飲・多尿、血糖値・HbA1cの推移を継続的に確認するよう説明。糖尿病または糖尿病既往がある場合は、禁忌該当の可能性があるため処方医へ確認。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">便秘悪化の訴え。抗コリン作用による腸蠕動低下が疑われるため、水分・食物繊維摂取の工夫を説明、続く場合は主治医に相談するよう指導。腹痛・嘔吐がある場合は麻痺性イレウスの可能性もあるため早めに受診するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">立ちくらみ・めまい（起立性低血圧疑い）の訴え。急に立ち上がらず段階的に動作するよう指導、頻繁な場合や転倒した場合は主治医に相談するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">抗コリン薬（過活動膀胱治療薬・抗ヒスタミン薬・三環系抗うつ薬・パーキンソン病治療薬等）併用あり。抗コリン作用の重複により便秘・口渇・尿閉・認知機能低下のリスクが上がるため、症状の観察を強化するよう指導。両処方医に併用事実を伝えるよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
+              <div class="tpl-text">月経異常・乳汁分泌・性機能障害等の訴え。高プロラクチン血症（特にリスペリドン・パリペリドン等で生じやすい）が疑われるため、症状を主治医に伝えて評価・処方検討を相談するよう指導。</div>
+              <button class="copy-mini">コピー</button></div>
+          </div>
+        </div>
+
+
+        <!-- クロザピンの扱い -->
+        <div class="drug-block" id="clozapine-note" style="border-left-color:#9ca3af;">
+          <div class="drug-block-head">
+            <span class="drug-block-name">クロザピン（参考）</span>
+            <span class="drug-block-sub">クロザリル</span>
+          </div>
+          <p style="font-size:13px;line-height:1.75;color:var(--ink);">
+            クロザピンはCPMS（クロザリル患者モニタリングサービス）登録医療機関・<strong>登録保険薬局</strong>での管理が必要な薬剤であり、<strong>無顆粒球症・心筋炎</strong>等のリスクから定期的な血液検査・登録手続きが求められます。一般薬局での通常調剤は想定されないため、<strong>本ページの定型テンプレ対象外</strong>としています。処方がある場合はCPMS運用手順・検査値・投与可能日数等を個別に確認してください。
+          </p>
+        </div>
+
+        <p style="font-size:12px;color:var(--sub);margin-top:8px;">
+          ※ 「変更のあった薬」を起点に、状況に最も近いバリエーションを1つ選び、必要なら必要時追記から該当するものを足す想定。<br />
+          ※ 併用薬がある場合は薬歴冒頭に併用薬名を明記。<strong>追加された薬がハイリスク薬なら、その追加薬について「新規イ」として扱う</strong>のが基本。既存ハイリスク薬の相互作用・リスクが変化した場合は「必要時追記」で「併用薬変更あり」として記載するか、必要に応じて<strong>「変化に基づくロ」</strong>として個別判断する。
+        </p>
+      </section>
+
+      <!-- ============================================================
+           § 3  副作用・服薬状況等の変化に基づくロ — 判断理由の書き方例
+           ============================================================ -->
+      <section id="section3">
+        <div class="section-label">SECTION 3</div>
+        <h2 class="section-title">副作用・服薬状況等の変化に基づくロ — 判断理由の書き方例</h2>
+
+        <div class="warn-box">
+          <div class="warn-box-title">判断理由の書き方</div>
+          <p>
+            この区分は患者の変化に基づき薬剤師が必要性を判断する場面のため、テンプレ化せず<strong>「変化の確認 → 指導の方向性を判断 → 指導」</strong>の型で短く残します。<br />
+            以下は<strong>判断理由の書き方の例</strong>であり、テンプレとしてそのまま使うものではありません。
+          </p>
+        </div>
+
+        <div class="tpl-warn">
+          <div class="tpl-warn-title">コピーする前に必ず確認</div>
+          <ul>
+            <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（書き方例では薬効群名で書いているが、実運用では具体薬剤名で始める）</li>
+            <li><strong>変化の具体内容・確認した内容</strong>を患者の状況に合わせて書き換える（「指導が必要と判断」のフレーズは加算根拠として残す）</li>
+            <li>説明・指導していない項目は<strong>削除</strong>する</li>
+          </ul>
+        </div>
+
+        <div class="tpl-set" style="margin-top:14px;">
+          <div class="tpl-mini">
+            <span class="tpl-tag base">書き方例</span>
+            <div class="tpl-text">手の震え・体のこわばり・じっとしていられないとの訴え。錐体外路症状が疑われるため指導が必要と判断。自己判断で中止せず主治医に症状を伝えるよう指導、用量調整・抗パーキンソン薬の必要性は処方医と相談するよう説明。</div>
+            <button class="copy-mini">コピー</button>
+          </div>
+          <div class="tpl-mini">
+            <span class="tpl-tag base">書き方例</span>
+            <div class="tpl-text">体重増加・口渇・多飲・多尿の訴え。MARTA系抗精神病薬服用下で高血糖が疑われるため指導が必要と判断。早めに主治医に相談し、血糖値・HbA1cの確認を相談するよう指導。体重・水分摂取量の変化を継続して観察するよう説明。</div>
+            <button class="copy-mini">コピー</button>
+          </div>
+          <div class="tpl-mini">
+            <span class="tpl-tag base">書き方例</span>
+            <div class="tpl-text">便秘悪化の訴え。抗コリン作用による腸蠕動低下が疑われるため指導が必要と判断。水分・食物繊維摂取の工夫を説明、続く場合は主治医に相談するよう指導。麻痺性イレウスの可能性もあるため、腹痛・嘔吐がある場合は早めに受診するよう説明。</div>
+            <button class="copy-mini">コピー</button>
+          </div>
+          <div class="tpl-mini">
+            <span class="tpl-tag base">書き方例</span>
+            <div class="tpl-text">立ちくらみ・めまいの訴え。抗精神病薬による起立性低血圧が疑われるため指導が必要と判断。急に立ち上がらず段階的に動作するよう指導、頻繁な場合や転倒した場合は主治医に相談するよう説明。</div>
+            <button class="copy-mini">コピー</button>
+          </div>
+          <div class="tpl-mini">
+            <span class="tpl-tag base">書き方例</span>
+            <div class="tpl-text">日中の強い眠気の訴え。眠気持続による事故リスクの懸念があるため指導が必要と判断。服用タイミング・運転状況を確認、自動車運転等の危険作業に従事しないよう再指導、用量調整・服用時刻の調整を主治医に相談するよう説明。</div>
+            <button class="copy-mini">コピー</button>
+          </div>
+          <div class="tpl-mini">
+            <span class="tpl-tag base">書き方例</span>
+            <div class="tpl-text">「効果実感が乏しい」「症状が安定したので自己中断したい」との訴え。自己中断による症状再発・再悪化リスクの懸念があるため指導が必要と判断。抗精神病薬は効果発現まで時間がかかること、症状安定中も継続が必要なことを説明、自己判断で中止せず主治医に相談するよう指導。</div>
+            <button class="copy-mini">コピー</button>
+          </div>
+          <div class="tpl-mini">
+            <span class="tpl-tag base">書き方例</span>
+            <div class="tpl-text">他院で抗コリン薬（過活動膀胱治療薬・抗ヒスタミン薬等）の追加処方あり。抗コリン作用の重複により便秘・口渇・尿閉・認知機能低下のリスクが上がるため指導が必要と判断。両処方医に併用事実を伝えるよう指導、症状出現時は早めに相談するよう説明。</div>
+            <button class="copy-mini">コピー</button>
+          </div>
+          <div class="tpl-mini">
+            <span class="tpl-tag base">書き方例</span>
+            <div class="tpl-text">月経異常・乳汁分泌等の訴え。高プロラクチン血症（特にリスペリドン・パリペリドン等で生じやすい）が疑われるため指導が必要と判断。症状を主治医に伝えて評価・必要に応じた処方検討を相談するよう指導。</div>
+            <button class="copy-mini">コピー</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           § SOURCE（折りたたみ）
+           ============================================================ -->
+      <section>
+        <details class="guide-details">
+          <summary>本ページの根拠（出典・通知）</summary>
+          <div class="guide-details-body">
+            <div class="source-box">
+              <span class="source-box-label">ガイドライン</span>
+              <div>日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」精神神経用剤</div>
+              <div class="source-cite">→ 確認・指導事項の根拠</div>
+            </div>
+            <div class="source-box" style="margin-top:12px;">
+              <span class="source-box-label">通知</span>
+              <div>令和8年3月5日 保医発0305第4号 別添3「調剤報酬点数表に関する事項」 特定薬剤管理指導加算1</div>
+              <div class="source-cite">→ 算定要件・薬歴記載要件の原文</div>
+            </div>
+            <p style="font-size:12px;color:var(--sub);margin-top:14px;">※ クロザピンはCPMS登録薬局での管理が必要なため、本ページの定型テンプレ対象外としています。抗うつ薬・気分安定薬・抗てんかん薬は別ページで扱います。BZD系・睡眠薬・抗ADHD薬は本ページの対象外です。</p>
+          </div>
+        </details>
+      </section>
+
+    </main>
+
+    </div><!-- /右カラム -->
+    </div><!-- /.layout-outer -->
+
+    <footer>調剤報酬まとめ ／ 薬歴マニュアル ／ ハイリスク薬指導 ／ 抗精神病薬 ／ 非公開作業中</footer>
+
+    <script>
+      document.querySelectorAll('.copy-mini').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const parent = btn.parentElement;
+          const tplText = parent.querySelector('.tpl-text');
+          let text;
+          if (tplText) {
+            text = tplText.innerText;
+          } else {
+            const spans = parent.querySelectorAll('span:not(.dcb-label)');
+            text = Array.from(spans).map(s => s.innerText).join('\n');
+          }
+          navigator.clipboard.writeText(text).then(() => {
+            btn.classList.add('copied');
+            const orig = btn.textContent;
+            btn.textContent = '済';
+            setTimeout(() => { btn.classList.remove('copied'); btn.textContent = orig; }, 1200);
+          });
+        });
+      });
+    </script>
+    <script>
+      // サイドスティッキーTOC アクティブハイライト
+      (function () {
+        const navLinks = document.querySelectorAll('.sticky-toc a[href^="#"]');
+        const sections = Array.from(navLinks)
+          .map(a => document.querySelector(a.getAttribute('href')))
+          .filter(Boolean);
+        if (!sections.length) return;
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const id = entry.target.id;
+              navLinks.forEach(a => {
+                a.classList.toggle('is-active', a.getAttribute('href') === '#' + id);
+              });
+            }
+          });
+        }, { rootMargin: '-40px 0px -70% 0px', threshold: 0 });
+        sections.forEach(s => observer.observe(s));
+      })();
+    </script>
+    <script src="../../assets/site-fab.js" defer></script>
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>
