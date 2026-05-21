@@ -338,7 +338,7 @@ tr:last-child td { border-bottom:none; }
       <tbody>
         <tr>
           <td>かかりつけ薬剤師指導料（76点）<br>かかりつけ薬剤師包括管理料（291点）</td>
-          <td class="td-after">服薬管理指導料１のイ（45点）・２のイ（59点）に統合<br><span style="font-weight:400; color:var(--ink);">略称：薬指 → 薬Aイ・薬Bイ</span></td>
+          <td class="td-after">服薬管理指導料１のイ（45点）・２のイ（59点）に統合<br><span style="font-weight:400; color:var(--ink);">略称：薬指 → 薬Aイ・薬Bイ（手帳なしは薬Bイ無）</span></td>
         </tr>
         <tr>
           <td>重複投薬・相互作用等防止加算<br>（残薬調整20点・残薬調整以外40点）</td>
@@ -787,10 +787,12 @@ tr:last-child td { border-bottom:none; }
         </tr>
       </thead>
       <tbody>
-        <tr><td>服薬管理指導料 １イ</td><td>45点</td><td>3月以内来局・手帳あり・かかりつけ担当薬剤師</td><td>薬指 → <strong>薬Aイ</strong></td></tr>
-        <tr><td>服薬管理指導料 １ロ</td><td>45点</td><td>3月以内来局・手帳あり・かかりつけ以外</td><td>薬A → <strong>薬Aロ</strong></td></tr>
-        <tr><td>服薬管理指導料 ２イ</td><td>59点</td><td>3月超来局またはかかりつけ担当で手帳なし</td><td>薬指 → <strong>薬Bイ</strong></td></tr>
-        <tr><td>服薬管理指導料 ２ロ</td><td>59点</td><td>初来局・上記のいずれにも非該当</td><td>薬B・薬C → <strong>薬Bロ</strong></td></tr>
+        <tr><td>服薬管理指導料 １イ</td><td>45点</td><td>3月以内・手帳あり・かかりつけ薬剤師</td><td>薬指 → <strong>薬Aイ</strong></td></tr>
+        <tr><td>服薬管理指導料 １ロ</td><td>45点</td><td>3月以内・手帳あり・かかりつけ以外</td><td>薬A → <strong>薬Aロ</strong></td></tr>
+        <tr><td>服薬管理指導料 ２イ</td><td>59点</td><td>3月超・かかりつけ薬剤師</td><td>薬指 → <strong>薬Bイ</strong></td></tr>
+        <tr><td>服薬管理指導料 ２イ</td><td>59点</td><td>3月以内・手帳なし・かかりつけ薬剤師</td><td>薬指 → <strong>薬Bイ無</strong></td></tr>
+        <tr><td>服薬管理指導料 ２ロ</td><td>59点</td><td>3月超／初来局・かかりつけ以外</td><td>薬C → <strong>薬Bロ</strong></td></tr>
+        <tr><td>服薬管理指導料 ２ロ</td><td>59点</td><td>3月以内・手帳なし・かかりつけ以外</td><td>薬B → <strong>薬Bロ無</strong></td></tr>
       </tbody>
     </table>
     <div class="note" style="margin-top:8px;">※やむを得ず他の薬剤師が担当した場合は１ロまたは２ロを算定し、かかりつけ薬剤師と情報共有が必要。</div>
