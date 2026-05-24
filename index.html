@@ -142,6 +142,65 @@
         line-height: 1.9;
       }
 
+      /* ── News Ticker ── */
+      .news-ticker {
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 10px 24px;
+      }
+      .ticker-inner {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        overflow: hidden;
+      }
+      .ticker-label {
+        flex-shrink: 0;
+        background: var(--blue);
+        color: #fff;
+        padding: 3px 11px;
+        border-radius: 100px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+      .ticker-track {
+        flex: 1;
+        overflow: hidden;
+        position: relative;
+        mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+      }
+      .ticker-content {
+        display: inline-flex;
+        gap: 44px;
+        white-space: nowrap;
+        animation: ticker-scroll 40s linear infinite;
+        font-size: 13px;
+      }
+      .ticker-content a {
+        color: var(--ink);
+        text-decoration: none;
+      }
+      .ticker-content a:hover {
+        color: var(--blue);
+        text-decoration: underline;
+      }
+      .ticker-date {
+        color: var(--sub);
+        font-weight: 700;
+        margin-right: 6px;
+      }
+      .news-ticker:hover .ticker-content {
+        animation-play-state: paused;
+      }
+      @keyframes ticker-scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+
       /* ── Main ── */
       main {
         max-width: 1000px;
@@ -479,6 +538,24 @@
       </div>
     </div>
 
+    <!-- News Ticker -->
+    <div class="news-ticker">
+      <div class="ticker-inner">
+        <span class="ticker-label">NEWS</span>
+        <div class="ticker-track">
+          <div class="ticker-content">
+            <a href="入力画面で解説_2026改定後の入力方法.html"><span class="ticker-date">5/24</span>入力画面で解説｜2026改定後の入力方法（Pharnes）を仮公開</a>
+            <a href="服薬管理指導料.html"><span class="ticker-date">5/21</span>【訂正】服薬管理指導料の区分（5区分→6区分）</a>
+            <a href="地域支援医薬品供給対応体制加算_届出判定ツール.html"><span class="ticker-date">5/19</span>地域支援・医薬品供給対応体制加算 届出判定ツールを修正</a>
+            <!-- ループ用に同じ内容を繰り返し -->
+            <a href="入力画面で解説_2026改定後の入力方法.html"><span class="ticker-date">5/24</span>入力画面で解説｜2026改定後の入力方法（Pharnes）を仮公開</a>
+            <a href="服薬管理指導料.html"><span class="ticker-date">5/21</span>【訂正】服薬管理指導料の区分（5区分→6区分）</a>
+            <a href="地域支援医薬品供給対応体制加算_届出判定ツール.html"><span class="ticker-date">5/19</span>地域支援・医薬品供給対応体制加算 届出判定ツールを修正</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <main>
       <section>
         <p class="sec-tag">CONTENTS</p>
@@ -636,61 +713,6 @@
                 処方箋備考欄への記載は「該当する状況（手術後／経管栄養）または投与理由」のみで日付は不要でした。栄養保持医薬品の詳細・事務向けポイント整理・ダイジェストを訂正
               </p>
             </li>
-            <li>
-              <div class="update-line1">
-                <span class="update-date">5/12</span>
-                <a class="update-name" href="訪問薬剤管理医師同時指導料.html"
-                  >訪問薬剤管理医師同時指導料</a
-                ><span class="badge-new">NEW</span>
-              </div>
-              <p class="update-desc">
-                セットになる医科側の点数（訪問診療薬剤師同時指導料）と算定要件を追加。クリニックへ同時訪問を相談する際の説明・確認手順を整理
-              </p>
-            </li>
-            <li>
-              <div class="update-line1">
-                <span class="update-date">5/12</span>
-                <a class="update-name" href="地域支援医薬品供給対応体制加算.html"
-                  >地域支援・医薬品供給対応体制加算</a
-                ><span class="badge-new">NEW</span>
-              </div>
-              <p class="update-desc">
-                届出判定ツールへの導線をトップに追加。配色バランスと文言を整理して読みやすさを改善
-              </p>
-            </li>
-            <li>
-              <div class="update-line1">
-                <span class="update-date">5/11</span>
-                <a class="update-name" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html"
-                  >事務スタッフ向けポイント整理</a
-                ><span class="badge-new">NEW</span>
-              </div>
-              <p class="update-desc">
-                かかりつけ薬剤師フォローアップ加算・訪問加算まわりの併算定不可リストを修正、算定不可欄の見やすさを改善
-              </p>
-            </li>
-            <li>
-              <div class="update-line1">
-                <span class="update-date">5/9</span>
-                <a class="update-name" href="疑義解釈_その5_2026.html"
-                  >疑義解釈資料の送付について（その５）</a
-                ><span class="badge-new">NEW</span>
-              </div>
-              <p class="update-desc">
-                門前薬局等立地依存減算と薬剤料（ネフィー点鼻液）の2問を追加
-              </p>
-            </li>
-            <li>
-              <div class="update-line1">
-                <span class="update-date">5/7</span>
-                <a class="update-name" href="別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html"
-                  >主要加算・管理料 摘要欄記載事項を整理</a
-                >
-              </div>
-              <p class="update-desc">
-                13ページにレセプト摘要欄記載事項カードを追加・整理（別表Ⅰ準拠）
-              </p>
-            </li>
           </ul>
           <div class="updates-all">
             <a href="updates.html">すべての更新履歴を見る →</a>
@@ -702,6 +724,22 @@
         <p class="sec-tag">PICKUP</p>
         <h2 class="sec-heading">おすすめコンテンツ</h2>
         <div class="pickup-list">
+          <a class="pickup-card" href="入力画面で解説_2026改定後の入力方法.html">
+            <div class="pickup-icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+              </svg>
+            </div>
+            <div class="pickup-body">
+              <div class="pickup-name">入力画面で解説｜2026改定後の入力方法（Pharnes）<span class="badge-new">NEW</span></div>
+              <div class="pickup-desc">
+                6月運用開始に向けて、新設・変更加算の入力方法をレセコン画面で整理。仮公開・ご意見募集中。
+              </div>
+            </div>
+            <span class="pickup-arrow">›</span>
+          </a>
           <a
             class="pickup-card"
             href="事務スタッフ向け_2026改定サマリ.html"
@@ -757,22 +795,6 @@
               <div class="pickup-name">2026改定 ダイジェスト</div>
               <div class="pickup-desc">
                 改定項目の要点を一覧で確認。まずここから。
-              </div>
-            </div>
-            <span class="pickup-arrow">›</span>
-          </a>
-          <a class="pickup-card" href="入力画面で解説_2026改定後の入力方法.html">
-            <div class="pickup-icon">
-              <svg viewBox="0 0 24 24">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                <line x1="8" y1="21" x2="16" y2="21" />
-                <line x1="12" y1="17" x2="12" y2="21" />
-              </svg>
-            </div>
-            <div class="pickup-body">
-              <div class="pickup-name">入力画面で解説｜2026改定後の入力方法（Pharnes）<span class="badge-new">NEW</span></div>
-              <div class="pickup-desc">
-                6月運用開始に向けて、新設・変更加算の入力方法をレセコン画面で整理。仮公開・ご意見募集中。
               </div>
             </div>
             <span class="pickup-arrow">›</span>
