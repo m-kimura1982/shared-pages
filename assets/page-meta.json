@@ -90,7 +90,7 @@
     "lastUpdated": "2026-05-14"
   },
   "事務スタッフ向け_2026調剤報酬改定ポイント整理.html": {
-    "lastUpdated": "2026-05-21"
+    "lastUpdated": "2026-05-26"
   },
   "調剤管理料_2026改定.html": {
     "lastUpdated": "2026-04-19"
@@ -148,7 +148,8 @@
     "lastUpdated": "2026-05-14"
   },
   "調剤時残薬調整加算.html": {
-    "lastUpdated": "2026-05-06"
+    "lastUpdated": "2026-05-26",
+    "newUntil": "2026-06-02"
   },
   "_notice_followup_homon_heisanntei.html": {
     "lastUpdated": "2026-05-11"
@@ -157,6 +158,6 @@
     "lastUpdated": "2026-05-14"
   },
   "入力画面で解説_2026改定後の入力方法.html": {
-    "lastUpdated": "2026-05-24"
+    "lastUpdated": "2026-05-26"
   }
 }
