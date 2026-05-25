@@ -117,13 +117,12 @@
 
     /* ── 画面ラベル ── */
     .screen-label {
-      font-size:13px; font-weight:700; color:var(--sub);
-      margin:14px 0 6px;
-    }
-    .screen-label::before {
-      content:''; display:inline-block;
-      width:3px; height:14px; background:var(--border-dk);
-      vertical-align:-2px; margin-right:6px; border-radius:1px;
+      font-size:15px; font-weight:700; color:var(--ink);
+      margin:20px 0 8px;
+      padding:6px 10px;
+      background:#f0f4f8;
+      border-left:4px solid var(--blue);
+      border-radius:2px;
     }
 
     /* ── 画像枠 ── */
@@ -175,15 +174,16 @@
       display:flex; align-items:center; gap:6px;
     }
     .tekiyo-label::before {
-      content:'摘要欄'; font-size:10px; background:var(--blue); color:#fff;
-      padding:1px 6px; border-radius:3px; letter-spacing:.05em;
+      content:'摘要欄コメント'; font-size:11px; font-weight:700;
+      background:#dbe7f4; color:var(--blue);
+      padding:2px 8px; border-radius:3px; letter-spacing:.05em;
     }
-    .tekiyo ul { padding-left:1.2em; margin:2px 0; font-size:13px; line-height:1.75; }
-    .tekiyo li { margin:2px 0; }
+    .tekiyo ul { padding-left:1.2em; margin:2px 0; font-size:14px; line-height:1.8; }
+    .tekiyo li { margin:3px 0; }
     .tekiyo .tekiyo-quote {
       display:inline-block; background:#fff; padding:1px 8px;
       border:1px solid var(--border); border-radius:3px;
-      font-size:12.5px; margin:2px 2px; color:#222;
+      font-size:13px; margin:2px 2px; color:#222;
     }
     .tekiyo-none {
       font-size:12px; color:var(--sub);
@@ -308,7 +308,7 @@
           <div class="screen-label">画面：薬学管理料算定画面</div>
           <div class="shot"><img src="images（レセコン画像など）/pharnes/調剤管理料.png" alt="調剤管理料 薬学管理料算定画面"></div>
           <div class="tekiyo">
-            <div class="tekiyo-label">レセプト摘要欄コメント</div>
+            <div class="tekiyo-label"></div>
             <div class="tekiyo-none">記載不要</div>
           </div>
           <div class="detail-link"><a href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s06">→ 事務向けポイント整理を見る</a></div>
@@ -326,7 +326,7 @@
           <div class="screen-label">画面：算定時ポップアップ</div>
           <div class="shot"><img src="images（レセコン画像など）/pharnes/薬学的有害事象等防止加算.png" alt="薬学的有害事象等防止加算 算定時ポップアップ"></div>
           <div class="tekiyo">
-            <div class="tekiyo-label">レセプト摘要欄コメント</div>
+            <div class="tekiyo-label"></div>
             <div style="font-size:11px;font-weight:700;color:var(--blue);margin:4px 0 2px;">区分イのみ</div>
             <ul>
               <li>相談年月日</li>
@@ -352,7 +352,7 @@
           <div class="screen-label">画面：算定時ポップアップ</div>
           <div class="shot"><img src="images（レセコン画像など）/pharnes/調剤時残薬調整加算.png" alt="調剤時残薬調整加算 算定時ポップアップ"></div>
           <div class="tekiyo">
-            <div class="tekiyo-label">レセプト摘要欄コメント</div>
+            <div class="tekiyo-label"></div>
             <div style="font-size:11px;font-weight:700;color:var(--blue);margin:4px 0 2px;">区分イのみ</div>
             <ul>
               <li>相談年月日</li>
@@ -378,10 +378,10 @@
           <div class="screen-label">画面：薬学管理料算定画面</div>
           <div class="shot"><img src="images（レセコン画像など）/pharnes/服薬管理指導料.png" alt="服薬管理指導料 薬学管理料算定画面"></div>
           <div class="tekiyo">
-            <div class="tekiyo-label">レセプト摘要欄コメント</div>
+            <div class="tekiyo-label"></div>
             <div style="font-size:11px;font-weight:700;color:var(--blue);margin:4px 0 2px;">在宅患者の例外ケースのみ</div>
             <ul>
-              <li>在宅患者訪問薬剤管理指導料を算定中の患者について、別の疾病・負傷に係る臨時の投薬で算定する場合 →<strong>算定年月日</strong>を記載</li>
+              <li>在宅患者訪問薬剤管理指導料を算定中の患者について、別の疾病・負傷に係る臨時の投薬で算定する場合<br>→<strong>算定年月日</strong>を記載</li>
             </ul>
           </div>
           <div class="detail-link"><a href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s11">→ 事務向けポイント整理を見る</a></div>
@@ -399,7 +399,7 @@
           <div class="screen-label">画面：処方入力画面</div>
           <div class="shot"><img src="images（レセコン画像など）/pharnes/かかりつけフォロー.png" alt="かかりつけ薬剤師フォローアップ加算 処方入力画面"></div>
           <div class="tekiyo">
-            <div class="tekiyo-label">レセプト摘要欄コメント</div>
+            <div class="tekiyo-label"></div>
             <ul>
               <li>フォローアップを行った<strong>年月日</strong></li>
             </ul>
@@ -418,7 +418,7 @@
           <div class="screen-label">画面：処方入力画面</div>
           <div class="shot"><img src="images（レセコン画像など）/pharnes/かかりつけ訪問.png" alt="かかりつけ薬剤師訪問加算 処方入力画面"></div>
           <div class="tekiyo">
-            <div class="tekiyo-label">レセプト摘要欄コメント</div>
+            <div class="tekiyo-label"></div>
             <ul>
               <li>訪問指導した<strong>年月日</strong></li>
             </ul>
@@ -438,7 +438,7 @@
           <div class="screen-label">画面：処方入力画面</div>
           <div class="shot"><div class="placeholder">画像準備中</div></div>
           <div class="tekiyo">
-            <div class="tekiyo-label">レセプト摘要欄コメント</div>
+            <div class="tekiyo-label"></div>
             <ul>
               <li>吸入薬の<strong>調剤年月日</strong></li>
               <li>吸入薬の<strong>名称</strong></li>
@@ -459,7 +459,7 @@
           <div class="screen-label">画面：薬学管理料算定画面</div>
           <div class="shot"><div class="placeholder">画像準備中</div></div>
           <div class="tekiyo">
-            <div class="tekiyo-label">レセプト摘要欄コメント</div>
+            <div class="tekiyo-label"></div>
             <div style="font-size:11px;font-weight:700;color:var(--blue);margin:4px 0 2px;">服薬管理指導料3</div>
             <ul>
               <li>入所する施設類型を選択（<span class="tekiyo-quote">特養</span><span class="tekiyo-quote">ショートステイ</span><span class="tekiyo-quote">介護医療院</span><span class="tekiyo-quote">老健</span>）</li>
@@ -494,7 +494,7 @@
           <div class="shot"><img src="images（レセコン画像など）/pharnes/zaitaku_1.png" alt="在宅薬学総合体制加算2 入力画面と確認ポップアップ"></div>
 
           <div class="tekiyo">
-            <div class="tekiyo-label">レセプト摘要欄コメント</div>
+            <div class="tekiyo-label"></div>
             <div class="tekiyo-none">記載不要</div>
           </div>
           <div class="detail-link"><a href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s_zaitaku_taisei">→ 事務向けポイント整理を見る</a></div>
@@ -513,7 +513,7 @@
           <div class="screen-label">画面2：処方表示（バイオ後続品は「BS」が表示）</div>
           <div class="shot"><img src="images（レセコン画像など）/pharnes/バイオ後続品２.png" alt="バイオ後続品 処方表示「BS」マーク"></div>
           <div class="tekiyo">
-            <div class="tekiyo-label">レセプト摘要欄コメント</div>
+            <div class="tekiyo-label"></div>
             <ul>
               <li>一般名処方でバイオ後続品を<strong>調剤しなかった</strong>場合のみ入力</li>
               <li>調剤しなかった理由（<span class="tekiyo-quote">患者の意向</span><span class="tekiyo-quote">備蓄なし</span> など）を入力</li>
@@ -543,7 +543,7 @@
           <div class="shot"><img src="images（レセコン画像など）/pharnes/zaitaku_houmon.png" alt="在宅患者訪問薬剤管理指導料 週1回超過時の確認メッセージ"></div>
 
           <div class="tekiyo">
-            <div class="tekiyo-label">レセプト摘要欄コメント</div>
+            <div class="tekiyo-label"></div>
             <ul>
               <li>単一建物患者数 等</li>
             </ul>
@@ -565,7 +565,7 @@
           <div class="screen-label">画面2：訪問指導年月日の入力ポップアップ</div>
           <div class="shot"><img src="images（レセコン画像など）/pharnes/fukusu_2.png" alt="複数名薬剤管理指導訪問料 日付入力ポップアップ"></div>
           <div class="tekiyo">
-            <div class="tekiyo-label">レセプト摘要欄コメント</div>
+            <div class="tekiyo-label"></div>
             <ul>
               <li>訪問<strong>年月日</strong></li>
               <li><span class="tekiyo-quote">処方箋記載により確認</span>または<span class="tekiyo-quote">疑義照会により確認</span>のいずれかを選択</li>
@@ -585,7 +585,7 @@
           <div class="screen-label">画面：処方入力画面</div>
           <div class="shot"><div class="placeholder">画像準備中</div></div>
           <div class="tekiyo">
-            <div class="tekiyo-label">レセプト摘要欄コメント</div>
+            <div class="tekiyo-label"></div>
             <ul>
               <li>訪問<strong>年月日</strong></li>
               <li>同時訪問した<strong>医師の医療機関名</strong></li>
@@ -610,7 +610,7 @@
           <div class="screen-label">画面：処方入力画面</div>
           <div class="shot"><img src="images（レセコン画像など）/pharnes/eiyo.png" alt="栄養保持を目的とした医薬品 処方入力画面"></div>
           <div class="tekiyo">
-            <div class="tekiyo-label">レセプト摘要欄コメント</div>
+            <div class="tekiyo-label"></div>
             <ul>
               <li>処方箋に記載があった場合 →<span class="tekiyo-quote">処方箋記載により確認</span></li>
               <li>疑義照会で確認した場合 →<span class="tekiyo-quote">疑義照会により確認</span></li>
@@ -630,7 +630,7 @@
           <div class="screen-label">画面：処方表示</div>
           <div class="shot"><img src="images（レセコン画像など）/pharnes/調剤ベースアップ.png" alt="調剤ベースアップ評価料 処方表示"></div>
           <div class="tekiyo">
-            <div class="tekiyo-label">レセプト摘要欄コメント</div>
+            <div class="tekiyo-label"></div>
             <div class="tekiyo-none">記載不要</div>
           </div>
           <div class="detail-link"><a href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s04">→ 事務向けポイント整理を見る</a></div>
@@ -647,7 +647,7 @@
           <div class="screen-label">画面：処方表示</div>
           <div class="shot"><img src="images（レセコン画像など）/pharnes/調剤物価.png" alt="調剤物価対応料 処方表示"></div>
           <div class="tekiyo">
-            <div class="tekiyo-label">レセプト摘要欄コメント</div>
+            <div class="tekiyo-label"></div>
             <div class="tekiyo-none">記載不要</div>
           </div>
           <div class="detail-link"><a href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s03">→ 事務向けポイント整理を見る</a></div>
