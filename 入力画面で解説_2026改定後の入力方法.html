@@ -137,6 +137,12 @@
     .shot img,
     .shot video { display:block; width:100%; height:auto; }
 
+    /* ── 画像キャプション ── */
+    .img-caption {
+      font-size:11.5px; color:var(--sub); line-height:1.6;
+      margin:4px 4px 12px; padding:0 4px;
+    }
+
     /* ── プレースホルダ ── */
     .placeholder {
       display:flex; align-items:center; justify-content:center;
@@ -495,7 +501,6 @@
             <ul>
               <li>かかりつけ患者宅を訪問し、医療機関へ情報提供した場合に算定（6月に1回・230点）</li>
               <li>前提：前回調剤時に「1のイ／2のイ」を算定し、訪問加算に係る業務を実施していること</li>
-              <li>画像はかかりつけ本人が応対した例。不在で別の薬剤師が応対する場合でも算定可（服薬管理指導料はロ・薬歴に氏名記載）</li>
               <li>レセコメ入力用のポップアップは表示されないため、処方入力画面で「カカリ（ツケ）」呼び出しによりレセコメを直接入力する</li>
             </ul>
           </div>
@@ -505,6 +510,7 @@
           <div class="shot"><img src="images（レセコン画像など）/pharnes/kakari_houmon_2.png" alt="かかりつけ薬剤師訪問加算 算定確認ポップアップ"></div>
           <div class="screen-label">画面3：薬学管理料算定画面</div>
           <div class="shot"><img src="images（レセコン画像など）/pharnes/kakari_houmon_3.png" alt="かかりつけ薬剤師訪問加算 薬学管理料算定画面"></div>
+          <div class="img-caption">※本ケースはかかりつけ本人が応対した例。不在で別の薬剤師が応対する場合でも算定可（服薬管理指導料はロ・薬歴に氏名記載）</div>
           <div class="tekiyo">
             <div class="tekiyo-label"></div>
             <ul>
