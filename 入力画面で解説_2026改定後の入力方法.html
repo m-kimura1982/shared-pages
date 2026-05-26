@@ -62,8 +62,15 @@
     .toc ul { list-style:none; }
     .toc li { padding:3px 0; }
     .toc li.indent { padding-left:14px; font-size:12.5px; color:var(--sub); }
-    .toc a { color:var(--ink); text-decoration:none; }
-    .toc a:hover { color:var(--blue); text-decoration:underline; }
+    .toc a { color:var(--ink); text-decoration:none; display:block; padding:2px 6px; border-radius:3px; border-left:2px solid transparent; transition:background 0.15s, color 0.15s; }
+    .toc a:hover { color:var(--blue); background:#f0f4f8; }
+    .toc a.is-active {
+      background:#dbe7f4; color:var(--blue); font-weight:700;
+      border-left-color:var(--blue);
+    }
+
+    /* アンカー追従時の余白 */
+    [id] { scroll-margin-top: 20px; }
     .toc .group { font-size:11px; font-weight:700; color:var(--sub); padding:8px 0 2px; letter-spacing:.05em; border-top:1px dashed var(--border); margin-top:6px; }
     .toc .group:first-child { border-top:none; margin-top:0; padding-top:0; }
     .toc .group-sub { font-size:10px; font-weight:500; color:#aaa; margin-left:6px; letter-spacing:0; }
@@ -323,7 +330,7 @@
   <div class="lead">
     2026年改定により新設・変更された加算・管理料の入力方法を、<strong>Pharnesシリーズの実画面</strong>を用いて整理しました。
     <div style="margin-top:10px;padding:8px 12px;background:#fff8e1;border-left:3px solid #f0c33c;border-radius:0 4px 4px 0;font-size:12.5px;color:#664500;">
-      🚧 <strong>仮公開中</strong>　ほぼ全項目で実画面への差し替えが完了しました。残りは <strong>調剤時残薬調整加算</strong> のみ撮影予定です。<br>
+      <strong>仮公開中</strong>　ほぼ全項目で実画面への差し替えが完了しました。残りは <strong>調剤時残薬調整加算</strong>（解説・画像の追加）のみ作業予定です。<br>
       「この項目も載せて欲しい」「ここがわかりにくい」など、ご意見をぜひお寄せください。
     </div>
   </div>
@@ -799,6 +806,28 @@
   <p class="footer-note">※本資料は情報管理室（木村）が独自にまとめたものです。公式の通知・告示ではありません。</p>
 
 </div>
+<script>
+(function () {
+  const navLinks = document.querySelectorAll('.toc a[href^="#"]');
+  const sections = Array.from(navLinks)
+    .map(a => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+  if (!sections.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(a => {
+          a.classList.toggle('is-active', a.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-20px 0px -70% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+})();
+</script>
 <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
