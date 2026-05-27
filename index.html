@@ -104,8 +104,8 @@
 
       /* ── Hero ── */
       .hero {
-        background: var(--white);
-        padding: 56px 24px 60px;
+        background: linear-gradient(180deg, #f5f9ff 0%, #ffffff 100%);
+        padding: 72px 24px 76px;
         text-align: center;
         border-bottom: 1px solid var(--border);
       }
@@ -143,72 +143,15 @@
       }
 
       /* ── News Ticker ── */
-      .news-ticker {
-        background: var(--white);
-        border-bottom: 1px solid var(--border);
-        padding: 10px 24px;
-      }
-      .ticker-inner {
-        max-width: 1000px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        overflow: hidden;
-      }
-      .ticker-label {
-        flex-shrink: 0;
-        background: var(--blue);
-        color: #fff;
-        padding: 3px 11px;
-        border-radius: 100px;
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-      }
-      .ticker-track {
-        flex: 1;
-        overflow: hidden;
-        position: relative;
-        mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
-        -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
-      }
-      .ticker-content {
-        display: inline-flex;
-        gap: 44px;
-        white-space: nowrap;
-        animation: ticker-scroll 40s linear infinite;
-        font-size: 13px;
-      }
-      .ticker-content a {
-        color: var(--ink);
-        text-decoration: none;
-      }
-      .ticker-content a:hover {
-        color: var(--blue);
-        text-decoration: underline;
-      }
-      .ticker-date {
-        color: var(--sub);
-        font-weight: 700;
-        margin-right: 6px;
-      }
-      .news-ticker:hover .ticker-content {
-        animation-play-state: paused;
-      }
-      @keyframes ticker-scroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-      }
 
       /* ── Main ── */
       main {
         max-width: 1000px;
         margin: 0 auto;
-        padding: 52px 24px 60px;
+        padding: 72px 24px 80px;
         display: flex;
         flex-direction: column;
-        gap: 52px;
+        gap: 72px;
       }
 
       /* ── Section header ── */
@@ -217,18 +160,19 @@
         font-weight: 700;
         color: var(--blue);
         letter-spacing: 0.14em;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
       }
       .sec-heading {
-        font-size: 22px;
+        font-size: 26px;
         font-weight: 900;
+        letter-spacing: -0.01em;
         margin-bottom: 28px;
       }
 
       /* ── Contents cards ── */
       .contents-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 16px;
       }
       .content-card {
@@ -242,14 +186,14 @@
         flex-direction: column;
         gap: 14px;
         transition:
-          border-color 0.18s,
-          box-shadow 0.18s,
-          transform 0.18s;
+          border-color 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+          box-shadow 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+          transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
       }
       .content-card:not(.disabled):hover {
         border-color: var(--blue);
-        box-shadow: 0 6px 24px rgba(30, 95, 168, 0.13);
-        transform: translateY(-3px);
+        box-shadow: 0 10px 36px rgba(30, 95, 168, 0.10);
+        transform: translateY(-4px);
       }
       .content-card.disabled {
         opacity: 0.45;
@@ -326,63 +270,6 @@
         width: fit-content;
       }
 
-      /* ── Pickup cards ── */
-      .pickup-list {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-      .pickup-card {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        background: var(--white);
-        border: 1.5px solid var(--blue);
-        border-radius: var(--radius);
-        padding: 16px 20px;
-        text-decoration: none;
-        color: var(--ink);
-        transition: box-shadow 0.15s;
-      }
-      .pickup-card:hover {
-        box-shadow: 0 4px 16px rgba(30, 95, 168, 0.12);
-      }
-      .pickup-icon {
-        background: var(--blue-light);
-        border-radius: 8px;
-        width: 40px;
-        height: 40px;
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .pickup-icon svg {
-        width: 20px;
-        height: 20px;
-        stroke: var(--blue);
-        fill: none;
-        stroke-width: 1.8;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-      .pickup-body {
-        flex: 1;
-      }
-      .pickup-name {
-        font-size: 15px;
-        font-weight: 700;
-      }
-      .pickup-desc {
-        font-size: 12px;
-        color: var(--sub);
-        margin-top: 2px;
-      }
-      .pickup-arrow {
-        font-size: 20px;
-        color: var(--sub);
-        flex-shrink: 0;
-      }
 
       /* ── Updates（リニューアル：2段組・5件・短文） ── */
       .updates-box {
@@ -390,25 +277,6 @@
         border: 1px solid var(--border);
         border-radius: var(--radius);
         overflow: hidden;
-      }
-      .updates-head {
-        padding: 14px 22px;
-        border-bottom: 1px solid var(--border);
-        font-size: 14px;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        color: var(--ink);
-      }
-      .updates-head svg {
-        width: 15px;
-        height: 15px;
-        stroke: var(--blue);
-        fill: none;
-        stroke-width: 2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
       }
       .updates-list {
         list-style: none;
@@ -497,7 +365,7 @@
           display: inline;
         }
         .hero {
-          padding: 52px 20px 60px;
+          padding: 56px 20px 64px;
         }
         .hero h1 {
           font-size: 26px;
@@ -510,11 +378,11 @@
           gap: 12px;
         }
         main {
-          padding: 48px 16px 60px;
-          gap: 52px;
+          padding: 52px 16px 64px;
+          gap: 56px;
         }
         .sec-heading {
-          font-size: 18px;
+          font-size: 20px;
         }
         .update-desc {
           margin-left: 0;
@@ -538,23 +406,6 @@
       </div>
     </div>
 
-    <!-- News Ticker -->
-    <div class="news-ticker">
-      <div class="ticker-inner">
-        <span class="ticker-label">NEWS</span>
-        <div class="ticker-track">
-          <div class="ticker-content">
-            <a href="入力画面で解説_2026改定後の入力方法.html"><span class="ticker-date">5/27</span>入力画面で解説｜2026改定後の入力方法（Pharnes）の画像差し替えがほぼ完了（残りは調剤時残薬調整加算のみ）</a>
-            <a href="調剤時残薬調整加算.html"><span class="ticker-date">5/26</span>調剤時残薬調整加算: 薬歴記載事項カード追加・摘要欄に変更内容併記の推奨追記</a>
-            <a href="服薬管理指導料.html"><span class="ticker-date">5/21</span>【訂正】服薬管理指導料の区分（5区分→6区分）</a>
-            <!-- ループ用に同じ内容を繰り返し -->
-            <a href="入力画面で解説_2026改定後の入力方法.html"><span class="ticker-date">5/27</span>入力画面で解説｜2026改定後の入力方法（Pharnes）の画像差し替えがほぼ完了（残りは調剤時残薬調整加算のみ）</a>
-            <a href="調剤時残薬調整加算.html"><span class="ticker-date">5/26</span>調剤時残薬調整加算: 薬歴記載事項カード追加・摘要欄に変更内容併記の推奨追記</a>
-            <a href="服薬管理指導料.html"><span class="ticker-date">5/21</span>【訂正】服薬管理指導料の区分（5区分→6区分）</a>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <main>
       <section>
@@ -581,6 +432,34 @@
             <div class="card-name">2026年 調剤報酬改定</div>
             <div class="card-desc">
               加算・管理料の改定ポイントを解説。ダイジェスト・算定フロー・早見表・別表などを収録。
+            </div>
+            <div class="card-meta"></div>
+            <div class="card-cta">
+              資料一覧を見る
+              <svg viewBox="0 0 24 24">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </div>
+          </a>
+
+          <a
+            class="content-card"
+            href="事務スタッフ向け.html"
+            data-count-from="事務スタッフ向け.html"
+            data-count-selector=".tool-card"
+            data-count-suffix="資料収録"
+          >
+            <div class="card-icon-wrap">
+              <svg viewBox="0 0 24 24">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <div class="card-name">事務スタッフ向け</div>
+            <div class="card-desc">
+              改定ポイント整理・サマリ・入力画面で解説（Pharnes）・別表Ⅰなど、事務スタッフ向け資料をまとめています。
             </div>
             <div class="card-meta"></div>
             <div class="card-cta">
@@ -650,14 +529,18 @@
         <p class="sec-tag">UPDATES</p>
         <h2 class="sec-heading">更新情報</h2>
         <div class="updates-box">
-          <div class="updates-head">
-            <svg viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10" />
-              <polyline points="12 6 12 12 16 14" />
-            </svg>
-            最近の更新
-          </div>
           <ul class="updates-list">
+            <li>
+              <div class="update-line1">
+                <span class="update-date">5/27</span>
+                <a class="update-name" href="疑義解釈_その6_2026.html"
+                  >疑義解釈資料の送付について（その６）</a
+                ><span class="badge-new">NEW</span>
+              </div>
+              <p class="update-desc">
+                令和８年５月22日付の疑義解釈（その６）の<strong>薬局関連</strong>を掲載。<strong>電子的調剤情報連携体制整備加算（問１）</strong>＝施設基準で求められるのはR5.1.26稼働の基本機能（発行・応需／閲覧／重複・併用禁忌チェック）への対応で足り、その後の機能拡張への対応は不要。
+              </p>
+            </li>
             <li>
               <div class="update-line1">
                 <span class="update-date">5/27</span>
@@ -702,103 +585,10 @@
                 判定回数を様式87の3の2の記載要領に合わせ小数点第1位まで表示するよう修正（第2位四捨五入）
               </p>
             </li>
-            <li>
-              <div class="update-line1">
-                <span class="update-date">5/14</span>
-                <a class="update-name" href="事務スタッフ向け_2026改定サマリ.html"
-                  >事務スタッフ向け 改定サマリ</a
-                >
-              </div>
-              <p class="update-desc">
-                「事務スタッフ向け 改定ポイント整理」から要点のみ抜粋した一覧ページを新規公開
-              </p>
-            </li>
           </ul>
           <div class="updates-all">
             <a href="updates.html">すべての更新履歴を見る →</a>
           </div>
-        </div>
-      </section>
-
-      <section>
-        <p class="sec-tag">PICKUP</p>
-        <h2 class="sec-heading">おすすめコンテンツ</h2>
-        <div class="pickup-list">
-          <a class="pickup-card" href="入力画面で解説_2026改定後の入力方法.html">
-            <div class="pickup-icon">
-              <svg viewBox="0 0 24 24">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                <line x1="8" y1="21" x2="16" y2="21" />
-                <line x1="12" y1="17" x2="12" y2="21" />
-              </svg>
-            </div>
-            <div class="pickup-body">
-              <div class="pickup-name">入力画面で解説｜2026改定後の入力方法（Pharnes）<span class="badge-new">NEW</span></div>
-              <div class="pickup-desc">
-                6月運用開始に向けて、新設・変更加算の入力方法をレセコン画面で整理。仮公開・ご意見募集中。
-              </div>
-            </div>
-            <span class="pickup-arrow">›</span>
-          </a>
-          <a
-            class="pickup-card"
-            href="事務スタッフ向け_2026改定サマリ.html"
-          >
-            <div class="pickup-icon">
-              <svg viewBox="0 0 24 24">
-                <line x1="8" y1="6" x2="21" y2="6" />
-                <line x1="8" y1="12" x2="21" y2="12" />
-                <line x1="8" y1="18" x2="21" y2="18" />
-                <line x1="3" y1="6" x2="3.01" y2="6" />
-                <line x1="3" y1="12" x2="3.01" y2="12" />
-                <line x1="3" y1="18" x2="3.01" y2="18" />
-              </svg>
-            </div>
-            <div class="pickup-body">
-              <div class="pickup-name">事務スタッフ向け 改定サマリ<span class="badge-new">NEW</span></div>
-              <div class="pickup-desc">
-                各項目の「何が変わったか」を要点のみ抜粋した一覧。
-              </div>
-            </div>
-            <span class="pickup-arrow">›</span>
-          </a>
-          <a
-            class="pickup-card"
-            href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html"
-          >
-            <div class="pickup-icon">
-              <svg viewBox="0 0 24 24">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-              </svg>
-            </div>
-            <div class="pickup-body">
-              <div class="pickup-name">事務スタッフ向け 改定ポイント整理</div>
-              <div class="pickup-desc">
-                受付・入力・会計に関わる改定を整理。摘要欄入力対応表付き。
-              </div>
-            </div>
-            <span class="pickup-arrow">›</span>
-          </a>
-          <a class="pickup-card" href="調剤報酬改定2026_ダイジェスト.html">
-            <div class="pickup-icon">
-              <svg viewBox="0 0 24 24">
-                <rect x="3" y="3" width="7" height="7" />
-                <rect x="14" y="3" width="7" height="7" />
-                <rect x="3" y="14" width="7" height="7" />
-                <rect x="14" y="14" width="7" height="7" />
-              </svg>
-            </div>
-            <div class="pickup-body">
-              <div class="pickup-name">2026改定 ダイジェスト</div>
-              <div class="pickup-desc">
-                改定項目の要点を一覧で確認。まずここから。
-              </div>
-            </div>
-            <span class="pickup-arrow">›</span>
-          </a>
         </div>
       </section>
 
