@@ -20,17 +20,18 @@ window.__pageMeta = {
   "特掲診療料_施設基準届出_調剤関係2026.html": {
     "lastUpdated": "2026-04-03"
   },
-  "index.html": {
-    "lastUpdated": "2026-05-24"
+  "updates.html": {
+    "lastUpdated": "2026-05-28"
   },
   "調剤基本料フローチャート.html": {
     "lastUpdated": "2026-03-26"
   },
+  "疑義解釈_その6_2026.html": {
+    "lastUpdated": "2026-05-27",
+    "newUntil": "2026-06-03"
+  },
   "調剤報酬点数早見表2026.html": {
     "lastUpdated": "2026-03-31"
-  },
-  "kaitei2026.html": {
-    "lastUpdated": "2026-05-14"
   },
   "gigi-search.html": {
     "lastUpdated": "2026-04-15"
@@ -44,10 +45,6 @@ window.__pageMeta = {
   "疑義解釈_その5_2026.html": {
     "lastUpdated": "2026-05-09"
   },
-  "疑義解釈_その6_2026.html": {
-    "lastUpdated": "2026-05-27",
-    "newUntil": "2026-06-03"
-  },
   "別表Ⅴ_調剤行為名称等の略号一覧2026改定.html": {
     "lastUpdated": "2026-05-21"
   },
@@ -57,8 +54,9 @@ window.__pageMeta = {
   "バイオ後続品調剤体制加算.html": {
     "lastUpdated": "2026-04-19"
   },
-  "updates.html": {
-    "lastUpdated": "2026-05-21"
+  "入力画面で解説_2026改定後の入力方法.html": {
+    "lastUpdated": "2026-05-28",
+    "newUntil": "2026-06-03"
   },
   "選定療養_概要2026.html": {
     "lastUpdated": "2026-05-07"
@@ -93,8 +91,8 @@ window.__pageMeta = {
   "調剤報酬改定2026_ダイジェスト.html": {
     "lastUpdated": "2026-05-14"
   },
-  "事務スタッフ向け_2026調剤報酬改定ポイント整理.html": {
-    "lastUpdated": "2026-05-21"
+  "事務スタッフ向け.html": {
+    "lastUpdated": "2026-05-27"
   },
   "調剤管理料_2026改定.html": {
     "lastUpdated": "2026-04-19"
@@ -119,6 +117,9 @@ window.__pageMeta = {
   },
   "地域支援医薬品供給対応体制加算_届出判定ツール.html": {
     "lastUpdated": "2026-05-19"
+  },
+  "index.html": {
+    "lastUpdated": "2026-05-28"
   },
   "かかりつけ薬剤師訪問加算.html": {
     "lastUpdated": "2026-05-06"
@@ -151,7 +152,8 @@ window.__pageMeta = {
     "lastUpdated": "2026-05-14"
   },
   "調剤時残薬調整加算.html": {
-    "lastUpdated": "2026-05-06"
+    "lastUpdated": "2026-05-26",
+    "newUntil": "2026-06-02"
   },
   "_notice_followup_homon_heisanntei.html": {
     "lastUpdated": "2026-05-11"
@@ -159,7 +161,10 @@ window.__pageMeta = {
   "訪問薬剤管理医師同時指導料.html": {
     "lastUpdated": "2026-05-14"
   },
-  "入力画面で解説_2026改定後の入力方法.html": {
-    "lastUpdated": "2026-05-24"
+  "kaitei2026.html": {
+    "lastUpdated": "2026-05-27"
+  },
+  "事務スタッフ向け_2026調剤報酬改定ポイント整理.html": {
+    "lastUpdated": "2026-05-28"
   }
 };
