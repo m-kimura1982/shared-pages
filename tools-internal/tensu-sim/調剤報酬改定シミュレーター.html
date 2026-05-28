@@ -599,16 +599,16 @@
                   value="reception"
                   checked
                 />
-                来局（服薬管理指導料）</label
+                服薬管理指導料を算定（来局・お届け等）</label
               >
               <label
                 ><input type="radio" name="home-claim" value="visit" />
-                訪問（在宅患者訪問薬剤管理指導料）</label
+                訪問指導料を算定（在宅・居宅）</label
               >
             </div>
           </div>
           <div class="row" id="home-reception-opts">
-            <label class="lbl">来局時設定</label>
+            <label class="lbl">患者条件</label>
             <div class="radio-group">
               <label
                 ><input
@@ -1406,7 +1406,7 @@
           } else {
             pendingArea.innerHTML =
               (pendingArea.innerHTML || "") +
-              `<div class="pending-msg">訪問時は在宅患者訪問薬剤管理指導料／居宅療養管理指導費を算定（点数変動なしのためシミュレーター上は省略）。服薬管理指導料との同時算定は不可。</div>`;
+              `<div class="pending-msg">訪問指導料を算定する場合：在宅患者訪問薬剤管理指導料／居宅療養管理指導費は点数変動なしのためシミュレーター上は省略しています。服薬管理指導料との同時算定は不可。</div>`;
           }
 
           // 6. 在宅薬学総合体制加算
