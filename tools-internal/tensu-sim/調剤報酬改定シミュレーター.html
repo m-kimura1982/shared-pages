@@ -579,6 +579,15 @@
           <select id="store"></select>
         </div>
 
+        <div class="row">
+          <label class="lbl">負担割合</label>
+          <div class="radio-group">
+            <label><input type="radio" name="burden" value="1" /> 1割</label>
+            <label><input type="radio" name="burden" value="2" /> 2割</label>
+            <label><input type="radio" name="burden" value="3" checked /> 3割</label>
+          </div>
+        </div>
+
         <!-- 通常モード設定 -->
         <div id="opts-out">
           <div class="row">
@@ -741,7 +750,7 @@
             <div class="yen" id="big-new-yen">—</div>
           </div>
           <div class="summary-box diff" id="big-diff-box">
-            <div class="ttl">差額</div>
+            <div class="ttl">差額<span id="big-diff-ttl-sub"></span></div>
             <div class="val" id="big-diff">—</div>
             <div class="yen" id="big-diff-yen">—</div>
           </div>
@@ -775,7 +784,7 @@
               内服薬の日数区分は旧4段階（〜7／8〜14／15〜27／28日以上）から新2段階（27日以下＝10点／28日以上＝60点）に再編。
             </li>
             <li>
-              3割負担換算は概算（点数×10×0.3）です。実際の負担額は端数処理等で異なります。
+              負担割合換算は概算（点数×10×負担割合）です。実際の負担額は端数処理等で異なります。
             </li>
           </ul>
         </div>
@@ -1103,6 +1112,7 @@
         const state = {
           mode,
           store: storeSelect.value,
+          burden: document.querySelector('input[name="burden"]:checked')?.value,
           visit: document.querySelector('input[name="visit"]:checked')?.value,
           home: document.querySelector('input[name="home"]:checked')?.value,
           kakari: document.getElementById("kakari").checked,
@@ -1128,6 +1138,12 @@
           const s = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
           if (!s) return;
           if (s.store && STORES[s.store]) storeSelect.value = s.store;
+          if (s.burden) {
+            const r = document.querySelector(
+              `input[name="burden"][value="${s.burden}"]`
+            );
+            if (r) r.checked = true;
+          }
           if (s.visit) {
             const r = document.querySelector(
               `input[name="visit"][value="${s.visit}"]`
@@ -1222,22 +1238,28 @@
             ? "±0 円"
             : "約 " +
               Math.abs(
-                Math.round((diff * 10 * 0.3) / 10) * 10
+                Math.round((diff * 10 * getBurden()) / 10) * 10
               ).toLocaleString() +
               " 円 " +
               (diff > 0 ? "増" : "減");
         document
           .getElementById("big-diff-box")
           .classList.toggle("minus", diff < 0);
+        document.getElementById("big-diff-ttl-sub").textContent =
+          "（" + getBurden() * 10 + "割換算）";
       }
 
       // 描画
       function fmt(v) {
         return v == null ? "—" : v + "点";
       }
+      function getBurden() {
+        const v = document.querySelector('input[name="burden"]:checked')?.value;
+        return (Number(v) || 3) / 10;
+      }
       function fmtYen(p) {
         if (p == null) return "—";
-        return "約 " + (Math.round(p * 10 * 0.3 / 10) * 10).toLocaleString() + " 円";
+        return "約 " + (Math.round(p * 10 * getBurden() / 10) * 10).toLocaleString() + " 円";
       }
       function fmtDiff(d) {
         if (d == null) return "—";
@@ -1547,11 +1569,13 @@
             ? "±0 円"
             : "約 " +
               Math.abs(
-                Math.round((diff * 10 * 0.3) / 10) * 10
+                Math.round((diff * 10 * getBurden()) / 10) * 10
               ).toLocaleString() +
               " 円 " +
               (diff > 0 ? "増" : "減");
         diffBox.classList.toggle("minus", diff < 0);
+        document.getElementById("big-diff-ttl-sub").textContent =
+          "（" + getBurden() * 10 + "割換算）";
 
         save();
       }
@@ -1618,6 +1642,7 @@
         return {
           mode,
           store: storeSelect.value,
+          burden: document.querySelector('input[name="burden"]:checked')?.value,
           visit: document.querySelector('input[name="visit"]:checked')?.value,
           home: document.querySelector('input[name="home"]:checked')?.value,
           kakari: document.getElementById("kakari").checked,
@@ -1638,6 +1663,12 @@
       function applyState(s) {
         if (!s) return;
         if (s.store && STORES[s.store]) storeSelect.value = s.store;
+        if (s.burden) {
+          const r = document.querySelector(
+            `input[name="burden"][value="${s.burden}"]`
+          );
+          if (r) r.checked = true;
+        }
         if (s.visit) {
           const r = document.querySelector(
             `input[name="visit"][value="${s.visit}"]`
