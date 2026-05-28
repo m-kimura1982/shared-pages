@@ -1,0 +1,1512 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>調剤報酬改定シミュレーター（社外秘）</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --text-xs: 13px;
+        --text-sm: 15px;
+        --text-md: 16px;
+        --text-lg: 18px;
+        --text-xl: 22px;
+        --pad-card: 22px;
+        --gap-card: 16px;
+        --blue: #1e5fa8;
+        --blue-light: #e8f0fb;
+        --red: #cc0000;
+        --green: #0a7a3a;
+        --orange: #c45c00;
+        --ink: #222222;
+        --sub: #666666;
+        --bg: #f3f4f6;
+        --white: #ffffff;
+        --box-blue: #e4f0f8;
+        --box-gray: #f2f2f2;
+        --box-yellow: #fff8d6;
+        --border: #d1d5db;
+        --border-dk: #9ca3af;
+        --radius: 10px;
+        --radius-sm: 6px;
+      }
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        font-size: var(--text-md);
+        line-height: 1.7;
+        padding: 24px 14px 60px;
+      }
+      .page {
+        max-width: 880px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-card);
+      }
+
+      .confidential {
+        background: #fff4f4;
+        border: 1px solid #d9b3b3;
+        color: var(--red);
+        padding: 8px 14px;
+        border-radius: var(--radius-sm);
+        font-size: var(--text-xs);
+        font-weight: 700;
+      }
+      .page-title {
+        border-left: 4px solid var(--blue);
+        padding: 6px 0 6px 16px;
+      }
+      .page-title h1 {
+        font-size: var(--text-xl);
+        font-weight: 900;
+      }
+      .page-title p {
+        font-size: var(--text-sm);
+        margin-top: 4px;
+        color: var(--sub);
+      }
+
+      .card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: var(--pad-card);
+      }
+      .card h2 {
+        font-size: var(--text-lg);
+        font-weight: 700;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--blue);
+        color: var(--blue);
+      }
+
+      /* モード切替 */
+      .mode-tabs {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+      .mode-tabs button {
+        flex: 1;
+        padding: 10px;
+        font-size: var(--text-md);
+        font-weight: 700;
+        border: 1.5px solid var(--border);
+        background: var(--white);
+        color: var(--sub);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-family: inherit;
+      }
+      .mode-tabs button.active {
+        background: var(--blue);
+        color: var(--white);
+        border-color: var(--blue);
+      }
+
+      /* 設定行 */
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px 16px;
+        margin: 8px 0;
+      }
+      .row label.lbl {
+        min-width: 110px;
+        font-weight: 700;
+        font-size: var(--text-sm);
+      }
+      select,
+      input[type="number"] {
+        font-family: inherit;
+        font-size: var(--text-md);
+        padding: 6px 10px;
+        border: 1px solid var(--border-dk);
+        border-radius: var(--radius-sm);
+        background: var(--white);
+      }
+      input[type="number"] {
+        width: 90px;
+      }
+      .chk {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: var(--text-sm);
+        cursor: pointer;
+        user-select: none;
+      }
+      .chk input {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+      }
+      .radio-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+      }
+      .radio-group label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: var(--text-sm);
+        cursor: pointer;
+      }
+
+      /* 結果テーブル */
+      table.result {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: var(--text-sm);
+      }
+      table.result th,
+      table.result td {
+        padding: 8px 10px;
+        border-bottom: 1px solid var(--border);
+        text-align: left;
+      }
+      table.result th {
+        background: var(--blue-light);
+        color: var(--blue);
+        font-weight: 700;
+        font-size: var(--text-xs);
+      }
+      table.result td.num {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+      table.result tr.diff-up td.num.diff {
+        color: var(--red);
+        font-weight: 700;
+      }
+      table.result tr.diff-dn td.num.diff {
+        color: var(--green);
+        font-weight: 700;
+      }
+      table.result tr.pending td {
+        color: var(--sub);
+        font-style: italic;
+      }
+      table.result input.pt-edit {
+        width: 64px;
+        padding: 2px 6px;
+        font-size: var(--text-sm);
+        font-family: inherit;
+        text-align: right;
+        border: 1px solid var(--border-dk);
+        border-radius: 4px;
+        background: var(--white);
+      }
+      table.result input.pt-edit:focus {
+        outline: 2px solid var(--blue);
+        outline-offset: 0;
+      }
+      table.result tfoot td {
+        background: var(--box-blue);
+        font-weight: 700;
+        font-size: var(--text-md);
+        border-top: 2px solid var(--blue);
+        border-bottom: none;
+      }
+
+      .badge {
+        display: inline-block;
+        font-size: 11px;
+        padding: 1px 6px;
+        border-radius: 3px;
+        margin-left: 6px;
+        vertical-align: middle;
+      }
+      .badge-new {
+        background: #2e7d32;
+        color: var(--white);
+      }
+      .badge-abol {
+        background: #757575;
+        color: var(--white);
+      }
+      .badge-pend {
+        background: var(--box-yellow);
+        color: var(--orange);
+        border: 1px solid var(--orange);
+      }
+
+      /* 結果サマリー */
+      .summary {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .summary-box {
+        background: var(--box-blue);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 12px;
+        text-align: center;
+      }
+      .summary-box .ttl {
+        font-size: var(--text-xs);
+        color: var(--sub);
+      }
+      .summary-box .val {
+        font-size: 24px;
+        font-weight: 900;
+        color: var(--blue);
+        margin-top: 4px;
+        font-variant-numeric: tabular-nums;
+      }
+      .summary-box.diff .val {
+        color: var(--red);
+      }
+      .summary-box.diff.minus .val {
+        color: var(--green);
+      }
+      .summary-box .yen {
+        font-size: var(--text-xs);
+        color: var(--sub);
+        margin-top: 2px;
+      }
+
+      .note {
+        font-size: var(--text-xs);
+        color: var(--sub);
+        background: var(--box-gray);
+        padding: 12px 14px;
+        border-radius: var(--radius-sm);
+        margin-top: 12px;
+        line-height: 1.8;
+      }
+      .note strong {
+        color: var(--ink);
+      }
+      .note ul {
+        padding-left: 20px;
+        margin-top: 4px;
+      }
+
+      .pending-msg {
+        background: #fff8d6;
+        border: 1px solid #e6c84a;
+        color: #8a6d00;
+        padding: 10px 14px;
+        border-radius: var(--radius-sm);
+        font-size: var(--text-sm);
+        margin-bottom: 12px;
+      }
+
+      @media (max-width: 600px) {
+        .summary {
+          grid-template-columns: 1fr;
+        }
+        .row label.lbl {
+          min-width: auto;
+        }
+      }
+
+      /* 印刷用 - A4 1枚に収める */
+      .print-bar {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+      .print-bar button {
+        font-family: inherit;
+        font-size: 13px;
+        padding: 6px 14px;
+        background: var(--blue);
+        color: var(--white);
+        border: none;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-weight: 700;
+      }
+      .preset-row {
+        background: var(--blue-light);
+        padding: 8px 12px;
+        border-radius: var(--radius-sm);
+        margin-bottom: 12px;
+      }
+      .preset-row .mini-btn {
+        font-family: inherit;
+        font-size: 12px;
+        padding: 4px 10px;
+        background: var(--white);
+        color: var(--blue);
+        border: 1px solid var(--blue);
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 700;
+      }
+      .preset-row .mini-btn.danger {
+        color: var(--red);
+        border-color: var(--red);
+      }
+      .preset-row .mini-btn:hover {
+        background: var(--blue-light);
+      }
+      @media print {
+        @page {
+          size: A4 portrait;
+          margin: 12mm 14mm;
+        }
+        body {
+          padding: 0;
+          background: var(--white);
+          font-size: 12.5px;
+          line-height: 1.55;
+        }
+        .page {
+          gap: 12px;
+          max-width: 100%;
+        }
+        .confidential {
+          font-size: 11px;
+          padding: 4px 12px;
+        }
+        .page-title {
+          padding: 4px 0 4px 14px;
+          border-left-width: 4px;
+        }
+        .page-title h1 {
+          font-size: 18px;
+        }
+        .page-title p {
+          font-size: 11px;
+          margin-top: 3px;
+        }
+        .card {
+          padding: 14px 16px;
+          page-break-inside: avoid;
+        }
+        .card h2 {
+          font-size: 14px;
+          padding-bottom: 6px;
+          margin-bottom: 10px;
+          border-bottom-width: 2px;
+        }
+        .row {
+          margin: 5px 0;
+          gap: 6px 14px;
+        }
+        .row label.lbl {
+          min-width: 90px;
+          font-size: 12px;
+        }
+        select,
+        input[type="number"] {
+          font-size: 12px;
+          padding: 2px 6px;
+          border: 1px solid #888;
+        }
+        input[type="number"] {
+          width: 70px;
+        }
+        .chk,
+        .radio-group label {
+          font-size: 12px;
+        }
+        table.result th,
+        table.result td {
+          padding: 6px 8px;
+          font-size: 12px;
+        }
+        table.result th {
+          font-size: 11px;
+        }
+        table.result input.pt-edit {
+          width: 42px;
+          padding: 0 4px;
+          font-size: 12px;
+          border: none;
+          background: transparent;
+        }
+        table.result input.pt-edit::-webkit-inner-spin-button,
+        table.result input.pt-edit::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        table.result tfoot td {
+          font-size: 13px;
+        }
+        .summary {
+          gap: 8px;
+          margin-top: 12px;
+        }
+        .summary-box {
+          padding: 10px 8px;
+        }
+        .summary-box .ttl {
+          font-size: 11px;
+        }
+        .summary-box .val {
+          font-size: 22px;
+          margin-top: 3px;
+        }
+        .summary-box .yen {
+          font-size: 11px;
+          margin-top: 2px;
+        }
+        .note {
+          font-size: 10.5px;
+          line-height: 1.55;
+          padding: 8px 12px;
+          margin-top: 8px;
+        }
+        .note ul {
+          padding-left: 18px;
+        }
+        .pending-msg {
+          padding: 6px 12px;
+          font-size: 12px;
+          margin-bottom: 8px;
+        }
+        .print-bar,
+        .mode-tabs,
+        .confidential,
+        .page-title,
+        .preset-row {
+          display: none !important;
+        }
+        .badge {
+          font-size: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="print-bar">
+        <button onclick="window.print()">印刷</button>
+      </div>
+      <div class="confidential">社外秘・社内利用のみ</div>
+
+      <div class="page-title">
+        <h1>調剤報酬改定シミュレーター</h1>
+        <p>2026年（令和8年）6月改定｜店舗別・基本部分の新旧比較</p>
+      </div>
+
+      <!-- 設定カード -->
+      <div class="card">
+        <h2>設定</h2>
+
+        <div class="row preset-row">
+          <label class="lbl" for="preset-select">パターン</label>
+          <select id="preset-select">
+            <option value="">（呼び出し）</option>
+          </select>
+          <button id="preset-save" class="mini-btn">現在の内容を保存</button>
+          <button id="preset-del" class="mini-btn danger">削除</button>
+        </div>
+
+        <div class="mode-tabs">
+          <button id="mode-out" class="active">通常（外来）</button>
+          <button id="mode-home">在宅患者</button>
+        </div>
+
+        <div class="row">
+          <label class="lbl" for="store">店舗</label>
+          <select id="store"></select>
+        </div>
+
+        <!-- 通常モード設定 -->
+        <div id="opts-out">
+          <div class="row">
+            <label class="lbl">来局区分</label>
+            <div class="radio-group">
+              <label
+                ><input type="radio" name="visit" value="within3" checked />
+                3か月以内・手帳あり</label
+              >
+              <label
+                ><input type="radio" name="visit" value="over3" />
+                3か月超 or 手帳なし・初めて</label
+              >
+            </div>
+          </div>
+          <div class="row">
+            <label class="lbl">患者条件</label>
+            <label class="chk"
+              ><input type="checkbox" id="kakari" />
+              かかりつけ薬剤師の担当患者</label
+            >
+          </div>
+          <div class="row">
+            <label class="lbl">内服薬</label>
+            <select id="naifuku-zai">
+              <option value="0">なし</option>
+              <option value="1" selected>1剤</option>
+              <option value="2">2剤</option>
+              <option value="3">3剤</option>
+            </select>
+            <input type="number" id="days" min="1" max="120" value="14" />
+            <span style="font-size: var(--text-xs); color: var(--sub)"
+              >日分（同日数前提）</span
+            >
+          </div>
+          <div class="row">
+            <label class="lbl">外用・屯服等</label>
+            <label class="chk"
+              ><input type="checkbox" id="gaiyou" />
+              あり（1調剤）</label
+            >
+          </div>
+        </div>
+
+        <!-- 在宅モード設定 -->
+        <div id="opts-home" style="display: none">
+          <div class="row">
+            <label class="lbl">在宅区分</label>
+            <div class="radio-group">
+              <label
+                ><input type="radio" name="home" value="single1" checked />
+                単一建物患者 1人</label
+              >
+              <label
+                ><input type="radio" name="home" value="other" /> その他</label
+              >
+            </div>
+          </div>
+          <div class="row">
+            <label class="lbl">内服薬</label>
+            <select id="naifuku-zai-h">
+              <option value="0">なし</option>
+              <option value="1" selected>1剤</option>
+              <option value="2">2剤</option>
+              <option value="3">3剤</option>
+            </select>
+            <input type="number" id="days-h" min="1" max="120" value="14" />
+            <span style="font-size: var(--text-xs); color: var(--sub)"
+              >日分（同日数前提）</span
+            >
+          </div>
+          <div class="row">
+            <label class="lbl">外用・屯服等</label>
+            <label class="chk"
+              ><input type="checkbox" id="gaiyou-h" />
+              あり（1調剤）</label
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- 結果カード -->
+      <div class="card">
+        <h2>比較結果</h2>
+        <div id="pending-area"></div>
+        <table class="result">
+          <thead>
+            <tr>
+              <th style="width: 50%">項目</th>
+              <th class="num" style="width: 15%">改定前</th>
+              <th class="num" style="width: 15%">改定後</th>
+              <th class="num" style="width: 20%">差</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+          <tfoot>
+            <tr>
+              <td>小計</td>
+              <td class="num" id="sum-old">—</td>
+              <td class="num" id="sum-new">—</td>
+              <td class="num" id="sum-diff">—</td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <div class="summary">
+          <div class="summary-box">
+            <div class="ttl">改定前 合計</div>
+            <div class="val" id="big-old">—</div>
+            <div class="yen" id="big-old-yen">—</div>
+          </div>
+          <div class="summary-box">
+            <div class="ttl">改定後 合計</div>
+            <div class="val" id="big-new">—</div>
+            <div class="yen" id="big-new-yen">—</div>
+          </div>
+          <div class="summary-box diff" id="big-diff-box">
+            <div class="ttl">差額</div>
+            <div class="val" id="big-diff">—</div>
+            <div class="yen" id="big-diff-yen">—</div>
+          </div>
+        </div>
+
+        <div class="note">
+          <strong>計算に含めていない項目（参考）</strong>
+          <ul>
+            <li>
+              <strong>医療情報取得加算（1点・年1回）</strong>：改定で廃止
+            </li>
+            <li>
+              <strong>調剤物価対応料（1点・3か月に1回）</strong
+              >：改定で新設（令和9年6月以降は2点予定）
+            </li>
+            <li>
+              <strong>調剤ベースアップ評価料</strong
+              >：当社は2026年8月から算定開始予定
+            </li>
+            <li>
+              ハイリスク薬・乳幼児・麻薬等の<strong>プラスα加算</strong
+              >は毎回算定ではないため非対象
+            </li>
+            <li><strong>薬剤料</strong>は処方ごとに異なるため別途</li>
+          </ul>
+        </div>
+
+        <div class="note">
+          <strong>注意</strong>
+          <ul>
+            <li>
+              改定後の<strong>調剤基本料</strong>・<strong>地域支援・医薬品供給対応体制加算</strong>は、現時点の見込み値を表に入力してください（自店舗の入力値は端末に保存されます）。
+            </li>
+            <li>
+              <strong>調剤管理料1（内服）と2（内服以外）は同時算定できません</strong>。内服薬がある処方では1（最大3剤）のみ、内服がなく屯服・外用のみの処方では2のみ算定します。
+            </li>
+            <li>
+              内服薬の日数区分は旧4段階（〜7／8〜14／15〜27／28日以上）から新2段階（27日以下＝10点／28日以上＝60点）に再編。
+            </li>
+            <li>
+              3割負担換算は概算（点数×10×0.3）です。実際の負担額は端数処理等で異なります。
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ===== 店舗データ =====
+      // 旧 = R6.6時点（2024年改定後）、新 = R8.6時点（2026年改定後・一部未確定）
+      // base/region は R8.6告示後の店舗別配分待ち
+      const STORES = {
+        戸田: {
+          region: "埼玉",
+          old: { base: 45, region: 40, gen: 30, dx: 8 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: 50, adv_new_single1: 50, adv_new_other: 100 },
+          kakari: true,
+        },
+        南浦和: {
+          region: "埼玉",
+          old: { base: 45, region: 40, gen: 30, dx: 8 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: 15, adv_new_single1: 30, adv_new_other: 30 },
+          kakari: true,
+        },
+        西川口: {
+          region: "埼玉",
+          old: { base: 29, region: 10, gen: 30, dx: 8 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: 15, adv_new_single1: 30, adv_new_other: 30 },
+          kakari: true,
+        },
+        学芸大: {
+          region: "東京",
+          old: { base: 45, region: 40, gen: 28, dx: 8 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: 50, adv_new_single1: 50, adv_new_other: 100 },
+          kakari: true,
+        },
+        南浦３号: {
+          region: "埼玉",
+          old: { base: 45, region: 32, gen: 30, dx: 8 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: 15, adv_new_single1: 30, adv_new_other: 30 },
+          kakari: true,
+        },
+        巣鴨: {
+          region: "東京",
+          old: { base: 45, region: null, gen: 30, dx: 10 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: null, adv_new_single1: null, adv_new_other: null },
+          kakari: true,
+        },
+        学大西口: {
+          region: "東京",
+          old: { base: 45, region: 0, gen: 30, dx: 10 },
+          new: { base: null, region: null, denshi: 8 },
+          home: null,
+          kakari: false,
+          note: "2026年2月開局",
+        },
+        東浦和: {
+          region: "埼玉",
+          old: { base: 45, region: 40, gen: 28, dx: 10 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: 15, adv_new_single1: 30, adv_new_other: 30 },
+          kakari: true,
+        },
+        川口: {
+          region: "埼玉",
+          old: { base: 45, region: 40, gen: 30, dx: 8 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: 15, adv_new_single1: 30, adv_new_other: 30 },
+          kakari: true,
+        },
+        コスモ: {
+          region: "埼玉",
+          old: { base: 45, region: 40, gen: 30, dx: 6 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: 15, adv_new_single1: 30, adv_new_other: 30 },
+          kakari: true,
+        },
+        一ツ木: {
+          region: "埼玉",
+          old: { base: 45, region: 40, gen: 30, dx: 8 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: 15, adv_new_single1: 30, adv_new_other: 30 },
+          kakari: true,
+        },
+        久喜: {
+          region: "埼玉",
+          old: { base: 45, region: 40, gen: 30, dx: 8 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: 15, adv_new_single1: 30, adv_new_other: 30 },
+          kakari: true,
+        },
+        喜沢南: {
+          region: "埼玉",
+          old: { base: 45, region: 40, gen: 30, dx: 8 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: 15, adv_new_single1: 30, adv_new_other: 30 },
+          kakari: true,
+        },
+        芝園: {
+          region: "埼玉",
+          old: { base: 45, region: 40, gen: 30, dx: 8 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: 15, adv_new_single1: 50, adv_new_other: 100 },
+          kakari: true,
+        },
+        立石: {
+          region: "東京",
+          old: { base: 45, region: null, gen: 30, dx: 8 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: 15, adv_new_single1: 30, adv_new_other: 30 },
+          kakari: true,
+        },
+        古河: {
+          region: "茨城",
+          old: { base: 45, region: null, gen: 30, dx: 10 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: 15, adv_new_single1: 30, adv_new_other: 30 },
+          kakari: false,
+        },
+        坂戸: {
+          region: "埼玉",
+          old: { base: 24, region: 10, gen: 30, dx: 8 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: 15, adv_new_single1: 30, adv_new_other: 30 },
+          kakari: true,
+        },
+        渋谷: {
+          region: "東京",
+          old: { base: 45, region: 32, gen: 28, dx: 10 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: 15, adv_new_single1: 30, adv_new_other: 30 },
+          kakari: true,
+        },
+        土呂: {
+          region: "埼玉",
+          old: { base: 45, region: null, gen: 28, dx: 10 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: null, adv_new_single1: null, adv_new_other: null },
+          kakari: true,
+        },
+        烏山: {
+          region: "東京",
+          old: { base: 45, region: 40, gen: 28, dx: 8 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: 15, adv_new_single1: 30, adv_new_other: 30 },
+          kakari: true,
+        },
+        鷹番: {
+          region: "東京",
+          old: { base: 45, region: 40, gen: 30, dx: 8 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: 15, adv_new_single1: 30, adv_new_other: 30 },
+          kakari: true,
+        },
+        練馬: {
+          region: "東京",
+          old: { base: 45, region: 40, gen: 28, dx: 8 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: 15, adv_new_single1: 30, adv_new_other: 30 },
+          kakari: true,
+        },
+        学大３号: {
+          region: "東京",
+          old: { base: 45, region: 40, gen: 30, dx: 8 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: 15, adv_new_single1: 30, adv_new_other: 30 },
+          kakari: true,
+        },
+        浦和美園: {
+          region: "埼玉",
+          old: { base: 45, region: 40, gen: 30, dx: 10 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: 15, adv_new_single1: 30, adv_new_other: 30 },
+          kakari: true,
+        },
+        南浦駅前: {
+          region: "埼玉",
+          old: { base: 45, region: 40, gen: 30, dx: 8 },
+          new: { base: null, region: null, denshi: 8 },
+          home: { adv_old: 50, adv_new_single1: 50, adv_new_other: 100 },
+          kakari: true,
+        },
+        西川２号: {
+          region: "埼玉",
+          old: { base: 45, region: 0, gen: 0, dx: 0 },
+          new: { base: null, region: null, denshi: 8 },
+          home: null,
+          kakari: false,
+          note: "2026年2月開局",
+        },
+        上尾: {
+          region: "埼玉",
+          old: null,
+          new: { base: null, region: null, denshi: null },
+          home: null,
+          kakari: false,
+          note: "2026年5月新規開局",
+        },
+      };
+
+      // 共通点数表（早見表より）
+      const COMMON = {
+        // 服薬管理指導料：かかりつけ患者は旧かかりつけ薬剤師指導料(76点)→新1イ/2イへ
+        fukuyaku: {
+          // 通常患者（かかりつけ以外）：点数変更なし
+          within3_normal: { old: 45, new: 45, label: "服薬管理指導料1ロ" },
+          over3_normal: { old: 59, new: 59, label: "服薬管理指導料2ロ" },
+          // かかりつけ患者：旧76点→新45/59点（大きく下がる）
+          within3_kakari: {
+            old: 76,
+            new: 45,
+            label: "服薬管理指導料1イ（かかりつけ）",
+          },
+          over3_kakari: {
+            old: 76,
+            new: 59,
+            label: "服薬管理指導料2イ（かかりつけ）",
+          },
+        },
+        // 調剤管理料 内服薬（1剤あたり）
+        chouzaiKanri: {
+          // 旧:7日以下=4, 8-14=28, 15-27=50, 28=50, 29+=60
+          // 新:27日以下=10, 28日以上(長期)=60
+          oldNaifuku: (days) => {
+            if (days <= 7) return 4;
+            if (days <= 14) return 28;
+            if (days <= 27) return 50;
+            if (days === 28) return 50;
+            return 60;
+          },
+          newNaifuku: (days) => {
+            if (days <= 27) return 10;
+            return 60;
+          },
+          // 内服薬以外（屯服・外用・注射等）1調剤あたり
+          oldGaiyou: 4,
+          newGaiyou: 10,
+        },
+      };
+
+      // 店舗別 手入力分（旧・新両方）を localStorage に保存
+      const EDITS_KEY = "tensu-sim-edits-v2";
+      function loadEdits() {
+        try {
+          return JSON.parse(localStorage.getItem(EDITS_KEY) || "{}");
+        } catch (e) {
+          return {};
+        }
+      }
+      function saveEdits(edits) {
+        try {
+          localStorage.setItem(EDITS_KEY, JSON.stringify(edits));
+        } catch (e) {}
+      }
+      function getEdited(storeName, field, side) {
+        const edits = loadEdits();
+        const v = edits[storeName]?.[field + "_" + side];
+        return v == null || v === "" ? null : Number(v);
+      }
+      function setEdited(storeName, field, side, value) {
+        const edits = loadEdits();
+        edits[storeName] = edits[storeName] || {};
+        const key = field + "_" + side;
+        if (value === "" || value == null) {
+          delete edits[storeName][key];
+        } else {
+          edits[storeName][key] = Number(value);
+        }
+        saveEdits(edits);
+      }
+
+      // ===== UI制御 =====
+      const tbody = document.getElementById("tbody");
+      const pendingArea = document.getElementById("pending-area");
+      const storeSelect = document.getElementById("store");
+      const modeOutBtn = document.getElementById("mode-out");
+      const modeHomeBtn = document.getElementById("mode-home");
+      const optsOut = document.getElementById("opts-out");
+      const optsHome = document.getElementById("opts-home");
+
+      let mode = "out"; // "out" or "home"
+
+      // 店舗セレクト構築（地域順）
+      function buildStoreOptions() {
+        const groups = { 東京: [], 埼玉: [], 茨城: [] };
+        Object.entries(STORES).forEach(([name, d]) => {
+          if (groups[d.region]) groups[d.region].push(name);
+        });
+        storeSelect.innerHTML = "";
+        Object.entries(groups).forEach(([region, names]) => {
+          const og = document.createElement("optgroup");
+          og.label = region;
+          names.forEach((n) => {
+            const opt = document.createElement("option");
+            opt.value = n;
+            opt.textContent = n;
+            og.appendChild(opt);
+          });
+          storeSelect.appendChild(og);
+        });
+      }
+      buildStoreOptions();
+
+      // モード切替
+      modeOutBtn.addEventListener("click", () => setMode("out"));
+      modeHomeBtn.addEventListener("click", () => setMode("home"));
+      function setMode(m) {
+        mode = m;
+        modeOutBtn.classList.toggle("active", m === "out");
+        modeHomeBtn.classList.toggle("active", m === "home");
+        optsOut.style.display = m === "out" ? "" : "none";
+        optsHome.style.display = m === "home" ? "" : "none";
+        save();
+        render();
+      }
+
+      // localStorage 保存/復元
+      const STORAGE_KEY = "tensu-sim-v2";
+      function save() {
+        const state = {
+          mode,
+          store: storeSelect.value,
+          visit: document.querySelector('input[name="visit"]:checked')?.value,
+          home: document.querySelector('input[name="home"]:checked')?.value,
+          kakari: document.getElementById("kakari").checked,
+          days: document.getElementById("days").value,
+          daysH: document.getElementById("days-h").value,
+          zai: document.getElementById("naifuku-zai").value,
+          zaiH: document.getElementById("naifuku-zai-h").value,
+          gaiyou: document.getElementById("gaiyou").checked,
+          gaiyouH: document.getElementById("gaiyou-h").checked,
+        };
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        } catch (e) {}
+      }
+      function load() {
+        try {
+          const s = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+          if (!s) return;
+          if (s.store && STORES[s.store]) storeSelect.value = s.store;
+          if (s.visit) {
+            const r = document.querySelector(
+              `input[name="visit"][value="${s.visit}"]`
+            );
+            if (r) r.checked = true;
+          }
+          if (s.home) {
+            const r = document.querySelector(
+              `input[name="home"][value="${s.home}"]`
+            );
+            if (r) r.checked = true;
+          }
+          if (typeof s.kakari === "boolean")
+            document.getElementById("kakari").checked = s.kakari;
+          if (s.days) document.getElementById("days").value = s.days;
+          if (s.daysH) document.getElementById("days-h").value = s.daysH;
+          if (s.zai) document.getElementById("naifuku-zai").value = s.zai;
+          if (s.zaiH) document.getElementById("naifuku-zai-h").value = s.zaiH;
+          if (typeof s.gaiyou === "boolean")
+            document.getElementById("gaiyou").checked = s.gaiyou;
+          if (typeof s.gaiyouH === "boolean")
+            document.getElementById("gaiyou-h").checked = s.gaiyouH;
+          if (s.mode) setMode(s.mode);
+        } catch (e) {}
+      }
+
+      // 入力中の部分更新（inputを破棄せず差額・合計だけ再計算）
+      function partialUpdate() {
+        const trs = document.querySelectorAll("#tbody tr");
+        let sumOld = 0,
+          sumNew = 0,
+          hasMissing = false;
+        trs.forEach((tr) => {
+          const cells = tr.querySelectorAll("td.num");
+          if (cells.length !== 3) return;
+          const parseCell = (c) => {
+            const input = c.querySelector("input.pt-edit");
+            if (input) {
+              return input.value === "" ? null : Number(input.value);
+            }
+            const txt = c.textContent.trim();
+            if (txt.includes("算定なし") || txt === "—") return null;
+            const m = txt.match(/(-?\d+)/);
+            return m ? Number(m[1]) : null;
+          };
+          const oldV = parseCell(cells[0]);
+          const newV = parseCell(cells[1]);
+          if (oldV != null) sumOld += oldV;
+          if (newV != null) sumNew += newV;
+          else hasMissing = true;
+          let diff = null;
+          if (oldV != null && newV != null) diff = newV - oldV;
+          cells[2].textContent = fmtDiff(diff);
+          tr.classList.remove("diff-up", "diff-dn");
+          if (diff != null) {
+            if (diff > 0) tr.classList.add("diff-up");
+            else if (diff < 0) tr.classList.add("diff-dn");
+          }
+        });
+        const diff = sumNew - sumOld;
+        document.getElementById("sum-old").textContent = sumOld + "点";
+        document.getElementById("sum-new").textContent =
+          sumNew + "点" + (hasMissing ? "（未入力あり）" : "");
+        document.getElementById("sum-diff").textContent = fmtDiff(diff);
+        document.getElementById("big-old").textContent = sumOld + " 点";
+        document.getElementById("big-old-yen").textContent = fmtYen(sumOld);
+        document.getElementById("big-new").textContent = sumNew + " 点";
+        document.getElementById("big-new-yen").textContent = fmtYen(sumNew);
+        document.getElementById("big-diff").textContent = fmtDiff(diff);
+        document.getElementById("big-diff-yen").textContent =
+          diff === 0
+            ? "±0 円"
+            : "約 " +
+              Math.abs(
+                Math.round((diff * 10 * 0.3) / 10) * 10
+              ).toLocaleString() +
+              " 円 " +
+              (diff > 0 ? "増" : "減");
+        document
+          .getElementById("big-diff-box")
+          .classList.toggle("minus", diff < 0);
+      }
+
+      // 描画
+      function fmt(v) {
+        return v == null ? "—" : v + "点";
+      }
+      function fmtYen(p) {
+        if (p == null) return "—";
+        return "約 " + (Math.round(p * 10 * 0.3 / 10) * 10).toLocaleString() + " 円";
+      }
+      function fmtDiff(d) {
+        if (d == null) return "—";
+        if (d === 0) return "±0点";
+        return (d > 0 ? "+" : "") + d + "点";
+      }
+
+      function addChouzaiKanriRows(rows, daysId, zaiId, gaiyouId) {
+        const days = Math.max(
+          1,
+          parseInt(document.getElementById(daysId).value) || 14
+        );
+        const zai = parseInt(document.getElementById(zaiId).value) || 0;
+        const gaiyou = document.getElementById(gaiyouId).checked;
+        // ルール：調剤管理料1（内服）を算定した場合、調剤管理料2（内服以外）は算定不可。
+        // 内服薬がある処方では1のみ。内服がなく屯服・外用のみの処方では2のみ。
+        if (zai > 0) {
+          const oldOne = COMMON.chouzaiKanri.oldNaifuku(days);
+          const newOne = COMMON.chouzaiKanri.newNaifuku(days);
+          const gaiyouNote = gaiyou
+            ? "<br><span style='font-size:11px;color:var(--sub)'>※同処方の屯服・外用は管理料2を併算定不可</span>"
+            : "";
+          const label =
+            zai === 1
+              ? `調剤管理料1 内服（${days}日分・1剤）${gaiyouNote}`
+              : `調剤管理料1 内服（${days}日分・${zai}剤＝${oldOne}×${zai}→${newOne}×${zai}）${gaiyouNote}`;
+          rows.push(addRow(label, oldOne * zai, newOne * zai));
+        } else if (gaiyou) {
+          rows.push(
+            addRow(
+              "調剤管理料2 内服薬以外（屯服・外用等・1調剤）",
+              COMMON.chouzaiKanri.oldGaiyou,
+              COMMON.chouzaiKanri.newGaiyou
+            )
+          );
+        }
+      }
+
+      function addRow(label, oldP, newP, opts = {}) {
+        const tr = document.createElement("tr");
+        let diff = null;
+        if (oldP != null && newP != null) diff = newP - oldP;
+        if (diff != null) {
+          if (diff > 0) tr.classList.add("diff-up");
+          else if (diff < 0) tr.classList.add("diff-dn");
+        }
+        const badge = opts.badge
+          ? ` <span class="badge ${opts.badge.cls}">${opts.badge.text}</span>`
+          : "";
+
+        const renderCell = (val, sideOpts, fallbackDash) => {
+          if (sideOpts) {
+            const v = val == null ? "" : val;
+            return `<input type="number" class="pt-edit" data-store="${sideOpts.store}" data-field="${sideOpts.field}" data-side="${sideOpts.side}" value="${v}" min="0" max="999" /> 点`;
+          }
+          if (val === 0 && opts.oldZeroAsNone && sideOpts !== false) {
+            return "算定なし";
+          }
+          return val == null ? fallbackDash || "—" : val + "点";
+        };
+        const oldCell =
+          oldP === 0 && opts.oldZeroAsNone && !opts.editableOld
+            ? "算定なし"
+            : renderCell(oldP, opts.editableOld, opts.oldDash);
+        const newCell = renderCell(newP, opts.editableNew, opts.newDash);
+        tr.innerHTML = `
+          <td>${label}${badge}</td>
+          <td class="num">${oldCell}</td>
+          <td class="num">${newCell}</td>
+          <td class="num diff">${fmtDiff(diff)}</td>
+        `;
+        tbody.appendChild(tr);
+        return { oldP, newP };
+      }
+
+      function render() {
+        tbody.innerHTML = "";
+        pendingArea.innerHTML = "";
+        const storeName = storeSelect.value;
+        const store = STORES[storeName];
+        if (!store) return;
+
+        // 新店舗（旧データなし）
+        if (!store.old) {
+          pendingArea.innerHTML = `<div class="pending-msg">${storeName}：${store.note || "改定前の算定データなし"}のため、改定前との比較ができません。</div>`;
+          document.getElementById("sum-old").textContent = "—";
+          document.getElementById("sum-new").textContent = "—";
+          document.getElementById("sum-diff").textContent = "—";
+          ["big-old", "big-new", "big-diff"].forEach((id) => (document.getElementById(id).textContent = "—"));
+          ["big-old-yen", "big-new-yen", "big-diff-yen"].forEach((id) => (document.getElementById(id).textContent = "—"));
+          return;
+        }
+
+        // 開局メモなど
+        if (store.note) {
+          pendingArea.innerHTML = `<div class="pending-msg">${storeName}：${store.note}</div>`;
+        }
+
+        const rows = [];
+
+        // 編集値の優先取得（旧・新両方）
+        const ed = (field, side, fallback) => {
+          const v = getEdited(storeName, field, side);
+          return v != null ? v : fallback;
+        };
+        const baseOld = ed("base", "old", store.old.base);
+        const baseNew = ed("base", "new", store.new.base);
+        const regionOld = ed("region", "old", store.old.region);
+        const regionNew = ed("region", "new", store.new.region);
+        const genOld = ed("gen", "old", store.old.gen);
+        const dxOld = ed("dx", "old", store.old.dx);
+        const denshiNew = ed("denshi", "new", store.new.denshi);
+
+        // 1. 調剤基本料
+        rows.push(
+          addRow("調剤基本料", baseOld, baseNew, {
+            editableOld: { store: storeName, field: "base", side: "old" },
+            editableNew: { store: storeName, field: "base", side: "new" },
+          })
+        );
+
+        // 2. 地域支援
+        rows.push(
+          addRow(
+            "地域支援・医薬品供給対応体制加算<br><span style='font-size:11px;color:var(--sub)'>（旧：地域支援体制加算）</span>",
+            regionOld,
+            regionNew,
+            {
+              editableOld: { store: storeName, field: "region", side: "old" },
+              editableNew: { store: storeName, field: "region", side: "new" },
+            }
+          )
+        );
+
+        // 3. 後発体制（廃止→地域支援に統合）
+        if (genOld) {
+          rows.push(
+            addRow(
+              "後発医薬品調剤体制加算<br><span style='font-size:11px;color:var(--sub)'>→ 地域支援に統合（廃止）</span>",
+              genOld,
+              0,
+              {
+                badge: { cls: "badge-abol", text: "廃止" },
+                editableOld: { store: storeName, field: "gen", side: "old" },
+              }
+            )
+          );
+        }
+
+        // 4. 医療DX→電子的調剤情報連携体制整備加算
+        rows.push(
+          addRow(
+            "電子的調剤情報連携体制整備加算<br><span style='font-size:11px;color:var(--sub)'>（旧：医療DX推進体制整備加算）</span>",
+            dxOld,
+            denshiNew,
+            {
+              editableOld: { store: storeName, field: "dx", side: "old" },
+              editableNew: { store: storeName, field: "denshi", side: "new" },
+            }
+          )
+        );
+
+        if (mode === "out") {
+          // 5. 服薬管理指導料
+          const visit = document.querySelector('input[name="visit"]:checked').value;
+          const kakari = document.getElementById("kakari").checked;
+          // かかりつけONだが施設基準なしの店舗は警告
+          if (kakari && !store.kakari) {
+            pendingArea.innerHTML = `<div class="pending-msg">${storeName}はかかりつけ薬剤師の施設基準を満たしていないため、かかりつけ患者として算定できません。</div>`;
+          }
+          const key =
+            visit === "within3"
+              ? kakari && store.kakari
+                ? "within3_kakari"
+                : "within3_normal"
+              : kakari && store.kakari
+              ? "over3_kakari"
+              : "over3_normal";
+          const f = COMMON.fukuyaku[key];
+          rows.push(addRow(f.label, f.old, f.new));
+
+          // 6. 調剤管理料
+          addChouzaiKanriRows(rows, "days", "naifuku-zai", "gaiyou");
+        } else {
+          // 在宅モード
+          // 5. 在宅薬学総合体制加算
+          const homeVisit = document.querySelector('input[name="home"]:checked').value;
+          if (store.home && store.home.adv_old != null) {
+            const advNew =
+              homeVisit === "single1"
+                ? store.home.adv_new_single1
+                : store.home.adv_new_other;
+            rows.push(addRow("在宅薬学総合体制加算", store.home.adv_old, advNew));
+          } else {
+            rows.push(
+              addRow("在宅薬学総合体制加算", null, null, {
+                oldDash: "算定なし",
+                newDash: "算定なし",
+              })
+            );
+          }
+
+          // 6. 調剤管理料
+          addChouzaiKanriRows(rows, "days-h", "naifuku-zai-h", "gaiyou-h");
+        }
+
+        // 集計
+        let sumOld = 0,
+          sumNew = 0,
+          hasMissing = false;
+        rows.forEach((r) => {
+          if (r.oldP != null) sumOld += r.oldP;
+          if (r.newP != null) sumNew += r.newP;
+          else hasMissing = true;
+        });
+        const diff = sumNew - sumOld;
+        document.getElementById("sum-old").textContent = sumOld + "点";
+        document.getElementById("sum-new").textContent =
+          sumNew + "点" + (hasMissing ? "（未入力あり）" : "");
+        document.getElementById("sum-diff").textContent = fmtDiff(diff);
+
+        // サマリー
+        document.getElementById("big-old").textContent = sumOld + " 点";
+        document.getElementById("big-old-yen").textContent = fmtYen(sumOld);
+        document.getElementById("big-new").textContent = sumNew + " 点";
+        document.getElementById("big-new-yen").textContent = fmtYen(sumNew);
+        const diffBox = document.getElementById("big-diff-box");
+        document.getElementById("big-diff").textContent = fmtDiff(diff);
+        document.getElementById("big-diff-yen").textContent =
+          diff === 0
+            ? "±0 円"
+            : "約 " +
+              Math.abs(
+                Math.round((diff * 10 * 0.3) / 10) * 10
+              ).toLocaleString() +
+              " 円 " +
+              (diff > 0 ? "増" : "減");
+        diffBox.classList.toggle("minus", diff < 0);
+
+        save();
+      }
+
+      // イベントバインド
+      document.body.addEventListener("input", (e) => {
+        if (
+          !e.target.matches(
+            "select, input[type='radio'], input[type='checkbox'], input[type='number']"
+          )
+        )
+          return;
+        if (e.target.classList.contains("pt-edit")) {
+          setEdited(
+            e.target.dataset.store,
+            e.target.dataset.field,
+            e.target.dataset.side,
+            e.target.value
+          );
+          partialUpdate();
+        } else {
+          render();
+        }
+      });
+      document.body.addEventListener("change", (e) => {
+        if (e.target.matches("select, input[type='radio'], input[type='checkbox']")) {
+          render();
+        }
+      });
+
+      // ===== プリセット =====
+      const PRESETS_KEY = "tensu-sim-presets-v1";
+      function loadPresets() {
+        try {
+          return JSON.parse(localStorage.getItem(PRESETS_KEY) || "{}");
+        } catch (e) {
+          return {};
+        }
+      }
+      function savePresets(p) {
+        try {
+          localStorage.setItem(PRESETS_KEY, JSON.stringify(p));
+        } catch (e) {}
+      }
+      function rebuildPresetSelect(active) {
+        const sel = document.getElementById("preset-select");
+        const presets = loadPresets();
+        const names = Object.keys(presets).sort();
+        sel.innerHTML =
+          '<option value="">（呼び出し）</option>' +
+          names
+            .map(
+              (n) =>
+                `<option value="${n.replace(/"/g, "&quot;")}">${n}</option>`
+            )
+            .join("");
+        if (active && presets[active]) sel.value = active;
+      }
+      function captureState() {
+        return {
+          mode,
+          store: storeSelect.value,
+          visit: document.querySelector('input[name="visit"]:checked')?.value,
+          home: document.querySelector('input[name="home"]:checked')?.value,
+          kakari: document.getElementById("kakari").checked,
+          days: document.getElementById("days").value,
+          daysH: document.getElementById("days-h").value,
+          zai: document.getElementById("naifuku-zai").value,
+          zaiH: document.getElementById("naifuku-zai-h").value,
+          gaiyou: document.getElementById("gaiyou").checked,
+          gaiyouH: document.getElementById("gaiyou-h").checked,
+        };
+      }
+      function applyState(s) {
+        if (!s) return;
+        if (s.store && STORES[s.store]) storeSelect.value = s.store;
+        if (s.visit) {
+          const r = document.querySelector(
+            `input[name="visit"][value="${s.visit}"]`
+          );
+          if (r) r.checked = true;
+        }
+        if (s.home) {
+          const r = document.querySelector(
+            `input[name="home"][value="${s.home}"]`
+          );
+          if (r) r.checked = true;
+        }
+        if (typeof s.kakari === "boolean")
+          document.getElementById("kakari").checked = s.kakari;
+        if (s.days) document.getElementById("days").value = s.days;
+        if (s.daysH) document.getElementById("days-h").value = s.daysH;
+        if (s.zai) document.getElementById("naifuku-zai").value = s.zai;
+        if (s.zaiH) document.getElementById("naifuku-zai-h").value = s.zaiH;
+        if (typeof s.gaiyou === "boolean")
+          document.getElementById("gaiyou").checked = s.gaiyou;
+        if (typeof s.gaiyouH === "boolean")
+          document.getElementById("gaiyou-h").checked = s.gaiyouH;
+        if (s.mode) setMode(s.mode);
+        else render();
+      }
+
+      document.getElementById("preset-save").addEventListener("click", () => {
+        const presets = loadPresets();
+        const defaultName =
+          storeSelect.value +
+          "・" +
+          (document.getElementById("kakari").checked ? "かかりつけ" : "通常") +
+          "・" +
+          document.getElementById("days").value +
+          "日";
+        const name = prompt("パターン名を入力してください", defaultName);
+        if (!name) return;
+        if (presets[name] && !confirm("「" + name + "」を上書きしますか？"))
+          return;
+        presets[name] = captureState();
+        savePresets(presets);
+        rebuildPresetSelect(name);
+      });
+      document.getElementById("preset-del").addEventListener("click", () => {
+        const sel = document.getElementById("preset-select");
+        const name = sel.value;
+        if (!name) {
+          alert("削除するパターンを選んでください");
+          return;
+        }
+        if (!confirm("「" + name + "」を削除しますか？")) return;
+        const presets = loadPresets();
+        delete presets[name];
+        savePresets(presets);
+        rebuildPresetSelect();
+      });
+      document
+        .getElementById("preset-select")
+        .addEventListener("change", (e) => {
+          const name = e.target.value;
+          if (!name) return;
+          const presets = loadPresets();
+          if (presets[name]) applyState(presets[name]);
+        });
+
+      rebuildPresetSelect();
+      load();
+      render();
+    </script>
+  </body>
+</html>

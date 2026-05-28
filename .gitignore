@@ -1,0 +1,13 @@
+# 社外秘の作業フォルダ（公開しない）
+/private/
+
+# OS/IDE系
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/
+
+# 一時ファイル
+*.tmp
+*.bak
+~$*
