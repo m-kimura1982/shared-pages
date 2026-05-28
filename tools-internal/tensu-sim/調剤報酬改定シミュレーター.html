@@ -589,20 +589,7 @@
             </div>
           </div>
           <div class="row">
-            <label class="lbl">服薬管理指導料</label>
-            <div class="radio-group">
-              <label
-                ><input type="radio" name="home-fukuyaku" value="visit" checked />
-                訪問（指導料3・45点）</label
-              >
-              <label
-                ><input type="radio" name="home-fukuyaku" value="reception" />
-                来局時</label
-              >
-            </div>
-          </div>
-          <div class="row" id="home-reception-opts" style="display: none">
-            <label class="lbl">来局時設定</label>
+            <label class="lbl">来局区分</label>
             <div class="radio-group">
               <label
                 ><input
@@ -622,6 +609,9 @@
                 3か月超 or 手帳なし</label
               >
             </div>
+          </div>
+          <div class="row">
+            <label class="lbl">患者条件</label>
             <label class="chk"
               ><input type="checkbox" id="home-kakari" />
               かかりつけ薬剤師の担当患者</label
@@ -1064,9 +1054,6 @@
           zaiH: document.getElementById("naifuku-zai-h").value,
           gaiyou: document.getElementById("gaiyou").checked,
           gaiyouH: document.getElementById("gaiyou-h").checked,
-          homeFukuyaku: document.querySelector(
-            'input[name="home-fukuyaku"]:checked'
-          )?.value,
           homeReceptionVisit: document.querySelector(
             'input[name="home-reception-visit"]:checked'
           )?.value,
@@ -1103,16 +1090,6 @@
             document.getElementById("gaiyou").checked = s.gaiyou;
           if (typeof s.gaiyouH === "boolean")
             document.getElementById("gaiyou-h").checked = s.gaiyouH;
-          if (s.homeFukuyaku) {
-            const r = document.querySelector(
-              `input[name="home-fukuyaku"][value="${s.homeFukuyaku}"]`
-            );
-            if (r) {
-              r.checked = true;
-              document.getElementById("home-reception-opts").style.display =
-                s.homeFukuyaku === "reception" ? "" : "none";
-            }
-          }
           if (s.homeReceptionVisit) {
             const r = document.querySelector(
               `input[name="home-reception-visit"][value="${s.homeReceptionVisit}"]`
@@ -1374,33 +1351,26 @@
           addChouzaiKanriRows(rows, "days", "naifuku-zai", "gaiyou");
         } else {
           // 在宅モード
-          // 5. 服薬管理指導料（訪問 or 来局）
-          const hf = document.querySelector(
-            'input[name="home-fukuyaku"]:checked'
+          // 5. 服薬管理指導料（1ロ/1イ/2ロ/2イ）
+          const hv = document.querySelector(
+            'input[name="home-reception-visit"]:checked'
           ).value;
-          if (hf === "visit") {
-            rows.push(addRow("服薬管理指導料3（訪問）", 45, 45));
-          } else {
-            const hv = document.querySelector(
-              'input[name="home-reception-visit"]:checked'
-            ).value;
-            const hk = document.getElementById("home-kakari").checked;
-            if (hk && !store.kakari) {
-              pendingArea.innerHTML =
-                (pendingArea.innerHTML || "") +
-                `<div class="pending-msg">${storeName}はかかりつけ薬剤師の施設基準を満たしていないため、かかりつけ患者として算定できません。</div>`;
-            }
-            const key =
-              hv === "within3"
-                ? hk && store.kakari
-                  ? "within3_kakari"
-                  : "within3_normal"
-                : hk && store.kakari
-                ? "over3_kakari"
-                : "over3_normal";
-            const f = COMMON.fukuyaku[key];
-            rows.push(addRow(f.label, f.old, f.new));
+          const hk = document.getElementById("home-kakari").checked;
+          if (hk && !store.kakari) {
+            pendingArea.innerHTML =
+              (pendingArea.innerHTML || "") +
+              `<div class="pending-msg">${storeName}はかかりつけ薬剤師の施設基準を満たしていないため、かかりつけ患者として算定できません。</div>`;
           }
+          const key =
+            hv === "within3"
+              ? hk && store.kakari
+                ? "within3_kakari"
+                : "within3_normal"
+              : hk && store.kakari
+              ? "over3_kakari"
+              : "over3_normal";
+          const f = COMMON.fukuyaku[key];
+          rows.push(addRow(f.label, f.old, f.new));
 
           // 6. 在宅薬学総合体制加算
           const homeVisit = document.querySelector('input[name="home"]:checked').value;
@@ -1483,10 +1453,6 @@
         if (e.target.matches("select, input[type='radio'], input[type='checkbox']")) {
           render();
         }
-        if (e.target.name === "home-fukuyaku") {
-          document.getElementById("home-reception-opts").style.display =
-            e.target.value === "reception" ? "" : "none";
-        }
       });
 
       // ===== プリセット =====
@@ -1530,9 +1496,6 @@
           zaiH: document.getElementById("naifuku-zai-h").value,
           gaiyou: document.getElementById("gaiyou").checked,
           gaiyouH: document.getElementById("gaiyou-h").checked,
-          homeFukuyaku: document.querySelector(
-            'input[name="home-fukuyaku"]:checked'
-          )?.value,
           homeReceptionVisit: document.querySelector(
             'input[name="home-reception-visit"]:checked'
           )?.value,
@@ -1564,16 +1527,6 @@
           document.getElementById("gaiyou").checked = s.gaiyou;
         if (typeof s.gaiyouH === "boolean")
           document.getElementById("gaiyou-h").checked = s.gaiyouH;
-        if (s.homeFukuyaku) {
-          const r = document.querySelector(
-            `input[name="home-fukuyaku"][value="${s.homeFukuyaku}"]`
-          );
-          if (r) {
-            r.checked = true;
-            document.getElementById("home-reception-opts").style.display =
-              s.homeFukuyaku === "reception" ? "" : "none";
-          }
-        }
         if (s.homeReceptionVisit) {
           const r = document.querySelector(
             `input[name="home-reception-visit"][value="${s.homeReceptionVisit}"]`
