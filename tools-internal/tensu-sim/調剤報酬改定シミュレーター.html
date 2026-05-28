@@ -1384,7 +1384,6 @@
         );
 
         if (mode === "out") {
-          addSectionHeader("薬学管理料");
           // 服薬管理指導料
           const visit = document.querySelector('input[name="visit"]:checked').value;
           const kakari = document.getElementById("kakari").checked;
@@ -1428,7 +1427,6 @@
             );
           }
 
-          addSectionHeader("薬学管理料");
           // 服薬管理指導料（来局時のみ）
           if (claim === "reception") {
             const hv = document.querySelector(
