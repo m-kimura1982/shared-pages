@@ -278,23 +278,24 @@
         font-size: var(--text-xs);
         color: var(--sub);
       }
-      .summary-box .val {
-        font-size: 24px;
+      .summary-box .yen {
+        font-size: 22px;
         font-weight: 900;
         color: var(--blue);
         margin-top: 4px;
         font-variant-numeric: tabular-nums;
       }
-      .summary-box.diff .val {
+      .summary-box.diff .yen {
         color: var(--red);
       }
-      .summary-box.diff.minus .val {
+      .summary-box.diff.minus .yen {
         color: var(--green);
       }
-      .summary-box .yen {
+      .summary-box .val {
         font-size: var(--text-xs);
         color: var(--sub);
         margin-top: 2px;
+        font-variant-numeric: tabular-nums;
       }
 
       .note {
@@ -481,11 +482,11 @@
         .summary-box .ttl {
           font-size: 11px;
         }
-        .summary-box .val {
-          font-size: 22px;
+        .summary-box .yen {
+          font-size: 20px;
           margin-top: 3px;
         }
-        .summary-box .yen {
+        .summary-box .val {
           font-size: 11px;
           margin-top: 2px;
         }
@@ -741,18 +742,18 @@
         <div class="summary">
           <div class="summary-box">
             <div class="ttl">改定前 合計</div>
-            <div class="val" id="big-old">—</div>
             <div class="yen" id="big-old-yen">—</div>
+            <div class="val" id="big-old">—</div>
           </div>
           <div class="summary-box">
             <div class="ttl">改定後 合計</div>
-            <div class="val" id="big-new">—</div>
             <div class="yen" id="big-new-yen">—</div>
+            <div class="val" id="big-new">—</div>
           </div>
           <div class="summary-box diff" id="big-diff-box">
             <div class="ttl">差額<span id="big-diff-ttl-sub"></span></div>
-            <div class="val" id="big-diff">—</div>
             <div class="yen" id="big-diff-yen">—</div>
+            <div class="val" id="big-diff">—</div>
           </div>
         </div>
 
