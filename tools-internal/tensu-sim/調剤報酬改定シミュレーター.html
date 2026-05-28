@@ -309,6 +309,19 @@
       .note strong {
         color: var(--ink);
       }
+      .note .note-h {
+        display: block;
+        font-size: var(--text-sm);
+        font-weight: 700;
+        color: var(--blue);
+        border-left: 3px solid var(--blue);
+        padding: 1px 0 1px 8px;
+        margin-bottom: 4px;
+      }
+      .note .note-h + .note-h,
+      .note ul + .note-h {
+        margin-top: 10px;
+      }
       .note ul {
         padding-left: 20px;
         margin-top: 4px;
@@ -499,18 +512,28 @@
           display: none !important;
         }
         .note {
-          font-size: 9px;
-          line-height: 1.3;
-          padding: 4px 8px;
-          margin-top: 4px;
+          font-size: 10px;
+          line-height: 1.45;
+          padding: 6px 10px;
+          margin-top: 6px;
         }
         .note strong {
-          font-size: 9.5px;
+          font-size: 10.5px;
+        }
+        .note .note-h {
+          font-size: 11px;
+          border-left-width: 3px;
+          padding: 0 0 0 6px;
+          margin-bottom: 3px;
+        }
+        .note ul + .note-h {
+          margin-top: 6px;
         }
         .note ul {
           padding-left: 14px;
           column-count: 2;
-          column-gap: 10px;
+          column-gap: 12px;
+          margin-top: 2px;
         }
         .note li {
           break-inside: avoid;
@@ -725,14 +748,10 @@
         </div>
 
         <div class="note">
-          <strong>計算に含めていない項目（参考）</strong>
+          <strong class="note-h">計算に含めていない項目（参考）</strong>
           <ul>
             <li>
               <strong>医療情報取得加算（1点・年1回）</strong>：改定で廃止
-            </li>
-            <li>
-              <strong>調剤物価対応料（1点・3か月に1回）</strong
-              >：改定で新設（令和9年6月以降は2点予定）
             </li>
             <li>
               <strong>調剤ベースアップ評価料</strong
@@ -744,10 +763,7 @@
             </li>
             <li><strong>薬剤料</strong>は処方ごとに異なるため別途</li>
           </ul>
-        </div>
-
-        <div class="note">
-          <strong>注意</strong>
+          <strong class="note-h">注意</strong>
           <ul>
             <li>
               改定後の<strong>調剤基本料</strong>・<strong>地域支援・医薬品供給対応体制加算</strong>は、現時点の見込み値を表に入力してください（自店舗の入力値は端末に保存されます）。
@@ -1170,6 +1186,8 @@
             if (input) {
               return input.value === "" ? null : Number(input.value);
             }
+            const dataVal = c.querySelector("[data-val]");
+            if (dataVal) return Number(dataVal.dataset.val);
             const txt = c.textContent.trim();
             if (txt.includes("算定なし") || txt === "—") return null;
             const m = txt.match(/(-?\d+)/);
@@ -1288,10 +1306,15 @@
           return val == null ? fallbackDash || "—" : val + "点";
         };
         const oldCell =
-          oldP === 0 && opts.oldZeroAsNone && !opts.editableOld
+          opts.oldNewSetup && !opts.editableOld
+            ? '<span data-val="0">—</span>'
+            : oldP === 0 && opts.oldZeroAsNone && !opts.editableOld
             ? "算定なし"
             : renderCell(oldP, opts.editableOld, opts.oldDash);
-        const newCell = renderCell(newP, opts.editableNew, opts.newDash);
+        const newCell =
+          opts.newAbolished && !opts.editableNew
+            ? '<span data-val="0">—</span>'
+            : renderCell(newP, opts.editableNew, opts.newDash);
         tr.innerHTML = `
           <td>${label}${badge}</td>
           <td class="num">${oldCell}</td>
@@ -1342,8 +1365,6 @@
         const renkyoOld = ed("renkyo", "old", 5);
         const renkyoNew = ed("renkyo", "new", 5);
 
-        addSectionHeader("調剤基本料・加算");
-
         // 1. 調剤基本料
         rows.push(
           addRow("調剤基本料", baseOld, baseNew, {
@@ -1375,6 +1396,7 @@
               {
                 badge: { cls: "badge-abol", text: "廃止" },
                 editableOld: { store: storeName, field: "gen", side: "old" },
+                newAbolished: true,
               }
             )
           );
@@ -1401,6 +1423,19 @@
           )
         );
 
+        // 6. 調剤物価対応料（新設・3か月に1回／改定後初回は必ず算定）
+        rows.push(
+          addRow(
+            "調剤物価対応料<br><span style='font-size:11px;color:var(--sub)'>（3か月に1回・令和9年6月以降は2点予定）</span>",
+            0,
+            1,
+            {
+              badge: { cls: "badge-new", text: "新設" },
+              oldNewSetup: true,
+            }
+          )
+        );
+
         if (mode === "out") {
           // 服薬管理指導料
           const visit = document.querySelector('input[name="visit"]:checked').value;
@@ -1418,7 +1453,12 @@
               ? "over3_kakari"
               : "over3_normal";
           const f = COMMON.fukuyaku[key];
-          rows.push(addRow(f.label, f.old, f.new));
+          // 通常患者は改定前後で点数変動なし→表示省略（合計には加算）
+          if (f.old !== f.new) {
+            rows.push(addRow(f.label, f.old, f.new));
+          } else {
+            rows.push({ oldP: f.old, newP: f.new });
+          }
 
           // 6. 調剤管理料
           addChouzaiKanriRows(rows, "days", "naifuku-zai", "gaiyou");
@@ -1465,7 +1505,11 @@
                 ? "over3_kakari"
                 : "over3_normal";
             const f = COMMON.fukuyaku[key];
-            rows.push(addRow(f.label, f.old, f.new));
+            if (f.old !== f.new) {
+              rows.push(addRow(f.label, f.old, f.new));
+            } else {
+              rows.push({ oldP: f.old, newP: f.new });
+            }
           } else {
             pendingArea.innerHTML =
               (pendingArea.innerHTML || "") +
