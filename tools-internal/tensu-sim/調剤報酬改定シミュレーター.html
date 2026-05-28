@@ -222,6 +222,14 @@
         outline: 2px solid var(--blue);
         outline-offset: 0;
       }
+      table.result tr.sect-head td {
+        background: var(--box-blue);
+        color: var(--blue);
+        font-weight: 700;
+        font-size: 12.5px;
+        padding: 5px 10px;
+        letter-spacing: 0.5px;
+      }
       table.result tfoot td {
         background: var(--box-blue);
         font-weight: 700;
@@ -1201,6 +1209,13 @@
         return (d > 0 ? "+" : "") + d + "点";
       }
 
+      function addSectionHeader(label) {
+        const tr = document.createElement("tr");
+        tr.className = "sect-head";
+        tr.innerHTML = `<td colspan="4">■ ${label}</td>`;
+        tbody.appendChild(tr);
+      }
+
       function addChouzaiKanriRows(rows, daysId, zaiId, gaiyouId) {
         const days = Math.max(
           1,
@@ -1306,6 +1321,10 @@
         const genOld = ed("gen", "old", store.old.gen);
         const dxOld = ed("dx", "old", store.old.dx);
         const denshiNew = ed("denshi", "new", store.new.denshi);
+        const renkyoOld = ed("renkyo", "old", 5);
+        const renkyoNew = ed("renkyo", "new", 5);
+
+        addSectionHeader("調剤基本料・加算");
 
         // 1. 調剤基本料
         rows.push(
@@ -1343,7 +1362,15 @@
           );
         }
 
-        // 4. 医療DX→電子的調剤情報連携体制整備加算
+        // 4. 連携強化加算（変動なし・5点）
+        rows.push(
+          addRow("連携強化加算", renkyoOld, renkyoNew, {
+            editableOld: { store: storeName, field: "renkyo", side: "old" },
+            editableNew: { store: storeName, field: "renkyo", side: "new" },
+          })
+        );
+
+        // 5. 医療DX→電子的調剤情報連携体制整備加算
         rows.push(
           addRow(
             "電子的調剤情報連携体制整備加算<br><span style='font-size:11px;color:var(--sub)'>（旧：医療DX推進体制整備加算）</span>",
@@ -1357,7 +1384,8 @@
         );
 
         if (mode === "out") {
-          // 5. 服薬管理指導料
+          addSectionHeader("薬学管理料");
+          // 服薬管理指導料
           const visit = document.querySelector('input[name="visit"]:checked').value;
           const kakari = document.getElementById("kakari").checked;
           // かかりつけONだが施設基準なしの店舗は警告
@@ -1382,7 +1410,26 @@
           const claim = document.querySelector(
             'input[name="home-claim"]:checked'
           ).value;
-          // 5. 服薬管理指導料（来局時のみ）
+
+          // 在宅薬学総合体制加算（基本料グループの末尾）
+          const homeVisit = document.querySelector('input[name="home"]:checked').value;
+          if (store.home && store.home.adv_old != null) {
+            const advNew =
+              homeVisit === "single1"
+                ? store.home.adv_new_single1
+                : store.home.adv_new_other;
+            rows.push(addRow("在宅薬学総合体制加算", store.home.adv_old, advNew));
+          } else {
+            rows.push(
+              addRow("在宅薬学総合体制加算", null, null, {
+                oldDash: "算定なし",
+                newDash: "算定なし",
+              })
+            );
+          }
+
+          addSectionHeader("薬学管理料");
+          // 服薬管理指導料（来局時のみ）
           if (claim === "reception") {
             const hv = document.querySelector(
               'input[name="home-reception-visit"]:checked'
@@ -1409,24 +1456,7 @@
               `<div class="pending-msg">訪問指導料を算定する場合：在宅患者訪問薬剤管理指導料／居宅療養管理指導費は点数変動なしのためシミュレーター上は省略しています。服薬管理指導料との同時算定は不可。</div>`;
           }
 
-          // 6. 在宅薬学総合体制加算
-          const homeVisit = document.querySelector('input[name="home"]:checked').value;
-          if (store.home && store.home.adv_old != null) {
-            const advNew =
-              homeVisit === "single1"
-                ? store.home.adv_new_single1
-                : store.home.adv_new_other;
-            rows.push(addRow("在宅薬学総合体制加算", store.home.adv_old, advNew));
-          } else {
-            rows.push(
-              addRow("在宅薬学総合体制加算", null, null, {
-                oldDash: "算定なし",
-                newDash: "算定なし",
-              })
-            );
-          }
-
-          // 7. 調剤管理料
+          // 調剤管理料
           addChouzaiKanriRows(rows, "days-h", "naifuku-zai-h", "gaiyou-h");
         }
 
