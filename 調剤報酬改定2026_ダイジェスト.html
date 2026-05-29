@@ -79,10 +79,10 @@
         margin-top: 4px;
       }
       .digest-badge {
-        background: var(--red);
-        color: var(--white);
+        background: #fde8e8;
+        color: var(--red);
         font-size: var(--text-xs);
-        font-weight: 900;
+        font-weight: 700;
         padding: 4px 14px;
         border-radius: 4px;
       }
@@ -217,14 +217,19 @@
         color: #888;
       }
       .val-new {
-        font-weight: 900;
-        color: var(--red);
+        font-weight: 700;
+        background: linear-gradient(transparent 62%, #fff59d 62%);
       }
 
       /* テキスト強調 */
       .em-red {
         color: var(--red);
         font-weight: 900;
+      }
+      /* マーカー（2026-05-29〜 強調デフォルト）：<strong class="marker"> で使う */
+      .marker {
+        background: linear-gradient(transparent 62%, #fff59d 62%);
+        font-weight: 700;
       }
 
       /* 詳細リンク */
@@ -1120,6 +1125,12 @@
               <span class="li-dot">・</span
               ><span>実績の判定期間は<strong>前年5月〜当年4月。</strong></span>
             </div>
+            <div class="li">
+              <span class="li-dot">・</span
+              ><span
+                >【5/29訂正通知】<strong class="marker">加算２未届の加算１薬局でも、在宅実績（480回以上）があれば算定できる</strong>。重症・要介護等の患者（別表第8の2・8の3）について、単一建物の人数にかかわらず加算２「イ」（100点）。</span
+              >
+            </div>
           </div>
         </div>
         <div class="link-row">
@@ -1213,7 +1224,7 @@
               <div class="li">
                 <span class="li-dot">・</span
                 ><span
-                  >時間外の特別料金徴収が<span class="em-red">薬局にも適用</span
+                  >時間外の特別料金徴収が<strong class="marker">薬局にも適用</strong
                   >。対象：開局時間外に患者自己都合で来局した場合（対面のみ）</span
                 >
               </div>
@@ -1782,9 +1793,9 @@
             <div class="li">
               <span class="li-dot">・</span
               ><span
-                ><strong>対象職員に注意。</strong>事業主・管理者・<span
-                  class="em-red"
-                  >40歳以上の薬剤師</span
+                ><strong>対象職員に注意。</strong>事業主・管理者・<strong
+                  class="marker"
+                  >40歳以上の薬剤師</strong
                 >・業務委託者は除外。</span
               >
             </div>
@@ -2238,9 +2249,9 @@
               <span class="li-dot">・</span
               ><span
                 ><strong>算定開始は令和9年6月から。</strong
-                >令和8年6月〜令和9年5月は旧・新ともに算定不可の<span
-                  class="em-red"
-                  >空白期間あり。</span
+                >令和8年6月〜令和9年5月は旧・新ともに算定不可の<strong
+                  class="marker"
+                  >空白期間あり。</strong
                 ></span
               >
             </div>
@@ -2424,7 +2435,7 @@
                 <span class="li-dot">・</span
                 ><span
                   >特定医療機関への依存度が高い薬局に調剤基本料から<strong
-                    class="em-red"
+                    class="marker"
                     >－15点</strong
                   >減算（新設）。</span
                 >
