@@ -45,7 +45,8 @@
     .code-tbl th { background:var(--box-gray); font-weight:900; text-align:left; padding:7px 10px; border-bottom:2px solid var(--border-dk); }
     .code-tbl td { padding:7px 10px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
     .code-tbl tr:last-child td { border-bottom:none; }
-    .code-tbl .cc { font-family:monospace; font-size:var(--text-xs); white-space:nowrap; color:#555; width:6.5em; }
+    .code-tbl .disp { font-weight:700; color:var(--ink); }
+    .disp-pre { color:#555; font-weight:400; }
     .grp-label { font-weight:900; font-size:var(--text-sm); margin:14px 0 6px; padding-left:10px; border-left:var(--bw-a) solid var(--border-dk); }
     .grp-label:first-child { margin-top:0; }
     .ref { font-size:var(--text-xs); color:#666; margin-top:6px; }
@@ -88,7 +89,7 @@
       <div><strong>① 加算２の届出薬局（イ）：</strong>通常は単一建物が複数人なら「ロ」（50点）だが、対象患者については単一建物の人数にかかわらず<strong>「イ」（100点）</strong>を算定できる。</div>
       <div><strong>② 加算１の届出薬局（ア）：</strong>本来は加算２を算定できないが、<strong>在宅訪問480回以上</strong>の実績があれば、対象患者について加算２の<strong>「イ」（100点）</strong>を算定できる。</div>
     </div>
-    <div style="font-size:var(--text-sm); margin-top:12px;">下のフローで<strong>算定できるか（加算２の「イ」＝100点になるか）</strong>を判定し、算定する場合は最後に摘要欄へ<strong>①薬局区分（ア／イ）</strong>と<strong>②患者の状態</strong>の2つのコードを記載する（別添3(8)）。</div>
+    <div style="font-size:var(--text-sm); margin-top:12px;">下のフローで<strong>算定できるか（加算２の「イ」＝100点になるか）</strong>を判定し、算定する場合は最後に摘要欄へ<strong>①薬局区分（ア／イ）</strong>と<strong>②患者の状態</strong>の2つの表示文言を選択する（コードは自動で入る・別添3(8)）。</div>
     <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;">
       <a class="link-chip" href="在宅薬学総合体制加算2026.html">在宅薬学総合体制加算（点数・要件）</a>
       <a class="link-chip" href="別添3_調剤報酬点数表に関する事項2026.html#kub-00-9">別添３ 原文(7)(8)</a>
@@ -107,7 +108,7 @@
       <div class="flow-arrow">▼</div>
       <div class="box-blue" style="font-size:var(--text-sm);"><strong>判定：STEP1・STEP2の両方を満たす</strong> → 単一建物の人数にかかわらず<strong class="marker">加算２の「イ」（100点）</strong>を算定できる。</div>
       <div class="flow-arrow">▼</div>
-      <div class="flow-item"><span class="step-no">3</span><div><div class="ft">摘要欄に「薬局区分（ア／イ）」＋「該当する状態」を記載</div><div class="fd">STEP1・STEP2で確定したコードを記載する（下表）。</div></div></div>
+      <div class="flow-item"><span class="step-no">3</span><div><div class="ft">摘要欄で「薬局区分（ア／イ）」＋「該当する状態」の表示文言を選択</div><div class="fd">STEP1・STEP2で確定した表示文言を選ぶ（コードは自動で入る／下表）。</div></div></div>
     </div>
   </div>
 
@@ -116,10 +117,10 @@
     <div class="card-title"><span class="step-no">1</span>薬局判定（ア・イのいずれか）</div>
     <div class="table-wrap">
       <table class="code-tbl">
-        <thead><tr><th style="width:2.5em;">区分</th><th>薬局の要件</th><th>摘要欄コード</th></tr></thead>
+        <thead><tr><th style="width:2.5em;">区分</th><th>薬局の要件（判定）</th><th>レセプト表示文言（これを選択）</th></tr></thead>
         <tbody>
-          <tr><td style="font-weight:900;">ア</td><td>在宅薬学総合体制加算<strong>１</strong>の届出済で、直近1年の在宅訪問系（在宅患者訪問薬剤管理指導料・緊急訪問・緊急時等共同指導料・単一建物居住者1人の居宅療養管理指導費・介護予防居宅療養管理指導費）の算定が<strong class="marker">計480回以上</strong>（割合は問わない）</td><td class="cc">842100124<br>（算定回数も記載）</td></tr>
-          <tr><td style="font-weight:900;">イ</td><td>在宅薬学総合体制加算<strong>２</strong>の届出済の薬局</td><td class="cc">820101939</td></tr>
+          <tr><td style="font-weight:900;">ア</td><td>在宅薬学総合体制加算<strong>１</strong>の届出済で、直近1年の在宅訪問系（在宅患者訪問薬剤管理指導料・緊急訪問・緊急時等共同指導料・単一建物居住者1人の居宅療養管理指導費・介護予防居宅療養管理指導費）の算定が<strong class="marker">計480回以上</strong>（割合は問わない）</td><td><span class="disp">在宅薬学総合体制加算１を届け出ており、所定の算定項目の算定回数の総計が直近一年間で480回以上の保険薬局；算定回数〇〇回</span><br><span class="disp-pre">※「〇〇回」に算定回数を入力</span></td></tr>
+          <tr><td style="font-weight:900;">イ</td><td>在宅薬学総合体制加算<strong>２</strong>の届出済の薬局</td><td><span class="disp">在宅薬学総合体制加算２を届け出ている保険薬局</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -138,19 +139,20 @@
 
   <!-- STEP3 -->
   <div class="card">
-    <div class="card-title"><span class="step-no">3</span>摘要欄に記載するコード（該当する状態を選択）</div>
+    <div class="card-title"><span class="step-no">3</span>摘要欄で選択するレセプト表示文言（該当する状態を選択）</div>
+    <div class="box-blue" style="font-size:var(--text-sm); margin-bottom:14px;">実務で選ぶのは<strong class="marker">レセプト表示文言</strong>。患者の状態に当てはまる文言を選択する（コードはレセコンが自動で付与）。文言は「<span class="disp-pre" style="color:var(--ink);">該当する疾患／状態（在宅薬学総合体制加算２のイ）：</span><strong>〇〇</strong>」の形（〇〇が選ぶ部分）。</div>
 
     <div class="grp-label">ウ（別表第8の2）：次に掲げる疾患に罹患している患者</div>
     <div class="table-wrap">
       <table class="code-tbl">
-        <thead><tr><th>該当する疾患</th><th>コード</th></tr></thead>
+        <thead><tr><th>レセプト表示文言（これを選択）</th></tr></thead>
         <tbody>
-          <tr><td>末期の悪性腫瘍</td><td class="cc">820101940</td></tr>
-          <tr><td>スモン</td><td class="cc">820101941</td></tr>
-          <tr><td>難病の患者に対する医療等に関する法律第五条第一項に規定する指定難病</td><td class="cc">820101942</td></tr>
-          <tr><td>後天性免疫不全症候群</td><td class="cc">820101943</td></tr>
-          <tr><td>脊髄損傷</td><td class="cc">820101944</td></tr>
-          <tr><td>真皮を越える褥瘡</td><td class="cc">820101945</td></tr>
+          <tr><td><span class="disp-pre">該当する疾患（在宅薬学総合体制加算２のイ）：</span><span class="disp">末期の悪性腫瘍</span></td></tr>
+          <tr><td><span class="disp-pre">該当する疾患（在宅薬学総合体制加算２のイ）：</span><span class="disp">スモン</span></td></tr>
+          <tr><td><span class="disp-pre">該当する疾患（在宅薬学総合体制加算２のイ）：</span><span class="disp">難病の患者に対する医療等に関する法律第五条第一項に規定する指定難病</span></td></tr>
+          <tr><td><span class="disp-pre">該当する疾患（在宅薬学総合体制加算２のイ）：</span><span class="disp">後天性免疫不全症候群</span></td></tr>
+          <tr><td><span class="disp-pre">該当する疾患（在宅薬学総合体制加算２のイ）：</span><span class="disp">脊髄損傷</span></td></tr>
+          <tr><td><span class="disp-pre">該当する疾患（在宅薬学総合体制加算２のイ）：</span><span class="disp">真皮を越える褥瘡</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -158,21 +160,21 @@
     <div class="grp-label">ウ（別表第8の2）：次に掲げる状態の患者</div>
     <div class="table-wrap">
       <table class="code-tbl">
-        <thead><tr><th>該当する状態</th><th>コード</th></tr></thead>
+        <thead><tr><th>レセプト表示文言（これを選択）</th></tr></thead>
         <tbody>
-          <tr><td>在宅自己連続携行式腹膜灌流を行っている状態</td><td class="cc">820101946</td></tr>
-          <tr><td>在宅血液透析を行っている状態</td><td class="cc">820101947</td></tr>
-          <tr><td>在宅酸素療法を行っている状態</td><td class="cc">820101948</td></tr>
-          <tr><td>在宅中心静脈栄養法を行っている状態</td><td class="cc">820101949</td></tr>
-          <tr><td>在宅成分栄養経管栄養法を行っている状態</td><td class="cc">820101950</td></tr>
-          <tr><td>在宅自己導尿を行っている状態</td><td class="cc">820101951</td></tr>
-          <tr><td>在宅人工呼吸を行っている状態</td><td class="cc">820101952</td></tr>
-          <tr><td>植込型脳・脊髄刺激装置による疼痛管理を行っている状態</td><td class="cc">820101953</td></tr>
-          <tr><td>肺高血圧症であって、プロスタグランジンＩ２製剤を投与されている状態</td><td class="cc">820101954</td></tr>
-          <tr><td>気管切開を行っている状態</td><td class="cc">820101955</td></tr>
-          <tr><td>気管カニューレを使用している状態</td><td class="cc">820101956</td></tr>
-          <tr><td>ドレーンチューブ又は留置カテーテルを使用している状態</td><td class="cc">820101957</td></tr>
-          <tr><td>人工肛門又は人工膀胱を設置している状態</td><td class="cc">820101958</td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">在宅自己連続携行式腹膜灌流を行っている状態</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">在宅血液透析を行っている状態</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">在宅酸素療法を行っている状態</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">在宅中心静脈栄養法を行っている状態</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">在宅成分栄養経管栄養法を行っている状態</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">在宅自己導尿を行っている状態</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">在宅人工呼吸を行っている状態</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">植込型脳・脊髄刺激装置による疼痛管理を行っている状態</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">肺高血圧症であって、プロスタグランジンＩ２製剤を投与されている状態</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">気管切開を行っている状態</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">気管カニューレを使用している状態</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">ドレーンチューブ又は留置カテーテルを使用している状態</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">人工肛門又は人工膀胱を設置している状態</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -180,37 +182,41 @@
     <div class="grp-label">エ（別表第8の3）：要介護・認知症・頻回訪問看護・処置・麻薬・小児等</div>
     <div class="table-wrap">
       <table class="code-tbl">
-        <thead><tr><th>該当する状態</th><th>コード</th></tr></thead>
+        <thead><tr><th>レセプト表示文言（これを選択）</th></tr></thead>
         <tbody>
-          <tr><td>１－１　要介護３</td><td class="cc">820101959</td></tr>
-          <tr><td>１－２　要介護４</td><td class="cc">820101960</td></tr>
-          <tr><td>１－３　要介護５</td><td class="cc">820101961</td></tr>
-          <tr><td>１－４　障害支援区分２以上</td><td class="cc">820101962</td></tr>
-          <tr><td>２－１　認知症高齢者の日常生活自立度 ランクⅢａ</td><td class="cc">820101963</td></tr>
-          <tr><td>２－２　ランクⅢｂ</td><td class="cc">820101964</td></tr>
-          <tr><td>２－３　ランクⅣ</td><td class="cc">820101965</td></tr>
-          <tr><td>２－４　ランクＭ</td><td class="cc">820101966</td></tr>
-          <tr><td>３　頻回の訪問看護を受けている状態</td><td class="cc">820101967</td></tr>
-          <tr><td>４　訪問診療又は訪問看護において処置を受けている状態</td><td class="cc">820101968</td></tr>
-          <tr><td>５　施設に入居し、看護職員による処置を受けている状態</td><td class="cc">820101969</td></tr>
-          <tr><td>６　麻薬投薬を受けている状態</td><td class="cc">820101970</td></tr>
-          <tr><td>７－１　脳性麻痺等、小児慢性特定疾病、障害児に該当する１５歳未満の患者</td><td class="cc">820101971</td></tr>
-          <tr><td>７－２　出生時体重が1,500ｇ未満であった１歳未満の患者</td><td class="cc">820101972</td></tr>
-          <tr><td>７－３　「超重症児（者）・準超重症児（者）の判定基準」による判定スコアが10以上である患者</td><td class="cc">820101973</td></tr>
-          <tr><td>７－４　家族等患者の看護に当たる者が注射又は喀痰吸引、経管栄養等の処置を行っている患者</td><td class="cc">820101974</td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">１－１　要介護３</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">１－２　要介護４</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">１－３　要介護５</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">１－４　障害支援区分２以上</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">２－１　ランクⅢａ</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">２－２　ランクⅢｂ</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">２－３　ランクⅣ</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">２－４　ランクＭ</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">３　頻回の訪問看護を受けている状態</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">４　訪問診療又は訪問看護において処置を受けている状態</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">５　施設に入居し、看護職員による処置を受けている状態</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">６　麻薬投薬を受けている状態</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">７－１　脳性麻痺等、小児慢性特定疾病、障害児に該当する１５歳未満の患者</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">７－２　出生時体重が1,500ｇ未満であった１歳未満の患者</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">７－３　「超重症児（者）・準超重症児（者）の判定基準」による判定スコアが10以上である患者</span></td></tr>
+          <tr><td><span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">７－４　家族等患者の看護に当たる者が注射又は喀痰吸引、経管栄養等の処置を行っている患者</span></td></tr>
         </tbody>
       </table>
     </div>
 
-    <div class="ref">※ コード・表示文言は別表Ⅰ 項番2に準拠。表示文言は「該当する疾患（又は状態）（在宅薬学総合体制加算２のイ）：〇〇」。</div>
+    <div class="ref">※ レセプト表示文言は別表Ⅰ 項番2に準拠。</div>
   </div>
 
   <!-- 記載例 -->
   <div class="card avoid-break">
     <div class="card-title">記載例</div>
     <div class="box-gray" style="font-size:var(--text-sm);">
-      例：加算２未届だが在宅実績480回以上の薬局が、在宅酸素療法中の患者に算定する場合<br>
-      → 摘要欄に <strong class="marker">842100124</strong>（ア・算定回数も記載）＋ <strong class="marker">820101948</strong>（在宅酸素療法を行っている状態）を記載。
+      例：加算２未届だが在宅実績480回以上の薬局（ア）が、在宅酸素療法中の患者に算定する場合<br>
+      → 摘要欄で次の2つの表示文言を選択：
+      <div style="margin-top:8px; display:flex; flex-direction:column; gap:6px;">
+        <div>① <span class="disp">在宅薬学総合体制加算１を届け出ており、所定の算定項目の算定回数の総計が直近一年間で480回以上の保険薬局；算定回数〇〇回</span></div>
+        <div>② <span class="disp-pre">該当する状態（在宅薬学総合体制加算２のイ）：</span><span class="disp">在宅酸素療法を行っている状態</span></div>
+      </div>
     </div>
   </div>
 
