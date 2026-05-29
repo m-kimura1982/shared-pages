@@ -44,6 +44,7 @@
     '服用薬剤調整支援料２_資格取得ステップ.html': { category: 'kaitei', title: '服用薬剤調整支援料２ 資格取得ステップ' },
     '吸入薬指導加算2026.html': { category: 'kaitei', title: '吸入薬指導加算' },
     '在宅薬学総合体制加算2026.html': { category: 'kaitei', title: '在宅薬学総合体制加算' },
+    '在宅薬学総合体制加算2イ_特例摘要欄ガイド.html': { category: 'kaitei', title: '在宅薬学総合体制加算２イ特例 摘要欄ガイド' },
     '在宅患者訪問薬剤管理指導料_算定間隔2026.html': { category: 'kaitei', title: '訪問薬剤管理指導料の算定間隔' },
     '電子的調剤情報連携体制整備加算_2026改定.html': { category: 'kaitei', title: '電子的調剤情報連携体制整備加算' },
     '地域支援医薬品供給対応体制加算.html': { category: 'kaitei', title: '地域支援・医薬品供給対応体制加算' },
