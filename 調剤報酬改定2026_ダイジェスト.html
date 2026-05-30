@@ -574,7 +574,7 @@
                 ><span>投与が必要と判断した理由</span>
               </div>
               <div style="font-size: var(--text-sm); margin-top: 6px">
-                <strong>記載がなければ保険請求不可。</strong>
+                <strong>記載がなければ、そのままでは保険請求できない。</strong>
               </div>
             </div>
           </div>
@@ -591,7 +591,7 @@
             <div class="li">
               <span class="li-dot">・</span
               ><span
-                >記載がない場合は<strong>疑義照会</strong>が必要。確認が取れた場合のみ保険給付の対象となる。</span
+                >記載がない場合は<strong class="marker">疑義照会が必要</strong>。確認が取れた場合のみ保険給付の対象となる（記載がなくても疑義照会で確認できれば請求可）。</span
               >
             </div>
             <div class="li">
@@ -688,7 +688,7 @@
             <div class="li">
               <span class="li-dot">・</span
               ><span
-                >旧・在宅オンライン系の指導料は点数・対象・算定要件の実質を維持したまま、<strong>服薬管理指導料４のロ・ハに体系統合。</strong>請求区分が変わるためレセプト記載に注意。</span
+                >旧・在宅オンライン系の指導料は点数・対象・算定要件の実質を維持したまま、<strong>服薬管理指導料４のロ・ハに体系統合。</strong>区分が変わるため、<strong class="marker">レセコン入力時の区分選択ミスに注意。</strong></span
               >
             </div>
             <div class="li">
@@ -777,7 +777,7 @@
             <div class="li">
               <span class="li-dot">・</span
               ><span
-                ><strong>調剤当日・処方箋持参当日は算定不可。</strong
+                ><strong class="marker">調剤当日・処方箋持参当日は算定不可。</strong
                 >「前回調剤後〜次回来局前」の期間に限られる。</span
               >
             </div>
@@ -864,6 +864,12 @@
             <div class="li">
               <span class="li-dot">・</span
               ><span
+                >算定は訪問時ではなく、<strong class="marker">訪問後に患者が再度処方箋を持参した次回受付時に行う</strong>（訪問そのものでは算定しない）。</span
+              >
+            </div>
+            <div class="li">
+              <span class="li-dot">・</span
+              ><span
                 >外来服薬支援料１・服薬情報等提供料・居宅療養管理指導費等を算定している患者には<strong
                   >算定不可。</strong
                 ></span
@@ -936,7 +942,7 @@
             <div class="li">
               <span class="li-dot">・</span
               ><span
-                >インフルエンザの場合は指導方法が異なる。<strong>保険薬剤師が看視のもと、その場で実際に吸入させること</strong>が必須（練習用吸入器での確認では不可）。</span
+                >インフルエンザの場合は指導方法が異なる。<strong class="marker">保険薬剤師が看視のもと、その場で実際に吸入させること</strong>が必須（練習用吸入器での確認では不可）。</span
               >
             </div>
             <div class="li">
@@ -998,7 +1004,7 @@
             <div class="li">
               <span class="li-dot">・</span
               ><span
-                >「中６日」と異なり、改定後は<strong>同一週内（日〜土）であれば再算定可</strong>。<strong>6日あけずに算定できる</strong>ケースが生じ、旧ルールより早く算定可能となる場合がある。</span
+                >「中６日以上」から「週１回（日曜起算）」に変更。<strong class="marker">同じ週（日〜土）内は1回まで・再算定不可。翌週の日曜以降が次回算定可能日</strong>。週をまたげば中6日未満でも算定できるケースが生じる。</span
               >
             </div>
             <div class="li">
@@ -1128,7 +1134,7 @@
             <div class="li">
               <span class="li-dot">・</span
               ><span
-                >【5/29訂正通知】<strong class="marker">加算２未届の加算１薬局でも、在宅実績（480回以上）があれば算定できる</strong>。重症・要介護等の患者（別表第8の2・8の3）について、単一建物の人数にかかわらず加算２「イ」（100点）。</span
+                >【5/29訂正通知】<strong class="marker">重症・要介護等の対象患者（別表第8の2・8の3）に限り、単一建物の人数にかかわらず加算２「イ」（100点）で算定できる特例</strong>。加算２未届の加算１薬局でも、在宅実績480回以上があれば、この対象患者に限り加算２「イ」を算定できる（対象外の患者まで加算２を算定できるわけではない）。詳細は関連ページを参照。</span
               >
             </div>
           </div>
@@ -1138,6 +1144,11 @@
             class="detail-link"
             href="https://m-kimura1982.github.io/shared-pages/在宅薬学総合体制加算2026.html"
             >→ 詳細資料を見る</a
+          >
+          <a
+            class="detail-link"
+            href="https://m-kimura1982.github.io/shared-pages/在宅薬学総合体制加算2イ_特例摘要欄ガイド.html"
+            >→ 加算２「イ」特例ガイド</a
           >
         </div>
       </div>
@@ -1171,7 +1182,7 @@
             <div class="sub-title">ここがポイント</div>
             <div class="li">
               <span class="li-dot">・</span
-              ><span>15歳未満まで対象が拡大したことで、これまで対象外だった<strong>小学生・中学生</strong>も加算算定が可能に。</span>
+              ><span>15歳未満まで対象が拡大したことで、これまで対象外だった<strong class="marker">小学生・中学生</strong>も加算算定が可能に。</span>
             </div>
             <div class="li">
               <span class="li-dot">・</span
@@ -1241,14 +1252,20 @@
             <div class="li">
               <span class="li-dot">・</span
               ><span
-                >過去に説明済みでも、<strong>自己負担額が変わる薬は特定薬剤管理指導加算３（ロ）を1回に限り再算定可。</strong>（疑義解釈その２
+                >過去に説明済みでも、<strong class="marker">選定療養費（自己負担額）が変わる薬は特定薬剤管理指導加算３（ロ）を1回に限り再算定可。</strong>（疑義解釈その２
                 問20）</span
               >
             </div>
             <div class="li">
               <span class="li-dot">・</span
               ><span
-                >時間外料金は<strong>薬局が任意設定。</strong>設定・変更時は地方厚生局長等への報告と薬局内への掲示が必要。</span
+                >時間外料金は<strong>薬局が任意設定。</strong>設定・変更時は地方厚生局長等への報告と、薬局内の見やすい場所＋原則ウェブサイトへの掲示が必要。</span
+              >
+            </div>
+            <div class="li">
+              <span class="li-dot">・</span
+              ><span
+                >金額の目安は<strong class="marker">「時間外加算の所定点数相当額」が標準</strong>（基礎額＝調剤基本料・調剤管理料等の最大2倍が目安）。区分の目安は<strong>時間外＝基礎額の100％／休日＝140％／深夜＝200％。</strong></span
               >
             </div>
             <div class="li">
@@ -1325,7 +1342,7 @@
             <div class="li">
               <span class="li-dot">・</span
               ><span
-                >全区分で<strong>GE率85%以上が必須。</strong>現行の後発品加算届出済み薬局は令和9年5月末まで経過措置あり。</span
+                >全区分で<strong class="marker">GE率85%以上が必須。</strong>現行の後発品加算届出済み薬局は令和9年5月末まで経過措置あり。</span
               >
             </div>
             <div class="li">
@@ -1400,7 +1417,7 @@
             <div class="li">
               <span class="li-dot">・</span
               ><span
-                >8〜27日分は<strong>大幅な減点</strong>。特に15〜27日分は50点→10点になる。短期・中期処方が多い薬局は注意。</span
+                >8〜27日分は<strong class="marker">大幅な減点</strong>。特に15〜27日分は50点→10点になる。短期・中期処方が多い薬局は注意。</span
               >
             </div>
             <div class="li">
@@ -1645,7 +1662,7 @@
             <div class="li">
               <span class="li-dot">・</span
               ><span
-                >単純に7日分以上残薬があれば算定できるわけではなく、<strong>残薬調整の必要性を患者・家族に確認</strong>してから行うことが要件。</span
+                >単純に7日分以上残薬があれば算定できるわけではなく、<strong>残薬調整の必要性を患者・家族に確認</strong>してから行うことが要件。なお<strong class="marker">6日分以下の調整</strong>は、高額医薬品や薬学的専門的観点による場合に限り算定でき、レセプトに理由の記載が必要。</span
               >
             </div>
             <div class="li">
@@ -1699,7 +1716,7 @@
               <div class="li">
                 <span class="li-dot">・</span
                 ><span
-                  >処方箋を受け付けるすべての患者に、<strong>３月に１回</strong>算定できる。</span
+                  >処方箋を受け付けるすべての患者に、<strong class="marker">３月に１回</strong>算定できる。</span
                 >
               </div>
               <div class="divider"></div>
@@ -1767,6 +1784,7 @@
                 <span class="li-dot">・</span
                 ><span
                   >職員の賃金改善体制（施設基準）を評価する点数として新設。<strong
+                    class="marker"
                     >届出が必要。</strong
                   ></span
                 >
@@ -1794,7 +1812,6 @@
               <span class="li-dot">・</span
               ><span
                 ><strong>対象職員に注意。</strong>事業主・管理者・<strong
-                  class="marker"
                   >40歳以上の薬剤師</strong
                 >・業務委託者は除外。</span
               >
@@ -1879,7 +1896,7 @@
             <div class="li">
               <span class="li-dot">・</span
               ><span
-                >マイナ保険証利用率<strong>30%以上</strong>であれば算定可（利用率要件は届出不要）。支払基金から報告される数値で確認できる。</span
+                >マイナ保険証利用率<strong class="marker">30%以上</strong>であれば算定可（利用率要件は届出不要）。支払基金から報告される数値で確認できる。</span
               >
             </div>
             <div class="li">
@@ -1924,7 +1941,7 @@
             <div class="sub-title">ここがポイント</div>
             <div class="li">
               <span class="li-dot">・</span
-              ><span>一般的な門前・敷地内薬局への影響はほぼなし。へき地の一部薬局の救済措置が主な改定内容。</span>
+              ><span><strong class="marker">一般的な門前・敷地内薬局への影響はほぼなし。</strong>へき地の一部薬局の救済措置が主な改定内容。</span>
             </div>
             <div class="li">
               <span class="li-dot">・</span
@@ -1970,7 +1987,7 @@
             <div class="li">
               <span class="li-dot">・</span
               ><span
-                >バイオ後続品には「後続1・後続2」等の番号があり<strong>番号が異なると法律上別成分のため変更不可。</strong>処方箋と在庫の番号が不一致の場合は<strong
+                >バイオ後続品には「後続1・後続2」等の番号があり<strong class="marker">番号が異なると法律上別成分のため変更不可。</strong>処方箋と在庫の番号が不一致の場合は<strong
                   >疑義照会が必要。</strong
                 ></span
               >
@@ -2048,7 +2065,7 @@
             <div class="li">
               <span class="li-dot">・</span
               ><span
-                >複数名訪問が必要な理由は<strong>患者の安全確保の観点</strong>（興奮・攻撃性等）に限られる。業務効率化など<strong
+                >複数名訪問が必要な理由は<strong>患者の安全確保の観点</strong>（興奮・攻撃性等）に限られる。業務効率化など<strong class="marker"
                   >薬局側の都合では算定不可。</strong
                 ></span
               >
@@ -2145,7 +2162,7 @@
             <div class="li">
               <span class="li-dot">・</span
               ><span
-                >新しいルールは<strong>手帳の基本情報ページに「かかりつけ」と薬剤師名を記入し、コピー（写真可）を保管。薬歴表紙にも記録。</strong>まだ手帳記入・コピー保管に移行していない患者については対応が必要。</span
+                >新しいルールは<strong class="marker">手帳の基本情報ページに「かかりつけ」と薬剤師名を記入し、コピー（写真可）を保管。薬歴表紙にも記録。</strong>まだ手帳記入・コピー保管に移行していない患者については対応が必要。</span
               >
             </div>
             <div class="li">
@@ -2335,7 +2352,7 @@
             <div class="li">
               <span class="li-dot">・</span
               ><span
-                >同行する医師が<strong>在宅時医学総合管理料を算定しており、かつ当該患者の主治医</strong>であることが条件。単発の往診医や他科専門医は対象外になる場合がある。</span
+                >同行する医師が<strong class="marker">在宅時医学総合管理料を算定しており、かつ当該患者の主治医</strong>であることが条件。単発の往診医や他科専門医は対象外になる場合がある。</span
               >
             </div>
             <div class="li">
@@ -2408,7 +2425,7 @@
             <div class="li">
               <span class="li-dot">・</span
               ><span
-                >投与量調整が発生しやすい小児において、15歳未満まで評価対象が拡大。これまで対象外だった<strong>小学生・中学生</strong>が新たに加算対象になる。</span
+                >投与量調整が発生しやすい小児において、15歳未満まで評価対象が拡大。これまで対象外だった<strong class="marker">小学生・中学生</strong>が新たに加算対象になる。</span
               >
             </div>
             <div class="li">
@@ -2552,7 +2569,7 @@
               <div class="li">
                 <span class="li-dot">・</span
                 ><span
-                  >重複投薬・相互作用等について処方医に照会し、<strong>処方が変更</strong>された場合に算定</span
+                  >重複投薬・相互作用等について処方医に照会し、<strong class="marker">処方が変更された場合に算定</strong></span
                 >
               </div>
             </div>

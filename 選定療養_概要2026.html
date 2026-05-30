@@ -33,6 +33,8 @@
     .box-gray { background:var(--box-gray); border-radius:var(--radius-sm); padding:14px 18px; border:var(--bw) solid var(--border); }
     .em-red  { color:var(--red);  font-weight:900; }
     .em-blue { color:var(--blue); font-weight:900; }
+    /* マーカー（2026-05-29〜 強調デフォルト）：<strong class="marker"> で使う */
+    .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
     .section-title { font-weight:900; font-size:var(--text-md); margin-bottom:8px; }
     .sub-title { font-weight:900; font-size:var(--text-md); padding:6px 0 6px 12px; border-left:var(--bw-t) solid var(--blue); margin-bottom:10px; }
     table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
@@ -111,9 +113,9 @@
       <div>
         <div class="sub-title">特定薬剤管理指導加算３（ロ）の再算定について</div>
         <div style="display:flex; flex-direction:column; gap:8px; font-size:var(--text-sm);">
-          <div class="bullet"><span>・</span><span><strong>薬価差1/4のときにすでに説明・算定済みの薬でも、</strong>今回の改定により自己負担額が変わる薬について薬剤師が重点的な服薬指導が必要と判断し説明を行った場合に改めて算定可（疑義解釈その２ 問20）</span></div>
-          <div class="bullet"><span>・</span><span>対象は<strong>自己負担額が変更となる医薬品</strong>に限る。負担額に変化がない場合は算定不可</span></div>
-          <div class="bullet"><span>・</span><span>再算定できるのは令和8年6月以降、<strong>最初に処方された1回のみ</strong></span></div>
+          <div class="bullet"><span>・</span><span><strong class="marker">過去に説明済み（算定済）でも、選定療養費（自己負担額）が変わる薬は</strong>、今回の改定により薬剤師が重点的な服薬指導が必要と判断し説明を行った場合に<strong>改めて算定可</strong>（疑義解釈その２ 問20）</span></div>
+          <div class="bullet"><span>・</span><span>対象は<strong>選定療養費（自己負担額）が変更となる医薬品</strong>に限る。選定療養費に変化がない場合は算定不可</span></div>
+          <div class="bullet"><span>・</span><span>再算定できるのは令和8年6月以降、<strong class="marker">最初に処方された1回のみ</strong></span></div>
         </div>
         <div style="margin-top:10px;">
           <a href="疑義解釈_その2_2026.html#tokutei" style="display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:700;color:#1e5fa8;text-decoration:none;padding:4px 12px;border:1px solid #1e5fa8;border-radius:4px;">→ 疑義解釈その２ 問20を見る</a>
@@ -150,23 +152,27 @@
           <div class="sub-title">対象となる条件</div>
           <div style="display:flex; flex-direction:column; gap:8px; font-size:var(--text-sm);">
             <div class="bullet"><span>・</span><span>薬局が表示している<strong>開局時間または閉局時間以外</strong>の時間に調剤等を行う</span></div>
-            <div class="bullet"><span>・</span><span>患者が<strong>自己都合で時間外の調剤を希望した場合</strong>に限る</span></div>
-            <div class="bullet"><span>・</span><span><strong>対面</strong>での調剤等であること</span></div>
+            <div class="bullet"><span>・</span><span>患者が<strong class="marker">自己都合で時間外の調剤を希望した場合</strong>に限る（緊急やむを得ない場合は徴収不可・通常の時間外加算で算定）</span></div>
+            <div class="bullet"><span>・</span><span><strong class="marker">対面</strong>での調剤等であること</span></div>
           </div>
         </div>
         <div>
           <div class="sub-title">料金徴収の要件</div>
           <div style="display:flex; flex-direction:column; gap:8px; font-size:var(--text-sm);">
-            <div class="bullet"><span>・</span><span>料金等を<strong>薬局内の見やすい場所に掲示</strong>すること</span></div>
-            <div class="bullet"><span>・</span><span>設定・変更時は<strong>地方厚生局長等に報告</strong></span></div>
+            <div class="bullet"><span>・</span><span>料金等を<strong>薬局内の見やすい場所に掲示</strong>し、<strong>原則としてウェブサイトにも掲載</strong>すること（自ら管理するHP等がない薬局は対象外）</span></div>
+            <div class="bullet"><span>・</span><span>設定・変更時は<strong>地方厚生局長等に報告</strong>（別紙様式４・その都度）</span></div>
             <div class="bullet"><span>・</span><span>料金は<strong>消費税込みで患者に提示</strong></span></div>
-            <div class="bullet"><span>・</span><span>金額は<strong>薬局が任意に設定</strong>（上限・下限の規定なし）</span></div>
+            <div class="bullet"><span>・</span><span>金額は<strong>薬局が任意に設定</strong>（上限・下限の規定なし）。ただし<strong class="marker">徴収額は「時間外加算の所定点数相当額」が標準</strong>とされている</span></div>
+            <div class="bullet"><span>・</span><span>目安：基礎額（調剤基本料・調剤管理料等）に対し <strong>時間外＝100％／休日＝140％／深夜＝200％</strong>。<strong class="marker">最大で基礎額の2倍が目安</strong></span></div>
+          </div>
+          <div style="margin-top:10px;">
+            <a href="files/別紙様式４.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:700;color:#1e5fa8;text-decoration:none;padding:4px 12px;border:1px solid #1e5fa8;border-radius:4px;">→ 別紙様式４（報告様式）を見る／印刷</a>
           </div>
         </div>
       </div>
 
       <div class="box-gray" style="font-size:var(--text-sm);">
-        <strong>時間外加算との併算定：不可。</strong>時間外調剤に係る特別の料金（選定療養）を徴収する場合は、時間外加算等を算定できない（別添３調剤報酬点数表・薬剤調製料の「注」に規定）。
+        <strong class="marker">時間外加算との併算定：不可。</strong>時間外調剤に係る特別の料金（選定療養）を徴収する場合は、時間外加算等を算定できない（別添３調剤報酬点数表・薬剤調製料の「注」に規定）。
       </div>
 
     </div>
