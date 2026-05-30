@@ -62,7 +62,8 @@ window.__pageMeta = {
     "lastUpdated": "2026-05-29"
   },
   "地域支援医薬品供給対応体制加算.html": {
-    "lastUpdated": "2026-05-12"
+    "lastUpdated": "2026-05-31",
+    "newUntil": "2026-06-07"
   },
   "調剤ベースアップ評価料.html": {
     "lastUpdated": "2026-04-19"
