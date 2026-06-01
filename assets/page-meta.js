@@ -40,7 +40,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-05-09"
   },
   "疑義解釈_その7_2026.html": {
-    "lastUpdated": "2026-05-31"
+    "lastUpdated": "2026-06-02"
   },
   "服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html": {
     "lastUpdated": "2026-05-02"
@@ -49,8 +49,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-06-01"
   },
   "入力画面で解説_2026改定後の入力方法.html": {
-    "lastUpdated": "2026-05-28",
-    "newUntil": "2026-06-03"
+    "lastUpdated": "2026-05-28"
   },
   "調剤報酬改定2026_ダイジェスト.html": {
     "lastUpdated": "2026-05-31"
@@ -101,13 +100,13 @@ window.__pageMeta = {
     "lastUpdated": "2026-04-01"
   },
   "事務スタッフ向け_2026改定サマリ.html": {
-    "lastUpdated": "2026-05-14"
+    "lastUpdated": "2026-06-01"
   },
   "別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html": {
     "lastUpdated": "2026-05-30"
   },
   "事務スタッフ向け_2026調剤報酬改定ポイント整理.html": {
-    "lastUpdated": "2026-05-31"
+    "lastUpdated": "2026-06-01"
   },
   "updates.html": {
     "lastUpdated": "2026-05-31"
