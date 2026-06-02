@@ -15,7 +15,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-04-19"
   },
   "薬学的有害事象等防止加算.html": {
-    "lastUpdated": "2026-05-06"
+    "lastUpdated": "2026-06-03"
   },
   "調剤基本料フローチャート.html": {
     "lastUpdated": "2026-03-26"
@@ -78,6 +78,9 @@ window.__pageMeta = {
   "服用薬剤調整支援料２_資格取得ステップ.html": {
     "lastUpdated": "2026-03-23"
   },
+  "index.html": {
+    "lastUpdated": "2026-06-02"
+  },
   "事務スタッフ向け.html": {
     "lastUpdated": "2026-05-27"
   },
@@ -93,7 +96,7 @@ window.__pageMeta = {
   "電子的調剤情報連携体制整備加算_2026改定.html": {
     "lastUpdated": "2026-04-19"
   },
-  "index.html": {
+  "updates.html": {
     "lastUpdated": "2026-06-02"
   },
   "かかりつけ薬剤師_算定一覧2026.html": {
@@ -106,10 +109,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-05-30"
   },
   "調剤時残薬調整加算.html": {
-    "lastUpdated": "2026-06-02"
-  },
-  "updates.html": {
-    "lastUpdated": "2026-06-02"
+    "lastUpdated": "2026-06-03"
   },
   "かかりつけ薬剤師訪問加算.html": {
     "lastUpdated": "2026-05-06"
@@ -133,7 +133,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-05-06"
   },
   "在宅薬学総合体制加算2026.html": {
-    "lastUpdated": "2026-05-30"
+    "lastUpdated": "2026-06-03"
   },
   "基礎的医薬品追加リストR8_4.html": {
     "lastUpdated": "2026-04-19"
@@ -151,7 +151,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-06-01"
   },
   "在宅薬学総合体制加算2イ_特例摘要欄ガイド.html": {
-    "lastUpdated": "2026-05-30"
+    "lastUpdated": "2026-06-03"
   },
   "疑義解釈_その7_2026.html": {
     "lastUpdated": "2026-06-02"
@@ -160,7 +160,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-05-31"
   },
   "選定療養_概要2026.html": {
-    "lastUpdated": "2026-06-01"
+    "lastUpdated": "2026-06-03"
   },
   "別表Ⅴ_調剤行為名称等の略号一覧2026改定.html": {
     "lastUpdated": "2026-05-30"
