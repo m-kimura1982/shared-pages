@@ -142,7 +142,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-05-14"
   },
   "調剤時残薬調整加算.html": {
-    "lastUpdated": "2026-05-29"
+    "lastUpdated": "2026-06-02"
   },
   "_notice_followup_homon_heisanntei.html": {
     "lastUpdated": "2026-05-11"

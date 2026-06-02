@@ -195,9 +195,44 @@
         margin: 10px 0;
       }
       .price-up {
-        color: var(--red);
+        color: var(--ink);
         font-weight: 900;
         font-size: 17px;
+      }
+      /* 折りたたみ（改定の背景） */
+      .fold {
+        background: var(--white);
+        border: var(--bw) solid var(--border);
+        border-radius: var(--radius);
+      }
+      .fold > summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 14px var(--pad-card);
+        font-weight: 700;
+        font-size: var(--text-sm);
+        color: var(--sub, #666);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .fold > summary::-webkit-details-marker {
+        display: none;
+      }
+      .fold > summary::before {
+        content: "▶";
+        font-size: 10px;
+        color: #999;
+        transition: transform 0.15s;
+      }
+      .fold[open] > summary::before {
+        transform: rotate(90deg);
+      }
+      .fold .fold-body {
+        padding: 0 var(--pad-card) var(--pad-card);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
       }
       .kana-bar {
         display: flex;
@@ -274,6 +309,37 @@
       .diff-new {
         color: var(--red);
         font-weight: 900;
+        white-space: nowrap;
+      }
+      .box-gray {
+        background: var(--box-gray);
+        border-radius: var(--radius-sm);
+        padding: 14px 18px;
+        border: var(--bw) solid var(--border);
+      }
+      .em-red {
+        color: var(--red);
+        font-weight: 900;
+      }
+      /* マーカー（2026-05-29〜 強調デフォルト）：<strong class="marker"> で使う */
+      .marker {
+        background: linear-gradient(transparent 62%, #fff59d 62%);
+        font-weight: 700;
+      }
+      .bullet {
+        display: flex;
+        gap: 6px;
+      }
+      .bullet > span:first-child {
+        flex-shrink: 0;
+      }
+      .new-tag {
+        font-size: var(--text-xs);
+        background: #ffe7e7;
+        color: var(--red);
+        padding: 1px 6px;
+        border-radius: 3px;
+        font-weight: 700;
         white-space: nowrap;
       }
 
@@ -475,61 +541,16 @@
         </div>
       </div>
 
-      <!-- 改定のポイント -->
-      <div class="card avoid-break">
-        <div class="card-title">
-          改定のポイント
-          <span class="badge badge-red">新設（2026年6月〜）</span>
-        </div>
-        <div class="lead">
-          従来の「残薬調整20点」に近い名称だが、単なる増点改定ではない。<strong>7日分以上の要件、剤形ごとの数え方、6日以下の特例、減量後の対応</strong>など、新たなルールが追加された。<strong>従来の感覚で算定すると要件漏れになりやすいため、新設加算として要件を整理しておきたい</strong>。
-        </div>
+      <!-- 改定の背景（折りたたみ） -->
+      <details class="fold avoid-break">
+        <summary>改定の背景・点数の変遷（折りたたみ）</summary>
+        <div class="fold-body">
+          <div style="font-size: var(--text-sm)">
+            従来の「残薬調整20点」に相当するが、単なる増点ではない。7日分以上の要件・剤形ごとの数え方・6日以下の特例・減量後の対応など新ルールが加わり、外来・在宅・かかりつけ（区分ハ）を含めて<strong>調剤管理料の加算として一本化</strong>された（点数は最大50点／区分ニのみ30点）。
+          </div>
 
-        <div
-          style="
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            font-size: var(--text-sm);
-          "
-        >
-          <div style="display: flex; gap: 10px">
-            <span style="flex-shrink: 0; font-weight: 900; color: var(--blue)"
-              >①</span
-            >
-            <span
-              ><strong>点数引き上げ</strong>：従来20点 →
-              <span class="price-up">最大50点</span>（区分ニのみ30点）</span
-            >
-          </div>
-          <div style="display: flex; gap: 10px">
-            <span style="flex-shrink: 0; font-weight: 900; color: var(--blue)"
-              >②</span
-            >
-            <span
-              ><strong>調剤管理料の加算として一本化</strong
-              >：従来バラバラだった外来と在宅の扱いをまとめ、<strong
-                >かかりつけ区分（ハ）も新設</strong
-              ></span
-            >
-          </div>
-          <div style="display: flex; gap: 10px">
-            <span style="flex-shrink: 0; font-weight: 900; color: var(--blue)"
-              >③</span
-            >
-            <span
-              ><strong>算定要件が詳細化</strong
-              >：7日分以上のルール、剤形ごとの数え方、6日以下の特例、減らした後にやること（4つ）、機械的な調整は不可
-              など</span
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- 改定前後の点数比較 -->
-      <div class="card avoid-break">
-        <div class="card-title">改定前後の点数比較</div>
-        <div class="table-wrap">
+          <div class="sub-title" style="margin-bottom: 0">改定前後の点数比較</div>
+          <div class="table-wrap">
           <table>
             <thead>
               <tr>
@@ -644,8 +665,9 @@
               </tr>
             </tbody>
           </table>
+          </div>
         </div>
-      </div>
+      </details>
 
       <!-- 算定区分と点数 -->
       <div class="card avoid-break">
@@ -892,7 +914,7 @@
           </div>
           <div style="display:flex; gap:6px;">
             <span style="flex-shrink:0;">※</span>
-            <span>同日に複数の処方箋を受け付け複数の処方を変更した場合でも、<strong>処方箋受付1回につき1回まで</strong>しか算定できない</span>
+            <span>同日に複数の処方箋を受け付け複数の処方を変更した場合でも、<strong class="marker">処方箋受付1回につき1回まで</strong>しか算定できない</span>
           </div>
         </div>
       </div>
@@ -908,7 +930,7 @@
           <div style="font-weight:900; margin-bottom:4px;">両パターン共通の大前提</div>
           <div style="line-height:1.7;">
             残薬調整の必要性（次回受診日を考慮した意図的な残薬かどうか等）を<strong>患者又はその家族等に確認してから</strong>行う。<br />
-            <span class="em-red">単に7日分以上の残薬があったことをもって機械的に行ってはならない。</span>
+            <strong class="marker">単に7日分以上の残薬があったことをもって機械的に行ってはならない。</strong>
           </div>
         </div>
 
@@ -957,7 +979,7 @@
             <div style="display: flex; gap: 6px; margin-bottom: 5px">
               <span style="flex-shrink: 0">・</span>
               <span
-                >残薬状況を確認し、処方医への疑義照会の結果、<strong>7日分以上相当の調剤日数の変更</strong>が行われた場合<br /><span style="font-size:var(--text-xs); color:var(--blue); font-weight:700;">※ 6日以下でも要件を満たせば算定可（後述）</span></span
+                >残薬状況を確認し、処方医への疑義照会の結果、<strong>7日分以上相当の調剤日数の変更</strong>が行われた場合<br /><span style="font-size:var(--text-xs); color:var(--ink); font-weight:700;">※ 6日以下でも要件を満たせば算定可（後述）</span></span
               >
             </div>
             <div style="display: flex; gap: 6px; margin-bottom: 10px">
@@ -1080,13 +1102,13 @@
             <div style="display: flex; gap: 6px; margin-bottom: 5px">
               <span style="flex-shrink: 0">・</span>
               <span
-                >処方箋の事前指示に基づき、薬局の判断で<strong>7日分以上相当の調剤日数を減数</strong>した場合<br /><span style="font-size:var(--text-xs); color:var(--blue); font-weight:700;">※ 6日以下でも要件を満たせば算定可（後述）</span></span
+                >処方箋の事前指示に基づき、薬局の判断で<strong>7日分以上相当の調剤日数を減数</strong>した場合<br /><span style="font-size:var(--text-xs); color:var(--ink); font-weight:700;">※ 6日以下でも要件を満たせば算定可（後述）</span></span
               >
             </div>
             <div style="display: flex; gap: 6px; margin-bottom: 10px">
               <span style="flex-shrink: 0">・</span>
               <span
-                >減数後は<strong>原則 翌営業日まで</strong>に保険医療機関へ情報提供（文書または電子処方箋コメント機能等）</span
+                >減数後は<strong class="marker">原則 翌営業日までに保険医療機関へ情報提供</strong>（文書または電子処方箋コメント機能等）</span
               >
             </div>
             <div
@@ -1108,17 +1130,12 @@
       <div class="card avoid-break">
         <div class="card-title">
           数量を減らした後にやること（4つ）
-          <span class="badge" style="background: #fde8e8; color: var(--red)"
+          <span class="badge" style="background: var(--box-gray); color: #555"
             >疑義照会・処方箋指示とも共通</span
           >
         </div>
         <div class="lead">
-          残薬を確認して調剤数量を減らした場合は、以下の4項目をすべて実施する。<strong>疑義照会で減らした場合も、処方箋指示で減らした場合も、どちらも対象</strong>。<br />
-          改定前は「要点を薬歴に記載」＋「必要に応じて処方医に情報提供」の2項目のみだった。改定後は
-          <span class="diff-new">新設2項目</span
-          >（手帳記載・患者から処方医への報告を促す）と
-          <span class="diff-new">拡充2項目</span
-          >（情報提供の期限明文化・薬歴記載の具体化）が追加された。
+          残薬を確認して調剤数量を減らした場合は、以下の4項目をすべて実施する。<strong>疑義照会で減らした場合も、処方箋指示で減らした場合も、どちらも対象</strong>。
         </div>
 
         <div style="display: flex; flex-direction: column; gap: 10px">
@@ -1126,17 +1143,7 @@
             <div
               style="font-weight: 900; margin-bottom: 4px; color: var(--blue)"
             >
-              ① 処方医への情報提供（原則 翌営業日まで）　<span
-                style="
-                  font-size: var(--text-xs);
-                  background: #ffe7e7;
-                  color: var(--red);
-                  padding: 1px 6px;
-                  border-radius: 3px;
-                  font-weight: 700;
-                "
-                >拡充</span
-              >
+              ① 処方医への情報提供（原則 翌営業日まで）
             </div>
             <div style="color: #555; margin-bottom: 6px">
               残薬量、残薬が生じた理由、調整後に交付した薬剤量、患者への説明内容等を、処方医療機関へ情報提供する。手段は電話・文書・<strong>電子処方箋管理サービスのコメント機能</strong>のいずれでもよい。
@@ -1164,17 +1171,7 @@
             <div
               style="font-weight: 900; margin-bottom: 4px; color: var(--blue)"
             >
-              ② 次回受診時に患者から処方医へ報告するよう促す　<span
-                style="
-                  font-size: var(--text-xs);
-                  background: #ffe7e7;
-                  color: var(--red);
-                  padding: 1px 6px;
-                  border-radius: 3px;
-                  font-weight: 700;
-                "
-                >新設</span
-              >
+              ② 次回受診時に患者から処方医へ報告するよう促す
             </div>
             <div style="color: #555">
               患者に対して、次回受診時に処方医へ残薬の状況を報告するよう口頭で促す。
@@ -1185,20 +1182,13 @@
             <div
               style="font-weight: 900; margin-bottom: 4px; color: var(--blue)"
             >
-              ③ お薬手帳への記載　<span
-                style="
-                  font-size: var(--text-xs);
-                  background: #ffe7e7;
-                  color: var(--red);
-                  padding: 1px 6px;
-                  border-radius: 3px;
-                  font-weight: 700;
-                "
-                >新設</span
-              >
+              ③ お薬手帳への記載
             </div>
             <div style="color: #555">
-              残薬調整した旨（品目・変更内容等）を手帳に記載する。<strong>疑義照会パターンでも記載が必要</strong>（原文上は減数した場合全般が対象）。
+              残薬調整した旨（品目・変更内容等）を手帳に記載する。<strong>手帳を用いて服薬管理指導を行う場合が対象</strong>で、疑義照会・処方箋指示のどちらのパターンでも記載する。
+              <span style="font-size: var(--text-xs); color: #777"
+                >（本加算は施設基準で手帳の活用実績が問われるため、手帳での指導が前提。下記「施設基準」参照）</span
+              >
             </div>
           </div>
 
@@ -1206,20 +1196,40 @@
             <div
               style="font-weight: 900; margin-bottom: 4px; color: var(--blue)"
             >
-              ④ 薬剤服用歴への記録　<span
-                style="
-                  font-size: var(--text-xs);
-                  background: #ffe7e7;
-                  color: var(--red);
-                  padding: 1px 6px;
-                  border-radius: 3px;
-                  font-weight: 700;
-                "
-                >拡充</span
-              >
+              ④ 薬剤服用歴への記録
             </div>
-            <div style="color: #555">
-              処方医に連絡・確認した内容の要点、<strong>変更した医薬品の品目名と数量等</strong>を薬歴に記載。改定により記載項目が通知上で明確化されたもので、実務上は従来から記載していた内容。
+            <div style="color: #555; margin-bottom: 6px">
+              次の3点を薬歴に記載する。通知上で記載項目が明確化されたもので、実務上は従来どおり。
+            </div>
+            <div class="bullet" style="margin-bottom: 2px">
+              <span>・</span><span>処方医に連絡・確認した内容の要点</span>
+            </div>
+            <div class="bullet" style="margin-bottom: 2px">
+              <span>・</span
+              ><span><strong>変更した医薬品の品目名と数量</strong></span>
+            </div>
+            <div class="bullet" style="margin-bottom: 8px">
+              <span>・</span><span>残薬が生じた理由（分析結果）</span>
+            </div>
+            <div
+              style="
+                font-size: var(--text-xs);
+                color: #555;
+                background: #f7f9fc;
+                padding: 8px 10px;
+                border-radius: var(--radius-sm);
+              "
+            >
+              <strong style="color: var(--blue)"
+                >「残薬が生じた理由」の記載例：</strong
+              ><br />
+              ・症状に応じて服用量・回数を自己調整している（頓用的に使用）<br />
+              ・飲み忘れが多い／服薬を自己中断していた<br />
+              ・症状改善時に自己判断で休薬していた<br />
+              ・副作用（〇〇）を懸念して服用していなかった<br />
+              ・服用方法を誤認していた（1日2回 → 1日1回など）<br />
+              ・受診間隔のずれにより前回処方分が残った<br />
+              ・他院・他科からの同種薬重複で服用していなかった
             </div>
           </div>
         </div>
@@ -1489,7 +1499,7 @@
                   padding: 6px 10px;
                 "
               >
-                <strong>記載例）</strong>残薬があるため、〇〇を△△日→▲▲日へ日数調整
+                <strong>記載例）</strong>高額医薬品のため、〇〇を14日→5日へ日数調整
               </div>
             </div>
           </div>
@@ -1506,62 +1516,11 @@
         </div>
       </div>
 
-      <!-- 薬剤服用歴記載事項 -->
-      <div class="card avoid-break">
-        <div class="card-title">薬剤服用歴（薬歴）記載事項</div>
-        <div class="lead" style="margin-bottom: 14px">
-          記載が必要な事項は下記のとおり。<strong>6日分以下で算定する場合のみ追加情報あり</strong>。
-        </div>
-
-        <div class="box-outline" style="font-size: var(--text-sm); margin-bottom: 14px;">
-          <div style="font-weight: 900; margin-bottom: 6px;">全ケース共通（原文(4)エ・(5)）</div>
-          <div style="display: flex; gap: 6px; margin-bottom: 4px">
-            <span style="flex-shrink: 0">・</span>
-            <span>処方医に連絡・確認した内容の要点</span>
-          </div>
-          <div style="display: flex; gap: 6px; margin-bottom: 4px">
-            <span style="flex-shrink: 0">・</span>
-            <span><strong>変更した医薬品の品目名と数量</strong></span>
-          </div>
-          <div style="display: flex; gap: 6px; margin-bottom: 8px">
-            <span style="flex-shrink: 0">・</span>
-            <span><strong>残薬が生じた理由</strong>（分析結果）</span>
-          </div>
-          <div style="font-size: var(--text-xs); color: #555; background: #f7f9fc; padding: 8px 10px; border-radius: var(--radius-sm);">
-            <strong style="color: var(--blue);">「残薬が生じた理由」の記載例：</strong><br />
-            ・症状に応じて服用量・回数を自己調整している（頓用的に使用）<br />
-            ・飲み忘れが多い／服薬を自己中断していた<br />
-            ・症状改善時に自己判断で休薬していた<br />
-            ・副作用（〇〇）を懸念して服用していなかった<br />
-            ・服用方法を誤認していた（1日2回 → 1日1回など）<br />
-            ・受診間隔のずれにより前回処方分が残った<br />
-            ・他院・他科からの同種薬重複で服用していなかった
-          </div>
-        </div>
-
-        <div class="box-outline" style="font-size: var(--text-sm)">
-          <div style="font-weight: 900; margin-bottom: 6px;">6日分以下で算定する場合の追加</div>
-          <div style="display: flex; gap: 6px; margin-bottom: 4px">
-            <span style="flex-shrink: 0">・</span>
-            <span>次回受診日（調剤日）を確認した旨</span>
-          </div>
-          <div style="display: flex; gap: 6px">
-            <span style="flex-shrink: 0">・</span>
-            <span>7日分を超えないのに調整する必要性を患者等へ説明した旨</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 施設基準：手帳活用実績 -->
-      <div class="card">
-        <div class="card-title">
-          施設基準　手帳の活用実績
-          <span class="badge" style="background: var(--box-gray); color: #555"
-            >50%以下で算定不可</span
-          >
-        </div>
-
-        <div class="box-blue" style="margin-bottom: 14px">
+      <!-- 施設基準：手帳活用実績（折りたたみ） -->
+      <details class="fold">
+        <summary>施設基準：手帳の活用実績（手帳提示割合50%以下の薬局は算定不可）</summary>
+        <div class="fold-body">
+        <div class="box-blue">
           <div style="font-weight: 900; margin-bottom: 6px">
             算定できない保険薬局の定義
           </div>
@@ -1614,7 +1573,8 @@
             </div>
           </div>
         </div>
-      </div>
+        </div>
+      </details>
 
       <!-- 算定要件チェックリスト -->
       <div class="card avoid-break">
@@ -1704,7 +1664,7 @@
         <div style="margin-top:14px; padding:12px 16px; background:#f7f9fc; border-left:4px solid var(--blue); border-radius:0 6px 6px 0;">
           <div style="font-weight:900; font-size:var(--text-sm); color:var(--blue); margin-bottom:6px;">補足：薬学的有害事象等防止加算とプロトコル対応の扱いが異なる理由</div>
           <div style="font-size:var(--text-sm); line-height:1.7;">
-            本加算は「残薬確認→処方変更」が要件の中核のため、<strong>プロトコル遵守による事後報告でも算定可</strong>。一方、薬学的有害事象等防止加算は「<strong>疑義照会</strong>を行った上での薬剤調整」を評価するため、プロトコル事後報告では算定不可（疑義解釈その２問12）。両加算で扱いが逆になるので注意。
+            本加算は<strong>事前の疑義照会を必須とせず</strong>、残薬の確認とその結果に基づく処方内容の変更そのものを評価する。そのため、地域で策定した簡素化プロトコルに沿った事後報告でも算定できる。一方、薬学的有害事象等防止加算は「<strong>疑義照会を行った上での薬剤調整</strong>」を評価するため、プロトコルによる事後報告では算定不可（疑義解釈その２問12）。両加算で扱いが逆になるので注意。
           </div>
         </div>
       </div>
