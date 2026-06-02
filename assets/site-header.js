@@ -183,6 +183,11 @@
       .sn-nav a:last-child { border-bottom: none; }
       .sn-crumb { padding: 8px 16px 0; }
     }
+
+    /* 印刷時は共通ヘッダー・パンくずを除外（本文だけ印刷） */
+    @media print {
+      .sn-header, .sn-crumb { display: none !important; }
+    }
   `;
 
   // ── HTML 構築 ──

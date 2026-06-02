@@ -30,6 +30,9 @@
         --bg: #f3f4f6;
         --white: #ffffff;
         --box-blue: #e4f0f8;
+        --ok-fill: #eef6fc;
+        --ok-mark: #134a82;
+        --ng-mark: #6b7280;
         --box-gray: #f2f2f2;
         --border: #d1d5db;
         --border-dk: #9ca3af;
@@ -228,13 +231,14 @@
       .beppyo-table .val-cell {
         text-align: center;
         font-weight: 900;
-        font-size: 13px;
+        font-size: 15px;
       }
       .beppyo-table .val-cell.ok {
-        color: var(--blue);
+        color: var(--ok-mark);
+        background: var(--ok-fill);
       }
       .beppyo-table .val-cell.ng {
-        color: #bbb;
+        color: var(--ng-mark);
       }
       .beppyo-table .val-cell.partial {
         color: #b45309;
@@ -444,9 +448,6 @@
           max-height: none;
           overflow: visible;
         }
-        a[href="kaitei2026.html"] {
-          display: none !important;
-        }
         .beppyo-table {
           font-size: 10px;
         }
@@ -501,7 +502,7 @@
           別表１　服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否
         </h1>
         <p>
-          令和8年6月1日施行｜2026年調剤報酬改定　※ 5月1日修正版（厚労省告知）反映済み
+          令和8年6月1日施行｜2026年調剤報酬改定　※ 5月29日版（厚労省告知）反映済み
         </p>
       </div>
 
@@ -563,7 +564,7 @@
           >列選択解除
         </button>
         <span class="result-count"
-          ><strong id="visibleCount">28</strong> / 28 件</span
+          ><strong id="visibleCount">26</strong> / 26 件</span
         >
         <button class="print-btn" onclick="window.print()">
           <svg
@@ -624,12 +625,12 @@
 
       <div class="legend">
         <span style="font-weight: 700">凡例：</span>
-        <span style="color: var(--blue)">○ 算定可</span>
+        <span style="color: var(--ok-mark)">○ 算定可</span>
         <span style="color: #b45309"
           >×<sup style="font-size: 8px; font-weight: 900">※</sup>
           条件付き可（※参照）</span
         >
-        <span style="color: #bbb">× 算定不可</span>
+        <span style="color: var(--ng-mark)">× 算定不可</span>
         <span style="font-size: 11px; color: #888; margin-left: 4px"
           >※ 列は横スクロールで確認できます</span
         >
@@ -1225,6 +1226,7 @@
 
       document.addEventListener("DOMContentLoaded", () => {
         fixCatCells();
+        applyRowFilters(); // 件数を実データから自動計算（表示ズレ防止）
 
         // 各行にクリックで選択ハイライト
         document.querySelectorAll("#tableBody tr").forEach((row) => {
