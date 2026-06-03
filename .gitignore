@@ -1,6 +1,13 @@
 # 社外秘の作業フォルダ（公開しない）
 /private/
 
+# Claude Code 作業用（公開しない）
+/.claude/
+
+# スクラッチ画像・元資料（公開しない）
+/images（レセコン画像など）/
+*.docx
+
 # OS/IDE系
 Thumbs.db
 .DS_Store

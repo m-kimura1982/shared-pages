@@ -58,6 +58,7 @@
     '複数名薬剤管理指導訪問料.html': { category: 'kaitei', title: '複数名薬剤管理指導訪問料' },
     '訪問薬剤管理医師同時指導料.html': { category: 'kaitei', title: '訪問薬剤管理医師同時指導料' },
     '選定療養_概要2026.html': { category: 'kaitei', title: '選定療養 概要' },
+    '選定療養_実務チェックリスト.html': { category: 'kaitei', title: '選定療養 算定チェックリスト' },
     '選定療養_計算方法2026.html': { category: 'kaitei', title: '選定療養 計算方法' },
     '疑義解釈_その1_2026.html': { category: 'kaitei', title: '疑義解釈 その1' },
     '疑義解釈_その2_2026.html': { category: 'kaitei', title: '疑義解釈 その2' },
