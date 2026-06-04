@@ -97,9 +97,6 @@
   "電子的調剤情報連携体制整備加算_2026改定.html": {
     "lastUpdated": "2026-04-19"
   },
-  "updates.html": {
-    "lastUpdated": "2026-06-02"
-  },
   "かかりつけ薬剤師_算定一覧2026.html": {
     "lastUpdated": "2026-04-01"
   },
@@ -137,7 +134,7 @@
     "lastUpdated": "2026-04-19"
   },
   "栄養保持を目的とした医薬品の保険給付の適正化.html": {
-    "lastUpdated": "2026-05-14"
+    "lastUpdated": "2026-06-04"
   },
   "knowledge.html": {
     "lastUpdated": "2026-06-04"
@@ -172,10 +169,13 @@
   "tools.html": {
     "lastUpdated": "2026-06-04"
   },
+  "index.html": {
+    "lastUpdated": "2026-06-04"
+  },
   "checklists.html": {
     "lastUpdated": "2026-06-04"
   },
-  "index.html": {
-    "lastUpdated": "2026-06-04"
+  "updates.html": {
+    "lastUpdated": "2026-06-02"
   }
 }

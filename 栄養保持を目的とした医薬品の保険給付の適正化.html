@@ -1,106 +1,114 @@
-﻿<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>栄養保持を目的とした医薬品の保険給付の適正化｜2026年調剤報酬改定</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
 :root {
-  --text-xs: 13px; --text-sm: 15px; --text-md: 16px;
-  --text-lg: 18px; --text-xl: 22px;
-  --pad-card: 22px; --gap-card: 16px;
-  --blue: #1e5fa8; --red: #cc0000; --ink: #222222;
-  --bg: #f3f4f6; --white: #ffffff;
-  --box-blue: #e4f0f8; --box-gray: #f2f2f2;
-  --border: #d1d5db; --border-dk: #9ca3af;
-  --radius: 10px; --radius-sm: 6px;
-  --bw: 0.5px; --bw-h: 1px; --bw-a: 3px; --bw-t: 4px;
+  --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+  --pad-card:22px; --gap-card:16px;
+  --blue:#1e5fa8; --red:#cc0000; --ink:#222222;
+  --bg:#f3f4f6; --white:#ffffff;
+  --box-blue:#eaf1fb; --box-gray:#f2f2f2;
+  --border:#d1d5db; --border-dk:#9ca3af;
+  --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px; --bw-t:4px;
+  --amber:#b45309; --amber-bg:#fdf0e3; --amber-bd:#e8c9a3;
+  --txt-2:#444444; --txt-3:#5e6470;
 }
 body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
 .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
-.page-title { border-left:var(--bw-t) solid var(--blue); padding:6px 0 6px 18px; }
-.page-title h1 { font-size:var(--text-xl); font-weight:900; }
-.page-title p { font-size:var(--text-sm); font-weight:500; margin-top:4px; }
+
+/* H1 */
+.page-title h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+.page-title p  { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+
 .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
-.card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--ink); padding-bottom:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+/* H2 */
+.card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:16px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+.card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+.card-title .badge { margin-left:auto; }
+/* H3 */
+.sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin-bottom:10px; }
+.sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+
 .badge { font-size:var(--text-sm); font-weight:700; padding:3px 12px; border-radius:4px; }
-.badge-red { background:#fde8e8; color:var(--red); }
-.badge-blue { background:var(--box-blue); color:var(--blue); }
-.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:var(--gap-card); }
-.box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:14px 18px; }
-.box-gray { background:var(--box-gray); border-radius:var(--radius-sm); padding:14px 18px; border:var(--bw) solid var(--border); }
-.em-red { color:var(--red); font-weight:900; }
-.em-blue { color:var(--blue); font-weight:900; }
-.change-badge { display:inline-flex; align-items:center; justify-content:center; color:var(--white); font-size:var(--text-xs); font-weight:900; padding:2px 10px; border-radius:3px; margin-right:8px; flex-shrink:0; }
-.change-badge.up { background:var(--blue); }
-.change-badge.strict { background:var(--red); }
-.change-badge.new-req { background:#b45309; }
-.section-title { font-weight:900; font-size:var(--text-md); margin-bottom:8px; }
-.sub-title { font-weight:900; font-size:var(--text-md); padding:6px 0 6px 12px; border-left:var(--bw-t) solid var(--blue); margin-bottom:10px; }
-table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
-th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
-td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:middle; }
-tr:last-child td { border-bottom:none; }
-.divider { border:none; border-top:var(--bw-h) solid var(--border); margin:12px 0; }
-.page-title-wrap { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap; padding:6px 0; }
-.page-title-left { border-left:var(--bw-t) solid var(--blue); padding:4px 0 4px 18px; flex:1; }
-.page-title-left h1 { font-size:var(--text-xl); font-weight:900; }
-.page-title-left p { font-size:var(--text-sm); font-weight:500; margin-top:4px; }
-.score-block { display:flex; align-items:center; gap:0; flex-shrink:0; border:var(--bw-h) solid var(--border-dk); border-radius:var(--radius-sm); overflow:hidden; background:var(--white); }
-.score-block .score-label { font-size:var(--text-xs); font-weight:700; padding:6px 14px; background:var(--box-gray); border-right:var(--bw-h) solid var(--border-dk); line-height:1.5; white-space:nowrap; }
-.score-block .score-num { font-size:28px; font-weight:900; padding:6px 18px; line-height:1.2; white-space:nowrap; }
-.score-block .score-num span { font-size:var(--text-md); font-weight:700; margin-left:2px; }
+.badge-blue  { background:var(--box-blue); color:var(--blue); }
+.badge-amber { background:var(--amber-bg); color:var(--amber); }
 
-/* 独自スタイル */
-.overview-text { font-size:var(--text-sm); line-height:1.9; margin-bottom:14px; }
-.before-after-wrap { display:grid; grid-template-columns:1fr 2fr; gap:0; margin-top:14px; border:var(--bw-h) solid var(--border-dk); border-radius:var(--radius-sm); overflow:hidden; }
-.ba-header { font-weight:900; font-size:var(--text-sm); padding:8px 14px; text-align:center; }
-.ba-header.before { background:var(--box-gray); color:var(--ink); border-right:var(--bw-h) solid var(--border-dk); border-bottom:var(--bw-h) solid var(--border-dk); }
-.ba-header.after { background:var(--box-blue); color:var(--ink); border-bottom:var(--bw-h) solid var(--border-dk); }
-.ba-before { background:var(--white); padding:14px; font-size:13px; line-height:1.7; border-right:var(--bw-h) solid var(--border-dk); vertical-align:top; }
-.ba-after { background:var(--white); padding:14px; font-size:13px; line-height:1.7; }
-.medicine-list { display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px 16px; margin-top:10px; }
+.box-blue  { background:var(--box-blue); border-radius:var(--radius-sm); padding:14px 18px; }
+.box-gray  { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:14px 18px; }
+.box-amber { background:var(--amber-bg); border:var(--bw-h) solid var(--amber-bd); border-radius:var(--radius-sm); padding:13px 16px; }
+.box-amber .ttl { font-weight:900; color:var(--amber); margin-bottom:5px; font-size:var(--text-sm); }
+
+.em-change { color:var(--blue); font-weight:900; }
+.em-amber  { color:var(--amber); font-weight:900; }
+.marker    { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+.lead-note { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:11px 15px; font-size:var(--text-sm); line-height:1.75; margin-bottom:14px; }
+
+/* 折りたたみ */
+.fold { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); }
+.fold > summary { list-style:none; cursor:pointer; padding:14px var(--pad-card); font-weight:700; font-size:var(--text-sm); color:var(--txt-2); display:flex; align-items:center; gap:8px; }
+.fold > summary::-webkit-details-marker { display:none; }
+.fold > summary::before { content:"▶"; font-size:10px; color:var(--txt-3); transition:transform .15s; }
+.fold[open] > summary::before { transform:rotate(90deg); }
+.fold .fold-body { padding:0 var(--pad-card) var(--pad-card); display:flex; flex-direction:column; gap:14px; }
+
+.bullet { display:flex; gap:6px; }
+.bullet > span:first-child { flex-shrink:0; color:#999; }
+
+.medicine-list { display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px 16px; }
 .medicine-list li { font-size:var(--text-sm); list-style:disc; margin-left:1.2em; }
-.flow-box { border-left:var(--bw-t) solid var(--blue); padding:12px 16px; margin-bottom:12px; background:var(--white); }
-.flow-box.alert { border-left-color:var(--red); }
-.flow-label { font-weight:900; font-size:var(--text-sm); margin-bottom:6px; }
-.flow-label.blue { color:var(--blue); }
-.flow-label.red { color:var(--red); }
 
-@media print {
-  body { background:white; padding:16px; font-size:12px; }
-  .page { gap:12px; }
-  .card { padding:14px; }
-  .medicine-list { grid-template-columns:1fr 1fr; }
-}
+/* 2パターン（処方箋記載 / 疑義照会）— 残薬ページ準拠の2色カード */
+.ptn-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.ptn { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; display:flex; flex-direction:column; }
+.ptn-head { padding:9px 14px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.ptn-head .nm { font-weight:900; font-size:var(--text-sm); }
+.ptn-head .tag { margin-left:auto; font-size:11px; font-weight:700; padding:2px 9px; border-radius:3px; white-space:nowrap; }
+.ptn-body { padding:12px 14px; font-size:var(--text-sm); flex:1; display:flex; flex-direction:column; gap:10px; }
+.ptn-row .k { font-size:12px; font-weight:900; color:var(--txt-3); margin-bottom:2px; }
+.ptn-row .v { padding-left:11px; border-left:2px solid #dde3ec; line-height:1.7; }
+.outcome { margin-top:auto; border-radius:var(--radius-sm); padding:9px 12px; font-weight:900; font-size:var(--text-sm); line-height:1.6; }
+.p1 .ptn-head{ background:#eaf1fb; } .p1 .nm{ color:var(--blue); } .p1 .tag{ background:#fff; color:var(--blue); border:1px solid #bcd3ee; } .p1 .outcome{ background:#eaf1fb; color:var(--blue); }
+.p2 .ptn-head{ background:var(--amber-bg); } .p2 .nm{ color:var(--amber); } .p2 .tag{ background:#fff; color:var(--amber); border:1px solid var(--amber-bd); } .p2 .outcome{ background:var(--amber-bg); color:var(--amber); }
+
+/* コード表 */
+.code-tbl { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+.code-tbl th { background:var(--box-gray); font-weight:900; text-align:left; padding:8px 12px; border-bottom:2px solid var(--border-dk); }
+.code-tbl td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
+.code-tbl tr:last-child td { border-bottom:none; }
+.code-tbl .disp { font-weight:700; }
+.table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.divider { border:none; border-top:var(--bw-h) solid var(--border); margin:18px 0; }
+.ref { font-size:var(--text-xs); color:var(--txt-3); line-height:1.7; }
 
 @media (max-width:640px) {
   body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
   :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
-  .before-after-wrap { grid-template-columns:1fr; }
-  .ba-before { border-right:none; border-bottom:var(--bw-h) solid var(--border-dk); }
-  .ba-header.before { border-right:none; border-bottom:var(--bw-h) solid var(--border-dk); }
+  .card { padding:14px; border-radius:8px; }
+  .card-title { font-size:15px; }
+  .box-blue,.box-gray,.box-amber { padding:10px 12px; }
   .medicine-list { grid-template-columns:1fr 1fr; }
-  .grid-2 { grid-template-columns:1fr; }
-  .page-title-wrap { flex-direction:column; }
-  .card { padding:14px; }
-  .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; }
-  .flow-box { padding:10px 12px; }
-  table { font-size:12px; }
-  th, td { padding:6px 8px; }
-  th { font-size:11.5px; }
-  .sub-title { font-size:13px; padding:4px 0 4px 10px; margin-bottom:8px; }
-  .box-gray, .box-blue { padding:10px 12px; }
+  .ptn-grid { grid-template-columns:1fr; }
+  .code-tbl { font-size:11.5px; min-width:320px; }
+}
+@media print {
+  .ptn-grid { grid-template-columns:1fr 1fr; }
+  @page { margin:11mm 10mm; size:A4; }
+  body { background:white; padding:0; font-size:12px; line-height:1.6; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  :root { --text-xs:10px; --text-sm:11px; --text-md:12px; --text-lg:13.5px; --text-xl:16px; --pad-card:11px; --gap-card:9px; }
+  .card { padding:11px 13px; }
+  .avoid-break { break-inside:avoid; }
+  a { color:inherit; text-decoration:none; }
 }
 </style>
 </head>
 <body>
     <script src="assets/site-header.js" defer></script>
 <div class="page">
-  <!-- TOPへ戻る（上部） -->
-  
 
   <!-- タイトル -->
   <div class="page-title">
@@ -109,23 +117,21 @@ tr:last-child td { border-bottom:none; }
   </div>
 
   <!-- 概要 -->
-  <div class="card">
-    <div class="card-title">
-      今回の改定ポイント
-      <span class="badge badge-red">新設要件</span>
-    </div>
+  <div class="card avoid-break">
+    <div class="card-title">今回の改定ポイント<span class="badge badge-amber">新設要件</span></div>
     <div style="display:flex; flex-direction:column; gap:8px; font-size:var(--text-sm);">
-      <div class="bullet"><span>・</span><span>一部の経腸栄養剤について、<strong>保険給付の対象となる患者を限定</strong>する見直しが行われた</span></div>
-      <div class="bullet"><span>・</span><span>対象薬が処方されていても、処方箋に所定の記載がなければ<span class="em-red">保険請求できない</span></span></div>
-      <div class="bullet"><span>・</span><span>記載がない場合は疑義照会が必要。確認できない場合はその薬剤は<span class="em-red">保険対象外</span>となる</span></div>
+      <div class="bullet"><span>・</span><span>一部の経腸栄養剤について、<span class="marker">保険給付の対象となる患者が限定</span>された。</span></div>
+      <div class="bullet"><span>・</span><span>対象薬を保険給付するには、患者が要件に該当することを<strong>「処方箋の記載」または「疑義照会」で確認</strong>する必要がある。</span></div>
+      <div class="bullet"><span>・</span><span>確認した場合は、どちらの確認方法でも、<span class="marker">レセプト摘要欄にコメントの入力が必須</span>（2026年改定で新設）。</span></div>
+      <div class="bullet"><span>・</span><span>要件に該当しない・確認できない場合、その薬剤は<span class="marker">保険対象外</span>となる。</span></div>
     </div>
   </div>
 
   <!-- 対象医薬品 -->
-  <div class="card">
+  <div class="card avoid-break">
     <div class="card-title">対象となる医薬品（2026年３月現在）</div>
     <p style="font-size:var(--text-sm); margin-bottom:12px;">以下の経腸栄養剤が対象となる。</p>
-    <div class="box-blue">
+    <div class="box-gray">
       <ul class="medicine-list">
         <li>イノラス配合経腸用液</li>
         <li>エネーボ配合経腸用液</li>
@@ -137,99 +143,68 @@ tr:last-child td { border-bottom:none; }
     </div>
   </div>
 
-  <!-- 処方箋確認フロー -->
-  <div class="card">
+  <!-- 処方箋受付時の確認と対応 -->
+  <div class="card avoid-break">
     <div class="card-title">処方箋受付時の確認と対応</div>
-
-    <!-- 記載あり -->
-    <div class="flow-box" style="margin-bottom:16px;">
-      <div class="flow-label" style="color:var(--ink);">① 処方箋に以下のいずれかの記載がある場合</div>
-      <table style="margin-top:10px;">
-        <thead>
-          <tr>
-            <th>処方箋備考欄に記載されている内容</th>
-            <th style="width:32%;">レセプト摘要欄への入力<br><span style="font-weight:700;font-size:11px;color:#555;">（2026年改定より新設）</span></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="font-weight:700; font-size:var(--text-md); padding:12px 14px;">①「手術後の患者である旨」</td>
-            <td rowspan="3" style="vertical-align:middle; text-align:center;">
-              <strong>「処方箋記載により確認」</strong>
-            </td>
-          </tr>
-          <tr>
-            <td style="font-weight:700; font-size:var(--text-md); padding:12px 14px;">②「経管により栄養補給を行っている旨」</td>
-          </tr>
-          <tr>
-            <td style="font-weight:700; font-size:var(--text-md); padding:12px 14px;">③「投与が必要と判断した理由」</td>
-          </tr>
-        </tbody>
-      </table>
-      <p style="font-size:var(--text-sm); margin-top:10px;">→ 上記の記載が確認できれば、保険給付の対象として請求できる。</p>
-      <p style="font-size:11.5px; color:#555; margin-top:6px; line-height:1.7;">※ 出典：別紙２「診療録等の記載上の注意事項」第５ 処方箋の記載上の注意事項 ８「備考」欄について(12)。処方箋の備考欄に「旨」または「理由」を記載することと規定されており、<strong>処方箋備考欄への日付の記載は不要</strong>。<br>※ 薬局のレセプト摘要欄には「処方箋記載により確認」または「疑義照会により確認」を入力するのみ（日付の入力は不要）。</p>
+    <div class="lead-note">
+      処方箋の記載の有無で対応が2パターンに分かれる。<strong>どちらの場合も、保険給付するなら<span class="marker">摘要欄コメントの入力が必須</span></strong>（確認方法で文言が変わるだけ）。
     </div>
 
-    <!-- 記載なし -->
-    <div class="flow-box alert" style="margin-bottom:16px;">
-      <div class="flow-label" style="color:var(--ink);">② 処方箋に記載がない場合</div>
-      <p style="font-size:var(--text-sm); margin-top:8px; line-height:1.9;">
-        処方医に疑義照会を行い、①の3区分のいずれかに該当することを確認する。確認できれば、レセプト摘要欄へ<strong>「疑義照会により確認」</strong>と入力して保険請求する。
-      </p>
+    <div class="ptn-grid">
+      <!-- パターン1：記載あり -->
+      <div class="ptn p1">
+        <div class="ptn-head"><span class="nm">パターン１　処方箋に記載がある</span><span class="tag">疑義照会不要</span></div>
+        <div class="ptn-body">
+          <div class="ptn-row"><div class="k">あてはまる場合</div><div class="v">処方箋の備考欄に、次のいずれかが記載されている。<br>① 手術後の患者である旨<br>② 経管により栄養補給を行っている旨<br>③ ①②以外で、医師が投与が必要と判断した理由<br><span style="color:var(--txt-3); font-size:var(--text-xs);">（③は食事だけでは栄養摂取が困難な場合等。理由そのものが記載される）</span></div></div>
+          <div class="ptn-row"><div class="k">レセプト摘要欄に入力</div><div class="v"><strong style="color:var(--blue); font-size:var(--text-md);">「処方箋記載により確認」</strong></div></div>
+          <div class="outcome">そのまま保険給付できる</div>
+        </div>
+      </div>
+      <!-- パターン2：記載なし -->
+      <div class="ptn p2">
+        <div class="ptn-head"><span class="nm">パターン２　処方箋に記載がない</span><span class="tag">疑義照会が必要</span></div>
+        <div class="ptn-body">
+          <div class="ptn-row"><div class="k">あてはまる場合</div><div class="v">①〜③の記載がない</div></div>
+          <div class="ptn-row"><div class="k">対応</div><div class="v">処方医に<strong>疑義照会</strong>し、①〜③のどれに当たるかを確認する。<strong>③の場合は投与が必要な理由を聞き取る</strong>。</div></div>
+          <div class="ptn-row"><div class="k">レセプト摘要欄に入力</div><div class="v"><strong style="color:var(--amber); font-size:var(--text-md);">「疑義照会により確認」</strong></div></div>
+          <div class="outcome">①〜③のいずれかに該当すれば保険給付できる<br><span style="font-weight:700; color:var(--ink);">× いずれにも該当しなければ保険対象外</span></div>
+        </div>
+      </div>
     </div>
 
-    <!-- 該当しない場合 -->
-    <div class="box-gray">
-      <strong>疑義照会を行っても上記いずれにも該当しないと確認された場合、その医薬品は保険対象外となる。</strong>
-    </div>
+    <p class="ref" style="margin-top:14px;">
+      ※ 処方箋の備考欄に①〜③のいずれかが記載される（出典：別紙２第５「処方箋の記載上の注意事項」８「備考」欄について(12)）。
+    </p>
   </div>
 
-  <!-- 新設条文 -->
-  <!-- レセコード＋参考原文 -->
+  <!-- レセプト摘要欄記載事項 -->
   <div class="card">
-    <div class="card-title">レセプト摘要欄記載事項</div>
-    <div style="font-size:var(--text-xs); color:#666; margin-bottom:14px;">
+    <div class="card-title">レセプト摘要欄記載事項（調剤）</div>
+    <p class="ref" style="margin-bottom:14px;">
       ※ <a href="別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html" style="color:var(--blue); text-decoration:underline;">別表Ⅰ</a>準拠（項目41）。処方箋記載または疑義照会のいずれかで投与の必要性を確認した旨を記載する。
+    </p>
+
+    <p style="font-size:var(--text-sm); line-height:1.85;">栄養保持を目的とした医薬品が処方されている処方箋に基づき調剤を行った場合は、<strong>手術後の患者に投与した旨</strong>又は<strong>経管により栄養補給を行っている患者に投与した旨</strong>、処方医が投与が必要と判断した理由について<strong>処方箋の記載により確認した</strong>旨又は<strong>疑義照会により確認した</strong>旨を記載すること。</p>
+  </div>
+
+  <!-- 参考：医科側（折りたたみ） -->
+  <details class="fold">
+    <summary>＜参考＞医療機関（医科）側の記載事項（クリックで開く）</summary>
+    <div class="fold-body">
+    <p class="ref">下記は<strong>医療機関（医科）側</strong>のレセプト摘要欄に入力されるコードであり、<strong>薬局のレセプト記載には直接関係しない</strong>。医療機関から処方箋備考欄の記載や本制度について問い合わせを受けた際の参考として掲載。</p>
+
+    <div class="box-gray" style="font-size:12.5px; line-height:1.85;">
+      <p style="font-weight:900; margin-bottom:6px;">別表第一　医科診療報酬点数表【第５部投薬】通則（抜粋）</p>
+      <p><strong>６（新設）</strong>　入院中の患者以外の患者に対して、栄養保持を目的とした医薬品を投薬した場合は、区分番号Ｆ０００に掲げる調剤料、区分番号Ｆ１００に掲げる処方料、区分番号Ｆ２００に掲げる薬剤、区分番号Ｆ４００に掲げる処方箋料及び区分番号Ｆ５００に掲げる調剤技術基本料は算定しない。ただし、当該患者が、<strong>手術後の患者</strong>である場合又は<strong>経管により栄養補給を行っている患者</strong>である場合はその旨を、<strong>必要な栄養を食事により摂取することが困難な患者</strong>である場合その他これに準ずる場合であって、医師が当該栄養保持を目的とした医薬品の投与が必要であると判断した患者に投薬する場合はその理由を処方箋及び診療報酬明細書に記載することで算定可能とする。</p>
     </div>
 
-    <div class="sub-title">調剤レセプト（調剤報酬明細書）</div>
-    <p style="font-size:var(--text-sm); margin-bottom:10px; line-height:1.9;">栄養保持を目的とした医薬品が処方されている処方箋に基づき調剤を行った場合は、<strong>手術後の患者に栄養保持を目的とした医薬品を投与した旨</strong>又は<strong>経管により栄養補給を行っている患者に栄養保持を目的とした医薬品を投与した旨</strong>、処方医が当該栄養保持を目的とした医薬品の投与が必要であると判断した理由について<strong>処方箋の記載により確認した患者はその旨</strong>又は<strong>疑義照会により確認した旨</strong>を記載すること。</p>
-    <table style="margin-bottom:22px;">
-      <thead>
-        <tr>
-          <th style="width:22%;">レセ電コード</th>
-          <th>左記コードによるレセプト表示文言</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>820100377</td>
-          <td>処方箋記載により確認</td>
-        </tr>
-        <tr>
-          <td>820100378</td>
-          <td>疑義照会により確認</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <hr class="divider">
-
-    <div style="font-size:12px; line-height:1.8; opacity:0.85;">
-      <div style="font-weight:900; margin-bottom:6px; color:#555;">＜参考＞ 医療機関側のレセプト摘要欄記載事項<span class="badge badge-blue" style="font-size:11px; margin-left:8px;">医科・診療報酬</span></div>
-      <p style="font-size:11.5px; color:#666; margin-bottom:10px; line-height:1.7;">下記は<strong>医療機関（医科）側</strong>のレセプト摘要欄に入力されるコードであり、<strong>薬局のレセプト記載には直接関係しない</strong>。医療機関から処方箋備考欄の記載や本制度について問い合わせを受けた際の参考として掲載。</p>
-
-      <div class="box-gray" style="font-size:12px; line-height:1.8; margin-bottom:12px;">
-        <p style="margin-bottom:6px;"><strong>別表第一　医科診療報酬点数表【第５部投薬】通則　（抜粋）</strong></p>
-        <p><strong>６（新設）</strong>　入院中の患者以外の患者に対して、栄養保持を目的とした医薬品を投薬した場合は、区分番号Ｆ０００に掲げる調剤料、区分番号Ｆ１００に掲げる処方料、区分番号Ｆ２００に掲げる薬剤、区分番号Ｆ４００に掲げる処方箋料及び区分番号Ｆ５００に掲げる調剤技術基本料は算定しない。ただし、当該患者が、<strong>手術後の患者</strong>である場合又は<strong>経管により栄養補給を行っている患者</strong>である場合はその旨を、<strong>必要な栄養を食事により摂取することが困難な患者</strong>である場合その他これに準ずる場合であって、医師が当該栄養保持を目的とした医薬品の投与が必要であると判断した患者に投薬する場合はその理由を処方箋及び診療報酬明細書に記載することで算定可能とする。</p>
-      </div>
-
-      <table style="font-size:12px;">
+    <div class="table-wrap">
+      <table class="code-tbl" style="font-size:12.5px;">
         <thead>
           <tr>
-            <th style="width:22%;">レセ電コード</th>
-            <th style="width:40%;">記載事項</th>
-            <th>左記コードによるレセプト表示文言</th>
+            <th style="width:20%;">レセ電コード</th>
+            <th style="width:38%;">記載事項</th>
+            <th>レセプト表示文言</th>
           </tr>
         </thead>
         <tbody>
@@ -251,13 +226,11 @@ tr:last-child td { border-bottom:none; }
         </tbody>
       </table>
     </div>
-  </div>
+    </div>
+  </details>
 
 </div>
 
 <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
-<!-- TOPに戻るリンク -->
-
 </body>
 </html>
