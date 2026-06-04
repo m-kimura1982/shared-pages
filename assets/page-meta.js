@@ -27,6 +27,10 @@ window.__pageMeta = {
   "調剤報酬点数早見表2026.html": {
     "lastUpdated": "2026-03-31"
   },
+  "選定療養_実務チェックリスト.html": {
+    "lastUpdated": "2026-06-04",
+    "newUntil": "2026-06-11"
+  },
   "gigi-search.html": {
     "lastUpdated": "2026-04-15"
   },
@@ -38,6 +42,9 @@ window.__pageMeta = {
   },
   "疑義解釈_その5_2026.html": {
     "lastUpdated": "2026-05-09"
+  },
+  "在宅薬学総合体制加算2026.html": {
+    "lastUpdated": "2026-06-03"
   },
   "服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html": {
     "lastUpdated": "2026-06-02"
@@ -72,17 +79,11 @@ window.__pageMeta = {
   "疑義解釈_その1_2026.html": {
     "lastUpdated": "2026-04-01"
   },
-  "tools.html": {
-    "lastUpdated": "2026-05-11"
+  "事務スタッフ向け.html": {
+    "lastUpdated": "2026-06-04"
   },
   "服用薬剤調整支援料２_資格取得ステップ.html": {
     "lastUpdated": "2026-03-23"
-  },
-  "index.html": {
-    "lastUpdated": "2026-06-02"
-  },
-  "事務スタッフ向け.html": {
-    "lastUpdated": "2026-05-27"
   },
   "調剤管理料_2026改定.html": {
     "lastUpdated": "2026-05-29"
@@ -126,20 +127,20 @@ window.__pageMeta = {
   "服用薬剤調整支援料２_2026改定.html": {
     "lastUpdated": "2026-05-06"
   },
-  "knowledge.html": {
-    "lastUpdated": "2026-04-30"
-  },
   "服薬管理指導料3・4_施設訪問・オンライン.html": {
     "lastUpdated": "2026-05-06"
   },
-  "在宅薬学総合体制加算2026.html": {
-    "lastUpdated": "2026-06-03"
+  "在宅薬学総合体制加算2イ_特例摘要欄ガイド.html": {
+    "lastUpdated": "2026-06-04"
   },
   "基礎的医薬品追加リストR8_4.html": {
     "lastUpdated": "2026-04-19"
   },
   "栄養保持を目的とした医薬品の保険給付の適正化.html": {
     "lastUpdated": "2026-05-14"
+  },
+  "knowledge.html": {
+    "lastUpdated": "2026-06-04"
   },
   "_notice_followup_homon_heisanntei.html": {
     "lastUpdated": "2026-05-11"
@@ -149,9 +150,6 @@ window.__pageMeta = {
   },
   "事務スタッフ向け_2026調剤報酬改定ポイント整理.html": {
     "lastUpdated": "2026-06-01"
-  },
-  "在宅薬学総合体制加算2イ_特例摘要欄ガイド.html": {
-    "lastUpdated": "2026-06-03"
   },
   "疑義解釈_その7_2026.html": {
     "lastUpdated": "2026-06-02"
@@ -170,5 +168,14 @@ window.__pageMeta = {
   },
   "地域支援医薬品供給対応体制加算_届出判定ツール.html": {
     "lastUpdated": "2026-05-31"
+  },
+  "tools.html": {
+    "lastUpdated": "2026-06-04"
+  },
+  "checklists.html": {
+    "lastUpdated": "2026-06-04"
+  },
+  "index.html": {
+    "lastUpdated": "2026-06-04"
   }
 };
