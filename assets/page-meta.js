@@ -176,6 +176,6 @@ window.__pageMeta = {
     "lastUpdated": "2026-06-04"
   },
   "updates.html": {
-    "lastUpdated": "2026-06-02"
+    "lastUpdated": "2026-06-04"
   }
 };
