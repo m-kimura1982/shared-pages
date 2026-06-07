@@ -35,6 +35,10 @@ window.__pageMeta = {
     "lastUpdated": "2026-06-06",
     "newUntil": "2026-06-13"
   },
+  "薬学的有害事象等防止加算_実務チェックリスト.html": {
+    "lastUpdated": "2026-06-08",
+    "newUntil": "2026-06-15"
+  },
   "gigi-search.html": {
     "lastUpdated": "2026-04-15"
   },

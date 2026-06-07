@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>薬学的有害事象等防止加算 算定チェックリスト｜2026年調剤報酬改定</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+    :root {
+      --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+      --pad-card:22px; --gap-card:16px;
+      --blue:#1e5fa8; --ink:#222222;
+      --bg:#f3f4f6; --white:#ffffff;
+      --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+      --border:#d1d5db; --border-dk:#9ca3af;
+      --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px;
+      --txt-2:#444444; --txt-3:#5e6470;
+      --warn-bg:#fffbe6; --warn-bd:#e0b000;
+    }
+    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+    .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+    .page-title-wrap { padding:6px 0; }
+    .page-title-wrap h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+    .page-title-wrap p  { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+    .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+    .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+    .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+    .premise { background:var(--box-gray); border-radius:var(--radius-sm); padding:12px 16px; margin-bottom:14px; }
+    .premise .k { font-size:var(--text-xs); font-weight:700; color:var(--txt-2); margin-bottom:4px; }
+    .premise .t { font-size:var(--text-sm); line-height:1.7; }
+    .em-change { color:var(--blue); font-weight:900; }
+    .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+    .flow { display:flex; flex-direction:column; gap:0; }
+    .check { display:flex; gap:12px; align-items:flex-start; padding:13px 15px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); background:var(--white); cursor:pointer; }
+    .check:hover { background:#fafbfc; }
+    .check > input[type=checkbox] { appearance:none; -webkit-appearance:none; width:22px; height:22px; border:2px solid var(--border-dk); border-radius:5px; flex-shrink:0; margin-top:1px; cursor:pointer; position:relative; }
+    .check > input[type=checkbox]:checked { background:var(--blue); border-color:var(--blue); }
+    .check > input[type=checkbox]:checked::after { content:""; position:absolute; left:6px; top:2px; width:6px; height:11px; border:solid #fff; border-width:0 2.5px 2.5px 0; transform:rotate(45deg); }
+    .check-body { flex:1; }
+    .check-main { display:block; font-size:var(--text-md); font-weight:700; line-height:1.7; }
+    .check-main .n { display:inline-flex; align-items:center; justify-content:center; width:21px; height:21px; border-radius:50%; background:var(--blue); color:#fff; font-size:13px; font-weight:900; margin-right:8px; vertical-align:middle; }
+    .check-note { display:block; font-size:var(--text-xs); color:var(--txt-2); margin-top:6px; line-height:1.65; }
+    .check:has(> input:checked) { background:#f0f6fc; border-color:#bcd6ec; }
+    .check:has(> input:checked) .check-main { color:var(--txt-3); }
+    .arrow { display:flex; align-items:center; gap:7px; padding:6px 0 6px 16px; font-size:var(--text-xs); font-weight:800; color:var(--blue); }
+    .arrow::before { content:"↓"; font-weight:900; font-size:15px; line-height:1; }
+    .guard { display:block; margin-top:8px; padding:9px 12px; background:var(--warn-bg); border-left:var(--bw-a) solid var(--warn-bd); border-radius:4px; font-size:var(--text-xs); line-height:1.6; }
+    .guard b { font-weight:900; }
+    .pick { display:block; margin-top:9px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; }
+    .pick .row { display:flex; gap:10px; padding:8px 12px; font-size:var(--text-xs); line-height:1.55; border-top:var(--bw-h) solid var(--border); }
+    .pick .row:first-child { border-top:none; }
+    .pick .cond { flex:1; }
+    .pick .out { font-weight:900; color:var(--blue); white-space:nowrap; align-self:center; }
+    .subchecks { display:flex; flex-direction:column; gap:7px; margin-top:9px; }
+    .subchecks .sc { font-size:var(--text-sm); line-height:1.6; padding-left:21px; text-indent:-21px; }
+    .subchecks .sc::before { content:"\2610"; color:var(--border-dk); font-weight:900; font-size:15px; margin-right:6px; }
+    .rei { display:block; background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:11px 13px; margin-top:9px; font-size:var(--text-sm); line-height:1.8; }
+    .rei .ttl { display:block; font-weight:900; color:var(--blue); font-size:var(--text-xs); margin-bottom:5px; }
+    .rei p { padding-left:14px; text-indent:-14px; }
+    .rei p + p { margin-top:5px; }
+    .rei .dot { color:var(--txt-3); font-weight:900; }
+    .link-inline { color:var(--blue); font-weight:700; text-decoration:none; border-bottom:1px solid var(--box-blue); }
+    .page-foot { font-size:var(--text-xs); color:var(--txt-3); text-align:right; padding-top:2px; }
+    @media (max-width:640px) {
+      body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+      :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+      .card { padding:14px; border-radius:8px; }
+      .check { padding:11px 12px; }
+      .pick .row { flex-direction:column; gap:3px; }
+      .pick .out { align-self:flex-start; }
+    }
+    @media print {
+      @page { size:A4 portrait; margin:7mm; }
+      body { background:#fff; padding:0; font-size:10.5px; line-height:1.45; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .page { gap:7px; max-width:none; }
+      .card { border:0.5px solid #ccc; border-radius:6px; padding:9px 11px; break-inside:avoid; }
+      .card-title { font-size:13px; margin-bottom:7px; padding-bottom:5px; }
+      .premise { padding:7px 11px; margin-bottom:8px; }
+      .check { padding:7px 9px; }
+      .check-main { font-size:10.5px; line-height:1.4; }
+      .check-note, .guard, .arrow, .pick .row, .subchecks .sc { font-size:9.5px; }
+      .check-note { margin-top:3px; line-height:1.35; }
+      .guard { padding:6px 9px; margin-top:5px; }
+      .arrow { padding:3px 0 3px 14px; }
+      .rei { padding:7px 9px; margin-top:5px; font-size:9.5px; line-height:1.4; }
+      .page-foot { display:none; }
+      a { color:inherit; text-decoration:none; }
+    }
+  </style>
+</head>
+<body>
+  <script src="assets/site-header.js" defer></script>
+<div class="page">
+
+  <div class="page-title-wrap">
+    <h1>薬学的有害事象等防止加算 算定チェックリスト</h1>
+    <p>重複投薬・相互作用・薬学的事項の照会による処方変更｜2026年6月〜（調剤管理料の加算・30／50点）</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">算定の流れ<span class="qual">処方箋受付1回につき1回</span></div>
+
+    <div class="premise">
+      <div class="k">この加算は</div>
+      <div class="t">重複投薬・相互作用・その他薬学的観点で気づき、<strong>疑義照会（又は交付前の事前提案＝区分イ）により処方が変更された</strong>場合に算定。<strong>残薬だけ</strong>の照会・変更は対象外（→調剤時残薬調整加算）。</div>
+    </div>
+
+    <div class="flow">
+
+      <!-- 1 対象事項 -->
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main"><span class="n">1</span>照会の中身は<strong class="marker">対象の薬学的事項</strong>か <span style="font-weight:700; font-size:var(--text-xs); color:var(--txt-3);">＝下の3つのどれか</span></span>
+          <span class="subchecks">
+            <span class="sc"><strong>① 重複投薬</strong>　併用薬との重複（薬理作用が類似する場合も含む）</span>
+            <span class="sc"><strong>② 相互作用</strong>　併用薬・飲食物等との相互作用</span>
+            <span class="sc"><strong>③ その他 薬学的観点</strong>　<span style="color:var(--blue); font-weight:700;">見落とし注意</span>（例は下記）</span>
+          </span>
+          <span class="rei">
+            <span class="ttl">③「その他 薬学的観点」の算定事例</span>
+            <p><span class="dot">・</span><strong>腎・肝機能低下</strong>を考慮した用法用量調整の提案</p>
+            <p><span class="dot">・</span><strong>嚥下困難・散剤が苦手</strong>な患者への剤形変更（錠剤・散剤・シロップ等）の提案</p>
+            <p><span class="dot">・</span><strong>禁忌・慎重投与</strong>（緑内障 × 抗コリン薬、前立腺肥大 × 排尿障害を来す薬 等）の回避・変更の提案</p>
+            <p><span class="dot">・</span><strong>副作用・アレルギー歴</strong>のある薬の再処方に対する減量・削除・他剤変更の提案</p>
+            <p><span class="dot">・</span><strong>ライフスタイル</strong>（運転業務 × 眠気の出やすい薬 → 眠気の少ない薬へ）を踏まえた変更提案</p>
+            <p><span class="dot">・</span><strong>体質</strong>（胃腸障害が出やすい 等）に配慮した胃粘膜保護薬・整腸剤の追加提案</p>
+          </span>
+          <span class="guard"><b>残薬調整のみ</b>に係る照会・変更は本加算では不可（→<b>調剤時残薬調整加算</b>で算定）。ただし残薬調整の照会と、重複・相互作用等の照会を<b>両方</b>行い、それぞれ処方が変更されれば、<b>両加算を併算定できる</b>（2026年改定で残薬調整が別加算化されたため）。</span>
+        </span>
+      </label>
+      <div class="arrow">照会して処方が変わったか</div>
+
+      <!-- 2 照会・変更 -->
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main"><span class="n">2</span>疑義照会して<strong class="marker">処方が変更された</strong>か</span>
+          <span class="check-note">交付前の事前提案で変わった＝区分イ／受付後の照会で変わった＝ロ・ハ・ニ。<strong>処方が変更されなければ算定不可</strong>。</span>
+          <span class="guard"><b>簡素化プロトコルの事後報告“のみ”は不可</b>＝疑義照会が必須。</span>
+        </span>
+      </label>
+      <div class="arrow">記録する</div>
+
+      <!-- 3 薬歴 -->
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main"><span class="n">3</span>薬歴に<strong class="marker">記録</strong>したか</span>
+          <span class="check-note">処方医へ連絡・確認した内容の<strong>要点</strong>と、<strong>変更内容</strong>を記載。重複等が生じた理由を分析し、必要に応じて処方医に情報提供。</span>
+        </span>
+      </label>
+      <div class="arrow">区分・点数を確定</div>
+
+      <!-- 4 区分 -->
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main"><span class="n">4</span>区分と点数を確定</span>
+          <span class="pick">
+            <span class="row"><span class="cond">在宅※ ＋ <strong>処方箋交付前</strong>の事前提案</span><span class="out">イ 50点</span></span>
+            <span class="row"><span class="cond">在宅※ ＋ 照会で処方変更</span><span class="out">ロ 50点</span></span>
+            <span class="row"><span class="cond">かかりつけ※ ＋ 照会で処方変更</span><span class="out">ハ 50点</span></span>
+            <span class="row"><span class="cond">上記以外 ＋ 照会で処方変更</span><span class="out">ニ 30点</span></span>
+          </span>
+          <span class="check-note">※在宅＝在宅患者訪問薬剤管理指導料等の算定患者／かかりつけ＝服薬管理指導料 1のイ・2のイを算定する患者。複数の処方を変更しても受付1回につき1回。</span>
+          <span class="rei">
+            <span class="ttl">レセプト摘要欄</span>
+            <p><span class="dot">・</span><strong>イ</strong>：相談年月日＋変更内容（同種同効薬への変更／剤形／用量／用法／その他）</p>
+            <p><span class="dot">・</span><strong>ロ〜ニ</strong>：連絡確認の要点（重複投薬／相互作用／アレルギー・副作用歴／年齢・体重／肝・腎機能／授乳・妊婦／その他薬学的観点）</p>
+          </span>
+        </span>
+      </label>
+
+    </div>
+  </div>
+
+  <div class="page-foot">詳しい解説は <a href="薬学的有害事象等防止加算.html" class="link-inline">薬学的有害事象等防止加算（解説ページ）</a> ／ 残薬のみの照会は <a href="調剤時残薬調整加算.html" class="link-inline">調剤時残薬調整加算</a> ／ <a href="調剤管理料_2026改定.html" class="link-inline">調剤管理料</a> を参照。</div>
+
+</div>
+
+<script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
