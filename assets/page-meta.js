@@ -31,6 +31,10 @@ window.__pageMeta = {
     "lastUpdated": "2026-06-04",
     "newUntil": "2026-06-11"
   },
+  "調剤時残薬調整加算_実務チェックリスト.html": {
+    "lastUpdated": "2026-06-06",
+    "newUntil": "2026-06-13"
+  },
   "gigi-search.html": {
     "lastUpdated": "2026-04-15"
   },
