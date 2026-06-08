@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
@@ -17,7 +17,6 @@
       --pad-card: 22px;
       --gap-card: 16px;
       --blue:     #1e5fa8;
-      --red:      #cc0000;
       --ink:      #222222;
       --bg:       #f3f4f6;
       --white:    #ffffff;
@@ -25,6 +24,8 @@
       --box-gray: #f2f2f2;
       --border:   #d1d5db;
       --border-dk:#9ca3af;
+      --txt-2:    #444444;
+      --txt-3:    #5e6470;
       --radius:   10px;
       --radius-sm:6px;
       --bw:       0.5px;
@@ -44,21 +45,26 @@
 
     .page { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--gap-card); }
 
-    .page-title { border-left: var(--bw-t) solid var(--blue); padding: 6px 0 6px 18px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
-    .page-title h1 { font-size: var(--text-xl); font-weight: 900; }
-    .page-title p  { font-size: var(--text-sm); font-weight: 500; margin-top: 4px; }
+    /* H1：装飾なし・大きめ太字（縦棒は付けない） */
+    .page-title { padding: 6px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .page-title h1 { font-size: var(--text-xl); font-weight: 900; letter-spacing: -0.01em; }
+    .page-title p  { font-size: var(--text-sm); font-weight: 500; color: var(--txt-2); margin-top: 4px; }
 
     .card { background: var(--white); border: var(--bw) solid var(--border); border-radius: var(--radius); padding: var(--pad-card); }
+
+    /* H2：短い縦棒＋下線 */
     .card-title {
       font-size: var(--text-lg); font-weight: 900;
-      border-bottom: var(--bw-h) solid var(--ink);
+      border-bottom: var(--bw-h) solid var(--border-dk);
       padding-bottom: 8px; margin-bottom: 16px;
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+      display: flex; align-items: center; flex-wrap: wrap; gap: 11px;
     }
+    .card-title::before { content: ""; width: 4px; height: 1.05em; border-radius: 2px; background: var(--blue); flex-shrink: 0; }
+    .card-title .badge { margin-left: auto; }
 
     .badge { font-size: var(--text-sm); font-weight: 700; padding: 3px 12px; border-radius: 4px; }
-    .badge-red  { background: #fde8e8; color: var(--red); }
     .badge-blue { background: var(--box-blue); color: var(--blue); }
+    .badge-gray { background: var(--box-gray); color: var(--txt-2); }
 
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-card); }
 
@@ -66,18 +72,24 @@
     .box-gray { background: var(--box-gray); border-radius: var(--radius-sm); padding: 14px 18px; border: var(--bw) solid var(--border); }
     .lead { border-left: var(--bw-t) solid var(--blue); background:#eef4fb; padding:12px 16px; border-radius:0 var(--radius-sm) var(--radius-sm) 0; font-size:var(--text-sm); line-height:1.75; }
 
-    .em-red  { color: var(--red);  font-weight: 900; }
-    .em-blue { color: var(--blue); font-weight: 900; }
+    /* H3：小さな青い四角 */
+    .h3 { font-weight: 900; margin-bottom: 4px; display: flex; align-items: baseline; gap: 8px; }
+    .h3::before { content: ""; width: 9px; height: 9px; border-radius: 2px; background: var(--blue); flex-shrink: 0; transform: translateY(1px); }
+
+    /* 色：青＝変化/構造、黄＝条件（赤・アンバーは使わない） */
+    .em-blue   { color: var(--blue); font-weight: 900; }
+    .em-change { color: var(--blue); font-weight: 900; }
+    .marker    { background: linear-gradient(transparent 62%, #fff59d 62%); font-weight: 700; }
+
+    /* NGリスト */
+    .ng-list { display: flex; flex-direction: column; gap: 6px; }
+    .ng-item { display: flex; align-items: flex-start; gap: 10px; font-size: var(--text-sm); padding: 9px 12px; background: var(--box-gray); border-radius: var(--radius-sm); border: var(--bw) solid var(--border); }
+    .ng-mark { color: var(--txt-2); font-weight: 900; flex-shrink: 0; line-height: 1.5; }
 
     .pts-badge { display: flex; align-items: center; background: var(--white); border: var(--bw-h) solid var(--border-dk); border-radius: var(--radius-sm); overflow: hidden; flex-shrink: 0; }
     .pts-label { background: var(--box-gray); padding: 8px 14px; font-size: var(--text-sm); font-weight: 700; border-right: var(--bw-h) solid var(--border-dk); }
     .pts-num   { padding: 8px 18px; font-size: 32px; font-weight: 900; color: var(--ink); line-height: 1; }
     .pts-unit  { font-size: var(--text-sm); font-weight: 700; }
-
-    /* NGリスト */
-    .ng-list { display: flex; flex-direction: column; gap: 6px; }
-    .ng-item { display: flex; align-items: flex-start; gap: 10px; font-size: var(--text-sm); padding: 9px 12px; background: var(--box-gray); border-radius: var(--radius-sm); border: var(--bw) solid var(--border); }
-    .ng-mark { color: #555; font-weight: 900; flex-shrink: 0; line-height: 1.5; }
 
     /* Q&A（残薬ページ準拠） */
     .qa-block { border: var(--bw-h) solid var(--border); border-radius: var(--radius-sm); overflow: hidden; margin-bottom: 10px; }
@@ -96,10 +108,10 @@
     --pad-card:14px; --gap-card:11px;
   }
   .card { padding:14px; border-radius:8px; }
-  .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; flex-direction:column; align-items:flex-start; gap:6px; }
+  .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; }
   .box-blue,.box-gray { padding:10px 12px; }
   .badge { font-size:12px; padding:3px 10px; }
-  .page-title { padding:4px 0 4px 14px; }
+  .page-title { padding:4px 0; }
   .page-title h1 { font-size:17px; line-height:1.45; }
   .page-title p { font-size:12.5px; }
   .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
@@ -119,9 +131,9 @@
         --radius: 8px; --radius-sm: 5px;
       }
       .card { padding: 12px 14px; }
-      .card-title { flex-direction:row; align-items:center; padding-bottom: 6px; margin-bottom: 10px; }
+      .card-title { padding-bottom: 6px; margin-bottom: 10px; }
       .grid-2 { grid-template-columns:1fr 1fr; gap: 10px; }
-      .page-title { padding: 5px 0 5px 14px; }
+      .page-title { padding: 5px 0; }
       .page-title h1 { font-size: 17px; }
       .page-title p  { font-size: 12px; margin-top: 3px; }
       .box-blue, .box-gray { padding: 9px 12px; }
@@ -135,8 +147,6 @@
 <body>
     <script src="assets/site-header.js" defer></script>
 <div class="page">
-  <!-- TOPへ戻る（上部） -->
-  
 
   <!-- タイトル -->
   <div class="page-title">
@@ -152,7 +162,7 @@
 
   <!-- 加算の位置づけ -->
   <div class="card avoid-break">
-    <div class="card-title">加算の位置づけ<span class="badge badge-red">新設（2026年6月〜）</span></div>
+    <div class="card-title">加算の位置づけ<span class="badge badge-blue">新設（2026年6月〜）</span></div>
     <div class="lead" style="margin-bottom:12px;">
       かかりつけ患者に対し、<strong>前回調剤後〜次回来局前</strong>の間に<strong>電話等で服薬状況・残薬状況を継続的に確認</strong>し、必要な指導を行ったことを評価する加算。
     </div>
@@ -168,7 +178,7 @@
       </div>
       <div style="display:flex; gap:10px;">
         <span style="flex-shrink:0; font-weight:900; color:var(--blue);">③</span>
-        <span><strong>双方向性</strong>が必須。一斉送信メールやアプリ定型チェックのみでは算定不可</span>
+        <span><span class="marker">双方向性</span>が必須。一斉送信メールやアプリ定型チェックのみでは算定不可</span>
       </div>
     </div>
   </div>
@@ -181,14 +191,14 @@
         <span style="font-weight:900;">実施のきっかけ：</span>患者・家族等の求め、または<strong>かかりつけ薬剤師が必要と認めた場合</strong>
       </div>
       <div class="box-blue">
-        <span style="font-weight:900;">対象患者：</span>以下の<span class="em-red">両方</span>を満たす患者
+        <span style="font-weight:900;">対象患者：</span>以下の<span class="marker">両方</span>を満たす患者
       </div>
-      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
-        <div style="font-weight:900; margin-bottom:4px;">条件① かかりつけを算定していること</div>
-        <div style="font-size:var(--text-sm);"><strong>フォローアップのきっかけとなった調剤時に</strong>服薬管理指導料「１のイ」または「２のイ」を算定していること</div>
+      <div>
+        <div class="h3">条件① かかりつけを算定していること</div>
+        <div style="font-size:var(--text-sm); padding-left:17px;"><strong>フォローアップのきっかけとなった調剤時に</strong>服薬管理指導料「１のイ」または「２のイ」を算定していること</div>
       </div>
-      <div style="border-left:var(--bw-t) solid var(--blue); padding-left:14px;">
-        <div style="font-weight:900; margin-bottom:6px;">条件② 直近6月以内に以下のいずれかを算定していること</div>
+      <div>
+        <div class="h3">条件② 直近6月以内に以下のいずれかを算定していること</div>
         <div class="box-gray" style="font-size:var(--text-sm);">
           <div style="display:flex; flex-direction:column; gap:4px;">
             <div>・ 外来服薬支援料１</div>
@@ -236,7 +246,7 @@
       </div>
     </div>
 
-    <div style="font-size:var(--text-xs); color:#555;">
+    <div style="font-size:var(--text-xs); color:var(--txt-2);">
       ※「起点となる調剤日」「対象処方箋」とは、<strong>フォローアップのきっかけとなった医療機関の処方箋</strong>に係る日／処方箋を指す（詳細は下記「算定対象となる処方箋」を参照）。<br>
       ※ 前回調剤の直後ではなく、<strong>受診間隔（調剤間隔）等を考慮して薬学的観点から適切と考えられる時期</strong>に実施する。
     </div>
@@ -251,7 +261,7 @@
     <div style="font-size:var(--text-sm); padding:10px 14px; background:var(--box-gray); border-radius:var(--radius-sm); border-left:var(--bw-a) solid var(--blue);">
       <div style="font-weight:900; margin-bottom:4px;">間に別の医療機関の処方箋を挟んだ場合</div>
       その処方箋では算定できないが、<strong>間に挟まっても次回の算定には影響しない</strong>。続いて<strong>対象処方箋</strong>を受け付けた時点で算定可能。
-      <div style="margin-top:8px; font-size:var(--text-xs); color:#555;">例）A病院でフォローアップ実施 → 途中でB病院処方箋を受付 → <span class="em-blue">次のA病院処方箋持参時に算定可</span></div>
+      <div style="margin-top:8px; font-size:var(--text-xs); color:var(--txt-2);">例）A病院でフォローアップ実施 → 途中でB病院処方箋を受付 → <span class="em-blue">次のA病院処方箋持参時に算定可</span></div>
     </div>
   </div>
 
@@ -281,7 +291,7 @@
     <div class="card-title">算定上の注意点</div>
 
     <!-- グループ1：実施にあたって -->
-    <div style="font-weight:900; color:var(--blue); font-size:var(--text-sm); margin-bottom:10px; padding-bottom:4px; border-bottom:var(--bw-h) solid var(--border);">■ 実施にあたって</div>
+    <div class="h3" style="color:var(--blue); font-size:var(--text-sm); margin-bottom:10px; padding-bottom:4px; border-bottom:var(--bw-h) solid var(--border);">実施にあたって</div>
     <div style="display:flex; flex-direction:column; gap:12px; font-size:var(--text-md); margin-bottom:20px;">
       <div>
         <div style="font-weight:900; margin-bottom:4px;">事前説明と同意</div>
@@ -298,11 +308,11 @@
     </div>
 
     <!-- グループ2：記録要件 -->
-    <div style="font-weight:900; color:var(--blue); font-size:var(--text-sm); margin-bottom:10px; padding-bottom:4px; border-bottom:var(--bw-h) solid var(--border);">■ 記録要件</div>
+    <div class="h3" style="color:var(--blue); font-size:var(--text-sm); margin-bottom:10px; padding-bottom:4px; border-bottom:var(--bw-h) solid var(--border);">記録要件</div>
     <div style="display:flex; flex-direction:column; gap:12px; font-size:var(--text-md);">
       <div>
         <div style="font-weight:900; margin-bottom:4px;">薬歴への記載</div>
-        <div style="font-size:var(--text-sm);">電話等によりフォローアップした旨・日時・実施した聞き取りや指導等の内容を記載。残薬等の問題が解消されない場合は、<span class="em-blue">理由・背景の検証内容および改善策も記載</span>する。</div>
+        <div style="font-size:var(--text-sm);">電話等によりフォローアップした旨・日時・実施した聞き取りや指導等の内容を記載。残薬等の問題が解消されない場合は、<span class="em-change">理由・背景の検証内容および改善策も記載</span>する。</div>
       </div>
     </div>
   </div>
@@ -316,15 +326,15 @@
     <div class="box-gray" style="font-size:var(--text-sm);">
       <div style="font-weight:900; color:var(--blue);">フォローアップ年月日</div>
     </div>
-    <div style="font-size:var(--text-xs); color:#666; margin-top:10px;">
+    <div style="font-size:var(--text-xs); color:var(--txt-3); margin-top:10px;">
       ※ <a href="別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html" style="color:var(--blue); text-decoration:underline;">別表Ⅰ</a>準拠。コメントコード 850100602「フォローアップ年月日（かかりつけ薬剤師フォローアップ加算）」。
     </div>
   </div>
 
   <!-- ⑥ 併算定不可 -->
   <div class="card avoid-break">
-    <div class="card-title">併算定不可<span class="badge badge-red">同月算定不可</span></div>
-    <div style="font-size:var(--text-sm); margin-bottom:10px;">以下を算定している患者には、<span class="em-red">同月において算定できない</span>。</div>
+    <div class="card-title">併算定不可<span class="badge badge-gray">同月算定不可</span></div>
+    <div style="font-size:var(--text-sm); margin-bottom:10px;">以下を算定している患者には、<strong>同月において算定できない</strong>。</div>
     <div class="box-gray" style="font-size:var(--text-sm); margin-bottom:10px;">
       <div style="display:flex; flex-direction:column; gap:5px;">
         <div>・ 調剤後薬剤管理指導料</div>
@@ -334,13 +344,13 @@
       </div>
     </div>
     <div style="font-size:var(--text-sm); padding:8px 12px; border-left:var(--bw-a) solid var(--border-dk); margin-bottom:6px;"><strong>複数の保険薬局でかかりつけを算定している場合、いずれの薬局も算定不可。</strong></div>
-    <div style="font-size:var(--text-xs); color:#555;">※特別調剤基本料Ｂを算定している保険薬局は算定不可。</div>
+    <div style="font-size:var(--text-xs); color:var(--txt-2);">※特別調剤基本料Ｂを算定している保険薬局は算定不可。</div>
   </div>
 
   <!-- Q&A -->
   <div class="card avoid-break">
     <div class="card-title">Q&amp;A</div>
-    <div style="font-size:var(--text-xs); color:#666; margin-bottom:10px;">── 疑義解釈（その２）より ──</div>
+    <div style="font-size:var(--text-xs); color:var(--txt-3); margin-bottom:10px;">── 疑義解釈（その２）より ──</div>
 
     <div class="qa-block">
       <div class="qa-q"><span class="qa-label">問21</span>調剤を実施し、後日、かかりつけ薬剤師フォローアップ加算に係る業務を行い、同一保険薬局で再度処方箋を受け付けた際、<strong>当該患者のかかりつけ薬剤師が不在であった場合も、かかりつけ薬剤師フォローアップ加算を算定可能であるか。</strong></div>
@@ -376,21 +386,21 @@
             </tr>
             <tr>
               <td style="padding:8px 10px; border:var(--bw-h) solid var(--border); font-weight:700;">薬歴への<br>かかりつけ薬剤師氏名記載</td>
-              <td style="padding:8px 10px; border:var(--bw-h) solid var(--border); text-align:center; color:#666;">不要 ※</td>
-              <td style="padding:8px 10px; border:var(--bw-h) solid var(--border); text-align:center;"><span class="em-red">必要</span></td>
+              <td style="padding:8px 10px; border:var(--bw-h) solid var(--border); text-align:center; color:var(--txt-3);">不要 ※</td>
+              <td style="padding:8px 10px; border:var(--bw-h) solid var(--border); text-align:center;"><span class="em-blue">必要</span></td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div style="font-size:var(--text-xs); color:#666; margin-top:6px;">※ かかりつけ本人が応対する場合は応対者＝かかりつけ薬剤師であり、薬歴の通常記録から自明のため疑義解釈の氏名記載要件（１のロ／２のロ併算定時）の対象外。</div>
+      <div style="font-size:var(--text-xs); color:var(--txt-3); margin-top:6px;">※ かかりつけ本人が応対する場合は応対者＝かかりつけ薬剤師であり、薬歴の通常記録から自明のため疑義解釈の氏名記載要件（１のロ／２のロ併算定時）の対象外。</div>
     </div>
 
-    <div style="margin-top:12px; font-size:var(--text-xs); color:#555; padding:10px 12px; background:var(--box-gray); border-radius:var(--radius-sm); border-left:var(--bw-a) solid var(--border-dk);">
+    <div style="margin-top:12px; font-size:var(--text-xs); color:var(--txt-2); padding:10px 12px; background:var(--box-gray); border-radius:var(--radius-sm); border-left:var(--bw-a) solid var(--border-dk);">
       <strong>実務メモ：</strong>かかりつけ薬剤師は薬歴サマリー（表紙）にも記載されているため、本文に重ねて書く必要性はないように思われる。ただし疑義解釈で明示された以上、<strong>１のロ／２のロ併算定時は本文にも氏名を記載したほうがよいだろう</strong>。
     </div>
 
     <div style="margin-top:18px; padding-top:14px; border-top:var(--bw-h) solid var(--border);">
-      <div style="font-size:var(--text-xs); color:#666; margin-bottom:10px;">── 当社で受けた質問より ──</div>
+      <div style="font-size:var(--text-xs); color:var(--txt-3); margin-bottom:10px;">── 当社で受けた質問より ──</div>
       <div class="qa-block">
         <div class="qa-q"><span class="qa-label">Q</span>かかりつけ薬剤師フォローアップ加算を算定した上で、同月・同処方箋で<strong>服薬情報等提供料も算定できるか</strong>。</div>
         <div class="qa-a"><span class="qa-label">A</span>算定可能。フォローアップ加算は<strong>患者本人への電話等による服薬・残薬状況の確認</strong>を評価する加算であり、医療機関等への情報提供は要件に含まれていない。したがって服薬情報等提供料（医療機関等への情報提供を評価する点数）と<strong>業務内容が重複しないため、それぞれの要件を満たせば両方算定できる</strong>。</div>
@@ -426,7 +436,7 @@
 <div style="max-width:900px; margin:0 auto; padding:16px 16px 32px; display:flex; flex-wrap:wrap; justify-content:center; gap:8px;">
   <a href="かかりつけ薬剤師訪問加算.html" style="display:inline-block; color:#1e5fa8; text-decoration:none; font-size:13px; border:1px solid #1e5fa8; border-radius:6px; padding:6px 16px; background:#fff;">関連 › かかりつけ薬剤師訪問加算</a>
   <a href="服薬管理指導料.html" style="display:inline-block; color:#1e5fa8; text-decoration:none; font-size:13px; border:1px solid #1e5fa8; border-radius:6px; padding:6px 16px; background:#fff;">関連 › 服薬管理指導料</a>
-  
+
 </div>
 </body>
 </html>
