@@ -1,20 +1,4 @@
 {
-  "かかりつけ薬剤師フォローアップ加算_実務チェックリスト.html": {
-    "lastUpdated": "2026-06-09",
-    "newUntil": "2026-06-16"
-  },
-  "かかりつけ薬剤師訪問加算_実務チェックリスト.html": {
-    "lastUpdated": "2026-06-09",
-    "newUntil": "2026-06-16"
-  },
-  "調剤時残薬調整加算_実務チェックリスト.html": {
-    "lastUpdated": "2026-06-06",
-    "newUntil": "2026-06-13"
-  },
-  "薬学的有害事象等防止加算_実務チェックリスト.html": {
-    "lastUpdated": "2026-06-08",
-    "newUntil": "2026-06-15"
-  },
   "変更調剤について.html": {
     "lastUpdated": "2026-04-18"
   },
@@ -43,9 +27,8 @@
   "調剤報酬点数早見表2026.html": {
     "lastUpdated": "2026-03-31"
   },
-  "選定療養_実務チェックリスト.html": {
-    "lastUpdated": "2026-06-04",
-    "newUntil": "2026-06-11"
+  "調剤時残薬調整加算.html": {
+    "lastUpdated": "2026-06-06"
   },
   "gigi-search.html": {
     "lastUpdated": "2026-04-15"
@@ -87,7 +70,7 @@
     "lastUpdated": "2026-03-28"
   },
   "かかりつけ薬剤師フォローアップ加算.html": {
-    "lastUpdated": "2026-05-06"
+    "lastUpdated": "2026-06-09"
   },
   "調剤基本料_2026改定.html": {
     "lastUpdated": "2026-04-22"
@@ -122,11 +105,12 @@
   "別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html": {
     "lastUpdated": "2026-05-30"
   },
-  "調剤時残薬調整加算.html": {
-    "lastUpdated": "2026-06-03"
+  "調剤時残薬調整加算_実務チェックリスト.html": {
+    "lastUpdated": "2026-06-08",
+    "newUntil": "2026-06-13"
   },
-  "かかりつけ薬剤師訪問加算.html": {
-    "lastUpdated": "2026-05-06"
+  "checklists.html": {
+    "lastUpdated": "2026-06-10"
   },
   "【簡易版】かかりつけ薬剤師に関わる管理料・加算一覧.html": {
     "lastUpdated": "2026-04-02"
@@ -140,6 +124,10 @@
   "服用薬剤調整支援料２_2026改定.html": {
     "lastUpdated": "2026-05-06"
   },
+  "選定療養_実務チェックリスト.html": {
+    "lastUpdated": "2026-06-06",
+    "newUntil": "2026-06-11"
+  },
   "服薬管理指導料3・4_施設訪問・オンライン.html": {
     "lastUpdated": "2026-05-06"
   },
@@ -149,8 +137,9 @@
   "基礎的医薬品追加リストR8_4.html": {
     "lastUpdated": "2026-04-19"
   },
-  "栄養保持を目的とした医薬品の保険給付の適正化.html": {
-    "lastUpdated": "2026-06-04"
+  "薬学的有害事象等防止加算_実務チェックリスト.html": {
+    "lastUpdated": "2026-06-08",
+    "newUntil": "2026-06-15"
   },
   "knowledge.html": {
     "lastUpdated": "2026-06-04"
@@ -182,16 +171,31 @@
   "地域支援医薬品供給対応体制加算_届出判定ツール.html": {
     "lastUpdated": "2026-05-31"
   },
+  "栄養保持を目的とした医薬品の保険給付の適正化.html": {
+    "lastUpdated": "2026-06-05"
+  },
   "tools.html": {
     "lastUpdated": "2026-06-04"
   },
-  "index.html": {
-    "lastUpdated": "2026-06-04"
+  "かかりつけ薬剤師訪問加算.html": {
+    "lastUpdated": "2026-06-09"
   },
-  "checklists.html": {
-    "lastUpdated": "2026-06-04"
+  "index.html": {
+    "lastUpdated": "2026-06-10"
+  },
+  "かかりつけ薬剤師フォローアップ加算_実務チェックリスト.html": {
+    "lastUpdated": "2026-06-09",
+    "newUntil": "2026-06-16"
   },
   "updates.html": {
     "lastUpdated": "2026-06-04"
+  },
+  "栄養保持を目的とした医薬品_確認チェックリスト.html": {
+    "lastUpdated": "2026-06-10",
+    "newUntil": "2026-06-17"
+  },
+  "かかりつけ薬剤師訪問加算_実務チェックリスト.html": {
+    "lastUpdated": "2026-06-09",
+    "newUntil": "2026-06-16"
   }
 }
