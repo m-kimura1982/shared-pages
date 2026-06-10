@@ -145,6 +145,22 @@
     .notes .bullet > span:first-child { color:#999; flex-shrink:0; }
     .src { font-size:var(--text-xs); color:var(--txt-3); margin-top:8px; }
 
+    /* 対象薬リスト */
+    .list-ctrl { display:flex; gap:14px; flex-wrap:wrap; align-items:flex-end; margin-bottom:10px; }
+    .list-count { font-size:var(--text-xs); color:var(--txt-3); margin-bottom:8px; }
+    .list-table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    .list-table { width:100%; border-collapse:collapse; font-size:var(--text-sm); min-width:600px; }
+    .list-table th { background:var(--box-gray); font-size:var(--text-xs); font-weight:900; padding:8px 9px; text-align:left; border-bottom:2px solid var(--border-dk); white-space:nowrap; }
+    .list-table th[data-key] { cursor:pointer; user-select:none; }
+    .list-table th[data-key]:hover { color:var(--blue); }
+    .list-table th .arw { color:var(--blue); font-size:10px; margin-left:2px; }
+    .list-table th .arw-i { color:var(--border-dk); }
+    .list-table td { padding:7px 9px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
+    .list-table td.r { text-align:right; white-space:nowrap; }
+    .list-table tr:hover td { background:#f7f9fc; }
+    .list-table .lt-nm { font-weight:700; }
+    .list-table .lt-sub { font-size:11px; color:var(--txt-3); }
+
     @media (max-width:640px) {
       body { font-size:13px; padding:14px 12px 40px; }
       :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
@@ -167,7 +183,7 @@
 
   <div class="print-only" style="font-weight:900; font-size:18px; border-bottom:1px solid #999; padding-bottom:6px; margin-bottom:4px;">選定療養 費用のご案内</div>
 
-  <span class="draft-tag no-print">社内ツール・非公開（draft）</span>
+  <span class="draft-tag no-print">社内用ツール</span>
   <div class="page-title no-print">
     <h1>選定療養 計算ツール</h1>
     <p>長期収載品の選定療養費・特管3（ロ）再算定可否を計算｜R8.6（価格差1/2）データ</p>
@@ -176,6 +192,7 @@
   <div class="modetabs no-print" id="modetabs">
     <button data-m="check" class="on">特管3ロ 再算定チェック（単品）</button>
     <button data-m="calc">選定療養費 計算（複数品目）</button>
+    <button data-m="list">対象薬リスト</button>
   </div>
 
   <!-- 検索（単品モードのみ） -->
@@ -192,7 +209,7 @@
     <div class="card no-print" style="margin-bottom:var(--gap-card);">
       <div class="card-title">条件を入れる</div>
       <div class="field">
-        <label>剤形 <span style="font-weight:500; color:var(--txt-3);">＝点数化の単位（ここで丸め方が変わります）</span></label>
+        <label>剤形 <span style="font-weight:500; color:var(--txt-3);">＝点数化する単位（内服は1日分、外用・頓服は1調剤分）</span></label>
         <div class="seg" id="segZ">
           <button data-z="naifuku" class="on">内服薬</button>
           <button data-z="gaiyo">外用・頓服</button>
@@ -250,15 +267,31 @@
     </div>
   </div>
 
+  <!-- ===== モード3：対象薬リスト ===== -->
+  <div id="modeList" class="hidden">
+    <div class="card">
+      <div class="card-title">対象薬リスト<span class="qual">点数・再算定可否を一覧／並び替え</span></div>
+      <div class="list-ctrl">
+        <div class="field" style="margin:0;"><label>数量（使用量）</label><input id="lstQty" class="num-input" type="number" inputmode="decimal" min="0" step="any" value="1" style="width:90px;"></div>
+        <div class="field" style="margin:0; flex:1; min-width:160px;"><label>品名・成分名でしぼり込み</label><input id="lstFilter" class="search-input" type="text" placeholder="例：オランザピン／ヒルドイド"></div>
+        <label style="display:inline-flex; align-items:center; gap:7px; font-size:var(--text-sm); font-weight:700; color:var(--txt-2); padding-bottom:8px;"><input id="lstOk" type="checkbox" checked> 再算定可のみ</label>
+        <button id="lstReset" class="btn" type="button" style="padding:7px 12px; font-size:var(--text-xs); margin-bottom:8px;">↺ 標準の並びに戻す</button>
+      </div>
+      <div class="unit-note" style="margin-bottom:8px;">数量は、計算したい使用量を入力してください。内服薬は1日量、外用・頓服は1調剤分の総量として計算します。点数・再算定可否はこの数量での値です。<strong>⇅の列見出しをクリック（タップ）で並び替え</strong>。「1錠で上がる薬」＝数量1・可のみ・価格差1/2で降順。</div>
+      <div class="list-count" id="lstCount"></div>
+      <div class="list-table-wrap" id="listBody"></div>
+    </div>
+  </div>
+
   <!-- 注意 -->
   <div class="card no-print">
     <div class="card-title">注意</div>
     <div class="notes">
-      <div class="bullet"><span>・</span><span>特管3ロの再算定は<b>薬剤（医薬品）ごと</b>の判断。<b>選定療養費（特別の料金）が変わる</b>医薬品について最初の1回に限り算定可（疑義解釈その2 問20）。<b>患者総額ではなく特別の料金で判断</b>します。同じ薬で算定済みなら不可。</span></div>
-      <div class="bullet"><span>・</span><span>一部負担金・総額は<b>選定対象薬のみの概算</b>（同じ剤の後発・非対象薬や、10円単位の端数整理は含みません）。患者説明の目安です。</span></div>
-      <div class="bullet"><span>・</span><span>医療上の必要性／後発品の在庫なし等で保険給付とした場合は選定療養の対象外です。</span></div>
-      <div class="bullet"><span>・</span><span>外用薬の混合など、複数薬剤を1調剤として扱う場合は、個別に確認してください（本ツールは外用・頓服を1品目＝1調剤として計算します）。</span></div>
-      <div class="src">点数への換算＝所定単位の薬価を「10円＝1点」で点数に直す（端数は0.5以下を切り捨て・0.5超を切り上げ＝五捨五超入、15円以下は1点）。データ：厚労省マスタ（R8.6）。</div>
+      <div class="bullet"><span>・</span><span>特管3ロの再算定は、<b>薬剤（医薬品）ごとの判断</b>です。選定療養費（特別の料金）が変更となる医薬品について、最初の1回に限り算定可とされています（疑義解釈その2 問20）。<b>患者負担の総額ではなく、特別の料金の変更で判断</b>します。同じ薬で算定済みの場合は算定できません。</span></div>
+      <div class="bullet"><span>・</span><span>一部負担金・患者負担総額は、<b>選定対象薬のみの概算</b>です。同じ剤に含まれる後発品・選定対象外薬剤、処方全体での10円単位の端数整理、公費等は反映していません。患者さんへの説明の参考として使用してください。</span></div>
+      <div class="bullet"><span>・</span><span>医療上の必要性がある場合や、後発品の在庫がないため保険給付とする場合は、選定療養の対象外です。</span></div>
+      <div class="bullet"><span>・</span><span>外用薬の混合など、複数薬剤を1調剤として扱う場合は、個別に確認してください。本ツールでは、外用・頓服は「1品目＝1調剤」として計算します。</span></div>
+      <div class="src">点数への換算：所定単位の薬価を「10円＝1点」として点数に換算します。端数は0.5以下を切り捨て、0.5超を切り上げます（五捨五超入）。15円以下は1点です。データ：厚労省マスタ（R8.6）</div>
     </div>
   </div>
 
@@ -342,7 +375,7 @@
       else if(naifuku) guide='目安：1日量が <b>'+(Math.floor(thr)+1)+'</b> 以上で再算定可。';
       else guide='目安：総量が <b>'+(Math.round(thr*10)/10)+'</b> を超えると再算定可。';
       html+='<div class="verdict ng"><div class="mark">×</div><div><div class="vt">特管3ロ 再算定 不可</div>'+
-        '<div class="vr"><b>特別の料金（選定療養費）が5月と変わりません</b>（'+ptChange+'）。患者総額ではなく特別の料金で判断します。'+guide+'</div></div></div>';
+        '<div class="vr"><b>特別の料金（選定療養費）が5月と変わりません</b>（'+ptChange+'）。患者負担の総額ではなく特別の料金で判断します。'+guide+'</div></div></div>';
     }
     html+='<div class="nums">'+
       '<div class="num-card accent"><div class="k">選定療養費（特別の料金・税込）</div><div class="v">'+yen(fee)+'<small>円</small></div></div>'+
@@ -462,7 +495,9 @@
     document.getElementById('modeCheck').classList.toggle('hidden', mode!=='check');
     document.getElementById('modeCalc').classList.toggle('hidden', mode!=='calc');
     document.getElementById('searchCard').classList.toggle('hidden', mode!=='check');
+    document.getElementById('modeList').classList.toggle('hidden', mode!=='list');
     if(mode==='calc'){ renderZai(); computeCalc(); }
+    if(mode==='list'){ renderList(); }
   });
   document.getElementById('addNaifuku').addEventListener('click',function(){ addZai('naifuku'); });
   document.getElementById('addGaiyo').addEventListener('click',function(){ addZai('gaiyo'); });
@@ -501,6 +536,58 @@
     else if(e.key==='Enter'){ if(kbd>=0 && curList[kbd]){ e.preventDefault(); pickSingle(curList[kbd]); } return; }
     else return;
     items.forEach(function(it,i){ it.classList.toggle('kbd', i===kbd); if(i===kbd) it.scrollIntoView({block:'nearest'}); });
+  });
+
+  /* ===== 対象薬リスト ===== */
+  var lst = { qty:1, filter:'', okOnly:true, key:'yakka', dir:1 };
+  function renderList(){
+    var needle=norm(lst.filter), rows=[];
+    for(var i=0;i<DATA.length;i++){ var d=DATA[i];
+      if(needle && norm(d.name).indexOf(needle)<0 && norm(d.ingredient).indexOf(needle)<0) continue;
+      var ptNew=toTen(d.sentei*lst.qty), ptOld=(d.senteiOld!=null?toTen(d.senteiOld*lst.qty):null);
+      var ok=(ptOld!=null)?(ptNew>ptOld):(ptNew>=2);
+      if(lst.okOnly && !ok) continue;
+      rows.push({d:d, ptNew:ptNew, ptOld:ptOld, ok:ok});
+    }
+    rows.sort(function(a,b){
+      var k=lst.key, va, vb;
+      if(k==='name') return lst.dir*a.d.name.localeCompare(b.d.name,'ja');
+      if(k==='yakka'){ va=a.d.yakka; vb=b.d.yakka; }
+      else if(k==='ptNew'){ va=a.ptNew; vb=b.ptNew; }
+      else { va=a.d.sentei; vb=b.d.sentei; }
+      return lst.dir*((va||0)-(vb||0));
+    });
+    document.getElementById('lstCount').textContent='対象薬 '+DATA.length+'品目中 '+rows.length+'件を表示'+(lst.okOnly?'（再算定可のみ）':'');
+    function arw(k){ return lst.key===k?('<span class="arw">'+(lst.dir<0?'▼':'▲')+'</span>'):'<span class="arw arw-i">⇅</span>'; }
+    var h='<table class="list-table"><thead><tr>'+
+      '<th data-key="name">品名（成分名）'+arw('name')+'</th>'+
+      '<th class="r" data-key="yakka">薬価'+arw('yakka')+'</th>'+
+      '<th class="r">後発</th>'+
+      '<th class="r" data-key="sentei">価格差1/2'+arw('sentei')+'</th>'+
+      '<th class="r" data-key="ptNew">点数 R8.5→R8.6'+arw('ptNew')+'</th>'+
+      '<th>再算定</th></tr></thead><tbody>';
+    rows.forEach(function(r){ var d=r.d;
+      h+='<tr><td><span class="lt-nm">'+esc(d.name)+'</span><div class="lt-sub">'+esc(d.ingredient)+'</div></td>'+
+        '<td class="r">'+d.yakka+'</td><td class="r">'+d.ge+'</td><td class="r">'+d.sentei+'</td>'+
+        '<td class="r">'+(r.ptOld!=null?r.ptOld:'—')+' → '+r.ptNew+'点</td>'+
+        '<td>'+(r.ok?'<span class="badge-ok">可</span>':'<span class="badge-ng">不可</span>')+'</td></tr>';
+    });
+    h+='</tbody></table>';
+    document.getElementById('listBody').innerHTML=h;
+  }
+  document.getElementById('listBody').addEventListener('click',function(e){
+    var th=e.target.closest('th[data-key]'); if(!th) return;
+    var k=th.dataset.key;
+    if(lst.key===k) lst.dir=-lst.dir; else { lst.key=k; lst.dir=(k==='name'?1:-1); }
+    renderList();
+  });
+  document.getElementById('lstQty').addEventListener('input',function(){ lst.qty=parseFloat(this.value)||0; renderList(); });
+  document.getElementById('lstFilter').addEventListener('input',function(){ lst.filter=this.value; renderList(); });
+  document.getElementById('lstOk').addEventListener('change',function(){ lst.okOnly=this.checked; renderList(); });
+  document.getElementById('lstReset').addEventListener('click',function(){
+    lst.filter=''; lst.okOnly=true; lst.key='yakka'; lst.dir=1;
+    document.getElementById('lstFilter').value=''; document.getElementById('lstOk').checked=true;
+    renderList();
   });
 })();
 </script>
