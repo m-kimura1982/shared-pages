@@ -90,6 +90,7 @@
     .doc-row + .doc-row { border-top:var(--bw-h) solid var(--border); }
     .doc-row .c { font-size:var(--text-sm); color:var(--txt-2); font-weight:700; }
     .doc-row .d { font-weight:900; color:var(--ink); font-size:var(--text-sm); }
+    .doc-row .d::before { content:"→"; color:var(--txt-3); font-weight:700; margin-right:6px; }
     .shot { margin:9px 0 4px; border:var(--bw) solid var(--border); border-radius:var(--radius-sm); background:#fff; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.06); }
     .shot img { display:block; width:100%; height:auto; }
     .shot-cap { font-size:var(--text-xs); color:var(--txt-3); line-height:1.6; margin-top:4px; }
@@ -145,7 +146,7 @@
     <h1>栄養保持を目的とした医薬品 確認チェックリスト</h1>
   </div>
 
-  <p class="lead"><span class="lead-date">2026年6月〜</span>対象となる栄養剤の保険給付に必要な確認方法と、レセコメ入力漏れを確認するチェックリストです。</p>
+  <p class="lead"><span class="lead-date">2026年6月〜</span>対象の経腸栄養剤を保険給付するには、投与の必要性の確認とレセコメ入力が必要です。</p>
 
   <!-- 確認の流れ -->
   <div>
@@ -214,8 +215,8 @@
           <span class="check-main"><span class="n">4</span><strong class="marker">レセコメ（摘要欄コメント）を入力したか</strong> <span style="font-weight:700; font-size:var(--text-xs); color:var(--txt-3);">＝給付の必須要件</span></span>
           <span class="check-note">確認した方法に合わせて、下記の文言を入力する。<strong>入力がないと保険給付の要件を満たさない。</strong></span>
           <div class="doclist">
-            <div class="doc-row"><span class="c">備考欄への記載あり</span><span class="d">「処方箋記載により確認」</span></div>
-            <div class="doc-row"><span class="c">備考欄への記載なし</span><span class="d">「疑義照会により確認」</span></div>
+            <div class="doc-row"><span class="c">備考欄に投与の必要性の記載あり</span><span class="d">「処方箋記載により確認」</span></div>
+            <div class="doc-row"><span class="c">備考欄に記載がなく疑義照会した</span><span class="d">「疑義照会により確認」</span></div>
           </div>
           <div class="shot"><img src="images（レセコン画像など）/pharnes/eiyo_2.png" alt="栄養保持目的医薬品 エイヨウ呼び出しのレセコメ候補リスト（候補1 処方箋記載により確認／候補2 疑義照会により確認）"></div>
           <div class="shot-cap">▲ 「エイヨウ」呼び出しの候補画面（エンシュア・リキッドの例）</div>
