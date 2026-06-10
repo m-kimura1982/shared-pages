@@ -25,15 +25,106 @@
       <span class="page-tag">ADD-ON</span>
       <h1 class="page-title">加算別 薬歴記載一覧</h1>
       <p class="page-desc">
-        各加算で薬歴に残すべき内容を、加算別に一覧化しています。算定要件ページにもリンクします。
+        各加算で「薬歴・記録に何を残すか」だけを加算別に整理するページです。算定要件そのものは kaitei2026 の各資料ページを参照してください。<br />
+        記載量の少ない加算はこのページ内のセクションで完結させ、ハイリスク薬のような重量級は個別ページへリンクします。
       </p>
     </div>
 
     <main>
-      <section>
+      <!-- ============================================================
+           一覧表（ハブ）
+           ============================================================ -->
+      <section id="list">
+        <div class="section-label">一覧</div>
+        <h2 class="section-title">加算と薬歴記載の対応表</h2>
+        <table class="gtable">
+          <tr>
+            <th style="width:16em;">加算・指導料</th>
+            <th>薬歴・記録に残す核</th>
+            <th style="width:9em;">詳細</th>
+          </tr>
+          <tr>
+            <td><strong>特定薬剤管理指導加算1</strong>（ハイリスク薬）</td>
+            <td>「薬剤名：〜」で書き始め、イ／ロの算定根拠（確認・指導・判断）を残す</td>
+            <td><a href="ハイリスク薬指導.html" style="color:var(--blue);font-weight:700;">→ 個別ページ</a></td>
+          </tr>
+          <tr>
+            <td>特定薬剤管理指導加算2（抗悪性腫瘍剤）</td>
+            <td>作成予定</td>
+            <td><span class="card-stub">準備中</span></td>
+          </tr>
+          <tr>
+            <td>特定薬剤管理指導加算3（イ／ロ）</td>
+            <td>作成予定（RMP等に基づく説明／選定療養・バイオ後続品の説明）</td>
+            <td><a href="#tokuyaku3" style="color:var(--blue);">→ 本ページ内</a></td>
+          </tr>
+          <tr>
+            <td>重複投薬・相互作用等防止加算</td>
+            <td>作成予定（照会内容・処方変更の有無・残薬調整）</td>
+            <td><a href="#choufuku" style="color:var(--blue);">→ 本ページ内</a></td>
+          </tr>
+          <tr>
+            <td>吸入薬指導加算</td>
+            <td>作成予定（手技確認・文書/練習用吸入器による指導・医療機関への情報提供）</td>
+            <td><a href="#kyunyu" style="color:var(--blue);">→ 本ページ内</a></td>
+          </tr>
+          <tr>
+            <td>乳幼児服薬指導加算</td>
+            <td>作成予定（体重・適切な剤形等の確認、保護者への指導内容）</td>
+            <td><a href="#nyuyoji" style="color:var(--blue);">→ 本ページ内</a></td>
+          </tr>
+          <tr>
+            <td>調剤後薬剤管理指導料（糖尿病／慢性心不全）</td>
+            <td>作成予定（調剤後フォローアップの記録・医療機関への情報提供）</td>
+            <td><span class="card-stub">準備中</span></td>
+          </tr>
+          <tr>
+            <td>服薬情報等提供料</td>
+            <td>作成予定（提供先・提供内容・提供日の記録）</td>
+            <td><span class="card-stub">準備中</span></td>
+          </tr>
+        </table>
+        <p style="font-size:12px;color:var(--sub);margin-top:10px;">
+          ※ 収録する加算・並び順は精査中。算定要件の詳細は <a href="../../kaitei2026.html" style="color:var(--blue);">2026改定 資料一覧</a> の各ページを参照。
+        </p>
+      </section>
+
+      <!-- ============================================================
+           本ページ内で完結させる加算（セクションの器のみ）
+           ============================================================ -->
+      <section id="tokuyaku3">
+        <div class="section-label">SECTION</div>
+        <h2 class="section-title">特定薬剤管理指導加算3（イ／ロ）</h2>
         <div class="warn-box">
           <div class="warn-box-title">作成中</div>
-          <p>このページは現在準備中です。チェックリストR8シート②と既存 kaitei2026 加算ページをベースに構築予定。</p>
+          <p>イ（RMP等に基づく説明）／ロ（選定療養・バイオ後続品の説明）で薬歴に残す内容と記載例をここに整理予定。</p>
+        </div>
+      </section>
+
+      <section id="choufuku">
+        <div class="section-label">SECTION</div>
+        <h2 class="section-title">重複投薬・相互作用等防止加算</h2>
+        <div class="warn-box">
+          <div class="warn-box-title">作成中</div>
+          <p>照会内容・処方変更の有無・残薬調整の記録で薬歴に残す内容と記載例をここに整理予定。残薬調整の算定は <a href="../../調剤時残薬調整加算_実務チェックリスト.html" style="color:var(--blue);">調剤時残薬調整加算 チェックリスト</a> も参照。</p>
+        </div>
+      </section>
+
+      <section id="kyunyu">
+        <div class="section-label">SECTION</div>
+        <h2 class="section-title">吸入薬指導加算</h2>
+        <div class="warn-box">
+          <div class="warn-box-title">作成中</div>
+          <p>手技確認・指導方法（文書・練習用吸入器）・医療機関への情報提供の記録をここに整理予定。</p>
+        </div>
+      </section>
+
+      <section id="nyuyoji">
+        <div class="section-label">SECTION</div>
+        <h2 class="section-title">乳幼児服薬指導加算</h2>
+        <div class="warn-box">
+          <div class="warn-box-title">作成中</div>
+          <p>体重・適切な剤形その他の確認事項と、保護者への指導内容・手帳記載の扱いをここに整理予定。</p>
         </div>
       </section>
     </main>
