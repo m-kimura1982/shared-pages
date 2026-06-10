@@ -287,6 +287,13 @@ section { margin-bottom: 40px; }
   font-size: 13px;
 }
 .gtable tr:nth-child(even) td { background: #fafbfc; }
+a.item-tag { text-decoration: none; }
+a.item-tag:hover { background: var(--blue); color: var(--white); }
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.table-wrap .gtable { min-width: 640px; }
+@media (max-width: 640px) {
+  .gtable th, .gtable td { padding: 8px 10px; }
+}
 
 /* ── コピーボタン付きテンプレ ── */
 .tpl-card {

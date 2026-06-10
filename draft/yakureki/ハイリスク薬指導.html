@@ -10,6 +10,14 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="yakureki.css" />
+    <style>
+      /* 薬剤名逆引き（五十音索引） */
+      .kana-row { display: flex; gap: 10px; align-items: flex-start; padding: 7px 0; border-bottom: 1px solid var(--border); }
+      .kana-row:last-child { border-bottom: none; }
+      .kana-label { flex-shrink: 0; width: 4.5em; font-size: 12px; font-weight: 700; color: var(--blue); padding-top: 2px; }
+      .kana-links { display: flex; flex-wrap: wrap; gap: 6px; }
+      .kana-links .item-tag { margin-right: 0; }
+    </style>
   </head>
   <body>
     <div class="draft-banner">⚠ 非公開作業中ページ｜内容は精査中のため公開ナビゲーションには掲載していません</div>
@@ -131,10 +139,60 @@
       </section>
 
       <!-- ============================================================
-           § 4  個別指導での注意点（作成中）
+           § 4  薬剤名から探す（逆引き）
+           ============================================================ -->
+      <section id="gyakubiki">
+        <div class="section-label">SECTION 4</div>
+        <h2 class="section-title">薬剤名から探す（逆引き）</h2>
+        <p style="font-size:13px;color:var(--sub);margin-bottom:12px;">
+          変更のあった薬の商品名から、薬効群ページの該当ブロックへ直接飛べます。<br />
+          <span style="font-size:12px;">※ ページ内検索（PC：Ctrl+F／スマホ：ブラウザメニューの「ページ内を検索」）に商品名を入力すると早く見つかります。後発品は先発の商品名で探してください。</span>
+        </p>
+        <div class="kana-index">
+          <div class="kana-row">
+            <span class="kana-label">ア行</span>
+            <div class="kana-links"><a href="ハイリスク_糖尿病用剤.html#tzd" class="item-tag">アクトス</a><a href="ハイリスク_抗うつ薬.html#tca" class="item-tag">アナフラニール</a><a href="ハイリスク_膵臓ホルモン剤.html#bolus" class="item-tag">アピドラ</a><a href="ハイリスク_糖尿病用剤.html#su" class="item-tag">アマリール</a><a href="ハイリスク_抗うつ薬.html#tca" class="item-tag">アモキサン</a><a href="ハイリスク_血液凝固阻止剤.html#doac" class="item-tag">イグザレルト</a><a href="ハイリスク_糖尿病用剤.html#combo" class="item-tag">イニシンク</a><a href="ハイリスク_膵臓ホルモン剤.html#mix" class="item-tag">イノレット30R</a><a href="ハイリスク_抗うつ薬.html#snri" class="item-tag">イフェクサーSR</a><a href="ハイリスク_抗精神病薬.html#sda" class="item-tag">インヴェガ</a><a href="ハイリスク_糖尿病用剤.html#dpp4" class="item-tag">エクア</a><a href="ハイリスク_糖尿病用剤.html#combo" class="item-tag">エクメット</a><a href="ハイリスク_抗精神病薬.html#dss-dsam" class="item-tag">エビリファイ</a><a href="ハイリスク_血液凝固阻止剤.html#antiplatelet" class="item-tag">エフィエント</a><a href="ハイリスク_血液凝固阻止剤.html#doac" class="item-tag">エリキュース</a><a href="ハイリスク_糖尿病用剤.html#su" class="item-tag">オイグルコン</a><a href="ハイリスク_糖尿病用剤.html#glp1-inj" class="item-tag">オゼンピック</a><a href="ハイリスク_糖尿病用剤.html#dpp4" class="item-tag">オングリザ</a></div>
+          </div>
+          <div class="kana-row">
+            <span class="kana-label">カ行</span>
+            <div class="kana-links"><a href="ハイリスク_糖尿病用剤.html#sglt2" class="item-tag">カナグル</a><a href="ハイリスク_糖尿病用剤.html#combo" class="item-tag">カナリア</a><a href="ハイリスク_糖尿病用剤.html#dpp4" class="item-tag">グラクティブ</a><a href="ハイリスク_膵臓ホルモン剤.html#basal" class="item-tag">グラルギンBS</a><a href="ハイリスク_糖尿病用剤.html#su" class="item-tag">グリミクロン</a><a href="ハイリスク_糖尿病用剤.html#agi" class="item-tag">グルコバイ</a><a href="ハイリスク_糖尿病用剤.html#su" class="item-tag">グルファスト</a><a href="ハイリスク_糖尿病用剤.html#combo" class="item-tag">グルベス</a><a href="ハイリスク_抗精神病薬.html#typical" class="item-tag">コントミン</a></div>
+          </div>
+          <div class="kana-row">
+            <span class="kana-label">サ行</span>
+            <div class="kana-links"><a href="ハイリスク_抗うつ薬.html#snri" class="item-tag">サインバルタ</a><a href="ハイリスク_糖尿病用剤.html#dpp4" class="item-tag">ザファテック</a><a href="ハイリスク_抗うつ薬.html#ssri" class="item-tag">ジェイゾロフト</a><a href="ハイリスク_抗精神病薬.html#marta" class="item-tag">ジプレキサ</a><a href="ハイリスク_糖尿病用剤.html#sglt2" class="item-tag">ジャディアンス</a><a href="ハイリスク_糖尿病用剤.html#dpp4" class="item-tag">ジャヌビア</a><a href="ハイリスク_糖尿病用剤.html#su" class="item-tag">シュアポスト</a><a href="ハイリスク_糖尿病用剤.html#sglt2" class="item-tag">スーグラ</a><a href="ハイリスク_糖尿病用剤.html#combo" class="item-tag">スージャヌ</a><a href="ハイリスク_糖尿病用剤.html#su" class="item-tag">スターシス</a><a href="ハイリスク_糖尿病用剤.html#agi" class="item-tag">セイブル</a><a href="ハイリスク_抗精神病薬.html#typical" class="item-tag">セレネース</a><a href="ハイリスク_抗精神病薬.html#marta" class="item-tag">セロクエル</a><a href="ハイリスク_糖尿病用剤.html#combo" class="item-tag">ソニアス</a><a href="ハイリスク_膵臓ホルモン剤.html#glp1-combo" class="item-tag">ソリクア</a><a href="ハイリスク_膵臓ホルモン剤.html#glp1-combo" class="item-tag">ゾルトファイ</a></div>
+          </div>
+          <div class="kana-row">
+            <span class="kana-label">タ行</span>
+            <div class="kana-links"><a href="ハイリスク_糖尿病用剤.html#imeglimin" class="item-tag">ツイミーグ</a><a href="ハイリスク_抗うつ薬.html#nassa-sari" class="item-tag">デジレル</a><a href="ハイリスク_抗うつ薬.html#tca" class="item-tag">テトラミド</a><a href="ハイリスク_糖尿病用剤.html#dpp4" class="item-tag">テネリア</a><a href="ハイリスク_抗うつ薬.html#ssri" class="item-tag">デプロメール</a><a href="ハイリスク_糖尿病用剤.html#sglt2" class="item-tag">デベルザ</a><a href="ハイリスク_抗うつ薬.html#tca" class="item-tag">トフラニール</a><a href="ハイリスク_糖尿病用剤.html#dpp4" class="item-tag">トラゼンタ</a><a href="ハイリスク_糖尿病用剤.html#combo" class="item-tag">トラディアンス</a><a href="ハイリスク_抗うつ薬.html#tca" class="item-tag">トリプタノール</a><a href="ハイリスク_抗うつ薬.html#srim" class="item-tag">トリンテリックス</a><a href="ハイリスク_糖尿病用剤.html#glp1-inj" class="item-tag">トルリシティ</a><a href="ハイリスク_膵臓ホルモン剤.html#basal" class="item-tag">トレシーバ</a><a href="ハイリスク_抗うつ薬.html#snri" class="item-tag">トレドミン</a></div>
+          </div>
+          <div class="kana-row">
+            <span class="kana-label">ナ行</span>
+            <div class="kana-links"><a href="ハイリスク_糖尿病用剤.html#dpp4" class="item-tag">ネシーナ</a><a href="ハイリスク_膵臓ホルモン剤.html#bolus" class="item-tag">ノボラピッド</a><a href="ハイリスク_膵臓ホルモン剤.html#mix" class="item-tag">ノボラピッド30/50/70Mix</a><a href="ハイリスク_膵臓ホルモン剤.html#mix" class="item-tag">ノボリン30R</a><a href="ハイリスク_膵臓ホルモン剤.html#bolus" class="item-tag">ノボリンR</a><a href="ハイリスク_抗うつ薬.html#tca" class="item-tag">ノリトレン</a></div>
+          </div>
+          <div class="kana-row">
+            <span class="kana-label">ハ行</span>
+            <div class="kana-links"><a href="ハイリスク_血液凝固阻止剤.html#antiplatelet" class="item-tag">バイアスピリン</a><a href="ハイリスク_抗うつ薬.html#ssri" class="item-tag">パキシル</a><a href="ハイリスク_糖尿病用剤.html#glp1-inj" class="item-tag">ビクトーザ</a><a href="ハイリスク_抗精神病薬.html#marta" class="item-tag">ビプレッソ</a><a href="ハイリスク_膵臓ホルモン剤.html#mix" class="item-tag">ヒューマリン3/7</a><a href="ハイリスク_膵臓ホルモン剤.html#bolus" class="item-tag">ヒューマリンR</a><a href="ハイリスク_膵臓ホルモン剤.html#bolus" class="item-tag">ヒューマログ</a><a href="ハイリスク_膵臓ホルモン剤.html#mix" class="item-tag">ヒューマログMix25・50</a><a href="ハイリスク_抗精神病薬.html#typical" class="item-tag">ヒルナミン</a><a href="ハイリスク_糖尿病用剤.html#su" class="item-tag">ファスティック</a><a href="ハイリスク_膵臓ホルモン剤.html#bolus" class="item-tag">フィアスプ</a><a href="ハイリスク_糖尿病用剤.html#sglt2" class="item-tag">フォシーガ</a><a href="ハイリスク_血液凝固阻止剤.html#doac" class="item-tag">プラザキサ</a><a href="ハイリスク_血液凝固阻止剤.html#antiplatelet" class="item-tag">プラビックス</a><a href="ハイリスク_血液凝固阻止剤.html#antiplatelet" class="item-tag">ブリリンタ</a><a href="ハイリスク_血液凝固阻止剤.html#antiplatelet" class="item-tag">プレタール</a><a href="ハイリスク_糖尿病用剤.html#agi" class="item-tag">ベイスン</a></div>
+          </div>
+          <div class="kana-row">
+            <span class="kana-label">マ行</span>
+            <div class="kana-links"><a href="ハイリスク_糖尿病用剤.html#dpp4" class="item-tag">マリゼブ</a><a href="ハイリスク_糖尿病用剤.html#gip-glp1" class="item-tag">マンジャロ</a><a href="ハイリスク_糖尿病用剤.html#combo" class="item-tag">メタクト</a><a href="ハイリスク_糖尿病用剤.html#combo" class="item-tag">メトアナ</a><a href="ハイリスク_糖尿病用剤.html#bg" class="item-tag">メトグルコ</a><a href="ハイリスク_糖尿病用剤.html#bg" class="item-tag">メトホルミン</a></div>
+          </div>
+          <div class="kana-row">
+            <span class="kana-label">ヤ〜ワ行</span>
+            <div class="kana-links"><a href="ハイリスク_膵臓ホルモン剤.html#mix" class="item-tag">ライゾデグ</a><a href="ハイリスク_抗精神病薬.html#sda" class="item-tag">ラツーダ</a><a href="ハイリスク_膵臓ホルモン剤.html#basal" class="item-tag">ランタス</a><a href="ハイリスク_膵臓ホルモン剤.html#basal" class="item-tag">ランタスXR</a><a href="ハイリスク_血液凝固阻止剤.html#doac" class="item-tag">リクシアナ</a><a href="ハイリスク_抗精神病薬.html#sda" class="item-tag">リスパダール</a><a href="ハイリスク_抗うつ薬.html#nassa-sari" class="item-tag">リフレックス</a><a href="ハイリスク_糖尿病用剤.html#glp1-po" class="item-tag">リベルサス</a><a href="ハイリスク_抗精神病薬.html#sda" class="item-tag">ルーラン</a><a href="ハイリスク_抗うつ薬.html#tca" class="item-tag">ルジオミール</a><a href="ハイリスク_糖尿病用剤.html#sglt2" class="item-tag">ルセフィ</a><a href="ハイリスク_抗うつ薬.html#ssri" class="item-tag">ルボックス</a><a href="ハイリスク_膵臓ホルモン剤.html#bolus" class="item-tag">ルムジェブ</a><a href="ハイリスク_抗精神病薬.html#dss-dsam" class="item-tag">レキサルティ</a><a href="ハイリスク_抗うつ薬.html#ssri" class="item-tag">レクサプロ</a><a href="ハイリスク_抗うつ薬.html#nassa-sari" class="item-tag">レスリン</a><a href="ハイリスク_膵臓ホルモン剤.html#basal" class="item-tag">レベミル</a><a href="ハイリスク_抗うつ薬.html#nassa-sari" class="item-tag">レメロン</a><a href="ハイリスク_抗精神病薬.html#sda" class="item-tag">ロナセン</a><a href="ハイリスク_血液凝固阻止剤.html#warfarin" class="item-tag">ワーファリン</a></div>
+          </div>
+        </div>
+        <p style="font-size:12px;color:var(--sub);margin-top:10px;">
+          ※ インスリンのペン型デバイス名（ソロスター・フレックスタッチ・フレックスペン・ミリオペン等）は複数製剤で共通のため収載していません。製剤名で探してください。<br />
+          ※ 準備中の薬効群（気分安定薬・抗てんかん薬 等）の薬剤は、ページ公開時に追加します。
+        </p>
+      </section>
+
+      <!-- ============================================================
+           § 5  個別指導での注意点（作成中）
            ============================================================ -->
       <section id="shido-chui">
-        <div class="section-label">SECTION 4</div>
+        <div class="section-label">SECTION 5</div>
         <h2 class="section-title">個別指導での注意点</h2>
         <div class="warn-box">
           <div class="warn-box-title">作成中</div>

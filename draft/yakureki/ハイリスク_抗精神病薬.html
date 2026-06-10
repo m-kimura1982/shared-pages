@@ -19,27 +19,27 @@
       .drug-block {
         background: var(--white);
         border: 1px solid var(--border);
-        border-left: 3px solid #d1d5db;
+        border-left: 3px solid var(--blue);
         border-radius: var(--radius-sm);
-        padding: 16px 18px;
-        margin-bottom: 16px;
+        padding:  18px 20px;
+        margin-bottom:  18px;
       }
       .drug-block-head {
         display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
-        margin-bottom: 8px; padding-bottom: 6px;
-        border-bottom: 1px dashed var(--border);
+        margin-bottom: 10px; padding-bottom: 8px;
+        border-bottom: 1px solid var(--border);
       }
-      .drug-block-name { font-size: 16px; font-weight: 700; color: var(--ink); }
+      .drug-block-name { font-size: 17px; font-weight: 700; color: var(--ink); }
       .drug-block-sub  { font-size: 12px; color: var(--sub); }
 
       /* テンプレ直上の注意（重要語のみ赤） */
       .tpl-warn {
-        background: #fafafa;
-        border-left: 3px solid #cc0000;
+        background: var(--warn-bg);
+        border-left: 3px solid var(--warn-border);
         border-radius: 4px;
         padding: 10px 14px;
         margin: 12px 0 8px;
-        font-size: 12.5px;
+        font-size: 13px;
         line-height: 1.7;
         color: var(--ink);
       }
@@ -49,19 +49,22 @@
       }
       .tpl-warn ul { margin: 4px 0 0 20px; padding: 0; }
       .tpl-warn ul li { margin-bottom: 2px; }
-      .tpl-warn strong { color: #cc0000; font-weight: 700; }
+      .tpl-warn strong { color: var(--ink); font-weight: 700; }
 
       /* 短文テンプレ（基本 / 追記） */
-      .tpl-set { margin-top: 8px; }
+      .tpl-set { margin-top: 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
       .tpl-mini {
-        display: flex; align-items: flex-start; gap: 8px;
-        background: #fff; border: 1px solid #dfe4ea;
-        border-radius: 6px; padding: 8px 12px; margin-bottom: 6px;
+        display: flex; align-items: flex-start; gap: 10px;
+        background: var(--white); border: none;
+        border-bottom: 1px solid #edf0f4;
+        padding: 11px 14px; margin: 0;
         position: relative;
       }
+      .tpl-mini:last-child { border-bottom: none; }
+      .tpl-mini:nth-child(even) { background: #fafbfd; }
       .tpl-mini .tpl-tag {
-        flex-shrink: 0; font-size: 10px; font-weight: 700;
-        padding: 2px 8px; border-radius: 100px;
+        flex-shrink: 0; font-size: 11px; font-weight: 700;
+        padding: 3px 10px; border-radius: 100px;
         letter-spacing: .04em; line-height: 1.6;
         white-space: nowrap;
       }
@@ -77,16 +80,16 @@
         border: 1px solid #e1e5ea;
         border-left: 3px solid var(--blue);
         border-radius: 4px;
-        padding: 10px 14px;
+        padding: 12px 16px;
         margin: 8px 0 12px;
       }
       .drug-check-box-title {
         font-weight: 700; color: var(--blue);
-        font-size: 12px; letter-spacing: .04em;
+        font-size: 12.5px; letter-spacing: .04em;
         margin-bottom: 4px;
       }
       .drug-check-box ul { margin: 0; padding-left: 20px; }
-      .drug-check-box ul li { font-size: 12.5px; line-height: 1.7; margin-bottom: 2px; }
+      .drug-check-box ul li { font-size: 13px; line-height: 1.7; margin-bottom: 2px; }
 
       /* 折りたたみ式 指導補足 */
       .guide-details {
@@ -117,15 +120,8 @@
         transition: transform 0.15s;
       }
       .guide-details[open] summary::before { transform: rotate(90deg); }
-      .guide-details summary::after {
-        content: "クリックで展開";
-        margin-left: auto;
-        font-size: 11px; font-weight: 400;
-        color: var(--sub);
-      }
-      .guide-details[open] summary::after { content: "クリックで閉じる"; }
       .guide-details-body {
-        padding: 0 16px 12px; font-size: 13px; line-height: 1.75;
+        padding: 2px 18px 14px; font-size: 13.5px; line-height: 1.75;
       }
       .guide-details-body h4 {
         font-size: 13px; font-weight: 700;
@@ -156,7 +152,7 @@
       }
       .drug-index-row {
         display: flex; align-items: baseline; gap: 6px;
-        flex-wrap: wrap; margin-bottom: 4px; font-size: 12px;
+        flex-wrap: wrap; margin-bottom: 4px; font-size: 12.5px;
       }
       .drug-index-row .di-group {
         color: var(--sub); font-weight: 700;
@@ -164,7 +160,7 @@
       }
       .drug-index-row a {
         background: #fff; border: 1px solid #d7dce3;
-        border-radius: 100px; padding: 2px 9px;
+        border-radius: 100px; padding: 3px 11px;
         color: var(--ink); text-decoration: none;
         white-space: nowrap;
       }
@@ -181,14 +177,14 @@
         display: inline-block; width: 10px; height: 10px; border-radius: 2px;
       }
       .tpl-mini .tpl-text {
-        flex: 1; font-size: 13px; line-height: 1.7;
+        flex: 1; font-size: 13.5px; line-height: 1.7;
         padding-right: 56px; white-space: pre-wrap;
       }
       .tpl-mini .copy-mini {
-        position: absolute; top: 7px; right: 8px;
+        position: absolute; top: 10px; right: 10px;
         background: #f3f4f6; color: #374151; border: 1px solid #d1d5db;
         border-radius: 4px; font-size: 11px; font-weight: 700;
-        padding: 3px 8px; cursor: pointer;
+        padding: 4px 10px; cursor: pointer;
         font-family: "Noto Sans JP", sans-serif;
       }
       .tpl-mini .copy-mini:hover { background: #e5e7eb; border-color: #9ca3af; }
@@ -200,7 +196,7 @@
           flex-direction: column;
           align-items: stretch;
           gap: 6px;
-          padding-bottom: 30px;
+          padding-bottom: 36px;
         }
         .tpl-mini .tpl-tag {
           align-self: flex-start;
@@ -246,6 +242,13 @@
       /* ===== サイドスティッキー目次（PC 880px+） ===== */
       [id] { scroll-margin-top: 16px; }
       .sticky-toc { display: none; }
+
+      /* ===== スマホ用インライン目次（880px未満のみ表示） ===== */
+      .toc-inline { border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--white); padding: 10px 14px; margin: 0 0 18px; }
+      .toc-inline summary { font-weight: 700; font-size: 13px; color: var(--blue); cursor: pointer; }
+      .toc-inline .toc-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+      .toc-inline .toc-links a { font-size: 12px; background: var(--blue-light); color: var(--blue); border-radius: 4px; padding: 2px 9px; text-decoration: none; }
+      @media (min-width: 880px) { .toc-inline { display: none; } }
 
       @media (min-width: 880px) {
         .layout-outer {
@@ -353,6 +356,11 @@
       <div class="sticky-toc-group">▼ その他</div>
       <a href="#clozapine-note">クロザピンの扱い</a>
       <a href="#section3">変化に基づくロ（判断理由）</a>
+      <div class="sticky-toc-group">▼ 他の薬効群</div>
+      <a href="ハイリスク_血液凝固阻止剤.html">血液凝固阻止剤</a>
+      <a href="ハイリスク_糖尿病用剤.html">糖尿病用剤</a>
+      <a href="ハイリスク_膵臓ホルモン剤.html">インスリン製剤</a>
+      <a href="ハイリスク_抗うつ薬.html">抗うつ薬</a>
     </nav>
 
     <div>
@@ -369,6 +377,23 @@
     </div>
 
     <main>
+      <details class="toc-inline">
+        <summary>目次（タップで開閉）</summary>
+        <div class="toc-links">
+          <a href="#section1">共通確認ポイント</a>
+          <a href="#common-se">共通の副作用説明</a>
+          <a href="#sda">非定型 SDA</a>
+          <a href="#marta">非定型 MARTA</a>
+          <a href="#dss-dsam">非定型 DSS/DSAM</a>
+          <a href="#typical">定型抗精神病薬</a>
+          <a href="#clozapine-note">クロザピンの扱い</a>
+          <a href="#section3">変化に基づくロ</a>
+          <a href="ハイリスク_血液凝固阻止剤.html">→ 血液凝固阻止剤</a>
+          <a href="ハイリスク_糖尿病用剤.html">→ 糖尿病用剤</a>
+          <a href="ハイリスク_膵臓ホルモン剤.html">→ インスリン製剤</a>
+          <a href="ハイリスク_抗うつ薬.html">→ 抗うつ薬</a>
+        </div>
+      </details>
 
       <!-- ============================================================
            § 1  共通確認ポイント
@@ -436,6 +461,16 @@
         <div class="tpl-warn" style="margin:12px 0;">
           <div class="tpl-warn-title">副作用説明の記載について</div>
           副作用に関する記載例は、<strong>実際に説明した内容に応じて追記</strong>してください。日常的な副作用（眠気・錐体外路症状・便秘・口渇・体重変化等）は初回イ本体に含めています。<strong>まれな重篤副作用</strong>（悪性症候群・QT延長・SJS/TEN・高血糖性ケトアシドーシス・遅発性ジスキネジア等）は、患者さんへ不安を与えすぎないよう、<strong>症状と相談・受診の目安を中心に説明</strong>します。薬歴上で説明内容を明確に残したい場合は、<strong>「副作用説明の追記」から該当するものを追加</strong>してください。
+        </div>
+        <div class="tpl-warn" id="copy-rule" style="margin:12px 0;">
+          <div class="tpl-warn-title">コピーする前に必ず確認（全薬剤群共通）</div>
+          下のテンプレは「指導・説明」部分の記載例です。そのままコピペすると要件不足になるので、以下を確認してください。
+          <ul>
+            <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（例：「リスパダール：眠気・錐体外路症状の確認と自動車運転回避を指導…」）</li>
+            <li><strong>確認した内容（症状・聞き取り結果 など）</strong>もテンプレに足す</li>
+            <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
+            <li>共通重篤副作用（悪性症候群・QT延長・SJS/TEN）を説明した場合は、<strong>「共通の副作用説明の追記」</strong>から該当する記載例を追加</li>
+          </ul>
         </div>
         <div class="tag-legend">
           <span><i style="background:var(--blue-light);border:1px solid var(--blue)"></i>初回イ（新規／併用下追加／高齢例 など）</span>
@@ -520,7 +555,6 @@
               <li>併用薬（CYP3A4阻害薬等）／アルコール</li>
               <li>自動車運転等の危険作業の従事状況／高齢者は転倒・誤嚥リスク</li>
             </ul>
-            <p style="font-size:11px;color:var(--sub);margin-top:6px;">※ 日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」精神神経用剤 を参考</p>
           </div>
 
           <details class="guide-details">
@@ -548,16 +582,7 @@
             </div>
           </details>
 
-          <div class="tpl-warn">
-            <div class="tpl-warn-title">コピーする前に必ず確認</div>
-            下のテンプレは「指導・説明」部分の記載例です。そのままコピペすると要件不足になるので、以下を確認してください。
-            <ul>
-              <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（例：「リスパダール：眠気・錐体外路症状の確認と自動車運転回避を指導…」）</li>
-              <li><strong>確認した内容（症状・聞き取り結果）</strong>もテンプレに足す</li>
-              <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
-              <li>共通重篤副作用（悪性症候群・QT延長・SJS/TEN）を説明した場合は、<strong>「共通の副作用説明の追記」</strong>から該当する記載例を追加</li>
-            </ul>
-          </div>
+          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
 
           <div class="tpl-set">
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
@@ -604,7 +629,6 @@
               <li>併用薬（CYP3A4阻害薬・他の血糖上昇薬等）／アルコール</li>
               <li>自動車運転等の危険作業の従事状況／効果指標：体重・血糖値・HbA1c の推移</li>
             </ul>
-            <p style="font-size:11px;color:var(--sub);margin-top:6px;">※ 日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」精神神経用剤 を参考</p>
           </div>
 
           <div class="caveat-box">
@@ -637,16 +661,10 @@
             </div>
           </details>
 
-          <div class="tpl-warn">
-            <div class="tpl-warn-title">コピーする前に必ず確認</div>
-            下のテンプレは「指導・説明」部分の記載例です。そのままコピペすると要件不足になるので、以下を確認してください。
-            <ul>
-              <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（例：「ジプレキサ：糖尿病既往なしを確認、血糖上昇を疑う症状時の受診を指導…」）</li>
-              <li><strong>糖尿病・糖尿病既往歴・血糖値・HbA1c・体重等の聞き取り結果</strong>もテンプレに足す</li>
-              <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
-              <li>共通重篤副作用（悪性症候群・QT延長・SJS/TEN）を説明した場合は、<strong>「共通の副作用説明の追記」</strong>から該当する記載例を追加</li>
-            </ul>
-          </div>
+          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
+          <ul style="font-size:12px;margin:0 0 8px;padding-left:1.6em;">
+            <li><strong>糖尿病・糖尿病既往歴・血糖値・HbA1c・体重等の聞き取り結果</strong>もテンプレに足す</li>
+          </ul>
 
           <div class="tpl-set">
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
@@ -692,7 +710,6 @@
               <li>併用薬（CYP3A4阻害薬・CYP2D6阻害薬等）／アルコール</li>
               <li>自動車運転等の危険作業の従事状況</li>
             </ul>
-            <p style="font-size:11px;color:var(--sub);margin-top:6px;">※ 日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」精神神経用剤 を参考</p>
           </div>
 
           <details class="guide-details">
@@ -719,16 +736,7 @@
             </div>
           </details>
 
-          <div class="tpl-warn">
-            <div class="tpl-warn-title">コピーする前に必ず確認</div>
-            下のテンプレは「指導・説明」部分の記載例です。そのままコピペすると要件不足になるので、以下を確認してください。
-            <ul>
-              <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（例：「エビリファイ：開始初期のアカシジア・不眠の説明と自動車運転回避を指導…」）</li>
-              <li><strong>確認した内容（症状・聞き取り結果）</strong>もテンプレに足す</li>
-              <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
-              <li>共通重篤副作用（悪性症候群・QT延長・SJS/TEN）を説明した場合は、<strong>「共通の副作用説明の追記」</strong>から該当する記載例を追加</li>
-            </ul>
-          </div>
+          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
 
           <div class="tpl-set">
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
@@ -772,7 +780,6 @@
               <li>併用薬（他のQT延長薬・中枢抑制薬・抗コリン薬重複）／アルコール</li>
               <li>自動車運転等の危険作業の従事状況／高齢者は転倒・誤嚥リスク</li>
             </ul>
-            <p style="font-size:11px;color:var(--sub);margin-top:6px;">※ 日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」精神神経用剤 を参考</p>
           </div>
 
           <details class="guide-details">
@@ -801,16 +808,7 @@
             </div>
           </details>
 
-          <div class="tpl-warn">
-            <div class="tpl-warn-title">コピーする前に必ず確認</div>
-            下のテンプレは「指導・説明」部分の記載例です。そのままコピペすると要件不足になるので、以下を確認してください。
-            <ul>
-              <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（例：「セレネース：錐体外路症状の確認と自動車運転回避を指導…」）</li>
-              <li><strong>確認した内容（症状・聞き取り結果）</strong>もテンプレに足す</li>
-              <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
-              <li>共通重篤副作用（悪性症候群・QT延長・SJS/TEN）を説明した場合は、<strong>「共通の副作用説明の追記」</strong>から該当する記載例を追加</li>
-            </ul>
-          </div>
+          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
 
           <div class="tpl-set">
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>

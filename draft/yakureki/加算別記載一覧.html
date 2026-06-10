@@ -25,8 +25,8 @@
       <span class="page-tag">ADD-ON</span>
       <h1 class="page-title">加算別 薬歴記載一覧</h1>
       <p class="page-desc">
-        各加算で「薬歴・記録に何を残すか」だけを加算別に整理するページです。算定要件そのものは kaitei2026 の各資料ページを参照してください。<br />
-        記載量の少ない加算はこのページ内のセクションで完結させ、ハイリスク薬のような重量級は個別ページへリンクします。
+        各加算・管理料で「薬歴・記録に何を残すか」だけを整理するページです。算定要件そのものは各資料ページを参照してください。<br />
+        出典はすべて 令和8年3月5日 保医発0305第4号 別添3（<a href="../../別添3_調剤報酬点数表に関する事項2026.html" style="color:var(--blue);">調剤報酬点数表に関する事項</a>）。各セクションに区分番号を記載しています。
       </p>
     </div>
 
@@ -36,12 +36,32 @@
            ============================================================ -->
       <section id="list">
         <div class="section-label">一覧</div>
-        <h2 class="section-title">加算と薬歴記載の対応表</h2>
+        <h2 class="section-title">加算・管理料と薬歴記載の対応表</h2>
+        <div class="table-wrap">
         <table class="gtable">
           <tr>
             <th style="width:16em;">加算・指導料</th>
             <th>薬歴・記録に残す核</th>
             <th style="width:9em;">詳細</th>
+          </tr>
+
+          <tr><td colspan="3" style="background:var(--blue-light);font-weight:700;">調剤管理料の加算（区分10の2）</td></tr>
+          <tr>
+            <td><strong>調剤時残薬調整加算</strong><br /><span style="font-size:11px;color:var(--sub);">（R8改定で残薬分が分離・新設）</span></td>
+            <td>①照会内容の要点 ②変更した品目名・数量 ③残薬が生じた理由 の3点</td>
+            <td><a href="#zanyaku" style="color:var(--blue);">→ 本ページ内</a></td>
+          </tr>
+          <tr>
+            <td><strong>薬学的有害事象等防止加算</strong><br /><span style="font-size:11px;color:var(--sub);">（R8改定で重複投薬・相互作用等防止加算から再編）</span></td>
+            <td>処方医に連絡・確認を行った内容の要点と変更内容</td>
+            <td><a href="#yuugai" style="color:var(--blue);">→ 本ページ内</a></td>
+          </tr>
+
+          <tr><td colspan="3" style="background:var(--blue-light);font-weight:700;">服薬管理指導料の加算（区分10の3）</td></tr>
+          <tr>
+            <td>麻薬管理指導加算</td>
+            <td>電話等で確認した服用状況・残薬・保管状況、行った指導、鎮痛効果・体調変化の確認結果</td>
+            <td><a href="#makan" style="color:var(--blue);">→ 本ページ内</a></td>
           </tr>
           <tr>
             <td><strong>特定薬剤管理指導加算1</strong>（ハイリスク薬）</td>
@@ -50,81 +70,293 @@
           </tr>
           <tr>
             <td>特定薬剤管理指導加算2（抗悪性腫瘍剤）</td>
-            <td>作成予定</td>
+            <td>レジメン確認の内容、電話等で確認した服用状況・体調変化、医療機関への文書提供（月1回）</td>
             <td><span class="card-stub">準備中</span></td>
           </tr>
           <tr>
             <td>特定薬剤管理指導加算3（イ／ロ）</td>
-            <td>作成予定（RMP等に基づく説明／選定療養・バイオ後続品の説明）</td>
+            <td>対象となる医薬品が分かるように記載（供給不足での説明は摘要欄に薬剤名）</td>
             <td><a href="#tokuyaku3" style="color:var(--blue);">→ 本ページ内</a></td>
           </tr>
           <tr>
-            <td>重複投薬・相互作用等防止加算</td>
-            <td>作成予定（照会内容・処方変更の有無・残薬調整）</td>
-            <td><a href="#choufuku" style="color:var(--blue);">→ 本ページ内</a></td>
-          </tr>
-          <tr>
-            <td>吸入薬指導加算</td>
-            <td>作成予定（手技確認・文書/練習用吸入器による指導・医療機関への情報提供）</td>
-            <td><a href="#kyunyu" style="color:var(--blue);">→ 本ページ内</a></td>
-          </tr>
-          <tr>
             <td>乳幼児服薬指導加算</td>
-            <td>作成予定（体重・適切な剤形等の確認、保護者への指導内容）</td>
+            <td>年齢・体重・適切な剤形等の確認事項、家族等への服薬指導（誤飲防止等）の内容</td>
             <td><a href="#nyuyoji" style="color:var(--blue);">→ 本ページ内</a></td>
           </tr>
           <tr>
-            <td>調剤後薬剤管理指導料（糖尿病／慢性心不全）</td>
-            <td>作成予定（調剤後フォローアップの記録・医療機関への情報提供）</td>
-            <td><span class="card-stub">準備中</span></td>
+            <td>小児特定加算</td>
+            <td>聞き取った服薬状況・服薬管理の希望、検討した調剤方法と服薬指導の内容</td>
+            <td><a href="#shoni" style="color:var(--blue);">→ 本ページ内</a></td>
           </tr>
           <tr>
-            <td>服薬情報等提供料</td>
-            <td>作成予定（提供先・提供内容・提供日の記録）</td>
-            <td><span class="card-stub">準備中</span></td>
+            <td>吸入薬指導加算</td>
+            <td>文書・練習用吸入器による手技指導と確認結果、医療機関への情報提供（文書／手帳）</td>
+            <td><a href="#kyunyu" style="color:var(--blue);">→ 本ページ内</a></td>
+          </tr>
+          <tr>
+            <td>かかりつけ薬剤師フォローアップ加算<br /><span style="font-size:11px;color:var(--sub);">（R8新設）</span></td>
+            <td>フォローアップした旨・日時、聞き取り・指導等の内容（問題未解消時は検証内容・改善策も）</td>
+            <td><a href="#fu" style="color:var(--blue);">→ 本ページ内</a></td>
+          </tr>
+          <tr>
+            <td>かかりつけ薬剤師訪問加算<br /><span style="font-size:11px;color:var(--sub);">（R8新設）</span></td>
+            <td>患家を訪問した旨、患家における残薬状況、実施した指導等の内容</td>
+            <td><a href="#homon" style="color:var(--blue);">→ 本ページ内</a></td>
+          </tr>
+
+          <tr><td colspan="3" style="background:var(--blue-light);font-weight:700;">外来服薬支援料（区分14の2）</td></tr>
+          <tr>
+            <td>外来服薬支援料1</td>
+            <td>処方医の了解を得た旨（又は情報提供した内容）、薬剤名、服薬支援の内容と理由</td>
+            <td><a href="#gairaishien" style="color:var(--blue);">→ 本ページ内</a></td>
+          </tr>
+          <tr>
+            <td>外来服薬支援料2（一包化）</td>
+            <td>薬剤師判断で一包化した場合：その旨と必要と認めた理由</td>
+            <td><a href="#gairaishien" style="color:var(--blue);">→ 本ページ内</a></td>
+          </tr>
+          <tr>
+            <td>施設連携加算</td>
+            <td>施設職員と協働して実施した内容の要点（保管状況・服薬状況・残薬・体調変化等の確認）</td>
+            <td><a href="#gairaishien" style="color:var(--blue);">→ 本ページ内</a></td>
+          </tr>
+
+          <tr><td colspan="3" style="background:var(--blue-light);font-weight:700;">その他の薬学管理料</td></tr>
+          <tr>
+            <td>服用薬剤調整支援料1・2（区分14の3）</td>
+            <td>1：減薬に係る患者の意向・薬学的検討内容　2：服用薬剤総合評価（別紙様式2）を保存</td>
+            <td><a href="#chousei" style="color:var(--blue);">→ 本ページ内</a></td>
+          </tr>
+          <tr>
+            <td>調剤後薬剤管理指導料（区分14の4）<br /><span style="font-size:11px;color:var(--sub);">糖尿病／慢性心不全</span></td>
+            <td>電話等で確認した使用状況・体調変化、医療機関への文書情報提供の内容（薬学的分析・評価に基づく）</td>
+            <td><a href="#chouzaigo" style="color:var(--blue);">→ 本ページ内</a></td>
+          </tr>
+          <tr>
+            <td>退院時共同指導料（区分15の4）</td>
+            <td>入院医療機関で行った服薬指導等の要点＋患者等に提供した文書の写しを添付</td>
+            <td><a href="#taiin" style="color:var(--blue);">→ 本ページ内</a></td>
+          </tr>
+          <tr>
+            <td>服薬情報等提供料（区分15の5）</td>
+            <td>提供した情報の内容（残薬は理由と再発防止策まで）・提供先・提供日</td>
+            <td><a href="#fukuyaku" style="color:var(--blue);">→ 本ページ内</a></td>
+          </tr>
+          <tr>
+            <td>経管投薬支援料（区分15の7）</td>
+            <td>個別の記載規定なし。通則(4)に基づき簡易懸濁法に係る支援の要点を記載</td>
+            <td><span style="font-size:12px;color:var(--sub);">表のみ</span></td>
           </tr>
         </table>
+        </div>
         <p style="font-size:12px;color:var(--sub);margin-top:10px;">
-          ※ 収録する加算・並び順は精査中。算定要件の詳細は <a href="../../kaitei2026.html" style="color:var(--blue);">2026改定 資料一覧</a> の各ページを参照。
+          ※ 在宅系（在宅患者訪問薬剤管理指導料・緊急訪問・在宅の麻薬管理指導加算等）は本ページの対象外。薬学的管理指導計画書の薬歴添付・麻薬廃棄届の写し添付など固有の記録要件があるため、別途整理予定。<br />
+          ※ どの加算にも共通する大前提（通則(4)：指導後その要点を速やかに記載）は <a href="基本記載ルール.html" style="color:var(--blue);">基本記載ルール</a> を参照。
         </p>
       </section>
 
       <!-- ============================================================
-           本ページ内で完結させる加算（セクションの器のみ）
+           調剤管理料の加算
            ============================================================ -->
+      <section id="zanyaku">
+        <div class="section-label">SECTION</div>
+        <h2 class="section-title">調剤時残薬調整加算</h2>
+        <p style="font-size:13px;color:var(--sub);margin:0 0 10px;">R8改定で残薬調整分が分離・新設。薬歴には次の3点を記載する（通知で明確化）。〔別添3 区分10の2・２〕</p>
+        <table class="gtable">
+          <tr><th style="width:14em;">記載項目</th><th>ポイント</th></tr>
+          <tr><td>① 処方医に連絡・確認した内容の要点</td><td>誰に・何を照会したか</td></tr>
+          <tr><td>② 変更した医薬品の品目名と数量</td><td>減数した品目・日数／数量を具体的に</td></tr>
+          <tr><td>③ 残薬が生じた理由（分析結果）</td><td>例：飲み忘れ・自己中断／症状改善時の自己休薬／副作用懸念で未服用／用法の誤認／受診間隔のずれ／他院・他科の同種薬重複 など</td></tr>
+        </table>
+        <p style="font-size:12px;color:var(--sub);margin-top:10px;">手帳を用いて服薬管理指導を行う場合は手帳にも記載する。算定要件・手順は <a href="../../調剤時残薬調整加算.html" style="color:var(--blue);">調剤時残薬調整加算</a>・<a href="../../調剤時残薬調整加算_実務チェックリスト.html" style="color:var(--blue);">実務チェックリスト</a> を参照。</p>
+      </section>
+
+      <section id="yuugai">
+        <div class="section-label">SECTION</div>
+        <h2 class="section-title">薬学的有害事象等防止加算</h2>
+        <p style="font-size:13px;color:var(--sub);margin:0 0 10px;">R8改定で「重複投薬・相互作用等防止加算」から再編。疑義照会による処方変更を評価する加算（残薬のみの照会は上の調剤時残薬調整加算へ）。イ＝かかりつけ薬剤師による照会は独立区分。〔別添3 区分10の2・３〕</p>
+        <table class="gtable">
+          <tr><th style="width:14em;">記載項目</th><th>ポイント</th></tr>
+          <tr><td>① 処方医に連絡・確認を行った内容の要点</td><td>照会した薬学的事項（重複投薬・相互作用・副作用歴等）と確認の経過</td></tr>
+          <tr><td>② 変更内容</td><td>処方がどう変更されたかを具体的に</td></tr>
+        </table>
+        <p style="font-size:12px;color:var(--sub);margin-top:10px;">重複投薬が生じた理由の分析も行い、必要に応じて処方医に情報提供する。算定要件は <a href="../../薬学的有害事象等防止加算.html" style="color:var(--blue);">薬学的有害事象等防止加算</a>・<a href="../../薬学的有害事象等防止加算_実務チェックリスト.html" style="color:var(--blue);">実務チェックリスト</a> を参照。</p>
+      </section>
+
+      <!-- ============================================================
+           服薬管理指導料の加算
+           ============================================================ -->
+      <section id="makan">
+        <div class="section-label">SECTION</div>
+        <h2 class="section-title">麻薬管理指導加算</h2>
+        <p style="font-size:13px;color:var(--sub);margin:0 0 10px;">調剤後、継続的に電話等で確認・指導した場合に算定。一律内容のメール一斉送信など一方的な情報発信のみでは継続的服薬指導にあたらない。〔別添3 区分10の3・５〕</p>
+        <table class="gtable">
+          <tr><th style="width:14em;">記載項目</th><th>ポイント</th></tr>
+          <tr><td>① 電話等で確認した内容</td><td>麻薬の服用状況・残薬の状況・保管状況</td></tr>
+          <tr><td>② 行った指導</td><td>残薬の適切な取扱方法を含めた保管取扱い上の注意等</td></tr>
+          <tr><td>③ 効果・副作用の確認結果</td><td>鎮痛等の効果、服薬中の体調の変化（副作用が疑われる症状）の有無</td></tr>
+        </table>
+        <p style="font-size:12px;color:var(--sub);margin-top:10px;">確認にあたっては「がん疼痛の薬物療法に関するガイドライン」（日本緩和医療学会）等を参照する。<br />※ 算定に馴染むのは、麻薬が新規処方された／用法用量が変更された／病態が安定していない等、調剤後の継続確認に実質があるケース。長期間同一処方で安定している患者では確認すべき項目が乏しく、算定は難しい。</p>
+      </section>
+
       <section id="tokuyaku3">
         <div class="section-label">SECTION</div>
         <h2 class="section-title">特定薬剤管理指導加算3（イ／ロ）</h2>
-        <div class="warn-box">
-          <div class="warn-box-title">作成中</div>
-          <p>イ（RMP等に基づく説明）／ロ（選定療養・バイオ後続品の説明）で薬歴に残す内容と記載例をここに整理予定。</p>
+        <p style="font-size:13px;color:var(--sub);margin:0 0 10px;">対象医薬品について最初に処方された1回に限り算定（イ＝RMP資材等を最初に用いた説明、ロ＝選定療養・供給不安定時の銘柄変更・バイオ後続品の説明）。〔別添3 区分10の3・８〕</p>
+        <table class="gtable">
+          <tr><th style="width:14em;">記載項目</th><th>ポイント</th></tr>
+          <tr><td>対象となる医薬品が分かるように記載</td><td>どの薬剤について説明・指導したのかを明示する（通知(6)）</td></tr>
+          <tr><td>（供給不足で説明した場合）</td><td>摘要欄に「調剤に必要な数量が確保できなかった薬剤名」を記載</td></tr>
+        </table>
+        <div class="example-box" style="margin-top:10px;">
+          <span class="example-label" style="color:var(--blue);">記載例（ロ：選定療養）</span>
+          <ul style="padding-left:1.4em;margin:0;line-height:1.85;">
+            <li>選定療養について説明（対象薬剤名を明記）→ 今後も先発医薬品を希望する旨確認。</li>
+            <li>長期収載品の選定療養について説明（対象薬剤名）→ 後発品希望に変更（R○.○〜）。</li>
+            <li>長期収載品を選択した場合の選定療養費について説明（対象薬剤名）→ 今回は先発希望。その都度確認してほしいと申し出あり。</li>
+          </ul>
         </div>
-      </section>
-
-      <section id="choufuku">
-        <div class="section-label">SECTION</div>
-        <h2 class="section-title">重複投薬・相互作用等防止加算</h2>
-        <div class="warn-box">
-          <div class="warn-box-title">作成中</div>
-          <p>照会内容・処方変更の有無・残薬調整の記録で薬歴に残す内容と記載例をここに整理予定。残薬調整の算定は <a href="../../調剤時残薬調整加算_実務チェックリスト.html" style="color:var(--blue);">調剤時残薬調整加算 チェックリスト</a> も参照。</p>
-        </div>
-      </section>
-
-      <section id="kyunyu">
-        <div class="section-label">SECTION</div>
-        <h2 class="section-title">吸入薬指導加算</h2>
-        <div class="warn-box">
-          <div class="warn-box-title">作成中</div>
-          <p>手技確認・指導方法（文書・練習用吸入器）・医療機関への情報提供の記録をここに整理予定。</p>
-        </div>
+        <p style="font-size:12px;color:var(--sub);margin-top:8px;">※ 長期収載品の処方がないのに「ロ」（選定療養）を算定すると返戻になるので注意。</p>
+        <p style="font-size:12px;color:var(--sub);margin-top:10px;">※R8疑義解釈その2：説明済みでも選定療養費（自己負担額）が変わる薬は「ロ」を1回に限り再算定可。<a href="../../選定療養_実務チェックリスト.html" style="color:var(--blue);">選定療養 実務チェックリスト</a> 参照。</p>
       </section>
 
       <section id="nyuyoji">
         <div class="section-label">SECTION</div>
         <h2 class="section-title">乳幼児服薬指導加算</h2>
+        <p style="font-size:13px;color:var(--sub);margin:0 0 10px;">乳幼児の処方箋受付時に必要事項を確認し、家族等に服薬指導した場合に算定。〔別添3 区分10の3・９〕</p>
+        <table class="gtable">
+          <tr><th style="width:14em;">記載項目</th><th>ポイント</th></tr>
+          <tr><td>① 確認した事項</td><td>年齢・体重・適切な剤形その他必要な事項</td></tr>
+          <tr><td>② 家族等への指導内容</td><td>適切な服薬方法・誤飲防止等</td></tr>
+        </table>
+        <p style="font-size:12px;color:var(--sub);margin-top:10px;">服用期間中に家族等から電話等の問い合わせがあった場合は適切に対応・指導する（対応した内容も薬歴に残す）。小児特定加算とは併算定不可。<br />※ Do処方で特に指導すべき内容がない場合や、使用経験のある外用のみの処方など、乳幼児特有の指導が成立しないケースは算定しない判断も必要（記録だけ整えても算定根拠にならない）。</p>
+      </section>
+
+      <section id="shoni">
+        <div class="section-label">SECTION</div>
+        <h2 class="section-title">小児特定加算</h2>
+        <p style="font-size:13px;color:var(--sub);margin:0 0 10px;">児童福祉法に規定する障害児（18歳未満）への調剤で、状態に合わせた薬学的管理・指導を行った場合に算定。〔別添3 区分10の3・10〕</p>
+        <table class="gtable">
+          <tr><th style="width:14em;">記載項目</th><th>ポイント</th></tr>
+          <tr><td>① 聞き取った情報</td><td>服薬状況、服薬管理を行う際の希望等（患者・家族等から収集）</td></tr>
+          <tr><td>② 検討・実施した内容</td><td>薬学的知見に基づき検討した調剤方法、服用上の注意点・適切な服用方法等の指導内容</td></tr>
+        </table>
+        <p style="font-size:12px;color:var(--sub);margin-top:10px;">服用期間中の問い合わせ対応は乳幼児服薬指導加算と同様。乳幼児服薬指導加算とは併算定不可。</p>
+      </section>
+
+      <section id="kyunyu">
+        <div class="section-label">SECTION</div>
+        <h2 class="section-title">吸入薬指導加算</h2>
+        <p style="font-size:13px;color:var(--sub);margin:0 0 10px;">6月に1回に限り算定（別の吸入薬が処方され別途指導した場合は6月以内でも可）。〔別添3 区分10の3・11〕</p>
+        <table class="gtable">
+          <tr><th style="width:14em;">記載項目</th><th>ポイント</th></tr>
+          <tr><td>① 指導の経緯（同意・求め）</td><td>医療機関からの求め／患者等の求め＋医師の了解、患者・家族等の同意</td></tr>
+          <tr><td>② 手技指導と確認の内容</td><td>文書・練習用吸入器等を用いた吸入手技の指導、正しい手順で使用できているかの確認結果（インフルエンザ治療薬は薬剤師看視下での吸入）</td></tr>
+          <tr><td>③ 医療機関への情報提供</td><td>吸入指導の内容・患者の手技の理解度等（文書のほか手帳での提供も可）</td></tr>
+        </table>
+        <p style="font-size:12px;color:var(--sub);margin-top:10px;">この情報提供では服薬情報等提供料は算定不可。手技に疑義があれば処方医に照会する。R8改定での見直しは <a href="../../吸入薬指導加算2026.html" style="color:var(--blue);">吸入薬指導加算の見直し</a>・<a href="../../吸入薬指導加算_実務チェックリスト.html" style="color:var(--blue);">実務チェックリスト</a> を参照。</p>
+      </section>
+
+      <section id="fu">
+        <div class="section-label">SECTION</div>
+        <h2 class="section-title">かかりつけ薬剤師フォローアップ加算</h2>
+        <p style="font-size:13px;color:var(--sub);margin:0 0 10px;">R8新設。前回の調剤後〜次回処方箋持参までの間に、かかりつけ薬剤師が電話等でフォローアップした場合に算定。〔別添3 区分10の3・12〕</p>
+        <table class="gtable">
+          <tr><th style="width:14em;">記載項目</th><th>ポイント</th></tr>
+          <tr><td>① フォローアップした旨と日時</td><td>電話等により実施した事実と日時（通知エで明記）</td></tr>
+          <tr><td>② 聞き取り・指導等の内容</td><td>実施した聞き取りや指導等の内容</td></tr>
+          <tr><td>③（問題が解消されない場合）</td><td>解消されなかった理由・背景の検証内容と改善策（通知カ。みだりに繰り返さない）</td></tr>
+        </table>
+        <p style="font-size:12px;color:var(--sub);margin-top:10px;">体調変化等で速やかに伝達すべき情報を得た場合は医療機関に提供し、必要に応じ受診勧奨。前提要件（直近6月の外来服薬支援料1等の算定）・かかりつけ薬剤師氏名の記載要件は <a href="../../かかりつけ薬剤師フォローアップ加算.html" style="color:var(--blue);">かかりつけ薬剤師フォローアップ加算</a>・<a href="../../かかりつけ薬剤師フォローアップ加算_実務チェックリスト.html" style="color:var(--blue);">実務チェックリスト</a> を参照。</p>
+      </section>
+
+      <section id="homon">
+        <div class="section-label">SECTION</div>
+        <h2 class="section-title">かかりつけ薬剤師訪問加算</h2>
+        <p style="font-size:13px;color:var(--sub);margin:0 0 10px;">R8新設。かかりつけ薬剤師が患家を訪問して服薬状況等を確認した場合に算定。〔別添3 区分10の3・13〕</p>
+        <table class="gtable">
+          <tr><th style="width:14em;">記載項目</th><th>ポイント</th></tr>
+          <tr><td>① 患家を訪問した旨</td><td>訪問の事実（通知イで明記）</td></tr>
+          <tr><td>② 患家における残薬状況</td><td>訪問先で確認した残薬の状況</td></tr>
+          <tr><td>③ 実施した指導等の内容</td><td>訪問時に行った指導・支援の内容</td></tr>
+        </table>
+        <p style="font-size:12px;color:var(--sub);margin-top:10px;">事前に患者自己負担額（交通費含む）等を説明し同意を得る。詳細は <a href="../../かかりつけ薬剤師訪問加算.html" style="color:var(--blue);">かかりつけ薬剤師訪問加算</a>・<a href="../../かかりつけ薬剤師訪問加算_実務チェックリスト.html" style="color:var(--blue);">実務チェックリスト</a> を参照。</p>
+      </section>
+
+      <!-- ============================================================
+           外来服薬支援料
+           ============================================================ -->
+      <section id="gairaishien">
+        <div class="section-label">SECTION</div>
+        <h2 class="section-title">外来服薬支援料1・2／施設連携加算</h2>
+        <p style="font-size:13px;color:var(--sub);margin:0 0 10px;">〔別添3 区分14の2〕</p>
+        <table class="gtable">
+          <tr><th style="width:14em;">区分</th><th>薬歴・記録に残すもの</th></tr>
+          <tr><td>外来服薬支援料1</td><td>処方医の了解を得た旨（又は情報提供した内容）／当該薬剤の名称／服薬支援の内容及び理由（通知(6)）</td></tr>
+          <tr><td>外来服薬支援料2（一包化）</td><td>保険薬剤師が一包化の必要を認め医師の了解を得て行った場合：その旨＋必要と認めた理由（通知(4)）</td></tr>
+          <tr><td>施設連携加算</td><td>施設職員と協働して実施した内容の要点（薬剤の保管状況・服薬状況・残薬・体調変化・施設職員の留意事項等の確認）。該当理由は摘要欄に記載</td></tr>
+        </table>
+      </section>
+
+      <!-- ============================================================
+           その他の薬学管理料
+           ============================================================ -->
+      <section id="chousei">
+        <div class="section-label">SECTION</div>
+        <h2 class="section-title">服用薬剤調整支援料1・2</h2>
+        <p style="font-size:13px;color:var(--sub);margin:0 0 10px;">〔別添3 区分14の3〕</p>
+        <table class="gtable">
+          <tr><th style="width:14em;">区分</th><th>薬歴・記録に残すもの</th></tr>
+          <tr><td>服用薬剤調整支援料1</td><td>処方医へ提案する際：減薬に係る患者の意向・提案に至るまでに薬学的見地から検討した内容。医療機関から提供された調整結果の情報は薬歴に添付して保存。摘要欄：医療機関名・調整前後の薬剤種類数</td></tr>
+          <tr><td>服用薬剤調整支援料2</td><td>服用薬剤総合評価（別紙様式2）を作成し薬剤服用歴に保存</td></tr>
+        </table>
+        <p style="font-size:12px;color:var(--sub);margin-top:10px;">算定要件・ステップは <a href="../../服用薬剤調整支援料２_2026改定.html" style="color:var(--blue);">服用薬剤調整支援料２ 2026改定</a> を参照。</p>
+      </section>
+
+      <section id="chouzaigo">
+        <div class="section-label">SECTION</div>
+        <h2 class="section-title">調剤後薬剤管理指導料（糖尿病／慢性心不全）</h2>
+        <p style="font-size:13px;color:var(--sub);margin:0 0 10px;">1＝新たに糖尿病用剤が処方等された患者、2＝入院歴のある慢性心不全患者。地域支援・医薬品供給対応体制加算2〜5の届出薬局が対象。〔別添3 区分14の4〕</p>
+        <table class="gtable">
+          <tr><th style="width:14em;">記載項目</th><th>ポイント</th></tr>
+          <tr><td>① 電話等で確認した内容</td><td>治療薬の使用状況、服薬中の体調の変化（副作用が疑われる症状）の有無等。計画的な電話等による確認が原則（事前に患者の了承）</td></tr>
+          <tr><td>② 医療機関への文書情報提供の内容</td><td>単なる状況の転記ではなく、薬学的分析・評価に基づく情報提供＋必要に応じた処方提案。体重増減・塩分摂取・飲水状況など関連情報の収集が望ましい</td></tr>
+        </table>
+        <p style="font-size:12px;color:var(--sub);margin-top:10px;">この文書提供では服薬情報等提供料は算定不可。調剤と同日・次回処方箋受付日の確認は算定不可。</p>
+      </section>
+
+      <section id="taiin">
+        <div class="section-label">SECTION</div>
+        <h2 class="section-title">退院時共同指導料</h2>
+        <p style="font-size:13px;color:var(--sub);margin:0 0 10px;">〔別添3 区分15の4〕</p>
+        <table class="gtable">
+          <tr><th style="width:14em;">記載項目</th><th>ポイント</th></tr>
+          <tr><td>① 服薬指導等の要点</td><td>入院保険医療機関において当該患者に行った服薬指導等の要点を薬歴に記載（通知(5)）</td></tr>
+          <tr><td>② 提供文書の写し</td><td>患者・家族等に提供した文書の写しを薬歴に添付</td></tr>
+        </table>
+      </section>
+
+      <section id="fukuyaku">
+        <div class="section-label">SECTION</div>
+        <h2 class="section-title">服薬情報等提供料</h2>
+        <p style="font-size:13px;color:var(--sub);margin:0 0 10px;">〔別添3 区分15の5〕</p>
+        <table class="gtable">
+          <tr><th style="width:14em;">記載項目</th><th>ポイント</th></tr>
+          <tr><td>① 提供した情報の内容・提供先・提供日</td><td>別紙様式1-1／1-2又は準ずる様式。相手方（医療機関／介護支援専門員）に応じた内容にする</td></tr>
+          <tr><td>② 残薬に係る情報提供の場合</td><td>確認された残薬の状況だけでなく「その後残薬が生じないために必要な内容」まで記載。提供後も服薬状況を継続把握</td></tr>
+        </table>
+        <p style="font-size:12px;color:var(--sub);margin-top:10px;">吸入薬指導加算・調剤後薬剤管理指導料・特定薬剤管理指導加算2等の算定時に行う文書提供では算定不可（各セクション参照）。</p>
+      </section>
+
+      <!-- ============================================================
+           共通注意
+           ============================================================ -->
+      <section>
         <div class="warn-box">
-          <div class="warn-box-title">作成中</div>
-          <p>体重・適切な剤形その他の確認事項と、保護者への指導内容・手帳記載の扱いをここに整理予定。</p>
+          <div class="warn-box-title">通則(5)：定型文の画一的な使用は指摘対象</div>
+          <p>
+            どの加算も「算定根拠が患者ごとの記録から読み取れること」が本質です。本ページの記載項目は通知が求める最低限の骨格であり、定型文をそのまま貼るのではなく、患者ごとに確認・判断した内容を記載してください。
+          </p>
         </div>
       </section>
     </main>
