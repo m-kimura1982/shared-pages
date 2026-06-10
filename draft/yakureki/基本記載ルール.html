@@ -1,538 +1,446 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex,nofollow,noarchive" />
-    <title>基本記載ルール｜薬歴マニュアル</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="yakureki.css" />
-    <style>
-      /* ── ページ内ナビ（ア〜オ） ── */
-      .item-nav {
-        background: var(--white);
-        border: 1px solid var(--border);
-        border-radius: var(--radius-sm);
-        padding: 14px 18px;
-        margin-bottom: 28px;
-      }
-      .item-nav-label {
-        font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
-        color: var(--blue); margin-bottom: 8px;
-      }
-      .item-nav-list {
-        display: flex; flex-wrap: wrap; gap: 6px;
-      }
-      .item-nav-list a {
-        display: inline-flex; align-items: center; gap: 6px;
-        background: var(--blue-light);
-        color: var(--blue);
-        text-decoration: none;
-        font-size: 13px;
-        font-weight: 500;
-        padding: 6px 12px;
-        border-radius: 100px;
-        line-height: 1.4;
-        transition: background 0.15s;
-      }
-      .item-nav-list a:hover { background: var(--blue); color: var(--white); }
-      .item-nav-list a.draft { opacity: 0.45; }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>基本記載ルール｜薬歴マニュアル</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+    :root {
+      --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+      --pad-card:22px; --gap-card:16px;
+      --blue:#1e5fa8; --ink:#222222;
+      --bg:#f3f4f6; --white:#ffffff;
+      --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+      --border:#d1d5db; --border-dk:#9ca3af;
+      --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px;
+      --amber:#b45309; --amber-bg:#fdf0e3; --amber-bd:#e8c9a3;
+      --txt-2:#444444; --txt-3:#5e6470;
+      --warn-bg:#fffbe6; --warn-bd:#e0b000;
+    }
+    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:0 16px 60px; }
+    .draft-banner { margin:0 -16px 18px; background:#fff8e1; border-bottom:var(--bw-h) solid #e5c200; color:#5f4b00; font-size:var(--text-xs); font-weight:700; text-align:center; padding:7px 16px; }
+    header { max-width:900px; margin:0 auto 14px; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+    .back-link { display:inline-flex; align-items:center; color:var(--blue); border:var(--bw-h) solid var(--blue); border-radius:var(--radius-sm); padding:4px 12px; text-decoration:none; font-size:var(--text-xs); font-weight:700; background:var(--white); }
+    .site-title { font-size:var(--text-xs); color:var(--txt-3); font-weight:700; }
+    .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
 
-      /* ── 項目セクション ── */
-      .item-section {
-        background: var(--white);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 28px 28px 24px;
-        margin-bottom: 22px;
-        scroll-margin-top: 16px;
-      }
-      .item-section.stub { opacity: 0.55; }
-      .item-head {
-        display: flex; align-items: baseline; gap: 10px;
-        border-bottom: 1px solid var(--ink);
-        padding-bottom: 10px; margin-bottom: 18px;
-      }
-      .item-head-tag {
-        background: var(--blue-light);
-        color: var(--blue);
-        font-size: 15px;
-        font-weight: 700;
-        padding: 2px 12px;
-        border-radius: 4px;
-        line-height: 1.4;
-      }
-      .item-head-title {
-        font-size: 20px;
-        font-weight: 700;
-        color: var(--ink);
-        line-height: 1.4;
-      }
+    .page-title-wrap { padding:6px 0; }
+    .page-title-wrap h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+    .page-title-wrap p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
 
-      .field-list {
-        list-style: none; padding: 0; margin: 0;
-      }
-      .field-list li {
-        position: relative;
-        padding: 4px 0 4px 22px;
-        font-size: 14px;
-        line-height: 1.75;
-      }
-      .field-list li::before {
-        content: "✓";
-        position: absolute;
-        left: 0; top: 4px;
-        color: var(--blue);
-        font-weight: 700;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="draft-banner">⚠ 非公開作業中ページ｜内容は精査中のため公開ナビゲーションには掲載していません</div>
+    /* ── タブナビ ── */
+    .nav-card { padding:10px 14px; position:sticky; top:8px; z-index:5; box-shadow:0 1px 4px rgba(0,0,0,0.04); }
+    .tabs { display:flex; flex-wrap:wrap; gap:6px; }
+    .tab { font-family:inherit; cursor:pointer; border:var(--bw-h) solid var(--border); background:var(--white); color:var(--txt-2); font-size:var(--text-xs); font-weight:700; padding:6px 13px; border-radius:100px; line-height:1.4; }
+    .tab:hover:not(.active) { background:var(--box-blue); color:var(--blue); }
+    .tab.active { background:var(--blue); color:#fff; border-color:var(--blue); }
 
-    <header>
-      <div class="header-inner">
-        <a href="index.html" class="back-link">← 薬歴マニュアルに戻る</a>
-        <span class="site-title">調剤報酬まとめ</span>
+    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); scroll-margin-top:14px; }
+    .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:13px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+    .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+    .card-title .tag { font-size:var(--text-sm); font-weight:900; color:var(--blue); background:var(--box-blue); padding:1px 10px; border-radius:4px; line-height:1.5; }
+    /* 重要度バッジ（最重要／重点のみ表示。通常は付けない） */
+    .imp { margin-left:auto; font-size:var(--text-xs); font-weight:700; padding:2px 11px; border-radius:4px; white-space:nowrap; }
+    .imp.top { background:var(--amber-bg); color:var(--amber); }
+    .imp.key { background:var(--box-blue); color:var(--blue); }
+
+    .em-change { color:var(--blue); font-weight:900; }
+    .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+
+    /* 原典（軽い引用：左罫線のみ・背景なし） */
+    .source { border-left:var(--bw-a) solid var(--border-dk); padding:2px 0 2px 13px; margin-bottom:12px; }
+    .source .k { font-size:var(--text-xs); font-weight:900; color:var(--txt-3); margin-right:9px; }
+    .source .t { font-size:var(--text-sm); line-height:1.7; color:var(--txt-2); }
+    .source .cite { display:block; font-size:var(--text-xs); color:var(--txt-3); margin-top:4px; }
+
+    .lead { font-size:var(--text-sm); line-height:1.85; margin-bottom:10px; }
+
+    /* H3：小さな青四角 */
+    .sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:baseline; gap:9px; margin:20px 0 9px; flex-wrap:wrap; }
+    .sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); align-self:center; flex-shrink:0; }
+    .sub-title .q { font-size:var(--text-xs); font-weight:700; }
+    .sub-title .q.top { color:var(--amber); }
+    .sub-title .q.key { color:var(--blue); }
+    .sub-title.sub2 { font-size:var(--text-sm); margin:15px 0 8px; }
+    .sub-title.sub2::before { width:7px; height:7px; }
+
+    /* 箇条書き */
+    .list { display:flex; flex-direction:column; gap:5px; margin:6px 0 2px; }
+    .list .li { font-size:var(--text-sm); line-height:1.7; padding-left:18px; text-indent:-18px; }
+    .list .li::before { content:"・"; color:var(--txt-3); font-weight:900; margin-right:6px; }
+
+    /* 必須要素タグ（照会など） */
+    .musts { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 2px; }
+    .musts .m { font-size:var(--text-xs); font-weight:700; color:var(--blue); background:var(--box-blue); border-radius:4px; padding:3px 10px; }
+
+    /* 記載例（残薬ページと同形） */
+    .rei { display:block; background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:11px 13px; margin-top:9px; font-size:var(--text-sm); line-height:1.8; }
+    .rei .ttl { display:block; font-weight:900; color:var(--blue); font-size:var(--text-xs); margin-bottom:5px; }
+    .rei p { padding-left:14px; text-indent:-14px; }
+    .rei p + p { margin-top:5px; }
+    .rei .dot { color:var(--txt-3); font-weight:900; }
+
+    /* 社内ルール */
+    .box-rule { background:var(--box-gray); border:var(--bw) solid var(--border); border-left:var(--bw-a) solid var(--blue); border-radius:var(--radius-sm); padding:13px 16px; margin-top:13px; }
+    .box-rule .ttl { font-weight:900; color:var(--blue); margin-bottom:6px; font-size:var(--text-sm); }
+    .box-rule .list .li { color:var(--txt-2); }
+    .box-rule .list .li b { color:var(--ink); }
+
+    /* 注意（アンバー） */
+    .guard { display:block; margin-top:11px; padding:9px 12px; background:var(--warn-bg); border-left:var(--bw-a) solid var(--warn-bd); border-radius:4px; font-size:var(--text-xs); line-height:1.65; }
+    .guard b { font-weight:900; color:#5f4b00; }
+
+    .box-note { background:var(--box-gray); border:var(--bw) solid var(--border); border-left:var(--bw-a) solid var(--blue); border-radius:var(--radius-sm); padding:14px 18px; }
+    .box-note .ttl { font-weight:900; color:var(--blue); margin-bottom:6px; font-size:var(--text-sm); }
+    .box-note p { font-size:var(--text-sm); color:var(--txt-2); line-height:1.75; }
+    .link-inline { color:var(--blue); font-weight:700; text-decoration:none; border-bottom:1px solid var(--box-blue); }
+    .ref { font-size:var(--text-xs); color:var(--txt-3); margin-top:9px; }
+    .ref a { color:var(--blue); }
+
+    /* 原文 折りたたみ */
+    details.original { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); overflow:hidden; }
+    details.original > summary { list-style:none; cursor:pointer; padding:13px 18px; font-size:var(--text-sm); font-weight:900; color:var(--blue); display:flex; align-items:center; gap:9px; }
+    details.original > summary::-webkit-details-marker { display:none; }
+    details.original > summary::before { content:"▶"; font-size:10px; transition:transform .15s; }
+    details.original[open] > summary::before { transform:rotate(90deg); }
+    details.original .obody { padding:2px 18px 16px; border-top:var(--bw) solid var(--border); }
+    details.original .ocite { font-size:var(--text-xs); color:var(--txt-3); margin:10px 0; }
+    .orig { display:flex; flex-direction:column; gap:7px; }
+    .orig .oi { display:flex; gap:9px; font-size:var(--text-sm); line-height:1.7; }
+    .orig .oi .lab { flex-shrink:0; min-width:22px; font-weight:900; color:var(--blue); }
+    .orig .osub { display:flex; flex-direction:column; gap:5px; margin:3px 0 2px 31px; }
+    .orig .osub .si { display:flex; gap:8px; font-size:var(--text-sm); color:var(--txt-2); line-height:1.65; }
+    .orig .osub .si .lab { flex-shrink:0; min-width:26px; font-weight:700; color:var(--txt-3); }
+
+    .cite-line { font-size:var(--text-xs); color:var(--txt-3); margin:-4px 0 11px; }
+
+    .page-foot { font-size:var(--text-xs); color:var(--txt-3); text-align:right; padding-top:2px; }
+
+    @media (max-width:640px) {
+      body { font-size:13px; padding:0 12px 40px; line-height:1.75; }
+      :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+      .draft-banner { margin:0 -12px 14px; }
+      .card { padding:14px; border-radius:8px; }
+    }
+    @media print {
+      @page { size:A4 portrait; margin:7mm; }
+      body { background:#fff; padding:0; font-size:10.5px; line-height:1.45; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      [data-sec] { display:block !important; }
+      .draft-banner, header, .nav-card, details.original { display:none !important; }
+      .page { gap:7px; max-width:none; }
+      .card { border:0.5px solid #ccc; border-radius:6px; padding:9px 11px; break-inside:avoid; }
+      .card-title { font-size:13px; margin-bottom:7px; padding-bottom:5px; }
+      .source { margin-bottom:7px; }
+      .source .t { font-size:9.5px; }
+      .lead, .list .li, .rei, .box-rule, .guard { font-size:9.5px; }
+      .page-foot { display:none; }
+      a { color:inherit; text-decoration:none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="draft-banner">非公開作業中ページ｜内容は精査中のため公開ナビゲーションには掲載していません</div>
+  <header>
+    <a href="index.html" class="back-link">← 薬歴マニュアルに戻る</a>
+    <span class="site-title">調剤報酬まとめ</span>
+  </header>
+
+  <div class="page">
+    <div class="page-title-wrap">
+      <h1>基本記載ルール</h1>
+      <p>薬歴10項目（ア〜オ）について、各項目の記載上の注意点と記載例をまとめています。</p>
+    </div>
+
+    <!-- ページ内ナビ -->
+    <div class="card nav-card">
+      <div class="tabs">
+        <button class="tab active" data-t="all">すべて</button>
+        <button class="tab" data-t="基本">基本（ア・イ・オ）</button>
+        <button class="tab" data-t="ウ">ウ 患者情報</button>
+        <button class="tab" data-t="エ">エ 継続的管理</button>
       </div>
-    </header>
+    </div>
 
-    <div class="page-head">
-      <span class="page-tag">BASIC RULE</span>
-      <h1 class="page-title">基本記載ルール</h1>
-      <p class="page-desc">
-        薬歴10項目（ア〜オ）ごとに、記載のポイント・記載例・社内ルールを整理しています。<br />
-        原典：令和8年3月5日 保医発0305第4号 別添3 ／ 薬学管理料 通則(4)
+    <!-- ── 原文（折りたたみ） ── -->
+    <details class="original" data-sec="intro">
+      <summary>薬歴10項目の原文を見る</summary>
+      <div class="obody">
+        <div class="ocite">オンライン資格確認等システムを通じて取得した患者の診療情報、薬剤情報等を含めて、次の事項等を記載する。</div>
+        <div class="orig">
+          <div class="oi"><span class="lab">ア</span>患者の基礎情報（氏名、生年月日、性別、被保険者証の記号番号、住所、必要に応じて緊急連絡先）</div>
+          <div class="oi"><span class="lab">イ</span>処方及び調剤内容等（処方した保険医療機関名、処方医氏名、処方日、調剤日、調剤した薬剤、処方内容に関する照会の要点等）</div>
+          <div class="oi"><span class="lab">ウ</span>以下の患者情報並びに当該情報等を踏まえた薬学的管理及び指導の要点</div>
+          <div class="osub">
+            <div class="si"><span class="lab">(イ)</span>患者の体質（アレルギー歴、副作用歴等を含む。）、薬学的管理に必要な患者の生活像及び後発医薬品の使用に関する患者の意向</div>
+            <div class="si"><span class="lab">(ロ)</span>疾患に関する情報（既往歴、合併症及び他科受診において加療中の疾患に関するものを含む。）</div>
+            <div class="si"><span class="lab">(ハ)</span>併用薬（要指導医薬品、一般用医薬品、医薬部外品及び健康食品を含む。）等の状況及び服用薬と相互作用が認められる飲食物の摂取状況</div>
+            <div class="si"><span class="lab">(ニ)</span>服薬状況</div>
+            <div class="si"><span class="lab">(ホ)</span>残薬状況（残薬がないときは、その旨を記載すること。）</div>
+            <div class="si"><span class="lab">(ヘ)</span>患者の服薬中の体調の変化（副作用が疑われる症状など）及び患者又はその家族等からの相談事項の要点</div>
+            <div class="si"><span class="lab">(ト)</span>手帳活用の有無（手帳を活用しなかった場合はその理由と患者への指導の有無。また、複数の手帳を所有しており１冊にまとめなかった場合は、その理由）</div>
+          </div>
+          <div class="oi"><span class="lab">エ</span>今後の継続的な薬学的管理及び指導の留意点</div>
+          <div class="oi"><span class="lab">オ</span>指導した保険薬剤師の氏名</div>
+        </div>
+        <div class="ocite">出典：別添3 薬学管理料 通則(4)（令和8年6月1日施行・R8.5.29訂正後）</div>
+      </div>
+    </details>
+
+    <!-- ── 前提：テンプレートと表紙 ── -->
+    <div class="card" id="zentei" data-sec="intro">
+      <div class="card-title"><span class="tag">前提</span>テンプレートと表紙の使い方</div>
+      <div class="lead">薬歴10項目は、電子薬歴のテンプレートを利用しつつ記載する。投薬時に得た新たな情報は随時、<b>表紙（患者サマリー）に追記</b>し、次回以降の服薬指導に活かす。</div>
+      <div class="box-rule">
+        <div class="ttl">表紙・患者サマリーの記載ルール</div>
+        <div class="list">
+          <div class="li">「調剤上の注意点」や「特記事項」といった補足的な情報を記載する項目以外は、<span class="marker">基本的に空欄を作らない</span>。情報がなければ <b>「なし」「特記事項なし」</b>、確認できないときは <b>「不明」「確認中」</b>など、確認状況が分かる形で残す。確認したら日付を更新する。</div>
+          <div class="li">更新の目安は <span class="marker">併用薬3か月／その他6か月</span>。情報の変化がなくても、<b>「確認した」という意味で更新</b>する。</div>
+          <div class="li">併用薬は、確認した際にその都度更新するのが望ましい。</div>
+        </div>
+      </div>
+      <div class="guard"><b>個別指導で指摘を受けやすい内容</b><br>患者サマリーが適切に更新されているかは、個別指導でチェックされやすい。表紙の空欄・更新不足は、服薬支援に必要な情報が不十分とみなされ、指摘につながりやすい。</div>
+    </div>
+
+    <!-- ── ア 患者の基礎情報 ── -->
+    <div class="card" id="ア" data-sec="基本">
+      <div class="card-title"><span class="tag">ア</span>患者の基礎情報</div>
+      <div class="cite-line">出典：別添3 薬学管理料 通則(4) ア</div>
+      <div class="list">
+        <div class="li">氏名・生年月日・性別・被保険者証の記号番号・住所。</div>
+        <div class="li"><b>緊急連絡先は「必要に応じて」記載する。</b>独居高齢者・在宅患者・ハイリスク薬を継続使用している患者など、継続的な支援が必要な患者では、できる限り確認しておく。</div>
+      </div>
+    </div>
+
+    <!-- ── イ 処方及び調剤内容等 ── -->
+    <div class="card" id="イ" data-sec="基本">
+      <div class="card-title"><span class="tag">イ</span>処方及び調剤内容等</div>
+      <div class="cite-line">出典：別添3 薬学管理料 通則(4) イ</div>
+      <div class="lead">処方及び調剤内容等は、レセコンから電子薬歴に自動転記される内容が多い。疑義照会を行った場合は記録が不十分になりやすいため、下記の事項を確認し、漏れがないよう注意する。特に、<span class="marker">処方医名や照会方法の記載漏れ</span>に注意する。</div>
+
+      <div class="sub-title">疑義照会の記載事項<span class="q key">重点</span></div>
+      <div class="musts">
+        <span class="m">照会日時（○月○日○時○分）</span>
+        <span class="m">回答者（○○病院 ○○Dr）</span>
+        <span class="m">照会方法（電話 等）</span>
+        <span class="m">照会内容</span>
+        <span class="m">回答内容</span>
+        <span class="m">照会した薬剤師名（フルネーム）</span>
+      </div>
+
+      <div class="sub-title">適応外・倍量処方の記録<span class="q key">重点</span></div>
+      <div class="lead">食前適応薬の食後処方・上限量超え・倍量処方（処方日数の上限超えが疑われる処方）などは、疑義照会の記録を薬歴だけでなく <b>表紙（調剤上の注意事項）とレセプト摘要欄</b>にも残す。表紙に残しておけば毎回の疑義照会は不要。<span class="marker">「倍量処方」「制限日数超え」などの法的に問題のある表現は使わない</span>。</div>
+      <div class="rei">
+        <span class="ttl">表紙・摘要欄の記載例</span>
+        <p><span class="dot">・</span>デュロキセチン 分1寝る前 〇〇医師照会済み（適応は朝食後）。</p>
+        <p><span class="dot">・</span>ブロチゾラム 0.25mg 2錠 〇〇医師照会済み。</p>
+        <p><span class="dot">・</span>ゾルピデムは医師から調節服用の指示あり。普段どおり調節服用するよう指導。</p>
+      </div>
+    </div>
+
+    <!-- ── ウ 患者情報・指導の要点 ── -->
+    <div class="card" id="ウ" data-sec="ウ">
+      <div class="card-title"><span class="tag">ウ</span>患者情報・薬学的管理及び指導の要点<span class="imp key">(イ)〜(ト)</span></div>
+      <div class="cite-line">出典：別添3 薬学管理料 通則(4) ウ</div>
+
+      <!-- (イ) -->
+      <div class="sub-title">(イ) 体質・生活像・後発意向<span class="q top">最重要</span></div>
+
+      <div class="sub-title sub2">アレルギー・副作用歴</div>
+      <div class="list">
+        <div class="li">アレルギー歴・副作用歴を確認し、<b>「副作用と疑われる症状が出ていないか」を毎回確認</b>する。</div>
+        <div class="li">副作用がある場合は、<b>具体的な副作用の症状</b>と <b>副作用出現時期</b>を記録する。</div>
+      </div>
+      <div class="rei">
+        <span class="ttl">記載例</span>
+        <p><span class="dot">・</span>デエビゴ10mg：眠気の副作用で5mgに減量（R7.4）。</p>
+        <p><span class="dot">・</span>リベルサス7mg：吐き気の副作用あり3mgに減量（R7.1）。再度7mgに増量（R7.6）→その後は吐き気の訴えなし。</p>
+      </div>
+
+      <div class="sub-title sub2">生活像</div>
+      <div class="list">
+        <div class="li">「規則的」「会社員」では薄い。<span class="marker">食事回数・職業・夜勤・運転・飲酒・独居</span>など、服薬指導に活かせる具体性を持たせる。</div>
+      </div>
+      <div class="rei">
+        <span class="ttl">記載例</span>
+        <p><span class="dot">・</span>1日2食。朝食を抜くことが多く、朝食後薬の飲み忘れあり。</p>
+        <p><span class="dot">・</span>タクシー運転手。眠気・ふらつきが出る薬は運転前の服用に注意。</p>
+        <p><span class="dot">・</span>週3回ビール500mL程度。眠剤服用前は飲酒を控えるよう説明済。</p>
+      </div>
+
+      <div class="sub-title sub2">後発医薬品の意向</div>
+      <div class="list">
+        <div class="li">希望の有無を記載する。先発品を希望する場合は <b>その理由</b>を記載する。</div>
+        <div class="li">選定療養の対象者は、<b>選定療養に関する指導記録</b>を残す。</div>
+      </div>
+      <div class="rei">
+        <span class="ttl">記載例</span>
+        <p><span class="dot">・</span>選定療養について説明済 → 今後も先発品を希望。</p>
+        <p><span class="dot">・</span>選定療養について説明 → ジェネリック希望に変更（R○年○月〜）。</p>
+      </div>
+
+      <!-- (ロ) -->
+      <div class="sub-title">(ロ) 疾患情報<span class="q key">重点</span></div>
+      <div class="list">
+        <div class="li">高血圧・2型糖尿病などの基本疾患を押さえつつ、既往歴・合併症・他科で加療中の疾患をまとめる。</div>
+        <div class="li"><b>禁忌薬の多い疾患</b>（前立腺肥大症・緑内障など）は、禁忌薬（抗コリン薬等）の服用可否を含め、治療経過を随時チェックして確認日を更新する。</div>
+        <div class="li">循環器疾患は「心臓病」などの曖昧な表現を避け、<b>具体的な病名</b>で記載する。</div>
+        <div class="li">手術歴などの既往歴も、可能な範囲で聞き取って記載する。</div>
+      </div>
+      <div class="rei">
+        <span class="ttl">記載例</span>
+        <p><span class="dot">・</span>大動脈弁狭窄症（〇年〇月 機械弁置換済）。</p>
+        <p><span class="dot">・</span>〇年〇月 心筋梗塞発症、〇〇病院にてPCI処置。</p>
+        <p><span class="dot">・</span>前立腺肥大症。抗コリン薬の服用可否を随時確認（〇年〇月時点 尿閉歴なし）。</p>
+      </div>
+      <div class="rei">
+        <span class="ttl">記載例（メンタル系：診断名が不明確なときは主訴・配慮事項を具体的に）</span>
+        <p><span class="dot">・</span>うつ病（意欲の低下、食欲不振の訴えあり）。</p>
+        <p><span class="dot">・</span>双極性障害疑い。現在は鬱状態が主。気分の波あり。</p>
+        <p><span class="dot">・</span>社交不安障害（あがり症）。服薬指導時は発語が少ない。</p>
+        <p><span class="dot">・</span>適応障害（職場ストレスが原因）。休職中のため回復傾向。</p>
+      </div>
+
+      <!-- (ハ) -->
+      <div class="sub-title">(ハ) 併用薬・相互作用飲食物<span class="q key">重点</span></div>
+      <div class="list">
+        <div class="li">他院処方薬に加え、<b>OTC・サプリ・健康食品</b>まで含めて確認する。</div>
+        <div class="li">相互作用が認められる飲食物（グレープフルーツ、納豆、アルコール等）の摂取状況。</div>
+      </div>
+      <div class="rei">
+        <span class="ttl">記載例</span>
+        <p><span class="dot">・</span>ワルファリン服用中。納豆を週数回摂取していたため、相互作用を説明し摂取を避けるよう指導。</p>
+      </div>
+
+      <!-- (ニ)(ホ) -->
+      <div class="sub-title">(ニ) 服薬状況 ＋ (ホ) 残薬状況<span class="q top">最重要・セットで見る</span></div>
+      <div class="lead">通知上は別項目だが、実務では <span class="marker">服薬状況と残薬はセットで見る</span>。受診間隔・処方日数と矛盾していないかを確認する。残薬なしでも「残薬なし」と記載し、残薬があれば <b>量・理由・対応・次回確認</b>まで残す。</div>
+      <div class="rei">
+        <span class="ttl">記載例</span>
+        <p><span class="dot">・</span>残薬なし。処方日数と受診間隔に大きなずれなし。</p>
+        <p><span class="dot">・</span>朝食を抜く日があり朝分の飲み忘れ週2回。アムロジピン残薬10日分。今回は処方日数の調整はせず、服用を起床後に変更して継続を提案。次回も残薬数を確認。</p>
+        <p><span class="dot">・</span>災害用に1週間分を手元に残している。飲み忘れではなく服薬は概ね良好。</p>
+      </div>
+      <div class="rei">
+        <span class="ttl">飲み忘れの原因の記載例（「飲み忘れあり」で終えず原因まで）</span>
+        <p><span class="dot">・</span>朝食を食べないため、朝分の飲み忘れが多い。</p>
+        <p><span class="dot">・</span>夜勤の影響で飲み忘れがしばしば。</p>
+        <p><span class="dot">・</span>副作用を過度に心配し、服薬が不規則になりがち。</p>
+        <p><span class="dot">・</span>薬価が高いのを気にして自己調節してしまう。</p>
+      </div>
+      <div class="rei">
+        <span class="ttl">残薬を調整しない理由の記載例</span>
+        <p><span class="dot">・</span>災害時に備えて1週間分ほど手元に余裕を持たせている。</p>
+        <p><span class="dot">・</span>〇〇は医師の指示による調節服用のため残薬あり。</p>
+      </div>
+      <div class="guard"><b>注意</b> 受診間隔と処方日数にずれがあるときは、「服薬良好」「残薬なし」と記載する前に、飲み忘れ・調節服用・受診間隔のずれがないか確認する。</div>
+      <div class="ref">※ 残薬調整して調剤日数を変えたときの算定は <a href="../../調剤時残薬調整加算_実務チェックリスト.html" class="link-inline">調剤時残薬調整加算 チェックリスト</a> を参照。</div>
+
+      <!-- (ヘ) -->
+      <div class="sub-title">(ヘ) 体調変化・相談事項<span class="q key">重点</span></div>
+      <div class="lead">専用欄に必ず二重入力する趣旨ではない。<span class="marker">SOAPに体調変化・副作用確認・相談内容と対応が具体的に記録されていればよい</span>。ただし、どこにも記録がない状態にはしない。「なし」だけでなく、何の副作用がないのか、どの症状が変わらないのかを具体化する。</div>
+      <div class="rei">
+        <span class="ttl">記載例</span>
+        <p><span class="dot">・</span>SSRI開始後、嘔気・下痢なし。眠気は軽度あるが日常生活に支障なし。</p>
+        <p><span class="dot">・</span>服薬開始1週後から胃部不快感。NSAIDsによる胃障害の疑い。食後服用を再指導。症状が継続・悪化する場合は受診勧奨。次回確認。</p>
+      </div>
+
+      <!-- (ト) -->
+      <div class="sub-title">(ト) 手帳活用</div>
+      <div class="list">
+        <div class="li">持参・記録・貼付の有無。</div>
+        <div class="li">活用しなかったときは <b>その理由と指導の有無</b>。</div>
+        <div class="li">複数の手帳を1冊にまとめなかったときは <b>その理由</b>。</div>
+      </div>
+
+    </div>
+
+    <!-- ── エ 継続的管理の留意点 ── -->
+    <div class="card" id="エ" data-sec="エ">
+      <div class="card-title"><span class="tag">エ</span>今後の継続的な薬学的管理及び指導の留意点<span class="imp top">最重要</span></div>
+      <div class="cite-line">出典：別添3 薬学管理料 通則(4) エ</div>
+      <div class="lead">薬歴の連続性を確認するうえで重要な項目。「経過確認」「特に問題なし」で終えない。<span class="marker">次回に何を確認するか</span>を具体的に1点でも残す。前回申し送りを確認し、今回の確認結果や薬学的判断を一言添えると、次回の服薬指導につなげやすい。</div>
+
+      <div class="sub-title sub2">何を書くか</div>
+      <div class="list">
+        <div class="li"><b>薬の効果・副作用・服薬状況</b>に着目し、次回確認してほしいことを具体的に書く。</div>
+        <div class="li">「経過確認」「SE確認」「残薬確認」では抽象的。<span class="marker">何の薬の・何を・どう確認するか</span>まで落とす。</div>
+      </div>
+
+      <div class="sub-title sub2">薬の効果（安定期）の申し送り例</div>
+      <div class="rei">
+        <span class="ttl">記載例</span>
+        <p><span class="dot">・</span>【血圧】降圧目標を維持できているか、引き続き家庭血圧を確認。</p>
+        <p><span class="dot">・</span>【心不全】階段や坂道で息切れがないか、急な体重増加や浮腫がないか確認。</p>
+        <p><span class="dot">・</span>【糖尿】2か月に1回採血。HbA1cが目標値を維持できているか確認。</p>
+        <p><span class="dot">・</span>【躁うつ】気分の安定が続いているか、意欲低下や躁転の兆候がないか確認。</p>
+        <p><span class="dot">・</span>【喘息】吸入のアドヒアランスは問題ないか、リリーバーの使いすぎはないか確認。</p>
+      </div>
+
+      <div class="sub-title sub2">副作用の申し送り例</div>
+      <div class="rei">
+        <span class="ttl">記載例</span>
+        <p><span class="dot">・</span>〇〇（降圧剤）服用に伴う、ふらつき等の過降圧を疑う症状がないか確認。</p>
+        <p><span class="dot">・</span>〇〇（スタチン）服用に伴う、筋肉痛・脱力など横紋筋融解症を疑う症状がないか確認。</p>
+        <p><span class="dot">・</span>〇〇（SSRI）開始後、嘔気・下痢などの消化器症状が出ていないか確認。</p>
+        <p><span class="dot">・</span>〇〇（抗ヒスタミン薬）服用後、口の渇きや日中の集中力低下がないか確認。</p>
+      </div>
+
+      <div class="sub-title sub2">服薬状況の申し送り例</div>
+      <div class="rei">
+        <span class="ttl">記載例</span>
+        <p><span class="dot">・</span>【服薬】毎回やや受診が遅れる傾向。飲み忘れの頻度や受診が遅れる理由を確認・フォロー。</p>
+        <p><span class="dot">・</span>【屯服】〇〇の服用状況と効果、処方量が適正か確認。</p>
+        <p><span class="dot">・</span>【吸入】手技は問題ないか、嗄声や口腔カンジダがないか確認。</p>
+        <p><span class="dot">・</span>【外用薬】塗布量が適切か次回確認。</p>
+      </div>
+
+      <div class="sub-title sub2">前回申し送り → 今回の流れの例</div>
+      <div class="rei">
+        <span class="ttl">記載例</span>
+        <p><span class="dot">・</span>前回、残薬確認予定。朝分の残薬あり。朝食を抜くため飲み忘れやすいと判断し、起床後の服用を提案。次回も朝分の残薬数を確認。</p>
+        <p><span class="dot">・</span>前回、増量後の経過確認予定。家庭血圧は130台で安定、ふらつきなし。現状維持が妥当と判断。次回も家庭血圧と浮腫を確認。</p>
+      </div>
+    </div>
+
+    <!-- ── オ 薬剤師氏名 ── -->
+    <div class="card" id="オ" data-sec="基本">
+      <div class="card-title"><span class="tag">オ</span>指導した保険薬剤師の氏名</div>
+      <div class="cite-line">出典：別添3 薬学管理料 通則(4) オ</div>
+      <div class="list">
+        <div class="li">電子薬歴・レセコンの <b>ログイン薬剤師が正しければ自動で記録される</b>ため、基本的に個別の記載は不要。</div>
+        <div class="li">注意点は <b>ログイン者と実際に指導した薬剤師が一致しているか</b>。代行入力したときだけ、指導薬剤師名を明記する。</div>
+      </div>
+    </div>
+
+    <div class="box-note" data-sec="intro">
+      <div class="ttl">関連ページ</div>
+      <p>
+        日常入力前後の点検は <a href="薬歴記載ルール_実務チェックリスト.html" class="link-inline">薬歴記載ルール 実務チェックリスト</a> を参照。
       </p>
     </div>
 
-    <main>
-      <!-- ── ページ内ナビ ── -->
-      <div class="item-nav">
-        <div class="item-nav-label">JUMP TO</div>
-        <div class="item-nav-list">
-          <a href="#ア">ア 基礎情報</a>
-          <a href="#イ">イ 処方・調剤内容</a>
-          <a href="#ウ">ウ 患者情報・指導の要点</a>
-          <a href="#エ">エ 継続的管理の留意点</a>
-          <a href="#オ">オ 薬剤師氏名</a>
-        </div>
-      </div>
+    <div class="page-foot">薬歴マニュアル ／ 非公開作業中</div>
+  </div>
 
-      <!-- ─────────────────────────────── -->
-      <!-- ア 患者の基礎情報 -->
-      <!-- ─────────────────────────────── -->
-      <section id="ア" class="item-section">
-        <div class="item-head">
-          <span class="item-head-tag">ア</span>
-          <h2 class="item-head-title">患者の基礎情報</h2>
-        </div>
-
-        <div class="source-box">
-          <span class="source-box-label">原典</span>
-          <p>患者の基礎情報（氏名、生年月日、性別、被保険者証の記号番号、住所、必要に応じて緊急連絡先）</p>
-          <p class="source-cite">令和8年3月5日 保医発0305第4号 別添3 ／ 薬学管理料 通則(4) ア</p>
-        </div>
-
-        <h3 class="subsection-title">記載すべき事項</h3>
-        <ul class="field-list">
-          <li>氏名（フリガナを含む）</li>
-          <li>生年月日</li>
-          <li>性別</li>
-          <li>被保険者証の記号番号</li>
-          <li>住所</li>
-          <li>緊急連絡先（必要に応じて — 後述）</li>
-        </ul>
-
-        <h3 class="subsection-title">緊急連絡先の判断</h3>
-        <p style="font-size:14px; line-height:1.85; margin-bottom:10px;">
-          通知上は「必要に応じて」とあるが、以下のような患者では原則として記載しておく。
-          改正薬機法（2020年9月施行）で継続的な服薬支援が義務化されたことも踏まえる。
-        </p>
-        <ul class="field-list">
-          <li>独居高齢者</li>
-          <li>認知機能低下が疑われる患者</li>
-          <li>在宅・ハイリスク薬を継続使用中の患者</li>
-          <li>継続的な薬学的管理が必要な患者（フォローアップ対象患者など）</li>
-        </ul>
-
-        <h3 class="subsection-title">記載例</h3>
-        <div class="example-pair">
-          <div class="example-box good">
-            <span class="example-label">○ 良い例</span>
-<pre>緊急連絡先：長女（同居） 090-XXXX-XXXX
-（独居・認知機能低下のため記載）</pre>
-          </div>
-          <div class="example-box bad">
-            <span class="example-label">× 不十分な例</span>
-<pre>緊急連絡先：（空欄）
-※独居・要介護2 だが連絡先未確認</pre>
-          </div>
-        </div>
-
-        <h3 class="subsection-title">問診票の記入を拒否された場合</h3>
-        <p style="font-size:14px; line-height:1.85; margin-bottom:10px;">
-          単に「拒否」と書くだけでは不十分。<strong>拒否された旨とその理由</strong>を残し、口頭で聴取した内容や次回確認する事項も合わせて記載する。
-        </p>
-        <div class="example-pair">
-          <div class="example-box good">
-            <span class="example-label">○ 良い例</span>
-<pre>問診票記入を希望されず。
-「以前の薬局で書いたので不要」とのこと。
-次回、副作用歴・併用薬の口頭確認を実施予定。</pre>
-          </div>
-          <div class="example-box bad">
-            <span class="example-label">× 不十分な例</span>
-<pre>問診票拒否。</pre>
-          </div>
-        </div>
-
-        <h3 class="subsection-title">空欄を作らない</h3>
-        <p style="font-size:14px; line-height:1.85;">
-          表紙に空欄があると、個別指導で「未確認」と判断される。確認した結果が「該当なし」「不明」であっても、その旨を必ず書き残す。
-        </p>
-        <div class="example-pair">
-          <div class="example-box good">
-            <span class="example-label">○ 良い例</span>
-<pre>副作用歴：特になし（本人確認）
-アレルギー歴：不明（本人記憶なし、家族にも確認予定）</pre>
-          </div>
-          <div class="example-box bad">
-            <span class="example-label">× 不十分な例</span>
-<pre>副作用歴：（空欄）
-アレルギー歴：（空欄）</pre>
-          </div>
-        </div>
-
-        <div class="rule-box">
-          <div class="rule-box-title">社内ルール</div>
-          <ul class="field-list" style="margin-top:4px;">
-            <li>表紙は <strong>3ヶ月に1回</strong> を目安に内容を見直し、変更がない場合も確認日を残す</li>
-            <li>独居・認知機能低下・ハイリスク薬使用者は<strong>緊急連絡先を必ず記載</strong>する</li>
-            <li>項目が「該当なし」「不明」の場合も<strong>その旨を明記</strong>し、空欄にしない</li>
-            <li>問診票拒否時は<strong>拒否の旨と理由</strong>を残し、口頭聴取で代替する</li>
-          </ul>
-        </div>
-
-        <div class="warn-box" style="margin-top:14px;">
-          <div class="warn-box-title">個別指導でよく見られる点</div>
-          <p>
-            表紙の空欄や緊急連絡先の記載漏れは、個別指導で指摘されやすい代表的な項目。とくに独居高齢者・在宅患者・ハイリスク薬を使用している患者で緊急連絡先が空欄だと、継続的な薬学的管理体制の不備を疑われやすい。
-          </p>
-        </div>
-      </section>
-
-      <!-- ─────────────────────────────── -->
-      <!-- イ 処方及び調剤内容等 -->
-      <!-- ─────────────────────────────── -->
-      <section id="イ" class="item-section">
-        <div class="item-head">
-          <span class="item-head-tag">イ</span>
-          <h2 class="item-head-title">処方及び調剤内容等</h2>
-        </div>
-
-        <div class="source-box">
-          <span class="source-box-label">原典</span>
-          <p>処方及び調剤内容等（処方医療機関名、処方医氏名、処方日、調剤日、調剤薬剤（薬品名、規格、用量、調剤量）及び処方内容に関する照会の要点）</p>
-          <p class="source-cite">令和8年3月5日 保医発0305第4号 別添3 ／ 薬学管理料 通則(4) イ</p>
-        </div>
-
-        <h3 class="subsection-title">記載すべき事項</h3>
-        <ul class="field-list">
-          <li>処方医療機関名</li>
-          <li>処方医氏名</li>
-          <li>処方日・調剤日</li>
-          <li>調剤薬剤（薬品名・規格・用量・調剤量）</li>
-          <li>処方内容に関する照会の要点（照会が発生した場合）</li>
-        </ul>
-
-        <h3 class="subsection-title">照会の要点の記載</h3>
-        <p style="font-size:14px; line-height:1.85; margin-bottom:10px;">
-          薬品名・用量・用法に疑義があり処方医に照会した場合は、<strong>照会内容・理由・回答・対応結果</strong>を必ず記録する。
-          電算システムで処方内容が自動転記される場合も、照会欄は手動記入になるケースが多い。記録漏れは個別指導の指摘につながりやすい。
-        </p>
-        <div class="example-pair">
-          <div class="example-box good">
-            <span class="example-label">○ 良い例</span>
-<pre>疑義照会：Rp.2 ロキソプロフェン錠 用量が「1回2錠」と記載されているが過量の可能性。処方医（田中先生）に確認→「1回1錠の誤記」とのこと。処方箋修正後に調剤。</pre>
-          </div>
-          <div class="example-box bad">
-            <span class="example-label">× 不十分な例</span>
-<pre>疑義照会：あり</pre>
-          </div>
-        </div>
-
-        <div class="rule-box">
-          <div class="rule-box-title">社内ルール</div>
-          <ul class="field-list" style="margin-top:4px;">
-            <li>照会が発生した場合は<strong>内容・理由・回答・対応結果</strong>をすべて記録する</li>
-            <li>電算システム転記項目であっても、照会欄の記入漏れがないか毎回確認する</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- ─────────────────────────────── -->
-      <!-- ウ 患者情報並びに薬学的管理及び指導の要点 -->
-      <!-- ─────────────────────────────── -->
-      <section id="ウ" class="item-section">
-        <div class="item-head">
-          <span class="item-head-tag">ウ</span>
-          <h2 class="item-head-title">患者情報並びに薬学的管理及び指導の要点</h2>
-        </div>
-
-        <div class="source-box">
-          <span class="source-box-label">原典</span>
-          <p>患者情報並びに薬学的管理及び指導の要点（(イ)〜(ヘ)の各事項）</p>
-          <p class="source-cite">令和8年3月5日 保医発0305第4号 別添3 ／ 薬学管理料 通則(4) ウ</p>
-        </div>
-
-        <!-- (イ) 体質・生活像・後発意向 -->
-        <h3 class="subsection-title">(イ) 体質・生活像・後発医薬品への意向</h3>
-        <div class="source-box" style="margin-bottom:14px;">
-          <span class="source-box-label">原典</span>
-          <p>患者の体質（アレルギー歴、副作用歴等）、生活像（生活習慣、職業等）及び後発医薬品の使用に関する患者の意向</p>
-        </div>
-        <ul class="field-list">
-          <li>アレルギー歴・副作用歴（「特になし（本人確認）」でも必ず記載）</li>
-          <li>生活像（職業・生活リズム・嗜好品など服薬指導に関わる情報）</li>
-          <li>後発医薬品の使用意向（希望する・しない・どちらでもよい、を明記）</li>
-        </ul>
-        <div class="example-pair">
-          <div class="example-box good">
-            <span class="example-label">○ 良い例</span>
-<pre>アレルギー歴：ペニシリン系（発疹）
-副作用歴：特になし（本人確認）
-生活像：日勤の会社員。昼食は外食が多い。
-後発意向：ジェネリック希望</pre>
-          </div>
-          <div class="example-box bad">
-            <span class="example-label">× 不十分な例</span>
-<pre>アレルギー歴：（空欄）
-副作用歴：（空欄）</pre>
-          </div>
-        </div>
-        <p style="font-size:13px; color:var(--sub); margin-bottom:20px;">※ 生活像の詳細な記載例は <a href="生活像.html" style="color:var(--blue);">生活像の記載</a> ページを参照。</p>
-
-        <!-- (ロ) 疾患情報 -->
-        <h3 class="subsection-title">(ロ) 疾患情報</h3>
-        <div class="source-box" style="margin-bottom:14px;">
-          <span class="source-box-label">原典</span>
-          <p>疾患に関する情報（既往歴、合併症及び他科受診において投薬されている薬剤に関する情報を含む。）</p>
-        </div>
-        <ul class="field-list">
-          <li>当薬局で把握している疾患・既往歴</li>
-          <li>合併症</li>
-          <li>他科受診の状況と処方薬（「なし（本人確認）」でも必ず記載）</li>
-        </ul>
-        <div class="example-pair">
-          <div class="example-box good">
-            <span class="example-label">○ 良い例</span>
-<pre>疾患：高血圧症、2型糖尿病
-既往：胃潰瘍（5年前）
-他科受診：△△整形外科（腰痛）→NSAIDs処方あり</pre>
-          </div>
-          <div class="example-box bad">
-            <span class="example-label">× 不十分な例</span>
-<pre>疾患：（空欄）</pre>
-          </div>
-        </div>
-
-        <!-- (ハ) 併用薬・相互作用 -->
-        <h3 class="subsection-title">(ハ) 併用薬・相互作用・飲食物</h3>
-        <div class="source-box" style="margin-bottom:14px;">
-          <span class="source-box-label">原典</span>
-          <p>併用薬（要指導医薬品、一般用医薬品、医薬部外品及びいわゆる健康食品を含む。）、相互作用及び飲食物を含む禁忌に関する情報</p>
-        </div>
-        <ul class="field-list">
-          <li>他院処方薬・OTC薬・サプリ・健康食品（「なし（本人確認）」でも記載）</li>
-          <li>確認した相互作用・飲食物（グレープフルーツ、納豆、アルコール等）</li>
-          <li>禁忌事項を指導した場合はその内容も記録</li>
-        </ul>
-        <div class="example-pair">
-          <div class="example-box good">
-            <span class="example-label">○ 良い例</span>
-<pre>他院処方：△△整形よりロキソプロフェン（服用中）
-OTC・サプリ：なし（本人確認）
-相互作用：NSAIDs重複→処方医に情報提供済み</pre>
-          </div>
-          <div class="example-box bad">
-            <span class="example-label">× 不十分な例</span>
-<pre>併用薬：他院あり
-（薬剤名・服用状況・相互作用の有無の記録なし）</pre>
-          </div>
-        </div>
-
-        <!-- (ニ) 服薬状況・残薬 -->
-        <h3 class="subsection-title">(ニ) 服薬状況・残薬</h3>
-        <div class="source-box" style="margin-bottom:14px;">
-          <span class="source-box-label">原典</span>
-          <p>服薬状況（残薬の状況を含む。）</p>
-        </div>
-        <ul class="field-list">
-          <li>服薬アドヒアランス（飲み忘れの有無・頻度・パターン）</li>
-          <li>残薬の有無・量・原因</li>
-          <li>残薬がある場合は次回調剤量への反映と記録</li>
-        </ul>
-        <div class="example-pair">
-          <div class="example-box good">
-            <span class="example-label">○ 良い例</span>
-<pre>服薬状況：朝の飲み忘れが週2〜3回。「仕事が忙しい朝は忘れる」とのこと。
-残薬：約10日分。今回調剤量を調整（−10日分）。次回確認予定。</pre>
-          </div>
-          <div class="example-box bad">
-            <span class="example-label">× 不十分な例</span>
-<pre>残薬：あり
-（量・原因・今回調剤量への反映の記録なし）</pre>
-          </div>
-        </div>
-
-        <!-- (ホ) 体調変化・相談事項 -->
-        <h3 class="subsection-title">(ホ) 体調変化・相談事項</h3>
-        <div class="source-box" style="margin-bottom:14px;">
-          <span class="source-box-label">原典</span>
-          <p>患者の体調の変化（副作用が疑われる症状を含む。）及び服薬中の体調に関する相談事項</p>
-        </div>
-        <ul class="field-list">
-          <li>前回来局以降の体調変化</li>
-          <li>副作用が疑われる症状（症状・発現時期・対応を記録）</li>
-          <li>患者から相談された内容とその対応</li>
-        </ul>
-        <div class="example-pair">
-          <div class="example-box good">
-            <span class="example-label">○ 良い例</span>
-<pre>体調変化：服薬開始1週後から胃部不快感。
-副作用疑い：NSAIDsによる胃障害の可能性。
-対応：食後服用を再指導、症状続くようなら受診勧奨。次回確認予定。</pre>
-          </div>
-          <div class="example-box bad">
-            <span class="example-label">× 不十分な例</span>
-<pre>胃部不快感の訴えあり
-（副作用疑いの評価・対応・フォロー予定の記録なし）</pre>
-          </div>
-        </div>
-
-        <!-- (ヘ) 手帳活用 -->
-        <h3 class="subsection-title">(ヘ) 薬剤服用歴の記録の活用状況（手帳）</h3>
-        <div class="source-box" style="margin-bottom:14px;">
-          <span class="source-box-label">原典</span>
-          <p>薬剤服用歴の記録の活用状況（手帳活用の有無）</p>
-        </div>
-        <ul class="field-list">
-          <li>お薬手帳の持参・提出の有無</li>
-          <li>手帳への記録・貼付の実施</li>
-          <li>持参しない場合の対応（案内・次回持参依頼・電子版手帳の確認等）</li>
-        </ul>
-        <div class="example-pair">
-          <div class="example-box good">
-            <span class="example-label">○ 良い例</span>
-<pre>手帳：持参あり。今回調剤内容を記録・貼付。
-（電子版の場合）電子版手帳に記録済み。</pre>
-          </div>
-          <div class="example-box bad">
-            <span class="example-label">× 不十分な例</span>
-<pre>手帳：持参なし
-（次回持参依頼・代替対応の記録なし）</pre>
-          </div>
-        </div>
-
-        <div class="rule-box">
-          <div class="rule-box-title">社内ルール（ウ全体）</div>
-          <ul class="field-list" style="margin-top:4px;">
-            <li>アレルギー歴・副作用歴・疾患情報・併用薬は「特になし・なし」でも<strong>確認した旨を必ず記載</strong>する</li>
-            <li>残薬がある場合は<strong>量・原因・対応・次回への反映</strong>まで記録する</li>
-            <li>副作用疑い症状は<strong>症状・発現時期・対応・フォロー予定</strong>をセットで残す</li>
-            <li>手帳持参がない場合も<strong>その旨と対応内容</strong>（案内・次回持参依頼等）を記録する</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- ─────────────────────────────── -->
-      <!-- エ 継続的な薬学的管理及び指導の留意点 -->
-      <!-- ─────────────────────────────── -->
-      <section id="エ" class="item-section">
-        <div class="item-head">
-          <span class="item-head-tag">エ</span>
-          <h2 class="item-head-title">今後の継続的な薬学的管理及び指導の留意点</h2>
-        </div>
-
-        <div class="source-box">
-          <span class="source-box-label">原典</span>
-          <p>今後の継続的な薬学的管理及び指導の留意点</p>
-          <p class="source-cite">令和8年3月5日 保医発0305第4号 別添3 ／ 薬学管理料 通則(4) エ</p>
-        </div>
-
-        <h3 class="subsection-title">記載すべき事項</h3>
-        <ul class="field-list">
-          <li>次回来局時に確認すべき事項（検査値・副作用症状の経過など）</li>
-          <li>他のスタッフへの申し送り事項</li>
-          <li>フォローアップの予定（電話確認の時期・内容など）</li>
-          <li>処方医への情報提供予定</li>
-        </ul>
-
-        <div class="example-pair">
-          <div class="example-box good">
-            <span class="example-label">○ 良い例</span>
-<pre>次回確認：胃部不快感の経過・NSAIDs中止の有無
-申し送り：残薬あり。次回も服薬状況を確認すること。
-フォロー：2週後に電話確認（副作用症状の継続有無）予定。</pre>
-          </div>
-          <div class="example-box bad">
-            <span class="example-label">× 不十分な例</span>
-<pre>（空欄）</pre>
-          </div>
-        </div>
-
-        <div class="rule-box">
-          <div class="rule-box-title">社内ルール</div>
-          <ul class="field-list" style="margin-top:4px;">
-            <li>「特に問題なし」で終わらせず、<strong>次回に何を確認するか</strong>を1点でも必ず残す</li>
-            <li>フォローアップを行う場合は<strong>時期・方法・確認内容</strong>を記録する</li>
-          </ul>
-        </div>
-
-        <p style="font-size:13px; color:var(--sub); margin-top:14px;">※ 詳細は <a href="継続的な管理.html" style="color:var(--blue);">継続的な薬学的管理</a> ページを参照。</p>
-      </section>
-
-      <!-- ─────────────────────────────── -->
-      <!-- オ 指導した保険薬剤師の氏名 -->
-      <!-- ─────────────────────────────── -->
-      <section id="オ" class="item-section">
-        <div class="item-head">
-          <span class="item-head-tag">オ</span>
-          <h2 class="item-head-title">指導した保険薬剤師の氏名</h2>
-        </div>
-
-        <div class="source-box">
-          <span class="source-box-label">原典</span>
-          <p>指導した保険薬剤師の氏名</p>
-          <p class="source-cite">令和8年3月5日 保医発0305第4号 別添3 ／ 薬学管理料 通則(4) オ</p>
-        </div>
-
-        <h3 class="subsection-title">記載すべき事項</h3>
-        <ul class="field-list">
-          <li>実際に服薬指導を行った保険薬剤師の氏名</li>
-          <li>加算を算定した場合はその算定根拠となる薬剤師の氏名</li>
-        </ul>
-
-        <h3 class="subsection-title">ローテーション勤務時の取扱い</h3>
-        <p style="font-size:14px; line-height:1.85; margin-bottom:10px;">
-          複数の薬剤師が交互に担当する場合でも、<strong>その日指導した薬剤師が自署または記名</strong>する。
-          前回の記録をそのまま流用したり、ログイン薬剤師と指導薬剤師が異なったままになっていないかに注意する。
-        </p>
-
-        <div class="rule-box">
-          <div class="rule-box-title">社内ルール</div>
-          <ul class="field-list" style="margin-top:4px;">
-            <li>電算システムへのログイン薬剤師と実際の指導薬剤師が<strong>一致しているか</strong>毎回確認する</li>
-            <li>代行入力した場合は<strong>指導薬剤師名を明記</strong>し、混同が生じないようにする</li>
-          </ul>
-        </div>
-      </section>
-    </main>
-
-    <footer>調剤報酬まとめ ／ 薬歴マニュアル ／ 非公開作業中</footer>
-  </body>
+  <script>
+    (function () {
+      var tabs = document.querySelectorAll('.tab');
+      var secs = document.querySelectorAll('[data-sec]');
+      tabs.forEach(function (t) {
+        t.addEventListener('click', function () {
+          tabs.forEach(function (x) { x.classList.remove('active'); });
+          t.classList.add('active');
+          var v = t.dataset.t;
+          secs.forEach(function (c) {
+            c.style.display = (v === 'all' || c.dataset.sec === v) ? '' : 'none';
+          });
+          window.scrollTo({ top: 0 });
+        });
+      });
+    })();
+  </script>
+</body>
 </html>
