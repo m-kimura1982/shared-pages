@@ -314,6 +314,7 @@
   }
   function toTen(yen){ return Math.max(1, Math.ceil(yen/10 - 0.5 - 1e-9)); }
   function yen(n){ return Math.round(n).toLocaleString('ja-JP'); }
+  function sgn(n){ n=Math.round(n); return (n>0?'+':n<0?'−':'±')+yen(Math.abs(n)); }
   function r2(n){ return Math.round(n*100)/100; }
   function esc(s){ return (s||'').replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}); }
   function matchHits(needle,limit){
@@ -363,6 +364,16 @@
     var ptH=toTen(d.hoken*qty), ptGE=toTen(d.ge*qty);
     var fee=ptNew*mult*11, ichibu=Math.round(ptH*mult*10*rate), ge=Math.round(ptGE*mult*10*rate);
     var total=fee+ichibu, diff=total-ge, unitName=naifuku?'1日量':'総量';
+    // R8.5（価格差1/4）の同条件での金額（hoken = yakka − sentei の関係から再構成）
+    var hasOld = d.senteiOld!=null;
+    var feeOld=null, totalOld=null, feeDiff=null, totalDiff=null;
+    if(hasOld){
+      feeOld = ptOld*mult*11;
+      var ptHOld = toTen((d.yakka - d.senteiOld)*qty);
+      var ichibuOld = Math.round(ptHOld*mult*10*rate);
+      totalOld = feeOld+ichibuOld;
+      feeDiff = fee-feeOld; totalDiff = total-totalOld;
+    }
     var ok=(ptOld!=null)?(ptNew>ptOld):(ptNew>=2);
     var ptChange='選定点数 R8.5まで '+(ptOld!=null?ptOld:'—')+'点 → R8.6以降 '+ptNew+'点';
     var html='<div class="print-only" style="font-weight:700; margin-bottom:8px;">'+esc(d.name)+'（'+esc(d.spec)+'）</div>';
@@ -381,6 +392,14 @@
       '<div class="num-card accent"><div class="k">選定療養費（特別の料金・税込）</div><div class="v">'+yen(fee)+'<small>円</small></div></div>'+
       '<div class="num-card"><div class="k">一部負担（'+(rate*10)+'割・先発）</div><div class="v">'+yen(ichibu)+'<small>円</small></div></div>'+
       '<div class="num-card"><div class="k">患者負担 総額</div><div class="v">'+yen(total)+'<small>円</small></div></div></div>';
+    if(hasOld){
+      html+='<div class="sub-line" style="background:var(--box-blue);">'+
+        '<div style="font-weight:900;margin-bottom:6px;">5月（価格差1/4）と比べた変化</div>'+
+        '<table style="width:100%;border-collapse:collapse;">'+
+        '<tr><td style="padding:3px 0;">選定療養費（特別の料金）</td><td style="text-align:right;">'+yen(feeOld)+'円 → <b>'+yen(fee)+'円</b></td><td style="text-align:right;padding-left:10px;white-space:nowrap;"><b class="em-change">'+sgn(feeDiff)+'円</b></td></tr>'+
+        '<tr><td style="padding:3px 0;">窓口負担の総額（'+(rate*10)+'割）</td><td style="text-align:right;">'+yen(totalOld)+'円 → <b>'+yen(total)+'円</b></td><td style="text-align:right;padding-left:10px;white-space:nowrap;"><b class="em-change">'+sgn(totalDiff)+'円</b></td></tr>'+
+        '</table></div>';
+    }
     html+='<div class="sub-line">後発品を選んだ場合：<b>'+yen(ge)+'円</b>　→　先発希望で <b class="em-change">'+yen(diff)+'円</b> 高くなります。</div>';
     html+='<div class="src" style="margin-top:6px;">※選定対象薬のみの概算です。実際の窓口負担（端数整理・公費・他剤の影響）と異なる場合があります。</div>';
     html+='<div class="unit-note no-print" style="margin-top:8px;">同じ剤に複数の先発がある場合、選定療養費は合算して計算されます。特管3ロの再算定可否は薬剤ごとの判断となるため、単品モードで確認してください。</div>';
@@ -458,28 +477,40 @@
       if(items.length===0) return;
       if(z.type==='naifuku'){
         if(z.days<=0) return;
-        var s=0,hk=0,g=0,names=[];
-        items.forEach(function(it){ s+=it.drug.sentei*it.qty; hk+=it.drug.hoken*it.qty; g+=it.drug.ge*it.qty; names.push(it.drug.name+'（'+it.qty+'/日）'); });
-        groups.push({label:'内服 剤'+(zi+1)+'（'+z.days+'日）', mult:z.days, names:names, sentei:s, hoken:hk, ge:g});
+        var s=0,hk=0,g=0,sOld=0,hkOld=0,names=[];
+        items.forEach(function(it){ var so=(it.drug.senteiOld!=null?it.drug.senteiOld:it.drug.sentei);
+          s+=it.drug.sentei*it.qty; hk+=it.drug.hoken*it.qty; g+=it.drug.ge*it.qty;
+          sOld+=so*it.qty; hkOld+=(it.drug.yakka-so)*it.qty; names.push(it.drug.name+'（'+it.qty+'/日）'); });
+        groups.push({label:'内服 剤'+(zi+1)+'（'+z.days+'日）', mult:z.days, names:names, sentei:s, hoken:hk, ge:g, sOld:sOld, hkOld:hkOld});
       } else {
-        items.forEach(function(it){ groups.push({label:'外用・頓服 剤'+(zi+1), mult:1, names:[it.drug.name+'（'+it.qty+'）'], sentei:it.drug.sentei*it.qty, hoken:it.drug.hoken*it.qty, ge:it.drug.ge*it.qty}); });
+        items.forEach(function(it){ var so=(it.drug.senteiOld!=null?it.drug.senteiOld:it.drug.sentei);
+          groups.push({label:'外用・頓服 剤'+(zi+1), mult:1, names:[it.drug.name+'（'+it.qty+'）'], sentei:it.drug.sentei*it.qty, hoken:it.drug.hoken*it.qty, ge:it.drug.ge*it.qty, sOld:so*it.qty, hkOld:(it.drug.yakka-so)*it.qty}); });
       }
     });
     if(groups.length===0){ out2El.innerHTML='<div class="empty-msg">剤を追加し、薬と数量を入れると計算します。</div>'; return; }
-    var gFee=0,gIchibu=0,gGe=0, rows='';
+    var gFee=0,gIchibu=0,gGe=0,gFeeOld=0,gIchibuOld=0, rows='';
     groups.forEach(function(g){
       var ptS=toTen(g.sentei), ptH=toTen(g.hoken), ptGE=toTen(g.ge);
       var fee=ptS*g.mult*11, ichibu=Math.round(ptH*g.mult*10*rate), ge=Math.round(ptGE*g.mult*10*rate);
       gFee+=fee; gIchibu+=ichibu; gGe+=ge;
+      var ptSOld=toTen(g.sOld), ptHOld=toTen(g.hkOld);
+      gFeeOld+=ptSOld*g.mult*11; gIchibuOld+=Math.round(ptHOld*g.mult*10*rate);
       rows+='<tr><td>'+esc(g.label)+'<div style="color:var(--txt-3);font-size:11px;">'+esc(g.names.join('＋'))+'</div></td>'+
         '<td style="text-align:right;">'+ptS+'点</td><td style="text-align:right;font-weight:700;">'+yen(fee)+'円</td></tr>';
     });
     var total=gFee+gIchibu, diff=total-gGe;
+    var totalOld=gFeeOld+gIchibuOld, feeDiff=gFee-gFeeOld, totalDiff=total-totalOld;
     var html='<div class="nums">'+
       '<div class="num-card accent"><div class="k">選定療養費 合計（特別の料金・税込）</div><div class="v">'+yen(gFee)+'<small>円</small></div></div>'+
       '<div class="num-card"><div class="k">患者負担 総額（概算・'+(rate*10)+'割）</div><div class="v">'+yen(total)+'<small>円</small></div></div>'+
       '<div class="num-card"><div class="k">後発との差額</div><div class="v">+'+yen(diff)+'<small>円</small></div></div></div>';
     html+='<div class="sub-line">先発を希望される場合、後発に比べ自己負担が合計 <b class="em-change">'+yen(diff)+'円</b> 増えます（選定対象薬のみの概算）。</div>';
+    html+='<div class="sub-line" style="background:var(--box-blue);">'+
+      '<div style="font-weight:900;margin-bottom:6px;">5月（価格差1/4）と比べた変化</div>'+
+      '<table style="width:100%;border-collapse:collapse;">'+
+      '<tr><td style="padding:3px 0;">選定療養費（特別の料金）合計</td><td style="text-align:right;">'+yen(gFeeOld)+'円 → <b>'+yen(gFee)+'円</b></td><td style="text-align:right;padding-left:10px;white-space:nowrap;"><b class="em-change">'+sgn(feeDiff)+'円</b></td></tr>'+
+      '<tr><td style="padding:3px 0;">窓口負担の総額（'+(rate*10)+'割）</td><td style="text-align:right;">'+yen(totalOld)+'円 → <b>'+yen(total)+'円</b></td><td style="text-align:right;padding-left:10px;white-space:nowrap;"><b class="em-change">'+sgn(totalDiff)+'円</b></td></tr>'+
+      '</table></div>';
     html+='<div class="src" style="margin-top:6px;">※選定対象薬のみの概算です。実際の窓口負担（端数整理・公費・他剤の影響）と異なる場合があります。</div>';
     html+='<details class="breakdown no-print" open><summary>剤・品目ごとの内訳（社内確認用）</summary><div class="bd-body"><table class="grp-table">'+
       '<tr><th>剤／品目</th><th style="text-align:right;">選定点数</th><th style="text-align:right;">選定療養費</th></tr>'+rows+'</table></div></details>';
