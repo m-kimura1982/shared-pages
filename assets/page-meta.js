@@ -84,6 +84,10 @@ window.__pageMeta = {
   "服用薬剤調整支援料２_資格取得ステップ.html": {
     "lastUpdated": "2026-03-23"
   },
+  "吸入薬指導加算_実務チェックリスト.html": {
+    "lastUpdated": "2026-06-13",
+    "newUntil": "2026-06-20"
+  },
   "調剤管理料_2026改定.html": {
     "lastUpdated": "2026-05-29"
   },
@@ -95,6 +99,9 @@ window.__pageMeta = {
   },
   "電子的調剤情報連携体制整備加算_2026改定.html": {
     "lastUpdated": "2026-04-19"
+  },
+  "index.html": {
+    "lastUpdated": "2026-06-13"
   },
   "かかりつけ薬剤師_算定一覧2026.html": {
     "lastUpdated": "2026-04-01"
@@ -109,14 +116,11 @@ window.__pageMeta = {
     "lastUpdated": "2026-06-08",
     "newUntil": "2026-06-13"
   },
-  "checklists.html": {
-    "lastUpdated": "2026-06-10"
+  "updates.html": {
+    "lastUpdated": "2026-06-13"
   },
   "【簡易版】かかりつけ薬剤師に関わる管理料・加算一覧.html": {
     "lastUpdated": "2026-04-02"
-  },
-  "吸入薬指導加算2026.html": {
-    "lastUpdated": "2026-05-06"
   },
   "疑義解釈_その2_2026.html": {
     "lastUpdated": "2026-04-29"
@@ -171,6 +175,10 @@ window.__pageMeta = {
   "地域支援医薬品供給対応体制加算_届出判定ツール.html": {
     "lastUpdated": "2026-05-31"
   },
+  "栄養保持を目的とした医薬品_確認チェックリスト.html": {
+    "lastUpdated": "2026-06-10",
+    "newUntil": "2026-06-17"
+  },
   "栄養保持を目的とした医薬品の保険給付の適正化.html": {
     "lastUpdated": "2026-06-05"
   },
@@ -180,19 +188,15 @@ window.__pageMeta = {
   "かかりつけ薬剤師訪問加算.html": {
     "lastUpdated": "2026-06-09"
   },
-  "index.html": {
-    "lastUpdated": "2026-06-10"
+  "吸入薬指導加算2026.html": {
+    "lastUpdated": "2026-06-13"
   },
   "かかりつけ薬剤師フォローアップ加算_実務チェックリスト.html": {
     "lastUpdated": "2026-06-09",
     "newUntil": "2026-06-16"
   },
-  "updates.html": {
-    "lastUpdated": "2026-06-04"
-  },
-  "栄養保持を目的とした医薬品_確認チェックリスト.html": {
-    "lastUpdated": "2026-06-10",
-    "newUntil": "2026-06-17"
+  "checklists.html": {
+    "lastUpdated": "2026-06-13"
   },
   "かかりつけ薬剤師訪問加算_実務チェックリスト.html": {
     "lastUpdated": "2026-06-09",
