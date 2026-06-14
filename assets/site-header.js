@@ -278,6 +278,15 @@
     });
   }
 
+  // ── 検索エンジン非掲載（社内専用サイト）：全ページに noindex を注入 ──
+  // 既に <meta name="robots"> があるページはスキップ（個別指定を尊重）
+  if (!document.querySelector('meta[name="robots"]')) {
+    const robots = document.createElement('meta');
+    robots.setAttribute('name', 'robots');
+    robots.setAttribute('content', 'noindex,nofollow,noarchive');
+    document.head.appendChild(robots);
+  }
+
   // ── 注入 ──
   const styleEl = document.createElement('style');
   styleEl.textContent = css;
