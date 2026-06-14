@@ -308,6 +308,8 @@
   var single = { drug:null, z:'naifuku', rate:0.3 };
   var calc = { rate:0.3, zai:[], nextId:1 };
   var kbd = -1, curList = [];
+  // 比較の主役を時期で切替：〜8月末＝「5月との変化」が主役／9月以降＝「後発との比較」が主役（5月分は折りたたみ）
+  var AFTER_SWITCH = (new Date() >= new Date(2026,8,1));
 
   function norm(s){
     if(!s) return '';
@@ -395,15 +397,28 @@
       '<div class="num-card accent"><div class="k">選定療養費（特別の料金・税込）</div><div class="v">'+yen(fee)+'<small>円</small></div></div>'+
       '<div class="num-card"><div class="k">一部負担（'+(rate*10)+'割・先発）</div><div class="v">'+yen(ichibu)+'<small>円</small></div></div>'+
       '<div class="num-card"><div class="k">患者負担 総額</div><div class="v">'+yen(total)+'<small>円</small></div></div></div>';
+    // 5月との変化テーブル（共通）
+    var mayTable='<table style="width:100%;border-collapse:collapse;">'+
+      '<tr style="font-size:var(--text-xs);color:var(--txt-3);"><td></td><td style="text-align:right;padding:2px 0;">5月 → 今月</td><td style="text-align:right;padding:2px 0 2px 10px;white-space:nowrap;">差額</td></tr>'+
+      '<tr><td style="padding:3px 0;">選定療養費（特別の料金）</td><td style="text-align:right;">'+yen(feeOld)+'円 → <b>'+yen(fee)+'円</b></td><td style="text-align:right;padding-left:10px;white-space:nowrap;"><b class="em-change">'+sgn(feeDiff)+'円</b><small style="color:var(--txt-3);font-weight:500;"> 増</small></td></tr>'+
+      '<tr><td style="padding:3px 0;">窓口負担の総額（'+(rate*10)+'割）</td><td style="text-align:right;">'+yen(totalOld)+'円 → <b>'+yen(total)+'円</b></td><td style="text-align:right;padding-left:10px;white-space:nowrap;"><b class="em-change">'+sgn(totalDiff)+'円</b><small style="color:var(--txt-3);font-weight:500;"> 増</small></td></tr>'+
+      '</table>';
+    var mayNote='<div style="font-size:var(--text-xs);color:var(--txt-3);margin-bottom:6px;">6月から選定療養費のルールが変わりました（価格差 1/4 → 1/2）</div>';
+    // 後発との比較（補足／主役）
+    var gengoSub='<div class="sub-line">後発品を選んだ場合：<b>'+yen(ge)+'円</b>　→　先発希望で <b class="em-change">'+yen(diff)+'円</b> 高くなります。</div>';
+    var gengoPrimary='<div class="sub-line" style="background:var(--box-blue);"><div style="font-weight:900;margin-bottom:4px;">後発品にすると、いくら安いか</div>'+
+      '後発品 <b>'+yen(ge)+'円</b>　／　先発（希望） <b>'+yen(total)+'円</b>　→　後発品を選ぶと <span class="marker">'+yen(diff)+'円 安くなります</span>。</div>';
     if(hasOld){
-      html+='<div class="sub-line" style="background:var(--box-blue);">'+
-        '<div style="font-weight:900;margin-bottom:6px;">5月（価格差1/4）と比べた変化</div>'+
-        '<table style="width:100%;border-collapse:collapse;">'+
-        '<tr><td style="padding:3px 0;">選定療養費（特別の料金）</td><td style="text-align:right;">'+yen(feeOld)+'円 → <b>'+yen(fee)+'円</b></td><td style="text-align:right;padding-left:10px;white-space:nowrap;"><b class="em-change">'+sgn(feeDiff)+'円</b></td></tr>'+
-        '<tr><td style="padding:3px 0;">窓口負担の総額（'+(rate*10)+'割）</td><td style="text-align:right;">'+yen(totalOld)+'円 → <b>'+yen(total)+'円</b></td><td style="text-align:right;padding-left:10px;white-space:nowrap;"><b class="em-change">'+sgn(totalDiff)+'円</b></td></tr>'+
-        '</table></div>';
+      if(AFTER_SWITCH){
+        html+=gengoPrimary;
+        html+='<details class="breakdown no-print" style="margin-top:12px;"><summary>前回（5月）からの変化を見る</summary><div class="bd-body"><div class="sub-line" style="background:var(--box-blue);margin-top:0;">'+mayNote+mayTable+'</div></div></details>';
+      } else {
+        html+='<div class="sub-line" style="background:var(--box-blue);"><div style="font-weight:900;margin-bottom:2px;">先月（5月）と比べて</div>'+mayNote+mayTable+'</div>';
+        html+=gengoSub;
+      }
+    } else {
+      html+=gengoSub;
     }
-    html+='<div class="sub-line">後発品を選んだ場合：<b>'+yen(ge)+'円</b>　→　先発希望で <b class="em-change">'+yen(diff)+'円</b> 高くなります。</div>';
     html+='<div class="src no-print" style="margin-top:6px;">※選定対象薬のみの概算です。実際の窓口負担（端数整理・公費・他剤の影響）と異なる場合があります。</div>';
     html+='<div class="unit-note no-print" style="margin-top:8px;">同じ剤に複数の先発がある場合、選定療養費は合算して計算されます。特管3ロの再算定可否は薬剤ごとの判断となるため、単品モードで確認してください。</div>';
     html+='<div class="actions no-print"><button class="btn" onclick="window.print()">印刷（患者に渡す）</button></div>';
@@ -507,13 +522,22 @@
       '<div class="num-card accent"><div class="k">選定療養費 合計（特別の料金・税込）</div><div class="v">'+yen(gFee)+'<small>円</small></div></div>'+
       '<div class="num-card"><div class="k">患者負担 総額（概算・'+(rate*10)+'割）</div><div class="v">'+yen(total)+'<small>円</small></div></div>'+
       '<div class="num-card"><div class="k">後発との差額</div><div class="v">+'+yen(diff)+'<small>円</small></div></div></div>';
-    html+='<div class="sub-line">先発を希望される場合、後発に比べ自己負担が合計 <b class="em-change">'+yen(diff)+'円</b> 増えます（選定対象薬のみの概算）。</div>';
-    html+='<div class="sub-line" style="background:var(--box-blue);">'+
-      '<div style="font-weight:900;margin-bottom:6px;">5月（価格差1/4）と比べた変化</div>'+
-      '<table style="width:100%;border-collapse:collapse;">'+
-      '<tr><td style="padding:3px 0;">選定療養費（特別の料金）合計</td><td style="text-align:right;">'+yen(gFeeOld)+'円 → <b>'+yen(gFee)+'円</b></td><td style="text-align:right;padding-left:10px;white-space:nowrap;"><b class="em-change">'+sgn(feeDiff)+'円</b></td></tr>'+
-      '<tr><td style="padding:3px 0;">窓口負担の総額（'+(rate*10)+'割）</td><td style="text-align:right;">'+yen(totalOld)+'円 → <b>'+yen(total)+'円</b></td><td style="text-align:right;padding-left:10px;white-space:nowrap;"><b class="em-change">'+sgn(totalDiff)+'円</b></td></tr>'+
-      '</table></div>';
+    var mayTable2='<table style="width:100%;border-collapse:collapse;">'+
+      '<tr style="font-size:var(--text-xs);color:var(--txt-3);"><td></td><td style="text-align:right;padding:2px 0;">5月 → 今月</td><td style="text-align:right;padding:2px 0 2px 10px;white-space:nowrap;">差額</td></tr>'+
+      '<tr><td style="padding:3px 0;">選定療養費（特別の料金）合計</td><td style="text-align:right;">'+yen(gFeeOld)+'円 → <b>'+yen(gFee)+'円</b></td><td style="text-align:right;padding-left:10px;white-space:nowrap;"><b class="em-change">'+sgn(feeDiff)+'円</b><small style="color:var(--txt-3);font-weight:500;"> 増</small></td></tr>'+
+      '<tr><td style="padding:3px 0;">窓口負担の総額（'+(rate*10)+'割）</td><td style="text-align:right;">'+yen(totalOld)+'円 → <b>'+yen(total)+'円</b></td><td style="text-align:right;padding-left:10px;white-space:nowrap;"><b class="em-change">'+sgn(totalDiff)+'円</b><small style="color:var(--txt-3);font-weight:500;"> 増</small></td></tr>'+
+      '</table>';
+    var mayNote2='<div style="font-size:var(--text-xs);color:var(--txt-3);margin-bottom:6px;">6月から選定療養費のルールが変わりました（価格差 1/4 → 1/2）</div>';
+    var gengoSub2='<div class="sub-line">先発を希望される場合、後発に比べ自己負担が合計 <b class="em-change">'+yen(diff)+'円</b> 増えます（選定対象薬のみの概算）。</div>';
+    var gengoPrimary2='<div class="sub-line" style="background:var(--box-blue);"><div style="font-weight:900;margin-bottom:4px;">後発品にすると、いくら安いか</div>'+
+      '後発品 合計 <b>'+yen(gGe)+'円</b>　／　先発（希望） 合計 <b>'+yen(total)+'円</b>　→　後発品を選ぶと <span class="marker">'+yen(diff)+'円 安くなります</span>。</div>';
+    if(AFTER_SWITCH){
+      html+=gengoPrimary2;
+      html+='<details class="breakdown no-print" style="margin-top:12px;"><summary>前回（5月）からの変化を見る</summary><div class="bd-body"><div class="sub-line" style="background:var(--box-blue);margin-top:0;">'+mayNote2+mayTable2+'</div></div></details>';
+    } else {
+      html+='<div class="sub-line" style="background:var(--box-blue);"><div style="font-weight:900;margin-bottom:2px;">先月（5月）と比べて</div>'+mayNote2+mayTable2+'</div>';
+      html+=gengoSub2;
+    }
     html+='<div class="src" style="margin-top:6px;">※選定対象薬のみの概算です。実際の窓口負担（端数整理・公費・他剤の影響）と異なる場合があります。</div>';
     html+='<details class="breakdown no-print" open><summary>剤・品目ごとの内訳（社内確認用）</summary><div class="bd-body"><table class="grp-table">'+
       '<tr><th>剤／品目</th><th style="text-align:right;">選定点数</th><th style="text-align:right;">選定療養費</th></tr>'+rows+'</table></div></details>';
