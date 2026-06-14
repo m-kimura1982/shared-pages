@@ -23,6 +23,7 @@
     'gigi-search.html': { category: 'tools', title: '疑義解釈 全文検索' },
     '地域支援医薬品供給対応体制加算_届出判定ツール.html': { category: 'tools', title: '地域支援・届出判定ツール' },
     '服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html': { category: 'tools', title: '別表１（１）併算定可否チェック' },
+    '選定療養費計算ツール.html': { category: 'tools', title: '選定療養費 計算ツール' },
 
     // 実務ナレッジ
     '変更調剤について.html': { category: 'knowledge', title: '変更調剤について' },

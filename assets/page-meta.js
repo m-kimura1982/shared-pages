@@ -84,10 +84,6 @@ window.__pageMeta = {
   "服用薬剤調整支援料２_資格取得ステップ.html": {
     "lastUpdated": "2026-03-23"
   },
-  "吸入薬指導加算_実務チェックリスト.html": {
-    "lastUpdated": "2026-06-13",
-    "newUntil": "2026-06-20"
-  },
   "調剤管理料_2026改定.html": {
     "lastUpdated": "2026-05-29"
   },
@@ -116,11 +112,12 @@ window.__pageMeta = {
     "lastUpdated": "2026-06-08",
     "newUntil": "2026-06-13"
   },
-  "updates.html": {
-    "lastUpdated": "2026-06-13"
-  },
   "【簡易版】かかりつけ薬剤師に関わる管理料・加算一覧.html": {
     "lastUpdated": "2026-04-02"
+  },
+  "吸入薬指導加算_実務チェックリスト.html": {
+    "lastUpdated": "2026-06-13",
+    "newUntil": "2026-06-20"
   },
   "疑義解釈_その2_2026.html": {
     "lastUpdated": "2026-04-29"
@@ -182,20 +179,23 @@ window.__pageMeta = {
   "栄養保持を目的とした医薬品の保険給付の適正化.html": {
     "lastUpdated": "2026-06-05"
   },
-  "tools.html": {
-    "lastUpdated": "2026-06-04"
+  "updates.html": {
+    "lastUpdated": "2026-06-13"
   },
   "かかりつけ薬剤師訪問加算.html": {
     "lastUpdated": "2026-06-09"
   },
-  "吸入薬指導加算2026.html": {
-    "lastUpdated": "2026-06-13"
+  "tools.html": {
+    "lastUpdated": "2026-06-04"
   },
   "かかりつけ薬剤師フォローアップ加算_実務チェックリスト.html": {
     "lastUpdated": "2026-06-09",
     "newUntil": "2026-06-16"
   },
   "checklists.html": {
+    "lastUpdated": "2026-06-13"
+  },
+  "吸入薬指導加算2026.html": {
     "lastUpdated": "2026-06-13"
   },
   "かかりつけ薬剤師訪問加算_実務チェックリスト.html": {

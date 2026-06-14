@@ -179,6 +179,7 @@
   </style>
 </head>
 <body>
+<script src="assets/site-header.js" defer></script>
 <div class="page">
 
   <div class="print-only" style="font-weight:900; font-size:18px; border-bottom:1px solid #999; padding-bottom:6px; margin-bottom:4px;">選定療養 費用のご案内</div>
@@ -295,6 +296,8 @@
     </div>
   </div>
 
+  <p class="no-print" style="font-size:var(--text-xs); color:var(--txt-3); text-align:center; margin-top:4px;">社内資料につき、無断転載・再配布はご遠慮ください。</p>
+
 </div>
 
 <script src="data-r86.js"></script>
@@ -378,14 +381,14 @@
     var ptChange='選定点数 R8.5まで '+(ptOld!=null?ptOld:'—')+'点 → R8.6以降 '+ptNew+'点';
     var html='<div class="print-only" style="font-weight:700; margin-bottom:8px;">'+esc(d.name)+'（'+esc(d.spec)+'）</div>';
     if(ok){
-      html+='<div class="verdict ok"><div class="mark">◯</div><div><div class="vt">特管3ロ 再算定 可</div>'+
+      html+='<div class="verdict ok no-print"><div class="mark">◯</div><div><div class="vt">特管3ロ 再算定 可</div>'+
         '<div class="vr"><b>特別の料金（選定療養費）が増えます</b>（'+ptChange+'）。<span class="marker">この薬の最初の処方1回に限り再算定できます</span>。</div></div></div>';
     } else {
       var thr = d.sentei>0 ? 15/d.sentei : Infinity, guide;
       if(!isFinite(thr)) guide='価格差が0のため対象外。';
       else if(naifuku) guide='目安：1日量が <b>'+(Math.floor(thr)+1)+'</b> 以上で再算定可。';
       else guide='目安：総量が <b>'+(Math.round(thr*10)/10)+'</b> を超えると再算定可。';
-      html+='<div class="verdict ng"><div class="mark">×</div><div><div class="vt">特管3ロ 再算定 不可</div>'+
+      html+='<div class="verdict ng no-print"><div class="mark">×</div><div><div class="vt">特管3ロ 再算定 不可</div>'+
         '<div class="vr"><b>特別の料金（選定療養費）が5月と変わりません</b>（'+ptChange+'）。患者負担の総額ではなく特別の料金で判断します。'+guide+'</div></div></div>';
     }
     html+='<div class="nums">'+
@@ -401,7 +404,7 @@
         '</table></div>';
     }
     html+='<div class="sub-line">後発品を選んだ場合：<b>'+yen(ge)+'円</b>　→　先発希望で <b class="em-change">'+yen(diff)+'円</b> 高くなります。</div>';
-    html+='<div class="src" style="margin-top:6px;">※選定対象薬のみの概算です。実際の窓口負担（端数整理・公費・他剤の影響）と異なる場合があります。</div>';
+    html+='<div class="src no-print" style="margin-top:6px;">※選定対象薬のみの概算です。実際の窓口負担（端数整理・公費・他剤の影響）と異なる場合があります。</div>';
     html+='<div class="unit-note no-print" style="margin-top:8px;">同じ剤に複数の先発がある場合、選定療養費は合算して計算されます。特管3ロの再算定可否は薬剤ごとの判断となるため、単品モードで確認してください。</div>';
     html+='<div class="actions no-print"><button class="btn" onclick="window.print()">印刷（患者に渡す）</button></div>';
     var ul=naifuku?'（1日分あたり）':'（1調剤＝総量あたり）';
