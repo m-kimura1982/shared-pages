@@ -46,7 +46,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-06-03"
   },
   "服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html": {
-    "lastUpdated": "2026-06-02"
+    "lastUpdated": "2026-06-19"
   },
   "kaitei2026.html": {
     "lastUpdated": "2026-06-01"
