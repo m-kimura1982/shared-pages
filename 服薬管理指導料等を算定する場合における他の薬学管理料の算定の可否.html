@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
@@ -72,6 +72,89 @@
         font-weight: 500;
         margin-top: 4px;
         color: #555;
+      }
+
+      /* ===== まず選ぶカード ===== */
+      .intro-card {
+        background: var(--white);
+        border: var(--bw) solid var(--border);
+        border-left: var(--bw-t) solid var(--blue);
+        border-radius: var(--radius);
+        padding: 16px 20px;
+      }
+      .intro-card h2 {
+        font-size: var(--text-md);
+        font-weight: 900;
+        color: var(--blue);
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .intro-card h2 svg {
+        width: 18px;
+        height: 18px;
+        stroke: var(--blue);
+        fill: none;
+        stroke-width: 2;
+        flex-shrink: 0;
+      }
+      .intro-card p {
+        font-size: var(--text-sm);
+        line-height: 1.75;
+        color: #333;
+      }
+      .intro-card .step-line {
+        margin-top: 6px;
+      }
+      .intro-card .step {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--blue);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 900;
+        margin-right: 4px;
+        vertical-align: 1px;
+      }
+
+      /* ===== グループ切替ボタン ===== */
+      .group-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+      .group-tabs .gt-label {
+        font-size: 12px;
+        font-weight: 700;
+        color: #555;
+        margin-right: 2px;
+      }
+      .gt-btn {
+        padding: 7px 16px;
+        border: 1px solid var(--border-dk);
+        border-radius: 999px;
+        background: var(--white);
+        color: var(--ink);
+        font-size: 13px;
+        font-weight: 700;
+        font-family: inherit;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .gt-btn:hover {
+        border-color: var(--blue);
+        color: var(--blue);
+      }
+      .gt-btn.active {
+        background: var(--blue);
+        border-color: var(--blue);
+        color: #fff;
       }
 
       /* ===== コントロールバー ===== */
@@ -159,6 +242,122 @@
         color: var(--blue);
       }
 
+      /* ===== 選択列の要約カード ===== */
+      .summary-card {
+        display: none;
+        background: var(--white);
+        border: 1.5px solid var(--blue);
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+      .summary-card.visible {
+        display: block;
+      }
+      .summary-head {
+        background: var(--blue);
+        color: #fff;
+        padding: 11px 18px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .summary-head .sh-title {
+        font-size: var(--text-md);
+        font-weight: 900;
+      }
+      .summary-head .sh-sub {
+        font-size: 12px;
+        font-weight: 500;
+        opacity: 0.9;
+      }
+      .summary-head .sh-close {
+        margin-left: auto;
+        background: rgba(255, 255, 255, 0.18);
+        border: none;
+        color: #fff;
+        font-size: 12px;
+        font-family: inherit;
+        padding: 4px 12px;
+        border-radius: 999px;
+        cursor: pointer;
+      }
+      .summary-head .sh-close:hover {
+        background: rgba(255, 255, 255, 0.32);
+      }
+      .summary-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+      }
+      .summary-col {
+        padding: 14px 18px;
+      }
+      .summary-col + .summary-col {
+        border-left: var(--bw) solid var(--border);
+      }
+      .summary-col h3 {
+        font-size: var(--text-sm);
+        font-weight: 900;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .summary-col.ok-col h3 {
+        color: var(--ok-mark);
+      }
+      .summary-col.ng-col h3 {
+        color: var(--ng-mark);
+      }
+      .summary-col h3 .badge {
+        font-size: 11px;
+        font-weight: 700;
+        background: var(--box-gray);
+        border-radius: 999px;
+        padding: 1px 9px;
+        color: #555;
+      }
+      .summary-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .summary-list li {
+        font-size: var(--text-sm);
+        line-height: 1.6;
+        padding: 4px 8px;
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+      }
+      .summary-col.ok-col li {
+        background: var(--ok-fill);
+      }
+      .summary-col.ng-col li {
+        background: #f7f7f8;
+      }
+      .summary-list .mk {
+        font-weight: 900;
+        flex-shrink: 0;
+      }
+      .summary-col.ok-col .mk {
+        color: var(--ok-mark);
+      }
+      .summary-col.ng-col .mk {
+        color: var(--ng-mark);
+      }
+      .summary-list .mk.partial {
+        color: #b45309;
+      }
+      .summary-list .nt {
+        font-size: 10px;
+        color: #b45309;
+        font-weight: 700;
+      }
+
       /* ===== 凡例 ===== */
       .legend {
         display: flex;
@@ -199,12 +398,12 @@
         font-size: 10px;
         line-height: 1.4;
       }
-      /* 在宅グループヘッダー：やや濃いグレーのみ、黄色なし */
       .beppyo-table th.grp-zaitaku {
         background: #e6e6e6;
       }
+      /* 画面表示は余白をやや広めに（印刷では戻す） */
       .beppyo-table td {
-        padding: 4px 6px;
+        padding: 6px 7px;
         border: 1px solid var(--border);
         vertical-align: middle;
       }
@@ -244,7 +443,6 @@
         color: #b45309;
       }
 
-      /* 在宅区切り：濃いグレーの縦線のみ */
       .beppyo-table .zaitaku-col {
         border-left: 2px solid #888 !important;
       }
@@ -269,6 +467,11 @@
       }
       .beppyo-table td.col-dimmed {
         opacity: 0.3;
+      }
+
+      /* グループ表示切替で隠す列 */
+      .beppyo-table .col-hidden {
+        display: none;
       }
 
       /* ホバー */
@@ -325,37 +528,8 @@
         background: #fef3c7;
       }
 
-      /* カテゴリ境界 */
       .beppyo-table .cat-border-top td {
         border-top: 2px solid var(--border-dk);
-      }
-
-      /* ===== 使い方ヒント ===== */
-      .usage-hint {
-        display: flex;
-        gap: 20px;
-        flex-wrap: wrap;
-        font-size: 12px;
-        color: #555;
-        padding: 9px 16px;
-        background: var(--white);
-        border: 1px solid var(--border);
-        border-radius: var(--radius-sm);
-      }
-      .hint-item {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .hint-item svg {
-        width: 13px;
-        height: 13px;
-        flex-shrink: 0;
-        stroke: var(--blue);
-        fill: none;
-        stroke-width: 1.8;
-        stroke-linecap: round;
-        stroke-linejoin: round;
       }
 
       /* 注釈 */
@@ -402,7 +576,6 @@
         color: var(--blue);
       }
 
-      /* 列解除ボタン */
       .col-clear-btn {
         display: none;
         align-items: center;
@@ -441,6 +614,9 @@
           gap: 8px;
         }
         .controls,
+        .group-tabs,
+        .intro-card,
+        .summary-card,
         .row-highlight-banner {
           display: none !important;
         }
@@ -451,11 +627,18 @@
         .beppyo-table {
           font-size: 10px;
         }
+        /* 印刷時は余白を詰める */
+        .beppyo-table td {
+          padding: 4px 6px;
+        }
         .beppyo-table .item-cell {
           font-size: 11px;
         }
         .beppyo-table .val-cell {
           font-size: 12px;
+        }
+        .beppyo-table .col-hidden {
+          display: table-cell;
         }
         .beppyo-table tbody tr:hover td {
           background: transparent !important;
@@ -486,8 +669,12 @@
           max-height: none;
           overflow-y: visible;
         }
-        .usage-hint {
-          gap: 12px;
+        .summary-body {
+          grid-template-columns: 1fr;
+        }
+        .summary-col + .summary-col {
+          border-left: none;
+          border-top: var(--bw) solid var(--border);
         }
       }
     </style>
@@ -495,15 +682,35 @@
   <body>
     <script src="assets/site-header.js" defer></script>
     <div class="page">
-      
-
       <div class="page-title">
         <h1>
           別表１　服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否
         </h1>
         <p>
-          令和8年6月1日施行｜2026年調剤報酬改定　※ 5月29日版（厚労省告知）反映済み
+          令和8年6月1日施行｜2026年調剤報酬改定　※ 6月19日版（厚労省告知）反映済み
         </p>
+      </div>
+
+      <!-- まず選ぶカード -->
+      <div class="intro-card">
+        <h2>この表の使い方</h2>
+        <p>
+          算定する薬学管理料を基準に、他の薬学管理料・加算が<strong>併算定できるか</strong>を確認する表です。
+        </p>
+        <p class="step-line">
+          <span class="step">1</span>まず下の<strong>「算定する指導料」</strong>を選ぶと、対象列が強調され、<strong>その列の併算定可否だけを縦一覧</strong>にまとめて表示します。
+        </p>
+        <p class="step-line">
+          <span class="step">2</span>列が多いときは<strong>「外来系／在宅・訪問系」</strong>ボタンで表示を切り替えると見やすくなります。
+        </p>
+      </div>
+
+      <!-- グループ切替 -->
+      <div class="group-tabs">
+        <span class="gt-label">列の表示：</span>
+        <button class="gt-btn active" data-group="all" onclick="setGroup('all')">すべて表示</button>
+        <button class="gt-btn" data-group="gairai" onclick="setGroup('gairai')">外来系のみ</button>
+        <button class="gt-btn" data-group="zaitaku" onclick="setGroup('zaitaku')">在宅・訪問系のみ</button>
       </div>
 
       <div class="controls">
@@ -530,7 +737,7 @@
         </div>
         <span class="controls-label">算定する指導料：</span>
         <select class="col-select" id="colSelect" onchange="applyColFilter()">
-          <option value="all">── すべての列を表示 ──</option>
+          <option value="all">── 指導料を選択 ──</option>
           <optgroup label="服薬管理指導料（外来系）">
             <option value="0">1イ・2イ　かかりつけ</option>
             <option value="1">1ロ・2ロ　通常対面</option>
@@ -561,7 +768,7 @@
           >
             <line x1="18" y1="6" x2="6" y2="18" />
             <line x1="6" y1="6" x2="18" y2="18" /></svg
-          >列選択解除
+          >選択解除
         </button>
         <span class="result-count"
           ><strong id="visibleCount">26</strong> / 26 件</span
@@ -584,25 +791,22 @@
         </button>
       </div>
 
-      <div class="usage-hint">
-        <div class="hint-item">
-          <svg viewBox="0 0 24 24">
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-          <span>項目名で行を絞り込めます</span>
+      <!-- 選択列の要約カード -->
+      <div class="summary-card" id="summaryCard">
+        <div class="summary-head">
+          <span class="sh-title" id="summaryTitle"></span>
+          <span class="sh-sub">を算定する場合の他の薬学管理料の可否</span>
+          <button class="sh-close" onclick="clearColFilter()">閉じる</button>
         </div>
-        <div class="hint-item">
-          <svg viewBox="0 0 24 24">
-            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
-          </svg>
-          <span>指導料を選ぶと対象列を強調・他列を薄く表示</span>
-        </div>
-        <div class="hint-item">
-          <svg viewBox="0 0 24 24">
-            <path d="M4 4l7.07 17 2.51-7.39L21 11.07z" />
-          </svg>
-          <span>行をクリックすると黄色でハイライトされます</span>
+        <div class="summary-body">
+          <div class="summary-col ok-col">
+            <h3>○ 併算定できる<span class="badge" id="okCount">0</span></h3>
+            <ul class="summary-list" id="okList"></ul>
+          </div>
+          <div class="summary-col ng-col">
+            <h3>× できない／条件付き<span class="badge" id="ngCount">0</span></h3>
+            <ul class="summary-list" id="ngList"></ul>
+          </div>
         </div>
       </div>
 
@@ -648,8 +852,8 @@
                 項目
               </th>
               <th rowspan="2">算定回数</th>
-              <th colspan="5">服薬管理指導料（外来系）</th>
-              <th colspan="5" class="grp-zaitaku zaitaku-col">在宅・訪問系</th>
+              <th colspan="5" id="grpHeadGairai">服薬管理指導料（外来系）</th>
+              <th colspan="5" class="grp-zaitaku zaitaku-col" id="grpHeadZaitaku">在宅・訪問系</th>
             </tr>
             <tr id="colHeaderRow">
               <th
@@ -851,7 +1055,7 @@
               <td class="val-cell ng" data-colidx="8">×</td>
               <td class="val-cell ng" data-colidx="9">×</td>
             </tr>
-            <tr data-vals="1,1,1,1,1,1,1,1,1,0">
+            <tr data-vals="1,1,1,1,1,1,1,1,1,1">
               <td class="item-cell">麻薬管理指導加算</td>
               <td class="freq-cell">１回ごと</td>
               <td class="val-cell ok" data-colidx="0">○</td>
@@ -863,9 +1067,9 @@
               <td class="val-cell ok" data-colidx="6">○</td>
               <td class="val-cell ok" data-colidx="7">○</td>
               <td class="val-cell ok" data-colidx="8">○</td>
-              <td class="val-cell ng" data-colidx="9">×</td>
+              <td class="val-cell ok" data-colidx="9">○</td>
             </tr>
-            <tr data-vals="0,0,0,0,0,1,1,1,1,0">
+            <tr data-vals="0,0,0,0,0,1,1,1,1,1">
               <td class="item-cell">乳幼児加算</td>
               <td class="freq-cell">１回ごと</td>
               <td class="val-cell ng" data-colidx="0">×</td>
@@ -877,9 +1081,9 @@
               <td class="val-cell ok" data-colidx="6">○</td>
               <td class="val-cell ok" data-colidx="7">○</td>
               <td class="val-cell ok" data-colidx="8">○</td>
-              <td class="val-cell ng" data-colidx="9">×</td>
+              <td class="val-cell ok" data-colidx="9">○</td>
             </tr>
-            <tr data-vals="1,1,1,1,1,1,1,1,1,0">
+            <tr data-vals="1,1,1,1,1,1,1,1,1,1">
               <td class="item-cell">小児特定加算</td>
               <td class="freq-cell">１回ごと</td>
               <td class="val-cell ok" data-colidx="0">○</td>
@@ -891,9 +1095,9 @@
               <td class="val-cell ok" data-colidx="6">○</td>
               <td class="val-cell ok" data-colidx="7">○</td>
               <td class="val-cell ok" data-colidx="8">○</td>
-              <td class="val-cell ng" data-colidx="9">×</td>
+              <td class="val-cell ok" data-colidx="9">○</td>
             </tr>
-            <tr data-vals="0,0,0,0,0,1,1,1,1,0">
+            <tr data-vals="0,0,0,0,0,1,1,1,1,1">
               <td class="item-cell">在宅患者医療用麻薬持続注射療法加算</td>
               <td class="freq-cell">１回ごと</td>
               <td class="val-cell ng" data-colidx="0">×</td>
@@ -905,9 +1109,9 @@
               <td class="val-cell ok" data-colidx="6">○</td>
               <td class="val-cell ok" data-colidx="7">○</td>
               <td class="val-cell ok" data-colidx="8">○</td>
-              <td class="val-cell ng" data-colidx="9">×</td>
+              <td class="val-cell ok" data-colidx="9">○</td>
             </tr>
-            <tr data-vals="0,0,0,0,0,1,1,1,1,0">
+            <tr data-vals="0,0,0,0,0,1,1,1,1,1">
               <td class="item-cell">在宅中心静脈栄養法加算</td>
               <td class="freq-cell">１回ごと</td>
               <td class="val-cell ng" data-colidx="0">×</td>
@@ -919,7 +1123,7 @@
               <td class="val-cell ok" data-colidx="6">○</td>
               <td class="val-cell ok" data-colidx="7">○</td>
               <td class="val-cell ok" data-colidx="8">○</td>
-              <td class="val-cell ng" data-colidx="9">×</td>
+              <td class="val-cell ok" data-colidx="9">○</td>
             </tr>
             <tr data-vals="1,1,1,1,0,0,0,0,0,0">
               <td class="item-cell">外来服薬支援料１</td>
@@ -935,7 +1139,7 @@
               <td class="val-cell ng" data-colidx="8">×</td>
               <td class="val-cell ng" data-colidx="9">×</td>
             </tr>
-            <tr data-vals="1,1,1,1,1,1,1,1,1,0">
+            <tr data-vals="1,1,1,1,1,1,1,1,1,1">
               <td class="item-cell">外来服薬支援料２</td>
               <td class="freq-cell">処方箋受付ごと</td>
               <td class="val-cell ok" data-colidx="0">○</td>
@@ -947,9 +1151,9 @@
               <td class="val-cell ok" data-colidx="6">○</td>
               <td class="val-cell ok" data-colidx="7">○</td>
               <td class="val-cell ok" data-colidx="8">○</td>
-              <td class="val-cell ng" data-colidx="9">×</td>
+              <td class="val-cell ok" data-colidx="9">○</td>
             </tr>
-            <tr data-vals="1,1,1,1,1,1,1,1,1,0">
+            <tr data-vals="1,1,1,1,1,1,1,1,1,1">
               <td class="item-cell">服用薬剤調整支援料１</td>
               <td class="freq-cell">月１回まで</td>
               <td class="val-cell ok" data-colidx="0">○</td>
@@ -961,9 +1165,9 @@
               <td class="val-cell ok" data-colidx="6">○</td>
               <td class="val-cell ok" data-colidx="7">○</td>
               <td class="val-cell ok" data-colidx="8">○</td>
-              <td class="val-cell ng" data-colidx="9">×</td>
+              <td class="val-cell ok" data-colidx="9">○</td>
             </tr>
-            <tr data-vals="1,2,0,1,1,1,1,1,1,0">
+            <tr data-vals="1,2,0,1,1,1,1,1,1,1">
               <td class="item-cell">
                 服用薬剤調整支援料２<span class="note-mark">※1</span>
               </td>
@@ -979,9 +1183,9 @@
               <td class="val-cell ok" data-colidx="6">○</td>
               <td class="val-cell ok" data-colidx="7">○</td>
               <td class="val-cell ok" data-colidx="8">○</td>
-              <td class="val-cell ng" data-colidx="9">×</td>
+              <td class="val-cell ok" data-colidx="9">○</td>
             </tr>
-            <tr data-vals="1,1,1,1,1,1,1,1,1,0">
+            <tr data-vals="1,1,1,1,1,1,1,1,1,1">
               <td class="item-cell">調剤後薬剤管理指導料１</td>
               <td class="freq-cell">月１回まで</td>
               <td class="val-cell ok" data-colidx="0">○</td>
@@ -993,9 +1197,9 @@
               <td class="val-cell ok" data-colidx="6">○</td>
               <td class="val-cell ok" data-colidx="7">○</td>
               <td class="val-cell ok" data-colidx="8">○</td>
-              <td class="val-cell ng" data-colidx="9">×</td>
+              <td class="val-cell ok" data-colidx="9">○</td>
             </tr>
-            <tr data-vals="1,1,1,1,1,1,1,1,1,0">
+            <tr data-vals="1,1,1,1,1,1,1,1,1,1">
               <td class="item-cell">調剤後薬剤管理指導料２</td>
               <td class="freq-cell">月１回まで</td>
               <td class="val-cell ok" data-colidx="0">○</td>
@@ -1007,7 +1211,7 @@
               <td class="val-cell ok" data-colidx="6">○</td>
               <td class="val-cell ok" data-colidx="7">○</td>
               <td class="val-cell ok" data-colidx="8">○</td>
-              <td class="val-cell ng" data-colidx="9">×</td>
+              <td class="val-cell ok" data-colidx="9">○</td>
             </tr>
             <tr data-vals="1,1,1,1,1,0,0,0,0,0">
               <td class="item-cell">服薬情報等提供料１</td>
@@ -1051,7 +1255,7 @@
               <td class="val-cell ng" data-colidx="8">×</td>
               <td class="val-cell ng" data-colidx="9">×</td>
             </tr>
-            <tr data-vals="1,1,1,1,1,1,1,1,1,0">
+            <tr data-vals="1,1,1,1,1,1,1,1,1,1">
               <td class="item-cell">経管投薬支援料</td>
               <td class="freq-cell">１回まで</td>
               <td class="val-cell ok" data-colidx="0">○</td>
@@ -1063,7 +1267,7 @@
               <td class="val-cell ok" data-colidx="6">○</td>
               <td class="val-cell ok" data-colidx="7">○</td>
               <td class="val-cell ok" data-colidx="8">○</td>
-              <td class="val-cell ng" data-colidx="9">×</td>
+              <td class="val-cell ok" data-colidx="9">○</td>
             </tr>
             <tr data-vals="0,0,0,0,0,1,0,0,0,0">
               <td class="item-cell">在宅移行初期管理料</td>
@@ -1095,7 +1299,6 @@
               <td class="val-cell ng" data-colidx="8">×</td>
               <td class="val-cell ng" data-colidx="9">×</td>
             </tr>
-
           </tbody>
         </table>
       </div>
@@ -1111,8 +1314,6 @@
       </div>
     </div>
 
-    
-
     <script
       data-goatcounter="https://kimura-chozai.goatcounter.com/count"
       async
@@ -1120,6 +1321,20 @@
     ></script>
 
     <script>
+      // 列ラベル（要約カード見出し用）
+      const COL_LABELS = [
+        "服薬管理指導料 1イ・2イ（かかりつけ）",
+        "服薬管理指導料 1ロ・2ロ（通常対面）",
+        "服薬管理指導料 3（施設訪問）",
+        "服薬管理指導料 4イ・4ニ（オンライン）",
+        "服薬管理指導料 4ロ・4ハ（在宅オンライン）",
+        "在宅患者訪問薬剤管理指導料１",
+        "在宅患者訪問薬剤管理指導料２・３",
+        "在宅患者緊急訪問薬剤管理指導料",
+        "在宅患者緊急時等共同指導料",
+        "訪問薬剤管理医師同時指導料",
+      ];
+
       // ===== 検索 =====
       function applySearch() {
         applyRowFilters();
@@ -1139,10 +1354,8 @@
             row.classList.add("hidden-row");
             return;
           }
-
           const textMatch =
             !query || itemCell.textContent.toLowerCase().includes(query);
-
           if (textMatch) {
             row.classList.remove("hidden-row");
             visible++;
@@ -1155,9 +1368,12 @@
         document.getElementById("emptyMsg").style.display =
           visible === 0 ? "block" : "none";
         fixCatCells();
+        // 検索が変わったら要約も更新
+        const val = document.getElementById("colSelect").value;
+        if (val !== "all") buildSummary(val);
       }
 
-      // ===== 列選択（ハイライト＋非選択を薄く）=====
+      // ===== 列選択（ハイライト＋非選択を薄く＋要約カード）=====
       function applyColFilter() {
         const val = document.getElementById("colSelect").value;
         document
@@ -1186,18 +1402,99 @@
             }
           });
 
-        // 列解除ボタンの表示切替
         document
           .getElementById("colClearBtn")
           .classList.toggle("visible", val !== "all");
 
-        // 列が変わったら行フィルターも再計算
+        if (val !== "all") {
+          // 排他制御：列を選んだら行の黄色ハイライトは消す
+          clearRowSelect();
+          // 選んだ列を含むグループを表示（隠れていたら出す）
+          const grp = Number(val) <= 4 ? "gairai" : "zaitaku";
+          if (currentGroup !== "all" && currentGroup !== grp) {
+            setGroup("all");
+          }
+          buildSummary(val);
+          document.getElementById("summaryCard").classList.add("visible");
+        } else {
+          document.getElementById("summaryCard").classList.remove("visible");
+        }
+
         applyRowFilters();
+      }
+
+      // ===== 要約カード生成 =====
+      function buildSummary(val) {
+        document.getElementById("summaryTitle").textContent = COL_LABELS[val];
+        const okList = document.getElementById("okList");
+        const ngList = document.getElementById("ngList");
+        okList.innerHTML = "";
+        ngList.innerHTML = "";
+        let okN = 0,
+          ngN = 0;
+
+        document.querySelectorAll("#tableBody tr").forEach((row) => {
+          if (row.classList.contains("hidden-row")) return;
+          const itemCell = row.querySelector(".item-cell");
+          if (!itemCell) return;
+          const cell = row.querySelector('td[data-colidx="' + val + '"]');
+          if (!cell) return;
+
+          const name = itemCell.textContent.trim();
+          const li = document.createElement("li");
+
+          if (cell.classList.contains("ok")) {
+            li.innerHTML =
+              '<span class="mk">○</span><span>' + name + "</span>";
+            okList.appendChild(li);
+            okN++;
+          } else if (cell.classList.contains("partial")) {
+            li.innerHTML =
+              '<span class="mk partial">×</span><span>' +
+              name +
+              ' <span class="nt">※3 条件付き可</span></span>';
+            ngList.appendChild(li);
+            ngN++;
+          } else {
+            li.innerHTML =
+              '<span class="mk">×</span><span>' + name + "</span>";
+            ngList.appendChild(li);
+            ngN++;
+          }
+        });
+
+        document.getElementById("okCount").textContent = okN;
+        document.getElementById("ngCount").textContent = ngN;
       }
 
       function clearColFilter() {
         document.getElementById("colSelect").value = "all";
         applyColFilter();
+      }
+
+      // ===== グループ表示切替 =====
+      let currentGroup = "all";
+      function setGroup(g) {
+        currentGroup = g;
+        document.querySelectorAll(".gt-btn").forEach((b) => {
+          b.classList.toggle("active", b.dataset.group === g);
+        });
+
+        const gairaiHead = document.getElementById("grpHeadGairai");
+        const zaitakuHead = document.getElementById("grpHeadZaitaku");
+        gairaiHead.classList.toggle("col-hidden", g === "zaitaku");
+        zaitakuHead.classList.toggle("col-hidden", g === "gairai");
+
+        document
+          .querySelectorAll("th[data-colidx], td[data-colidx]")
+          .forEach((c) => {
+            const idx = Number(c.dataset.colidx);
+            const inGairai = idx <= 4;
+            let hide = false;
+            if (g === "gairai" && !inGairai) hide = true;
+            if (g === "zaitaku" && inGairai) hide = true;
+            c.classList.toggle("col-hidden", hide);
+          });
       }
 
       // ===== カテゴリrowspan調整 =====
@@ -1226,26 +1523,26 @@
 
       document.addEventListener("DOMContentLoaded", () => {
         fixCatCells();
-        applyRowFilters(); // 件数を実データから自動計算（表示ズレ防止）
+        applyRowFilters();
 
-        // 各行にクリックで選択ハイライト
         document.querySelectorAll("#tableBody tr").forEach((row) => {
           row.addEventListener("click", () => {
             const itemCell = row.querySelector(".item-cell");
             if (!itemCell) return;
             const isSelected = row.classList.contains("row-selected");
-
-            // 全行の選択を解除
             document
               .querySelectorAll("#tableBody tr.row-selected")
               .forEach((r) => r.classList.remove("row-selected"));
-
             if (!isSelected) {
+              // 排他制御：行を選んだら指導料の列選択・サマリーは解除
+              if (document.getElementById("colSelect").value !== "all") {
+                document.getElementById("colSelect").value = "all";
+                applyColFilter();
+              }
               row.classList.add("row-selected");
               document.getElementById("bannerItemName").textContent =
                 itemCell.textContent.trim();
               document.getElementById("rowBanner").classList.add("visible");
-              // 選択行が見えるようスクロール
               row.scrollIntoView({ block: "nearest", behavior: "smooth" });
             } else {
               clearRowSelect();
