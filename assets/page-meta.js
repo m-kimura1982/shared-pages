@@ -85,12 +85,10 @@ window.__pageMeta = {
     "lastUpdated": "2026-03-23"
   },
   "調剤管理料_2026改定.html": {
-    "lastUpdated": "2026-06-20",
-    "newUntil": "2026-06-27"
+    "lastUpdated": "2026-06-20"
   },
   "調剤時残薬調整加算_実務チェックリスト.html": {
-    "lastUpdated": "2026-06-20",
-    "newUntil": "2026-06-27"
+    "lastUpdated": "2026-06-20"
   },
   "疑義解釈_その3_2026.html": {
     "lastUpdated": "2026-04-22"
@@ -108,8 +106,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-06-01"
   },
   "別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html": {
-    "lastUpdated": "2026-06-20",
-    "newUntil": "2026-06-27"
+    "lastUpdated": "2026-06-20"
   },
   "index.html": {
     "lastUpdated": "2026-06-20"
@@ -157,8 +154,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-05-14"
   },
   "事務スタッフ向け_2026調剤報酬改定ポイント整理.html": {
-    "lastUpdated": "2026-06-20",
-    "newUntil": "2026-06-27"
+    "lastUpdated": "2026-06-20"
   },
   "疑義解釈_その7_2026.html": {
     "lastUpdated": "2026-06-02"
@@ -170,8 +166,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-06-03"
   },
   "別表Ⅴ_調剤行為名称等の略号一覧2026改定.html": {
-    "lastUpdated": "2026-06-20",
-    "newUntil": "2026-06-27"
+    "lastUpdated": "2026-06-20"
   },
   "別添3_調剤報酬点数表に関する事項2026.html": {
     "lastUpdated": "2026-05-30"
