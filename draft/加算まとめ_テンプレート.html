@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>〈加算名〉｜加算まとめ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+      :root {
+        --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+        --pad-card:22px; --gap-card:16px;
+        --blue:#1e5fa8; --ink:#222222;
+        --bg:#f3f4f6; --white:#ffffff;
+        --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+        --border:#d1d5db; --border-dk:#9ca3af;
+        --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px; --bw-t:4px;
+        --warn-bg:#fffbe6; --warn-bd:#e0b000;
+        --amber:#b45309; --amber-bg:#fdf0e3; --amber-bd:#e8c9a3;
+        --txt-2:#444444; --txt-3:#5e6470;
+      }
+      /* 配色は必ずトークンで（生hexを足さない）：青背景=--box-blue／灰背景=--box-gray／罫線=--border・--border-dk／青文字・棒・番号=--blue／注意=--warn-*（黄）／分岐のみ--amber-* */
+      body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+      .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+      .page-title-wrap { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+      .page-title-left { flex:1; }
+      .page-title-left h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+      .page-title-left p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+      .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+      .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+      .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+      .card-title .badge { margin-left:auto; font-size:var(--text-xs); font-weight:700; background:var(--box-gray); color:var(--txt-2); padding:3px 12px; border-radius:4px; }
+      .sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin-bottom:10px; }
+      .sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+
+      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+
+      .score-block { display:flex; flex-direction:column; border:var(--bw) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; flex-shrink:0; }
+      .score-block .score-label { background:var(--box-gray); color:var(--txt-2); font-size:var(--text-xs); font-weight:700; padding:5px 16px; text-align:center; border-bottom:var(--bw) solid var(--border); }
+      .score-block .score-num { background:var(--white); font-size:28px; font-weight:900; padding:6px 20px; text-align:center; white-space:nowrap; }
+      .score-block .score-num span { font-size:var(--text-sm); font-weight:500; margin-left:2px; }
+
+      .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+      .em-change { color:var(--blue); font-weight:900; }
+
+      .lead-note { background:var(--box-blue); border-radius:var(--radius-sm); padding:11px 15px; font-size:var(--text-sm); line-height:1.7; margin-bottom:14px; }
+      .premise { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:12px 16px; font-size:var(--text-sm); margin-bottom:14px; }
+      .premise b{ display:block; margin-bottom:3px; }
+
+      .box-gray { background:var(--box-gray); border-radius:var(--radius-sm); padding:14px 18px; border:var(--bw) solid var(--border); }
+      .box-outline { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:14px 18px; }
+      .guard { display:block; margin-top:8px; padding:9px 12px; background:var(--warn-bg); border-left:var(--bw-a) solid var(--warn-bd); border-radius:4px; font-size:var(--text-sm); line-height:1.65; }
+      .guard b { font-weight:900; color:#5f4b00; }
+
+      .list { display:flex; flex-direction:column; gap:5px; margin:4px 0 2px; }
+      .list .li { font-size:var(--text-sm); line-height:1.7; padding-left:18px; text-indent:-18px; }
+      .list .li::before { content:"・"; color:var(--txt-3); font-weight:900; margin-right:6px; }
+      .musts { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 2px; }
+      .musts .m { font-size:var(--text-xs); font-weight:700; color:var(--blue); background:var(--box-blue); border-radius:4px; padding:3px 10px; }
+
+      table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+      th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
+      td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
+      tr:last-child td { border-bottom:none; }
+      .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+
+      .fold { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); }
+      .fold > summary { list-style:none; cursor:pointer; padding:14px var(--pad-card); font-weight:700; font-size:var(--text-sm); color:var(--txt-2); display:flex; align-items:center; gap:8px; }
+      .fold > summary::-webkit-details-marker { display:none; }
+      .fold > summary::before { content:"▶"; font-size:10px; color:var(--txt-3); transition:transform .15s; }
+      .fold[open] > summary::before { transform:rotate(90deg); }
+      .fold .fold-body { padding:0 var(--pad-card) var(--pad-card); display:flex; flex-direction:column; gap:16px; }
+
+      /* 区分の色分け(.grp/.kana)は既定では使わない＝区分はグレーの簡素な表で十分。多区分の例外時のみ残薬ページから流用する */
+
+      .ptn-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+      .ptn { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; display:flex; flex-direction:column; }
+      .ptn-head { padding:9px 14px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; border-bottom:var(--bw-h) solid var(--border); }
+      .ptn-head .nm { font-weight:900; font-size:var(--text-sm); }
+      .ptn-head .tag { margin-left:auto; font-size:11px; font-weight:700; padding:2px 9px; border-radius:3px; white-space:nowrap; border:1px solid var(--border); background:var(--white); }
+      .ptn-body { padding:12px 14px; font-size:var(--text-sm); flex:1; display:flex; flex-direction:column; gap:10px; }
+      .ptn-row .k { font-size:12px; font-weight:900; color:var(--txt-3); margin-bottom:2px; }
+      .ptn-row .v { padding-left:11px; border-left:2px solid var(--border); }
+      .outcome { margin-top:auto; border-radius:var(--radius-sm); padding:9px 12px; font-weight:900; font-size:var(--text-sm); background:var(--box-gray); }
+      /* 分岐の色分け＝上辺3pxバー＋名前/タグの“色”だけで対を作る（塗りで色分けしない。青1色統一の唯一の例外。分岐が主役級なら4pxに） */
+      .p1 { border-top:3px solid var(--blue); } .p1 .nm{ color:var(--blue); } .p1 .tag{ color:var(--blue); } .p1 .outcome{ color:var(--blue); }
+      .p2 { border-top:3px solid var(--amber); } .p2 .nm{ color:var(--amber); } .p2 .tag{ color:var(--amber); border-color:var(--amber-bd); } .p2 .outcome{ color:var(--amber); }
+
+      .steps { display:flex; flex-direction:column; }
+      .step { display:flex; gap:13px; padding:14px 0; border-top:var(--bw-h) solid var(--border); }
+      .step:first-child{ border-top:none; padding-top:0; }
+      .step .n { width:26px; height:26px; border-radius:7px; background:var(--blue); color:var(--white); font-size:14px; font-weight:900; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+      .step .c { flex:1; }
+      .step .t { font-weight:900; font-size:var(--text-md); margin-bottom:3px; }
+      .step .t .when { font-size:var(--text-xs); font-weight:700; color:var(--txt-3); margin-left:6px; }
+      .step .d { font-size:var(--text-sm); color:var(--ink); }
+      .step .sub { font-size:var(--text-xs); color:var(--txt-2); margin-top:6px; line-height:1.8; padding-left:11px; border-left:3px solid var(--border); }
+
+      .check-item { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:12px 16px; font-size:var(--text-sm); }
+      .check-item .ci-main { font-weight:900; }
+      .check-item .ci-note { font-size:var(--text-xs); color:var(--txt-3); margin-top:3px; padding-left:1.2em; }
+
+      .qa-block { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; margin-bottom:10px; }
+      .qa-q { background:var(--box-gray); padding:10px 14px; font-size:var(--text-sm); border-bottom:var(--bw-h) solid var(--border); }
+      .qa-a { padding:10px 14px; font-size:var(--text-sm); }
+      .qa-q .qa-label, .qa-a .qa-label { display:inline-block; font-weight:900; color:var(--ink); margin-right:6px; }
+      .qa-src { font-size:var(--text-xs); color:var(--txt-3); margin-top:6px; }
+
+      .ref-links { max-width:900px; margin:16px auto 0; padding:20px 16px 4px; border-top:1px solid var(--border); }
+      .ref-links .row { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+      .ref-links .lab { font-size:12px; color:var(--txt-2); white-space:nowrap; font-weight:bold; }
+      .ref-links a { display:inline-block; color:var(--blue); text-decoration:none; font-size:13px; border:1px solid var(--border); border-radius:6px; padding:4px 12px; background:var(--white); }
+
+      @media (max-width:640px) {
+        body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+        :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+        .card { padding:14px; border-radius:8px; }
+        .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; }
+        .card-title .badge { margin-left:0; }
+        .page-title-wrap { flex-direction:column; gap:10px; }
+        .ptn-grid { grid-template-columns:1fr; }
+        table { font-size:11.5px; min-width:420px; }
+        th, td { padding:6px 8px; }
+      }
+      @media print {
+        @page { margin:10mm 9mm; size:A4; }
+        body { background:white; padding:0; font-size:11.5px; line-height:1.6; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        .page { gap:9px; max-width:700px; margin:0 auto; }
+        :root { --text-xs:9.5px; --text-sm:11px; --text-md:11.5px; --text-lg:13px; --text-xl:15px; --pad-card:10px; --gap-card:9px; }
+        .card { padding:10px 12px; }
+        .avoid-break { break-inside:avoid; }
+        a { color:inherit; text-decoration:none; }
+        .tmpl-banner { display:none; }
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+      ============================================================
+      加算まとめ 標準テンプレート（雛形は「調剤時残薬調整加算」）
+      使い方：このファイルを複製 → 〈 〉の placeholder を差し替え →
+              【任意】ブロックは不要なら丸ごと削除。
+      原則：原文は主役にしない（最下部の「原文参照」に退避）。
+            冒頭に必ず「点数の早見」と「噛み砕いた1〜2文」を置く。
+            配色＝青(構造)＋黄色(注意・重要)が基本。「注意」は黄色の .guard を使う。
+            黄色マーカー .marker は、算定可否に関わる重要語の強調に使う。
+            アンバーと区分カラーは“例外”（パターン分岐・複数区分のときだけ）。赤は使わない。
+            ボックスを縦棒で囲う装飾は必須ではない。枠より中身を優先しシンプルに。
+      公開時：robotsのnoindexを外す／site-header.js を有効化／このコメントとバナーを削除。
+      ============================================================
+    -->
+    <div class="tmpl-banner" style="max-width:900px;margin:0 auto 14px;background:#fff8e1;border:1px solid #e5c200;color:#5f4b00;font-size:13px;font-weight:700;border-radius:8px;padding:9px 14px;">テンプレート：複製して各加算ページを作成してください。〈 〉を差し替え、【任意】ブロックは不要なら削除。この帯は削除。</div>
+
+    <!-- 公開ページでは有効化：共通ヘッダー自動注入 -->
+    <!-- <script src="assets/site-header.js" defer></script> -->
+
+    <div class="page">
+
+      <!-- 【必須】ヘッダー＋点数早見 ────────────────────────── -->
+      <div class="page-title-wrap">
+        <div class="page-title-left">
+          <h1>〈加算名〉</h1>
+          <p>〈この加算が評価している行為を1文で。例：「○○した場合の評価」〉</p>
+        </div>
+        <!-- 複数点数の加算は右上に全部入れない。「区分あり」等にして詳細は下の「算定区分と点数」表へ逃がす -->
+        <div class="score-block">
+          <div class="score-label">〈区分／算定単位〉</div>
+          <div class="score-num">〈○○〉<span>点</span></div>
+        </div>
+      </div>
+
+      <!-- 【任意】制度の背景・経緯（改定由来や経緯がある加算のみ。無ければ削除） -->
+      <details class="fold avoid-break">
+        <summary>制度の背景・経緯（折りたたみ）</summary>
+        <div class="fold-body">
+          <div style="font-size:var(--text-sm);">〈趣旨・点数の変遷などを簡潔に。原文の丸写しはしない〉</div>
+        </div>
+      </details>
+
+      <!-- 【必須】算定対象と要件 ─────────────────────────── -->
+      <div class="card avoid-break">
+        <div class="card-title">算定対象と要件<span class="qual">〈補足ラベル可〉</span></div>
+        <div class="lead-note">〈誰が・いつ・何をしたら算定できるかを噛み砕いて1〜2文。ここが読み手の入口〉</div>
+
+        <div class="sub-title">対象患者・対象処方箋</div>
+        <div class="list">
+          <div class="li">〈対象となる患者・処方箋の条件〉</div>
+          <div class="li">〈起点となる調剤日・期間など〉</div>
+        </div>
+
+        <div class="sub-title" style="margin-top:16px;">満たすべき要件</div>
+        <div class="musts">
+          <span class="m">〈要件1〉</span>
+          <span class="m">〈要件2〉</span>
+          <span class="m">〈要件3〉</span>
+        </div>
+
+        <div class="premise" style="margin-top:14px;">
+          <b>前提</b>〈算定の大前提。重要語は <span class="marker">黄色マーカー</span> で（淡灰の上はOK・黄の上には置かない）。例：「調剤管理料を算定していること」など〉
+        </div>
+      </div>
+
+      <!-- 【任意】算定区分：区分がある加算のみ。既定は“グレーのシンプルな表”で十分。無駄に色を塗らない。
+           ※区分が多く色で見分けたい例外（残薬の在宅:青/かかりつけ:紫/その他:灰）のときだけ色分けにする -->
+      <div class="card avoid-break">
+        <div class="card-title">算定区分と点数<span class="qual">〈算定単位〉</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th style="white-space:nowrap;">区分</th><th>対象・条件</th><th style="text-align:right; white-space:nowrap;">点数</th></tr></thead>
+            <tbody>
+              <tr><td style="white-space:nowrap; font-weight:900;">イ</td><td>〈区分イの対象・条件〉</td><td style="text-align:right; font-weight:900; white-space:nowrap;">〈○○点〉</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">ロ</td><td>〈区分ロの対象・条件〉</td><td style="text-align:right; font-weight:900; white-space:nowrap;">〈○○点〉</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 【任意】算定パターン：分岐がある加算のときだけ。ここで使うアンバー(.p2)は「分岐の色分け」専用で、注意の意味では使わない -->
+      <div class="card">
+        <div class="card-title">算定できる〈N〉つのパターン</div>
+        <div class="lead-note">〈どう分岐するか・何が違うかを1文〉</div>
+        <div class="ptn-grid">
+          <div class="ptn p1">
+            <div class="ptn-head"><span class="nm">パターン1　〈名称〉</span><span class="tag">〈特徴タグ〉</span></div>
+            <div class="ptn-body">
+              <div class="ptn-row"><div class="k">あてはまる場合</div><div class="v">〈条件〉</div></div>
+              <div class="outcome">〈このパターンの結論〉</div>
+            </div>
+          </div>
+          <div class="ptn p2">
+            <div class="ptn-head"><span class="nm">パターン2　〈名称〉</span><span class="tag">〈特徴タグ〉</span></div>
+            <div class="ptn-body">
+              <div class="ptn-row"><div class="k">あてはまる場合</div><div class="v">〈条件〉</div></div>
+              <div class="outcome">〈このパターンの結論〉</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 【任意】算定の手順（実施事項が複数ある加算。番号ステップ） -->
+      <div class="card avoid-break">
+        <div class="card-title">算定までの手順<span class="badge">〈補足〉</span></div>
+        <div class="steps">
+          <div class="step">
+            <div class="n">1</div>
+            <div class="c">
+              <div class="t">〈手順の見出し〉<span class="when">〈期限など〉</span></div>
+              <div class="d">〈やることの説明〉</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="n">2</div>
+            <div class="c">
+              <div class="t">〈手順の見出し〉</div>
+              <div class="d">〈やることの説明〉</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 【必須】算定上の注意・誤算定 ──────────────────── -->
+      <!-- 黄色を並べない：通常の注意＝素のリスト＋黄マーカー／黄色guardは“ここだけ”の1点／NGはグレー枠＋✕（黄にしない） -->
+      <div class="card">
+        <div class="card-title">算定上の注意・誤算定例</div>
+        <div class="list">
+          <div class="li">〈通常の注意点。重要語だけ <span class="marker">黄マーカー</span> で〉</div>
+          <div class="li">〈注意点2〉</div>
+        </div>
+        <div class="guard"><b>ここに注意</b>　〈一番やりがちな重大な誤り。黄色ボックスは1ページで1〜2個まで〉</div>
+        <div class="box-outline" style="border-color:var(--border-dk); margin-top:12px;">
+          <div style="font-weight:900; margin-bottom:6px;">算定できないケース</div>
+          <div style="font-size:var(--text-sm); display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; gap:8px;"><span style="flex-shrink:0; color:var(--txt-3); font-weight:900;">✕</span><span>〈NGケース〉</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 【推奨】薬歴に残す核（“核”だけ。記載例・個別指導など詳細は薬歴マニュアル「加算別 薬歴記載一覧」が正本＝複製しない。
+           薬歴に無関係な体制加算では削除） -->
+      <div class="card avoid-break">
+        <div class="card-title">薬歴に残す内容（概要）</div>
+        <div class="list">
+          <div class="li">〈薬歴に残す要点①〉</div>
+          <div class="li">〈要点②〉</div>
+          <div class="li">〈要点③〉</div>
+        </div>
+        <div style="font-size:var(--text-xs); color:var(--txt-3); margin-top:10px;">※ 記載例・個別指導の指摘など詳細は <a href="〈薬歴マニュアル／加算別記載一覧#該当加算〉" style="color:var(--blue); font-weight:700; text-decoration:none; border-bottom:1px solid var(--box-blue);">加算別 薬歴記載一覧</a> を参照（薬歴の正本はこちら）。</div>
+      </div>
+
+      <!-- 【原則必須】レセプト摘要欄（レセプト表示文言を1行で明快に。入力位置は書かない＝レセコメは常に摘要欄で全加算共通。
+           長い説明文で2行にしない。記載不要の加算は「個別記載は不要」と書く。コードは載せない） -->
+      <div class="card avoid-break">
+        <div class="card-title">レセプト摘要欄記載事項</div>
+        <div class="box-gray" style="font-size:var(--text-sm);">
+          <div style="font-weight:900; color:var(--blue);">〈レセプトに表示される文言（例：○○年月日）。不要なら「個別記載は不要」〉</div>
+        </div>
+      </div>
+
+      <!-- 【任意】施設基準（届出・実績要件がある加算のみ） -->
+      <details class="fold">
+        <summary>施設基準〈要点を一言〉</summary>
+        <div class="fold-body">
+          <div class="box-gray" style="font-size:var(--text-sm);">〈届出・実績要件〉</div>
+        </div>
+      </details>
+
+      <!-- 【任意】算定要件チェックリスト（印刷用CLが別にあるなら下の関連リンクで代替可） -->
+      <div class="card avoid-break">
+        <div class="card-title">算定要件チェックリスト</div>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div class="check-item"><div class="ci-main">□ 〈確認項目〉</div><div class="ci-note">※〈補足〉</div></div>
+          <div class="check-item"><div class="ci-main">□ 〈確認項目〉</div></div>
+        </div>
+      </div>
+
+      <!-- 【推奨】Q&A（疑義解釈・社内で迷いやすい点がある場合。なければ削除可。原典の問番号を qa-src に） -->
+      <div class="card">
+        <div class="card-title">Q&amp;A<span class="qual">〈出典：疑義解釈その○ 等〉</span></div>
+        <div class="qa-block">
+          <div class="qa-q"><span class="qa-label">Q</span>〈想定される疑問〉</div>
+          <div class="qa-a"><span class="qa-label">A</span>〈回答〉<div class="qa-src">〈疑義解釈（その○）問○〉</div></div>
+        </div>
+      </div>
+
+      <!-- 【推奨】関連ページ（原文参照とは別の“横の導線”。印刷用CL・改定での変更点・関連加算など） -->
+      <div class="card">
+        <div class="card-title">関連ページ</div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <a href="#" style="display:inline-block; color:var(--blue); text-decoration:none; font-size:var(--text-sm); border:1px solid var(--border); border-radius:6px; padding:5px 13px; background:var(--white);">〈印刷用チェックリスト〉</a>
+          <a href="#" style="display:inline-block; color:var(--blue); text-decoration:none; font-size:var(--text-sm); border:1px solid var(--border); border-radius:6px; padding:5px 13px; background:var(--white);">〈2026改定での変更点〉</a>
+          <a href="#" style="display:inline-block; color:var(--blue); text-decoration:none; font-size:var(--text-sm); border:1px solid var(--border); border-radius:6px; padding:5px 13px; background:var(--white);">〈関連加算〉</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 公開ページでは有効化：アクセス解析 -->
+    <!-- <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script> -->
+
+    <!-- 【必須】原文参照リンク（原文は主役にせず、ここに退避） -->
+    <div class="ref-links">
+      <div class="row">
+        <span class="lab">原文参照：</span>
+        <a href="#">〈別添3 › 該当箇所〉</a>
+        <a href="#">〈別表第三 › 該当箇所〉</a>
+        <a href="#">〈疑義解釈 › 該当箇所〉</a>
+      </div>
+    </div>
+  </body>
+</html>
