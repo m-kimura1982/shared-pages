@@ -179,17 +179,30 @@
         background: var(--white);
         border: 1.5px solid var(--border);
         border-radius: var(--radius);
-        padding: 28px 24px 24px;
+        padding: 20px 22px;
         text-decoration: none;
         color: var(--ink);
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto 1fr auto auto;
+        grid-template-areas:
+          "icon name"
+          "desc desc"
+          "meta meta"
+          "cta  cta";
+        column-gap: 14px;
+        row-gap: 11px;
+        align-items: center;
         transition:
           border-color 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
           box-shadow 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
           transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
       }
+      .content-card > .card-icon-wrap { grid-area: icon; }
+      .content-card > .card-name { grid-area: name; }
+      .content-card > .card-desc { grid-area: desc; align-self: start; }
+      .content-card > .card-meta { grid-area: meta; }
+      .content-card > .card-cta { grid-area: cta; }
       .content-card:not(.disabled):hover {
         border-color: var(--blue);
         box-shadow: 0 10px 36px rgba(30, 95, 168, 0.10);
@@ -201,17 +214,17 @@
         pointer-events: none;
       }
       .card-icon-wrap {
-        width: 52px;
-        height: 52px;
-        border-radius: 12px;
+        width: 44px;
+        height: 44px;
+        border-radius: 11px;
         background: var(--blue-light);
         display: flex;
         align-items: center;
         justify-content: center;
       }
       .card-icon-wrap svg {
-        width: 26px;
-        height: 26px;
+        width: 22px;
+        height: 22px;
         stroke: var(--blue);
         fill: none;
         stroke-width: 1.7;
@@ -436,11 +449,38 @@
             </div>
             <div class="card-name">2026年 調剤報酬改定</div>
             <div class="card-desc">
-              加算・管理料の改定ポイントを解説。ダイジェスト・算定フロー・早見表・別表などを収録。
+              2026年改定で変更・新設された項目を整理。ダイジェスト・算定フロー・早見表・別表などを収録。
             </div>
             <div class="card-meta"></div>
             <div class="card-cta">
               資料一覧を見る
+              <svg viewBox="0 0 24 24">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </div>
+          </a>
+
+          <a
+            class="content-card"
+            href="加算まとめ.html"
+            data-count-from="加算まとめ.html"
+            data-count-selector=".tool-card"
+            data-count-suffix="資料収録"
+          >
+            <div class="card-icon-wrap">
+              <svg viewBox="0 0 24 24">
+                <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                <polyline points="2 17 12 22 22 17" />
+                <polyline points="2 12 12 17 22 12" />
+              </svg>
+            </div>
+            <div class="card-name">加算まとめ</div>
+            <div class="card-desc">
+              算定要件・点数・薬歴記載・摘要欄の注意点を、加算ごとに確認できます。
+            </div>
+            <div class="card-meta"></div>
+            <div class="card-cta">
+              一覧を見る
               <svg viewBox="0 0 24 24">
                 <polyline points="9 18 15 12 9 6" />
               </svg>
@@ -563,6 +603,16 @@
           <ul class="updates-list">
             <li>
               <div class="update-line1">
+                <span class="update-date">6/21</span>
+                <a class="update-name" href="加算まとめ.html"
+                  >加算まとめ ページ新設<span class="badge-new">NEW</span></a>
+              </div>
+              <p class="update-desc">
+                加算・管理料ごとの算定要件・点数・薬歴・摘要欄をまとめた一覧ページを新設。検索・カテゴリ付き。
+              </p>
+            </li>
+            <li>
+              <div class="update-line1">
                 <span class="update-date">6/20</span>
                 <a class="update-name" href="別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html"
                   >別表Ⅰ・Ⅴほか 2026改定の摘要欄・略号を整備<span class="badge-new">更新</span></a>
@@ -599,37 +649,6 @@
               </div>
               <p class="update-desc">
                 算定チェックリスト第5弾。30点・6月に1回。対象疾患の確認→吸入指導→医療機関へ情報提供→薬歴記載まで（1ページ）。
-              </p>
-            </li>
-            <li>
-              <div class="update-line1">
-                <span class="update-date">6/13</span>
-                <a class="update-name" href="吸入薬指導加算2026.html"
-                  >吸入薬指導加算の見直し（解説ページ）<span class="badge-new">更新</span></a>
-              </div>
-              <p class="update-desc">
-                デザインを最新版に刷新し、薬歴への記載カード（通則(4)(5)準拠・SOAP記載例）を新設。
-              </p>
-            </li>
-            <li>
-              <div class="update-line1">
-                <span class="update-date">6/10</span>
-                <a class="update-name" href="栄養保持を目的とした医薬品_確認チェックリスト.html"
-                  >栄養保持を目的とした医薬品 確認チェックリスト<span class="badge-new">NEW</span></a>
-              </div>
-              <p class="update-desc">
-                対象の経腸栄養剤を保険給付するための確認とレセコメ入力のチェックリスト（1ページ）。
-              </p>
-            </li>
-            <li>
-              <div class="update-line1">
-                <span class="update-date">6/9</span>
-                <a class="update-name" href="かかりつけ薬剤師フォローアップ加算_実務チェックリスト.html"
-                  >かかりつけ薬剤師フォローアップ加算</a>・<a class="update-name" href="かかりつけ薬剤師訪問加算_実務チェックリスト.html"
-                  >訪問加算 算定チェックリスト<span class="badge-new">NEW</span></a>
-              </div>
-              <p class="update-desc">
-                算定チェックリスト第4弾。かかりつけ薬剤師フォローアップ加算（50点）・訪問加算（230点）の2点セット。
               </p>
             </li>
           </ul>

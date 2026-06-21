@@ -16,6 +16,7 @@
     'index.html': { category: 'home', title: 'ホーム' },
     'updates.html': { category: 'home', title: '更新履歴' },
     'kaitei2026.html': { category: 'kaitei', title: '2026改定資料' },
+    '加算まとめ.html': { category: 'kasan', title: '加算まとめ' },
     'tools.html': { category: 'tools', title: '実務ツール集' },
     'knowledge.html': { category: 'knowledge', title: '実務ナレッジ集' },
 
@@ -79,6 +80,7 @@
   const CATEGORIES = {
     home: { name: 'ホーム', url: 'index.html' },
     kaitei: { name: '2026改定資料', url: 'kaitei2026.html' },
+    kasan: { name: '加算まとめ', url: '加算まとめ.html' },
     tools: { name: '実務ツール集', url: 'tools.html' },
     knowledge: { name: '実務ナレッジ集', url: 'knowledge.html' },
   };
@@ -196,6 +198,7 @@
   const navItems = [
     { cat: 'home', label: 'ホーム' },
     { cat: 'kaitei', label: '改定資料' },
+    { cat: 'kasan', label: '加算まとめ' },
     { cat: 'tools', label: 'ツール' },
     { cat: 'knowledge', label: 'ナレッジ' },
   ];

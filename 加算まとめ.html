@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>加算まとめ｜調剤報酬まとめ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+:root {
+  --blue: #1e5fa8; --blue-light: #e8f0fb; --ink: #222222; --sub: #666666;
+  --border: #d8dde8; --white: #ffffff; --bg: #f5f7fa;
+  --radius: 10px; --radius-sm: 6px;
+  --text-xs: 13px; --text-sm: 15px; --text-md: 16px; --text-lg: 18px; --text-xl: 22px;
+}
+body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: var(--ink); font-size: var(--text-md); line-height: 1.8; padding: 32px 16px 60px; }
+.page { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+
+.page-title { border-left: 4px solid var(--blue); padding: 6px 0 6px 18px; }
+.page-title h1 { font-size: var(--text-xl); font-weight: 900; }
+.page-title p { font-size: var(--text-sm); font-weight: 500; margin-top: 4px; color: var(--sub); line-height: 1.7; }
+
+.search-wrap input { width: 100%; font-family: inherit; font-size: 15px; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 10px; background: var(--white); color: var(--ink); outline: none; }
+.search-wrap input:focus { border-color: var(--blue); }
+
+.cat-nav { display: flex; flex-wrap: wrap; gap: 7px; }
+.cat-nav a { font-size: 12.5px; font-weight: 700; color: var(--blue); background: var(--blue-light); border-radius: 100px; padding: 5px 13px; text-decoration: none; }
+.cat-nav a:hover { background: #dbe8fa; }
+
+.cat-block { scroll-margin-top: 14px; }
+.cat-block + .cat-block { margin-top: 18px; }
+.cat { font-size: 14px; font-weight: 900; color: var(--blue); margin: 0 2px 8px; padding-bottom: 7px; border-bottom: 1px solid var(--border); }
+
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+.tool-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 13px 16px;
+  text-decoration: none;
+  color: var(--ink);
+  display: block;
+  transition: border-color 0.2s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.2s cubic-bezier(0.2,0.8,0.2,1), transform 0.2s cubic-bezier(0.2,0.8,0.2,1);
+}
+.tool-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 6px 22px rgba(30, 95, 168, 0.1);
+  transform: translateY(-2px);
+}
+.tool-name { font-size: 15px; font-weight: 700; line-height: 1.45; }
+.tool-meta { font-size: 12px; color: var(--sub); margin-top: 3px; line-height: 1.5; }
+
+#kasan-empty { display: none; font-size: 14px; color: var(--sub); padding: 14px 2px; }
+.note { font-size: 12px; color: var(--sub); padding: 6px 2px 0; line-height: 1.7; }
+
+@media (max-width: 640px) {
+  body { padding: 14px 12px 40px; }
+  .grid { grid-template-columns: 1fr; }
+  .tool-card { padding: 12px 14px; }
+}
+</style>
+</head>
+<body>
+    <script src="assets/site-header.js" defer></script>
+    <script src="assets/page-meta.js" defer></script>
+    <script src="assets/last-updated.js" defer></script>
+<div class="page">
+
+  <div class="page-title">
+    <h1>加算まとめ</h1>
+    <p>加算・管理料ごとに、算定要件・点数・薬歴記載・摘要欄の注意点を整理しています。2026年改定で変更された項目は、改定ページからも確認できます。</p>
+  </div>
+
+  <div class="search-wrap">
+    <input id="kasan-search" type="search" placeholder="加算名で検索（ひらがな・カタカナOK 例：ざんやく、きゅうにゅう、ﾊﾞｲｵ）" autocomplete="off" aria-label="加算名で検索">
+  </div>
+
+  <nav class="cat-nav" aria-label="カテゴリ">
+    <a href="#cat-kihon">調剤基本料・体制加算</a>
+    <a href="#cat-kanri">調剤管理料・関連加算</a>
+    <a href="#cat-yakkan">薬学管理料</a>
+    <a href="#cat-zaitaku">在宅関連</a>
+  </nav>
+
+  <div id="kasan-list">
+
+    <div class="cat-block" id="cat-kihon">
+      <div class="cat">調剤基本料・体制加算</div>
+      <div class="grid">
+        <a class="tool-card" href="調剤基本料_2026改定.html" data-keywords="調剤基本料 集中率 施設基準 ちょうざいきほんりょう">
+          <div class="tool-name">調剤基本料</div>
+          <div class="tool-meta">点数・施設基準・集中率の計算</div>
+        </a>
+        <a class="tool-card" href="地域支援医薬品供給対応体制加算.html" data-keywords="地域支援 医薬品供給 体制加算 届出 ちいきしえん いやくひんきょうきゅう たいせいかさん">
+          <div class="tool-name">地域支援・医薬品供給対応体制加算</div>
+          <div class="tool-meta">届出区分・施設基準・実績</div>
+        </a>
+        <a class="tool-card" href="在宅薬学総合体制加算2026.html" data-keywords="在宅薬学総合体制加算 在総体 在宅 体制 ざいたくやくがくそうごうたいせい ざいそうたい">
+          <div class="tool-name">在宅薬学総合体制加算</div>
+          <div class="tool-meta">区分1・2｜施設基準・実績要件</div>
+        </a>
+        <a class="tool-card" href="バイオ後続品調剤体制加算.html" data-keywords="バイオ後続品 バイオシミラー 体制加算 ばいおこうぞくひん">
+          <div class="tool-name">バイオ後続品調剤体制加算</div>
+          <div class="tool-meta">届出｜バイオ後続品の調剤体制</div>
+        </a>
+        <a class="tool-card" href="電子的調剤情報連携体制整備加算_2026改定.html" data-keywords="電子的調剤情報連携 電子処方箋 連携 体制 でんしてきちょうざいじょうほうれんけい">
+          <div class="tool-name">電子的調剤情報連携体制整備加算</div>
+          <div class="tool-meta">届出｜電子処方箋等の連携体制</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="cat-block" id="cat-kanri">
+      <div class="cat">調剤管理料・関連加算</div>
+      <div class="grid">
+        <a class="tool-card" href="調剤管理料_2026改定.html" data-keywords="調剤管理料 長期処方 ちょうざいかんりりょう">
+          <div class="tool-name">調剤管理料</div>
+          <div class="tool-meta">長期60点／その他10点｜算定の注意</div>
+        </a>
+        <a class="tool-card" href="調剤時残薬調整加算.html" data-keywords="残薬 残薬調整 減数調剤 調剤日数 疑義照会 ざんやく ざんやくちょうせい げんすうちょうざい">
+          <div class="tool-name">調剤時残薬調整加算</div>
+          <div class="tool-meta">区分イ〜ニ｜残薬調整で調剤日数変更</div>
+        </a>
+        <a class="tool-card" href="薬学的有害事象等防止加算.html" data-keywords="有害事象 防止加算 重複投薬 相互作用 疑義照会 ゆうがいじしょう ぼうしかさん">
+          <div class="tool-name">薬学的有害事象等防止加算</div>
+          <div class="tool-meta">区分イ〜ニ｜照会による処方変更</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="cat-block" id="cat-yakkan">
+      <div class="cat">薬学管理料</div>
+      <div class="grid">
+        <a class="tool-card" href="服薬管理指導料.html" data-keywords="服薬管理指導料 服管 かかりつけ 1のイ 2のイ ふくやくかんりしどうりょう ふくかん">
+          <div class="tool-name">服薬管理指導料（1・2／かかりつけ）</div>
+          <div class="tool-meta">区分1・2｜かかりつけ要件・薬歴記載</div>
+        </a>
+        <a class="tool-card" href="服薬管理指導料3・4_施設訪問・オンライン.html" data-keywords="服薬管理指導料3 服薬管理指導料4 施設 オンライン 服薬指導 ふくやくかんりしどうりょう">
+          <div class="tool-name">服薬管理指導料 3・4</div>
+          <div class="tool-meta">区分3・4｜施設訪問・オンライン服薬指導</div>
+        </a>
+        <a class="tool-card" href="吸入薬指導加算2026.html" data-keywords="吸入 喘息 COPD 吸入手技 きゅうにゅう きゅうにゅうやくしどう ぜんそく">
+          <div class="tool-name">吸入薬指導加算</div>
+          <div class="tool-meta">30点・6月1回｜手技指導・情報提供・薬歴</div>
+        </a>
+        <a class="tool-card" href="かかりつけ薬剤師フォローアップ加算.html" data-keywords="かかりつけ フォローアップ 電話 継続 ふぉろーあっぷ">
+          <div class="tool-name">かかりつけ薬剤師フォローアップ加算</div>
+          <div class="tool-meta">50点・3月1回｜電話フォロー・双方向性</div>
+        </a>
+        <a class="tool-card" href="かかりつけ薬剤師訪問加算.html" data-keywords="かかりつけ 訪問 患家 ほうもん">
+          <div class="tool-name">かかりつけ薬剤師訪問加算</div>
+          <div class="tool-meta">230点・6月1回｜患家訪問・次回算定</div>
+        </a>
+        <a class="tool-card" href="服用薬剤調整支援料２_2026改定.html" data-keywords="服用薬剤調整支援料 ポリファーマシー 減薬 ふくようやくざいちょうせいしえん ぽりふぁーましー">
+          <div class="tool-name">服用薬剤調整支援料2</div>
+          <div class="tool-meta">ポリファーマシー｜算定区分・記録要件</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="cat-block" id="cat-zaitaku">
+      <div class="cat">在宅関連</div>
+      <div class="grid">
+        <a class="tool-card" href="在宅患者訪問薬剤管理指導料_算定間隔2026.html" data-keywords="在宅 訪問 在宅患者訪問薬剤管理指導料 算定間隔 ざいたく ほうもん">
+          <div class="tool-name">在宅患者訪問薬剤管理指導料</div>
+          <div class="tool-meta">算定間隔・回数の整理</div>
+        </a>
+        <a class="tool-card" href="複数名薬剤管理指導訪問料.html" data-keywords="複数名 在宅 訪問 ふくすうめい ほうもん">
+          <div class="tool-name">複数名薬剤管理指導訪問料</div>
+          <div class="tool-meta">新設｜複数薬剤師の訪問指導</div>
+        </a>
+        <a class="tool-card" href="訪問薬剤管理医師同時指導料.html" data-keywords="医師同時 訪問 在宅 いしどうじ ほうもん">
+          <div class="tool-name">訪問薬剤管理医師同時指導料</div>
+          <div class="tool-meta">新設・6月1回｜医師と同時の訪問</div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="kasan-empty">該当する加算が見つかりませんでした。別のキーワードでお試しください。</div>
+
+  <p class="note">※ 在宅薬学総合体制加算は「調剤基本料の加算」のため体制加算に分類していますが、「在宅」でも検索できます。内容は随時追加・整理します。印刷して確認する場合は <a href="checklists.html" style="color:var(--blue);">算定チェックリスト</a> を参照してください。</p>
+
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('kasan-search');
+  var blocks = Array.prototype.slice.call(document.querySelectorAll('.cat-block'));
+  var empty = document.getElementById('kasan-empty');
+  if (!input) return;
+  // ひらがな・半角カタカナ・全角英数のゆれを吸収：NFKC正規化＋ひらがな→カタカナ畳み込み＋小文字化
+  function norm(s) {
+    s = (s || '');
+    try { s = s.normalize('NFKC'); } catch (e) {}
+    s = s.toLowerCase();
+    return s.replace(/[ぁ-ゖ]/g, function (ch) {
+      return String.fromCharCode(ch.charCodeAt(0) + 0x60);
+    });
+  }
+  input.addEventListener('input', function () {
+    var q = norm(input.value).trim();
+    var total = 0;
+    blocks.forEach(function (block) {
+      var cards = block.querySelectorAll('.tool-card');
+      var shown = 0;
+      Array.prototype.forEach.call(cards, function (c) {
+        var hay = norm(c.textContent + ' ' + (c.dataset.keywords || ''));
+        var hit = q === '' || hay.indexOf(q) !== -1;
+        c.style.display = hit ? '' : 'none';
+        if (hit) shown++;
+      });
+      block.style.display = shown ? '' : 'none';
+      total += shown;
+    });
+    empty.style.display = total ? 'none' : 'block';
+  });
+})();
+</script>
+<script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
