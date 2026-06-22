@@ -186,15 +186,21 @@
       @page { size:A4 portrait; margin:8mm; }
       body { background:#fff; padding:0; font-size:10.5px; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
       .draft-banner, header, .copy-mini, .copy-group, .print-btn, details.original { display:none !important; }
-      .page { gap:8px; max-width:none; }
+      /* 紙では目次・更新メモは不要 */
+      .card:has(.toc), .page-foot { display:none !important; }
+      .page { gap:6px; max-width:none; }
       /* 「このチェックリストを印刷」ボタン時：チェックリストのカードだけ印刷 */
       body.print-checklist-only .page > *:not(#sec-checklist) { display:none !important; }
       body.print-checklist-only .cl-item { padding:6px 9px; font-size:10px; }
       body.print-checklist-only .cl-item input[type=checkbox] { width:15px; height:15px; }
-      .card { border:0.5px solid #ccc; border-radius:6px; padding:10px 12px; break-inside:avoid; }
-      .card-title { font-size:13px; margin-bottom:7px; padding-bottom:5px; }
+      /* カードは分割を許可（スカスカの改ページを防ぐ）。小さな塊だけ分割禁止にする */
+      .card { border:0.5px solid #ccc; border-radius:6px; padding:9px 12px; break-inside:auto; }
+      .card-title { font-size:13px; margin-bottom:7px; padding-bottom:5px; break-after:avoid; }
+      .sub-title { break-after:avoid; }
+      /* 分割禁止は小さい塊だけ。大きい記載例(.rei)・Q&Aは分割を許可して余白を減らす */
+      .tpl, .check-item, .cl-item, .source, .scene-ctx, .guard, tr { break-inside:avoid; }
+      .rei p, .qa-q, .qa-a { break-inside:avoid; }
       .lead, .lead-note, .list .li, .rei, .tpl, .box-rule, .guard, td, th { font-size:9.5px; }
-      .page-foot { display:none; }
       a { color:inherit; text-decoration:none; }
     }
   </style>
