@@ -105,15 +105,14 @@ section { margin-bottom: 40px; }
 .source-box {
   background: var(--white);
   border: 1px solid var(--border);
-  border-left: 4px solid var(--blue);
   border-radius: var(--radius-sm);
   padding: 18px 22px;
   font-size: 14px;
 }
 .source-box-label {
   display: inline-block;
-  background: var(--blue);
-  color: var(--white);
+  background: var(--blue-light);
+  color: var(--blue);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -203,8 +202,8 @@ section { margin-bottom: 40px; }
 /* ── 注意ボックス（lead 風：青の左ボーダー＋薄青背景） ── */
 .warn-box {
   background: #eef4fb;
-  border-left: 4px solid var(--blue);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  border: 1px solid #cbddf2;
+  border-radius: var(--radius-sm);
   padding: 14px 18px;
   font-size: 14px;
 }
@@ -240,7 +239,7 @@ section { margin-bottom: 40px; }
   margin-bottom: 8px;
 }
 .example-box.good .example-label { color: var(--blue); }
-.example-box.bad  .example-label { color: var(--red); }
+.example-box.bad  .example-label { color: var(--sub); }
 .example-box pre {
   font-family: "Noto Sans JP", sans-serif;
   white-space: pre-wrap;
@@ -345,4 +344,105 @@ footer {
   font-size: 12px; color: var(--sub);
   border-top: 1px solid var(--border);
   text-align: center;
+}
+
+/* ============================================================
+   改修パターン共通コンポーネント
+   乳幼児・抗うつ薬で確立。縦棒整理（左ボーダーは見出し・引用・黄注意のみ）・
+   赤ゼロ方針。改修済みページ共通（2026-06-24 抗うつ薬 inline から移設）
+   ============================================================ */
+
+/* ── まず見るところ：導線3カード ── */
+.guide-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+@media (max-width: 640px) { .guide-cards { grid-template-columns: 1fr; } }
+.guide-card {
+  display: block; background: var(--white);
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 14px 16px; text-decoration: none; color: var(--ink);
+  transition: border-color .12s, box-shadow .12s;
+}
+.guide-card:hover { border-color: var(--blue); box-shadow: 0 2px 8px rgba(30,95,168,.08); }
+.guide-card .gc-no { display: block; font-size: 14px; font-weight: 700; color: var(--blue); margin-bottom: 5px; }
+.guide-card .gc-title { display: block; font-size: 14px; font-weight: 700; color: var(--ink); line-height: 1.4; margin-bottom: 3px; }
+.guide-card .gc-desc { display: block; font-size: 12px; color: var(--sub); line-height: 1.6; }
+
+/* ── 最低ライン カード ── */
+.minline {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--blue);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+}
+.minline-lead { font-size: 13.5px; color: var(--ink); line-height: 1.8; margin-bottom: 12px; }
+.minline-checks { display: flex; flex-direction: column; gap: 8px; }
+.minline-check {
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 10px 14px; font-size: 13.5px; line-height: 1.65;
+}
+.minline-check b { color: var(--ink); }
+.minline-check .mc-no { color: var(--blue); font-weight: 700; margin-right: 7px; }
+.minline-check .mc-note { display: block; font-size: 12px; color: var(--sub); margin-top: 3px; }
+
+/* 算定根拠として不十分になりやすい例（黄guard） */
+.guard-note {
+  background: var(--warn-bg);
+  border-left: 3px solid var(--warn-border);
+  border-radius: 4px;
+  padding: 9px 13px; margin-top: 12px;
+  font-size: 13px; line-height: 1.7; color: var(--ink);
+}
+.guard-note b { color: var(--warn-title); }
+
+/* ── 印刷用チェックリスト ── */
+.checklist-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 16px 20px;
+}
+.print-btn {
+  font-family: "Noto Sans JP", sans-serif; cursor: pointer;
+  border: 1px solid var(--blue); background: var(--blue); color: #fff;
+  font-size: 12px; font-weight: 700; padding: 5px 14px; border-radius: 100px;
+  vertical-align: middle; margin-left: 14px;
+}
+.print-btn:hover { background: var(--blue-mid); }
+.cl-group + .cl-group { margin-top: 14px; }
+.cl-head {
+  font-weight: 700; font-size: 13px; color: var(--blue);
+  display: flex; align-items: center; gap: 8px; margin-bottom: 7px;
+}
+.cl-head::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--blue); flex-shrink: 0; }
+.cl-item {
+  display: flex; gap: 11px; align-items: flex-start;
+  padding: 9px 13px; border: 1px solid var(--border); border-radius: 6px;
+  margin-bottom: 6px; font-size: 13.5px; line-height: 1.6; cursor: pointer;
+}
+.cl-item input[type=checkbox] {
+  appearance: none; -webkit-appearance: none;
+  width: 18px; height: 18px; border: 2px solid #9ca3af; border-radius: 4px;
+  flex-shrink: 0; margin-top: 1px; cursor: pointer; position: relative;
+}
+.cl-item input[type=checkbox]:checked { background: var(--blue); border-color: var(--blue); }
+.cl-item input[type=checkbox]:checked::after {
+  content: ""; position: absolute; left: 5px; top: 1px;
+  width: 5px; height: 10px; border: solid #fff; border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+}
+.cl-item input[type=checkbox]:checked + span { color: var(--sub); }
+
+/* ── 個別指導の引用 ── */
+.kobetsu-quote { border-left: 3px solid #9ca3af; padding: 4px 0 4px 14px; margin-top: 12px; }
+.kobetsu-quote .kq-k { font-size: 11px; font-weight: 700; color: var(--sub); margin-right: 8px; }
+.kobetsu-quote .kq-t { font-size: 13.5px; line-height: 1.75; color: var(--ink); }
+.kobetsu-quote .kq-cite { display: block; font-size: 11px; color: var(--sub); margin-top: 5px; }
+
+/* ── 印刷：チェックリストだけ印刷 ── */
+@media print {
+  .print-btn, .copy-mini, .copy-btn { display: none !important; }
+  .cl-item { break-inside: avoid; }
+  body.print-checklist-only main > section:not(#sec-checklist) { display: none !important; }
+  body.print-checklist-only .page-head,
+  body.print-checklist-only .draft-banner,
+  body.print-checklist-only header,
+  body.print-checklist-only footer { display: none !important; }
 }
