@@ -35,7 +35,7 @@
       /* テンプレ直上の注意（重要語のみ赤） */
       .tpl-warn {
         background: var(--warn-bg);
-        border-left: 3px solid var(--warn-border);
+        border: 1px solid var(--warn-border);
         border-radius: 4px;
         padding: 10px 14px;
         margin: 12px 0 8px;
@@ -50,6 +50,22 @@
       .tpl-warn ul { margin: 4px 0 0 20px; padding: 0; }
       .tpl-warn ul li { margin-bottom: 2px; }
       .tpl-warn strong { color: var(--ink); font-weight: 700; }
+
+      /* 算定要件・改定注記の警告（オレンジ系） */
+      .caveat-box {
+        background: #fff7e6;
+        border: 1px solid #f5d4a1;
+        border-radius: 4px;
+        padding: 10px 14px;
+        margin: 12px 0;
+        font-size: 12.5px;
+        line-height: 1.7;
+        color: var(--ink);
+      }
+      .caveat-box-title {
+        font-weight: 700; color: #c2701c;
+        font-size: 13px; margin-bottom: 4px;
+      }
 
       /* 短文テンプレ（基本 / 追記） */
       .tpl-set { margin-top: 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
@@ -222,15 +238,15 @@
 
       /* インスリン特有チェックリスト（SECTION 1.5） */
       .insulin-check {
-        background: #fff8e6;
-        border: 1px solid #f5d98a;
-        border-left: 4px solid #d97706;
+        background: #f7f8fa;
+        border: 1px solid #e1e5ea;
+        border-left: 3px solid var(--blue);
         border-radius: var(--radius-sm);
         padding: 14px 18px;
         margin: 10px 0 16px;
       }
       .insulin-check-title {
-        font-weight: 700; color: #92400e;
+        font-weight: 700; color: var(--blue);
         font-size: 14px; margin-bottom: 8px;
       }
       .insulin-check ol {
@@ -238,7 +254,7 @@
         font-size: 13px; line-height: 1.85;
       }
       .insulin-check ol li { margin-bottom: 4px; }
-      .insulin-check ol li strong { color: #92400e; }
+      .insulin-check ol li strong { color: var(--ink); }
 
       /* ===== サイドスティッキー目次（PC 880px+） ===== */
       [id] { scroll-margin-top: 16px; }
@@ -330,7 +346,7 @@
     </style>
   </head>
   <body>
-    <div class="draft-banner">⚠ 非公開作業中ページ｜内容は精査中のため公開ナビゲーションには掲載していません</div>
+    <div class="draft-banner">⚠ 試験公開中｜内容は精査中です。気になる点・使いにくい点はハローフォーラムでお知らせください</div>
 
     <header>
       <div class="header-inner">
@@ -345,16 +361,22 @@
       <div class="sticky-toc-head">
         <span class="sticky-toc-label">CONTENTS</span>
       </div>
-      <a href="#section1">共通確認ポイント</a>
-      <a href="#section1-5">インスリン指導で特に確認すること</a>
-      <a href="#section2">製剤群別テンプレート</a>
-      <div class="sticky-toc-group">▼ 製剤群</div>
+      <a href="#guide">このページの使い方</a>
+      <div class="sticky-toc-group">▼ まず確認</div>
+      <a href="#lowline">算定時の記載ポイント</a>
+      <a href="#sec-checklist">簡易チェックリスト</a>
+      <a href="#drug-search">薬剤名から探す</a>
+      <div class="sticky-toc-group">▼ 製剤群別</div>
       <a href="#basal">持効型・基礎インスリン</a>
       <a href="#bolus">速効型・超速効型・食事インスリン</a>
       <a href="#mix">混合型・配合型インスリン</a>
       <a href="#glp1-combo">インスリン＋GLP-1配合剤</a>
-      <div class="sticky-toc-group">▼ その他</div>
-      <a href="#section3">変化に基づくロ（判断理由）</a>
+      <div class="sticky-toc-group">▼ 必要時</div>
+      <a href="#section3">変化に基づくロ</a>
+      <div class="sticky-toc-group">▼ 参考</div>
+      <a href="#section1">共通確認ポイント</a>
+      <a href="#section1-5">インスリン指導の確認事項</a>
+      <a href="#kobetsu">個別指導</a>
       <div class="sticky-toc-group">▼ 他の薬効群</div>
       <a href="ハイリスク_血液凝固阻止剤.html">血液凝固阻止剤</a>
       <a href="ハイリスク_糖尿病用剤.html">糖尿病用剤</a>
@@ -368,9 +390,8 @@
       <span class="page-tag">HIGH-RISK 10</span>
       <h1 class="page-title">膵臓ホルモン剤（インスリン製剤）</h1>
       <p class="page-desc">
-        特定薬剤管理指導加算1の対象となるインスリン製剤について、<strong>新規処方（イ）・用法用量変更（ロ）・副作用や服薬状況等の変化に基づくロ</strong>の薬歴記載例を整理したページです。<br />
-        変更のあった製剤から、確認事項・指導内容・薬歴記載例を探せるようにしています。<br />
-        日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」膵臓ホルモン剤の確認事項を参考にしています。
+        特定薬剤管理指導加算1の対象となるインスリン製剤について、新規処方時の「イ」、用法・用量変更時の「ロ」、副作用や服薬状況等の変化に基づく「ロ」の薬歴記載例を整理したページである。<br />
+        経口糖尿病薬・GLP-1作動薬（注射）は別ページ（糖尿病用剤）で扱う。
       </p>
     </div>
 
@@ -378,13 +399,18 @@
       <details class="toc-inline">
         <summary>目次（タップで開閉）</summary>
         <div class="toc-links">
-          <a href="#section1">共通確認ポイント</a>
-          <a href="#section1-5">インスリン指導の確認事項</a>
+          <a href="#guide">このページの使い方</a>
+          <a href="#lowline">算定時の記載ポイント</a>
+          <a href="#sec-checklist">簡易チェックリスト</a>
+          <a href="#drug-search">薬剤名から探す</a>
           <a href="#basal">持効型・基礎</a>
           <a href="#bolus">速効型・超速効型</a>
           <a href="#mix">混合型・配合型</a>
           <a href="#glp1-combo">インスリン＋GLP-1</a>
           <a href="#section3">変化に基づくロ</a>
+          <a href="#section1">共通確認ポイント</a>
+          <a href="#section1-5">インスリン指導の確認事項</a>
+          <a href="#kobetsu">個別指導</a>
           <a href="ハイリスク_血液凝固阻止剤.html">→ 血液凝固阻止剤</a>
           <a href="ハイリスク_糖尿病用剤.html">→ 糖尿病用剤</a>
           <a href="ハイリスク_抗精神病薬.html">→ 抗精神病薬</a>
@@ -393,15 +419,109 @@
       </details>
 
       <!-- ============================================================
-           § 1  共通確認ポイント
+           § まず見るところ（導線3カード／最低ライン／チェックリスト／薬剤名から探す）
            ============================================================ -->
-      <section id="section1">
-        <div class="section-label">SECTION 1</div>
-        <h2 class="section-title">膵臓ホルモン剤の共通確認ポイント</h2>
-        <p style="font-size:13px;color:var(--sub);margin-bottom:12px;">
-          インスリン製剤に共通する確認・指導の考え方を整理しています。<br />
-          具体的な確認事項と記載例は、SECTION 2 の製剤群別ブロックにまとめています。
-        </p>
+      <!-- § このページの使い方（導線3カード） -->
+      <section id="guide" style="margin-bottom:24px;">
+        <div class="section-label">このページの使い方</div>
+        <div class="guide-cards">
+          <a class="guide-card" href="#lowline"><span class="gc-no">1</span><span class="gc-title">算定前に記載内容を確認する</span><span class="gc-desc">最低ラインと簡易チェックリストで、算定根拠として不足がないか確認する。</span></a>
+          <a class="guide-card" href="#drug-search"><span class="gc-no">2</span><span class="gc-title">製剤名から記載例を探す</span><span class="gc-desc">薬剤名・デバイス名を選択し、該当する製剤群の記載例へ移動する。</span></a>
+          <a class="guide-card" href="#section3"><span class="gc-no">3</span><span class="gc-title">変化に基づくロの記載例を見る</span><span class="gc-desc">副作用・服薬状況等の変化により、追加指導が必要と判断した場合の記載例を確認する。</span></a>
+        </div>
+      </section>
+
+      <!-- § 最低ライン -->
+      <section id="lowline" style="margin-bottom:28px;">
+        <div class="section-label">最低ライン</div>
+        <h2 class="section-title">算定時の記載ポイント</h2>
+        <div class="minline">
+          <p class="minline-lead">
+            特定薬剤管理指導加算1は、服薬管理指導料に対する加算であり、対象薬が処方されていることだけを理由に算定する加算ではない。算定する場合は、通常の服薬指導に加えて、対象薬に関する確認を行い、患者の病状・服薬状況等を踏まえたプラスアルファの指導を行う必要がある。
+          </p>
+          <p class="minline-lead" style="margin-bottom:14px;">
+            算定時は、対象薬について確認した内容と行った指導の要点を薬歴に記録する。従来と同一の処方内容でロを算定する場合は、特に指導が必要と判断した理由の要点も記載する。
+          </p>
+          <div class="minline-checks">
+            <div class="minline-check"><span class="mc-no">①</span><b>「薬剤名 単位数 タイミング：〜」の形で書き始める</b><span class="mc-note">どの薬についての指導記録かを明確にする（例：「トレシーバ 10単位 朝食前：…」）。</span></div>
+            <div class="minline-check"><span class="mc-no">②</span><b>確認した内容を記録する</b><span class="mc-note">単位数・注射タイミング・注射手技・低血糖・シックデイ時の対応・併用薬・検査値（HbA1c・血糖・自己測定値）など、確認した内容を残す。</span></div>
+            <div class="minline-check"><span class="mc-no">③</span><b>患者の状況に応じた指導内容を残す</b><span class="mc-note">一般的な薬効・用法説明だけでなく、注射手技・低血糖症状と対処（ブドウ糖）・シックデイ時に自己判断で中止しないことなど、その患者に必要な指導を具体的に記録する。</span></div>
+            <div class="minline-check"><span class="mc-no">④</span><b>記載内容から場面（新規・変更・変化）が分かるように記録する</b><span class="mc-note">「イ／ロ」の記号自体を書く必要はない（新規＝イ、用法用量変更＝ロ）。<strong>従来と同一処方でも、特に指導が必要と認めてロを算定する場合は、特に指導が必要と判断した理由の要点を必ず残す</strong>（別添3 記載要件）。</span></div>
+          </div>
+          <div class="guard-note"><b>算定根拠として不十分になりやすい例</b>　一般的な薬効・用法説明のみで、確認した内容や患者の状況に応じた指導内容が薬歴から確認できない。</div>
+
+          <h3 class="subsection-title" style="margin-top:18px;">よくある薬歴と修正例（インスリン製剤）</h3>
+          <div class="example-pair">
+            <div class="example-box bad">
+              <span class="example-label">✕ 算定根拠として不十分な例</span>
+              <pre>トレシーバ：新規。効果と副作用を説明し、継続して注射するよう指導した。</pre>
+            </div>
+            <div class="example-box good">
+              <span class="example-label">○ 修正例（製剤群テンプレートを参考にした例）</span>
+              <pre>トレシーバ 10単位 朝食前：新規導入。単位数・注射タイミングを確認。基礎インスリンを補う薬で、自己判断で中止すると高血糖・ケトアシドーシスのリスクがあることを説明。注射手技（空打ち・部位ローテーション）・保管を実演で確認。低血糖症状（冷汗・ふるえ・動悸・強い空腹感）が出たらブドウ糖を摂取するよう指導。シックデイ（発熱・食事摂取不良）時は自己判断で中止・調整せず医師に相談するよう説明。視力・手指の動き・家族支援も確認。</pre>
+            </div>
+          </div>
+          <p style="font-size:12px;color:var(--sub);margin-top:4px;">※ ✕は確認した内容や患者ごとのプラスアルファの指導が読み取れない。○は「<a href="#drug-search" class="link-inline" style="color:var(--blue);">薬剤名から探す</a>」から持効型インスリン初回イの記載例を参考にしたもの。薬効・用法説明だけで終わらず、単位数・注射手技・低血糖／シックデイ対応の確認と、患者の状況に応じた指導が薬歴から確認できるようにする。</p>
+        </div>
+      </section>
+
+      <!-- § 印刷用チェックリスト -->
+      <section id="sec-checklist" style="margin-bottom:28px;">
+        <div class="section-label">印刷用</div>
+        <h2 class="section-title">算定前セルフチェック<button class="print-btn" type="button">このチェックリストを印刷</button></h2>
+        <div class="checklist-card">
+          <div class="cl-group">
+            <div class="cl-head">確認・記録する項目（基本）</div>
+            <label class="cl-item"><input type="checkbox"><span>対象薬剤が分かるように記載した（<b>「薬剤名 単位数 タイミング：〜」</b>）</span></label>
+            <label class="cl-item"><input type="checkbox"><span>記載内容から<b>新規／変更／変化のどれに当たるか分かる</b>（「イ／ロ」の記号は不要）。<b>変化に基づくロは、特に指導が必要と判断した理由</b>も記載した</span></label>
+            <label class="cl-item"><input type="checkbox"><span><b>処方目的・適応・単位数・注射タイミング</b>を確認した（<b>継続・変更時は実施状況・打ち忘れ</b>も）</span></label>
+            <label class="cl-item"><input type="checkbox"><span><b>低血糖症状と対処（ブドウ糖）</b>を説明した</span></label>
+            <label class="cl-item"><input type="checkbox"><span><b>注射手技</b>（空打ち・部位ローテーション）・<b>保管</b>・針の取扱いを確認した</span></label>
+            <label class="cl-item"><input type="checkbox"><span><b>シックデイ時に自己判断で中止・調整しないこと</b>を説明した（持効型の中断は高血糖・ケトアシドーシス）</span></label>
+            <label class="cl-item"><input type="checkbox"><span><b>患者の状況に応じた指導内容</b>を記録した</span></label>
+          </div>
+          <div class="cl-group">
+            <div class="cl-head">必要に応じて確認・説明する項目（インスリン製剤）</div>
+            <label class="cl-item"><input type="checkbox"><span><b>「続けられるか」</b>（視力・手指の動き・理解力・家族支援）を確認した</span></label>
+            <label class="cl-item"><input type="checkbox"><span><b>夜間低血糖</b>（朝の倦怠感・寝汗）の有無を確認した（特に持効型・増量後）</span></label>
+            <label class="cl-item"><input type="checkbox"><span><b>重症低血糖の備え</b>（家族へのブドウ糖・グルカゴン製剤の準備）を確認した</span></label>
+            <label class="cl-item"><input type="checkbox"><span>混合型／配合型：<b>懸濁の要否</b>（混合型は要懸濁／ライゾデグ等の配合型は振らない）を正しく指導した</span></label>
+            <label class="cl-item"><input type="checkbox"><span>インスリン＋GLP-1配合剤：<b>悪心・食欲低下・急性膵炎</b>の注意を説明した</span></label>
+            <label class="cl-item"><input type="checkbox"><span>針の<b>廃棄方法</b>（店舗・自治体の運用）を説明した</span></label>
+          </div>
+          <div class="guard-note"><b>算定根拠として不十分になりやすい例</b>　一般的な薬効説明のみで、確認した内容や患者の状況に応じた指導内容が薬歴から確認できない。</div>
+        </div>
+      </section>
+
+      <!-- § 薬剤名から探す -->
+      <section id="drug-search" style="margin-bottom:28px;">
+        <div class="section-label">薬剤名から探す</div>
+        <h2 class="section-title">薬剤名・デバイス名から記載例を探す</h2>
+        <p style="font-size:13px;color:var(--sub);margin-bottom:10px;">薬剤名・デバイス名をタップすると、該当する製剤群別テンプレートに移動する。</p>
+        <div class="drug-index">
+          <div class="drug-index-row">
+            <span class="di-group">持効型</span>
+            <a href="#basal">ランタス</a><a href="#basal">ランタスXR</a><a href="#basal">レベミル</a><a href="#basal">トレシーバ</a><a href="#basal">グラルギンBS</a><a href="#basal">ソロスター</a><a href="#basal">フレックスペン</a><a href="#basal">フレックスタッチ</a><a href="#basal">イノレット</a>
+          </div>
+          <div class="drug-index-row">
+            <span class="di-group">速効・超速効</span>
+            <a href="#bolus">ヒューマログ</a><a href="#bolus">ノボラピッド</a><a href="#bolus">アピドラ</a><a href="#bolus">フィアスプ</a><a href="#bolus">ルムジェブ</a><a href="#bolus">ヒューマリンR</a><a href="#bolus">ノボリンR</a><a href="#bolus">ミリオペン</a>
+          </div>
+          <div class="drug-index-row">
+            <span class="di-group">混合・配合</span>
+            <a href="#mix">ヒューマログMix25</a><a href="#mix">ヒューマログMix50</a><a href="#mix">ノボラピッド30Mix</a><a href="#mix">ノボラピッド50Mix</a><a href="#mix">ノボラピッド70Mix</a><a href="#mix">ライゾデグ</a><a href="#mix">ノボリン30R</a><a href="#mix">イノレット30R</a><a href="#mix">ヒューマリン3/7</a>
+          </div>
+          <div class="drug-index-row">
+            <span class="di-group">GLP-1配合</span>
+            <a href="#glp1-combo">ゾルトファイ</a><a href="#glp1-combo">ソリクア</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- § 参考  共通確認ポイント（日薬GL由来・折りたたみ） -->
+      <section id="section1" style="margin-bottom:28px;">
+        <div class="section-label">参考</div>
+        <h2 class="section-title">膵臓ホルモン剤の共通確認ポイント（日薬GL）</h2>
 
         <details class="guide-details">
           <summary>共通確認ポイント（日薬GL 6項目）を見る</summary>
@@ -435,10 +555,10 @@
            § 1.5  インスリン指導で特に確認すること
            ============================================================ -->
       <section id="section1-5">
-        <div class="section-label">SECTION 1.5</div>
+        <div class="section-label">インスリン共通</div>
         <h2 class="section-title">インスリン指導で特に確認すること</h2>
         <p style="font-size:13px;color:var(--sub);margin-bottom:12px;">
-          インスリン製剤は経口薬と違い、<strong>「打てるか・続けられるか・低血糖時に対応できるか」</strong>が指導の本丸です。製剤群を問わず以下の項目が重要で、<strong>新規処方時・用法用量変更時・患者状況に変化がある場合</strong>は、必要に応じて確認・指導してください。
+          インスリン製剤は経口薬と違い、<strong>「打てるか・続けられるか・低血糖時に対応できるか」</strong>が指導の本丸である。製剤群を問わず以下の項目が重要で、<strong>新規処方時・用法用量変更時・患者状況に変化がある場合</strong>は、必要に応じて確認・指導する。
         </p>
 
         <div class="insulin-check">
@@ -455,15 +575,15 @@
           </ol>
         </div>
 
-        <div class="insulin-check" style="background:#eef4fb;border-color:#c9def5;border-left-color:var(--blue);">
-          <div class="insulin-check-title" style="color:var(--blue);">「続けられるか」を見る確認項目</div>
+        <div class="insulin-check">
+          <div class="insulin-check-title">「続けられるか」の確認項目</div>
           <ol>
             <li><strong>視力</strong>：単位目盛りが見えているか、注射部位を確認できているか</li>
             <li><strong>手指の動き（巧緻性）</strong>：ダイヤルが回せるか、針の取り付け／取り外しができるか</li>
             <li><strong>理解力</strong>：手順・低血糖対応の説明を理解できているか</li>
             <li><strong>家族支援</strong>：本人が打てない・対処できない場合の家族のサポート体制、グルカゴン製剤の準備状況</li>
           </ol>
-          <p style="font-size:12px;color:var(--sub);margin-top:8px;">※ 高齢者・視力低下・認知機能低下例では特に重要。家族同伴の確認や、店舗側からの提案も視野に。</p>
+          <p style="font-size:12px;color:var(--sub);margin-top:8px;">※ 高齢者・視力低下・認知機能低下例では特に重要。家族同伴の確認や、店舗側からの提案も検討する。</p>
         </div>
       </section>
 
@@ -474,18 +594,18 @@
         <div class="section-label">SECTION 2</div>
         <h2 class="section-title">製剤群別テンプレート</h2>
         <p style="font-size:13px;color:var(--sub);margin-bottom:8px;">
-          薬歴を作成する際は、<strong>新規処方または変更があった製剤群</strong>を確認し、患者の状況に近い記載例を参考にしてください。必要に応じて、確認した内容や追加で行った指導を追記してください。<br />
-          本ページは、特定薬剤管理指導加算1のうち、<strong>新規処方時のイ、用法・用量変更時のロ、副作用や服薬状況等の変化に基づくロ</strong>を想定した薬歴記載例です。継続処方時の通常確認を記録するためのテンプレートではありません。<br />
-          <span style="font-size:12px;">※ 併用薬については、各製剤群で<strong>低血糖リスクに関係する代表的な組み合わせ</strong>を中心に記載しています。その他の相互作用や注意すべき併用薬がある場合は、確認した内容と患者へ説明した内容を個別に追記してください。</span><br />
-          <span style="font-size:12px;">※ 製剤群の並びは、現場での使用頻度・指導上の重要度を考慮して配置しています。</span>
+          薬歴を作成する際は、<strong>新規処方または変更があった製剤群</strong>を確認し、患者の状況に近い記載例を参考にする。必要に応じて、確認した内容や追加で行った指導を追記する。<br />
+          本ページは、特定薬剤管理指導加算1のうち、<strong>新規処方時のイ、用法・用量変更時のロ、副作用や服薬状況等の変化に基づくロ</strong>を想定した薬歴記載例である。継続処方時の通常確認を記録するためのテンプレートではない。<br />
+          <span style="font-size:12px;">※ 併用薬については、各製剤群で<strong>低血糖リスクに関係する代表的な組み合わせ</strong>を中心に記載している。その他の相互作用や注意すべき併用薬がある場合は、確認した内容と患者へ説明した内容を個別に追記する。</span><br />
+          <span style="font-size:12px;">※ 製剤群の並びは、現場での使用頻度・指導上の重要度を考慮して配置している。</span>
         </p>
         <div class="tpl-warn" style="margin:12px 0;">
           <div class="tpl-warn-title">副作用説明の記載について</div>
-          副作用に関する記載例は、<strong>実際に説明した内容に応じて追記</strong>してください。インスリン製剤の主な副作用（低血糖）は初回イ本体に含めています。<strong>まれな重篤副作用</strong>（インスリン＋GLP-1配合剤の急性膵炎など）は、患者さんへ不安を与えすぎないよう、<strong>症状と相談・受診の目安を中心に説明</strong>します。薬歴上で説明内容を明確に残したい場合は、<strong>「副作用説明の追記」から該当するものを追加</strong>してください。
+          副作用に関する記載例は、<strong>実際に説明した内容に応じて追記</strong>する。インスリン製剤の主な副作用（低血糖）は初回イ本体に含めている。<strong>まれな重篤副作用</strong>（インスリン＋GLP-1配合剤の急性膵炎など）は、患者へ不安を与えすぎないよう、<strong>症状と相談・受診の目安を中心に説明</strong>する。薬歴上で説明内容を明確に残したい場合は、<strong>「副作用説明の追記」から該当するものを追加</strong>する。
         </div>
         <div class="tpl-warn" id="copy-rule" style="margin:12px 0;">
           <div class="tpl-warn-title">コピーする前に必ず確認（全薬剤群共通）</div>
-          下のテンプレは「指導・説明」部分の記載例です。そのままコピペすると要件不足になるので、以下を確認してください。
+          下のテンプレは「指導・説明」部分の記載例である。そのままコピペすると要件不足になるので、以下を確認する。
           <ul>
             <li>ハイリスク指導記録は <strong>「薬剤名 単位数 タイミング：〜」</strong> の形で記載（例：「トレシーバ 10単位 朝食前：注射手技と低血糖対応を指導…」）</li>
             <li><strong>確認した内容（注射手技・症状・聞き取り結果・食事状況 など）</strong>もテンプレに足す</li>
@@ -498,26 +618,6 @@
           <span><i style="background:#e0f2f1;border:1px solid #0d9488"></i>変更ロ（増量／減量／用量変更／製剤変更 など）</span>
           <span><i style="background:#f2f4f8;border:1px solid #d7dce3"></i>必要時追記</span>
           <span><i style="background:#fef3e8;border:1px solid #f5d4a1"></i>副作用説明の追記（説明した分だけ追加）</span>
-        </div>
-
-        <div class="drug-index">
-          <div class="drug-index-title">薬剤名・デバイス名から探す</div>
-          <div class="drug-index-row">
-            <span class="di-group">持効型</span>
-            <a href="#basal">ランタス</a><a href="#basal">ランタスXR</a><a href="#basal">レベミル</a><a href="#basal">トレシーバ</a><a href="#basal">グラルギンBS</a><a href="#basal">ソロスター</a><a href="#basal">フレックスペン</a><a href="#basal">フレックスタッチ</a><a href="#basal">イノレット</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">速効・超速効</span>
-            <a href="#bolus">ヒューマログ</a><a href="#bolus">ノボラピッド</a><a href="#bolus">アピドラ</a><a href="#bolus">フィアスプ</a><a href="#bolus">ルムジェブ</a><a href="#bolus">ヒューマリンR</a><a href="#bolus">ノボリンR</a><a href="#bolus">ミリオペン</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">混合・配合</span>
-            <a href="#mix">ヒューマログMix25</a><a href="#mix">ヒューマログMix50</a><a href="#mix">ノボラピッド30Mix</a><a href="#mix">ノボラピッド50Mix</a><a href="#mix">ノボラピッド70Mix</a><a href="#mix">ライゾデグ</a><a href="#mix">ノボリン30R</a><a href="#mix">イノレット30R</a><a href="#mix">ヒューマリン3/7</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">GLP-1配合</span>
-            <a href="#glp1-combo">ゾルトファイ</a><a href="#glp1-combo">ソリクア</a>
-          </div>
         </div>
 
         <!-- 持効型・基礎インスリン -->
@@ -851,7 +951,7 @@
               <h4>Sick day時の対応</h4>
               <p>Sick day時は<strong>自己判断で中止・調整せず、医師の指示を確認</strong>するよう伝える。持効型インスリン成分の中断は高血糖・ケトアシドーシスのリスクがある一方、食事摂取不良時のGLP-1部分による影響もあるため、必ず医師に相談を。</p>
 
-              <p style="margin-top:8px;font-weight:700;">→ GLP-1作動薬としての指導内容は、糖尿病用剤ページの「GLP-1注射」ブロックも合わせて参照すると詳しいです。</p>
+              <p style="margin-top:8px;font-weight:700;">→ GLP-1作動薬としての指導内容は、糖尿病用剤ページの「GLP-1注射」ブロックも合わせて参照する。</p>
 
               <div class="patient-say">患者への伝え方の例：<br />「1日1回、決まった時間に打ってください。最初は気持ち悪さや食欲低下が出ることもありますが、たいてい治まります。強く続く場合や、お腹を強く痛がる・吐き気が止まらない場合はすぐ連絡してください。具合が悪くて食事が摂れない時も、自己判断で中止せず必ず相談してください。」</div>
             </div>
@@ -895,7 +995,7 @@
 
         <p style="font-size:12px;color:var(--sub);margin-top:8px;">
           ※ 「変更のあった製剤」を起点に、状況に最も近いバリエーションを1つ選び、必要なら必要時追記から該当するものを足す想定。<br />
-          ※ 製剤名・単位数（ドーズ数）・注射タイミングはテンプレに含めず、ハイリスク指導記録の冒頭に薬剤師が記載してください（加算1は「どの薬剤について指導したか」が薬歴上で分かる必要があるため）。
+          ※ 製剤名・単位数（ドーズ数）・注射タイミングはテンプレに含めず、ハイリスク指導記録の冒頭に薬剤師が記載する（加算1は「どの薬剤について指導したか」が薬歴上で分かる必要があるため）。
         </p>
       </section>
 
@@ -909,9 +1009,9 @@
         <div class="warn-box">
           <div class="warn-box-title">この区分の位置づけと使い方</div>
           <p>
-            §2が<strong>新規処方（イ）・用法用量変更（ロ）</strong>のテンプレートだったのに対し、ここで扱うのは<strong>「副作用・服薬状況等の変化に基づくロ」（5点）</strong>——患者の体調や生活の変化に薬剤師が気付き、<strong>指導の必要性を判断</strong>したことを薬歴に残す区分です。<br />
+            §2が<strong>新規処方（イ）・用法用量変更（ロ）</strong>のテンプレートだったのに対し、ここで扱うのは<strong>「副作用・服薬状況等の変化に基づくロ」（5点）</strong>——患者の体調や生活の変化に薬剤師が気付き、<strong>指導の必要性を判断</strong>したことを薬歴に残す区分である。<br />
             記録は<strong>「変化の確認 → 指導の方向性を判断 → 指導」</strong>の流れで簡潔に。<br />
-            以下は記載例です。患者の状況に合わせて書き換えてください。
+            以下は記載例。患者の状況に合わせて書き換える。
           </p>
         </div>
 
@@ -963,6 +1063,37 @@
         </div>
       </section>
 
+      <!-- § 個別指導での指摘事例 -->
+      <section id="kobetsu">
+        <div class="section-label">個別指導</div>
+        <h2 class="section-title">個別指導での指摘事例</h2>
+        <div class="warn-box" style="margin-bottom:12px;">
+          <div class="warn-box-title">確認の方向性</div>
+          <p>低血糖症状の有無や注射手技を確認することは重要だが、それだけで特定薬剤管理指導加算1を算定するものではない。患者の病状・服薬状況等を確認したうえで、必要なプラスアルファの指導を行い、その内容を薬歴に記録することが算定根拠として重要。</p>
+        </div>
+
+        <div class="kobetsu-quote">
+          <span class="kq-k">個別指導</span>
+          <span class="kq-t">特定薬剤管理指導加算は服薬管理指導料に対する加算であり、プラスアルファの指導を求めるもの。薬そのものというより、その処方がなされた病状に対して（日薬の確認項目に沿って）確認を行い、別途説明が必要な場合に説明し、その内容を記録することで算定できる。副作用の確認等だけで算定できると誤解されることがあるが、あくまで指導の加算であり、患者の病状をモニタリングしたうえで必要な指導を行い、記録して初めて算定できる。</span>
+          <span class="kq-cite">社内個別指導（R1.11）の記録より</span>
+        </div>
+        <div class="caveat-box">
+          <div class="caveat-box-title">読むときの注意（改定で変わった点）</div>
+          この指摘は改定前（対象薬を調剤するたびに指導が必要だった時期）のもの。現在は算定機会が<strong>初回（イ）・用法用量変更（ロ）・変化に基づくロ</strong>に整理された。ただし、確認だけでなく病状に応じた指導を行って記録するという考え方は変わらない。
+        </div>
+
+        <div class="drug-check-box">
+          <div class="drug-check-box-title">確認されやすいポイント</div>
+          <ul>
+            <li>記録から<strong>対象薬剤（「薬剤名 単位数 タイミング：〜」）</strong>が分かるか</li>
+            <li>何を確認したか（単位数・注射タイミング・注射手技・低血糖・シックデイ対応・服薬状況・検査値）が書かれているか</li>
+            <li>確認しただけで終わらず、<strong>患者の状況に応じた指導内容</strong>になっているか</li>
+            <li>注射手技・低血糖症状と対処・シックデイ時に自己判断で中止しないことなど、必要な指導を記録したか</li>
+            <li>「変化に基づくロ」では、<strong>変化の確認・指導が必要と判断した理由・指導内容</strong>が残っているか</li>
+          </ul>
+        </div>
+      </section>
+
       <!-- ============================================================
            § SOURCE（折りたたみ）
            ============================================================ -->
@@ -980,8 +1111,8 @@
               <div>令和8年3月5日 保医発0305第4号 別添3「調剤報酬点数表に関する事項」 特定薬剤管理指導加算1</div>
               <div class="source-cite">→ 算定要件・薬歴記載要件の原文</div>
             </div>
-            <p style="font-size:12px;color:var(--sub);margin-top:14px;">※ 経口糖尿病薬・GLP-1作動薬（注射）は別ページ「糖尿病用剤」で扱います。インスリン＋GLP-1配合剤のGLP-1作動薬部分の詳細指導は、糖尿病用剤ページの「GLP-1注射」ブロックも参照してください。</p>
-            <p style="font-size:12px;color:var(--sub);margin-top:6px;">※ 針の廃棄方法・回収運用は店舗・自治体によって異なります。社内・店舗の運用ルールに従ってください。</p>
+            <p style="font-size:12px;color:var(--sub);margin-top:14px;">※ 経口糖尿病薬・GLP-1作動薬（注射）は別ページ「糖尿病用剤」で扱う。インスリン＋GLP-1配合剤のGLP-1作動薬部分の詳細指導は、糖尿病用剤ページの「GLP-1注射」ブロックも参照。</p>
+            <p style="font-size:12px;color:var(--sub);margin-top:6px;">※ 針の廃棄方法・回収運用は店舗・自治体によって異なる。社内・店舗の運用ルールに従う。</p>
           </div>
         </details>
       </section>
@@ -993,6 +1124,18 @@
 
     <footer>調剤報酬まとめ ／ 薬歴マニュアル ／ ハイリスク薬指導 ／ 膵臓ホルモン剤 ／ 非公開作業中</footer>
 
+    <script>
+      // チェックリストだけ印刷
+      document.querySelectorAll('.print-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          document.body.classList.add('print-checklist-only');
+          window.print();
+        });
+      });
+      window.addEventListener('afterprint', function () {
+        document.body.classList.remove('print-checklist-only');
+      });
+    </script>
     <script>
       document.querySelectorAll('.copy-mini').forEach(btn => {
         btn.addEventListener('click', () => {
