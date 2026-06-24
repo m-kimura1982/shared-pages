@@ -19,7 +19,6 @@
       .drug-block {
         background: var(--white);
         border: 1px solid var(--border);
-        border-left: 3px solid var(--blue);
         border-radius: var(--radius-sm);
         padding:  18px 20px;
         margin-bottom:  18px;
@@ -30,12 +29,13 @@
         border-bottom: 1px solid var(--border);
       }
       .drug-block-name { font-size: 17px; font-weight: 700; color: var(--ink); }
+      .drug-block-name::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 2px; background: var(--blue); margin-right: 9px; vertical-align: middle; }
       .drug-block-sub  { font-size: 12px; color: var(--sub); }
 
       /* テンプレ直上の注意（重要語のみ赤） */
       .tpl-warn {
         background: var(--warn-bg);
-        border-left: 3px solid var(--warn-border);
+        border: 1px solid var(--warn-border);
         border-radius: 4px;
         padding: 10px 14px;
         margin: 12px 0 8px;
@@ -50,6 +50,22 @@
       .tpl-warn ul { margin: 4px 0 0 20px; padding: 0; }
       .tpl-warn ul li { margin-bottom: 2px; }
       .tpl-warn strong { color: var(--ink); font-weight: 700; }
+
+      /* 算定要件・改定注記の警告（オレンジ系） */
+      .caveat-box {
+        background: #fff7e6;
+        border: 1px solid #f5d4a1;
+        border-radius: 4px;
+        padding: 10px 14px;
+        margin: 12px 0;
+        font-size: 12.5px;
+        line-height: 1.7;
+        color: var(--ink);
+      }
+      .caveat-box-title {
+        font-weight: 700; color: #c2701c;
+        font-size: 13px; margin-bottom: 4px;
+      }
 
       /* 短文テンプレ（基本 / 追記） */
       .tpl-set { margin-top: 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
@@ -78,7 +94,6 @@
       .drug-check-box {
         background: #f7f8fa;
         border: 1px solid #e1e5ea;
-        border-left: 3px solid var(--blue);
         border-radius: 4px;
         padding: 12px 16px;
         margin: 8px 0 12px;
@@ -327,20 +342,21 @@
       <div class="sticky-toc-head">
         <span class="sticky-toc-label">CONTENTS</span>
       </div>
-      <a href="#section1">共通確認ポイント</a>
-      <a href="#section2">薬剤群別テンプレート</a>
-      <div class="sticky-toc-group">▼ 薬剤群</div>
+      <a href="#guide">このページの使い方</a>
+      <div class="sticky-toc-group">▼ まず確認</div>
+      <a href="#lowline">算定時の記載ポイント</a>
+      <a href="#sec-checklist">簡易チェックリスト</a>
+      <a href="#drug-search">薬剤名から探す</a>
+      <div class="sticky-toc-group">▼ 薬剤群別</div>
       <a href="#warfarin">ワーファリン</a>
       <a href="#doac">DOAC</a>
       <a href="#antiplatelet">抗血小板薬</a>
-      <div class="sticky-toc-group">▼ その他</div>
-      <a href="#heparin-note">ヘパリン類の扱い</a>
-      <a href="#section3">変化に基づくロ（判断理由）</a>
-      <div class="sticky-toc-group">▼ 他の薬効群</div>
-      <a href="ハイリスク_糖尿病用剤.html">糖尿病用剤</a>
-      <a href="ハイリスク_膵臓ホルモン剤.html">インスリン製剤</a>
-      <a href="ハイリスク_抗精神病薬.html">抗精神病薬</a>
-      <a href="ハイリスク_抗うつ薬.html">抗うつ薬</a>
+      <a href="#heparin-note">ヘパリン類</a>
+      <div class="sticky-toc-group">▼ 必要時</div>
+      <a href="#section3">変化に基づくロ</a>
+      <div class="sticky-toc-group">▼ 参考</div>
+      <a href="#section1">共通確認ポイント</a>
+      <a href="#kobetsu">個別指導</a>
     </nav>
 
     <div>
@@ -349,9 +365,8 @@
       <span class="page-tag">HIGH-RISK 05</span>
       <h1 class="page-title">血液凝固阻止剤</h1>
       <p class="page-desc">
-        特定薬剤管理指導加算1の対象となる血液凝固阻止剤（ワーファリン／DOAC／抗血小板薬）について、<strong>新規処方（イ）・用法用量変更（ロ）・副作用や服薬状況等の変化に基づくロ</strong>の薬歴記載例を整理したページです。<br />
-        変更のあった薬から、確認事項・指導内容・薬歴記載例を探せるようにしています。<br />
-        日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」血液凝固阻止剤の確認事項を参考にしています。
+        特定薬剤管理指導加算1の対象となる血液凝固阻止剤（ワーファリン／DOAC／抗血小板薬）について、新規処方時の「イ」、用法・用量変更時の「ロ」、副作用や服薬状況等の変化に基づく「ロ」の薬歴記載例を整理したページである。<br />
+        ヘパリン類（自己注射）は別の論点が多いため、本ページの定型テンプレ対象外として末尾に注記する。
       </p>
     </div>
 
@@ -359,42 +374,125 @@
       <details class="toc-inline">
         <summary>目次（タップで開閉）</summary>
         <div class="toc-links">
-          <a href="#section1">共通確認ポイント</a>
+          <a href="#guide">このページの使い方</a>
+          <a href="#lowline">算定時の記載ポイント</a>
+          <a href="#sec-checklist">簡易チェックリスト</a>
+          <a href="#drug-search">薬剤名から探す</a>
           <a href="#warfarin">ワーファリン</a>
           <a href="#doac">DOAC</a>
           <a href="#antiplatelet">抗血小板薬</a>
-          <a href="#heparin-note">ヘパリン類の扱い</a>
+          <a href="#heparin-note">ヘパリン類</a>
           <a href="#section3">変化に基づくロ</a>
-          <a href="ハイリスク_糖尿病用剤.html">→ 糖尿病用剤</a>
-          <a href="ハイリスク_膵臓ホルモン剤.html">→ インスリン製剤</a>
-          <a href="ハイリスク_抗精神病薬.html">→ 抗精神病薬</a>
-          <a href="ハイリスク_抗うつ薬.html">→ 抗うつ薬</a>
+          <a href="#section1">共通確認ポイント</a>
+          <a href="#kobetsu">個別指導</a>
         </div>
       </details>
 
       <!-- ============================================================
-           § 1  共通確認ポイント
+           § このページの使い方（導線3カード）
            ============================================================ -->
-      <section id="section1">
-        <div class="section-label">SECTION 1</div>
-        <h2 class="section-title">血液凝固阻止剤の共通確認ポイント</h2>
-        <p style="font-size:13px;color:var(--sub);margin-bottom:12px;">
-          血液凝固阻止剤に共通する確認・指導の考え方を整理しています。<br />
-          具体的な確認事項と記載例は、SECTION 2 の薬剤群別ブロックにまとめています。
-        </p>
-
-        <div class="warn-box" style="margin-bottom:12px;">
-          <div class="warn-box-title">疾患理解が出発点</div>
-          <p style="margin:0;">
-            血液凝固阻止剤の指導では、出血症状の有無を確認するだけでなく、<strong>何の血栓を防ぐ／再発予防として使われているのか</strong>を把握することが出発点です。<br />
-            同じ「脳梗塞既往」でも、<strong>心原性脳塞栓症</strong>（心房細動が原因）と<strong>非心原性脳梗塞</strong>（アテローム性・ラクナ等）では、選ばれる薬剤群（抗凝固薬／抗血小板薬）も、確認すべき背景も異なります。
-          </p>
+      <section id="guide" style="margin-bottom:24px;">
+        <div class="section-label">このページの使い方</div>
+        <div class="guide-cards">
+          <a class="guide-card" href="#lowline"><span class="gc-no">1</span><span class="gc-title">算定前に記載内容を確認する</span><span class="gc-desc">最低ラインと簡易チェックリストで、算定根拠として不足がないか確認する。</span></a>
+          <a class="guide-card" href="#drug-search"><span class="gc-no">2</span><span class="gc-title">薬剤名から記載例を探す</span><span class="gc-desc">薬剤名を選択し、該当する薬剤群の記載例へ移動する。</span></a>
+          <a class="guide-card" href="#section3"><span class="gc-no">3</span><span class="gc-title">変化に基づくロの記載例を見る</span><span class="gc-desc">副作用・服薬状況等の変化により、追加指導が必要と判断した場合の記載例を確認する。</span></a>
         </div>
+      </section>
 
-        <p style="font-size:12px;color:var(--sub);margin-bottom:12px;">
-          本ページで使う主な略語：<strong>NVAF</strong>＝非弁膜症性心房細動／<strong>VTE</strong>＝静脈血栓塞栓症／<strong>PCI</strong>＝経皮的冠動脈インターベンション（カテーテル治療）／<strong>DAPT</strong>＝抗血小板薬2剤併用／<strong>TTP</strong>＝血栓性血小板減少性紫斑病／<strong>HIT</strong>＝ヘパリン起因性血小板減少症
-        </p>
+      <!-- ============================================================
+           § 最低ライン
+           ============================================================ -->
+      <section id="lowline" style="margin-bottom:28px;">
+        <div class="section-label">最低ライン</div>
+        <h2 class="section-title">算定時の記載ポイント</h2>
+        <div class="minline">
+          <p class="minline-lead">
+            特定薬剤管理指導加算1は、服薬管理指導料に対する加算であり、対象薬が処方されていることだけを理由に算定する加算ではない。算定する場合は、通常の服薬指導に加えて、対象薬に関する確認を行い、患者の病状・服薬状況等を踏まえたプラスアルファの指導を行う必要がある。
+          </p>
+          <p class="minline-lead" style="margin-bottom:14px;">
+            現在は、初回処方時、用法・用量等の変更時、または副作用・服薬状況等の変化により薬剤師が必要と認めて指導した場合に算定する。算定時は、対象薬について確認した内容と行った指導の要点を薬歴に記録する。従来と同一の処方内容でロを算定する場合は、特に指導が必要と判断した理由の要点も記載する。
+          </p>
+          <div class="minline-checks">
+            <div class="minline-check"><span class="mc-no">①</span><b>「薬剤名：〜」の形で書き始める</b><span class="mc-note">どの薬についての指導記録かを明確にする（例：「ワーファリン：…」）。</span></div>
+            <div class="minline-check"><span class="mc-no">②</span><b>確認した内容を記録する</b><span class="mc-note">処方目的・適応疾患・併用薬・食事（ワーファリンのビタミンK）・服薬状況（飲み忘れ・自己中断）・検査値（PT-INR・腎機能）など、確認した内容を残す。</span></div>
+            <div class="minline-check"><span class="mc-no">③</span><b>患者の状況に応じた指導内容を残す</b><span class="mc-note">一般的な薬効・用法説明だけでなく、出血兆候の注意・自己中断の回避・抜歯/手術前の事前相談など、その患者に必要な指導を具体的に記録する。</span></div>
+            <div class="minline-check"><span class="mc-no">④</span><b>記載内容から場面（新規・変更・変化）が分かるように記録する</b><span class="mc-note">「イ／ロ」の記号自体を書く必要はない（新規＝イ、用法用量変更＝ロ）。<strong>従来と同一処方でも、特に指導が必要と認めてロを算定する場合は、特に指導が必要と判断した理由の要点を必ず残す</strong>（別添3 記載要件）。</span></div>
+          </div>
+          <div class="guard-note"><b>算定根拠として不十分になりやすい例</b>　一般的な薬効・用法説明のみで、確認した内容や患者の状況に応じた指導内容が薬歴から確認できない。</div>
 
+          <h3 class="subsection-title" style="margin-top:18px;">よくある薬歴と修正例（血液凝固阻止剤）</h3>
+          <div class="example-pair">
+            <div class="example-box bad">
+              <span class="example-label">✕ 算定根拠として不十分な例</span>
+              <pre>ワーファリン：新規。効果と副作用について説明し、継続して服用するよう指導した。</pre>
+            </div>
+            <div class="example-box good">
+              <span class="example-label">○ 修正例（薬剤群テンプレートを参考にした例）</span>
+              <pre>ワーファリン：新規。処方目的（NVAFの脳塞栓予防）、併用薬・食事内容を確認。血液を固まりにくくして血栓を防ぐ薬であること、自己判断で中止しないことを説明。鼻血・歯ぐき出血・あざ・血尿・黒色便などの出血症状があれば自己判断で中止せず連絡、納豆・クロレラ・青汁は避けるよう指導。他科・歯科受診や市販薬購入時は服用中であることを伝え、抜歯・手術・内視鏡予定があれば事前に主治医・施行医に相談するよう説明。</pre>
+            </div>
+          </div>
+          <p style="font-size:12px;color:var(--sub);margin-top:4px;">※ ✕は確認した内容や患者ごとのプラスアルファの指導が読み取れない。○は「<a href="#drug-search" class="link-inline" style="color:var(--blue);">薬剤名から探す</a>」からワーファリン初回イの記載例を参考にしたもの。薬効・用法説明だけで終わらず、処方目的・併用薬・食事の確認と、患者の状況に応じた指導が薬歴から確認できるようにする。</p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           § 印刷用チェックリスト
+           ============================================================ -->
+      <section id="sec-checklist" style="margin-bottom:28px;">
+        <div class="section-label">印刷用</div>
+        <h2 class="section-title">算定前セルフチェック<button class="print-btn" type="button">このチェックリストを印刷</button></h2>
+        <div class="checklist-card">
+          <div class="cl-group">
+            <div class="cl-head">確認・記録する項目（基本）</div>
+            <label class="cl-item"><input type="checkbox"><span>対象薬剤が分かるように記載した（<b>「薬剤名：〜」</b>）</span></label>
+            <label class="cl-item"><input type="checkbox"><span>記載内容から<b>新規／変更／変化のどれに当たるか分かる</b>（「イ／ロ」の記号は不要）。<b>変化に基づくロは、特に指導が必要と判断した理由</b>も記載した</span></label>
+            <label class="cl-item"><input type="checkbox"><span><b>処方目的・適応疾患</b>を確認した（<b>継続・変更時は服薬状況</b>も）</span></label>
+            <label class="cl-item"><input type="checkbox"><span>相互作用に注意が必要な併用薬・市販薬・サプリ・食事（ワーファリンのビタミンK）を確認した</span></label>
+            <label class="cl-item"><input type="checkbox"><span>出血兆候の注意・自己判断で中止しないことを説明した</span></label>
+            <label class="cl-item"><input type="checkbox"><span><b>患者の状況に応じた指導内容</b>を記録した</span></label>
+          </div>
+          <div class="cl-group">
+            <div class="cl-head">必要に応じて確認・説明する項目（血液凝固阻止剤）</div>
+            <label class="cl-item"><input type="checkbox"><span><b>抜歯・手術・内視鏡</b>予定の有無と、自己判断で中止せず事前相談することを確認・説明した</span></label>
+            <label class="cl-item"><input type="checkbox"><span>ワーファリン：<b>納豆・クロレラ・青汁等のビタミンK</b>、PT-INR目標値・直近値を確認した</span></label>
+            <label class="cl-item"><input type="checkbox"><span>DOAC：<b>腎機能（主にCCr）・体重・年齢</b>に応じた用量妥当性を確認した</span></label>
+            <label class="cl-item"><input type="checkbox"><span>抗血小板薬：<b>単剤かDAPTか</b>、PCI後等での自己中断回避、消化器症状を確認・説明した</span></label>
+            <label class="cl-item"><input type="checkbox"><span>重篤な出血を疑うサイン（大量の黒色便・激しい頭痛・止まらない出血等）の受診目安を説明した</span></label>
+          </div>
+          <div class="guard-note"><b>算定根拠として不十分になりやすい例</b>　一般的な薬効説明のみで、確認した内容や患者の状況に応じた指導内容が薬歴から確認できない。</div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           § 薬剤名から探す
+           ============================================================ -->
+      <section id="drug-search" style="margin-bottom:28px;">
+        <div class="section-label">薬剤名から探す</div>
+        <h2 class="section-title">薬剤名から記載例を探す</h2>
+        <p style="font-size:13px;color:var(--sub);margin-bottom:10px;">薬剤名をタップすると、該当する薬剤群別テンプレートに移動する。</p>
+        <div class="drug-index">
+          <div class="drug-index-row">
+            <span class="di-group">ワーファリン</span>
+            <a href="#warfarin">ワーファリン</a>
+          </div>
+          <div class="drug-index-row">
+            <span class="di-group">DOAC</span>
+            <a href="#doac">リクシアナ</a><a href="#doac">エリキュース</a><a href="#doac">イグザレルト</a><a href="#doac">プラザキサ</a>
+          </div>
+          <div class="drug-index-row">
+            <span class="di-group">抗血小板薬</span>
+            <a href="#antiplatelet">バイアスピリン</a><a href="#antiplatelet">プラビックス</a><a href="#antiplatelet">エフィエント</a><a href="#antiplatelet">ブリリンタ</a><a href="#antiplatelet">プレタール</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           § 参考  共通確認ポイント（日薬GL由来・折りたたみ）
+           ============================================================ -->
+      <section id="section1" style="margin-bottom:28px;">
+        <div class="section-label">参考</div>
+        <h2 class="section-title">血液凝固阻止剤の共通確認ポイント（日薬GL）</h2>
         <details class="guide-details">
           <summary>共通確認ポイント（日薬GL 6項目）を見る</summary>
           <div class="guide-details-body">
@@ -421,13 +519,6 @@
             <p style="font-size:12px;color:var(--blue);margin-top:8px;font-weight:700;">→ 各薬剤群ごとの具体的な指導内容は SECTION 2 を参照</p>
           </div>
         </details>
-
-        <p style="font-size:12px;color:var(--sub);margin-top:8px;">
-          ※ ヘパリン類（自己注射）は処方頻度が低く、注射手技・HIT等の別論点があるため、本ページの定型テンプレ対象外としています（末尾の注記を参照）。
-        </p>
-        <p style="font-size:12px;color:var(--sub);margin-top:6px;">
-          出典：日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」血液凝固阻止剤
-        </p>
       </section>
 
       <!-- ============================================================
@@ -436,48 +527,28 @@
       <section id="section2">
         <div class="section-label">SECTION 2</div>
         <h2 class="section-title">薬剤群別テンプレート</h2>
-        <p style="font-size:13px;color:var(--sub);margin-bottom:8px;">
-          薬歴を作成する際は、<strong>新規処方または変更があった薬剤群</strong>を確認し、患者の状況に近い記載例を参考にしてください。必要に応じて、確認した内容や追加で行った指導を追記してください。<br />
-          本ページは、特定薬剤管理指導加算1のうち、<strong>新規処方時のイ、用法・用量変更時のロ、副作用や服薬状況等の変化に基づくロ</strong>を想定した薬歴記載例です。継続処方時の通常確認を記録するためのテンプレートではありません。<br />
-          <span style="font-size:12px;">※ 出血症状・自己判断で中止しないこと・抜歯/手術/内視鏡時の事前相談は、全薬剤群共通の核として初回イ本体に含めています。</span><br />
-          <span style="font-size:12px;">※ 抜歯・手術・内視鏡前の休薬日数は患者ごと・処置ごとに異なるため、テンプレには入れず「自己判断で中止せず事前相談」にとどめています。</span>
-        </p>
-        <div class="tpl-warn" style="margin:12px 0;">
-          <div class="tpl-warn-title">副作用説明の記載について</div>
-          副作用に関する記載例は、<strong>実際に説明した内容に応じて追記</strong>してください。出血症状は全薬剤群共通の核として初回イ本体に含めています。<strong>まれな重篤副作用</strong>（ワーファリンの皮膚壊死、抗血小板薬のTTP等）は、患者さんへ不安を与えすぎないよう、<strong>症状と相談・受診の目安を中心に説明</strong>します。薬歴上で説明内容を明確に残したい場合は、<strong>「副作用説明の追記」から該当するものを追加</strong>してください。
+        <div class="warn-box" style="margin-bottom:12px;">
+          <div class="warn-box-title">疾患理解が出発点</div>
+          <p style="margin:0;">
+            血液凝固阻止剤の指導では、出血兆候に注意するだけでなく、<strong>何の血栓を防ぐ／再発予防として使われているのか</strong>を把握することが出発点になる。<br />
+            同じ「脳梗塞既往」でも、<strong>心原性脳塞栓症</strong>（心房細動が原因）と<strong>非心原性脳梗塞</strong>（アテローム性・ラクナ等）では、選ばれる薬剤群（抗凝固薬／抗血小板薬）も、確認すべき背景も異なる。
+          </p>
         </div>
+        <p style="font-size:12px;color:var(--sub);margin-bottom:10px;">
+          本ページで使う主な略語：<strong>NVAF</strong>＝非弁膜症性心房細動／<strong>VTE</strong>＝静脈血栓塞栓症／<strong>PCI</strong>＝経皮的冠動脈インターベンション（カテーテル治療）／<strong>DAPT</strong>＝抗血小板薬2剤併用／<strong>TTP</strong>＝血栓性血小板減少性紫斑病／<strong>HIT</strong>＝ヘパリン起因性血小板減少症
+        </p>
+        <p style="font-size:13px;color:var(--sub);margin-bottom:8px;">
+          新規処方または変更があった薬剤群を確認し、患者の状況に近い記載例を参考にする。出血兆候への注意・自己判断で中止しないこと・抜歯/手術/内視鏡時の事前相談は、全薬剤群共通の核として初回イ本体に含めている。抜歯・手術・内視鏡前の休薬日数は患者ごと・処置ごとに異なるため、テンプレには入れず「自己判断で中止せず事前相談」にとどめる。
+        </p>
         <div class="tpl-warn" id="copy-rule" style="margin:12px 0;">
-          <div class="tpl-warn-title">コピーする前に必ず確認（全薬剤群共通）</div>
-          下のテンプレは「指導・説明」部分の記載例です。そのままコピペすると要件不足になるので、以下を確認してください。
-          <ul>
-            <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（例：「ワーファリン：PT-INR推移と出血症状の確認、食事制限と抜歯時対応を指導…」）</li>
-            <li><strong>確認した内容（PT-INR・症状・聞き取り結果・腎機能・併用薬 など）</strong>もテンプレに足す</li>
-            <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
-            <li>抜歯・手術・内視鏡前の<strong>休薬日数はテンプレに入れず、自己判断で中止せず事前相談</strong>にとどめる</li>
-            <li>副作用説明を行った場合は、<strong>「副作用説明の追記」</strong>から該当する記載例を追加（説明していない副作用は追加しない）</li>
-          </ul>
+          <div class="tpl-warn-title">テンプレート使用時の注意</div>
+          下の記載例を使用する場合は、<strong>「薬剤名：〜」</strong>の形で薬剤名を明記し、確認した内容（PT-INR・腎機能・併用薬・聞き取り結果など）を追記する。説明・指導していない項目は削除する。副作用に関する記載例は、実際に説明した内容に応じて必要なものを追記する（まれな重篤副作用は症状と相談・受診の目安を中心に説明する）。
         </div>
         <div class="tag-legend">
           <span><i style="background:var(--blue-light);border:1px solid var(--blue)"></i>初回イ（新規／併用下追加／高齢例 など）</span>
           <span><i style="background:#e0f2f1;border:1px solid #0d9488"></i>変更ロ（用量変更／PT-INR変動／腎機能変化 など）</span>
           <span><i style="background:#f2f4f8;border:1px solid #d7dce3"></i>必要時追記</span>
           <span><i style="background:#fef3e8;border:1px solid #f5d4a1"></i>副作用説明の追記（説明した分だけ追加）</span>
-        </div>
-
-        <div class="drug-index">
-          <div class="drug-index-title">薬剤名から探す</div>
-          <div class="drug-index-row">
-            <span class="di-group">ワーファリン</span>
-            <a href="#warfarin">ワーファリン</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">DOAC</span>
-            <a href="#doac">リクシアナ</a><a href="#doac">エリキュース</a><a href="#doac">イグザレルト</a><a href="#doac">プラザキサ</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">抗血小板薬</span>
-            <a href="#antiplatelet">バイアスピリン</a><a href="#antiplatelet">プラビックス</a><a href="#antiplatelet">エフィエント</a><a href="#antiplatelet">ブリリンタ</a><a href="#antiplatelet">プレタール</a>
-          </div>
         </div>
 
         <!-- ワーファリン -->
@@ -497,6 +568,7 @@
               <li>併用薬（抗血小板薬・NSAIDs・抗菌薬・OTC・サプリメント等）の有無</li>
               <li>抜歯・手術・内視鏡予定の有無</li>
               <li>飲み忘れ時の対応理解／服薬の継続状況</li>
+              <li><strong>妊娠・妊娠希望・授乳の有無</strong>（妊娠可能年齢の女性。ワーファリンは催奇形性があり妊娠中は禁忌）</li>
               <li>高齢・腎機能・肝機能／家族支援の有無</li>
             </ul>
           </div>
@@ -547,13 +619,13 @@
 
           <div class="tpl-set">
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
-              <div class="tpl-text">新規処方。出血症状の有無、併用薬、食事内容を確認。血液を固まりにくくして血栓を防ぐ薬であることを説明。鼻血・歯ぐき出血・あざ・血尿・黒色便などの出血症状があれば自己判断で中止せず連絡、納豆・クロレラ・青汁の摂取は避け、緑黄色野菜の大量摂取・急な中止に注意するよう指導。<strong>相互作用が多い薬</strong>のため、他科受診・歯科受診・市販薬購入時はワーファリン服用中であることを必ず伝え、新たな併用薬・OTC・サプリを始める前に薬剤師に確認するよう説明。抜歯・手術・内視鏡予定がある場合は事前に主治医・施行医に服用中であることを伝えるよう指導。</div>
+              <div class="tpl-text">新規処方。処方目的（適応疾患）、併用薬、食事内容を確認。血液を固まりにくくして血栓を防ぐ薬であることを説明。鼻血・歯ぐき出血・あざ・血尿・黒色便などの出血症状があれば自己判断で中止せず連絡、納豆・クロレラ・青汁の摂取は避け、緑黄色野菜の大量摂取・急な中止に注意するよう指導。<strong>相互作用が多い薬</strong>のため、他科受診・歯科受診・市販薬購入時はワーファリン服用中であることを必ず伝え、新たな併用薬・OTC・サプリを始める前に薬剤師に確認するよう説明。抜歯・手術・内視鏡予定がある場合は事前に主治医・施行医に服用中であることを伝えるよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：抗血小板薬等併用下追加</span>
               <div class="tpl-text">他剤併用下（抗血小板薬・NSAIDs等）でワーファリン新規追加。併用薬を確認。出血リスクが上がるため、出血兆候（あざ・鼻血・歯ぐき出血・止まりにくい出血等）に注意するよう指導。食事制限（納豆・クロレラ・青汁回避、緑黄色野菜の大量摂取・急な中止に注意）、抜歯・手術・内視鏡時は事前相談を説明。自己判断で中止しないよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
-              <div class="tpl-text">高齢者へのワーファリン新規処方。PT-INR目標値・直近値を確認。出血症状の自覚が遅れる可能性があるため、家族支援の有無も確認し、出血兆候（あざ・鼻血・歯ぐき出血・黒色便・止まりにくい出血等）に注意するよう本人・家族に説明。食事制限・併用薬・抜歯時対応も指導、自己判断で中止しないよう注意喚起。転倒時の頭部打撲は症状がなくても受診するよう説明。</div>
+              <div class="tpl-text">高齢者へのワーファリン新規処方。処方目的とPT-INR目標値（医師の設定）を確認。出血症状の自覚が遅れる可能性があるため、家族支援の有無も確認し、出血兆候（あざ・鼻血・歯ぐき出血・黒色便・止まりにくい出血等）に注意するよう本人・家族に説明。食事制限・併用薬・抜歯時対応も指導、自己判断で中止しないよう注意喚起。転倒時の頭部打撲は症状がなくても受診するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更・PT-INR変動</span>
               <div class="tpl-text">PT-INR変動による用量変更を確認。変更前後の出血症状・食事・併用薬の変化を確認。新用量での服用方法を再説明、PT-INRの推移と出血兆候（あざ・鼻血・歯ぐき出血・止まりにくい出血等）の有無を継続して確認するよう指導。</div>
@@ -602,6 +674,7 @@
               <li>併用薬（抗血小板薬・NSAIDs・DOACの作用変動や出血リスク増加に注意が必要な薬剤・OTC・サプリメント等）の有無</li>
               <li>抜歯・手術・内視鏡予定の有無</li>
               <li>飲み忘れ時の対応理解／服薬の継続状況</li>
+              <li><strong>妊娠・妊娠希望・授乳の有無</strong>（妊娠可能年齢の女性。DOACは妊娠中の使用は推奨されない）</li>
               <li>家族支援の有無（高齢例）／プラザキサは吸湿性のため保管方法も確認</li>
             </ul>
           </div>
@@ -622,8 +695,8 @@
 
               <h4>用量調整（背景知識）</h4>
               <p>DOACは<strong>年齢・腎機能・体重</strong>に応じて用量調整が必要。薬剤ごとに基準が異なるため、処方箋の用量が患者背景に照らして妥当か確認する。腎機能の評価は<strong>主にCockcroft-Gault式によるクレアチニンクリアランス（CCr）</strong>で行うのが原則（添付文書・適正使用ガイドでもeGFRではなくCCrが推奨されている）。腎機能の経時変化（脱水・新規併用薬・加齢）で用量変更が必要になる場合がある。</p>
-              <p style="background:#fef3e8;border-left:3px solid #c2701c;padding:8px 12px;margin:8px 0;font-size:12.5px;">
-                <strong>※ 以下は NVAF（非弁膜症性心房細動）での用量調整の目安です。</strong>VTE（静脈血栓塞栓症）の治療・再発抑制では、初期高用量期の設定（リクシアナ：先行ヘパリン後60/30mg／イグザレルト：3週間15mg×2→以降15mg／エリキュース：7日間10mg×2→以降5mg×2 等）があり、用法用量がNVAFと異なります。プラザキサはVTE適応なし。<strong>処方目的を確認したうえで、最終的には添付文書を参照してください。</strong>
+              <p style="background:#fef3e8;border:1px solid #f5d4a1;padding:8px 12px;margin:8px 0;font-size:12.5px;">
+                <strong>※ 以下は NVAF（非弁膜症性心房細動）での用量調整の目安。</strong>VTE（静脈血栓塞栓症）の治療・再発抑制では、初期高用量期の設定（リクシアナ：先行ヘパリン後60/30mg／イグザレルト：3週間15mg×2→以降15mg／エリキュース：7日間10mg×2→以降5mg×2 等）があり、用法用量がNVAFと異なる。プラザキサはVTE適応なし。<strong>処方目的を確認したうえで、最終的には添付文書を参照する。</strong>
               </p>
               <ul>
                 <li><strong>リクシアナ</strong>（NVAF時）：CCr 30〜50／体重60kg以下／P-gp阻害薬併用のいずれかで減量、CCr 15未満は禁忌</li>
@@ -675,7 +748,7 @@
 
           <div class="tpl-set">
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
-              <div class="tpl-text">新規処方。出血症状の有無、腎機能（主にCCr）・年齢・体重に応じた用量妥当性、併用薬（抗血小板薬・NSAIDs等）を確認。血液を固まりにくくして血栓を防ぐ薬であることを説明。鼻血・歯ぐき出血・あざ・血尿・黒色便などの出血症状があれば自己判断で中止せず連絡、飲み忘れ時の対応、抜歯・手術・内視鏡時は事前に主治医・施行医へ服用中であることを伝えるよう指導。</div>
+              <div class="tpl-text">新規処方。処方目的・適応疾患、腎機能（主にCCr）・年齢・体重に応じた用量妥当性、併用薬（抗血小板薬・NSAIDs等）を確認。血液を固まりにくくして血栓を防ぐ薬であることを説明。鼻血・歯ぐき出血・あざ・血尿・黒色便などの出血症状があれば自己判断で中止せず連絡、飲み忘れ時の対応、抜歯・手術・内視鏡時は事前に主治医・施行医へ服用中であることを伝えるよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢・腎機能低下例</span>
               <div class="tpl-text">高齢・腎機能低下例へのDOAC新規処方。腎機能（主にCCr）・体重・年齢に応じた用量妥当性を確認・説明。出血リスクが上がるため、出血兆候（あざ・鼻血・歯ぐき出血・黒色便・止まりにくい出血等）に注意するよう本人・家族に説明。脱水・発熱・下痢嘔吐時は腎機能悪化により蓄積リスクが上がる旨を指導。抜歯・手術時は事前相談、自己判断で中止しないよう注意喚起。転倒時の頭部打撲は症状がなくても受診するよう説明。</div>
@@ -702,7 +775,7 @@
               <div class="tpl-text">併用薬変更あり（〇〇）。DOACの作用変動・出血リスク増加の可能性があるため、出血兆候（あざ・鼻血・歯ぐき出血・止まりにくい出血等）に注意するよう指導。新たなOTC・サプリを始める前に薬剤師に確認するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">飲み忘れあり。DOACは半減期が短く、飲み忘れにより血中濃度が下がりやすい。毎日決まった時間に服用することが血栓予防に重要である旨を説明。製剤ごとのレスキュールールを再指導：リクシアナは当日中なら服用・翌日に気付けばとばす／イグザレルトは気が付いたらすぐ服用・翌日から1日1回／エリキュースは気が付いた時点で服用・その後1日2回継続／プラザキサは気が付いたら服用し次の服用まで6時間以上の間隔をあける。2回分を一度に服用しないよう再説明。頻回の場合は次回受診時に主治医へ伝えるよう指導。</div>
+              <div class="tpl-text">飲み忘れあり。DOACは半減期が短く、飲み忘れにより血中濃度が下がりやすい。毎日決まった時間に服用することが血栓予防に重要である旨を説明。製剤ごとのレスキュールールを再指導：リクシアナ・イグザレルト（1日1回）は当日中なら服用・翌日に気付けばとばす／エリキュースは気が付いた時点で服用・その後1日2回継続／プラザキサは気が付いたら服用し次の服用まで6時間以上の間隔をあける。2回分を一度に服用しないよう再説明。頻回の場合は次回受診時に主治医へ伝えるよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記（重篤出血疑い）</span>
               <div class="tpl-text">大量の黒色便・激しい頭痛・嘔吐・視力異常・麻痺・止まらない出血等あり。消化管出血・脳出血等の重篤な出血が疑われるため、自己判断で中止・継続を判断せず、速やかに医療機関を受診するよう指導。</div>
@@ -785,7 +858,7 @@
 
           <div class="tpl-set">
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
-              <div class="tpl-text">新規処方。出血症状・消化器症状の有無、併用薬（抗凝固薬・NSAIDs等）、抜歯・手術予定を確認。血小板の働きを抑えて血栓をできにくくする薬であることを説明。鼻血・歯ぐき出血・あざ・血尿・黒色便などの出血症状があれば自己判断で中止せず連絡、市販の痛み止めやサプリは薬剤師に確認するよう指導。抜歯・手術・内視鏡時は事前に主治医・施行医へ服用中であることを伝えるよう説明。自己判断で中止しないよう注意喚起。</div>
+              <div class="tpl-text">新規処方。処方目的、併用薬（抗凝固薬・NSAIDs等）、抜歯・手術予定を確認。血小板の働きを抑えて血栓をできにくくする薬であることを説明。鼻血・歯ぐき出血・あざ・血尿・黒色便などの出血症状があれば自己判断で中止せず連絡、市販の痛み止めやサプリは薬剤師に確認するよう指導。抜歯・手術・内視鏡時は事前に主治医・施行医へ服用中であることを伝えるよう説明。自己判断で中止しないよう注意喚起。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：DAPT（抗血小板2剤併用）</span>
               <div class="tpl-text">DAPT（アスピリン＋P2Y12阻害薬）として新規追加。PCI後等の再閉塞予防として継続が特に重要であり、自己判断で中止するとステント血栓症等の重大事象に繋がる旨を徹底説明。出血リスクが上がるため、出血兆候（あざ・鼻血・歯ぐき出血・止まりにくい出血等）に注意するよう指導。胃痛・胸やけ・黒色便があれば消化管出血の可能性として早めに連絡、PPI併用がある場合は一緒に継続するよう説明。抜歯・手術・内視鏡時は事前相談を指導。</div>
@@ -833,13 +906,13 @@
         </div>
 
         <!-- ヘパリン類の扱い -->
-        <div class="drug-block" id="heparin-note" style="border-left-color:#9ca3af;">
+        <div class="drug-block" id="heparin-note">
           <div class="drug-block-head">
             <span class="drug-block-name">ヘパリン類（参考）</span>
             <span class="drug-block-sub">ヘパリンカルシウム皮下注 等</span>
           </div>
           <p style="font-size:13px;line-height:1.75;color:var(--ink);">
-            ヘパリン類（自己注射）は、薬局での処方頻度が低く、<strong>注射手技・保管・HIT（ヘパリン起因性血小板減少症）・妊娠関連</strong>など別の論点が増えるため、本ページの定型テンプレ対象外としています。処方がある場合は、注射手技・出血症状・併用薬・腎機能・妊娠の有無等を個別に確認・指導してください。
+            ヘパリン類（自己注射）は、薬局での処方頻度が低く、<strong>注射手技・保管・HIT（ヘパリン起因性血小板減少症）・妊娠関連</strong>など別の論点が増えるため、本ページの定型テンプレ対象外としている。処方がある場合は、注射手技・出血症状・併用薬・腎機能・妊娠の有無等を個別に確認・指導する。
           </p>
         </div>
 
@@ -859,9 +932,9 @@
         <div class="warn-box">
           <div class="warn-box-title">この区分の位置づけと使い方</div>
           <p>
-            §2が<strong>新規処方（イ）・用法用量変更（ロ）</strong>のテンプレートだったのに対し、ここで扱うのは<strong>「副作用・服薬状況等の変化に基づくロ」（5点）</strong>——患者の体調や生活の変化に薬剤師が気付き、<strong>指導の必要性を判断</strong>したことを薬歴に残す区分です。<br />
+            §2が<strong>新規処方（イ）・用法用量変更（ロ）</strong>のテンプレートだったのに対し、ここで扱うのは<strong>「副作用・服薬状況等の変化に基づくロ」（5点）</strong>——患者の体調や生活の変化に薬剤師が気付き、<strong>指導の必要性を判断</strong>したことを薬歴に残す区分である。<br />
             記録は<strong>「変化の確認 → 指導の方向性を判断 → 指導」</strong>の流れで簡潔に。<br />
-            以下は記載例です。患者の状況に合わせて書き換えてください。
+            以下は記載例。患者の状況に合わせて書き換える。
           </p>
         </div>
 
@@ -919,6 +992,39 @@
       </section>
 
       <!-- ============================================================
+           § 個別指導での指摘事例
+           ============================================================ -->
+      <section id="kobetsu">
+        <div class="section-label">個別指導</div>
+        <h2 class="section-title">個別指導での指摘事例</h2>
+        <div class="warn-box" style="margin-bottom:12px;">
+          <div class="warn-box-title">確認の方向性</div>
+          <p>出血症状の有無を確認することは重要だが、それだけで特定薬剤管理指導加算1を算定するものではない。患者の病状・服薬状況等を確認したうえで、必要なプラスアルファの指導を行い、その内容を薬歴に記録することが算定根拠として重要。</p>
+        </div>
+
+        <div class="kobetsu-quote">
+          <span class="kq-k">個別指導</span>
+          <span class="kq-t">特定薬剤管理指導加算は服薬管理指導料に対する加算であり、プラスアルファの指導を求めるもの。薬そのものというより、その処方がなされた病状に対して（日薬の確認項目に沿って）確認を行い、別途説明が必要な場合に説明し、その内容を記録することで算定できる。副作用の確認等だけで算定できると誤解されることがあるが、あくまで指導の加算であり、患者の病状をモニタリングしたうえで必要な指導を行い、記録して初めて算定できる。</span>
+          <span class="kq-cite">社内個別指導（R1.11）の記録より</span>
+        </div>
+        <div class="caveat-box">
+          <div class="caveat-box-title">この指摘を読むときの注意（改定による変化）</div>
+          この指摘は、対象薬の調剤のたびに指導を要した時期（改定前）のもの。以前のように継続処方を含めてすべての対象薬を同じ考え方で確認するのではなく、現在は算定機会が<strong>初回（イ）・用法用量等の変更（ロ）・その他必要と認められる場合（変化に基づくロ）</strong>に整理されている。一方で、確認だけでなく、病状に応じた必要な指導を行って記録するという考え方は変わらない。
+        </div>
+
+        <div class="drug-check-box">
+          <div class="drug-check-box-title">確認されやすいポイント</div>
+          <ul>
+            <li>記録から<strong>対象薬剤（「薬剤名：〜」）</strong>が分かるか</li>
+            <li>何を確認したか（処方目的・適応疾患・併用薬・食事・服薬状況・検査値）が書かれているか</li>
+            <li>確認しただけで終わらず、<strong>患者の状況に応じた指導内容</strong>になっているか</li>
+            <li>出血兆候の注意・自己判断で中止しないこと・抜歯/手術前の事前相談など、必要な指導を記録したか</li>
+            <li>「変化に基づくロ」では、<strong>変化の確認・指導が必要と判断した理由・指導内容</strong>が残っているか</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============================================================
            § SOURCE（折りたたみ）
            ============================================================ -->
       <section>
@@ -935,9 +1041,20 @@
               <div>令和8年3月5日 保医発0305第4号 別添3「調剤報酬点数表に関する事項」 特定薬剤管理指導加算1</div>
               <div class="source-cite">→ 算定要件・薬歴記載要件の原文</div>
             </div>
-            <p style="font-size:12px;color:var(--sub);margin-top:14px;">※ ヘパリン類は本ページの定型テンプレ対象外としています（処方時は個別に確認・指導）。</p>
+            <p style="font-size:12px;color:var(--sub);margin-top:14px;">※ ヘパリン類は本ページの定型テンプレ対象外としている（処方時は個別に確認・指導）。</p>
           </div>
         </details>
+      </section>
+
+      <!-- 関連ページ（他の薬効群） -->
+      <section style="margin-top:8px;">
+        <div class="section-label">関連ページ</div>
+        <div class="drug-index">
+          <div class="drug-index-row">
+            <span class="di-group">他の薬効群</span>
+            <a href="ハイリスク_糖尿病用剤.html">糖尿病用剤</a><a href="ハイリスク_膵臓ホルモン剤.html">インスリン製剤</a><a href="ハイリスク_抗精神病薬.html">抗精神病薬</a><a href="ハイリスク_抗うつ薬.html">抗うつ薬</a>
+          </div>
+        </div>
       </section>
 
     </main>
@@ -947,6 +1064,18 @@
 
     <footer>調剤報酬まとめ ／ 薬歴マニュアル ／ ハイリスク薬指導 ／ 血液凝固阻止剤 ／ 非公開作業中</footer>
 
+    <script>
+      // チェックリストだけ印刷
+      document.querySelectorAll('.print-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          document.body.classList.add('print-checklist-only');
+          window.print();
+        });
+      });
+      window.addEventListener('afterprint', function () {
+        document.body.classList.remove('print-checklist-only');
+      });
+    </script>
     <script>
       document.querySelectorAll('.copy-mini').forEach(btn => {
         btn.addEventListener('click', () => {
