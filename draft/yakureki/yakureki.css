@@ -436,8 +436,35 @@ footer {
 .kobetsu-quote .kq-t { font-size: 13.5px; line-height: 1.75; color: var(--ink); }
 .kobetsu-quote .kq-cite { display: block; font-size: 11px; color: var(--sub); margin-top: 5px; }
 
+/* ── 表示切替：解説＋テンプレ / テンプレのみ ── */
+.tpl-toggle {
+  display: inline-flex; gap: 0; margin: 0 0 18px;
+  border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+}
+.tpl-toggle button {
+  font-family: inherit; font-size: 13px; font-weight: 700;
+  padding: 8px 16px; border: none; background: var(--white);
+  color: var(--sub); cursor: pointer; line-height: 1.4;
+}
+.tpl-toggle button + button { border-left: 1px solid var(--border); }
+.tpl-toggle button.active { background: var(--blue); color: #fff; }
+.tpl-toggle button:not(.active):hover { background: var(--blue-light); color: var(--blue); }
+
+/* テンプレのみモード：解説・確認・序論を隠してコピー用ブロックだけ残す */
+body.tpl-only .toc-inline { display: none; }
+body.tpl-only main > section { display: none; }
+body.tpl-only main > section#section2,
+body.tpl-only main > section#section3 { display: block; }
+/* section2/section3 の直下は drug-block と tpl-set 以外を隠す（見出し・序論・各種注意ボックス等） */
+body.tpl-only #section2 > *:not(.drug-block):not(.tpl-set),
+body.tpl-only #section3 > *:not(.drug-block):not(.tpl-set) { display: none; }
+/* drug-block 内は薬剤名見出し（drug-block-head）とテンプレ（tpl-set）以外を隠す */
+body.tpl-only .drug-block > *:not(.drug-block-head):not(.tpl-set) { display: none; }
+body.tpl-only .drug-block { margin-bottom: 14px; }
+
 /* ── 印刷：チェックリストだけ印刷 ── */
 @media print {
+  .tpl-toggle { display: none !important; }
   .print-btn, .copy-mini, .copy-btn { display: none !important; }
   .cl-item { break-inside: avoid; }
   body.print-checklist-only main > section:not(#sec-checklist) { display: none !important; }

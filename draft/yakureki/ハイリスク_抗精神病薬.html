@@ -18,9 +18,7 @@
       /* 薬剤群ブロック */
       .drug-block {
         background: var(--white);
-        border: 1px solid var(--border);
-        border-left: 3px solid var(--blue);
-        border-radius: var(--radius-sm);
+        border: 1px solid var(--border);        border-radius: var(--radius-sm);
         padding:  18px 20px;
         margin-bottom:  18px;
       }
@@ -35,7 +33,7 @@
       /* テンプレ直上の注意（重要語のみ赤） */
       .tpl-warn {
         background: var(--warn-bg);
-        border-left: 3px solid var(--warn-border);
+        border: 1px solid var(--warn-border);
         border-radius: 4px;
         padding: 10px 14px;
         margin: 12px 0 8px;
@@ -77,9 +75,7 @@
       /* 薬剤ブロック内：この薬で確認すること */
       .drug-check-box {
         background: #f7f8fa;
-        border: 1px solid #e1e5ea;
-        border-left: 3px solid var(--blue);
-        border-radius: 4px;
+        border: 1px solid #e1e5ea;        border-radius: 4px;
         padding: 12px 16px;
         margin: 8px 0 12px;
       }
@@ -345,17 +341,23 @@
       <div class="sticky-toc-head">
         <span class="sticky-toc-label">CONTENTS</span>
       </div>
-      <a href="#section1">共通確認ポイント</a>
-      <a href="#section2">薬剤群別テンプレート</a>
-      <a href="#common-se">共通の副作用説明の追記</a>
-      <div class="sticky-toc-group">▼ 薬剤群</div>
+      <a href="#guide">このページの使い方</a>
+      <div class="sticky-toc-group">▼ まず確認</div>
+      <a href="#lowline">算定時の記載ポイント</a>
+      <a href="#sec-checklist">簡易チェックリスト</a>
+      <a href="#drug-search">薬剤名から探す</a>
+      <div class="sticky-toc-group">▼ 薬剤群別</div>
+      <a href="#common-se">共通の副作用説明</a>
       <a href="#sda">非定型 SDA</a>
       <a href="#marta">非定型 MARTA</a>
       <a href="#dss-dsam">非定型 DSS/DSAM</a>
       <a href="#typical">定型抗精神病薬</a>
-      <div class="sticky-toc-group">▼ その他</div>
-      <a href="#clozapine-note">クロザピンの扱い</a>
-      <a href="#section3">変化に基づくロ（判断理由）</a>
+      <a href="#clozapine-note">クロザピン（参考）</a>
+      <div class="sticky-toc-group">▼ 必要時</div>
+      <a href="#section3">変化に基づくロ</a>
+      <div class="sticky-toc-group">▼ 参考</div>
+      <a href="#section1">共通確認ポイント</a>
+      <a href="#kobetsu">個別指導</a>
       <div class="sticky-toc-group">▼ 他の薬効群</div>
       <a href="ハイリスク_血液凝固阻止剤.html">血液凝固阻止剤</a>
       <a href="ハイリスク_糖尿病用剤.html">糖尿病用剤</a>
@@ -369,25 +371,32 @@
       <span class="page-tag">HIGH-RISK 08-1</span>
       <h1 class="page-title">抗精神病薬</h1>
       <p class="page-desc">
-        特定薬剤管理指導加算1の対象となる精神神経用剤のうち、<strong>抗精神病薬</strong>について、新規処方（イ）・用法用量変更（ロ）・副作用や服薬状況等の変化に基づくロの薬歴記載例を整理したページです。<br />
-        変更のあった薬から、確認事項・指導内容・薬歴記載例を探せるようにしています。<br />
-        抗うつ薬・気分安定薬・抗てんかん薬は別ページで扱います。BZD系・睡眠薬など薬効分類112に該当する薬剤は、本ページでは特定薬剤管理指導加算1の精神神経用剤としては扱いません。<br />
-        日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」精神神経用剤の確認事項を参考にしています。
+        <strong>抗精神病薬</strong>（定型・非定型）の特定薬剤管理指導加算1の薬歴記載例。新規（イ）・用法用量変更（ロ）・変化に基づくロを扱う。<br />
+        抗うつ薬・気分安定薬・抗てんかん薬は別ページ。BZD系・睡眠薬・抗ADHD薬は対象外。
       </p>
     </div>
 
     <main>
+      <div class="tpl-toggle" role="tablist" aria-label="表示切替">
+        <button type="button" data-mode="all" class="active">解説＋テンプレ</button>
+        <button type="button" data-mode="tpl">テンプレのみ</button>
+      </div>
       <details class="toc-inline">
         <summary>目次（タップで開閉）</summary>
         <div class="toc-links">
-          <a href="#section1">共通確認ポイント</a>
+          <a href="#guide">このページの使い方</a>
+          <a href="#lowline">算定時の記載ポイント</a>
+          <a href="#sec-checklist">簡易チェックリスト</a>
+          <a href="#drug-search">薬剤名から探す</a>
           <a href="#common-se">共通の副作用説明</a>
           <a href="#sda">非定型 SDA</a>
           <a href="#marta">非定型 MARTA</a>
           <a href="#dss-dsam">非定型 DSS/DSAM</a>
           <a href="#typical">定型抗精神病薬</a>
-          <a href="#clozapine-note">クロザピンの扱い</a>
+          <a href="#clozapine-note">クロザピン（参考）</a>
           <a href="#section3">変化に基づくロ</a>
+          <a href="#section1">共通確認ポイント</a>
+          <a href="#kobetsu">個別指導</a>
           <a href="ハイリスク_血液凝固阻止剤.html">→ 血液凝固阻止剤</a>
           <a href="ハイリスク_糖尿病用剤.html">→ 糖尿病用剤</a>
           <a href="ハイリスク_膵臓ホルモン剤.html">→ インスリン製剤</a>
@@ -396,15 +405,108 @@
       </details>
 
       <!-- ============================================================
-           § 1  共通確認ポイント
+           § まず見るところ（導線3カード／最低ライン／チェックリスト／薬剤名から探す）
            ============================================================ -->
-      <section id="section1">
-        <div class="section-label">SECTION 1</div>
-        <h2 class="section-title">抗精神病薬の共通確認ポイント</h2>
-        <p style="font-size:13px;color:var(--sub);margin-bottom:12px;">
-          抗精神病薬に共通する確認・指導の考え方を整理しています。<br />
-          具体的な確認事項と記載例は、SECTION 2 の薬剤群別ブロックにまとめています。
-        </p>
+      <!-- § このページの使い方（導線3カード） -->
+      <section id="guide" style="margin-bottom:24px;">
+        <div class="section-label">このページの使い方</div>
+        <div class="guide-cards">
+          <a class="guide-card" href="#lowline"><span class="gc-no">1</span><span class="gc-title">算定前に記載内容を確認する</span><span class="gc-desc">最低ラインと簡易チェックリストで、算定根拠として不足がないか確認する。</span></a>
+          <a class="guide-card" href="#drug-search"><span class="gc-no">2</span><span class="gc-title">薬剤名から記載例を探す</span><span class="gc-desc">薬剤名を選択し、該当する薬剤群の記載例へ移動する。</span></a>
+          <a class="guide-card" href="#section3"><span class="gc-no">3</span><span class="gc-title">変化に基づくロの記載例を見る</span><span class="gc-desc">副作用・服薬状況等の変化により、追加指導が必要と判断した場合の記載例を確認する。</span></a>
+        </div>
+      </section>
+
+      <!-- § 最低ライン -->
+      <section id="lowline" style="margin-bottom:28px;">
+        <div class="section-label">最低ライン</div>
+        <h2 class="section-title">算定時の記載ポイント</h2>
+        <div class="minline">
+          <p class="minline-lead">
+            特定薬剤管理指導加算1は、服薬管理指導料に対する加算であり、対象薬が処方されていることだけを理由に算定する加算ではない。算定する場合は、通常の服薬指導に加えて、対象薬に関する確認を行い、患者の病状・服薬状況等を踏まえたプラスアルファの指導を行う必要がある。
+          </p>
+          <p class="minline-lead" style="margin-bottom:14px;">
+            算定時は、対象薬について確認した内容と行った指導の要点を薬歴に記録する。従来と同一の処方内容でロを算定する場合は、特に指導が必要と判断した理由の要点も記載する。
+          </p>
+          <div class="minline-checks">
+            <div class="minline-check"><span class="mc-no">①</span><b>「薬剤名：〜」の形で書き始める</b><span class="mc-note">どの薬についての指導記録かを明確にする（例：「リスパダール：…」）。</span></div>
+            <div class="minline-check"><span class="mc-no">②</span><b>確認した内容を記録する</b><span class="mc-note">処方目的・症状の安定状況・併用薬・錐体外路症状や代謝系（体重・血糖）・服薬状況など、確認した内容を残す。</span></div>
+            <div class="minline-check"><span class="mc-no">③</span><b>患者の状況に応じた指導内容を残す</b><span class="mc-note">一般的な薬効・用法説明だけでなく、自己中断の回避・眠気／自動車運転の注意・錐体外路症状や血糖上昇の相談目安など、その患者に必要な指導を具体的に記録する。</span></div>
+            <div class="minline-check"><span class="mc-no">④</span><b>記載内容から場面（新規・変更・変化）が分かるように記録する</b><span class="mc-note">「イ／ロ」の記号自体を書く必要はない（新規＝イ、用法用量変更＝ロ）。<strong>従来と同一処方でも、特に指導が必要と認めてロを算定する場合は、特に指導が必要と判断した理由の要点を必ず残す</strong>（別添3 記載要件）。</span></div>
+          </div>
+          <div class="guard-note"><b>算定根拠として不十分になりやすい例</b>　一般的な薬効・用法説明のみで、確認した内容や患者の状況に応じた指導内容が薬歴から確認できない。</div>
+
+          <h3 class="subsection-title" style="margin-top:18px;">よくある薬歴と修正例（抗精神病薬）</h3>
+          <div class="example-pair">
+            <div class="example-box bad">
+              <span class="example-label">✕ 算定根拠として不十分な例</span>
+              <pre>リスパダール：新規。効果と副作用を説明し、継続して服用するよう指導した。</pre>
+            </div>
+            <div class="example-box good">
+              <span class="example-label">○ 修正例（薬剤群テンプレートを参考にした例）</span>
+              <pre>リスパダール：新規（処方目的：統合失調症）。現在の症状・併用薬を確認。症状の安定を助ける薬で、症状が落ち着いても自己判断で中止しないことを説明。眠気・ふらつきが出るため自動車運転等の危険作業を避けるよう指導。手の震え・体のこわばり・じっとしていられない、月経異常・乳汁分泌（高プロラクチン血症）があれば早めに相談するよう説明。市販の風邪薬・睡眠改善薬・サプリは事前に相談するよう指導。</pre>
+            </div>
+          </div>
+          <p style="font-size:12px;color:var(--sub);margin-top:4px;">※ ✕は確認した内容や患者ごとのプラスアルファの指導が読み取れない。○は「<a href="#drug-search" class="link-inline" style="color:var(--blue);">薬剤名から探す</a>」からSDA初回イの記載例を参考にしたもの。薬効・用法説明だけで終わらず、処方目的・症状・併用薬の確認と、患者の状況に応じた指導が薬歴から確認できるようにする。</p>
+        </div>
+      </section>
+
+      <!-- § 印刷用チェックリスト -->
+      <section id="sec-checklist" style="margin-bottom:28px;">
+        <div class="section-label">印刷用</div>
+        <h2 class="section-title">算定前セルフチェック<button class="print-btn" type="button">このチェックリストを印刷</button></h2>
+        <div class="checklist-card">
+          <div class="cl-group">
+            <div class="cl-head">確認・記録する項目（基本）</div>
+            <label class="cl-item"><input type="checkbox"><span>対象薬剤が分かるように記載した（<b>「薬剤名：〜」</b>）</span></label>
+            <label class="cl-item"><input type="checkbox"><span>記載内容から<b>新規／変更／変化のどれに当たるか分かる</b>（「イ／ロ」の記号は不要）。<b>変化に基づくロは、特に指導が必要と判断した理由</b>も記載した</span></label>
+            <label class="cl-item"><input type="checkbox"><span><b>処方目的・症状</b>を確認した（<b>継続・変更時は服薬状況</b>も）</span></label>
+            <label class="cl-item"><input type="checkbox"><span>併用薬・市販薬・サプリ（<b>中枢抑制薬・抗コリン薬の重複</b>等）を確認した</span></label>
+            <label class="cl-item"><input type="checkbox"><span><b>自己判断で中止しないこと</b>・眠気／自動車運転等の危険作業の注意を説明した</span></label>
+            <label class="cl-item"><input type="checkbox"><span><b>患者の状況に応じた指導内容</b>を記録した</span></label>
+          </div>
+          <div class="cl-group">
+            <div class="cl-head">必要に応じて確認・説明する項目（抗精神病薬）</div>
+            <label class="cl-item"><input type="checkbox"><span><b>錐体外路症状</b>（手の震え・じっとしていられない・体のこわばり・嚥下障害）・<b>遅発性ジスキネジア</b>の注意を確認・説明した</span></label>
+            <label class="cl-item"><input type="checkbox"><span>MARTA（オランザピン・クエチアピン）：<b>糖尿病・糖尿病既往の有無（禁忌）</b>・高血糖症状を確認・説明した</span></label>
+            <label class="cl-item"><input type="checkbox"><span>SDA（リスペリドン・パリペリドン）：<b>高プロラクチン血症</b>（月経異常・乳汁分泌・性機能）を確認した</span></label>
+            <label class="cl-item"><input type="checkbox"><span><b>悪性症候群・QT延長・SJS/TEN</b>（分類共通の重篤副作用）の受診目安を説明した</span></label>
+            <label class="cl-item"><input type="checkbox"><span>高齢者の<b>転倒・誤嚥・起立性低血圧</b>、家族支援を確認した</span></label>
+            <label class="cl-item"><input type="checkbox"><span><b>処方目的</b>を確認した（鎮静・睡眠補助目的の低用量等の<b>適応外処方は算定対象外</b>のため、該当時は算定の可否を判断）</span></label>
+          </div>
+          <div class="guard-note"><b>算定根拠として不十分になりやすい例</b>　一般的な薬効説明のみで、確認した内容や患者の状況に応じた指導内容が薬歴から確認できない。</div>
+        </div>
+      </section>
+
+      <!-- § 薬剤名から探す -->
+      <section id="drug-search" style="margin-bottom:28px;">
+        <div class="section-label">薬剤名から探す</div>
+        <h2 class="section-title">薬剤名から記載例を探す</h2>
+        <p style="font-size:13px;color:var(--sub);margin-bottom:10px;">薬剤名をタップすると、該当する薬剤群別テンプレートに移動する。</p>
+        <div class="drug-index">
+          <div class="drug-index-row">
+            <span class="di-group">非定型 SDA</span>
+            <a href="#sda">リスパダール</a><a href="#sda">ルーラン</a><a href="#sda">ロナセン</a><a href="#sda">インヴェガ</a><a href="#sda">ラツーダ</a>
+          </div>
+          <div class="drug-index-row">
+            <span class="di-group">非定型 MARTA</span>
+            <a href="#marta">ジプレキサ</a><a href="#marta">セロクエル</a><a href="#marta">ビプレッソ</a>
+          </div>
+          <div class="drug-index-row">
+            <span class="di-group">非定型 DSS/DSAM</span>
+            <a href="#dss-dsam">エビリファイ</a><a href="#dss-dsam">レキサルティ</a>
+          </div>
+          <div class="drug-index-row">
+            <span class="di-group">定型</span>
+            <a href="#typical">セレネース</a><a href="#typical">コントミン</a><a href="#typical">ヒルナミン</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- § 参考  共通確認ポイント（日薬GL由来・折りたたみ） -->
+      <section id="section1" style="margin-bottom:28px;">
+        <div class="section-label">参考</div>
+        <h2 class="section-title">抗精神病薬の共通確認ポイント（日薬GL）</h2>
 
         <details class="guide-details">
           <summary>共通確認ポイント（日薬GL 6項目）を見る</summary>
@@ -434,10 +536,10 @@
         </details>
 
         <p style="font-size:12px;color:var(--sub);margin-top:8px;">
-          ※ <strong>クロザピン</strong>はCPMS登録医療機関・登録保険薬局での管理が必要な薬剤のため、本ページの定型テンプレ対象外としています（末尾の注記を参照）。<br />
-          ※ <strong>抗うつ薬・気分安定薬・抗てんかん薬</strong>は別ページで扱います。<br />
-          ※ <strong>BZD系・睡眠薬</strong>など薬効分類112に該当する薬剤は、本ページでは特定薬剤管理指導加算1の精神神経用剤としては扱いません。<br />
-          ※ <strong>抗ADHD薬</strong>は薬効分類・管理制度が絡むため本ページでは扱いません。
+          ※ <strong>クロザピン</strong>はCPMS登録医療機関・登録保険薬局での管理が必要な薬剤のため、本ページの定型テンプレ対象外としている（末尾の注記を参照）。<br />
+          ※ <strong>抗うつ薬・気分安定薬・抗てんかん薬</strong>は別ページで扱う。<br />
+          ※ <strong>BZD系・睡眠薬</strong>など薬効分類112に該当する薬剤は、本ページでは特定薬剤管理指導加算1の精神神経用剤としては扱わない。<br />
+          ※ <strong>抗ADHD薬</strong>は薬効分類・管理制度が絡むため本ページでは扱わない。
         </p>
         <p style="font-size:12px;color:var(--sub);margin-top:6px;">
           出典：日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2版）」精神神経用剤
@@ -451,20 +553,20 @@
         <div class="section-label">SECTION 2</div>
         <h2 class="section-title">薬剤群別テンプレート</h2>
         <p style="font-size:13px;color:var(--sub);margin-bottom:8px;">
-          薬歴を作成する際は、<strong>新規処方または変更があった薬剤</strong>を確認し、患者の状況に近い記載例を参考にしてください。必要に応じて、確認した内容や追加で行った指導を追記してください。<br />
-          本ページは、特定薬剤管理指導加算1のうち、<strong>新規処方時のイ、用法・用量変更時のロ、副作用や服薬状況等の変化に基づくロ</strong>を想定した薬歴記載例です。継続処方時の通常確認を記録するためのテンプレートではありません。<br />
-          <span style="font-size:12px;">※ 抗精神病薬は<strong>副作用プロファイルが分類ごとに大きく異なる</strong>ため、SDA／MARTA／DSS/DSAM／定型の4ブロックに分けています。特にMARTA系（オランザピン・クエチアピン）は<strong>糖尿病・糖尿病既往歴のある患者には禁忌</strong>となるため、独立したブロックで扱います。</span><br />
-          <span style="font-size:12px;">※ <strong>悪性症候群・QT延長・SJS/TEN</strong>は分類を問わず注意が必要な共通の重篤副作用のため、各ブロックではなく「共通の副作用説明の追記」セクションに置いています。</span><br />
-          <span style="font-size:12px;">※ 自己判断で中止しないこと・眠気/危険作業の注意は、すべての薬剤に共通の核として初回イ本体に含めています。</span><br />
-          <span style="font-size:12px;">※ <strong>適応外処方（鎮静・睡眠補助目的でのクエチアピン低用量・オランザピン低用量・レボメプロマジン少量等）は特定薬剤管理指導加算1の算定対象外</strong>です。処方目的を聞き取りで確認してから算定の可否を判断してください。</span>
+          薬歴を作成する際は、<strong>新規処方または変更があった薬剤</strong>を確認し、患者の状況に近い記載例を参考にする。必要に応じて、確認した内容や追加で行った指導を追記する。<br />
+          本ページは、特定薬剤管理指導加算1のうち、<strong>新規処方時のイ、用法・用量変更時のロ、副作用や服薬状況等の変化に基づくロ</strong>を想定した薬歴記載例である。継続処方時の通常確認を記録するためのテンプレートではない。<br />
+          <span style="font-size:12px;">※ 抗精神病薬は<strong>副作用プロファイルが分類ごとに大きく異なる</strong>ため、SDA／MARTA／DSS/DSAM／定型の4ブロックに分けている。特にMARTA系（オランザピン・クエチアピン）は<strong>糖尿病・糖尿病既往歴のある患者には禁忌</strong>となるため、独立したブロックで扱う。</span><br />
+          <span style="font-size:12px;">※ <strong>悪性症候群・QT延長・SJS/TEN</strong>は分類を問わず注意が必要な共通の重篤副作用のため、各ブロックではなく「共通の副作用説明の追記」セクションに置いている。</span><br />
+          <span style="font-size:12px;">※ 自己判断で中止しないこと・眠気/危険作業の注意は、すべての薬剤に共通の核として初回イ本体に含めている。</span><br />
+          <span style="font-size:12px;">※ <strong>適応外処方（鎮静・睡眠補助目的でのクエチアピン低用量・オランザピン低用量・レボメプロマジン少量等）は特定薬剤管理指導加算1の算定対象外</strong>である。処方目的を聞き取りで確認してから算定の可否を判断する。</span>
         </p>
         <div class="tpl-warn" style="margin:12px 0;">
           <div class="tpl-warn-title">副作用説明の記載について</div>
-          副作用に関する記載例は、<strong>実際に説明した内容に応じて追記</strong>してください。日常的な副作用（眠気・錐体外路症状・便秘・口渇・体重変化等）は初回イ本体に含めています。<strong>まれな重篤副作用</strong>（悪性症候群・QT延長・SJS/TEN・高血糖性ケトアシドーシス・遅発性ジスキネジア等）は、患者さんへ不安を与えすぎないよう、<strong>症状と相談・受診の目安を中心に説明</strong>します。薬歴上で説明内容を明確に残したい場合は、<strong>「副作用説明の追記」から該当するものを追加</strong>してください。
+          副作用に関する記載例は、<strong>実際に説明した内容に応じて追記</strong>する。日常的な副作用（眠気・錐体外路症状・便秘・口渇・体重変化等）は初回イ本体に含めている。<strong>まれな重篤副作用</strong>（悪性症候群・QT延長・SJS/TEN・高血糖性ケトアシドーシス・遅発性ジスキネジア等）は、患者へ不安を与えすぎないよう、<strong>症状と相談・受診の目安を中心に説明</strong>する。薬歴上で説明内容を明確に残したい場合は、<strong>「副作用説明の追記」から該当するものを追加</strong>する。
         </div>
         <div class="tpl-warn" id="copy-rule" style="margin:12px 0;">
           <div class="tpl-warn-title">コピーする前に必ず確認（全薬剤群共通）</div>
-          下のテンプレは「指導・説明」部分の記載例です。そのままコピペすると要件不足になるので、以下を確認してください。
+          下のテンプレは「指導・説明」部分の記載例である。そのままコピペすると要件不足になるので、以下を確認する。
           <ul>
             <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（例：「リスパダール：眠気・錐体外路症状の確認と自動車運転回避を指導…」）</li>
             <li><strong>確認した内容（症状・聞き取り結果 など）</strong>もテンプレに足す</li>
@@ -479,34 +581,14 @@
           <span><i style="background:#fef3e8;border:1px solid #f5d4a1"></i>副作用説明の追記（説明した分だけ追加）</span>
         </div>
 
-        <div class="drug-index">
-          <div class="drug-index-title">薬剤名から探す</div>
-          <div class="drug-index-row">
-            <span class="di-group">非定型 SDA</span>
-            <a href="#sda">リスパダール</a><a href="#sda">ルーラン</a><a href="#sda">ロナセン</a><a href="#sda">インヴェガ</a><a href="#sda">ラツーダ</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">非定型 MARTA</span>
-            <a href="#marta">ジプレキサ</a><a href="#marta">セロクエル</a><a href="#marta">ビプレッソ</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">非定型 DSS/DSAM</span>
-            <a href="#dss-dsam">エビリファイ</a><a href="#dss-dsam">レキサルティ</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">定型</span>
-            <a href="#typical">セレネース</a><a href="#typical">コントミン</a><a href="#typical">ヒルナミン</a>
-          </div>
-        </div>
-
         <!-- 共通の副作用説明の追記 -->
-        <div class="drug-block" id="common-se" style="border-left-color:#c2701c;">
+        <div class="drug-block" id="common-se">
           <div class="drug-block-head">
             <span class="drug-block-name">共通の副作用説明の追記</span>
             <span class="drug-block-sub">分類を問わず注意が必要な重篤副作用</span>
           </div>
           <p style="font-size:13px;line-height:1.75;color:var(--ink);margin-bottom:8px;">
-            <strong>悪性症候群・QT延長・SJS/TEN</strong>は抗精神病薬全般で注意が必要な重篤副作用です。説明した場合は以下のテンプレを薬剤群別ブロックの初回イ等の薬歴記録に追記してください。
+            <strong>悪性症候群・QT延長・SJS/TEN</strong>は抗精神病薬全般で注意が必要な重篤副作用である。説明した場合は以下のテンプレを薬剤群別ブロックの初回イ等の薬歴記録に追記する。
           </p>
           <details class="guide-details">
             <summary>共通副作用の背景知識</summary>
@@ -553,7 +635,7 @@
               <li>眠気・ふらつき／立ちくらみの有無</li>
               <li><strong>月経異常・乳汁分泌・性機能障害</strong>（高プロラクチン血症、特にリスペリドン・パリペリドン）</li>
               <li>併用薬（CYP3A4阻害薬等）／アルコール</li>
-              <li>自動車運転等の危険作業の従事状況／高齢者は転倒・誤嚥リスク</li>
+              <li>自動車運転等の危険作業の有無／高齢者では転倒・誤嚥リスク、家族支援の有無</li>
             </ul>
           </div>
 
@@ -568,7 +650,7 @@
                 <li>毎日決まった時間に服用、<strong>自己判断で中止しない</strong>（症状が安定しても継続が必要）</li>
                 <li>眠気・ふらつきが出ることがあるため、<strong>自動車運転等の危険作業に従事しないよう説明</strong></li>
                 <li>手の震え・じっとしていられない・体のこわばりが出たら早めに相談</li>
-                <li>月経異常・乳汁分泌・性機能の変化があれば（恥ずかしがらず）早めに相談</li>
+                <li>月経異常・乳汁分泌・性機能の変化があれば、相談しにくい内容でも早めに相談するよう促す</li>
                 <li>市販の風邪薬・睡眠改善薬・サプリは薬剤師に確認</li>
               </ul>
 
@@ -595,13 +677,13 @@
               <div class="tpl-text">用量変更を確認。変更前後の症状の安定状況・眠気・錐体外路症状を確認。新用量での服用方法を再説明、症状出現時は早めに相談するよう再指導。自己判断で中止しないよう注意喚起。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">高プロラクチン血症について、まれではあるが、月経異常・無月経・乳汁分泌・性機能障害（性欲低下・勃起障害等）が続く場合は主治医に相談するよう説明（特にリスペリドン・パリペリドン）。</div>
+              <div class="tpl-text">高プロラクチン血症について、月経異常・無月経・乳汁分泌・性機能障害（性欲低下・勃起障害等）が続く場合は主治医に相談するよう説明（特にリスペリドン・パリペリドン）。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">錐体外路症状（手の震え・じっとしていられない・体のこわばり・嚥下障害等）の訴えあり。自己判断で中止せず主治医に症状を伝えるよう指導、用量調整・抗パーキンソン薬の必要性は処方医と相談するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">月経異常・乳汁分泌・性機能障害等の訴え。高プロラクチン血症が疑われるため、症状を主治医に伝えて評価・処方検討を相談するよう指導。長期では骨密度低下のリスクもある旨を必要に応じて説明。</div>
+              <div class="tpl-text">月経異常・乳汁分泌・性機能障害等の訴え。高プロラクチン血症が疑われるため、症状を主治医に伝え、薬剤の継続可否や変更の必要性について相談するよう指導。長期では骨密度低下のリスクもある旨を必要に応じて説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">妊娠・授乳希望／妊娠判明の情報あり。リスペリドン・パリペリドンはプロラクチン上昇により受胎に影響することがあり、また妊娠中・授乳中の使用は個別判断が必要なため、自己判断で中止せず主治医に相談するよう指導。</div>
@@ -778,7 +860,7 @@
               <li>眠気・ふらつき／<strong>起立性低血圧</strong>（立ちくらみ・めまい）の有無</li>
               <li>便秘・口渇・尿閉・霧視等の抗コリン作用症状の有無</li>
               <li>併用薬（他のQT延長薬・中枢抑制薬・抗コリン薬重複）／アルコール</li>
-              <li>自動車運転等の危険作業の従事状況／高齢者は転倒・誤嚥リスク</li>
+              <li>自動車運転等の危険作業の有無／高齢者では転倒・誤嚥リスク、家族支援の有無</li>
             </ul>
           </div>
 
@@ -839,13 +921,13 @@
 
 
         <!-- クロザピンの扱い -->
-        <div class="drug-block" id="clozapine-note" style="border-left-color:#9ca3af;">
+        <div class="drug-block" id="clozapine-note">
           <div class="drug-block-head">
             <span class="drug-block-name">クロザピン（参考）</span>
             <span class="drug-block-sub">クロザリル</span>
           </div>
           <p style="font-size:13px;line-height:1.75;color:var(--ink);">
-            クロザピンはCPMS（クロザリル患者モニタリングサービス）登録医療機関・<strong>登録保険薬局</strong>での管理が必要な薬剤であり、<strong>無顆粒球症・心筋炎</strong>等のリスクから定期的な血液検査・登録手続きが求められます。一般薬局での通常調剤は想定されないため、<strong>本ページの定型テンプレ対象外</strong>としています。処方がある場合はCPMS運用手順・検査値・投与可能日数等を個別に確認してください。
+            クロザピンはCPMS（クロザリル患者モニタリングサービス）登録医療機関・<strong>登録保険薬局</strong>での管理が必要な薬剤であり、<strong>無顆粒球症・心筋炎</strong>等のリスクから定期的な血液検査・登録手続きが求められる。一般薬局での通常調剤は想定されないため、<strong>本ページの定型テンプレ対象外</strong>としている。処方がある場合はCPMS運用手順・検査値・投与可能日数等を個別に確認する。
           </p>
         </div>
 
@@ -865,9 +947,9 @@
         <div class="warn-box">
           <div class="warn-box-title">この区分の位置づけと使い方</div>
           <p>
-            §2が<strong>新規処方（イ）・用法用量変更（ロ）</strong>のテンプレートだったのに対し、ここで扱うのは<strong>「副作用・服薬状況等の変化に基づくロ」（5点）</strong>——患者の体調や生活の変化に薬剤師が気付き、<strong>指導の必要性を判断</strong>したことを薬歴に残す区分です。<br />
+            §2が<strong>新規処方（イ）・用法用量変更（ロ）</strong>のテンプレートだったのに対し、ここで扱うのは<strong>「副作用・服薬状況等の変化に基づくロ」（5点）</strong>——患者の体調や生活の変化に薬剤師が気付き、<strong>指導の必要性を判断</strong>したことを薬歴に残す区分である。<br />
             記録は<strong>「変化の確認 → 指導の方向性を判断 → 指導」</strong>の流れで簡潔に。<br />
-            以下は記載例です。患者の状況に合わせて書き換えてください。
+            以下は記載例。患者の状況に合わせて書き換える。
           </p>
         </div>
 
@@ -924,6 +1006,25 @@
         </div>
       </section>
 
+      <!-- § 個別指導での指摘事例 -->
+      <section id="kobetsu">
+        <div class="section-label">個別指導</div>
+        <h2 class="section-title">個別指導での指摘事例</h2>
+        <div class="drug-check-box">
+          <div class="drug-check-box-title">この薬効群で特に確認されやすいポイント</div>
+          <ul>
+            <li>記録から<strong>対象薬剤（「薬剤名：〜」）</strong>が分かるか</li>
+            <li>何を確認したか（処方目的・症状・併用薬・服薬状況・検査値）が書かれているか</li>
+            <li>確認しただけで終わらず、<strong>患者の状況に応じた指導内容</strong>になっているか</li>
+            <li>自己判断で中止しないこと・眠気／運転の注意・錐体外路症状や代謝系の相談目安など、必要な指導を記録したか</li>
+            <li>「変化に基づくロ」では、<strong>変化の確認・指導が必要と判断した理由・指導内容</strong>が残っているか</li>
+          </ul>
+        </div>
+        <p style="font-size:12px;color:var(--sub);margin-top:10px;">
+          ※ 個別指導の一般的な考え方・過去の指摘の読み方は <a href="ハイリスク薬指導.html#shido-chui" style="color:var(--blue);">ハイリスク薬指導「個別指導での注意点」</a> に集約している。
+        </p>
+      </section>
+
       <!-- ============================================================
            § SOURCE（折りたたみ）
            ============================================================ -->
@@ -941,7 +1042,7 @@
               <div>令和8年3月5日 保医発0305第4号 別添3「調剤報酬点数表に関する事項」 特定薬剤管理指導加算1</div>
               <div class="source-cite">→ 算定要件・薬歴記載要件の原文</div>
             </div>
-            <p style="font-size:12px;color:var(--sub);margin-top:14px;">※ クロザピンはCPMS登録薬局での管理が必要なため、本ページの定型テンプレ対象外としています。抗うつ薬・気分安定薬・抗てんかん薬は別ページで扱います。BZD系・睡眠薬・抗ADHD薬は本ページの対象外です。</p>
+            <p style="font-size:12px;color:var(--sub);margin-top:14px;">※ クロザピンはCPMS登録薬局での管理が必要なため、本ページの定型テンプレ対象外としている。抗うつ薬・気分安定薬・抗てんかん薬は別ページで扱う。BZD系・睡眠薬・抗ADHD薬は本ページの対象外。</p>
           </div>
         </details>
       </section>
@@ -953,6 +1054,18 @@
 
     <footer>調剤報酬まとめ ／ 薬歴マニュアル ／ ハイリスク薬指導 ／ 抗精神病薬 ／ 非公開作業中</footer>
 
+    <script>
+      // チェックリストだけ印刷
+      document.querySelectorAll('.print-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          document.body.classList.add('print-checklist-only');
+          window.print();
+        });
+      });
+      window.addEventListener('afterprint', function () {
+        document.body.classList.remove('print-checklist-only');
+      });
+    </script>
     <script>
       document.querySelectorAll('.copy-mini').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -995,6 +1108,7 @@
         sections.forEach(s => observer.observe(s));
       })();
     </script>
+    <script src="yakureki.js" defer></script>
     <script src="../../assets/site-fab.js" defer></script>
     <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   </body>

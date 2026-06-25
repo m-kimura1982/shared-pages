@@ -18,9 +18,7 @@
       /* 薬剤群ブロック */
       .drug-block {
         background: var(--white);
-        border: 1px solid var(--border);
-        border-left: 3px solid var(--blue);
-        border-radius: var(--radius-sm);
+        border: 1px solid var(--border);        border-radius: var(--radius-sm);
         padding:  18px 20px;
         margin-bottom:  18px;
       }
@@ -93,9 +91,7 @@
       /* 薬剤ブロック内：確認項目 */
       .drug-check-box {
         background: #f7f8fa;
-        border: 1px solid #e1e5ea;
-        border-left: 3px solid var(--blue);
-        border-radius: 4px;
+        border: 1px solid #e1e5ea;        border-radius: 4px;
         padding: 12px 16px;
         margin: 8px 0 12px;
       }
@@ -239,9 +235,7 @@
       /* インスリン特有チェックリスト（SECTION 1.5） */
       .insulin-check {
         background: #f7f8fa;
-        border: 1px solid #e1e5ea;
-        border-left: 3px solid var(--blue);
-        border-radius: var(--radius-sm);
+        border: 1px solid #e1e5ea;        border-radius: var(--radius-sm);
         padding: 14px 18px;
         margin: 10px 0 16px;
       }
@@ -390,12 +384,16 @@
       <span class="page-tag">HIGH-RISK 10</span>
       <h1 class="page-title">膵臓ホルモン剤（インスリン製剤）</h1>
       <p class="page-desc">
-        特定薬剤管理指導加算1の対象となるインスリン製剤について、新規処方時の「イ」、用法・用量変更時の「ロ」、副作用や服薬状況等の変化に基づく「ロ」の薬歴記載例を整理したページである。<br />
-        経口糖尿病薬・GLP-1作動薬（注射）は別ページ（糖尿病用剤）で扱う。
+        <strong>インスリン製剤</strong>の特定薬剤管理指導加算1の薬歴記載例。新規（イ）・用法用量変更（ロ）・変化に基づくロを扱う。<br />
+        経口糖尿病薬・GLP-1作動薬（注射）は別ページ（糖尿病用剤）。
       </p>
     </div>
 
     <main>
+      <div class="tpl-toggle" role="tablist" aria-label="表示切替">
+        <button type="button" data-mode="all" class="active">解説＋テンプレ</button>
+        <button type="button" data-mode="tpl">テンプレのみ</button>
+      </div>
       <details class="toc-inline">
         <summary>目次（タップで開閉）</summary>
         <div class="toc-links">
@@ -1067,23 +1065,8 @@
       <section id="kobetsu">
         <div class="section-label">個別指導</div>
         <h2 class="section-title">個別指導での指摘事例</h2>
-        <div class="warn-box" style="margin-bottom:12px;">
-          <div class="warn-box-title">確認の方向性</div>
-          <p>低血糖症状の有無や注射手技を確認することは重要だが、それだけで特定薬剤管理指導加算1を算定するものではない。患者の病状・服薬状況等を確認したうえで、必要なプラスアルファの指導を行い、その内容を薬歴に記録することが算定根拠として重要。</p>
-        </div>
-
-        <div class="kobetsu-quote">
-          <span class="kq-k">個別指導</span>
-          <span class="kq-t">特定薬剤管理指導加算は服薬管理指導料に対する加算であり、プラスアルファの指導を求めるもの。薬そのものというより、その処方がなされた病状に対して（日薬の確認項目に沿って）確認を行い、別途説明が必要な場合に説明し、その内容を記録することで算定できる。副作用の確認等だけで算定できると誤解されることがあるが、あくまで指導の加算であり、患者の病状をモニタリングしたうえで必要な指導を行い、記録して初めて算定できる。</span>
-          <span class="kq-cite">社内個別指導（R1.11）の記録より</span>
-        </div>
-        <div class="caveat-box">
-          <div class="caveat-box-title">過去の指摘事項を読む際の注意点</div>
-          この指摘は改定前（対象薬を調剤するたびに指導が必要だった時期）のもの。現在は算定機会が<strong>初回（イ）・用法用量変更（ロ）・変化に基づくロ</strong>に整理された。ただし、確認だけでなく病状に応じた指導を行って記録するという考え方は変わらない。
-        </div>
-
         <div class="drug-check-box">
-          <div class="drug-check-box-title">確認されやすいポイント</div>
+          <div class="drug-check-box-title">この薬効群で特に確認されやすいポイント</div>
           <ul>
             <li>記録から<strong>対象薬剤（「薬剤名 単位数 タイミング：〜」）</strong>が分かるか</li>
             <li>何を確認したか（単位数・注射タイミング・注射手技・低血糖・シックデイ対応・服薬状況・検査値）が書かれているか</li>
@@ -1092,6 +1075,9 @@
             <li>「変化に基づくロ」では、<strong>変化の確認・指導が必要と判断した理由・指導内容</strong>が残っているか</li>
           </ul>
         </div>
+        <p style="font-size:12px;color:var(--sub);margin-top:10px;">
+          ※ 個別指導の一般的な考え方・過去の指摘の読み方は <a href="ハイリスク薬指導.html#shido-chui" style="color:var(--blue);">ハイリスク薬指導「個別指導での注意点」</a> に集約している。
+        </p>
       </section>
 
       <!-- ============================================================
@@ -1178,6 +1164,7 @@
         sections.forEach(s => observer.observe(s));
       })();
     </script>
+    <script src="yakureki.js" defer></script>
     <script src="../../assets/site-fab.js" defer></script>
     <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   </body>
