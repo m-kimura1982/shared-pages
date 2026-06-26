@@ -45,14 +45,11 @@ window.__pageMeta = {
   "在宅薬学総合体制加算2026.html": {
     "lastUpdated": "2026-06-03"
   },
-  "kaitei2026.html": {
-    "lastUpdated": "2026-06-01"
+  "updates.html": {
+    "lastUpdated": "2026-06-21"
   },
   "入力画面で解説_2026改定後の入力方法.html": {
     "lastUpdated": "2026-05-28"
-  },
-  "updates.html": {
-    "lastUpdated": "2026-06-19"
   },
   "調剤報酬改定2026_ダイジェスト.html": {
     "lastUpdated": "2026-06-01"
@@ -99,6 +96,9 @@ window.__pageMeta = {
   "電子的調剤情報連携体制整備加算_2026改定.html": {
     "lastUpdated": "2026-04-19"
   },
+  "index.html": {
+    "lastUpdated": "2026-06-21"
+  },
   "かかりつけ薬剤師_算定一覧2026.html": {
     "lastUpdated": "2026-04-01"
   },
@@ -108,8 +108,8 @@ window.__pageMeta = {
   "別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html": {
     "lastUpdated": "2026-06-20"
   },
-  "index.html": {
-    "lastUpdated": "2026-06-20"
+  "加算まとめ.html": {
+    "lastUpdated": "2026-06-21"
   },
   "選定療養費計算ツール.html": {
     "lastUpdated": "2026-06-15"
@@ -196,6 +196,9 @@ window.__pageMeta = {
   },
   "吸入薬指導加算2026.html": {
     "lastUpdated": "2026-06-13"
+  },
+  "kaitei2026.html": {
+    "lastUpdated": "2026-06-01"
   },
   "かかりつけ薬剤師訪問加算_実務チェックリスト.html": {
     "lastUpdated": "2026-06-09",

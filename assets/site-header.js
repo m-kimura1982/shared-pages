@@ -68,6 +68,7 @@
     '疑義解釈_その5_2026.html': { category: 'kaitei', title: '疑義解釈 その5' },
     '疑義解釈_その6_2026.html': { category: 'kaitei', title: '疑義解釈 その6' },
     '疑義解釈_その7_2026.html': { category: 'kaitei', title: '疑義解釈 その7' },
+    '疑義解釈_その9_2026.html': { category: 'kaitei', title: '疑義解釈 その9' },
     '特掲診療料_施設基準届出_調剤関係2026.html': { category: 'kaitei', title: '特掲診療料 施設基準届出（調剤関係）' },
     '別添3_調剤報酬点数表に関する事項2026.html': { category: 'kaitei', title: '別添3 点数表に関する事項' },
     '別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html': { category: 'kaitei', title: '別表Ⅰ 摘要欄記載事項' },
