@@ -17,6 +17,58 @@
       .kana-label { flex-shrink: 0; width: 4.5em; font-size: 12px; font-weight: 700; color: var(--blue); padding-top: 2px; }
       .kana-links { display: flex; flex-wrap: wrap; gap: 6px; }
       .kana-links .item-tag { margin-right: 0; }
+
+      /* ===== 個別ページ准拠：サイドスティッキー目次（PC 880px+）＋スマホ用インライン目次 ===== */
+      [id] { scroll-margin-top: 16px; }
+      .sticky-toc { display: none; }
+      .toc-inline { border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--white); padding: 10px 14px; margin: 0 0 18px; }
+      .toc-inline summary { font-weight: 700; font-size: 13px; color: var(--blue); cursor: pointer; }
+      .toc-inline .toc-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+      .toc-inline .toc-links a { font-size: 12px; background: var(--blue-light); color: var(--blue); border-radius: 4px; padding: 2px 9px; text-decoration: none; }
+      @media (min-width: 880px) { .toc-inline { display: none; } }
+
+      @media (min-width: 880px) {
+        .layout-outer {
+          max-width: 1240px; margin: 0 auto; padding: 28px 20px 0;
+          display: grid; grid-template-columns: 220px minmax(0, 1fr);
+          gap: 28px; align-items: start;
+        }
+        .layout-outer .page-head { max-width: none; margin: 0 0 16px; padding: 0; }
+        .layout-outer main { max-width: none; margin: 0; padding: 0; }
+        .sticky-toc {
+          display: block; position: sticky; top: 20px;
+          background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm);
+          padding: 12px 8px 14px; max-height: calc(100vh - 40px); overflow-y: auto;
+          scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+        }
+        .sticky-toc::-webkit-scrollbar { width: 4px; }
+        .sticky-toc::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+        .sticky-toc-head { padding: 0 8px 8px; margin-bottom: 6px; border-bottom: 1px solid var(--border); }
+        .sticky-toc-label { display: block; font-size: 11px; font-weight: 700; color: var(--blue); letter-spacing: 0.12em; }
+        .sticky-toc a {
+          display: block; font-size: 13px; color: var(--ink); text-decoration: none;
+          padding: 5px 10px; border-radius: 4px; line-height: 1.45;
+          border-left: 3px solid transparent; margin-bottom: 1px;
+          transition: background 0.12s, color 0.12s, border-color 0.12s;
+        }
+        .sticky-toc a:hover { background: var(--blue-light); color: var(--blue); }
+        .sticky-toc a.is-active { background: var(--blue-light); color: var(--blue); font-weight: 700; border-left-color: var(--blue); }
+      }
+      @media print {
+        .sticky-toc { display: none !important; }
+        .layout-outer { display: block !important; padding: 0; }
+      }
+
+      /* 縦棒削減：注意枠・ルール枠を左縦棒→フル枠（＋ルール枠は上アクセント）に。縦棒は見出し(section-label)・引用(kobetsu-quote)のみに限定 */
+      .warn-box { border: 1px solid #cbddf2; border-radius: var(--radius-sm); }
+      .rule-box { border: 1px solid var(--border); border-top: 3px solid var(--blue); border-radius: var(--radius-sm); }
+
+      /* 個別ページ准拠：確認ポイントは控えめなグレー枠（青はタイトル文字のみ）。色数を絞る */
+      .drug-check-box { background: #f7f8fa; border: 1px solid #e1e5ea; border-radius: 4px; padding: 12px 16px; margin: 8px 0 12px; }
+      .drug-check-box-title { font-weight: 700; color: var(--blue); font-size: 12.5px; letter-spacing: .04em; margin-bottom: 4px; }
+      .drug-check-box ul { margin: 0; padding-left: 20px; }
+      .drug-check-box ul li { font-size: 13px; line-height: 1.7; margin-bottom: 2px; }
+      .drug-check-box p { margin: 0; font-size: 13px; line-height: 1.75; }
     </style>
   </head>
   <body>
@@ -29,6 +81,21 @@
       </div>
     </header>
 
+    <div class="layout-outer">
+
+    <nav class="sticky-toc" aria-label="目次">
+      <div class="sticky-toc-head">
+        <span class="sticky-toc-label">CONTENTS</span>
+      </div>
+      <a href="#kubun">算定区分（イ／ロ）</a>
+      <a href="#kyotsu">薬歴記載の共通原則</a>
+      <a href="#groups">薬効群別ページ</a>
+      <a href="#gyakubiki">薬剤名から探す</a>
+      <a href="#shido-chui">個別指導での注意点</a>
+    </nav>
+
+    <div>
+
     <div class="page-head">
       <span class="page-tag">HIGH-RISK HUB</span>
       <h1 class="page-title">ハイリスク薬指導（特定薬剤管理指導加算1）</h1>
@@ -39,6 +106,17 @@
     </div>
 
     <main>
+      <details class="toc-inline">
+        <summary>目次（タップで開閉）</summary>
+        <div class="toc-links">
+          <a href="#kubun">算定区分（イ／ロ）</a>
+          <a href="#kyotsu">薬歴記載の共通原則</a>
+          <a href="#groups">薬効群別ページ</a>
+          <a href="#gyakubiki">薬剤名から探す</a>
+          <a href="#shido-chui">個別指導での注意点</a>
+        </div>
+      </details>
+
       <!-- ============================================================
            § 1  算定区分の整理（イ／ロ）
            ============================================================ -->
@@ -65,7 +143,7 @@
             <td>変更内容と、変更に伴い確認・指導した内容</td>
           </tr>
           <tr>
-            <td><strong>ロ</strong>（変化に基づく）</td>
+            <td><strong>ロ</strong>（副作用・服薬状況等の変化）</td>
             <td>患者の<strong>副作用・服薬状況等の変化</strong>に薬剤師が気付き、指導の必要性を判断した場合</td>
             <td>「変化の確認 → 指導が必要と判断 → 指導」の流れ。<strong>判断した根拠</strong>を必ず残す</td>
           </tr>
@@ -85,7 +163,7 @@
           <div class="rule-box-title">全薬効群共通のルール</div>
           <ul style="padding-left:1.4em; font-size:14px; line-height:1.85;">
             <li>ハイリスク指導の記録は <strong>「薬剤名：〜」</strong> の形で書き始め、通常の薬歴と区別できるようにする</li>
-            <li>変化に基づくロでは、<strong>「指導が必要と判断」した根拠</strong>（何の変化に気付いたか）を加算の根拠として残す</li>
+            <li>副作用・服薬状況等の変化によるロでは、<strong>「指導が必要と判断」した根拠</strong>（何の変化に気付いたか）を加算の根拠として残す</li>
             <li>記載例をコピーした場合、<strong>説明・指導していない項目は削除</strong>し、患者の状況に合わせて書き換える（通則(5)）</li>
             <li>継続処方時の通常確認の記録は、薬効群別ページの定型テンプレの対象外（基本記載ルールに従って記載）</li>
           </ul>
@@ -132,12 +210,17 @@
             <div class="card-title">気分安定薬（精神神経用薬）</div>
             <div class="card-desc">リチウム／バルプロ酸／カルバマゼピン／ラモトリギン。血中濃度モニタリング・催奇形性・重篤皮疹。</div>
           </a>
+          <a href="ハイリスク_抗てんかん薬.html" class="card">
+            <div class="card-num">HIGH-RISK 04</div>
+            <div class="card-title">抗てんかん薬</div>
+            <div class="card-desc">バルプロ酸／カルバマゼピン／ラモトリギン／レベチラセタム 等。発作状況・自己中止リスク・血中濃度・重篤皮疹。てんかん目的が算定の前提。</div>
+          </a>
         </div>
 
         <div class="warn-box" style="margin-top:16px;">
-          <div class="warn-box-title">準備中の薬効群</div>
+          <div class="warn-box-title">今後の追加候補（未収載）</div>
           <p>
-            抗てんかん薬（精神神経用薬の続き）ほか、特定薬剤管理指導加算1の対象薬効群を順次追加予定。<br />
+            抗悪性腫瘍剤・免疫抑制剤・不整脈用剤・テオフィリン製剤・抗HIV薬 ほか、特定薬剤管理指導加算1の対象薬効群がある。順次追加していく予定（追加時期は未定）。<br />
             <span style="font-size:12px;color:var(--sub);">※ 本サイトは特定薬剤管理指導加算1の<strong>算定対象薬</strong>を扱う。日本薬剤師会の業務ガイドライン（第2.1版）の薬効分類と、加算1の算定対象は一致しない（GLには加算対象外の薬剤も含まれる）。たとえば<strong>催眠鎮静剤・抗不安剤（薬効分類112／BZD系・睡眠薬等）</strong>は第2.1版でGL上「催眠鎮静薬」として独立したが、<strong>加算1の算定対象ではない</strong>ため本サイトでは扱わない。</span>
           </p>
         </div>
@@ -189,7 +272,7 @@
         </div>
         <p style="font-size:12px;color:var(--sub);margin-top:10px;">
           ※ インスリンのペン型デバイス名（ソロスター・フレックスタッチ・フレックスペン・ミリオペン等）は複数製剤で共通のため収載していません。製剤名で探してください。<br />
-          ※ 準備中の薬効群（抗てんかん薬 等）の薬剤は、ページ公開時に追加します。
+          ※ 未収載の薬効群の薬剤は、ページ公開時に追加します。
         </p>
       </section>
 
@@ -199,9 +282,9 @@
       <section id="shido-chui">
         <div class="section-label">SECTION 5</div>
         <h2 class="section-title">個別指導での注意点</h2>
-        <div class="warn-box" style="margin-bottom:12px;">
-          <div class="warn-box-title">確認の方向性</div>
-          <p>副作用の有無を確認することは重要だが、それだけで特定薬剤管理指導加算1を算定するものではない。患者の病状・服薬状況等を確認したうえで、必要なプラスアルファの指導を行い、その内容を薬歴に記録することが算定根拠として重要。</p>
+        <div class="drug-check-box" style="margin-bottom:12px;">
+          <div class="drug-check-box-title">確認の方向性</div>
+          <p>副作用の有無を確認することは重要だが、それだけで特定薬剤管理指導加算1を算定するものではない。患者の状態・服薬状況等を確認したうえで、必要なプラスアルファの指導を行い、その内容を薬歴に記録することが算定根拠として重要。</p>
         </div>
 
         <div class="kobetsu-quote">
@@ -210,19 +293,17 @@
           <span class="kq-cite">社内個別指導（R1.11）の記録より</span>
         </div>
 
-        <div class="warn-box" style="margin-top:12px;background:#fff7e6;border-color:#f5d4a1;">
-          <div class="warn-box-title" style="color:#c2701c;">過去の個別指導指摘事項を読む際の注意点</div>
-          <p>この指摘は改定前（対象薬を調剤するたびに指導が必要だった時期）のもの。現在は算定機会が<strong>初回（イ）・用法用量変更（ロ）・変化に基づくロ</strong>に整理された。ただし、確認だけでなく病状に応じた指導を行って記録するという考え方は変わらない。</p>
-        </div>
+        <p style="font-size:12px;color:var(--sub);margin-top:8px;line-height:1.75;">
+          ※ <strong>この指摘は改定前</strong>（対象薬を調剤するたびに指導が必要だった時期）のもの。現在は算定機会が<strong>初回（イ）・用法用量変更（ロ）・副作用・服薬状況等の変化によるロ</strong>に整理された。ただし、確認だけでなく状態に応じた指導を行って記録するという考え方は変わらない。
+        </p>
 
-        <div class="rule-box" style="margin-top:12px;">
-          <div class="rule-box-title">確認されやすい共通ポイント</div>
-          <ul style="padding-left:1.4em;font-size:14px;line-height:1.85;">
+        <div class="drug-check-box" style="margin-top:12px;">
+          <div class="drug-check-box-title">確認されやすい共通ポイント</div>
+          <ul>
             <li>記録から<strong>対象薬剤（「薬剤名：〜」）</strong>が分かるか</li>
-            <li>何を確認したか（処方目的・症状／病状・併用薬・服薬状況・検査値）が書かれているか</li>
+            <li>何を確認したか（処方目的、併用薬、服薬状況、検査値、必要に応じた症状等）が書かれているか</li>
             <li>確認しただけで終わらず、<strong>患者の状況に応じた指導内容</strong>になっているか</li>
-            <li>自己判断で中止しないこと等、必要な指導を記録したか</li>
-            <li>「変化に基づくロ」では、<strong>変化の確認・指導が必要と判断した理由・指導内容</strong>が残っているか</li>
+            <li>「副作用・服薬状況等の変化によるロ」では、<strong>変化の確認・指導が必要と判断した理由・指導内容</strong>が残っているか</li>
           </ul>
         </div>
 
@@ -233,6 +314,31 @@
       </section>
     </main>
 
+    </div>
+    </div>
+
     <footer>調剤報酬まとめ ／ 薬歴マニュアル ／ ハイリスク薬指導 ／ 非公開作業中</footer>
+
+    <script>
+      // サイドスティッキーTOC アクティブハイライト
+      (function () {
+        const navLinks = document.querySelectorAll('.sticky-toc a[href^="#"]');
+        const sections = Array.from(navLinks)
+          .map(a => document.querySelector(a.getAttribute('href')))
+          .filter(Boolean);
+        if (!sections.length) return;
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const id = entry.target.id;
+              navLinks.forEach(a => {
+                a.classList.toggle('is-active', a.getAttribute('href') === '#' + id);
+              });
+            }
+          });
+        }, { rootMargin: '-40px 0px -70% 0px', threshold: 0 });
+        sections.forEach(s => observer.observe(s));
+      })();
+    </script>
   </body>
 </html>
