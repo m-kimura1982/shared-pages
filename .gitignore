@@ -1,8 +1,9 @@
 # 社外秘の作業フォルダ（公開しない）
 /private/
 
-# Claude Code 作業用（公開しない）
-/.claude/
+# Claude Code 作業用：設定・ローカルファイルは非公開／共有コマンド(.claude/commands)だけ2台PC間で追跡する
+/.claude/*
+!/.claude/commands/
 
 # スクラッチ画像・元資料（公開しない）
 /images（レセコン画像など）/
