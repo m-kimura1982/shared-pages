@@ -78,14 +78,14 @@
       }
       .tpl-mini:last-child { border-bottom: none; }
       .tpl-mini:nth-child(even) { background: #fafbfd; }
-      .tpl-mini .tpl-tag {
+      .tpl-mini .tpl-tag, .tpl-builder .tpl-tag {
         flex-shrink: 0; font-size: 11px; font-weight: 700;
         padding: 3px 10px; border-radius: 100px;
         letter-spacing: .04em; line-height: 1.6;
         white-space: nowrap;
       }
       .tpl-mini .tpl-tag.base   { background: var(--blue-light); color: var(--blue); }
-      .tpl-mini .tpl-tag.init   { background: var(--blue-light); color: var(--blue); }
+      .tpl-mini .tpl-tag.init, .tpl-builder .tpl-tag.init { background: var(--blue-light); color: var(--blue); }
       .tpl-mini .tpl-tag.change { background: #e0f2f1; color: #0d9488; border: none; }
       .tpl-mini .tpl-tag.add    { background: #f2f4f8; color: #4b5563; border: 1px solid #d7dce3; }
       .tpl-mini .tpl-tag.se     { background: #fef3e8; color: #c2701c; border: 1px solid #f5d4a1; }
@@ -191,19 +191,34 @@
       .tag-legend i {
         display: inline-block; width: 10px; height: 10px; border-radius: 2px;
       }
-      .tpl-mini .tpl-text {
+      .tpl-mini .tpl-text, .tpl-builder .tpl-text {
         flex: 1; font-size: 13.5px; line-height: 1.7;
         padding-right: 56px; white-space: pre-wrap;
       }
-      .tpl-mini .copy-mini {
+      .tpl-mini .copy-mini, .tpl-builder .copy-mini {
         position: absolute; top: 10px; right: 10px;
         background: #f3f4f6; color: #374151; border: 1px solid #d1d5db;
         border-radius: 4px; font-size: 11px; font-weight: 700;
         padding: 4px 10px; cursor: pointer;
         font-family: "Noto Sans JP", sans-serif;
       }
-      .tpl-mini .copy-mini:hover { background: #e5e7eb; border-color: #9ca3af; }
-      .tpl-mini .copy-mini.copied { background: var(--good-border); color: #fff; border-color: var(--good-border); }
+      .tpl-mini .copy-mini:hover, .tpl-builder .copy-mini:hover { background: #e5e7eb; border-color: #9ca3af; }
+      .tpl-mini .copy-mini.copied, .tpl-builder .copy-mini.copied { background: var(--good-border); color: #fff; border-color: var(--good-border); }
+
+      /* 組み立て式テンプレ（ザズベイ 初回イ）：状況を選ぶと記載例が切り替わる */
+      .tpl-builder { padding: 12px 14px; background: var(--white); }
+      .tpl-builder-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+      .tpl-builder-hint { font-size: 12px; color: var(--sub); }
+      .tpl-builder .opt-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }
+      .tpl-builder .opt-label { font-size: 12px; font-weight: 700; color: var(--sub); min-width: 8em; flex-shrink: 0; }
+      .tpl-builder .opt-row label {
+        display: inline-flex; align-items: center; gap: 5px;
+        font-size: 12.5px; line-height: 1.6; cursor: pointer;
+        background: var(--white); border: 1px solid #d7dce3; border-radius: 100px; padding: 3px 12px;
+      }
+      .tpl-builder .opt-row input { accent-color: var(--blue); margin: 0; cursor: pointer; }
+      .tpl-builder .opt-row label:has(input:checked) { background: var(--blue-light); border-color: var(--blue); color: var(--blue); font-weight: 700; }
+      .tpl-builder-out { position: relative; margin-top: 10px; background: #fafbfd; border: 1px solid #edf0f4; border-radius: 4px; padding: 11px 14px; }
 
       /* モバイル：tpl-mini を縦積みにする */
       @media (max-width: 640px) {
@@ -220,6 +235,10 @@
         }
         .tpl-mini .tpl-text { padding-right: 0; }
         .tpl-mini .copy-mini { top: auto; bottom: 6px; right: 8px; }
+        .tpl-builder .opt-label { min-width: 100%; }
+        .tpl-builder-out { padding-bottom: 40px; }
+        .tpl-builder .tpl-text { padding-right: 0; }
+        .tpl-builder .copy-mini { top: auto; bottom: 6px; right: 8px; }
       }
 
       .warn-box ul { padding-left: 22px; margin-top: 4px; }
@@ -612,44 +631,6 @@
       </section>
 
       <!-- ============================================================
-           § 参考  共通確認ポイント（日薬GL由来・折りたたみ）
-           ============================================================ -->
-      <section id="section1" style="margin-bottom:28px;">
-        <div class="section-label">参考</div>
-        <h2 class="section-title">抗うつ薬の共通確認ポイント（日薬GL）</h2>
-        <details class="guide-details">
-          <summary>共通確認ポイントを見る</summary>
-          <div class="guide-details-body">
-            <dl class="ci-list" style="margin:0;">
-              <dt>① 患者に対する処方内容の確認</dt>
-              <dd>薬剤名・用法・用量・服用タイミング等を確認</dd>
-
-              <dt>② アドヒアランスの確認</dt>
-              <dd>飲み忘れ・残薬の有無、服薬の継続状況／<strong>自己判断で中止していないか</strong>を確認（突然の中止で中止後症候群が出ること、症状が安定しても再発予防のため継続が必要なことを説明）</dd>
-
-              <dt>③ 副作用モニタリング・重篤副作用発生時の対処方法の教育</dt>
-              <dd>消化器症状（悪心・下痢、開始初期に多い）、眠気・ふらつき、性機能障害、<strong>賦活症候群（不安・焦燥・不眠・イライラ等が開始初期や増量後に出ることがある）</strong>等をモニタリング。賦活症状・気分や行動の変化・希死念慮等のリスクを踏まえ、症状に応じた相談目安を説明したかを確認</dd>
-
-              <dt>④ 効果の確認</dt>
-              <dd>症状の改善状況、<strong>効果の現れ方には個人差があり効果発現には時間がかかる</strong>こと（すぐに効果の有無を判断しない）の理解、再発予防のため寛解後も一定期間（目安として6ヶ月〜1年）継続する旨の説明</dd>
-
-              <dt>⑤ 併用薬・食事との相互作用の確認</dt>
-              <dd>他のセロトニン作動薬（トリプタン系・トラマドール・MAO阻害薬・他の抗うつ薬・リネゾリド・メチレンブルー等）の重複、CYP代謝阻害薬、OTC・サプリメント（セントジョーンズワート等）の併用、アルコール摂取の確認</dd>
-
-              <dt>⑥ 危険作業従事・家族支援の確認</dt>
-              <dd>自動車運転等の危険作業については薬剤ごとの添付文書記載に応じて指導（一律ではない）／高齢者では転倒・転落・SIADH（低Na血症）リスク、家族支援の有無を確認／<strong>特に開始初期や増量後の自殺念慮・賦活症候群について家族にも変化に注意してもらう</strong></dd>
-
-              <dt>⑦ 受付・服薬指導時のプライバシー配慮</dt>
-              <dd>精神疾患の医療情報は特に慎重な取り扱いが必要。<strong>「薬名」「病名」は声に出さず</strong>、処方箋やお薬手帳を指さしながら<strong>代名詞を用いて</strong>確認する（厚労省「薬局における疾患別対応マニュアル」Q4-3）</dd>
-            </dl>
-            <p style="font-size:12px;color:var(--sub);margin-top:8px;">※ <strong>ザズベイ（ズラノロン）は14日間服用していったん服用終了となる薬（急性期治療に用いる）</strong>であり、「効果発現に時間がかかる」「症状が安定しても再発予防のため長期に継続」といった上記②④の説明はそのまま当てはまらない（<a href="#zuranolone" style="color:var(--blue);">ザズベイの項</a>を参照）。</p>
-            <p style="font-size:12px;color:var(--sub);margin-top:8px;">※ 出典：日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2.1版）」精神神経用薬</p>
-            <p style="font-size:12px;color:var(--blue);margin-top:8px;font-weight:700;">→ 抗うつ薬の具体的な指導内容は SECTION 2 を参照</p>
-          </div>
-        </details>
-      </section>
-
-      <!-- ============================================================
            § 2  薬剤群別テンプレート（初回イ／変更ロ／副作用説明の追記／必要時追記）
            ============================================================ -->
       <section id="section2">
@@ -664,7 +645,7 @@
           下の記載例を使用する場合は、<strong>「薬剤名：〜」</strong>の形で薬剤名を明記し、確認した内容を追記する。説明・指導していない項目は削除する。副作用に関する記載例は、実際に説明した内容に応じて必要なものを追記する。
         </div>
         <div class="tag-legend">
-          <span><i style="background:var(--blue-light);border:1px solid var(--blue)"></i>初回イ（新規／併用下追加／高齢例 など）</span>
+          <span><i style="background:var(--blue-light);border:1px solid var(--blue)"></i>初回イ（新規／若年例／高齢例 など）</span>
           <span><i style="background:#e0f2f1;border:1px solid #0d9488"></i>変更ロ（用量変更／製剤切替 など）</span>
           <span><i style="background:#f2f4f8;border:1px solid #d7dce3"></i>必要時追記</span>
           <span><i style="background:#fef3e8;border:1px solid #f5d4a1"></i>副作用説明の追記（説明した分だけ追加）</span>
@@ -881,7 +862,7 @@
               <div class="tpl-text">SNRI新規処方。処方目的と、相互作用に注意が必要な併用薬・市販薬・サプリ等を確認。脳内のセロトニン・ノルアドレナリンを増やして気持ちの落ち込みを和らげる薬であることを説明、効果発現には時間がかかるため、すぐに効果の有無を判断せず自己判断で中止しないことを指導。開始初期に悪心・口渇・便秘等が出ることがあるが多くは1〜2週で軽快する旨を説明。開始初期や増量後に落ち着かなさ・不安・焦り・不眠・イライラ・衝動的な行動などがみられることがあるため、普段と違う変化があれば早めに相談するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：ベンラファキシン</span>
-              <div class="tpl-text">ベンラファキシン新規処方。徐放性製剤のため噛まず・砕かず・そのまま服用するよう指導。中止後症候群が特に出やすい薬剤のため、自己判断で中止・減量しないこと、減量・中止については主治医に相談することを徹底説明。高用量での血圧上昇に注意し、必要に応じて家庭血圧の測定を提案。</div>
+              <div class="tpl-text">ベンラファキシン新規処方。徐放性製剤のため噛まず・砕かず・そのまま服用するよう指導。中止後症候群が特に出やすい薬剤のため、自己判断で中止・減量せず、減量・中止については主治医に相談するよう重ねて説明。高用量での血圧上昇に注意し、必要に応じて家庭血圧の測定を提案。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：デュロキセチン</span>
               <div class="tpl-text">デュロキセチン新規処方（処方目的：うつ病・うつ状態）。肝機能障害に注意が必要な旨、強いだるさ・黄疸・褐色尿等があれば早めに相談・受診するよう説明。飲酒習慣の有無を確認、飲酒がある場合は肝への負担を避けるため控えるよう指導（多飲例・肝機能低下例は特に注意）。</div>
@@ -983,7 +964,7 @@
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：若年例（24歳以下）</span>
               <div class="tpl-text">若年例（24歳以下）へのボルチオキセチン新規処方。開始初期や増量後に、落ち着かなさ・不安・焦り・不眠・イライラ・衝動的な行動などがみられることがあるため、普段と違う変化があれば早めに相談するよう本人に説明。家族同席時は、本人の様子にいつもと違う変化があれば早めに医師・薬剤師へ連絡するよう家族にも依頼（若年では特に開始初期の変化に注意が必要なため）。自己判断で中止しないことも説明。</div>
               <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ:高齢例</span>
+            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
               <div class="tpl-text">高齢者へのボルチオキセチン新規処方。SIADH・低Na血症のリスク、転倒リスクの上昇を説明。家族支援の有無を確認、家族同席時・必要に応じて家族にも症状の変化に注意してもらうよう説明。自己判断で中止しないよう注意喚起。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
@@ -1205,7 +1186,7 @@
               <div class="tpl-text">高齢者への三環系／四環系抗うつ薬新規処方。抗コリン負荷・転倒・誤嚥・起立性低血圧・認知機能低下のリスクが上がる旨を説明。家族支援の有無を確認、家族同席時・必要に応じて家族にも症状の変化に注意してもらうよう説明。立ち上がりはゆっくり段階的に行うよう指導、便秘・尿閉・霧視等があれば早めに相談するよう説明。運転・危険作業の有無を確認、運転する場合は眠気・集中力低下・転倒リスクから従事しないよう注意喚起。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：服薬管理に配慮が必要な例</span>
-              <div class="tpl-text">服薬管理に配慮が必要な例（希死念慮の訴え・既往等）への三環系／四環系抗うつ薬新規処方。決められた量を必ず守り、超えて服用しないよう徹底指導。服薬管理に不安がある場合は一包化や家族による管理を提案。落ち着かなさ・不安・焦り・衝動的な行動など、普段と違う変化があればすぐに連絡するよう本人・家族に説明。</div>
+              <div class="tpl-text">服薬管理に配慮が必要な例（希死念慮の訴え・既往等）への三環系／四環系抗うつ薬新規処方。決められた量を必ず守り、超えて服用しないよう指導。服薬管理に不安がある場合は一包化や家族による管理を提案。落ち着かなさ・不安・焦り・衝動的な行動など、普段と違う変化があればすぐに連絡するよう本人・家族に説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
               <div class="tpl-text">用量変更を確認。変更前後の気分・抗コリン症状・起立性低血圧の変化を確認。新用量での服用方法を再説明、症状出現時は早めに相談するよう再指導。自己判断で中止しないよう注意喚起。</div>
@@ -1241,7 +1222,7 @@
           <div class="tpl-warn">
             <div class="tpl-warn-title">ザズベイ使用時の記載・指導の注意（他群テンプレを流用しない）</div>
             本剤は<strong>ズラノロン30mgを1日1回、14日間夕食後に服用する</strong>薬であり、長期継続を前提とした従来の抗うつ薬とは使い方が異なる。そのため<strong>「効果発現には時間がかかる」「症状が安定しても再発予防のため長期に継続」といった他群の記載・指導テンプレートはそのまま流用しない</strong>。<br />
-            記載・指導の主眼は、<strong>14日間の服用方法・服用期間中の運転等危険作業／飲酒の予定確認と該当時の回避・自己判断で増量・中止・再開しないこと</strong>に置く。運転・飲酒は全員に一律「避けるよう指導した」と残すのではなく、<strong>予定の有無を確認し、該当する場合に回避指導した旨を記録する</strong>（運転・飲酒しない患者に一律の指導記録を残さない）。傾眠・めまいの頻度、相互作用、妊婦禁忌などの薬剤側の詳細は、下の「この薬の確認項目」「詳細・背景知識」を参照。
+            記載・指導の主眼は、<strong>14日間の服用方法・服用期間中の運転等危険作業／飲酒の予定確認と該当時の回避・自己判断で増量・中止・再開しないこと</strong>に置く。運転・飲酒は全員に一律「避けるよう指導した」と残すのではなく、<strong>予定の有無を確認し、該当する場合に回避指導した旨を記録する</strong>。下の初回イの記載例は、<strong>予定の有無を選ぶと文章が切り替わる組み立て式</strong>にしている。傾眠・めまいの頻度、相互作用、妊婦禁忌などの薬剤側の詳細は、下の「この薬の確認項目」「詳細・背景知識」を参照。
           </div>
 
           <div class="drug-check-box">
@@ -1304,22 +1285,33 @@
           <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。本剤は他群と使い方が異なるため、<strong>他の抗うつ薬のテンプレを流用しない</strong>。</p>
           <p style="font-size:12px;color:var(--sub);margin:0 0 6px;">※ <strong>算定区分の目安</strong>：その患者にザズベイが<strong>初めて処方された場合はイ</strong>。前回から間隔をあけ、従来と同一処方で再治療となる場合は、服薬状況・副作用・病状等の変化を踏まえ、<strong>特に指導が必要と保険薬剤師が認めた場合にロ</strong>として算定できる（毎回機械的に算定するものではない）。その際は<strong>特に指導が必要と判断した理由の要点</strong>を薬歴に記載する（別添3）。用法・用量変更によるロは、用量固定のため通常想定しにくい。</p>
 
+          <div class="tpl-set tpl-builder" id="zzb-builder">
+            <div class="tpl-builder-head">
+              <span class="tpl-tag init">初回イ：新規（組み立て式）</span>
+              <span class="tpl-builder-hint">当てはまる状況を選ぶと、下の記載例が切り替わる。</span>
+            </div>
+            <div class="tpl-builder-opts">
+              <div class="opt-row"><span class="opt-label">患者</span>
+                <label><input type="radio" name="zzb-pt" value="general" checked>一般</label>
+                <label><input type="radio" name="zzb-pt" value="young">若年（24歳以下）</label>
+                <label><input type="radio" name="zzb-pt" value="elder">高齢</label>
+              </div>
+              <div class="opt-row"><span class="opt-label">運転等危険作業</span>
+                <label><input type="radio" name="zzb-drive" value="no" checked>予定なし</label>
+                <label><input type="radio" name="zzb-drive" value="yes">予定あり</label>
+              </div>
+              <div class="opt-row"><span class="opt-label">飲酒</span>
+                <label><input type="radio" name="zzb-alc" value="no" checked>予定なし</label>
+                <label><input type="radio" name="zzb-alc" value="yes">予定あり</label>
+              </div>
+            </div>
+            <div class="tpl-builder-out">
+              <div class="tpl-text" id="zzb-text">ズラノロン（ザズベイ）新規処方。処方目的、服用開始日、14日間の服用方法、服用期間中の運転等危険作業・飲酒の予定（いずれも予定なし）、併用薬を確認。1日1回夕食後に14日間服用する薬であり、自己判断で増量・中止・再開しないよう説明。眠気・ふらつきが出る場合があるため注意するよう説明。普段と違う変化があれば早めに相談するよう説明。</div>
+              <button class="copy-mini">コピー</button>
+            </div>
+          </div>
+
           <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
-              <div class="tpl-text">ズラノロン（ザズベイ）新規処方。処方目的、服用開始日、14日間の服用方法、服用期間中の運転等危険作業の予定・飲酒予定、併用薬を確認。1日1回夕食後に14日間服用する薬であり、自己判断で増量・中止・再開しないよう説明。眠気・めまいが出やすいため、該当する作業や飲酒予定がある場合は服用期間中避ける必要があることを説明。普段と違う変化があれば早めに相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：若年例（24歳以下）</span>
-              <div class="tpl-text">若年例（24歳以下）へのズラノロン（ザズベイ）新規処方。1日1回夕食後に14日間服用する薬であること、服用期間中の運転等危険作業・飲酒の予定を確認し該当時は避けるよう説明。開始初期に落ち着かなさ・不安・焦り・不眠・衝動的な行動などがみられることがあるため、普段と違う変化があれば早めに相談するよう本人に説明。家族同席時は、本人の様子にいつもと違う変化があれば早めに連絡するよう家族にも依頼。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
-              <div class="tpl-text">高齢者へのズラノロン（ザズベイ）新規処方。傾眠・めまいによる転倒リスクの上昇を説明。服用期間中の運転等危険作業の予定を確認、運転する場合は傾眠・運転能力低下のため避けるよう指導。家族支援の有無を確認、家族同席時・必要に応じて家族にも眠気・ふらつき・転倒に注意してもらうよう説明。1日1回夕食後に14日間服用する薬であることを説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記：予定なし</span>
-              <div class="tpl-text">服用期間中の運転等危険作業の予定なし、飲酒予定なしを確認。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記：予定あり</span>
-              <div class="tpl-text">服用期間中に自動車運転（通勤等）／飲酒の予定を確認。眠気・めまいが出やすく投与開始翌日に運転能力の低下が確認されているため、服用期間中は運転を避ける（代替手段を検討する）／飲酒を避けるよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">中枢神経抑制薬（ベンゾジアゼピン系等）・アルコールの併用あり（〇〇）。眠気・ふらつきが増強する可能性があるため、服用期間中は自動車運転等の危険作業に従事しないよう再指導、飲酒は避けるよう説明。</div>
               <button class="copy-mini">コピー</button></div>
@@ -1384,27 +1376,6 @@
           ※ 「変更のあった薬」を起点に、状況に最も近いバリエーションを1つ選び、必要なら必要時追記から該当するものを足す想定。<br />
           ※ 併用薬がある場合は薬歴冒頭に併用薬名を明記。<strong>追加された薬がハイリスク薬なら、その追加薬について「新規イ」として扱う</strong>のが基本。既存ハイリスク薬の相互作用・リスクが変化した場合は「必要時追記」で「併用薬変更あり」として記載するか、必要に応じて<strong>「副作用・服薬状況等の変化によるロ」</strong>として個別判断する。<br />
           ※ ミルタザピン・トラゾドンの<strong>睡眠補助目的（適応外）処方は加算1の算定対象外</strong>。
-        </p>
-      </section>
-
-      <!-- ============================================================
-           § 個別指導での指摘事例
-           ============================================================ -->
-      <section id="kobetsu">
-        <div class="section-label">個別指導</div>
-        <h2 class="section-title">個別指導での指摘事例</h2>
-        <div class="drug-check-box">
-          <div class="drug-check-box-title">この薬効群で特に確認されやすいポイント</div>
-          <ul>
-            <li>記録から<strong>対象薬剤（「薬剤名：〜」）</strong>が分かるか</li>
-            <li>何を確認したか（処方目的、併用薬、服薬状況、必要に応じた症状等）が書かれているか</li>
-            <li>確認しただけで終わらず、<strong>患者の状況に応じた指導内容</strong>になっているか</li>
-            <li>賦活症候群・中止後症候群など、必要な副作用の説明を記録したか</li>
-            <li>「副作用・服薬状況等の変化によるロ」では、<strong>変化の確認・指導が必要と判断した理由・指導内容</strong>が残っているか</li>
-          </ul>
-        </div>
-        <p style="font-size:12px;color:var(--sub);margin-top:10px;">
-          ※ 個別指導の一般的な考え方・過去の指摘の読み方は <a href="ハイリスク薬指導.html#shido-chui" style="color:var(--blue);">ハイリスク薬指導「個別指導での注意点」</a> に集約している。
         </p>
       </section>
 
@@ -1479,6 +1450,65 @@
       </section>
 
       <!-- ============================================================
+           § 参考  共通確認ポイント（日薬GL由来・折りたたみ）
+           ============================================================ -->
+      <section id="section1" style="margin-bottom:28px;">
+        <div class="section-label">参考</div>
+        <h2 class="section-title">抗うつ薬の共通確認ポイント（日薬GL）</h2>
+        <details class="guide-details">
+          <summary>共通確認ポイントを見る</summary>
+          <div class="guide-details-body">
+            <dl class="ci-list" style="margin:0;">
+              <dt>① 患者に対する処方内容の確認</dt>
+              <dd>薬剤名・用法・用量・服用タイミング等を確認</dd>
+
+              <dt>② アドヒアランスの確認</dt>
+              <dd>飲み忘れ・残薬の有無、服薬の継続状況／<strong>自己判断で中止していないか</strong>を確認（突然の中止で中止後症候群が出ること、症状が安定しても再発予防のため継続が必要なことを説明）</dd>
+
+              <dt>③ 副作用モニタリング・重篤副作用発生時の対処方法の教育</dt>
+              <dd>消化器症状（悪心・下痢、開始初期に多い）、眠気・ふらつき、性機能障害、<strong>賦活症候群（不安・焦燥・不眠・イライラ等が開始初期や増量後に出ることがある）</strong>等をモニタリング。賦活症状・気分や行動の変化・希死念慮等のリスクを踏まえ、症状に応じた相談目安を説明したかを確認</dd>
+
+              <dt>④ 効果の確認</dt>
+              <dd>症状の改善状況、<strong>効果の現れ方には個人差があり効果発現には時間がかかる</strong>こと（すぐに効果の有無を判断しない）の理解、再発予防のため寛解後も一定期間（目安として6ヶ月〜1年）継続する旨の説明</dd>
+
+              <dt>⑤ 併用薬・食事との相互作用の確認</dt>
+              <dd>他のセロトニン作動薬（トリプタン系・トラマドール・MAO阻害薬・他の抗うつ薬・リネゾリド・メチレンブルー等）の重複、CYP代謝阻害薬、OTC・サプリメント（セントジョーンズワート等）の併用、アルコール摂取の確認</dd>
+
+              <dt>⑥ 危険作業従事・家族支援の確認</dt>
+              <dd>自動車運転等の危険作業については薬剤ごとの添付文書記載に応じて指導（一律ではない）／高齢者では転倒・転落・SIADH（低Na血症）リスク、家族支援の有無を確認／<strong>特に開始初期や増量後の自殺念慮・賦活症候群について家族にも変化に注意してもらう</strong></dd>
+
+              <dt>⑦ 受付・服薬指導時のプライバシー配慮</dt>
+              <dd>精神疾患の医療情報は特に慎重な取り扱いが必要。<strong>「薬名」「病名」は声に出さず</strong>、処方箋やお薬手帳を指さしながら<strong>代名詞を用いて</strong>確認する（厚労省「薬局における疾患別対応マニュアル」Q4-3）</dd>
+            </dl>
+            <p style="font-size:12px;color:var(--sub);margin-top:8px;">※ <strong>ザズベイ（ズラノロン）は14日間服用していったん服用終了となる薬（急性期治療に用いる）</strong>であり、「効果発現に時間がかかる」「症状が安定しても再発予防のため長期に継続」といった上記②④の説明はそのまま当てはまらない（<a href="#zuranolone" style="color:var(--blue);">ザズベイの項</a>を参照）。</p>
+            <p style="font-size:12px;color:var(--sub);margin-top:8px;">※ 出典：日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2.1版）」精神神経用薬</p>
+            <p style="font-size:12px;color:var(--blue);margin-top:8px;font-weight:700;">→ 具体的な指導内容・記載例は<a href="#section2" style="color:var(--blue);">薬剤群別テンプレート</a>を参照</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- ============================================================
+           § 個別指導での指摘事例
+           ============================================================ -->
+      <section id="kobetsu">
+        <div class="section-label">個別指導</div>
+        <h2 class="section-title">個別指導での指摘事例</h2>
+        <div class="drug-check-box">
+          <div class="drug-check-box-title">この薬効群で特に確認されやすいポイント</div>
+          <ul>
+            <li>記録から<strong>対象薬剤（「薬剤名：〜」）</strong>が分かるか</li>
+            <li>何を確認したか（処方目的、併用薬、服薬状況、必要に応じた症状等）が書かれているか</li>
+            <li>確認しただけで終わらず、<strong>患者の状況に応じた指導内容</strong>になっているか</li>
+            <li>賦活症候群・中止後症候群など、必要な副作用の説明を記録したか</li>
+            <li>「副作用・服薬状況等の変化によるロ」では、<strong>変化の確認・指導が必要と判断した理由・指導内容</strong>が残っているか</li>
+          </ul>
+        </div>
+        <p style="font-size:12px;color:var(--sub);margin-top:10px;">
+          ※ 個別指導の一般的な考え方・過去の指摘の読み方は <a href="ハイリスク薬指導.html#shido-chui" style="color:var(--blue);">ハイリスク薬指導「個別指導での注意点」</a> に集約している。
+        </p>
+      </section>
+
+      <!-- ============================================================
            § SOURCE（折りたたみ）
            ============================================================ -->
       <section>
@@ -1529,6 +1559,50 @@
       window.addEventListener('afterprint', function () {
         document.body.classList.remove('print-checklist-only');
       });
+    </script>
+    <script>
+      // ザズベイ 初回イ：組み立て式テンプレ（患者区分×運転×飲酒で記載例を切り替え）
+      (function () {
+        var root = document.getElementById('zzb-builder');
+        if (!root) return;
+        var out = document.getElementById('zzb-text');
+        function val(name) { return root.querySelector('input[name="' + name + '"]:checked').value; }
+        function build() {
+          var pt = val('zzb-pt');
+          var drive = val('zzb-drive') === 'yes';
+          var alc = val('zzb-alc') === 'yes';
+          var s = [];
+          s.push(pt === 'young' ? '若年例（24歳以下）へのズラノロン（ザズベイ）新規処方。'
+               : pt === 'elder' ? '高齢者へのズラノロン（ザズベイ）新規処方。'
+               : 'ズラノロン（ザズベイ）新規処方。');
+          var plan = (!drive && !alc) ? 'いずれも予定なし'
+                   : (drive && alc)   ? 'いずれも予定あり'
+                   : drive            ? '運転等の予定あり・飲酒予定なし'
+                                      : '運転等の予定なし・飲酒予定あり';
+          s.push('処方目的、服用開始日、14日間の服用方法、服用期間中の運転等危険作業・飲酒の予定（' + plan + '）、併用薬を確認。');
+          s.push('1日1回夕食後に14日間服用する薬であり、自己判断で増量・中止・再開しないよう説明。');
+          if (!drive && !alc) {
+            s.push('眠気・ふらつきが出る場合があるため注意するよう説明。');
+          } else if (drive && alc) {
+            s.push('眠気・めまいがあらわれることがあり、投与開始翌日に運転能力の低下が確認されているため、服用期間中は運転等危険作業を避ける（代替手段を検討する）よう指導。アルコールも眠気・ふらつきを増強するため、服用期間中は飲酒を避けるよう指導。');
+          } else if (drive) {
+            s.push('眠気・めまいがあらわれることがあり、投与開始翌日に運転能力の低下が確認されているため、服用期間中は運転等危険作業を避ける（代替手段を検討する）よう指導。');
+          } else {
+            s.push('眠気・ふらつきが出る場合があるため注意するよう説明。アルコールにより眠気・ふらつきが増強されるおそれがあるため、服用期間中は飲酒を避けるよう指導。');
+          }
+          if (pt === 'elder') {
+            s.push('傾眠・めまいによる転倒リスクの上昇を説明。家族支援の有無を確認、家族同席時・必要に応じて家族にも眠気・ふらつき・転倒に注意してもらうよう説明。');
+          }
+          if (pt === 'young') {
+            s.push('開始初期に落ち着かなさ・不安・焦り・不眠・衝動的な行動などがみられることがあるため、普段と違う変化があれば早めに相談するよう本人に説明。家族同席時は、本人の様子にいつもと違う変化があれば早めに連絡するよう家族にも依頼。');
+          } else {
+            s.push('普段と違う変化があれば早めに相談するよう説明。');
+          }
+          out.textContent = s.join('');
+        }
+        root.addEventListener('change', build);
+        build();
+      })();
     </script>
     <script>
       document.querySelectorAll('.copy-mini').forEach(btn => {
