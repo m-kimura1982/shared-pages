@@ -10,15 +10,18 @@
  */
 (function () {
   // ── ページごとの所属カテゴリ・表示名 ──
-  // category: 'home' | 'kaitei' | 'tools' | 'knowledge'
+  // category: 'home' | 'kaitei' | 'kasan' | 'checklist' | 'tools' | 'knowledge' | 'jimu'
+  // 未登録のページはサイト内検索・パンくずに出ない。新規公開時は必ずここに1行足すこと
   const PAGES = {
     // サイト構造
     'index.html': { category: 'home', title: 'ホーム' },
     'updates.html': { category: 'home', title: '更新履歴' },
     'kaitei2026.html': { category: 'kaitei', title: '2026改定資料' },
     '加算まとめ.html': { category: 'kasan', title: '加算まとめ' },
+    'checklists.html': { category: 'checklist', title: '算定チェックリスト' },
     'tools.html': { category: 'tools', title: '実務ツール集' },
     'knowledge.html': { category: 'knowledge', title: '実務ナレッジ集' },
+    '事務スタッフ向け.html': { category: 'jimu', title: '事務スタッフ向け' },
 
     // ツール
     'gigi-search.html': { category: 'tools', title: '疑義解釈 全文検索' },
@@ -31,37 +34,51 @@
     '基礎的医薬品追加リストR8_4.html': { category: 'knowledge', title: '基礎的医薬品 追加リスト（R8.4）' },
     '入力画面で解説_2026改定後の入力方法.html': { category: 'knowledge', title: '入力画面で解説｜2026改定後の入力方法（Pharnes）' },
 
-    // 改定資料（個別）
-    '調剤基本料_2026改定.html': { category: 'kaitei', title: '調剤基本料' },
+    // 加算まとめ（恒久ページ。kaitei2026 のカードからもリンクされるが、所属は加算まとめ）
+    '調剤基本料_2026改定.html': { category: 'kasan', title: '調剤基本料' },
+    '地域支援医薬品供給対応体制加算.html': { category: 'kasan', title: '地域支援・医薬品供給対応体制加算' },
+    '在宅薬学総合体制加算2026.html': { category: 'kasan', title: '在宅薬学総合体制加算' },
+    'バイオ後続品調剤体制加算.html': { category: 'kasan', title: 'バイオ後続品調剤体制加算' },
+    '電子的調剤情報連携体制整備加算_2026改定.html': { category: 'kasan', title: '電子的調剤情報連携体制整備加算' },
+    '調剤管理料_2026改定.html': { category: 'kasan', title: '調剤管理料' },
+    '調剤時残薬調整加算.html': { category: 'kasan', title: '調剤時残薬調整加算' },
+    '薬学的有害事象等防止加算.html': { category: 'kasan', title: '薬学的有害事象等防止加算' },
+    '服薬管理指導料.html': { category: 'kasan', title: '服薬管理指導料' },
+    '服薬管理指導料3・4_施設訪問・オンライン.html': { category: 'kasan', title: '服薬管理指導料 3・4（施設訪問・オンライン）' },
+    '吸入薬指導加算2026.html': { category: 'kasan', title: '吸入薬指導加算' },
+    'かかりつけ薬剤師フォローアップ加算.html': { category: 'kasan', title: 'かかりつけ薬剤師フォローアップ加算' },
+    'かかりつけ薬剤師訪問加算.html': { category: 'kasan', title: 'かかりつけ薬剤師訪問加算' },
+    '服用薬剤調整支援料２_2026改定.html': { category: 'kasan', title: '服用薬剤調整支援料２' },
+    '在宅患者訪問薬剤管理指導料_算定間隔2026.html': { category: 'kasan', title: '訪問薬剤管理指導料の算定間隔' },
+    '複数名薬剤管理指導訪問料.html': { category: 'kasan', title: '複数名薬剤管理指導訪問料' },
+    '訪問薬剤管理医師同時指導料.html': { category: 'kasan', title: '訪問薬剤管理医師同時指導料' },
+
+    // 算定チェックリスト
+    '選定療養_実務チェックリスト.html': { category: 'checklist', title: '選定療養 算定チェックリスト' },
+    '調剤時残薬調整加算_実務チェックリスト.html': { category: 'checklist', title: '調剤時残薬調整加算 算定チェックリスト' },
+    '薬学的有害事象等防止加算_実務チェックリスト.html': { category: 'checklist', title: '薬学的有害事象等防止加算 算定チェックリスト' },
+    'かかりつけ薬剤師フォローアップ加算_実務チェックリスト.html': { category: 'checklist', title: 'かかりつけ薬剤師フォローアップ加算 算定チェックリスト' },
+    'かかりつけ薬剤師訪問加算_実務チェックリスト.html': { category: 'checklist', title: 'かかりつけ薬剤師訪問加算 算定チェックリスト' },
+    '栄養保持を目的とした医薬品_確認チェックリスト.html': { category: 'checklist', title: '栄養保持を目的とした医薬品 確認チェックリスト' },
+    '吸入薬指導加算_実務チェックリスト.html': { category: 'checklist', title: '吸入薬指導加算 算定チェックリスト' },
+
+    // 事務スタッフ向け（個別）
+    '事務スタッフ向け_2026調剤報酬改定ポイント整理.html': { category: 'jimu', title: '事務スタッフ向け 改定ポイント整理' },
+    '事務スタッフ向け_2026改定サマリ.html': { category: 'jimu', title: '事務スタッフ向け 2026改定サマリ' },
+
+    // 改定資料(個別)
     '調剤基本料フローチャート.html': { category: 'kaitei', title: '調剤基本料フローチャート' },
-    '調剤管理料_2026改定.html': { category: 'kaitei', title: '調剤管理料' },
     '調剤ベースアップ評価料.html': { category: 'kaitei', title: '調剤ベースアップ評価料' },
     '調剤物価対応料.html': { category: 'kaitei', title: '調剤物価対応料' },
-    '調剤時残薬調整加算.html': { category: 'kaitei', title: '調剤時残薬調整加算' },
     '調剤報酬体系図_2026改定.html': { category: 'kaitei', title: '調剤報酬体系図' },
     '調剤報酬改定2026_ダイジェスト.html': { category: 'kaitei', title: '2026改定 ダイジェスト' },
     '調剤報酬点数早見表2026.html': { category: 'kaitei', title: '調剤報酬点数早見表' },
-    '服薬管理指導料.html': { category: 'kaitei', title: '服薬管理指導料' },
-    '服用薬剤調整支援料２_2026改定.html': { category: 'kaitei', title: '服用薬剤調整支援料２' },
     '服用薬剤調整支援料２_資格取得ステップ.html': { category: 'kaitei', title: '服用薬剤調整支援料２ 資格取得ステップ' },
-    '吸入薬指導加算2026.html': { category: 'kaitei', title: '吸入薬指導加算' },
-    '在宅薬学総合体制加算2026.html': { category: 'kaitei', title: '在宅薬学総合体制加算' },
     '在宅薬学総合体制加算2イ_特例摘要欄ガイド.html': { category: 'kaitei', title: '在宅薬学総合体制加算２イ特例 摘要欄ガイド' },
-    '在宅患者訪問薬剤管理指導料_算定間隔2026.html': { category: 'kaitei', title: '訪問薬剤管理指導料の算定間隔' },
-    '電子的調剤情報連携体制整備加算_2026改定.html': { category: 'kaitei', title: '電子的調剤情報連携体制整備加算' },
-    '地域支援医薬品供給対応体制加算.html': { category: 'kaitei', title: '地域支援・医薬品供給対応体制加算' },
-    'バイオ後続品調剤体制加算.html': { category: 'kaitei', title: 'バイオ後続品調剤体制加算' },
-    '薬学的有害事象等防止加算.html': { category: 'kaitei', title: '薬学的有害事象等防止加算' },
     '門前薬局等立地依存減算.html': { category: 'kaitei', title: '門前薬局等立地依存減算' },
     'かかりつけ薬剤師_算定一覧2026.html': { category: 'kaitei', title: 'かかりつけ薬剤師 算定一覧' },
     '【簡易版】かかりつけ薬剤師に関わる管理料・加算一覧.html': { category: 'kaitei', title: 'かかりつけ薬剤師 算定一覧（簡易版）' },
-    'かかりつけ薬剤師フォローアップ加算.html': { category: 'kaitei', title: 'かかりつけ薬剤師フォローアップ加算' },
-    'かかりつけ薬剤師訪問加算.html': { category: 'kaitei', title: 'かかりつけ薬剤師訪問加算' },
-    '複数名薬剤管理指導訪問料.html': { category: 'kaitei', title: '複数名薬剤管理指導訪問料' },
-    '訪問薬剤管理医師同時指導料.html': { category: 'kaitei', title: '訪問薬剤管理医師同時指導料' },
     '選定療養_概要2026.html': { category: 'kaitei', title: '選定療養 概要' },
-    '選定療養_実務チェックリスト.html': { category: 'kaitei', title: '選定療養 算定チェックリスト' },
-    '選定療養_計算方法2026.html': { category: 'kaitei', title: '選定療養 計算方法' },
     '疑義解釈_その1_2026.html': { category: 'kaitei', title: '疑義解釈 その1' },
     '疑義解釈_その2_2026.html': { category: 'kaitei', title: '疑義解釈 その2' },
     '疑義解釈_その3_2026.html': { category: 'kaitei', title: '疑義解釈 その3' },
@@ -82,8 +99,10 @@
     home: { name: 'ホーム', url: 'index.html' },
     kaitei: { name: '2026改定資料', url: 'kaitei2026.html' },
     kasan: { name: '加算まとめ', url: '加算まとめ.html' },
+    checklist: { name: '算定チェックリスト', url: 'checklists.html' },
     tools: { name: '実務ツール集', url: 'tools.html' },
     knowledge: { name: '実務ナレッジ集', url: 'knowledge.html' },
+    jimu: { name: '事務スタッフ向け', url: '事務スタッフ向け.html' },
   };
 
   // サイト内検索（site-search.js）から参照
@@ -196,10 +215,12 @@
   `;
 
   // ── HTML 構築 ──
+  // 事務スタッフ向け（jimu）はナビに出さない（項目過多回避。トップカード・検索・パンくずで到達できる）
   const navItems = [
     { cat: 'home', label: 'ホーム' },
     { cat: 'kaitei', label: '改定資料' },
     { cat: 'kasan', label: '加算まとめ' },
+    { cat: 'checklist', label: 'チェックリスト' },
     { cat: 'tools', label: 'ツール' },
     { cat: 'knowledge', label: 'ナレッジ' },
   ];
