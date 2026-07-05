@@ -45,8 +45,11 @@ window.__pageMeta = {
   "在宅薬学総合体制加算2026.html": {
     "lastUpdated": "2026-06-03"
   },
+  "index.html": {
+    "lastUpdated": "2026-07-05"
+  },
   "updates.html": {
-    "lastUpdated": "2026-06-26"
+    "lastUpdated": "2026-07-05"
   },
   "入力画面で解説_2026改定後の入力方法.html": {
     "lastUpdated": "2026-05-28"
@@ -90,14 +93,8 @@ window.__pageMeta = {
   "疑義解釈_その3_2026.html": {
     "lastUpdated": "2026-04-22"
   },
-  "選定療養_計算方法2026.html": {
-    "lastUpdated": "2026-03-29"
-  },
   "電子的調剤情報連携体制整備加算_2026改定.html": {
     "lastUpdated": "2026-04-19"
-  },
-  "index.html": {
-    "lastUpdated": "2026-06-26"
   },
   "かかりつけ薬剤師_算定一覧2026.html": {
     "lastUpdated": "2026-04-01"
@@ -151,7 +148,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-06-19"
   },
   "訪問薬剤管理医師同時指導料.html": {
-    "lastUpdated": "2026-05-14"
+    "lastUpdated": "2026-06-26"
   },
   "事務スタッフ向け_2026調剤報酬改定ポイント整理.html": {
     "lastUpdated": "2026-06-20"
