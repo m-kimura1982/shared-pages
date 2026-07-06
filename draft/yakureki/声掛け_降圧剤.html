@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>降圧剤｜投薬時の声掛けと薬歴記載例｜薬歴マニュアル</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+    :root {
+      --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+      --pad-card:22px; --gap-card:16px;
+      --blue:#1e5fa8; --ink:#222222;
+      --bg:#f3f4f6; --white:#ffffff;
+      --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+      --border:#d1d5db; --border-dk:#9ca3af;
+      --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px;
+      --warn-bg:#fffbe6; --warn-bd:#e0b000;
+      --txt-2:#444444; --txt-3:#5e6470;
+    }
+    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:0 16px 60px; }
+    .draft-banner { margin:0 -16px 18px; background:#fff8e1; border-bottom:var(--bw-h) solid #e5c200; color:#5f4b00; font-size:var(--text-xs); font-weight:700; text-align:center; padding:7px 16px; }
+    header { max-width:900px; margin:0 auto 14px; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+    .back-link { display:inline-flex; align-items:center; color:var(--blue); border:var(--bw-h) solid var(--blue); border-radius:var(--radius-sm); padding:4px 12px; text-decoration:none; font-size:var(--text-xs); font-weight:700; background:var(--white); }
+    .site-title { font-size:var(--text-xs); color:var(--txt-3); font-weight:700; }
+    .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+    .page-title-wrap { padding:6px 0; }
+    .page-title-wrap h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+    .page-title-wrap p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+
+    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+    .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+    .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+    .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+
+    /* 注意枠（黄 .guard 系。アンバーは使わない） */
+    .box-guard { background:var(--warn-bg); border:var(--bw-h) solid var(--warn-bd); border-left:var(--bw-a) solid var(--warn-bd); border-radius:var(--radius-sm); padding:14px 18px; }
+    .box-guard p { font-size:var(--text-sm); color:var(--txt-2); line-height:1.8; }
+    .box-guard b { color:var(--ink); }
+
+    /* グループ小見出し（青四角）。画面上の案内用でコピー文には入れない */
+    .grp { font-weight:900; font-size:var(--text-sm); display:flex; align-items:center; gap:8px; margin:17px 0 8px; }
+    .grp::before { content:""; width:8px; height:8px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+    .card > .grp:first-of-type { margin-top:4px; }
+
+    /* 声掛けの例（会話。コピー対象にしない） */
+    .say { background:var(--box-blue); border-radius:14px; padding:9px 15px; font-size:var(--text-sm); line-height:1.75; }
+    .say + .say { margin-top:7px; }
+    .say .who { font-size:var(--text-xs); font-weight:700; color:var(--txt-3); margin-right:6px; }
+
+    /* 拾うポイント */
+    .bullet { display:flex; gap:6px; font-size:var(--text-sm); color:var(--txt-2); }
+    .bullet + .bullet { margin-top:5px; }
+    .bullet > span:first-child { flex-shrink:0; color:#999; }
+    .bullet b { color:var(--ink); }
+
+    /* 記載例＋コピーボタン */
+    .tpl { display:flex; align-items:flex-start; gap:10px; padding:11px 13px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); background:var(--white); }
+    .tpl + .tpl { margin-top:8px; }
+    .tag { flex-shrink:0; font-size:var(--text-xs); font-weight:700; color:var(--txt-3); background:var(--box-gray); border-radius:4px; padding:2px 9px; margin-top:3px; white-space:nowrap; }
+    .tpl-text { flex:1; font-size:var(--text-sm); line-height:1.75; }
+    .copy-mini { flex-shrink:0; font-family:inherit; cursor:pointer; border:var(--bw-h) solid var(--blue); background:var(--white); color:var(--blue); font-size:var(--text-xs); font-weight:700; padding:5px 13px; border-radius:100px; white-space:nowrap; }
+    .copy-mini:hover { background:var(--box-blue); }
+    .copy-mini.copied { background:var(--blue); color:#fff; border-color:var(--blue); }
+
+    .page-foot { font-size:var(--text-xs); color:var(--txt-3); text-align:right; padding-top:2px; }
+
+    @media (max-width:640px) {
+      body { font-size:13px; padding:0 12px 40px; line-height:1.75; }
+      :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+      .draft-banner { margin:0 -12px 14px; }
+      .card { padding:14px; border-radius:8px; }
+      .tpl { flex-direction:column; gap:7px; }
+      .tag { margin-top:0; align-self:flex-start; }
+      .copy-mini { align-self:flex-end; }
+    }
+    @media print {
+      @page { size:A4 portrait; margin:7mm; }
+      body { background:#fff; padding:0; font-size:10.5px; line-height:1.45; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .draft-banner, header, .copy-mini { display:none; }
+      .page { gap:7px; max-width:none; }
+      .card { border:0.5px solid #ccc; border-radius:6px; padding:9px 11px; break-inside:avoid; }
+      .grp { font-size:10px; margin:6px 0 3px; }
+      .say { padding:4px 8px; }
+      .tpl { padding:5px 7px; }
+      .tpl-text { font-size:9.5px; }
+      .page-foot { display:none; }
+      a { color:inherit; text-decoration:none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="draft-banner">非公開作業中ページ｜内容は精査中のため公開ナビゲーションには掲載していません</div>
+  <header>
+    <a href="index.html" class="back-link">← 薬歴マニュアルに戻る</a>
+    <span class="site-title">調剤報酬まとめ</span>
+  </header>
+
+  <div class="page">
+    <div class="page-title-wrap">
+      <h1>降圧剤｜投薬時の声掛けと薬歴記載例</h1>
+      <p>「血圧どうですか」の繰り返しから抜け出すための話題と記載例。</p>
+    </div>
+
+    <div class="box-guard">
+      <p>患者・処方に合う話題を選ぶ。副作用や食品の話題は<b>該当する薬のときに</b>。目標値は一般的な目安を伝えるまでにとどめ、個別の目標や薬の変更にかかわる相談は主治医につなぐ。</p>
+    </div>
+
+    <!-- 1 血圧の聞き方 -->
+    <div class="card">
+      <div class="card-title">血圧の「聞き方」を変える<span class="qual">家庭血圧・測り方</span></div>
+
+      <div class="grp">声掛けの例</div>
+      <div class="say">「おうちでも血圧を測っていますか。朝と夜、どちらで測ることが多いですか」</div>
+      <div class="say">「病院で測ったときと、おうちで測ったとき、数字に差はありますか」</div>
+
+      <div class="grp">話を広げる・拾うポイント</div>
+      <div class="bullet"><span>・</span><span>数値でなく<b>測り方</b>を聞くと話が続く。朝は起床後1時間以内・トイレのあと・朝食や服薬の前、座って1〜2分落ち着いてからが目安。</span></div>
+      <div class="bullet"><span>・</span><span>診察室と家庭の差が大きいときは、測定値をメモやお薬手帳に残して<b>次回受診時に医師へ伝える</b>よう勧める。</span></div>
+      <div class="bullet"><span>・</span><span>測っていない方に無理強いはしない。「機会があれば朝に1回」程度の提案にとどめる。</span></div>
+
+      <div class="grp">記載例</div>
+      <div class="tpl"><span class="tag">申し送り</span><span class="tpl-text">家庭血圧の測定状況（タイミング・頻度）を確認し、普段の血圧の傾向と体調の変化を把握する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tag">A／P</span><span class="tpl-text">家庭血圧は朝に測定しており、普段と大きな変動はないとのこと。測定を続け、普段と違う値が続くときは主治医に相談するよう説明。</span><button class="copy-mini">コピー</button></div>
+    </div>
+
+    <!-- 1b 目標値を聞かれたとき -->
+    <div class="card">
+      <div class="card-title">目標値を聞かれたとき<span class="qual">よくある質問</span></div>
+
+      <div class="grp">聞かれ方の例</div>
+      <div class="say"><span class="who">患者</span>「結局、血圧はいくつまで下げればいいの？」</div>
+
+      <div class="grp">答え方の例</div>
+      <div class="say">「一般的な目安は、診察室で130/80未満、おうちで測るときは125/75未満とされています。家で測る方が少し低めに出るので、目安も5ずつ低いんですよ」</div>
+      <div class="say">「ただ、年齢や腎臓の状態、ふらつきの出やすさで、先生が個別に目標を調整することもあります。おうちの記録を受診のときに見せていただくと、〇〇さんに合った目標を決めてもらいやすいですよ」</div>
+
+      <div class="grp">話を広げる・拾うポイント</div>
+      <div class="bullet"><span>・</span><span>2025年のガイドライン（JSH2025）で、降圧目標は原則<b>診察室130/80未満・家庭125/75未満</b>に整理された。数字だけでなく「家庭の方が5ずつ低い」と添えると、家で測る意味が伝わる。</span></div>
+      <div class="bullet"><span>・</span><span>「あなたの目標はここ」と<b>断定しない</b>。ふらつき・腎機能・年齢などをみて主治医が個別に調整することがある。</span></div>
+      <div class="bullet"><span>・</span><span>目標値の質問が出たときは、<b>家庭血圧の記録につなげる絶好の機会</b>。記録を受診時に持参するところまで案内する。</span></div>
+
+      <div class="grp">記載例</div>
+      <div class="tpl"><span class="tag">申し送り</span><span class="tpl-text">血圧の目標値に関心あり。家庭血圧の記録が続いているか、受診時に主治医へ提示できているか確認する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tag">A／P</span><span class="tpl-text">血圧の目標値について質問あり。一般的な目安を説明し、個別の目標は主治医の判断によるため、家庭血圧の記録を受診時に提示するよう説明。</span><button class="copy-mini">コピー</button></div>
+    </div>
+
+    <!-- 2 季節 -->
+    <div class="card">
+      <div class="card-title">季節の話題<span class="qual">夏の低下・冬の上昇</span></div>
+
+      <div class="grp">声掛けの例</div>
+      <div class="say"><span class="who">夏</span>「汗をかく時期は血圧が下がりぎみになる方もいます。立ちくらみやふらつきはありませんか」</div>
+      <div class="say"><span class="who">夏</span>「水分はとれていますか」</div>
+      <div class="say"><span class="who">冬</span>「冬は血圧が上がりやすい季節です。朝の数字はいかがですか」</div>
+
+      <div class="grp">話を広げる・拾うポイント</div>
+      <div class="bullet"><span>・</span><span><b>夏：</b>脱水で血圧が下がりやすい。利尿薬・ARB・ACE阻害薬では脱水時の腎機能低下にも注意。市販の鎮痛薬が重なるとリスクがさらに上がる。</span></div>
+      <div class="bullet"><span>・</span><span><b>冬：</b>早朝の血圧上昇、入浴前後や脱衣所の寒暖差。急に寒い場所へ出る場面がないか聞いてみる。</span></div>
+      <div class="bullet"><span>・</span><span>同じ患者でも季節ごとに話題が変わるので、継続来局でこそ使いやすい切り口。</span></div>
+
+      <div class="grp">記載例</div>
+      <div class="tpl"><span class="tag">申し送り</span><span class="tpl-text">季節による血圧の変動（夏の低下・冬の上昇）と、それに伴うふらつき等の体調変化がないか確認する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tag">A／P</span><span class="tpl-text">立ちくらみ・ふらつきの訴えなし。汗をかく時期は血圧が下がりやすいことを伝え、ふらつきが続くときは主治医に相談するよう説明。</span><button class="copy-mini">コピー</button></div>
+    </div>
+
+    <!-- 3 副作用 -->
+    <div class="card">
+      <div class="card-title">副作用の観察<span class="qual">薬効群別</span></div>
+
+      <div class="grp">声掛けの例</div>
+      <div class="say">「立ち上がったときに、クラッとすることはありませんか」</div>
+      <div class="say">「夕方になると靴下の跡が残るような、足のむくみはありませんか」（Ca拮抗薬）</div>
+
+      <div class="grp">話を広げる・拾うポイント</div>
+      <div class="bullet"><span>・</span><span><b>共通：</b>起立時のめまい・ふらつき。高齢の方では転倒につながるため優先度が高い。</span></div>
+      <div class="bullet"><span>・</span><span><b>Ca拮抗薬：</b>足のむくみ、顔のほてり、歯ぐきの腫れ。</span></div>
+      <div class="bullet"><span>・</span><span><b>ACE阻害薬：</b>長引く空咳。かぜと思い込んでいることがある。</span></div>
+      <div class="bullet"><span>・</span><span><b>利尿薬：</b>こむら返り、口の渇き、トイレの回数の変化。</span></div>
+      <div class="bullet"><span>・</span><span><b>β遮断薬：</b>脈の遅さ、だるさ、めまい。</span></div>
+      <div class="bullet"><span>・</span><span><b>ARB：</b>自覚症状に出る副作用が少ない。無理に副作用の話題を探さず、ふらつきなど共通の観察にとどめてよい。</span></div>
+      <div class="bullet"><span>・</span><span>ふらつきやめまいが出たときは、<b>そのときに血圧を測って記録</b>し、受診時に主治医へ伝えるよう案内する。</span></div>
+
+      <div class="grp">記載例</div>
+      <div class="tpl"><span class="tag">申し送り</span><span class="tpl-text">起立時のふらつき・めまいの有無を確認し、転倒につながる血圧低下がないか評価する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tag">A／P</span><span class="tpl-text">起立時のふらつきや足のむくみの訴えなし。服薬継続に支障となる症状は認めない。気になる症状が出たときは自己判断で中止せず相談するよう説明。</span><button class="copy-mini">コピー</button></div>
+    </div>
+
+    <!-- 4 生活の変化 -->
+    <div class="card">
+      <div class="card-title">生活の変化を拾う<span class="qual">食事・体重・運動</span></div>
+
+      <div class="grp">声掛けの例</div>
+      <div class="say">「最近、外食や味の濃いものが増えていませんか」</div>
+      <div class="say">「体重は変わりないですか。歩く機会はどうでしょう」</div>
+
+      <div class="grp">話を広げる・拾うポイント</div>
+      <div class="bullet"><span>・</span><span>塩分は「減らしましょう」より<b>何が多いかを一緒に探す</b>（汁物・漬物・麺類の汁・加工食品）。目安は<b>食塩6g/日未満</b>。</span></div>
+      <div class="bullet"><span>・</span><span><b>できていることを先に認める</b>と続きやすい（「減塩を続けているのは大きいですね」）。</span></div>
+      <div class="bullet"><span>・</span><span>体重の増加、飲酒量の変化、運動習慣の中断は血圧に直結する情報で、薬歴に残す価値が高い。</span></div>
+      <div class="bullet"><span>・</span><span>糖尿病・腎臓病・脳卒中の既往などがある方には、<b>血圧管理の大切さをあらためて伝える</b>良い機会。生活の話から自然につなげられる。</span></div>
+
+      <div class="grp">記載例</div>
+      <div class="tpl"><span class="tag">申し送り</span><span class="tpl-text">食事（塩分）・体重・運動など生活習慣の変化を確認し、血圧管理に影響する要因がないか把握する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tag">A／P</span><span class="tpl-text">食事・運動習慣に大きな変化なし。減塩の工夫を続けていることを確認し、無理のない範囲で継続するよう説明。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tag">A／P</span><span class="tpl-text">糖尿病の合併あり、血圧管理の重要性をあらためて説明。家庭血圧の記録を続け、変動が続くときは受診時に主治医へ相談するよう伝えた。</span><button class="copy-mini">コピー</button></div>
+    </div>
+
+    <!-- 5 飲み忘れ・残薬 -->
+    <div class="card">
+      <div class="card-title">飲み忘れ・残薬・自己調整</div>
+
+      <div class="grp">声掛けの例</div>
+      <div class="say">「飲み忘れたときは、どうしていますか」</div>
+      <div class="say">「お薬は余っていませんか。余りがあれば、次回お持ちいただくと日数を調整できます」</div>
+
+      <div class="grp">話を広げる・拾うポイント</div>
+      <div class="bullet"><span>・</span><span>「忘れることはありますか」より<b>「忘れたときどうしていますか」</b>の方が実態が出やすい。</span></div>
+      <div class="bullet"><span>・</span><span>2回分をまとめて飲まないのが原則。対応は薬・用法で異なるため、迷ったら薬局へ確認するよう伝える。</span></div>
+      <div class="bullet"><span>・</span><span>「血圧が落ち着いてきたから減らした」という<b>自己調整は降圧剤で起こりがち</b>。症状がなくても続ける薬であることを説明し、減量の希望は主治医に相談するよう案内する。</span></div>
+      <div class="bullet"><span>・</span><span>β遮断薬は急にやめると動悸や胸の症状が出ることがあり、<b>自己中断はとくに避ける</b>よう伝える。</span></div>
+
+      <div class="grp">記載例</div>
+      <div class="tpl"><span class="tag">申し送り</span><span class="tpl-text">残薬と服薬状況を確認し、飲み忘れや自己調整の有無とその背景を把握する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tag">A／P</span><span class="tpl-text">自己判断で錠数を減らして服用していたことが判明。血圧が安定していても継続が必要な薬であることを説明し、減量の希望は主治医へ相談するよう案内。次回、服薬状況を確認予定。</span><button class="copy-mini">コピー</button></div>
+    </div>
+
+    <!-- 6 市販薬・健康食品 -->
+    <div class="card">
+      <div class="card-title">市販薬・健康食品</div>
+
+      <div class="grp">声掛けの例</div>
+      <div class="say">「市販の痛み止めやかぜ薬を使うことはありますか」</div>
+      <div class="say">「健康食品やサプリメントで、新しく始めたものはありますか」</div>
+
+      <div class="grp">話を広げる・拾うポイント</div>
+      <div class="bullet"><span>・</span><span>市販の鎮痛薬（NSAIDs）は血圧を上げ、降圧剤の効きを弱めることがある。<b>継続使用</b>がないか聞く。</span></div>
+      <div class="bullet"><span>・</span><span>甘草を含む漢方薬・市販薬の長期使用は、むくみ・血圧上昇（偽アルドステロン症）の原因になることがある。</span></div>
+      <div class="bullet"><span>・</span><span>グレープフルーツの影響はCa拮抗薬の中でも薬剤によって差がある。<b>該当薬か確認してから</b>話題にする。</span></div>
+
+      <div class="grp">記載例</div>
+      <div class="tpl"><span class="tag">申し送り</span><span class="tpl-text">市販薬（鎮痛薬・かぜ薬）や健康食品の使用状況を確認し、血圧への影響や飲み合わせの問題がないか評価する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tag">A／P</span><span class="tpl-text">市販薬・サプリメントの新規使用なし。市販の痛み止めを続けて使うときは薬局へ相談するよう説明。</span><button class="copy-mini">コピー</button></div>
+    </div>
+
+    <div class="page-foot">薬歴マニュアル ／ 非公開作業中</div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.copy-mini').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var el = btn.parentElement.querySelector('.tpl-text');
+        if (!el) return;
+        var text = el.textContent.trim();
+        var done = function () {
+          var orig = btn.textContent;
+          btn.textContent = 'コピー済';
+          btn.classList.add('copied');
+          setTimeout(function () { btn.textContent = orig; btn.classList.remove('copied'); }, 1200);
+        };
+        var fallback = function () {
+          var ta = document.createElement('textarea');
+          ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+          document.body.appendChild(ta); ta.select();
+          try { document.execCommand('copy'); done(); } catch (e) {}
+          document.body.removeChild(ta);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, fallback);
+        } else {
+          fallback();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

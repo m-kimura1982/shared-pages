@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>循環器系 定型文集（申し送り・AP）｜薬歴マニュアル</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+    :root {
+      --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+      --pad-card:22px; --gap-card:16px;
+      --blue:#1e5fa8; --ink:#222222;
+      --bg:#f3f4f6; --white:#ffffff;
+      --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+      --border:#d1d5db; --border-dk:#9ca3af;
+      --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px;
+      --warn-bg:#fffbe6; --warn-bd:#e0b000;
+      --txt-2:#444444; --txt-3:#5e6470;
+    }
+    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:0 16px 60px; }
+    .draft-banner { margin:0 -16px 18px; background:#fff8e1; border-bottom:var(--bw-h) solid #e5c200; color:#5f4b00; font-size:var(--text-xs); font-weight:700; text-align:center; padding:7px 16px; }
+    header { max-width:900px; margin:0 auto 14px; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+    .back-link { display:inline-flex; align-items:center; color:var(--blue); border:var(--bw-h) solid var(--blue); border-radius:var(--radius-sm); padding:4px 12px; text-decoration:none; font-size:var(--text-xs); font-weight:700; background:var(--white); }
+    .site-title { font-size:var(--text-xs); color:var(--txt-3); font-weight:700; }
+    .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+    .page-title-wrap { padding:6px 0; }
+    .page-title-wrap h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+    .page-title-wrap p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+
+    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+    .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+    .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+    .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+
+    /* 注意枠（黄 .guard 系・基本記載ルールと配色統一。アンバーは使わない） */
+    .box-guard { background:var(--warn-bg); border:var(--bw-h) solid var(--warn-bd); border-left:var(--bw-a) solid var(--warn-bd); border-radius:var(--radius-sm); padding:14px 18px; }
+    .box-guard .ttl { font-weight:900; color:var(--ink); margin-bottom:5px; font-size:var(--text-sm); }
+    .box-guard p { font-size:var(--text-sm); color:var(--txt-2); line-height:1.8; }
+    .box-guard b { color:var(--ink); }
+    .box-guard a { color:var(--blue); font-weight:700; }
+
+    /* グループ小見出し（青四角・基本記載ルールの sub2 と同形）。画面上の案内用でコピー文には入れない */
+    .grp { font-weight:900; font-size:var(--text-sm); display:flex; align-items:center; gap:8px; margin:17px 0 8px; }
+    .grp::before { content:""; width:8px; height:8px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+    .card > .grp:first-of-type { margin-top:4px; }
+
+    /* 定型文＋コピーボタン */
+    .tpl { display:flex; align-items:flex-start; gap:10px; padding:11px 13px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); background:var(--white); }
+    .tpl + .tpl { margin-top:8px; }
+    .tpl-text { flex:1; font-size:var(--text-sm); line-height:1.75; }
+    .copy-mini { flex-shrink:0; font-family:inherit; cursor:pointer; border:var(--bw-h) solid var(--blue); background:var(--white); color:var(--blue); font-size:var(--text-xs); font-weight:700; padding:5px 13px; border-radius:100px; white-space:nowrap; }
+    .copy-mini:hover { background:var(--box-blue); }
+    .copy-mini.copied { background:var(--blue); color:#fff; border-color:var(--blue); }
+
+    .card-note { font-size:var(--text-xs); color:var(--txt-3); margin-bottom:12px; line-height:1.7; }
+    .card-note b { color:var(--txt-2); }
+
+    .page-foot { font-size:var(--text-xs); color:var(--txt-3); text-align:right; padding-top:2px; }
+    .link-inline { color:var(--blue); font-weight:700; text-decoration:none; border-bottom:1px solid var(--box-blue); }
+
+    @media (max-width:640px) {
+      body { font-size:13px; padding:0 12px 40px; line-height:1.75; }
+      :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+      .draft-banner { margin:0 -12px 14px; }
+      .card { padding:14px; border-radius:8px; }
+      .tpl { flex-direction:column; gap:7px; }
+      .copy-mini { align-self:flex-end; }
+    }
+    @media print {
+      @page { size:A4 portrait; margin:7mm; }
+      body { background:#fff; padding:0; font-size:10.5px; line-height:1.45; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .draft-banner, header, .copy-mini { display:none; }
+      .page { gap:7px; max-width:none; }
+      .card { border:0.5px solid #ccc; border-radius:6px; padding:9px 11px; break-inside:avoid; }
+      .grp { font-size:10px; margin:6px 0 3px; }
+      .tpl { padding:5px 7px; }
+      .tpl-text { font-size:9.5px; }
+      .page-foot { display:none; }
+      a { color:inherit; text-decoration:none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="draft-banner">非公開作業中ページ｜内容は精査中のため公開ナビゲーションには掲載していません</div>
+  <header>
+    <a href="index.html" class="back-link">← 薬歴マニュアルに戻る</a>
+    <span class="site-title">調剤報酬まとめ</span>
+  </header>
+
+  <div class="page">
+    <div class="page-title-wrap">
+      <h1>循環器系 定型文集（申し送り・AP）</h1>
+      <p>循環器系の申し送り・AP。定期受診で特に記載することがないときの一例。</p>
+    </div>
+
+    <div class="box-guard">
+      <p>病名や処方内容から該当する見出しを選んで使う。心房細動・弁膜症で抗凝固薬を服用中の患者には、<b>ワルファリン／DOACの見出しもあわせて</b>使える。体重や検査値の目安は、<b>医師の指示があればそちらを優先</b>する。疾患を限定しない文は <a href="テンプレート_汎用.html" class="link-inline">汎用 定型文集</a>、抗凝固薬・抗血小板薬そのものの指導内容は <a href="ハイリスク_血液凝固阻止剤.html" class="link-inline">ハイリスク薬（血液凝固阻止剤）</a> を参照。</p>
+    </div>
+
+    <!-- 申し送り -->
+    <div class="card">
+      <div class="card-title">申し送り<span class="qual">次回確認事項</span></div>
+      <div class="card-note">次回の薬剤師が何を確認すればよいかを残す。DOAC・抗血小板薬の安定期で聞くことがないときは、確認の切り口（出血 → 飲み忘れ → 定期検査 → 併用薬）を来局ごとに替える。</div>
+
+      <div class="grp">高血圧</div>
+      <div class="tpl"><span class="tpl-text">家庭血圧の普段の値と、測定・記録が続いているか確認する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">立ちくらみ・ふらつきの有無を確認し、血圧の下げすぎを疑う症状がないか評価する。</span><button class="copy-mini">コピー</button></div>
+
+      <div class="grp">心不全</div>
+      <div class="tpl"><span class="tpl-text">体重の急な増加（目安：1週間で2kg以上）や足のむくみの有無を確認し、心不全増悪の兆候がないか評価する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">階段や坂道での息切れ、夜間の呼吸苦の変化を確認する。「息切れなし」の返事でも、動作を控えて症状を避けていないか動作のレベルで確認する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">利尿薬を含めた服薬状況と、市販の痛み止め・かぜ薬（NSAIDs）を使っていないか確認する（心不全悪化の一因になる）。</span><button class="copy-mini">コピー</button></div>
+
+      <div class="grp">心房細動</div>
+      <div class="tpl"><span class="tpl-text">抗凝固薬の服薬状況を確認し、飲み忘れや自己中断がないか確認する。自覚症状がない人が多いため、服用の目的（脳梗塞予防）を理解して続けられているかもみる。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">動悸・脈の乱れ・めまいの自覚がある場合、症状の頻度が増えていないか評価する。</span><button class="copy-mini">コピー</button></div>
+
+      <div class="grp">ワルファリン</div>
+      <div class="tpl"><span class="tpl-text">直近のPT-INRの結果と用量変更の有無を確認し、コントロールが安定しているか評価する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">納豆・青汁・クロレラなどビタミンKを多く含む食品の摂取や、食生活の大きな変化がないか確認する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">あざ・歯ぐきからの出血など出血傾向の有無を確認し、効きすぎを疑う兆候がないか評価する。</span><button class="copy-mini">コピー</button></div>
+
+      <div class="grp">DOAC（直接経口抗凝固薬）</div>
+      <div class="tpl"><span class="tpl-text">あざ・歯ぐきからの出血・血尿・黒色便など出血兆候の有無を確認する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">飲み忘れの頻度と、忘れたときにどうしているかを確認する（効果の持続が短く、飲み忘れの影響が出やすい）。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">定期的な血液検査（腎機能）を受けているか確認する（腎機能に応じて用量が決まるため）。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">新しく始まった薬・市販薬・サプリメントがないか確認する。</span><button class="copy-mini">コピー</button></div>
+
+      <div class="grp">虚血性心疾患・抗血小板薬</div>
+      <div class="tpl"><span class="tpl-text">胸の痛み・圧迫感など労作時の胸部症状の再発がないか確認し、受診が必要な変化がないか評価する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">抗血小板薬の服薬状況と、手術・抜歯の予定や2剤から1剤への処方変更の指示がないか確認する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">あざ・黒色便・胃の痛みなど出血や胃腸の症状がないか確認し、服薬継続に支障がないか評価する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">スタチン服用に伴う筋肉痛・脱力の有無を確認し、服薬継続に支障がないか評価する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">硝酸薬（頓用）の使用頻度を確認し、発作の増加を示す変化がないか評価する。</span><button class="copy-mini">コピー</button></div>
+
+      <div class="grp">弁膜症（機械弁置換後）</div>
+      <div class="tpl"><span class="tpl-text">抜歯・手術・内視鏡検査など、ワルファリンの休薬にかかわる予定がないか確認する。</span><button class="copy-mini">コピー</button></div>
+
+      <div class="grp">弁膜症（生体弁置換後）</div>
+      <div class="tpl"><span class="tpl-text">抗凝固薬・抗血小板薬の処方内容と服用予定の期間（終了予定）を確認し、術後どの段階かを把握する。</span><button class="copy-mini">コピー</button></div>
+
+      <div class="grp">弁膜症（弁置換なし・経過観察）</div>
+      <div class="tpl"><span class="tpl-text">息切れ・むくみ・動悸など進行を疑う症状の出現・悪化と、定期の検査（心エコーなど）の受診が続いているか確認する。</span><button class="copy-mini">コピー</button></div>
+    </div>
+
+    <!-- AP -->
+    <div class="card">
+      <div class="card-title">指導記録（A／P）<span class="qual">評価・計画</span></div>
+      <div class="card-note">確認結果に基づく薬学的評価と指導内容。安定している日の骨組みとして使い、確認した結果に合わせて書き換える。申し送りと対応づける必要はない。</div>
+
+      <div class="grp">高血圧</div>
+      <div class="tpl"><span class="tpl-text">家庭血圧は普段どおりの値で安定し、立ちくらみ・ふらつきの訴えなし。飲み忘れなく服薬できており、今の服薬と血圧測定を続けるよう説明。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">普段より血圧が低めとの訴えあり。ふらつき・立ちくらみはなし。低めが続くときやふらつきが出るときは、家庭血圧の記録を持って早めに受診するよう説明。</span><button class="copy-mini">コピー</button></div>
+
+      <div class="grp">心不全</div>
+      <div class="tpl"><span class="tpl-text">体重の急な増加や浮腫・息切れの訴えはなく、増悪の兆候なし。毎日の体重測定を続け、1週間で2kg以上増えたときやむくみが出たときは早めに受診するよう説明。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">利尿薬を含め服薬状況に問題なく、自己調整なし。市販の痛み止めには心不全に影響するものがあるため、購入前に相談するよう説明。</span><button class="copy-mini">コピー</button></div>
+
+      <div class="grp">心房細動</div>
+      <div class="tpl"><span class="tpl-text">もともと自覚症状はなく、体調にも変化なし。飲み忘れなく服薬は安定しており、症状がなくても脳梗塞予防のため継続が必要であることを再確認。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">動悸・脈の乱れの自覚に変化なし。症状の頻度が増えるときは受診するよう説明。</span><button class="copy-mini">コピー</button></div>
+
+      <div class="grp">ワルファリン</div>
+      <div class="tpl"><span class="tpl-text">PT-INRは目標範囲内で推移し、用量変更なし。納豆・青汁などの摂取なく、あざ・出血傾向の訴えもなし。引き続き検査結果を確認しながら服薬を継続するよう説明。</span><button class="copy-mini">コピー</button></div>
+
+      <div class="grp">DOAC（直接経口抗凝固薬）</div>
+      <div class="tpl"><span class="tpl-text">出血兆候・飲み忘れの訴えなし。定期的に血液検査を受けており、用量変更なし。腎機能に応じて量が決まる薬のため、検査を続けて受けるよう説明。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">併用薬・市販薬の追加なし。新しい薬やサプリメントを始めるときは事前に相談するよう説明。</span><button class="copy-mini">コピー</button></div>
+
+      <div class="grp">虚血性心疾患・抗血小板薬</div>
+      <div class="tpl"><span class="tpl-text">胸部症状の再発なく、出血や胃の症状の訴えもなし。症状がなくても再発予防のため服薬を続ける必要があることを再確認。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">抗血小板薬の自己中断なし。手術・抜歯の予定が決まったときは、事前に医師・薬局へ相談するよう指導。</span><button class="copy-mini">コピー</button></div>
+
+      <div class="grp">弁膜症（機械弁置換後）</div>
+      <div class="tpl"><span class="tpl-text">服薬は安定し、飲み忘れなし。機械弁のためワルファリンは生涯続ける必要があり、自己判断で中止しないよう再確認。</span><button class="copy-mini">コピー</button></div>
+
+      <div class="grp">弁膜症（生体弁置換後）</div>
+      <div class="tpl"><span class="tpl-text">術後経過は安定し、胸部症状・息切れの訴えなし。抗凝固薬は医師の指示どおり継続中。定期受診（心エコー）を続けるよう説明。</span><button class="copy-mini">コピー</button></div>
+
+      <div class="grp">弁膜症（弁置換なし・経過観察）</div>
+      <div class="tpl"><span class="tpl-text">息切れ・むくみなどの症状なく安定。定期の受診・検査を続け、坂道や階段での息切れやむくみが出たときは早めに受診するよう説明。</span><button class="copy-mini">コピー</button></div>
+    </div>
+
+    <div class="page-foot">薬歴マニュアル ／ 非公開作業中</div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.copy-mini').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var el = btn.parentElement.querySelector('.tpl-text');
+        if (!el) return;
+        var text = el.textContent.trim();
+        var done = function () {
+          var orig = btn.textContent;
+          btn.textContent = 'コピー済';
+          btn.classList.add('copied');
+          setTimeout(function () { btn.textContent = orig; btn.classList.remove('copied'); }, 1200);
+        };
+        var fallback = function () {
+          var ta = document.createElement('textarea');
+          ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+          document.body.appendChild(ta); ta.select();
+          try { document.execCommand('copy'); done(); } catch (e) {}
+          document.body.removeChild(ta);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, fallback);
+        } else {
+          fallback();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
