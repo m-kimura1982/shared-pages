@@ -30,10 +30,6 @@
   "別表第三_調剤報酬点数表2026.html": {
     "lastUpdated": "2026-04-10"
   },
-  "調剤報酬QA.html": {
-    "lastUpdated": "2026-07-12",
-    "newUntil": "2026-07-19"
-  },
   "疑義解釈_その5_2026.html": {
     "lastUpdated": "2026-05-09"
   },
@@ -42,6 +38,10 @@
   },
   "index.html": {
     "lastUpdated": "2026-07-12"
+  },
+  "調剤報酬QA.html": {
+    "lastUpdated": "2026-07-12",
+    "newUntil": "2026-07-19"
   },
   "在宅薬学総合体制加算2026.html": {
     "lastUpdated": "2026-07-12"
