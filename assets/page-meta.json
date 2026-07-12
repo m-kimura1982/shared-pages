@@ -1,7 +1,4 @@
 {
-  "調剤報酬QA.html": {
-    "newUntil": "2026-07-19"
-  },
   "服用薬剤調整支援料２_2026改定.html": {
     "lastUpdated": "2026-05-06"
   },
@@ -33,6 +30,10 @@
   "別表第三_調剤報酬点数表2026.html": {
     "lastUpdated": "2026-04-10"
   },
+  "調剤報酬QA.html": {
+    "lastUpdated": "2026-07-12",
+    "newUntil": "2026-07-19"
+  },
   "疑義解釈_その5_2026.html": {
     "lastUpdated": "2026-05-09"
   },
@@ -40,10 +41,7 @@
     "lastUpdated": "2026-07-12"
   },
   "index.html": {
-    "lastUpdated": "2026-07-05"
-  },
-  "updates.html": {
-    "lastUpdated": "2026-07-05"
+    "lastUpdated": "2026-07-12"
   },
   "在宅薬学総合体制加算2026.html": {
     "lastUpdated": "2026-07-12"
@@ -71,6 +69,9 @@
   },
   "変更調剤について.html": {
     "lastUpdated": "2026-04-18"
+  },
+  "updates.html": {
+    "lastUpdated": "2026-07-12"
   },
   "疑義解釈_その1_2026.html": {
     "lastUpdated": "2026-04-01"
@@ -146,11 +147,11 @@
     "lastUpdated": "2026-06-08",
     "newUntil": "2026-06-15"
   },
-  "knowledge.html": {
-    "lastUpdated": "2026-06-04"
-  },
   "服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html": {
     "lastUpdated": "2026-06-19"
+  },
+  "knowledge.html": {
+    "lastUpdated": "2026-07-12"
   },
   "事務スタッフ向け_2026調剤報酬改定ポイント整理.html": {
     "lastUpdated": "2026-07-12"
