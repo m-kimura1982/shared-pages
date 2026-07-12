@@ -18,10 +18,6 @@ window.__pageMeta = {
   "調剤基本料フローチャート.html": {
     "lastUpdated": "2026-03-26"
   },
-  "疑義解釈_その6_2026.html": {
-    "lastUpdated": "2026-05-29",
-    "newUntil": "2026-06-03"
-  },
   "調剤報酬点数早見表2026.html": {
     "lastUpdated": "2026-03-31"
   },
@@ -37,14 +33,17 @@ window.__pageMeta = {
   "疑義解釈_その5_2026.html": {
     "lastUpdated": "2026-05-09"
   },
-  "在宅薬学総合体制加算2026.html": {
-    "lastUpdated": "2026-06-03"
+  "かかりつけ薬剤師フォローアップ加算.html": {
+    "lastUpdated": "2026-07-12"
   },
   "index.html": {
     "lastUpdated": "2026-07-05"
   },
   "updates.html": {
     "lastUpdated": "2026-07-05"
+  },
+  "在宅薬学総合体制加算2026.html": {
+    "lastUpdated": "2026-07-12"
   },
   "入力画面で解説_2026改定後の入力方法.html": {
     "lastUpdated": "2026-05-28"
@@ -53,7 +52,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-06-01"
   },
   "事務スタッフ向け_2026改定サマリ.html": {
-    "lastUpdated": "2026-06-01"
+    "lastUpdated": "2026-07-12"
   },
   "地域支援医薬品供給対応体制加算.html": {
     "lastUpdated": "2026-05-31"
@@ -64,8 +63,8 @@ window.__pageMeta = {
   "調剤基本料_2026改定.html": {
     "lastUpdated": "2026-04-22"
   },
-  "かかりつけ薬剤師フォローアップ加算.html": {
-    "lastUpdated": "2026-06-09"
+  "かかりつけ薬剤師訪問加算.html": {
+    "lastUpdated": "2026-07-12"
   },
   "変更調剤について.html": {
     "lastUpdated": "2026-04-18"
@@ -91,8 +90,8 @@ window.__pageMeta = {
   "疑義解釈_その3_2026.html": {
     "lastUpdated": "2026-04-22"
   },
-  "吸入薬指導加算2026.html": {
-    "lastUpdated": "2026-06-13"
+  "疑義解釈_その7_2026.html": {
+    "lastUpdated": "2026-07-12"
   },
   "電子的調剤情報連携体制整備加算_2026改定.html": {
     "lastUpdated": "2026-04-19"
@@ -116,7 +115,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-06-15"
   },
   "在宅薬学総合体制加算2イ_特例摘要欄ガイド.html": {
-    "lastUpdated": "2026-06-04"
+    "lastUpdated": "2026-07-12"
   },
   "吸入薬指導加算_実務チェックリスト.html": {
     "lastUpdated": "2026-06-13",
@@ -130,6 +129,9 @@ window.__pageMeta = {
   },
   "服薬管理指導料3・4_施設訪問・オンライン.html": {
     "lastUpdated": "2026-05-06"
+  },
+  "吸入薬指導加算2026.html": {
+    "lastUpdated": "2026-07-12"
   },
   "基礎的医薬品追加リストR8_4.html": {
     "lastUpdated": "2026-04-19"
@@ -148,13 +150,14 @@ window.__pageMeta = {
     "lastUpdated": "2026-06-26"
   },
   "事務スタッフ向け_2026調剤報酬改定ポイント整理.html": {
-    "lastUpdated": "2026-06-20"
+    "lastUpdated": "2026-07-12"
+  },
+  "疑義解釈_その6_2026.html": {
+    "lastUpdated": "2026-07-12",
+    "newUntil": "2026-06-03"
   },
   "疑義解釈_その9_2026.html": {
-    "lastUpdated": "2026-06-26"
-  },
-  "疑義解釈_その7_2026.html": {
-    "lastUpdated": "2026-06-02"
+    "lastUpdated": "2026-07-12"
   },
   "特掲診療料_施設基準届出_調剤関係2026.html": {
     "lastUpdated": "2026-05-31"
@@ -174,15 +177,8 @@ window.__pageMeta = {
   "地域支援医薬品供給対応体制加算_届出判定ツール.html": {
     "lastUpdated": "2026-05-31"
   },
-  "栄養保持を目的とした医薬品_確認チェックリスト.html": {
-    "lastUpdated": "2026-06-10",
-    "newUntil": "2026-06-17"
-  },
   "栄養保持を目的とした医薬品の保険給付の適正化.html": {
     "lastUpdated": "2026-06-05"
-  },
-  "かかりつけ薬剤師訪問加算.html": {
-    "lastUpdated": "2026-06-09"
   },
   "tools.html": {
     "lastUpdated": "2026-06-15"
@@ -203,5 +199,9 @@ window.__pageMeta = {
   "かかりつけ薬剤師訪問加算_実務チェックリスト.html": {
     "lastUpdated": "2026-06-09",
     "newUntil": "2026-06-16"
+  },
+  "栄養保持を目的とした医薬品_確認チェックリスト.html": {
+    "lastUpdated": "2026-07-12",
+    "newUntil": "2026-06-17"
   }
 };
