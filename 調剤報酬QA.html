@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>調剤報酬 社内Q&amp;A｜実務ナレッジ集</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <!-- 試作（案B改良2：Q＋結論は常時表示、根拠・場合分けだけ折りたたみ）。
+         draft/ 内プレビュー用にリンク・画像は  付き。ルートへ昇格する時は  を外すこと。 -->
+    <style>
+      *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+      :root {
+        --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+        --pad-card:22px; --gap-card:16px;
+        --blue:#1e5fa8; --ink:#222222;
+        --bg:#f3f4f6; --white:#ffffff;
+        --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+        --border:#d1d5db; --border-dk:#9ca3af;
+        --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px;
+        --txt-2:#444444; --txt-3:#5e6470;
+      }
+      body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+      .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+      .page-title-left h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+      .page-title-left p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+
+      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+      .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+      .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+      .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+
+      .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+      .em-change { color:var(--blue); font-weight:900; }
+
+      /* 導入＋全体開閉 */
+      .intro-bar { display:flex; gap:12px; align-items:stretch; }
+      .intro { flex:1; background:#eef4fb; border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .toggle-all { flex-shrink:0; align-self:center; font-family:inherit; font-size:var(--text-xs); font-weight:700; color:var(--blue); background:var(--white); border:1px solid #bcd3ee; border-radius:6px; padding:7px 14px; cursor:pointer; white-space:nowrap; }
+      .toggle-all:hover { background:#f2f7fc; }
+
+      /* ===== Q&A（Q＋結論は常時表示、詳細だけ折りたたみ） ===== */
+      .qa { border:var(--bw-h) solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:12px; scroll-margin-top:76px; }
+      .qa:last-child { margin-bottom:0; }
+      .qa-head { background:#eef4fb; padding:13px 15px; display:flex; gap:11px; align-items:flex-start; font-size:var(--text-sm); font-weight:700; }
+      .qbadge { width:26px; height:26px; border-radius:7px; background:var(--blue); color:#fff; font-weight:900; font-size:15px; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+      .qa-concl { padding:13px 15px 12px; display:flex; gap:11px; align-items:flex-start; font-size:var(--text-sm); }
+      .alabel { width:26px; height:26px; border-radius:7px; border:1.5px solid var(--border-dk); color:var(--txt-2); font-weight:900; font-size:15px; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; background:var(--white); }
+      .qa-concl .ctext { flex:1; font-weight:900; padding-top:1px; }
+      .qa-concl .ctext .sub { display:block; font-weight:500; color:var(--txt-2); margin-top:3px; }
+
+      details.qa-detail { border-top:var(--bw-h) solid var(--border); }
+      details.qa-detail > summary { list-style:none; cursor:pointer; padding:9px 15px 9px 52px; font-size:var(--text-xs); font-weight:700; color:var(--txt-3); display:flex; align-items:center; gap:7px; background:#fafbfc; }
+      details.qa-detail > summary::-webkit-details-marker { display:none; }
+      details.qa-detail > summary:hover { background:#f2f5f9; }
+      details.qa-detail > summary .chev { color:var(--border-dk); font-size:15px; transition:transform .18s; }
+      details.qa-detail[open] > summary .chev { transform:rotate(90deg); }
+      .qa-body { padding:4px 15px 15px 52px; font-size:var(--text-sm); }
+      .qa-body > * + * { margin-top:10px; }
+
+      .box-gray { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:12px 15px; }
+      /* NG・対象外は中立グレー＋×印（アンバーは使わない） */
+      .box-ng { background:var(--box-gray); border:var(--bw-h) solid var(--border-dk); border-radius:var(--radius-sm); padding:12px 15px; }
+      .box-ng .ttl { font-weight:900; color:var(--txt-2); margin-bottom:4px; font-size:var(--text-sm); display:flex; gap:7px; align-items:baseline; }
+      .box-ng .ttl .x { color:var(--txt-3); flex-shrink:0; }
+
+      /* 場合分けリスト */
+      .case { display:grid; grid-template-columns:1fr; gap:8px; }
+      .case .row { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:10px 13px; }
+      .case .row .rh { font-weight:900; color:var(--blue); margin-bottom:3px; }
+      .case .row .rd { color:var(--txt-2); }
+
+      /* 例（→で結論） */
+      .ex-rows { display:flex; flex-direction:column; }
+      .ex-rows .er { padding:9px 0; border-top:var(--bw-h) solid #e7e9ee; }
+      .ex-rows .er:first-child { border-top:none; padding-top:0; }
+      .ex-rows .er .cond { color:var(--txt-2); }
+      .ex-rows .er .res { font-weight:900; margin-top:2px; display:flex; gap:6px; }
+      .ex-rows .er .res .arrow { color:var(--blue); flex-shrink:0; }
+      .ex-rows .er .res.ng { color:var(--txt-2); }
+      .ex-rows .er .res.ng .arrow { color:var(--txt-3); }
+
+      .qa-src { font-size:var(--text-xs); color:var(--txt-3); margin-top:12px; padding-top:9px; border-top:var(--bw-h) dashed var(--border); display:flex; flex-wrap:wrap; gap:6px 8px; align-items:center; }
+      .qa-src .lab { font-weight:700; }
+      .qa-src a { color:var(--blue); text-decoration:none; font-weight:700; border:1px solid #bcd3ee; background:var(--white); border-radius:5px; padding:2px 10px; }
+      .qa-src a:hover { background:#f2f7fc; }
+
+      .screen-shot { margin:0; }
+      .screen-shot img { width:100%; max-width:480px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); display:block; }
+      .screen-shot figcaption { font-size:var(--text-xs); color:var(--txt-3); margin-top:5px; }
+
+      .rate-table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+      .rate-table th { background:var(--box-gray); font-weight:900; padding:7px 11px; text-align:left; border-bottom:2px solid var(--border-dk); }
+      .rate-table td { padding:7px 11px; border-bottom:var(--bw-h) solid var(--border); }
+      .rate-table tr:last-child td { border-bottom:none; }
+
+      .ref-links { max-width:900px; margin:16px auto 0; padding:20px 16px 4px; border-top:1px solid #d0d8e8; }
+      .ref-links .row { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+      .ref-links .lab { font-size:12px; color:var(--txt-2); white-space:nowrap; font-weight:bold; }
+      .ref-links a { display:inline-block; color:var(--blue); text-decoration:none; font-size:13px; border:1px solid #a0b8d8; border-radius:6px; padding:4px 12px; background:#fff; }
+
+      @media (max-width:640px) {
+        body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+        :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+        .card { padding:14px; border-radius:8px; }
+        .intro-bar { flex-direction:column; gap:8px; }
+        .toggle-all { align-self:flex-end; }
+        .qbadge, .alabel { width:22px; height:22px; font-size:13px; border-radius:6px; }
+        details.qa-detail > summary { padding-left:15px; }
+        .qa-body { padding-left:15px; }
+      }
+      @media print {
+        @page { margin:10mm 9mm; size:A4; }
+        body { background:white; padding:0; font-size:11.5px; line-height:1.6; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        .page { gap:9px; max-width:700px; margin:0 auto; }
+        .card { padding:11px 13px; }
+        .qa { break-inside:avoid; }
+        .toggle-all { display:none; }
+        details.qa-detail > summary { display:none; }
+        a { color:inherit; text-decoration:none; border:none !important; padding:0 !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <script src="assets/site-header.js" defer></script>
+    <div class="page">
+
+      <!-- タイトル -->
+      <div class="page-title-left">
+        <h1>調剤報酬 社内Q&amp;A</h1>
+        <p>現場から寄せられた質問と回答のまとめ（通知・疑義解釈の根拠つき）</p>
+      </div>
+
+      <div class="intro-bar">
+        <div class="intro">
+          ご質問のあった内容について、回答をまとめています。質問と<strong>結論</strong>はそのまま読めます。くわしい内容は「解説」を押すと開きます。
+        </div>
+        <button type="button" class="toggle-all" id="toggleAll">すべて開く</button>
+      </div>
+
+      <!-- ① 調剤管理料 -->
+      <div class="card">
+        <div class="card-title">調剤管理料</div>
+
+        <div class="qa" id="q-kanri-1">
+          <div class="qa-head">
+            <span class="qbadge">Q</span>
+            <span>長期処方（28日分以上）の患者で残薬を確認し、疑義照会または処方箋指示により調剤日数を変更した結果、実際の投与日数が27日以下になりました。調剤管理料は「1のイ（長期処方）」と「ロ」のどちらで算定すればよいですか？　また、対象薬を<strong>削除</strong>した場合はどうなりますか？</span>
+          </div>
+          <div class="qa-concl">
+            <span class="alabel">A</span>
+            <span class="ctext"><span class="marker">残薬調整で27日以下になっても「1のイ（長期処方）」で算定する。</span><span class="sub">ただし対象薬を削除（0日）した場合は対象外。</span></span>
+          </div>
+          <details class="qa-detail">
+            <summary>解説<span class="chev">›</span></summary>
+            <div class="qa-body">
+              <div>疑義解釈その7 問4。前提は、①疑義照会による調剤日数の変更／②減数調剤（処方箋指示）の<strong>いずれも「1日分以上を調剤すること」</strong>。</div>
+              <div>
+                <div style="font-weight:900; margin-bottom:4px;">例）残薬調整の対象薬が30日分処方されていた場合</div>
+                <div class="ex-rows">
+                  <div class="er"><div class="cond">疑義照会で16日分を残薬調整し、14日分を処方</div><div class="res"><span class="arrow">→</span><span>1のイ（長期処方28日分以上）＝60点</span></div></div>
+                  <div class="er"><div class="cond">減数調剤の指示で29日分を残薬調整し、1日分を処方</div><div class="res"><span class="arrow">→</span><span>1のイ（長期処方28日分以上）＝60点</span></div></div>
+                  <div class="er"><div class="cond">疑義照会で対象薬を削除した場合</div><div class="res ng"><span class="arrow">×</span><span>その薬に関わる調剤管理料は算定できない</span></div></div>
+                </div>
+              </div>
+              <div class="box-ng">
+                <div class="ttl"><span class="x">×</span>対象薬を「削除」した場合は対象外</div>
+                薬剤を削除（0日）した場合は問4の対象外で、<strong>その薬を根拠に調剤管理料1のイ（60点）は算定できない</strong>。同一用法の剤が別に処方されていれば、そちらの日数に応じて算定する。
+              </div>
+              <div class="qa-src"><span class="lab">出典・関連：</span><a href="疑義解釈_その7_2026.html">疑義解釈その7 問4</a><a href="調剤時残薬調整加算.html">調剤時残薬調整加算</a></div>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- ② 選定療養（時間外） -->
+      <div class="card">
+        <div class="card-title">選定療養<span class="qual">時間外の特別の料金</span></div>
+
+        <div class="qa" id="q-sentei-1">
+          <div class="qa-head">
+            <span class="qbadge">Q</span>
+            <span>R8.6から「時間外の選定療養費」の徴収が可能になりますが、徴収できるようレセコンの設定を変更した方がよいですか？</span>
+          </div>
+          <div class="qa-concl">
+            <span class="alabel">A</span>
+            <span class="ctext"><span class="marker">徴収しない場合は「入力しない」のままでよい。</span><span class="sub">徴収するには事前の報告（地方厚生（支）局長へ別紙様式４）が必要。</span></span>
+          </div>
+          <details class="qa-detail">
+            <summary>解説<span class="chev">›</span></summary>
+            <div class="qa-body">
+              <figure class="screen-shot">
+                <img src="images（レセコン画像など）/pharnes/7e94c34be349fd37334a912900e71b9fe5366ce9.png" alt="レセコン：時間外の選定療養の設定画面（入力しない／入力する）" loading="lazy" />
+                <figcaption>レセコン設定画面（74. 時間外の選定療養の特別の料金）。徴収しないなら「入力しない」のまま。</figcaption>
+              </figure>
+              <div class="box-gray">
+                <strong>留意点：</strong>時間外の選定療養（特別の料金）を徴収する場合、<strong class="marker">時間外加算等とは併用できない</strong>（どちらか一方）。
+              </div>
+              <div>
+                <strong>補足（手続の名称）：</strong>正式名称は「届出」ではなく<strong class="marker">報告</strong>（別紙様式４により、その都度報告）。施設基準の「届出」とは別の枠組みだが、徴収には事前の報告が必須。報告のタイミングは<strong>徴収を開始する時・金額等を変更する時</strong>。
+              </div>
+              <div class="qa-src"><span class="lab">関連：</span><a href="選定療養_概要2026.html">選定療養の改定ポイント（時間外の選定療養）</a></div>
+            </div>
+          </details>
+        </div>
+
+        <div class="qa" id="q-sentei-2">
+          <div class="qa-head">
+            <span class="qbadge">Q</span>
+            <span>（仮に徴収する場合）徴収金額はどのくらいが目安になりますか？</span>
+          </div>
+          <div class="qa-concl">
+            <span class="alabel">A</span>
+            <span class="ctext"><span class="marker">基礎額と同額〜2倍程度が目安。</span><span class="sub">金額は薬局が任意に設定できるが、報告する金額は1つだけ。</span></span>
+          </div>
+          <details class="qa-detail">
+            <summary>解説<span class="chev">›</span></summary>
+            <div class="qa-body">
+              <div>通知では<strong>「時間外加算の所定点数相当額」が標準</strong>とされている。基礎額（調剤基本料・調剤管理料等）に対する割合は次のとおり。</div>
+              <table class="rate-table">
+                <thead><tr><th>区分</th><th>加算割合</th><th>イメージ</th></tr></thead>
+                <tbody>
+                  <tr><td>時間外</td><td>100％</td><td>基礎額と同額を上乗せ</td></tr>
+                  <tr><td>休日</td><td>140％</td><td>基礎額の1.4倍</td></tr>
+                  <tr><td>深夜</td><td>200％</td><td>基礎額の2倍（最大）</td></tr>
+                </tbody>
+              </table>
+              <div><strong class="marker">報告様式の金額欄は1つだけ</strong>なので、時間帯ごとに別額ではなく、薬局として固定金額を1つ決めて報告する形になる。</div>
+              <div class="qa-src"><span class="lab">関連：</span><a href="選定療養_概要2026.html">選定療養の改定ポイント</a></div>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- ③ 調剤時残薬調整加算 -->
+      <div class="card">
+        <div class="card-title">調剤時残薬調整加算</div>
+
+        <div class="qa" id="q-zanyaku-1">
+          <div class="qa-head">
+            <span class="qbadge">Q</span>
+            <span>加算を算定せずに残薬調整した場合（例：下剤を5日分減らした等）も、「残薬調整した旨」の<strong>お薬手帳への記載</strong>は必要ですか？</span>
+          </div>
+          <div class="qa-concl">
+            <span class="alabel">A</span>
+            <span class="ctext"><span class="marker">残薬調整の「方法」によって異なる。</span><span class="sub">いずれも手帳を用いて服薬管理指導を行う場合が対象。</span></span>
+          </div>
+          <details class="qa-detail">
+            <summary>解説<span class="chev">›</span></summary>
+            <div class="qa-body">
+              <div class="case">
+                <div class="row">
+                  <div class="rh">処方箋指示（「減量した上で情報提供」）に基づく減数調剤</div>
+                  <div class="rd"><strong class="marker">算定の有無にかかわらず</strong>、手帳への記載が必要。</div>
+                </div>
+                <div class="row">
+                  <div class="rh">「保険医療機関へ疑義照会した上で調剤」した場合</div>
+                  <div class="rd"><strong>算定する場合のみ</strong>、手帳への記載が必要。</div>
+                </div>
+              </div>
+              <div class="qa-src"><span class="lab">出典・関連：</span><a href="別添3_調剤報酬点数表に関する事項2026.html#kub-10-2-2">別添３ 調剤時残薬調整加算</a><a href="調剤時残薬調整加算.html">調剤時残薬調整加算（解説）</a></div>
+            </div>
+          </details>
+        </div>
+
+        <div class="qa" id="q-zanyaku-2">
+          <div class="qa-head">
+            <span class="qbadge">Q</span>
+            <span>処方箋指示に基づく減数調剤で、処方を<strong>削除（0日へ変更）</strong>する場合も疑義照会は必要ですか？　簡素化プロトコルがあれば省略できますか？</span>
+          </div>
+          <div class="qa-concl">
+            <span class="alabel">A</span>
+            <span class="ctext"><span class="marker">プロトコルの規定内容しだい。</span><span class="sub">原則として、0日への変更（処方削除）は疑義照会が必要。</span></span>
+          </div>
+          <details class="qa-detail">
+            <summary>解説<span class="chev">›</span></summary>
+            <div class="qa-body">
+              <div>簡素化プロトコルは「疑義照会を簡略化するための手順」を地域で定めたもの。</div>
+              <div class="case">
+                <div class="row">
+                  <div class="rh">プロトコルで「0日への変更」まで認められている場合</div>
+                  <div class="rd">疑義照会は<strong>不要</strong>（その規定に従える）。</div>
+                </div>
+                <div class="row">
+                  <div class="rh">プロトコルが「1日分は残すこと」までの場合</div>
+                  <div class="rd">処方を削除（0日へ変更）するなら<strong>疑義照会が必要</strong>。</div>
+                </div>
+              </div>
+              <div class="box-gray">
+                <strong>補足：</strong>通知では、減数調剤で調剤日数を「0」にすることはできず、必要な場合は従前どおり処方医への<strong>事前の照会</strong>が必要とされている。したがって原則として、0日への変更（処方削除）は減数調剤では対応できず疑義照会が必要。簡素化プロトコルで0日変更が認められている場合に限り、その規定に従って照会を省略できる。
+              </div>
+              <div class="qa-src"><span class="lab">関連：</span><a href="調剤時残薬調整加算.html">調剤時残薬調整加算（解説）</a></div>
+            </div>
+          </details>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 原文参照リンク -->
+    <div class="ref-links">
+      <div class="row">
+        <span class="lab">原文参照：</span>
+        <a href="疑義解釈_その7_2026.html">疑義解釈（その７）</a>
+        <a href="疑義解釈_その2_2026.html">疑義解釈（その２）</a>
+        <a href="別添3_調剤報酬点数表に関する事項2026.html">別添３ 調剤報酬点数表に関する事項</a>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const allDetails = () => Array.from(document.querySelectorAll('details.qa-detail'));
+        // すべて開く／閉じる
+        const btn = document.getElementById('toggleAll');
+        function refreshLabel() {
+          const opened = allDetails().filter(d => d.open).length;
+          btn.textContent = (opened === allDetails().length) ? 'すべて閉じる' : 'すべて開く';
+        }
+        btn.addEventListener('click', () => {
+          const openAll = btn.textContent === 'すべて開く';
+          allDetails().forEach(d => { d.open = openAll; });
+          refreshLabel();
+        });
+        document.addEventListener('toggle', e => {
+          if (e.target.matches('details.qa-detail')) refreshLabel();
+        }, true);
+
+        // 印刷時は全部開く → 印刷後に元へ戻す
+        let printSnapshot = null;
+        window.addEventListener('beforeprint', () => {
+          printSnapshot = allDetails().map(d => d.open);
+          allDetails().forEach(d => { d.open = true; });
+        });
+        window.addEventListener('afterprint', () => {
+          if (!printSnapshot) return;
+          allDetails().forEach((d, i) => { d.open = printSnapshot[i]; });
+          printSnapshot = null;
+          refreshLabel();
+        });
+
+        // #q-xxx で開いたら該当Qの詳細を開いてスクロール
+        function openFromHash() {
+          if (!location.hash) return;
+          const target = document.querySelector(location.hash + '.qa, .qa' + location.hash);
+          if (!target) return;
+          const det = target.querySelector('details.qa-detail');
+          if (det) det.open = true;
+          target.scrollIntoView({ block: 'start' });
+          refreshLabel();
+        }
+        window.addEventListener('hashchange', openFromHash);
+        openFromHash();
+      })();
+    </script>
+
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>

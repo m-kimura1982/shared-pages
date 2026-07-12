@@ -33,6 +33,7 @@
     '変更調剤について.html': { category: 'knowledge', title: '変更調剤について' },
     '基礎的医薬品追加リストR8_4.html': { category: 'knowledge', title: '基礎的医薬品 追加リスト（R8.4）' },
     '入力画面で解説_2026改定後の入力方法.html': { category: 'knowledge', title: '入力画面で解説｜2026改定後の入力方法（Pharnes）' },
+    '調剤報酬QA.html': { category: 'knowledge', title: '調剤報酬 社内Q&A' },
 
     // 加算まとめ（恒久ページ。kaitei2026 のカードからもリンクされるが、所属は加算まとめ）
     '調剤基本料_2026改定.html': { category: 'kasan', title: '調剤基本料' },
