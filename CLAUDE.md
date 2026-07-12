@@ -207,6 +207,8 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
 
 **アップ依頼を受けたら、まず shared-pages と作業フォルダのどちらが更新済みか確認する。** shared-pages に更新済みファイルが直接置かれている場合は、`deploy.js` を使うと古い作業フォルダ版で上書きしてしまう。その場合は deploy.js を使わず git add・commit・push のみ行う。
 
+**画像フォルダ `images（レセコン画像など）/` は `.gitignore` 対象。** 中の画像を新しくページに載せるときは、通常の `git add` では追跡されず**公開後に画像切れ**になる（既存の追跡済み画像40枚超は過去に個別追加されたもの）。**必ず `git add -f "images（レセコン画像など）/…"` で明示追加**してからコミットする。公開ページに画像を追加したら、push後にライブURL（`https://m-kimura1982.github.io/shared-pages/…`）で画像が 200 で返るか確認する（2026-07-13、調剤報酬QA のレセコン画像1枚が add 漏れで画像切れになっていた）。レセコン設定画面のスクショは患者情報を含まないので公開可。
+
 手動でやむを得ずやる場合の最小手順：
 ```bash
 cd "D:/☆shared-pages"
