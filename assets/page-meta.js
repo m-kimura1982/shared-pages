@@ -1,4 +1,8 @@
 window.__pageMeta = {
+  "薬歴の書き方_実例解説集.html": {
+    "lastUpdated": "2026-07-13",
+    "newUntil": "2026-07-20"
+  },
   "服用薬剤調整支援料２_2026改定.html": {
     "lastUpdated": "2026-05-06"
   },

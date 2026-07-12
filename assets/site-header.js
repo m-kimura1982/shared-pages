@@ -10,7 +10,7 @@
  */
 (function () {
   // ── ページごとの所属カテゴリ・表示名 ──
-  // category: 'home' | 'kaitei' | 'kasan' | 'checklist' | 'tools' | 'knowledge' | 'jimu'
+  // category: 'home' | 'kaitei' | 'kasan' | 'checklist' | 'tools' | 'knowledge' | 'yakureki' | 'jimu'
   // 未登録のページはサイト内検索・パンくずに出ない。新規公開時は必ずここに1行足すこと
   const PAGES = {
     // サイト構造
@@ -34,6 +34,9 @@
     '基礎的医薬品追加リストR8_4.html': { category: 'knowledge', title: '基礎的医薬品 追加リスト（R8.4）' },
     '入力画面で解説_2026改定後の入力方法.html': { category: 'knowledge', title: '入力画面で解説｜2026改定後の入力方法（Pharnes）' },
     '調剤報酬QA.html': { category: 'knowledge', title: '調剤報酬 社内Q&A' },
+
+    // 薬歴（先行公開。薬歴マニュアル公開時にここへ合流させる。現状はこのページがカテゴリ入口を兼ねる）
+    '薬歴の書き方_実例解説集.html': { category: 'yakureki', title: '薬歴の書き方｜実例解説集' },
 
     // 加算まとめ（恒久ページ。kaitei2026 のカードからもリンクされるが、所属は加算まとめ）
     '調剤基本料_2026改定.html': { category: 'kasan', title: '調剤基本料' },
@@ -103,6 +106,7 @@
     checklist: { name: '算定チェックリスト', url: 'checklists.html' },
     tools: { name: '実務ツール集', url: 'tools.html' },
     knowledge: { name: '実務ナレッジ集', url: 'knowledge.html' },
+    yakureki: { name: '薬歴', url: '薬歴の書き方_実例解説集.html' },
     jimu: { name: '事務スタッフ向け', url: '事務スタッフ向け.html' },
   };
 
@@ -134,11 +138,17 @@
     .sn-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .sn-logo img { height: 24px; opacity: 0.85; }
     .sn-logo-text { font-size: 14px; font-weight: 700; color: #222; letter-spacing: .02em; }
-    .sn-nav { display: flex; gap: 4px; align-items: center; }
+    .sn-nav { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
     .sn-nav a {
       font-size: 14px; font-weight: 500; color: #444;
       text-decoration: none; padding: 8px 14px; border-radius: 6px;
+      white-space: nowrap;
       transition: background 0.15s, color 0.15s;
+    }
+    /* 項目が増えても1行に収まるよう、狭めのPC幅では余白を詰める（ラベル内では改行させない） */
+    @media (max-width: 1000px) {
+      .sn-nav a { padding: 8px 9px; }
+      .sn-header-inner { gap: 10px; }
     }
     .sn-nav a:hover { background: #f0f4fa; color: #1e5fa8; }
     .sn-nav a.sn-active { color: #1e5fa8; font-weight: 700; }
@@ -224,6 +234,7 @@
     { cat: 'checklist', label: 'チェックリスト' },
     { cat: 'tools', label: 'ツール' },
     { cat: 'knowledge', label: 'ナレッジ' },
+    { cat: 'yakureki', label: '薬歴' },
   ];
 
   const navHtml = navItems
