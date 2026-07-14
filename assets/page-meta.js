@@ -41,7 +41,7 @@ window.__pageMeta = {
   },
   "調剤報酬QA.html": {
     "lastUpdated": "2026-07-12",
-    "newUntil": "2026-07-19"
+    "newUntil": "2026-07-21"
   },
   "在宅薬学総合体制加算2026.html": {
     "lastUpdated": "2026-07-12"
