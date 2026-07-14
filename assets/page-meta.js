@@ -32,7 +32,7 @@ window.__pageMeta = {
   },
   "調剤報酬QA.html": {
     "lastUpdated": "2026-07-14",
-    "newUntil": "2026-07-21"
+    "newUntil": "2026-07-22"
   },
   "疑義解釈_その5_2026.html": {
     "lastUpdated": "2026-05-09"
