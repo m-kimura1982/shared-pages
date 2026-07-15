@@ -25,7 +25,8 @@ window.__pageMeta = {
     "lastUpdated": "2026-07-12"
   },
   "gigi-search.html": {
-    "lastUpdated": "2026-04-15"
+    "lastUpdated": "2026-04-15",
+    "newUntil": "2026-07-23"
   },
   "別表第三_調剤報酬点数表2026.html": {
     "lastUpdated": "2026-04-10"
