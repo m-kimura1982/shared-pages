@@ -24,15 +24,11 @@
   "かかりつけ薬剤師訪問加算.html": {
     "lastUpdated": "2026-07-12"
   },
-  "gigi-search.html": {
-    "lastUpdated": "2026-04-15",
-    "newUntil": "2026-07-23"
+  "kaitei2026.html": {
+    "lastUpdated": "2026-07-16"
   },
   "別表第三_調剤報酬点数表2026.html": {
     "lastUpdated": "2026-04-10"
-  },
-  "index.html": {
-    "lastUpdated": "2026-07-15"
   },
   "疑義解釈_その5_2026.html": {
     "lastUpdated": "2026-05-09"
@@ -40,8 +36,8 @@
   "かかりつけ薬剤師フォローアップ加算.html": {
     "lastUpdated": "2026-07-12"
   },
-  "updates.html": {
-    "lastUpdated": "2026-07-15"
+  "index.html": {
+    "lastUpdated": "2026-07-16"
   },
   "調剤報酬QA.html": {
     "lastUpdated": "2026-07-15",
@@ -73,6 +69,9 @@
   },
   "変更調剤について.html": {
     "lastUpdated": "2026-04-18"
+  },
+  "tools.html": {
+    "lastUpdated": "2026-07-16"
   },
   "疑義解釈_その1_2026.html": {
     "lastUpdated": "2026-04-01"
@@ -135,6 +134,9 @@
   "調剤時残薬調整加算.html": {
     "lastUpdated": "2026-07-12"
   },
+  "updates.html": {
+    "lastUpdated": "2026-07-16"
+  },
   "服薬管理指導料3・4_施設訪問・オンライン.html": {
     "lastUpdated": "2026-05-06"
   },
@@ -147,6 +149,10 @@
   "薬学的有害事象等防止加算_実務チェックリスト.html": {
     "lastUpdated": "2026-06-08",
     "newUntil": "2026-06-15"
+  },
+  "gigi-search.html": {
+    "lastUpdated": "2026-07-16",
+    "newUntil": "2026-07-23"
   },
   "服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html": {
     "lastUpdated": "2026-06-19"
@@ -193,9 +199,6 @@
   "地域支援医薬品供給対応体制加算_届出判定ツール.html": {
     "lastUpdated": "2026-07-12"
   },
-  "tools.html": {
-    "lastUpdated": "2026-06-15"
-  },
   "かかりつけ薬剤師フォローアップ加算_実務チェックリスト.html": {
     "lastUpdated": "2026-07-12",
     "newUntil": "2026-06-16"
@@ -209,8 +212,5 @@
   },
   "バイオ後続品調剤体制加算.html": {
     "lastUpdated": "2026-06-01"
-  },
-  "kaitei2026.html": {
-    "lastUpdated": "2026-06-26"
   }
 }
