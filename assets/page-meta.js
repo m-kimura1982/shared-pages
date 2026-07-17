@@ -74,9 +74,6 @@ window.__pageMeta = {
   "変更調剤について.html": {
     "lastUpdated": "2026-04-18"
   },
-  "tools.html": {
-    "lastUpdated": "2026-07-16"
-  },
   "疑義解釈_その2_2026.html": {
     "lastUpdated": "2026-04-29"
   },
@@ -138,6 +135,9 @@ window.__pageMeta = {
   "調剤時残薬調整加算.html": {
     "lastUpdated": "2026-07-12"
   },
+  "tools.html": {
+    "lastUpdated": "2026-07-18"
+  },
   "服薬管理指導料3・4_施設訪問・オンライン.html": {
     "lastUpdated": "2026-05-06"
   },
@@ -152,8 +152,8 @@ window.__pageMeta = {
     "newUntil": "2026-06-15"
   },
   "gigi-search.html": {
-    "lastUpdated": "2026-07-16",
-    "newUntil": "2026-07-23"
+    "lastUpdated": "2026-07-18",
+    "newUntil": "2026-07-25"
   },
   "服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html": {
     "lastUpdated": "2026-06-19"
