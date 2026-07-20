@@ -25,9 +25,6 @@
   "かかりつけ薬剤師訪問加算.html": {
     "lastUpdated": "2026-07-12"
   },
-  "updates.html": {
-    "lastUpdated": "2026-07-16"
-  },
   "別表第三_調剤報酬点数表2026.html": {
     "lastUpdated": "2026-04-10"
   },
@@ -41,7 +38,7 @@
   "かかりつけ薬剤師フォローアップ加算.html": {
     "lastUpdated": "2026-07-12"
   },
-  "index.html": {
+  "updates.html": {
     "lastUpdated": "2026-07-16"
   },
   "疑義解釈_その1_2026.html": {
@@ -73,6 +70,9 @@
   },
   "変更調剤について.html": {
     "lastUpdated": "2026-04-18"
+  },
+  "index.html": {
+    "lastUpdated": "2026-07-16"
   },
   "疑義解釈_その2_2026.html": {
     "lastUpdated": "2026-04-29"
@@ -216,5 +216,57 @@
   },
   "バイオ後続品調剤体制加算.html": {
     "lastUpdated": "2026-06-01"
+  },
+  "yakureki/index.html": {
+    "lastUpdated": "2026-07-20",
+    "newUntil": "2026-07-27"
+  },
+  "yakureki/基本記載ルール.html": {
+    "lastUpdated": "2026-07-20"
+  },
+  "yakureki/個別指導で問われる記載.html": {
+    "lastUpdated": "2026-07-20"
+  },
+  "yakureki/加算別記載一覧.html": {
+    "lastUpdated": "2026-07-20"
+  },
+  "yakureki/乳幼児服薬指導加算.html": {
+    "lastUpdated": "2026-07-20"
+  },
+  "yakureki/ハイリスク薬指導.html": {
+    "lastUpdated": "2026-07-20"
+  },
+  "yakureki/ハイリスク_血液凝固阻止剤.html": {
+    "lastUpdated": "2026-07-20"
+  },
+  "yakureki/ハイリスク_糖尿病用剤.html": {
+    "lastUpdated": "2026-07-20"
+  },
+  "yakureki/ハイリスク_膵臓ホルモン剤.html": {
+    "lastUpdated": "2026-07-20"
+  },
+  "yakureki/ハイリスク_抗精神病薬.html": {
+    "lastUpdated": "2026-07-20"
+  },
+  "yakureki/ハイリスク_抗うつ薬.html": {
+    "lastUpdated": "2026-07-20"
+  },
+  "yakureki/ハイリスク_気分安定薬.html": {
+    "lastUpdated": "2026-07-20"
+  },
+  "yakureki/ハイリスク_抗てんかん薬.html": {
+    "lastUpdated": "2026-07-20"
+  },
+  "yakureki/テンプレート集.html": {
+    "lastUpdated": "2026-07-20"
+  },
+  "yakureki/テンプレート_汎用.html": {
+    "lastUpdated": "2026-07-20"
+  },
+  "yakureki/テンプレート_メンタル.html": {
+    "lastUpdated": "2026-07-20"
+  },
+  "yakureki/テンプレート_循環器.html": {
+    "lastUpdated": "2026-07-20"
   }
 }
