@@ -425,6 +425,12 @@
           <p class="minline-lead">
             特定薬剤管理指導加算1は、服薬管理指導料に対する加算であり、対象薬が処方されていることだけを理由に算定する加算ではない。算定する場合は、通常の服薬指導に加えて、対象薬に関する確認を行い、患者の状態・服薬状況等を踏まえたプラスアルファの指導を行う必要がある。
           </p>
+          <p class="minline-lead" style="margin-bottom:6px;">算定する場面は次の3つ。</p>
+          <ul style="margin:0 0 12px; padding-left:20px; font-size:13.5px; line-height:1.75; color:var(--ink);">
+            <li style="margin-bottom:3px;"><strong>イ</strong>　初回処方時</li>
+            <li style="margin-bottom:3px;"><strong>ロ</strong>　用法・用量等の変更時</li>
+            <li><strong>ロ</strong>　副作用・服薬状況等の変化により、薬剤師が必要と認めて指導した場合</li>
+          </ul>
           <p class="minline-lead" style="margin-bottom:14px;">
             算定時は、対象薬について確認した内容と行った指導の要点を薬歴に記録する。従来と同一の処方内容でロを算定する場合は、特に指導が必要と判断した理由の要点も記載する。
           </p>
@@ -439,7 +445,7 @@
           <h3 class="subsection-title" style="margin-top:18px;">よくある薬歴と修正例（抗精神病薬）</h3>
           <div class="example-pair">
             <div class="example-box bad">
-              <span class="example-label">✕ 算定根拠として不十分な例</span>
+              <span class="example-label">✕ 算定根拠として不十分な例（新規）</span>
               <pre>リスパダール：新規。効果と副作用を説明し、継続して服用するよう指導した。</pre>
             </div>
             <div class="example-box good">
@@ -447,6 +453,17 @@
               <pre>リスパダール：新規（処方目的：統合失調症）。現在の症状・併用薬を確認。症状の安定を助ける薬で、症状が落ち着いても自己判断で中止しないことを説明。眠気・ふらつきが出るため自動車運転等の危険作業を避けるよう指導。手の震え・体のこわばり・じっとしていられない、月経異常・乳汁分泌（高プロラクチン血症）があれば早めに相談するよう説明。市販の風邪薬・睡眠改善薬・サプリは事前に相談するよう指導。</pre>
             </div>
           </div>
+          <div class="example-pair" style="margin-top:10px;">
+            <div class="example-box bad">
+              <span class="example-label">✕ 算定根拠として不十分な例（増量）</span>
+              <pre>リスパダール：1mg→2mgへ増量。用量変更を確認。症状の安定状況・眠気を確認。新用量での服用方法を再説明。</pre>
+            </div>
+            <div class="example-box good">
+              <span class="example-label">○ 修正例（変更ロ：増量のテンプレートを使った例）</span>
+              <pre>リスパダール：1mg→2mgへ増量説明。増量に伴い手の震え・体のこわばり・じっとしていられない感じ（錐体外路症状）や眠気・ふらつきが出やすくなるため、みられた場合は早めに相談するよう指導。ふらつきによる転倒と、車の運転等の危険作業に従事しないことを再指導。症状が落ち着いても自己判断で調整せず継続して服用するよう説明。</pre>
+            </div>
+          </div>
+          <p style="font-size:12px;color:var(--sub);margin-top:4px;">※ 増量の✕は「確認した」「再説明した」という行為の記録だけで、確認の結果が読めない。確認の結果はSに、指導の中身は具体的な症状の言葉で残す。</p>
           <p style="font-size:12px;color:var(--sub);margin-top:4px;">※ ✕は確認した内容や患者ごとのプラスアルファの指導が読み取れない。○は「<a href="#drug-search" class="link-inline" style="color:var(--blue);">薬剤名から探す</a>」からSDA初回イの記載例を参考にしたもの。薬効・用法説明だけで終わらず、処方目的・症状・併用薬の確認と、患者の状況に応じた指導が薬歴から確認できるようにする。</p>
         </div>
       </section>
@@ -460,6 +477,7 @@
             <div class="cl-head">確認・記録する項目（基本）</div>
             <label class="cl-item"><input type="checkbox"><span>対象薬剤が分かるように記載した（<b>「薬剤名：〜」</b>）</span></label>
             <label class="cl-item"><input type="checkbox"><span>記載内容から<b>新規／変更／変化のどれに当たるか分かる</b>。<b>副作用・服薬状況等の変化によるロは、変化の内容と、追加指導が必要と判断した理由</b>も記載した</span></label>
+            <label class="cl-item"><input type="checkbox"><span><b>用法・用量の変更時</b>は、変更内容と、<b>変更前後の症状・副作用の変化</b>を記載した（SOAP運用ではSへの記載でよい）</span></label>
             <label class="cl-item"><input type="checkbox"><span><b>処方目的・症状</b>を確認した（<b>継続・変更時は服薬状況</b>も）</span></label>
             <label class="cl-item"><input type="checkbox"><span>併用薬・市販薬・サプリ（<b>中枢抑制薬・抗コリン薬の重複</b>等）を確認した</span></label>
             <label class="cl-item"><input type="checkbox"><span><b>自己判断で中止しないこと</b>・眠気／自動車運転等の危険作業の注意を説明した</span></label>
@@ -576,7 +594,7 @@
         </div>
         <div class="tag-legend">
           <span><i style="background:var(--blue-light);border:1px solid var(--blue)"></i>初回イ（新規／併用下追加／高齢例 など）</span>
-          <span><i style="background:#e0f2f1;border:1px solid #0d9488"></i>変更ロ（用量変更／製剤切替 など）</span>
+          <span><i style="background:#e0f2f1;border:1px solid #0d9488"></i>変更ロ（増量 など）</span>
           <span><i style="background:#f2f4f8;border:1px solid #d7dce3"></i>必要時追記</span>
           <span><i style="background:#fef3e8;border:1px solid #f5d4a1"></i>副作用説明の追記（説明した分だけ追加）</span>
         </div>
@@ -585,10 +603,13 @@
         <div class="drug-block" id="common-se">
           <div class="drug-block-head">
             <span class="drug-block-name">共通の副作用説明の追記</span>
-            <span class="drug-block-sub">分類を問わず注意が必要な重篤副作用</span>
+            <span class="drug-block-sub">分類を問わず注意が必要な副作用</span>
           </div>
           <p style="font-size:13px;line-height:1.75;color:var(--ink);margin-bottom:8px;">
             <strong>悪性症候群・QT延長・SJS/TEN</strong>は抗精神病薬全般で注意が必要な重篤副作用である。説明した場合は以下のテンプレを薬剤群別ブロックの初回イ等の薬歴記録に追記する。
+          </p>
+          <p style="font-size:13px;line-height:1.75;color:var(--ink);margin-bottom:8px;">
+            あわせて、抗精神病薬は体温調節に影響し、抗コリン作用のある薬では汗をかきにくくなる。<strong>夏場は熱中症を起こしやすい</strong>ため、暑い時期に来局した患者には最後の「必要時追記」を使う。
           </p>
           <details class="guide-details">
             <summary>共通副作用の背景知識</summary>
@@ -615,6 +636,9 @@
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
               <div class="tpl-text">皮膚粘膜眼症候群・中毒性表皮壊死症（SJS/TEN）について、まれではあるが、発熱を伴う全身性の皮疹・口や眼の粘膜びらん・水ぶくれが出た場合は速やかに受診するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag add">必要時追記（夏場）</span>
+              <div class="tpl-text">暑い時期のため、汗をかきにくく体温が上がりやすくなる旨を説明。こまめな水分補給と、涼しい環境で過ごすよう指導。体が熱い・ぐったりする・意識がはっきりしない場合は、我慢せず速やかに受診するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
           </div>
         </div>
@@ -673,8 +697,8 @@
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
               <div class="tpl-text">高齢者へのSDA系新規処方。転倒・誤嚥・起立性低血圧のリスクが上がる旨を説明。家族支援の有無を確認、家族同席時・必要に応じて家族にも症状観察を依頼。眠気・ふらつき出現時は無理せず休むこと、立ち上がりはゆっくり段階的に行うよう指導。錐体外路症状や嚥下障害があれば早めに相談、自己判断で中止しないよう注意喚起。</div>
               <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
-              <div class="tpl-text">用量変更を確認。変更前後の症状の安定状況・眠気・錐体外路症状を確認。新用量での服用方法を再説明、症状出現時は早めに相談するよう再指導。自己判断で中止しないよう注意喚起。</div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
+              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴い手の震え・体のこわばり・じっとしていられない感じ（錐体外路症状）や眠気・ふらつきが出やすくなるため、みられた場合は早めに相談するよう指導。ふらつきによる転倒と、車の運転等の危険作業に従事しないことを再指導。症状が落ち着いても自己判断で調整せず継続して服用するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
               <div class="tpl-text">高プロラクチン血症について、月経異常・無月経・乳汁分泌・性機能障害（性欲低下・勃起障害等）が続く場合は主治医に相談するよう説明（特にリスペリドン・パリペリドン）。</div>
@@ -755,8 +779,8 @@
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
               <div class="tpl-text">高齢者へのMARTA系新規処方。糖尿病・糖尿病既往歴の有無を確認（不明な場合は次回以降も確認）。転倒・誤嚥・抗コリン負荷・起立性低血圧のリスクが上がる旨を説明。家族支援の有無を確認、家族同席時・必要に応じて家族にも血糖上昇を疑う症状（口渇・多飲・多尿・倦怠感等）の観察と出現時の受診を依頼。自己判断で中止しないよう注意喚起。</div>
               <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
-              <div class="tpl-text">用量変更を確認。変更前後の体重・血糖関連症状・眠気の変化を確認。新用量での服用方法を再説明、血糖上昇を疑う症状時の受診目安を再指導。自己判断で中止しないよう注意喚起。</div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
+              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴い眠気・ふらつきが出やすくなるため、転倒と、車の運転等の危険作業に従事しないことを再指導。のどの渇き・水を多く飲む・尿の量が多いなど血糖上昇を疑う症状がみられた場合は速やかに受診するよう再指導。体重の増加が続く場合は相談するよう説明。自己判断で調整せず継続して服用するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
               <div class="tpl-text">高血糖・糖尿病性ケトアシドーシスについて、まれではあるが、口渇・多飲・多尿・頻尿・倦怠感等の急な出現があれば、自己判断で様子を見ず速やかに受診するよう説明。</div>
@@ -827,8 +851,8 @@
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
               <div class="tpl-text">高齢者へのDSS/DSAM系新規処方。転倒・起立性低血圧のリスクが上がる旨を説明。家族支援の有無を確認、家族同席時・必要に応じて家族にもアカシジア・不眠・焦燥感の出現の観察を依頼。自己判断で中止しないよう注意喚起。</div>
               <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
-              <div class="tpl-text">用量変更を確認。変更前後の症状の安定状況・アカシジア・不眠・焦燥感の変化を確認。新用量での服用方法を再説明、症状出現時は早めに相談するよう再指導。自己判断で中止しないよう注意喚起。</div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
+              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴いじっとしていられない・そわそわして落ち着かない感じ（アカシジア）や不眠・焦りが出やすくなるため、みられた場合は我慢せず早めに相談するよう指導。自己判断で調整せず継続して服用するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">アカシジア（じっとしていられない・足のそわそわ感）の訴え。開始初期や増量時に出やすい旨を説明、自己判断で中止せず主治医に症状を伝えて用量調整・服用時刻の変更・薬剤変更等を相談するよう指導。</div>
@@ -899,8 +923,8 @@
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
               <div class="tpl-text">高齢者への定型抗精神病薬新規処方。転倒・誤嚥・抗コリン負荷・起立性低血圧のリスクが上がる旨を説明。認知症患者では脳血管事故・死亡リスク増加の報告があるため、処方目的・用量・継続期間を確認し、必要時は処方医へ確認する。家族支援の有無を確認、家族同席時・必要に応じて家族にも症状観察を依頼。立ち上がりはゆっくり段階的に行うよう指導、嚥下が悪くなった場合は早めに相談するよう説明。自己判断で中止しないよう注意喚起。</div>
               <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
-              <div class="tpl-text">用量変更を確認。変更前後の症状の安定状況・眠気・錐体外路症状・抗コリン症状の変化を確認。新用量での服用方法を再説明、症状出現時は早めに相談するよう再指導。自己判断で中止しないよう注意喚起。</div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
+              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴い手の震え・体のこわばり・動きにくさ（錐体外路症状）、口の渇き・便秘（抗コリン症状）、眠気・ふらつきが出やすくなるため、みられた場合は早めに相談するよう指導。動悸・失神がみられた場合は速やかに受診するよう説明。自己判断で調整せず継続して服用するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
 
             <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
@@ -946,11 +970,14 @@
 
         <div class="warn-box">
           <div class="warn-box-title">この区分の位置づけと使い方</div>
-          <p>
-            加算1の<strong>ロ</strong>は、①<strong>用法・用量の変更</strong>に伴い必要と認めて指導した場合（§2の変更ロ）と、②<strong>副作用の発現状況・服薬状況等の変化</strong>に基づき必要と認めて指導した場合の2つ（別添3）。ここで扱うのは②の<strong>副作用・服薬状況等の変化によるロ</strong>——同一処方でも、患者の体調・服薬状況・生活状況等の変化に薬剤師が気付き、<strong>追加の指導が必要と判断</strong>し、<strong>その理由の要点を薬歴に記載</strong>したときに算定する区分である。<br />
-            記録は<strong>「変化の確認 → 指導の方向性を判断 → 指導」</strong>の流れで簡潔に。<br />
-            以下は記載例。患者の状況に合わせて書き換える。
-          </p>
+          <p style="margin-bottom:8px;">加算1の<strong>ロ</strong>には、次の2つの場面がある（別添3）。</p>
+          <ul style="margin-bottom:10px;">
+            <li>①<strong>用法・用量の変更</strong>に伴い必要と認めて指導した場合 → <strong>SECTION 2 の変更ロ</strong></li>
+            <li>②<strong>副作用の発現状況・服薬状況等の変化</strong>に基づき必要と認めて指導した場合 → <strong>このセクション</strong></li>
+          </ul>
+          <p style="margin-bottom:8px;">②は、同一処方であっても、患者の体調・服薬状況・生活状況等の変化に薬剤師が気付き、<strong>追加の指導が必要と判断</strong>し、<strong>その理由の要点を薬歴に記載</strong>したときに算定する。</p>
+          <p style="margin-bottom:8px;">記録は<strong>「変化の確認 → 指導の方向性を判断 → 指導」</strong>の流れで簡潔に。</p>
+          <p>以下は記載例。患者の状況に合わせて書き換える。</p>
         </div>
 
         <div class="tpl-warn">

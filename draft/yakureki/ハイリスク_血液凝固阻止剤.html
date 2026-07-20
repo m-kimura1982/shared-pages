@@ -414,8 +414,14 @@
           <p class="minline-lead">
             特定薬剤管理指導加算1は、服薬管理指導料に対する加算であり、対象薬が処方されていることだけを理由に算定する加算ではない。算定する場合は、通常の服薬指導に加えて、対象薬に関する確認を行い、患者の状態・服薬状況等を踏まえたプラスアルファの指導を行う必要がある。
           </p>
+          <p class="minline-lead" style="margin-bottom:6px;">算定する場面は次の3つ。</p>
+          <ul style="margin:0 0 12px; padding-left:20px; font-size:13.5px; line-height:1.75; color:var(--ink);">
+            <li style="margin-bottom:3px;"><strong>イ</strong>　初回処方時</li>
+            <li style="margin-bottom:3px;"><strong>ロ</strong>　用法・用量等の変更時</li>
+            <li><strong>ロ</strong>　副作用・服薬状況等の変化により、薬剤師が必要と認めて指導した場合</li>
+          </ul>
           <p class="minline-lead" style="margin-bottom:14px;">
-            現在は、初回処方時、用法・用量等の変更時、または副作用・服薬状況等の変化により薬剤師が必要と認めて指導した場合に算定する。算定時は、対象薬について確認した内容と行った指導の要点を薬歴に記録する。従来と同一の処方内容でロを算定する場合は、特に指導が必要と判断した理由の要点も記載する。
+            算定時は、対象薬について確認した内容と行った指導の要点を薬歴に記録する。従来と同一の処方内容でロを算定する場合は、特に指導が必要と判断した理由の要点も記載する。
           </p>
           <div class="minline-checks">
             <div class="minline-check"><span class="mc-no">①</span><b>「薬剤名：〜」の形で書き始める</b><span class="mc-note">どの薬についての指導記録かを明確にする（例：「ワーファリン：…」）。</span></div>
@@ -428,7 +434,7 @@
           <h3 class="subsection-title" style="margin-top:18px;">よくある薬歴と修正例（血液凝固阻止剤）</h3>
           <div class="example-pair">
             <div class="example-box bad">
-              <span class="example-label">✕ 算定根拠として不十分な例</span>
+              <span class="example-label">✕ 算定根拠として不十分な例（新規）</span>
               <pre>ワーファリン：新規。効果と副作用について説明し、継続して服用するよう指導した。</pre>
             </div>
             <div class="example-box good">
@@ -436,6 +442,17 @@
               <pre>ワーファリン：新規。処方目的（NVAFの脳塞栓予防）、併用薬・食事内容を確認。血液を固まりにくくして血栓を防ぐ薬であること、自己判断で中止しないことを説明。鼻血・歯ぐき出血・あざ・血尿・黒色便などの出血症状があれば自己判断で中止せず連絡、納豆・クロレラ・青汁は避けるよう指導。他科・歯科受診や市販薬購入時は服用中であることを伝え、抜歯・手術・内視鏡予定があれば事前に主治医・施行医に相談するよう説明。</pre>
             </div>
           </div>
+          <div class="example-pair" style="margin-top:10px;">
+            <div class="example-box bad">
+              <span class="example-label">✕ 算定根拠として不十分な例（増量）</span>
+              <pre>ワーファリン：2mg→2.5mgへ増量。用量変更を確認。変更前後の出血症状・食事・併用薬の変化を確認。新用量での服用方法を再説明。</pre>
+            </div>
+            <div class="example-box good">
+              <span class="example-label">○ 修正例（変更ロ：増量のテンプレートを使った例）</span>
+              <pre>ワーファリン：2mg→2.5mgへ増量説明。増量に伴い出血しやすくなるため、あざ・鼻血・歯ぐき出血・血尿・黒色便などの出血兆候がみられた場合は自己判断で中止せず早めに連絡するよう指導。抗菌薬・解熱鎮痛薬など併用薬で作用が変わりやすい薬のため、他院の処方・市販薬・サプリを始めるときは事前に相談するよう改めて注意喚起。</pre>
+            </div>
+          </div>
+          <p style="font-size:12px;color:var(--sub);margin-top:4px;">※ 増量の✕は「確認した」「再説明した」という行為の記録だけで、確認の結果が読めない。確認の結果（PT-INR・出血症状の有無など）はS/Oに、指導の中身は具体的な症状の言葉で残す。</p>
           <p style="font-size:12px;color:var(--sub);margin-top:4px;">※ ✕は確認した内容や患者ごとのプラスアルファの指導が読み取れない。○は「<a href="#drug-search" class="link-inline" style="color:var(--blue);">薬剤名から探す</a>」からワーファリン初回イの記載例を参考にしたもの。薬効・用法説明だけで終わらず、処方目的・併用薬・食事の確認と、患者の状況に応じた指導が薬歴から確認できるようにする。</p>
         </div>
       </section>
@@ -451,6 +468,7 @@
             <div class="cl-head">確認・記録する項目（基本）</div>
             <label class="cl-item"><input type="checkbox"><span>対象薬剤が分かるように記載した（<b>「薬剤名：〜」</b>）</span></label>
             <label class="cl-item"><input type="checkbox"><span>記載内容から<b>新規／変更／変化のどれに当たるか分かる</b>。<b>副作用・服薬状況等の変化によるロは、変化の内容と、追加指導が必要と判断した理由</b>も記載した</span></label>
+            <label class="cl-item"><input type="checkbox"><span><b>用法・用量の変更時</b>は、変更内容と、<b>変更前後の症状・検査値・服薬状況の変化</b>を記載した（SOAP運用ではS/Oへの記載でよい）</span></label>
             <label class="cl-item"><input type="checkbox"><span><b>処方目的・適応疾患</b>を確認した（<b>継続・変更時は服薬状況</b>も）</span></label>
             <label class="cl-item"><input type="checkbox"><span>相互作用に注意が必要な併用薬・市販薬・サプリ・食事（ワーファリンのビタミンK）を確認した</span></label>
             <label class="cl-item"><input type="checkbox"><span>出血兆候の注意・自己判断で中止しないことを説明した</span></label>
@@ -550,7 +568,7 @@
         </div>
         <div class="tag-legend">
           <span><i style="background:var(--blue-light);border:1px solid var(--blue)"></i>初回イ（新規／併用下追加／高齢例 など）</span>
-          <span><i style="background:#e0f2f1;border:1px solid #0d9488"></i>変更ロ（用量変更／PT-INR変動／腎機能変化 など）</span>
+          <span><i style="background:#e0f2f1;border:1px solid #0d9488"></i>変更ロ（増量／減量／DAPT解除 など）</span>
           <span><i style="background:#f2f4f8;border:1px solid #d7dce3"></i>必要時追記</span>
           <span><i style="background:#fef3e8;border:1px solid #f5d4a1"></i>副作用説明の追記（説明した分だけ追加）</span>
         </div>
@@ -631,8 +649,11 @@
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
               <div class="tpl-text">高齢者へのワーファリン新規処方。処方目的とPT-INR目標値（医師の設定）を確認。出血症状の自覚が遅れる可能性があるため、家族支援の有無も確認し、出血兆候（あざ・鼻血・歯ぐき出血・黒色便・止まりにくい出血等）に注意するよう本人・家族に説明。食事制限・併用薬・抜歯時対応も指導、自己判断で中止しないよう注意喚起。転倒時の頭部打撲は症状がなくても受診するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更・PT-INR変動</span>
-              <div class="tpl-text">PT-INR変動による用量変更を確認。変更前後の出血症状・食事・併用薬の変化を確認。新用量での服用方法を再説明、PT-INRの推移と出血兆候（あざ・鼻血・歯ぐき出血・止まりにくい出血等）の有無を継続して確認するよう指導。</div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
+              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴い出血しやすくなるため、あざ・鼻血・歯ぐき出血・血尿・黒色便などの出血兆候がみられた場合は自己判断で中止せず早めに連絡するよう指導。抗菌薬・解熱鎮痛薬など併用薬で作用が変わりやすい薬のため、他院の処方・市販薬・サプリを始めるときは事前に相談するよう改めて注意喚起。</div>
+              <button class="copy-mini">コピー</button></div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：減量</span>
+              <div class="tpl-text">〇mg→〇mgへ減量説明。減量後もしばらくは出血しやすい状態が続くため、あざ・鼻血・歯ぐき出血・血尿・黒色便などの出血兆候の観察を続けるよう指導。抗菌薬・解熱鎮痛薬など併用薬で作用が変わりやすい薬のため、他院の処方・市販薬・サプリを始めるときは事前に相談するよう改めて注意喚起。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
               <div class="tpl-text">重篤な出血（消化管出血・脳出血等）について、まれではあるが、激しい頭痛・嘔吐・視力異常・麻痺・大量の黒色便等があれば速やかに受診するよう説明。</div>
@@ -760,8 +781,8 @@
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：抗血小板薬・NSAIDs等併用下追加</span>
               <div class="tpl-text">他剤併用下（抗血小板薬・NSAIDs等）でDOAC新規追加。併用薬を確認。出血リスクが上がるため、出血兆候（あざ・鼻血・歯ぐき出血・止まりにくい出血等）に注意するよう指導。抜歯・手術・内視鏡時は事前相談、自己判断で中止しないよう説明。OTC・サプリ追加時は薬剤師に確認するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更・腎機能変化</span>
-              <div class="tpl-text">腎機能変化または年齢・体重に応じた用量変更を確認。新用量での服用方法を再説明、出血兆候（あざ・鼻血・歯ぐき出血・止まりにくい出血等）の有無を継続して確認するよう指導。脱水・発熱等で腎機能が変動しやすい状況では早めに相談するよう説明。</div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：減量（腎機能・年齢・体重）</span>
+              <div class="tpl-text">〇mg→〇mgへ減量説明。腎機能・年齢・体重に応じた基準に沿った減量であり、血栓を防ぐ効果は保たれるため、自己判断で中止したり量を戻したりしないよう指導。出血兆候（あざ・鼻血・歯ぐき出血・血尿・黒色便）の観察は続けるよう説明。脱水・発熱・下痢嘔吐など腎機能が変動しやすい体調変化があれば早めに相談するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
               <div class="tpl-text">重篤な出血（消化管出血・脳出血等）について、まれではあるが、激しい頭痛・嘔吐・視力異常・麻痺・大量の黒色便等があれば速やかに受診するよう説明。</div>
@@ -876,10 +897,9 @@
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：シロスタゾール</span>
               <div class="tpl-text">シロスタゾール新規処方。心不全・心不全既往の有無を確認（心不全に禁忌のため）。血管拡張作用により頭痛・動悸・頻脈・ほてりが開始初期に出やすいが多くは継続で軽快する旨を説明、強い場合は相談するよう指導。出血症状・併用薬・抜歯時対応も併せて指導。自己判断で中止しないよう説明。</div>
               <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更・追加/中止後の注意</span>
-              <div class="tpl-text">用量変更または併用薬追加・中止を確認。出血リスク・血栓リスクのバランスが変わるため、出血症状の観察と自己判断で中止しないことを再指導。DAPT解除時は単剤継続の重要性を説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：DAPT解除（単剤へ変更）</span>
+              <div class="tpl-text">DAPT解除、〇〇単剤へ変更を説明。残る1剤の継続が再閉塞予防に特に重要であり、自己判断で中止しないよう再指導。出血兆候（あざ・鼻血・歯ぐき出血・黒色便）と胃痛・胸やけなどの消化器症状の観察は継続するよう説明。</div>
+              <button class="copy-mini">コピー</button></div>            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
               <div class="tpl-text">重篤な出血（消化管出血・脳出血等）について、まれではあるが、激しい頭痛・嘔吐・視力異常・麻痺・大量の黒色便等があれば速やかに受診するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
@@ -935,11 +955,14 @@
 
         <div class="warn-box">
           <div class="warn-box-title">この区分の位置づけと使い方</div>
-          <p>
-            加算1の<strong>ロ</strong>は、①<strong>用法・用量の変更</strong>に伴い必要と認めて指導した場合（§2の変更ロ）と、②<strong>副作用の発現状況・服薬状況等の変化</strong>に基づき必要と認めて指導した場合の2つ（別添3）。ここで扱うのは②の<strong>副作用・服薬状況等の変化によるロ</strong>——同一処方でも、患者の体調・服薬状況・生活状況等の変化に薬剤師が気付き、<strong>追加の指導が必要と判断</strong>し、<strong>その理由の要点を薬歴に記載</strong>したときに算定する区分である。<br />
-            記録は<strong>「変化の確認 → 指導の方向性を判断 → 指導」</strong>の流れで簡潔に。<br />
-            以下は記載例。患者の状況に合わせて書き換える。
-          </p>
+          <p style="margin-bottom:8px;">加算1の<strong>ロ</strong>には、次の2つの場面がある（別添3）。</p>
+          <ul style="margin-bottom:10px;">
+            <li>①<strong>用法・用量の変更</strong>に伴い必要と認めて指導した場合 → <strong>SECTION 2 の変更ロ</strong></li>
+            <li>②<strong>副作用の発現状況・服薬状況等の変化</strong>に基づき必要と認めて指導した場合 → <strong>このセクション</strong></li>
+          </ul>
+          <p style="margin-bottom:8px;">②は、同一処方であっても、患者の体調・服薬状況・生活状況等の変化に薬剤師が気付き、<strong>追加の指導が必要と判断</strong>し、<strong>その理由の要点を薬歴に記載</strong>したときに算定する。</p>
+          <p style="margin-bottom:8px;">記録は<strong>「変化の確認 → 指導の方向性を判断 → 指導」</strong>の流れで簡潔に。</p>
+          <p>以下は記載例。患者の状況に合わせて書き換える。</p>
         </div>
 
         <div class="tpl-warn">

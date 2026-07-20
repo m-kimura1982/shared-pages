@@ -449,6 +449,12 @@
           <p class="minline-lead">
             特定薬剤管理指導加算1は、服薬管理指導料に対する加算であり、対象薬が処方されていることだけを理由に算定する加算ではない。算定する場合は、通常の服薬指導に加えて、対象薬に関する確認を行い、患者の状態・服薬状況等を踏まえたプラスアルファの指導を行う必要がある。
           </p>
+          <p class="minline-lead" style="margin-bottom:6px;">算定する場面は次の3つ。</p>
+          <ul style="margin:0 0 12px; padding-left:20px; font-size:13.5px; line-height:1.75; color:var(--ink);">
+            <li style="margin-bottom:3px;"><strong>イ</strong>　初回処方時</li>
+            <li style="margin-bottom:3px;"><strong>ロ</strong>　用法・用量等の変更時</li>
+            <li><strong>ロ</strong>　副作用・服薬状況等の変化により、薬剤師が必要と認めて指導した場合</li>
+          </ul>
           <p class="minline-lead" style="margin-bottom:14px;">
             算定時は、対象薬について確認した内容と行った指導の要点を薬歴に記録する。従来と同一の処方内容でロを算定する場合は、特に指導が必要と判断した理由の要点も記載する。
           </p>
@@ -463,7 +469,7 @@
           <h3 class="subsection-title" style="margin-top:18px;">よくある薬歴と修正例（抗てんかん薬）</h3>
           <div class="example-pair">
             <div class="example-box bad">
-              <span class="example-label">✕ 算定根拠として不十分な例</span>
+              <span class="example-label">✕ 算定根拠として不十分な例（新規）</span>
               <pre>テグレトール：新規。効果と副作用を説明し、継続して服用するよう指導した。</pre>
             </div>
             <div class="example-box good">
@@ -471,6 +477,17 @@
               <pre>テグレトール：新規（処方目的：てんかん）。発作を抑える薬であり自己判断で中止・減量すると発作が再発・悪化するおそれがあることを説明。飲み始めの数週間は発熱を伴う発疹・口や目のただれ等の重篤な皮膚障害に注意し、出た場合は速やかに受診するよう指導。眠気・めまい・複視が出ることがあり運転等に注意するよう説明。他の薬の効きを弱めることがあるため、他院処方・市販薬・サプリは必ず申告するよう指導。</pre>
             </div>
           </div>
+          <div class="example-pair" style="margin-top:10px;">
+            <div class="example-box bad">
+              <span class="example-label">✕ 算定根拠として不十分な例（増量）</span>
+              <pre>テグレトール：200mg→400mgへ増量。用量変更を確認。血中濃度・発作状況を確認。新用量での服用方法を再説明。</pre>
+            </div>
+            <div class="example-box good">
+              <span class="example-label">○ 修正例（変更ロ：増量のテンプレートを使った例）</span>
+              <pre>テグレトール：200mg→400mgへ増量説明。増量に伴いめまい・ふらつき・眠気・物が二重に見える（複視）が出やすくなるため、みられた場合は早めに相談するよう指導。ふらつきによる転倒と、車の運転等の危険作業に従事しないことを再指導。発作予防のため自己判断で調整せず継続して服用するよう指導。</pre>
+            </div>
+          </div>
+          <p style="font-size:12px;color:var(--sub);margin-top:4px;">※ 増量の✕は「確認した」「再説明した」という行為の記録だけで、確認の結果が読めない。確認の結果（血中濃度・発作状況）はS/Oに、指導の中身は具体的な症状の言葉で残す。</p>
           <p style="font-size:12px;color:var(--sub);margin-top:4px;">※ ✕は確認した内容や患者ごとのプラスアルファの指導が読み取れない。○は「<a href="#drug-search" class="link-inline" style="color:var(--blue);">薬剤名から探す</a>」からカルバマゼピン初回イの記載例を参考にしたもの。薬効・用法説明だけで終わらず、処方目的・血中濃度や検査の確認と、患者の状況に応じた指導が薬歴から確認できるようにする。</p>
         </div>
       </section>
@@ -484,6 +501,7 @@
             <div class="cl-head">確認・記録する項目（基本）</div>
             <label class="cl-item"><input type="checkbox"><span>対象薬剤が分かるように記載した（<b>「薬剤名：〜」</b>）</span></label>
             <label class="cl-item"><input type="checkbox"><span>記載内容から<b>新規／変更／変化のどれに当たるか分かる</b>。<b>副作用・服薬状況等の変化によるロは、変化の内容と、追加指導が必要と判断した理由</b>も記載した</span></label>
+            <label class="cl-item"><input type="checkbox"><span><b>用法・用量の変更時</b>は、変更内容と、<b>変更前後の発作状況・副作用・血中濃度の変化</b>を記載した（SOAP運用ではS/Oへの記載でよい）</span></label>
             <label class="cl-item"><input type="checkbox"><span><b>処方目的・最近の発作状況</b>を確認した（<b>継続・変更時は服薬状況</b>も）</span></label>
             <label class="cl-item"><input type="checkbox"><span>併用薬・市販薬・サプリ（<b>酵素誘導／阻害薬・経口避妊薬・カルバペネム＋バルプロ酸・ワルファリン</b>等）を確認した</span></label>
             <label class="cl-item"><input type="checkbox"><span><b>自己判断で中止・減量しないこと</b>（中止により発作の再発・重症化・てんかん重積につながる可能性）を説明した</span></label>
@@ -664,7 +682,7 @@
         </div>
         <div class="tag-legend">
           <span><i style="background:var(--blue-light);border:1px solid var(--blue)"></i>初回イ（新規／併用下追加／高齢例 など）</span>
-          <span><i style="background:#e0f2f1;border:1px solid #0d9488"></i>変更ロ（用量変更／漸増 など）</span>
+          <span><i style="background:#e0f2f1;border:1px solid #0d9488"></i>変更ロ（増量／漸増 など）</span>
           <span><i style="background:#f2f4f8;border:1px solid #d7dce3"></i>必要時追記</span>
           <span><i style="background:#fef3e8;border:1px solid #f5d4a1"></i>副作用説明の追記（説明した分だけ追加）</span>
         </div>
@@ -784,8 +802,8 @@
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
               <div class="tpl-text">高齢者へのバルプロ酸新規処方。高アンモニア血症による意識変化・傾眠、ふらつき・転倒のリスクを説明。家族支援の有無を確認し、家族同席時・必要に応じて意識のもうろう・嘔吐・強いだるさ等の出現を観察してもらうよう依頼。定期的な検査が重要な薬であることを説明し、検査結果が分かる場合は共有してもらうよう説明。自己判断で中止しないよう注意喚起。</div>
               <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
-              <div class="tpl-text">用量変更を確認。変更前の血中濃度・発作状況・副作用（眠気・ふらつき・意識変化）を確認。新用量での服用方法を再説明、変更後の副作用症状に注意し、症状出現時は相談するよう説明。自己判断で中止しないよう注意喚起。</div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
+              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴い眠気・ふらつき・手の震えが出やすくなるため、転倒と、車の運転等の危険作業に従事しないことを再指導。ぼんやりする・強い眠気・嘔気が続く場合（高アンモニア血症）は早めに相談・受診するよう説明。発作予防のため自己判断で調整せず継続して服用するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
               <div class="tpl-text">高アンモニア血症について、まれではあるが、傾眠・意識のもうろう・嘔吐・ふらつき等が出た場合は速やかに受診するよう説明（血中濃度が正常域でも起こりうる）。</div>
@@ -874,8 +892,8 @@
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
               <div class="tpl-text">高齢者へのカルバマゼピン新規処方。低Na血症・ふらつき・転倒・複視のリスクを説明。家族支援の有無を確認し、家族同席時・必要に応じて発疹・発熱・倦怠感・意識変化等の出現を観察してもらうよう依頼。利尿薬併用時は低Na血症に特に注意。定期的な検査が重要な薬であることを説明し、検査結果が分かる場合は共有してもらうよう説明。自己判断で中止しないよう注意喚起。</div>
               <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
-              <div class="tpl-text">用量変更を確認。変更前の血中濃度・発作状況・副作用（めまい・ふらつき・複視）を確認。新用量での服用方法を再説明、変更後の副作用症状に注意し、症状出現時は相談するよう説明。自己判断で中止しないよう注意喚起。</div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
+              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴いめまい・ふらつき・眠気・物が二重に見える（複視）が出やすくなるため、みられた場合は早めに相談するよう指導。ふらつきによる転倒と、車の運転等の危険作業に従事しないことを再指導。発作予防のため自己判断で調整せず継続して服用するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
               <div class="tpl-text">血液障害（汎血球減少・無顆粒球症）について、まれではあるが、急な発熱・のどの痛み・倦怠感・あざ・出血等が出た場合は速やかに受診するよう説明。</div>
@@ -960,10 +978,10 @@
               <div class="tpl-text">バルプロ酸併用下でのラモトリギン新規処方。バルプロ酸併用によりラモトリギンの血中濃度が上がり皮疹リスクが高まるため、通常よりさらに低用量・緩徐な漸増となる旨を説明。漸増スケジュールの遵守を徹底し、発疹・皮膚の違和感・粘膜症状・発熱が出た場合は速やかに連絡・受診するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag change">変更ロ：漸増（増量段階）</span>
-              <div class="tpl-text">漸増スケジュールに沿った増量を確認。これまで皮膚症状がないことを確認。発疹・皮膚の違和感・粘膜症状・発熱に注意し、症状出現時は自己判断で続けず速やかに連絡・受診するよう説明。次回来局時も皮膚症状の有無を確認予定。</div>
+              <div class="tpl-text">漸増スケジュールに沿って〇mg→〇mgへ増量説明。増量段階では皮疹のリスクがあるため、発疹・皮膚の違和感・くちびるや口の中のただれ・発熱がみられた場合は自己判断で続けず速やかに連絡・受診するよう指導。決められたスケジュールどおりに増やすことが皮疹を防ぐうえで重要な旨を説明し、自己判断で調整せず継続して服用するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更（維持期）</span>
-              <div class="tpl-text">維持期の用量変更を確認。併用薬の変化（バルプロ酸＝血中濃度上昇／カルバマゼピン等＝低下）の有無を確認。皮膚症状・めまい・ふらつきの有無を確認し、症状出現時は早めに相談するよう指導。自己判断で中止しないよう注意喚起。</div>
+              <div class="tpl-text">維持期の〇mg→〇mgへの変更を説明。併用薬の開始・中止で血中濃度が大きく変わる薬のため（バルプロ酸で上昇・カルバマゼピン等で低下）、他院の処方や市販薬も含め薬の変更があれば伝えるよう指導。皮膚症状・めまい・ふらつきがみられた場合は早めに相談するよう説明。発作予防のため自己判断で中止しないよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">飲み忘れ・数日以上の中断あり。中断後に元の用量で再開すると皮疹リスクが上がるため、自己判断で元の量に戻さず主治医に相談するよう指導（改めて漸増が必要な場合がある）。</div>
@@ -1017,8 +1035,8 @@
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢・腎機能低下例</span>
               <div class="tpl-text">高齢者（または腎機能低下例）へのレベチラセタム新規処方。腎排泄のため腎機能に応じた用量である旨を確認。眠気・ふらつき・転倒に注意するよう説明、家族支援の有無を確認。気分・行動の変化があれば相談するよう説明。自己判断で中止しないよう注意喚起。</div>
               <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
-              <div class="tpl-text">用量変更を確認。変更前の発作状況・副作用（眠気・ふらつき・気分の変化）を確認。新用量での服用方法を再説明、変更後の症状に注意し、症状出現時は相談するよう説明。自己判断で中止しないよう注意喚起。</div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
+              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴い眠気・ふらつきや、イライラ・気分の落ち込みなどの気分の変化が出やすくなるため、本人・家族とも普段と違う変化があれば早めに相談するよう指導。発作予防のため自己判断で調整せず継続して服用するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
               <div class="tpl-text">精神症状について、イライラ・怒りっぽさ・気分の落ち込み・不眠等が出た場合は主治医に相談するよう説明（家族にも変化に気づいたら相談するよう依頼）。気分の強い落ち込みがある場合は早めに相談するよう伝える。</div>
@@ -1064,7 +1082,7 @@
               <div class="tpl-text">ラコサミド新規処方（処方目的：てんかん）。発作を抑える薬であり、自己判断で中止・減量しないよう説明。開始初期・増量時はめまい・ふらつき・ものが二重に見える等が出やすいため、運転等の危険作業に注意するよう指導。動悸・脈の乱れ・立ちくらみ・失神があれば早めに相談するよう説明。心疾患の既往・併用薬を確認。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">増量を確認。これまでのめまい・複視・動悸等の有無を確認。増量に伴いめまい・ふらつき・複視が出やすい旨を説明、症状出現時は相談するよう指導。自己判断で中止しないよう注意喚起。</div>
+              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴いめまい・ふらつき・物が二重に見える（複視）が出やすくなるため、みられた場合は早めに相談するよう指導。動悸・脈の乱れ・失神がみられた場合は速やかに受診するよう説明。発作予防のため自己判断で調整せず継続して服用するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">PR延長をきたす併用薬の追加あり（〇〇）。心伝導への影響が重なる可能性があるため、動悸・脈の乱れ・失神に注意するよう指導、気になる場合は主治医に相談するよう説明。</div>
@@ -1117,7 +1135,7 @@
               <div class="tpl-text">家族同席でのペランパネル新規処方。精神症状・行動の変化（怒りっぽさ・攻撃性・気分の落ち込み等）について家族にも観察を依頼し、変化があれば主治医に相談するよう説明。就寝前服用・緩徐な増量・転倒注意を本人・家族に説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">増量を確認。これまでの眠気・精神症状の有無を確認。増量に伴い眠気・精神症状が出やすい旨を説明、出現時は相談するよう指導。自己判断で中止しないよう注意喚起。</div>
+              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴いイライラ・怒りっぽさなどの気分・行動の変化や、眠気・めまいが出やすくなるため、みられた場合は早めに相談するよう指導。本人では気づきにくいことがあるため、家族の同席時は普段と違う様子に気づいたら知らせてもらうよう説明。発作予防のため自己判断で調整せず継続して服用するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">家族より怒りっぽさ・攻撃性・気分の落ち込みの訴えあり。ペランパネルによる精神症状の可能性があるため、症状を主治医に伝えるよう指導。強い気分の落ち込みがある場合は早めに受診するよう説明。</div>
@@ -1164,7 +1182,7 @@
               <div class="tpl-text">小児へのトピラマート新規処方。発汗減少による体温上昇・熱中症のリスクを保護者に説明。発熱・高温時の対応（涼しい環境・水分・無理をさせない）を指導。食欲・体重・言語面の変化に注意し、気になる場合は主治医に相談するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">増量を確認。これまでの食欲・体重・認知面・尿路症状を確認。増量に伴い副作用が出やすい旨を説明、水分摂取と症状出現時の相談を指導。自己判断で中止しないよう注意喚起。</div>
+              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴い眠気や、言葉が出にくい・ぼんやりするなどの症状が出やすくなるため、みられた場合は早めに相談するよう指導。汗をかきにくくなり体温が上がりやすくなるため、暑い時期は水分をこまめにとり、涼しい環境で過ごすよう指導。ぐったりする・体が熱いなどの症状があれば受診するよう説明。発作予防のため自己判断で調整せず継続して服用するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">側腹部痛・血尿の訴え。尿路結石の可能性があるため、水分摂取と主治医への相談を指導。</div>
@@ -1214,7 +1232,7 @@
               <div class="tpl-text">小児へのゾニサミド新規処方。発汗減少・体温上昇・熱中症のリスクを保護者に説明。発熱・高温時の対応を指導。食欲・体重・元気さの変化に注意するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">増量を確認。眠気・ふらつき・食欲・精神面の変化を確認。増量に伴う副作用に注意するよう説明、水分摂取を指導。自己判断で中止しないよう注意喚起。</div>
+              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴い眠気・食欲低下が出やすくなるため、食事量の低下が続く場合は相談するよう指導。汗をかきにくくなり体温が上がりやすくなるため、暑い時期は水分をこまめにとり、暑さ対策に注意するよう指導。発作予防のため自己判断で調整せず継続して服用するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
               <div class="tpl-text">重篤な皮膚障害について、まれではあるが、発熱を伴う発疹・口や目のただれ等が出た場合は速やかに受診するよう説明。</div>
@@ -1262,8 +1280,8 @@
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
               <div class="tpl-text">フェニトイン新規処方（処方目的：てんかん）。発作を抑える薬であり自己判断で中止・減量しないよう説明。少しの量の違いや併用薬で血中濃度が大きく変わりやすい薬であることを説明し、定期的な血中濃度検査の重要性を伝える。眼の揺れ・ものが二重に見える・ふらつき・ろれつが回らない等の中毒徴候、発熱を伴う発疹・粘膜症状（重篤な皮膚障害）が出た場合は速やかに相談・受診するよう指導。歯ぐきの腫れ予防に丁寧な歯みがきを勧める。他の薬の効きを変えるため併用薬は必ず申告するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
-              <div class="tpl-text">用量変更を確認。少量の変更でも血中濃度が大きく変動しうるため、中毒徴候（眼振・複視・ふらつき・ろれつが回らない）に注意するよう説明、血中濃度の確認状況を確認。自己判断で中止しないよう注意喚起。</div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
+              <div class="tpl-text">〇mg→〇mgへ増量説明。少量の増量でも血中濃度が急に上がることがある薬のため、ふらつく・ろれつが回らない・物が二重に見えるなどの中毒徴候がみられた場合は速やかに連絡・受診するよう指導。発作予防のため自己判断で調整せず継続して服用するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">併用薬の追加・中止あり（〇〇）。フェニトインは多くの薬と相互作用し、自身の血中濃度も変動しうるため、両処方医に併用事実を伝えるよう指導。中毒徴候・効果の変化に注意するよう説明。</div>
@@ -1315,7 +1333,7 @@
               <div class="tpl-text">小児・高齢者へのフェノバルビタール新規処方。眠気・ふらつきのほか、興奮・多動・混乱（逆説反応）が出ることがある旨を家族に説明。転倒・様子の変化に注意し、気になる場合は相談するよう指導。自己判断で中止しないよう注意喚起。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
-              <div class="tpl-text">用量変更を確認。眠気・ふらつき・認知面の変化を確認。急な減量・中止は発作・離脱のリスクがあるため自己判断しないよう説明。</div>
+              <div class="tpl-text">〇mg→〇mgへ変更説明。眠気・ふらつきが出やすくなるため、転倒と、車の運転等の危険作業に従事しないことを再指導。急な減量・中止は発作や離脱症状のリスクがあるため、自己判断で変更しないよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">併用薬の追加・中止あり（〇〇）。酵素誘導により相手薬の効果が変わるため、両処方医に併用事実を伝えるよう指導、効果の変化に注意するよう説明。</div>
@@ -1365,7 +1383,7 @@
               <div class="tpl-text">クロバザム（またはクロナゼパム）新規処方（処方目的：てんかん）。発作を抑える薬であり、自己判断で中止・減量しないよう説明（急な中止は発作や離脱症状を誘発）。眠気・ふらつきに注意し運転等の危険作業に注意するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
-              <div class="tpl-text">用量変更を確認。眠気・ふらつきの有無を確認。減量・中止は医師の指示で行い、自己判断しないよう説明。</div>
+              <div class="tpl-text">〇mg→〇mgへ変更説明。眠気・ふらつきが出やすくなるため、転倒に注意し、車の運転等の危険作業に従事しないことを再指導。急な減量・中止は発作・離脱症状のリスクがあるため、減量は医師の指示どおりに行い自己判断で変更しないよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">眠気・ふらつきの訴え。転倒に注意するよう指導、強い場合は主治医に相談するよう説明。自己判断で中止しないよう注意喚起（急な中止で発作のリスク）。</div>
@@ -1413,8 +1431,8 @@
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢・腎機能低下例</span>
               <div class="tpl-text">高齢・腎機能低下例へのガバペンチン新規処方。腎排泄のため腎機能に応じた用量である旨を確認。眠気・ふらつき・転倒に注意するよう説明。自己判断で中止しないよう注意喚起。</div>
               <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
-              <div class="tpl-text">用量変更を確認。眠気・ふらつき・むくみの有無を確認、症状出現時は相談するよう指導。自己判断で中止しないよう注意喚起。</div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
+              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴い眠気・ふらつき・むくみが出やすくなるため、みられた場合は相談するよう指導。転倒と、車の運転等の危険作業に従事しないことを再指導。発作予防のため自己判断で調整せず継続して服用するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">制酸剤（胃薬）の使用あり。ガバペンチンの吸収が低下するため、服用を2時間程度あけるよう指導。</div>
@@ -1456,8 +1474,8 @@
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
               <div class="tpl-text">エトスクシミド新規処方（処方目的：てんかん／欠神発作）。発作を抑える薬であり自己判断で中止・減量しないよう説明。食欲不振・吐き気・腹痛が出やすいため食後に服用するよう指導。眠気・ふらつきに注意。発熱・のどの痛み・あざ・強い倦怠感が出た場合は速やかに相談するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
-              <div class="tpl-text">用量変更を確認。消化器症状・眠気の有無を確認、症状出現時は相談するよう指導。自己判断で中止しないよう注意喚起。</div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
+              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴い吐き気・食欲低下などの消化器症状や眠気が出やすくなるため、続く場合は相談するよう指導。発作予防のため自己判断で調整せず継続して服用するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">食欲不振・吐き気の訴え。食後服用を再指導、続く場合は主治医に相談するよう説明。</div>
@@ -1514,7 +1532,7 @@
               <div class="tpl-text">発作時レスキュー薬の新規交付（処方目的：てんかん発作・てんかん重積の頓挫）。使用のタイミング（医師の指示）・使用方法を本人・家族に説明し、理解を確認。使用後も発作が止まらない・繰り返す・意識が戻らない場合は救急要請するよう指導。使用した時刻・様子を記録し主治医に伝えるよう説明。保管方法・使用期限を確認。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量・製剤変更</span>
-              <div class="tpl-text">用量・製剤の変更を確認。新しい使用量・使用方法を本人・家族に再説明し、理解を確認。使用のタイミング・救急要請の目安を再確認。</div>
+              <div class="tpl-text">用量・製剤の変更を説明。新しい使用量・使用方法を本人・家族に説明し、実際に使う人が理解できているかを確認。使用するタイミングと、使用後に救急要請する目安を再指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">前回使用したとの情報あり。使用時の状況（時刻・回数・効果・その後の様子）を確認し、主治医に伝えるよう指導。使い方に不安がある場合は手順を再確認。</div>
@@ -1563,11 +1581,14 @@
 
         <div class="warn-box">
           <div class="warn-box-title">この区分の位置づけと使い方</div>
-          <p>
-            加算1の<strong>ロ</strong>は、①<strong>用法・用量の変更</strong>に伴い必要と認めて指導した場合（§2の変更ロ）と、②<strong>副作用の発現状況・服薬状況等の変化</strong>に基づき必要と認めて指導した場合の2つ（別添3）。ここで扱うのは②の<strong>副作用・服薬状況等の変化によるロ</strong>——同一処方でも、患者の体調・服薬状況・生活状況等の変化に薬剤師が気付き、<strong>追加の指導が必要と判断</strong>し、<strong>その理由の要点を薬歴に記載</strong>したときに算定する区分である。<br />
-            記録は<strong>「変化の確認 → 指導の方向性を判断 → 指導」</strong>の流れで簡潔に。<br />
-            以下は記載例。患者の状況に合わせて書き換える。
-          </p>
+          <p style="margin-bottom:8px;">加算1の<strong>ロ</strong>には、次の2つの場面がある（別添3）。</p>
+          <ul style="margin-bottom:10px;">
+            <li>①<strong>用法・用量の変更</strong>に伴い必要と認めて指導した場合 → <strong>SECTION 2 の変更ロ</strong></li>
+            <li>②<strong>副作用の発現状況・服薬状況等の変化</strong>に基づき必要と認めて指導した場合 → <strong>このセクション</strong></li>
+          </ul>
+          <p style="margin-bottom:8px;">②は、同一処方であっても、患者の体調・服薬状況・生活状況等の変化に薬剤師が気付き、<strong>追加の指導が必要と判断</strong>し、<strong>その理由の要点を薬歴に記載</strong>したときに算定する。</p>
+          <p style="margin-bottom:8px;">記録は<strong>「変化の確認 → 指導の方向性を判断 → 指導」</strong>の流れで簡潔に。</p>
+          <p>以下は記載例。患者の状況に合わせて書き換える。</p>
         </div>
 
         <div class="tpl-warn">

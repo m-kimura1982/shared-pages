@@ -426,6 +426,12 @@
           <p class="minline-lead">
             特定薬剤管理指導加算1は、服薬管理指導料に対する加算であり、対象薬が処方されていることだけを理由に算定する加算ではない。算定する場合は、通常の服薬指導に加えて、対象薬に関する確認を行い、患者の状態・服薬状況等を踏まえたプラスアルファの指導を行う必要がある。
           </p>
+          <p class="minline-lead" style="margin-bottom:6px;">算定する場面は次の3つ。</p>
+          <ul style="margin:0 0 12px; padding-left:20px; font-size:13.5px; line-height:1.75; color:var(--ink);">
+            <li style="margin-bottom:3px;"><strong>イ</strong>　初回処方時</li>
+            <li style="margin-bottom:3px;"><strong>ロ</strong>　用法・用量等の変更時</li>
+            <li><strong>ロ</strong>　副作用・服薬状況等の変化により、薬剤師が必要と認めて指導した場合</li>
+          </ul>
           <p class="minline-lead" style="margin-bottom:14px;">
             算定時は、対象薬について確認した内容と行った指導の要点を薬歴に記録する。従来と同一の処方内容でロを算定する場合は、特に指導が必要と判断した理由の要点も記載する。
           </p>
@@ -440,7 +446,7 @@
           <h3 class="subsection-title" style="margin-top:18px;">よくある薬歴と修正例（気分安定薬）</h3>
           <div class="example-pair">
             <div class="example-box bad">
-              <span class="example-label">✕ 算定根拠として不十分な例</span>
+              <span class="example-label">✕ 算定根拠として不十分な例（新規）</span>
               <pre>リーマス：新規。効果と副作用を説明し、継続して服用するよう指導した。</pre>
             </div>
             <div class="example-box good">
@@ -448,6 +454,17 @@
               <pre>リーマス：新規（処方目的：双極性障害の再発予防）。気分の波を抑え再発を防ぐ薬であること、効き目と副作用が出る量が近く定期的な血中濃度検査が重要であることを説明。発熱・下痢・大量発汗等の脱水時は中毒が起こりやすいため相談するよう指導。食欲低下・吐き気・強い手の震え・ふらつき等の中毒徴候が出た場合は速やかに受診するよう説明。市販の痛み止め（NSAIDs）は自己判断で使わず相談するよう指導。</pre>
             </div>
           </div>
+          <div class="example-pair" style="margin-top:10px;">
+            <div class="example-box bad">
+              <span class="example-label">✕ 算定根拠として不十分な例（増量）</span>
+              <pre>リーマス：400mg→600mgへ増量。用量変更を確認。血中濃度・気分の安定状況を確認。新用量での服用方法を再説明。</pre>
+            </div>
+            <div class="example-box good">
+              <span class="example-label">○ 修正例（変更ロ：増量のテンプレートを使った例）</span>
+              <pre>リーマス：400mg→600mgへ増量説明。治療域が狭い薬のため、増量後は中毒の初期症状（食欲低下・吐き気・下痢・強い手の震え・ふらつき・眠気）に特に注意し、みられた場合は速やかに連絡・受診するよう指導。発熱・下痢・大量発汗などの脱水時や、市販の痛み止め（NSAIDs）で血中濃度が上がりやすい旨を再指導。増量後の血中濃度検査を受けるよう説明。</pre>
+            </div>
+          </div>
+          <p style="font-size:12px;color:var(--sub);margin-top:4px;">※ 増量の✕は「確認した」「再説明した」という行為の記録だけで、確認の結果が読めない。確認の結果（血中濃度・症状の有無）はS/Oに、指導の中身は具体的な症状の言葉で残す。</p>
           <p style="font-size:12px;color:var(--sub);margin-top:4px;">※ ✕は確認した内容や患者ごとのプラスアルファの指導が読み取れない。○は「<a href="#drug-search" class="link-inline" style="color:var(--blue);">薬剤名から探す</a>」からリチウム初回イの記載例を参考にしたもの。薬効・用法説明だけで終わらず、処方目的・血中濃度や検査の確認と、患者の状況に応じた指導が薬歴から確認できるようにする。</p>
         </div>
       </section>
@@ -461,6 +478,7 @@
             <div class="cl-head">確認・記録する項目（基本）</div>
             <label class="cl-item"><input type="checkbox"><span>対象薬剤が分かるように記載した（<b>「薬剤名：〜」</b>）</span></label>
             <label class="cl-item"><input type="checkbox"><span>記載内容から<b>新規／変更／変化のどれに当たるか分かる</b>。<b>副作用・服薬状況等の変化によるロは、変化の内容と、追加指導が必要と判断した理由</b>も記載した</span></label>
+            <label class="cl-item"><input type="checkbox"><span><b>用法・用量の変更時</b>は、変更内容と、<b>変更前後の症状・血中濃度の変化</b>を記載した（SOAP運用ではS/Oへの記載でよい）</span></label>
             <label class="cl-item"><input type="checkbox"><span><b>処方目的・気分の安定状況</b>を確認した（<b>継続・変更時は服薬状況</b>も）</span></label>
             <label class="cl-item"><input type="checkbox"><span>併用薬・市販薬・サプリ（<b>NSAIDs・利尿薬・酵素誘導／阻害薬・カルバペネム</b>等）を確認した</span></label>
             <label class="cl-item"><input type="checkbox"><span><b>自己判断で中止しないこと</b>（中止により症状の再発・再燃につながる可能性）を説明した</span></label>
@@ -593,7 +611,7 @@
         </div>
         <div class="tag-legend">
           <span><i style="background:var(--blue-light);border:1px solid var(--blue)"></i>初回イ（新規／併用下追加／高齢例 など）</span>
-          <span><i style="background:#e0f2f1;border:1px solid #0d9488"></i>変更ロ（用量変更／漸増 など）</span>
+          <span><i style="background:#e0f2f1;border:1px solid #0d9488"></i>変更ロ（増量／漸増 など）</span>
           <span><i style="background:#f2f4f8;border:1px solid #d7dce3"></i>必要時追記</span>
           <span><i style="background:#fef3e8;border:1px solid #f5d4a1"></i>副作用説明の追記（説明した分だけ追加）</span>
         </div>
@@ -710,8 +728,8 @@
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：妊娠可能年齢の女性</span>
               <div class="tpl-text">妊娠可能年齢の女性へのリチウム処方。催奇形性（心奇形）の報告がある薬剤である旨を説明。妊娠の希望・判明時は自己判断で中止せず（中止により再発・躁転のリスク）、必ず主治医に相談するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
-              <div class="tpl-text">用量変更を確認。変更前の血中濃度・気分の安定状況・副作用症状を確認。新用量での服用方法を再説明、変更後は中毒徴候（吐き気・強い手の震え・ふらつき等）に注意し、症状が出た場合は相談するよう説明。自己判断で中止しないよう注意喚起。</div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
+              <div class="tpl-text">〇mg→〇mgへ増量説明。治療域が狭い薬のため、増量後は中毒の初期症状（食欲低下・吐き気・下痢・強い手の震え・ふらつき・眠気）に特に注意し、みられた場合は速やかに連絡・受診するよう指導。発熱・下痢・大量発汗などの脱水時や、市販の痛み止め（NSAIDs）で血中濃度が上がりやすい旨を再指導。増量後の血中濃度検査を受けるよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
               <div class="tpl-text">リチウム中毒について、まれではあるが、食欲低下・吐き気・嘔吐・下痢、粗大な手の震え・ふらつき・ろれつが回らない・強い眠気・意識のもうろう等が出た場合は、自己判断で続けず速やかに受診するよう説明。</div>
@@ -808,8 +826,8 @@
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
               <div class="tpl-text">高齢者へのバルプロ酸新規処方。高アンモニア血症による意識変化・傾眠、ふらつき・転倒のリスクを説明。家族支援の有無を確認し、家族同席時・必要に応じて意識のもうろう・嘔吐・強いだるさ等の出現を観察してもらうよう依頼。定期的な検査が重要な薬であることを説明し、検査結果が分かる場合は共有してもらうよう説明。自己判断で中止しないよう注意喚起。</div>
               <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
-              <div class="tpl-text">用量変更を確認。変更前の血中濃度・気分の安定状況・副作用（眠気・ふらつき・意識変化）を確認。新用量での服用方法を再説明、変更後の副作用症状に注意し、症状出現時は相談するよう説明。自己判断で中止しないよう注意喚起。</div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
+              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴い眠気・ふらつき・手の震えが出やすくなるため、転倒と、車の運転等の危険作業に従事しないことを再指導。ぼんやりする・強い眠気・嘔気が続く場合（高アンモニア血症）は早めに相談・受診するよう説明。自己判断で調整せず継続して服用するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
               <div class="tpl-text">高アンモニア血症について、まれではあるが、傾眠・意識のもうろう・嘔吐・ふらつき等が出た場合は速やかに受診するよう説明（血中濃度が正常域でも起こりうる）。</div>
@@ -898,8 +916,8 @@
             <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
               <div class="tpl-text">高齢者へのカルバマゼピン新規処方。低Na血症・ふらつき・転倒・複視のリスクを説明。家族支援の有無を確認し、家族同席時・必要に応じて発疹・発熱・倦怠感・意識変化等の出現を観察してもらうよう依頼。利尿薬併用時は低Na血症に特に注意。定期的な検査が重要な薬であることを説明し、検査結果が分かる場合は共有してもらうよう説明。自己判断で中止しないよう注意喚起。</div>
               <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
-              <div class="tpl-text">用量変更を確認。変更前の血中濃度・気分の安定状況・副作用（めまい・ふらつき・複視）を確認。新用量での服用方法を再説明、変更後の副作用症状に注意し、症状出現時は相談するよう説明。自己判断で中止しないよう注意喚起。</div>
+            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
+              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴いめまい・ふらつき・眠気・物が二重に見える（複視）が出やすくなるため、みられた場合は早めに相談するよう指導。ふらつきによる転倒と、車の運転等の危険作業に従事しないことを再指導。自己判断で調整せず継続して服用するよう説明。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
               <div class="tpl-text">血液障害（汎血球減少・無顆粒球症）について、まれではあるが、急な発熱・のどの痛み・倦怠感・あざ・出血等が出た場合は速やかに受診するよう説明。</div>
@@ -984,10 +1002,10 @@
               <div class="tpl-text">バルプロ酸併用下でのラモトリギン新規処方。バルプロ酸併用によりラモトリギンの血中濃度が上がり皮疹リスクが高まるため、通常よりさらに低用量・緩徐な漸増となる旨を説明。漸増スケジュールの遵守を徹底し、発疹・皮膚の違和感・粘膜症状・発熱が出た場合は速やかに連絡・受診するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag change">変更ロ：漸増（増量段階）</span>
-              <div class="tpl-text">漸増スケジュールに沿った増量を確認。これまで皮膚症状がないことを確認。発疹・皮膚の違和感・粘膜症状・発熱に注意し、症状出現時は自己判断で続けず速やかに連絡・受診するよう説明。次回来局時も皮膚症状の有無を確認予定。</div>
+              <div class="tpl-text">漸増スケジュールに沿って〇mg→〇mgへ増量説明。増量段階では皮疹のリスクがあるため、発疹・皮膚の違和感・くちびるや口の中のただれ・発熱がみられた場合は自己判断で続けず速やかに連絡・受診するよう指導。決められたスケジュールどおりに増やすことが皮疹を防ぐうえで重要な旨を説明し、自己判断で調整せず継続して服用するよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更（維持期）</span>
-              <div class="tpl-text">維持期の用量変更を確認。併用薬の変化（バルプロ酸＝血中濃度上昇／カルバマゼピン等＝低下）の有無を確認。皮膚症状・めまい・ふらつきの有無を確認し、症状出現時は早めに相談するよう指導。自己判断で中止しないよう注意喚起。</div>
+              <div class="tpl-text">維持期の〇mg→〇mgへの変更を説明。併用薬の開始・中止で血中濃度が大きく変わる薬のため（バルプロ酸で上昇・カルバマゼピン等で低下）、他院の処方や市販薬も含め薬の変更があれば伝えるよう指導。皮膚症状・めまい・ふらつきがみられた場合は早めに相談するよう説明。自己判断で中止しないよう指導。</div>
               <button class="copy-mini">コピー</button></div>
             <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
               <div class="tpl-text">飲み忘れ・数日以上の中断あり。中断後に元の用量で再開すると皮疹リスクが上がるため、自己判断で元の量に戻さず主治医に相談するよう指導（改めて漸増が必要な場合がある）。</div>
@@ -1018,11 +1036,14 @@
 
         <div class="warn-box">
           <div class="warn-box-title">この区分の位置づけと使い方</div>
-          <p>
-            加算1の<strong>ロ</strong>は、①<strong>用法・用量の変更</strong>に伴い必要と認めて指導した場合（§2の変更ロ）と、②<strong>副作用の発現状況・服薬状況等の変化</strong>に基づき必要と認めて指導した場合の2つ（別添3）。ここで扱うのは②の<strong>副作用・服薬状況等の変化によるロ</strong>——同一処方でも、患者の体調・服薬状況・生活状況等の変化に薬剤師が気付き、<strong>追加の指導が必要と判断</strong>し、<strong>その理由の要点を薬歴に記載</strong>したときに算定する区分である。<br />
-            記録は<strong>「変化の確認 → 指導の方向性を判断 → 指導」</strong>の流れで簡潔に。<br />
-            以下は記載例。患者の状況に合わせて書き換える。
-          </p>
+          <p style="margin-bottom:8px;">加算1の<strong>ロ</strong>には、次の2つの場面がある（別添3）。</p>
+          <ul style="margin-bottom:10px;">
+            <li>①<strong>用法・用量の変更</strong>に伴い必要と認めて指導した場合 → <strong>SECTION 2 の変更ロ</strong></li>
+            <li>②<strong>副作用の発現状況・服薬状況等の変化</strong>に基づき必要と認めて指導した場合 → <strong>このセクション</strong></li>
+          </ul>
+          <p style="margin-bottom:8px;">②は、同一処方であっても、患者の体調・服薬状況・生活状況等の変化に薬剤師が気付き、<strong>追加の指導が必要と判断</strong>し、<strong>その理由の要点を薬歴に記載</strong>したときに算定する。</p>
+          <p style="margin-bottom:8px;">記録は<strong>「変化の確認 → 指導の方向性を判断 → 指導」</strong>の流れで簡潔に。</p>
+          <p>以下は記載例。患者の状況に合わせて書き換える。</p>
         </div>
 
         <div class="tpl-warn">
