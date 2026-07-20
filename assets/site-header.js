@@ -42,7 +42,6 @@
     // 実務ナレッジ
     'ナレッジ/変更調剤について.html': { category: 'knowledge', title: '変更調剤について' },
     'ナレッジ/基礎的医薬品追加リストR8_4.html': { category: 'knowledge', title: '基礎的医薬品 追加リスト（R8.4）' },
-    'ナレッジ/入力画面で解説_2026改定後の入力方法.html': { category: 'knowledge', title: '入力画面で解説｜2026改定後の入力方法（Pharnes）' },
     'ナレッジ/調剤報酬QA.html': { category: 'knowledge', title: '調剤報酬 社内Q&A' },
 
     // 薬歴（2026-07-20公開。サブディレクトリ yakureki/ 配下・パスキーで登録）
@@ -96,6 +95,7 @@
     // 事務スタッフ向け（個別）
     '事務/事務スタッフ向け_2026調剤報酬改定ポイント整理.html': { category: 'jimu', title: '事務スタッフ向け 改定ポイント整理' },
     '事務/事務スタッフ向け_2026改定サマリ.html': { category: 'jimu', title: '事務スタッフ向け 2026改定サマリ' },
+    '事務/入力画面で解説_2026改定後の入力方法.html': { category: 'jimu', title: '入力画面で解説｜2026改定後の入力方法（Pharnes）' },
 
     // 改定資料(個別)
     '改定資料/調剤基本料フローチャート.html': { category: 'kaitei', title: '調剤基本料フローチャート' },
