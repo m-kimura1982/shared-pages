@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>栄養保持を目的とした医薬品 確認チェックリスト｜2026年調剤報酬改定</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+    :root {
+      --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+      --pad-card:22px; --gap-card:11px;
+      --blue:#1e5fa8; --ink:#222222;
+      --bg:#f3f4f6; --white:#ffffff;
+      --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+      --border:#d1d5db; --border-dk:#9ca3af;
+      --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px;
+      --txt-2:#444444; --txt-3:#5e6470;
+      --warn-bg:#fffbe6; --warn-bd:#e0b000;
+      --amber:#b45309; --amber-bg:#fdf0e3; --amber-bd:#e8c9a3;
+    }
+    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:18px 16px 60px; }
+    .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+    .page-title-wrap { padding:2px 0; }
+    .page-title-wrap h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+    .lead { font-size:var(--text-sm); color:var(--txt-2); line-height:1.7; padding:0 2px; }
+    .lead .lead-date { color:var(--txt-3); font-weight:700; margin-right:9px; }
+
+    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+    .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+    .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+    .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+
+    .premise { background:var(--box-gray); border-radius:var(--radius-sm); padding:12px 16px; margin-bottom:14px; }
+    .premise .k { font-size:var(--text-xs); font-weight:700; color:var(--txt-2); margin-bottom:4px; }
+    .premise .t { font-size:var(--text-sm); line-height:1.7; }
+    .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+    .em-blue { color:var(--blue); font-weight:900; }
+
+    /* チェックフロー */
+    .flow { display:flex; flex-direction:column; gap:0; }
+    .check { display:flex; gap:12px; align-items:flex-start; padding:13px 15px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); background:var(--white); cursor:pointer; }
+    .check:hover { background:#fafbfc; }
+    .check > input[type=checkbox] { appearance:none; -webkit-appearance:none; width:22px; height:22px; border:2px solid var(--border-dk); border-radius:5px; flex-shrink:0; margin-top:1px; cursor:pointer; position:relative; }
+    .check > input[type=checkbox]:checked { background:var(--blue); border-color:var(--blue); }
+    .check > input[type=checkbox]:checked::after { content:""; position:absolute; left:6px; top:2px; width:6px; height:11px; border:solid #fff; border-width:0 2.5px 2.5px 0; transform:rotate(45deg); }
+    .check-body { flex:1; }
+    .check-main { display:block; font-size:var(--text-md); font-weight:700; line-height:1.7; }
+    .check-main .n { display:inline-flex; align-items:center; justify-content:center; width:21px; height:21px; border-radius:50%; background:var(--blue); color:#fff; font-size:13px; font-weight:900; margin-right:8px; vertical-align:middle; }
+    .check-note { display:block; font-size:var(--text-xs); color:var(--txt-2); margin-top:6px; line-height:1.65; }
+    .check:has(> input:checked) { background:#f0f6fc; border-color:#bcd6ec; }
+    .check:has(> input:checked) .check-main { color:var(--txt-3); }
+
+    .arrow { display:flex; align-items:center; gap:7px; padding:6px 0 6px 16px; font-size:var(--text-xs); font-weight:800; color:var(--blue); }
+    .arrow::before { content:"↓"; font-weight:900; font-size:15px; line-height:1; }
+
+    .guard { display:block; margin-top:8px; padding:9px 12px; background:var(--warn-bg); border-left:var(--bw-a) solid var(--warn-bd); border-radius:4px; font-size:var(--text-xs); line-height:1.6; }
+    .guard b { font-weight:900; }
+
+    /* 小チェック（□） */
+    .subchecks { display:flex; flex-direction:column; gap:7px; margin-top:9px; }
+    .subchecks .sc { font-size:var(--text-sm); line-height:1.6; padding-left:21px; text-indent:-21px; }
+    .subchecks .sc::before { content:"\2610"; color:var(--border-dk); font-weight:900; font-size:15px; margin-right:6px; }
+
+    /* 分岐（どちら→結果） */
+    .pick { display:block; margin-top:9px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; }
+    .pick .row { display:flex; gap:10px; padding:9px 12px; font-size:var(--text-sm); line-height:1.55; border-top:var(--bw-h) solid var(--border); }
+    .pick .row:first-child { border-top:none; }
+    .pick .cond { flex:1; }
+    .pick .out { font-weight:900; color:var(--blue); white-space:nowrap; align-self:center; }
+
+    .rei { display:block; background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:11px 13px; margin-top:9px; font-size:var(--text-sm); line-height:1.8; }
+    .rei .ttl { display:block; font-weight:900; color:var(--blue); font-size:var(--text-xs); margin-bottom:5px; }
+
+    /* 対象薬リスト */
+    .medlist { display:grid; grid-template-columns:1fr 1fr; gap:5px 14px; margin-top:6px; }
+    .medlist .m { font-size:var(--text-sm); line-height:1.55; padding-left:16px; text-indent:-16px; }
+    .medlist .m::before { content:"・"; color:var(--blue); font-weight:900; margin-right:4px; }
+
+    /* 疑義照会の例（青＋黄マーカー。アンバーは使わない） */
+    .qbox { margin-top:10px; border:var(--bw) solid var(--border); border-left:var(--bw-a) solid var(--blue); background:var(--box-gray); border-radius:var(--radius-sm); padding:11px 14px; }
+    .qbox .qt { font-size:var(--text-xs); font-weight:900; color:var(--blue); margin-bottom:6px; }
+    .qbox .qbody { font-size:var(--text-sm); line-height:1.85; color:var(--ink); }
+    .qbox .qbody .hl { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+
+    /* レセコメ：入力する文言（プレーン表示・枠で囲わない） */
+    .doclist { margin-top:8px; }
+    .doc-row { display:flex; gap:10px; flex-wrap:wrap; align-items:baseline; padding:6px 2px; }
+    .doc-row + .doc-row { border-top:var(--bw-h) solid var(--border); }
+    .doc-row .c { font-size:var(--text-sm); color:var(--txt-2); font-weight:700; }
+    .doc-row .d { font-weight:900; color:var(--ink); font-size:var(--text-sm); }
+    .doc-row .d::before { content:"→"; color:var(--txt-3); font-weight:700; margin-right:6px; }
+    .shot { margin:9px 0 4px; border:var(--bw) solid var(--border); border-radius:var(--radius-sm); background:#fff; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+    .shot img { display:block; width:100%; height:auto; }
+    .shot-cap { font-size:var(--text-xs); color:var(--txt-3); line-height:1.6; margin-top:4px; }
+
+    .ref { font-size:var(--text-xs); color:var(--txt-3); line-height:1.7; margin-top:11px; }
+    .link-inline { color:var(--blue); font-weight:700; text-decoration:none; border-bottom:1px solid var(--box-blue); }
+    .page-foot { font-size:var(--text-xs); color:var(--txt-3); text-align:right; padding-top:2px; }
+
+    @media (max-width:640px) {
+      body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+      :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+      .card { padding:14px; border-radius:8px; }
+      .medlist { grid-template-columns:1fr; }
+      .check { padding:11px 12px; }
+      .pick .row { flex-direction:column; gap:3px; }
+      .pick .out { align-self:flex-start; }
+      .doc-row .d { margin-left:0; }
+    }
+    @media print {
+      @page { size:A4 portrait; margin:8mm; }
+      body { background:#fff; padding:0; font-size:10.5px; line-height:1.45; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .page { gap:7px; max-width:none; }
+      .card { border:0.5px solid #ccc; border-radius:6px; padding:10px 12px; }
+      .card-title { font-size:13px; margin-bottom:7px; padding-bottom:5px; }
+      .premise { padding:7px 10px; margin-bottom:8px; }
+      .flow { gap:0; }
+      .check { padding:7px 9px; break-inside:avoid; }
+      .check-main { font-size:10.5px; line-height:1.4; }
+      .check-note, .guard, .arrow, .subchecks .sc, .pick .row { font-size:9.5px; }
+      .check-note { margin-top:3px; line-height:1.35; }
+      .subchecks { gap:5px; margin-top:6px; }
+      .guard { padding:6px 9px; margin-top:5px; }
+      .arrow { padding:3px 0 3px 14px; }
+      .qbox { padding:7px 10px; margin-top:7px; break-inside:avoid; }
+      .qbox .qbody { font-size:9.5px; line-height:1.6; }
+      .doc-row { padding:5px 0; }
+      .doc-row .d { font-size:11px; }
+      .shot { margin:6px 0 3px; text-align:center; break-inside:avoid; }
+      .shot img { width:74%; margin:0 auto; }
+      .shot-cap { font-size:9px; margin-top:3px; }
+      .rei { padding:7px 10px; margin-top:6px; line-height:1.5; }
+      .page-foot { display:none; }
+      a { color:inherit; text-decoration:none; }
+    }
+  </style>
+</head>
+<body>
+  <script src="../assets/site-header.js" defer></script>
+<div class="page">
+
+  <!-- タイトル -->
+  <div class="page-title-wrap">
+    <h1>栄養保持を目的とした医薬品 確認チェックリスト</h1>
+  </div>
+
+  <p class="lead"><span class="lead-date">2026年6月〜</span>対象の経腸栄養剤を保険給付するには、投与の必要性の確認とレセコメ入力が必要になる。</p>
+
+  <!-- 確認の流れ -->
+  <div>
+    <div class="card-title">確認の流れ<span class="qual">処方応需 → レセコメ入力</span></div>
+
+    <div class="flow">
+
+      <!-- 1 応需→リスト確認 -->
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main"><span class="n">1</span>栄養剤の処方を応需 → <strong class="marker">対象リスト</strong>に当てはまるか確認したか</span>
+          <span class="check-note">下記6品目が対象（2026年3月現在）。対象外の薬なら、この確認・レセコメは不要。</span>
+          <span class="rei">
+            <span class="ttl">対象となる医薬品</span>
+            <div class="medlist">
+              <span class="m">イノラス配合経腸用液</span>
+              <span class="m">エネーボ配合経腸用液</span>
+              <span class="m">エンシュア・H</span>
+              <span class="m">エンシュア・リキッド</span>
+              <span class="m">ツインラインNF配合経腸用液</span>
+              <span class="m">ラコールNF配合経腸用液</span>
+            </div>
+          </span>
+        </span>
+      </label>
+      <div class="arrow">備考欄を確認</div>
+
+      <!-- 2 備考欄確認＝分岐 -->
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main"><span class="n">2</span>処方箋の<strong class="marker">備考欄に①〜③の記載があるか</strong>を確認したか</span>
+          <span class="subchecks">
+            <span class="sc"><strong>① 手術後の患者である旨</strong></span>
+            <span class="sc"><strong>② 経管により栄養補給を行っている旨</strong></span>
+            <span class="sc"><strong>③ ①②以外で、医師が投与が必要と判断した理由</strong>（食事だけでは栄養摂取が困難な場合等。理由そのものが記載される）</span>
+          </span>
+          <span class="pick">
+            <span class="row"><span class="cond">①〜③のいずれかが<strong>記載あり</strong>（疑義照会は不要）</span><span class="out">→ 手順4へ</span></span>
+            <span class="row"><span class="cond">①〜③の<strong>記載なし</strong></span><span class="out">→ 手順3へ</span></span>
+          </span>
+        </span>
+      </label>
+      <div class="arrow">記載がなければ</div>
+
+      <!-- 3 疑義照会 -->
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main"><span class="n">3</span>記載がなければ<strong class="marker">疑義照会</strong>で①〜③を確認したか</span>
+          <span class="check-note">①〜③のどれに当たるかを確認。<strong>③の場合は投与が必要な理由を聞き取る</strong>。</span>
+          <span class="guard">過去に同一患者・同一医療機関の処方で確認済みなら、<b>再度の疑義照会は不要</b>。レセコメは「疑義照会により確認」を選び、必要に応じて確認時期・理由を補足。確認内容は薬歴表紙等にも記録する。</span>
+          <div class="qbox">
+            <div class="qt">疑義照会の例</div>
+            <div class="qbody">「令和8年度の調剤報酬改定で、栄養剤（経腸栄養剤）を保険給付するには投与の必要性の確認が必要になりました。〇〇様に処方の<span class="hl">エンシュア・リキッド</span>について、<span class="hl">①手術後の患者さんへの投与</span>／<span class="hl">②経管により栄養補給を行っている患者さんへの投与</span>／<span class="hl">③それ以外で、先生が当該医薬品の投与が必要と判断された場合はその理由</span>、のいずれに該当するかご教示いただけますか。」</div>
+          </div>
+          <span class="guard"><b>✕ ①〜③のいずれにも該当しない・確認できないときは、その薬剤は保険対象外</b>。保険給付しない。</span>
+        </span>
+      </label>
+      <div class="arrow">給付するなら必ず</div>
+
+      <!-- 4 レセコメ入力 -->
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main"><span class="n">4</span><strong class="marker">レセコメ（摘要欄コメント）を入力したか</strong> <span style="font-weight:700; font-size:var(--text-xs); color:var(--txt-3);">＝給付の必須要件</span></span>
+          <span class="check-note">確認した方法に合わせて、下記の文言を入力する。<strong>入力がないと保険給付の要件を満たさない。</strong></span>
+          <div class="doclist">
+            <div class="doc-row"><span class="c">備考欄に投与の必要性の記載あり</span><span class="d">「処方箋記載により確認」</span></div>
+            <div class="doc-row"><span class="c">備考欄に記載がなく、疑義照会で確認</span><span class="d">「疑義照会により確認」</span></div>
+          </div>
+          <div class="shot"><img src="../images（レセコン画像など）/pharnes/eiyo_2.png" alt="栄養保持目的医薬品 エイヨウ呼び出しのレセコメ候補リスト（候補1 処方箋記載により確認／候補2 疑義照会により確認）"></div>
+          <div class="shot-cap">▲ 「エイヨウ」呼び出しの候補画面（エンシュア・リキッドの例）</div>
+        </span>
+      </label>
+
+    </div>
+  </div>
+
+  <div class="page-foot">詳しい解説は <a href="../改定資料/栄養保持を目的とした医薬品の保険給付の適正化.html" class="link-inline">栄養保持を目的とした医薬品の保険給付の適正化</a> を参照。</div>
+
+</div>
+
+<script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

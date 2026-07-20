@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>調剤時残薬調整加算 算定チェックリスト｜2026年調剤報酬改定</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+    :root {
+      --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+      --pad-card:22px; --gap-card:16px;
+      --blue:#1e5fa8; --ink:#222222;
+      --bg:#f3f4f6; --white:#ffffff;
+      --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+      --border:#d1d5db; --border-dk:#9ca3af;
+      --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px;
+      --txt-2:#444444; --txt-3:#5e6470;
+      --warn-bg:#fffbe6; --warn-bd:#e0b000;
+    }
+    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+    .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+    .page-title-wrap { padding:6px 0; }
+    .page-title-wrap h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+    .page-title-wrap p  { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+
+    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+    .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+    .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+    .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+
+    .card-when { font-size:var(--text-sm); color:var(--txt-2); margin-bottom:14px; padding-left:11px; border-left:var(--bw-a) solid var(--box-blue); }
+    .card-when b { color:var(--blue); margin-right:7px; }
+
+    .premise { background:var(--box-gray); border-radius:var(--radius-sm); padding:12px 16px; margin-bottom:14px; }
+    .premise .k { font-size:var(--text-xs); font-weight:700; color:var(--txt-2); margin-bottom:4px; }
+    .premise .t { font-size:var(--text-sm); line-height:1.7; }
+    .em-change { color:var(--blue); font-weight:900; }
+    .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+
+    .flow { display:flex; flex-direction:column; gap:0; }
+    .check { display:flex; gap:12px; align-items:flex-start; padding:13px 15px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); background:var(--white); cursor:pointer; }
+    .check:hover { background:#fafbfc; }
+    .check > input[type=checkbox] { appearance:none; -webkit-appearance:none; width:22px; height:22px; border:2px solid var(--border-dk); border-radius:5px; flex-shrink:0; margin-top:1px; cursor:pointer; position:relative; }
+    .check > input[type=checkbox]:checked { background:var(--blue); border-color:var(--blue); }
+    .check > input[type=checkbox]:checked::after { content:""; position:absolute; left:6px; top:2px; width:6px; height:11px; border:solid #fff; border-width:0 2.5px 2.5px 0; transform:rotate(45deg); }
+    .check-body { flex:1; }
+    .check-main { display:block; font-size:var(--text-md); font-weight:700; line-height:1.7; }
+    .check-main .n { display:inline-flex; align-items:center; justify-content:center; width:21px; height:21px; border-radius:50%; background:var(--blue); color:#fff; font-size:13px; font-weight:900; margin-right:8px; vertical-align:middle; }
+    .check-note { display:block; font-size:var(--text-xs); color:var(--txt-2); margin-top:6px; line-height:1.65; }
+    .check:has(> input:checked) { background:#f0f6fc; border-color:#bcd6ec; }
+    .check:has(> input:checked) .check-main { color:var(--txt-3); }
+
+    .arrow { display:flex; align-items:center; gap:7px; padding:6px 0 6px 16px; font-size:var(--text-xs); font-weight:800; color:var(--blue); }
+    .arrow::before { content:"↓"; font-weight:900; font-size:15px; line-height:1; }
+
+    .guard { display:block; margin-top:8px; padding:9px 12px; background:var(--warn-bg); border-left:var(--bw-a) solid var(--warn-bd); border-radius:4px; font-size:var(--text-xs); line-height:1.6; }
+    .guard b { font-weight:900; }
+
+    /* 判定（どれに当てはまる→結果） */
+    .pick { display:block; margin-top:9px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; }
+    .pick .row { display:flex; gap:10px; padding:8px 12px; font-size:var(--text-xs); line-height:1.55; border-top:var(--bw-h) solid var(--border); }
+    .pick .row:first-child { border-top:none; }
+    .pick .cond { flex:1; }
+    .pick .out { font-weight:900; color:var(--blue); white-space:nowrap; align-self:center; }
+
+    /* 小チェック（□）の並び：ぶら下げインデント方式 */
+    .subchecks { display:flex; flex-direction:column; gap:7px; margin-top:9px; }
+    .subchecks .sc { font-size:var(--text-sm); line-height:1.6; padding-left:21px; text-indent:-21px; }
+    .subchecks .sc::before { content:"\2610"; color:var(--border-dk); font-weight:900; font-size:15px; margin-right:6px; }
+
+    .rei { display:block; background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:11px 13px; margin-top:9px; font-size:var(--text-sm); line-height:1.8; }
+    .rei .ttl { display:block; font-weight:900; color:var(--blue); font-size:var(--text-xs); margin-bottom:5px; }
+    .rei p { padding-left:14px; text-indent:-14px; }
+    .rei p + p { margin-top:5px; }
+    .rei .dot { color:var(--txt-3); font-weight:900; }
+
+    .link-inline { color:var(--blue); font-weight:700; text-decoration:none; border-bottom:1px solid var(--box-blue); }
+    .page-foot { font-size:var(--text-xs); color:var(--txt-3); text-align:right; padding-top:2px; }
+
+    @media (max-width:640px) {
+      body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+      :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+      .card { padding:14px; border-radius:8px; }
+      .check { padding:11px 12px; }
+      .pick .row { flex-direction:column; gap:3px; }
+      .pick .out { align-self:flex-start; }
+    }
+    @media print {
+      @page { size:A4 portrait; margin:7mm; }
+      body { background:#fff; padding:0; font-size:10.5px; line-height:1.45; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .page { gap:7px; max-width:none; }
+      .card { border:0.5px solid #ccc; border-radius:6px; padding:9px 11px; break-inside:avoid; }
+      .card-title { font-size:13px; margin-bottom:7px; padding-bottom:5px; }
+      .card-when { font-size:10px; margin-bottom:8px; }
+      .premise { padding:7px 11px; margin-bottom:8px; }
+      .check { padding:7px 9px; }
+      .check-main { font-size:10.5px; line-height:1.4; }
+      .check-note, .guard, .arrow, .pick .row, .subchecks .sc { font-size:9.5px; }
+      .check-note { margin-top:3px; line-height:1.35; }
+      .guard { padding:6px 9px; margin-top:5px; }
+      .arrow { padding:3px 0 3px 14px; }
+      .rei { padding:7px 9px; margin-top:5px; font-size:9.5px; line-height:1.4; }
+      .page-foot { display:none; }
+      a { color:inherit; text-decoration:none; }
+    }
+  </style>
+</head>
+<body>
+  <script src="../assets/site-header.js" defer></script>
+<div class="page">
+
+  <!-- タイトル -->
+  <div class="page-title-wrap">
+    <h1>調剤時残薬調整加算 算定チェックリスト</h1>
+    <p>残薬調整に基づく調剤日数の変更｜2026年6月〜（調剤管理料の加算・30／50点）</p>
+  </div>
+
+  <!-- 算定の流れ -->
+  <div class="card">
+    <div class="card-title">算定の流れ<span class="qual">処方箋受付1回につき1回</span></div>
+
+    <div class="premise">
+      <div class="k">減らす前に必ず</div>
+      <div class="t">残薬を確認したら、<strong>調整の必要性を患者・家族に確認</strong>（次回受診日を考えた意図的な残薬かも）。<strong class="marker">「7日分あるから」だけで機械的に減らさない</strong>。</div>
+    </div>
+
+    <div class="flow">
+
+      <!-- 1 パターン -->
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main"><span class="n">1</span>どう減らしたか <span style="font-weight:700; font-size:var(--text-xs); color:var(--txt-3);">＝「0まで減らせるか」が決まる</span></span>
+          <span class="pick">
+            <span class="row"><span class="cond"><strong>疑義照会</strong>を行って減らした</span><span class="out">0日（全量）まで可</span></span>
+            <span class="row"><span class="cond">処方箋の<strong>「調剤する薬剤を減量した上で保険医療機関に情報提供」欄の指示</strong>で、事前照会なし・<strong>事後報告</strong>で減数調剤した</span><span class="out">最低1日分（0不可）</span></span>
+          </span>
+          <span class="check-note"><strong>「0」（全量カット）にできるのは疑義照会のときだけ</strong>。減数調剤（処方箋の指示）は調剤日数・数量を0にできない＝<strong>最低1日分は調剤</strong>（通知）。</span>
+        </span>
+      </label>
+      <div class="arrow">減らす量を確認</div>
+
+      <!-- 2 量 -->
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main"><span class="n">2</span>減らした量は <strong class="marker">7日分以上が基本</strong></span>
+          <span class="check-note">内服＝7日分以上／屯服＝7回分以上／外用＝1回使用量で7回分以上／隔日投与等＝実際に服薬する日数で数える。<strong>6日分以下にするときは下の「6日分以下に減らすとき」カードへ。</strong></span>
+        </span>
+      </label>
+      <div class="arrow">減らしたら</div>
+
+      <!-- 3 事後の4つ -->
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main"><span class="n">3</span>減らした後にやること <span style="font-weight:700; font-size:var(--text-xs); color:var(--txt-3);">＝下の4つすべて・パターン共通</span></span>
+          <span class="subchecks">
+            <span class="sc">処方医へ情報提供（電話・文書・電子処方箋コメントのいずれか／原則 <strong>翌営業日まで</strong>）。疑義照会ならその電話自体が情報提供に該当。</span>
+            <span class="sc">患者へ「次回受診時に自分から報告」を促す。</span>
+            <span class="sc">お薬手帳に記載（<strong>残薬調整した品目・変更内容</strong> など。手帳で服薬管理指導を行う場合）。</span>
+            <span class="sc">薬歴に記録（連絡の要点／変更した品目名と数量／残薬が生じた理由）。</span>
+          </span>
+          <span class="guard"><b>＋α：減数調剤（処方箋の指示）で“文書”により情報提供したときは、服薬情報等提供料1を併算定できる</b>（疑義解釈その2 問10）。</span>
+          <span class="guard"><b>＋α：残薬調整とは別に、重複・相互作用・薬学的観点の照会で処方が変更されたときは、薬学的有害事象等防止加算（30／50点）も併算定できる</b>（別加算のため）。</span>
+        </span>
+      </label>
+      <div class="arrow">区分・点数を確定</div>
+
+      <!-- 4 区分 -->
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main"><span class="n">4</span>区分と点数を確定</span>
+          <span class="pick">
+            <span class="row"><span class="cond">在宅※ ＋ <strong>処方箋交付前</strong>の事前提案</span><span class="out">イ 50点</span></span>
+            <span class="row"><span class="cond">在宅※ ＋ 照会／減数調剤で調剤日数を変更</span><span class="out">ロ 50点</span></span>
+            <span class="row"><span class="cond">かかりつけ※ ＋ 照会／減数調剤で調剤日数を変更</span><span class="out">ハ 50点</span></span>
+            <span class="row"><span class="cond">上記以外 ＋ 照会／減数調剤で調剤日数を変更</span><span class="out">ニ 30点</span></span>
+          </span>
+          <span class="check-note">※在宅＝在宅患者訪問薬剤管理指導料等の算定患者／かかりつけ＝服薬管理指導料 1のイ・2のイを算定する患者。</span>
+          <span class="rei">
+            <span class="ttl">レセプト摘要欄（7日分以上のとき）</span>
+            <p><span class="dot">・</span><strong>区分イ（事前提案）のみ</strong>：相談年月日</p>
+            <p><span class="dot">・</span><strong>共通</strong>：通知上の指定はないが、変更内容（薬剤名→日数）を併記すると伝わりやすい</p>
+          </span>
+          <span class="check-note"><strong>6日分以下のときの摘要欄は、下の「6日分以下に減らすとき」カードへ。</strong></span>
+        </span>
+      </label>
+
+    </div>
+  </div>
+
+  <!-- 6日分以下に減らすとき -->
+  <div class="card">
+    <div class="card-title">6日分以下に減らすとき<span class="qual">通常の手順に＋α</span></div>
+    <div class="card-when"><b>このとき</b>減らした量が7日分未満（内服6日分以下 等）。<strong>通常の手順に加えて</strong>、下記が要る。</div>
+
+    <div class="flow">
+
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main"><span class="n">1</span>減らす<strong class="marker">理由</strong>に当てはまるか（どちらか）</span>
+          <span class="subchecks">
+            <span class="sc"><strong>① がん化学療法薬等の高額医薬品</strong>で、患者負担の軽減が特に必要。</span>
+            <span class="sc"><strong>② 薬学的専門的な観点</strong>から減らす必要がある（下記※）。</span>
+          </span>
+          <span class="check-note">※②の<strong>具体例</strong>（疑義解釈その7 問5）。<strong>あくまで例示で、下記に限らない</strong>：添付文書で服用期間が定められた薬で通算すると服用期間を超える見込み／次回の検査結果等で処方変更が見込まれる など。</span>
+        </span>
+      </label>
+      <div class="arrow">通常の手順に加えて</div>
+
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main"><span class="n">2</span>6日分以下のとき、追加で行うこと</span>
+          <span class="subchecks">
+            <span class="sc">次回受診日（調剤日）を患者・家族に確認する。</span>
+            <span class="sc">7日分を超えないのに調整する必要性を患者・家族に説明する。</span>
+            <span class="sc">上記の概要を薬歴に記録する。</span>
+          </span>
+        </span>
+      </label>
+      <div class="arrow">摘要欄も追加</div>
+
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main"><span class="n">3</span>レセプト摘要欄に<strong class="marker">追加で記載</strong>したか</span>
+          <span class="check-note">7日分以上は摘要欄の指定なし。<strong>6日分以下のときだけ</strong>、下記を追加で入れる。</span>
+          <span class="rei">
+            <span class="ttl">摘要欄コメント（6日分以下のときだけ）</span>
+            <p><span class="dot">・</span>変更した主な薬剤名</p>
+            <p><span class="dot">・</span>理由：高額医薬品／治療終了予定日との日数調整／投与間隔が長い／その他薬学的専門的観点</p>
+          </span>
+        </span>
+      </label>
+
+    </div>
+
+    <span class="guard" style="margin-top:14px;"><b>✕ 6日分以下で算定できない例</b>：継続的に同じような処方で、残薬が7日分を超えるまで待つのが合理的な患者（認知機能に問題なし等）を機械的に早期調整／<b>処方医が同意しただけ</b>を理由にする。</span>
+  </div>
+
+  <!-- 残薬調整したときの調剤管理料 -->
+  <div class="card">
+    <div class="card-title">残薬調整したときの調剤管理料<span class="qual">残すか・全量カットかで分ける</span></div>
+
+    <div class="premise">
+      <div class="k">まず分ける</div>
+      <div class="t"><strong>① 元の処方が長期処方（28日分以上）か</strong>で区分が決まる（イ＝60点／ロ＝27日分以下 10点）。<br><strong>② 残薬調整後に「1日分以上を調剤」か「全量カット（削除）」か</strong>で扱いが分かれる（下記）。</div>
+    </div>
+
+    <div class="flow">
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main"><strong>1日分以上を調剤した</strong>とき（減らして残す）</span>
+          <span class="check-note">区分は<strong>元の処方日数で判定</strong>（実際に調剤した日数ではない）。長期処方（28日分以上）を27日分以下に減らしても <strong>1のイ（60点）のまま</strong>。ロ（10点）に落とさない（疑義解釈その7 問4）。</span>
+          <span class="rei">
+            <span class="ttl">例</span>
+            <p><span class="dot">・</span>28日処方を残薬調整で20日分に調剤 → <strong>1のイ＝60点で算定</strong></p>
+          </span>
+          <span class="rei">
+            <span class="ttl">レセプト摘要欄（長期処方を1のイで算定するとき・令和8年6月追加）</span>
+            <p><span class="dot">・</span>減数調剤を実施した年月日</p>
+            <p><span class="dot">・</span>減数調剤を実施した薬剤名</p>
+            <p><span class="dot">・</span>調整前の日数</p>
+          </span>
+          <span class="check-note">長期処方（28日分以上）を減数調剤し、実際に調剤する内服薬が1〜27日分となった場合の記載事項。7日分以上／6日分以下の摘要欄（上記カード）とは別に必要。</span>
+        </span>
+      </label>
+      <div class="arrow">一方</div>
+
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main">対象薬を<strong class="marker">削除した</strong>とき（疑義照会で全量カット）</span>
+          <span class="guard"><b>削除した薬の調剤管理料は算定できない</b>（その薬を調剤していないため）。同一用法の剤が別に処方されていれば、<b>その剤の日数に応じて</b>調剤管理料を算定（疑義解釈その7 問4）。</span>
+        </span>
+      </label>
+    </div>
+  </div>
+
+  <div class="page-foot">詳しい解説は <a href="../加算まとめ/調剤時残薬調整加算.html" class="link-inline">調剤時残薬調整加算</a> ／ <a href="../加算まとめ/調剤管理料_2026改定.html" class="link-inline">調剤管理料</a>（解説ページ）を参照。</div>
+
+</div>
+
+<script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

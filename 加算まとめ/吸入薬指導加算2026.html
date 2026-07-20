@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>吸入薬指導加算の見直し｜2026年調剤報酬改定</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --text-xs:  13px;
+      --text-sm:  15px;
+      --text-md:  16px;
+      --text-lg:  18px;
+      --text-xl:  22px;
+      --pad-card: 22px;
+      --gap-card: 16px;
+      --blue:     #1e5fa8;
+      --ink:      #222222;
+      --bg:       #f3f4f6;
+      --white:    #ffffff;
+      --box-blue: #e4f0f8;
+      --box-gray: #f2f2f2;
+      --border:   #d1d5db;
+      --border-dk:#9ca3af;
+      --txt-2:    #444444;
+      --txt-3:    #5e6470;
+      --radius:   10px;
+      --radius-sm:6px;
+      --bw:       0.5px;
+      --bw-h:     1px;
+      --bw-a:     3px;
+      --bw-t:     4px;
+    }
+
+    body {
+      font-family: "Noto Sans JP", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: var(--text-md);
+      line-height: 1.8;
+      padding: 32px 16px 60px;
+    }
+
+    .page { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--gap-card); }
+
+    /* H1：装飾なし・大きめ太字 */
+    .page-title { padding: 6px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .page-title h1 { font-size: var(--text-xl); font-weight: 900; letter-spacing: -0.01em; }
+    .page-title p  { font-size: var(--text-sm); font-weight: 500; color: var(--txt-2); margin-top: 4px; }
+
+    .card { background: var(--white); border: var(--bw) solid var(--border); border-radius: var(--radius); padding: var(--pad-card); }
+
+    /* H2：短い縦棒＋下線 */
+    .card-title {
+      font-size: var(--text-lg); font-weight: 900;
+      border-bottom: var(--bw-h) solid var(--border-dk);
+      padding-bottom: 8px; margin-bottom: 16px;
+      display: flex; align-items: center; flex-wrap: wrap; gap: 11px;
+    }
+    .card-title::before { content: ""; width: 4px; height: 1.05em; border-radius: 2px; background: var(--blue); flex-shrink: 0; }
+    .card-title .qual { font-size: var(--text-sm); font-weight: 700; color: var(--txt-3); }
+    .card-title .badge { margin-left: auto; }
+
+    .badge { font-size: var(--text-sm); font-weight: 700; padding: 3px 12px; border-radius: 4px; }
+    .badge-blue { background: var(--box-blue); color: var(--blue); }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-card); }
+
+    .box-gray { background: var(--box-gray); border-radius: var(--radius-sm); padding: 14px 18px; border: var(--bw) solid var(--border); }
+    .lead { border-left: var(--bw-t) solid var(--blue); background:#eef4fb; padding:12px 16px; border-radius:0 var(--radius-sm) var(--radius-sm) 0; font-size:var(--text-sm); line-height:1.75; }
+
+    /* H3：小さな青い四角 */
+    .h3 { font-weight: 900; margin-bottom: 8px; display: flex; align-items: baseline; gap: 8px; }
+    .h3::before { content: ""; width: 9px; height: 9px; border-radius: 2px; background: var(--blue); flex-shrink: 0; transform: translateY(1px); }
+
+    /* 色：青＝変化/構造、黄＝条件（赤は使わない） */
+    .em-change { color: var(--blue); font-weight: 900; }
+    .marker    { background: linear-gradient(transparent 62%, #fff59d 62%); font-weight: 700; }
+
+    .pts-badge { display: flex; align-items: center; background: var(--white); border: var(--bw-h) solid var(--border-dk); border-radius: var(--radius-sm); overflow: hidden; flex-shrink: 0; }
+    .pts-label { background: var(--box-gray); padding: 8px 14px; font-size: var(--text-sm); font-weight: 700; border-right: var(--bw-h) solid var(--border-dk); }
+    .pts-num   { padding: 8px 18px; font-size: 32px; font-weight: 900; color: var(--ink); line-height: 1; }
+    .pts-unit  { font-size: var(--text-sm); font-weight: 700; }
+
+    /* 変更前後比較 */
+    .compare-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .compare-old { font-size: var(--text-sm); font-weight: 700; color: var(--txt-3); text-decoration: line-through; }
+    .compare-arrow { font-size: var(--text-lg); color: var(--txt-3); flex-shrink: 0; }
+    .compare-new { font-size: var(--text-xl); font-weight: 900; color: var(--blue); }
+
+    /* 注意（黄） */
+    .guard { padding: 9px 12px; background: #fffbe6; border-left: var(--bw-a) solid #e0b000; border-radius: 4px; font-size: var(--text-xs); line-height: 1.65; }
+    .guard b { font-weight: 900; }
+
+    /* 記載例 */
+    .rei { background: var(--box-gray); border: var(--bw) solid var(--border); border-radius: var(--radius-sm); padding: 12px 14px; margin-top: 10px; font-size: var(--text-sm); line-height: 1.8; }
+    .rei .ttl { display: block; font-weight: 900; color: var(--blue); font-size: var(--text-xs); margin-bottom: 5px; }
+    .rei p { padding-left: 14px; text-indent: -14px; }
+    .rei p + p { margin-top: 5px; }
+    .rei .dot { color: var(--txt-3); font-weight: 900; }
+
+    /* 箇条書き */
+    .bullet { display: flex; gap: 6px; }
+    .bullet > span:first-child { flex-shrink: 0; color: var(--txt-3); }
+
+    table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+    th { background: var(--box-gray); color: var(--ink); font-weight: 900; padding: 8px 12px; text-align: left; border-bottom: 2px solid var(--border-dk); }
+    td { padding: 8px 12px; border-bottom: var(--bw-h) solid var(--border); vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+
+    .divider { border: none; border-top: var(--bw-h) solid var(--border); margin: 14px 0; }
+    .link-inline { color: var(--blue); font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--box-blue); }
+    .page-foot { font-size: var(--text-xs); color: var(--txt-3); text-align: right; padding-top: 2px; }
+
+    @media (max-width:640px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      body { font-size: 13px; padding: 14px 12px 40px; line-height: 1.75; }
+      :root {
+        --text-xs: 11px; --text-sm: 12.5px; --text-md: 13px;
+        --text-lg: 15px; --text-xl: 17px;
+        --pad-card: 14px; --gap-card: 11px;
+      }
+      .card { padding: 14px; border-radius: 8px; }
+      .card-title { font-size: 15px; padding-bottom: 6px; margin-bottom: 10px; }
+      .box-gray { padding: 10px 12px; }
+      .badge { font-size: 12px; padding: 3px 10px; }
+      .page-title { padding: 4px 0; }
+      .page-title h1 { font-size: 17px; line-height: 1.45; }
+      .page-title p { font-size: 12.5px; }
+      .pts-label { padding: 6px 10px; font-size: 11px; }
+      .pts-num { font-size: 24px; padding: 6px 14px; }
+      .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      table { font-size: 11.5px; min-width: 480px; }
+      th, td { padding: 6px 8px; }
+    }
+
+    @media print {
+      @page { margin: 9mm 9mm; size: A4; }
+      body { background: white; padding: 0; font-size: 13px; line-height: 1.65;
+        -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .page { gap: 10px; }
+      :root {
+        --text-xs: 11px; --text-sm: 12px; --text-md: 13px;
+        --text-lg: 14.5px; --text-xl: 17px;
+        --pad-card: 12px; --gap-card: 10px;
+        --radius: 8px; --radius-sm: 5px;
+      }
+      .card { padding: 12px 14px; }
+      .card-title { padding-bottom: 6px; margin-bottom: 10px; }
+      .grid-2 { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .page-title { padding: 5px 0; }
+      .page-title h1 { font-size: 17px; }
+      .page-title p  { font-size: 12px; margin-top: 3px; }
+      .box-gray { padding: 9px 12px; }
+      .avoid-break { break-inside: avoid; }
+      .badge { font-size: 11px; padding: 2px 9px; }
+      .pts-num { font-size: 26px; }
+      .divider { margin: 9px 0; }
+      .table-wrap { overflow-x: visible; }
+      table { font-size: var(--text-sm); min-width: unset; }
+      .page-foot { display: none; }
+      a { color: inherit; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+    <script src="../assets/site-header.js" defer></script>
+<div class="page">
+
+  <!-- タイトル -->
+  <div class="page-title">
+    <div>
+      <h1>吸入薬指導加算</h1>
+      <p>算定間隔の変更とインフルエンザ吸入薬の追加｜2026年調剤報酬改定</p>
+    </div>
+    <div class="pts-badge">
+      <span class="pts-label">6月に1回に限り</span>
+      <span class="pts-num">30<span class="pts-unit">点</span></span>
+    </div>
+  </div>
+
+  <!-- 改定の概要 -->
+  <div class="card avoid-break">
+    <div class="card-title">今回の改定ポイント<span class="badge badge-blue">2026年改定</span></div>
+    <div class="grid-2">
+      <!-- 変更点1 -->
+      <div>
+        <div class="h3">① 算定間隔の変更</div>
+        <div class="box-gray" style="margin-bottom:10px;">
+          <div class="compare-row">
+            <span class="compare-old">3月に1回</span>
+            <span class="compare-arrow">→</span>
+            <span class="compare-new">6月に1回</span>
+          </div>
+        </div>
+        <div class="bullet" style="font-size:var(--text-sm);"><span>・</span><span>算定間隔が3月に1回→6月に1回に変更。点数は30点で変更なし</span></div>
+      </div>
+      <!-- 変更点2 -->
+      <div>
+        <div class="h3">② 対象疾患にインフルエンザを追加</div>
+        <div class="box-gray" style="margin-bottom:10px;">
+          <div class="compare-row">
+            <span class="compare-old">喘息・COPD のみ</span>
+            <span class="compare-arrow">→</span>
+            <span style="font-size:var(--text-md); font-weight:900; color:var(--blue);">インフルエンザも追加</span>
+          </div>
+        </div>
+        <div class="bullet" style="font-size:var(--text-sm);"><span>・</span><span>喘息・COPDに加え、<strong>インフルエンザウイルス感染症</strong>の吸入薬も対象に。ただし指導の方法が異なる（下記参照）</span></div>
+        <div style="margin-top:8px; font-size:var(--text-xs); color:var(--txt-2);">※ 風邪・咳喘息での吸入処方は今回も対象外。対象疾患の拡大と混同しないよう注意。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 算定要件（ア・イ） -->
+  <div class="card avoid-break">
+    <div class="card-title">算定要件<span class="qual">ア・イの両方を満たすこと</span></div>
+
+    <div class="lead" style="margin-bottom:14px;">
+      <strong>6月に1回</strong>に限り算定可。ただし、<span class="marker">他の吸入薬が処方され必要な指導を別に行った場合</span>は、6月以内でも算定できる。
+    </div>
+
+    <div style="margin-bottom:16px;">
+      <div class="h3">ア　吸入指導の実施</div>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+
+        <!-- 喘息・COPD -->
+        <div class="box-gray">
+          <div style="font-weight:900; margin-bottom:6px;">喘息・慢性閉塞性肺疾患（COPD）の場合</div>
+          <div class="bullet" style="font-size:var(--text-sm);"><span>・</span><span><strong>文書および練習用吸入器等</strong>を用いて吸入手技の指導を行う</span></div>
+          <div class="bullet" style="font-size:var(--text-sm);"><span>・</span><span>患者が正しい手順で吸入薬を使用できているか確認する</span></div>
+          <div class="bullet" style="font-size:var(--text-sm);"><span>・</span><span>指導は日本アレルギー学会「アレルギー総合ガイドライン」等を参照して行う</span></div>
+        </div>
+
+        <!-- インフルエンザ -->
+        <div class="box-gray">
+          <div style="font-weight:900; margin-bottom:6px;"><span class="em-change">インフルエンザウイルス感染症の場合</span>（2026新規追加）</div>
+          <div class="bullet" style="font-size:var(--text-sm);"><span>・</span><span><span class="marker">保険薬剤師による看視の下、その場で吸入させること</span>が必須要件</span></div>
+          <div class="guard" style="margin-top:8px;"><b>喘息・COPDとは方法が違う</b>＝「練習用吸入器等を用いた指導・確認」ではなく「看視下での吸入」が求められる。</div>
+        </div>
+
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- イ -->
+    <div>
+      <div class="h3">イ　保険医療機関への情報提供</div>
+      <div class="box-gray">
+        <div class="bullet" style="font-size:var(--text-sm);"><span>・</span><span>吸入指導の結果等を<strong>文書により</strong>保険医療機関へ情報提供する</span></div>
+        <div class="bullet" style="font-size:var(--text-sm); margin-top:4px;"><span>・</span><span>文書の他、<strong>お薬手帳への記載</strong>による情報提供でも差し支えない</span></div>
+        <div class="bullet" style="font-size:var(--text-sm); margin-top:4px;"><span>・</span><span>患者の吸入薬の使用について疑義がある場合は、処方医へ照会する</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 算定上の注意点 -->
+  <div class="card avoid-break">
+    <div class="card-title">算定上の注意点・留意事項</div>
+
+    <div style="display:flex; flex-direction:column; gap:12px;">
+
+      <div>
+        <div class="h3">同意取得と算定の開始条件</div>
+        <div style="display:flex; flex-direction:column; gap:4px; font-size:var(--text-sm);">
+          <div class="bullet"><span>・</span><span>患者または家族等の<strong>同意を得た上で</strong>指導を行う</span></div>
+          <div class="bullet"><span>・</span><span>「<strong>保険医療機関からの求め</strong>」または「<strong>患者・家族等の求め</strong>があり、吸入指導の必要性が認められ<span class="marker">医師の了解を得た場合</span>」のいずれかで算定可能</span></div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div>
+        <div class="h3">算定できない場合</div>
+        <div style="display:flex; flex-direction:column; gap:4px; font-size:var(--text-sm);">
+          <div class="bullet"><span>・</span><span>当加算を算定する場合、<strong>服薬情報等提供料との併算定は不可</strong></span></div>
+          <div class="bullet"><span>・</span><span>服薬管理指導料「４のロ」または「４のハ」（特別養護老人ホーム等）を算定する場合は算定不可</span></div>
+          <div class="bullet"><span>・</span><span>特別調剤基本料Aを算定している薬局で、当該薬局と<strong>不動産取引等その他特別な関係</strong>を有している保険医療機関への情報提供の場合は算定不可</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 薬歴への記載 -->
+  <div class="card avoid-break">
+    <div class="card-title">薬歴への記載<span class="qual">通則(4)(5)に基づく</span></div>
+
+    <div class="lead" style="margin-bottom:14px;">
+      かつては吸入薬指導加算に個別の薬歴規定（情報提供文書の写し等の添付・記載）があったが、<strong>2024年改定で通則に集約</strong>された。現在は通則(4)（疾患情報等の記載）と通則(5)（加算の根拠・指導内容の簡潔な記載、情報提供文書の写し又は要点の記載・添付）に基づいて記載する。
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:4px; font-size:var(--text-sm);">
+      <div class="bullet"><span>・</span><span><strong>対象疾患（喘息・COPD等）を病歴・既往歴に反映</strong>する。風邪・咳喘息での吸入は対象外のため、疾患確認の記録がそのまま算定根拠になる</span></div>
+      <div class="bullet"><span>・</span><span><strong>吸入指導の要点と確認結果</strong>を記載する</span></div>
+      <div class="bullet"><span>・</span><span><strong>情報提供した文書等の写し又は要点</strong>を記載・添付する（お薬手帳の場合はその旨）</span></div>
+      <div class="bullet"><span>・</span><span>医師の指示がなく、薬剤師が声をかけ患者・家族等の同意を得て実施した場合（多くはこのケース）も、区分イの要件として<strong>医師の了解</strong>を得た経緯を残す</span></div>
+    </div>
+
+    <div class="rei">
+      <span class="ttl">薬歴 記載例（喘息・初回指導）</span>
+      <p><span class="dot">・</span><strong>病歴・S</strong>：病名（気管支喘息 等）を記載</p>
+      <p><span class="dot">・</span><strong>P</strong>：〇〇（吸入薬名）について、説明文書および練習用吸入器を用いて吸入手技を指導。吸入操作は手順どおり実施できており、吸入音から吸入力にも問題がないことを確認。症状の有無にかかわらず毎日一定時刻に継続して吸入すること、吸入後はうがいを行うことを説明。嗄声・口腔カンジダ等の副作用について注意喚起し、症状出現時は薬局または医療機関へ相談するよう指導。</p>
+      <p><span class="dot">・</span><strong>次回申し送り</strong>：吸入手技が正しくできているか確認。嗄声・口腔内違和感・口腔カンジダ等の副作用の有無を確認。</p>
+    </div>
+
+    <div class="guard" style="margin-top:10px;"><b>個別指導での指摘例</b>＝「気管支喘息」か「咳喘息」かの確認不足。数日分の単発処方で使い切り終了となるケース（急性期）は、継続的な吸入管理を前提とした本加算の対象にあたらない。疾患名の確認と薬歴への反映が重要。</div>
+  </div>
+
+  <!-- 旧要件との比較 -->
+  <div class="card avoid-break">
+    <div class="card-title">旧要件との変更点まとめ<span class="badge badge-blue">参考</span></div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:28%;">項目</th>
+            <th style="width:36%;">旧要件（改定前）</th>
+            <th style="width:36%;">新要件（2026年改定）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>対象疾患</strong></td>
+            <td>喘息・COPD のみ</td>
+            <td><span class="em-change">喘息・COPD ＋ インフルエンザ</span>を追加</td>
+          </tr>
+          <tr>
+            <td><strong>算定間隔</strong></td>
+            <td>3月に1回</td>
+            <td><span class="em-change">6月に1回</span></td>
+          </tr>
+          <tr>
+            <td><strong>点数</strong></td>
+            <td>30点</td>
+            <td>30点（変更なし）</td>
+          </tr>
+          <tr>
+            <td><strong>他の吸入薬処方時</strong></td>
+            <td>3月以内でも別に算定可</td>
+            <td>6月以内でも別に算定可（間隔のみ変更）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- レセプト摘要欄記載事項 -->
+  <div class="card avoid-break">
+    <div class="card-title">レセプト摘要欄記載事項</div>
+    <div class="box-gray" style="font-size:var(--text-sm);">
+      <div style="font-weight:900; margin-bottom:6px;">吸入薬の調剤年月日</div>
+      <div style="font-weight:900;">吸入薬の名称</div>
+    </div>
+    <div style="font-size:var(--text-xs); color:var(--txt-2); margin-top:10px;">
+      ※ <a href="../改定資料/別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html" class="link-inline">別表Ⅰ</a>準拠。指導の対象となった吸入薬について、調剤年月日と名称の両方を記載する。
+    </div>
+  </div>
+
+  <!-- 実務メモ -->
+  <div class="card avoid-break">
+    <div class="card-title">実務メモ</div>
+    <div class="box-gray" style="border-left:var(--bw-a) solid var(--border-dk);">
+      <div class="h3">インフルエンザ吸入薬の情報提供：お薬手帳の活用が現実的</div>
+      <div style="display:flex; flex-direction:column; gap:4px; font-size:var(--text-sm);">
+        <div class="bullet"><span>・</span><span>イの要件にある「文書による情報提供」は、従来から<strong>お薬手帳への記載でも差し支えない</strong>とされている</span></div>
+        <div class="bullet"><span>・</span><span>インフルエンザは短期治療であり、喘息・COPDのような継続的な吸入管理とは性質が異なる。別途詳細な報告書を作成するより、<strong>指導内容や吸入の理解度等をお薬手帳に記載する運用</strong>が現実的と考えられる</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-foot">現場での確認は <a href="../チェックリスト/吸入薬指導加算_実務チェックリスト.html" class="link-inline">吸入薬指導加算 算定チェックリスト</a> を参照。</div>
+
+</div>
+<script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+    <!-- 原文参照リンク -->
+    <div
+      style="
+        max-width: 860px;
+        margin: 16px auto 0;
+        padding: 20px 16px 4px;
+        border-top: 1px solid #d0d8e8;
+      "
+    >
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px;">
+        <span style="font-size: 12px; color: #555; white-space: nowrap; font-weight: bold;">原文参照：</span>
+        <a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-10-3-11" style="display: inline-block; color: #1e5fa8; text-decoration: none; font-size: 13px; border: 1px solid #a0b8d8; border-radius: 6px; padding: 4px 12px; background: #fff;">別添３ › 吸入薬指導加算</a>
+        <a href="../改定資料/別表第三_調剤報酬点数表2026.html#ku10-3" style="display: inline-block; color: #1e5fa8; text-decoration: none; font-size: 13px; border: 1px solid #a0b8d8; border-radius: 6px; padding: 4px 12px; background: #fff;">別表第三 › 服薬管理指導料（注12）</a>
+      </div>
+    </div>
+
+</body>
+</html>

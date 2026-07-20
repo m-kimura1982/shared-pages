@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026調剤報酬改定 事務スタッフ向けサマリ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+:root {
+  --text-xs:13px; --text-sm:14px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+  --blue:#1e5fa8; --red:#cc0000; --ink:#222; --sub:#666;
+  --bg:#f3f4f6; --white:#fff; --box-blue:#e4f0f8; --box-gray:#f5f5f5;
+  --border:#d1d5db; --border-dk:#9ca3af;
+  --radius:10px; --bw:0.5px; --bw-h:1px; --bw-t:4px;
+}
+body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.7; padding:28px 16px 60px; }
+.page { max-width:980px; margin:0 auto; display:flex; flex-direction:column; gap:14px; }
+
+.page-title-left { border-left:var(--bw-t) solid var(--blue); padding:6px 0 6px 18px; }
+.page-title-left h1 { font-size:var(--text-xl); font-weight:900; }
+.page-title-left p { font-size:var(--text-sm); font-weight:500; margin-top:4px; color:var(--sub); }
+
+.lead { background:var(--white); border:var(--bw) solid var(--border); border-left:3px solid var(--blue); border-radius:var(--radius); padding:14px 18px; font-size:var(--text-sm); line-height:1.75; }
+.lead strong { color:var(--blue); }
+
+.card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:18px 20px; }
+
+table.summary { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+table.summary th { background:var(--box-gray); font-weight:900; padding:8px 10px; border-bottom:2px solid var(--border-dk); text-align:left; white-space:nowrap; }
+table.summary td { padding:9px 10px; border-bottom:var(--bw-h) solid var(--border); vertical-align:middle; }
+table.summary tr:last-child td { border-bottom:none; }
+table.summary tr:hover td { background:#fafbfc; }
+.col-no { width:36px; text-align:center; color:var(--sub); font-size:var(--text-xs); }
+.col-name { width:230px; font-weight:700; }
+.col-change { line-height:1.7; }
+.col-link { width:78px; text-align:right; white-space:nowrap; vertical-align:middle; }
+
+.badge { display:inline-block; font-size:11px; font-weight:700; padding:2px 8px; border-radius:3px; margin-left:6px; vertical-align:middle; }
+.badge-red { background:#fde8e8; color:var(--red); }
+.badge-blue { background:var(--box-blue); color:var(--blue); }
+.badge-gray { background:#eceef2; color:#555; }
+
+.detail-link { display:inline-block; font-size:11.5px; font-weight:700; color:var(--blue); text-decoration:none; padding:3px 10px; border:var(--bw-h) solid var(--blue); border-radius:3px; }
+.detail-link:hover { background:var(--box-blue); }
+
+.note { font-size:12px; color:var(--sub); padding:0 4px; }
+
+@media (max-width:720px) {
+  body { padding:14px 12px 40px; font-size:14px; }
+  table.summary, table.summary thead, table.summary tbody, table.summary tr, table.summary td { display:block; width:100%; }
+  table.summary thead { display:none; }
+  table.summary tr { border:var(--bw) solid var(--border); border-radius:8px; margin-bottom:8px; padding:10px 12px; }
+  table.summary td { border:none !important; padding:3px 0; }
+  .col-no { display:inline-block; width:auto; padding-right:6px !important; color:var(--sub); }
+  .col-name { width:auto; display:inline-block !important; font-size:15px; }
+  .col-change { font-size:13px; color:#333; padding-top:4px !important; }
+  .col-link { width:auto; text-align:left; padding-top:6px !important; }
+}
+
+@media print {
+  @page { margin:8mm 8mm; size:A4; }
+  body { background:white; padding:0; font-size:10.5px; line-height:1.55; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .page { gap:6px; }
+  .card { padding:8px 10px; }
+  .lead { padding:6px 10px; font-size:10px; }
+  table.summary th, table.summary td { padding:4px 6px; font-size:10px; }
+  .col-name { width:200px; }
+  .col-link { width:56px; }
+  .detail-link { display:none; }
+  .col-link::after { content:""; }
+  .badge { font-size:9px; padding:1px 5px; }
+  .page-title-left h1 { font-size:15px; }
+  .page-title-left p { font-size:10px; }
+  .note { font-size:9px; }
+}
+</style>
+</head>
+<body>
+<script src="../assets/site-header.js" defer></script>
+<script src="../assets/page-meta.js" defer></script>
+<script src="../assets/last-updated.js" defer></script>
+
+<div class="page">
+
+  <div class="page-title-left">
+    <h1>2026調剤報酬改定 事務スタッフ向けサマリ</h1>
+    <p>「事務スタッフ向けポイント整理」から要点だけを一覧化。詳細は各行の「→詳細」から</p>
+  </div>
+
+  <div class="lead">
+    各項目の<strong>「何が変わったか」</strong>を要点ごとに並べた一覧。詳しい算定要件・摘要欄記載は <a href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html" style="color:var(--blue); font-weight:700;">ポイント整理ページ</a> を参照。
+  </div>
+
+  <div class="card">
+    <table class="summary">
+      <thead>
+        <tr>
+          <th class="col-name">項目</th>
+          <th class="col-change">何が変わった</th>
+          <th class="col-link"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-name">名称変更・廃止・再編されたもの<span class="badge badge-blue">改編</span></td>
+          <td class="col-change">廃止・改名・再編された加算の一覧</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s01">→詳細</a></td>
+        </tr>
+        <tr>
+          <td class="col-name">栄養保持を目的とした医薬品<span class="badge badge-red">新規要件</span></td>
+          <td class="col-change">対象6剤（エンシュア・H、ラコールNF配合経腸用液 等）の処方箋備考欄に、以下①〜③のいずれかの記載が必要。<br>①手術後の患者である旨／②経管により栄養補給を行っている旨／③投与が必要と判断した理由<br>記載がなければ保険請求不可。</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s02">→詳細</a></td>
+        </tr>
+        <tr>
+          <td class="col-name">長期収載品（先発品）の選定療養</td>
+          <td class="col-change">特別の料金の算出に使う薬価差の割合が 1/4 から 1/2 に引き上げ。<br>患者の自己負担額が変わる薬は特定薬剤管理指導加算３（ロ）を1回に限り再算定可。</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s19">→詳細</a></td>
+        </tr>
+        <tr>
+          <td class="col-name">調剤物価対応料<span class="badge badge-red">新設</span></td>
+          <td class="col-change">処方箋を受け付けるすべての患者に3月に1回 1点を算定（届出不要・対象患者の制限なし）。<br>令和9年6月から 2点に増点。</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s03">→詳細</a></td>
+        </tr>
+        <tr>
+          <td class="col-name">調剤ベースアップ評価料<span class="badge badge-red">新設</span></td>
+          <td class="col-change">職員の賃金改善体制を評価する新加算。<br>処方箋受付1回 4点（要届出）。<br>令和9年6月から 8点に増点。</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s04">→詳細</a></td>
+        </tr>
+        <tr>
+          <td class="col-name">電子的調剤情報連携体制整備加算<span class="badge badge-blue">改名</span></td>
+          <td class="col-change">医療DX推進体制整備加算から名称変更。<br>3区分（6/8/10点）を一律 8点に統一。<br>マイナ保険証利用率30%以上で算定可。</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s05">→詳細</a></td>
+        </tr>
+        <tr>
+          <td class="col-name">調剤管理料</td>
+          <td class="col-change">4段階を2段階に整理。<br>28日分以上の長期処方は60点／27日分以下は一律10点。<br>調剤管理加算（イ・ロ）は廃止。</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s06">→詳細</a></td>
+        </tr>
+        <tr>
+          <td class="col-name">調剤時残薬調整加算<span class="badge badge-red">新設</span></td>
+          <td class="col-change">重複投薬・相互作用等防止加算の残薬調整区分を再編した新加算。<br>在宅・かかりつけ患者は 50点／それ以外は 30点。<br>原則7日分以上の調剤日数変更が条件。</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s07">→詳細</a></td>
+        </tr>
+        <tr>
+          <td class="col-name">薬学的有害事象等防止加算<span class="badge badge-red">新設</span></td>
+          <td class="col-change">重複投薬・相互作用等防止加算の残薬調整以外の業務（重複・相互作用・副作用回避等）を再編した新加算。<br>在宅・かかりつけ患者は 50点／それ以外は 30点。</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s08">→詳細</a></td>
+        </tr>
+        <tr>
+          <td class="col-name">かかりつけ薬剤師フォローアップ加算<span class="badge badge-red">新設</span></td>
+          <td class="col-change">かかりつけ患者を調剤後〜次回来局前に電話等でフォローした場合、次回処方箋受付時に算定。<br>3月に1回 50点。</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s09">→詳細</a></td>
+        </tr>
+        <tr>
+          <td class="col-name">かかりつけ薬剤師訪問加算<span class="badge badge-red">新設</span></td>
+          <td class="col-change">かかりつけ患者宅を訪問し服薬管理の指導・残薬整理等を行い、医療機関へ情報提供した場合に算定。<br>6月に1回 230点。</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s10">→詳細</a></td>
+        </tr>
+        <tr>
+          <td class="col-name">服薬管理指導料 １・２<span class="badge badge-blue">区分・略称変更</span></td>
+          <td class="col-change">かかりつけ薬剤師指導料が廃止され、服薬管理指導料に統合。<br>区分名と略称も見直し（別表Ⅴ参照）。</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s11">→詳細</a></td>
+        </tr>
+        <tr>
+          <td class="col-name">服薬管理指導料 ３・４</td>
+          <td class="col-change">３（施設訪問）と ４（情報通信機器）の体系を整理。<br>在宅患者オンライン薬剤管理指導料は廃止され、服薬管理指導料「４のロ・ハ」に統合。</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s11b">→詳細</a></td>
+        </tr>
+        <tr>
+          <td class="col-name">服用薬剤調整支援料２<span class="badge badge-blue">改編・大幅増点</span></td>
+          <td class="col-change">90〜110点から 1,000点に大幅増点（6月に1回）。<br>ただし令和8年6月〜令和9年5月は算定不可の空白期間で、算定開始は令和9年6月から。</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s12">→詳細</a></td>
+        </tr>
+        <tr>
+          <td class="col-name">訪問薬剤管理医師同時指導料<span class="badge badge-red">新設</span><span class="badge badge-gray">在宅のみ</span></td>
+          <td class="col-change">在宅時医学総合管理料を算定している主治医と同時に在宅患者宅を訪問した場合の新加算。<br>対象は単一建物1人の患者。<br>6月に1回 150点。</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s13">→詳細</a></td>
+        </tr>
+        <tr>
+          <td class="col-name">複数名薬剤管理指導訪問料<span class="badge badge-red">新設</span><span class="badge badge-gray">在宅のみ</span></td>
+          <td class="col-change">在宅訪問に 2名以上で同行した場合の新加算（同行者は事務員等でも可）。<br>患者の安全確保が必要な場合に限る。<br>訪問1回 300点。</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s14">→詳細</a></td>
+        </tr>
+        <tr>
+          <td class="col-name">在宅患者訪問薬剤管理指導料<span class="badge badge-blue">算定間隔変更</span><span class="badge badge-gray">在宅のみ</span></td>
+          <td class="col-change">算定間隔が「中6日」から「週1回まで」に変更（週の起算日は日曜）。<br>6日あけずに週内で算定できるケースが生じる。</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s15">→詳細</a></td>
+        </tr>
+        <tr>
+          <td class="col-name">在宅薬学総合体制加算<span class="badge badge-blue">点数・区分変更</span><span class="badge badge-gray">在宅のみ</span></td>
+          <td class="col-change">加算1：15点→30点（在宅訪問が年48回以上必要）。<br>加算2：50点→イ100点／ロ50点に分割。<br>加算2の要件は設備保有から麻薬・無菌・小児在宅の実績要件へ。</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s_zaitaku_taisei">→詳細</a></td>
+        </tr>
+        <tr>
+          <td class="col-name">小児用無菌製剤処理加算<span class="badge badge-blue">対象年齢拡大</span><span class="badge badge-gray">在宅のみ</span></td>
+          <td class="col-change">小児加算の対象年齢：6歳未満の乳幼児 → 15歳未満の小児に拡大。<br>中心静脈栄養法用輸液（小児）：137点 → 237点に引き上げ。<br>抗悪性腫瘍剤・麻薬は点数据え置き（対象年齢のみ拡大）。</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s_shoni_mukin">→詳細</a></td>
+        </tr>
+        <tr>
+          <td class="col-name">バイオ後続品調剤体制加算<span class="badge badge-red">新設</span></td>
+          <td class="col-change">バイオ後続品（インスリン製剤等を除く）を調剤した際につく新加算。<br>調剤時 50点。要届出。<br>関連：特定薬剤管理指導加算３（ロ） 10点は、バイオ医薬品の一般名処方／バイオ後続品の銘柄名処方の患者にバイオ後続品の説明を行った場合に算定可（最初の1回限り）。<strong>体制加算と違いインスリンも対象</strong>。</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s16">→詳細</a></td>
+        </tr>
+        <tr>
+          <td class="col-name">吸入薬指導加算</td>
+          <td class="col-change">算定間隔が 3月に1回 → 6月に1回 に変更。<br>対象疾患にインフルエンザウイルス感染症の吸入薬を追加（喘息・COPDに加えて）。</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s17">→詳細</a></td>
+        </tr>
+        <tr>
+          <td class="col-name">調剤基本料</td>
+          <td class="col-change">各区分 +1〜2点に引き上げ。<br>基本料2の基準が月2,000回超 → 1,800回超に引き下げ。<br>集中率の計算方法も変更（同一敷地・建物内の複数医療機関は合算 等）。</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s18">→詳細</a></td>
+        </tr>
+        <tr>
+          <td class="col-name">地域支援・医薬品供給対応体制加算<span class="badge badge-red">改名・統合</span></td>
+          <td class="col-change">「地域支援体制加算」から名称変更。<br>後発医薬品調剤体制加算を加算1（27点）に統合し、4区分から5区分に再編。<br>全区分でGE率85%以上が必須。</td>
+          <td class="col-link"><a class="detail-link" href="事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s_chiki">→詳細</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="note">※ 本ページは「事務スタッフ向け_2026調剤報酬改定ポイント整理」からの抜粋・要約。算定要件・摘要欄記載・経過措置などの詳細は各「→詳細」のリンク先を参照。</p>
+
+</div>
+
+<script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

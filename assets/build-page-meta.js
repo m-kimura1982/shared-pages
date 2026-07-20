@@ -11,7 +11,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 // 公開サブディレクトリ（存在するものだけ走査）。薬歴マニュアル昇格時は 'yakureki' がここで拾われる。
 // キーは 'yakureki/ページ名.html' のようなサイトルート相対パス（/ 区切り）になる
-const PUBLIC_DIRS = ['yakureki'];
+const PUBLIC_DIRS = ['yakureki', '加算まとめ', '改定資料', 'チェックリスト', 'ツール', 'ナレッジ', '事務'];
 const files = fs
   .readdirSync(ROOT)
   .filter((f) => f.endsWith('.html'));
