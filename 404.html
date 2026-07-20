@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>ページが見つかりません｜調剤報酬まとめ</title>
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      /* ──────────────────────────────────────────────
+         旧URLの救済（2026-07-20 のフォルダ整理・07-18 の疑義解釈統合）
+         GitHub Pages は存在しないURLに 404.html を返すが、
+         アドレスバーには元のリクエストURLが残る。それを見て転送する。
+         ページ移動のたびにスタブHTMLを増やさずに済むよう、ここに集約している。
+         ────────────────────────────────────────────── */
+      (function () {
+        // フォルダ整理で移動したページ（旧ファイル名 → 新パス）
+        var MOVED = {
+    "【簡易版】かかりつけ薬剤師に関わる管理料・加算一覧.html": "改定資料/【簡易版】かかりつけ薬剤師に関わる管理料・加算一覧.html",
+    "gigi-search.html": "ツール/gigi-search.html",
+    "かかりつけ薬剤師_算定一覧2026.html": "改定資料/かかりつけ薬剤師_算定一覧2026.html",
+    "かかりつけ薬剤師フォローアップ加算_実務チェックリスト.html": "チェックリスト/かかりつけ薬剤師フォローアップ加算_実務チェックリスト.html",
+    "かかりつけ薬剤師フォローアップ加算.html": "加算まとめ/かかりつけ薬剤師フォローアップ加算.html",
+    "かかりつけ薬剤師訪問加算_実務チェックリスト.html": "チェックリスト/かかりつけ薬剤師訪問加算_実務チェックリスト.html",
+    "かかりつけ薬剤師訪問加算.html": "加算まとめ/かかりつけ薬剤師訪問加算.html",
+    "バイオ後続品調剤体制加算.html": "加算まとめ/バイオ後続品調剤体制加算.html",
+    "栄養保持を目的とした医薬品_確認チェックリスト.html": "チェックリスト/栄養保持を目的とした医薬品_確認チェックリスト.html",
+    "栄養保持を目的とした医薬品の保険給付の適正化.html": "改定資料/栄養保持を目的とした医薬品の保険給付の適正化.html",
+    "基礎的医薬品追加リストR8_4.html": "ナレッジ/基礎的医薬品追加リストR8_4.html",
+    "疑義解釈まとめ2026.html": "改定資料/疑義解釈まとめ2026.html",
+    "吸入薬指導加算_実務チェックリスト.html": "チェックリスト/吸入薬指導加算_実務チェックリスト.html",
+    "吸入薬指導加算2026.html": "加算まとめ/吸入薬指導加算2026.html",
+    "在宅患者訪問薬剤管理指導料_算定間隔2026.html": "加算まとめ/在宅患者訪問薬剤管理指導料_算定間隔2026.html",
+    "在宅薬学総合体制加算2026.html": "加算まとめ/在宅薬学総合体制加算2026.html",
+    "在宅薬学総合体制加算2イ_特例摘要欄ガイド.html": "改定資料/在宅薬学総合体制加算2イ_特例摘要欄ガイド.html",
+    "事務スタッフ向け_2026改定サマリ.html": "事務/事務スタッフ向け_2026改定サマリ.html",
+    "事務スタッフ向け_2026調剤報酬改定ポイント整理.html": "事務/事務スタッフ向け_2026調剤報酬改定ポイント整理.html",
+    "選定療養_概要2026.html": "改定資料/選定療養_概要2026.html",
+    "選定療養_実務チェックリスト.html": "チェックリスト/選定療養_実務チェックリスト.html",
+    "選定療養費計算ツール.html": "ツール/選定療養費計算ツール.html",
+    "地域支援医薬品供給対応体制加算_届出判定ツール.html": "ツール/地域支援医薬品供給対応体制加算_届出判定ツール.html",
+    "地域支援医薬品供給対応体制加算.html": "加算まとめ/地域支援医薬品供給対応体制加算.html",
+    "調剤ベースアップ評価料.html": "改定資料/調剤ベースアップ評価料.html",
+    "調剤管理料_2026改定.html": "加算まとめ/調剤管理料_2026改定.html",
+    "調剤基本料_2026改定.html": "加算まとめ/調剤基本料_2026改定.html",
+    "調剤基本料フローチャート.html": "改定資料/調剤基本料フローチャート.html",
+    "調剤時残薬調整加算_実務チェックリスト.html": "チェックリスト/調剤時残薬調整加算_実務チェックリスト.html",
+    "調剤時残薬調整加算.html": "加算まとめ/調剤時残薬調整加算.html",
+    "調剤物価対応料.html": "改定資料/調剤物価対応料.html",
+    "調剤報酬QA.html": "ナレッジ/調剤報酬QA.html",
+    "調剤報酬改定2026_ダイジェスト.html": "改定資料/調剤報酬改定2026_ダイジェスト.html",
+    "調剤報酬体系図_2026改定.html": "改定資料/調剤報酬体系図_2026改定.html",
+    "調剤報酬点数早見表2026.html": "改定資料/調剤報酬点数早見表2026.html",
+    "電子的調剤情報連携体制整備加算_2026改定.html": "加算まとめ/電子的調剤情報連携体制整備加算_2026改定.html",
+    "特掲診療料_施設基準届出_調剤関係2026.html": "改定資料/特掲診療料_施設基準届出_調剤関係2026.html",
+    "入力画面で解説_2026改定後の入力方法.html": "ナレッジ/入力画面で解説_2026改定後の入力方法.html",
+    "服薬管理指導料.html": "加算まとめ/服薬管理指導料.html",
+    "服薬管理指導料3・4_施設訪問・オンライン.html": "加算まとめ/服薬管理指導料3・4_施設訪問・オンライン.html",
+    "服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html": "ツール/服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html",
+    "服用薬剤調整支援料２_2026改定.html": "加算まとめ/服用薬剤調整支援料２_2026改定.html",
+    "服用薬剤調整支援料２_資格取得ステップ.html": "改定資料/服用薬剤調整支援料２_資格取得ステップ.html",
+    "複数名薬剤管理指導訪問料.html": "加算まとめ/複数名薬剤管理指導訪問料.html",
+    "別添3_調剤報酬点数表に関する事項2026.html": "改定資料/別添3_調剤報酬点数表に関する事項2026.html",
+    "別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html": "改定資料/別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html",
+    "別表Ⅴ_調剤行為名称等の略号一覧2026改定.html": "改定資料/別表Ⅴ_調剤行為名称等の略号一覧2026改定.html",
+    "別表第三_調剤報酬点数表2026.html": "改定資料/別表第三_調剤報酬点数表2026.html",
+    "変更調剤について.html": "ナレッジ/変更調剤について.html",
+    "訪問薬剤管理医師同時指導料.html": "加算まとめ/訪問薬剤管理医師同時指導料.html",
+    "門前薬局等立地依存減算.html": "改定資料/門前薬局等立地依存減算.html",
+    "薬学的有害事象等防止加算_実務チェックリスト.html": "チェックリスト/薬学的有害事象等防止加算_実務チェックリスト.html",
+    "薬学的有害事象等防止加算.html": "加算まとめ/薬学的有害事象等防止加算.html",
+    "薬歴の書き方_実例解説集.html": "yakureki/薬歴の書き方_実例解説集.html",
+        };
+        // 疑義解釈：発出回ごとのページ → 統合ページ（ページ内アンカーも対応づける）
+        var GIGI = {
+    "疑義解釈_その1_2026.html": {"chiki-kyokyuu":"s1q1","denshi-chozai":"s1q2","baseup":"s1q3"},
+    "疑義解釈_その2_2026.html": {},
+    "疑義解釈_その3_2026.html": {"kihonryo":"s3q1","chiki-kyokyuu":"s3q2","sonota":"s3q4"},
+    "疑義解釈_その5_2026.html": {"monzen":"s5q1","yakuzai":"s5q2"},
+    "疑義解釈_その6_2026.html": {"denshi":"s6q1"},
+    "疑義解釈_その7_2026.html": {},
+    "疑義解釈_その9_2026.html": {"chiiki":"s9q1","doji":"s9q2","ika":"s9ika"},
+        };
+        var GIGI_TARGET = "改定資料/疑義解釈まとめ2026.html";
+
+        // サイトルート（GitHub Pages は /shared-pages/、ローカルは /）
+        var BASE =
+          location.pathname.indexOf('/shared-pages/') === 0 ? '/shared-pages/' : '/';
+        var reqPath = location.pathname.slice(BASE.length);
+        var file;
+        try {
+          file = decodeURIComponent(reqPath);
+        } catch (e) {
+          file = reqPath;
+        }
+        // サブフォルダ付きで来た場合もファイル名だけで判定する
+        var baseName = file.split('/').pop();
+
+        var target = null;
+        if (GIGI[baseName]) {
+          var h = location.hash.replace('#', '');
+          var q = GIGI[baseName][h];
+          target = GIGI_TARGET + (q ? '#' + q : '');
+        } else if (MOVED[baseName]) {
+          target = MOVED[baseName] + location.hash;
+        }
+
+        if (target) {
+          location.replace(BASE + target);
+        } else {
+          // 転送先がない場合だけ本文を表示する
+          document.addEventListener('DOMContentLoaded', function () {
+            var el = document.getElementById('nf');
+            if (el) el.style.display = '';
+            var p = document.getElementById('nf-path');
+            if (p && file) p.textContent = file;
+            // 案内リンクはサイトルート基準で組み立てる（ローカル・Pages 兼用）
+            var links = document.querySelectorAll('#nf .links a[data-to]');
+            for (var i = 0; i < links.length; i++) {
+              links[i].setAttribute('href', BASE + links[i].getAttribute('data-to'));
+            }
+          });
+        }
+      })();
+    </script>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      :root {
+        --blue: #1e5fa8;
+        --ink: #222222;
+        --txt-2: #444444;
+        --txt-3: #5e6470;
+        --bg: #f3f4f6;
+        --white: #ffffff;
+        --box-gray: #f2f2f2;
+        --border: #d1d5db;
+        --radius: 10px;
+      }
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        font-size: 16px;
+        line-height: 1.8;
+        padding: 32px 16px 60px;
+      }
+      .page { max-width: 640px; margin: 0 auto; }
+      .card {
+        background: var(--white);
+        border: 0.5px solid var(--border);
+        border-radius: var(--radius);
+        padding: 32px 28px;
+      }
+      h1 { font-size: 22px; font-weight: 900; letter-spacing: -0.01em; margin-bottom: 10px; }
+      .lead { font-size: 15px; color: var(--txt-2); margin-bottom: 22px; }
+      .path {
+        display: block;
+        background: var(--box-gray);
+        border-radius: 6px;
+        padding: 10px 14px;
+        font-size: 13px;
+        color: var(--txt-3);
+        word-break: break-all;
+        margin-bottom: 22px;
+      }
+      .path:empty { display: none; }
+      .links { display: flex; flex-direction: column; gap: 10px; }
+      .links a {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--blue);
+        text-decoration: none;
+      }
+      .links a::before {
+        content: "";
+        width: 9px; height: 9px;
+        border-radius: 2px;
+        background: var(--blue);
+        flex-shrink: 0;
+      }
+      .links a:hover { text-decoration: underline; }
+      .note {
+        margin-top: 24px;
+        padding-top: 18px;
+        border-top: 0.5px solid var(--border);
+        font-size: 13px;
+        color: var(--txt-3);
+      }
+      @media (max-width: 640px) {
+        body { padding: 20px 14px 48px; }
+        .card { padding: 24px 20px; }
+        h1 { font-size: 19px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="card" id="nf" style="display:none">
+        <h1>ページが見つかりません</h1>
+        <p class="lead">
+          お探しのページは、移動または削除された可能性があります。
+        </p>
+        <code class="path" id="nf-path"></code>
+        <div class="links">
+          <a data-to="index.html" href="index.html">トップページへ</a>
+          <a data-to="加算まとめ.html" href="加算まとめ.html">加算まとめ</a>
+          <a data-to="yakureki/index.html" href="yakureki/index.html">薬歴マニュアル</a>
+          <a data-to="updates.html" href="updates.html">更新履歴</a>
+        </div>
+        <p class="note">
+          ページ名がわかっている場合は、各ページ右上の「資料を検索」からも探せます。
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
