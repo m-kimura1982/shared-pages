@@ -110,7 +110,7 @@
         border-bottom: 1px solid var(--border);
       }
       .hero-inner {
-        max-width: 620px;
+        max-width: 900px;
         margin: 0 auto;
       }
       .hero-label {
@@ -132,6 +132,8 @@
         margin-bottom: 20px;
         letter-spacing: -0.02em;
       }
+      /* 折り返す場合は意味の切れ目で分かれるようにする（「に。」だけが行末に残らない） */
+      .hero h1 .nb { display: inline-block; }
       .hero h1 em {
         color: var(--blue);
         font-style: normal;
@@ -506,7 +508,7 @@
     <div class="hero">
       <div class="hero-inner">
         <p class="hero-label">調剤報酬・薬歴</p>
-        <h1>調剤報酬も薬歴も<br /><em>「現場で使える形」</em>に。</h1>
+        <h1><span class="nb">調剤報酬も薬歴も</span><span class="nb"><em>「現場で使える形」</em>に。</span></h1>
         <p class="hero-desc">
           日々の業務に必要な情報を、<br
             class="sp-br"
