@@ -9,7 +9,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-07-20"
   },
   "事務スタッフ向け.html": {
-    "lastUpdated": "2026-06-04"
+    "lastUpdated": "2026-07-20"
   },
   "加算まとめ.html": {
     "lastUpdated": "2026-06-21"
@@ -235,9 +235,6 @@ window.__pageMeta = {
     "lastUpdated": "2026-07-15",
     "newUntil": "2026-07-22"
   },
-  "ナレッジ/入力画面で解説_2026改定後の入力方法.html": {
-    "lastUpdated": "2026-05-28"
-  },
   "ナレッジ/変更調剤について.html": {
     "lastUpdated": "2026-04-18"
   },
@@ -248,6 +245,9 @@ window.__pageMeta = {
     "lastUpdated": "2026-07-12"
   },
   "事務/事務スタッフ向け_2026調剤報酬改定ポイント整理.html": {
-    "lastUpdated": "2026-07-12"
+    "lastUpdated": "2026-07-20"
+  },
+  "事務/入力画面で解説_2026改定後の入力方法.html": {
+    "lastUpdated": "2026-07-20"
   }
 };
