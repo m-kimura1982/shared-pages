@@ -9,9 +9,19 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
+// 公開サブディレクトリ（存在するものだけ走査）。薬歴マニュアル昇格時は 'yakureki' がここで拾われる。
+// キーは 'yakureki/ページ名.html' のようなサイトルート相対パス（/ 区切り）になる
+const PUBLIC_DIRS = ['yakureki'];
 const files = fs
   .readdirSync(ROOT)
   .filter((f) => f.endsWith('.html'));
+for (const dir of PUBLIC_DIRS) {
+  const abs = path.join(ROOT, dir);
+  if (!fs.existsSync(abs)) continue;
+  for (const f of fs.readdirSync(abs)) {
+    if (f.endsWith('.html')) files.push(`${dir}/${f}`);
+  }
+}
 
 // 大規模一括コミット（20ファイル以上を変更したもの）のハッシュを取得 → スキップ対象
 // -c core.quotepath=false で日本語ファイル名のエスケープを無効化

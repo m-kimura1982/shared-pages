@@ -28,9 +28,10 @@
   function record() {
     const PAGES = window.SITE_PAGES;
     if (!PAGES) return;
-    const filename = decodeURIComponent(
-      (location.pathname.split('/').pop() || 'index.html')
-    );
+    // site-header.js が算出したサイトルート相対キーを優先（サブディレクトリ対応）
+    const filename =
+      window.SITE_PAGE_KEY ||
+      decodeURIComponent(location.pathname.split('/').pop() || 'index.html');
     const info = PAGES[filename];
     if (!info) return;
     // ホーム・更新履歴は履歴として扱わない
@@ -70,7 +71,7 @@
           .map(
             (item) => `
               <div class="recents-item-wrap">
-                <a class="recents-item" href="${escapeHtml(item.file)}">
+                <a class="recents-item" href="${escapeHtml((window.SITE_ROOT || '') + item.file)}">
                   <span class="recents-name">${escapeHtml(item.title)}</span>
                 </a>
                 <button class="recents-del" data-file="${escapeHtml(item.file)}" aria-label="この履歴を削除">×</button>

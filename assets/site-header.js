@@ -5,10 +5,20 @@
  *   各HTMLの <body> 直後に以下1行を入れるだけ
  *   <script src="assets/site-header.js" defer></script>
  *
- * パンくず・ナビは現在のファイル名から自動判定。
+ * パンくず・ナビは「サイトルートからの相対パス」で自動判定。
  * 新規ページを追加した時は、このファイルの PAGES に1行足すだけでOK。
+ * サブディレクトリのページは 'yakureki/index.html' のようにパス付きキーで登録する
+ * （ルートの index.html とは別キーになるので衝突しない）。
+ * サブディレクトリ側からの読み込みは <script src="../assets/site-header.js" defer></script>。
  */
 (function () {
+  // ── サイトルートの自動判定 ──
+  // このスクリプト自身の src（…/assets/site-header.js）からルートURLを導出する。
+  // ローカル（http://localhost:3000/）でも GitHub Pages（/shared-pages/）でも同じコードで動く。
+  const SCRIPT_SRC = (document.currentScript && document.currentScript.src) || '';
+  const ROOT = SCRIPT_SRC ? new URL('..', SCRIPT_SRC).href : '';
+  const u = (p) => (ROOT ? ROOT + p : p); // サイトルート相対パス → 実URL
+
   // ── ページごとの所属カテゴリ・表示名 ──
   // category: 'home' | 'kaitei' | 'kasan' | 'checklist' | 'tools' | 'knowledge' | 'yakureki' | 'jimu'
   // 未登録のページはサイト内検索・パンくずに出ない。新規公開時は必ずここに1行足すこと
@@ -37,6 +47,24 @@
 
     // 薬歴（先行公開。薬歴マニュアル公開時にここへ合流させる。現状はこのページがカテゴリ入口を兼ねる）
     '薬歴の書き方_実例解説集.html': { category: 'yakureki', title: '薬歴の書き方｜実例解説集' },
+    // 薬歴マニュアル（2026-07-20公開。サブディレクトリ yakureki/ 配下・パスキーで登録）
+    'yakureki/index.html': { category: 'yakureki', title: '薬歴マニュアル' },
+    'yakureki/基本記載ルール.html': { category: 'yakureki', title: '薬歴の基本記載ルール' },
+    'yakureki/個別指導で問われる記載.html': { category: 'yakureki', title: '個別指導で問われる項目と薬歴の残し方' },
+    'yakureki/加算別記載一覧.html': { category: 'yakureki', title: '加算別 薬歴記載一覧' },
+    'yakureki/乳幼児服薬指導加算.html': { category: 'yakureki', title: '乳幼児服薬指導加算の薬歴記載' },
+    'yakureki/ハイリスク薬指導.html': { category: 'yakureki', title: 'ハイリスク薬指導（特定薬剤管理指導加算1）' },
+    'yakureki/ハイリスク_血液凝固阻止剤.html': { category: 'yakureki', title: 'ハイリスク薬 血液凝固阻止剤' },
+    'yakureki/ハイリスク_糖尿病用剤.html': { category: 'yakureki', title: 'ハイリスク薬 糖尿病用剤' },
+    'yakureki/ハイリスク_膵臓ホルモン剤.html': { category: 'yakureki', title: 'ハイリスク薬 インスリン製剤' },
+    'yakureki/ハイリスク_抗精神病薬.html': { category: 'yakureki', title: 'ハイリスク薬 抗精神病薬' },
+    'yakureki/ハイリスク_抗うつ薬.html': { category: 'yakureki', title: 'ハイリスク薬 抗うつ薬' },
+    'yakureki/ハイリスク_気分安定薬.html': { category: 'yakureki', title: 'ハイリスク薬 気分安定薬' },
+    'yakureki/ハイリスク_抗てんかん薬.html': { category: 'yakureki', title: 'ハイリスク薬 抗てんかん薬' },
+    'yakureki/テンプレート集.html': { category: 'yakureki', title: '薬歴テンプレート・文例集' },
+    'yakureki/テンプレート_汎用.html': { category: 'yakureki', title: '汎用 定型文集' },
+    'yakureki/テンプレート_メンタル.html': { category: 'yakureki', title: 'メンタル系 定型文集' },
+    'yakureki/テンプレート_循環器.html': { category: 'yakureki', title: '循環器系 定型文集' },
 
     // 加算まとめ（恒久ページ。kaitei2026 のカードからもリンクされるが、所属は加算まとめ）
     '調剤基本料_2026改定.html': { category: 'kasan', title: '調剤基本料' },
@@ -100,18 +128,28 @@
     checklist: { name: '算定チェックリスト', url: 'checklists.html' },
     tools: { name: '実務ツール集', url: 'tools.html' },
     knowledge: { name: '実務ナレッジ集', url: 'knowledge.html' },
-    yakureki: { name: '薬歴', url: '薬歴の書き方_実例解説集.html' },
+    yakureki: { name: '薬歴', url: 'yakureki/index.html' },
     jimu: { name: '事務スタッフ向け', url: '事務スタッフ向け.html' },
   };
 
-  // サイト内検索（site-search.js）から参照
+  // サイト内検索（site-search.js）等から参照
   window.SITE_PAGES = PAGES;
   window.SITE_CATEGORIES = CATEGORIES;
+  window.SITE_ROOT = ROOT; // 'http://…/shared-pages/' 形式（末尾スラッシュあり）
 
-  // ── 現在のページ判定 ──
-  const path = location.pathname;
-  const rawFile = path.split('/').pop() || 'index.html';
-  const filename = decodeURIComponent(rawFile) || 'index.html';
+  // ── 現在のページ判定（サイトルートからの相対パスをキーにする） ──
+  let pageKey;
+  const rootPath = ROOT ? new URL(ROOT).pathname : '';
+  if (rootPath && location.pathname.startsWith(rootPath)) {
+    pageKey = decodeURIComponent(location.pathname.slice(rootPath.length));
+  } else {
+    // 保険：ルートが導出できない場合は旧来どおりファイル名だけで判定
+    pageKey = decodeURIComponent(location.pathname.split('/').pop() || '');
+  }
+  if (pageKey === '' || pageKey.endsWith('/')) pageKey += 'index.html';
+  window.SITE_PAGE_KEY = pageKey;
+
+  const filename = pageKey;
   const pageInfo = PAGES[filename] || { category: null, title: document.title };
   const category = pageInfo.category;
   const isHome = category === 'home';
@@ -234,7 +272,7 @@
   const navHtml = navItems
     .map(
       (n) =>
-        `<a href="${CATEGORIES[n.cat].url}" class="${
+        `<a href="${u(CATEGORIES[n.cat].url)}" class="${
           category === n.cat ? 'sn-active' : ''
         }">${n.label}</a>`
     )
@@ -248,16 +286,16 @@
     if (isCategoryLanding) {
       crumbHtml = `
         <nav class="sn-crumb" aria-label="パンくずリスト">
-          <a href="index.html">ホーム</a>
+          <a href="${u('index.html')}">ホーム</a>
           <span class="sn-crumb-sep">›</span>
           <span class="sn-crumb-current">${cat.name}</span>
         </nav>`;
     } else {
       crumbHtml = `
         <nav class="sn-crumb" aria-label="パンくずリスト">
-          <a href="index.html">ホーム</a>
+          <a href="${u('index.html')}">ホーム</a>
           <span class="sn-crumb-sep">›</span>
-          <a href="${cat.url}">${cat.name}</a>
+          <a href="${u(cat.url)}">${cat.name}</a>
           <span class="sn-crumb-sep">›</span>
           <span class="sn-crumb-current">${pageInfo.title}</span>
         </nav>`;
@@ -268,7 +306,7 @@
     <div class="sn-wrap">
       <header class="sn-header">
         <div class="sn-header-inner">
-          <a href="index.html" class="sn-logo">
+          <a href="${u('index.html')}" class="sn-logo">
             <img src="${getLogoPath()}" alt="Hello Group">
           </a>
           <nav class="sn-nav" id="sn-nav">${navHtml}</nav>
@@ -288,19 +326,18 @@
     </div>
   `;
 
-  // ロゴ画像のパス（サブディレクトリ対応）
+  // ロゴ画像のパス（サブディレクトリでもサイトルート起点で解決）
   function getLogoPath() {
-    // 現状は全ページが同じディレクトリ。将来サブディレクトリができたらここを調整
-    return '会社ロゴ.png';
+    return u('会社ロゴ.png');
   }
 
   // ── favicon 自動注入（既に <link rel="icon"> がある場合はスキップ） ──
   if (!document.querySelector('link[rel="icon"]')) {
     const favicons = [
-      { rel: 'icon', href: 'favicon.ico', sizes: 'any' },
-      { rel: 'icon', type: 'image/svg+xml', href: 'favicon.svg' },
-      { rel: 'icon', type: 'image/png', sizes: '32x32', href: 'favicon.png' },
-      { rel: 'apple-touch-icon', href: 'apple-touch-icon.png' },
+      { rel: 'icon', href: u('favicon.ico'), sizes: 'any' },
+      { rel: 'icon', type: 'image/svg+xml', href: u('favicon.svg') },
+      { rel: 'icon', type: 'image/png', sizes: '32x32', href: u('favicon.png') },
+      { rel: 'apple-touch-icon', href: u('apple-touch-icon.png') },
     ];
     favicons.forEach((f) => {
       const link = document.createElement('link');
@@ -342,7 +379,7 @@
   // ── サイト内検索スクリプトを自動ロード ──
   if (!document.querySelector('script[data-site-search]')) {
     const s = document.createElement('script');
-    s.src = 'assets/site-search.js';
+    s.src = u('assets/site-search.js');
     s.defer = true;
     s.dataset.siteSearch = '1';
     document.head.appendChild(s);
@@ -351,7 +388,7 @@
   // ── トップへ戻るFABを自動ロード ──
   if (!document.querySelector('script[data-site-fab]')) {
     const s = document.createElement('script');
-    s.src = 'assets/site-fab.js';
+    s.src = u('assets/site-fab.js');
     s.defer = true;
     s.dataset.siteFab = '1';
     document.head.appendChild(s);
@@ -360,7 +397,7 @@
   // ── 最近見たページ（履歴記録＋index描画）を自動ロード ──
   if (!document.querySelector('script[data-site-recents]')) {
     const s = document.createElement('script');
-    s.src = 'assets/site-recents.js';
+    s.src = u('assets/site-recents.js');
     s.defer = true;
     s.dataset.siteRecents = '1';
     document.head.appendChild(s);

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow,noarchive">
-  <title>メンタル系 定型文集（申し送り・AP）｜薬歴マニュアル</title>
+  <title>汎用 定型文集（申し送り・AP）｜薬歴マニュアル</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
@@ -40,6 +40,7 @@
     .box-guard .ttl { font-weight:900; color:var(--ink); margin-bottom:5px; font-size:var(--text-sm); }
     .box-guard p { font-size:var(--text-sm); color:var(--txt-2); line-height:1.8; }
     .box-guard b { color:var(--ink); }
+    .box-guard a { color:var(--blue); font-weight:700; }
 
     /* グループ小見出し（青四角・基本記載ルールの sub2 と同形）。画面上の案内用でコピー文には入れない */
     .grp { font-weight:900; font-size:var(--text-sm); display:flex; align-items:center; gap:8px; margin:17px 0 8px; }
@@ -82,7 +83,6 @@
   </style>
 </head>
 <body>
-  <div class="draft-banner">非公開作業中ページ｜内容は精査中のため公開ナビゲーションには掲載していません</div>
   <header>
     <a href="index.html" class="back-link">← 薬歴マニュアルに戻る</a>
     <span class="site-title">調剤報酬まとめ</span>
@@ -90,12 +90,12 @@
 
   <div class="page">
     <div class="page-title-wrap">
-      <h1>メンタル系 定型文集（申し送り・AP）</h1>
-      <p>メンタル系の申し送り・AP。定期受診で特に記載することがないときの一例。</p>
+      <h1>汎用 定型文集（申し送り・AP）</h1>
+      <p>疾患を限定しない申し送り・AP。安定期で特に記載することがないときの一例（系統別の集があるものはそちらを優先）。</p>
     </div>
 
     <div class="box-guard">
-      <p>当日の状況に合うものを選んで使う。<b>頓服・抗コリン系の副作用</b>の文は該当する処方のときだけ選び、運転・仕事などの個別事情は必要なときに追記する。</p>
+      <p>患者の状況に合うものを選んで使う。系統別の定型文集がある処方は、そちらの具体的な文を優先する：<a href="テンプレート_メンタル.html" class="link-inline">メンタル系</a>／<a href="テンプレート_循環器.html" class="link-inline">循環器系</a>。</p>
     </div>
 
     <!-- 申し送り -->
@@ -103,29 +103,29 @@
       <div class="card-title">申し送り<span class="qual">次回確認事項</span></div>
       <div class="card-note">次回の薬剤師が何を確認すればよいかを残す。前回の申し送りや当日の状況に応じて、必要なものを選ぶ。</div>
 
-      <div class="grp">気分・症状</div>
-      <div class="tpl"><span class="tpl-text">前回からの気分の落ち込みや不安感の変化を確認し、症状の再燃・悪化の兆候がないか評価する。</span><button class="copy-mini">コピー</button></div>
-      <div class="tpl"><span class="tpl-text">焦燥感・イライラ感や落ち着かなさの有無を確認し、前回から気分の不安定さが強まっていないか評価する。</span><button class="copy-mini">コピー</button></div>
-      <div class="tpl"><span class="tpl-text">意欲や日中の活動状況を確認し、前回から活動性の低下や生活への支障がないか評価する。</span><button class="copy-mini">コピー</button></div>
+      <div class="grp">効果・治療目標</div>
+      <div class="tpl"><span class="tpl-text">検査値や自覚症状の推移を確認し、治療目標を維持できているか評価する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">前回からの症状の変化を確認し、コントロール悪化を示す兆候がないか評価する。</span><button class="copy-mini">コピー</button></div>
 
-      <div class="grp">睡眠・日中の影響</div>
-      <div class="tpl"><span class="tpl-text">入眠・中途覚醒・熟眠感など睡眠の状況を確認し、日常生活に支障が出ていないか評価する。</span><button class="copy-mini">コピー</button></div>
-      <div class="tpl"><span class="tpl-text">日中の眠気・ふらつき・集中力低下の有無を確認し、日常生活への影響がないか評価する。</span><button class="copy-mini">コピー</button></div>
+      <div class="grp">副作用・体調</div>
+      <div class="tpl"><span class="tpl-text">服用中の薬による気になる症状の有無を確認し、服薬継続に支障がないか評価する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">前回からの体調変化を確認し、副作用を疑う症状がないか評価する。</span><button class="copy-mini">コピー</button></div>
 
       <div class="grp">服薬・残薬</div>
       <div class="tpl"><span class="tpl-text">服薬状況と残薬を把握し、飲み忘れ・自己調整・自己中断につながる要因がないか確認する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">飲み忘れの有無とその原因を確認し、服用方法の工夫が必要か検討する。</span><button class="copy-mini">コピー</button></div>
+
+      <div class="grp">併用薬・他科受診</div>
+      <div class="tpl"><span class="tpl-text">併用薬（他院処方・OTC・サプリメント）の変更の有無を確認し、相互作用や重複がないか評価する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">他科受診の状況を確認し、処方変更や新規の薬剤がないか把握する。</span><button class="copy-mini">コピー</button></div>
+
+      <div class="grp">生活・服薬継続</div>
+      <div class="tpl"><span class="tpl-text">生活リズム（食事・睡眠・活動）の変化を確認し、服薬への影響がないか評価する。</span><button class="copy-mini">コピー</button></div>
       <div class="tpl"><span class="tpl-text">治療や薬に関する不安・困りごとの有無を確認し、受診・服薬の継続に支障となる要因がないか評価する。</span><button class="copy-mini">コピー</button></div>
 
-      <div class="grp">頓服</div>
-      <div class="tpl"><span class="tpl-text">頓服薬の使用状況を把握し、使用頻度の増加や症状悪化を示唆する変化がないか確認する。</span><button class="copy-mini">コピー</button></div>
-
-      <div class="grp">副作用・服薬不安</div>
-      <div class="tpl"><span class="tpl-text">口渇・便秘・排尿困難など抗コリン作用を疑う症状の有無を確認し、服薬継続に支障がないか評価する。</span><button class="copy-mini">コピー</button></div>
-      <div class="tpl"><span class="tpl-text">服薬に伴う気になる症状や不安の訴えの有無を確認し、自己中断につながる要因がないか確認する。</span><button class="copy-mini">コピー</button></div>
-      <div class="tpl"><span class="tpl-text">食欲や体重の変化を確認し、服薬継続に影響する副作用や症状の悪化がないか評価する。</span><button class="copy-mini">コピー</button></div>
-
       <div class="grp">全般</div>
-      <div class="tpl"><span class="tpl-text">体調や生活面に前回からの大きな変化がないかを確認し、服薬継続に影響する問題がないか評価する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">前回からの体調・生活面の大きな変化の有無を確認し、服薬継続に影響する問題がないか評価する。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">服用中に気になる点や質問がないか確認し、必要に応じて情報提供・指導する。</span><button class="copy-mini">コピー</button></div>
     </div>
 
     <!-- AP -->
@@ -133,32 +133,32 @@
       <div class="card-title">指導記録（A／P）<span class="qual">評価・計画</span></div>
       <div class="card-note">確認結果に基づく薬学的評価と指導内容。申し送りと対応づける必要はなく、当日の所見に合うものを選ぶ。</div>
 
-      <div class="grp">気分・症状</div>
-      <div class="tpl"><span class="tpl-text">前回からの気分の落ち込みや不安感に大きな変化はなく、症状の再燃・悪化を疑う訴えなし。再燃を防ぐため、自己判断で中止・減量せず服薬を継続するよう説明。</span><button class="copy-mini">コピー</button></div>
-      <div class="tpl"><span class="tpl-text">焦燥感・イライラ感の増悪はなく、前回から気分は概ね安定。落ち着かなさや気分の変化があれば早めに相談するよう説明し、服薬を継続するよう指導。</span><button class="copy-mini">コピー</button></div>
-      <div class="tpl"><span class="tpl-text">意欲や日中の活動状況に大きな変化はなく、生活への支障はみられない。安定した状態を保てるよう、処方どおりの服薬継続を説明。</span><button class="copy-mini">コピー</button></div>
+      <div class="grp">効果・治療目標</div>
+      <div class="tpl"><span class="tpl-text">検査値・自覚症状の推移に大きな変化はなく、治療目標を維持できていると判断。自己判断で中止・減量せず、処方どおり服薬を継続するよう説明。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">症状の悪化を示す訴えはなく、コントロールは概ね安定。変化があった場合は早めの相談を促し、服薬を継続するよう指導。</span><button class="copy-mini">コピー</button></div>
 
-      <div class="grp">睡眠・日中の影響</div>
-      <div class="tpl"><span class="tpl-text">睡眠の状況に大きな支障はなく、日常生活への影響もみられない。服用のタイミングを守り、処方どおり服薬を継続するよう説明。</span><button class="copy-mini">コピー</button></div>
-      <div class="tpl"><span class="tpl-text">日中の眠気・ふらつき・集中力低下の訴えはなく、日常生活への影響は認められない。症状が出た場合は自己判断で中断せず相談するよう説明。</span><button class="copy-mini">コピー</button></div>
+      <div class="grp">副作用・体調</div>
+      <div class="tpl"><span class="tpl-text">服用中の薬による気になる症状の訴えはなく、服薬継続に支障となる副作用は認めない。新たな症状が出た場合は自己判断で中断せず相談するよう説明。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">前回からの体調変化はなく、副作用を疑う訴えなし。引き続き処方どおり服薬するよう指導。</span><button class="copy-mini">コピー</button></div>
 
       <div class="grp">服薬・残薬</div>
-      <div class="tpl"><span class="tpl-text">服薬状況・残薬に大きな問題はなく、飲み忘れや自己調整なし。症状の再燃・悪化を防ぐため、自己判断で中止・減量せず継続するよう指導。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">服薬状況・残薬に大きな問題はなく、飲み忘れや自己調整なし。処方どおり服薬を継続するよう説明。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">飲み忘れが時々あるとのこと。原因は〇〇。生活に合わせた服用タイミングを提案し、次回、残薬を確認予定。</span><button class="copy-mini">コピー</button></div>
+
+      <div class="grp">併用薬・他科受診</div>
+      <div class="tpl"><span class="tpl-text">併用薬の変更なし。OTC・サプリメントの新規使用もなく、相互作用の問題なし。新たに使い始めるときは薬局へ相談するよう説明。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">他科受診・処方変更なし。受診の際はお薬手帳を提示するよう説明。</span><button class="copy-mini">コピー</button></div>
+
+      <div class="grp">生活・服薬継続</div>
+      <div class="tpl"><span class="tpl-text">生活リズムに大きな変化はなく、服薬への影響なし。現在の服用方法を継続するよう説明。</span><button class="copy-mini">コピー</button></div>
       <div class="tpl"><span class="tpl-text">治療や薬に関する不安・困りごとの訴えはなく、受診・服薬の継続に支障となる要因なし。気になる点があれば早めに相談するよう説明。</span><button class="copy-mini">コピー</button></div>
 
-      <div class="grp">頓服</div>
-      <div class="tpl"><span class="tpl-text">頓服薬の使用頻度の増加はなく、症状悪化を示唆する変化なし。指示された用法・用量の範囲で使用し、使用回数が増える場合は相談するよう指導。</span><button class="copy-mini">コピー</button></div>
-
-      <div class="grp">副作用・服薬不安</div>
-      <div class="tpl"><span class="tpl-text">口渇・便秘・排尿困難など抗コリン作用を疑う訴えなし。服薬継続に支障となる副作用はなく、気になる症状が出た場合は自己判断で中断せず相談するよう説明。</span><button class="copy-mini">コピー</button></div>
-      <div class="tpl"><span class="tpl-text">服薬に伴う気になる症状や不安はなく、自己中断につながる訴えなし。再燃を防ぐため、自己判断で中止・減量せず継続するよう説明。</span><button class="copy-mini">コピー</button></div>
-      <div class="tpl"><span class="tpl-text">食欲や体重に前回からの大きな変化はなく、服薬継続に影響する訴えなし。気になる変化がある場合は自己判断で中断せず相談するよう説明。</span><button class="copy-mini">コピー</button></div>
-
       <div class="grp">全般</div>
-      <div class="tpl"><span class="tpl-text">体調・生活面に前回からの大きな変化はなく、服薬継続に影響する問題なし。安定した状態を保てるよう、処方どおりの服薬継続を指導。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">前回からの体調・生活面に大きな変化はなく、服薬継続に影響する問題なし。安定した状態を保てるよう、処方どおりの服薬継続を指導。</span><button class="copy-mini">コピー</button></div>
+      <div class="tpl"><span class="tpl-text">服用中の気になる点や質問の訴えなし。困ったことがあれば、来局時に限らず電話でも相談できることを案内。</span><button class="copy-mini">コピー</button></div>
     </div>
 
-    <div class="page-foot">薬歴マニュアル ／ 非公開作業中</div>
+    <div class="page-foot">薬歴マニュアル</div>
   </div>
 
   <script>
@@ -188,5 +188,6 @@
       });
     });
   </script>
-</body>
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
 </html>

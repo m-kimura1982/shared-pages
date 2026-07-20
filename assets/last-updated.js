@@ -77,7 +77,20 @@
   const cards = document.querySelectorAll('a.card[href], a.tool-card[href], a.card-digest[href]');
   cards.forEach((card) => {
     const href = card.getAttribute('href');
-    const filename = decodeURIComponent(href.split('/').pop().split('#')[0].split('?')[0]);
+    // サイトルート相対パスをキーにする（サブディレクトリ対応。site-header.js が SITE_ROOT を提供）
+    let filename = null;
+    if (window.SITE_ROOT) {
+      try {
+        const abs = new URL(href, location.href).href.split('#')[0].split('?')[0];
+        if (abs.startsWith(window.SITE_ROOT)) {
+          filename = decodeURIComponent(abs.slice(window.SITE_ROOT.length));
+        }
+      } catch (e) {}
+    }
+    // 保険：ルート不明時は旧来どおりファイル名だけで判定
+    if (!filename) {
+      filename = decodeURIComponent(href.split('/').pop().split('#')[0].split('?')[0]);
+    }
     const entry = meta[filename];
     if (!entry || !entry.lastUpdated) return;
 

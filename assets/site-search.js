@@ -295,7 +295,7 @@
         currentResults
           .map(
             (r, i) => `
-        <a class="ss-item${i === active ? ' ss-active' : ''}" href="${escapeHtml(r.file)}" data-idx="${i}">
+        <a class="ss-item${i === active ? ' ss-active' : ''}" href="${escapeHtml((window.SITE_ROOT || '') + r.file)}" data-idx="${i}">
           <div class="ss-item-title">${highlight(r.title, q)}</div>
           <div class="ss-item-meta">${escapeHtml(r.categoryName)}</div>
         </a>`
@@ -323,7 +323,7 @@
       } else if (e.key === 'Enter') {
         e.preventDefault();
         if (active >= 0 && currentResults[active]) {
-          location.href = currentResults[active].file;
+          location.href = (window.SITE_ROOT || '') + currentResults[active].file;
         }
       } else if (e.key === 'Escape') {
         close();
