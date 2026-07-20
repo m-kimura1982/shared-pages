@@ -1,42 +1,23 @@
 window.__pageMeta = {
-  "index.html": {
+  "404.html": {
     "lastUpdated": "2026-07-20"
   },
-  "疑義解釈_その6_2026.html": {
-    "lastUpdated": "2026-07-12",
-    "newUntil": "2026-06-03"
-  },
-  "疑義解釈_その1_2026.html": {
-    "lastUpdated": "2026-04-01"
+  "index.html": {
+    "lastUpdated": "2026-07-20"
   },
   "updates.html": {
     "lastUpdated": "2026-07-20"
   },
-  "疑義解釈_その2_2026.html": {
-    "lastUpdated": "2026-04-29"
-  },
   "事務スタッフ向け.html": {
     "lastUpdated": "2026-06-04"
   },
-  "疑義解釈_その5_2026.html": {
-    "lastUpdated": "2026-05-09"
-  },
-  "疑義解釈_その9_2026.html": {
-    "lastUpdated": "2026-07-12"
-  },
   "加算まとめ.html": {
     "lastUpdated": "2026-06-21"
-  },
-  "疑義解釈_その3_2026.html": {
-    "lastUpdated": "2026-04-22"
   },
   "tools.html": {
     "lastUpdated": "2026-07-18"
   },
   "knowledge.html": {
-    "lastUpdated": "2026-07-12"
-  },
-  "疑義解釈_その7_2026.html": {
     "lastUpdated": "2026-07-12"
   },
   "kaitei2026.html": {
