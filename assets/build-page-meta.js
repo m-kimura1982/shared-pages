@@ -58,8 +58,10 @@ const meta = {};
 for (const f of files) {
   try {
     // 各ファイルのコミット履歴を新しい順に取得し、bulkCommits に該当しない最新を採用
+    // --follow：フォルダ移動（rename）を越えて移動前の履歴までたどる
+    // （2026-07-20 のフォルダ整理で、これがないと全ページが「移動日 = 更新日」になる）
     const log = execSync(
-      `git log --format="%H %cs" -- "${f}"`,
+      `git log --follow --format="%H %cs" -- "${f}"`,
       { cwd: ROOT, encoding: 'utf8' }
     ).trim().split('\n');
 
