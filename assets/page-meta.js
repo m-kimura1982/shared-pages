@@ -1,36 +1,52 @@
 window.__pageMeta = {
+  "tools.html": {
+    "lastUpdated": "2026-07-18"
+  },
   "404.html": {
-    "lastUpdated": "2026-07-20"
-  },
-  "index.html": {
-    "lastUpdated": "2026-07-20"
-  },
-  "updates.html": {
     "lastUpdated": "2026-07-20"
   },
   "事務スタッフ向け.html": {
     "lastUpdated": "2026-07-20"
   },
-  "加算まとめ.html": {
-    "lastUpdated": "2026-06-21"
-  },
-  "tools.html": {
-    "lastUpdated": "2026-07-18"
-  },
-  "knowledge.html": {
-    "lastUpdated": "2026-07-12"
-  },
-  "kaitei2026.html": {
-    "lastUpdated": "2026-07-16"
+  "index.html": {
+    "lastUpdated": "2026-07-21"
   },
   "checklists.html": {
     "lastUpdated": "2026-06-13"
   },
+  "updates.html": {
+    "lastUpdated": "2026-07-21"
+  },
+  "knowledge.html": {
+    "lastUpdated": "2026-07-12"
+  },
+  "加算まとめ.html": {
+    "lastUpdated": "2026-06-21"
+  },
+  "kaitei2026.html": {
+    "lastUpdated": "2026-07-16"
+  },
+  "yakureki/薬歴の書き方_実例解説集.html": {
+    "lastUpdated": "2026-07-13",
+    "newUntil": "2026-07-20"
+  },
   "yakureki/index.html": {
-    "lastUpdated": "2026-07-20",
+    "lastUpdated": "2026-07-21",
     "newUntil": "2026-07-27"
   },
-  "yakureki/基本記載ルール.html": {
+  "yakureki/テンプレート_メンタル.html": {
+    "lastUpdated": "2026-07-06"
+  },
+  "yakureki/テンプレート_循環器.html": {
+    "lastUpdated": "2026-07-06"
+  },
+  "yakureki/テンプレート_汎用.html": {
+    "lastUpdated": "2026-07-06"
+  },
+  "yakureki/テンプレート集.html": {
+    "lastUpdated": "2026-07-06"
+  },
+  "yakureki/乳幼児服薬指導加算.html": {
     "lastUpdated": "2026-07-12"
   },
   "yakureki/個別指導で問われる記載.html": {
@@ -39,48 +55,32 @@ window.__pageMeta = {
   "yakureki/加算別記載一覧.html": {
     "lastUpdated": "2026-07-12"
   },
-  "yakureki/乳幼児服薬指導加算.html": {
+  "yakureki/基本記載ルール.html": {
     "lastUpdated": "2026-07-12"
-  },
-  "yakureki/ハイリスク薬指導.html": {
-    "lastUpdated": "2026-07-12"
-  },
-  "yakureki/ハイリスク_血液凝固阻止剤.html": {
-    "lastUpdated": "2026-07-20"
-  },
-  "yakureki/ハイリスク_糖尿病用剤.html": {
-    "lastUpdated": "2026-07-20"
-  },
-  "yakureki/ハイリスク_膵臓ホルモン剤.html": {
-    "lastUpdated": "2026-07-20"
-  },
-  "yakureki/ハイリスク_抗精神病薬.html": {
-    "lastUpdated": "2026-07-20"
-  },
-  "yakureki/ハイリスク_抗うつ薬.html": {
-    "lastUpdated": "2026-07-20"
   },
   "yakureki/ハイリスク_気分安定薬.html": {
-    "lastUpdated": "2026-07-20"
+    "lastUpdated": "2026-07-21"
+  },
+  "yakureki/ハイリスク薬指導.html": {
+    "lastUpdated": "2026-07-21"
+  },
+  "yakureki/ハイリスク_抗精神病薬.html": {
+    "lastUpdated": "2026-07-21"
+  },
+  "yakureki/ハイリスク_膵臓ホルモン剤.html": {
+    "lastUpdated": "2026-07-21"
   },
   "yakureki/ハイリスク_抗てんかん薬.html": {
-    "lastUpdated": "2026-07-20"
+    "lastUpdated": "2026-07-21"
   },
-  "yakureki/テンプレート集.html": {
-    "lastUpdated": "2026-07-06"
+  "yakureki/ハイリスク_糖尿病用剤.html": {
+    "lastUpdated": "2026-07-21"
   },
-  "yakureki/テンプレート_汎用.html": {
-    "lastUpdated": "2026-07-06"
+  "yakureki/ハイリスク_血液凝固阻止剤.html": {
+    "lastUpdated": "2026-07-21"
   },
-  "yakureki/テンプレート_メンタル.html": {
-    "lastUpdated": "2026-07-06"
-  },
-  "yakureki/テンプレート_循環器.html": {
-    "lastUpdated": "2026-07-06"
-  },
-  "yakureki/薬歴の書き方_実例解説集.html": {
-    "lastUpdated": "2026-07-13",
-    "newUntil": "2026-07-20"
+  "yakureki/ハイリスク_抗うつ薬.html": {
+    "lastUpdated": "2026-07-21"
   },
   "加算まとめ/服用薬剤調整支援料２_2026改定.html": {
     "lastUpdated": "2026-05-06"
