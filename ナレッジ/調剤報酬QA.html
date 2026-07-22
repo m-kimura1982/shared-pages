@@ -26,7 +26,7 @@
       .page-title-left h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
       .page-title-left p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
 
-      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); scroll-margin-top:76px; }
       .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
       .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
       .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
@@ -40,11 +40,23 @@
       .toggle-all { flex-shrink:0; align-self:center; font-family:inherit; font-size:var(--text-xs); font-weight:700; color:var(--blue); background:var(--white); border:1px solid #bcd3ee; border-radius:6px; padding:7px 14px; cursor:pointer; white-space:nowrap; }
       .toggle-all:hover { background:#f2f7fc; }
 
+      /* 検索＋カテゴリ目次 */
+      .find-bar { display:flex; flex-direction:column; gap:10px; }
+      .find-bar input { width:100%; font-family:inherit; font-size:var(--text-md); padding:11px 14px; border:1.5px solid var(--border); border-radius:10px; background:var(--white); color:var(--ink); outline:none; }
+      .find-bar input:focus { border-color:var(--blue); }
+      .cat-chips { display:flex; flex-wrap:wrap; gap:7px; }
+      .cat-chips a { font-size:var(--text-xs); font-weight:700; color:var(--blue); text-decoration:none; border:1px solid #bcd3ee; background:var(--white); border-radius:100px; padding:5px 12px; white-space:nowrap; }
+      .cat-chips a:hover { background:#f2f7fc; }
+      .cat-chips a.off { color:var(--txt-3); border-color:var(--border); opacity:.4; pointer-events:none; }
+      .cat-chips a .n { color:var(--txt-3); font-weight:500; margin-left:4px; }
+      .find-empty { display:none; font-size:var(--text-sm); color:var(--txt-2); background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:12px 15px; }
+
       /* ===== Q&A（Q＋結論は常時表示、詳細だけ折りたたみ） ===== */
       .qa { border:var(--bw-h) solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:12px; scroll-margin-top:76px; }
       .qa:last-child { margin-bottom:0; }
       .qa-head { background:#eef4fb; padding:13px 15px; display:flex; gap:11px; align-items:flex-start; font-size:var(--text-sm); font-weight:700; }
       .qbadge { width:26px; height:26px; border-radius:7px; background:var(--blue); color:#fff; font-weight:900; font-size:15px; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+      .new-chip { flex-shrink:0; align-self:flex-start; margin-top:4px; font-size:var(--text-xs); font-weight:700; color:var(--blue); background:var(--box-blue); border:1px solid #bcd3ee; border-radius:4px; padding:0 7px; letter-spacing:.02em; }
       .qa-concl { padding:13px 15px 12px; display:flex; gap:11px; align-items:flex-start; font-size:var(--text-sm); }
       .alabel { width:26px; height:26px; border-radius:7px; border:1.5px solid var(--border-dk); color:var(--txt-2); font-weight:900; font-size:15px; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; background:var(--white); }
       .qa-concl .ctext { flex:1; font-weight:900; padding-top:1px; }
@@ -116,7 +128,8 @@
         .page { gap:9px; max-width:700px; margin:0 auto; }
         .card { padding:11px 13px; }
         .qa { break-inside:avoid; }
-        .toggle-all { display:none; }
+        .toggle-all, .find-bar { display:none; }
+        .new-chip { display:none; }
         details.qa-detail > summary { display:none; }
         a { color:inherit; text-decoration:none; border:none !important; padding:0 !important; }
       }
@@ -134,13 +147,19 @@
 
       <div class="intro-bar">
         <div class="intro">
-          ご質問のあった内容について、回答をまとめています。くわしい内容は「解説」を押すと開きます。
+          ご質問のあった内容について、回答をまとめています。くわしい内容は「解説」を押すと開きます。探すときは下の検索窓か、加算名のボタンを使ってください。
         </div>
         <button type="button" class="toggle-all" id="toggleAll">すべて開く</button>
       </div>
 
+      <div class="find-bar">
+        <input id="qaSearch" type="search" placeholder="加算名・薬剤名で検索（ひらがな・カタカナOK　例：ざんやく、みやBM、じくとる）" autocomplete="off" aria-label="Q&amp;Aを検索" />
+        <div class="cat-chips" id="catChips"></div>
+        <p class="find-empty" id="qaEmpty">該当するQ&amp;Aが見つかりませんでした。別の言葉で探してみてください。</p>
+      </div>
+
       <!-- ① 調剤管理料 -->
-      <div class="card">
+      <div class="card" id="c-kanri" data-keywords="ちょうざいかんりりょう ちょうきしょほう">
         <div class="card-title">調剤管理料</div>
 
         <div class="qa" id="q-kanri-1">
@@ -175,7 +194,7 @@
       </div>
 
       <!-- ② 選定療養（時間外） -->
-      <div class="card">
+      <div class="card" id="c-sentei" data-keywords="せんていりょうよう じかんがい とくべつのりょうきん">
         <div class="card-title">選定療養<span class="qual">時間外の特別の料金</span></div>
 
         <div class="qa" id="q-sentei-1">
@@ -234,7 +253,7 @@
       </div>
 
       <!-- ③ 調剤時残薬調整加算 -->
-      <div class="card">
+      <div class="card" id="c-zanyaku" data-keywords="ざんやくちょうせい ざんやく げんすうちょうざい おくすりてちょう">
         <div class="card-title">調剤時残薬調整加算</div>
 
         <div class="qa" id="q-zanyaku-1">
@@ -297,7 +316,7 @@
       </div>
 
       <!-- ④ 服薬情報等提供料 -->
-      <div class="card">
+      <div class="card" id="c-fukuyaku" data-keywords="ふくやくじょうほうとうていきょうりょう りふぃる きゅうにゅうやくしどうかさん">
         <div class="card-title">服薬情報等提供料</div>
 
         <div class="qa" id="q-fukuyaku-1">
@@ -358,7 +377,7 @@
       </div>
 
       <!-- ⑤ 薬学的有害事象等防止加算 -->
-      <div class="card">
+      <div class="card" id="c-yugai" data-keywords="やくがくてきゆうがいじしょうとうぼうしかさん じゅうふくとうやく そうごさよう ぼうA">
         <div class="card-title">薬学的有害事象等防止加算</div>
 
         <div class="qa" id="q-yugai-1">
@@ -401,7 +420,7 @@
           </details>
         </div>
 
-        <div class="qa" id="q-yugai-2">
+        <div class="qa" id="q-yugai-2" data-added="2026-07-23">
           <div class="qa-head">
             <span class="qbadge">Q</span>
             <span>患者から「薬の効果が不十分」との訴えがあり、疑義照会で別の薬剤に変更しました（抗ヒスタミン薬のケース）。この場合は算定要件を満たしますか？</span>
@@ -437,10 +456,10 @@
       </div>
 
       <!-- ⑥ 特定薬剤管理指導加算３ロ -->
-      <div class="card">
+      <div class="card" id="c-tokkan3" data-keywords="とくていやくざいかんりしどうかさん とっかん りゅうつうふりょう きょうきゅうふあんてい めいがらへんこう">
         <div class="card-title">特定薬剤管理指導加算３ロ<span class="qual">供給不安定（流通不良）</span></div>
 
-        <div class="qa" id="q-tokkan3-1">
+        <div class="qa" id="q-tokkan3-1" data-added="2026-07-23">
           <div class="qa-head">
             <span class="qbadge">Q</span>
             <span>臨時処方でフスタゾール糖衣錠10mgが処方されましたが、在庫がなく、疑義照会でレスプレン錠20mgに変更しました。前回フスタゾールの処方はありません。このケースで特定薬剤管理指導加算３ロは算定できますか？　要件に「前回調剤された銘柄から別の銘柄に変更」とある以上、算定対象外だと考えているのですが、いかがでしょうか？</span>
@@ -477,7 +496,7 @@
           </details>
         </div>
 
-        <div class="qa" id="q-tokkan3-2">
+        <div class="qa" id="q-tokkan3-2" data-added="2026-07-23">
           <div class="qa-head">
             <span class="qbadge">Q</span>
             <span>カルボシステイン錠やデキストロメトルファン錠など、急性疾患でよく使う薬の銘柄変更について、各店舗はどう算定していますか？　前回の処方から3か月以内など、期間を区切っていますか？　それとも前回と違えば算定していますか？</span>
@@ -514,7 +533,7 @@
           </details>
         </div>
 
-        <div class="qa" id="q-tokkan3-3">
+        <div class="qa" id="q-tokkan3-3" data-added="2026-07-23">
           <div class="qa-head">
             <span class="qbadge">Q</span>
             <span>入荷未定のミヤBM錠の処方を、疑義照会でミヤBM細粒に変更した場合は算定できますか？　剤形が変わっても「別の銘柄への変更」として扱ってよいのでしょうか。</span>
@@ -538,7 +557,7 @@
           </details>
         </div>
 
-        <div class="qa" id="q-tokkan3-4">
+        <div class="qa" id="q-tokkan3-4" data-added="2026-07-23">
           <div class="qa-head">
             <span class="qbadge">Q</span>
             <span>流通不良のため医療機関へ代替薬（ミヤBM→ビオスリーなど）への変更を依頼し、処方が変更されて発行されたケースです。医師から患者へ「流通不良のため変更する」と既に説明されている場合でも、医師の説明の有無や疑義照会の有無に関わらず、薬剤師として必要な指導を行ったかどうかで算定してよいという認識で合っていますか？</span>
@@ -565,10 +584,10 @@
       </div>
 
       <!-- ⑦ 自家製剤加算 -->
-      <div class="card">
+      <div class="card" id="c-jikaseizai" data-keywords="じかせいざいかさん はんじょう ぶんかつ ふんさい いっぽうか がいらいふくやくしえんりょう">
         <div class="card-title">自家製剤加算<span class="qual">半割・粉砕</span></div>
 
-        <div class="qa" id="q-jikaseizai-1">
+        <div class="qa" id="q-jikaseizai-1" data-added="2026-07-23">
           <div class="qa-head">
             <span class="qbadge">Q</span>
             <span>一包化の対象外の薬を半錠にした場合、自家製剤加算は算定できますか？</span>
@@ -597,7 +616,7 @@
           </details>
         </div>
 
-        <div class="qa" id="q-jikaseizai-2">
+        <div class="qa" id="q-jikaseizai-2" data-added="2026-07-23">
           <div class="qa-head">
             <span class="qbadge">Q</span>
             <span>調節服用のためセレコキシブを分割し、一包化に含めず別包（またはユニパック）で交付します。セレコキシブを外しても残りの薬剤で一包化の要件は満たしているのですが、外来服薬支援料２と自家製剤加算を併算定できますか？</span>
@@ -633,7 +652,7 @@
           </details>
         </div>
 
-        <div class="qa" id="q-jikaseizai-3">
+        <div class="qa" id="q-jikaseizai-3" data-added="2026-07-23">
           <div class="qa-head">
             <span class="qbadge">Q</span>
             <span>カロナール錠200mgを半錠にした場合、自家製剤加算は算定できますか？　カロナール細粒で対応できると思うのですが、そちらは考慮しなくてよいのでしょうか。</span>
@@ -679,7 +698,7 @@
           </details>
         </div>
 
-        <div class="qa" id="q-jikaseizai-4">
+        <div class="qa" id="q-jikaseizai-4" data-added="2026-07-23">
           <div class="qa-head">
             <span class="qbadge">Q</span>
             <span>カロナール細粒が入手困難なため、カロナール錠を粉砕して自家製剤加算を算定しました（処方：カロナール細粒20% 〇〇g　発熱・疼痛時 10回分）。加算点数を確認したところ、自家製剤加算【頓服】錠剤等＝90点となっています。内服薬に比べて点数が高すぎるように感じますが、間違いではないでしょうか？</span>
@@ -722,10 +741,10 @@
       </div>
 
       <!-- ⑧ 乳幼児服薬指導加算 -->
-      <div class="card">
+      <div class="card" id="c-nyuyoji" data-keywords="にゅうようじふくやくしどうかさん ろくさいみまん てちょう">
         <div class="card-title">乳幼児服薬指導加算</div>
 
-        <div class="qa" id="q-nyuyoji-1">
+        <div class="qa" id="q-nyuyoji-1" data-added="2026-07-23">
           <div class="qa-head">
             <span class="qbadge">Q</span>
             <span>処方内容が錠剤のみの場合でも、乳幼児服薬指導加算は算定できますか？</span>
@@ -760,10 +779,10 @@
       </div>
 
       <!-- ⑨ 服用薬剤調整支援料１ -->
-      <div class="card">
+      <div class="card" id="c-chosei" data-keywords="ふくようやくざいちょうせいしえんりょう げんやく ポリファーマシー">
         <div class="card-title">服用薬剤調整支援料１</div>
 
-        <div class="qa" id="q-chosei-1">
+        <div class="qa" id="q-chosei-1" data-added="2026-07-23">
           <div class="qa-head">
             <span class="qbadge">Q</span>
             <span>減薬の提案により内服薬が8種類から6種類に減ったケースです。提案を行った薬とは別の薬について、規格や用量の変更があった場合、算定要件に影響はありますか？（例1：提案後にマグミットが250mgから330mgに変更／例2：提案後にマグミットが2錠から4錠に増量）</span>
@@ -787,10 +806,10 @@
       </div>
 
       <!-- ⑩ 在宅薬学総合体制加算 -->
-      <div class="card">
+      <div class="card" id="c-zaitakutaisei" data-keywords="ざいたくやくがくそうごうたいせいかさん ざいちょう きょたくりょうようかんりしどうひ">
         <div class="card-title">在宅薬学総合体制加算</div>
 
-        <div class="qa" id="q-zaitakutaisei-1">
+        <div class="qa" id="q-zaitakutaisei-1" data-added="2026-07-23">
           <div class="qa-head">
             <span class="qbadge">Q</span>
             <span>在宅薬学総合体制加算は、居宅療養管理指導費を算定しない調剤日でも算定してよいのでしょうか？　訪問先の医療機関の処方は居宅へ訪問していますが、眼科の処方箋などはご家族が来局して調剤する場合があります。この場合、加算は算定できないのでしょうか？</span>
@@ -821,10 +840,10 @@
       </div>
 
       <!-- ⑪ オンライン服薬指導 -->
-      <div class="card">
+      <div class="card" id="c-online" data-keywords="おんらいんふくやくしどう しょほうせん げんぽん ファクシミリ">
         <div class="card-title">オンライン服薬指導<span class="qual">処方箋の取扱い</span></div>
 
-        <div class="qa" id="q-online-1">
+        <div class="qa" id="q-online-1" data-added="2026-07-23">
           <div class="qa-head">
             <span class="qbadge">Q</span>
             <span>オンライン服薬指導を希望されていた方が、途中で対面での服薬指導に切り替わりました。処方箋の原本がない状態で薬をお渡しすることになりますが、法的に問題はないのでしょうか？</span>
@@ -848,10 +867,10 @@
       </div>
 
       <!-- ⑫ 湿布薬の投与枚数制限 -->
-      <div class="card">
+      <div class="card" id="c-shippu" data-keywords="しっぷやく とうよまいすうせいげん ろくじゅうさんまい ちょうふざい">
         <div class="card-title">湿布薬の投与枚数制限<span class="qual">1処方63枚</span></div>
 
-        <div class="qa" id="q-shippu-1">
+        <div class="qa" id="q-shippu-1" data-added="2026-07-23">
           <div class="qa-head">
             <span class="qbadge">Q</span>
             <span>ロキソプロフェンNaテープとジクトルテープの合計枚数が63枚を超える処方を応需したため、疑義照会をしたところ、医師から「ジクトルテープは内服のような効果を持つ湿布なので処方枚数制限はありません。処方通りお渡ししてください。」と回答がありました。全身作用型ではありますが、湿布には変わりないので処方枚数制限の対象だと思うのですが、どう対応すべきでしょうか？</span>
@@ -901,7 +920,7 @@
           </details>
         </div>
 
-        <div class="qa" id="q-shippu-2">
+        <div class="qa" id="q-shippu-2" data-added="2026-07-23">
           <div class="qa-head">
             <span class="qbadge">Q</span>
             <span>がん性疼痛以外の目的で処方されていて、かつ医学的な理由により63枚を超える処方が必要な場合、薬局側はどう対応すればよいですか？　また、摘要欄に記載すべきコメントなどはありますか？</span>
@@ -1001,6 +1020,67 @@
         }
         window.addEventListener('hashchange', openFromHash);
         openFromHash();
+
+        // ===== NEWチップ（data-added から14日間だけ表示）=====
+        const NEW_DAYS = 14;
+        const today = new Date(); today.setHours(0, 0, 0, 0);
+        document.querySelectorAll('.qa[data-added]').forEach(qa => {
+          const added = new Date(qa.dataset.added + 'T00:00:00');
+          if (isNaN(added.getTime())) return;
+          if ((today - added) / 86400000 > NEW_DAYS) return;
+          const head = qa.querySelector('.qa-head');
+          const badge = head && head.querySelector('.qbadge');
+          if (!badge) return;
+          const chip = document.createElement('span');
+          chip.className = 'new-chip';
+          chip.textContent = 'NEW';
+          badge.insertAdjacentElement('afterend', chip);
+        });
+
+        // ===== カテゴリ目次チップ（カード見出しから自動生成）=====
+        const cards = Array.from(document.querySelectorAll('.card'));
+        const chipBox = document.getElementById('catChips');
+        cards.forEach((card, i) => {
+          const titleEl = card.querySelector('.card-title');
+          if (!titleEl) return;
+          if (!card.id) card.id = 'c-' + (i + 1);
+          const name = (titleEl.childNodes[0] && titleEl.childNodes[0].textContent || titleEl.textContent).trim();
+          const a = document.createElement('a');
+          a.href = '#' + card.id;
+          a.innerHTML = name + '<span class="n">' + card.querySelectorAll('.qa').length + '問</span>';
+          a.dataset.card = card.id;
+          chipBox.appendChild(a);
+        });
+
+        // ===== 検索（ひらがな・半角カナ・全角英数のゆれを吸収）=====
+        const input = document.getElementById('qaSearch');
+        const emptyMsg = document.getElementById('qaEmpty');
+        function norm(s) {
+          s = s || '';
+          try { s = s.normalize('NFKC'); } catch (e) {}
+          s = s.toLowerCase();
+          return s.replace(/[ぁ-ゖ]/g, ch => String.fromCharCode(ch.charCodeAt(0) + 0x60));
+        }
+        const chips = Array.from(chipBox.querySelectorAll('a'));
+        input.addEventListener('input', () => {
+          const q = norm(input.value).trim();
+          let total = 0;
+          cards.forEach(card => {
+            let shown = 0;
+            const catKey = norm(card.dataset.keywords || '');
+            card.querySelectorAll('.qa').forEach(qa => {
+              const hay = norm(qa.textContent) + ' ' + catKey;
+              const hit = q === '' || hay.indexOf(q) !== -1;
+              qa.style.display = hit ? '' : 'none';
+              if (hit) shown++;
+            });
+            card.style.display = shown ? '' : 'none';
+            const chip = chips.find(c => c.dataset.card === card.id);
+            if (chip) chip.classList.toggle('off', !shown);
+            total += shown;
+          });
+          emptyMsg.style.display = total ? 'none' : 'block';
+        });
       })();
     </script>
 
