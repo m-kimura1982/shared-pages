@@ -5,14 +5,17 @@ window.__pageMeta = {
   "404.html": {
     "lastUpdated": "2026-07-20"
   },
+  "updates.html": {
+    "lastUpdated": "2026-07-23"
+  },
   "事務スタッフ向け.html": {
     "lastUpdated": "2026-07-20"
   },
+  "index.html": {
+    "lastUpdated": "2026-07-23"
+  },
   "checklists.html": {
     "lastUpdated": "2026-06-13"
-  },
-  "updates.html": {
-    "lastUpdated": "2026-07-23"
   },
   "knowledge.html": {
     "lastUpdated": "2026-07-12"
@@ -22,9 +25,6 @@ window.__pageMeta = {
   },
   "kaitei2026.html": {
     "lastUpdated": "2026-07-16"
-  },
-  "index.html": {
-    "lastUpdated": "2026-07-23"
   },
   "yakureki/薬歴の書き方_実例解説集.html": {
     "lastUpdated": "2026-07-13",
