@@ -14,6 +14,9 @@ window.__pageMeta = {
   "checklists.html": {
     "lastUpdated": "2026-06-13"
   },
+  "updates.html": {
+    "lastUpdated": "2026-07-23"
+  },
   "knowledge.html": {
     "lastUpdated": "2026-07-12"
   },
@@ -22,9 +25,6 @@ window.__pageMeta = {
   },
   "kaitei2026.html": {
     "lastUpdated": "2026-07-16"
-  },
-  "updates.html": {
-    "lastUpdated": "2026-07-23"
   },
   "yakureki/薬歴の書き方_実例解説集.html": {
     "lastUpdated": "2026-07-13",
@@ -231,15 +231,15 @@ window.__pageMeta = {
   "ツール/地域支援医薬品供給対応体制加算_届出判定ツール.html": {
     "lastUpdated": "2026-07-12"
   },
-  "ナレッジ/調剤報酬QA.html": {
-    "lastUpdated": "2026-07-23",
-    "newUntil": "2026-07-30"
-  },
   "ナレッジ/変更調剤について.html": {
     "lastUpdated": "2026-04-18"
   },
   "ナレッジ/基礎的医薬品追加リストR8_4.html": {
     "lastUpdated": "2026-04-19"
+  },
+  "ナレッジ/調剤報酬QA.html": {
+    "lastUpdated": "2026-07-23",
+    "newUntil": "2026-07-30"
   },
   "事務/事務スタッフ向け_2026改定サマリ.html": {
     "lastUpdated": "2026-07-12"
