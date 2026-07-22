@@ -9,13 +9,10 @@ window.__pageMeta = {
     "lastUpdated": "2026-07-20"
   },
   "index.html": {
-    "lastUpdated": "2026-07-21"
+    "lastUpdated": "2026-07-23"
   },
   "checklists.html": {
     "lastUpdated": "2026-06-13"
-  },
-  "updates.html": {
-    "lastUpdated": "2026-07-21"
   },
   "knowledge.html": {
     "lastUpdated": "2026-07-12"
@@ -25,6 +22,9 @@ window.__pageMeta = {
   },
   "kaitei2026.html": {
     "lastUpdated": "2026-07-16"
+  },
+  "updates.html": {
+    "lastUpdated": "2026-07-23"
   },
   "yakureki/薬歴の書き方_実例解説集.html": {
     "lastUpdated": "2026-07-13",
@@ -166,9 +166,6 @@ window.__pageMeta = {
   "改定資料/別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html": {
     "lastUpdated": "2026-06-20"
   },
-  "改定資料/在宅薬学総合体制加算2イ_特例摘要欄ガイド.html": {
-    "lastUpdated": "2026-07-12"
-  },
   "改定資料/特掲診療料_施設基準届出_調剤関係2026.html": {
     "lastUpdated": "2026-05-31"
   },
@@ -190,6 +187,9 @@ window.__pageMeta = {
   "改定資料/疑義解釈まとめ2026.html": {
     "lastUpdated": "2026-07-18",
     "newUntil": "2026-07-25"
+  },
+  "改定資料/在宅薬学総合体制加算2イ_特例摘要欄ガイド.html": {
+    "lastUpdated": "2026-07-23"
   },
   "チェックリスト/選定療養_実務チェックリスト.html": {
     "lastUpdated": "2026-06-06",
@@ -232,7 +232,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-07-12"
   },
   "ナレッジ/調剤報酬QA.html": {
-    "lastUpdated": "2026-07-15",
+    "lastUpdated": "2026-07-23",
     "newUntil": "2026-07-30"
   },
   "ナレッジ/変更調剤について.html": {
