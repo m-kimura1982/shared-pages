@@ -1,0 +1,37 @@
+/* 疑義解釈一覧ブロック（build-gigi-list.js が生成する .gi-* の共通スタイル）
+   各ページの :root（--blue / --text-sm など）を前提にする。読み込みは <link> で。 */
+
+.gi-row { display:block; border:var(--bw-h, 1px) solid var(--border, #d1d5db); border-radius:var(--radius-sm, 6px); overflow:hidden; margin-bottom:10px; text-decoration:none; color:var(--ink, #222); }
+.gi-row:hover { border-color:var(--blue, #1e5fa8); }
+
+.gi-q { background:#eef4fb; padding:12px 15px; display:flex; gap:11px; align-items:flex-start; flex-wrap:wrap; font-size:var(--text-sm, 15px); font-weight:700; line-height:1.65; }
+.gi-q .qtext { flex:1; min-width:200px; }
+
+.qbadge { width:26px; height:26px; border-radius:7px; background:var(--blue, #1e5fa8); color:#fff; font-weight:900; font-size:15px; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+.alabel { width:26px; height:26px; border-radius:7px; border:1.5px solid var(--border-dk, #9ca3af); color:var(--txt-2, #444); font-weight:900; font-size:15px; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; background:var(--white, #fff); }
+
+.gi-src { flex-shrink:0; font-size:var(--text-xs, 13px); font-weight:700; color:var(--txt-3, #5e6470); background:var(--white, #fff); border:1px solid var(--border, #d1d5db); border-radius:4px; padding:0 8px; white-space:nowrap; align-self:flex-start; margin-top:3px; }
+.gi-src.new { color:var(--blue, #1e5fa8); border-color:#bcd3ee; background:var(--box-blue, #e4f0f8); }
+
+.gi-a { padding:13px 15px 0; display:flex; gap:11px; align-items:flex-start; font-size:var(--text-sm, 15px); line-height:1.7; }
+.gi-a .ctext { flex:1; font-weight:900; padding-top:1px; }
+.gi-a .ctext .sub { display:block; font-weight:500; color:var(--txt-2, #444); margin-top:3px; }
+
+.gi-more { padding:9px 15px 12px; margin-left:37px; font-size:var(--text-xs, 13px); font-weight:700; color:var(--blue, #1e5fa8); display:flex; align-items:center; gap:3px; }
+.gi-more .chev { font-size:15px; line-height:1; }
+.gi-row:hover .gi-more { text-decoration:underline; }
+
+@media (max-width:640px) {
+  .qbadge, .alabel { width:22px; height:22px; font-size:13px; border-radius:6px; }
+  .gi-q { display:grid; grid-template-columns:22px 1fr; gap:7px 8px; }
+  .gi-q .qtext { min-width:0; }
+  .gi-src { grid-column:2; justify-self:start; margin-top:0; }
+  .gi-a { gap:8px; }
+  .gi-more { margin-left:30px; }
+}
+
+@media print {
+  .gi-row { break-inside:avoid; }
+  .gi-more { display:none; }
+  .gi-a { padding-bottom:11px; }
+}

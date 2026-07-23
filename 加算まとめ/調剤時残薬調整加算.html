@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>調剤時残薬調整加算｜2026年調剤報酬改定</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/gigi-list.css" />
     <style>
       *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
       :root {
@@ -124,12 +125,6 @@
       .check-item .ci-main { font-weight:900; }
       .check-item .ci-note { font-size:var(--text-xs); color:var(--txt-3); margin-top:3px; padding-left:1.2em; }
 
-      /* Q&A */
-      .qa-block { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; margin-bottom:10px; }
-      .qa-q { background:#f7f9fc; padding:10px 14px; font-size:var(--text-sm); border-bottom:var(--bw-h) solid var(--border); }
-      .qa-a { padding:10px 14px; font-size:var(--text-sm); }
-      .qa-q .qa-label, .qa-a .qa-label { display:inline-block; font-weight:900; color:var(--ink); margin-right:6px; }
-      .qa-src { font-size:var(--text-xs); color:var(--txt-3); margin-top:6px; }
 
       .ref-links { max-width:900px; margin:16px auto 0; padding:20px 16px 4px; border-top:1px solid #d0d8e8; }
       .ref-links .row { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
@@ -345,7 +340,7 @@
                 <b>情報提供のパターン</b>
                 <div class="sub-par"><span>・</span><span><b>疑義照会</b>の場合：照会の電話自体が情報提供に該当。追加の文書は不要なことが多い。</span></div>
                 <div class="sub-par"><span>・</span><span><b>処方箋指示</b>の場合：事後報告のため、文書または電子処方箋コメント機能での情報提供が中心。</span></div>
-                <div style="margin-top:5px;">※ 文書で情報提供した場合は<strong class="marker">服薬情報等提供料１を併算定可</strong>（疑義解釈 問10）。</div>
+                <div style="margin-top:5px;">※ 文書で情報提供した場合は<strong class="marker">服薬情報等提供料１を併算定可</strong>（疑義解釈その２ 問10）。</div>
               </div>
             </div>
           </div>
@@ -396,9 +391,11 @@
                 <tr><td>屯服薬</td><td><strong>7回分以上</strong>減じた場合</td></tr>
                 <tr><td>外用薬</td><td>1回の使用量をもとに<strong>7回分以上</strong>にあたる量</td></tr>
                 <tr><td>隔日投与等（服用しない日がある場合）</td><td>実際に服薬する日数による</td></tr>
+                <tr><td>注射薬</td><td>処方箋で指示された<strong>1日使用量</strong>から見て<strong>7日分以上</strong>の使用量にあたる量</td></tr>
               </tbody>
             </table>
           </div>
+          <div style="font-size:var(--text-xs); color:var(--txt-3); margin-top:8px;">※ インスリン製剤等、1製剤で複数回使える注射薬は<strong style="color:var(--txt-2);">製剤単位で残薬を調整する</strong>。1日2回・1回8単位なら1本300単位が15日分にあたり、未使用の1本が7日分以上の残薬になる。</div>
         </div>
 
         <div class="sub-title">6日以下でも算定できる場合（例外）</div>
@@ -434,7 +431,7 @@
       <div class="card avoid-break">
         <div class="card-title">レセプト摘要欄記載事項</div>
         <div class="lead-note">
-          算定パターンにより記載内容が異なる。<strong>区分イ</strong>は<strong>相談年月日</strong>、<strong>7日分以上</strong>は指定なし、<strong>6日分以下</strong>は<strong>薬剤名と理由</strong>を記載。なお<strong>7日分以上・6日分以下とも具体的な変更内容を併記</strong>することが望ましい。
+          算定パターンにより記載内容が異なる。<strong>区分イ</strong>は<strong>相談年月日</strong>、<strong>7日分以上</strong>は指定なし、<strong>6日分以下</strong>は<strong>薬剤名と理由</strong>を記載。なお<strong>6日分以下は具体的な変更内容を併記</strong>することが望ましい。7日分以上は、調剤管理料の必須コメントが付くかどうかで判断する。
         </div>
 
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px;">
@@ -449,8 +446,9 @@
           <div>
             <div style="font-weight:900; font-size:var(--text-sm); margin-bottom:6px;">7日分以上の残薬調整</div>
             <div class="box-gray" style="font-size:var(--text-sm);">
-              <div style="font-weight:900; color:var(--blue); margin-bottom:4px;">指定された摘要欄記載事項はなし</div>
-              <div style="color:var(--txt-2); margin-bottom:6px;">ただし審査側からわかりにくいとの指摘があるため、<strong>変更内容を摘要欄に記載</strong>することが望ましい。</div>
+              <div style="font-weight:900; color:var(--blue); margin-bottom:6px;">指定された摘要欄記載事項はなし</div>
+              <div style="color:var(--txt-2); margin-bottom:6px;"><strong class="marker"><a href="調剤管理料_2026改定.html" style="color:inherit;">調剤管理料「１のイ」</a>の必須コメントを入れる場合は、書き足す必要はない。</strong>減数調剤の年月日・薬剤名・調整前の日数がそちらに出るため、減数の内容が伝わる。</div>
+              <div style="color:var(--txt-2); margin-bottom:6px;">必須コメントが付かないときは、審査側から変更内容が分からないため、<strong>変更内容を摘要欄に記載</strong>することが望ましい。<span style="font-size:var(--text-xs);">例）90日分を60日分に減らすなど調整後も28日分以上になるとき。同じ剤の別の薬が28日分以上あり、調剤日数が27日分以下にならないとき。</span></div>
               <div style="font-size:var(--text-xs); color:var(--txt-2); background:#fff; border:var(--bw-h) solid var(--border); border-radius:4px; padding:6px 10px;">
                 <strong>記載例）</strong>残薬があるため、〇〇を△△日→▲▲日へ日数調整
               </div>
@@ -465,7 +463,7 @@
               <div style="padding-left:14px; color:var(--txt-2); line-height:1.9;">
                 <div>高額医薬品のため</div>
                 <div>治療終了予定日との日数調整のため</div>
-                <div>投与間隔が長い薬剤のため</div>
+                <div>投与間隔が長い薬剤のため<span style="font-size:var(--text-xs); color:var(--txt-3); margin-left:8px;">6日間以上が該当</span></div>
                 <div>その他薬学的専門的観点；*******</div>
               </div>
               <div style="color:var(--txt-2); margin:10px 0 6px;">薬剤名と理由のみでは伝わりにくいため、<strong>具体的な変更内容も併記</strong>することが望ましい。</div>
@@ -519,28 +517,71 @@
           <div class="check-item"><div class="ci-main">□ 減数後の4項目すべて実施（情報提供＋患者促し＋手帳記載＋薬歴記録）</div><div class="ci-note">※従来は薬歴記載＋必要時の情報提供のみ</div></div>
           <div class="check-item"><div class="ci-main">□ 処方箋指示パターンは原則 翌営業日までに保険医療機関へ情報提供</div><div class="ci-note">※従来は明確なルールなし（薬局判断）</div></div>
           <div class="check-item"><div class="ci-main">□ 機械的な減薬はNG（患者・家族等への必要性確認が必須）</div><div class="ci-note">※従来は制限なし</div></div>
-          <div class="check-item"><div class="ci-main">□ 簡素化プロトコルでの事後報告でも算定可（疑義解釈問11）</div><div class="ci-note">※薬学的有害事象等防止加算とは扱いが逆なので注意</div></div>
+          <div class="check-item"><div class="ci-main">□ 簡素化プロトコルでの事後報告でも算定可（疑義解釈その２ 問11）</div><div class="ci-note">※薬学的有害事象等防止加算とは扱いが逆なので注意</div></div>
         </div>
       </div>
 
-      <!-- Q&A -->
-      <div class="card">
-        <div class="card-title">Q&amp;A<span class="qual">疑義解釈（その２）より</span></div>
+      <!-- 疑義解釈一覧（疑義解釈まとめ2026.html の当加算セクションと対応） -->
+      <div class="card avoid-break">
+        <!-- gigi-list:sec-zanyaku -->
+        <div class="card-title">関連する疑義解釈<span class="qual">全5件</span></div>
+        <div class="lead-note">要旨と結論のみ記載。原文は疑義解釈まとめページで確認する。</div>
 
-        <div class="qa-block">
-          <div class="qa-q"><span class="qa-label">Q</span>「調剤する薬剤を減量した上で保険医療機関に情報提供」の指示がある処方箋を受け付け、減数調剤を行った際に、残薬が生じている理由を薬学的に分析した上で、処方箋を発行した保険医療機関に対して<strong>文書により情報提供</strong>を行った場合、服薬情報等提供料１を算定することはできるか。また、<strong>調剤時残薬調整加算を併せて算定</strong>することは可能か。</div>
-          <div class="qa-a"><span class="qa-label">A</span><strong>いずれも可能。</strong><div class="qa-src">疑義解釈（その２）問10</div></div>
-        </div>
+        <a class="gi-row" href="../改定資料/疑義解釈まとめ2026.html#s2q10">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">減数調剤を行い、残薬の理由を分析して処方元へ文書で情報提供した場合、服薬情報等提供料１を算定できるか。本加算との併算定は可能か</span><span class="gi-src">その２ 問10</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">いずれも可能。<span class="sub">服薬情報等提供料１も、調剤時残薬調整加算との併算定も認められる。</span></span></div>
+          <div class="gi-more">疑義解釈まとめで原文を見る<span class="chev">›</span></div>
+        </a>
 
-        <div class="qa-block">
-          <div class="qa-q"><span class="qa-label">Q</span>残薬発見時の減数調剤に係る対応が<strong>問合せの簡素化プロトコル</strong>として地域で策定されており、当該プロトコルどおりに減数調剤した後に<strong>事後報告のみ</strong>で差し支えないと定められている場合、当該減数調剤について本加算を算定することができるか。</div>
-          <div class="qa-a"><span class="qa-label">A</span><strong>７日分以上相当の調剤日数の変更が行われた場合は、算定可能。</strong>また、６日分以下相当の変更を行う場合には、残薬が７日分を超えないにもかかわらず調整する必要性をレセプト摘要欄に記載することで算定可能。<br><strong class="marker">ただし、簡素化プロトコルに策定されていること自体を6日以下の理由にすることは不可。</strong><div class="qa-src">疑義解釈（その２）問11</div></div>
-        </div>
+        <a class="gi-row" href="../改定資料/疑義解釈まとめ2026.html#s2q11">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">地域の簡素化プロトコルに基づき、事後報告のみで減数調剤した場合も本加算を算定できるか</span><span class="gi-src">その２ 問11</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">７日分以上相当の変更なら算定可能。<span class="sub">６日分以下相当は、調整の必要性を摘要欄に記載すれば算定できるが、「プロトコルに策定されているから」を理由にすることは不可。</span></span></div>
+          <div class="gi-more">疑義解釈まとめで原文を見る<span class="chev">›</span></div>
+        </a>
+
+        <a class="gi-row" href="../改定資料/疑義解釈まとめ2026.html#s7q5">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">６日分以下の変更理由となる「薬学的専門的な観点による」理由とは、具体的に何か</span><span class="gi-src">その７ 問５</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">「服用期間の定めがある薬剤で通算すると上限を超える場合」「次回診察時の検査結果等で処方変更が見込まれる場合」などが該当する。</span></div>
+          <div class="gi-more">疑義解釈まとめで原文を見る<span class="chev">›</span></div>
+        </a>
+
+        <a class="gi-row" href="../改定資料/疑義解釈まとめ2026.html#s10q1">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">注射薬の残薬は、「７日分以上相当」をどう考えればよいか</span><span class="gi-src new">その10 問１</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">処方箋で指示されている１日使用量から見て、７日分以上の使用量に相当する残薬をいう。<span class="sub">インスリン製剤など１製剤で複数回使える注射薬は、製剤単位で残薬を調整する。</span></span></div>
+          <div class="gi-more">疑義解釈まとめで原文を見る<span class="chev">›</span></div>
+        </a>
+
+        <a class="gi-row" href="../改定資料/疑義解釈まとめ2026.html#s10q2">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">摘要欄の理由「投与間隔が長い薬剤のため」の「投与間隔が長い」とは、具体的にどのような場合か</span><span class="gi-src new">その10 問２</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">投与間隔が６日間以上の場合を指す。<span class="sub">週１回製剤などが該当する。調整した残薬日数が６日以下のときに、この理由を摘要欄に記載して算定できる。</span></span></div>
+          <div class="gi-more">疑義解釈まとめで原文を見る<span class="chev">›</span></div>
+        </a>
+        <!-- /gigi-list -->
 
         <div class="lead-note" style="margin:14px 0 0;">
           <div style="font-weight:900; color:var(--blue); margin-bottom:6px;">補足：薬学的有害事象等防止加算とプロトコル対応の扱いが異なる理由</div>
           <div style="line-height:1.7;">本加算は<strong>事前の疑義照会を必須とせず</strong>、残薬の確認とその結果に基づく処方内容の変更そのものを評価する。そのため、地域で策定した簡素化プロトコルに沿った事後報告でも算定できる。一方、薬学的有害事象等防止加算は「<strong>疑義照会を行った上での薬剤調整</strong>」を評価するため、プロトコルによる事後報告では算定不可（疑義解釈その２問12）。両加算で扱いが逆になるので注意。</div>
         </div>
+      </div>
+
+      <!-- 社内Q&A（ナレッジ/調剤報酬QA.html の当該カテゴリと対応） -->
+      <div class="card avoid-break">
+        <!-- qa-list:c-zanyaku -->
+        <div class="card-title">関連する社内Q&amp;A<span class="qual">全2件</span></div>
+        <div class="lead-note">結論のみ記載。解説は調剤報酬Q&amp;Aで確認する。</div>
+
+        <a class="gi-row" href="../ナレッジ/調剤報酬QA.html#q-zanyaku-1">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">加算を算定せずに残薬調整した場合（例：下剤を5日分減らした等）も、「残薬調整した旨」の<strong>お薬手帳への記載</strong>は必要ですか？</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">残薬調整の「方法」によって異なる。<span class="sub">いずれも手帳を用いて服薬管理指導を行う場合が対象。</span></span></div>
+          <div class="gi-more">調剤報酬Q&amp;Aで解説を見る<span class="chev">›</span></div>
+        </a>
+
+        <a class="gi-row" href="../ナレッジ/調剤報酬QA.html#q-zanyaku-2">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">処方箋指示に基づく減数調剤で、処方を<strong>削除（0日へ変更）</strong>する場合も疑義照会は必要ですか？　簡素化プロトコルがあれば省略できますか？</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">プロトコルの規定内容しだい。<span class="sub">原則として、0日への変更（処方削除）は疑義照会が必要。</span></span></div>
+          <div class="gi-more">調剤報酬Q&amp;Aで解説を見る<span class="chev">›</span></div>
+        </a>
+        <!-- /qa-list -->
       </div>
     </div>
 
@@ -552,8 +593,7 @@
         <span class="lab">原文参照：</span>
         <a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-10-2-2">別添３ › 調剤時残薬調整加算</a>
         <a href="../改定資料/別表第三_調剤報酬点数表2026.html#ku10-2">別表第三 › 調剤管理料（注３）</a>
-        <a href="../改定資料/疑義解釈まとめ2026.html#s2q10">疑義解釈（その２）› 調剤時残薬調整加算</a>
-        <a href="../改定資料/疑義解釈まとめ2026.html#s7q5">疑義解釈（その７）› 調剤時残薬調整加算（問５）</a>
+        <a href="../改定資料/疑義解釈まとめ2026.html#sec-zanyaku">疑義解釈まとめ › 調剤時残薬調整加算</a>
       </div>
     </div>
   </body>

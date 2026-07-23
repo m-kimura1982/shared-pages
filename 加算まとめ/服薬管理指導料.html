@@ -8,6 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="../assets/gigi-list.css" />
     <style>
       *,
       *::before,
@@ -983,67 +984,57 @@
           </div>
         </div>
 
-        <!-- 疑義解釈 -->
-        <div class="card col-span-2 avoid-break">
-          <div class="card-title">Q&amp;A</div>
-          <div
-            style="
-              display: flex;
-              flex-direction: column;
-              gap: 12px;
-              font-size: var(--text-sm);
-            "
-          >
-            <div>
-              <div style="font-weight: 900; margin-bottom: 4px">
-                Q. 6月より前に、手帳への「かかりつけ」記入を始めてもよい？
-              </div>
-              <div>
-                A. 算定を伴わない記入であれば問題ない。患者の了承を得て5月中に<span class="em-blue">手帳記入＋コピー保管まで済ませておけば、6月1日から即日「1イ」「2イ」を算定可能</span>（経過措置により5月以前の同意は有効）。
-                <span style="display: block; margin-top: 4px; font-size: var(--text-xs); color: #555;">※ 5月中に従来のかかりつけ薬剤師指導料を算定する場合は、従来通り書面同意書が別途必要。</span>
-              </div>
-            </div>
-            <div style="border-top: var(--bw-h) solid var(--border-dk); padding-top: 10px; margin-top: 4px;">
-              <div style="font-size: var(--text-sm); font-weight: 900; color: var(--blue); margin-bottom: 10px;">
-                ── 以下、疑義解釈（その２）より ──
-              </div>
-              <div style="font-weight: 900; margin-bottom: 4px">
-                Q. 患者が別薬局への「かかりつけ」変更を希望した場合は？（問14）
-              </div>
-              <div>
-                A. かかりつけ薬剤師を変更する場合は、<span class="em-blue">手帳に上書き</span>を行い、変更内容と日付を薬剤服用歴に記載する。
-              </div>
-            </div>
-            <div
-              style="
-                border-top: var(--bw) solid var(--border);
-                padding-top: 12px;
-              "
-            >
-              <div style="font-weight: 900; margin-bottom: 4px">
-                Q. 手帳コピーの保管は紙でなければならない？（問17・18）
-              </div>
-              <div>
-                A. 必ずしも紙の保管である必要はない。スキャンデータや写真データ等として保管することでも差し支えない。電子お薬手帳の場合も<span class="em-blue">画像データ等で保管可</span>。
-                <span style="display: block; margin-top: 4px; font-size: var(--text-xs); color: #555;">※ サーバー・外付けHDD等の扱いはセキュリティに配慮すること。</span>
-              </div>
-            </div>
-            <div
-              style="
-                border-top: var(--bw) solid var(--border);
-                padding-top: 12px;
-              "
-            >
-              <div style="font-weight: 900; margin-bottom: 4px">
-                Q. 電子お薬手帳への「かかりつけ」記入はどうする？（問19）
-              </div>
-              <div>
-                A. システム上の登録機能があれば利用する。ない場合は、「かかりつけ」の文字と薬剤師名を記入した画像等を作成し、<span class="em-blue">電子お薬手帳に登録</span>する方法でも可。
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
+      <!-- 疑義解釈一覧（疑義解釈まとめ2026.html の当加算セクションと対応） -->
+      <div class="card avoid-break">
+        <!-- gigi-list:sec-fukuyaku -->
+        <div class="card-title">関連する疑義解釈<span class="qual">全7件</span></div>
+        <div class="lead-note">要旨と結論のみ記載。原文は疑義解釈まとめページで確認する。</div>
+
+        <a class="gi-row" href="../改定資料/疑義解釈まとめ2026.html#s2q13">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">患者の署名がある同意書を保存していれば、お薬手帳へのかかりつけ薬剤師氏名の記入は不要か</span><span class="gi-src">その２ 問13</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">同意書の有無にかかわらず、原則としてお薬手帳に記入する。</span></div>
+          <div class="gi-more">疑義解釈まとめで原文を見る<span class="chev">›</span></div>
+        </a>
+
+        <a class="gi-row" href="../改定資料/疑義解釈まとめ2026.html#s2q14">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">別の薬局のかかりつけ薬剤師名がある手帳は上書き禁止とされているが、かかりつけ薬剤師を変更する場合はどうするか</span><span class="gi-src">その２ 問14</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">離職または患者の希望による変更の場合は、手帳に上書きし、変更の旨と日付を薬歴に明記する。</span></div>
+          <div class="gi-more">疑義解釈まとめで原文を見る<span class="chev">›</span></div>
+        </a>
+
+        <a class="gi-row" href="../改定資料/疑義解釈まとめ2026.html#s2q15">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">施設基準の「継続的に在籍している期間が平均して１年以上」に、週31時間未満の勤務期間も計上してよいか</span><span class="gi-src">その２ 問15</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">週31時間以上勤務した期間のみを通算する。</span></div>
+          <div class="gi-more">疑義解釈まとめで原文を見る<span class="chev">›</span></div>
+        </a>
+
+        <a class="gi-row" href="../改定資料/疑義解釈まとめ2026.html#s2q16">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">在宅患者訪問薬剤管理指導料の患者や要介護・要支援の患者でも、同意を得た旨をお薬手帳に記入する必要があるか</span><span class="gi-src">その２ 問16</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">お薬手帳を活用している場合は、記入する。</span></div>
+          <div class="gi-more">疑義解釈まとめで原文を見る<span class="chev">›</span></div>
+        </a>
+
+        <a class="gi-row" href="../改定資料/疑義解釈まとめ2026.html#s2q17">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">お薬手帳のコピー等は、紙媒体で保管する必要があるか</span><span class="gi-src">その２ 問17</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">紙でなくてもよい。<span class="sub">スキャンデータや写真を電子データとして保管して差し支えない。セキュリティ全般への適切な対応が前提。</span></span></div>
+          <div class="gi-more">疑義解釈まとめで原文を見る<span class="chev">›</span></div>
+        </a>
+
+        <a class="gi-row" href="../改定資料/疑義解釈まとめ2026.html#s2q18">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">電子版お薬手帳の場合、コピー等の保管はどのように行えばよいか</span><span class="gi-src">その２ 問18</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">画面の画像データ保管・スクリーンショットの送信・画面の撮影・必要情報の転記などの方法が考えられる。<span class="sub">紙媒体・電子データのいずれで保管しても差し支えない。</span></span></div>
+          <div class="gi-more">疑義解釈まとめで原文を見る<span class="chev">›</span></div>
+        </a>
+
+        <a class="gi-row" href="../改定資料/疑義解釈まとめ2026.html#s2q19">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">電子版お薬手帳で、上書き防止や「かかりつけ」の文字記入のためのシステム対応は必要か</span><span class="gi-src">その２ 問19</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">必ずしもシステム改修は要さない。<span class="sub">電子版お薬手帳上でかかりつけ薬剤師の氏名等を容易に確認できれば足りる。</span></span></div>
+          <div class="gi-more">疑義解釈まとめで原文を見る<span class="chev">›</span></div>
+        </a>
+        <!-- /gigi-list -->
+      </div>
+
     </div>
   <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>薬学的有害事象等防止加算｜2026年調剤報酬改定</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/gigi-list.css" />
     <style>
       *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
       :root {
@@ -87,11 +88,6 @@
       .req:last-child { border-bottom:none; }
       .req > span:first-child { flex-shrink:0; color:var(--txt-3); margin-top:1px; }
 
-      .qa-block { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; }
-      .qa-q { background:#f7f9fc; padding:10px 14px; font-size:var(--text-sm); border-bottom:var(--bw-h) solid var(--border); }
-      .qa-a { padding:10px 14px; font-size:var(--text-sm); }
-      .qa-q .qa-label, .qa-a .qa-label { display:inline-block; font-weight:900; color:var(--ink); margin-right:6px; }
-      .qa-src { font-size:var(--text-xs); color:var(--txt-3); margin-top:6px; }
 
       .ref-links { max-width:900px; margin:16px auto 0; padding:20px 16px 4px; border-top:1px solid #d0d8e8; }
       .ref-links .row { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
@@ -300,6 +296,11 @@
           <div class="req"><span>・</span><div>処方医への連絡・確認内容の要点および<strong>変更内容を薬剤服用歴等に記載</strong>する</div></div>
           <div class="req"><span>・</span><div>同時に複数の処方箋を受け付け、複数について薬剤を変更した場合であっても、<strong class="marker">1回に限り算定</strong>。同一受付内で複数の処方変更があった場合も、処方箋ごとではなく1算定として処理。</div></div>
         </div>
+
+        <div class="box-outline" style="margin-top:14px; font-size:var(--text-sm);">
+          <div style="font-weight:900; margin-bottom:6px;">簡素化プロトコルでの事後報告は算定不可</div>
+          <div style="line-height:1.7;">本加算は<strong>疑義照会を行った上での薬剤調整</strong>を評価するため、地域で策定した簡素化プロトコルに沿って調整し事後報告のみで済ませた場合は算定できない。一方、<a href="調剤時残薬調整加算.html" style="color:var(--blue); font-weight:700;">調剤時残薬調整加算</a>は疑義照会を必須とせず残薬の確認と処方変更そのものを評価するため、プロトコルによる事後報告でも算定できる。<strong class="marker">両加算で扱いが逆になるので注意する。</strong></div>
+        </div>
       </div>
 
       <!-- レセプト摘要欄記載事項 -->
@@ -375,14 +376,38 @@
         </div>
       </details>
 
-      <!-- Q&A -->
-      <div class="card">
-        <div class="card-title">Q&amp;A<span class="qual">疑義解釈（その２）より</span></div>
+      <!-- 疑義解釈一覧（疑義解釈まとめ2026.html の当加算セクションと対応） -->
+      <div class="card avoid-break">
+        <!-- gigi-list:sec-yugai -->
+        <div class="card-title">関連する疑義解釈<span class="qual">全1件</span></div>
+        <div class="lead-note">要旨と結論のみ記載。原文は疑義解釈まとめページで確認する。</div>
 
-        <div class="qa-block">
-          <div class="qa-q"><span class="qa-label">Q</span>重複投薬を検知した際の対応が問合せの簡素化プロトコルとして地域で策定されており、そのプロトコル通りに薬剤調整した後に<strong>事後報告のみで差し支えない</strong>と定められている場合、本加算は算定できるか。</div>
-          <div class="qa-a"><span class="qa-label">A</span><strong>算定不可。</strong> 本加算は「疑義照会を行った上での薬剤調整」を評価するもの。プロトコルによる事後報告のみの対応は疑義照会に該当しないため算定できない。<span style="color:var(--txt-2)">（調剤時残薬調整加算とは扱いが異なる点に注意）</span><div class="qa-src">疑義解釈（その２）問12</div></div>
-        </div>
+        <a class="gi-row" href="../改定資料/疑義解釈まとめ2026.html#s2q12">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">地域の簡素化プロトコルに基づき、事後報告のみで薬剤調整した場合も本加算を算定できるか</span><span class="gi-src">その２ 問12</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">算定不可。<span class="sub">本加算は疑義照会に係る対応を評価するもので、事後報告のみの対応は疑義照会に当たらない。</span></span></div>
+          <div class="gi-more">疑義解釈まとめで原文を見る<span class="chev">›</span></div>
+        </a>
+        <!-- /gigi-list -->
+      </div>
+
+      <!-- 社内Q&A（ナレッジ/調剤報酬QA.html の当該カテゴリと対応） -->
+      <div class="card avoid-break">
+        <!-- qa-list:c-yugai -->
+        <div class="card-title">関連する社内Q&amp;A<span class="qual">全2件</span></div>
+        <div class="lead-note">結論のみ記載。解説は調剤報酬Q&amp;Aで確認する。</div>
+
+        <a class="gi-row" href="../ナレッジ/調剤報酬QA.html#q-yugai-1">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">マンジャロ皮下注アテオスで、5mgへ増量して2週間後に7.5mgが処方されました。添付文書で定められた増量間隔（4週間以上）を満たしていなかったため、疑義照会を行い5mgへ変更しました。この場合、薬学的有害事象等防止加算は算定できますか？</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">添付文書どおりの用法・用量へ修正するための疑義照会では、薬学的有害事象等防止加算の算定対象とはならないと考えられる。</span></div>
+          <div class="gi-more">調剤報酬Q&amp;Aで解説を見る<span class="chev">›</span></div>
+        </a>
+
+        <a class="gi-row" href="../ナレッジ/調剤報酬QA.html#q-yugai-2">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">患者から「薬の効果が不十分」との訴えがあり、疑義照会で別の薬剤に変更しました（抗ヒスタミン薬のケース）。この場合は算定要件を満たしますか？</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">算定できる。<span class="sub">算定要件の「そのほか薬学的観点から必要と認める事項」に当たる。</span></span></div>
+          <div class="gi-more">調剤報酬Q&amp;Aで解説を見る<span class="chev">›</span></div>
+        </a>
+        <!-- /qa-list -->
       </div>
     </div>
 

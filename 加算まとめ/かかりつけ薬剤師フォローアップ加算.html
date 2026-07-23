@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>かかりつけ薬剤師フォローアップ加算</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/gigi-list.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
@@ -347,19 +348,38 @@
     <div style="font-size:var(--text-xs); color:var(--txt-2);">※特別調剤基本料Ｂを算定している保険薬局は算定不可。</div>
   </div>
 
-  <!-- Q&A -->
+  <!-- 疑義解釈一覧（疑義解釈まとめ2026.html の当加算セクションと対応） -->
   <div class="card avoid-break">
-    <div class="card-title">Q&amp;A</div>
-    <div style="font-size:var(--text-xs); color:var(--txt-3); margin-bottom:10px;">── 疑義解釈（その２）より ──</div>
+    <!-- gigi-list:sec-follow -->
+    <div class="card-title">関連する疑義解釈<span class="qual">全3件</span></div>
+    <div class="lead-note">要旨と結論のみ記載。原文は疑義解釈まとめページで確認する。</div>
 
-    <div class="qa-block">
-      <div class="qa-q"><span class="qa-label">問21</span>調剤を実施し、後日、かかりつけ薬剤師フォローアップ加算に係る業務を行い、同一保険薬局で再度処方箋を受け付けた際、<strong>当該患者のかかりつけ薬剤師が不在であった場合も、かかりつけ薬剤師フォローアップ加算を算定可能であるか。</strong></div>
-      <div class="qa-a"><span class="qa-label">答</span>算定可能。ただし、服薬管理指導料１のロ又は２のロと併せて算定する際には、電話等によりフォローアップした旨及び日時、実施した聞き取りや指導等の内容等に加え、<strong>かかりつけ薬剤師の氏名を薬剤服用歴等に記載すること</strong>。</div>
-    </div>
+    <a class="gi-row" href="../改定資料/疑義解釈まとめ2026.html#s2q21">
+      <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">フォローアップ後の再受付時に、かかりつけ薬剤師が不在だった場合も算定できるか</span><span class="gi-src">その２ 問21</span></div>
+      <div class="gi-a"><span class="alabel">A</span><span class="ctext">算定可能。<span class="sub">服薬管理指導料１のロ・２のロと併せて算定する場合は、フォローアップの旨・日時・聞き取りや指導内容に加え、かかりつけ薬剤師の氏名を薬歴に記載する。</span></span></div>
+      <div class="gi-more">疑義解釈まとめで原文を見る<span class="chev">›</span></div>
+    </a>
 
-    <div class="lead" style="margin-top:12px;">
-      <div style="font-weight:900; margin-bottom:6px;">ポイント（補足解説）</div>
-      原文は「不在でも算定できるか」と「氏名を薬歴に記載」という<strong>２つの論点</strong>が１問１答に混ざっているため読みにくい。<strong>次回来局時の応対者</strong>で整理すると下表のようになる。
+    <a class="gi-row" href="../改定資料/疑義解釈まとめ2026.html#s7q6">
+      <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">直近６月以内に、廃止された重複投薬・相互作用等防止加算を算定していた患者は、残薬調整加算等を算定した患者とみなしてよいか</span><span class="gi-src">その７ 問６</span></div>
+      <div class="gi-a"><span class="alabel">A</span><span class="ctext">よい。<span class="sub">改定をまたぐ期間は、旧加算の算定実績を新加算の実績として扱える。</span></span></div>
+      <div class="gi-more">疑義解釈まとめで原文を見る<span class="chev">›</span></div>
+    </a>
+
+    <a class="gi-row" href="../改定資料/疑義解釈まとめ2026.html#s10q4">
+      <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">フォローアップの業務によって、算定の前提となった問題（残薬等）がすでに解消されている場合、本加算を算定できるか</span><span class="gi-src new">その10 問４</span></div>
+      <div class="gi-a"><span class="alabel">A</span><span class="ctext">算定不可。<span class="sub">直近６月以内に外来服薬支援料１等の算定があっても、その算定の原因となった問題がフォローアップにより解消されていれば算定できない。</span></span></div>
+      <div class="gi-more">疑義解釈まとめで原文を見る<span class="chev">›</span></div>
+    </a>
+    <!-- /gigi-list -->
+  </div>
+
+  <!-- 補足解説・当社Q&A -->
+  <div class="card avoid-break">
+    <div class="card-title">かかりつけ薬剤師が不在だった場合の整理</div>
+
+    <div class="lead">
+      疑義解釈その２ 問21は「不在でも算定できるか」と「氏名を薬歴に記載」という<strong>２つの論点</strong>が１問１答に混ざっているため読みにくい。<strong>次回来局時の応対者</strong>で整理すると下表のようになる。
     </div>
 
     <div style="margin-top:12px;">
@@ -399,18 +419,26 @@
       <strong>実務メモ：</strong>かかりつけ薬剤師は薬歴サマリー（表紙）にも記載されているため、本文に重ねて書く必要性は乏しいと考えられる。ただし疑義解釈で明示された以上、<strong>１のロ／２のロ併算定時は本文にも氏名を記載しておくのが安全</strong>。
     </div>
 
-    <div style="margin-top:18px; padding-top:14px; border-top:var(--bw-h) solid var(--border);">
-      <div style="font-size:var(--text-xs); color:var(--txt-3); margin-bottom:10px;">── 当社で受けた質問より ──</div>
-      <div class="qa-block">
-        <div class="qa-q"><span class="qa-label">Q</span>かかりつけ薬剤師フォローアップ加算を算定した上で、同月・同処方箋で<strong>服薬情報等提供料も算定できるか</strong>。</div>
-        <div class="qa-a"><span class="qa-label">A</span>算定可能。フォローアップ加算は<strong>患者本人への電話等による服薬・残薬状況の確認</strong>を評価する加算であり、医療機関等への情報提供は要件に含まれていない。したがって服薬情報等提供料（医療機関等への情報提供を評価する点数）と<strong>業務内容が重複しないため、それぞれの要件を満たせば両方算定できる</strong>。</div>
-      </div>
+  </div>
 
-      <div class="qa-block">
-        <div class="qa-q"><span class="qa-label">Q</span>4/20にA病院処方箋でかかりつけ対応、後日フォローアップ実施。4/27にBクリニックの処方箋を当該薬局のかかりつけ以外の薬剤師が対応。5/1にA病院から再度処方箋を持参。この場合<strong>フォローアップ加算は5/1で算定できるか</strong>。</div>
-        <div class="qa-a"><span class="qa-label">A</span>算定可能。原文(3)ウに「<strong>フォローアップを実施する要因となった処方箋を発行した医療機関以外からの処方箋を持参した場合は、これに含まれない</strong>」と明記されており、間にB医療機関の処方箋持参を挟んでもフォローアップ加算の算定可否には影響しない。<strong>5/1のA病院処方箋受付時に算定する</strong>（4/27のB医療機関処方箋ではフォローアップ加算は算定不可）。</div>
-      </div>
-    </div>
+  <!-- 現場から受けた質問（ナレッジ/調剤報酬QA.html の当該カテゴリと対応） -->
+  <div class="card avoid-break">
+    <!-- qa-list:c-follow -->
+    <div class="card-title">関連する社内Q&amp;A<span class="qual">全2件</span></div>
+    <div class="lead-note">結論のみ記載。解説は調剤報酬Q&amp;Aで確認する。</div>
+
+    <a class="gi-row" href="../ナレッジ/調剤報酬QA.html#q-follow-1">
+      <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">かかりつけ薬剤師フォローアップ加算を算定した上で、同じ月・同じ処方箋で服薬情報等提供料も算定できますか？</span></div>
+      <div class="gi-a"><span class="alabel">A</span><span class="ctext">それぞれの要件を満たせば、両方算定できる。<span class="sub">評価している業務が重ならないため。</span></span></div>
+      <div class="gi-more">調剤報酬Q&amp;Aで解説を見る<span class="chev">›</span></div>
+    </a>
+
+    <a class="gi-row" href="../ナレッジ/調剤報酬QA.html#q-follow-2">
+      <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">4/20にA病院の処方箋でかかりつけ対応をし、後日フォローアップを実施しました。4/27にBクリニックの処方箋を、かかりつけ以外の薬剤師が対応。5/1にA病院から再度処方箋を持参した場合、フォローアップ加算は5/1で算定できますか？</span></div>
+      <div class="gi-a"><span class="alabel">A</span><span class="ctext">5/1のA病院処方箋の受付時に算定できる。<span class="sub">間にB医療機関の処方箋をはさんでも影響しない。</span></span></div>
+      <div class="gi-more">調剤報酬Q&amp;Aで解説を見る<span class="chev">›</span></div>
+    </a>
+    <!-- /qa-list -->
   </div>
 
 </div>
