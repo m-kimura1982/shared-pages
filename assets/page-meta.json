@@ -5,23 +5,23 @@
   "404.html": {
     "lastUpdated": "2026-07-20"
   },
-  "updates.html": {
-    "lastUpdated": "2026-07-23"
-  },
   "事務スタッフ向け.html": {
     "lastUpdated": "2026-07-20"
   },
-  "index.html": {
-    "lastUpdated": "2026-07-23"
+  "加算まとめ.html": {
+    "lastUpdated": "2026-07-24"
+  },
+  "updates.html": {
+    "lastUpdated": "2026-07-24"
   },
   "checklists.html": {
     "lastUpdated": "2026-06-13"
   },
+  "index.html": {
+    "lastUpdated": "2026-07-24"
+  },
   "knowledge.html": {
     "lastUpdated": "2026-07-12"
-  },
-  "加算まとめ.html": {
-    "lastUpdated": "2026-06-21"
   },
   "kaitei2026.html": {
     "lastUpdated": "2026-07-16"
@@ -133,6 +133,14 @@
   "加算まとめ/かかりつけ薬剤師フォローアップ加算.html": {
     "lastUpdated": "2026-07-23"
   },
+  "加算まとめ/外来服薬支援料1.html": {
+    "lastUpdated": "2026-07-24",
+    "newUntil": "2026-07-31"
+  },
+  "加算まとめ/外来服薬支援料1_算定事例.html": {
+    "lastUpdated": "2026-07-24",
+    "newUntil": "2026-07-31"
+  },
   "改定資料/調剤報酬体系図_2026改定.html": {
     "lastUpdated": "2026-03-28"
   },
@@ -215,21 +223,21 @@
     "newUntil": "2026-06-16"
   },
   "チェックリスト/かかりつけ薬剤師フォローアップ加算_実務チェックリスト.html": {
-    "lastUpdated": "2026-07-12",
+    "lastUpdated": "2026-07-24",
     "newUntil": "2026-06-16"
   },
   "ツール/選定療養費計算ツール.html": {
     "lastUpdated": "2026-06-15"
-  },
-  "ツール/gigi-search.html": {
-    "lastUpdated": "2026-07-18",
-    "newUntil": "2026-07-25"
   },
   "ツール/服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html": {
     "lastUpdated": "2026-06-19"
   },
   "ツール/地域支援医薬品供給対応体制加算_届出判定ツール.html": {
     "lastUpdated": "2026-07-12"
+  },
+  "ツール/gigi-search.html": {
+    "lastUpdated": "2026-07-24",
+    "newUntil": "2026-07-25"
   },
   "ナレッジ/変更調剤について.html": {
     "lastUpdated": "2026-04-18"
@@ -238,7 +246,7 @@
     "lastUpdated": "2026-04-19"
   },
   "ナレッジ/調剤報酬QA.html": {
-    "lastUpdated": "2026-07-23",
+    "lastUpdated": "2026-07-24",
     "newUntil": "2026-07-30"
   },
   "事務/事務スタッフ向け_2026改定サマリ.html": {
