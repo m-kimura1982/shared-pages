@@ -628,6 +628,11 @@ updateBookmarkCount();
 if (window.innerWidth <= 640) {
   document.getElementById("keywordInput").placeholder = "キーワードを入力";
 }
+
+// URL に ?q=キーワード があれば自動で検索する（各ページからの絞り込みリンク用）
+// 例：gigi-search.html?q=外来服薬支援　→　「外来服薬支援」で検索した状態で開く
+const _q = new URLSearchParams(location.search).get('q');
+if (_q && _q.trim()) quickSearch(_q.trim());
 </script>
 <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

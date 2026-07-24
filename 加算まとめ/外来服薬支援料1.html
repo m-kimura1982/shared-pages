@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>外来服薬支援料１｜加算まとめ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <!-- 社内Q&A一覧の共通スタイル。加算まとめ/ へ昇格時は ../assets/ に直す -->
+    <link rel="stylesheet" href="../assets/gigi-list.css" />
+    <style>
+      *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+      :root {
+        --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+        --pad-card:22px; --gap-card:16px;
+        --blue:#1e5fa8; --ink:#222222;
+        --bg:#f3f4f6; --white:#ffffff;
+        --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+        --border:#d1d5db; --border-dk:#9ca3af;
+        --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px;
+        --txt-2:#444444; --txt-3:#5e6470;
+      }
+      body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+      .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+      /* 見出し */
+      .page-title-wrap { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+      .page-title-left { flex:1; }
+      .page-title-left h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+      .page-title-left p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+      .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+      .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+      .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+      .sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin:18px 0 9px; }
+      .sub-title:first-child { margin-top:0; }
+      .sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+
+      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+
+      .score-block { display:flex; flex-direction:column; border:var(--bw) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; flex-shrink:0; }
+      .score-block .score-label { background:var(--box-gray); color:var(--txt-2); font-size:var(--text-xs); font-weight:700; padding:5px 16px; text-align:center; border-bottom:var(--bw) solid var(--border); }
+      .score-block .score-num { background:var(--white); font-size:28px; font-weight:900; padding:6px 20px; text-align:center; white-space:nowrap; }
+      .score-block .score-num span { font-size:var(--text-sm); font-weight:500; margin-left:2px; }
+
+      /* 強調 */
+      .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+      .em-change { color:var(--blue); font-weight:900; }
+
+      .lead-note { background:#eef4fb; border-radius:var(--radius-sm); padding:12px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray .ttl, .box-blue .ttl { display:block; font-weight:900; margin-bottom:5px; font-size:var(--text-sm); }
+      .box-gray .ttl { color:var(--blue); }
+      .box-blue .ttl { color:var(--ink); }
+
+      table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+      th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
+      td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
+      tr:last-child td { border-bottom:none; }
+      .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+
+      /* 箇条書き */
+      .list { display:flex; flex-direction:column; gap:6px; margin:4px 0 2px; }
+      .list .li { font-size:var(--text-sm); line-height:1.7; padding-left:18px; text-indent:-18px; }
+      .list .li::before { content:"・"; color:var(--txt-3); font-weight:900; margin-right:6px; }
+      .list .li b { color:var(--ink); }
+
+      /* 注1・注2 対比（2列。どちらも中立＝色で優劣を付けない） */
+      .cmp { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:4px; }
+      .cmp .col { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; display:flex; flex-direction:column; }
+      .cmp .col-head { background:#eef2f7; padding:9px 14px; display:flex; align-items:baseline; gap:9px; border-bottom:var(--bw-h) solid var(--border); }
+      .cmp .col-head .no { font-weight:900; color:var(--blue); font-size:var(--text-md); }
+      .cmp .col-head .nm { font-weight:700; font-size:var(--text-xs); color:var(--txt-2); }
+      .cmp .col-body { padding:12px 14px; font-size:var(--text-sm); line-height:1.7; flex:1; }
+      .cmp .col-body .def { margin-bottom:9px; }
+      .cmp .col-body .yk { font-size:var(--text-xs); font-weight:900; color:var(--txt-3); margin:2px 0 4px; }
+      .cmp .col-body ol { list-style:none; counter-reset:y; }
+      .cmp .col-body ol li { counter-increment:y; padding-left:20px; text-indent:-20px; font-size:var(--text-sm); line-height:1.6; margin-bottom:2px; }
+      .cmp .col-body ol li::before { content:counter(y)". "; font-weight:900; color:var(--blue); }
+
+      /* 記載例 */
+      .rei { display:block; background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; margin-top:10px; font-size:var(--text-sm); line-height:1.8; }
+      .rei .ttl { display:block; font-weight:900; color:var(--blue); font-size:var(--text-xs); margin-bottom:5px; }
+      .rei p { padding-left:14px; text-indent:-14px; }
+      .rei p + p { margin-top:6px; }
+      .rei .dot { color:var(--txt-3); font-weight:900; }
+
+      /* 摘要欄 表示文言 */
+      .disp { display:flex; flex-direction:column; gap:8px; margin-top:4px; }
+      .disp .d { border:var(--bw-h) solid var(--border); border-left:var(--bw-a) solid var(--blue); border-radius:var(--radius-sm); padding:9px 13px; font-size:var(--text-sm); line-height:1.6; }
+      .disp .d .pre { color:var(--txt-3); }
+      .disp .d .val { font-weight:900; color:var(--ink); }
+
+      /* 番号バッジ付き注意リスト */
+      .num-list { display:flex; flex-direction:column; gap:11px; }
+      .num-list .ni { display:flex; gap:11px; align-items:flex-start; }
+      .num-list .ni .n { width:23px; height:23px; border-radius:6px; background:var(--blue); color:#fff; font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+      .num-list .ni .c { flex:1; font-size:var(--text-sm); line-height:1.7; }
+      .num-list .ni .c b { color:var(--ink); }
+
+      /* 折りたたみ原文 */
+      details.fold { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); }
+      details.fold > summary { list-style:none; cursor:pointer; padding:14px var(--pad-card); font-weight:700; font-size:var(--text-sm); color:var(--txt-2); display:flex; align-items:center; gap:8px; }
+      details.fold > summary::-webkit-details-marker { display:none; }
+      details.fold > summary::before { content:"▶"; font-size:10px; color:var(--txt-3); transition:transform .15s; }
+      details.fold[open] > summary::before { transform:rotate(90deg); }
+      details.fold .fold-body { padding:2px var(--pad-card) var(--pad-card); }
+      .orig { display:flex; flex-direction:column; gap:9px; }
+      .orig .oh { font-weight:900; font-size:var(--text-sm); color:var(--blue); margin-top:6px; }
+      .orig .oi { display:flex; gap:9px; font-size:var(--text-sm); line-height:1.7; color:var(--txt-2); }
+      .orig .oi .lab { flex-shrink:0; min-width:28px; font-weight:900; color:var(--txt-3); }
+      .orig .cite { font-size:var(--text-xs); color:var(--txt-3); margin-top:2px; }
+
+      /* 関連リンク */
+      .rel { display:flex; flex-direction:column; gap:8px; }
+      .rel a { display:flex; align-items:center; gap:9px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; text-decoration:none; color:var(--ink); font-size:var(--text-sm); font-weight:700; }
+      .rel a::before { content:"›"; color:var(--blue); font-weight:900; }
+      .rel a:hover { background:#fafbfc; border-color:#bcd3ee; }
+      .rel a .sub { font-weight:400; color:var(--txt-3); font-size:var(--text-xs); margin-left:auto; }
+
+      /* 原文参照リンク（最下部・.page の外） */
+      .ref-links { max-width:900px; margin:16px auto 0; padding:20px 16px 4px; border-top:1px solid var(--border); }
+      .ref-links .row { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+      .ref-links .lab { font-size:12px; color:var(--txt-2); white-space:nowrap; font-weight:bold; }
+      .ref-links a { display:inline-block; color:var(--blue); text-decoration:none; font-size:13px; border:1px solid var(--border); border-radius:6px; padding:4px 12px; background:var(--white); }
+
+      .page-foot { font-size:var(--text-xs); color:var(--txt-3); text-align:right; padding-top:2px; }
+
+      @media (max-width:640px) {
+        body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+        :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+        .card { padding:14px; border-radius:8px; }
+        .page-title-wrap { flex-direction:column; gap:12px; }
+        .cmp { grid-template-columns:1fr; }
+        .rel a .sub { display:none; }
+        table { min-width:420px; }
+      }
+      @media print {
+        @page { margin:10mm 9mm; size:A4; }
+        body { background:#fff; padding:0; font-size:11px; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        /* フレックスのままだと印刷時に改ページが効かない。block に戻して gap→margin にする */
+        .page { display:block; max-width:none; }
+        /* 長いカードはページをまたいで詰めてよい（空白を作らない） */
+        .card { border:0.5px solid #ccc; padding:9px 11px; margin-bottom:7px; break-inside:auto; }
+        /* 見出しだけがページ末尾に取り残されないように */
+        .card-title, .sub-title { break-after:avoid; }
+        .card-title { margin-bottom:8px; padding-bottom:5px; }
+        /* 小さな塊は途中で切らない */
+        .lead-note, .box-gray, .box-blue, .rei, .disp .d, .check-item,
+        .cmp .col, .num-list .ni, .steps .step, .gi-row, tr { break-inside:avoid; }
+        details.fold { break-inside:avoid; }
+        .page-foot { display:none; }
+        a { color:inherit; text-decoration:none; }
+      }
+    </style>
+  </head>
+  <body>
+    <script src="../assets/site-header.js" defer></script>
+    <div class="page">
+
+      <!-- タイトル -->
+      <div class="page-title-wrap">
+        <div class="page-title-left">
+          <h1>外来服薬支援料１</h1>
+          <p>服用中の薬剤の整理・服薬支援の評価</p>
+        </div>
+        <div class="score-block">
+          <div class="score-label">月１回まで</div>
+          <div class="score-num">185<span>点</span></div>
+        </div>
+      </div>
+
+      <div class="lead-note">
+        処方箋によらず、<span class="marker">服用中（調剤済み）の薬剤</span>を一包化や服薬カレンダー等で整理し、日々の服薬管理が容易になるよう支援した場合に月１回算定する。処方医の了解を<span class="em-change">事前に得て</span>支援した場合（注１）のほか、持参された服用薬を整理し、その結果を保険医療機関へ<span class="em-change">情報提供した</span>場合（注２）も同じ点数で算定する。
+      </div>
+
+      <!-- 算定要件 -->
+      <div class="card">
+        <div class="card-title">算定要件</div>
+        <div class="list">
+          <div class="li"><b>対象患者</b>：自己による服薬管理が困難な患者・その家族等、又は保険医療機関の求めに応じた場合</div>
+          <div class="li"><b>支援の対象</b>：服用中（調剤済み）の薬剤。当薬局で調剤した薬に限らず、<span class="marker">他薬局で調剤された薬・院内投薬された薬も含めて</span>整理してよい</div>
+          <div class="li"><b>実施すること</b>：一包化・服薬カレンダー等で薬を整理し、日々の服薬管理が容易になるよう支援する（単なる服薬指導のみでは算定できない）</div>
+          <div class="li"><b>処方医の関与</b>：注１＝<b>事前に</b>処方医の了解を得る／注２＝<b>支援後に</b>保険医療機関へ情報提供する</div>
+          <div class="li"><b>算定単位</b>：服薬支援１回につき、月１回まで（185点）</div>
+        </div>
+        <div class="box-gray" style="margin-top:12px;">
+          <span class="ttl">一包化の目的（留意点）</span>
+          多種類の薬による飲み忘れ・飲み誤りの防止、又は心身の特性で被包から取り出して服用することが困難な患者への配慮を目的とし、<b>治療上の必要性が認められる場合</b>に行う。
+        </div>
+      </div>
+
+      <!-- 算定上の注意 -->
+      <div class="card">
+        <div class="card-title">算定上の注意</div>
+        <div class="sub-title">請求のしかた・支援後の対応</div>
+        <div class="list">
+          <div class="li">外来服薬支援料１は<span class="marker">185点のみの単独のレセプト</span>として請求する。処方箋によらない支援なので、この分に調剤技術料は付かない</div>
+          <div class="li">支援が必要となった背景・理由を分析し、<span class="marker">同様の支援が今後必要とならないよう努める</span>（例：次回からの一包化指示・処方日数の調整を処方医へ相談）</div>
+        </div>
+        <div class="sub-title">算定できないケース</div>
+        <div class="list">
+          <div class="li"><b>在宅患者訪問薬剤管理指導料を算定した月</b>は算定できない。同じ月に<span class="marker">服薬情報等提供料も算定できない</span>（別添3(11)）</div>
+          <div class="li"><b>薬剤師による居宅療養管理指導費・介護予防居宅療養管理指導費（介護保険）</b>を同一月に算定している患者も算定できない（医療・介護の給付調整）</div>
+          <div class="li">月途中で在宅へ移行し、同月に在宅患者訪問薬剤管理指導料を算定した場合は、<span class="marker">先に算定した外来服薬支援料１も算定できない</span></div>
+          <div class="li">現に他の保険医療機関・保険薬局の薬剤師が訪問薬剤管理指導を行っている患者</div>
+          <div class="li"><span class="marker">外来服薬支援料２（外来服薬支援料１とは同時に算定できない）</span></div>
+          <div class="li">特別調剤基本料Ｂを算定している保険薬局</div>
+          <div class="li">特別調剤基本料Ａの薬局が、不動産取引等の特別な関係を有する保険医療機関へ情報提供した場合（注２）</div>
+        </div>
+      </div>
+
+      <!-- 料1と料2の違い -->
+      <div class="card">
+        <div class="card-title">外来服薬支援料１と２の違い</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th style="width:14%"></th><th style="width:43%">外来服薬支援料１（185点）</th><th style="width:43%">外来服薬支援料２（旧・一包化加算）</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>対象</b></td>
+                <td><span class="marker">服用中（調剤済み）の薬剤</span>。処方箋によらない</td>
+                <td>処方箋に基づく一包化</td>
+              </tr>
+              <tr>
+                <td><b>きっかけ</b></td>
+                <td>服用中（調剤済み）の薬を整理する必要が生じた（飲み忘れ・飲み間違い、薬の種類が多く服薬管理が困難、残薬・持参薬の整理など）</td>
+                <td>処方箋に一包化の指示がある。指示がなくても、薬剤師が必要と認めた場合は処方医に確認（疑義照会）し、了解を得て一包化する</td>
+              </tr>
+              <tr>
+                <td><b>算定単位</b></td>
+                <td>月１回まで</td>
+                <td>処方箋受付ごと（日数に応じた点数）</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-blue" style="margin-top:12px;">
+          <span class="marker">外来服薬支援料１を算定した場合、外来服薬支援料２は併算定できない。</span> 外来服薬支援料１は単独のレセプトで入力するため、誤って外来服薬支援料２も算定していないか確認する。
+        </div>
+      </div>
+
+      <!-- 注1と注2 -->
+      <div class="card">
+        <div class="card-title">注１と注２の違い<span class="qual">判断ポイント</span></div>
+        <p style="font-size:var(--text-sm); line-height:1.8; margin-bottom:12px;">
+          分かれ目は<span class="marker">処方医の了解が「事前」か、情報提供が「事後」か</span>である。一包化をしたかどうかで決まるのではない。
+        </p>
+        <div class="cmp">
+          <div class="col">
+            <div class="col-head"><span class="no">注１</span><span class="nm">事前に処方医の了解を得て支援</span></div>
+            <div class="col-body">
+              <div class="def">処方医に、その薬の治療上の必要性・服薬管理の支援の必要性について<span class="em-change">事前に了解を得た上で</span>、患者の服薬管理を支援した場合（一包化など）。</div>
+              <div class="yk">薬歴の記載事項</div>
+              <ol>
+                <li>服薬支援に係る薬剤の<b>処方医の了解を得た旨</b></li>
+                <li>当該薬剤の名称</li>
+                <li>服薬支援の内容及び理由</li>
+              </ol>
+            </div>
+          </div>
+          <div class="col">
+            <div class="col-head"><span class="no">注２</span><span class="nm">薬剤師判断で介入し事後に情報提供</span></div>
+            <div class="col-body">
+              <div class="def">持参された服用薬の整理等を行い、<span class="em-change">その結果を保険医療機関へ情報提供した</span>場合。あらかじめ患者・家族に薬を入れる袋を渡しておき、服用中の薬を薬局へ持ってきてもらう（いわゆるブラウンバッグ運動）。</div>
+              <div class="yk">薬歴の記載事項</div>
+              <ol>
+                <li><b>情報提供した内容</b></li>
+                <li>当該薬剤の名称</li>
+                <li>服薬支援の内容及び理由</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div class="box-gray" style="margin-top:13px;">
+          <span class="ttl">誤解しやすい点</span>
+          一包化は治療上の必要性が認められる場合に行うものであり、<span class="marker">基本は一包化の前に処方医へ確認し、了解を得てから行う（＝注１）</span>。持参された服用薬の整理など、薬剤師の判断で先に支援した場合は、その結果を保険医療機関へ情報提供することで注２として算定する。注２があるからといって、事前の確認を省略してよいわけではない。
+        </div>
+        <div class="box-blue" style="margin-top:11px;">
+          <span class="ttl">注２の本質</span>
+          注２の評価対象は一包化の有無ではなく、<span class="marker">服用中（調剤済み）の薬剤の服薬管理上の問題に薬剤師が主体的に介入し、その内容を保険医療機関へ情報提供した一連の服薬支援</span>である。
+        </div>
+      </div>
+
+      <!-- 薬歴 -->
+      <div class="card">
+        <div class="card-title">薬歴の記載</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;">記載事項が多く、記載漏れが起きやすい。丁寧に支援しても、<span class="em-change">根拠が薬歴になければ算定根拠として不十分になる</span>。次の3点を必ず残す（1項目目が注１・注２で異なる）。</p>
+        <div class="box-gray" style="margin-top:11px;">
+          <div class="list" style="margin:0;">
+            <div class="li">① <b>処方医の了解を得た旨</b>（注１）／<b>情報提供した内容</b>（注２）</div>
+            <div class="li">② 服薬支援を行った薬剤の名称</div>
+            <div class="li">③ 服薬支援の内容及び理由</div>
+          </div>
+        </div>
+        <div class="rei">
+          <span class="ttl">記載例</span>
+          <p><span class="dot">・</span>飲み間違い・飲み忘れの防止のため、△△病院の持参薬（□□錠、◇◇錠）と〇〇クリニックの薬をまとめて一包化してお渡しした。</p>
+          <p><span class="dot">・</span>（注１）上記について、〇〇クリニック・△△病院の処方医へ事前に確認し、了解を得た。</p>
+          <p><span class="dot">・</span>（注２）上記について、〇〇医師へ情報提供した。</p>
+        </div>
+        <div class="box-blue" style="margin-top:11px;">
+          <span class="ttl">繰り返し算定するとき</span>
+          上記に加えて<span class="marker">「繰り返しの支援が必要な理由」</span>も薬歴に残す（例：複数科受診で処方日数のズレが恒常的にあり、自己管理が困難なため）。
+        </div>
+        <p style="font-size:var(--text-xs); color:var(--txt-3); margin-top:10px; line-height:1.6;">
+          ※（社内運用）単独レセプトで入力すると薬歴の入力欄が分かれ、前回分がSOAPのみだとDo入力が反映しないことがある。外来服薬支援料１の薬歴も他と同様に全項目を記載する（レセコンにより挙動は異なる）。
+        </p>
+      </div>
+
+      <!-- 繰り返し算定 -->
+      <div class="card">
+        <div class="card-title">繰り返し算定の注意点</div>
+        <div class="num-list">
+          <div class="ni"><div class="n">1</div><div class="c"><b>繰り返す理由があるか。</b> 「支援が今後必要とならないよう努める」ことが要件のため、繰り返すには<span class="marker">やむを得ない事情</span>が要る。理由を薬歴に必ず記載する。</div></div>
+          <div class="ni"><div class="n">2</div><div class="c"><b>月１回のルールを守っているか。</b> 「特定の保険医療機関の処方を受け付けたら算定」などの運用では、<span class="marker">同一月に外来服薬支援料１を重複して算定する</span>おそれがある。同一月の算定がないか確認する。</div></div>
+          <div class="ni"><div class="n">3</div><div class="c"><b>外来服薬支援料２と併算定していないか。</b> 外来服薬支援料１は単独のレセプトで入力するため、誤って外来服薬支援料２も算定しやすい。</div></div>
+          <div class="ni"><div class="n">4</div><div class="c"><b>薬歴記載の漏れがないか。</b> 前項の3点（＋繰り返す理由）が毎回そろっているかを見返す。</div></div>
+        </div>
+      </div>
+
+      <!-- 摘要欄 -->
+      <div class="card">
+        <div class="card-title">レセプト摘要欄の記載</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;">摘要欄には次の3点を入力する。注１・注２のどちらに該当するかの記載が必要になる。</p>
+        <div class="disp">
+          <div class="d"><span class="val">外来服薬支援料１：注１</span> <span class="pre">又は</span> <span class="val">外来服薬支援料１：注２</span></div>
+          <div class="d"><span class="pre">服薬管理を実施した年月日（外来服薬支援料１）；</span><span class="val">令和〇年〇月〇日</span></div>
+          <div class="d"><span class="pre">保険医療機関の名称（外来服薬支援料１）；</span><span class="val">〇〇病院</span></div>
+        </div>
+        <div class="box-gray" style="margin-top:12px;">
+          <span class="ttl">保険医療機関名称の考え方</span>
+          注１は<b>服薬支援の必要性を確認した</b>保険医療機関の名称、注２は<b>情報提供をした</b>保険医療機関の名称を記載する。
+        </div>
+      </div>
+
+      <!-- 原文 -->
+      <details class="fold">
+        <summary>原文を見る（告示・通知）</summary>
+        <div class="fold-body">
+          <div class="orig">
+            <div class="oh">告示（別表第三 区分１４の２）</div>
+            <div class="oi"><span class="lab">注１</span><span>１については、自己による服薬管理が困難な患者若しくはその家族等又は保険医療機関の求めに応じて、当該患者が服薬中の薬剤について、当該薬剤を処方した保険医に当該薬剤の治療上の必要性及び服薬管理に係る支援の必要性の了解を得た上で、患者の服薬管理を支援した場合に月１回に限り算定する。ただし、区分番号１５に掲げる在宅患者訪問薬剤管理指導料を算定している患者については、算定しない。なお、区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</span></div>
+            <div class="oi"><span class="lab">注２</span><span>１については、患者若しくはその家族等又は保険医療機関の求めに応じて、患者又はその家族等が保険薬局に持参した服用薬の整理等の服薬管理を行い、その結果を保険医療機関に情報提供した場合についても、所定点数を算定できる。ただし、区分番号００に掲げる特別調剤基本料Ａを算定する保険薬局において、調剤基本料の注６に規定する厚生労働大臣が定める保険医療機関への情報提供を行った場合は、算定できない。</span></div>
+
+            <div class="oh">通知（別添3 外来服薬支援料１）</div>
+            <div class="oi"><span class="lab">(1)</span><span>外来服薬支援料１は、保険薬局の保険薬剤師が、自己による服薬管理が困難な外来の患者若しくはその家族等又は保険医療機関の求めに応じ、当該患者又はその家族等が持参した服薬中の薬剤について、治療上の必要性及び服薬管理に係る支援の必要性を判断し、当該薬剤を処方した保険医にその必要性につき了解を得た上で、一包化や服薬カレンダー等の活用により薬剤を整理し、日々の服薬管理が容易になるよう支援した場合に、「注１」及び「注２」を合わせて服薬支援１回につき、月１回に限り算定する。また、患者の来局時のほか、患者の求めに応じて保険薬剤師が患者を訪問して服用薬の整理等を行った場合でも算定できる。この場合、訪問に要した交通費（実費）は患家の負担とする。なお、服薬管理を容易にするような整理を行わずに単に服薬指導を行っただけでは算定できない。また、服用薬の整理等の支援を行った場合においては、当該支援が必要となった背景、理由等を分析し薬学的管理を実施するとともに、同様の支援が今後必要とならないように努めること。</span></div>
+            <div class="oi"><span class="lab">(2)</span><span>「注１」については、外来服薬支援を行うに当たり、患者が、当該保険薬局で調剤した薬剤以外に他の保険薬局で調剤された薬剤や保険医療機関で院内投薬された薬剤を服用していないか確認し、極力これらの薬剤も含めて一包化や服薬カレンダー等の活用により整理するよう努める。また、実際にこれらの薬剤も含めて服薬支援を行う場合には、重複投薬、相互作用等の有無を確認し、処方医に必要な照会を行い、適切な措置を講じる。なお、患者に対する服薬中の薬剤の確認や処方医への照会等を行った上で、結果として、他の保険薬局で調剤された薬剤又は保険医療機関で院内投薬された薬剤のみについて服薬支援を行うこととなった場合（当該保険薬局で調剤を受けていない患者が持参した、他の保険薬局で調剤された薬剤や保険医療機関で院内投薬された薬剤について服薬支援を行う場合を含む。）でも算定できる。</span></div>
+            <div class="oi"><span class="lab">(3)</span><span>「注２」については、患者が保険薬局に持参した服用中の薬剤等の服薬管理を行い、その結果を関係する保険医療機関へ情報提供した場合に算定できる。算定に当たっては、あらかじめ、患者又はその家族等に対して、保険薬局へ服用中の薬剤等を持参する動機付けのために薬剤等を入れる袋等を提供し、患者等が薬剤等を持参することで服薬管理を行う取組（いわゆるブラウンバッグ運動）を周知しておく。この場合において、外来服薬支援料１は、特別調剤基本料Ａを算定している保険薬局において、当該保険薬局と不動産取引等その他特別な関係を有している保険医療機関へ情報提供を行った場合は算定できない。</span></div>
+            <div class="oi"><span class="lab">(4)</span><span>外来服薬支援料１に係る外来服薬支援は、処方箋によらず、調剤済みの薬剤について服薬管理の支援を目的として行うものであるため、薬剤の一包化を行った場合でも、調剤基本料等の調剤技術料は算定できない。</span></div>
+            <div class="oi"><span class="lab">(5)</span><span>薬剤の一包化による服薬支援は、多種類の薬剤が投与されている患者においてしばしばみられる薬剤の飲み忘れ、飲み誤りを防止すること又は心身の特性により錠剤等を直接の被包から取り出して服用することが困難な患者に配慮することを目的とし、治療上の必要性が認められる場合に行うものである点に留意する。</span></div>
+            <div class="oi"><span class="lab">(6)</span><span>外来服薬支援料１を算定する場合は、服薬支援に係る薬剤の処方医の了解を得た旨又は情報提供した内容並びに当該薬剤の名称、服薬支援の内容及び理由を薬剤服用歴等に記載する。</span></div>
+            <div class="oi"><span class="lab">(7)</span><span>外来服薬支援料１は、在宅患者訪問薬剤管理指導料を算定している患者については算定できない。また、現に他の保険医療機関又は保険薬局の保険薬剤師が訪問薬剤管理指導を行っている患者についても算定できない。</span></div>
+            <div class="oi"><span class="lab">(8)</span><span>外来服薬支援料１は、特別調剤基本料Ｂを算定している保険薬局は算定できない。</span></div>
+
+            <div class="oh">参考（別添3 在宅患者訪問薬剤管理指導料）</div>
+            <div class="oi"><span class="lab">(11)</span><span>在宅患者訪問薬剤管理指導料を算定した月においては、服薬管理指導料（服薬管理指導料「４のロ」及び「４のハ」は除く。）は、当該患者の薬学的管理指導計画に係る疾病と別の疾病又は負傷に係る臨時の処方箋によって調剤を行った場合を除いて算定できない。また、在宅患者訪問薬剤管理指導料を算定した月においては、外来服薬支援料１又は服薬情報等提供料は算定できない。</span></div>
+
+            <div class="oh">参考（医療・介護の給付調整）</div>
+            <div class="oi"><span class="lab">介護</span><span>外来服薬支援料１・服薬情報等提供料は、同一月において居宅療養管理指導費又は介護予防居宅療養管理指導費（薬剤師が行う場合に限る。）が算定されている場合は算定できない。</span></div>
+            <div class="cite">出典：診療報酬の算定方法（別表第三 調剤報酬点数表）／「診療報酬の算定方法の一部改正に伴う実施上の留意事項について」（令和8年3月5日 保医発0305第4号）別添3。摘要欄は別表Ⅰ（調剤報酬明細書の摘要欄への記載事項）項番19による。同一月の算定不可は在宅患者訪問薬剤管理指導料の通知(11)、及び「医療保険と介護保険の給付調整に関する留意事項…」による。</div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 関連する社内Q&A（自動生成：node assets/build-gigi-list.js。マーカーの間は上書きされる） -->
+      <div class="card">
+        <!-- qa-list:c-gairai1 -->
+        <div class="card-title">関連する社内Q&amp;A<span class="qual">全5件</span></div>
+        <div class="lead-note">結論のみ記載。解説は調剤報酬Q&amp;Aで確認する。</div>
+
+        <a class="gi-row" href="../ナレッジ/調剤報酬QA.html#q-gairai1-1">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">内科と総合病院を別の日に受診している患者です。家族が総合病院の処方箋と、数日前に調剤した内科の薬を持参し「まとめてほしい」と希望されました。両方の処方医に連絡して一包化と支援の了解を得て、外来服薬支援料１を算定しました。今後も別の日に持参されると思われますが、算定してよいですか？</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">算定できる。<span class="sub">調剤済みの薬を含めて一包化する支援に当たる。繰り返す場合は理由を薬歴に残す。</span></span></div>
+          <div class="gi-more">調剤報酬Q&amp;Aで解説を見る<span class="chev">›</span></div>
+        </a>
+
+        <a class="gi-row" href="../ナレッジ/調剤報酬QA.html#q-gairai1-2">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">長期処方の受付時に、調剤済みの他の保険医療機関の薬を持参してもらい、合わせて一包化しています。今の算定の仕方で合っていますか？</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">算定できる。<span class="sub">調剤済みの薬への支援に当たる。他の処方箋と同日受付でまとめる場合は算定できない。</span></span></div>
+          <div class="gi-more">調剤報酬Q&amp;Aで解説を見る<span class="chev">›</span></div>
+        </a>
+
+        <a class="gi-row" href="../ナレッジ/調剤報酬QA.html#q-gairai1-3">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">複数の保険医療機関の薬（院内調剤された薬を含む）をまとめて一包化してほしいと希望されており、毎月、定期処方を調剤するタイミングで外来服薬支援料１を算定しています。問題ないですか？</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">算定できる。<span class="sub">院内調剤の薬が続く限り支援の必要も続くため、繰り返し算定するやむを得ない理由になる。</span></span></div>
+          <div class="gi-more">調剤報酬Q&amp;Aで解説を見る<span class="chev">›</span></div>
+        </a>
+
+        <a class="gi-row" href="../ナレッジ/調剤報酬QA.html#q-gairai1-4">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">別の日に分包した薬を持参され、当日の薬と混ぜて一包化してほしいと希望されています。処方医の了解を得て、合わせて一包化する日に外来服薬支援料１を算定していますが、合っていますか？</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">算定できる。<span class="sub">調剤済みの薬剤への服薬支援に当たる。処方医の了解を得ているので注１。</span></span></div>
+          <div class="gi-more">調剤報酬Q&amp;Aで解説を見る<span class="chev">›</span></div>
+        </a>
+
+        <a class="gi-row" href="../ナレッジ/調剤報酬QA.html#q-gairai1-5">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">複数の保険医療機関の処方箋を同じ日に一緒に持参され、合わせて一包化している患者に、毎月、外来服薬支援料１を算定しています。合っていますか？</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">同日に持参している場合は算定できない。<span class="sub">受け付けた処方薬どうしの一包化は「調剤済みの薬剤への支援」に当たらない。</span></span></div>
+          <div class="gi-more">調剤報酬Q&amp;Aで解説を見る<span class="chev">›</span></div>
+        </a>
+        <!-- /qa-list -->
+      </div>
+
+      <!-- 関連ページ -->
+      <div class="card">
+        <div class="card-title">関連ページ</div>
+        <div class="rel">
+          <a href="外来服薬支援料1_算定事例.html">算定事例（外来服薬支援料１）<span class="sub">○×事例と判断実例</span></a>
+          <a href="../ツール/服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html">他の薬学管理料との併算定可否一覧<span class="sub">早見表</span></a>
+          <a href="../加算まとめ.html">加算・管理料まとめ<span class="sub">一覧</span></a>
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- 原文参照リンク（.page の外） -->
+    <div class="ref-links">
+      <div class="row">
+        <span class="lab">原文参照：</span>
+        <a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-14-2-1">別添３ › 外来服薬支援料１</a>
+        <a href="../改定資料/別表第三_調剤報酬点数表2026.html#ku14-2">別表第三 › 外来服薬支援料</a>
+        <a href="../改定資料/別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html">別表Ⅰ › 摘要欄記載事項</a>
+      </div>
+    </div>
+
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>

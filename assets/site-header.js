@@ -76,9 +76,12 @@
     '加算まとめ/服薬管理指導料.html': { category: 'kasan', title: '服薬管理指導料' },
     '加算まとめ/服薬管理指導料3・4_施設訪問・オンライン.html': { category: 'kasan', title: '服薬管理指導料 3・4（施設訪問・オンライン）' },
     '加算まとめ/吸入薬指導加算2026.html': { category: 'kasan', title: '吸入薬指導加算' },
+    '加算まとめ/乳幼児服薬指導加算.html': { category: 'kasan', title: '乳幼児服薬指導加算' },
     '加算まとめ/かかりつけ薬剤師フォローアップ加算.html': { category: 'kasan', title: 'かかりつけ薬剤師フォローアップ加算' },
     '加算まとめ/かかりつけ薬剤師訪問加算.html': { category: 'kasan', title: 'かかりつけ薬剤師訪問加算' },
     '加算まとめ/服用薬剤調整支援料２_2026改定.html': { category: 'kasan', title: '服用薬剤調整支援料２' },
+    '加算まとめ/外来服薬支援料1.html': { category: 'kasan', title: '外来服薬支援料１' },
+    '加算まとめ/外来服薬支援料1_算定事例.html': { category: 'kasan', title: '外来服薬支援料１ 算定事例' },
     '加算まとめ/在宅患者訪問薬剤管理指導料_算定間隔2026.html': { category: 'kasan', title: '訪問薬剤管理指導料の算定間隔' },
     '加算まとめ/複数名薬剤管理指導訪問料.html': { category: 'kasan', title: '複数名薬剤管理指導訪問料' },
     '加算まとめ/訪問薬剤管理医師同時指導料.html': { category: 'kasan', title: '訪問薬剤管理医師同時指導料' },
@@ -342,6 +345,21 @@
       Object.entries(f).forEach(([k, v]) => link.setAttribute(k, v));
       document.head.appendChild(link);
     });
+  }
+
+  // ── 共通・印刷レイアウト（assets/print.css）を全ページへ注入 ──
+  // カード／ボックスで組んだページの印刷枚数を減らす。個別ページのインライン
+  // @media print より後に読み込まれ、古い印刷指定を上書きする。
+  // 除外：① checklist カテゴリ（印刷1枚に個別調整済みのため共通CSSを当てない）
+  //       ② <meta name="sn-no-print-css"> を置いたページ（任意で個別に除外）
+  const skipPrintCss = category === 'checklist' || document.querySelector('meta[name="sn-no-print-css"]');
+  if (!skipPrintCss && !document.querySelector('link[data-sn-print]')) {
+    const printCss = document.createElement('link');
+    printCss.rel = 'stylesheet';
+    printCss.media = 'print';
+    printCss.href = u('assets/print.css');
+    printCss.setAttribute('data-sn-print', '');
+    document.head.appendChild(printCss);
   }
 
   // ── 検索エンジン非掲載（社内専用サイト）：全ページに noindex を注入 ──

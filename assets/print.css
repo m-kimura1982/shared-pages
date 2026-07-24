@@ -1,0 +1,35 @@
+/*
+ * 共通・印刷レイアウト（site-header.js が全ページの <head> に自動注入）
+ *
+ * 目的：カード／ボックスで組んだページを印刷したとき、ページ末尾に大きな空白が
+ *       できて枚数が膨らむのを防ぐ。
+ *
+ * 効かせている肝：
+ *   ① .page が display:flex のままだと、印刷時に子（カード）の改ページが無効化され、
+ *      カードごと次ページへ飛んで空白が出る。→ 印刷時だけ block に戻す（gap→margin）。
+ *   ② 長いカードはページをまたいで詰めてよい（break-inside:auto）。
+ *   ③ ただし小さな塊（記載例・注１注２の欄・表の行など）は途中で切らない。
+ *   ④ 見出しだけがページ末尾に取り残されないようにする（break-after:avoid）。
+ *
+ * 【重要】必ず media="print" 付きの <link> で読み込むこと（site-header.js はそう注入する）。
+ *   このファイル自体は @media で囲っていないので、screen で読み込むと画面まで縦積みになる。
+ *
+ * 各ページのインライン @media print より後に読み込まれるため、古いページの
+ *   「.card { break-inside:avoid }」等はこのファイルが上書きする。
+ * 個別ページで別の印刷調整が要る場合は、そのページ側の @media print に !important で書く。
+ */
+
+/* ① フレックス解除（これが最大の肝） */
+.page { display: block; max-width: none; }
+
+/* ② カードは分割可・フレックス解除で消える gap を margin で補う */
+.card { break-inside: auto; margin-bottom: 8px; }
+
+/* ③ 小さな塊は途中で切らない */
+.lead-note, .box-gray, .box-blue, .box-outline, .box-amber, .box-warn,
+.rei, .disp .d, .check-item, .cmp .col, .num-list .ni, .steps .step,
+.gi-row, .case, .qa, tr, .musts { break-inside: avoid; }
+details, details.fold { break-inside: avoid; }
+
+/* ④ 見出しは次の本文と離さない */
+.card-title, .sub-title { break-after: avoid; }
