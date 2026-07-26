@@ -2,8 +2,11 @@ window.__pageMeta = {
   "tools.html": {
     "lastUpdated": "2026-07-18"
   },
+  "updates.html": {
+    "lastUpdated": "2026-07-26"
+  },
   "加算まとめ.html": {
-    "lastUpdated": "2026-07-24"
+    "lastUpdated": "2026-07-26"
   },
   "事務スタッフ向け.html": {
     "lastUpdated": "2026-07-20"
@@ -12,13 +15,10 @@ window.__pageMeta = {
     "lastUpdated": "2026-07-24"
   },
   "index.html": {
-    "lastUpdated": "2026-07-24"
+    "lastUpdated": "2026-07-26"
   },
   "checklists.html": {
     "lastUpdated": "2026-06-13"
-  },
-  "updates.html": {
-    "lastUpdated": "2026-07-24"
   },
   "knowledge.html": {
     "lastUpdated": "2026-07-12"
@@ -52,9 +52,6 @@ window.__pageMeta = {
   "yakureki/個別指導で問われる記載.html": {
     "lastUpdated": "2026-07-06"
   },
-  "yakureki/加算別記載一覧.html": {
-    "lastUpdated": "2026-07-12"
-  },
   "yakureki/基本記載ルール.html": {
     "lastUpdated": "2026-07-12"
   },
@@ -82,13 +79,13 @@ window.__pageMeta = {
   "yakureki/ハイリスク_抗うつ薬.html": {
     "lastUpdated": "2026-07-21"
   },
+  "yakureki/加算別記載一覧.html": {
+    "lastUpdated": "2026-07-26"
+  },
   "加算まとめ/服用薬剤調整支援料２_2026改定.html": {
     "lastUpdated": "2026-07-23"
   },
   "加算まとめ/かかりつけ薬剤師訪問加算.html": {
-    "lastUpdated": "2026-07-23"
-  },
-  "加算まとめ/服薬管理指導料.html": {
     "lastUpdated": "2026-07-23"
   },
   "加算まとめ/在宅薬学総合体制加算2026.html": {
@@ -118,9 +115,6 @@ window.__pageMeta = {
   "加算まとめ/服薬管理指導料3・4_施設訪問・オンライン.html": {
     "lastUpdated": "2026-07-23"
   },
-  "加算まとめ/吸入薬指導加算2026.html": {
-    "lastUpdated": "2026-07-12"
-  },
   "加算まとめ/バイオ後続品調剤体制加算.html": {
     "lastUpdated": "2026-06-01"
   },
@@ -133,14 +127,6 @@ window.__pageMeta = {
   "加算まとめ/かかりつけ薬剤師フォローアップ加算.html": {
     "lastUpdated": "2026-07-23"
   },
-  "加算まとめ/服薬情報等提供料.html": {
-    "lastUpdated": "2026-07-26",
-    "newUntil": "2026-08-02"
-  },
-  "加算まとめ/外来服薬支援料1.html": {
-    "lastUpdated": "2026-07-24",
-    "newUntil": "2026-07-31"
-  },
   "加算まとめ/外来服薬支援料1_算定事例.html": {
     "lastUpdated": "2026-07-24",
     "newUntil": "2026-07-31"
@@ -148,6 +134,20 @@ window.__pageMeta = {
   "加算まとめ/乳幼児服薬指導加算.html": {
     "lastUpdated": "2026-07-24",
     "newUntil": "2026-07-31"
+  },
+  "加算まとめ/外来服薬支援料1.html": {
+    "lastUpdated": "2026-07-26",
+    "newUntil": "2026-07-31"
+  },
+  "加算まとめ/服薬管理指導料.html": {
+    "lastUpdated": "2026-07-26"
+  },
+  "加算まとめ/吸入薬指導加算2026.html": {
+    "lastUpdated": "2026-07-26"
+  },
+  "加算まとめ/服薬情報等提供料.html": {
+    "lastUpdated": "2026-07-26",
+    "newUntil": "2026-08-02"
   },
   "改定資料/調剤報酬体系図_2026改定.html": {
     "lastUpdated": "2026-03-28"
@@ -254,7 +254,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-04-19"
   },
   "ナレッジ/調剤報酬QA.html": {
-    "lastUpdated": "2026-07-24",
+    "lastUpdated": "2026-07-26",
     "newUntil": "2026-07-30"
   },
   "事務/事務スタッフ向け_2026改定サマリ.html": {
