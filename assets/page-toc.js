@@ -1,0 +1,96 @@
+/* ============================================================
+   page-toc.js — 長いページのページ内目次（チップ形式）
+
+   使い方：目次を出したい位置に空の入れ物を置き、このファイルを読み込む。
+     <div id="page-toc"></div>
+     <script src="../assets/page-toc.js" defer></script>
+
+   ・見出しは .card > .card-title と details.fold > summary から自動で拾う。
+     カードを足しても目次のメンテは不要。
+   ・入れ物 (#page-toc) がないページでは何もしない。
+   ・見出し2つ以下のページでは目次を出さない（短いページに目次は邪魔なので）。
+   ・目次に載せたくないカードは、そのカードに data-toc="skip" を付ける。
+   ・目次だけ別の文言にしたいときは、そのカードに data-toc-label="〇〇" を付ける
+     （折りたたみの「原文を見る（告示・通知）」→ 目次では「原文」など）。
+   ・チップの見た目は調剤報酬QAのカテゴリ目次と同じ。スタイルもこのファイルが注入する。
+
+   目次を付ける目安：本文8,000字超、または見出し10枚超。
+   加算ページの標準は5,000〜6,000字で、その長さなら目次はなくてよい。
+   ============================================================ */
+(function () {
+  'use strict';
+
+  var STYLE = [
+    '.page-toc { display:flex; flex-wrap:wrap; gap:7px; }',
+    '.page-toc a { font-size:13px; font-weight:700; color:#1e5fa8; text-decoration:none;',
+    '  border:1px solid #bcd3ee; background:#ffffff; border-radius:100px; padding:5px 12px; white-space:nowrap; }',
+    '.page-toc a:hover { background:#f2f7fc; }',
+    /* 共通ヘッダーが sticky なので、アンカーで飛んだとき見出しが隠れないようにする */
+    '.page .card, .page details.fold { scroll-margin-top:76px; }',
+    '@media (max-width:640px) {',
+    '  .page-toc { gap:6px; }',
+    '  .page-toc a { font-size:11.5px; padding:4px 10px; }',
+    '  .page .card, .page details.fold { scroll-margin-top:64px; }',
+    '}',
+    '@media print { .page-toc-wrap { display:none; } }'
+  ].join('\n');
+
+  function ready(fn) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', fn);
+    } else {
+      fn();
+    }
+  }
+
+  ready(function () {
+    var box = document.getElementById('page-toc');
+    if (!box) return;
+
+    var page = document.querySelector('.page') || document;
+    var sections = page.querySelectorAll('.card, details.fold');
+    var items = [];
+
+    Array.prototype.forEach.call(sections, function (sec, i) {
+      if (sec.getAttribute('data-toc') === 'skip') return;
+      if (sec.closest('#page-toc')) return;
+
+      var titleEl = sec.matches('details.fold')
+        ? sec.querySelector(':scope > summary')
+        : sec.querySelector(':scope > .card-title');
+      if (!titleEl) return;
+
+      var name = sec.getAttribute('data-toc-label') || '';
+      if (!name) {
+        /* 見出しの先頭テキストだけ拾う（.qual や .badge の補足語は目次に載せない） */
+        Array.prototype.forEach.call(titleEl.childNodes, function (n) {
+          if (n.nodeType === 3) {
+            name += n.textContent;
+          } else if (n.nodeType === 1 && !n.classList.contains('qual') && !n.classList.contains('badge')) {
+            name += n.textContent;
+          }
+        });
+      }
+      name = name.replace(/\s+/g, ' ').trim();
+      if (!name) return;
+
+      if (!sec.id) sec.id = 'sec-toc-' + (i + 1);
+      items.push({ id: sec.id, name: name });
+    });
+
+    /* 見出しが少ないページでは目次を出さない */
+    if (items.length < 3) return;
+
+    var style = document.createElement('style');
+    style.textContent = STYLE;
+    document.head.appendChild(style);
+
+    box.classList.add('page-toc');
+    items.forEach(function (it) {
+      var a = document.createElement('a');
+      a.href = '#' + it.id;
+      a.textContent = it.name;
+      box.appendChild(a);
+    });
+  });
+})();

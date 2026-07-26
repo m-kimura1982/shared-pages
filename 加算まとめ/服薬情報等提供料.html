@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>服薬情報等提供料１・２・３｜算定項目まとめ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/gigi-list.css" />
+    <style>
+      *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+      :root {
+        --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+        --pad-card:22px; --gap-card:16px;
+        --blue:#1e5fa8; --ink:#222222;
+        --bg:#f3f4f6; --white:#ffffff;
+        --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+        --border:#d1d5db; --border-dk:#9ca3af;
+        --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px; --bw-t:4px;
+        --txt-2:#444444; --txt-3:#5e6470;
+      }
+      body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+      .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+      /* 見出し階層 */
+      .page-title-wrap { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+      .page-title-left { flex:1; }
+      .page-title-left h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+      .page-title-left p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+      .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+      .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+      .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+      .sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin:18px 0 9px; }
+      .sub-title:first-child { margin-top:0; }
+      .sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+
+      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+
+      .score-block { display:flex; flex-direction:column; border:var(--bw) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; flex-shrink:0; }
+      .score-block .score-label { background:var(--box-gray); color:var(--txt-2); font-size:var(--text-xs); font-weight:700; padding:5px 16px; text-align:center; border-bottom:var(--bw) solid var(--border); }
+      .score-block .score-num { background:var(--white); font-size:28px; font-weight:900; padding:6px 20px; text-align:center; white-space:nowrap; }
+      .score-block .score-num span { font-size:var(--text-sm); font-weight:500; margin-left:2px; }
+
+      /* 強調 */
+      .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+      .em-change { color:var(--blue); font-weight:900; }
+
+      .lead-note { background:#eef4fb; border-radius:var(--radius-sm); padding:12px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray .ttl, .box-blue .ttl { display:block; font-weight:900; margin-bottom:5px; font-size:var(--text-sm); }
+      .box-gray .ttl { color:var(--blue); }
+      .box-blue .ttl { color:var(--ink); }
+      .box-outline { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:14px 18px; }
+
+      table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+      th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
+      td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
+      tr:last-child td { border-bottom:none; }
+      .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+
+      /* 箇条書き */
+      .list { display:flex; flex-direction:column; gap:6px; margin:4px 0 2px; }
+      .list .li { font-size:var(--text-sm); line-height:1.7; padding-left:18px; text-indent:-18px; }
+      .list .li::before { content:"・"; color:var(--txt-3); font-weight:900; margin-right:6px; }
+      .list .li b { color:var(--ink); }
+      /* ①②③・ア〜エのように項目自体に番号・記号が付くとき。
+         折り返した2行目以降が番号の下に潜らないよう、番号と本文を分けてぶら下げる */
+      .list .li.mk { display:flex; gap:7px; padding-left:0; text-indent:0; }
+      .list .li.mk::before { content:none; }
+      .list .li.mk > .m { flex-shrink:0; font-weight:900; color:var(--ink); }
+
+      /* 2列の対比 */
+      .cmp { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:4px; }
+      .cmp .col { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; display:flex; flex-direction:column; }
+      .cmp .col-head { background:#eef2f7; padding:9px 14px; display:flex; align-items:baseline; gap:9px; border-bottom:var(--bw-h) solid var(--border); }
+      .cmp .col-head .no { font-weight:900; color:var(--blue); font-size:var(--text-md); }
+      .cmp .col-head .nm { font-weight:700; font-size:var(--text-xs); color:var(--txt-2); }
+      .cmp .col-body { padding:12px 14px; font-size:var(--text-sm); line-height:1.7; flex:1; }
+      .cmp .col-body .def { margin-bottom:9px; }
+      .cmp .col-body .yk { font-size:var(--text-xs); font-weight:900; color:var(--txt-3); margin:2px 0 4px; }
+      .cmp .col-body ol { list-style:none; counter-reset:y; }
+      .cmp .col-body ol li { counter-increment:y; padding-left:20px; text-indent:-20px; font-size:var(--text-sm); line-height:1.6; margin-bottom:2px; }
+      .cmp .col-body ol li::before { content:counter(y)". "; font-weight:900; color:var(--blue); }
+
+      /* 記載例 */
+      .rei { display:block; background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; margin-top:10px; font-size:var(--text-sm); line-height:1.8; }
+      .rei .ttl { display:block; font-weight:900; color:var(--blue); font-size:var(--text-xs); margin-bottom:5px; }
+      .rei p { padding-left:14px; text-indent:-14px; }
+      .rei p + p { margin-top:6px; }
+      .rei .dot { color:var(--txt-3); font-weight:900; }
+
+      /* 摘要欄 表示文言 */
+      .disp { display:flex; flex-direction:column; gap:8px; margin-top:4px; }
+      .disp .d { border:var(--bw-h) solid var(--border); border-left:var(--bw-a) solid var(--blue); border-radius:var(--radius-sm); padding:9px 13px; font-size:var(--text-sm); line-height:1.6; }
+      .disp .d .pre { color:var(--txt-3); }
+      .disp .d .val { font-weight:900; color:var(--ink); }
+
+      /* 番号バッジ付きリスト */
+      .num-list { display:flex; flex-direction:column; gap:11px; }
+      .num-list .ni { display:flex; gap:11px; align-items:flex-start; }
+      .num-list .ni .n { width:23px; height:23px; border-radius:6px; background:var(--blue); color:#fff; font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+      .num-list .ni .c { flex:1; font-size:var(--text-sm); line-height:1.7; }
+      .num-list .ni .c b { color:var(--ink); }
+
+      /* 折りたたみ */
+      details.fold { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); }
+      details.fold > summary { list-style:none; cursor:pointer; padding:14px var(--pad-card); font-weight:700; font-size:var(--text-sm); color:var(--txt-2); display:flex; align-items:center; gap:8px; }
+      details.fold > summary::-webkit-details-marker { display:none; }
+      details.fold > summary::before { content:"▶"; font-size:10px; color:var(--txt-3); transition:transform .15s; }
+      details.fold[open] > summary::before { transform:rotate(90deg); }
+      details.fold .fold-body { padding:2px var(--pad-card) var(--pad-card); }
+      .orig { display:flex; flex-direction:column; gap:9px; }
+      .orig .oh { font-weight:900; font-size:var(--text-sm); color:var(--blue); margin-top:6px; }
+      .orig .oi { display:flex; gap:9px; font-size:var(--text-sm); line-height:1.7; color:var(--txt-2); }
+      .orig .oi .lab { flex-shrink:0; min-width:28px; font-weight:900; color:var(--txt-3); }
+      .orig .oi.sub { padding-left:22px; }
+      .orig .cite { font-size:var(--text-xs); color:var(--txt-3); margin-top:2px; }
+
+      /* 関連ページ */
+      .rel { display:flex; flex-direction:column; gap:8px; }
+      .rel a { display:flex; align-items:center; gap:9px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; text-decoration:none; color:var(--ink); font-size:var(--text-sm); font-weight:700; }
+      .rel a::before { content:"›"; color:var(--blue); font-weight:900; }
+      .rel a:hover { background:#fafbfc; border-color:#bcd3ee; }
+      .rel a .sub { font-weight:400; color:var(--txt-3); font-size:var(--text-xs); margin-left:auto; }
+
+      /* 原文参照リンク */
+      .ref-links { max-width:900px; margin:16px auto 0; padding:20px 16px 4px; border-top:1px solid var(--border); }
+      .ref-links .row { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+      .ref-links .lab { font-size:12px; color:var(--txt-2); white-space:nowrap; font-weight:bold; }
+      .ref-links a { display:inline-block; color:var(--blue); text-decoration:none; font-size:13px; border:1px solid var(--border); border-radius:6px; padding:4px 12px; background:var(--white); }
+
+      @media (max-width:640px) {
+        body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+        :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+        .card { padding:14px; border-radius:8px; }
+        .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; }
+        .page-title-wrap { flex-direction:column; gap:12px; }
+        .cmp { grid-template-columns:1fr; }
+        .rel a .sub { display:none; }
+        table { font-size:11.5px; min-width:420px; }
+        th, td { padding:6px 8px; }
+      }
+      @media print {
+        @page { margin:10mm 9mm; size:A4; }
+        body { background:white; padding:0; font-size:11.5px; line-height:1.55; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        :root { --text-xs:9.5px; --text-sm:11px; --text-md:11.5px; --text-lg:13px; --text-xl:15px; --pad-card:10px; --gap-card:9px; }
+        .page { display:block; max-width:700px; margin:0 auto; }
+        .card { padding:10px 12px; margin-bottom:9px; break-inside:auto; }
+        .card-title, .sub-title { break-after:avoid; }
+        .lead-note, .box-gray, .box-blue, .box-outline, .rei, .disp .d,
+        .cmp .col, .num-list .ni, .gi-row, tr { break-inside:avoid; }
+        details.fold { break-inside:avoid; margin-bottom:9px; }
+        a { color:inherit; text-decoration:none; }
+      }
+    </style>
+  </head>
+  <body>
+    <script src="../assets/site-header.js" defer></script>
+    <script src="../assets/page-toc.js" defer></script>
+
+    <div class="page">
+
+      <!-- タイトル -->
+      <div class="page-title-wrap">
+        <div class="page-title-left">
+          <h1>服薬情報等提供料１・２・３</h1>
+          <p>調剤後の服用薬・服薬状況を医療機関等へ文書で提供したときの評価</p>
+        </div>
+        <div class="score-block">
+          <div class="score-label">区分により算定</div>
+          <div class="score-num">20〜50<span>点</span></div>
+        </div>
+      </div>
+
+      <!-- ページ内目次（assets/page-toc.js がカード見出しから自動生成。手入力しない） -->
+      <div class="page-toc-wrap"><div id="page-toc"></div></div>
+
+      <!-- 点数・区分 -->
+      <div class="card">
+        <div class="card-title">点数・区分<span class="qual">誰の求めで動いたか・どこへ出したかで分かれる</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th style="white-space:nowrap;">区分</th><th>きっかけ</th><th>提供先</th><th style="white-space:nowrap;">算定単位</th><th style="text-align:right; white-space:nowrap;">点数</th></tr></thead>
+            <tbody>
+              <tr><td style="white-space:nowrap; font-weight:900;">１</td><td>保険医療機関の求め</td><td>現に受診している保険医療機関</td><td style="white-space:nowrap;">月１回</td><td style="text-align:right; font-weight:900; white-space:nowrap;">30点</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">２のイ</td><td>薬剤師が必要性を認めた</td><td>現に受診している保険医療機関</td><td style="white-space:nowrap;">月１回</td><td style="text-align:right; font-weight:900; white-space:nowrap;">20点</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">２のロ</td><td>リフィル処方箋に基づく調剤後</td><td>リフィル処方箋の処方医</td><td style="white-space:nowrap;">月１回</td><td style="text-align:right; font-weight:900; white-space:nowrap;">20点</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">２のハ</td><td>薬剤師が必要性を認めた</td><td>介護支援専門員</td><td style="white-space:nowrap;">月１回</td><td style="text-align:right; font-weight:900; white-space:nowrap;">20点</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">３</td><td>保険医療機関の求め（入院を予定している患者）</td><td>入院を予定している保険医療機関</td><td style="white-space:nowrap;">３月に１回</td><td style="text-align:right; font-weight:900; white-space:nowrap;">50点</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 算定要件 -->
+      <div class="card">
+        <div class="card-title">算定要件</div>
+
+        <div class="sub-title">共通の前提</div>
+        <div class="list">
+          <div class="li"><b>同意</b>：患者又はその家族等の同意を得る</div>
+          <div class="li"><b>提供の方法</b>：文書等（トレーシングレポート）により提供する。様式は別紙様式１－１・１－２<b>又はこれに準ずる様式</b>とされており、必要な事項が記載されていれば決まった書式でなくてもよい</div>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;">
+          <a href="../files/別紙様式1-1.pdf" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:4px; font-size:var(--text-xs); font-weight:700; color:var(--blue); text-decoration:none; padding:4px 12px; border:1px solid var(--blue); border-radius:4px;">→ 別紙様式１－１を見る／印刷</a>
+          <a href="../files/別紙様式1-2.pdf" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:4px; font-size:var(--text-xs); font-weight:700; color:var(--blue); text-decoration:none; padding:4px 12px; border:1px solid var(--blue); border-radius:4px;">→ 別紙様式１－２を見る／印刷</a>
+        </div>
+
+        <div class="sub-title">情報提供の内容<span style="font-weight:500; font-size:var(--text-sm); color:var(--txt-3);">（保険医療機関へ。以下この記号で参照する）</span></div>
+        <div class="box-gray">
+          <div class="list" style="margin:0;">
+            <div class="li mk"><span class="m">ア</span><span>服用薬及び服薬状況</span></div>
+            <div class="li mk"><span class="m">イ</span><span>服薬指導の要点</span></div>
+            <div class="li mk"><span class="m">ウ</span><span>服薬期間中の患者の状態の変化等。自覚症状がある場合はその原因の可能性がある薬剤の推定</span></div>
+            <div class="li mk"><span class="m">エ</span><span>患者が容易に又は継続的に服用できるための技術工夫等の調剤情報</span></div>
+          </div>
+        </div>
+        <p style="font-size:var(--text-sm); line-height:1.8; margin-top:10px;">介護支援専門員へ提供するときは、「多職種連携推進のための在宅患者訪問薬剤管理指導ガイド」別添の報告書様式・薬学的評価シートを参考に、生活様式を踏まえた薬学的分析を行い、<span class="marker">介護支援専門員が理解しやすい表現で</span>書く。</p>
+        <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;">
+          <a href="../files/訪問薬剤管理指導の報告書.pdf" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:4px; font-size:var(--text-xs); font-weight:700; color:var(--blue); text-decoration:none; padding:4px 12px; border:1px solid var(--blue); border-radius:4px;">→ 報告書様式を見る／印刷</a>
+          <a href="../files/多職種連携のための薬学的評価シート.pdf" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:4px; font-size:var(--text-xs); font-weight:700; color:var(--blue); text-decoration:none; padding:4px 12px; border:1px solid var(--blue); border-radius:4px;">→ 薬学的評価シートを見る／印刷</a>
+        </div>
+
+        <div class="sub-title">服薬情報等提供料１<span style="font-weight:500; font-size:var(--text-sm); color:var(--txt-3);">（30点・月１回）</span></div>
+        <div class="list">
+          <div class="li"><b>きっかけ</b>：<span class="marker">保険医療機関から、上の「情報提供の内容」ア〜ウの求めがその理由とともにあった場合</span></div>
+          <div class="li"><b>提供先</b>：現に患者が受診している保険医療機関</div>
+          <div class="li"><b>次の場合が含まれる</b></div>
+        </div>
+        <div class="list" style="margin-left:18px;">
+          <div class="li mk"><span class="m">①</span><span>処方元が残薬の報告を求めており、残薬を確認し、残薬が生じている場合はその理由を薬学的に分析して情報提供した場合</span></div>
+          <div class="li mk"><span class="m">②</span><span>医師の指示による分割調剤・リフィル処方箋の２回目以降の調剤時に、服薬状況や服薬期間中の体調の変化等を確認して処方医へ情報提供した場合（残薬がある場合はその量と理由、副作用の有無、副作用がある場合は原因の可能性がある薬剤の推定を含める）</span></div>
+          <div class="li mk"><span class="m">③</span><span>保険医療機関の求めに応じ、入院前の患者の服用薬を確認して依頼元へ情報提供した場合</span></div>
+        </div>
+
+        <div class="sub-title">服薬情報等提供料２<span style="font-weight:500; font-size:var(--text-sm); color:var(--txt-3);">（20点・月１回）</span></div>
+        <div class="list">
+          <div class="li"><b>きっかけ</b>：<span class="marker">薬剤師が薬歴等に基づき、上の「情報提供の内容」ア〜エの情報提供の必要性を認めた場合</span>。薬学的な分析に基づく情報を文書により提供する</div>
+        </div>
+        <div class="table-wrap" style="margin-top:10px;">
+          <table>
+            <thead><tr><th style="white-space:nowrap;">区分</th><th>提供先</th><th>その区分になる場合</th></tr></thead>
+            <tbody>
+              <tr><td style="white-space:nowrap; font-weight:900;">イ</td><td style="white-space:nowrap;">保険医療機関</td><td>現に受診している保険医療機関へ提供する。残薬・副作用の発現状況等を確認して処方元へ提供した場合、受診中の歯科医療機関へ他の医療機関の処方に基づく服用薬・服薬状況を提供した場合が含まれる</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">ロ</td><td style="white-space:nowrap;">リフィル処方箋の処方医</td><td>リフィル処方箋に基づく調剤後、処方医へ服薬状況等を提供する</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">ハ</td><td style="white-space:nowrap;">介護支援専門員</td><td>介護支援専門員が関与する要介護又は要支援認定を受けた患者で、<span class="marker">居宅療養管理指導を同一月に算定していない</span>場合に、生活状況を踏まえた薬学的な分析に基づき特に必要な情報を提供する</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-gray" style="margin-top:12px;">
+          <span class="ttl">介護支援専門員から求められたときも２のハ</span>
+          介護支援専門員から情報提供の求めがあった場合でも、薬剤師が情報提供の必要性を認めた上で要件を満たせば算定できる。求めがあったことを理由に１にはならない。
+        </div>
+
+        <div class="sub-title">服薬情報等提供料３<span style="font-weight:500; font-size:var(--text-sm); color:var(--txt-3);">（50点・３月に１回）</span></div>
+        <div class="list">
+          <div class="li"><b>対象</b>：<span class="marker">入院を予定している患者</span>。保険医療機関の求めがあった場合に算定する。求めは入院予定先のほか、受診している他の保険医療機関からのものも含む</div>
+          <div class="li"><b>把握のしかた</b>：患者・家族等への聞き取り、又は他の保険薬局・保険医療機関への聞き取り等により服用薬を<span class="marker">一元的に把握</span>する。当薬局で調剤した薬、他の保険薬局で調剤された薬、保険医療機関で院内投薬された薬を含める</div>
+          <div class="li"><b>服用薬の整理</b>：必要に応じて、患者が薬局に持参した服用薬を整理する</div>
+          <div class="li"><b>提供</b>：受診中の保険医療機関・診療科等／服薬状況／併用薬剤等の情報を、入院を予定している保険医療機関へ提供する（別紙様式１－２又はこれに準ずるもの）</div>
+        </div>
+        <div class="box-gray" style="margin-top:12px;">
+          <span class="ttl">１の③と３の見分け方</span>
+          どちらも入院前の患者について、保険医療機関の求めに応じて情報提供する点は同じ。<span class="marker">３は「一元的な把握」までが要件</span>で、他の保険薬局で調剤された薬・保険医療機関で院内投薬された薬まで含めて確認し、必要に応じて持参薬の整理も行う。自局で把握している範囲の服用薬を確認して依頼元へ返すだけなら１にあたる。
+        </div>
+
+      </div>
+
+      <!-- 算定上の注意 -->
+      <div class="card">
+        <div class="card-title">算定上の注意</div>
+
+        <div class="sub-title">回数の数え方</div>
+        <div class="list">
+          <div class="li">同一月に２回以上情報提供を行っても、<span class="marker">算定は月１回のみ</span>（３は３月に１回）</div>
+          <div class="li">複数の保険医療機関の医師・歯科医師へ提供した場合は、<span class="marker">医師・歯科医師ごとに月１回</span>算定できる</div>
+          <div class="li">処方箋を発行していない保険医療機関の医師・歯科医師へ提供した場合は、必要に応じて処方元の医師・歯科医師へも同様の情報提供を行う。この場合も医師・歯科医師ごとに月１回まで</div>
+          <div class="li">介護支援専門員へ提供して服薬情報等提供料２を算定した場合に、処方元の医師・歯科医師へも同様の情報提供を行ったときは、服薬情報等提供料２を別に算定できる。ただし内容は相手方に応じたものにする</div>
+          <div class="li">医師の指示による分割調剤では、他の点数と違い<span class="marker">分割回数で除さない点数</span>を算定できる</div>
+        </div>
+
+        <div class="sub-title">算定するタイミング</div>
+        <div class="list">
+          <div class="li">算定するのは<span class="marker">情報提供した次の来局時</span>。通知の本文に「次回来局時に算定する」と書かれているわけではないが、情報提供の内容はその日の投薬時に確認した服薬状況や体調の変化を踏まえたものになるため、<b>投薬 → 情報提供 → 次回の受付時に算定</b>という流れになる</div>
+          <div class="li">入院前の患者について保険医療機関の求めに応じて情報提供する場合（服薬情報等提供料３と、服薬情報等提供料１の③）は、投薬が起点にならないので<b>情報提供 → 次回の受付時に算定</b>となる。算定するタイミングそのものは変わらない</div>
+          <div class="li">来局時に処方箋を持参していなくても算定はできる。ただし処方箋に基づく調剤分のレセプトがないため、実際には算定しにくい</div>
+        </div>
+
+        <div class="sub-title">請求のしかた</div>
+        <div class="list">
+          <div class="li"><b>服薬情報等提供料３は単独レセプト</b>：処方箋に基づく調剤分のレセプトとは別に、<span class="marker">３だけの明細書を単独で立てる</span>。この明細書には保険医療機関の所在地・名称・医療機関コード・保険医氏名を書かない</div>
+          <div class="li">単独レセプトになる点数（服薬情報等提供料３のほか、外来服薬支援料１・服用薬剤調整支援料２・退院時共同指導料）だけを算定した月は、件数は１件、受付回数は０件として数える</div>
+          <div class="li"><b>服薬情報等提供料１・２は単独レセプトにしない</b>。処方箋に基づく調剤分のレセプトに含めて請求する</div>
+        </div>
+        <p style="font-size:var(--text-xs); color:var(--txt-3); margin-top:8px; line-height:1.6;">
+          出典：「診療報酬請求書等の記載要領等について」等の一部改正について（Ⅳ 調剤報酬請求書及び調剤報酬明細書に関する事項）第２の１(3)・(14)(15)、第１の 12(2)。
+        </p>
+        <div class="box-blue" style="margin-top:12px;">
+          <span class="ttl">例）同じ病院の同じ診療科でも、医師が違えば別に算定できる</span>
+          A病院内科のC医師、同じくA病院内科のD医師、BクリニックのE医師にそれぞれ情報提供した場合、<b>3件とも算定できる</b>。数えるのは医師・歯科医師の単位であって、医療機関の単位でも診療科の単位でもない。
+        </div>
+        <div class="box-blue" style="margin-top:12px;">
+          <span class="ttl">例）処方箋を発行していない医療機関へ情報提供したとき</span>
+          循環器科の処方箋を応需した際に、整形外科から処方されたアセトアミノフェンの漫然投与が判明した。この患者は定期処方でワルファリンを服用している。<br />
+          整形外科の処方医へ減薬を提案し、あわせて循環器科の処方医へ、アセトアミノフェンが中止になった場合のPT-INRへの影響を考慮する必要がある旨を情報提供した。この場合、<b>それぞれの情報提供について服薬情報等提供料２を算定できる</b>。
+        </div>
+
+        <div class="sub-title">提供する内容・提供後の対応</div>
+        <div class="list">
+          <div class="li"><b>残薬の情報提供</b>：確認された残薬の状況を書くだけでは足りない。<span class="marker">その後の残薬が生じないために必要な内容を併せて記載し、提供後も服薬状況を継続して把握する</span></div>
+          <div class="rei">
+            <span class="ttl">情報提供書の文例（残薬）</span>
+            <p><span class="dot">・</span>○○は残薬があり、次回処方は不要となりますのでよろしくお願いいたします。</p>
+            <p><span class="dot">・</span>朝食を食べないライフスタイルのため、朝食後の薬の飲み忘れがあるようです。</p>
+            <p><span class="dot">・</span>飲み忘れ回避のため、○○を夕食後に変更してはいかがでしょうか。</p>
+          </div>
+          <div class="li" style="margin-top:8px;">残薬の状況（1行目）で終わらせず、<span class="marker">生じた理由（2行目）と、再発を防ぐための提案（3行目）まで書く</span>のが要件を満たす形になる</div>
+          <div class="li"><b>体調の変化・自覚症状</b>：薬剤の副作用によるものか否かを分析し、その結果を踏まえて服薬指導したうえで、分析と指導の要点を情報提供する。分析には「重篤副作用疾患別対応マニュアル」（厚生労働省）等を参考にすることが望ましい</div>
+        </div>
+
+        <div class="sub-title">算定できないケース</div>
+        <div class="list">
+          <div class="li"><b>薬剤の一般的な情報や、薬価改定・自己負担額の変化を案内しただけの文書</b>。情報提供の内容は上のア〜エに限られており、そのいずれにも当たらない</div>
+          <div class="li">「エ 患者が容易に又は継続的に服用できるための技術工夫等の調剤情報」については、<span class="marker">処方箋の記入上の疑義照会等では算定できない</span></div>
+          <div class="li">特別調剤基本料Ａの薬局が、不動産取引等の特別な関係を有する保険医療機関へ情報提供した場合</div>
+          <div class="li">特別調剤基本料Ｂを算定している保険薬局</div>
+        </div>
+
+        <div class="sub-title">併算定できない点数</div>
+        <div class="table-wrap">
+          <!-- 答えの列（右）がスマホで切れないよう、この表だけ min-width を解除する -->
+          <table style="min-width:0;">
+            <thead><tr><th style="width:55%;">ケース</th><th>算定できないもの</th></tr></thead>
+            <tbody>
+              <tr><td>在宅患者訪問薬剤管理指導料を算定した月<br />訪問薬剤管理医師同時指導料を算定している患者</td><td><b>服薬情報等提供料</b></td></tr>
+              <tr><td>居宅療養管理指導費・介護予防居宅療養管理指導費を同一月に算定している患者<br /><span style="font-size:var(--text-xs); color:var(--txt-3);">薬剤師が行う場合に限る。医療・介護の給付調整による</span></td><td><b>服薬情報等提供料</b></td></tr>
+              <tr><td>特定薬剤管理指導加算２・吸入薬指導加算・調剤後薬剤管理指導料の算定にあたって行う情報提供</td><td><b>服薬情報等提供料</b></td></tr>
+              <tr><td>在宅移行初期管理料で求められる文書での情報提供</td><td><b>服薬情報等提供料</b></td></tr>
+              <tr><td>服薬情報等提供料を算定している患者</td><td><b>かかりつけ薬剤師訪問加算</b><br /><span style="font-size:var(--text-xs); color:var(--txt-3);">制限は訪問加算の側にある</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 1と2の違い -->
+      <div class="card">
+        <div class="card-title">服薬情報等提供料１と２の違い<span class="qual">判断ポイント</span></div>
+        <p style="font-size:var(--text-sm); line-height:1.8; margin-bottom:12px;">
+          分かれ目は<span class="marker">情報提供のきっかけが「保険医療機関の求め」か「薬剤師が必要性を認めた」か</span>である。提供した内容や提供先で決まるのではない。
+        </p>
+        <div class="cmp">
+          <div class="col">
+            <div class="col-head"><span class="no">１</span><span class="nm">医療機関から求められて提供</span></div>
+            <div class="col-body">
+              <div class="def">保険医療機関から、理由とともに情報提供の求めがあった場合。残薬の報告依頼、分割調剤・リフィル処方箋の２回目以降の状況報告、入院前の服用薬の確認依頼などが典型。</div>
+              <div class="yk">押さえること</div>
+              <ol>
+                <li>求めがあった<b>理由</b></li>
+                <li>提供先は現に受診している保険医療機関</li>
+                <li>30点・月１回</li>
+              </ol>
+            </div>
+          </div>
+          <div class="col">
+            <div class="col-head"><span class="no">２</span><span class="nm">薬剤師の判断で提供</span></div>
+            <div class="col-body">
+              <div class="def">薬歴等に基づき、薬剤師が情報提供の必要性を認めた場合。残薬・副作用の発現状況を確認して処方元へ伝える、リフィル処方箋の調剤後に処方医へ伝える、介護支援専門員へ伝える。</div>
+              <div class="yk">押さえること</div>
+              <ol>
+                <li>必要性を認めた<b>薬学的な分析</b></li>
+                <li>提供先で イ・ロ・ハ に分かれる</li>
+                <li>20点・月１回</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div class="box-gray" style="margin-top:13px;">
+          <span class="ttl">誤解しやすい点</span>
+          リフィル処方箋の調剤後の情報提供は、処方医から報告を求められていれば１、薬剤師の判断で行えば２のロになる。<span class="marker">医療機関から求めがあったかどうかを先に確認する</span>。介護支援専門員からの求めに応じた場合は、求めがあっても１にはならず２のハで算定する。
+        </div>
+        <div class="box-blue" style="margin-top:11px;">
+          <span class="ttl">服薬情報等提供料３の位置づけ</span>
+          ３は入院前の患者に限った点数で、<span class="marker">複数の医療機関・薬局・院内投薬にまたがる服用薬を一元的に把握して入院先へ渡す</span>ことを評価している。単に処方内容を伝えるだけの情報提供とは求められる作業量が違う。
+        </div>
+      </div>
+
+      <!-- 薬歴記載事項 -->
+      <div class="card">
+        <div class="card-title">薬歴記載事項</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;">服薬情報等提供料に固有の薬歴記載事項は定められていないが、別添3 薬学管理料 <b>通則(5)</b>により、薬学管理料を算定する場合は<span class="marker">その根拠及び指導内容等を簡潔に記載する</span>。あわせて通則(5)は、処方医等へ情報提供した場合は<span class="marker">情報提供した文書等の写し又はその内容の要点等を薬歴に記載又は添付する</span>としている。個別の記載事項がないことは「記載不要」を意味しない。</p>
+
+        <div class="sub-title">この点数で残す記録</div>
+        <div class="box-gray">
+          <div class="list" style="margin:0;">
+            <div class="li mk"><span class="m">①</span><span>提供した情報の内容（提供した文書の写しの添付でも可）・提供先・提供日</span></div>
+            <div class="li mk"><span class="m">②</span><span>情報提供に至った根拠（医療機関からの求めの内容と理由／薬剤師が必要性を認めた分析）</span></div>
+            <div class="li mk"><span class="m">③</span><span>残薬に関する情報提供のときは、残薬の状況に加えて、その後残薬が生じないために必要な内容</span></div>
+            <div class="li mk"><span class="m">④</span><span>患者又はその家族等の同意を得たこと</span></div>
+          </div>
+        </div>
+
+        <div style="font-size:var(--text-xs); color:var(--txt-3); margin-top:10px;">
+          ※ 薬歴の残し方は <a href="../yakureki/加算別記載一覧.html#fukuyaku" style="color:var(--blue); font-weight:700;">薬歴マニュアル</a> を参照。全ての薬歴に共通して必要な記載事項（ア〜オ）と、個別指導で指摘されやすい書き方は <a href="../yakureki/基本記載ルール.html" style="color:var(--blue); font-weight:700;">基本記載ルール</a> を参照。
+        </div>
+      </div>
+
+      <!-- 摘要欄 -->
+      <div class="card">
+        <div class="card-title">レセプト摘要欄記載事項</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;">服薬情報等提供料３を算定したときは、情報提供先の保険医療機関の名称と診療科名を入力する。複数の保険医療機関へ提供した場合は各医療機関の名称を、同一医療機関の複数の診療科へ提供した場合は各診療科名を書く。</p>
+        <div class="disp">
+          <div class="d"><span class="pre">情報提供先の保険医療機関名（服薬情報等提供料３）；</span><span class="val">〇〇病院</span></div>
+          <div class="d"><span class="pre">情報提供先の診療科名（服薬情報等提供料３）；</span><span class="val">内科</span></div>
+        </div>
+        <div class="box-gray" style="margin-top:12px;">
+          <span class="ttl">調剤を行っていない月に算定したとき（３を除く）</span>
+          服薬情報等提供料１・２を、その月に調剤を行っていない患者について算定した場合は、<span class="marker">情報提供の対象となる調剤の年月日と投薬日数</span>を記載する。
+          <div class="disp" style="margin-top:8px;">
+            <div class="d"><span class="val">令和〇年〇月〇日調剤</span></div>
+            <div class="d"><span class="val">〇〇日分投薬</span></div>
+          </div>
+        </div>
+        <div style="font-size:var(--text-xs); color:var(--txt-3); margin-top:10px;">
+          ※ 上記のほかに服薬情報等提供料１・２の摘要欄記載事項は <a href="../改定資料/別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html" style="color:var(--blue); text-decoration:underline;">別表Ⅰ</a>に設定されていない。
+        </div>
+      </div>
+
+      <!-- 原文 -->
+      <details class="fold" data-toc-label="原文（告示・通知）">
+        <summary>原文を見る（告示・通知）</summary>
+        <div class="fold-body">
+          <div class="orig">
+            <div class="oh">告示（別表第三 区分１５の５）</div>
+            <div class="oi"><span class="lab">注１</span><span>１については、保険医療機関の求めがあった場合において、患者又はその家族等の同意を得た上で、薬剤の使用が適切に行われるよう、調剤後も当該患者の服用薬の情報等について把握し、保険医療機関に必要な情報を文書により提供等した場合に月１回に限り算定する。</span></div>
+            <div class="oi"><span class="lab">注２</span><span>２については、保険薬剤師がその必要性を認めた場合において、患者又はその家族等の同意を得た上で、薬剤の使用が適切に行われるよう、調剤後も当該患者の服用薬の情報等について把握し、保険医療機関又は介護支援専門員に必要な情報を文書により提供等した場合に月１回に限り算定する。</span></div>
+            <div class="oi"><span class="lab">注３</span><span>３については、入院前の患者に係る保険医療機関の求めがあった場合において、当該患者又はその家族等の同意を得た上で、当該患者の服用薬の情報等について一元的に把握し、必要に応じて当該患者が保険薬局に持参した服用薬の整理を行うとともに、保険医療機関に必要な情報を文書により提供等した場合に３月に１回に限り算定する。</span></div>
+            <div class="oi"><span class="lab">注４</span><span>区分番号００に掲げる特別調剤基本料Ａを算定する保険薬局において、調剤基本料の注６に規定する厚生労働大臣が定める保険医療機関への情報提供を行った場合は、算定できない。</span></div>
+            <div class="oi"><span class="lab">注５</span><span>区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</span></div>
+            <div class="oi"><span class="lab">注６</span><span>区分番号１５に掲げる在宅患者訪問薬剤管理指導料又は区分番号１５の９に掲げる訪問薬剤管理医師同時指導料を算定している患者については、算定しない。</span></div>
+
+            <div class="oh">通知（別添３ 服薬情報等提供料）</div>
+            <div class="oi"><span class="lab">(1)</span><span>服薬情報等提供料は、保険薬局において調剤後も患者の服用薬や服薬状況に関する情報等を把握し、保険医療機関に当該情報を提供することにより、医師の処方設計及び患者の服薬の継続又は中断の判断の参考とする等、保険医療機関と保険薬局の連携の下で医薬品の適正使用を推進することを目的とするものである。</span></div>
+            <div class="oi"><span class="lab">(2)</span><span>服薬情報等提供料１は、保険医療機関から（５）のアからウに掲げる情報提供の求めがあった場合にその理由とともに、患者の同意を得て、現に患者が受診している保険医療機関に対して、当該患者の服薬状況等について文書等により提供した場合に算定できる。これには、次に掲げる場合が含まれる。なお、残薬に係る情報提供に関しては、単に確認された残薬の状況を記載するだけではなく、その後の残薬が生じないために必要な内容を併せて記載すべきであり、情報提供後の当該患者の服薬状況を継続して把握しておくこと。</span></div>
+            <div class="oi sub"><span class="lab">ア</span><span>処方箋を発行した保険医療機関が患者の服用薬の残薬の報告を求めており、保険薬局において患者の服用薬の残薬を確認し、残薬が生じている場合はその理由を薬学的に分析した上で当該保険医療機関に対して情報提供を行った場合</span></div>
+            <div class="oi sub"><span class="lab">イ</span><span>調剤基本料の「注11」に掲げる医師の指示による分割調剤及びリフィル処方箋による調剤において、２回目以降の調剤時に患者の服薬状況、服薬期間中の体調の変化等について確認し、処方医に対して情報提供を行った場合この場合において、次に掲げる事項を含める・残薬が生じている場合はその量及び理由・副作用の有無・副作用が生じている場合はその原因の可能性がある薬剤の推定</span></div>
+            <div class="oi sub"><span class="lab">ウ</span><span>保険医療機関からの求めに応じ、入院前の患者の服用薬について確認し、依頼元の医療機関に情報提供した場合</span></div>
+            <div class="oi"><span class="lab">(3)</span><span>服薬情報等提供料２は、保険薬剤師が患者の服薬状況等について薬学的な分析に基づき患者の薬学的管理に必要な情報を文書により以下のとおり情報提供した場合に算定できる。なお、残薬に係る情報提供に関しては、単に確認された残薬の状況を記載するだけではなく、その後の残薬が生じないために必要な内容を併せて記載するとともに、情報提供後の当該患者の服薬状況を継続して把握しておくこと。</span></div>
+            <div class="oi sub"><span class="lab">ア</span><span>服薬情報等提供料「２のイ」保険薬局の保険薬剤師が薬剤服用歴等に基づき患者の服薬に関する（５）のアからエまでに掲げる情報提供の必要性を認めた場合であって、患者の同意を得て、現に患者が受診している保険医療機関に対して、当該患者の服薬状況等について文書等により提供した場合。これには、保険薬局において患者の服用薬の残薬、副作用の発現状況等を確認し、処方箋を発行した保険医療機関に対して情報提供を行った場合、現に歯科医療機関を受診している患者について、当該歯科医療機関に対して他の医療機関の処方に基づく当該患者の服用薬、服薬状況等の情報提供を行った場合が含まれる。</span></div>
+            <div class="oi sub"><span class="lab">イ</span><span>服薬情報等提供料「２のロ」保険薬局の保険薬剤師がリフィル処方箋に基づく調剤後、処方医に対して当該患者の服薬状況等について文書等により提供した場合。</span></div>
+            <div class="oi sub"><span class="lab">ウ</span><span>服薬情報等提供料「２のハ」保険薬局の保険薬剤師が薬剤服用歴等に基づき患者の服薬に関する（５）のアからエまでに掲げる情報提供の必要性を認め、介護支援専門員が関与する要介護又は要支援認定を受けた患者で、居宅療養管理指導を同一月に算定していない場合において、患者の同意を得て、当該患者の介護支援専門員に対して、患者の服薬状況等を踏まえた薬学的な分析に基づき、特に必要な情報を文書等により提供した場合。なお、この場合において、介護支援専門員からの情報提供の求めがあった場合においても保険薬局の保険薬剤師が情報提供の必要性を認めたうえで要件を満たせば算定することができる。</span></div>
+            <div class="oi"><span class="lab">(4)</span><span>服薬情報等提供料３は、以下の場合に算定できる。</span></div>
+            <div class="oi sub"><span class="lab">ア</span><span>入院を予定している患者について、保険医療機関の求めがあった場合において、患者が服用中の薬剤について、当該患者若しくはその家族等への聞き取り又は他の保険薬局若しくは保険医療機関への聞き取り等により、一元的に把握し、必要に応じて当該患者が保険薬局に持参した服用薬の整理を行うとともに、患者が入院を予定している保険医療機関に対して、当該患者の服薬状況等について文書等により提供した場合に算定できる。</span></div>
+            <div class="oi sub"><span class="lab">イ</span><span>保険医療機関の求めについては、患者が入院を予定している保険医療機関からの求めのほか、患者が受診している他の保険医療機関からの求めを含む。</span></div>
+            <div class="oi sub"><span class="lab">ウ</span><span>患者の服用薬等については、当該保険薬局で調剤した薬剤、他の保険薬局で調剤された薬剤、保険医療機関で院内投薬された薬剤等を一元的に把握すること。</span></div>
+            <div class="oi sub"><span class="lab">エ</span><span>算定に当たっては、別紙様式１－２又はこれに準ずるものを用いて、以下の内容について保険医療機関への情報提供を行うこと。・受診中の保険医療機関、診療科等に関する・患者の服薬状況・併用薬剤等の情報</span></div>
+            <div class="oi"><span class="lab">(5)</span><span>保険医療機関に対する情報提供の内容は次のとおりとする。</span></div>
+            <div class="oi sub"><span class="lab">ア</span><span>当該患者の服用薬及び服薬状況</span></div>
+            <div class="oi sub"><span class="lab">イ</span><span>当該患者に対する服薬指導の要点</span></div>
+            <div class="oi sub"><span class="lab">ウ</span><span>服薬期間中の患者の状態の変化等、自覚症状がある場合はその原因の可能性がある薬剤の推定</span></div>
+            <div class="oi sub"><span class="lab">エ</span><span>当該患者が容易に又は継続的に服用できるための技術工夫等の調剤情報</span></div>
+            <div class="oi"><span class="lab">(6)</span><span>服薬期間中の体調の変化等の患者の訴えや自覚症状がある場合には、患者の自覚症状が薬剤の副作用によるものか否かに関する分析結果を踏まえて服薬指導し、当該分析及び指導の要点を情報提供することとし、また、患者に対する服薬指導は、当該分析結果を踏まえたものとする。なお、患者の自覚症状の分析に当たっては、「重篤副作用疾患別対応マニュアル」（厚生労働省）等を参考とすることが望ましい。</span></div>
+            <div class="oi"><span class="lab">(7)</span><span>（５）のエについては、処方箋の記入上の疑義照会等では算定できない。</span></div>
+            <div class="oi"><span class="lab">(8)</span><span>保険医療機関への情報提供については、次の場合に算定する。</span></div>
+            <div class="oi sub"><span class="lab">ア</span><span>患者１人につき同一月に２回以上服薬情報等の提供を行った場合においても、月１回のみの算定とする。</span></div>
+            <div class="oi sub"><span class="lab">イ</span><span>複数の保険医療機関の医師又は歯科医師に対して服薬情報等の提供を行った場合は、当該保険医療機関の医師又は歯科医師ごとに月１回に限り算定できる。</span></div>
+            <div class="oi sub"><span class="lab">ウ</span><span>処方箋を発行していない保険医療機関の医師又は歯科医師に対して服薬情報等の提供を行った場合は、必要に応じて処方箋を発行した医療機関の医師又は歯科医師に対して同様の服薬情報等を提供すること。この場合においては、当該保険医療機関の医師又は歯科医師ごとに月１回に限り算定できる。</span></div>
+            <div class="oi"><span class="lab">(9)</span><span>介護支援専門員に対して服薬情報等を提供し服薬情報等提供料２を算定した場合であって、処方箋を発行した保険医療機関の医師又は歯科医師に対しても同様の服薬情報等の提供を行った場合においては、服薬情報等提供料２を別に算定できる。ただし、情報提供の内容については、（10）に示すように相手方に応じたものとすること。</span></div>
+            <div class="oi"><span class="lab">(10)</span><span>保険医療機関への情報提供に当たっては、別紙様式１－１、別紙様式１－２又はこれに準ずる様式の文書等に必要事項を記載し、患者が現に診療を受けている保険医療機関に交付すること。介護支援専門員への情報提供に当たっては、「多職種連携推進のための在宅患者訪問薬剤管理指導ガイド」（令和４年度・令和５年度厚生労働科学研究費補助金 長寿科学政策研究事業 薬学的視点を踏まえた自立支援・重度化防止推進のための研究）等を参照されたい。また、介護支援専門員への情報提供については、「多職種連携推進のための在宅患者訪問薬剤管理指導ガイド」別添の報告書様式及び薬学的評価シートを参考に当該患者の生活様式を踏まえた薬学的分析を行うとともに、情報提供の際には介護支援専門員が理解しやすい表現で実施すること。</span></div>
+            <div class="oi"><span class="lab">(11)</span><span>服薬情報等提供料は、特別調剤基本料Ａを算定している保険薬局において、当該保険薬局と不動産取引等その他特別な関係を有している保険医療機関へ情報提供を行った場合は算定できない。また、在宅患者訪問薬剤管理指導料を算定している患者に係る情報提供を行った場合は算定できない。</span></div>
+            <div class="oi"><span class="lab">(12)</span><span>服薬情報等提供料は、特別調剤基本料Ｂを算定している保険薬局は算定できない。</span></div>
+
+            <div class="oh">参考（別添３ 薬学管理料 通則・薬歴記載の根拠）</div>
+            <div class="oi"><span class="lab">(5)</span><span>薬剤服用歴等の記載に当たっては、患者から収集した情報、相談事項及び患者への指導内容を単に全て記載するのではなく、その要点を記載することで差し支えないが、指導後速やかに記載を完了させること。また、定型文を用いて画一的に記載するのではなく、指導等を行った保険薬剤師が必要事項を判断して記載すること。特に、薬学管理料やその加算を算定する場合には、その根拠及び指導内容等について簡潔に記載すること。なお、指導の内容等について処方医等へ情報提供した場合には、情報提供した文書等の写し又はその内容の要点等を薬剤服用歴等に記載又は添付すること。</span></div>
+
+            <div class="oh">参考（別添３ 調剤基本料・医師の指示による分割調剤）</div>
+            <div class="oi"><span class="lab">(4)イ</span><span>調剤基本料及びその加算、薬剤調製料及びその加算並びに薬学管理料については、当該分割調剤を行う保険薬局が当該処方箋において分割調剤を実施しない場合に算定する点数をそれぞれ合算し、分割回数で除した点数を当該調剤時に算定する。当該点数は、小数点以下第一位を四捨五入して計算する。ただし、服薬情報等提供料については、分割回数で除していない点数を算定できる。</span></div>
+
+            <div class="oh">参考（別添３ 在宅患者訪問薬剤管理指導料）</div>
+            <div class="oi"><span class="lab">(11)</span><span>在宅患者訪問薬剤管理指導料を算定した月においては、服薬管理指導料（服薬管理指導料「４のロ」及び「４のハ」は除く。）は、当該患者の薬学的管理指導計画に係る疾病と別の疾病又は負傷に係る臨時の処方箋によって調剤を行った場合を除いて算定できない。また、在宅患者訪問薬剤管理指導料を算定した月においては、外来服薬支援料１又は服薬情報等提供料は算定できない。</span></div>
+
+            <div class="oh">参考（別添３ 他の点数の算定時に行う情報提供）</div>
+            <div class="oi"><span class="lab">特薬２</span><span>当該加算の算定時に行う保険医療機関への文書による情報提供については、服薬情報等提供料は算定できない。（特定薬剤管理指導加算２）</span></div>
+            <div class="oi"><span class="lab">吸入</span><span>当該加算の算定時に行う保険医療機関への文書による情報提供については、服薬情報等提供料は算定できない。（吸入薬指導加算）</span></div>
+            <div class="oi"><span class="lab">調後</span><span>調剤後薬剤管理指導料の算定時に行う保険医療機関への文書による情報提供については、服薬情報等提供料は算定できない。</span></div>
+            <div class="oi"><span class="lab">在初</span><span>実施した薬学的管理及び指導の内容等について薬剤服用歴等に記載し、必要に応じて、薬学的管理指導計画書を作成・見直しすること。また、当該患者の在宅療養を担う保険医療機関の医師及び居宅介護支援事業者の介護支援専門員に対して必要な情報提供を文書で行うこと。なお、この場合の文書での情報提供については、服薬情報等提供料を別途算定できない。（在宅移行初期管理料）</span></div>
+            <div class="oi"><span class="lab">か訪</span><span>かかりつけ薬剤師訪問加算は、外来服薬支援料１、施設連携加算、在宅患者訪問薬剤管理指導料、服薬情報等提供料、居宅療養管理指導費又は介護予防居宅療養管理指導費を算定している患者については、算定できない。</span></div>
+
+            <div class="oh">参考（医療・介護の給付調整）</div>
+            <div class="oi"><span class="lab">介護</span><span>外来服薬支援料１・服薬情報等提供料は、同一月において居宅療養管理指導費又は介護予防居宅療養管理指導費（薬剤師が行う場合に限る。）が算定されている場合は算定できない。</span></div>
+            <div class="cite">出典：診療報酬の算定方法（別表第三 調剤報酬点数表）／「診療報酬の算定方法の一部改正に伴う実施上の留意事項について」（令和8年3月5日 保医発0305第4号）別添3。摘要欄は別表Ⅰ（調剤報酬明細書の摘要欄への記載事項）項番24・33による。同一月の算定不可は「医療保険と介護保険の給付調整に関する留意事項…」による。</div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 関連する社内Q&A（自動生成：node assets/build-gigi-list.js。マーカーの間は上書きされる） -->
+      <div class="card">
+        <!-- qa-list:c-fukuyaku -->
+        <div class="card-title">関連する社内Q&amp;A<span class="qual">全5件</span></div>
+        <div class="lead-note">結論のみ記載。解説は調剤報酬Q&amp;Aで確認する。</div>
+
+        <a class="gi-row" href="../ナレッジ/調剤報酬QA.html#q-fukuyaku-1">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">リフィル処方箋の２回目以降の調剤では、服薬情報等提供料２ロを算定できると思います。この場合、情報提供を行った当日（調剤時）に算定してよいのでしょうか？<br /><br />調剤当日にFAXで処方医へ情報提供を行い、そのまま算定しましたが、本来は次回の処方受付時に算定すべきだったのでしょうか？</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">今回の調剤時ではなく、次回の来局時（処方受付時）に算定する。<span class="sub">服薬情報等提供料は同一月に１回まで算定可能。</span></span></div>
+          <div class="gi-more">調剤報酬Q&amp;Aで解説を見る<span class="chev">›</span></div>
+        </a>
+
+        <a class="gi-row" href="../ナレッジ/調剤報酬QA.html#q-fukuyaku-2">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">処方箋に医師から吸入指導の指示があるが、吸入薬指導加算の算定要件を満たさないケース（咳喘息や臨時の風邪処方など）で、医師に情報提供をした場合は、服薬情報等提供料２の算定になりますか？</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">服薬情報等提供料２ではなく、服薬情報等提供料１を算定できる。<span class="sub">医師の指示に基づく情報提供であり、医療機関からの求めに該当するため。</span></span></div>
+          <div class="gi-more">調剤報酬Q&amp;Aで解説を見る<span class="chev">›</span></div>
+        </a>
+
+        <a class="gi-row" href="../ナレッジ/調剤報酬QA.html#q-fukuyaku-3">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">高額な医薬品を使用している患者で、薬価改定により薬価が大きく下がる予定です。次回の処方を改定後にすれば患者の自己負担額が軽減される見込みですが、この内容を文書にして処方医へ提供した場合、服薬情報等提供料２イを算定できますか？</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">薬価が下がるという案内だけでは、算定根拠として不十分。<span class="sub">患者個別の服薬状況に基づく情報提供ではなく、薬剤についての一般的な案内にあたるため。</span></span></div>
+          <div class="gi-more">調剤報酬Q&amp;Aで解説を見る<span class="chev">›</span></div>
+        </a>
+
+        <a class="gi-row" href="../ナレッジ/調剤報酬QA.html#q-fukuyaku-4">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">かかりつけ薬剤師は服薬情報等提供料を算定できない、と理解していました。令和8年度改定後も同じでしょうか？</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">服薬管理指導料１イ・２イを算定している患者でも、服薬情報等提供料１・２・３のいずれも算定できる。<span class="sub">令和6年度までのかかりつけ薬剤師指導料では算定できなかったが、令和8年度改定で服薬管理指導料に統合されたことに伴い算定可能になった。</span></span></div>
+          <div class="gi-more">調剤報酬Q&amp;Aで解説を見る<span class="chev">›</span></div>
+        </a>
+
+        <a class="gi-row" href="../ナレッジ/調剤報酬QA.html#q-fukuyaku-5">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">以前は、処方医へ情報提供したあと、次回の来局時にその後の経過を確認し、確認した内容を薬歴に記載する手順があったと認識しています。この手順は現在も必要でしょうか？</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">すべての情報提供に求められる算定要件ではない。ただし、残薬に係る情報提供では、情報提供後も服薬状況を継続して把握することが通知で求められている。<span class="sub">また、残薬以外の場合でも、継続的な薬学的管理の一環として、次回来局時以降に経過を確認することが望ましいと考えられる。</span></span></div>
+          <div class="gi-more">調剤報酬Q&amp;Aで解説を見る<span class="chev">›</span></div>
+        </a>
+        <!-- /qa-list -->
+      </div>
+
+      <!-- 過去の疑義解釈 -->
+      <div class="card">
+        <div class="card-title">関連する過去の疑義解釈</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;"><a href="../ツール/gigi-search.html?q=服薬情報等提供料" style="color:var(--blue); font-weight:700;">疑義解釈検索ツールで「服薬情報等提供料」の全件を見る</a></p>
+      </div>
+
+      <!-- 関連ページ -->
+      <div class="card">
+        <div class="card-title">関連ページ</div>
+        <div class="rel">
+          <a href="../ツール/服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html">他の薬学管理料との併算定可否一覧<span class="sub">早見表</span></a>
+          <a href="吸入薬指導加算2026.html">吸入薬指導加算<span class="sub">情報提供の重複に注意</span></a>
+          <a href="調剤時残薬調整加算.html">調剤時残薬調整加算<span class="sub">残薬の情報提供</span></a>
+          <a href="../yakureki/加算別記載一覧.html#fukuyaku">薬歴の記載事項（加算別記載一覧）<span class="sub">薬歴マニュアル</span></a>
+          <a href="../加算まとめ.html">加算・管理料まとめ<span class="sub">一覧</span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 原文参照リンク（.page の外） -->
+    <div class="ref-links">
+      <div class="row">
+        <span class="lab">原文参照：</span>
+        <a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-15-5">別添３ › 服薬情報等提供料</a>
+        <a href="../改定資料/別表第三_調剤報酬点数表2026.html#ku15-5">別表第三 › 服薬情報等提供料</a>
+        <a href="../改定資料/別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html">別表Ⅰ › 摘要欄記載事項</a>
+        <a href="../files/Ⅳ 調剤報酬請求書及び調剤報酬明細書に関する事項.pdf" target="_blank" rel="noopener">記載要領 › 調剤報酬明細書（PDF）</a>
+      </div>
+    </div>
+
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>

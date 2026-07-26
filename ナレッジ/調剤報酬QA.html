@@ -70,6 +70,11 @@
       details.qa-detail[open] > summary .chev { transform:rotate(90deg); }
       .qa-body { padding:4px 15px 15px 52px; font-size:var(--text-sm); }
       .qa-body > * + * { margin-top:10px; }
+      /* ①②③・ア〜エのように項目に番号・記号が付くとき。
+         折り返した2行目以降が番号の下に潜らないよう、番号と本文を分けてぶら下げる */
+      .mklist { display:flex; flex-direction:column; gap:4px; }
+      .mklist .mi { display:flex; gap:7px; line-height:1.7; }
+      .mklist .mi > .m { flex-shrink:0; font-weight:900; }
 
       .box-gray { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:12px 15px; }
       /* NG・対象外は中立グレー＋×印（アンバーは使わない） */
@@ -371,6 +376,87 @@
                 本Q&amp;Aは、吸入薬指導加算の対象とならない患者に対して吸入指導を実施した場合の取扱いを説明したものである。
               </div>
               <div class="qa-src"><span class="lab">出典・関連：</span><a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-15-5">別添３ 服薬情報等提供料</a><a href="../加算まとめ/吸入薬指導加算2026.html">吸入薬指導加算（解説）</a></div>
+            </div>
+          </details>
+        </div>
+
+        <div class="qa" id="q-fukuyaku-3" data-added="2026-07-26">
+          <div class="qa-head">
+            <span class="qbadge">Q</span>
+            <span>高額な医薬品を使用している患者で、薬価改定により薬価が大きく下がる予定です。次回の処方を改定後にすれば患者の自己負担額が軽減される見込みですが、この内容を文書にして処方医へ提供した場合、服薬情報等提供料２イを算定できますか？</span>
+          </div>
+          <div class="qa-concl">
+            <span class="alabel">A</span>
+            <span class="ctext"><span class="marker">薬価が下がるという案内だけでは、算定根拠として不十分。</span><span class="sub">患者個別の服薬状況に基づく情報提供ではなく、薬剤についての一般的な案内にあたるため。</span></span>
+          </div>
+          <details class="qa-detail">
+            <summary>解説<span class="chev">›</span></summary>
+            <div class="qa-body">
+              <div>服薬情報等提供料は、保険薬局が調剤後も患者の服用薬や服薬状況を把握し、その情報を保険医療機関へ提供することで、医師の処方設計や、患者が服薬を継続するか中断するかの判断の参考としてもらうための点数である（別添３(1)）。</div>
+              <div>保険医療機関へ提供する情報の内容は、通知(5)で次のアからエに限定されている。</div>
+              <div class="box-gray">
+                <div class="mklist">
+                  <div class="mi"><span class="m">ア</span><span>当該患者の服用薬及び服薬状況</span></div>
+                  <div class="mi"><span class="m">イ</span><span>当該患者に対する服薬指導の要点</span></div>
+                  <div class="mi"><span class="m">ウ</span><span>服薬期間中の患者の状態の変化等。自覚症状がある場合はその原因の可能性がある薬剤の推定</span></div>
+                  <div class="mi"><span class="m">エ</span><span>当該患者が容易に又は継続的に服用できるための技術工夫等の調剤情報</span></div>
+                </div>
+              </div>
+              <div>薬価改定により薬価が下がり、患者の自己負担額が軽減されることは、この薬剤を使用している患者すべてに共通する情報であり、アからエのいずれにも該当しない。したがって、この内容のみを記載した文書では、<strong>服薬情報等提供料の算定根拠として不十分</strong>である。</div>
+              <div class="box-gray">
+                <strong>算定を検討できる場合：</strong>自己負担額の変化によって患者が服薬を中断するおそれがある、実際に残薬が生じているなど、患者個別の服薬管理上の問題がある場合は別である。この場合、薬価が下がるという事実そのものではなく、<strong>その患者の服薬状況や服薬継続上の問題を処方医へ共有する情報提供</strong>として算定対象となる。
+              </div>
+              <div class="qa-src"><span class="lab">出典・関連：</span><a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-15-5">別添３ 服薬情報等提供料</a><a href="../加算まとめ/服薬情報等提供料.html">服薬情報等提供料（解説）</a></div>
+            </div>
+          </details>
+        </div>
+
+        <div class="qa" id="q-fukuyaku-4" data-added="2026-07-26">
+          <div class="qa-head">
+            <span class="qbadge">Q</span>
+            <span>かかりつけ薬剤師は服薬情報等提供料を算定できない、と理解していました。令和8年度改定後も同じでしょうか？</span>
+          </div>
+          <div class="qa-concl">
+            <span class="alabel">A</span>
+            <span class="ctext"><span class="marker">服薬管理指導料１イ・２イを算定している患者でも、服薬情報等提供料１・２・３のいずれも算定できる。</span><span class="sub">令和6年度までのかかりつけ薬剤師指導料では算定できなかったが、令和8年度改定で服薬管理指導料に統合されたことに伴い算定可能になった。</span></span>
+          </div>
+          <details class="qa-detail">
+            <summary>解説<span class="chev">›</span></summary>
+            <div class="qa-body">
+              <div>令和6年度までは、かかりつけ薬剤師指導料を算定する患者について、服薬情報等提供料を算定することはできなかった。「かかりつけ薬剤師は服薬情報等提供料を算定できない」という理解は、この時期のものである。</div>
+              <div>令和8年度改定でかかりつけ薬剤師指導料が<strong>服薬管理指導料１イ・２イ</strong>に統合され、これに伴って服薬情報等提供料１・２・３のいずれも算定できるようになった。</div>
+              <div class="box-gray">
+                <div class="mklist">
+                  <div class="mi"><span class="m">・</span><span>服薬情報等提供料１（月１回まで）… R6まで算定不可 → R8から算定可</span></div>
+                  <div class="mi"><span class="m">・</span><span>服薬情報等提供料２（月１回まで）… R6まで算定不可 → R8から算定可</span></div>
+                  <div class="mi"><span class="m">・</span><span>服薬情報等提供料３（３月に１回まで）… R6まで算定不可 → R8から算定可</span></div>
+                </div>
+              </div>
+              <div class="qa-src"><span class="lab">出典・関連：</span><a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-15-5">別添３ 服薬情報等提供料</a><a href="../加算まとめ/服薬管理指導料.html#kakaritsuke-santei">服薬管理指導料（かかりつけでも算定できるようになった点数）</a></div>
+            </div>
+          </details>
+        </div>
+
+        <div class="qa" id="q-fukuyaku-5" data-added="2026-07-26">
+          <div class="qa-head">
+            <span class="qbadge">Q</span>
+            <span>以前は、処方医へ情報提供したあと、次回の来局時にその後の経過を確認し、確認した内容を薬歴に記載する手順があったと認識しています。この手順は現在も必要でしょうか？</span>
+          </div>
+          <div class="qa-concl">
+            <span class="alabel">A</span>
+            <span class="ctext"><span class="marker">すべての情報提供に求められる算定要件ではない。ただし、残薬に係る情報提供では、情報提供後も服薬状況を継続して把握することが通知で求められている。</span><span class="sub">また、残薬以外の場合でも、継続的な薬学的管理の一環として、次回来局時以降に経過を確認することが望ましいと考えられる。</span></span>
+          </div>
+          <details class="qa-detail">
+            <summary>解説<span class="chev">›</span></summary>
+            <div class="qa-body">
+              <div>保険医療機関への情報提供すべてについて、「次回来局時に確認して薬歴に記載する」ことが算定要件として定められているわけではない。</div>
+              <div>一方、残薬に係る情報提供については、通知(2)(3)に次の定めがある。</div>
+              <div class="box-gray">
+                残薬に係る情報提供に関しては、単に確認された残薬の状況を記載するだけではなく、その後の残薬が生じないために必要な内容を併せて記載すべきであり、<strong>情報提供後の当該患者の服薬状況を継続して把握しておくこと</strong>。
+              </div>
+              <div>残薬以外の場合であっても、情報提供したあとの経過を確認し、次回以降の服薬支援につなげることは、継続的な薬学的管理を行ううえで必要な対応である。次回来局時に確認すべき事項がある場合は、薬歴に申し送りとして記載し、確認漏れを防ぐ。</div>
+              <div>なお、情報提供の内容を薬歴に残す方法については、薬学管理料 通則(5)が「情報提供した文書等の写し又はその内容の要点等を薬剤服用歴等に記載又は添付すること」としている。情報提供書の写しを薬歴に残していれば、要件は満たす。</div>
+              <div class="qa-src"><span class="lab">出典・関連：</span><a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-15-5">別添３ 服薬情報等提供料</a><a href="../yakureki/加算別記載一覧.html#fukuyaku">薬歴マニュアル（服薬情報等提供料）</a></div>
             </div>
           </details>
         </div>

@@ -133,6 +133,10 @@ window.__pageMeta = {
   "加算まとめ/かかりつけ薬剤師フォローアップ加算.html": {
     "lastUpdated": "2026-07-23"
   },
+  "加算まとめ/服薬情報等提供料.html": {
+    "lastUpdated": "2026-07-26",
+    "newUntil": "2026-08-02"
+  },
   "加算まとめ/外来服薬支援料1.html": {
     "lastUpdated": "2026-07-24",
     "newUntil": "2026-07-31"
