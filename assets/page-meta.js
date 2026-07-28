@@ -2,11 +2,11 @@ window.__pageMeta = {
   "tools.html": {
     "lastUpdated": "2026-07-18"
   },
-  "updates.html": {
-    "lastUpdated": "2026-07-26"
+  "index.html": {
+    "lastUpdated": "2026-07-28"
   },
-  "加算まとめ.html": {
-    "lastUpdated": "2026-07-26"
+  "updates.html": {
+    "lastUpdated": "2026-07-28"
   },
   "事務スタッフ向け.html": {
     "lastUpdated": "2026-07-20"
@@ -14,11 +14,11 @@ window.__pageMeta = {
   "404.html": {
     "lastUpdated": "2026-07-24"
   },
-  "index.html": {
-    "lastUpdated": "2026-07-26"
-  },
   "checklists.html": {
     "lastUpdated": "2026-06-13"
+  },
+  "加算まとめ.html": {
+    "lastUpdated": "2026-07-28"
   },
   "knowledge.html": {
     "lastUpdated": "2026-07-12"
@@ -80,7 +80,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-07-21"
   },
   "yakureki/加算別記載一覧.html": {
-    "lastUpdated": "2026-07-26"
+    "lastUpdated": "2026-07-28"
   },
   "加算まとめ/服用薬剤調整支援料２_2026改定.html": {
     "lastUpdated": "2026-07-23"
@@ -150,6 +150,7 @@ window.__pageMeta = {
     "newUntil": "2026-08-02"
   },
   "加算まとめ/特定薬剤管理指導加算3.html": {
+    "lastUpdated": "2026-07-28",
     "newUntil": "2026-08-04"
   },
   "改定資料/調剤報酬体系図_2026改定.html": {
