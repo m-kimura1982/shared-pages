@@ -149,6 +149,9 @@ window.__pageMeta = {
     "lastUpdated": "2026-07-26",
     "newUntil": "2026-08-02"
   },
+  "加算まとめ/特定薬剤管理指導加算3.html": {
+    "newUntil": "2026-08-04"
+  },
   "改定資料/調剤報酬体系図_2026改定.html": {
     "lastUpdated": "2026-03-28"
   },
