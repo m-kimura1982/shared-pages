@@ -259,7 +259,7 @@ window.__pageMeta = {
   },
   "ナレッジ/調剤報酬QA.html": {
     "lastUpdated": "2026-07-26",
-    "newUntil": "2026-07-30"
+    "newUntil": "2026-08-05"
   },
   "事務/事務スタッフ向け_2026改定サマリ.html": {
     "lastUpdated": "2026-07-12"
