@@ -93,6 +93,8 @@ for (const rel of targets()) {
       // ページ内で正式名を併記済みなら見逃す（初出だけを問題にするルール用）
       if (r.okIfPageHas && raw.includes(r.okIfPageHas)) continue;
       if (r.skipFiles && r.skipFiles.includes(rel)) continue;
+      // フォルダ単位で見逃す（そのカテゴリ全体では正しい用法になる語 用）
+      if (r.skipDirs && r.skipDirs.some(d => rel.startsWith(d))) continue;
       const m = text.match(new RegExp(r.pattern));
       if (!m) continue;
       hits.push({ line: i + 1, word: m[0].trim(), rule: r, text });

@@ -43,6 +43,8 @@
     'ナレッジ/変更調剤について.html': { category: 'knowledge', title: '変更調剤について' },
     'ナレッジ/基礎的医薬品追加リストR8_4.html': { category: 'knowledge', title: '基礎的医薬品 追加リスト（R8.4）' },
     'ナレッジ/調剤報酬QA.html': { category: 'knowledge', title: '調剤報酬 社内Q&A' },
+    'ナレッジ/高額療養費と薬局窓口対応.html': { category: 'knowledge', title: '高額療養費と薬局窓口対応' },
+    'ナレッジ/高額療養費制度の見直し2026.html': { category: 'knowledge', title: '高額療養費制度の見直し（2026年8月）' },
 
     // 薬歴（2026-07-20公開。サブディレクトリ yakureki/ 配下・パスキーで登録）
     'yakureki/薬歴の書き方_実例解説集.html': { category: 'yakureki', title: '薬歴の書き方｜実例解説集' },

@@ -12,6 +12,7 @@
     "       check = 文脈しだい。目視で判断する",
     "skipSpeech true = 患者・医師へのセリフ例では見逃す（敬体でよい場所のため）",
     "skipFiles  = このファイルでは見逃す（そこでは直さないと決めたもの）",
+    "skipDirs   = このフォルダ配下では見逃す（例: 薬効の説明が本業の yakureki/ での「効く」）",
     "okIfPageHas = ページ内にこの語があれば見逃す（初出だけを問題にするとき）"
   ],
   "rules": [
@@ -26,6 +27,7 @@
     { "id": "rese-tekiyo", "pattern": "レセ摘要欄", "suggest": "レセプト摘要欄／摘要欄", "why": "略しすぎ。初出は正式名", "level": "ng" },
     { "id": "doji-santei", "pattern": "同時算定不可", "suggest": "併算定不可／併算定できない", "why": "通知引用以外では使わない", "level": "ng" },
     { "id": "penalty", "pattern": "ペナルティ", "suggest": "減算", "why": "カタカナ語を持ち込まない", "level": "ng" },
+    { "id": "kiku", "pattern": "効(き方|く[^すな]|かない|かなく)", "suggest": "影響する／変わる／反映される", "why": "「効く」は薬効の意味でしか使わない", "level": "check", "skipSpeech": true, "skipDirs": ["yakureki/"] },
     { "id": "jobun", "pattern": "条文", "suggest": "通知本文／原文", "why": "調剤報酬は告示・通知であって条文ではない", "level": "ng" },
     { "id": "santei-case", "pattern": "算定(できる|可能な|対象となる)ケース", "suggest": "算定できる場合／算定対象となる場合", "why": "サイト全体で「場合」が優勢", "level": "ng" },
     { "id": "nozomashii", "pattern": "望ましいと考えられる", "suggest": "望ましい", "why": "ぼかしの二重がけ", "level": "ng" },

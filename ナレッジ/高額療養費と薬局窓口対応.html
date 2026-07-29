@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>高額療養費と薬局窓口対応｜実務ナレッジ集</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+      :root {
+        --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+        --pad-card:22px; --gap-card:16px;
+        --blue:#1e5fa8; --ink:#222222;
+        --bg:#f3f4f6; --white:#ffffff;
+        --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+        --border:#d1d5db; --border-dk:#9ca3af;
+        --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px;
+        --txt-2:#444444; --txt-3:#5e6470;
+        --fill-gray:#6b7280;   /* 帯・棒の「自分で払う／中立」部分 */
+      }
+      body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+      .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+      .page-title-left h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+      .page-title-left p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+
+      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); scroll-margin-top:76px; }
+      .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:16px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+      .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+      .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+
+      .sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin-bottom:10px; }
+      .sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+
+      .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+      .em-change { color:var(--blue); font-weight:900; }
+      .lead { background:var(--box-blue); border-radius:var(--radius-sm); padding:14px 18px; font-size:var(--text-md); line-height:1.9; }
+      .note { font-size:var(--text-sm); color:var(--txt-2); }
+      .box-gray { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); }
+      .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); }
+      .stack > * + * { margin-top:12px; }
+
+      .bullet { display:flex; gap:7px; line-height:1.8; }
+      .bullet > span:first-child { flex-shrink:0; color:#999; }
+      .blist { display:flex; flex-direction:column; gap:7px; font-size:var(--text-sm); }
+
+      /* ===== 帯グラフ（医療費の内訳） ===== */
+      .fee { margin-top:4px; }
+      .fee-scale { font-size:var(--text-xs); color:var(--txt-3); font-weight:700; text-align:center; border:var(--bw-h) solid var(--border-dk); border-bottom:none; padding:3px 0; letter-spacing:.04em; }
+      .bar-row { margin-top:14px; }
+      .bar-cap { font-size:var(--text-sm); font-weight:700; margin-bottom:5px; }
+      .bar-cap .w { font-weight:500; color:var(--txt-2); }
+      .bar { display:flex; height:38px; border-radius:var(--radius-sm); overflow:hidden; }
+      .seg { display:flex; align-items:center; justify-content:center; font-size:var(--text-xs); font-weight:700; min-width:0; overflow:hidden; white-space:nowrap; }
+      .seg-pay    { background:var(--fill-gray); color:#fff; }
+      .seg-limit  { background:var(--blue); color:#fff; }
+      .seg-refund { background:var(--box-blue); color:var(--blue); }
+      .seg-ins    { background:var(--box-gray); color:var(--txt-2); box-shadow:inset 0 0 0 var(--bw) var(--border); }
+      .bar-arrow { text-align:center; font-size:var(--text-sm); font-weight:700; color:var(--blue); margin:10px 0 2px; }
+      .legend { display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:14px; font-size:var(--text-sm); }
+      .legend div { display:flex; align-items:center; gap:7px; }
+      .legend i { width:15px; height:15px; border-radius:3px; flex-shrink:0; }
+      .legend .l-limit  { background:var(--blue); }
+      .legend .l-refund { background:var(--box-blue); box-shadow:inset 0 0 0 var(--bw) var(--border); }
+      .legend .l-ins    { background:var(--box-gray); box-shadow:inset 0 0 0 var(--bw) var(--border); }
+      .legend .l-pay    { background:var(--fill-gray); }
+      .calc { margin-top:14px; font-size:var(--text-sm); background:var(--box-blue); border-radius:var(--radius-sm); padding:13px 16px; }
+      .calc .f { font-weight:700; }
+      .tbl-wrap { overflow-x:auto; margin-top:14px; }
+      table { width:100%; min-width:380px; border-collapse:collapse; font-size:var(--text-sm); }
+      th { background:var(--box-gray); font-weight:900; padding:7px 11px; text-align:left; border-bottom:2px solid var(--border-dk); white-space:nowrap; }
+      td { padding:7px 11px; border-bottom:var(--bw-h) solid var(--border); white-space:nowrap; }
+      tr:last-child td { border-bottom:none; }
+      td.hi { color:var(--blue); font-weight:700; }
+
+      /* ===== 縦棒グラフ（多数回該当） ===== */
+      .chart-wrap { display:flex; gap:8px; }
+      .chart-axis { width:118px; flex-shrink:0; height:250px; position:relative; }
+      .axis-lb { position:absolute; right:0; transform:translateY(50%); text-align:right; font-size:var(--text-xs); line-height:1.45; }
+      .axis-lb b { font-size:var(--text-sm); font-weight:900; color:var(--blue); display:block; }
+      .axis-lb span { color:var(--txt-3); }
+      .chart { flex:1; height:250px; position:relative; display:flex; align-items:flex-end; gap:8px; border-bottom:var(--bw-h) solid var(--border-dk); }
+      .gline { position:absolute; left:0; right:0; border-top:2px dashed var(--blue); }
+      .gline.g2 { border-top-color:#123f73; }
+      .mcol { flex:1; height:100%; display:flex; flex-direction:column; justify-content:flex-end; }
+      /* overflow:hidden は付けない（回数ラベルが棒の上に出るため） */
+      .mb { position:relative; display:flex; flex-direction:column-reverse; width:66%; margin:0 auto; }
+      .mb .self   { background:#d7dade; }
+      .mb .exempt { background:var(--box-blue); box-shadow:inset 0 0 0 var(--bw) #a9c9e4; }
+      .mb .exempt.deep { background:#9dc2e6; }
+      .cnt { position:absolute; top:-19px; left:0; right:0; text-align:center; font-size:var(--text-xs); font-weight:900; color:var(--blue); }
+      .chart-labels { display:flex; gap:8px; margin-left:126px; margin-top:6px; }
+      .chart-labels span { flex:1; text-align:center; font-size:var(--text-xs); color:var(--txt-2); font-weight:700; }
+
+      /* ===== タイムライン（1列縦） ===== */
+      .tl { list-style:none; position:relative; padding-left:26px; }
+      .tl::before { content:""; position:absolute; left:5px; top:6px; bottom:6px; width:2px; background:var(--border); }
+      .tl li { position:relative; padding-bottom:20px; }
+      .tl li:last-child { padding-bottom:0; }
+      .tl li::before { content:""; position:absolute; left:-26px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--white); box-shadow:inset 0 0 0 3px var(--border-dk); }
+      .tl li.on::before { box-shadow:inset 0 0 0 3px var(--blue); }
+      .tl .y { font-size:var(--text-sm); font-weight:900; color:var(--txt-3); }
+      .tl li.on .y { color:var(--blue); }
+      .tl .t { font-weight:700; margin-top:1px; }
+      .tl .d { font-size:var(--text-sm); color:var(--txt-2); margin-top:3px; }
+
+      a { color:var(--blue); }
+
+      @media (max-width:640px) {
+        body { font-size:13px; padding:14px 12px 40px; }
+        :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+        .seg { font-size:10px; }
+        .seg .t { display:none; }
+        .bar { height:30px; }
+        .chart, .chart-axis { height:190px; }
+        .chart-axis { width:76px; }
+        .chart-labels { margin-left:84px; }
+        .chart, .chart-labels { gap:5px; }
+        .mb { width:86%; }
+        .cnt { top:-16px; }
+        .tl { padding-left:20px; }
+        .tl li::before { left:-20px; width:10px; height:10px; }
+        .tl::before { left:4px; }
+      }
+      @media print {
+        body { background:#fff; padding:0; font-size:11pt; }
+        .card { break-inside:avoid; border-color:#999; }
+        .seg, .mb .self, .mb .exempt, .legend i { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        .seg .t { display:flex; }
+      }
+    </style>
+  </head>
+  <body>
+    <script src="../assets/site-header.js" defer></script>
+
+    <div class="page">
+
+      <div class="page-title-left">
+        <h1>高額療養費と薬局窓口対応</h1>
+        <p>仕組み・合算のルール・窓口で聞かれたときの考え方</p>
+      </div>
+
+      <!-- まず押さえること -->
+      <div class="card">
+        <div class="card-title">まず押さえること</div>
+        <div class="lead">
+          高額療養費は<span class="marker">ひと月（暦月）の自己負担が上限額を超えた分を戻す制度</span>である。<br />
+          薬局の窓口で上限が適用されるのは<span class="em-change">その薬局で支払う分だけ</span>で、医療機関との合算は事後に保険者が計算する。
+        </div>
+        <p class="note" style="margin-top:12px;">
+          このページは制度そのものの説明。2026年8月からの見直し（上限額の引き上げ・年間上限の新設）は
+          <a href="高額療養費制度の見直し2026.html">高額療養費制度の見直し（2026年8月）</a>を参照。
+        </p>
+      </div>
+
+      <!-- 仕組み -->
+      <div class="card">
+        <div class="card-title">仕組み<span class="qual">医療費100万円・70歳未満・区分ウの場合</span></div>
+
+        <div class="fee">
+          <div class="fee-scale">医 療 費 １０ ０ 万 円</div>
+
+          <div class="bar-row">
+            <div class="bar-cap">限度額の情報がないとき<span class="w">　いったん3割を払う</span></div>
+            <div class="bar">
+              <div class="seg seg-pay" style="width:30%"><span class="t">窓口負担　30万円</span></div>
+              <div class="seg seg-ins" style="width:70%"><span class="t">70万円</span></div>
+            </div>
+          </div>
+
+          <div class="bar-arrow">↓　数か月後に高額療養費として 207,060円 が戻る</div>
+
+          <div class="bar-row">
+            <div class="bar-cap">最終的な負担の内訳</div>
+            <div class="bar">
+              <div class="seg seg-limit" style="width:9.294%"></div>
+              <div class="seg seg-refund" style="width:20.706%"><span class="t">あとで戻る 207,060円</span></div>
+              <div class="seg seg-ins" style="width:70%"><span class="t">保険給付　70万円</span></div>
+            </div>
+          </div>
+
+          <div class="bar-row">
+            <div class="bar-cap">限度額の情報があるとき<span class="w">　マイナ保険証／限度額適用認定証／資格確認書＋同意</span></div>
+            <div class="bar">
+              <div class="seg seg-limit" style="width:9.294%"></div>
+              <div class="seg seg-refund" style="width:20.706%"><span class="t">窓口負担なし</span></div>
+              <div class="seg seg-ins" style="width:70%"><span class="t">70万円</span></div>
+            </div>
+          </div>
+
+          <div class="legend">
+            <div><i class="l-limit"></i>自己負担限度額 92,940円</div>
+            <div><i class="l-refund"></i>あとで戻る／窓口負担なし 207,060円</div>
+            <div><i class="l-ins"></i>保険給付 70万円</div>
+            <div><i class="l-pay"></i>いったん払う3割 30万円</div>
+          </div>
+
+          <div class="calc">
+            <span class="f">自己負担限度額　85,800円＋（1,000,000円－286,000円）×1％＝<span class="em-change">92,940円</span></span><br />
+            <span class="note">区分ウ（標準報酬月額28〜50万円）の算定式。令和8年8月からの額。</span>
+          </div>
+        </div>
+
+        <div class="box-gray" style="margin-top:16px;">
+          限度額の情報が窓口で確認できれば、支払いはその場で限度額までにとどまる（現物給付）。確認できなければ、いったん負担割合どおり支払い、あとから保険者が戻す（償還払い）。
+        </div>
+
+        <div class="sub-title" style="margin-top:20px;">医療費が増えても、限度額はほとんど増えない</div>
+        <p class="note">上限を超えた部分は1％しか乗らないため、高額な薬剤を扱っても自己負担は頭打ちに近くなる。</p>
+        <div class="tbl-wrap">
+          <table>
+            <thead>
+              <tr><th>医療費</th><th>3割で計算した窓口負担</th><th>自己負担限度額</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>100万円</td><td>30万円</td><td class="hi">92,940円</td></tr>
+              <tr><td>200万円</td><td>60万円</td><td class="hi">102,940円</td></tr>
+              <tr><td>300万円</td><td>90万円</td><td class="hi">112,940円</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note" style="margin-top:10px;"><span class="marker">医療費が100万円増えても、自己負担限度額は1万円しか増えない。</span>70歳未満・区分ウの場合。</p>
+      </div>
+
+      <!-- 窓口で見る上限 -->
+      <div class="card">
+        <div class="card-title">窓口で見るのは1つだけ</div>
+        <div class="box-blue" style="margin-bottom:18px;">
+          窓口で判断するのは、<span class="marker">その患者がその薬局で払う額が上限に届くかどうかだけ。</span><br />
+          家族の分・他の医療機関の分・入院の分を足すのは保険者が事後に行うので、窓口では考えない。レセコンの入力が患者ごとである以上、そもそも窓口では計算できない。医療機関の窓口でも同じ。
+        </div>
+
+        <div class="sub-title">窓口で使う上限額</div>
+        <div class="tbl-wrap" style="margin-top:0;">
+          <table>
+            <thead><tr><th>患者</th><th>使う上限額</th></tr></thead>
+            <tbody>
+              <tr><td>70歳未満</td><td class="hi">区分ごとの上限額（ア〜オ）</td></tr>
+              <tr><td>70歳以上・現役並みⅠ〜Ⅲ</td><td class="hi">区分ごとの上限額（70歳未満と同額）</td></tr>
+              <tr><td>70歳以上・一般／低所得</td><td class="hi">外来特例（月22,000円など）</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note" style="margin-top:10px;">70歳以上のうち、一般・低所得の3区分だけは外来に限って低い上限（外来特例）がある。<span class="marker">現役並みの3区分にはそれがなく、外来も入院も同じ上限額を使う。</span>現役並みの患者でも、薬局の窓口で上限が適用されることに変わりはない。</p>
+
+        <div class="box-gray" style="margin-top:16px;">
+          世帯合算・入院との合算・21,000円の条件は、いずれも<span class="em-change">保険者が事後に計算するときのルール</span>で、窓口では使わない。<a href="#gassan">合算のルール</a>を参照。
+        </div>
+      </div>
+
+      <!-- 多数回該当 -->
+      <div class="card">
+        <div class="card-title">多数回該当<span class="qual">70歳未満・区分エの場合</span></div>
+        <p style="margin-bottom:16px;">
+          <span class="marker">直近12か月に3回該当した場合、4回目から上限額がさらに下がる。</span>治療が長く続く患者への配慮の仕組み。
+        </p>
+
+        <div class="chart-wrap">
+          <div class="chart-axis">
+            <div class="axis-lb" style="bottom:55.91%"><b>61,500円</b><span>上限額</span></div>
+            <div class="axis-lb" style="bottom:40.36%"><b>44,400円</b><span>多数回該当</span></div>
+          </div>
+          <div class="chart">
+            <div class="gline" style="bottom:55.91%"></div>
+            <div class="gline g2" style="bottom:40.36%"></div>
+            <div class="mcol"><div class="mb" style="height:81.82%"><div class="self" style="height:68.33%"></div><div class="exempt" style="height:31.67%"></div><span class="cnt">1回目</span></div></div>
+            <div class="mcol"><div class="mb" style="height:36.36%"><div class="self" style="height:100%"></div></div></div>
+            <div class="mcol"><div class="mb" style="height:72.73%"><div class="self" style="height:76.88%"></div><div class="exempt" style="height:23.12%"></div><span class="cnt">2回目</span></div></div>
+            <div class="mcol"><div class="mb" style="height:45.45%"><div class="self" style="height:100%"></div></div></div>
+            <div class="mcol"><div class="mb" style="height:77.27%"><div class="self" style="height:72.35%"></div><div class="exempt" style="height:27.65%"></div><span class="cnt">3回目</span></div></div>
+            <div class="mcol"><div class="mb" style="height:86.36%"><div class="self" style="height:46.74%"></div><div class="exempt deep" style="height:53.26%"></div><span class="cnt">4回目</span></div></div>
+            <div class="mcol"><div class="mb" style="height:63.64%"><div class="self" style="height:63.43%"></div><div class="exempt deep" style="height:36.57%"></div><span class="cnt">5回目</span></div></div>
+          </div>
+        </div>
+        <div class="chart-labels">
+          <span>1月</span><span>2月</span><span>3月</span><span>4月</span><span>5月</span><span>6月</span><span>7月</span>
+        </div>
+
+        <div class="legend">
+          <div><i class="l-ins" style="background:#d7dade;"></i>自己負担額</div>
+          <div><i class="l-refund"></i>高額療養費で戻る分</div>
+          <div><i class="l-refund" style="background:#9dc2e6;"></i>多数回該当で戻る分</div>
+        </div>
+
+        <div class="box-gray" style="margin-top:16px;">
+          <div class="sub-title">カウントが引き継がれるかは「保険者が変わったか」で決まる</div>
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>負担割合が変わっても、<span class="em-change">保険者が同じならカウントは引き継がれる</span>。</span></div>
+            <div class="bullet"><span>・</span><span>国保から社保へ、社保から国保へ、後期高齢者医療制度へ移ったときは<span class="em-change">リセットされる</span>。</span></div>
+            <div class="bullet"><span>・</span><span>転職・転居はきっかけにすぎない。同じ保険者のまま変わらないこともあるので、保険者で判断する。</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 合算のルール -->
+      <div class="card" id="gassan">
+        <div class="card-title">合算のルール<span class="qual">保険者が事後に計算する</span></div>
+        <div class="box-blue" style="margin-bottom:16px;">
+          複数の受診や家族の分の合算は、<span class="marker">保険者が事後に計算する。</span>薬局の窓口で合算はできない。<br />
+          そのうえで、患者から聞かれることがあるので、合算できるかどうかを決める条件は押さえておく。
+        </div>
+        <div class="blist stack">
+          <div>
+            <div class="sub-title">同じ月であること</div>
+            <div class="note">暦月（月初から月末まで）で数える。月をまたぐと合算できない。<span class="marker">処方箋の交付日ではなく、調剤した日の属する月で数える。</span>月末に処方箋を受け取って翌月に調剤すると、医療機関の分と別の月になる。</div>
+          </div>
+          <div>
+            <div class="sub-title">同じ保険者であること</div>
+            <div class="note">保険でいう「世帯」は住民票の世帯とは違う。同じ保険に入っていれば住所が別でも合算でき、共働きで別々の健康保険なら住所が同じでも合算できない。</div>
+          </div>
+          <div>
+            <div class="sub-title">70歳未満は1枚21,000円以上のみ</div>
+            <div class="note">レセプト1枚あたりの自己負担が21,000円以上でないと、他の分と合算できない。70歳以上にこの条件はない。</div>
+          </div>
+          <div>
+            <div class="sub-title">院外処方は処方元とひとまとめ</div>
+            <div class="note">院外処方の調剤分は、処方箋を出した医療機関の分と合わせて<span class="em-change">1つの「医療機関等」</span>として扱う。<span class="marker">調剤分だけで21,000円に届かなくても、処方元と合わせて超えれば合算の対象になる。</span></div>
+          </div>
+        </div>
+        <div class="box-gray" style="margin-top:16px;">
+          他の医療機関の受診状況や家族の分が分からないと判断できないため、<span class="em-change">薬局では判定しない。</span>患者から聞かれたときは、加入している保険者に確認してもらう。
+        </div>
+      </div>
+
+      <!-- 窓口 -->
+      <div class="card">
+        <div class="card-title">薬局窓口で押さえること</div>
+        <div class="stack">
+          <div>
+            <div class="sub-title">医療機関で上限まで払っていても、薬局では薬局分を受け取る</div>
+            <div class="note">薬局は医療機関でいくら払ったかを知らないため、窓口で合算できない。合算して上限を超えた分は、事後に保険者が計算して戻す。</div>
+          </div>
+          <div>
+            <div class="sub-title">その払い戻しは3か月ほど先になる</div>
+            <div class="note">合算して上限を超えた分が患者に戻るのは、調剤した月からおおむね3か月後。レセプトの提出と審査を経てから支給額が決まるため。<br />
+            自動で振り込まれるか申請が要るかは保険者によって違うので、<span class="marker">「保険者から案内がある」と伝えるにとどめる。</span></div>
+          </div>
+          <div>
+            <div class="sub-title">70歳以上の外来特例は認定証が要らない</div>
+            <div class="note">高齢受給者証で区分が分かるため、限度額適用認定証がなくても適用される。金額は2026年8月に引き上げられる。</div>
+          </div>
+          <div>
+            <div class="sub-title">75歳になる月は限度額が半分</div>
+            <div class="note">75歳到達月は、その月に受けた療養の算定基準額が通常の半分になる。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 変遷 -->
+      <div class="card">
+        <div class="card-title">窓口で限度額までにとどまるようになるまで</div>
+        <ol class="tl">
+          <li>
+            <div class="y">1973年</div>
+            <div class="t">高額療養費制度が始まる</div>
+            <div class="d">上限を超えた分を戻す仕組み。ただし窓口ではいったん負担割合どおり全額を支払い、あとから申請して払い戻す「償還払い」だった。高額な医療費をいったん用意しなければならない点が課題として残った。</div>
+          </li>
+          <li>
+            <div class="y">2007年</div>
+            <div class="t">入院に「現物給付」が入る<span class="note">（70歳未満）</span></div>
+            <div class="d">事前に申請して限度額適用認定証の交付を受け、窓口で提示すれば、支払いが限度額までにとどまるようになった。</div>
+          </li>
+          <li class="on">
+            <div class="y">2012年</div>
+            <div class="t">外来にも広がる<span class="note">（70歳未満）</span></div>
+            <div class="d"><span class="marker">薬局の窓口でも限度額適用認定証が使えるようになった。</span>高額な薬剤を扱う場面で、患者が限度額を超える薬代を立て替えずに済む。</div>
+          </li>
+          <li class="on">
+            <div class="y">2021年</div>
+            <div class="t">オンライン資格確認が始まる</div>
+            <div class="d">マイナ保険証を使えば、事前申請も認定証の提示もなく限度額が適用される。</div>
+          </li>
+          <li class="on">
+            <div class="y">2024年</div>
+            <div class="t">健康保険証（紙）の新規発行が終わる</div>
+            <div class="d">経過措置も2025年12月1日で切れた。現在窓口に出るのはマイナ保険証か資格確認書。<span class="em-change">資格確認書でも、患者の同意があればオンライン資格確認で限度額情報を取得できる。</span></div>
+          </li>
+          <li class="on">
+            <div class="y">2026年8月</div>
+            <div class="t">限度額そのものが引き上げられる</div>
+            <div class="d">あわせて年単位の上限（年間上限）が新設される。詳細は<a href="高額療養費制度の見直し2026.html">高額療養費制度の見直し（2026年8月）</a>。</div>
+          </li>
+        </ol>
+      </div>
+
+      <!-- 出典 -->
+      <div class="card">
+        <div class="card-title">出典</div>
+        <div class="blist">
+          <div class="bullet"><span>・</span><span>厚生労働省「高額療養費制度を利用される皆さまへ」（合算のルール・多数回該当）</span></div>
+          <div class="bullet"><span>・</span><span>厚生労働省「高額療養費制度の見直しについて」「高額療養費の年間上限の新設」（令和8年8月からの額）</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>
