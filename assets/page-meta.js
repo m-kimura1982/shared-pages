@@ -2,10 +2,10 @@ window.__pageMeta = {
   "tools.html": {
     "lastUpdated": "2026-07-18"
   },
-  "index.html": {
+  "updates.html": {
     "lastUpdated": "2026-07-30"
   },
-  "updates.html": {
+  "index.html": {
     "lastUpdated": "2026-07-30"
   },
   "404.html": {
