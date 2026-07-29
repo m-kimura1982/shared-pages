@@ -3,16 +3,16 @@ window.__pageMeta = {
     "lastUpdated": "2026-07-18"
   },
   "index.html": {
-    "lastUpdated": "2026-07-29"
+    "lastUpdated": "2026-07-30"
   },
-  "事務スタッフ向け.html": {
-    "lastUpdated": "2026-07-20"
+  "updates.html": {
+    "lastUpdated": "2026-07-30"
   },
   "404.html": {
     "lastUpdated": "2026-07-24"
   },
-  "updates.html": {
-    "lastUpdated": "2026-07-29"
+  "事務スタッフ向け.html": {
+    "lastUpdated": "2026-07-30"
   },
   "checklists.html": {
     "lastUpdated": "2026-06-13"
@@ -20,11 +20,11 @@ window.__pageMeta = {
   "加算まとめ.html": {
     "lastUpdated": "2026-07-28"
   },
-  "knowledge.html": {
-    "lastUpdated": "2026-07-12"
-  },
   "kaitei2026.html": {
     "lastUpdated": "2026-07-29"
+  },
+  "knowledge.html": {
+    "lastUpdated": "2026-07-30"
   },
   "yakureki/薬歴の書き方_実例解説集.html": {
     "lastUpdated": "2026-07-13",
@@ -261,10 +261,12 @@ window.__pageMeta = {
     "lastUpdated": "2026-07-29",
     "newUntil": "2026-08-05"
   },
-  "ナレッジ/高額療養費と薬局窓口対応.html": {
+  "ナレッジ/高額療養費制度の見直し2026.html": {
+    "lastUpdated": "2026-07-30",
     "newUntil": "2026-08-06"
   },
-  "ナレッジ/高額療養費制度の見直し2026.html": {
+  "ナレッジ/高額療養費と薬局窓口対応.html": {
+    "lastUpdated": "2026-07-30",
     "newUntil": "2026-08-06"
   },
   "事務/事務スタッフ向け_2026調剤報酬改定ポイント整理.html": {
