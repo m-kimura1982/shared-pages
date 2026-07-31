@@ -2,11 +2,11 @@ window.__pageMeta = {
   "tools.html": {
     "lastUpdated": "2026-07-18"
   },
-  "updates.html": {
-    "lastUpdated": "2026-07-30"
-  },
   "index.html": {
-    "lastUpdated": "2026-07-30"
+    "lastUpdated": "2026-08-01"
+  },
+  "updates.html": {
+    "lastUpdated": "2026-08-01"
   },
   "404.html": {
     "lastUpdated": "2026-07-24"
@@ -21,7 +21,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-07-28"
   },
   "kaitei2026.html": {
-    "lastUpdated": "2026-07-29"
+    "lastUpdated": "2026-08-01"
   },
   "knowledge.html": {
     "lastUpdated": "2026-07-30"
@@ -169,7 +169,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-04-10"
   },
   "改定資料/調剤ベースアップ評価料.html": {
-    "lastUpdated": "2026-07-23"
+    "lastUpdated": "2026-08-01"
   },
   "改定資料/服用薬剤調整支援料２_資格取得ステップ.html": {
     "lastUpdated": "2026-03-23"
@@ -186,10 +186,6 @@ window.__pageMeta = {
   "改定資料/特掲診療料_施設基準届出_調剤関係2026.html": {
     "lastUpdated": "2026-05-31"
   },
-  "改定資料/選定療養_概要2026.html": {
-    "lastUpdated": "2026-07-23",
-    "newUntil": "2026-08-08"
-  },
   "改定資料/別表Ⅴ_調剤行為名称等の略号一覧2026改定.html": {
     "lastUpdated": "2026-06-20"
   },
@@ -202,15 +198,19 @@ window.__pageMeta = {
   "改定資料/栄養保持を目的とした医薬品の保険給付の適正化.html": {
     "lastUpdated": "2026-07-12"
   },
-  "改定資料/疑義解釈まとめ2026.html": {
-    "lastUpdated": "2026-07-18",
-    "newUntil": "2026-08-08"
-  },
   "改定資料/在宅薬学総合体制加算2イ_特例摘要欄ガイド.html": {
     "lastUpdated": "2026-07-23"
   },
   "改定資料/調剤報酬改定2026_ダイジェスト.html": {
     "lastUpdated": "2026-07-12"
+  },
+  "改定資料/疑義解釈まとめ2026.html": {
+    "lastUpdated": "2026-08-01",
+    "newUntil": "2026-08-08"
+  },
+  "改定資料/選定療養_概要2026.html": {
+    "lastUpdated": "2026-08-01",
+    "newUntil": "2026-08-08"
   },
   "チェックリスト/選定療養_実務チェックリスト.html": {
     "lastUpdated": "2026-06-06",
@@ -262,11 +262,11 @@ window.__pageMeta = {
     "lastUpdated": "2026-07-29",
     "newUntil": "2026-08-05"
   },
-  "ナレッジ/高額療養費と薬局窓口対応.html": {
+  "ナレッジ/高額療養費制度の見直し2026.html": {
     "lastUpdated": "2026-07-30",
     "newUntil": "2026-08-06"
   },
-  "ナレッジ/高額療養費制度の見直し2026.html": {
+  "ナレッジ/高額療養費と薬局窓口対応.html": {
     "lastUpdated": "2026-07-30",
     "newUntil": "2026-08-06"
   },
