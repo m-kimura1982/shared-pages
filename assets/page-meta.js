@@ -1,11 +1,11 @@
 window.__pageMeta = {
-  "tools.html": {
-    "lastUpdated": "2026-07-18"
+  "updates.html": {
+    "lastUpdated": "2026-08-01"
   },
   "index.html": {
     "lastUpdated": "2026-08-01"
   },
-  "updates.html": {
+  "tools.html": {
     "lastUpdated": "2026-08-01"
   },
   "404.html": {
@@ -249,7 +249,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-07-12"
   },
   "ツール/gigi-search.html": {
-    "lastUpdated": "2026-07-24",
+    "lastUpdated": "2026-08-01",
     "newUntil": "2026-07-25"
   },
   "ナレッジ/変更調剤について.html": {
