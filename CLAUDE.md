@@ -292,9 +292,13 @@ git config --global user.email "m-kimura1982@users.noreply.github.com"
 git config --global --add safe.directory 'D:/☆shared-pages'
 ```
 
+**このリポジトリは USB メモリ上にある（このPCでは D: ドライブ）。** USB ごと別PCへ持っていけば private/ も一緒に移動するので、コピーは要らない。ただし**別PCではドライブレターが変わることがある**（E: など）。その場合は上の safe.directory をそのレターで設定し直す。`.claude/launch.json` は相対パスにしてあるのでレターが変わっても動く。
+
+**private/ は git に入らないので、USB が壊れると失われる。** 公開ページは GitHub から戻せるが private/ は戻せないので、時々どこかにコピーを取っておく。
+
 ## ローカルプレビュー
 ```bash
-npx serve "D:/☆shared-pages" -p 3000
+npx serve . -p 3000
 # → http://localhost:3000
 ```
 
