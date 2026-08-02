@@ -333,16 +333,16 @@
 
   // ロゴ画像のパス（サブディレクトリでもサイトルート起点で解決）
   function getLogoPath() {
-    return u('会社ロゴ.png');
+    return u('assets/icons/会社ロゴ.png');
   }
 
   // ── favicon 自動注入（既に <link rel="icon"> がある場合はスキップ） ──
   if (!document.querySelector('link[rel="icon"]')) {
     const favicons = [
-      { rel: 'icon', href: u('favicon.ico'), sizes: 'any' },
-      { rel: 'icon', type: 'image/svg+xml', href: u('favicon.svg') },
-      { rel: 'icon', type: 'image/png', sizes: '32x32', href: u('favicon.png') },
-      { rel: 'apple-touch-icon', href: u('apple-touch-icon.png') },
+      { rel: 'icon', href: u('assets/icons/favicon.ico'), sizes: 'any' },
+      { rel: 'icon', type: 'image/svg+xml', href: u('assets/icons/favicon.svg') },
+      { rel: 'icon', type: 'image/png', sizes: '32x32', href: u('assets/icons/favicon.png') },
+      { rel: 'apple-touch-icon', href: u('assets/icons/apple-touch-icon.png') },
     ];
     favicons.forEach((f) => {
       const link = document.createElement('link');
