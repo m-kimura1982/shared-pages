@@ -5,6 +5,9 @@
 /.claude/*
 !/.claude/commands/
 
+# npm のライブラリ（package.json があれば npm install で復元できるので追跡しない）
+/node_modules/
+
 # スクラッチ画像・元資料（公開しない）
 /images（レセコン画像など）/
 *.docx
