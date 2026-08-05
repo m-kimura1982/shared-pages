@@ -165,6 +165,11 @@
 
   // ── スタイル（スコープ：.sn- prefix で既存CSSと衝突回避） ──
   const css = `
+    /* 固定ヘッダーの高さ。sticky な目次や scroll-margin-top を持つページが
+       calc(var(--sn-header-h) + 余白) で参照する。
+       このスクリプトが読めなかったときは各ページの fallback 値（0px）に戻る。 */
+    :root { --sn-header-h: 66px; }
+    @media (max-width: 700px) { :root { --sn-header-h: 57px; } }
     .sn-wrap { display: contents; font-family: "Noto Sans JP", sans-serif; }
     .sn-header {
       background: #ffffff;

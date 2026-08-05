@@ -30,7 +30,7 @@ knowledge.html        ← ハブ：実務ナレッジ集（改定非依存の実
   └ 事務/              … 改定ポイント整理・改定サマリ2（category: jimu）
 yakureki/             ← 薬歴（フォルダ内に入口 index.html がある唯一のカテゴリ）
   ├ index.html        … 薬歴マニュアルの入口
-  ├ 基本記載ルール〜ハイリスク7薬効群・文例集の17ページ（独自ヘッダー＋back-link運用）
+  ├ 基本記載ルール〜ハイリスク7薬効群・文例集の17ページ（2026-08-06 に共通ヘッダーへ統一）
   └ 薬歴の書き方_実例解説集.html … 編集ツール（draft/薬歴記載例_見直し.html）の保管庫JSONを取り込んで実例を追加
 404.html               ← 旧URLの救済。GitHub Pages は存在しないURLにこれを返す（後述）
 
@@ -46,7 +46,8 @@ files/                ← 厚労省通知などの原本PDF
 - 戻る導線は共通ヘッダー（site-header.js）が自動で担う。手動の戻るボタンは置かない。
 - index.html のコンテンツカード件数（「N資料収録」）は data-count-from による自動カウント。手動メンテ不要。
 - **新規ページは必ず site-header.js の PAGES に登録する**（category＋title）。未登録だとサイト内検索・パンくずに出ない（2026-07-05の構成点検で10ページの漏れが見つかった）。カテゴリは `kaitei / kasan / checklist / tools / knowledge / yakureki / jimu`。**キーはサイトルートからの相対パス**（例 `'加算まとめ/調剤時残薬調整加算.html'`）。フォルダ内のページからは `../assets/site-header.js` で読み込む。
-- **新規ページを公開フォルダに追加したら `assets/build-page-meta.js` の PUBLIC_DIRS を確認する**（新しいフォルダを作った場合のみ追記。既存フォルダなら不要）。
+- **新規ページを公開フォルダに追加したら `assets/build-page-meta.js` の PUBLIC_DIRS を確認する**（新しいフォルダを作った場合のみ追記。既存フォルダなら不要）。`assets/build-search-index.js` の PUBLIC_DIRS も同じ内容なので揃える。
+- **サイト内検索と `資料一覧.html` は、ページ名だけでなく各ページの見出しも探す。** 索引は `node assets/build-search-index.js` が `h1 / .card-title / .sub-title / .section-title / .tool-name / .item-heading` を集めて `assets/search-index.js` を作る（/公開 の中で走る）。見出しに出てこない言葉でも引っかけたいときは、そのページの `<head>` に `<meta name="search-keywords" content="湿布,貼付剤,前後7日" />` を足す。入口ページ（ハブ）はスクリプト側の SKIP で索引から外している（中身が他ページ名の並びなので、入れるとどの語でも上位に出て邪魔になる）。
 - **draft/ のページはルート相対でリンクを書く慣習**（昇格後にルートへ置く前提）。フォルダへ昇格させるときは相対パスの調整が必要。
 - `tools-internal/deploy.js` は新規HTMLをルート直下にコピーする作りのまま。フォルダ構成にした今は、コピー後に該当フォルダへ移動してリンクを直す必要がある（または手動で配置する）。公開は原則 `/公開` を使うので出番はほぼない。
 - **アイコン・ロゴは `assets/icons/` に置く。ルート直下には増やさない。** 参照は site-header.js が自動注入するので、新規ページ側で書く必要はない。
@@ -325,7 +326,16 @@ npx serve . -p 3000
 
 **公開方針（2026-07-05決定・07-20実施）：** 別サイトに分けず、同一サイトの薬歴カテゴリとして公開。理由：①サイト全体が noindex の社内専用なので分離する必要がない ②相互リンク（算定の正本＝加算まとめ／薬歴の正本＝薬歴マニュアル）を壊さない ③更新フロー・検索・page-meta の二重管理を避ける。改定ページ（kaitei2026）からは導線を作らない。
 
-**薬歴ページは独自ヘッダー（back-link）のまま公開**（共通ヘッダーは sticky でハイリスク各ページの固定目次と干渉リスクがあるため見送り。載せ替えはページ種別ごとに今後判断）。共通ヘッダーがなくても、検索・パンくず・ナビ「薬歴」から yakureki/ 配下へは到達できる。
+**薬歴ページも共通ヘッダーに統一済み（2026-08-06）。** 非公開作業時の名残だった独自ヘッダー（back-link）は18ページすべてで撤去した。他のページと同じく `<body>` 直後の `<script src="../assets/site-header.js" defer></script>` 1行だけでよい。**手動の戻るボタンは置かない。**
+
+見送り理由だった「sticky ヘッダーと固定目次の干渉」は、**ヘッダー高さを CSS 変数にして解決した**。site-header.js が `--sn-header-h`（PC 66px／700px以下 57px）を `:root` に定義するので、固定目次やアンカーを持つページはこれを足す。
+
+```css
+.sticky-toc { top: calc(var(--sn-header-h, 0px) + 20px); max-height: calc(100vh - var(--sn-header-h, 0px) - 40px); }
+[id] { scroll-margin-top: calc(var(--sn-header-h, 0px) + 16px); }   /* yakureki.css に定義済み */
+```
+
+**fallback の `0px` は必ず書く**（site-header.js が読めなかったときに従来のレイアウトへ戻すため）。sticky な要素やアンカーを持つ新規ページを作るときも同じ書き方にする。
 
 **draft/yakureki/ に残っている非公開WIP（トップ・yakureki入口から導線を作らない）：**
 `循環器_高血圧.html`（投薬時知識シリーズ・公開判断待ち）／`声掛け_降圧剤.html`（解体して素材化予定）／`薬歴記載ルール_実務チェックリスト.html`（未完成・リンク全削除済み）／`_stub_template.html`／`_設計メモ_投薬時知識シリーズ.md`。これらは昇格済みページを `../../yakureki/…` で参照する。

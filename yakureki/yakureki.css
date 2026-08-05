@@ -49,27 +49,14 @@ body {
   letter-spacing: 0.04em;
 }
 
-/* ── ヘッダー ── */
-header {
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
-  padding: 14px 24px;
-}
-.header-inner {
-  max-width: 1000px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between; gap: 16px;
-}
-.back-link {
-  color: var(--blue);
-  text-decoration: none;
-  font-size: 13px;
-  border: 1px solid var(--blue);
-  border-radius: 6px;
-  padding: 4px 14px;
-  background: var(--white);
-}
-.back-link:hover { background: var(--blue-light); }
-.site-title { font-size: 14px; color: var(--sub); font-weight: 500; }
+/* ── ヘッダー ──
+   2026-08-06 に独自ヘッダー（back-link）をやめ、共通ヘッダー（assets/site-header.js）へ移行した。
+   header / .header-inner / .back-link / .site-title の定義はここで削除済み。
+   戻る導線とパンくずは共通ヘッダーが担うので、手動の戻るボタンは置かない。 */
+
+/* 固定ヘッダーに隠れないようアンカー位置を下げる。
+   --sn-header-h は site-header.js が定義する（読めなければ 0px で従来どおり） */
+[id] { scroll-margin-top: calc(var(--sn-header-h, 0px) + 16px); }
 
 /* ── ページタイトル ── */
 .page-head {

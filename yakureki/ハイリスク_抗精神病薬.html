@@ -236,7 +236,7 @@
       .ci-list dd .ci-l { display: inline-block; min-width: 4.5em; font-weight: 700; color: var(--blue); }
 
       /* ===== サイドスティッキー目次（PC 880px+） ===== */
-      [id] { scroll-margin-top: 16px; }
+      [id] { scroll-margin-top:calc(var(--sn-header-h, 0px) + 16px); }
       .sticky-toc { display: none; }
 
       /* ===== スマホ用インライン目次（880px未満のみ表示） ===== */
@@ -262,12 +262,12 @@
         .sticky-toc {
           display: block;
           position: sticky;
-          top: 20px;
+          top: calc(var(--sn-header-h, 0px) + 20px);
           background: var(--white);
           border: 1px solid var(--border);
           border-radius: var(--radius-sm);
           padding: 12px 8px 14px;
-          max-height: calc(100vh - 40px);
+          max-height: calc(100vh - var(--sn-header-h, 0px) - 40px);
           overflow-y: auto;
           scrollbar-width: thin;
           scrollbar-color: var(--border) transparent;
@@ -326,13 +326,8 @@
     </style>
   </head>
   <body>
+  <script src="../assets/site-header.js" defer></script>
 
-    <header>
-      <div class="header-inner">
-        <a href="ハイリスク薬指導.html" class="back-link">← ハイリスク薬指導に戻る</a>
-        <span class="site-title">調剤報酬・薬歴まとめ</span>
-      </div>
-    </header>
 
     <div class="layout-outer">
 

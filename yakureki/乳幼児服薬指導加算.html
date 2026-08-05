@@ -22,9 +22,6 @@
     }
     body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:0 16px 60px; }
     .draft-banner { margin:0 -16px 18px; background:#fff8e1; border-bottom:var(--bw-h) solid #e5c200; color:#5f4b00; font-size:var(--text-xs); font-weight:700; text-align:center; padding:7px 16px; }
-    header { max-width:900px; margin:0 auto 14px; display:flex; justify-content:space-between; align-items:center; gap:12px; }
-    .back-link { display:inline-flex; align-items:center; color:var(--blue); border:var(--bw-h) solid var(--blue); border-radius:var(--radius-sm); padding:4px 12px; text-decoration:none; font-size:var(--text-xs); font-weight:700; background:var(--white); }
-    .site-title { font-size:var(--text-xs); color:var(--txt-3); font-weight:700; }
     .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
 
     .page-title-wrap { padding:6px 0; }
@@ -153,7 +150,7 @@
     .toc a { display:block; color:var(--blue); font-size:var(--text-sm); font-weight:700; text-decoration:none; padding:9px 10px; border-radius:var(--radius-sm); border-bottom:var(--bw) solid var(--border); }
     .toc a:last-child { border-bottom:none; }
     .toc a:hover { background:var(--box-blue); }
-    .card[id] { scroll-margin-top:14px; }
+    .card[id] { scroll-margin-top:calc(var(--sn-header-h, 0px) + 14px); }
 
     /* 最低ラインのビフォーアフター */
     .ba-bad .ttl { color:var(--txt-3) !important; }
@@ -206,10 +203,7 @@
   </style>
 </head>
 <body>
-  <header>
-    <a href="加算別記載一覧.html" class="back-link">← 加算別記載一覧に戻る</a>
-    <span class="site-title">調剤報酬・薬歴まとめ</span>
-  </header>
+  <script src="../assets/site-header.js" defer></script>
 
   <div class="page">
     <div class="page-title-wrap">
