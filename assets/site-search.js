@@ -23,10 +23,30 @@
           title: info.title,
           category: info.category,
           categoryName: catName,
-          haystack: (info.title + ' ' + file + ' ' + catName).toLowerCase(),
+          baseHay: (info.title + ' ' + file + ' ' + catName).toLowerCase(),
           titleLower: info.title.toLowerCase(),
         };
       });
+
+    // ページ内の見出し（build-search-index.js が生成）。ページ名にない言葉でも探せるようにする。
+    // search-index.js の到着が遅れることがあるので、検索のたびに読み直して一度だけ組み立てる。
+    let termsReady = false;
+    function hydrateTerms() {
+      const src = window.__searchIndex;
+      if (termsReady || !src) return;
+      for (const item of index) {
+        const terms = src[item.file] || [];
+        item.terms = terms;
+        item.termsLower = terms.map((t) => t.toLowerCase());
+        item.haystack = item.baseHay + ' ' + terms.join(' ').toLowerCase();
+      }
+      termsReady = true;
+    }
+    for (const item of index) {
+      item.terms = [];
+      item.termsLower = [];
+      item.haystack = item.baseHay;
+    }
 
     // ── CSS ──
     const css = `
@@ -110,6 +130,15 @@
         font-weight: 700; margin-top: 2px;
         letter-spacing: 0.05em;
       }
+      .ss-item-hit {
+        color: #5e6470; font-weight: 500; margin-left: 8px;
+      }
+      .ss-item-hit mark { background: #fff59d; color: inherit; }
+      .ss-empty-link {
+        display: block; margin-top: 14px;
+        color: #1e5fa8; font-weight: 700; text-decoration: none;
+      }
+      .ss-empty-link:hover { text-decoration: underline; }
       .ss-empty {
         padding: 32px 16px; text-align: center;
         color: #888; font-size: 13px;
@@ -206,7 +235,20 @@
     let active = -1;
     let currentResults = [];
 
+    // 見出しの索引は初回に検索を開いたときだけ読む（全ページ表示で読ませない）
+    let indexRequested = false;
+    function loadHeadingIndex() {
+      if (indexRequested || window.__searchIndex) return;
+      indexRequested = true;
+      const s = document.createElement('script');
+      s.src = (window.SITE_ROOT || '') + 'assets/search-index.js';
+      // 届いたら、開いたままの検索結果を組み直す
+      s.onload = () => { if (overlay.classList.contains('ss-open')) render(input.value); };
+      document.head.appendChild(s);
+    }
+
     function open() {
+      loadHeadingIndex();
       overlay.classList.add('ss-open');
       overlay.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
@@ -242,20 +284,31 @@
         }
         return index.slice(0, 12);
       }
+      hydrateTerms();
       const tokens = q.split(/\s+/).filter(Boolean);
       return index
         .map((item) => {
           let score = 0;
+          let hitTerm = '';
           for (const t of tokens) {
             const titleIdx = item.titleLower.indexOf(t);
             const hayIdx = item.haystack.indexOf(t);
             if (hayIdx === -1) return null;
             if (titleIdx === 0) score += 100;       // タイトル先頭一致
             else if (titleIdx > 0) score += 50;     // タイトル中に含む
-            else score += 10;                       // ファイル名 or カテゴリのみ
+            else {
+              // ページ名にはないが、ページ内の見出しに含まれる
+              const ti = item.termsLower.findIndex((x) => x.indexOf(t) !== -1);
+              if (ti !== -1) {
+                score += 25;
+                if (!hitTerm) hitTerm = item.terms[ti];
+              } else {
+                score += 10;                        // ファイル名 or カテゴリのみ
+              }
+            }
             score -= hayIdx * 0.1;                  // 早い位置ほど高評価
           }
-          return { item, score };
+          return { item: Object.assign({}, item, { hitTerm }), score };
         })
         .filter(Boolean)
         .sort((a, b) => b.score - a.score)
@@ -279,7 +332,11 @@
       currentResults = search(q);
       active = currentResults.length > 0 ? 0 : -1;
       if (currentResults.length === 0) {
-        results.innerHTML = '<div class="ss-empty">該当する資料が見つかりませんでした</div>';
+        results.innerHTML =
+          '<div class="ss-empty">該当する資料が見つかりませんでした' +
+          '<a class="ss-empty-link" href="' +
+          escapeHtml((window.SITE_ROOT || '') + 'ページ一覧.html') +
+          '">ページ一覧からさがす ›</a></div>';
         return;
       }
       const isEmpty = !q.trim();
@@ -297,7 +354,9 @@
             (r, i) => `
         <a class="ss-item${i === active ? ' ss-active' : ''}" href="${escapeHtml((window.SITE_ROOT || '') + r.file)}" data-idx="${i}">
           <div class="ss-item-title">${highlight(r.title, q)}</div>
-          <div class="ss-item-meta">${escapeHtml(r.categoryName)}</div>
+          <div class="ss-item-meta">${escapeHtml(r.categoryName)}${
+            r.hitTerm ? ` <span class="ss-item-hit">見出し：${highlight(r.hitTerm, q)}</span>` : ''
+          }</div>
         </a>`
           )
           .join('');

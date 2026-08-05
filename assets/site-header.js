@@ -32,6 +32,7 @@
     'tools.html': { category: 'tools', title: '実務ツール集' },
     'knowledge.html': { category: 'knowledge', title: '実務ナレッジ集' },
     '事務スタッフ向け.html': { category: 'jimu', title: '事務スタッフ向け' },
+    'ページ一覧.html': { category: 'home', title: 'ページ一覧' },
 
     // ツール
     'ツール/gigi-search.html': { category: 'tools', title: '疑義解釈 全文検索' },
@@ -41,6 +42,7 @@
 
     // 実務ナレッジ
     'ナレッジ/変更調剤について.html': { category: 'knowledge', title: '変更調剤について' },
+    'ナレッジ/リフィル処方箋.html': { category: 'knowledge', title: 'リフィル処方箋' },
     'ナレッジ/基礎的医薬品追加リストR8_4.html': { category: 'knowledge', title: '基礎的医薬品 追加リスト（R8.4）' },
     'ナレッジ/調剤報酬QA.html': { category: 'knowledge', title: '調剤報酬 社内Q&A' },
     'ナレッジ/高額療養費と薬局窓口対応.html': { category: 'knowledge', title: '高額療養費と薬局窓口対応' },
@@ -98,6 +100,7 @@
     'チェックリスト/かかりつけ薬剤師訪問加算_実務チェックリスト.html': { category: 'checklist', title: 'かかりつけ薬剤師訪問加算 算定チェックリスト' },
     'チェックリスト/栄養保持を目的とした医薬品_確認チェックリスト.html': { category: 'checklist', title: '栄養保持を目的とした医薬品 確認チェックリスト' },
     'チェックリスト/吸入薬指導加算_実務チェックリスト.html': { category: 'checklist', title: '吸入薬指導加算 算定チェックリスト' },
+    'チェックリスト/リフィル処方箋_実務チェックリスト.html': { category: 'checklist', title: 'リフィル処方箋 対応の流れ' },
 
     // 事務スタッフ向け（個別）
     '事務/事務スタッフ向け_2026調剤報酬改定ポイント整理.html': { category: 'jimu', title: '事務スタッフ向け 改定ポイント整理' },
@@ -157,7 +160,8 @@
   const filename = pageKey;
   const pageInfo = PAGES[filename] || { category: null, title: document.title };
   const category = pageInfo.category;
-  const isHome = category === 'home';
+  // トップだけがパンくず不要。更新履歴・ページ一覧（category: 'home'）にも「ホーム ›」を出す
+  const isHome = filename === 'index.html';
 
   // ── スタイル（スコープ：.sn- prefix で既存CSSと衝突回避） ──
   const css = `
@@ -287,13 +291,14 @@
   let crumbHtml = '';
   if (!isHome && category) {
     const cat = CATEGORIES[category];
-    const isCategoryLanding = filename === cat.url;
+    // home 直下のページ（更新履歴・ページ一覧）は「ホーム › ページ名」の2段
+    const isCategoryLanding = filename === cat.url || category === 'home';
     if (isCategoryLanding) {
       crumbHtml = `
         <nav class="sn-crumb" aria-label="パンくずリスト">
           <a href="${u('index.html')}">ホーム</a>
           <span class="sn-crumb-sep">›</span>
-          <span class="sn-crumb-current">${cat.name}</span>
+          <span class="sn-crumb-current">${category === 'home' ? pageInfo.title : cat.name}</span>
         </nav>`;
     } else {
       crumbHtml = `
@@ -397,6 +402,8 @@
   }
 
   // ── サイト内検索スクリプトを自動ロード ──
+  // 見出しの索引（assets/search-index.js・約38KB）はここでは読まない。
+  // 検索を初めて開いたときに site-search.js が読む（大半のページ表示では使わないため）。
   if (!document.querySelector('script[data-site-search]')) {
     const s = document.createElement('script');
     s.src = u('assets/site-search.js');

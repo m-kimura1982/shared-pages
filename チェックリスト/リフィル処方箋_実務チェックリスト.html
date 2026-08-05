@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>リフィル処方箋 対応の流れ｜調剤報酬・薬歴まとめ</title>
+  <meta name="search-keywords" content="湿布,貼付剤,前後7日,次回調剤予定日,写しの保管,リフィル可,対応の流れ" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+    :root {
+      --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+      --pad-card:22px; --gap-card:16px;
+      --blue:#1e5fa8; --ink:#222222;
+      --bg:#f3f4f6; --white:#ffffff;
+      --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+      --border:#d1d5db; --border-dk:#9ca3af;
+      --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px;
+      --txt-2:#444444; --txt-3:#5e6470;
+    }
+    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+    .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+    .page-title-wrap { padding:6px 0; }
+    .page-title-wrap h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+    .page-title-wrap p  { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+
+    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+    .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:16px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+    .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+    .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+
+    .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+
+    /* ── 手順（左）と補足（右）──
+       行の横罫と列の縦罫で、どの手順の補足かが一目で分かるようにする。
+       罫線をつなげるため列の隙間は padding で作る（column-gap は使わない） ── */
+    .flow { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); column-gap:0; }
+    .flow .col-head { font-size:var(--text-xs); font-weight:900; color:var(--txt-3); letter-spacing:.04em; padding-bottom:8px; border-bottom:var(--bw-h) solid var(--border-dk); }
+    .flow .col-head.r { border-left:var(--bw) solid var(--border); padding-left:20px; }
+
+    .st { display:flex; gap:12px; align-items:flex-start; padding:13px 20px 13px 0; border-top:var(--bw) solid var(--border); }
+    .st:first-of-type, .nt:first-of-type { border-top:none; }
+    /* 順序のある手順なので角丸四角（◯はケース番号に使う） */
+    .st .n { width:26px; height:26px; border-radius:7px; background:var(--blue); color:#fff; font-size:13.5px; font-weight:900; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .st .a { flex:1; font-size:var(--text-md); font-weight:700; line-height:1.5; padding-top:2px; }
+
+    .nt { font-size:var(--text-xs); color:var(--txt-2); line-height:1.65; padding:14px 0 13px 20px; border-top:var(--bw) solid var(--border); border-left:var(--bw) solid var(--border); }
+    .nt b { color:var(--ink); font-weight:900; }
+    .nt .ng { color:var(--txt-3); font-weight:900; }
+    .nt p + p { margin-top:6px; }
+
+    /* ── まとめのチェック ── */
+    .checks { display:flex; flex-direction:column; gap:8px; }
+    .chk { display:flex; gap:12px; align-items:flex-start; padding:11px 14px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); cursor:pointer; }
+    .chk:hover { background:#fafbfc; }
+    .chk > input[type=checkbox] { appearance:none; -webkit-appearance:none; width:21px; height:21px; border:2px solid var(--border-dk); border-radius:5px; flex-shrink:0; margin-top:2px; cursor:pointer; position:relative; }
+    .chk > input[type=checkbox]:checked { background:var(--blue); border-color:var(--blue); }
+    .chk > input[type=checkbox]:checked::after { content:""; position:absolute; left:5.5px; top:1.5px; width:6px; height:11px; border:solid #fff; border-width:0 2.5px 2.5px 0; transform:rotate(45deg); }
+    .chk .t { flex:1; font-size:var(--text-sm); font-weight:700; line-height:1.6; }
+    .chk .t .sub { display:block; font-size:var(--text-xs); font-weight:400; color:var(--txt-2); margin-top:2px; }
+    .chk:has(> input:checked) { background:#f0f6fc; border-color:#bcd6ec; }
+    .chk:has(> input:checked) .t { color:var(--txt-3); }
+
+    .link-inline { color:var(--blue); font-weight:700; text-decoration:none; border-bottom:1px solid var(--box-blue); }
+    .page-foot { font-size:var(--text-xs); color:var(--txt-3); text-align:right; padding-top:2px; }
+
+    @media (max-width:760px) {
+      body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+      :root { --text-xs:11.5px; --text-sm:12.5px; --text-md:13.5px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+      .card { padding:14px; border-radius:8px; }
+      /* 1段に落ちる。手順の直後に補足が続くので、補足はぶら下げて弱く見せる */
+      .flow { grid-template-columns:1fr; }
+      .flow .col-head { display:none; }
+      .st { padding:11px 0 6px; }
+      .nt { margin:0 0 5px 38px; padding:0 0 0 11px; border-top:none; border-left:var(--bw-a) solid var(--box-blue); }
+      .nt:empty { display:none; }
+    }
+    @media print {
+      @page { size:A4 portrait; margin:8mm; }
+      body { background:#fff; padding:0; font-size:10px; line-height:1.4; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .page { gap:6px; max-width:none; display:block; }
+      /* A4 1枚に収める。本文領域281mmに対して実測272mm（余り9mm）。
+         文言を足すときはこの余白を超えないか確認する */
+      .card { border:0.5px solid #ccc; border-radius:5px; padding:7px 10px; margin-bottom:5px; break-inside:avoid; }
+      .card-title { font-size:12px; margin-bottom:6px; padding-bottom:4px; }
+      .flow .col-head { font-size:9px; padding-bottom:4px; }
+      .flow .col-head.r { padding-left:12px; }
+      .st { padding:5px 12px 5px 0; break-inside:avoid; }
+      .st .n { width:18px; height:18px; font-size:9.5px; }
+      .st .a { font-size:10.5px; line-height:1.35; }
+      .nt { font-size:9px; line-height:1.35; padding:6px 0 5px 12px; break-inside:avoid; }
+      .nt p + p { margin-top:4px; }
+      .chk { padding:4px 8px; break-inside:avoid; }
+      .chk > input[type=checkbox] { width:14px; height:14px; }
+      .chk .t { font-size:9.5px; line-height:1.35; }
+      .chk .t .sub { font-size:8.5px; }
+      .checks { gap:4px; }
+      .page-foot { display:none; }
+      a { color:inherit; text-decoration:none; }
+    }
+  </style>
+</head>
+<body>
+  <script src="../assets/site-header.js" defer></script>
+<div class="page">
+
+  <!-- タイトル -->
+  <div class="page-title-wrap">
+    <h1>リフィル処方箋 対応の流れ</h1>
+  </div>
+
+  <!-- 対応の流れ -->
+  <div class="card">
+    <div class="card-title">対応の流れ<span class="qual">調剤のたびに</span></div>
+
+    <div class="flow">
+      <div class="col-head">手順</div>
+      <div class="col-head r">補足</div>
+
+      <div class="st"><div class="n">1</div><div class="a">「リフィル可」欄の <b>✓</b> と回数を確認</div></div>
+      <div class="nt">
+        <p>総使用回数の上限は３回。今回が何回目かを見る。</p>
+        <p><span class="ng">×</span> <b>投与量に限度が定められている医薬品</b>（新医薬品・麻薬・向精神薬）と<b>鎮痛・消炎の貼付剤</b>（湿布）は<span class="marker">リフィル不可</span>。</p>
+      </div>
+
+      <div class="st"><div class="n">2</div><div class="a">調剤できる期間内かを確認</div></div>
+      <div class="nt">
+        <p><b>１回目</b>＝使用期間欄の日まで。<b>２回目以降</b>＝次回調剤予定日の<span class="marker">前後７日以内（予定日を挟んだ15日間）</span>。</p>
+        <p>期間外は調剤できない。早く来局したときは日をあらためて来てもらう。</p>
+      </div>
+
+      <div class="st"><div class="n">3</div><div class="a">服薬状況等を確認</div></div>
+      <div class="nt">
+        <p>リフィルで調剤することが不適切と判断したら<b>調剤を行わず</b>、受診勧奨を行い、処方医へ情報提供する。</p>
+      </div>
+
+      <div class="st"><div class="n">4</div><div class="a">レセコン入力、調剤・監査</div></div>
+      <div class="nt">
+        <p>次回調剤予定日はレセコンが自動で計算する。</p>
+      </div>
+
+      <div class="st"><div class="n">5</div><div class="a">処方箋に<b>調剤日</b>と<b>次回調剤予定日</b>を記載</div></div>
+      <div class="nt">
+        <p>あわせて<b>薬局名</b>と<b>薬剤師の氏名</b>を余白または裏面に記載する。</p>
+      </div>
+
+      <div class="st"><div class="n">6</div><div class="a">処方箋の<b>写し</b>を調剤録とともに保管</div></div>
+      <div class="nt">
+        <p>返却する前に写しをとる。</p>
+        <p>保管期間は<b>調剤の終了日から３年間</b>。</p>
+      </div>
+
+      <div class="st"><div class="n">7</div><div class="a">処方箋を患者に返却</div></div>
+      <div class="nt">
+        <p>総使用回数の調剤が終わったときは返却せず、<b>調剤済処方箋</b>として保管する。</p>
+      </div>
+
+      <div class="st"><div class="n">8</div><div class="a">次回の来局予定を伝えて確認</div></div>
+      <div class="nt">
+        <p>次回調剤予定日と前後７日を<b>具体的な日付</b>で伝える。飲み終える前に来られるよう、予定日までの来局が望ましいことも添える。</p>
+        <p>継続的な薬学的管理指導のため、<b>同じ薬局</b>で調剤を受けるべきである旨を説明する。</p>
+      </div>
+
+      <div class="st"><div class="n">9</div><div class="a">必要に応じて処方医に情報提供</div></div>
+      <div class="nt">
+        <p>２回目以降に文書等で提供すれば<b>服薬情報等提供料２のロ</b>（20点・月１回）。医療機関から求めがあった場合は<b>１</b>。</p>
+        <p>含めるもの：残薬の有無と理由／副作用の有無／副作用が疑われる場合は原因の可能性がある薬剤の推定。</p>
+      </div>
+
+      <div class="st"><div class="n">10</div><div class="a">予定日を過ぎても来局しない場合は電話連絡</div></div>
+      <div class="nt">
+        <p>連絡がつかない、来局しない場合は、必要に応じ処方医へ情報提供する。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- まとめのチェック -->
+  <div class="card">
+    <div class="card-title">最後にまとめて確認<span class="qual">処方箋を返す前に</span></div>
+
+    <div class="checks">
+      <label class="chk">
+        <input type="checkbox">
+        <span class="t">投与量に限度がある薬や鎮痛・消炎の貼付剤（湿布）は含まれていないか<span class="sub">含まれている場合はリフィル不可。調剤せず疑義照会する</span></span>
+      </label>
+      <label class="chk">
+        <input type="checkbox">
+        <span class="t">処方箋に調剤日と次回調剤予定日を記載したか</span>
+      </label>
+      <label class="chk">
+        <input type="checkbox">
+        <span class="t">薬局名と薬剤師の氏名を余白または裏面に記載したか</span>
+      </label>
+      <label class="chk">
+        <input type="checkbox">
+        <span class="t">処方箋の写しをとったか<span class="sub">調剤録とともに保管。調剤の終了日から３年間</span></span>
+      </label>
+      <label class="chk">
+        <input type="checkbox">
+        <span class="t">返却時に次回の調剤日程を伝えたか<span class="sub">次回調剤予定日の前後７日。具体的な日付で</span></span>
+      </label>
+      <label class="chk">
+        <input type="checkbox">
+        <span class="t">次回の来局予定を確認したか<span class="sub">予定日を過ぎても来局がなければ電話連絡する</span></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="page-foot">詳しい解説は <a href="../ナレッジ/リフィル処方箋.html" class="link-inline">リフィル処方箋</a> ／ <a href="../加算まとめ/服薬情報等提供料.html" class="link-inline">服薬情報等提供料</a> を参照。</div>
+
+</div>
+
+<script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

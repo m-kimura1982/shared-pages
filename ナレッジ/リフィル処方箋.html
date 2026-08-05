@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>リフィル処方箋｜調剤報酬・薬歴まとめ</title>
+    <meta name="search-keywords" content="湿布,貼付剤,前後7日,次回調剤予定日,使用回数,写しの保管,リフィル可" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+      :root {
+        --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+        --pad-card:22px; --gap-card:16px;
+        --blue:#1e5fa8; --ink:#222222;
+        --bg:#f3f4f6; --white:#ffffff;
+        --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+        --border:#d1d5db; --border-dk:#9ca3af;
+        --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px;
+        --txt-2:#444444; --txt-3:#5e6470;
+      }
+      body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+      .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+      /* 見出し */
+      .page-title-wrap { padding:6px 0; }
+      .page-title-wrap h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+      .page-title-wrap p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+      .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+      .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+      .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+      .sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin:18px 0 9px; }
+      .sub-title:first-child { margin-top:0; }
+      .sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+
+      /* 強調 */
+      .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+      .em-change { color:var(--blue); font-weight:900; }
+
+      .lead-note { background:#eef4fb; border-radius:var(--radius-sm); padding:12px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray .ttl, .box-blue .ttl { display:block; font-weight:900; margin-bottom:5px; font-size:var(--text-sm); }
+      .box-gray .ttl { color:var(--blue); }
+      .box-blue .ttl { color:var(--ink); }
+
+      table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+      th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
+      td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
+      tr:last-child td { border-bottom:none; }
+      .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+
+      /* 箇条書き */
+      .list { display:flex; flex-direction:column; gap:6px; margin:4px 0 2px; }
+      .list .li { font-size:var(--text-sm); line-height:1.7; padding-left:18px; text-indent:-18px; }
+      .list .li::before { content:"・"; color:var(--txt-3); font-weight:900; margin-right:6px; }
+      .list .li b { color:var(--ink); }
+      .list .li.ng::before { content:"×"; color:var(--txt-3); font-weight:900; }
+
+      /* 間違えやすいところ */
+      .miss { display:flex; flex-direction:column; }
+      .miss .m { padding:13px 0; border-top:var(--bw) solid var(--border); }
+      .miss .m:first-child { border-top:none; padding-top:2px; }
+      .miss .m:last-child { padding-bottom:2px; }
+      .miss .m .q { display:block; font-size:var(--text-md); font-weight:900; line-height:1.55; margin-bottom:6px; }
+      .miss .m .d { font-size:var(--text-sm); color:var(--txt-2); line-height:1.75; }
+      .miss .m .d b { color:var(--ink); font-weight:900; }
+      .miss .m .d + .d { margin-top:6px; }
+
+      /* 期間の帯 */
+      .band { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; margin-top:10px; }
+      .band .bh { background:var(--box-gray); padding:8px 14px; font-size:var(--text-xs); font-weight:900; color:var(--txt-2); border-bottom:var(--bw-h) solid var(--border); }
+      .band .bb { padding:13px 15px; font-size:var(--text-sm); line-height:1.8; }
+      .band .bb .day { display:inline-block; border:var(--bw-h) solid var(--border-dk); border-radius:5px; padding:1px 9px; font-weight:900; margin:0 3px; }
+      .band .bb .day.hit { background:var(--box-blue); border-color:#9dc0e2; color:var(--blue); }
+
+      /* 処方箋様式の抜粋。原寸を超えて拡大しない（拡大するとぼやけるため） */
+      .form-fig { margin-top:12px; }
+      .form-fig .frame { overflow-x:auto; -webkit-overflow-scrolling:touch; border:var(--bw) solid var(--border); border-radius:var(--radius-sm); background:var(--white); }
+      .form-fig img { display:block; max-width:100%; height:auto; }
+      .form-fig figcaption { font-size:var(--text-xs); color:var(--txt-3); margin-top:5px; line-height:1.6; }
+
+      /* 関連リンク */
+      .rel { display:flex; flex-direction:column; gap:8px; }
+      .rel a { display:flex; align-items:center; gap:9px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; text-decoration:none; color:var(--ink); font-size:var(--text-sm); font-weight:700; }
+      .rel a::before { content:"›"; color:var(--blue); font-weight:900; }
+      .rel a:hover { background:#fafbfc; border-color:#bcd3ee; }
+      .rel a .sub { font-weight:400; color:var(--txt-3); font-size:var(--text-xs); margin-left:auto; }
+
+      /* 折りたたみ原文 */
+      details.fold { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); }
+      details.fold > summary { list-style:none; cursor:pointer; padding:14px var(--pad-card); font-weight:700; font-size:var(--text-sm); color:var(--txt-2); display:flex; align-items:center; gap:8px; }
+      details.fold > summary::-webkit-details-marker { display:none; }
+      details.fold > summary::before { content:"▶"; font-size:10px; color:var(--txt-3); transition:transform .15s; }
+      details.fold[open] > summary::before { transform:rotate(90deg); }
+      details.fold .fold-body { padding:2px var(--pad-card) var(--pad-card); }
+      .orig { display:flex; flex-direction:column; gap:9px; }
+      .orig .oh { font-weight:900; font-size:var(--text-sm); color:var(--blue); margin-top:6px; }
+      .orig .oi { display:flex; gap:9px; font-size:var(--text-sm); line-height:1.7; color:var(--txt-2); }
+      .orig .oi .lab { flex-shrink:0; min-width:28px; font-weight:900; color:var(--txt-3); }
+      .orig .cite { font-size:var(--text-xs); color:var(--txt-3); margin-top:2px; }
+
+      /* 原文参照リンク（最下部・.page の外） */
+      .ref-links { max-width:900px; margin:16px auto 0; padding:20px 16px 4px; border-top:1px solid var(--border); }
+      .ref-links .row { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+      .ref-links .lab { font-size:12px; color:var(--txt-2); white-space:nowrap; font-weight:bold; }
+      .ref-links a { display:inline-block; color:var(--blue); text-decoration:none; font-size:13px; border:1px solid var(--border); border-radius:6px; padding:4px 12px; background:var(--white); }
+
+      @media (max-width:640px) {
+        body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+        :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+        .card { padding:14px; border-radius:8px; }
+        .rel a .sub { display:none; }
+        table { min-width:420px; }
+        /* 幅に合わせて縮めると様式の細字が読めなくなるので、原寸のまま横スクロールさせる */
+        .form-fig img { max-width:none; }
+      }
+      @media print {
+        @page { margin:10mm 9mm; size:A4; }
+        body { background:#fff; padding:0; font-size:11px; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        .page { display:block; max-width:none; }
+        .card { border:0.5px solid #ccc; padding:9px 11px; margin-bottom:7px; break-inside:auto; }
+        .card-title, .sub-title { break-after:avoid; }
+        .card-title { margin-bottom:8px; padding-bottom:5px; }
+        .lead-note, .box-gray, .box-blue, .band, .miss .m, .form-fig, tr { break-inside:avoid; }
+        details.fold { break-inside:avoid; }
+        a { color:inherit; text-decoration:none; }
+      }
+    </style>
+  </head>
+  <body>
+    <script src="../assets/site-header.js" defer></script>
+    <div class="page">
+
+      <!-- タイトル -->
+      <div class="page-title-wrap">
+        <h1>リフィル処方箋</h1>
+        <p>基本ルールと対応時の注意点</p>
+      </div>
+
+      <div class="lead-note">
+        処方箋の「リフィル可」欄に <b>✓</b> が記載されていれば、リフィル処方箋として取り扱う。<span class="marker">総使用回数の上限は３回</span>で、回数は処方箋に記載されている。リフィル処方箋で調剤するごとに<span class="em-change">処方箋受付１回</span>として数え、要件を満たせば調剤技術料・薬学管理料を算定できる。
+      </div>
+
+      <figure class="form-fig">
+        <div class="frame"><img src="../images（レセコン画像など）/様式/リフィル可欄.png"
+             alt="処方箋様式の「リフィル可」欄。チェックボックスと、使用回数を書く括弧が並んでいる" /></div>
+        <figcaption>処方箋様式（様式第二号）の「リフィル可」欄。この□に「レ」または「×」があればリフィル処方箋として取り扱う。</figcaption>
+      </figure>
+
+      <div class="rel">
+        <a href="../チェックリスト/リフィル処方箋_実務チェックリスト.html">受付時の手順は「リフィル処方箋 対応の流れ」<span class="sub">10手順＋最後の確認・印刷用</span></a>
+      </div>
+
+      <!-- リフィルにできない薬 -->
+      <div class="card">
+        <div class="card-title">リフィルにできない薬</div>
+        <div class="list">
+          <div class="li ng"><b>投与量に限度が定められている医薬品</b>。療担規則で定められているもので、新医薬品（原則１回14日分まで）、麻薬、向精神薬が該当する</div>
+          <div class="li ng"><b>貼付剤</b>。ここでいう貼付剤は、鎮痛・消炎に係る効能及び効果を有するもので、麻薬・向精神薬であるものと、専ら皮膚疾患に用いるものを除いたもの</div>
+        </div>
+        <div class="box-blue" style="margin-top:12px;">
+          <span class="ttl">対象外の薬は同じ処方箋に記載できない</span>
+          医師は、<span class="marker">リフィルにする薬としない薬を同じ処方箋に記載できない</span>。投薬期間や使用回数の上限が薬ごとに異なる場合も、薬ごとに処方箋を分けることになっている。リフィル可の処方箋に対象外の薬が含まれている場合は、そのまま調剤せず疑義照会する。
+        </div>
+      </div>
+
+      <!-- 調剤できる期間 -->
+      <div class="card">
+        <div class="card-title">調剤できる期間<span class="qual">２回目以降は前後７日</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th style="width:24%">いつの調剤か</th><th>調剤できる期間</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>１回目</b></td>
+                <td>処方箋の<b>使用期間</b>欄に記載されている日まで（記載がなければ交付の日を含めて４日以内）</td>
+              </tr>
+              <tr>
+                <td><b>２回目以降</b></td>
+                <td>前回の調剤日を起点として、その調剤に係る投薬期間を経過する日を<b>次回調剤予定日</b>（実際に投薬が終了する日）とし、<span class="marker">その前後７日以内</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <figure class="form-fig">
+        <div class="frame"><img src="../images（レセコン画像など）/様式/交付年月日・使用期間欄.png"
+               alt="処方箋様式の「交付年月日」欄と「処方箋の使用期間」欄。使用期間欄の右に、特に記載のある場合を除き交付の日を含めて４日以内に提出する旨の注記がある" /></div>
+          <figcaption>１回目の期限はこの「処方箋の使用期間」欄で決まる。</figcaption>
+        </figure>
+
+        <div class="band">
+          <div class="bh">例）次回調剤予定日が６月13日のとき</div>
+          <div class="bb">
+            次回調剤予定日を<b>含まない</b>前後７日間なので、<span class="day hit">6/6</span>〜<span class="day hit">6/20</span> の <b>15日間</b>に調剤できる。
+          </div>
+        </div>
+
+        <div class="box-gray" style="margin-top:12px;">
+          <span class="ttl">患者に伝えること</span>
+          <div class="list">
+            <div class="li">まず<span class="marker">いつまでに来れば調剤できるか</span>を伝える。例なら <b>6/20</b>。この日を過ぎると、その処方箋では調剤できない</div>
+            <div class="li">そのうえで、薬が切れる前に受け取れるよう <b>6/13</b> 頃までの来局を勧める</div>
+            <div class="li">継続的な薬学的管理指導のため、<b>同じ薬局で調剤を受けるべきである旨</b>を説明する</div>
+            <div class="li">リフィル処方箋の意義や使い方について質問を受けたら、丁寧に説明する</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 間違えやすいところ -->
+      <div class="card">
+        <div class="card-title">間違えやすいところ</div>
+        <div class="miss">
+
+          <div class="m">
+            <span class="q">貼付剤がすべてリフィル不可なわけではない</span>
+            <div class="d">リフィルにできないのは<span class="marker">鎮痛・消炎の効能及び効果を有する貼付剤</span>。狭心症の硝酸薬や気管支拡張薬の貼付剤、専ら皮膚疾患に用いる貼付剤（ステロイドの貼付剤など）はこれに当たらない。</div>
+            <div class="d"><b>作用機序や全身作用の有無では判断しない。</b>ロコアテープ・ジクトルテープは全身に作用するが、鎮痛・消炎の効能及び効果を有するのでリフィルにできない。<a href="../ナレッジ/調剤報酬QA.html#c-shippu" style="color:var(--blue); font-weight:700;">湿布薬の投与枚数制限</a>でも同じ考え方をとる。</div>
+          </div>
+
+          <div class="m">
+            <span class="q">前後７日は、次回調剤予定日を<span class="marker">含めずに</span>数える</span>
+            <div class="d">予定日が 6/13 なら、前の７日は 6/6〜6/12、後ろの７日は 6/14〜6/20。予定日を挟んだ<span class="marker">15日間</span>が調剤できる期間になる。</div>
+          </div>
+
+          <div class="m">
+            <span class="q">期間より早く来ても調剤できない</span>
+            <div class="d">前後７日を外れた日は、期間の前でも後でも調剤できない。</div>
+          </div>
+
+          <div class="m">
+            <span class="q">一般名処方は、２回目以降も初回と同じ薬にするのが望ましい</span>
+            <div class="d">２回目以降を一般名処方として取り扱って差し支えないが、初回に調剤した薬剤と同一のものを調剤することが望ましい。</div>
+          </div>
+
+          <div class="m">
+            <span class="q">不適切と判断したら調剤しない</span>
+            <div class="d">服薬状況等を確認してリフィルでの調剤が不適切と判断した場合は、<b>調剤を行わず</b>、受診勧奨を行うとともに処方医へ情報提供する。</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 返却と保管 -->
+      <div class="card">
+        <div class="card-title">処方箋の返却と保管<span class="qual">途中の調剤だけ患者に返す</span></div>
+        <figure class="form-fig" style="margin-top:0; margin-bottom:14px;">
+        <div class="frame"><img src="../images（レセコン画像など）/様式/調剤実施回数欄.png"
+               alt="処方箋様式の「調剤実施回数」欄。１回目・２回目・３回目の調剤日を書く欄が並び、次回調剤予定日の欄は１回目と２回目の下だけにある" /></div>
+          <figcaption>処方箋様式の「調剤実施回数」欄。次回調剤予定日の欄は１回目と２回目にしかない。</figcaption>
+        </figure>
+
+        <div class="sub-title">返却する前に記載すること</div>
+        <div class="list">
+          <div class="li">調剤実施回数欄の□に「レ」または「×」を付け、<b>調剤日</b>と<b>次回調剤予定日</b>を記入する。次回調剤予定日は<b>１回目と２回目だけ</b></div>
+          <div class="li"><b>薬局名</b>と<b>薬剤師の氏名</b>を余白または裏面に記載する</div>
+        </div>
+
+        <div class="sub-title" style="margin-top:16px;">記載したあとの扱い</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th style="width:32%">どの時点か</th><th>処方箋の扱い</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>途中の調剤</b></td>
+                <td><span class="marker">写しを調剤録とともに保管し、原本は患者に返却する</span></td>
+              </tr>
+              <tr>
+                <td><b>総使用回数の調剤が<br>終わったとき</b></td>
+                <td>返却せず、調剤済処方箋として薬局で保管する。普段の処方箋と同じ扱いになる</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-gray" style="margin-top:12px;">
+          <span class="ttl">保管期間</span>
+          リフィル処方箋の写しは、そのリフィル処方箋に係る<b>調剤の終了日から３年間</b>保管する。
+        </div>
+      </div>
+
+      <!-- 情報提供と算定 -->
+      <div class="card">
+        <div class="card-title">処方医への情報提供と算定</div>
+        <div class="sub-title">情報提供が必要になる場面</div>
+        <div class="list">
+          <div class="li"><b>調剤しなかったとき</b>：リフィルで調剤するのが不適切と判断した場合は、受診勧奨とあわせて処方医へ情報提供する</div>
+          <div class="li"><b>調剤したとき</b>：調剤した内容・患者の服薬状況等について、<b>必要に応じて</b>処方医へ情報提供する</div>
+          <div class="li"><b>来局しないとき</b>：来局の希望があったのに予定の時期に来ない場合は電話等で状況を確認し、連絡がつかない・来局しない場合は必要に応じ処方医へ情報提供する</div>
+        </div>
+        <div class="sub-title">服薬情報等提供料</div>
+        <div class="list">
+          <div class="li"><b>２のロ（20点・月１回）</b>：リフィル処方箋に基づく調剤後、処方医へ服薬状況等を文書等で提供した場合</div>
+          <div class="li"><b>１</b>：医療機関から理由とともに情報提供の求めがあって提供した場合。<span class="marker">求めがあったかどうかで１と２のロが分かれる</span></div>
+        </div>
+        <div class="box-gray" style="margin-top:12px;">
+          <span class="ttl">２回目以降に情報提供するとき</span>
+          服薬状況や服薬期間中の体調の変化等を確認して処方医へ提供する。このとき、<b>残薬の有無と残薬が生じた理由・副作用の有無・副作用が疑われる場合はその原因の可能性がある薬剤の推定</b>を内容に含める。詳しくは <a href="../加算まとめ/服薬情報等提供料.html" style="color:var(--blue); font-weight:700;">服薬情報等提供料</a> を参照。
+        </div>
+        <div class="sub-title">受付回数の数え方</div>
+        <div class="list">
+          <div class="li">リフィル処方箋で調剤を行うごとに、<b>処方箋受付回数１回</b>として取り扱う。所定の要件を満たせば調剤技術料・薬学管理料を算定できる</div>
+          <div class="li">調剤基本料は、同一患者から同一日に複数の処方箋（リフィル処方箋を含む）を受け付けた場合、同一医療機関の同一医師の処方箋等は<b>一括して受付１回</b>として数える</div>
+        </div>
+      </div>
+
+      <!-- 原文 -->
+      <details class="fold">
+        <summary>原文を見る（通知）</summary>
+        <div class="fold-body">
+          <div class="orig">
+            <div class="oh">別添3 調剤報酬点数表に関する事項 第１ 調剤基本料 ４・５</div>
+            <div class="oi"><span class="lab">４</span><span>保険薬局において、「リフィル可」欄に「✓」が記載されていた場合、当該処方箋を「リフィル処方箋」として取り扱い調剤を行うこと。／リフィル処方箋による調剤を行う場合は、１回目の調剤を行うことが可能な期間については、使用期間に記載されている日までとする。２回目以降の調剤については、原則として、前回の調剤日を起点とし、当該調剤に係る投薬期間を経過する日を次回調剤予定日（実際に投薬が終了する日）とし、その前後７日以内とする。</span></div>
+            <div class="oi"><span class="lab">５</span><span>保険薬局においてリフィル処方箋による調剤を行い、当該保険薬局において調剤済みとならない場合は、リフィル処方箋に薬剤師法第26条に規定する事項及び次回調剤予定日等の必要な事項を記入し、調剤録等を作成した後、リフィル処方箋を患者に返却すること。その際、必要な事項が記入されたリフィル処方箋の写しを調剤録とともに保管すること。なお、当該リフィル処方箋の総使用回数の調剤が終わった場合、調剤済処方箋として保管すること。</span></div>
+
+            <div class="oh">別添3 第５ 調剤技術料 ８ リフィル処方箋による調剤（１）通則</div>
+            <div class="oi"><span class="lab">ア</span><span>リフィル処方箋による調剤を行う場合は、所定の要件を満たせば、調剤技術料及び薬学管理料を算定できる。なお、リフィル処方箋による調剤を行うごとに、処方箋受付回数１回として取扱う。</span></div>
+            <div class="oi"><span class="lab">イ</span><span>保険医療機関及び保険医療養担当規則（昭和32年厚生省令第15号）において、投与量に限度が定められている医薬品及び貼付剤（この場合において、「貼付剤」とは、鎮痛・消炎に係る効能及び効果を有するものであって、麻薬若しくは向精神薬であるもの又は専ら皮膚疾患に用いるものを除いたものをいう。）については、リフィル処方箋による調剤を行うことはできない。</span></div>
+            <div class="oi"><span class="lab">ウ</span><span>患者又はその家族等からリフィル処方箋に関する質問を受けた場合は、その意義や使用方法等について丁寧に説明を行うこと。</span></div>
+
+            <div class="oh">別添3 第５ 調剤技術料 ８（２）リフィル処方箋による調剤</div>
+            <div class="oi"><span class="lab">ア</span><span>保険薬局の保険薬剤師は、リフィル処方箋による１回目又は２回目（総使用回数３回の場合）の調剤を行う場合、リフィル処方箋に調剤日及び次回調剤予定日を所定の欄に記載するとともに、調剤を実施した保険薬局の名称及び保険薬剤師の氏名を余白又は裏面に記載の上、調剤録等を作成した後、リフィル処方箋を患者に返却すること。その際、必要な事項が記入されたリフィル処方箋の写しを調剤録とともに保管すること。また、当該リフィル処方箋の総使用回数の調剤が終わった場合、調剤済処方箋として保管すること。</span></div>
+            <div class="oi"><span class="lab">イ</span><span>保険薬局の保険薬剤師は、リフィル処方箋により調剤を行うに当たって、患者の服薬状況等の確認を行い、リフィル処方箋により調剤を行うことが不適切と判断した場合には、調剤を行わず、受診勧奨を行うとともに、処方医に情報提供を行うこと。また、リフィル処方箋により調剤した場合は、調剤した内容、患者の服薬状況等について必要に応じ処方医へ情報提供を行うこと。</span></div>
+            <div class="oi"><span class="lab">ウ</span><span>保険薬局の保険薬剤師は、リフィル処方箋の交付を受けた患者に対して、継続的な薬学的管理指導のため、同一の保険薬局で調剤を受けるべきである旨を説明すること。</span></div>
+            <div class="oi"><span class="lab">エ</span><span>保険薬局の保険薬剤師は、患者の次回の調剤を受ける予定を確認すること。次回の来局の希望があるにもかかわらず予定される時期に患者が来局しない場合は、電話等により患者の状況を確認すること。患者と連絡がつかない、患者が来局しない等の場合は、必要に応じ処方医へ情報提供を行うこと。</span></div>
+
+            <div class="cite">出典：「診療報酬の算定方法の一部改正に伴う実施上の留意事項について」（令和8年3月5日 保医発0305第4号）別添3。総使用回数の上限３回・リフィル可欄は保険医療機関及び保険医療養担当規則の処方箋様式による。写しの保管期間・前後７日の数え方等は疑義解釈による。</div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 関連ページ -->
+      <div class="card">
+        <div class="card-title">関連ページ</div>
+        <div class="rel">
+          <a href="../チェックリスト/リフィル処方箋_実務チェックリスト.html">リフィル処方箋 対応の流れ<span class="sub">印刷用の手順表</span></a>
+          <a href="../加算まとめ/服薬情報等提供料.html">服薬情報等提供料<span class="sub">２のロの算定</span></a>
+          <a href="../ツール/gigi-search.html?q=リフィル">疑義解釈 検索ツール<span class="sub">「リフィル」で検索</span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 原文参照リンク（.page の外） -->
+    <div class="ref-links">
+      <div class="row">
+        <span class="lab">原文参照：</span>
+        <a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-00-8">別添３ › リフィル処方箋による調剤</a>
+        <a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html">別添３ › 調剤基本料</a>
+      </div>
+    </div>
+
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>

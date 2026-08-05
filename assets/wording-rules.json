@@ -259,6 +259,69 @@
       "suggest": "必要な対応",
       "why": "見出しが事務的。動作の主語を示した名詞句にする",
       "level": "check"
+    },
+    {
+      "id": "tana-iriguchi",
+      "pattern": "(棚|入口)(ページ|を開|から)",
+      "suggest": "「カテゴリー」「まとめページ」",
+      "why": "サイト設計側の言葉。読者には通じない（推敲対照集8）",
+      "level": "ng",
+      "skipDirs": [
+        "draft"
+      ]
+    },
+    {
+      "id": "kopi",
+      "pattern": "コピーを(取|とっ|取っ)",
+      "suggest": "写しを取る",
+      "why": "処方箋・調剤録の文脈は通知に合わせて「写し」",
+      "level": "check"
+    },
+    {
+      "id": "iruka",
+      "pattern": "が要るか",
+      "suggest": "が必要かどうか",
+      "why": "口語",
+      "level": "ng"
+    },
+    {
+      "id": "zurenikui",
+      "pattern": "ずれにくい",
+      "suggest": "行き違いが起きにくい",
+      "why": "口語",
+      "level": "check"
+    },
+    {
+      "id": "kategori-nobasu",
+      "pattern": "カテゴリ(?![ー案])",
+      "suggest": "カテゴリー",
+      "why": "サイト内の既存表記は「カテゴリー」",
+      "level": "check",
+      "skipDirs": [
+        "assets",
+        "draft"
+      ]
+    },
+    {
+      "id": "haitteiru-kaiwa",
+      "pattern": "入っていたら",
+      "suggest": "含まれている場合は",
+      "why": "会話調",
+      "level": "ng"
+    },
+    {
+      "id": "1kaigoto-maikai",
+      "pattern": "１回ごとに毎回|1回ごとに毎回",
+      "suggest": "調剤のたびに",
+      "why": "「1回ごと」と「毎回」が同義で重複",
+      "level": "ng"
+    },
+    {
+      "id": "naiyo-ni-fukumeru",
+      "pattern": "内容に含めるもの",
+      "suggest": "含めるもの",
+      "why": "「内容」が前後で重複しやすい",
+      "level": "check"
     }
   ]
 }
