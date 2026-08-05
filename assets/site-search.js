@@ -155,6 +155,15 @@
         font-family: inherit; font-size: 10px; font-weight: 700;
         color: #555;
       }
+      /* 検索で見つからないときの逃げ道。トップを経由しない人にも届くよう常時出す */
+      .ss-hint-link {
+        margin-left: auto; color: #1e5fa8; font-weight: 700; text-decoration: none;
+        white-space: nowrap;
+      }
+      .ss-hint-link:hover { text-decoration: underline; }
+      @media (max-width: 600px) {
+        .ss-hint-link { margin-left: 0; width: 100%; }
+      }
 
       /* 検索ボタン（ヘッダー埋め込み用） */
       .sn-search-btn {
@@ -213,6 +222,7 @@
             <span><kbd>↑</kbd><kbd>↓</kbd> 移動</span>
             <span><kbd>Enter</kbd> 開く</span>
             <span><kbd>Esc</kbd> 閉じる</span>
+            <a class="ss-hint-link" id="ss-all-pages" href="#">ページ一覧をカテゴリー別に見る ›</a>
           </div>
         </div>
       </div>
@@ -231,6 +241,10 @@
     const input = document.getElementById('ss-input');
     const results = document.getElementById('ss-results');
     const closeBtn = document.getElementById('ss-close');
+
+    // ページ一覧へのリンク。サイトルートは実行時にしか分からないのでここで入れる
+    const allPagesLink = document.getElementById('ss-all-pages');
+    if (allPagesLink) allPagesLink.href = (window.SITE_ROOT || '') + 'ページ一覧.html';
 
     let active = -1;
     let currentResults = [];
