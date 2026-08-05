@@ -248,8 +248,36 @@
     .sn-crumb-sep { color: #777; font-size: 14px; font-weight: 700; }
     .sn-crumb-current { color: #555; font-weight: 400; }
 
+    /* 同じカテゴリーの他のページ（本文の最後に自動で置く）
+       フォーラムから個別ページに直接来る人が大半で、読み終えたあとの行き先がないため */
+    .sn-siblings {
+      max-width: 1000px; margin: 40px auto 0;
+      padding: 22px 24px 8px;
+      border-top: 1px solid #d8dde8;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+    .sn-sib-head {
+      display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .sn-sib-title { font-size: 14px; font-weight: 700; color: #222; }
+    .sn-sib-hub { margin-left: auto; font-size: 12px; font-weight: 700; color: #1e5fa8; text-decoration: none; white-space: nowrap; }
+    .sn-sib-hub:hover { text-decoration: underline; }
+    .sn-sib-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px 24px; }
+    .sn-sib-grid a {
+      display: flex; align-items: baseline; gap: 8px;
+      padding: 7px 2px; font-size: 13px; line-height: 1.55;
+      color: #444; text-decoration: none;
+      border-bottom: 0.5px solid #eef0f4;
+    }
+    .sn-sib-grid a::before { content: "›"; color: #1e5fa8; font-weight: 700; flex-shrink: 0; }
+    .sn-sib-grid a:hover { color: #1e5fa8; }
+
     /* モバイル */
     @media (max-width: 700px) {
+      .sn-siblings { margin-top: 28px; padding: 18px 16px 4px; }
+      .sn-sib-grid { grid-template-columns: 1fr; }
+      .sn-sib-hub { margin-left: 0; }
       .sn-header { padding: 10px 16px; }
       .sn-toggle { display: flex; }
       .sn-nav {
@@ -267,7 +295,7 @@
 
     /* 印刷時は共通ヘッダー・パンくずを除外（本文だけ印刷） */
     @media print {
-      .sn-header, .sn-crumb { display: none !important; }
+      .sn-header, .sn-crumb, .sn-siblings { display: none !important; }
     }
   `;
 
@@ -433,5 +461,49 @@
     s.defer = true;
     s.dataset.siteRecents = '1';
     document.head.appendChild(s);
+  }
+
+  // ── 同じカテゴリーの他のページを本文の最後に置く ──
+  // フォーラムのリンクから個別ページに直接来る人が大半で、読み終えたあとの
+  // 行き先がヘッダーのナビしかなかった（2026-08-06 のアクセス解析で判明）。
+  // PAGES から作るので、ページ側の追記は要らない。
+  function buildSiblings() {
+    if (!category || category === 'home') return;      // トップ・更新履歴・ページ一覧には出さない
+    const cat = CATEGORIES[category];
+    if (!cat || filename === cat.url) return;          // まとめページ自身には出さない（既に全部並んでいる）
+    if (document.querySelector('.sn-siblings')) return;
+
+    const siblings = Object.entries(PAGES).filter(
+      ([file, info]) => info.category === category && file !== filename && file !== cat.url
+    );
+    if (siblings.length < 2) return;
+
+    const nav = document.createElement('nav');
+    nav.className = 'sn-siblings';
+    nav.setAttribute('aria-label', '同じカテゴリーのページ');
+    nav.innerHTML =
+      '<div class="sn-sib-head">' +
+      `<span class="sn-sib-title">${esc(cat.name)}の他のページ</span>` +
+      `<a class="sn-sib-hub" href="${encodeURI(u(cat.url))}">まとめページへ ›</a>` +
+      '</div><div class="sn-sib-grid">' +
+      siblings
+        .map(([file, info]) => `<a href="${encodeURI(u(file))}">${esc(info.title)}</a>`)
+        .join('') +
+      '</div>';
+
+    // ページ末尾のフッターがあればその手前に置く（フッターより下に出さない）
+    const foot = document.querySelector('body > footer, body > .page-foot');
+    if (foot) foot.parentNode.insertBefore(nav, foot);
+    else document.body.appendChild(nav);
+  }
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', buildSiblings);
+  } else {
+    buildSiblings();
   }
 })();
