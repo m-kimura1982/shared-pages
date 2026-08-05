@@ -6,23 +6,23 @@
     "lastUpdated": "2026-08-06",
     "newUntil": "2026-08-13"
   },
-  "tools.html": {
-    "lastUpdated": "2026-08-01"
+  "index.html": {
+    "lastUpdated": "2026-08-06"
   },
-  "updates.html": {
+  "事務スタッフ向け.html": {
     "lastUpdated": "2026-08-06"
   },
   "checklists.html": {
     "lastUpdated": "2026-08-06"
   },
-  "事務スタッフ向け.html": {
-    "lastUpdated": "2026-07-30"
-  },
-  "index.html": {
+  "updates.html": {
     "lastUpdated": "2026-08-06"
   },
   "加算まとめ.html": {
-    "lastUpdated": "2026-07-28"
+    "lastUpdated": "2026-08-06"
+  },
+  "tools.html": {
+    "lastUpdated": "2026-08-06"
   },
   "knowledge.html": {
     "lastUpdated": "2026-08-06"
@@ -33,10 +33,6 @@
   "yakureki/薬歴の書き方_実例解説集.html": {
     "lastUpdated": "2026-07-13",
     "newUntil": "2026-07-20"
-  },
-  "yakureki/index.html": {
-    "lastUpdated": "2026-08-06",
-    "newUntil": "2026-07-27"
   },
   "yakureki/テンプレート_メンタル.html": {
     "lastUpdated": "2026-08-06"
@@ -85,6 +81,10 @@
   },
   "yakureki/乳幼児服薬指導加算.html": {
     "lastUpdated": "2026-08-06"
+  },
+  "yakureki/index.html": {
+    "lastUpdated": "2026-08-06",
+    "newUntil": "2026-07-27"
   },
   "加算まとめ/服用薬剤調整支援料２_2026改定.html": {
     "lastUpdated": "2026-07-23"
@@ -214,7 +214,7 @@
     "newUntil": "2026-08-08"
   },
   "改定資料/調剤報酬体系図_2026改定.html": {
-    "lastUpdated": "2026-08-02"
+    "lastUpdated": "2026-08-06"
   },
   "チェックリスト/選定療養_実務チェックリスト.html": {
     "lastUpdated": "2026-06-06",
@@ -289,6 +289,6 @@
     "lastUpdated": "2026-08-02"
   },
   "事務/入力画面で解説_2026改定後の入力方法.html": {
-    "lastUpdated": "2026-08-02"
+    "lastUpdated": "2026-08-06"
   }
 }
