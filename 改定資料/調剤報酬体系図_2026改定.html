@@ -31,12 +31,6 @@
     }
     .page-header h1 { font-size:20px; font-weight:900; }
     .page-header p  { font-size:12px; color:#666; margin-top:3px; }
-    .back-link {
-      font-size:12px; color:var(--blue); text-decoration:none;
-      white-space:nowrap; padding-top:4px; flex-shrink:0;
-    }
-    .back-link:hover { text-decoration:underline; }
-
     /* ── 比較レイアウト ── */
     .compare {
       display:grid; grid-template-columns:1fr 28px 1fr;
@@ -167,7 +161,6 @@
     @media (max-width: 700px) {
       body { font-size:13px; padding:12px 10px 40px; }
       .page-header h1 { font-size:16px; }
-      .back-link { font-size:11px; }
       .compare {
         grid-template-columns: 1fr;
       }
@@ -195,7 +188,6 @@
       @page { margin:7mm 6mm; size:A4 landscape; }
       body { background:white; padding:0; font-size:10.5px; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
       .page { gap:7px; max-width:100%; }
-      .back-link { display:none; }
       .era-body { padding:8px; gap:8px; }
       .two-col { gap:8px; }
       .cat-title { font-size:11px; padding:4px 8px; }
@@ -220,7 +212,6 @@
       <h1>調剤報酬の構成（令和８年改定）</h1>
       <p>改正点を中心に掲載</p>
     </div>
-    <a class="back-link" href="../kaitei2026.html">← 資料一覧へ</a>
   </div>
 
   <div class="compare">

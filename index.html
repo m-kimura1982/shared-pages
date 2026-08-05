@@ -39,7 +39,7 @@
         --sub: #666666;
         --border: #d8dde8;
         --white: #ffffff;
-        --bg: #f5f7fa;
+        --bg: #f3f4f6;
         --radius: 12px;
         --radius-sm: 8px;
       }
@@ -50,57 +50,7 @@
         line-height: 1.7;
       }
 
-      /* ── Header ── */
-      header {
-        background: var(--white);
-        border-bottom: 1px solid var(--border);
-        padding: 14px 24px;
-        position: sticky;
-        top: 0;
-        z-index: 10;
-      }
-      .header-inner {
-        max-width: 1000px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-      }
-      .header-logo {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        text-decoration: none;
-      }
-      .header-logo-mark {
-        width: 34px;
-        height: 34px;
-        background: var(--blue);
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-      }
-      .header-logo-mark svg {
-        width: 18px;
-        height: 18px;
-        stroke: white;
-        fill: none;
-        stroke-width: 2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-      .header-logo-text {
-        font-size: 15px;
-        font-weight: 700;
-        color: var(--ink);
-      }
-      .header-img {
-        height: 24px;
-        opacity: 0.75;
-      }
+      /* ヘッダーは assets/site-header.js が注入する（このページ側の定義は不要） */
 
       /* ── Hero ── */
       .hero {
@@ -530,6 +480,7 @@
   <body>
     <script src="assets/site-header.js" defer></script>
     <script src="assets/site-recents.js" defer></script>
+    <script src="assets/page-meta.js" defer></script>
 
     <div class="hero">
       <div class="hero-inner">
@@ -568,7 +519,8 @@
             </span>
           </a>
 
-          <a class="pillar-card" href="#yakureki">
+          <!-- 薬歴は行き先が薬歴マニュアル1つなので、下の棚を経由せず直接開く -->
+          <a class="pillar-card" href="yakureki/index.html">
             <div class="pillar-head">
               <div class="pillar-icon">
                 <svg viewBox="0 0 24 24">
@@ -582,11 +534,19 @@
               基本記載ルール・個別指導で問われやすい項目・加算別の記載事項・文例集。
             </p>
             <span class="pillar-cta">
-              一覧を見る
+              マニュアルを開く
               <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6" /></svg>
             </span>
           </a>
         </div>
+      </section>
+
+      <!-- 最近見たページ（履歴がある時だけ site-recents.js が表示する）。
+           毎日使う人は「この前見たページをもう一度」が多いので、棚より前に置く -->
+      <section id="site-recents-section" style="display:none">
+        <p class="sec-tag">RECENTS</p>
+        <h2 class="sec-heading">最近見たページ</h2>
+        <div id="site-recents-container"></div>
       </section>
 
       <!-- ── 調剤報酬の棚 ── -->
@@ -816,7 +776,7 @@
               <div class="update-line1">
                 <span class="update-date">8/6</span>
                 <a class="update-name" href="ページ一覧.html"
-                  >ページ一覧を追加し、ページ内の見出しからも探せるようにしました<span class="badge-new">NEW</span></a>
+                  >ページ一覧を追加し、ページ内の見出しからも探せるようにしました</a>
               </div>
               <p class="update-desc">
                 サイトにあるページをカテゴリー別に一覧できます。ページ名にない言葉でも、各ページの見出しから探せるようになりました。検索は画面上部の「資料を検索」からも開けます。
@@ -826,7 +786,7 @@
               <div class="update-line1">
                 <span class="update-date">8/6</span>
                 <a class="update-name" href="ナレッジ/リフィル処方箋.html"
-                  >リフィル処方箋のページと対応時のチェックリストを公開<span class="badge-new">NEW</span></a>
+                  >リフィル処方箋のページと対応時のチェックリストを公開</a>
               </div>
               <p class="update-desc">
                 リフィルにできない薬、２回目以降に調剤できる期間の数え方、処方箋への記載と写しの保管をまとめました。受付時に見る「対応の流れ」もあわせて公開しています。
@@ -836,7 +796,7 @@
               <div class="update-line1">
                 <span class="update-date">8/1</span>
                 <a class="update-name" href="改定資料/選定療養_概要2026.html"
-                  >選定療養に近視進行抑制薬の項目を追加<span class="badge-new">NEW</span></a>
+                  >選定療養に近視進行抑制薬の項目を追加</a>
               </div>
               <p class="update-desc">
                 近視進行抑制薬を選定療養として取り扱うときに必要な準備と手続きをまとめました。別紙様式23（報告様式）も掲載しています。
@@ -846,7 +806,7 @@
               <div class="update-line1">
                 <span class="update-date">8/1</span>
                 <a class="update-name" href="改定資料/疑義解釈まとめ2026.html"
-                  >疑義解釈（その11）の薬局関連を掲載<span class="badge-new">NEW</span></a>
+                  >疑義解釈（その11）の薬局関連を掲載</a>
               </div>
               <p class="update-desc">
                 対象となる職員がいなくなったとき、調剤ベースアップ評価料をいつまで算定できるかが示されました。
@@ -856,7 +816,7 @@
               <div class="update-line1">
                 <span class="update-date">7/30</span>
                 <a class="update-name" href="ナレッジ/高額療養費制度の見直し2026.html"
-                  >高額療養費制度の見直し（2026年8月）のページを公開<span class="badge-new">NEW</span></a>
+                  >高額療養費制度の見直し（2026年8月）のページを公開</a>
               </div>
               <p class="update-desc">
                 8月1日から自己負担の上限額が上がります。8月からの変更点と、薬局窓口での対応のポイントをまとめました。
@@ -881,11 +841,6 @@
         </a>
       </section>
 
-      <section id="site-recents-section" style="display:none">
-        <p class="sec-tag">RECENTS</p>
-        <h2 class="sec-heading">最近見たページ</h2>
-        <div id="site-recents-container"></div>
-      </section>
     </main>
 
     <footer>
@@ -897,6 +852,32 @@
     </footer>
 
     <script>
+      // ── 更新情報の NEW バッジを page-meta から出す ──
+      // 手書きだと期限が来ても消えず、各ページ側のバッジと食い違うため、
+      // page-meta.json の newUntil（＝ハブページと同じ基準）だけで判定する。
+      document.addEventListener("DOMContentLoaded", function () {
+        var meta = window.__pageMeta;
+        if (!meta) return;
+        var today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        document.querySelectorAll(".update-name[href]").forEach(function (a) {
+          // index.html はサイトルート直下にあるので href がそのままキーになる
+          var key = decodeURIComponent(
+            a.getAttribute("href").split("#")[0].split("?")[0]
+          );
+          var entry = meta[key];
+          if (!entry || !entry.newUntil) return;
+          var until = new Date(entry.newUntil + "T23:59:59");
+          if (isNaN(until.getTime()) || today > until) return;
+
+          var badge = document.createElement("span");
+          badge.className = "badge-new";
+          badge.textContent = "NEW";
+          a.appendChild(badge);
+        });
+      });
+
       // ── コンテンツカードの収録数を自動カウント ──
       // data-count-from / data-count-selector / data-count-suffix 属性を持つ要素について、
       // 対象ページをフェッチして指定セレクタの内部リンクカード数をカウントし、

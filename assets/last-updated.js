@@ -23,12 +23,13 @@
       bottom: 6px;
       right: 32px;
       font-size: 10.5px;
-      color: #b0b0b0;
+      color: #777;
       font-weight: 400;
       letter-spacing: 0.02em;
       pointer-events: none;
     }
-    .lu-text.lu-mid { color: #888; font-weight: 500; font-size: 11px; }
+    /* 7日以内はもう一段濃くする。どちらも本文として読める濃さにする（薄すぎ厳禁） */
+    .lu-text.lu-mid { color: #555; font-weight: 500; font-size: 11px; }
     .lu-pill {
       position: absolute;
       bottom: 6px;
@@ -53,6 +54,16 @@
       font-weight: 700;
       color: #1e5fa8;
     }
+    /* 薬歴マニュアルのハブカード（.hub-main）は説明文が幅いっぱいまで来るので、
+       絶対配置にせず説明文の下へ普通に流す */
+    .hub-main .lu-text,
+    .hub-main .lu-pill {
+      position: static;
+      margin-top: 8px;
+      display: inline-flex;
+      align-items: center;
+    }
+
     /* card-digest（横長カード）はサブタイトルと被るため右上に配置 */
     .card-digest .lu-text,
     .card-digest .lu-pill {
@@ -74,7 +85,9 @@
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  const cards = document.querySelectorAll('a.card[href], a.tool-card[href], a.card-digest[href]');
+  const cards = document.querySelectorAll(
+    'a.card[href], a.tool-card[href], a.card-digest[href], a.hub-main[href]'
+  );
   cards.forEach((card) => {
     const href = card.getAttribute('href');
     // サイトルート相対パスをキーにする（サブディレクトリ対応。site-header.js が SITE_ROOT を提供）
