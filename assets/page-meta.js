@@ -3,13 +3,14 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-02"
   },
   "ページ一覧.html": {
-    "lastUpdated": "2026-08-06"
-  },
-  "updates.html": {
-    "lastUpdated": "2026-08-06"
+    "lastUpdated": "2026-08-06",
+    "newUntil": "2026-08-13"
   },
   "tools.html": {
     "lastUpdated": "2026-08-01"
+  },
+  "updates.html": {
+    "lastUpdated": "2026-08-06"
   },
   "checklists.html": {
     "lastUpdated": "2026-08-06"
