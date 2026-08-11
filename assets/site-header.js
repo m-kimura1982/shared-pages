@@ -79,6 +79,7 @@
     '加算まとめ/薬学的有害事象等防止加算.html': { category: 'kasan', title: '薬学的有害事象等防止加算' },
     '加算まとめ/服薬管理指導料.html': { category: 'kasan', title: '服薬管理指導料' },
     '加算まとめ/服薬管理指導料3・4_施設訪問・オンライン.html': { category: 'kasan', title: '服薬管理指導料 3・4（施設訪問・オンライン）' },
+    '加算まとめ/特定薬剤管理指導加算1.html': { category: 'kasan', title: '特定薬剤管理指導加算１' },
     '加算まとめ/特定薬剤管理指導加算2.html': { category: 'kasan', title: '特定薬剤管理指導加算２' },
     '加算まとめ/特定薬剤管理指導加算3.html': { category: 'kasan', title: '特定薬剤管理指導加算３' },
     '加算まとめ/吸入薬指導加算2026.html': { category: 'kasan', title: '吸入薬指導加算' },

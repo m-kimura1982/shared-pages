@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>特定薬剤管理指導加算１｜算定項目まとめ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/gigi-list.css" />
+    <style>
+      *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+      :root {
+        --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+        --pad-card:22px; --gap-card:16px;
+        --blue:#1e5fa8; --ink:#222222;
+        --bg:#f3f4f6; --white:#ffffff;
+        --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+        --border:#d1d5db; --border-dk:#9ca3af;
+        --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px; --bw-t:4px;
+        --txt-2:#444444; --txt-3:#5e6470;
+      }
+      body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+      .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+      .page-title-wrap { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+      .page-title-left { flex:1; }
+      .page-title-left h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+      .page-title-left p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+      .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+      .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+      .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+      .sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin:18px 0 9px; }
+      .sub-title:first-child { margin-top:0; }
+      .sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+
+      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+
+      .score-block { display:flex; flex-direction:column; border:var(--bw) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; flex-shrink:0; }
+      .score-block .score-label { background:var(--box-gray); color:var(--txt-2); font-size:var(--text-xs); font-weight:700; padding:5px 16px; text-align:center; border-bottom:var(--bw) solid var(--border); }
+      .score-block .score-num { background:var(--white); font-size:28px; font-weight:900; padding:6px 20px; text-align:center; white-space:nowrap; }
+      .score-block .score-num span { font-size:var(--text-sm); font-weight:500; margin-left:2px; }
+
+      .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+
+      .lead-note { background:#eef4fb; border-radius:var(--radius-sm); padding:12px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray .ttl, .box-blue .ttl { display:block; font-weight:900; margin-bottom:5px; font-size:var(--text-sm); }
+      .box-gray .ttl { color:var(--blue); }
+      .box-blue .ttl { color:var(--ink); }
+
+      .list { display:flex; flex-direction:column; gap:6px; margin:4px 0 2px; }
+      .list .li { font-size:var(--text-sm); line-height:1.7; padding-left:18px; text-indent:-18px; }
+      .list .li::before { content:"・"; color:var(--txt-3); font-weight:900; margin-right:6px; }
+      .list .li b { color:var(--ink); }
+
+      /* 対象薬の12分類。名前だけを並べるので枠付きの札にして拾いやすくする */
+      .drugs { display:flex; flex-wrap:wrap; gap:7px; margin:2px 0; }
+      .drugs .d { font-size:var(--text-sm); font-weight:700; background:var(--white); border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:5px 12px; }
+      .drugs .d .q { font-weight:500; color:var(--txt-3); font-size:var(--text-xs); margin-left:3px; }
+
+      table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+      th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
+      td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
+      tr:last-child td { border-bottom:none; }
+      /* 最終行にまたがる rowspan セルは、その行の罫線が消えても下線が残って線が途切れて見えるので合わせて消す */
+      tr:nth-last-child(2) td[rowspan="2"] { border-bottom:none; }
+      .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+      td.kb { font-size:var(--text-lg); font-weight:900; text-align:center; }
+      /* ○×は中立。× は色を付けず、記号で示す（注意＝色 の発想を持ち込まない） */
+      td.mk { text-align:center; font-weight:900; white-space:nowrap; }
+      td.mk.no, td.mk.na { color:var(--txt-3); }
+      td.mk .q { display:block; font-size:var(--text-xs); font-weight:500; color:var(--txt-3); }
+      td.cs { font-weight:700; color:var(--txt-2); }
+      tr.grp td { border-top:2px solid var(--border-dk); }
+
+      details.fold { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); }
+      details.fold > summary { list-style:none; cursor:pointer; padding:14px var(--pad-card); font-weight:700; font-size:var(--text-sm); color:var(--txt-2); display:flex; align-items:center; gap:8px; }
+      details.fold > summary::-webkit-details-marker { display:none; }
+      details.fold > summary::before { content:"▶"; font-size:10px; color:var(--txt-3); transition:transform .15s; }
+      details.fold[open] > summary::before { transform:rotate(90deg); }
+      details.fold .fold-body { padding:2px var(--pad-card) var(--pad-card); }
+      .orig { display:flex; flex-direction:column; gap:9px; }
+      .orig .oh { font-weight:900; font-size:var(--text-sm); color:var(--blue); margin-top:6px; }
+      .orig .oi { display:flex; gap:9px; font-size:var(--text-sm); line-height:1.7; color:var(--txt-2); }
+      .orig .oi .lab { flex-shrink:0; min-width:28px; font-weight:900; color:var(--txt-3); }
+      .orig .cite { font-size:var(--text-xs); color:var(--txt-3); margin-top:2px; }
+
+      .rel { display:flex; flex-direction:column; gap:8px; }
+      .rel a { display:flex; align-items:center; gap:9px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; text-decoration:none; color:var(--ink); font-size:var(--text-sm); font-weight:700; }
+      .rel a::before { content:"›"; color:var(--blue); font-weight:900; }
+      .rel a:hover { background:#fafbfc; border-color:#bcd3ee; }
+      .rel a .sub { font-weight:400; color:var(--txt-3); font-size:var(--text-xs); margin-left:auto; }
+
+      .ref-links { max-width:900px; margin:16px auto 0; padding:20px 16px 4px; border-top:1px solid var(--border); }
+      .ref-links .row { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+      .ref-links .lab { font-size:12px; color:var(--txt-2); white-space:nowrap; font-weight:bold; }
+      .ref-links a { display:inline-block; color:var(--blue); text-decoration:none; font-size:13px; border:1px solid var(--border); border-radius:6px; padding:4px 12px; background:var(--white); }
+
+      @media (max-width:640px) {
+        body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+        :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+        .card { padding:14px; border-radius:8px; }
+        .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; }
+        .page-title-wrap { flex-direction:column; gap:12px; }
+        .rel a .sub { display:none; }
+        table { font-size:11.5px; min-width:420px; }
+        th, td { padding:6px 8px; }
+      }
+      @media print {
+        @page { margin:10mm 9mm; size:A4; }
+        body { background:white; padding:0; font-size:11.5px; line-height:1.55; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        :root { --text-xs:9.5px; --text-sm:11px; --text-md:11.5px; --text-lg:13px; --text-xl:15px; --pad-card:10px; --gap-card:9px; }
+        .page { display:block; max-width:700px; margin:0 auto; }
+        .card { padding:10px 12px; margin-bottom:9px; break-inside:auto; }
+        .card-title, .sub-title { break-after:avoid; }
+        .lead-note, .box-gray, .box-blue, .drugs .d, .gi-row, tr { break-inside:avoid; }
+        details.fold { break-inside:avoid; margin-bottom:9px; }
+        a { color:inherit; text-decoration:none; }
+      }
+    </style>
+  </head>
+  <body>
+    <script src="../assets/site-header.js" defer></script>
+
+    <div class="page">
+
+      <!-- タイトル＋点数早見 -->
+      <div class="page-title-wrap">
+        <div class="page-title-left">
+          <h1>特定薬剤管理指導加算１</h1>
+          <p>特に安全管理が必要な医薬品（ハイリスク薬）についての指導の評価</p>
+        </div>
+        <div class="score-block">
+          <div class="score-label">イ／ロ</div>
+          <div class="score-num">10・5<span>点</span></div>
+        </div>
+      </div>
+
+      <!-- 算定要件 -->
+      <div class="card">
+        <div class="card-title">算定要件</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th style="white-space:nowrap;">分類</th><th style="white-space:nowrap;"></th><th>算定要件</th><th style="text-align:right; white-space:nowrap;">点数</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="kb">イ</td>
+                <td class="cs" style="white-space:nowrap;">新たに処方</td>
+                <td>特に安全管理が必要な医薬品が<b>新たに処方された患者</b>に対して行った場合</td>
+                <td style="text-align:right; font-weight:900; white-space:nowrap;">10点</td>
+              </tr>
+              <tr class="grp">
+                <td rowspan="2" class="kb">ロ</td>
+                <td class="cs" style="white-space:nowrap;">ア 用法・用量の変更</td>
+                <td>特に安全管理が必要な医薬品の<b>用法又は用量の変更</b>に伴い保険薬剤師が必要と認めて指導を行った患者</td>
+                <td rowspan="2" style="text-align:right; font-weight:900; white-space:nowrap;">5点</td>
+              </tr>
+              <tr>
+                <td class="cs" style="white-space:nowrap;">イ 副作用・服薬状況等の変化</td>
+                <td>患者の<b>副作用の発現状況、服薬状況等の変化</b>に基づき保険薬剤師が必要と認めて指導を行った患者</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sub-title">対象となる医薬品</div>
+        <div class="drugs">
+          <span class="d">抗悪性腫瘍剤</span>
+          <span class="d">免疫抑制剤</span>
+          <span class="d">不整脈用剤</span>
+          <span class="d">抗てんかん剤</span>
+          <span class="d">血液凝固阻止剤<span class="q">内服薬に限る</span></span>
+          <span class="d">ジギタリス製剤</span>
+          <span class="d">テオフィリン製剤</span>
+          <span class="d">カリウム製剤<span class="q">注射薬に限る</span></span>
+          <span class="d">精神神経用剤</span>
+          <span class="d">糖尿病用剤</span>
+          <span class="d">膵臓ホルモン剤</span>
+          <span class="d">抗ＨＩＶ薬</span>
+        </div>
+        <div style="font-size:var(--text-xs); color:var(--txt-3); margin-top:8px;">
+          対象となる薬剤名を確認する場合は、<a href="https://shinryohoshu.mhlw.go.jp/shinryohoshu/" target="_blank" rel="noopener" style="color:var(--blue); font-weight:700;">診療報酬情報提供サービス</a>のページ下部にある対象薬剤一覧（Excel）を参照する。
+        </div>
+
+        <div class="sub-title">共通要件</div>
+        <div class="list">
+          <div class="li">服薬管理指導料を算定するに当たって行った薬剤の管理及び指導等に<b>加えて</b>、その薬剤が特に安全管理が必要な医薬品である旨を伝え、これまでの指導内容等も踏まえた適切な指導を行う</div>
+          <div class="li">対象薬が複数処方されている場合は、<span class="marker">保険薬剤師が必要と認める薬学的管理及び指導</span>を行う。この場合、加算は処方箋受付１回につき１回に限り算定する</div>
+          <div class="li"><b>イ及びロのいずれにも該当する場合であっても、重複して算定することはできない</b></div>
+        </div>
+
+      </div>
+
+      <!-- 算定対象の考え方 -->
+      <div class="card">
+        <div class="card-title">算定対象の考え方<span class="qual">イとロ</span></div>
+        <p style="font-size:var(--text-sm); line-height:1.8; margin-bottom:12px;">
+          イの対象は<span class="marker">患者にとって新たに処方された医薬品</span>である。当薬局で初めて受け付けたかどうかではなく、同一成分の別の銘柄に変わっただけの場合も該当しない。ロは用法・用量の変更に限らず、<span class="marker">副作用の発現状況や服薬状況の変化</span>に基づいて指導した場合も含む。
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>ケース</th><th style="text-align:center; white-space:nowrap;">イ<br />10点</th><th style="text-align:center; white-space:nowrap;">ロ<br />5点</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>患者が初めて服用する医薬品が処方された</td>
+                <td class="mk">○</td>
+                <td class="mk na">—</td>
+              </tr>
+              <tr>
+                <td>用法又は用量が変更された</td>
+                <td class="mk no">×</td>
+                <td class="mk">○</td>
+              </tr>
+              <tr>
+                <td>副作用の発現状況や服薬状況に変化があった</td>
+                <td class="mk no">×</td>
+                <td class="mk">○</td>
+              </tr>
+              <tr class="grp">
+                <td>当薬局では初めて受け付けたが、患者は以前から継続して服用している</td>
+                <td class="mk no">×</td>
+                <td class="mk">△</td>
+              </tr>
+              <tr>
+                <td>同一成分の別の銘柄（併売品）に変更された</td>
+                <td class="mk no">×</td>
+                <td class="mk">△</td>
+              </tr>
+              <tr>
+                <td>従来と同一の処方内容</td>
+                <td class="mk no">×</td>
+                <td class="mk">△</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="box-gray" style="margin-top:14px;">
+          <span class="ttl">△＝指導の必要性で判断する</span>
+          △の3つはいずれも用法・用量が変わっていない。<span class="marker">特に指導が必要と認めたときだけ</span>ロを算定し、その理由の要点を薬歴に残す。
+        </div>
+
+        <div style="font-size:var(--text-xs); color:var(--txt-3); margin-top:10px;">
+          ※ イとロの重複算定はできない。当薬局初処方・併売品への変更の扱いは令和6年の疑義解釈による。原文は <a href="../ツール/gigi-search.html?q=特定薬剤管理指導加算１" style="color:var(--blue); font-weight:700;">疑義解釈検索ツール</a> で確認する。
+        </div>
+
+        <div class="sub-title">ロで「必要と認める」場面</div>
+        <p style="font-size:var(--text-xs); color:var(--txt-3); margin:-4px 0 9px;">算定要件ではなく、社内で整理した判断の目安。</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th style="white-space:nowrap;">場面</th><th>指導の例</th></tr>
+            </thead>
+            <tbody>
+              <tr><td style="white-space:nowrap; font-weight:700;">増量</td><td>増量に伴う副作用のリスクについて指導する</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:700;">副作用の出現</td><td>出現した副作用の対処法について指導する（例：低血糖）</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:700;">服薬状況の不良</td><td>継続して服用することの重要性について指導する（例：ＳＳＲＩ）</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:700;">相互作用</td><td>新たな併用薬との相互作用について注意喚起する（例：ＮＳＡＩＤｓとワルファリンの併用による出血のリスク）</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:700;">理解度</td><td>理解度が低いため、繰り返し指導する</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:700;">シックデイ</td><td>定期処方と一緒に、シックデイに該当する臨時処方を応需した場合の対応を指導する</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="box-gray" style="margin-top:14px;">
+          <span class="ttl">実務メモ〔社内運用〕</span>
+          <div class="list" style="margin:0;">
+            <div class="li"><b>同系統の別成分への切替はイとしている。</b>成分が変われば指導する内容も変わるため</div>
+            <div class="li"><b>合剤は有効成分で見る。</b>新たな成分が入ればイ、同じ成分で用量が変わるだけならロ</div>
+            <div class="li"><b>初めて服用するか確認できないときはイとしない。</b>ロの要件を満たすかを見て算定している</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 算定上の注意 -->
+      <div class="card">
+        <div class="card-title">算定上の注意</div>
+
+        <div class="sub-title">事前の情報収集</div>
+        <div class="list">
+          <div class="li">「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン」（日本薬剤師会）等を参照し、薬学的管理及び指導等を行う上で必要な情報は事前に収集することが望ましい</div>
+          <div class="li"><b>薬局では得ることが困難な診療上の情報の収集は、必ずしも必要としない</b></div>
+        </div>
+
+        <div class="sub-title">特定薬剤管理指導加算２との関係</div>
+        <div class="list">
+          <div class="li">同じ薬剤を対象とするときは、<span class="marker">特定薬剤管理指導加算２と同一月内には算定できない</span></div>
+          <div class="li">特定薬剤管理指導加算２の算定に係る抗悪性腫瘍剤・制吐剤等の支持療法に係る薬剤<b>以外</b>の薬剤を対象として指導を行った場合は、要件を満たせば算定できる</div>
+        </div>
+        <div style="font-size:var(--text-xs); color:var(--txt-3); margin-top:6px;">
+          ※ 令和4年度 疑義解釈その18 問1・問2による。
+        </div>
+
+        <div class="sub-title">算定できないケース</div>
+        <div class="list">
+          <div class="li"><b>服薬管理指導料の「４のロ」又は「４のハ」を算定する場合</b>。４のロは在宅で療養を行っている通院が困難な患者に情報通信機器を用いて服薬指導を行った場合、４のハはそのうち患者の状態の急変等に伴うものを指す</div>
+        </div>
+      </div>
+
+      <!-- 薬歴記載事項 -->
+      <div class="card">
+        <div class="card-title">薬歴記載事項</div>
+        <div class="list">
+          <div class="li">対象となる医薬品に関して患者又はその家族等に対して<span class="marker">確認した内容及び行った指導の要点</span>を記載する（別添３(6)）</div>
+          <div class="li">対象薬が複数処方されている場合は、<b>必要と認めて指導を行った薬剤について記載する</b>。複数の薬剤に指導したのであれば、その全てについて記載する</div>
+          <div class="li">従来と同一の処方内容でロを算定する場合は、<span class="marker">特に指導が必要と判断した理由の要点</span>も記載する</div>
+        </div>
+        <div class="box-blue" style="margin-top:14px;">
+          <span class="ttl">具体的な確認・記載方法</span>
+          通知では、日本薬剤師会の「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン」等を参照することが望ましいとされている。ガイドライン等を踏まえた<b>薬効群ごとの確認項目、薬歴の記載例、個別指導で確認されやすい点</b>を薬歴マニュアルにまとめている。<b>算定する前に確認する。</b>
+        </div>
+        <div class="rel" style="margin-top:11px;">
+          <a href="../yakureki/ハイリスク薬指導.html">薬歴マニュアル ハイリスク薬指導<span class="sub">薬効群別の記載例</span></a>
+        </div>
+        <div style="font-size:var(--text-xs); color:var(--txt-3); margin-top:10px;">
+          ※ 全ての薬歴に共通して必要な記載事項（ア〜オ）は <a href="../yakureki/基本記載ルール.html" style="color:var(--blue); font-weight:700;">基本記載ルール</a> を参照。
+        </div>
+      </div>
+
+      <!-- レセプト摘要欄記載事項 -->
+      <div class="card">
+        <div class="card-title">レセプト摘要欄記載事項</div>
+        <div class="box-gray"><div style="font-weight:900; color:var(--blue);">摘要欄記載事項なし</div></div>
+        <div style="font-size:var(--text-xs); color:var(--txt-3); margin-top:10px;">
+          ※ <a href="../改定資料/別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html" style="color:var(--blue); text-decoration:underline;">別表Ⅰ</a>に本加算の記載事項は設定されていない。
+        </div>
+      </div>
+
+      <!-- 原文 -->
+      <details class="fold">
+        <summary>原文を見る（告示・通知）</summary>
+        <div class="fold-body">
+          <div class="orig">
+            <div class="oh">告示（別表第三 区分１０の３ 服薬管理指導料）</div>
+            <div class="oi"><span class="lab">注7</span><span>特に安全管理が必要な医薬品として別に厚生労働大臣が定めるものを調剤した場合であって、当該医薬品の服用に関し、その服用状況、副作用の有無等について患者又はその家族等に確認し、必要な指導等を行ったときには、特定薬剤管理指導加算１として、次に掲げる点数をそれぞれ所定点数に加算する。ただし、４のロ又はハを算定する場合においては、次に掲げる加算は算定しない。<br />イ　特に安全管理が必要な医薬品が新たに処方された患者に対して行った場合　10点<br />ロ　特に安全管理が必要な医薬品に係る用法又は用量の変更、患者の副作用の発現状況等に基づき保険薬剤師が必要と認めて行った場合　５点</span></div>
+
+            <div class="oh">通知（別添３ 特定薬剤管理指導加算１）</div>
+            <div class="oi"><span class="lab">(1)</span><span>特定薬剤管理指導加算１は、服薬管理指導料を算定するに当たって行った薬剤の管理及び指導等に加えて、特に安全管理が必要な医薬品が処方された患者又はその家族等に当該薬剤が特に安全管理が必要な医薬品である旨を伝え、当該薬剤についてこれまでの指導内容等も踏まえ適切な指導を行った場合に算定する。なお、「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン」（日本薬剤師会）等を参照し、特に安全管理が必要な医薬品に関して薬学的管理及び指導等を行う上で必要な情報については事前に情報を収集することが望ましいが、薬局では得ることが困難な診療上の情報の収集については必ずしも必要とはしない。</span></div>
+            <div class="oi"><span class="lab">(2)</span><span>イについては、新たに当該医薬品が処方された場合に限り、算定することができる。</span></div>
+            <div class="oi"><span class="lab">(3)</span><span>ロについては、次のいずれかに該当する患者に対して指導を行った場合をいう。<br />ア　特に安全管理が必要な医薬品の用法又は用量の変更に伴い保険薬剤師が必要と認めて指導を行った患者<br />イ　患者の副作用の発現状況、服薬状況等の変化に基づき保険薬剤師が必要と認めて指導を行った患者</span></div>
+            <div class="oi"><span class="lab">(4)</span><span>「特に安全管理が必要な医薬品」とは、抗悪性腫瘍剤、免疫抑制剤、不整脈用剤、抗てんかん剤、血液凝固阻止剤（内服薬に限る。）、ジギタリス製剤、テオフィリン製剤、カリウム製剤（注射薬に限る。）、精神神経用剤、糖尿病用剤、膵臓ホルモン剤及び抗ＨＩＶ薬をいう。なお、具体的な対象薬剤については、その一覧を厚生労働省のホームページに掲載している。</span></div>
+            <div class="oi"><span class="lab">(5)</span><span>特に安全管理が必要な医薬品が複数処方されている場合には、保険薬剤師が必要と認める薬学的管理及び指導を行うこと。この場合において、当該加算は処方箋受付１回につき１回に限り算定する。なお、イ及びロのいずれにも該当する場合であっても、重複して算定することはできない。</span></div>
+            <div class="oi"><span class="lab">(6)</span><span>対象となる医薬品に関して患者又はその家族等に対して確認した内容及び行った指導の要点について、薬剤服用歴等に記載すること。なお、従来と同一の処方内容の場合は、ロとして特に指導が必要と保険薬剤師が認めた場合に限り算定することができるが、この場合において、特に指導が必要と判断した理由の要点を薬剤服用歴等に記載すること。</span></div>
+            <div class="cite">出典：診療報酬の算定方法（別表第三 調剤報酬点数表）／「診療報酬の算定方法の一部改正に伴う実施上の留意事項について」（令和8年3月5日 保医発0305第4号）別添3。</div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 関連する過去の疑義解釈 -->
+      <div class="card">
+        <div class="card-title">関連する過去の疑義解釈</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;"><a href="../ツール/gigi-search.html?q=特定薬剤管理指導加算１" style="color:var(--blue); font-weight:700;">疑義解釈検索ツールで「特定薬剤管理指導加算１」の全件を見る</a></p>
+      </div>
+
+      <!-- 関連ページ -->
+      <div class="card">
+        <div class="card-title">関連ページ</div>
+        <div class="rel">
+          <a href="服薬管理指導料.html">服薬管理指導料<span class="sub">本体の点数</span></a>
+          <a href="特定薬剤管理指導加算2.html">特定薬剤管理指導加算２<span class="sub">同一月の併算定に注意</span></a>
+          <a href="特定薬剤管理指導加算3.html">特定薬剤管理指導加算３<span class="sub">要件を満たせば同時算定可</span></a>
+          <a href="../yakureki/ハイリスク薬指導.html">薬歴マニュアル ハイリスク薬指導<span class="sub">薬効群別の記載例</span></a>
+          <a href="../加算まとめ.html">算定項目まとめ<span class="sub">一覧</span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+    <!-- 原文参照リンク -->
+    <div class="ref-links">
+      <div class="row">
+        <span class="lab">原文参照：</span>
+        <a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-10-3-6">別添３ › 特定薬剤管理指導加算１</a>
+        <a href="../改定資料/別表第三_調剤報酬点数表2026.html#ku10-3-n7">別表第三 › 服薬管理指導料（注7）</a>
+      </div>
+    </div>
+  </body>
+</html>
