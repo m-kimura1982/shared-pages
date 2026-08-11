@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>特定薬剤管理指導加算２｜算定項目まとめ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/gigi-list.css" />
+    <style>
+      *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+      :root {
+        --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+        --pad-card:22px; --gap-card:16px;
+        --blue:#1e5fa8; --ink:#222222;
+        --bg:#f3f4f6; --white:#ffffff;
+        --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+        --border:#d1d5db; --border-dk:#9ca3af;
+        --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px; --bw-t:4px;
+        --txt-2:#444444; --txt-3:#5e6470;
+      }
+      body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+      .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+      .page-title-wrap { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+      .page-title-left { flex:1; }
+      .page-title-left h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+      .page-title-left p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+      .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+      .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+      .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+      .sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin:18px 0 9px; }
+      .sub-title:first-child { margin-top:0; }
+      .sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+
+      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+
+      .score-block { display:flex; flex-direction:column; border:var(--bw) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; flex-shrink:0; }
+      .score-block .score-label { background:var(--box-gray); color:var(--txt-2); font-size:var(--text-xs); font-weight:700; padding:5px 16px; text-align:center; border-bottom:var(--bw) solid var(--border); }
+      .score-block .score-num { background:var(--white); font-size:28px; font-weight:900; padding:6px 20px; text-align:center; white-space:nowrap; }
+      .score-block .score-num span { font-size:var(--text-sm); font-weight:500; margin-left:2px; }
+
+      .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+
+      .lead-note { background:#eef4fb; border-radius:var(--radius-sm); padding:12px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray .ttl, .box-blue .ttl { display:block; font-weight:900; margin-bottom:5px; font-size:var(--text-sm); }
+      .box-gray .ttl { color:var(--blue); }
+      .box-blue .ttl { color:var(--ink); }
+
+      .list { display:flex; flex-direction:column; gap:6px; margin:4px 0 2px; }
+      .list .li { font-size:var(--text-sm); line-height:1.7; padding-left:18px; text-indent:-18px; }
+      .list .li::before { content:"・"; color:var(--txt-3); font-weight:900; margin-right:6px; }
+      .list .li b { color:var(--ink); }
+
+      /* 手順（順序があるので青地の角丸四角バッジ） */
+      .steps { display:flex; flex-direction:column; }
+      .step { display:flex; gap:13px; padding:14px 0; border-top:var(--bw-h) solid var(--border); }
+      .step:first-child { border-top:none; padding-top:0; }
+      .step .n { width:26px; height:26px; border-radius:7px; background:var(--blue); color:var(--white); font-size:14px; font-weight:900; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+      .step .c { flex:1; }
+      .step .t { font-weight:900; font-size:var(--text-md); margin-bottom:3px; }
+      .step .t .when { display:inline-block; font-size:var(--text-xs); font-weight:700; color:var(--txt-3); background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:4px; padding:0 8px; margin-right:8px; vertical-align:1px; }
+      .step .d { font-size:var(--text-sm); line-height:1.7; color:var(--ink); }
+
+      /* 摘要欄のレセプト表示文言（固定部＝グレー／入力する可変部＝黒太字） */
+      .disp { display:flex; flex-direction:column; gap:8px; margin-top:4px; }
+      .disp .d { border:var(--bw-h) solid var(--border); border-left:var(--bw-a) solid var(--blue); border-radius:var(--radius-sm); padding:9px 13px; font-size:var(--text-sm); line-height:1.6; }
+      .disp .d .pre { color:var(--txt-3); }
+      .disp .d .val { font-weight:900; color:var(--ink); }
+
+      table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+      th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
+      td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
+      tr:last-child td { border-bottom:none; }
+      .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+
+      details.fold { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); }
+      details.fold > summary { list-style:none; cursor:pointer; padding:14px var(--pad-card); font-weight:700; font-size:var(--text-sm); color:var(--txt-2); display:flex; align-items:center; gap:8px; }
+      details.fold > summary::-webkit-details-marker { display:none; }
+      details.fold > summary::before { content:"▶"; font-size:10px; color:var(--txt-3); transition:transform .15s; }
+      details.fold[open] > summary::before { transform:rotate(90deg); }
+      details.fold .fold-body { padding:2px var(--pad-card) var(--pad-card); }
+      .orig { display:flex; flex-direction:column; gap:9px; }
+      .orig .oh { font-weight:900; font-size:var(--text-sm); color:var(--blue); margin-top:6px; }
+      .orig .oi { display:flex; gap:9px; font-size:var(--text-sm); line-height:1.7; color:var(--txt-2); }
+      .orig .oi .lab { flex-shrink:0; min-width:28px; font-weight:900; color:var(--txt-3); }
+      .orig .cite { font-size:var(--text-xs); color:var(--txt-3); margin-top:2px; }
+
+      .rel { display:flex; flex-direction:column; gap:8px; }
+      .rel a { display:flex; align-items:center; gap:9px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; text-decoration:none; color:var(--ink); font-size:var(--text-sm); font-weight:700; }
+      .rel a::before { content:"›"; color:var(--blue); font-weight:900; }
+      .rel a:hover { background:#fafbfc; border-color:#bcd3ee; }
+      .rel a .sub { font-weight:400; color:var(--txt-3); font-size:var(--text-xs); margin-left:auto; }
+
+      .ref-links { max-width:900px; margin:16px auto 0; padding:20px 16px 4px; border-top:1px solid var(--border); }
+      .ref-links .row { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+      .ref-links .lab { font-size:12px; color:var(--txt-2); white-space:nowrap; font-weight:bold; }
+      .ref-links a { display:inline-block; color:var(--blue); text-decoration:none; font-size:13px; border:1px solid var(--border); border-radius:6px; padding:4px 12px; background:var(--white); }
+
+      @media (max-width:640px) {
+        body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+        :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+        .card { padding:14px; border-radius:8px; }
+        .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; }
+        .page-title-wrap { flex-direction:column; gap:12px; }
+        .rel a .sub { display:none; }
+        table { font-size:11.5px; min-width:420px; }
+        th, td { padding:6px 8px; }
+        .step .n { width:22px; height:22px; font-size:13px; border-radius:6px; }
+      }
+      @media print {
+        @page { margin:10mm 9mm; size:A4; }
+        body { background:white; padding:0; font-size:11.5px; line-height:1.55; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        :root { --text-xs:9.5px; --text-sm:11px; --text-md:11.5px; --text-lg:13px; --text-xl:15px; --pad-card:10px; --gap-card:9px; }
+        .page { display:block; max-width:700px; margin:0 auto; }
+        .card { padding:10px 12px; margin-bottom:9px; break-inside:auto; }
+        .card-title, .sub-title { break-after:avoid; }
+        .lead-note, .box-gray, .box-blue, .disp .d, .steps .step, .gi-row, tr { break-inside:avoid; }
+        details.fold { break-inside:avoid; margin-bottom:9px; }
+        a { color:inherit; text-decoration:none; }
+      }
+    </style>
+  </head>
+  <body>
+    <script src="../assets/site-header.js" defer></script>
+
+    <div class="page">
+
+      <!-- タイトル＋点数早見 -->
+      <div class="page-title-wrap">
+        <div class="page-title-left">
+          <h1>特定薬剤管理指導加算２</h1>
+          <p>抗悪性腫瘍剤の注射を受けている患者に、電話等で服用状況や副作用の有無等を確認し、確認結果を保険医療機関へ文書で情報提供した場合の評価</p>
+        </div>
+        <div class="score-block">
+          <div class="score-label">月1回まで</div>
+          <div class="score-num">100<span>点</span></div>
+        </div>
+      </div>
+
+      <!-- 届出が前提 -->
+      <div class="lead-note">
+        <span class="marker">施設基準の届出をした保険薬局でなければ算定できない</span>加算。まず当薬局の届出状況を確認する。
+      </div>
+
+      <!-- 算定要件 -->
+      <div class="card">
+        <div class="card-title">算定要件</div>
+
+        <div class="sub-title">対象患者</div>
+        <div class="list">
+          <div class="li">医科点数表の連携充実加算を届け出ている保険医療機関において、<b>抗悪性腫瘍剤を注射された悪性腫瘍の患者</b></div>
+          <div class="li">患者にレジメン等を交付した保険医療機関の処方箋に基づき、当薬局が<b>抗悪性腫瘍剤又は制吐剤等の支持療法に係る薬剤を調剤する</b>こと</div>
+        </div>
+        <div class="box-gray" style="margin-top:10px;">
+          <span class="ttl">連携充実加算の届出状況を確認するには</span>
+          連携充実加算は医科の加算なので、薬局から届出状況を直接確認できるわけではない。必要に応じて、関東信越厚生局の<a href="https://kouseikyoku.mhlw.go.jp/kantoshinetsu/chousa/kijyun.html" target="_blank" rel="noopener" style="color:var(--blue); font-weight:700;">施設基準の届出受理状況</a>にある都県別の名簿で確認する。名簿の受理番号欄では、連携充実加算は<b>「外化連」</b>と略記されている。届出をしている医療機関は多くないので、近隣の該当医療機関を一度調べておくとよい。
+        </div>
+
+        <div class="sub-title">実施すること</div>
+        <div class="steps">
+          <div class="step">
+            <div class="n">1</div>
+            <div class="c">
+              <div class="t"><span class="when">投薬時</span>レジメン等を確認して指導する</div>
+              <div class="d">患者が医療機関から交付されたレジメン等の文書で、副作用の発現状況や治療計画を確認し、必要な薬学的管理及び指導を行う。</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="n">2</div>
+            <div class="c">
+              <div class="t"><span class="when">投薬時</span>電話等で確認することの同意を得る</div>
+              <div class="d">ここでの同意は、<span class="marker">後日、薬局から電話等で連絡し、服用状況や体調を確認することへの同意</span>を指す。指導を終えたその場で同意を得る。ビデオ通話を使うなら、その旨も伝えておく。</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="n">3</div>
+            <div class="c">
+              <div class="t"><span class="when">後日</span>電話等で服用状況と体調を確認する</div>
+              <div class="d">患者に注射又は投薬されている抗悪性腫瘍剤及び制吐剤等の支持療法に係る薬剤について、電話等により、服用状況や服薬中の体調の変化（副作用が疑われる症状など）の有無等を患者又はその家族等に確認する。</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="n">4</div>
+            <div class="c">
+              <div class="t"><span class="when">確認後</span>保険医療機関へ文書で情報提供する</div>
+              <div class="d">確認結果を踏まえ、医療機関に必要な情報を<b>文書により</b>提供する。<span class="marker">情報提供を行うのは、3の電話等での確認を終えたあと</span>。投薬した日に情報提供するものではない。</div>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:var(--text-xs); color:var(--txt-3); margin-top:8px;">
+          ※ 通知のアを1・2に分け、イを3、ウを4として時系列に並べたもの。原文は下の「原文を見る」を参照。
+        </div>
+
+        <div class="sub-title">算定単位</div>
+        <div class="list">
+          <div class="li"><b>月1回に限り</b>100点。同一月に複数回情報提供を行っても、算定は1回</div>
+        </div>
+      </div>
+
+      <!-- 算定上の注意 -->
+      <div class="card">
+        <div class="card-title">算定上の注意</div>
+
+        <div class="sub-title">事前の準備</div>
+        <div class="list">
+          <div class="li">原則として、<b>保険医療機関のウェブサイト等でレジメン等を確認し</b>、あらかじめ薬学的管理等に必要な情報を把握する</div>
+          <div class="li">患者の緊急時に対応できるよう、あらかじめ保険医療機関との間で<b>緊急時の対応方法や連絡先等を共有する</b>ことが望ましい</div>
+          <div class="li">医療機関が<b>情報提供文書の書式を示している</b>ことがある。研修会やウェブサイトで確認しておく</div>
+        </div>
+
+        <div class="sub-title">「電話等」の範囲</div>
+        <div class="list">
+          <div class="li">電話のほか、<b>ビデオ通話</b>による連絡や、<b>患者が他の保険医療機関の処方箋を持参した際に行う確認</b>も含まれる</div>
+          <div class="li">つまり、他の医療機関の処方箋を持って来局したときに聞き取る形でもよく、必ず電話をかけなければならないわけではない。その場合も手順2の同意は必要</div>
+        </div>
+
+        <div class="sub-title">重大な副作用が疑われるときの対応</div>
+        <div class="list">
+          <div class="li">患者に対し、速やかに保険医療機関へ連絡するよう指導し、必要に応じて受診勧奨を行うなど、必要な対応をとる</div>
+        </div>
+
+        <div class="sub-title">服薬情報等提供料との関係</div>
+        <div class="list">
+          <div class="li">この加算の算定時に行う保険医療機関への文書による情報提供については、<span class="marker">服薬情報等提供料は算定できない</span></div>
+          <div class="li">確認の際に<b>他の保険医療機関又は他の診療科</b>で処方された薬剤に係る情報を得た場合は、必要に応じて患者の同意を得た上でその保険医療機関等へ情報提供する。この場合は、所定の要件を満たせば服薬情報等提供料を算定できる</div>
+        </div>
+
+        <div class="sub-title">算定できないケース</div>
+        <div class="list">
+          <div class="li"><b>服薬管理指導料の「４のロ」又は「４のハ」を算定する場合</b>。４のロは、在宅で療養中の通院が困難な患者に対し、情報通信機器を用いて服薬指導を行った場合。４のハは、そのうち患者の状態の急変等に伴う場合を指す</div>
+          <div class="li"><b>特別調剤基本料Ａを算定している保険薬局</b>が、不動産取引等その他特別な関係を有している保険医療機関へ情報提供を行った場合</div>
+        </div>
+      </div>
+
+      <!-- 施設基準・届出 -->
+      <div class="card">
+        <div class="card-title">施設基準・届出<span class="qual">特掲診療料施設基準 第98</span></div>
+        <div class="list">
+          <div class="li"><b>勤務経験</b>：届出時点で、保険薬剤師としての勤務経験が<span class="marker">5年以上</span>ある薬剤師が勤務していること。保険医療機関の薬剤師としての勤務経験を1年以上有する場合は、1年を上限として保険薬剤師としての勤務経験の期間に含めることができる</div>
+          <div class="li"><b>プライバシーへの配慮</b>：患者との会話のやりとりが他の患者に聞こえないよう、パーテーション等で区切られた独立したカウンターを有するなど、患者のプライバシーに配慮していること</div>
+          <div class="li"><b>麻薬小売業者の免許</b>：麻薬及び向精神薬取締法第３条の規定による麻薬小売業者の免許を取得し、必要な指導を行うことができる体制が整備されていること</div>
+          <div class="li"><b>研修</b>：保険医療機関が実施する抗悪性腫瘍剤の化学療法に係る研修会に、当該保険薬局に勤務する<span class="marker">常勤の保険薬剤師が年1回以上参加</span>していること</div>
+        </div>
+        <div class="box-gray" style="margin-top:12px;">
+          届出は、<b><a href="https://kouseikyoku.mhlw.go.jp/kantoshinetsu/r8-2-603.pdf" target="_blank" rel="noopener" style="color:var(--blue);">別添２の届出書</a></b>に<b><a href="https://kouseikyoku.mhlw.go.jp/kantoshinetsu/r8-t92.pdf" target="_blank" rel="noopener" style="color:var(--blue);">様式92</a></b>を添えて出す。関東信越厚生局の整理番号は2-603。様式92には、勤務経験が5年以上ある保険薬剤師の氏名、プライバシーに配慮した服薬指導の方法、麻薬小売業者免許証の番号、直近1年の研修会への出席状況を書く。同じ研修会に複数名が参加しても、出席回数は1回と数える。
+        </div>
+      </div>
+
+      <!-- 薬歴記載事項 -->
+      <div class="card">
+        <div class="card-title">薬歴記載事項</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;">特定薬剤管理指導加算２に固有の薬歴記載事項は定められていないが、別添３ 薬学管理料 <b>通則(5)</b>により、加算を算定する場合は<span class="marker">その根拠及び指導内容等を簡潔に記載する</span>。個別の記載事項が定められていないからといって、薬歴への記載が不要になるわけではない。</p>
+        <div style="font-size:var(--text-xs); color:var(--txt-3); margin-top:10px;">
+          ※ 全ての薬歴に共通して必要な記載事項（ア〜オ）は <a href="../yakureki/基本記載ルール.html" style="color:var(--blue); font-weight:700;">基本記載ルール</a> を参照。
+        </div>
+      </div>
+
+      <!-- レセプト摘要欄記載事項 -->
+      <div class="card">
+        <div class="card-title">レセプト摘要欄記載事項</div>
+        <p style="font-size:var(--text-sm); line-height:1.8; margin-bottom:10px;">次の2項目を入力する。</p>
+        <div class="disp">
+          <div class="d"><span class="pre">患者に抗悪性腫瘍剤を注射している保険医療機関名（特定薬剤管理指導加算２）；</span></div>
+          <div class="d"><span class="pre">情報提供を行った年月日（特定薬剤管理指導加算２）；</span></div>
+        </div>
+        <div style="font-size:var(--text-xs); color:var(--txt-3); margin-top:10px;">
+          ※ 別表Ⅰ 項番10。記載事項は「当該患者に抗悪性腫瘍剤を注射している保険医療機関の名称及び当該保険医療機関に情報提供を行った年月日」。
+        </div>
+      </div>
+
+      <!-- 原文 -->
+      <details class="fold">
+        <summary>原文を見る（告示・通知・施設基準）</summary>
+        <div class="fold-body">
+          <div class="orig">
+            <div class="oh">告示（別表第三 区分１０の３ 服薬管理指導料）</div>
+            <div class="oi"><span class="lab">注8</span><span>別に厚生労働大臣が定める施設基準に適合しているものとして地方厚生局長等に届け出た保険薬局において、別に厚生労働大臣が定める患者に対して、当該患者の副作用の発現状況、治療計画等を文書により確認し、必要な指導等を行った上で、当該患者又はその家族等の同意を得て、悪性腫瘍の治療に係る薬剤の投薬又は注射に関し、電話等により、その服用状況、副作用の有無等について患者又はその家族等に確認し、保険医療機関に必要な情報を文書により提供した場合には、特定薬剤管理指導加算２として、月１回に限り100点を所定点数に加算する。この場合において、区分番号１５の５に掲げる服薬情報等提供料は算定できない。また、４のロ又はハを算定する場合においては、当該加算は算定しない。</span></div>
+
+            <div class="oh">通知（別添３ 特定薬剤管理指導加算２）</div>
+            <div class="oi"><span class="lab">(1)</span><span>特定薬剤管理指導加算２は、医科点数表の「Ｂ００１－２－12」の「注８」に規定する連携充実加算を届け出ている保険医療機関において、抗悪性腫瘍剤を注射された悪性腫瘍の患者に対して、抗悪性腫瘍剤等を調剤する保険薬局の保険薬剤師が以下のアからウまでの全てを実施した場合に算定する。<br />ア　当該患者のレジメン（治療内容）等を確認し、必要な薬学的管理及び指導を行うこと。<br />イ　当該患者が注射又は投薬されている抗悪性腫瘍剤及び制吐剤等の支持療法に係る薬剤に関し、電話等により服用状況、患者の服薬中の体調の変化（副作用が疑われる症状など）の有無等について患者又はその家族等に確認すること。<br />ウ　イの確認結果を踏まえ、当該保険医療機関に必要な情報を文書により提供すること。</span></div>
+            <div class="oi"><span class="lab">(2)</span><span>「抗悪性腫瘍剤等を調剤する保険薬局」とは、患者にレジメン（治療内容）等を交付した保険医療機関の処方箋に基づき、保険薬剤師が抗悪性腫瘍剤又は制吐剤等の支持療法に係る薬剤を調剤する保険薬局をいう。</span></div>
+            <div class="oi"><span class="lab">(3)</span><span>特定薬剤管理指導加算２における薬学的管理及び指導を行おうとする保険薬剤師は、原則として、保険医療機関のホームページ等でレジメン（治療内容）等を閲覧し、あらかじめ薬学的管理等に必要な情報を把握すること。</span></div>
+            <div class="oi"><span class="lab">(4)</span><span>電話等による患者の服薬状況及び患者の服薬中の体調の変化（副作用が疑われる症状など）の有無等の確認は、電話の他、リアルタイムでの画像を介したコミュニケーション（以下「ビデオ通話」という。）による連絡及び患者が他の保険医療機関の処方箋を持参した際の確認が含まれる。電話又はビデオ通話により患者に確認を行う場合は、あらかじめ患者に対し、電話又はビデオ通話を用いて確認することについて了承を得ること。</span></div>
+            <div class="oi"><span class="lab">(5)</span><span>患者の緊急時に対応できるよう、あらかじめ保険医療機関との間で緊急時の対応方法や連絡先等について共有することが望ましい。また、患者の服薬状況の確認において、重大な副作用の発現のおそれがある場合には、患者に対して速やかに保険医療機関に連絡するよう指導することや受診勧奨を行うことなどにより、必要な対応を行うこと。</span></div>
+            <div class="oi"><span class="lab">(6)</span><span>当該加算の算定時に行う保険医療機関への文書による情報提供については、服薬情報等提供料は算定できない。</span></div>
+            <div class="oi"><span class="lab">(7)</span><span>特定薬剤管理指導加算２は、特別調剤基本料Ａを算定している保険薬局において、当該保険薬局と不動産取引等その他特別な関係を有している保険医療機関へ情報提供を行った場合は算定できない。</span></div>
+            <div class="oi"><span class="lab">(8)</span><span>患者１人につき同一月に２回以上の情報提供を行った場合においても、当該加算の算定は月１回のみとする。</span></div>
+            <div class="oi"><span class="lab">(9)</span><span>抗悪性腫瘍剤等に関する患者の服用状況及び患者の服薬中の体調の変化（副作用が疑われる症状など）の有無等の確認を行う際に、他の保険医療機関又は他の診療科で処方された薬剤に係る情報を得た場合には、必要に応じて、患者の同意を得た上で、当該他の保険医療機関等に情報提供を行うこと。この場合において、所定の要件を満たせば服薬情報等提供料を算定できる。</span></div>
+
+            <div class="oh">施設基準（特掲診療料施設基準通知 第98）</div>
+            <div class="oi"><span class="lab">(1)</span><span>施設基準の届出時点において、保険薬剤師としての勤務経験を５年以上有する薬剤師が勤務していること。なお、保険医療機関の薬剤師としての勤務経験を１年以上有する場合、１年を上限として保険薬剤師としての勤務経験の期間に含めることができる。</span></div>
+            <div class="oi"><span class="lab">(2)</span><span>薬学的管理等の内容が他の患者に漏れ聞こえる場合があることを踏まえ、患者との会話のやりとりが他の患者に聞こえないようパーテーション等で区切られた独立したカウンターを有するなど、患者のプライバシーに配慮していること。</span></div>
+            <div class="oi"><span class="lab">(3)</span><span>麻薬及び向精神薬取締法第３条の規定による麻薬小売業者の免許を取得し、必要な指導を行うことができる体制が整備されていること。</span></div>
+            <div class="oi"><span class="lab">(4)</span><span>保険医療機関が実施する抗悪性腫瘍剤の化学療法に係る研修会に当該保険薬局に勤務する常勤の保険薬剤師が年１回以上参加していること。</span></div>
+            <div class="oi"><span class="lab">届出</span><span>特定薬剤管理指導加算２の施設基準に係る届出は、別添２の様式92を用いること。</span></div>
+
+            <div class="oh">参考（別添３ 薬学管理料 通則(5)・薬歴記載の根拠）</div>
+            <div class="oi"><span class="lab">(5)</span><span>また、定型文を用いて画一的に記載するのではなく、指導等を行った保険薬剤師が必要事項を判断して記載すること。特に、薬学管理料やその加算を算定する場合には、その根拠及び指導内容等について簡潔に記載すること。</span></div>
+            <div class="cite">出典：診療報酬の算定方法（別表第三 調剤報酬点数表）／「診療報酬の算定方法の一部改正に伴う実施上の留意事項について」（令和8年3月5日 保医発0305第4号）別添3／「特掲診療料の施設基準等及びその届出に関する手続きの取扱いについて」（令和8年3月5日 保医発0305第8号）第98。摘要欄は別表Ⅰ 項番10による。</div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 関連する過去の疑義解釈 -->
+      <div class="card">
+        <div class="card-title">関連する過去の疑義解釈</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;"><a href="../ツール/gigi-search.html?q=特定薬剤管理指導加算２" style="color:var(--blue); font-weight:700;">疑義解釈検索ツールで「特定薬剤管理指導加算２」の全件を見る</a></p>
+      </div>
+
+      <!-- 関連ページ -->
+      <div class="card">
+        <div class="card-title">関連ページ</div>
+        <div class="rel">
+          <a href="服薬管理指導料.html">服薬管理指導料<span class="sub">本体の点数</span></a>
+          <a href="特定薬剤管理指導加算1.html">特定薬剤管理指導加算１<span class="sub">ハイリスク薬</span></a>
+          <a href="特定薬剤管理指導加算3.html">特定薬剤管理指導加算３<span class="sub">要件を満たせば同時算定可</span></a>
+          <a href="服薬情報等提供料.html">服薬情報等提供料<span class="sub">併算定の関係</span></a>
+          <a href="../ツール/服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html">別表１ 算定可否表<span class="sub">どの指導料に付けられるか</span></a>
+          <a href="../加算まとめ.html">算定項目まとめ<span class="sub">一覧</span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+    <!-- 原文参照リンク -->
+    <div class="ref-links">
+      <div class="row">
+        <span class="lab">原文参照：</span>
+        <a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-10-3-7">別添３ › 特定薬剤管理指導加算２</a>
+        <a href="../改定資料/別表第三_調剤報酬点数表2026.html#ku10-3-n8">別表第三 › 服薬管理指導料（注8）</a>
+        <a href="../改定資料/特掲診療料_施設基準届出_調剤関係2026.html">特掲診療料 › 施設基準・届出</a>
+        <a href="../改定資料/別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html">別表Ⅰ › 摘要欄記載事項</a>
+      </div>
+    </div>
+  </body>
+</html>
