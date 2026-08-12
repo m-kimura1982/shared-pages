@@ -6,20 +6,20 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-06",
     "newUntil": "2026-08-13"
   },
-  "加算まとめ.html": {
-    "lastUpdated": "2026-08-12"
-  },
   "事務スタッフ向け.html": {
     "lastUpdated": "2026-08-06"
   },
-  "updates.html": {
-    "lastUpdated": "2026-08-12"
+  "index.html": {
+    "lastUpdated": "2026-08-13"
   },
   "checklists.html": {
     "lastUpdated": "2026-08-06"
   },
-  "index.html": {
-    "lastUpdated": "2026-08-12"
+  "updates.html": {
+    "lastUpdated": "2026-08-13"
+  },
+  "加算まとめ.html": {
+    "lastUpdated": "2026-08-13"
   },
   "tools.html": {
     "lastUpdated": "2026-08-06"
@@ -84,7 +84,7 @@ window.__pageMeta = {
     "newUntil": "2026-07-27"
   },
   "yakureki/加算別記載一覧.html": {
-    "lastUpdated": "2026-08-12"
+    "lastUpdated": "2026-08-13"
   },
   "加算まとめ/服用薬剤調整支援料２_2026改定.html": {
     "lastUpdated": "2026-07-23"
@@ -146,10 +146,6 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-12",
     "newUntil": "2026-07-31"
   },
-  "加算まとめ/外来服薬支援料2.html": {
-    "lastUpdated": "2026-08-13",
-    "newUntil": "2026-08-20"
-  },
   "加算まとめ/特定薬剤管理指導加算3.html": {
     "lastUpdated": "2026-08-12",
     "newUntil": "2026-08-04"
@@ -172,6 +168,10 @@ window.__pageMeta = {
   "加算まとめ/麻薬管理指導加算.html": {
     "lastUpdated": "2026-08-12",
     "newUntil": "2026-08-19"
+  },
+  "加算まとめ/外来服薬支援料2.html": {
+    "lastUpdated": "2026-08-13",
+    "newUntil": "2026-08-20"
   },
   "改定資料/調剤物価対応料.html": {
     "lastUpdated": "2026-04-19"
