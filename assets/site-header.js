@@ -84,6 +84,7 @@
     '加算まとめ/特定薬剤管理指導加算3.html': { category: 'kasan', title: '特定薬剤管理指導加算３' },
     '加算まとめ/吸入薬指導加算2026.html': { category: 'kasan', title: '吸入薬指導加算' },
     '加算まとめ/乳幼児服薬指導加算.html': { category: 'kasan', title: '乳幼児服薬指導加算' },
+    '加算まとめ/麻薬管理指導加算.html': { category: 'kasan', title: '麻薬管理指導加算' },
     '加算まとめ/かかりつけ薬剤師フォローアップ加算.html': { category: 'kasan', title: 'かかりつけ薬剤師フォローアップ加算' },
     '加算まとめ/かかりつけ薬剤師訪問加算.html': { category: 'kasan', title: 'かかりつけ薬剤師訪問加算' },
     '加算まとめ/服用薬剤調整支援料２_2026改定.html': { category: 'kasan', title: '服用薬剤調整支援料２' },
