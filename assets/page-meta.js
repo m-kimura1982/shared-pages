@@ -53,38 +53,38 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-06"
   },
   "yakureki/ハイリスク_気分安定薬.html": {
-    "lastUpdated": "2026-08-06"
+    "lastUpdated": "2026-08-12"
   },
   "yakureki/ハイリスク薬指導.html": {
-    "lastUpdated": "2026-08-06"
+    "lastUpdated": "2026-08-12"
   },
   "yakureki/ハイリスク_抗精神病薬.html": {
-    "lastUpdated": "2026-08-06"
+    "lastUpdated": "2026-08-12"
   },
   "yakureki/ハイリスク_膵臓ホルモン剤.html": {
-    "lastUpdated": "2026-08-06"
+    "lastUpdated": "2026-08-12"
   },
   "yakureki/ハイリスク_抗てんかん薬.html": {
-    "lastUpdated": "2026-08-06"
+    "lastUpdated": "2026-08-12"
   },
   "yakureki/ハイリスク_糖尿病用剤.html": {
-    "lastUpdated": "2026-08-06"
+    "lastUpdated": "2026-08-12"
   },
   "yakureki/ハイリスク_血液凝固阻止剤.html": {
-    "lastUpdated": "2026-08-06"
+    "lastUpdated": "2026-08-12"
   },
   "yakureki/ハイリスク_抗うつ薬.html": {
-    "lastUpdated": "2026-08-06"
-  },
-  "yakureki/加算別記載一覧.html": {
-    "lastUpdated": "2026-08-06"
+    "lastUpdated": "2026-08-12"
   },
   "yakureki/乳幼児服薬指導加算.html": {
-    "lastUpdated": "2026-08-06"
+    "lastUpdated": "2026-08-12"
   },
   "yakureki/index.html": {
-    "lastUpdated": "2026-08-06",
+    "lastUpdated": "2026-08-12",
     "newUntil": "2026-07-27"
+  },
+  "yakureki/加算別記載一覧.html": {
+    "lastUpdated": "2026-08-12"
   },
   "加算まとめ/服用薬剤調整支援料２_2026改定.html": {
     "lastUpdated": "2026-07-23"
@@ -139,23 +139,19 @@ window.__pageMeta = {
     "lastUpdated": "2026-07-23"
   },
   "加算まとめ/乳幼児服薬指導加算.html": {
-    "lastUpdated": "2026-07-24",
+    "lastUpdated": "2026-08-12",
     "newUntil": "2026-07-31"
   },
   "加算まとめ/外来服薬支援料1.html": {
-    "lastUpdated": "2026-07-26",
+    "lastUpdated": "2026-08-12",
     "newUntil": "2026-07-31"
   },
   "加算まとめ/特定薬剤管理指導加算3.html": {
-    "lastUpdated": "2026-07-28",
+    "lastUpdated": "2026-08-12",
     "newUntil": "2026-08-04"
   },
   "加算まとめ/調剤時残薬調整加算.html": {
     "lastUpdated": "2026-07-23"
-  },
-  "加算まとめ/服薬情報等提供料.html": {
-    "lastUpdated": "2026-08-06",
-    "newUntil": "2026-08-02"
   },
   "加算まとめ/特定薬剤管理指導加算2.html": {
     "lastUpdated": "2026-08-12",
@@ -164,6 +160,10 @@ window.__pageMeta = {
   "加算まとめ/特定薬剤管理指導加算1.html": {
     "lastUpdated": "2026-08-12",
     "newUntil": "2026-08-19"
+  },
+  "加算まとめ/服薬情報等提供料.html": {
+    "lastUpdated": "2026-08-12",
+    "newUntil": "2026-08-02"
   },
   "改定資料/調剤物価対応料.html": {
     "lastUpdated": "2026-04-19"
@@ -287,7 +287,7 @@ window.__pageMeta = {
     "newUntil": "2026-08-06"
   },
   "ナレッジ/リフィル処方箋.html": {
-    "lastUpdated": "2026-08-06",
+    "lastUpdated": "2026-08-12",
     "newUntil": "2026-08-13"
   },
   "事務/事務スタッフ向け_2026改定サマリ.html": {
