@@ -35,10 +35,11 @@
         --pad-card: 24px; /* カード内余白 */
         --gap-card: 20px; /* カード間のすき間 */
 
-        /* --- 色（4色のみ） --- */
+        /* --- 色 --- */
         --blue: #1e5fa8; /* 強調・メインカラー */
-        --red: #cc0000; /* 最重要・警告 */
         --ink: #222222; /* 全テキスト */
+        --txt-2: #444444; /* 補助テキスト */
+        --txt-3: #5e6470; /* 補助テキスト（弱） */
 
         /* --- 背景・ボーダー --- */
         --bg: #f3f4f6;
@@ -70,7 +71,7 @@
       }
 
       .page {
-        max-width: 860px;
+        max-width: 900px;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
@@ -79,19 +80,19 @@
 
       /* ─── タイトル ─── */
       .page-title {
-        border-left: var(--bw-t) solid var(--blue);
-        padding: 6px 0 6px 18px;
         margin-bottom: 4px;
       }
       .page-title h1 {
         font-size: var(--text-xl);
         font-weight: 900;
+        letter-spacing: -0.01em;
         line-height: 1.35;
       }
       .page-title p {
-        font-size: var(--text-lg);
-        font-weight: 700;
-        margin-top: 6px;
+        font-size: var(--text-sm);
+        font-weight: 500;
+        color: var(--txt-2);
+        margin-top: 4px;
       }
 
       /* ─── カード ─── */
@@ -104,14 +105,47 @@
       .card-title {
         font-size: var(--text-lg);
         font-weight: 900;
-        border-bottom: var(--bw-h) solid var(--ink);
+        border-bottom: var(--bw-h) solid var(--border-dk);
         padding-bottom: 8px;
         margin-bottom: 18px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
         flex-wrap: wrap;
-        gap: 8px;
+        gap: 11px;
+      }
+      .card-title::before {
+        content: "";
+        width: 4px;
+        height: 1.05em;
+        border-radius: 2px;
+        background: var(--blue);
+        flex-shrink: 0;
+      }
+      .card-title .qual {
+        font-size: var(--text-sm);
+        font-weight: 700;
+        color: var(--txt-3);
+      }
+      .card-title .badge {
+        margin-left: auto;
+      }
+
+      /* ─── H3 ─── */
+      .sub-title {
+        font-weight: 900;
+        font-size: var(--text-md);
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-bottom: 10px;
+      }
+      .sub-title::before {
+        content: "";
+        width: 9px;
+        height: 9px;
+        border-radius: 2px;
+        background: var(--blue);
+        flex-shrink: 0;
       }
 
       /* ─── バッジ ─── */
@@ -121,9 +155,9 @@
         padding: 3px 12px;
         border-radius: 4px;
       }
-      .badge-red {
-        background: #fde8e8;
-        color: var(--red);
+      .badge-gray {
+        background: var(--box-gray);
+        color: var(--txt-2);
       }
       .badge-blue {
         background: var(--box-blue);
@@ -185,10 +219,6 @@
       }
       .blue-text {
         color: var(--blue);
-        font-weight: 900;
-      }
-      .red-text {
-        color: var(--red);
         font-weight: 900;
       }
 
@@ -261,17 +291,42 @@
       }
 
       /* ─── 強調テキスト ─── */
-      .em-blue {
+      .em-blue,
+      .em-change {
         color: var(--blue);
         font-weight: 900;
       }
-      .em-red {
-        color: var(--red);
-        font-weight: 900;
+      .marker {
+        background: linear-gradient(transparent 62%, #fff59d 62%);
+        font-weight: 700;
       }
-      .underline-red {
-        border-bottom: var(--bw-h) solid var(--red);
-      }
+
+      /* ─── 折りたたみ原文 ─── */
+      details.fold { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); }
+      details.fold > summary { list-style:none; cursor:pointer; padding:14px var(--pad-card); font-weight:700; font-size:var(--text-sm); color:var(--txt-2); display:flex; align-items:center; gap:8px; }
+      details.fold > summary::-webkit-details-marker { display:none; }
+      details.fold > summary::before { content:"▶"; font-size:10px; color:var(--txt-3); transition:transform .15s; }
+      details.fold[open] > summary::before { transform:rotate(90deg); }
+      details.fold .fold-body { padding:2px var(--pad-card) var(--pad-card); }
+      .orig { display:flex; flex-direction:column; gap:9px; }
+      .orig .oh { font-weight:900; font-size:var(--text-sm); color:var(--blue); margin-top:6px; }
+      .orig .oi { display:flex; gap:9px; font-size:var(--text-sm); line-height:1.7; color:var(--txt-2); }
+      .orig .oi .lab { flex-shrink:0; min-width:28px; font-weight:900; color:var(--txt-3); }
+      .orig .oi .sub { display:block; padding-left:14px; margin-top:4px; }
+      .orig .cite { font-size:var(--text-xs); color:var(--txt-3); margin-top:2px; }
+
+      /* ─── 関連リンク ─── */
+      .rel { display:flex; flex-direction:column; gap:8px; }
+      .rel a { display:flex; align-items:center; gap:9px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; text-decoration:none; color:var(--ink); font-size:var(--text-sm); font-weight:700; }
+      .rel a::before { content:"›"; color:var(--blue); font-weight:900; }
+      .rel a:hover { background:#fafbfc; border-color:#bcd3ee; }
+      .rel a .sub { font-weight:400; color:var(--txt-3); font-size:var(--text-xs); margin-left:auto; }
+
+      /* ─── 原文参照リンク（最下部・.page の外） ─── */
+      .ref-links { max-width:900px; margin:16px auto 0; padding:20px 16px 4px; border-top:1px solid var(--border); }
+      .ref-links .row { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+      .ref-links .lab { font-size:12px; color:var(--txt-2); white-space:nowrap; font-weight:bold; }
+      .ref-links a { display:inline-block; color:var(--blue); text-decoration:none; font-size:13px; border:1px solid var(--border); border-radius:6px; padding:4px 12px; background:var(--white); }
 
       /* ─── 補足・注釈 ─── */
       .note {
@@ -303,10 +358,6 @@
       /* ─── 左ボーダーアクセント ─── */
       .left-accent-blue {
         border-left: var(--bw-a) solid var(--blue);
-        padding-left: 12px;
-      }
-      .left-accent-red {
-        border-left: var(--bw-a) solid var(--red);
         padding-left: 12px;
       }
 
@@ -425,8 +476,7 @@
         .grid-2.print-break-before .box-gray {
           padding: 11px 13px;
         }
-        .grid-2.print-break-before .left-accent-blue,
-        .grid-2.print-break-before .left-accent-red {
+        .grid-2.print-break-before .left-accent-blue {
           padding-top: 4px;
           padding-bottom: 4px;
         }
@@ -443,11 +493,11 @@
     --pad-card:14px; --gap-card:11px;
   }
   .card { padding:14px; border-radius:8px; }
-  .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; flex-direction:column; align-items:flex-start; gap:6px; }
+  .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; gap:8px; }
+  .card-title .badge { margin-left:0; }
   .box-blue,.box-gray { padding:10px 12px; }
   .badge { font-size:12px; padding:3px 10px; }
   .sub-title { font-size:13px; }
-  .page-title { padding:4px 0 4px 14px; }
   .page-title h1 { font-size:17px; line-height:1.45; }
   .page-title p { font-size:12.5px; }
   /* ページタイトルに点数バッジがある場合 */
@@ -466,6 +516,7 @@
   </head>
   <body>
     <script src="../assets/site-header.js" defer></script>
+    <script src="../assets/page-toc.js" defer></script>
     <div class="page">
       <!-- タイトル -->
       <div class="page-title">
@@ -475,11 +526,14 @@
         </p>
       </div>
 
+      <!-- ページ内目次（assets/page-toc.js がカード見出しから自動生成。手入力しない） -->
+      <div class="page-toc-wrap"><div id="page-toc"></div></div>
+
       <!-- 点数早見表 -->
       <div class="card avoid-break">
         <div class="card-title">服薬管理指導料　2026改定</div>
         <div style="border-left: var(--bw-a) solid var(--blue); padding: 6px 0 6px 12px; margin-bottom: 14px; font-weight: 700;">
-          従来の<span style="text-decoration: line-through; color: #888;">かかりつけ薬剤師指導料 76点</span>が廃止され、<span class="em-blue">かかりつけ薬剤師も・かかりつけ以外も同額</span>に統一。<br>
+          従来の<span style="text-decoration: line-through; color: var(--txt-3);">かかりつけ薬剤師指導料 76点</span>が廃止され、<span class="em-blue">かかりつけ薬剤師もかかりつけ以外も同額</span>に統一。<br>
           <span style="font-size: var(--text-sm); font-weight: 500;">点数差がなくなったことで、かかりつけを患者に推奨しやすくなった。</span>
         </div>
         <div class="tbl-wrap">
@@ -501,103 +555,92 @@
                 <td rowspan="2" class="pts-cell" style="text-align:center;white-space:nowrap;">
                   45<span class="pts-unit">点</span>
                 </td>
-                <td class="ku-nowrap">服薬管理指導料 １イ</td>
+                <td class="ku-nowrap">服薬管理指導料 １のイ</td>
                 <td>3月以内</td>
                 <td class="blue-text">かかりつけ薬剤師</td>
                 <td>手帳あり</td>
                 <td class="blue-text">薬Aイ</td>
-                <td style="color:#888;font-size:var(--text-sm);">薬指</td>
+                <td style="color:var(--txt-3);font-size:var(--text-sm);">薬指</td>
               </tr>
               <tr class="row-general">
-                <td class="ku-nowrap">服薬管理指導料 １ロ</td>
+                <td class="ku-nowrap">服薬管理指導料 １のロ</td>
                 <td>3月以内</td>
                 <td>かかりつけ以外</td>
                 <td>手帳あり</td>
                 <td>薬Aロ</td>
-                <td style="color:#888;font-size:var(--text-sm);">薬A</td>
+                <td style="color:var(--txt-3);font-size:var(--text-sm);">薬A</td>
               </tr>
               <!-- 59点（イ系） -->
               <tr class="row-kakari">
                 <td rowspan="2" class="pts-cell" style="text-align:center;white-space:nowrap;">
                   59<span class="pts-unit">点</span>
                 </td>
-                <td class="ku-nowrap">服薬管理指導料 ２イ</td>
+                <td class="ku-nowrap">服薬管理指導料 ２のイ</td>
                 <td>3月超</td>
                 <td class="blue-text">かかりつけ薬剤師</td>
                 <td>－</td>
                 <td class="blue-text">薬Bイ</td>
-                <td style="color:#888;font-size:var(--text-sm);">薬指</td>
+                <td style="color:var(--txt-3);font-size:var(--text-sm);">薬指</td>
               </tr>
               <tr class="row-kakari">
-                <td class="ku-nowrap">服薬管理指導料 ２イ</td>
+                <td class="ku-nowrap">服薬管理指導料 ２のイ</td>
                 <td>3月以内</td>
                 <td class="blue-text">かかりつけ薬剤師</td>
                 <td>手帳なし</td>
                 <td class="blue-text" style="white-space:nowrap;">薬Bイ無</td>
-                <td style="color:#888;font-size:var(--text-sm);">薬指</td>
+                <td style="color:var(--txt-3);font-size:var(--text-sm);">薬指</td>
               </tr>
               <!-- 59点（ロ系） -->
               <tr class="row-general">
                 <td rowspan="2" class="pts-cell" style="text-align:center;white-space:nowrap;">
                   59<span class="pts-unit">点</span>
                 </td>
-                <td class="ku-nowrap">服薬管理指導料 ２ロ</td>
+                <td class="ku-nowrap">服薬管理指導料 ２のロ</td>
                 <td style="white-space:nowrap;">3月超／初来局</td>
                 <td>かかりつけ以外</td>
                 <td>－</td>
                 <td>薬Bロ</td>
-                <td style="color:#888;font-size:var(--text-sm);">薬C</td>
+                <td style="color:var(--txt-3);font-size:var(--text-sm);">薬C</td>
               </tr>
               <tr class="row-general">
-                <td class="ku-nowrap">服薬管理指導料 ２ロ</td>
+                <td class="ku-nowrap">服薬管理指導料 ２のロ</td>
                 <td>3月以内</td>
                 <td>かかりつけ以外</td>
                 <td>手帳なし</td>
                 <td style="white-space:nowrap;">薬Bロ無</td>
-                <td style="color:#888;font-size:var(--text-sm);">薬B</td>
+                <td style="color:var(--txt-3);font-size:var(--text-sm);">薬B</td>
               </tr>
             </tbody>
           </table>
         </div>
         <div class="box-gray" style="margin-top: 14px; font-size: var(--text-sm);">
-          <div style="font-weight: 900; margin-bottom: 4px;">同月内は「同じ薬局・同じ薬剤師」ルール</div>
+          <div style="font-weight: 900; margin-bottom: 4px;">同月内は「同じ薬局・同じ薬剤師」</div>
           <div>
-            1人の患者について、<strong>同月内に「１イ」「２イ」を算定できるのは1薬局の1人の薬剤師のみ</strong>。
+            1人の患者について、<span class="marker">「１のイ」「２のイ」を算定できるのは1か所の保険薬局の1人の保険薬剤師のみ</span>。同一月内は同一の保険薬局における同一の保険薬剤師について算定する。
+            <div class="indent note">他薬局からかかりつけ薬剤師を変更した場合は、同月に変更前の薬局を利用しているときの算定に注意する。</div>
           </div>
         </div>
       </div>
 
-      <!-- 同意取得のルール -->
+
+      <!-- 同意取得後に行うこと -->
       <div class="card avoid-break">
-        <div class="card-title">同意取得から記録までの流れ</div>
-        <div style="border-left: var(--bw-a) solid var(--red); padding: 6px 0 6px 12px; margin-bottom: 16px; font-weight: 700;">
-          <span class="em-red">書面での同意書は廃止</span>。手帳への記入＋コピー保管が新たな同意取得の方法。
+        <div class="card-title">同意取得後に行うこと<span class="qual">別添3 ２の(２)ウ</span></div>
+        <div style="border-left: var(--bw-a) solid var(--blue); padding: 6px 0 6px 12px; margin-bottom: 16px; font-weight: 700;">
+          <span class="em-change">書面での同意書は廃止</span>。手帳への記入＋コピー保管が新たな同意取得の方法。
+        </div>
+        <div class="box-gray" style="margin-bottom: 18px; font-size: var(--text-sm);">
+          <div style="font-weight: 900; margin-bottom: 4px;">前提（同意を取得するとき）</div>
+          同意取得は<span class="marker">複数回来局している患者</span>に行う。同意を得た日の処方受付時から算定できる（改定前は次回の処方受付時以降だった）。
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 18px; margin-bottom: 20px;">
+        <div style="display: flex; flex-direction: column; gap: 18px;">
           <div>
-            <div style="font-weight: 900; color: var(--blue); margin-bottom: 6px;">
-              1．複数回来局している患者に同意取得
-            </div>
+            <div class="sub-title">手帳の基本情報ページに記入する</div>
             <div>
-              同意取得は複数回来局している患者に行い、同意を得た日の処方から算定可能。
-            </div>
-          </div>
-          <div>
-            <div style="font-weight: 900; color: var(--blue); margin-bottom: 6px;">
-              2．手帳に記入し、コピー等を保管
-            </div>
-            <div>
-              手帳の基本情報ページに「かかりつけ」の文字と薬剤師名を記入し、<span class="em-red">そのページをコピー等して薬局で保管する</span>。
-              <div class="box-gray" style="margin-top: 8px">
-                <div
-                  style="
-                    font-size: var(--text-sm);
-                    font-weight: 900;
-                    margin-bottom: 8px;
-                  "
-                >
-                  手帳の基本情報ページとは（①〜④が記載されたページ）
+              <div class="box-gray" style="margin-bottom: 10px;">
+                <div style="font-size: var(--text-sm); font-weight: 900; margin-bottom: 8px;">
+                  基本情報ページとは（①〜④が載っているページ）
                 </div>
                 <div
                   style="
@@ -613,58 +656,77 @@
                   <div>③ 主な既往歴等疾患に関する記録</div>
                   <div>④ 日常利用する薬局の名称・連絡先等</div>
                 </div>
-                <div
-                  style="
-                    font-size: var(--text-sm);
-                    color: var(--ink);
-                    margin-top: 8px;
-                    font-weight: 700;
-                  "
-                >
-                  ※ 未記入の項目は薬局側で可能な範囲で記入してからコピーする対応で可。写真での記録も「コピー等」に含まれる。
-                </div>
               </div>
+              このページに<span class="marker">「かかりつけ」の文字と薬剤師名を記入する</span>。例）かかりつけ　〇〇　〇〇
+              <div class="indent note">未記入の項目は薬局側で可能な範囲で記入するか、患者に記入を促す。</div>
             </div>
           </div>
           <div>
-            <div style="font-weight: 900; color: var(--blue); margin-bottom: 6px;">
-              3．薬歴表紙に「同意取得済み」と記載
-            </div>
+            <div class="sub-title">そのページをコピー・写真等で薬局に保管する</div>
             <div>
-              薬歴表紙に<span class="em-red">同意を取得した旨を記載</span>する。
-              <div
-                class="box-gray"
-                style="margin-top: 8px; font-size: var(--text-sm)"
-              >
-                記載例）かかりつけ同意取得（担当：〇〇）令和8年6月1日
+              写真での記録も「コピー等」に含まれる。基本情報ページに「かかりつけ」の記載欄がない場合は、<span class="marker">記入したページと基本情報ページの両方を保管する</span>。
+            </div>
+          </div>
+          <div>
+            <div class="sub-title">薬歴に同意を取得した旨を記載する</div>
+            <div>
+              通知は「薬剤服用歴等にその旨を記載」とだけ定めている。
+              <div class="box-gray" style="margin-top: 8px; font-size: var(--text-sm);">
+                <div style="font-weight: 900; margin-bottom: 4px;">〔社内〕薬歴表紙に記載する</div>
+                記載例）かかりつけ同意取得（担当：〇〇）令和8年8月14日
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- 他薬局の手帳の取り扱い -->
-        <div class="box-gray">
-          <div
-            style="
-              font-size: var(--text-lg);
-              font-weight: 900;
-              margin-bottom: 8px;
-            "
-          >
-            他薬局の「かかりつけ」手帳の取り扱い
+      <!-- 手帳を管理する上でのポイント -->
+      <div class="card avoid-break">
+        <div class="card-title">手帳を管理する上でのポイント</div>
+        <div style="display: flex; flex-direction: column; gap: 18px;">
+          <div>
+            <div class="sub-title">手帳の切り替えは早めに行う</div>
+            <div>
+              手帳が終わりに近づいたら、新しい手帳を用意する。<span class="marker">かかりつけ薬剤師の情報を記載した状態で、新しい手帳へ切り替える</span>。
+            </div>
           </div>
           <div>
-            他薬局の薬剤師の「かかりつけ」記載がある手帳への<strong>上書きは原則禁止</strong>。<br />
-            ただし、患者がかかりつけの変更を希望する場合に限り上書き可能とし、その際は薬歴に「かかりつけの変更希望があった旨と日付」を必ず記載すること。
+            <div class="sub-title">必要に応じて、表紙・裏表紙にもかかりつけの記録を残す</div>
+            <div>
+              「かかりつけ薬局」の表示や薬局名・担当薬剤師名、開始日などを記載しておくと、他の薬局でもかかりつけ薬剤師がいることを確認しやすい。
+              <div class="box-gray" style="margin-top: 8px; font-size: var(--text-sm);">
+                記載例）かかりつけ薬局　〇〇薬局／担当薬剤師　〇〇　〇〇　　2026.8.14〜
+              </div>
+              <div class="indent note">
+                通知で求められている手順ではない。
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+
+      <!-- かかりつけ薬剤師を変更する場合 -->
+      <div class="card avoid-break">
+        <div class="card-title">かかりつけ薬剤師を変更する場合</div>
+        <ul class="bullet-list" style="gap: 10px;">
+          <li>
+            <div>
+              別の保険薬局のかかりつけ薬剤師の氏名が記載されている場合、その記載を上書きして当薬局のかかりつけ薬剤師に変更することは<span class="marker">原則行わない</span>。
+            </div>
+          </li>
+          <li>
+            <div>
+              患者が当薬局のかかりつけ薬剤師を希望する場合は、手帳の記載を上書きし、<span class="marker">変更の旨と日付を薬歴に記載する</span>。
+            </div>
+          </li>
+        </ul>
       </div>
 
       <!-- かかりつけ薬剤師の業務要件（全要件） -->
       <div class="card avoid-break">
         <div class="card-title">かかりつけ薬剤師の主な業務要件</div>
-        <div style="font-size: var(--text-sm); font-weight: 500; margin-bottom: 14px; color: #555;">
-          服薬管理指導料「１イ」「２イ」算定時に求められる業務。
+        <div style="font-size: var(--text-sm); font-weight: 500; margin-bottom: 14px; color: var(--txt-2);">
+          服薬管理指導料「１のイ」「２のイ」算定時に求められる業務。
         </div>
         <div class="grid-2">
           <ul class="bullet-list">
@@ -724,7 +786,7 @@
       <div class="card avoid-break" id="kakaritsuke-santei">
         <div class="card-title">かかりつけでも算定できるようになった点数</div>
         <div style="margin-bottom: 14px;">
-          かかりつけ薬剤師指導料が「服薬管理指導料１イ・２イ」に統合されたことに伴い、従来は算定できなかった以下の点数も算定可能となった。
+          かかりつけ薬剤師指導料が「服薬管理指導料１のイ・２のイ」に統合されたことに伴い、従来は算定できなかった以下の点数も算定可能となった。
         </div>
         <div class="tbl-wrap">
           <table>
@@ -740,25 +802,25 @@
               <tr class="row-white">
                 <td>服薬情報等提供料１</td>
                 <td style="text-align:center;white-space:nowrap;">月１回まで</td>
-                <td style="text-align:center; color:#888;">×</td>
+                <td style="text-align:center; color:var(--txt-3);">×</td>
                 <td style="text-align:center;" class="blue-text">○</td>
               </tr>
               <tr class="row-white">
                 <td>服薬情報等提供料２</td>
                 <td style="text-align:center;white-space:nowrap;">月１回まで</td>
-                <td style="text-align:center; color:#888;">×</td>
+                <td style="text-align:center; color:var(--txt-3);">×</td>
                 <td style="text-align:center;" class="blue-text">○</td>
               </tr>
               <tr class="row-white">
                 <td>服薬情報等提供料３</td>
                 <td style="text-align:center;white-space:nowrap;">３月に１回まで</td>
-                <td style="text-align:center; color:#888;">×</td>
+                <td style="text-align:center; color:var(--txt-3);">×</td>
                 <td style="text-align:center;" class="blue-text">○</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="note" style="margin-top: 10px; color: #555;">
+        <div class="note" style="margin-top: 10px; color: var(--txt-2);">
           出典：別表１（１）服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否
         </div>
       </div>
@@ -787,7 +849,7 @@
                 勤務時間
               </div>
               <div>
-                週32時間以上 → <span class="em-red">週31時間以上</span> に短縮
+                週32時間以上 → <span class="em-change">週31時間以上</span> に短縮
               </div>
             </div>
             <div>
@@ -801,7 +863,7 @@
                 在籍期間
               </div>
               <div>
-                継続1年以上 → <span class="em-red">継続6か月以上</span> に短縮
+                継続1年以上 → <span class="em-change">継続6か月以上</span> に短縮
               </div>
               <div class="indent note">
                 ※産休・育休等からの復職時（同一薬局）は休業前と合算可。
@@ -861,7 +923,7 @@
               padding-top: 14px;
             "
           >
-            <div style="font-weight: 900; margin-bottom: 8px; color: #555;">従来からの要件（継続）</div>
+            <div style="font-weight: 900; margin-bottom: 8px; color: var(--txt-2);">従来からの要件（継続）</div>
             <div style="display: flex; flex-direction: column; gap: 8px;">
               <div class="left-accent-blue">
                 研修認定薬剤師の取得、地域活動への参画
@@ -879,7 +941,7 @@
         <div class="card col-span-2 avoid-break">
           <div class="card-title">
             届出で見落としがちなポイント
-            <span class="badge badge-red">要注意</span>
+            <span class="badge badge-gray">要注意</span>
           </div>
           <ul class="bullet-list">
             <li>
@@ -913,54 +975,12 @@
           </div>
         </div>
 
-        <!-- 経過措置 -->
+        <!-- 過去に取得した同意 -->
         <div class="card col-span-2 avoid-break">
-          <div class="grid-2" style="gap: 0">
-            <div style="padding-right: 24px">
-              <div
-                style="
-                  font-size: var(--text-sm);
-                  font-weight: 900;
-                  margin-bottom: 6px;
-                "
-              >
-                過去の同意書について
-              </div>
-              <div>
-                令和8年5月31日以前に取得した同意も<span class="em-blue"
-                  >引き続き有効</span
-                >。
-                <span class="note"
-                  >（〔社内〕手帳記入・コピー保管への切替は早めに進める）</span
-                >
-                <span
-                  class="note"
-                  style="margin-top: 6px; color: var(--red); font-weight: 700"
-                  >ただし、手帳への「かかりつけ」記入＋コピー保管が未実施の場合は対応が必要。</span
-                >
-              </div>
-            </div>
-            <div
-              style="
-                padding-left: 24px;
-                border-left: var(--bw) solid var(--border);
-              "
-            >
-              <div
-                style="
-                  font-size: var(--text-sm);
-                  font-weight: 900;
-                  margin-bottom: 6px;
-                "
-              >
-                薬局体制要件の経過措置
-              </div>
-              <div>
-                すでに届出済みの薬局は、<span class="em-blue"
-                  >令和8年11月30日まで</span
-                >新体制要件を満たしたものとみなされる。
-              </div>
-            </div>
+          <div class="card-title">過去に取得した同意の扱い</div>
+          <div>
+            令和8年5月31日以前に取得した同意も<span class="em-change">引き続き有効</span>。ただし、<span class="marker">手帳への「かかりつけ」記入＋コピー保管が未実施の場合は対応が必要</span>。
+            <div class="indent note">〔社内〕手帳記入・コピー保管への切替は早めに進める。</div>
           </div>
         </div>
 
@@ -979,12 +999,48 @@
               <span style="font-weight: 900; color: var(--blue);">算定年月日</span>を記載
             </div>
           </div>
-          <div style="font-size: var(--text-xs); color: #666; margin-top: 10px;">
+          <div style="font-size: var(--text-xs); color: var(--txt-3); margin-top: 10px;">
             ※ <a href="../改定資料/別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html" style="color:var(--blue); text-decoration:underline;">別表Ⅰ</a>準拠。コメントコード 850100374「算定年月日（服薬管理指導料）」。
           </div>
         </div>
 
       </div>
+
+      <!-- 原文 -->
+      <details class="fold" data-toc-label="原文（告示・通知）">
+        <summary>原文を見る（告示・通知／かかりつけ薬剤師関係）</summary>
+        <div class="fold-body">
+          <div class="orig">
+            <div class="oh">告示（別表第三 区分１０の３ 服薬管理指導料）</div>
+            <div class="oi"><span class="lab">注１</span><span>１のイ及び２のイについては、別に厚生労働大臣が定める施設基準に適合しているものとして、あらかじめ当該算定項目に係る服薬管理指導を行う旨を地方厚生局長等に届け出た保険薬局において、患者又はその家族等が選択する当該保険薬局の特定の保険薬剤師（以下この表において「かかりつけ薬剤師」という。）が当該患者又はその家族等に対して必要な指導等を行った場合に、処方箋受付１回につき所定点数を算定する。なお、区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</span></div>
+
+            <div class="oh">通知（別添3 服薬管理指導料 ２の(２) かかりつけ薬剤師による指導等に係る留意点）</div>
+            <div class="oi"><span class="lab">ア</span><span>服薬管理指導料「１のイ」及び「２のイ」は、かかりつけ薬剤師が、保険医と連携して患者の服薬状況を継続的及び一元的に把握した上で、当該指導等に係る同意を得た患者に対して服薬指導等を行った場合に算定できる。</span></div>
+            <div class="oi"><span class="lab">イ</span><span>算定に当たっては、当該指導料を算定しようとする保険薬剤師本人が、かかりつけ薬剤師の業務内容やかかりつけ薬剤師を持つことの意義、役割等を説明した上で、患者又はその家族等から同意を得ること。</span></div>
+            <div class="oi"><span class="lab">ウ</span><span>患者又はその家族等からかかりつけ薬剤師として選択され、同意を取得した際は、当該患者の持つ手帳に１の（５）のイの（イ）の①から④までの事項及び薬剤師の氏名の近傍に「かかりつけ」の文字を記入し、これらが記載されたページのコピー等を当該保険薬局において保管し、当該患者の薬剤服用歴等にその旨を記載すること。原則として、別の保険薬局のかかりつけ薬剤師の氏名が記載されている手帳に上書きしてはならないこと。患者の選択によりかかりつけ薬剤師を変更する場合には、薬剤服用歴にもその旨を記載すること。</span></div>
+            <div class="oi"><span class="lab">エ</span><span>同意取得は、当該保険薬局に複数回来局している患者に行うこととする。また、患者又はその家族等の同意を得た後、その際の処方箋受付時から算定できる。なお、１人の患者に対して、１か所の保険薬局における１人の保険薬剤師のみについて服薬管理指導料の「１のイ」又は「２のイ」を算定できるものであり、同一月内は同一の保険薬局における同一の保険薬剤師について算定すること。</span></div>
+            <div class="oi"><span class="lab">オ</span><span>患者に対する服薬指導等の業務はかかりつけ薬剤師が行うことを原則とする。ただし、やむを得ない事由により、かかりつけ薬剤師が業務を行えない場合は、当該保険薬局に勤務する他の保険薬剤師が服薬指導等を行っても差し支えないが、この場合は服薬管理指導料「１のロ」又は「２のロ」を算定するとともに、他の保険薬剤師が服薬指導等で得た情報については、かかりつけ薬剤師と情報を共有すること。</span></div>
+            <div class="oi"><span class="lab">カ</span><span>かかりつけ薬剤師は、担当患者に対して、以下の服薬指導等を行う。
+              <span class="sub">(イ) 患者の理解に応じた適切な服薬指導等を行うこと。</span>
+              <span class="sub">(ロ) 患者が服用中の薬剤等について、患者を含めた関係者が一元的、継続的に確認できるよう、患者の意向を確認した上で、服薬指導等の内容を手帳等に記載すること。</span>
+              <span class="sub">(ハ) 患者が受診している全ての保険医療機関の情報を把握し、服用している処方薬をはじめ、要指導医薬品及び一般用医薬品（以下「要指導医薬品等」という。）並びに健康食品等について全て把握するとともに、その内容を薬剤服用歴等に記載すること。また、当該患者に対して、保険医療機関を受診する場合や他の保険薬局で調剤を受ける場合には、かかりつけ薬剤師を有している旨を明示するよう説明すること。</span>
+              <span class="sub">(ニ) 患者がかかりつけ薬剤師からの服薬指導等を受けられるよう、当該保険薬局における勤務日等の必要な情報を伝えること。</span>
+              <span class="sub">(ホ) 患者から休日、夜間を含む時間帯の相談に応じる体制をとり、開局時間外の連絡先を伝えること。原則として、かかりつけ薬剤師が相談に対応することとするが、当該保険薬局のかかりつけ薬剤師以外の別の保険薬剤師が相談等に対応しても差し支えない。ただし、この場合において、かかりつけ薬剤師以外の他の保険薬剤師は、開局時間外に当該患者から連絡があった旨とその内容、調剤や服薬指導等を行った場合にはその内容、その他当該患者について得た情報について、かかりつけ薬剤師と共有すること。また、やむを得ない事由により、患者からの電話等による問い合わせに応じることができなかった場合は、速やかに折り返して連絡することができる体制がとられていること。なお、自宅等の当該保険薬局以外の場所で対応する場合にあっては、必要に応じて薬剤服用歴等が閲覧できる体制が整備されていることが望ましい。</span>
+              <span class="sub">(ヘ) 患者が他の保険薬局等で調剤を受けた場合は、その服用薬等の情報を入手し、薬剤服用歴等に記載すること。</span>
+              <span class="sub">(ト) 継続的な薬学的管理のため、患者に対して、服用中の薬剤等を保険薬局に持参する動機付けのために薬剤等を入れる袋等を必要に応じて提供し、その取組（いわゆるブラウンバッグ運動）の意義等を説明すること。</span>
+              <span class="sub">(チ) 必要に応じ、患者が入手している調剤及び服薬指導に必要な血液・生化学検査結果の提示について、患者の同意が得られた場合は当該情報を参考として、薬学的管理及び指導を行うこと。</span>
+            </span></div>
+            <div class="oi"><span class="lab">キ</span><span>服薬管理指導料「１のイ」又は「２のイ」を算定する患者以外の患者への服薬指導等又は地域住民からの要指導医薬品等の使用に関する相談及び健康の維持増進に関する相談に対しても、丁寧に対応した上で、必要に応じて保険医療機関へ受診勧奨を行うよう努める。</span></div>
+            <div class="oi"><span class="lab">ク</span><span>育児休業、介護休業等育児又は家族介護を行う労働者の福祉に関する法律（平成３年法律第76号）第16条の８で定める期間に、当該保険薬局の勤務時間が週31時間に満たない保険薬剤師が算定する場合には、次に掲げる対応を行う。
+              <span class="sub">(イ) 同意取得に当たっては、勤務時間が通常より短いことや、休日、夜間の時間帯を含む開局時間外に相談があった場合の対応を他の保険薬剤師が行う場合は、その旨を説明する。</span>
+              <span class="sub">(ロ) 当該保険薬局に勤務する他の保険薬剤師と当該患者についての情報を共有し、患者から問い合わせがあった場合等に、他の保険薬剤師が円滑に対応できる体制を整えておく。</span>
+            </span></div>
+            <div class="oi"><span class="lab">ケ</span><span>令和８年５月31日以前に取得した同意はその効力を有するが、ウについて未実施である場合には対応すること。ただし、患者又はその家族等が同意の取消しを申し出た場合は、この限りでない。</span></div>
+            <div class="cite">出典：診療報酬の算定方法（別表第三 調剤報酬点数表）／「診療報酬の算定方法の一部改正に伴う実施上の留意事項について」（令和8年3月5日 保医発0305第6号）別添3。</div>
+          </div>
+        </div>
+      </details>
+
       <!-- 疑義解釈一覧（疑義解釈まとめ2026.html の当加算セクションと対応） -->
       <div class="card avoid-break">
         <!-- gigi-list:sec-fukuyaku -->
@@ -1035,29 +1091,29 @@
         <!-- /gigi-list -->
       </div>
 
+      <!-- 関連ページ -->
+      <div class="card avoid-break">
+        <div class="card-title">関連ページ</div>
+        <div class="rel">
+          <a href="../チェックリスト/かかりつけ薬剤師_同意取得後_確認チェックリスト.html">かかりつけ薬剤師 同意取得後の確認チェックリスト<span class="sub">印刷用</span></a>
+          <a href="../改定資料/かかりつけ薬剤師_算定一覧2026.html">かかりつけ薬剤師に関わる管理料・加算一覧<span class="sub">紐づく加算・施設基準</span></a>
+          <a href="../改定資料/【簡易版】かかりつけ薬剤師に関わる管理料・加算一覧.html">かかりつけ薬剤師に関わる管理料・加算　簡易版<span class="sub">1枚で確認</span></a>
+        </div>
+      </div>
+
     </div>
   <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
     <!-- 原文参照リンク -->
-    <div
-      style="
-        max-width: 900px;
-        margin: 16px auto 0;
-        padding: 20px 16px 4px;
-        border-top: 1px solid #d0d8e8;
-      "
-    >
-      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px;">
-        <span style="font-size: 12px; color: #555; white-space: nowrap; font-weight: bold;">原文参照：</span>
-        <a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-10-3" style="display: inline-block; color: #1e5fa8; text-decoration: none; font-size: 13px; border: 1px solid #a0b8d8; border-radius: 6px; padding: 4px 12px; background: #fff;">別添３ › 服薬管理指導料</a>
-        <a href="../改定資料/別表第三_調剤報酬点数表2026.html#ku10-3" style="display: inline-block; color: #1e5fa8; text-decoration: none; font-size: 13px; border: 1px solid #a0b8d8; border-radius: 6px; padding: 4px 12px; background: #fff;">別表第三 › 服薬管理指導料</a>
-        <a href="../改定資料/特掲診療料_施設基準届出_調剤関係2026.html#sec-97-2" style="display: inline-block; color: #1e5fa8; text-decoration: none; font-size: 13px; border: 1px solid #a0b8d8; border-radius: 6px; padding: 4px 12px; background: #fff;">施設基準届出 › 第97の２</a>
+    <!-- 原文参照リンク（.page の外） -->
+    <div class="ref-links">
+      <div class="row">
+        <span class="lab">原文参照：</span>
+        <a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-10-3">別添３ › 服薬管理指導料</a>
+        <a href="../改定資料/別表第三_調剤報酬点数表2026.html#ku10-3">別表第三 › 服薬管理指導料</a>
+        <a href="../改定資料/特掲診療料_施設基準届出_調剤関係2026.html#sec-97-2">施設基準届出 › 第97の２</a>
+        <a href="../改定資料/疑義解釈まとめ2026.html#sec-fukuyaku">疑義解釈 › 服薬管理指導料</a>
       </div>
     </div>
-<!-- フッターリンク -->
-<div style="max-width:900px; margin:0 auto; padding:16px 16px 32px; display:flex; flex-wrap:wrap; justify-content:center; gap:8px;">
-  <a href="../改定資料/疑義解釈まとめ2026.html#sec-fukuyaku" style="display:inline-block; color:#1e5fa8; text-decoration:none; font-size:13px; border:1px solid #1e5fa8; border-radius:6px; padding:6px 16px; background:#fff;">疑義解釈（その２）› 服薬管理指導料</a>
-  <a href="../改定資料/疑義解釈まとめ2026.html#s2q20" style="display:inline-block; color:#1e5fa8; text-decoration:none; font-size:13px; border:1px solid #1e5fa8; border-radius:6px; padding:6px 16px; background:#fff;">疑義解釈（その２）› 特定薬剤管理指導加算３</a>
-</div>
 </body>
 </html>

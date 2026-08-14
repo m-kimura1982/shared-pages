@@ -8,7 +8,8 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     :root {
-      --blue: #1e5fa8; --red: #cc0000; --ink: #222222;
+      --blue: #1e5fa8; --ink: #222222;
+      --txt-2: #444444; --txt-3: #5e6470;
       --bg: #f3f4f6; --white: #ffffff;
       --box-blue: #e4f0f8; --box-gray: #f2f2f2;
       --border: #d1d5db; --border-dk: #9ca3af;
@@ -24,25 +25,27 @@
     .page { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
 
     /* ページタイトル */
-    .page-title { border-left: var(--bw-t) solid var(--blue); padding: 6px 0 6px 18px; }
-    .page-title h1 { font-size: 22px; font-weight: 900; }
-    .page-title p { font-size: 14px; color: #333; margin-top: 4px; }
+    .page-title { padding: 6px 0; }
+    .page-title h1 { font-size: 22px; font-weight: 900; letter-spacing: -0.01em; }
+    .page-title p { font-size: 14px; font-weight: 500; color: var(--txt-2); margin-top: 4px; }
 
     /* セクションカード */
     .section { background: var(--white); border: var(--bw) solid var(--border); border-radius: var(--radius); overflow: hidden; }
     .section-header {
       font-size: 16px; font-weight: 900; color: var(--ink);
-      border-bottom: var(--bw-h) solid var(--ink);
+      border-bottom: var(--bw-h) solid var(--border-dk);
       padding: 16px 20px 10px;
-      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      display: flex; align-items: center; gap: 11px; flex-wrap: wrap;
+    }
+    .section-header::before {
+      content: ""; width: 4px; height: 1.05em; border-radius: 2px;
+      background: var(--blue); flex-shrink: 0;
     }
     .section-header .count {
-      font-size: 12px; font-weight: 700; color: #555;
+      font-size: 12px; font-weight: 700; color: var(--txt-2);
       background: var(--box-gray);
       padding: 1px 8px; border-radius: 10px;
     }
-    .section-header.gray { }
-    .section-header.teal { }
 
     /* アイテムグリッド */
     .items { display: flex; flex-direction: column; padding: 4px 0; }
@@ -57,36 +60,34 @@
     .item:last-child { border-bottom: none; }
     .item-name { font-size: 15px; font-weight: 700; line-height: 1.5; }
     .item-pts {
-      font-size: 15px; font-weight: 700; color: #555;
+      font-size: 15px; font-weight: 700; color: var(--txt-2);
       text-align: center; white-space: nowrap;
     }
-    .item-pts.red { color: var(--red); }
-    .item-pts.gray { color: #888; font-size: 13px; }
-    .item-summary { font-size: 14px; color: #333; line-height: 1.7; padding-left: 12px; border-left: 2px solid var(--box-blue); }
+    .item-pts.gray { color: var(--txt-3); font-size: 13px; }
+    .item-summary { font-size: 14px; color: var(--txt-2); line-height: 1.7; padding-left: 12px; border-left: 2px solid var(--box-blue); }
 
     /* バッジ */
     .badge {
       display: inline-block; font-size: 10px; font-weight: 900;
       padding: 1px 6px; border-radius: 3px; margin-left: 5px; vertical-align: middle;
     }
-    .badge-new { background: var(--red); color: #fff; }
     .badge-up  { background: var(--box-blue); color: var(--blue); }
 
     /* 施設基準は2カラム */
     .item-2col {
       grid-template-columns: 200px 1fr;
     }
-    .item-2col .item-summary { border-left: 2px solid #e0e0e0; color: #444; }
+    .item-2col .item-summary { border-left: 2px solid #e0e0e0; color: var(--txt-2); }
 
     /* 注釈 */
-    .note { font-size: 12px; color: #444; padding: 8px 16px 10px; background: var(--box-gray); border-top: var(--bw-h) solid var(--border); line-height: 1.7; }
-    .note-target { font-size: 13px; color: #444; padding: 8px 16px 10px; background: var(--box-gray); border-top: var(--bw-h) solid var(--border); line-height: 1.7; }
+    .note { font-size: 12px; color: var(--txt-2); padding: 8px 16px 10px; background: var(--box-gray); border-top: var(--bw-h) solid var(--border); line-height: 1.7; }
+    .note-target { font-size: 13px; color: var(--txt-2); padding: 8px 16px 10px; background: var(--box-gray); border-top: var(--bw-h) solid var(--border); line-height: 1.7; }
 
     /* かかりつけ強調 */
     .kk { color: var(--blue); font-weight: 700; }
 
     /* フッター */
-    .footer { font-size: 12px; color: #555; text-align: right; }
+    .footer { font-size: 12px; color: var(--txt-2); text-align: right; }
 
     @media (max-width: 640px) {
       body { font-size: 13px; padding: 16px 12px 40px; }
@@ -187,13 +188,13 @@
     </div>
     <div class="items">
       <div class="item">
-        <div class="item-name">調剤時残薬調整加算<br><span style="font-size:11px;font-weight:400;color:#555;">（かかりつけ：区分ハ）</span></div>
-        <div class="item-pts">50点<br><span style="font-size:11px;font-weight:400;color:#888;">その他：30点</span></div>
+        <div class="item-name">調剤時残薬調整加算<br><span style="font-size:11px;font-weight:400;color:var(--txt-2);">（かかりつけ：区分ハ）</span></div>
+        <div class="item-pts">50点<br><span style="font-size:11px;font-weight:400;color:var(--txt-3);">その他：30点</span></div>
         <div class="item-summary"><span class="kk">服薬管理指導料１のイ・２のイ</span>を算定中の患者で、残薬確認に基づく疑義照会または処方箋指示により調剤日数の変更が行われた場合。</div>
       </div>
       <div class="item">
-        <div class="item-name">薬学的有害事象等<br>防止加算<br><span style="font-size:11px;font-weight:400;color:#555;">（かかりつけ：区分ハ）</span></div>
-        <div class="item-pts">50点<br><span style="font-size:11px;font-weight:400;color:#888;">その他：30点</span></div>
+        <div class="item-name">薬学的有害事象等<br>防止加算<br><span style="font-size:11px;font-weight:400;color:var(--txt-2);">（かかりつけ：区分ハ）</span></div>
+        <div class="item-pts">50点<br><span style="font-size:11px;font-weight:400;color:var(--txt-3);">その他：30点</span></div>
         <div class="item-summary"><span class="kk">服薬管理指導料１のイ・２のイ</span>を算定中の患者で、疑義照会の結果、処方に変更が行われた場合。</div>
       </div>
     </div>
@@ -207,11 +208,11 @@
     </div>
     <div class="items">
       <div class="item item-2col">
-        <div class="item-name">地域支援・医薬品供給<br>対応体制加算２・３<br><span style="font-size:11px;font-weight:400;color:#555;">調剤基本料１の薬局</span></div>
+        <div class="item-name">地域支援・医薬品供給<br>対応体制加算２・３<br><span style="font-size:11px;font-weight:400;color:var(--txt-2);">調剤基本料１の薬局</span></div>
         <div class="item-summary"><span class="kk">服薬管理指導料１のイ・２のイ</span>の算定回数（処方箋受付１万回当たり）が<strong>20回以上</strong>であることが要件の一つ。</div>
       </div>
       <div class="item item-2col">
-        <div class="item-name">地域支援・医薬品供給<br>対応体制加算４・５<br><span style="font-size:11px;font-weight:400;color:#555;">調剤基本料１以外の薬局</span></div>
+        <div class="item-name">地域支援・医薬品供給<br>対応体制加算４・５<br><span style="font-size:11px;font-weight:400;color:var(--txt-2);">調剤基本料１以外の薬局</span></div>
         <div class="item-summary"><span class="kk">服薬管理指導料１のイ・２のイ</span>の算定回数（処方箋受付１万回当たり）が<strong>40回以上</strong>であることが要件の一つ。</div>
       </div>
       <div class="item item-2col">
@@ -219,11 +220,11 @@
         <div class="item-summary"><span class="kk">かかりつけ薬剤師</span>（服薬管理指導料の注１）の届出が必須要件。加算１が加算２取得の前提にもなる。</div>
       </div>
       <div class="item item-2col">
-        <div class="item-name">服薬管理指導料<br>注１届出<br><span style="font-size:11px;font-weight:400;color:#555;">かかりつけ薬剤師要件</span></div>
+        <div class="item-name">服薬管理指導料<br>注１届出<br><span style="font-size:11px;font-weight:400;color:var(--txt-2);">かかりつけ薬剤師要件</span></div>
         <div class="item-summary"><span class="kk">かかりつけ薬剤師</span>として届け出る薬剤師個人の要件（保険薬局勤務３年以上・週31時間以上・６か月以上在籍・研修認定取得・地域活動参加）を満たす必要がある。</div>
       </div>
       <div class="item item-2col">
-        <div class="item-name">調剤基本料の減算回避<br><span style="font-size:11px;font-weight:400;color:#555;">注４：かかりつけ機能要件</span></div>
+        <div class="item-name">調剤基本料の減算回避<br><span style="font-size:11px;font-weight:400;color:var(--txt-2);">注４：かかりつけ機能要件</span></div>
         <div class="item-summary"><span class="kk">服薬管理指導料１のイ・２のイ</span>は対象業務の一つとしてカウント。他の対象業務と合わせて<strong>年10回以上</strong>で減算を回避できる。</div>
       </div>
     </div>
