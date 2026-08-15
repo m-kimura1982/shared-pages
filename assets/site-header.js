@@ -91,6 +91,7 @@
     '加算まとめ/外来服薬支援料1.html': { category: 'kasan', title: '外来服薬支援料１' },
     '加算まとめ/外来服薬支援料1_算定事例.html': { category: 'kasan', title: '外来服薬支援料１ 算定事例' },
     '加算まとめ/外来服薬支援料2.html': { category: 'kasan', title: '外来服薬支援料２' },
+    '加算まとめ/施設連携加算.html': { category: 'kasan', title: '施設連携加算' },
     '加算まとめ/服薬情報等提供料.html': { category: 'kasan', title: '服薬情報等提供料１・２・３' },
     '加算まとめ/在宅患者訪問薬剤管理指導料_算定間隔2026.html': { category: 'kasan', title: '訪問薬剤管理指導料の算定間隔' },
     '加算まとめ/複数名薬剤管理指導訪問料.html': { category: 'kasan', title: '複数名薬剤管理指導訪問料' },

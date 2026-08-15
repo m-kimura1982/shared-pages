@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>施設連携加算｜算定項目まとめ</title>
+    <meta name="search-keywords" content="特養,介護老人福祉施設,地域密着型,施設職員,一包化,老健,ショートステイ,短期入所生活介護,外来服薬支援料1,配置医師" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/gigi-list.css" />
+    <style>
+      *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+      :root {
+        --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+        --pad-card:22px; --gap-card:16px;
+        --blue:#1e5fa8; --ink:#222222;
+        --bg:#f3f4f6; --white:#ffffff;
+        --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+        --border:#d1d5db; --border-dk:#9ca3af;
+        --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px;
+        --txt-2:#444444; --txt-3:#5e6470;
+      }
+      body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+      .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+      /* 見出し */
+      .page-title-wrap { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+      .page-title-left { flex:1; }
+      .page-title-left h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+      .page-title-left p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+      .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+      .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+      .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+      .sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin:18px 0 9px; }
+      .sub-title:first-child { margin-top:0; }
+      .sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+
+      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+
+      .score-block { display:flex; flex-direction:column; border:var(--bw) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; flex-shrink:0; }
+      .score-block .score-label { background:var(--box-gray); color:var(--txt-2); font-size:var(--text-xs); font-weight:700; padding:5px 16px; text-align:center; border-bottom:var(--bw) solid var(--border); }
+      .score-block .score-num { background:var(--white); font-size:28px; font-weight:900; padding:6px 20px; text-align:center; white-space:nowrap; }
+      .score-block .score-num span { font-size:var(--text-sm); font-weight:500; margin-left:2px; }
+
+      /* 強調 */
+      .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+      .em-change { color:var(--blue); font-weight:900; }
+
+      .lead-note { background:#eef4fb; border-radius:var(--radius-sm); padding:12px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray .ttl, .box-blue .ttl { display:block; font-weight:900; margin-bottom:5px; font-size:var(--text-sm); }
+      .box-gray .ttl { color:var(--blue); }
+      .box-blue .ttl { color:var(--ink); }
+
+      table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+      th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
+      td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
+      tr:last-child td { border-bottom:none; }
+      .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+      td.kubun { font-weight:900; color:var(--txt-2); }
+
+      /* 箇条書き */
+      .list { display:flex; flex-direction:column; gap:6px; margin:4px 0 2px; }
+      .list .li { font-size:var(--text-sm); line-height:1.7; padding-left:18px; text-indent:-18px; }
+      .list .li::before { content:"・"; color:var(--txt-3); font-weight:900; margin-right:6px; }
+      .list .li b { color:var(--ink); }
+
+      /* 摘要欄 表示文言（固定プレフィックスはグレー・選ぶ可変部は太字） */
+      .pre { color:var(--txt-3); }
+      .val { font-weight:900; color:var(--ink); }
+      td .val { display:inline-block; }
+
+      /* 折りたたみ原文 */
+      details.fold { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); }
+      details.fold > summary { list-style:none; cursor:pointer; padding:14px var(--pad-card); font-weight:700; font-size:var(--text-sm); color:var(--txt-2); display:flex; align-items:center; gap:8px; }
+      details.fold > summary::-webkit-details-marker { display:none; }
+      details.fold > summary::before { content:"▶"; font-size:10px; color:var(--txt-3); transition:transform .15s; }
+      details.fold[open] > summary::before { transform:rotate(90deg); }
+      details.fold .fold-body { padding:2px var(--pad-card) var(--pad-card); }
+      .orig { display:flex; flex-direction:column; gap:9px; }
+      .orig .oh { font-weight:900; font-size:var(--text-sm); color:var(--blue); margin-top:6px; }
+      .orig .oi { display:flex; gap:9px; font-size:var(--text-sm); line-height:1.7; color:var(--txt-2); }
+      .orig .oi .lab { flex-shrink:0; min-width:28px; font-weight:900; color:var(--txt-3); }
+      .orig .cite { font-size:var(--text-xs); color:var(--txt-3); margin-top:2px; }
+
+      /* 関連リンク */
+      .rel { display:flex; flex-direction:column; gap:8px; }
+      .rel a { display:flex; align-items:center; gap:9px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; text-decoration:none; color:var(--ink); font-size:var(--text-sm); font-weight:700; }
+      .rel a::before { content:"›"; color:var(--blue); font-weight:900; }
+      .rel a:hover { background:#fafbfc; border-color:#bcd3ee; }
+      .rel a .sub { font-weight:400; color:var(--txt-3); font-size:var(--text-xs); margin-left:auto; }
+
+      /* 原文参照リンク（最下部・.page の外） */
+      .ref-links { max-width:900px; margin:16px auto 0; padding:20px 16px 4px; border-top:1px solid var(--border); }
+      .ref-links .row { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+      .ref-links .lab { font-size:12px; color:var(--txt-2); white-space:nowrap; font-weight:bold; }
+      .ref-links a { display:inline-block; color:var(--blue); text-decoration:none; font-size:13px; border:1px solid var(--border); border-radius:6px; padding:4px 12px; background:var(--white); }
+
+      @media (max-width:640px) {
+        body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+        :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+        .card { padding:14px; border-radius:8px; }
+        .page-title-wrap { flex-direction:column; gap:12px; }
+        .rel a .sub { display:none; }
+        table { min-width:420px; }
+      }
+      @media print {
+        @page { margin:10mm 9mm; size:A4; }
+        body { background:#fff; padding:0; font-size:11px; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        .page { display:block; max-width:none; }
+        .card { border:0.5px solid #ccc; padding:9px 11px; margin-bottom:7px; break-inside:auto; }
+        .card-title, .sub-title { break-after:avoid; }
+        .card-title { margin-bottom:8px; padding-bottom:5px; }
+        .lead-note, .box-gray, .box-blue, .gi-row, tr { break-inside:avoid; }
+        details.fold { break-inside:avoid; }
+        a { color:inherit; text-decoration:none; }
+      }
+    </style>
+  </head>
+  <body>
+    <script src="../assets/site-header.js" defer></script>
+    <div class="page">
+
+      <!-- タイトル -->
+      <div class="page-title-wrap">
+        <div class="page-title-left">
+          <h1>施設連携加算</h1>
+          <p>特養の入所者を訪問し、施設職員と協働して行う服薬管理</p>
+        </div>
+        <div class="score-block">
+          <div class="score-label">月1回まで</div>
+          <div class="score-num">50<span>点</span></div>
+        </div>
+      </div>
+
+      <div class="lead-note">
+        介護老人福祉施設（特養）に入所中の患者を訪問し、施設職員と協働して服薬管理を支援した場合に算定する。<span class="marker">外来服薬支援料２に加算する</span>点数なので、一包化が前提になる。
+      </div>
+
+      <!-- 施設連携加算で行うこと -->
+      <div class="card">
+        <div class="card-title">施設連携加算で行うこと</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;">
+          特養には医師が配置されているため、入所者には在宅患者訪問薬剤管理指導料が原則算定できない。訪問して行う服薬管理そのものは<b>服薬管理指導料３</b>（45点・月4回）で算定する。施設連携加算はそれとは別に、<span class="marker">施設職員と協働して施設での服薬管理を支援したこと</span>を評価する点数で、外来服薬支援料２に加算される。
+        </p>
+
+        <div class="list">
+          <div class="li">当薬局が調剤した薬だけでなく、他の薬局で調剤された薬・院内投薬された薬も含めて一包化等の調製を行う。別々に配薬されていた状態を一つにする</div>
+          <div class="li">施設での療養生活の状態を薬剤師自らが直接確認する</div>
+          <div class="li">施設職員が服薬の支援・管理を行ううえで留意すべき事項を伝える</div>
+        </div>
+        <div style="font-size:var(--text-xs); color:var(--txt-3); margin-top:7px;">別添３(4)(5)</div>
+
+        <div class="sub-title">具体例</div>
+        <div class="list">
+          <div class="li">例）他の薬局の薬と院内投薬の薬が別々に一包化されていたので、当薬局の分と合わせて一包化し直す</div>
+          <div class="li">例）嚥下機能の低下により粉砕・簡易懸濁の可否を確認し、その結果を職員に伝える。困難な場合は剤形の変更を処方医に相談する</div>
+          <div class="li">例）職員が服薬の支援・管理を行ううえで注意する点（副作用が疑われる症状など）を具体的に伝える</div>
+        </div>
+      </div>
+
+      <!-- 算定要件 -->
+      <div class="card">
+        <div class="card-title">算定要件</div>
+        <div class="list">
+          <div class="li"><b>対象施設</b>：<b>地域密着型介護老人福祉施設</b>（定員29人以下の特養・市町村が指定）、又は<b>介護老人福祉施設</b>（定員30人以上の特養・都道府県が指定）に<b>入所中</b>の患者。<span class="marker">どちらも特養に該当する</span></div>
+          <div class="li"><b>前提</b>：<span class="marker">外来服薬支援料２（一包化）を算定していること</span>。この点数に加算する</div>
+          <div class="li"><b>同意・了解</b>：患者又はその家族等の同意を得たうえで、処方医にその必要性の了解を得る</div>
+          <div class="li"><b>実施すること</b>：施設を訪問し、施設職員と協働して、日常の服薬管理が容易になるよう支援・指導する</div>
+          <div class="li"><b>調製の範囲</b>：当薬局が調剤した薬だけでなく、<span class="marker">他の薬局で調剤された薬・医療機関で院内投薬された薬も含めて</span>一包化等の調製を行う</div>
+          <div class="li"><b>算定単位</b>：月1回まで（50点）</div>
+        </div>
+        <div class="box-gray" style="margin-top:12px;">
+          <span class="ttl">対象にならない施設・サービス</span>
+          介護老人保健施設（老健）・介護医療院は、同じ介護保険施設だが施設連携加算の対象ではない。特養であっても、<b>短期入所生活介護（ショートステイ）の利用者は対象外</b>。施設連携加算の対象は、地域密着型介護老人福祉施設又は介護老人福祉施設に<b>入所中の患者</b>に限られる。
+        </div>
+      </div>
+
+      <!-- 算定できる場合 -->
+      <div class="card">
+        <div class="card-title">算定できる場合<span class="qual">摘要欄の表示文言</span></div>
+        <p style="font-size:var(--text-sm); line-height:1.8; margin-bottom:12px;">
+          特に重点的な服薬管理の支援が必要な、次のいずれかの場合に限られる。いずれも<span class="marker">薬剤師が服薬支援の必要を認めたことが前提</span>になる。該当する表示文言を摘要欄に入力する。
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th style="width:5%"></th><th>レセプト表示文言</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="kubun">ア</td>
+                <td><span class="pre">算定理由（施設連携加算）：</span><span class="val">施設入所時であって、服用している薬剤が多いため</span></td>
+              </tr>
+              <tr>
+                <td class="kubun">イ</td>
+                <td><span class="pre">算定理由（施設連携加算）：</span><span class="val">新たな薬剤が処方された若しくは薬剤の用法又は用量が変更となったため</span></td>
+              </tr>
+              <tr>
+                <td class="kubun">ウ</td>
+                <td><span class="pre">算定理由（施設連携加算）：</span><span class="val">患者が服薬している薬剤に関する副作用・体調の変化等における当該施設職員からの相談があったため</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-gray" style="margin-top:12px;">
+          <span class="ttl">算定できない場合</span>
+          施設の要望で服用薬の一包化等を行い、施設職員に服薬の支援・管理に関する情報共有をしただけでは算定できない。<span class="marker">薬剤師が施設を訪問し、療養生活の状態を直接確認していること</span>が必要になる。
+        </div>
+      </div>
+
+      <!-- 訪問時に確認すること -->
+      <div class="card">
+        <div class="card-title">訪問時に確認すること</div>
+        <p style="font-size:var(--text-sm); line-height:1.8; margin-bottom:11px;">
+          施設職員と協働した服薬管理は、施設での療養生活の状態を<span class="marker">薬剤師自らが直接確認したうえで</span>行う。確認する内容は次のとおり。
+        </p>
+        <div class="list">
+          <div class="li">薬剤の保管状況、服薬状況、残薬の状況</div>
+          <div class="li">投薬後の併用薬剤、投薬後の併診に関する情報</div>
+          <div class="li">服薬中の体調の変化（副作用が疑われる症状など）、重複服用、相互作用</div>
+          <div class="li">実施する服薬支援措置、<b>施設職員が服薬の支援・管理を行ううえで留意すべき事項</b></div>
+        </div>
+      </div>
+
+      <!-- 薬歴 -->
+      <div class="card">
+        <div class="card-title">薬歴の記載</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;">
+          施設職員と協働して<span class="marker">実施した内容の要点</span>を記載する（別添３(5)）。上の確認事項のうち、その患者で問題になった点と、施設職員に依頼した内容が分かる形にする。
+        </p>
+        <div style="font-size:var(--text-xs); color:var(--txt-3); margin-top:10px;">
+※ 加算ごとの記載事項は <a href="../yakureki/加算別記載一覧.html#gairaishien" style="color:var(--blue); font-weight:700;">加算別記載一覧</a> にまとめている。全ての薬歴に共通して必要な記載事項（ア〜オ）は <a href="../yakureki/基本記載ルール.html" style="color:var(--blue); font-weight:700;">基本記載ルール</a> を参照。
+        </div>
+      </div>
+
+      <!-- 併算定 -->
+      <div class="card">
+        <div class="card-title">併算定の注意</div>
+        <div class="list">
+          <div class="li">施設連携加算を算定している患者には、<b>かかりつけ薬剤師訪問加算</b>を算定できない</div>
+          <div class="li"><b>服薬管理指導料３</b>（介護老人福祉施設等入所患者への訪問・45点・月4回）は、同じ訪問で併せて算定できる</div>
+        </div>
+      </div>
+
+      <!-- 原文 -->
+      <details class="fold">
+        <summary>原文を見る（告示・通知）</summary>
+        <div class="fold-body">
+          <div class="orig">
+            <div class="oh">告示（別表第三 区分１４の２）</div>
+            <div class="oi"><span class="lab">注４</span><span>介護保険法第８条第22項に規定する地域密着型介護老人福祉施設又は同条第27項に規定する介護老人福祉施設に入所中の患者を訪問し、注３に係る業務に加えて、当該施設職員と協働し当該患者が服薬中の薬剤を含めた服薬管理を支援した場合に、施設連携加算として月に１回に限り50点を所定点数に加算する。</span></div>
+
+            <div class="oh">通知（別添3 施設連携加算）</div>
+            <div class="oi"><span class="lab">(1)</span><span>施設連携加算は、保険薬剤師が患者の入所している地域密着型介護老人福祉施設又は介護老人福祉施設を訪問し、当該施設職員と協働して、日常の服薬管理が容易になるよう薬学的観点から支援や指導等を実施することを評価するものである。</span></div>
+            <div class="oi"><span class="lab">(2)</span><span>当該患者又はその家族等の同意を得て、当該薬剤を処方した保険医にその必要性につき了解を得た上で実施すること。</span></div>
+            <div class="oi"><span class="lab">(3)</span><span>当該患者の服薬状況等に基づき継続的に適切な服薬が行えるよう、特に重点的な服薬管理の支援を行うことが必要な以下のいずれかの場合に限り、外来服薬支援料２に加えて算定することとし、該当する理由について、調剤報酬明細書の摘要欄に記載すること。</span></div>
+            <div class="oi"><span class="lab">ア</span><span>地域密着型介護老人福祉施設又は介護老人福祉施設への入所時であって、服用している薬剤が多く、入所後の服薬管理について当該施設職員と協働した服薬支援が必要と保険薬剤師が認めた場合</span></div>
+            <div class="oi"><span class="lab">イ</span><span>新たな薬剤が処方された若しくは薬剤の用法又は用量が変更となった患者のうち、これまでの服薬管理とは異なる方法等での服薬支援が必要と保険薬剤師が認めた場合</span></div>
+            <div class="oi"><span class="lab">ウ</span><span>患者が服薬している薬剤に関する副作用等の状況、体調の変化等における当該施設職員からの相談に基づき保険薬剤師が当該患者の服薬状況等の確認を行った結果、これまでの服薬管理とは異なる方法等での服薬支援が必要と保険薬剤師が認めた場合</span></div>
+            <div class="oi"><span class="lab">(4)</span><span>日常の服薬管理が容易になるような支援については、当該保険薬局が調剤した薬剤以外に他の保険薬局で調剤された薬剤や保険医療機関で院内投薬された薬剤等の調剤済みの薬剤も含めて一包化等の調製を行うこと。</span></div>
+            <div class="oi"><span class="lab">(5)</span><span>（１）の当該施設職員との協働した服薬管理については、施設における患者の療養生活の状態を保険薬剤師自らが直接確認し、薬剤の保管状況、服薬状況、残薬の状況、投薬後の併用薬剤、投薬後の併診に関する情報、患者の服薬中の体調の変化（副作用が疑われる症状など）、重複服用、相互作用、実施する服薬支援措置、施設職員が服薬の支援・管理を行う上で留意すべき事項等に関する確認等を行った上で実施すること。また、実施した内容の要点を薬剤服用歴等に記載すること。</span></div>
+            <div class="oi"><span class="lab">(6)</span><span>単に当該施設の要望に基づき服用薬剤の一包化等の調製を行い、当該施設の職員に対して服薬の支援・管理に関する情報共有等を行ったのみの場合は算定できない。</span></div>
+
+            <div class="oh">参考（別添3 外来服薬支援料２(2)）</div>
+            <div class="oi"><span class="lab">参考</span><span>外来服薬支援料２は、処方箋受付１回につき１回算定できるものであり、投与日数が42日分以下の場合には、一包化を行った投与日数が７又はその端数を増すごとに34点を加算した点数を、投与日数が43日分以上の場合には、投与日数にかかわらず240点を算定する。この場合において、外来服薬支援料１は算定できない。</span></div>
+
+            <div class="oh">参考（別添3 かかりつけ薬剤師訪問加算）</div>
+            <div class="oi"><span class="lab">参考</span><span>かかりつけ薬剤師訪問加算は、外来服薬支援料１、施設連携加算、在宅患者訪問薬剤管理指導料、服薬情報等提供料、居宅療養管理指導費又は介護予防居宅療養管理指導費を算定している患者については、算定できない。</span></div>
+            <div class="cite">出典：診療報酬の算定方法（別表第三 調剤報酬点数表）／「診療報酬の算定方法の一部改正に伴う実施上の留意事項について」（令和8年3月5日 保医発0305第6号）別添3。摘要欄は別表Ⅰ（調剤報酬明細書の摘要欄への記載事項）項番21による。</div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 関連ページ -->
+      <div class="card">
+        <div class="card-title">関連ページ</div>
+        <div class="rel">
+          <a href="外来服薬支援料2.html">外来服薬支援料２<span class="sub">加算する点数（一包化）</span></a>
+          <a href="外来服薬支援料1.html">外来服薬支援料１<span class="sub">処方箋によらない薬の整理</span></a>
+          <a href="服薬管理指導料3・4_施設訪問・オンライン.html">服薬管理指導料３・４<span class="sub">施設訪問時の管理料</span></a>
+          <a href="かかりつけ薬剤師訪問加算.html">かかりつけ薬剤師訪問加算<span class="sub">併算定できない相手</span></a>
+          <a href="../加算まとめ.html">加算・管理料まとめ<span class="sub">一覧</span></a>
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- 原文参照リンク（.page の外） -->
+    <div class="ref-links">
+      <div class="row">
+        <span class="lab">原文参照：</span>
+        <a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-14-2-k">別添３ › 施設連携加算</a>
+        <a href="../改定資料/別表第三_調剤報酬点数表2026.html#ku14-2-n4">別表第三 › 注４</a>
+        <a href="../改定資料/別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html">別表Ⅰ › 摘要欄記載事項</a>
+      </div>
+    </div>
+
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>

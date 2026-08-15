@@ -173,6 +173,9 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-13",
     "newUntil": "2026-08-20"
   },
+  "加算まとめ/施設連携加算.html": {
+    "newUntil": "2026-08-22"
+  },
   "改定資料/調剤物価対応料.html": {
     "lastUpdated": "2026-04-19"
   },
