@@ -54,6 +54,7 @@
     'yakureki/基本記載ルール.html': { category: 'yakureki', title: '薬歴の基本記載ルール' },
     'yakureki/個別指導で問われる記載.html': { category: 'yakureki', title: '個別指導で問われる項目と薬歴の残し方' },
     'yakureki/加算別記載一覧.html': { category: 'yakureki', title: '加算別 薬歴記載一覧' },
+    'yakureki/居宅療養管理指導_薬歴の記載事項.html': { category: 'yakureki', title: '居宅療養管理指導の薬歴記載事項（原典）' },
     'yakureki/乳幼児服薬指導加算.html': { category: 'yakureki', title: '乳幼児服薬指導加算の薬歴記載' },
     'yakureki/ハイリスク薬指導.html': { category: 'yakureki', title: 'ハイリスク薬指導（特定薬剤管理指導加算1）' },
     'yakureki/ハイリスク_血液凝固阻止剤.html': { category: 'yakureki', title: 'ハイリスク薬 血液凝固阻止剤' },
