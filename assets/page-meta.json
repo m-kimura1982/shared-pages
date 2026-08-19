@@ -50,10 +50,10 @@
     "lastUpdated": "2026-08-06"
   },
   "yakureki/基本記載ルール.html": {
-    "lastUpdated": "2026-08-06"
+    "lastUpdated": "2026-08-20"
   },
   "yakureki/ハイリスク_気分安定薬.html": {
-    "lastUpdated": "2026-08-12"
+    "lastUpdated": "2026-08-20"
   },
   "yakureki/ハイリスク薬指導.html": {
     "lastUpdated": "2026-08-12"
@@ -65,7 +65,7 @@
     "lastUpdated": "2026-08-12"
   },
   "yakureki/ハイリスク_抗てんかん薬.html": {
-    "lastUpdated": "2026-08-12"
+    "lastUpdated": "2026-08-20"
   },
   "yakureki/ハイリスク_糖尿病用剤.html": {
     "lastUpdated": "2026-08-12"
@@ -84,7 +84,7 @@
     "newUntil": "2026-07-27"
   },
   "yakureki/加算別記載一覧.html": {
-    "lastUpdated": "2026-08-19",
+    "lastUpdated": "2026-08-20",
     "newUntil": "2026-08-25"
   },
   "yakureki/居宅療養管理指導_薬歴の記載事項.html": {
@@ -92,13 +92,13 @@
     "newUntil": "2026-08-25"
   },
   "加算まとめ/服用薬剤調整支援料２_2026改定.html": {
-    "lastUpdated": "2026-08-19"
+    "lastUpdated": "2026-08-20"
   },
   "加算まとめ/かかりつけ薬剤師訪問加算.html": {
-    "lastUpdated": "2026-08-18"
+    "lastUpdated": "2026-08-20"
   },
   "加算まとめ/施設連携加算.html": {
-    "lastUpdated": "2026-08-15",
+    "lastUpdated": "2026-08-20",
     "newUntil": "2026-08-22"
   },
   "加算まとめ/服薬情報等提供料.html": {
@@ -109,7 +109,7 @@
     "lastUpdated": "2026-08-15"
   },
   "加算まとめ/バイオ後続品調剤体制加算.html": {
-    "lastUpdated": "2026-08-19"
+    "lastUpdated": "2026-08-20"
   },
   "加算まとめ/地域支援医薬品供給対応体制加算.html": {
     "lastUpdated": "2026-08-19"
@@ -124,7 +124,7 @@
     "lastUpdated": "2026-08-19"
   },
   "加算まとめ/在宅患者訪問薬剤管理指導料_算定間隔2026.html": {
-    "lastUpdated": "2026-08-19"
+    "lastUpdated": "2026-08-20"
   },
   "加算まとめ/訪問薬剤管理医師同時指導料.html": {
     "lastUpdated": "2026-08-19"
@@ -144,27 +144,27 @@
     "newUntil": "2026-08-26"
   },
   "加算まとめ/薬学的有害事象等防止加算.html": {
-    "lastUpdated": "2026-08-18"
+    "lastUpdated": "2026-08-20"
   },
   "加算まとめ/かかりつけ薬剤師フォローアップ加算.html": {
-    "lastUpdated": "2026-08-18"
+    "lastUpdated": "2026-08-20"
   },
   "加算まとめ/外来服薬支援料1_算定事例.html": {
     "lastUpdated": "2026-07-24",
     "newUntil": "2026-07-31"
   },
   "加算まとめ/吸入薬指導加算2026.html": {
-    "lastUpdated": "2026-07-26"
+    "lastUpdated": "2026-08-20"
   },
   "加算まとめ/在宅薬学総合体制加算2026.html": {
     "lastUpdated": "2026-07-23"
   },
   "加算まとめ/乳幼児服薬指導加算.html": {
-    "lastUpdated": "2026-08-12",
+    "lastUpdated": "2026-08-20",
     "newUntil": "2026-07-31"
   },
   "加算まとめ/外来服薬支援料1.html": {
-    "lastUpdated": "2026-08-12",
+    "lastUpdated": "2026-08-20",
     "newUntil": "2026-07-31"
   },
   "加算まとめ/特定薬剤管理指導加算3.html": {
@@ -172,22 +172,22 @@
     "newUntil": "2026-08-04"
   },
   "加算まとめ/調剤時残薬調整加算.html": {
-    "lastUpdated": "2026-08-18"
+    "lastUpdated": "2026-08-20"
   },
   "加算まとめ/特定薬剤管理指導加算2.html": {
     "lastUpdated": "2026-08-12",
     "newUntil": "2026-08-18"
   },
   "加算まとめ/特定薬剤管理指導加算1.html": {
-    "lastUpdated": "2026-08-12",
+    "lastUpdated": "2026-08-20",
     "newUntil": "2026-08-19"
   },
   "加算まとめ/麻薬管理指導加算.html": {
-    "lastUpdated": "2026-08-18",
+    "lastUpdated": "2026-08-20",
     "newUntil": "2026-08-19"
   },
   "加算まとめ/外来服薬支援料2.html": {
-    "lastUpdated": "2026-08-19",
+    "lastUpdated": "2026-08-20",
     "newUntil": "2026-08-20"
   },
   "改定資料/調剤物価対応料.html": {
