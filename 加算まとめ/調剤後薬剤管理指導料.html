@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>調剤後薬剤管理指導料｜算定項目まとめ</title>
+    <meta name="search-keywords" content="糖尿病,慢性心不全,電話,フォローアップ,情報提供,地域支援" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/gigi-list.css" />
+    <style>
+      *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+      :root {
+        --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+        --pad-card:22px; --gap-card:16px;
+        --blue:#1e5fa8; --ink:#222222;
+        --bg:#f3f4f6; --white:#ffffff;
+        --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+        --border:#d1d5db; --border-dk:#9ca3af;
+        --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px;
+        --txt-2:#444444; --txt-3:#5e6470;
+      }
+      body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+      .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+      /* 見出し */
+      .page-title-wrap { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+      .page-title-left { flex:1; }
+      .page-title-left h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+      .page-title-left p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+      .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+      .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+      .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+      .sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin:18px 0 9px; }
+      .sub-title:first-child { margin-top:0; }
+      .sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+
+      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+
+      .score-block { display:flex; flex-direction:column; border:var(--bw) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; flex-shrink:0; }
+      .score-block .score-label { background:var(--box-gray); color:var(--txt-2); font-size:var(--text-xs); font-weight:700; padding:5px 16px; text-align:center; border-bottom:var(--bw) solid var(--border); }
+      .score-block .score-num { background:var(--white); font-size:28px; font-weight:900; padding:6px 20px; text-align:center; white-space:nowrap; }
+      .score-block .score-num span { font-size:var(--text-sm); font-weight:500; margin-left:2px; }
+
+      /* 強調 */
+      .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+      .em-change { color:var(--blue); font-weight:900; }
+
+      .lead-note { background:#eef4fb; border-radius:var(--radius-sm); padding:12px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray .ttl, .box-blue .ttl { display:block; font-weight:900; margin-bottom:5px; font-size:var(--text-sm); }
+      .box-gray .ttl { color:var(--blue); }
+      .box-blue .ttl { color:var(--ink); }
+
+      table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+      th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
+      td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
+      tr:last-child td { border-bottom:none; }
+      .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+      td.kubun { font-weight:900; color:var(--txt-2); }
+
+      /* 箇条書き */
+      .list { display:flex; flex-direction:column; gap:6px; margin:4px 0 2px; }
+      .list .li { font-size:var(--text-sm); line-height:1.7; padding-left:18px; text-indent:-18px; }
+      .list .li::before { content:"・"; color:var(--txt-3); font-weight:900; margin-right:6px; }
+      .list .li b { color:var(--ink); }
+
+      /* 手順（順序＝青の角丸四角バッジ） */
+      .steps { display:flex; flex-direction:column; gap:11px; }
+      .steps .step { display:flex; gap:12px; align-items:flex-start; }
+      .steps .step .n { width:26px; height:26px; border-radius:7px; background:var(--blue); color:#fff; font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+      .steps .step .c { flex:1; font-size:var(--text-sm); line-height:1.7; }
+      .steps .step .c .when { display:inline-block; font-size:var(--text-xs); font-weight:700; color:var(--txt-3); background:var(--box-gray); border-radius:4px; padding:1px 8px; margin-right:7px; }
+      /* 動作と詳細を行で分ける（1ステップの情報量が多いため） */
+      .steps .step .c .act { font-weight:900; margin-top:3px; }
+      .steps .step .c .det { color:var(--txt-2); margin-top:2px; }
+      .steps .step .c .det .sep { color:var(--txt-3); margin:0 5px; }
+      .steps .step .c .branch { padding-left:20px; text-indent:-20px; margin-top:3px; }
+      .steps .step .c .branch .bl { font-weight:900; color:var(--txt-3); margin-right:7px; }
+
+      /* 電話等で確認する日の図解（横線＝時間軸・●＝その日。可＝青／不可＝中立グレー＋×。赤は使わない） */
+      .when-diagram { border:var(--bw) solid var(--border); border-radius:var(--radius-sm); background:var(--white); padding:16px 14px 13px; }
+      .wd-track { display:grid; grid-template-columns:1fr 1.4fr 1fr; border-bottom:2px solid var(--border-dk); }
+      .wd-stop { position:relative; text-align:center; font-size:var(--text-xs); font-weight:700; color:var(--ink); line-height:1.45; padding:0 4px 10px; align-self:end; }
+      .wd-stop::after { content:""; position:absolute; left:50%; bottom:-6px; width:11px; height:11px; margin-left:-5.5px; border-radius:50%; background:var(--blue); }
+      .wd-gap { text-align:center; font-size:var(--text-xs); font-weight:500; color:var(--txt-3); padding:0 4px 10px; align-self:end; }
+      .wd-bars { display:grid; grid-template-columns:1fr 1.4fr 1fr; gap:5px; margin-top:13px; }
+      .wd-bar { border-radius:var(--radius-sm); padding:9px 6px; text-align:center; font-size:var(--text-sm); font-weight:700; line-height:1.5; }
+      .wd-bar .wd-mk { font-weight:900; margin-right:4px; }
+      .wd-x { background:var(--box-gray); color:var(--txt-2); border:var(--bw) solid var(--border); }
+      .wd-o { background:var(--box-blue); color:var(--blue); }
+      .wd-note { font-size:var(--text-xs); color:var(--txt-3); line-height:1.7; margin-top:9px; }
+      .wd-note b { color:var(--txt-2); }
+
+      /* 摘要欄 表示文言 */
+      .disp { display:flex; flex-direction:column; gap:8px; margin-top:4px; }
+      .disp .d { border:var(--bw-h) solid var(--border); border-left:var(--bw-a) solid var(--blue); border-radius:var(--radius-sm); padding:9px 13px; font-size:var(--text-sm); line-height:1.6; }
+      .disp .d .pre { color:var(--txt-3); }
+      .disp .d .val { font-weight:900; color:var(--ink); }
+
+      /* 折りたたみ原文 */
+      details.fold { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); }
+      details.fold > summary { list-style:none; cursor:pointer; padding:14px var(--pad-card); font-weight:700; font-size:var(--text-sm); color:var(--txt-2); display:flex; align-items:center; gap:8px; }
+      details.fold > summary::-webkit-details-marker { display:none; }
+      details.fold > summary::before { content:"▶"; font-size:10px; color:var(--txt-3); transition:transform .15s; }
+      details.fold[open] > summary::before { transform:rotate(90deg); }
+      details.fold .fold-body { padding:2px var(--pad-card) var(--pad-card); }
+      .orig { display:flex; flex-direction:column; gap:9px; }
+      .orig .oh { font-weight:900; font-size:var(--text-sm); color:var(--blue); margin-top:6px; }
+      .orig .oi { display:flex; gap:9px; font-size:var(--text-sm); line-height:1.7; color:var(--txt-2); }
+      .orig .oi .lab { flex-shrink:0; min-width:28px; font-weight:900; color:var(--txt-3); }
+      .orig .cite { font-size:var(--text-xs); color:var(--txt-3); margin-top:2px; }
+
+      /* 関連リンク */
+      .rel { display:flex; flex-direction:column; gap:8px; }
+      .rel a { display:flex; align-items:center; gap:9px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; text-decoration:none; color:var(--ink); font-size:var(--text-sm); font-weight:700; }
+      .rel a::before { content:"›"; color:var(--blue); font-weight:900; }
+      .rel a:hover { background:#fafbfc; border-color:#bcd3ee; }
+      .rel a .sub { font-weight:400; color:var(--txt-3); font-size:var(--text-xs); margin-left:auto; }
+
+      /* 原文参照リンク（最下部・.page の外） */
+      .ref-links { max-width:900px; margin:16px auto 0; padding:20px 16px 4px; border-top:1px solid var(--border); }
+      .ref-links .row { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+      .ref-links .lab { font-size:12px; color:var(--txt-2); white-space:nowrap; font-weight:bold; }
+      .ref-links a { display:inline-block; color:var(--blue); text-decoration:none; font-size:13px; border:1px solid var(--border); border-radius:6px; padding:4px 12px; background:var(--white); }
+
+      @media (max-width:640px) {
+        body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
+        :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+        .card { padding:14px; border-radius:8px; }
+        .page-title-wrap { flex-direction:column; gap:12px; }
+        .rel a .sub { display:none; }
+        table { min-width:420px; }
+      }
+      @media print {
+        @page { margin:10mm 9mm; size:A4; }
+        body { background:#fff; padding:0; font-size:11px; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        .page { display:block; max-width:none; }
+        .card { border:0.5px solid #ccc; padding:9px 11px; margin-bottom:7px; break-inside:auto; }
+        .card-title, .sub-title { break-after:avoid; }
+        .card-title { margin-bottom:8px; padding-bottom:5px; }
+        .lead-note, .box-gray, .box-blue, .disp .d, .steps .step, .when-diagram, .gi-row, tr { break-inside:avoid; }
+        details.fold { break-inside:avoid; }
+        a { color:inherit; text-decoration:none; }
+      }
+    </style>
+  </head>
+  <body>
+    <script src="../assets/site-header.js" defer></script>
+    <div class="page">
+
+      <!-- タイトル -->
+      <div class="page-title-wrap">
+        <div class="page-title-left">
+          <h1>調剤後薬剤管理指導料</h1>
+          <p>調剤後の電話等によるフォローアップと、医療機関への文書での情報提供の評価</p>
+        </div>
+        <div class="score-block">
+          <div class="score-label">月1回まで</div>
+          <div class="score-num">60<span>点</span></div>
+        </div>
+      </div>
+
+      <div class="lead-note">
+        糖尿病（１）と慢性心不全（２）の患者が対象。<span class="marker">地域支援・医薬品供給対応体制加算２〜５のいずれかを届け出ている薬局に限られる</span>。
+      </div>
+
+      <!-- 対象患者 -->
+      <div class="card">
+        <div class="card-title">対象患者</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th style="width:26%">区分</th><th>対象となる患者</th><th style="width:14%">点数</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="kubun">１　糖尿病</td>
+                <td><b>新たに糖尿病用剤が処方された</b>患者、又は<b>糖尿病用剤の用法・用量の変更があった</b>患者</td>
+                <td>60点</td>
+              </tr>
+              <tr>
+                <td class="kubun">２　慢性心不全</td>
+                <td><b>心疾患による入院歴</b>があり、<span class="marker">作用機序が異なる複数の循環器官用薬等</span>の処方を受けている慢性心不全の患者</td>
+                <td>60点</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-gray" style="margin-top:12px;">
+          区分２の該当は、日本循環器学会・日本心不全学会の最新の「急性・慢性心不全診療ガイドライン」等を参照して判断する。
+        </div>
+      </div>
+
+      <!-- 算定の流れ -->
+      <div class="card">
+        <div class="card-title">算定の流れ</div>
+        <div class="steps">
+          <div class="step">
+            <div class="n">1</div>
+            <div class="c">
+              <span class="when">投薬前</span>
+              <div class="act">算定対象か確認する</div>
+              <div class="det">区分１＝糖尿病用剤の新規処方・用法用量の変更<span class="sep">／</span>区分２＝心疾患の入院歴と、作用機序が異なる複数の循環器官用薬等</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="n">2</div>
+            <div class="c">
+              <span class="when">投薬時</span>
+              <div class="act">フォローアップが必要か判断する</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="n">3</div>
+            <div class="c">
+              <span class="when">投薬時</span>
+              <div class="act">同意・了解を得る</div>
+              <div class="det">
+                実施できるのは次のいずれかの場合。
+                <div class="branch"><span class="bl">ア</span>医療機関から求めがあった場合 → <b>患者等の同意</b>を得る</div>
+                <div class="branch"><span class="bl">イ</span>患者・家族等から求めがあった場合 → 薬剤師が必要と認め、<b>処方医の了解</b>を得たうえで<b>患者等の同意</b>を得る</div>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="n">4</div>
+            <div class="c">
+              <span class="when">後日（調剤日・次回の処方箋受付日を除く）</span>
+              <div class="act">電話等でフォローアップを実施する</div>
+              <div class="det">使用状況と、服薬中の体調の変化（副作用が疑われる症状など）の有無等を確認し、必要な指導を続ける</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="n">5</div>
+            <div class="c">
+              <span class="when">確認後</span>
+              <div class="act">受診中の医療機関へ文書で情報提供する</div>
+            </div>
+          </div>
+        </div>
+        <div class="box-gray" style="margin-top:13px;">
+          <span class="ttl">フォローアップが必要と判断する目安<span style="font-weight:500; color:var(--txt-3); font-size:var(--text-xs); margin-left:6px;">ステップ2</span></span>
+          投薬時に次のような点があれば、フォローアップを検討する。
+          <div class="list" style="margin-top:7px;">
+            <div class="li">服薬アドヒアランスが不良／服薬への不安がある／手技が不十分（注射剤）</div>
+            <div class="li">副作用の発現／相互作用のリスク</div>
+            <div class="li">自覚症状の悪化／セルフケアの不徹底／退院直後</div>
+          </div>
+        </div>
+        <div class="box-gray" style="margin-top:10px;">
+          <span class="ttl">実務メモ<span style="font-weight:500; color:var(--txt-3); font-size:var(--text-xs); margin-left:6px;">ステップ3</span></span>
+          イの「患者・家族等の求め」は、<span class="marker">実際には薬剤師からの提案が起点になることが多い</span>。投薬時にフォローアップが必要と判断したら患者等に説明し、同意を得たうえで処方医に連絡する。
+        </div>
+        <div class="box-blue" style="margin-top:13px;">
+          <span class="ttl">投薬時に、電話する日を決めておく<span style="font-weight:500; color:var(--txt-3); font-size:var(--text-xs); margin-left:6px;">ステップ3</span></span>
+          別添３(6)は「計画的な電話等による確認を原則とする」としたうえで、あらかじめ患者等から電話等で確認することの了承を得るよう求めている。<span class="marker">投薬時に「〇日にお電話します」など、確認する日を決めておく</span>と、計画的に実施しやすい。なお別添３(5)は、一律の内容を一斉送信するだけでは継続的な服薬指導を行ったことにならないとしている。
+        </div>
+      </div>
+
+      <!-- 情報提供の内容 -->
+      <div class="card">
+        <div class="card-title">情報提供に含める内容</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;">
+          電話等で確認した内容を<span class="marker">薬学的に分析・評価したうえで情報提供する</span>。必要に応じて処方の提案も行う。聞き取った服薬状況・副作用の状況をそのまま書き写しただけでは、算定根拠として不十分。
+        </p>
+        <div class="list" style="margin-top:9px;">
+          <div class="li">体重の増減、塩分摂取、飲水の状況など、薬学的管理に密接に関係する情報も積極的に集めて活用することが望ましい</div>
+          <div class="li">速やかに伝えるべき体調の変化等を把握した場合は、その情報を医療機関に提供し、必要に応じて受診勧奨する</div>
+        </div>
+      </div>
+
+      <!-- 算定上の注意 -->
+      <div class="card">
+        <div class="card-title">算定上の注意</div>
+
+        <div class="sub-title">電話等で確認する日</div>
+        <p style="font-size:var(--text-sm); line-height:1.8; margin-bottom:10px;">
+          <b>調剤と同日</b>、及び<b>その次に処方箋を受け付ける日</b>に電話等で確認した場合は算定できない（別添３(9)）。<span class="marker">フォローアップはその間に行う</span>。
+        </p>
+        <div class="when-diagram">
+          <div class="wd-track">
+            <div class="wd-stop">調剤日</div>
+            <div class="wd-gap">← この間 →</div>
+            <div class="wd-stop">次に処方箋を<br />受け付ける日</div>
+          </div>
+          <div class="wd-bars">
+            <div class="wd-bar wd-x"><span class="wd-mk">×</span>算定できない</div>
+            <div class="wd-bar wd-o"><span class="wd-mk">○</span>電話等で確認する</div>
+            <div class="wd-bar wd-x"><span class="wd-mk">×</span>算定できない</div>
+          </div>
+          <p class="wd-note">※ 判定するのは<b>電話等で確認した日</b>。医療機関へ情報提供した日ではない。</p>
+        </div>
+        <div class="box-gray" style="margin:11px 0 14px;">
+          <span class="ttl">次の受付日でも算定できる場合</span>
+          受診勧奨により受診した処方箋を持参した場合と、きっかけとなった処方箋を発行した医療機関以外の処方箋を持参した場合は算定できる。
+        </div>
+
+        <div class="sub-title">算定できない場合</div>
+        <div class="list">
+          <div class="li">この算定時に行う医療機関への文書での情報提供について、<span class="marker">服薬情報等提供料は算定できない</span></div>
+          <div class="li">特別調剤基本料Ａの薬局が、不動産取引等の特別な関係を有する医療機関へ情報提供した場合は算定できない</div>
+        </div>
+      </div>
+
+      <!-- 薬歴 -->
+      <div class="card">
+        <div class="card-title">薬歴記載事項</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;">
+          個別の記載事項は定められていない。ただし、通則(5)により算定の根拠と指導内容等を簡潔に記載する。電話等で確認した使用状況・体調の変化と、医療機関へ提供した情報の内容が分かる形にする。
+        </p>
+        <div style="font-size:var(--text-xs); color:var(--txt-3); margin-top:10px;">
+          ※ 薬歴に残す内容は <a href="../yakureki/加算別記載一覧.html#chouzaigo" style="color:var(--blue); font-weight:700;">加算別 薬歴記載一覧</a>、全ての薬歴に共通して必要な記載事項（ア〜オ）は <a href="../yakureki/基本記載ルール.html" style="color:var(--blue); font-weight:700;">基本記載ルール</a> を参照。
+        </div>
+      </div>
+
+      <!-- 摘要欄 -->
+      <div class="card">
+        <div class="card-title">レセプト摘要欄記載事項</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;">情報提供を行った年月日と、その薬剤を処方している医療機関の名称を入力する。</p>
+        <div class="sub-title">調剤後薬剤管理指導料１（糖尿病）</div>
+        <div class="disp">
+          <div class="d"><span class="pre">情報提供を行った年月日（調剤後薬剤管理指導料１）；</span><span class="val">令和〇年〇月〇日</span></div>
+          <div class="d"><span class="pre">糖尿病用剤を処方した保険医療機関名（調剤後薬剤管理指導料１）；</span><span class="val">〇〇病院</span></div>
+        </div>
+        <div class="sub-title">調剤後薬剤管理指導料２（慢性心不全）</div>
+        <div class="disp">
+          <div class="d"><span class="pre">情報提供を行った年月日（調剤後薬剤管理指導料２）；</span><span class="val">令和〇年〇月〇日</span></div>
+          <div class="d"><span class="pre">循環器用薬等を処方した保険医療機関名（調剤後薬剤管理指導料２）；</span><span class="val">〇〇病院</span></div>
+        </div>
+      </div>
+
+      <!-- 原文 -->
+      <details class="fold">
+        <summary>原文を見る（告示・通知）</summary>
+        <div class="fold-body">
+          <div class="orig">
+            <div class="oh">告示（別表第三 区分１４の４）</div>
+            <div class="oi"><span class="lab">注１</span><span>区分番号００に掲げる調剤基本料の注５に規定する施設基準に適合しているものとして地方厚生局長等に届け出た保険薬局において、１については糖尿病患者であって別に厚生労働大臣が定めるものに対して、２については心疾患による入院の経験がある患者であって、作用機序が異なる循環器官用薬等の複数の治療薬の処方を受けている慢性心不全のものに対して、患者又はその家族等の求めがあり、保険薬剤師が必要性を認め、処方医の了解を得た場合又は保険医療機関の求めがあった場合に当該患者又はその家族等の同意を得て、調剤後に次に掲げる業務等の全てを行った場合には、調剤後薬剤管理指導料として、月１回に限り算定できる。この場合において、区分番号１５の５に掲げる服薬情報等提供料は算定できない。</span></div>
+            <div class="oi"><span class="lab">イ</span><span>調剤後に当該薬剤の服用に関し、その服用状況、副作用の有無等について当該患者又はその家族等へ電話等により確認すること（当該調剤と同日に行う場合を除く。）。</span></div>
+            <div class="oi"><span class="lab">ロ</span><span>必要な指導等を継続して実施すること。</span></div>
+            <div class="oi"><span class="lab">ハ</span><span>処方医へ必要な情報を文書により提供すること。</span></div>
+            <div class="oi"><span class="lab">注２</span><span>区分番号００に掲げる特別調剤基本料Ａを算定する保険薬局において、区分番号００に掲げる調剤基本料の注６に規定する別に厚生労働大臣が定める保険医療機関への情報提供を行った場合は、算定できない。</span></div>
+
+            <div class="oh">通知（別添3 調剤後薬剤管理指導料）</div>
+            <div class="oi"><span class="lab">(1)</span><span>調剤後薬剤管理指導料１は、新たに糖尿病用剤が処方等された患者に対し、薬物治療を適切に継続する観点から、地域支援・医薬品供給対応体制加算の２から５までのいずれかを届け出ている保険薬局の保険薬剤師が、調剤後に電話等により、その使用状況、患者の服薬中の体調の変化（副作用が疑われる症状など）の有無等について患者に確認する等、必要な薬学的管理指導を行うとともに、その結果等を受診中の保険医療機関に文書により情報提供した場合に算定する。</span></div>
+            <div class="oi"><span class="lab">(2)</span><span>（１）の「新たに糖尿病用剤が処方等された患者」とは次のいずれかに該当する患者をいう。ア 新たに糖尿病用剤が処方された患者　イ 糖尿病用剤の用法・用量の変更があった患者</span></div>
+            <div class="oi"><span class="lab">(3)</span><span>調剤後薬剤管理指導料２は、心疾患による入院歴のある作用機序が異なる複数の治療薬の処方を受けている慢性心不全患者に対し、薬物治療を適切に継続するとともに、特に入院歴を有する慢性心不全患者の再入院を抑制する観点から、地域支援・医薬品供給対応体制加算の２から５までのいずれかを届け出ている保険薬局の保険薬剤師が、調剤後に電話等により、その使用状況、患者の服薬中の体調の変化（副作用が疑われる症状など）の有無等について患者に確認する等、必要な薬学的管理指導を行うとともに、その結果等を受診中の保険医療機関に文書により情報提供した場合に算定する。なお、当該指導料に係る薬剤の調剤と同日に電話等により使用状況の確認等を行った場合には算定できない。</span></div>
+            <div class="oi"><span class="lab">(4)</span><span>（３）の「心疾患による入院歴のある作用機序が異なる複数の治療薬の処方を受けている慢性心不全患者」とは、日本循環器学会及び日本心不全学会が作成する最新の「急性・慢性心不全診療ガイドライン」等を参照し、複数の作用機序の異なる循環器疾患に係る治療薬の処方を受けている慢性心不全患者をいう。</span></div>
+            <div class="oi"><span class="lab">(5)</span><span>調剤後薬剤管理指導料に係る電話等による当該治療薬の服薬状況の確認等は、以下のいずれかの場合に患者の同意を得て行うものであること。なお、電話等による確認方法については、電話の他に情報通信機器を用いた方法も含まれるが、患者等に一方的に情報発信すること（例えば、一律の内容の電子メールを一斉送信すること）のみでは、継続的服薬指導を実施したことにはならず、個々の患者の状況等に応じて必要な対応を行うこと。ア 保険医療機関からの求めがあった場合　イ 患者若しくはその家族等の求めがあり、保険薬剤師が調剤後の薬剤管理指導を必要と認め、医師の了解を得た場合</span></div>
+            <div class="oi"><span class="lab">(6)</span><span>調剤後薬剤管理指導料に係る調剤後の糖尿病又は慢性心不全の治療薬の服薬状況等の確認は、処方医等の求めに応じて実施するものであり、計画的な電話等による確認を原則とすること。この場合において、あらかじめ患者等に対し、電話等を用いて確認することについて了承を得ること。</span></div>
+            <div class="oi"><span class="lab">(7)</span><span>電話等による患者の糖尿病又は慢性心不全の治療薬の服薬状況等の確認を行った結果、速やかに保険医療機関に伝達すべき患者の服薬中の体調の変化等の情報を入手した場合は、当該情報を患者が受診中の保険医療機関に提供するとともに、必要に応じて保険医療機関への受診勧奨を行うこと。</span></div>
+            <div class="oi"><span class="lab">(8)</span><span>医療機関への情報提供に当たっては、単に確認された服薬状況、副作用の状況を記載して情報提供するだけでなく、医療機関との連携の下で、処方医等の求めに応じた情報の収集と、薬学的分析及び評価に基づく情報提供を実施するとともに、必要に応じて処方に係る提案等を行うこと。この際、体重の増減、塩分摂取、飲水の状況など、薬学的管理に密接に関係する情報も積極的に収集し、活用することが望ましい。また、医療従事者間のＩＣＴを活用した服薬状況等の情報共有等により対応した場合には、処方提案等の行為を行った日時が記録され、必要に応じてこれらの内容を随時確認できることが望ましい。</span></div>
+            <div class="oi"><span class="lab">(9)</span><span>当該指導料に係る薬剤の調剤と同日及びその次に処方箋を受け付ける日に電話等により使用状況の確認等を行った場合には算定できない。なお、電話等により使用状況の確認等を行った結果、受診勧奨により患者が保険医療機関を受診し、その処方箋を持参した場合及び調剤後薬剤管理指導料の要因となった処方箋を発行した医療機関以外からの処方箋を持参した場合は、この限りではない。</span></div>
+            <div class="oi"><span class="lab">(10)</span><span>調剤後薬剤管理指導料の算定時に行う保険医療機関への文書による情報提供については、服薬情報等提供料は算定できない。</span></div>
+            <div class="oi"><span class="lab">(11)</span><span>調剤後薬剤管理指導料は、特別調剤基本料Ａを算定している保険薬局において、当該保険薬局と不動産取引等その他特別な関係を有している保険医療機関へ情報提供を行った場合は算定できない。</span></div>
+            <div class="cite">出典：診療報酬の算定方法（別表第三 調剤報酬点数表）／「診療報酬の算定方法の一部改正に伴う実施上の留意事項について」（令和8年3月5日 保医発0305第6号）別添3。摘要欄は別表Ⅰ（調剤報酬明細書の摘要欄への記載事項）項番15・16による。</div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 関連ページ -->
+      <div class="card">
+        <div class="card-title">関連ページ</div>
+        <div class="rel">
+          <a href="地域支援医薬品供給対応体制加算.html">地域支援・医薬品供給対応体制加算<span class="sub">算定の前提となる届出</span></a>
+          <a href="服薬情報等提供料.html">服薬情報等提供料<span class="sub">併算定できない相手</span></a>
+          <a href="../加算まとめ.html">加算・管理料まとめ<span class="sub">一覧</span></a>
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- 原文参照リンク（.page の外） -->
+    <div class="ref-links">
+      <div class="row">
+        <span class="lab">原文参照：</span>
+        <a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-14-4">別添３ › 調剤後薬剤管理指導料</a>
+        <a href="../改定資料/別表第三_調剤報酬点数表2026.html#ku14-4">別表第三 › 調剤後薬剤管理指導料</a>
+        <a href="../改定資料/別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html">別表Ⅰ › 摘要欄記載事項</a>
+      </div>
+    </div>
+
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>

@@ -89,6 +89,7 @@
     '加算まとめ/かかりつけ薬剤師フォローアップ加算.html': { category: 'kasan', title: 'かかりつけ薬剤師フォローアップ加算' },
     '加算まとめ/かかりつけ薬剤師訪問加算.html': { category: 'kasan', title: 'かかりつけ薬剤師訪問加算' },
     '加算まとめ/服用薬剤調整支援料２_2026改定.html': { category: 'kasan', title: '服用薬剤調整支援料２' },
+    '加算まとめ/調剤後薬剤管理指導料.html': { category: 'kasan', title: '調剤後薬剤管理指導料' },
     '加算まとめ/外来服薬支援料1.html': { category: 'kasan', title: '外来服薬支援料１' },
     '加算まとめ/外来服薬支援料1_算定事例.html': { category: 'kasan', title: '外来服薬支援料１ 算定事例' },
     '加算まとめ/外来服薬支援料2.html': { category: 'kasan', title: '外来服薬支援料２' },
