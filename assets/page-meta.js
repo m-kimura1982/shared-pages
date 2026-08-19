@@ -12,11 +12,11 @@ window.__pageMeta = {
   "事務スタッフ向け.html": {
     "lastUpdated": "2026-08-06"
   },
-  "checklists.html": {
-    "lastUpdated": "2026-08-14"
-  },
   "updates.html": {
     "lastUpdated": "2026-08-19"
+  },
+  "checklists.html": {
+    "lastUpdated": "2026-08-14"
   },
   "加算まとめ.html": {
     "lastUpdated": "2026-08-19"
