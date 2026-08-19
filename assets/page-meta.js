@@ -7,19 +7,19 @@ window.__pageMeta = {
     "newUntil": "2026-08-13"
   },
   "index.html": {
-    "lastUpdated": "2026-08-18"
+    "lastUpdated": "2026-08-19"
   },
   "事務スタッフ向け.html": {
     "lastUpdated": "2026-08-06"
   },
   "updates.html": {
-    "lastUpdated": "2026-08-18"
+    "lastUpdated": "2026-08-19"
   },
   "checklists.html": {
     "lastUpdated": "2026-08-14"
   },
   "加算まとめ.html": {
-    "lastUpdated": "2026-08-15"
+    "lastUpdated": "2026-08-19"
   },
   "tools.html": {
     "lastUpdated": "2026-08-06"
@@ -134,6 +134,10 @@ window.__pageMeta = {
   },
   "加算まとめ/服薬管理指導料3・4_施設訪問・オンライン.html": {
     "lastUpdated": "2026-07-23"
+  },
+  "加算まとめ/在宅患者訪問薬剤管理指導料.html": {
+    "lastUpdated": "2026-08-19",
+    "newUntil": "2026-08-26"
   },
   "加算まとめ/薬学的有害事象等防止加算.html": {
     "lastUpdated": "2026-08-18"
@@ -319,9 +323,5 @@ window.__pageMeta = {
   },
   "事務/入力画面で解説_2026改定後の入力方法.html": {
     "lastUpdated": "2026-08-06"
-  },
-  "加算まとめ/在宅患者訪問薬剤管理指導料.html": {
-    "lastUpdated": "2026-08-19",
-    "newUntil": "2026-08-26"
   }
 };
