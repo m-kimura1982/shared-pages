@@ -27,7 +27,7 @@
         --pad-card: 22px;
         --gap-card: 16px;
         --blue: #1e5fa8;
-        --red: #cc0000;
+        --red: #cc0000; --txt-2:#444444;
         --ink: #222222;
         --bg: #f3f4f6;
         --white: #ffffff;
@@ -94,10 +94,6 @@
         padding: 3px 12px;
         border-radius: 4px;
       }
-      .badge-red {
-        background: #fde8e8;
-        color: var(--red);
-      }
       .badge-blue {
         background: var(--box-blue);
         color: var(--blue);
@@ -118,8 +114,8 @@
         padding: 14px 18px;
         border: var(--bw) solid var(--border);
       }
-      .em-red {
-        color: var(--red);
+      .em-change {
+        color: var(--blue);
         font-weight: 900;
       }
       .em-blue {
@@ -143,14 +139,14 @@
         color: var(--blue);
       }
       .change-badge.strict {
-        background: var(--red);
+        background: var(--txt-2);
       }
       .change-badge.new-req {
         background: #b45309;
       }
       .change-badge.warn {
-        background: #fde8e8;
-        color: var(--red);
+        background: var(--box-blue);
+        color:var(--blue);
       }
       .section-title {
         font-weight: 900;
@@ -541,7 +537,7 @@
             <div class="box-gray" style="font-size: var(--text-sm)">
               <strong>【経過措置】</strong
               >　令和8年3月31日時点で後発医薬品調剤体制加算の届出を行っている薬局は、<span
-                class="em-red"
+                class="em-change"
                 >令和9年5月31日まで</span
               >加算１のGE率85%以上の要件を満たしているとみなす。
             </div>
@@ -614,7 +610,7 @@
             </div>
             <div style="font-size: var(--text-sm)">
               これにより加算３・加算５の算定に必要な要件数が<span
-                class="em-red"
+                class="em-change"
                 >8項目から7項目</span
               >に変更された。
             </div>
@@ -694,7 +690,7 @@
                       "
                     >
                       ④<br /><span
-                        style="font-size: var(--text-xs); color: var(--red)"
+                        style="font-size: var(--text-xs); color:var(--blue)"
                         >加算２・４は必須</span
                       >
                     </td>
@@ -727,7 +723,7 @@
                       "
                     >
                       ⑥<br /><span
-                        style="font-size: var(--text-xs); color: var(--red)"
+                        style="font-size: var(--text-xs); color:var(--blue)"
                         >加算４は必須</span
                       >
                     </td>
@@ -784,7 +780,7 @@
                     <div style="font-weight: 900; margin-bottom: 3px">
                       加算３　67点
                     </div>
-                    ①〜⑨のうち<span class="em-red">7項目以上</span><br />
+                    ①〜⑨のうち<span class="em-change">7項目以上</span><br />
                     <span style="font-size: var(--text-xs)"
                       >※服用薬剤調整支援料２の削除により8項目から変更</span
                     >
@@ -804,7 +800,7 @@
                     <div style="font-weight: 900; margin-bottom: 3px">
                       加算５　59点
                     </div>
-                    ①〜⑨のうち<span class="em-red">7項目以上</span><br />
+                    ①〜⑨のうち<span class="em-change">7項目以上</span><br />
                     <span style="font-size: var(--text-xs)"
                       >※服用薬剤調整支援料２の削除により8項目から変更</span
                     >
@@ -822,7 +818,7 @@
       <!-- 新規施設基準（P3） -->
       <div class="card print-break-before">
         <div class="card-title">
-          今改定で追加された施設基準<span class="badge badge-red"
+          今改定で追加された施設基準<span class="badge badge-blue"
             >今改定で新設</span
           >
         </div>
@@ -904,7 +900,7 @@
                 >　旧・後発医薬品調剤体制加算から引き継いだ要件</span
               >
             </div>
-            直近3月間の後発医薬品調剤割合が<span class="em-red">85%以上</span
+            直近3月間の後発医薬品調剤割合が<span class="em-change">85%以上</span
             >であること。後発医薬品を積極的に調剤している旨を薬局の内外の見えやすい場所に掲示すること。
           </div>
 

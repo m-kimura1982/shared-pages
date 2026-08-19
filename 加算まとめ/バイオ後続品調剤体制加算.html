@@ -17,7 +17,7 @@
       --pad-card: 22px;
       --gap-card: 16px;
       --blue:     #1e5fa8;
-      --red:      #cc0000;
+      --red:      #cc0000; --txt-2:#444444;
       --ink:      #222222;
       --bg:       #f3f4f6;
       --white:    #ffffff;
@@ -57,15 +57,15 @@
     }
 
     .badge { font-size: var(--text-sm); font-weight: 700; padding: 3px 12px; border-radius: 4px; }
-    .badge-red  { background: #fde8e8; color: var(--red); }
     .badge-blue { background: var(--box-blue); color: var(--blue); }
+    .badge-gray { background:var(--box-gray); color:var(--txt-2); }
 
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-card); }
 
     .box-blue { background: var(--box-blue); border-radius: var(--radius-sm); padding: 14px 18px; }
     .box-gray { background: var(--box-gray); border-radius: var(--radius-sm); padding: 14px 18px; border: var(--bw) solid var(--border); }
 
-    .em-red  { color: var(--red);  font-weight: 900; }
+    .em-change  { color: var(--blue);  font-weight: 900; }
     .em-blue { color: var(--blue); font-weight: 900; }
     .marker { background: linear-gradient(transparent 62%, #fff59d 62%); font-weight: 700; }
 
@@ -81,7 +81,7 @@
     .pts-unit  { font-size: var(--text-sm); font-weight: 700; color: var(--ink); }
 
     .section-label { display: inline-block; font-size: var(--text-sm); font-weight: 900; padding: 2px 10px; border-radius: 4px; margin-bottom: 6px; }
-    .label-red  { background: #fde8e8; color: var(--red); }
+    .label-red  { background: var(--box-blue); color:var(--blue); }
     .label-blue { background: var(--box-blue); color: var(--blue); }
 
     .divider { border: none; border-top: var(--bw-h) solid var(--border); margin: 14px 0; }
@@ -167,7 +167,7 @@
       </div>
     </div>
     <div style="font-size:var(--text-sm); margin-bottom:14px;">
-      <span class="em-blue">バイオ後続品</span>を調剤した場合に算定可能。ただし<span class="em-red">インスリン製剤は対象外</span>。
+      <span class="em-blue">バイオ後続品</span>を調剤した場合に算定可能。ただし<strong>インスリン製剤は対象外</strong>。
     </div>
     <div class="grid-2">
       <div class="box-gray" style="font-size:var(--text-sm);">
@@ -185,7 +185,7 @@
   <div class="card avoid-break">
     <div class="card-title">
       処方箋の記載に基づく対応ルール
-      <span class="badge badge-red">変更調剤の可否に注意</span>
+      <span class="badge badge-gray">変更調剤の可否に注意</span>
     </div>
     <div class="grid-2" style="margin-bottom:16px;">
       <!-- 一般名処方 -->
@@ -197,7 +197,7 @@
         </div>
         <div class="box-gray">
           <div style="font-weight:900; margin-bottom:4px;">未調剤の場合の対応</div>
-          有効性・安全性・品質等を説明した上でもバイオ後続品等を調剤しなかった場合は、<span class="em-red">その理由をレセプトの摘要欄に記載</span>すること。
+          有効性・安全性・品質等を説明した上でもバイオ後続品等を調剤しなかった場合は、<span class="em-change">その理由をレセプトの摘要欄に記載</span>すること。
         </div>
         <div class="box-gray">
           後続番号（後続1・後続2）の考え方は下の<strong>「補足：後続番号について」</strong>にまとめている。
@@ -206,7 +206,7 @@
       <!-- 銘柄名処方 -->
       <div style="font-size:var(--text-md); display:flex; flex-direction:column; gap:8px;">
         <div style="font-weight:900; font-size:var(--text-lg); text-align:center; padding-bottom:6px; border-bottom:var(--bw-h) solid var(--border-dk);">銘柄名処方（先行品）の場合</div>
-        <div>先行バイオ医薬品の銘柄名が記載されている場合、<span class="em-red">処方医に事前に確認することなくバイオ後続品に変更して調剤することはできない</span>。</div>
+        <div>先行バイオ医薬品の銘柄名が記載されている場合、<strong>処方医に事前に確認することなくバイオ後続品に変更して調剤することはできない</strong>。</div>
         <div class="box-gray">※必ず事前の疑義照会（同意取得）が必要。</div>
       </div>
     </div>
@@ -233,7 +233,7 @@
         <div style="font-weight:900; margin-bottom:8px;">ケースB：番号が一致しない場合</div>
         処方箋：インフリキシマブ（遺伝子組換え）<strong>［後続1］</strong><br>
         在庫：<strong>「後続2」</strong>の承認を持つ製品（例：ファイザー）<br>
-        <div style="margin-top:10px;"><span class="em-red">→ そのまま調剤は不可。</span>疑義照会が必要。<br>
+        <div style="margin-top:10px;"><strong>→ そのまま調剤は不可。</strong>疑義照会が必要。<br>
         <span style="font-size:var(--text-sm); margin-top:4px; display:block;">「処方は［後続1］ですが、当薬局の採用は［後続2］です。変更して調剤してもよろしいでしょうか？」</span></div>
       </div>
     </div>
@@ -270,7 +270,7 @@
       <div style="font-size:var(--text-sm);">
         <span class="section-label label-red">必須要件</span>
         <div style="font-weight:900; margin-bottom:4px;">院内外への掲示</div>
-        バイオ後続品の調剤を積極的に行っている旨を、当該保険薬局の<span class="em-red">内側および外側の見えやすい場所に掲示</span>すること。
+        バイオ後続品の調剤を積極的に行っている旨を、当該保険薬局の<span class="em-change">内側および外側の見えやすい場所に掲示</span>すること。
       </div>
       <hr class="divider">
       <div style="font-size:var(--text-sm);">
