@@ -12,11 +12,11 @@
   "事務スタッフ向け.html": {
     "lastUpdated": "2026-08-06"
   },
-  "updates.html": {
-    "lastUpdated": "2026-08-19"
-  },
   "checklists.html": {
     "lastUpdated": "2026-08-14"
+  },
+  "updates.html": {
+    "lastUpdated": "2026-08-19"
   },
   "加算まとめ.html": {
     "lastUpdated": "2026-08-19"
@@ -84,15 +84,15 @@
     "newUntil": "2026-07-27"
   },
   "yakureki/加算別記載一覧.html": {
-    "lastUpdated": "2026-08-18",
+    "lastUpdated": "2026-08-19",
     "newUntil": "2026-08-25"
   },
   "yakureki/居宅療養管理指導_薬歴の記載事項.html": {
-    "lastUpdated": "2026-08-18",
+    "lastUpdated": "2026-08-19",
     "newUntil": "2026-08-25"
   },
   "加算まとめ/服用薬剤調整支援料２_2026改定.html": {
-    "lastUpdated": "2026-08-18"
+    "lastUpdated": "2026-08-19"
   },
   "加算まとめ/かかりつけ薬剤師訪問加算.html": {
     "lastUpdated": "2026-08-18"
@@ -109,31 +109,35 @@
     "lastUpdated": "2026-08-15"
   },
   "加算まとめ/バイオ後続品調剤体制加算.html": {
-    "lastUpdated": "2026-08-14"
+    "lastUpdated": "2026-08-19"
   },
   "加算まとめ/地域支援医薬品供給対応体制加算.html": {
-    "lastUpdated": "2026-07-23"
+    "lastUpdated": "2026-08-19"
   },
   "加算まとめ/調剤基本料_2026改定.html": {
-    "lastUpdated": "2026-07-23"
+    "lastUpdated": "2026-08-19"
   },
   "加算まとめ/調剤管理料_2026改定.html": {
-    "lastUpdated": "2026-07-23"
+    "lastUpdated": "2026-08-19"
   },
   "加算まとめ/電子的調剤情報連携体制整備加算_2026改定.html": {
-    "lastUpdated": "2026-07-23"
+    "lastUpdated": "2026-08-19"
   },
   "加算まとめ/在宅患者訪問薬剤管理指導料_算定間隔2026.html": {
-    "lastUpdated": "2026-08-18"
+    "lastUpdated": "2026-08-19"
   },
   "加算まとめ/訪問薬剤管理医師同時指導料.html": {
-    "lastUpdated": "2026-07-23"
+    "lastUpdated": "2026-08-19"
   },
   "加算まとめ/複数名薬剤管理指導訪問料.html": {
-    "lastUpdated": "2026-08-14"
+    "lastUpdated": "2026-08-19"
   },
   "加算まとめ/服薬管理指導料3・4_施設訪問・オンライン.html": {
-    "lastUpdated": "2026-07-23"
+    "lastUpdated": "2026-08-19"
+  },
+  "加算まとめ/居宅療養管理指導費.html": {
+    "lastUpdated": "2026-08-19",
+    "newUntil": "2026-08-26"
   },
   "加算まとめ/在宅患者訪問薬剤管理指導料.html": {
     "lastUpdated": "2026-08-19",
@@ -183,7 +187,7 @@
     "newUntil": "2026-08-19"
   },
   "加算まとめ/外来服薬支援料2.html": {
-    "lastUpdated": "2026-08-13",
+    "lastUpdated": "2026-08-19",
     "newUntil": "2026-08-20"
   },
   "改定資料/調剤物価対応料.html": {
