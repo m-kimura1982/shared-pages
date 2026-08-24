@@ -261,15 +261,15 @@
       }
       @media (max-width: 640px) {
         body {
-          font-size: 13px;
+          font-size: 14px;
           padding: 14px 12px 40px;
         }
         :root {
-          --text-xs: 11px;
-          --text-sm: 12.5px;
-          --text-md: 13px;
-          --text-lg: 15px;
-          --text-xl: 17px;
+          --text-xs: 11.5px;
+          --text-sm: 13.5px;
+          --text-md: 14px;
+          --text-lg: 16px;
+          --text-xl: 18px;
           --pad-card: 14px;
           --gap-card: 11px;
         }
@@ -284,6 +284,19 @@
         }
         .reg-item-sub3 {
           margin-left: 2.2em;
+        }
+        /* 受理番号一覧：狭い画面では列を揃えず折り返す
+           （「調剤基本料１（注１ただし書該当）」のような長い名称が画面幅を超えるため） */
+        .receipt-row {
+          flex-wrap: wrap;
+          gap: 4px 10px;
+        }
+        .receipt-code {
+          min-width: 0;
+          flex-shrink: 1;
+        }
+        .receipt-abbr {
+          min-width: 0;
         }
       }
       @media print {

@@ -38,6 +38,31 @@ const SKIP = new Set([
   'knowledge.html', '事務スタッフ向け.html', 'yakureki/index.html',
 ]);
 
+/**
+ * 索引に入れない見出し（定型の枠組み・案内文）
+ *
+ * 多くのページに同じ文字列で出る見出しは、ページを見分ける手がかりにならない。
+ * 索引に入れると「疑義解釈」で検索したとき、各ページの「関連する疑義解釈」が
+ * 20件以上並んで、本命（疑義解釈まとめ・全文検索ツール）が埋もれる。
+ *
+ * 残すもの：「レセプト摘要欄記載事項」「薬歴記載事項」など内容を指す見出し。
+ * 「摘要欄」「薬歴記載」で該当ページを探す使い方があるので消さない。
+ */
+const SKIP_TERMS = new Set([
+  '関連ページ', '関連する疑義解釈', '関連する過去の疑義解釈', '関連する社内Q&A',
+  '原文を見る', '原文を見る（告示・通知）', '原文参照',
+  '目次', 'CONTENTS', 'このページの内容',
+  '薬剤名から記載例を探す', '加算名から探す',
+]);
+/** 前方一致で外すもの（見出しに件数やUI文言がくっつくケース） */
+const SKIP_TERM_PREFIXES = ['算定前セルフチェック', '関連する疑義解釈', '関連する社内Q&A'];
+
+function isSkipTerm(t) {
+  const k = t.replace(/\s+/g, '');
+  if (SKIP_TERMS.has(k)) return true;
+  return SKIP_TERM_PREFIXES.some((p) => k.startsWith(p));
+}
+
 const files = fs.readdirSync(ROOT).filter((f) => f.endsWith('.html'));
 for (const dir of PUBLIC_DIRS) {
   const abs = path.join(ROOT, dir);
@@ -74,6 +99,7 @@ function pickByClass(html, cls) {
 
 const index = {};
 let totalTerms = 0;
+let skippedTerms = 0;
 
 for (const f of files) {
   if (SKIP.has(f)) continue;
@@ -86,27 +112,36 @@ for (const f of files) {
     continue;
   }
 
-  const raw = [];
+  // 手で足したキーワードは、定型見出しの除外にかけない（書いた人の意図を優先する）
+  const manual = [];
+  const headings = [];
 
   // <head> の手動キーワード（見出しに出てこない言葉を足す用）
   for (const m of full.matchAll(/<meta[^>]*name="search-keywords"[^>]*content="([^"]*)"[^>]*>/gi)) {
-    raw.push(...m[1].split(/[,、]/));
+    manual.push(...m[1].split(/[,、]/));
   }
 
   // <body> より前（CSS など）は見出しを探さない
   const bodyAt = full.indexOf('<body');
   const html = bodyAt > -1 ? full.slice(bodyAt) : full;
 
-  for (const m of html.matchAll(/<h1[^>]*>([\s\S]*?)<\/h1>/gi)) raw.push(m[1]);
-  for (const cls of CLASS_NAMES) raw.push(...pickByClass(html, cls));
-  for (const m of html.matchAll(/data-keywords="([^"]*)"/gi)) raw.push(m[1]);
+  for (const m of html.matchAll(/<h1[^>]*>([\s\S]*?)<\/h1>/gi)) headings.push(m[1]);
+  for (const cls of CLASS_NAMES) headings.push(...pickByClass(html, cls));
+  for (const m of html.matchAll(/data-keywords="([^"]*)"/gi)) manual.push(m[1]);
 
   const seen = new Set();
   const terms = [];
-  for (const r of raw) {
+  for (const [r, isHeading] of [
+    ...manual.map((x) => [x, false]),
+    ...headings.map((x) => [x, true]),
+  ]) {
     let t = toText(r);
     if (t.length > MAX_LEN) t = t.slice(0, MAX_LEN);
     if (t.length < 2) continue;
+    if (isHeading && isSkipTerm(t)) {
+      skippedTerms++;
+      continue;
+    }
     const key = t.toLowerCase();
     if (seen.has(key)) continue;
     seen.add(key);
@@ -124,4 +159,7 @@ const jsPath = path.join(__dirname, 'search-index.js');
 fs.writeFileSync(jsPath, `window.__searchIndex = ${JSON.stringify(index)};\n`, 'utf8');
 
 const kb = (fs.statSync(jsPath).size / 1024).toFixed(1);
-console.log(`✓ ${Object.keys(index).length} ページ・${totalTerms} 語を索引化（${kb} KB）\n  ${jsPath}`);
+console.log(
+  `✓ ${Object.keys(index).length} ページ・${totalTerms} 語を索引化（${kb} KB）\n` +
+    `  定型見出し ${skippedTerms} 語は索引から除外\n  ${jsPath}`
+);

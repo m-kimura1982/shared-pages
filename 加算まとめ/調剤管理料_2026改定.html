@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>調剤管理料｜2026年調剤報酬改定</title>
+  <meta name="search-keywords" content="重複投薬,相互作用,調剤日数,内服薬,お薬手帳,薬剤服用歴,60点" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/gigi-list.css" />
   <style>
@@ -49,6 +50,8 @@
     .compare-table tr:last-child td { border-bottom:none; }
     .compare-table .pt { text-align:right; font-weight:700; white-space:nowrap; padding-left:8px; }
     .compare-table.after th { background:var(--box-blue); }
+    /* 表が画面幅に収まらないときは表の中だけ横スクロールする（ページごと横に流れないように） */
+    .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
     .arrow-col { display:flex; align-items:center; justify-content:center; font-size:26px; color:var(--border-dk); padding-top:32px; }
 
     /* 廃止された加算 */
@@ -57,8 +60,8 @@
     .del-label::before { content:''; display:inline-block; width:10px; height:10px; background:#dde3ec; border:1.5px solid var(--border-dk); border-radius:2px; }
 
     @media (max-width:640px) {
-      body { font-size:13px; padding:14px 12px 40px; line-height:1.75; }
-      :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:17px; --pad-card:14px; --gap-card:11px; }
+      body { font-size:14px; padding:14px 12px 40px; line-height:1.75; }
+      :root { --text-xs:11.5px; --text-sm:13.5px; --text-md:14px; --text-lg:16px; --text-xl:18px; --pad-card:14px; --gap-card:11px; }
       .card { padding:14px; border-radius:8px; }
       .card-title { font-size:15px; flex-direction:column; align-items:flex-start; gap:6px; padding-bottom:6px; margin-bottom:10px; }
       .page-title-wrap { flex-direction:column; gap:10px; }

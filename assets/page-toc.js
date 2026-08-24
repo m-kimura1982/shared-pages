@@ -23,14 +23,16 @@
   var STYLE = [
     '.page-toc { display:flex; flex-wrap:wrap; gap:7px; }',
     '.page-toc a { font-size:13px; font-weight:700; color:#1e5fa8; text-decoration:none;',
-    '  border:1px solid #bcd3ee; background:#ffffff; border-radius:100px; padding:5px 12px; white-space:nowrap; }',
+    '  border:1px solid #bcd3ee; background:#ffffff; border-radius:100px; padding:5px 12px;',
+    '  white-space:nowrap; max-width:100%; }',
     '.page-toc a:hover { background:#f2f7fc; }',
     /* 共通ヘッダーが sticky なので、アンカーで飛んだとき見出しが隠れないようにする */
-    '.page .card, .page details.fold { scroll-margin-top:76px; }',
+    '.page .card, .page details.fold, section[id] { scroll-margin-top:76px; }',
     '@media (max-width:640px) {',
     '  .page-toc { gap:6px; }',
-    '  .page-toc a { font-size:11.5px; padding:4px 10px; }',
-    '  .page .card, .page details.fold { scroll-margin-top:64px; }',
+    /* 長い見出しのチップが画面幅を超えて横スクロールを起こすので、狭い画面では折り返す */
+    '  .page-toc a { font-size:11.5px; padding:4px 10px; white-space:normal; border-radius:14px; }',
+    '  .page .card, .page details.fold, section[id] { scroll-margin-top:64px; }',
     '}',
     '@media print { .page-toc-wrap { display:none; } }'
   ].join('\n');
@@ -49,6 +51,18 @@
 
     var page = document.querySelector('.page') || document;
     var sections = page.querySelectorAll('.card, details.fold');
+
+    /* カードで組んでいないページ（薬歴の一部）は <section> + .section-title を見出しにする。
+       .card-title があるページの動きは変えたくないので、カードが1枚もない時だけ使う。 */
+    if (!page.querySelector('.card > .card-title')) {
+      var secs = [];
+      Array.prototype.forEach.call(page.querySelectorAll('.section-title'), function (t) {
+        var sec = t.closest('section') || t.parentElement;
+        if (sec && secs.indexOf(sec) === -1) secs.push(sec);
+      });
+      if (secs.length) sections = secs;
+    }
+
     var items = [];
 
     Array.prototype.forEach.call(sections, function (sec, i) {
@@ -57,7 +71,7 @@
 
       var titleEl = sec.matches('details.fold')
         ? sec.querySelector(':scope > summary')
-        : sec.querySelector(':scope > .card-title');
+        : sec.querySelector(':scope > .card-title, :scope > .section-title');
       if (!titleEl) return;
 
       var name = sec.getAttribute('data-toc-label') || '';

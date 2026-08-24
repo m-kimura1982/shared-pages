@@ -258,6 +258,20 @@
     .sn-crumb-sep { color: #777; font-size: 14px; font-weight: 700; }
     .sn-crumb-current { color: #555; font-weight: 400; }
 
+    /* 最終更新日（パンくずの右端）
+       検索やフォーラムのリンクで個別ページに直接来た人は、いつ時点の内容か分からなかった。
+       制度の資料なので、読み始める位置で日付が見えるようにする。 */
+    .sn-crumb-updated {
+      margin-left: auto;
+      font-size: 12px; color: #5e6470; font-weight: 500;
+      white-space: nowrap;
+    }
+    .sn-crumb-updated[hidden] { display: none; }
+    .sn-crumb-updated .sn-upd-date { font-weight: 700; color: #444; }
+    @media (max-width: 700px) {
+      .sn-crumb-updated { margin-left: 0; width: 100%; font-size: 11px; }
+    }
+
     /* 同じカテゴリーの他のページ（本文の最後に自動で置く）
        フォーラムから個別ページに直接来る人が大半で、読み終えたあとの行き先がないため */
     .sn-siblings {
@@ -332,6 +346,7 @@
 
   // パンくず（ホーム以外で表示）
   let crumbHtml = '';
+  let showUpdated = false; // 最終更新日は個別ページだけ（ハブは各カードに出ている）
   if (!isHome && category) {
     const cat = CATEGORIES[category];
     // home 直下のページ（更新履歴・ページ一覧）は「ホーム › ページ名」の2段
@@ -351,7 +366,9 @@
           <a href="${u(cat.url)}">${cat.name}</a>
           <span class="sn-crumb-sep">›</span>
           <span class="sn-crumb-current">${pageInfo.title}</span>
+          <span class="sn-crumb-updated" id="sn-updated" hidden></span>
         </nav>`;
+      showUpdated = true;
     }
   }
 
@@ -442,6 +459,45 @@
   const nav = document.getElementById('sn-nav');
   if (toggle && nav) {
     toggle.addEventListener('click', () => nav.classList.toggle('sn-open'));
+  }
+
+  // ── 最終更新日をパンくずの右端に出す ──
+  // 日付は page-meta.js（git のコミット日から生成）を使うので、ページ側の記入は要らない。
+  // 90日より前は出さない（古い日付だけが目立って、内容が変わっていないだけのページが
+  // 使えないものに見えるため）。ハブは各カードに日付が出ているので対象外。
+  function renderUpdated() {
+    if (!showUpdated) return;
+    const slot = document.getElementById('sn-updated');
+    const entry = window.__pageMeta && window.__pageMeta[filename];
+    if (!slot || !entry || !entry.lastUpdated) return;
+
+    const d = new Date(entry.lastUpdated + 'T00:00:00');
+    if (isNaN(d.getTime())) return;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    if (Math.floor((today - d) / 86400000) > 90) return;
+
+    slot.innerHTML =
+      '最終更新 <span class="sn-upd-date">' +
+      `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日` +
+      '</span>';
+    slot.hidden = false;
+  }
+
+  if (showUpdated) {
+    if (window.__pageMeta) {
+      renderUpdated();
+    } else if (!document.querySelector('script[data-page-meta]')) {
+      const s = document.createElement('script');
+      s.src = u('assets/page-meta.js');
+      s.defer = true;
+      s.dataset.pageMeta = '1';
+      s.onload = renderUpdated;
+      document.head.appendChild(s);
+    } else {
+      // 既にページ側が読み込み中（ハブ用の記述が残っているページ）
+      document.addEventListener('DOMContentLoaded', renderUpdated);
+    }
   }
 
   // ── サイト内検索スクリプトを自動ロード ──
