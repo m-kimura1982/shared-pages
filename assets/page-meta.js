@@ -6,11 +6,11 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-06",
     "newUntil": "2026-08-13"
   },
-  "index.html": {
-    "lastUpdated": "2026-08-20"
-  },
   "事務スタッフ向け.html": {
     "lastUpdated": "2026-08-06"
+  },
+  "index.html": {
+    "lastUpdated": "2026-08-20"
   },
   "checklists.html": {
     "lastUpdated": "2026-08-14"
