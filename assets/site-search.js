@@ -369,7 +369,7 @@
         <a class="ss-item${i === active ? ' ss-active' : ''}" href="${escapeHtml((window.SITE_ROOT || '') + r.file)}" data-idx="${i}">
           <div class="ss-item-title">${highlight(r.title, q)}</div>
           <div class="ss-item-meta">${escapeHtml(r.categoryName)}${
-            r.hitTerm ? ` <span class="ss-item-hit">見出し：${highlight(r.hitTerm, q)}</span>` : ''
+            r.hitTerm ? ` <span class="ss-item-hit">ページ内：${highlight(r.hitTerm, q)}</span>` : ''
           }</div>
         </a>`
           )

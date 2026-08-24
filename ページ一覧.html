@@ -84,7 +84,7 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
 .row .nm .hit { background:#fff59d; }
 .row .dt { font-size:var(--text-xs); color:var(--txt-3); white-space:nowrap; font-variant-numeric:tabular-nums; }
 .row .in { display:block; font-size:var(--text-xs); color:var(--txt-3); margin-top:3px; line-height:1.5; }
-.row .in::before { content:"見出し："; }
+.row .in::before { content:"ページ内："; }
 .row .in .hit { background:#fff59d; }
 .row.is-hub .nm::after { content:"まとめ"; font-size:11px; font-weight:700; color:var(--txt-3); border:var(--bw-h) solid var(--border); border-radius:4px; padding:0 6px; margin-left:8px; vertical-align:1px; }
 .row[hidden] { display:none; }
@@ -124,7 +124,7 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
 
   <div class="page-title-wrap">
     <h1>ページ一覧</h1>
-    <p>サイト内のすべてのページを一覧で掲載しています。ページ名や見出しから探せます。</p>
+    <p>サイト内のすべてのページを一覧で掲載しています。ページ名のほか、ページ内の言葉からも探せます。</p>
   </div>
 
   <div class="card">
@@ -142,7 +142,7 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
 
   <div id="groups"></div>
 
-  <p class="note">※ ページを追加すると自動でこの一覧に載ります。ページ名だけでなく、各ページの見出しも検索できます。</p>
+  <p class="note">※ ページを追加すると自動でこの一覧に載ります。ページ名だけでなく、各ページの見出しや現場で使う言い方（略語・薬剤名など）でも探せます。</p>
 
 </div>
 
@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } else if (shown) {
       hint.innerHTML = '<b>' + shown + '</b> ページ見つかりました（' + openable + ' カテゴリー）';
     } else {
-      hint.innerHTML = '該当するページはありませんでした。ページ名だけでなく、ページ内の見出しも検索対象です。';
+      hint.innerHTML = '該当するページはありませんでした。ページ名だけでなく、ページ内の言葉も検索対象です。';
     }
   }
 
