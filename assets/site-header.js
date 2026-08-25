@@ -98,6 +98,11 @@
     '加算まとめ/在宅患者訪問薬剤管理指導料.html': { category: 'kasan', title: '在宅患者訪問薬剤管理指導料' },
     '加算まとめ/在宅患者訪問薬剤管理指導料_算定間隔2026.html': { category: 'kasan', title: '訪問薬剤管理指導料の算定間隔' },
     '加算まとめ/居宅療養管理指導費.html': { category: 'kasan', title: '居宅療養管理指導費（薬局の薬剤師）' },
+    '加算まとめ/在宅患者緊急訪問薬剤管理指導料.html': { category: 'kasan', title: '在宅患者緊急訪問薬剤管理指導料' },
+    '加算まとめ/夜間・休日・深夜訪問加算.html': { category: 'kasan', title: '夜間・休日・深夜訪問加算' },
+    '加算まとめ/在宅患者緊急時等共同指導料.html': { category: 'kasan', title: '在宅患者緊急時等共同指導料' },
+    '加算まとめ/在宅移行初期管理料.html': { category: 'kasan', title: '在宅移行初期管理料' },
+    '加算まとめ/在宅協力薬局.html': { category: 'kasan', title: '在宅協力薬局' },
     '加算まとめ/複数名薬剤管理指導訪問料.html': { category: 'kasan', title: '複数名薬剤管理指導訪問料' },
     '加算まとめ/訪問薬剤管理医師同時指導料.html': { category: 'kasan', title: '訪問薬剤管理医師同時指導料' },
 

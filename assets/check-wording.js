@@ -42,7 +42,7 @@ const ORIG_PAGES = [
 ];
 
 // 原文・質問文・セリフ例・出典の行。ここは直す対象にしない
-const SKIP_LINE = /class="(patient-say|qtext|qa-head|reg-body|reg-item|oh|gi-q|quote|orig)[ "]|より引用|出典[：:]/;
+const SKIP_LINE = /class="(patient-say|qtext|qa-head|reg-body|reg-item|oh|oi|gi-q|quote|orig)[ "]|より引用|出典[：:]/;
 // 「…」だけで出来ている行はセリフ例とみなす
 const SPEECH_LINE = /^[^「]*「[^」]{10,}」[^」]*$/;
 

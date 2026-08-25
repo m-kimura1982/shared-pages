@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>在宅患者緊急訪問薬剤管理指導料｜算定項目まとめ</title>
+    <meta name="search-keywords" content="緊急訪問,計画外訪問,計画以外,急変,変化,臨時処方,月8回,月4回,4のハ,末期の悪性腫瘍,注射による麻薬,16キロメートル,交通費,特別調剤基本料B,訪問指示,要訪問,口頭指示,疑義照会,新型インフルエンザ,きんきゅうほうもん,けいかくがい" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/gigi-list.css" />
+    <style>
+      *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+      :root {
+        --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+        --pad-card:22px; --gap-card:16px;
+        --blue:#1e5fa8; --ink:#222222;
+        --bg:#f3f4f6; --white:#ffffff;
+        --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+        --border:#d1d5db; --border-dk:#9ca3af;
+        --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-t:4px;
+        --txt-2:#444444; --txt-3:#5e6470;
+      }
+      body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+      .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+      /* 見出し階層 */
+      .page-title-wrap { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+      .page-title-left { flex:1; }
+      .page-title-left h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+      .page-title-left p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+      .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+      .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+      .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+      .card-title .badge { margin-left:auto; font-size:var(--text-xs); font-weight:700; background:var(--box-gray); color:var(--txt-2); padding:3px 12px; border-radius:4px; }
+      .card-title .badge.new { background:var(--box-blue); color:var(--blue); }
+      .sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin:20px 0 10px; }
+      .card-title + .sub-title { margin-top:0; }
+      .sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+
+      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+
+      .score-block { display:flex; flex-direction:column; border:var(--bw) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; flex-shrink:0; }
+      .score-block .score-label { background:var(--box-gray); color:var(--txt-2); font-size:var(--text-xs); font-weight:700; padding:5px 16px; text-align:center; border-bottom:var(--bw) solid var(--border); }
+      .score-block .score-num { background:var(--white); font-size:26px; font-weight:900; padding:6px 20px; text-align:center; white-space:nowrap; }
+      .score-block .score-num span { font-size:var(--text-sm); font-weight:500; margin-left:2px; }
+
+      .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+      .em-change { color:var(--blue); font-weight:900; }
+
+      .lead-note { background:#eef4fb; border-radius:var(--radius-sm); padding:11px 15px; font-size:var(--text-sm); line-height:1.7; margin-bottom:14px; }
+      .box-gray { background:var(--box-gray); border-radius:var(--radius-sm); padding:14px 18px; border:var(--bw) solid var(--border); }
+      .box-outline { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:14px 18px; }
+
+      table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+      th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
+      td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
+      tr:last-child td { border-bottom:none; }
+      .musts { display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 0; }
+      .musts .m { font-size:var(--text-xs); font-weight:700; color:var(--blue); background:var(--box-blue); border-radius:4px; padding:3px 10px; }
+      .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+      .old-txt { color:var(--txt-3); }
+      .arw { color:var(--border-dk); text-align:center; width:1.6em; }
+
+      /* 原文引用 */
+      /* 改定の経緯（折りたたみ）の新旧対比だけで使う */
+      .src { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.85; background:#fbfcfd; }
+      .src .src-lbl { font-weight:900; font-size:var(--text-xs); color:var(--txt-3); margin-bottom:6px; }
+
+      /* ○×の対比 */
+      .cmp { display:flex; flex-direction:column; gap:10px; }
+      .cmp-row { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; }
+      .cmp-head { padding:7px 14px; font-weight:900; font-size:var(--text-sm); display:flex; align-items:center; gap:8px; border-bottom:var(--bw-h) solid var(--border); }
+      .cmp-row.ng .cmp-head { background:var(--box-gray); color:var(--txt-2); }
+      .cmp-row.ok .cmp-head { background:var(--box-blue); color:var(--blue); }
+      .cmp-body { padding:11px 14px; font-size:var(--text-sm); }
+      .cmp-body .rec { background:#fbfcfd; border:var(--bw) solid var(--border); border-radius:4px; padding:9px 12px; line-height:1.8; }
+      .cmp-body .why { margin-top:8px; color:var(--txt-2); font-size:var(--text-sm); }
+
+      .req { display:flex; gap:10px; padding:10px 0; border-bottom:var(--bw-h) solid var(--border); font-size:var(--text-sm); }
+      .req:last-child { border-bottom:none; }
+      .req > span:first-child { flex-shrink:0; color:var(--txt-3); margin-top:1px; }
+
+      .memo-ttl { font-weight:900; font-size:var(--text-sm); margin-bottom:6px; }
+      .note { font-size:var(--text-xs); color:var(--txt-2); margin-top:10px; line-height:1.7; }
+
+      /* 折りたたみ（施行済みの改定経緯を格納） */
+      .fold { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); }
+      .fold > summary { list-style:none; cursor:pointer; padding:14px var(--pad-card); font-weight:700; font-size:var(--text-sm); color:var(--txt-2); display:flex; align-items:center; gap:8px; }
+      .fold > summary::-webkit-details-marker { display:none; }
+      .fold > summary::before { content:"▶"; font-size:10px; color:var(--txt-3); transition:transform .15s; }
+      .fold[open] > summary::before { transform:rotate(90deg); }
+      .fold .fold-body { padding:0 var(--pad-card) var(--pad-card); display:flex; flex-direction:column; gap:14px; }
+      /* 新旧全文対比 */
+      .orig { display:flex; flex-direction:column; gap:9px; }
+      .orig .oh { font-weight:900; font-size:var(--text-sm); color:var(--blue); margin-top:6px; }
+      .orig .oi { display:flex; gap:9px; font-size:var(--text-sm); line-height:1.7; color:var(--txt-2); }
+      .orig .oi .lab { flex-shrink:0; min-width:28px; font-weight:900; color:var(--txt-3); }
+      .orig .cite { font-size:var(--text-xs); color:var(--txt-3); margin-top:2px; }
+      .diff-row { font-size:var(--text-sm); line-height:1.85; }
+      .diff-row + .diff-row { margin-top:10px; padding-top:10px; border-top:var(--bw-h) solid var(--border); }
+      .diff-lbl { font-weight:900; }
+      .diff-arw { text-align:center; color:var(--border-dk); font-size:15px; margin:5px 0; }
+
+      .ref-links { max-width:900px; margin:16px auto 0; padding:20px 16px 4px; border-top:1px solid #d0d8e8; }
+      .ref-links .row { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+      .ref-links .lab { font-size:12px; color:var(--txt-2); white-space:nowrap; font-weight:bold; }
+      .ref-links a { display:inline-block; color:var(--blue); text-decoration:none; font-size:13px; border:1px solid #a0b8d8; border-radius:6px; padding:4px 12px; background:#fff; }
+
+      @media (max-width:640px) {
+        body { font-size:14px; padding:14px 12px 40px; line-height:1.75; }
+        :root { --text-xs:11.5px; --text-sm:13.5px; --text-md:14px; --text-lg:16px; --text-xl:18px; --pad-card:14px; --gap-card:11px; }
+        .card { padding:14px; border-radius:8px; }
+        .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; }
+        .card-title .badge { margin-left:0; }
+        .page-title-wrap { flex-direction:column; gap:10px; }
+        table { font-size:11.5px; min-width:420px; }
+        th, td { padding:6px 8px; }
+      }
+      @media print {
+        @page { margin:10mm 9mm; size:A4; }
+        body { background:white; padding:0; font-size:12px; line-height:1.65; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        .page { gap:10px; max-width:700px; margin:0 auto; }
+        :root { --text-xs:10px; --text-sm:11.5px; --text-md:12px; --text-lg:13.5px; --text-xl:15.5px; --pad-card:11px; --gap-card:10px; }
+        .card { padding:11px 13px; }
+        .avoid-break { break-inside:avoid; }
+        a { color:inherit; text-decoration:none; }
+        table { min-width:unset; }
+      }
+    </style>
+  </head>
+  <body>
+    <script src="../assets/site-header.js" defer></script>
+    <script src="../assets/page-toc.js" defer></script>
+    <div class="page">
+
+      <!-- タイトル -->
+      <div class="page-title-wrap">
+        <div class="page-title-left">
+          <h1>在宅患者緊急訪問薬剤管理指導料</h1>
+          <p>保険医の求めにより計画外に訪問して行う薬学的管理指導の評価</p>
+        </div>
+        <div class="score-block">
+          <div class="score-label">月４回まで</div>
+          <div class="score-num">500 <span>/</span> 200<span>点</span></div>
+        </div>
+      </div>
+      <!-- ページ内目次（assets/page-toc.js が見出しから自動生成。手入力しない） -->
+      <div class="page-toc-wrap"><div id="page-toc"></div></div>
+
+      <!-- 1. 点数・区分 -->
+      <div class="card avoid-break">
+        <div class="card-title">点数・区分<span class="qual">分かれ目は計画の対象疾患かどうか</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th style="width:26%">区分</th><th>対象</th><th style="width:16%">点数</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>１</strong></td>
+                <td>計画的な訪問薬剤管理指導の<strong>対象疾患</strong>の変化等</td>
+                <td>500点</td>
+              </tr>
+              <tr>
+                <td><strong>２</strong></td>
+                <td>計画的な訪問薬剤管理指導の<strong>対象となっていない疾患</strong>の変化等</td>
+                <td>200点</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note">
+          ※ １・２とも「訪問薬剤管理指導を実施している保険薬局」が前提。<strong>普段その患者に訪問薬剤管理指導を行っていない薬局が、臨時の処方だけ届けても２は算定できない</strong>（令和2年度改定 疑義解釈その１ 問19）。
+        </div>
+        <div class="note">
+          ※ 新型インフルエンザ等感染症・指定感染症・新感染症の患者に対して、処方医の指示により患家又は施設を訪問し、対面で服薬指導を行って薬剤を交付した場合は、<strong>計画的な訪問薬剤管理指導を行っていなくても１を算定する</strong>。この場合、服薬管理指導料は別に算定できない。
+        </div>
+      </div>
+
+      <!-- 2. 算定要件 -->
+      <div class="card avoid-break">
+        <div class="card-title">算定要件<span class="badge new">令和8年で緩和</span></div>
+        <div class="lead-note">
+          <span class="marker">状態の変化</span>等に伴い、保険医の求めにより、<span class="marker">予め定めた訪問の計画以外で患家を訪問</span>して薬学的管理指導を行った場合に算定する。訪問結果は保険医へ文書で情報提供する。
+        </div>
+        <p style="font-size:var(--text-sm); line-height:1.8; margin:14px 0 12px;">令和8年改定で、<span class="old-txt">状態の急変</span>・<span class="old-txt">緊急に訪問</span>だった要件が<strong>状態の変化</strong>・<strong>予め定めた訪問の計画以外で訪問</strong>に改まり、対象が広がった。</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th style="width:26%">　</th><th style="width:34%">令和6年（旧）</th><th class="arw">→</th><th>令和8年（新）</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight:900;">訪問のきっかけ</td>
+                <td class="old-txt">状態の<strong>急変</strong>等</td>
+                <td class="arw">→</td>
+                <td>状態の<strong class="marker">変化</strong>等</td>
+              </tr>
+              <tr>
+                <td style="font-weight:900;">訪問のしかた</td>
+                <td class="old-txt"><strong>緊急に</strong>患家を訪問</td>
+                <td class="arw">→</td>
+                <td><strong class="marker">予め定めた訪問の計画以外で</strong>患家を訪問</td>
+              </tr>
+              <tr>
+                <td style="font-weight:900;">薬歴の記録（8）イ</td>
+                <td class="old-txt"><strong>緊急の</strong>要請</td>
+                <td class="arw">→</td>
+                <td><strong class="marker">予め定めた訪問の計画以外</strong>の要請</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note">
+          ※ 上の表は<strong>通知（別添３）</strong>の変更。<strong>告示（別表第三）と区分の名称は「急変」「緊急」のまま</strong>（後述）。
+        </div>
+        <div class="box-gray" style="margin-top:14px; font-size:var(--text-sm);">
+          <div class="memo-ttl">〔社内〕これまで緊急性を理由に見送っていた例</div>
+            <div style="font-size:var(--text-sm); margin-bottom:7px;">当社で算定を見送っていた事例の一部。医師の求めによる計画外の訪問であれば、こうしたケースも対象となる。</div>
+          <div class="req"><span>・</span><span>結膜炎に対する点眼薬</span></div>
+          <div class="req"><span>・</span><span>便秘時の頓用下剤</span></div>
+          <div class="req"><span>・</span><span>褥瘡に対する外用剤</span></div>
+          <div class="req"><span>・</span><span>食欲低下に対する経腸栄養剤</span></div>
+        </div>
+      </div>
+
+      <!-- 3. 算定上の注意 -->
+      <div class="card">
+        <div class="card-title">算定上の注意</div>
+
+        <div class="sub-title">算定回数</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th style="width:52%">患者</th><th>上限<span style="font-weight:400; color:var(--txt-3);">（１・２と服薬管理指導料「４のハ」を合わせて）</span></th></tr></thead>
+            <tbody>
+              <tr><td>下記以外の患者</td><td><strong>月４回</strong></td></tr>
+              <tr><td>末期の悪性腫瘍の患者<br />注射による麻薬の投与が必要な患者</td><td><strong>原則として月８回</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note">
+          ※ 情報通信機器を用いた場合の<strong>服薬管理指導料「４のハ」</strong>も同じ枠で数える。
+        </div>
+        <div class="box-gray" style="margin-top:14px;">
+          <div class="memo-ttl">月８回を超えて算定するとき</div>
+          <div style="font-size:var(--text-sm);">
+            特に医療上の必要がある場合であって、<strong>保険医の発行した処方箋に基づくとき</strong>に限り月８回を超えて算定できる。この場合は、保険医からの指示内容・訪問が必要になった患者の容態等について<span class="marker">薬学的分析を実施して薬歴に記載</span>したうえで、訪問が必要であった理由を摘要欄に記載する。
+          </div>
+        </div>
+
+        <div class="sub-title">医師の指示・求め</div>
+        <div style="font-size:var(--text-sm); line-height:1.8;">
+          計画的な訪問には、あらかじめ<strong class="marker">医師の訪問指示</strong>が要る〔区分１５〕。緊急訪問は、その訪問について<strong class="marker">保険医の求め</strong>があったことが要件で、求めの形式について通知の定めはない。処方箋に指示として記載されてくることが多い。薬歴への記録は「薬歴記載事項」のイを参照。
+        </div>
+
+        <a class="gi-row" style="margin-top:14px;" href="../ツール/gigi-search.html?q=在宅患者訪問薬剤管理指導における医師の指示">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">在宅患者訪問薬剤管理指導における医師の指示は、どのような方法で行えばよいか</span><span class="gi-src">令和4年度 その１ 問37</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">診療状況を示す文書、処方箋等（電子メール、FAX等を含む）に、「要訪問」「訪問指導を行うこと」等の指示を行った旨が分かる内容及び処方日数を記載する。<span class="sub">処方日数は、処方から１か月以内の訪問を指示する場合は記載不要。緊急やむを得ない場合は、後日文書等により処方日数が示されていればよい。</span></span></div>
+          <div class="gi-more">疑義解釈検索ツールで原文を見る<span class="chev">›</span></div>
+        </a>
+        <p style="font-size:var(--text-xs); color:var(--txt-3); margin-top:8px;">日本薬剤師会「在宅服薬支援マニュアル その4・訪問」にも同じ内容が収載されている。</p>
+      </div>
+
+      <!-- 加算 -->
+      <div class="card">
+        <div class="card-title">加算</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th style="width:30%">加算</th><th>要件</th><th style="text-align:right; white-space:nowrap;">点数</th></tr></thead>
+            <tbody>
+              <tr><td><a href="夜間・休日・深夜訪問加算.html">夜間訪問加算</a><br /><a href="夜間・休日・深夜訪問加算.html">休日訪問加算</a><br /><a href="夜間・休日・深夜訪問加算.html">深夜訪問加算</a></td><td>末期の悪性腫瘍の患者又は注射による麻薬の投与が必要な患者に対して、保険医の求めにより開局時間以外の夜間・休日・深夜に訪問した場合。<strong>１にのみ加算できる</strong></td><td style="text-align:right; white-space:nowrap;">400点<br />600点<br />1,000点</td></tr>
+              <tr><td>麻薬管理指導加算</td><td>麻薬の投薬が行われている患者に対して、服用及び保管の状況、副作用の有無等について確認し、必要な指導等を行った場合</td><td style="text-align:right; white-space:nowrap;">100点</td></tr>
+              <tr><td>在宅患者医療用麻薬持続注射療法加算<div class="musts"><span class="m">届出が必要</span></div></td><td>在宅で医療用麻薬持続注射療法を行っている患者に対して、投与及び保管の状況、副作用の有無等について確認し、必要な指導等を行った場合。<strong>麻薬管理指導加算とは併算定できない</strong></td><td style="text-align:right; white-space:nowrap;">250点</td></tr>
+              <tr><td>乳幼児加算</td><td>在宅で療養を行っている<strong>６歳未満</strong>の乳幼児であって通院が困難なものに対して、患家を訪問して直接指導等を行った場合</td><td style="text-align:right; white-space:nowrap;">100点</td></tr>
+              <tr><td>小児特定加算</td><td>児童福祉法第56条の６第２項に規定する<strong>障害児</strong>である患者又はその家族等に対して必要な指導等を行った場合。<strong>乳幼児加算とは併算定できない</strong></td><td style="text-align:right; white-space:nowrap;">450点</td></tr>
+              <tr><td>在宅中心静脈栄養法加算<div class="musts"><span class="m">届出が必要</span></div></td><td>在宅中心静脈栄養法を行っている患者又はその家族等に対して、投与及び保管の状況、配合変化の有無について確認し、必要な指導等を行った場合</td><td style="text-align:right; white-space:nowrap;">150点</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 算定できない場合 -->
+      <div class="card">
+        <div class="card-title">算定できない場合</div>
+        <div class="box-outline" style="border-color:var(--border-dk); padding:14px 18px; border-radius:var(--radius-sm);">
+          <div style="font-size:var(--text-sm); display:flex; flex-direction:column; gap:9px;">
+            <div style="display:flex; gap:8px;"><span style="flex-shrink:0; color:var(--txt-3); font-weight:900;">✕</span><span><strong><a href="在宅患者緊急時等共同指導料.html">在宅患者緊急時等共同指導料</a></strong>を算定する場合〔告示 区分１５の３ 注８〕</span></div>
+            <div style="display:flex; gap:8px;"><span style="flex-shrink:0; color:var(--txt-3); font-weight:900;">✕</span><span>情報通信機器を用いて薬学的管理指導を行った場合　→ <strong>服薬管理指導料「４のハ」</strong>を算定する</span></div>
+            <div style="display:flex; gap:8px;"><span style="flex-shrink:0; color:var(--txt-3); font-weight:900;">✕</span><span>保険薬局の所在地と患家の所在地との距離が<strong>16キロメートルを超えた場合</strong>（特殊の事情があった場合を除く）</span></div>
+            <div style="display:flex; gap:8px;"><span style="flex-shrink:0; color:var(--txt-3); font-weight:900;">✕</span><span><strong>特別調剤基本料Ｂ</strong>を算定している保険薬局</span></div>
+          </div>
+        </div>
+        <div class="note">
+          ※ 交通費は患家の負担とし、実費とする。
+        </div>
+      </div>
+
+      <!-- 3. 薬歴 -->
+      <div class="card">
+        <div class="card-title">薬歴記載事項</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;">薬学管理料の通則(4)の記載事項に加えて、<strong>ア〜エの４項目</strong>を記載する。</p>
+        <div class="box-gray" style="margin-top:10px;">
+          <div style="display:flex; flex-direction:column; gap:7px;">
+            <div>ア　訪問の実施日、訪問した保険薬剤師の氏名</div>
+            <div>イ　当該患者の在宅療養を担う保険医療機関の保険医又は当該保険医と連携する他の保険医から予め定めた訪問の計画以外の要請があった日付及び当該要請の内容並びに当該要請に基づき訪問薬剤管理指導を実施した旨</div>
+            <div>ウ　訪問に際して実施した薬学的管理指導の内容（服薬状況、副作用、相互作用等に関する確認等を含む。）</div>
+            <div>エ　保険医に対して提供した訪問結果に関する情報の要点</div>
+          </div>
+        </div>
+        <p style="font-size:var(--text-sm); line-height:1.8; margin-top:14px;">各項目の具体的な記載内容と書き方は <a href="../yakureki/加算別記載一覧.html#zaitaku-kinkyu">加算別 薬歴記載一覧</a>、加算の有無にかかわらず薬歴に必要な事項は <a href="../yakureki/基本記載ルール.html">基本記載ルール</a> を参照。</p>
+      </div>
+
+      <!-- 5. 摘要欄 -->
+      <div class="card avoid-break">
+        <div class="card-title">レセプト摘要欄記載事項</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th style="width:40%">場面</th><th>レセプト表示文言・記載内容</th></tr></thead>
+            <tbody>
+              <tr><td>調剤を行っていない月に算定した場合</td><td>情報提供又は訪問の対象となる調剤の年月日及び投薬日数を記入する</td></tr>
+              <tr><td><strong>２</strong>を、在宅患者訪問薬剤管理指導料・居宅療養管理指導費・介護予防居宅療養管理指導費を算定していない月に算定する場合</td><td>直近算定年月日（訪問薬剤管理指導）</td></tr>
+              <tr><td>月８回を超えて算定する場合<br /><span style="font-size:var(--text-xs); color:var(--txt-3);">次の中から該当するものを選ぶ・１と２で別の文言</span></td><td>訪問が必要であった理由（在宅患者緊急訪問薬剤管理指導料１）：悪性腫瘍患者に対する麻薬の処方<br />同：悪性腫瘍患者に対する麻薬以外の処方<br />同：悪性腫瘍以外の患者に対する麻薬の処方<br />同：その他；******</td></tr>
+              <tr><td colspan="2" style="background:var(--box-gray); font-weight:900; font-size:var(--text-xs); color:var(--txt-2);">場面が限られるもの</td></tr>
+              <tr><td>在宅基幹薬局に代わって在宅協力薬局が実施した場合<br /><span style="font-size:var(--text-xs); color:var(--txt-3);">在宅基幹薬局が記載</span></td><td>（在宅基幹薬局）実施年月日（在宅患者緊急訪問薬剤管理指導料）<br />（在宅基幹薬局）在宅協力薬局名（在宅患者緊急訪問薬剤管理指導料）；******</td></tr>
+              <tr><td>同上<br /><span style="font-size:var(--text-xs); color:var(--txt-3);">在宅協力薬局が記載・処方箋が交付されていた場合</span></td><td>（在宅協力薬局）実施年月日（在宅患者緊急訪問薬剤管理指導料）</td></tr>
+              <tr><td>特別養護老人ホームの入所者であって末期の悪性腫瘍の患者に実施した場合</td><td>（特養のがん末期の患者）訪問指導年月日（在宅患者緊急訪問薬剤管理指導料）</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:var(--text-xs); color:var(--txt-3); margin-top:8px;">※ 別表Ⅰ 項番24・26・27・28・29・30。夜間・休日・深夜訪問加算を算定する場合は <a href="夜間・休日・深夜訪問加算.html">夜間・休日・深夜訪問加算</a>（項番31）を参照。表示文言は <a href="../改定資料/別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html">別表Ⅰ</a> を参照。</p>
+      </div>
+
+      <details class="fold" data-toc-label="原文（告示・通知）">
+        <summary>原文を見る（告示・通知）</summary>
+        <div class="fold-body">
+          <div class="orig">
+            <div class="oh">告示（別表第三 区分１５の２ 在宅患者緊急訪問薬剤管理指導料）</div>
+            <div class="oi"><span class="lab">注１</span><span>１及び２について、訪問薬剤管理指導を実施している保険薬局の保険薬剤師が、在宅での療養を行っている患者であって通院が困難なものの状態の急変等に伴い、当該患者の在宅療養を担う保険医療機関の保険医又は当該保険医療機関と連携する他の保険医療機関の保険医の求めにより、当該患者に係る計画的な訪問薬剤管理指導とは別に、緊急に患家を訪問して、患者又はその家族等に対して必要な指導等を行った場合に、１及び２並びに区分番号１０の３に掲げる服薬管理指導料の４のハを合わせて月４回（末期の悪性腫瘍の患者又は注射による麻薬の投与が必要な患者にあっては、原則として月８回）に限り算定する。なお、区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</span></div>
+            <div class="oi"><span class="lab">注７</span><span>保険薬局の所在地と患家の所在地との距離が16キロメートルを超えた場合にあっては、特殊の事情があった場合を除き算定できない。</span></div>
+            <div class="oi"><span class="lab">注８</span><span>在宅患者緊急訪問薬剤管理指導に要した交通費は、患家の負担とする。</span></div>
+            <div class="oi"><span class="lab">注10</span><span>注１の規定にかかわらず、感染症法第６条第７項に規定する新型インフルエンザ等感染症、同条第８項に規定する指定感染症、同条第９項に規定する新感染症の患者であって、患家又は宿泊施設で療養するもの、介護老人保健施設、介護医療院、地域密着型介護老人福祉施設又は介護老人福祉施設に入所するものに対して交付された処方箋を受け付けた場合において、処方医の指示により、当該保険薬局の保険薬剤師が患家又は当該施設を緊急に訪問し、当該患者又はその家族等に対して対面による服薬指導その他の必要な指導等を実施し、薬剤を交付した場合には、１を算定する。この場合において、注10については、区分番号１０の３に掲げる服薬管理指導料は、別に算定できない。</span></div>
+            <div class="oh">通知（別添3 区分１５の２）</div>
+            <div class="oi"><span class="lab">(１)</span><span>在宅患者緊急訪問薬剤管理指導料は、訪問薬剤管理指導を実施している保険薬局の保険薬剤師が、在宅での療養を行っている患者であって通院が困難なものの状態の変化等に伴い、当該患者の在宅療養を担う保険医療機関の保険医又は当該保険医療機関と連携する他の保険医療機関の保険医（以下この項で単に「保険医」という。）の求めにより、当該患者に係る計画的な訪問薬剤管理指導とは別に、予め定めた訪問の計画以外で患家を訪問して必要な薬学的管理指導を行い、当該保険医に対して訪問結果について必要な情報提供を文書で行った場合に、在宅患者緊急訪問薬剤管理指導料１及び２並びに服薬管理指導料「４のハ」を合わせて月４回に限り算定する。</span></div>
+            <div class="oi"><span class="lab">(２)</span><span>（１）の規定にかかわらず、末期の悪性腫瘍の患者又は注射による麻薬の投与が必要な患者に対して、在宅患者緊急訪問薬剤管理指導料に係る業務を実施する場合は、１と２及び服薬管理指導料「４のハ」を合わせて原則として月８回まで算定できる。ただし、特に医療上の必要がある場合であって、保険医の発行した処方箋に基づくときに限り、月８回を超えて算定することができる。ただし、この場合にあっては、保険医からの指示内容、訪問が必要になった患者の容態等について、必要な薬学的分析を実施し、薬剤服用歴等に記載した上で、当該訪問が必要であった理由を調剤報酬明細書の摘要欄に簡潔に記載すること。</span></div>
+            <div class="oi"><span class="lab">(３)</span><span>在宅患者緊急訪問薬剤管理指導料１は、当該患者に係る計画的な訪問薬剤管理指導の対象疾患の変化等に関して、保険医の求めにより、予め定めた訪問の計画以外で患家を訪問して必要な薬学的管理指導を行い、訪問結果について当該保険医に必要な情報提供を文書で行った場合に算定する。</span></div>
+            <div class="oi"><span class="lab">(４)</span><span>在宅患者緊急訪問薬剤管理指導料２は、当該患者に係る計画的な訪問薬剤管理指導の対象となっていない疾患の変化等に関して、保険医の求めにより、予め定めた訪問の計画以外で患家を訪問して必要な薬学的管理指導を行い、訪問結果について当該保険医に必要な情報提供を文書で行った場合に算定する。</span></div>
+            <div class="oi"><span class="lab">(５)</span><span>（３）及び（４）については、情報通信機器を用いて療養上必要な薬学的管理指導を行った場合は、服薬管理指導料「４のハ」を算定すること。この場合において、在宅患者緊急訪問薬剤管理指導料は算定できない。</span></div>
+            <div class="oi"><span class="lab">(６)</span><span>（３）から（５）までについては、在宅療養を担う保険医療機関の保険医と連携する他の保険医の求めにより、予め定めた訪問の計画以外で患家を訪問して必要な薬学的管理指導を行った場合は、当該保険医に加え、当該患者の在宅療養を担う保険医療機関の保険医にも必要な情報提供を文書で行うこと。在宅療養を担う保険医療機関の保険医と連携する他の保険医については、担当医に確認し、薬学的管理指導計画書等に当該医師の氏名と医療機関名を記載すること。</span></div>
+            <div class="oi"><span class="lab">(７)</span><span>「１５」在宅患者訪問薬剤管理指導料の１の（４）に規定する同意を得ている場合において、在宅基幹薬局に代わって在宅協力薬局が緊急訪問薬剤管理指導を行った場合は、在宅患者緊急訪問薬剤管理指導料を算定できる。なお、その場合においては、「１５」在宅患者訪問薬剤管理指導料の１の（４）の取扱いに準ずること。</span></div>
+            <div class="oi"><span class="lab">(８)</span><span>在宅患者緊急訪問薬剤管理指導料を算定するためには、薬剤服用歴等に薬学管理料の通則（４）の記載事項に加えて、少なくとも次の事項について記載されていなければならない。</span></div>
+            <div class="oi"><span class="lab">ア</span><span>訪問の実施日、訪問した保険薬剤師の氏名</span></div>
+            <div class="oi"><span class="lab">イ</span><span>当該患者の在宅療養を担う保険医療機関の保険医又は当該保険医と連携する他の保険医から予め定めた訪問の計画以外の要請があった日付及び当該要請の内容並びに当該要請に基づき訪問薬剤管理指導を実施した旨</span></div>
+            <div class="oi"><span class="lab">ウ</span><span>訪問に際して実施した薬学的管理指導の内容（服薬状況、副作用、相互作用等に関する確認等を含む。）</span></div>
+            <div class="oi"><span class="lab">エ</span><span>保険医に対して提供した訪問結果に関する情報の要点</span></div>
+            <div class="oi"><span class="lab">(14)</span><span>保険薬局（在宅協力薬局を含む。）の所在地と患家の所在地との距離が16キロメートルを超える訪問薬剤管理指導については、患家の所在地から16キロメートルの圏域の内側に、在宅患者訪問薬剤管理指導を行う旨を届け出ている保険薬局が存在しないなど、当該保険薬局からの訪問薬剤管理指導を必要とする特殊な事情がある場合に認められるものであって、この場合の在宅患者緊急訪問薬剤管理指導料の算定については16キロメートル以内の場合と同様に算定する。特殊な事情もなく、特に患家の希望により16キロメートルを超えて訪問薬剤管理指導を行った場合の在宅患者緊急訪問薬剤管理指導料は保険診療としては認められないことから、患者負担とする。この場合において、「保険薬局の所在地と患家の所在地との距離が16キロメートルを超えた場合」とは、患家を中心とする半径16キロメートルの圏域の外側に当該保険薬局が所在する場合をいう。ただし、平成24年３月31日以前に在宅患者訪問薬剤管理指導料の「注１」に規定する医師の指示があった患者については、当該規定は適用しないものであること。</span></div>
+            <div class="oi"><span class="lab">(15)</span><span>「注８」に規定する交通費は実費とする。</span></div>
+            <div class="oi"><span class="lab">(17)</span><span>「注10」については、患家又は宿泊施設若しくは入所中の施設を保険薬剤師が予め定めた訪問の計画以外で訪問し、当該患者又はその家族等（現にその看護に当たっている者及び当該患者の薬剤を管理している当該施設の職員を含む。）に対して、必要な薬学的管理及び指導を実施し、薬剤を交付した場合に「注１」に規定する計画的な訪問薬剤管理指導の実施の有無によらず算定できる。また、この場合において、服薬管理指導料は、別に算定できない。</span></div>
+            <div class="oi"><span class="lab">(18)</span><span>在宅患者緊急訪問薬剤管理指導料は、特別調剤基本料Ｂを算定している保険薬局は算定できない。</span></div>
+            <div class="cite">出典：診療報酬の算定方法（別表第三 調剤報酬点数表）／「診療報酬の算定方法の一部改正に伴う実施上の留意事項について」（令和8年3月5日 保医発0305第6号）別添3。摘要欄は別表Ⅰ（調剤報酬明細書の摘要欄への記載事項）項番24・26・27・28・29・30による。加算の通知（麻薬管理指導加算ほか）は各加算のページを参照。</div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 改定の経緯：施行済みのため格納。返戻対応の根拠用に全文を残す -->
+      <details class="fold" data-toc-label="改定の経緯・新旧全文対比">
+        <summary>改定の経緯・別添３本文の新旧全文対比（折りたたみ）</summary>
+        <div class="fold-body">
+          <div style="font-size:var(--text-sm);">
+            返戻時の確認に使えるよう、令和6年から令和8年で本文がどう変わったかを並べた。黄色マーカーが変わった箇所。
+          </div>
+
+          <div class="src">
+            <div class="src-lbl">(1) 通則</div>
+            <div class="diff-row">
+              <span class="diff-lbl old-txt">令和6年（旧）：</span><span class="old-txt">…通院が困難なものの状態の<strong>急変</strong>等に伴い、…保険医の求めにより、当該患者に係る計画的な訪問薬剤管理指導とは別に、<strong>緊急に</strong>患家を訪問して必要な薬学的管理指導を行い…</span>
+            </div>
+            <div class="diff-arw">▼</div>
+            <div class="diff-row">
+              <span class="diff-lbl">令和8年（新）：</span>…通院が困難なものの状態の<strong class="marker">変化</strong>等に伴い、…保険医の求めにより、当該患者に係る計画的な訪問薬剤管理指導とは別に、<strong class="marker">予め定めた訪問の計画以外で</strong>患家を訪問して必要な薬学的管理指導を行い…
+            </div>
+          </div>
+
+          <div class="src">
+            <div class="src-lbl">(3) 在宅患者緊急訪問薬剤管理指導料１</div>
+            <div class="diff-row">
+              <span class="diff-lbl old-txt">令和6年（旧）：</span><span class="old-txt">…計画的な訪問薬剤管理指導の対象疾患の<strong>急変</strong>等に関して、保険医の求めにより、<strong>緊急に</strong>患家を訪問して…</span>
+            </div>
+            <div class="diff-arw">▼</div>
+            <div class="diff-row">
+              <span class="diff-lbl">令和8年（新）：</span>…計画的な訪問薬剤管理指導の対象疾患の<strong class="marker">変化</strong>等に関して、保険医の求めにより、<strong class="marker">予め定めた訪問の計画以外で</strong>患家を訪問して…
+            </div>
+          </div>
+
+          <div class="src">
+            <div class="src-lbl">(4) 在宅患者緊急訪問薬剤管理指導料２</div>
+            <div class="diff-row">
+              <span class="diff-lbl old-txt">令和6年（旧）：</span><span class="old-txt">…計画的な訪問薬剤管理指導の対象となっていない疾患の<strong>急変</strong>等に関して、保険医の求めにより、<strong>緊急に</strong>患家を訪問して…</span>
+            </div>
+            <div class="diff-arw">▼</div>
+            <div class="diff-row">
+              <span class="diff-lbl">令和8年（新）：</span>…計画的な訪問薬剤管理指導の対象となっていない疾患の<strong class="marker">変化</strong>等に関して、保険医の求めにより、<strong class="marker">予め定めた訪問の計画以外で</strong>患家を訪問して…
+            </div>
+          </div>
+
+          <div>
+            <div class="sub-title">記録要件 (8)イ は5月29日の訂正通知で整合が取られた</div>
+            <div style="font-size:var(--text-sm);">
+              令和8年の通知は、本文の (1)(3)(4) が当初から「計画以外」になっていた一方で、<strong>記録要件の (8)イ だけ「緊急の要請」のまま残っていた</strong>。5月29日の訂正通知でイも「予め定めた訪問の計画以外の要請」に直り、本文と揃った。
+            </div>
+          </div>
+
+          <div class="box-gray">
+            <div class="memo-ttl">告示（別表第三）は「急変」のまま</div>
+            <div style="font-size:var(--text-sm);">
+              通知（別添３）が「変化・計画以外」に変わった一方で、<strong>告示の区分名と注１は「急変」「緊急に」のまま残っている</strong>。<strong>令和8年5月29日の事務連絡（別添９ 官報掲載事項の一部訂正）で訂正されたのは歯科の別表第二の1か所だけで、別表第三は対象になっていない。</strong>算定要件の解釈は通知によるため、上記の緩和が及ぶ。告示側の修正漏れとみられる。
+            </div>
+          </div>
+
+          <div class="box-gray">
+            <div class="memo-ttl">〔社内〕返戻が来たときの対応</div>
+            <div style="font-size:var(--text-sm);">
+              当面は、返戻が来た場合は上記の新旧対比を根拠として対応する。<strong class="marker">返戻が来たケースは共有し、状況に合わせて運用を更新していく。</strong>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 関連ページ -->
+      <div class="card">
+        <div class="card-title">関連する過去の疑義解釈</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;"><a href="../ツール/gigi-search.html?q=在宅患者緊急訪問薬剤管理指導料">疑義解釈検索ツールで「在宅患者緊急訪問薬剤管理指導料」の全件を見る</a></p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">関連ページ</div>
+        <div style="font-size:var(--text-sm); display:flex; flex-direction:column; gap:8px;">
+          <div><a href="在宅患者訪問薬剤管理指導料.html">在宅患者訪問薬剤管理指導料</a>　計画的な訪問の指導料。訪問指示・薬学的管理指導計画はこちら</div>
+          <div><a href="夜間・休日・深夜訪問加算.html">夜間・休日・深夜訪問加算</a>　開局時間外に訪問した場合の加算</div>
+          <div><a href="在宅患者緊急時等共同指導料.html">在宅患者緊急時等共同指導料</a>　カンファレンスを踏まえて訪問した場合。併算定できない</div>
+          <div><a href="在宅協力薬局.html">在宅協力薬局</a>　基幹薬局に代わって訪問した場合の算定と記録</div>
+          <div><a href="../yakureki/加算別記載一覧.html#zaitaku-kinkyu">加算別 薬歴記載一覧</a>　薬歴に残す項目の中身</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 原文参照リンク -->
+    <div class="ref-links">
+      <div class="row">
+        <span class="lab">原文参照：</span>
+        <a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-15-2">別添３ › 在宅患者緊急訪問薬剤管理指導料</a>
+        <a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-15">別添３ › 在宅患者訪問薬剤管理指導料</a>
+        <a href="../改定資料/別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html">別表Ⅰ › 摘要欄記載事項</a>
+        <a href="../ツール/gigi-search.html">疑義解釈検索</a>
+      </div>
+    </div>
+
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>

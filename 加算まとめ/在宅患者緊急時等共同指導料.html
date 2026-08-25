@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>在宅患者緊急時等共同指導料｜算定項目まとめ</title>
+    <meta name="search-keywords" content="共同指導料,カンファレンス,多職種,ビデオ通話,オンライン会議,ケアマネ,介護支援専門員,相談支援専門員,訪問看護,月2回,700点,16キロメートル,特別調剤基本料B,特養,きょうどうしどう,かんふぁれんす" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/gigi-list.css" />
+    <style>
+      *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+      :root {
+        --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+        --pad-card:22px; --gap-card:16px;
+        --blue:#1e5fa8; --ink:#222222;
+        --bg:#f3f4f6; --white:#ffffff;
+        --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+        --border:#d1d5db; --border-dk:#9ca3af;
+        --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px; --bw-t:4px;
+        --txt-2:#444444; --txt-3:#5e6470;
+        /* 黄ボックス（.guard）を使うときだけ有効化。原則は使わない */
+        /* --warn-bg:#fffbe6; --warn-bd:#e0b000; */
+        /* アンバーはパターン分岐の対比が要るときだけ有効化。注意の意味では使わない */
+        /* --amber:#b45309; --amber-bg:#fdf0e3; --amber-bd:#e8c9a3; */
+      }
+      /* 配色は必ずトークンで（生hexを足さない）：青背景=--box-blue／灰背景=--box-gray／罫線=--border・--border-dk／青文字・棒・番号=--blue */
+      body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+      .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+      /* ── 見出し階層 ── */
+      .page-title-wrap { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+      .page-title-left { flex:1; }
+      .page-title-left h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+      .page-title-left p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+      .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+      .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+      .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+      .card-title .badge { margin-left:auto; font-size:var(--text-xs); font-weight:700; background:var(--box-gray); color:var(--txt-2); padding:3px 12px; border-radius:4px; }
+      .sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin:18px 0 9px; }
+      .sub-title:first-child { margin-top:0; }
+      .sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+
+      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+
+      .score-block { display:flex; flex-direction:column; border:var(--bw) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; flex-shrink:0; }
+      .score-block .score-label { background:var(--box-gray); color:var(--txt-2); font-size:var(--text-xs); font-weight:700; padding:5px 16px; text-align:center; border-bottom:var(--bw) solid var(--border); }
+      .score-block .score-num { background:var(--white); font-size:28px; font-weight:900; padding:6px 20px; text-align:center; white-space:nowrap; }
+      .score-block .score-num span { font-size:var(--text-sm); font-weight:500; margin-left:2px; }
+
+      /* ── 強調 ── */
+      .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+      .em-change { color:var(--blue); font-weight:900; }
+
+      /* ── ボックス ──
+         タイトル（.ttl）はブロック表示＝ラベル1行目・本文2行目。
+         灰ボックスのタイトルは青字、青ボックスのタイトルは濃色（青地に青字は見づらい。
+         青いアクセントは背景か文字のどちらか一方だけ） */
+      .lead-note { background:#eef4fb; border-radius:var(--radius-sm); padding:12px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray .ttl, .box-blue .ttl { display:block; font-weight:900; margin-bottom:5px; font-size:var(--text-sm); }
+      .box-gray .ttl { color:var(--blue); }
+      .box-blue .ttl { color:var(--ink); }
+      .box-outline { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:14px 18px; }
+      /* 黄ボックス。1ページ1個まで。使うときは :root の --warn-* を有効化する */
+      /* .guard { display:block; margin-top:8px; padding:9px 12px; background:var(--warn-bg); border-left:var(--bw-a) solid var(--warn-bd); border-radius:4px; font-size:var(--text-sm); line-height:1.65; }
+         .guard b { font-weight:900; color:#5f4b00; } */
+
+      /* ── 箇条書き ── */
+      .list { display:flex; flex-direction:column; gap:6px; margin:4px 0 2px; }
+      .list .li { font-size:var(--text-sm); line-height:1.7; padding-left:18px; text-indent:-18px; }
+      .list .li::before { content:"・"; color:var(--txt-3); font-weight:900; margin-right:6px; }
+      .list .li b { color:var(--ink); }
+      /* ①②③・ア〜エのように項目自体に番号・記号が付くときは .li.mk を使う。
+         素の .li に「① 〜」と書くと、折り返した2行目が番号の下に潜って読みにくい。
+         <div class="li mk"><span class="m">①</span><span>本文</span></div> */
+      .list .li.mk { display:flex; gap:7px; padding-left:0; text-indent:0; }
+      .list .li.mk::before { content:none; }
+      .list .li.mk > .m { flex-shrink:0; font-weight:900; color:var(--ink); }
+      .musts { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 2px; }
+      .musts .m { font-size:var(--text-xs); font-weight:700; color:var(--blue); background:var(--box-blue); border-radius:4px; padding:3px 10px; }
+
+      /* ── 表 ── */
+      table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+      th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
+      td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
+      tr:last-child td { border-bottom:none; }
+      .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+
+      /* ── 2列の対比（注１と注２、区分イとロ など。どちらも中立＝色で優劣を付けない） ── */
+      .cmp { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:4px; }
+      .cmp .col { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; display:flex; flex-direction:column; }
+      .cmp .col-head { background:#eef2f7; padding:9px 14px; display:flex; align-items:baseline; gap:9px; border-bottom:var(--bw-h) solid var(--border); }
+      .cmp .col-head .no { font-weight:900; color:var(--blue); font-size:var(--text-md); }
+      .cmp .col-head .nm { font-weight:700; font-size:var(--text-xs); color:var(--txt-2); }
+      .cmp .col-body { padding:12px 14px; font-size:var(--text-sm); line-height:1.7; flex:1; }
+      .cmp .col-body .def { margin-bottom:9px; }
+      .cmp .col-body .yk { font-size:var(--text-xs); font-weight:900; color:var(--txt-3); margin:2px 0 4px; }
+      .cmp .col-body ol { list-style:none; counter-reset:y; }
+      .cmp .col-body ol li { counter-increment:y; padding-left:20px; text-indent:-20px; font-size:var(--text-sm); line-height:1.6; margin-bottom:2px; }
+      .cmp .col-body ol li::before { content:counter(y)". "; font-weight:900; color:var(--blue); }
+
+      /* ── 記載例（患者への説明文言・情報提供文のコピー用。薬歴の記載例には使わない） ── */
+      .rei { display:block; background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; margin-top:10px; font-size:var(--text-sm); line-height:1.8; }
+      .rei .ttl { display:block; font-weight:900; color:var(--blue); font-size:var(--text-xs); margin-bottom:5px; }
+      .rei p { padding-left:14px; text-indent:-14px; }
+      .rei p + p { margin-top:6px; }
+      .rei .dot { color:var(--txt-3); font-weight:900; }
+
+      /* ── 摘要欄のレセプト表示文言（固定部＝グレー／選ぶ可変部＝黒太字。コードは載せない） ── */
+      .disp { display:flex; flex-direction:column; gap:8px; margin-top:4px; }
+      .disp .d { border:var(--bw-h) solid var(--border); border-left:var(--bw-a) solid var(--blue); border-radius:var(--radius-sm); padding:9px 13px; font-size:var(--text-sm); line-height:1.6; }
+      .disp .d .pre { color:var(--txt-3); }
+      .disp .d .val { font-weight:900; color:var(--ink); }
+
+      /* ── 番号バッジ付きリスト（順序のある注意点・手順） ── */
+      .num-list { display:flex; flex-direction:column; gap:11px; }
+      .num-list .ni { display:flex; gap:11px; align-items:flex-start; }
+      .num-list .ni .n { width:23px; height:23px; border-radius:6px; background:var(--blue); color:#fff; font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+      .num-list .ni .c { flex:1; font-size:var(--text-sm); line-height:1.7; }
+      .num-list .ni .c b { color:var(--ink); }
+
+      /* ── 手順ステップ（見出し＋説明が必要なとき。1行で済むなら .num-list） ── */
+      .steps { display:flex; flex-direction:column; }
+      .step { display:flex; gap:13px; padding:14px 0; border-top:var(--bw-h) solid var(--border); }
+      .step:first-child { border-top:none; padding-top:0; }
+      .step .n { width:26px; height:26px; border-radius:7px; background:var(--blue); color:var(--white); font-size:14px; font-weight:900; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+      .step .c { flex:1; }
+      .step .t { font-weight:900; font-size:var(--text-md); margin-bottom:3px; }
+      .step .t .when { font-size:var(--text-xs); font-weight:700; color:var(--txt-3); margin-left:6px; }
+      .step .d { font-size:var(--text-sm); color:var(--ink); }
+
+      .check-item { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:12px 16px; font-size:var(--text-sm); }
+      .check-item .ci-main { font-weight:900; }
+      .check-item .ci-note { font-size:var(--text-xs); color:var(--txt-3); margin-top:3px; padding-left:1.2em; }
+
+      /* ── 折りたたみ（原文・施設基準など） ── */
+      details.fold { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); }
+      details.fold > summary { list-style:none; cursor:pointer; padding:14px var(--pad-card); font-weight:700; font-size:var(--text-sm); color:var(--txt-2); display:flex; align-items:center; gap:8px; }
+      details.fold > summary::-webkit-details-marker { display:none; }
+      details.fold > summary::before { content:"▶"; font-size:10px; color:var(--txt-3); transition:transform .15s; }
+      details.fold[open] > summary::before { transform:rotate(90deg); }
+      details.fold .fold-body { padding:2px var(--pad-card) var(--pad-card); }
+      .orig { display:flex; flex-direction:column; gap:9px; }
+      .orig .oh { font-weight:900; font-size:var(--text-sm); color:var(--blue); margin-top:6px; }
+      .orig .oi { display:flex; gap:9px; font-size:var(--text-sm); line-height:1.7; color:var(--txt-2); }
+      .orig .oi .lab { flex-shrink:0; min-width:28px; font-weight:900; color:var(--txt-3); }
+      .orig .cite { font-size:var(--text-xs); color:var(--txt-3); margin-top:2px; }
+
+      /* ── 関連ページ（横の導線） ── */
+      .rel { display:flex; flex-direction:column; gap:8px; }
+      .rel a { display:flex; align-items:center; gap:9px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; text-decoration:none; color:var(--ink); font-size:var(--text-sm); font-weight:700; }
+      .rel a::before { content:"›"; color:var(--blue); font-weight:900; }
+      .rel a:hover { background:#fafbfc; border-color:#bcd3ee; }
+      .rel a .sub { font-weight:400; color:var(--txt-3); font-size:var(--text-xs); margin-left:auto; }
+
+      /* ── 原文参照リンク（最下部・.page の外） ── */
+      .ref-links { max-width:900px; margin:16px auto 0; padding:20px 16px 4px; border-top:1px solid var(--border); }
+      .ref-links .row { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+      .ref-links .lab { font-size:12px; color:var(--txt-2); white-space:nowrap; font-weight:bold; }
+      .ref-links a { display:inline-block; color:var(--blue); text-decoration:none; font-size:13px; border:1px solid var(--border); border-radius:6px; padding:4px 12px; background:var(--white); }
+
+      @media (max-width:640px) {
+        body { font-size:14px; padding:14px 12px 40px; line-height:1.75; }
+        :root { --text-xs:11.5px; --text-sm:13.5px; --text-md:14px; --text-lg:16px; --text-xl:18px; --pad-card:14px; --gap-card:11px; }
+        .card { padding:14px; border-radius:8px; }
+        .card-title { font-size:15px; padding-bottom:6px; margin-bottom:10px; }
+        .card-title .badge { margin-left:0; }
+        .page-title-wrap { flex-direction:column; gap:12px; }
+        .cmp { grid-template-columns:1fr; }
+        .rel a .sub { display:none; }
+        table { font-size:11.5px; min-width:420px; }
+        th, td { padding:6px 8px; }
+        .step .n { width:22px; height:22px; font-size:13px; border-radius:6px; }
+      }
+      /* 印刷：assets/print.css（site-header.js が全ページに注入）と同じ方針。
+         公開前のローカルプレビューでも同じ見え方になるよう、ここにも同じルールを置く。
+         肝は「.page のフレックス解除」（フレックスのままだと改ページが効かず枚数が膨らむ）。 */
+      @media print {
+        @page { margin:10mm 9mm; size:A4; }
+        body { background:white; padding:0; font-size:11.5px; line-height:1.55; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        :root { --text-xs:9.5px; --text-sm:11px; --text-md:11.5px; --text-lg:13px; --text-xl:15px; --pad-card:10px; --gap-card:9px; }
+        .page { display:block; max-width:700px; margin:0 auto; }
+        .card { padding:10px 12px; margin-bottom:9px; break-inside:auto; }   /* 長いカードは分割してよい */
+        .card-title, .sub-title { break-after:avoid; }                        /* 見出しだけ取り残さない */
+        .lead-note, .box-gray, .box-blue, .box-outline, .rei, .disp .d, .check-item,
+        .cmp .col, .num-list .ni, .steps .step, .gi-row, tr, .musts { break-inside:avoid; }
+        details.fold { break-inside:avoid; margin-bottom:9px; }
+        a { color:inherit; text-decoration:none; }
+        .tmpl-banner { display:none; }
+      }
+    </style>
+  </head>  <body>
+    <script src="../assets/site-header.js" defer></script>
+
+    <div class="page">
+
+      <div class="page-title-wrap">
+        <div class="page-title-left">
+          <h1>在宅患者緊急時等共同指導料</h1>
+          <p>病状の変化や診療方針の大幅な変更に伴い、多職種のカンファレンスを踏まえて行う薬学的管理指導の評価</p>
+        </div>
+        <div class="score-block">
+          <div class="score-label">月２回まで</div>
+          <div class="score-num">700<span>点</span></div>
+        </div>
+      </div>
+
+      <div class="lead-note">
+        <span class="marker">カンファレンスの結果を踏まえて患家を訪問し、薬学的管理指導まで行った場合に算定する</span>。参加しただけでは算定できない。
+      </div>
+
+      <div class="card">
+        <div class="card-title">算定要件<span class="qual">この順に行って算定する</span></div>
+        <div style="font-size:var(--text-sm); line-height:1.8; margin-bottom:6px;">次の1〜4をすべて行った場合に算定する。</div>
+        <div class="steps">
+          <div class="step">
+            <div class="n">1</div>
+            <div class="c">
+              <div class="t">保険医から求めがある<span class="when">病状の変化・診療方針の大幅な変更</span></div>
+              <div class="d">在宅療養を担う保険医、又はその保険医と連携する他の保険医の求めによる。<strong>この求めを受けて、2のカンファレンスと3の訪問指導を行う。</strong></div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="n">2</div>
+            <div class="c">
+              <div class="t">関係する医療関係職種等と共同でカンファレンスを行う</div>
+              <div class="d">保険医、歯科医師、訪問看護ステーションの看護師等、介護支援専門員、相談支援専門員など。</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="n">3</div>
+            <div class="c">
+              <div class="t">患家を訪問して薬学的管理指導を行う</div>
+              <div class="d">共有した診療情報とカンファレンスの結果を踏まえ、計画的な訪問薬剤管理指導の内容に加えて行う。</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="n">4</div>
+            <div class="c">
+              <div class="t">保険医へ文書で情報提供する</div>
+              <div class="d">連携する他の保険医の求めで訪問した場合は、その保険医に加えて在宅療養を担う保険医にも行う。</div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:var(--text-xs); color:var(--txt-3); margin-top:8px;">告示は「状態の急変等に伴い」と書いているが、通知は「病状の変化や、診療方針の大幅な変更等の必要が生じたことに伴い」としている。<a href="在宅患者緊急訪問薬剤管理指導料.html">在宅患者緊急訪問薬剤管理指導料</a> と同じく、令和8年改定で通知側が「変化」に改まり、告示側は「急変」のまま残っている。</p>
+        <div class="box-gray" style="margin-top:13px;">
+          <span class="ttl">カンファレンスと指導は別の日でもよい</span>
+          カンファレンスを行った日と異なる日に薬学的管理指導を行った場合も算定できる。ただし<span class="marker">カンファレンスの日以降、速やかに行う</span>。算定は<strong>カンファレンスとそれに基づく薬学的管理指導１回につき１回</strong>。
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">カンファレンスへの参加方法</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;">保険薬剤師は<span class="marker">ビデオ通話が可能な機器を用いて参加できる</span>。ただし、患者に対する診療等を行う医療関係職種等の<strong>１者以上は患家に赴いてカンファレンスを行う</strong>。</p>
+        <div class="box-gray" style="margin-top:11px;">
+          <span class="ttl">ビデオ通話で行うときに確認すること</span>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <div>患者の個人情報を画面上で共有する場合は、<strong>患者の同意</strong>を得る。</div>
+            <div>保険医療機関の電子カルテ等の医療情報システムと共通のネットワーク上の端末で行う場合は、厚生労働省「医療情報システムの安全管理に関するガイドライン」に対応している必要がある。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">加算</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th style="width:30%">加算</th><th>要件</th><th style="text-align:right; white-space:nowrap;">点数</th></tr></thead>
+            <tbody>
+              <tr><td>麻薬管理指導加算</td><td>麻薬の投薬が行われている患者に対して、服用及び保管の状況、副作用の有無等について確認し、必要な指導等を行った場合</td><td style="text-align:right; white-space:nowrap;">100点</td></tr>
+              <tr><td>在宅患者医療用麻薬持続注射療法加算<div class="musts"><span class="m">届出が必要</span></div></td><td>在宅で医療用麻薬持続注射療法を行っている患者に対して、投与及び保管の状況、副作用の有無等について確認し、必要な指導等を行った場合。<strong>麻薬管理指導加算とは併算定できない</strong></td><td style="text-align:right; white-space:nowrap;">250点</td></tr>
+              <tr><td>乳幼児加算</td><td>在宅で療養を行っている<strong>６歳未満</strong>の乳幼児であって通院が困難なものに対して、患家を訪問して直接指導等を行った場合</td><td style="text-align:right; white-space:nowrap;">100点</td></tr>
+              <tr><td>小児特定加算</td><td>児童福祉法第56条の６第２項に規定する<strong>障害児</strong>である患者又はその家族等に対して必要な指導等を行った場合。<strong>乳幼児加算とは併算定できない</strong></td><td style="text-align:right; white-space:nowrap;">450点</td></tr>
+              <tr><td>在宅中心静脈栄養法加算<div class="musts"><span class="m">届出が必要</span></div></td><td>在宅中心静脈栄養法を行っている患者又はその家族等に対して、投与及び保管の状況、配合変化の有無について確認し、必要な指導等を行った場合</td><td style="text-align:right; white-space:nowrap;">150点</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">算定できない場合</div>
+        <div class="box-outline" style="border-color:var(--border-dk);">
+          <div style="font-size:var(--text-sm); display:flex; flex-direction:column; gap:9px;">
+            <div style="display:flex; gap:8px;"><span style="flex-shrink:0; color:var(--txt-3); font-weight:900;">✕</span><span>情報通信機器を用いて薬学的管理指導を行った場合　→ <strong>服薬管理指導料「４のハ」</strong>を算定する</span></div>
+            <div style="display:flex; gap:8px;"><span style="flex-shrink:0; color:var(--txt-3); font-weight:900;">✕</span><span>保険薬局の所在地と患家の所在地との距離が<strong>16キロメートルを超えた場合</strong>（特殊の事情があった場合を除く）</span></div>
+            <div style="display:flex; gap:8px;"><span style="flex-shrink:0; color:var(--txt-3); font-weight:900;">✕</span><span><strong>特別調剤基本料Ｂ</strong>を算定している保険薬局</span></div>
+          </div>
+        </div>
+        <div class="box-gray" style="margin-top:13px;">
+          <span class="ttl">この指導料を算定すると、算定できなくなる点数</span>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <div><a href="在宅患者訪問薬剤管理指導料.html">在宅患者訪問薬剤管理指導料</a>　別に算定できない</div>
+            <div><a href="在宅患者緊急訪問薬剤管理指導料.html">在宅患者緊急訪問薬剤管理指導料</a>　別に算定できない</div>
+            <div><a href="訪問薬剤管理医師同時指導料.html">訪問薬剤管理医師同時指導料</a>・<a href="複数名薬剤管理指導訪問料.html">複数名薬剤管理指導訪問料</a>　この指導料に係る指導等を<strong>同日</strong>に行った場合〔告示 区分１５の９ 注２・区分１５の10 注２〕</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">薬歴記載事項</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;">薬学管理料の通則(4)の記載事項に加えて、<strong>ア〜エの４項目</strong>を記載する。</p>
+        <div class="box-gray" style="margin-top:10px;">
+          <div style="display:flex; flex-direction:column; gap:7px;">
+            <div>ア　カンファレンス及び薬学的管理指導の実施日、薬学的管理指導を行った保険薬剤師の氏名並びに<strong>カンファレンスに参加した医療関係職種等の氏名</strong></div>
+            <div>イ　保険医から要請があって患家を訪問し、他の医療関係職種等と共同してカンファレンスを行い、その結果を踏まえて薬学的管理指導を実施した旨<strong>及びその理由</strong></div>
+            <div>ウ　カンファレンスの要点及びカンファレンスの結果を踏まえて実施した薬学的管理指導の内容（服薬状況、副作用、相互作用等に関する確認等を含む。）</div>
+            <div>エ　保険医に対して提供した訪問結果に関する情報の要点</div>
+          </div>
+        </div>
+        <p style="font-size:var(--text-sm); line-height:1.8; margin-top:12px;">ほかの在宅の指導料と違い、<span class="marker">参加者の氏名とカンファレンスの要点</span>も残す。各項目の具体的な記載内容と書き方は <a href="../yakureki/加算別記載一覧.html#zaitaku-kyodo">加算別 薬歴記載一覧</a>、加算の有無にかかわらず薬歴に必要な事項は <a href="../yakureki/基本記載ルール.html">基本記載ルール</a> を参照。</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">レセプト摘要欄記載事項</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>場面</th><th>レセプト表示文言・記載内容</th></tr></thead>
+            <tbody>
+              <tr><td>調剤を行っていない月に算定した場合</td><td>情報提供又は訪問の対象となる調剤の年月日及び投薬日数を記入する</td></tr>
+              <tr><td>特別養護老人ホームの入所者であって末期の悪性腫瘍の患者に実施した場合</td><td>（特養のがん末期の患者）訪問指導年月日（在宅患者緊急時共同指導料）</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:var(--text-xs); color:var(--txt-3); margin-top:8px;">※ 別表Ⅰ 項番24・28。表示文言は <a href="../改定資料/別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html">別表Ⅰ</a> を参照。</p>
+      </div>
+
+      <details class="fold" data-toc-label="原文（告示・通知）">
+        <summary>原文を見る（告示・通知）</summary>
+        <div class="fold-body">
+          <div class="orig">
+            <div class="oh">告示（別表第三 区分１５の３ 在宅患者緊急時等共同指導料）</div>
+            <div class="oi"><span class="lab">注１</span><span>訪問薬剤管理指導を実施している保険薬局の保険薬剤師が、在宅での療養を行っている患者であって通院が困難なものの状態の急変等に伴い、当該患者の在宅療養を担う保険医療機関の保険医又は当該保険医療機関と連携する他の保険医療機関の保険医の求めにより、当該保険医療機関の保険医等、歯科訪問診療を実施している保険医療機関の保険医である歯科医師等、訪問看護ステーションの保健師、助産師、看護師、理学療法士、作業療法士若しくは言語聴覚士、介護支援専門員又は相談支援専門員と共同でカンファレンスに参加し、それらの者と共同で療養上必要な指導等を行った場合に、月２回に限り算定する。ただし、区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</span></div>
+            <div class="oi"><span class="lab">注７</span><span>保険薬局の所在地と患家の所在地との距離が16キロメートルを超えた場合にあっては、特殊の事情があった場合を除き算定できない。</span></div>
+            <div class="oi"><span class="lab">注８</span><span>区分番号１５の２に掲げる在宅患者緊急訪問薬剤管理指導料は、別に算定できない。</span></div>
+            <div class="oh">通知（別添3 区分１５の３）</div>
+            <div class="oi"><span class="lab">(１)</span><span>在宅患者緊急時等共同指導料は、在宅での療養を行っている患者の状態の変化や診療方針の変更等の際、当該患者に対する診療等を行う医療関係職種等（居宅介護支援事業者の介護支援専門員を含む。当該区分において以下同じ。）が一堂に会す等によりカンファレンスを行うことで、より適切な治療方針を立てることが可能となるとともに、カンファレンスの参加者の間で診療方針の変更等の情報を的確に共有することができ、患者及び家族が安心して療養生活を送ることに資することから、そのような取組を評価するものである。</span></div>
+            <div class="oi"><span class="lab">(２)</span><span>在宅患者緊急時等共同指導料は、訪問薬剤管理指導を実施している保険薬局の保険薬剤師が、在宅での療養を行っている患者であって通院が困難なものの病状の変化や、診療方針の大幅な変更等の必要が生じたことに伴い、当該患者の在宅療養を担う保険医療機関の保険医又は当該保険医療機関と連携する他の保険医療機関の保険医の求めにより、関係する医療関係職種等と共同でカンファレンスを行うとともに、共有した当該患者の診療情報及び当該カンファレンスの結果を踏まえ、計画的な訪問薬剤管理指導の内容に加えて、患家を訪問した上で患者に対し療養上必要な薬学的管理指導を行った場合に、月２回に限り算定する。なお、当該カンファレンスを行った日と異なる日に当該薬学的管理指導を行った場合でも算定できるが、当該カンファレンスを行った日以降速やかに薬学的管理指導を行うものであること。また、カンファレンス及びそれに基づく薬学的管理指導１回につき１回に限り算定する。</span></div>
+            <div class="oi"><span class="lab">(３)</span><span>（１）及び（２）については、在宅療養を担う保険医療機関の保険医と連携する他の保険医の求めにより、患家を訪問して必要な薬学的管理指導を行った場合は、当該保険医に加え、当該患者の在宅療養を担う保険医療機関の保険医にも必要な情報提供を文書で行うこと。また、在宅療養を担う保険医療機関の保険医と連携する他の保険医については、担当医に確認し、薬学的管理指導計画書等に当該医師の氏名と医療機関名を記載すること。</span></div>
+            <div class="oi"><span class="lab">(４)</span><span>当該カンファレンスは、保険薬局の保険薬剤師が、ビデオ通話が可能な機器を用いて参加することができる。ただし、当該患者に対する診療等を行う医療関係職種等の１者以上は、患家に赴きカンファレンスを行っていること。</span></div>
+            <div class="oi"><span class="lab">(５)</span><span>（４）において、患者の個人情報を当該ビデオ通話の画面上で共有する際は、患者の同意を得ていること。また、保険医療機関の電子カルテなどを含む医療情報システムと共通のネットワーク上の端末においてカンファレンスを実施する場合には、厚生労働省「医療情報システムの安全管理に関するガイドライン」に対応していること。</span></div>
+            <div class="oi"><span class="lab">(６)</span><span>在宅患者緊急時等共同指導料を算定するためには、薬剤服用歴等に薬学管理料の通則（４）の記載事項に加えて、少なくとも次の事項について記載されていなければならない。</span></div>
+            <div class="oi"><span class="lab">ア</span><span>カンファレンス及び薬学的管理指導の実施日、薬学的管理指導を行った保険薬剤師の氏名並びにカンファレンスに参加した医療関係職種等の氏名</span></div>
+            <div class="oi"><span class="lab">イ</span><span>当該患者の在宅療養を担う保険医療機関の保険医又は当該保険医と連携する他の保険医から要請があって患家を訪問し、他の医療関係職種等と共同してカンファレンスを行い、その結果を踏まえて薬学的管理指導を実施した旨及びその理由</span></div>
+            <div class="oi"><span class="lab">ウ</span><span>カンファレンスの要点及びカンファレンスの結果を踏まえて実施した薬学的管理指導の内容（服薬状況、副作用、相互作用等に関する確認等を含む。）</span></div>
+            <div class="oi"><span class="lab">エ</span><span>保険医に対して提供した訪問結果に関する情報の要点</span></div>
+            <div class="oi"><span class="lab">(７)</span><span>在宅患者緊急時等共同指導料を算定する場合は、在宅患者訪問薬剤管理指導料は別に算定できない。また、情報通信機器を用いて療養上必要な薬学的管理指導を行った場合は、服薬管理指導料「４のハ」を算定し、在宅患者緊急時等共同指導料は算定できない。</span></div>
+            <div class="oi"><span class="lab">(８)</span><span>在宅患者緊急時等共同指導料は、特別調剤基本料Ｂを算定している保険薬局は算定できない。</span></div>
+            <div class="oi"><span class="lab">(14)</span><span>保険薬局の所在地と患家の所在地との距離が16キロメートルを超える訪問薬剤管理指導については、患家の所在地から16キロメートルの圏域の内側に、在宅患者訪問薬剤管理指導を行う旨を届け出ている保険薬局が存在しないなど、当該保険薬局からの訪問薬剤管理指導を必要とする特殊な事情がある場合に認められるものであって、この場合の在宅患者緊急時等共同指導料の算定については16キロメートル以内の場合と同様に算定する。特殊な事情もなく、特に患家の希望により16キロメートルを超えて療養上必要な指導を行った場合の在宅患者緊急時等共同指導料は保険診療としては認められないことから、患者負担とする。この場合において、「保険薬局の所在地と患家の所在地との距離が16キロメートルを超えた場合」とは、患家を中心とする半径16キロメートルの圏域の外側に当該保険薬局が所在する場合をいう。ただし、平成24年３月31日以前に在宅患者訪問薬剤管理指導料の「注１」に規定する医師の指示があった患者については、当該規定は適用しないものであること。</span></div>
+            <div class="cite">出典：診療報酬の算定方法（別表第三 調剤報酬点数表）／「診療報酬の算定方法の一部改正に伴う実施上の留意事項について」（令和8年3月5日 保医発0305第6号）別添3。摘要欄は別表Ⅰ（調剤報酬明細書の摘要欄への記載事項）項番24・28による。加算の通知（麻薬管理指導加算ほか）は各加算のページを参照。</div>
+          </div>
+        </div>
+      </details>
+
+      <div class="card">
+        <div class="card-title">関連する過去の疑義解釈</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;"><a href="../ツール/gigi-search.html?q=在宅患者緊急時等共同指導料">疑義解釈検索ツールで「在宅患者緊急時等共同指導料」の全件を見る</a></p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">関連ページ</div>
+        <div style="font-size:var(--text-sm); display:flex; flex-direction:column; gap:8px;">
+          <div><a href="在宅患者訪問薬剤管理指導料.html">在宅患者訪問薬剤管理指導料</a>　計画的な訪問の指導料。同じ日には算定できない</div>
+          <div><a href="在宅患者緊急訪問薬剤管理指導料.html">在宅患者緊急訪問薬剤管理指導料</a>　カンファレンスによらず計画外に訪問した場合。併算定できない</div>
+          <div><a href="訪問薬剤管理医師同時指導料.html">訪問薬剤管理医師同時指導料</a>　医師と同時に訪問した場合</div>
+          <div><a href="複数名薬剤管理指導訪問料.html">複数名薬剤管理指導訪問料</a>　複数名で訪問した場合</div>
+          <div><a href="../yakureki/加算別記載一覧.html#zaitaku-kyodo">加算別 薬歴記載一覧</a>　薬歴に残す項目の中身</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="max-width:900px; margin:18px auto 0; font-size:var(--text-xs); color:var(--txt-3); line-height:1.8;">
+      原文参照：<a href="../改定資料/別表第三_調剤報酬点数表2026.html">別表第三 調剤報酬点数表</a>／<a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-15-3">別添3 › 在宅患者緊急時等共同指導料</a>／<a href="../改定資料/別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html">別表Ⅰ 摘要欄記載事項</a>
+    </div>
+
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>
