@@ -43,6 +43,25 @@ for (const hash of allCommits) {
   } catch (e) {}
 }
 
+// ── 中身を変えていないコミットは「最終更新」に反映しない ──
+// 検索キーワードの追加・共通スクリプトの差し替えなど、読者から見てページの中身が
+// 同じものを更新扱いにすると、開いた人が「何が変わったのか」を探すことになる（2026-08-26）。
+// 使い方：コミットメッセージの1行目に [表示は変えない] を付ける。
+const META_ONLY_MARK = '[表示は変えない]';
+for (const line of execSync(
+  `git -c core.quotepath=false log --format="%H%x09%s"`,
+  gitOpts
+).trim().split('\n')) {
+  const [hash, subject = ''] = line.split('\t');
+  if (subject.includes(META_ONLY_MARK)) bulkCommits.add(hash);
+}
+// 目印を決めた 2026-08-26 より前に行った、中身を変えていないコミット。
+// ここは増やさない（以降のものはコミットメッセージに目印を付ける）
+for (const hash of [
+  '3f702424e7cd9db626583accafa8a9176547a179', // チェックリスト7枚に検索キーワードを追加
+  '8e3913579d48c1a6ad0db7484d5a31b605139569', // 404ページにアクセス解析を追加
+]) bulkCommits.add(hash);
+
 // 既存の page-meta.json から手動メタ（newUntil 等）を読み込んで保持
 const jsonPathExisting = path.join(__dirname, 'page-meta.json');
 let existingMeta = {};
