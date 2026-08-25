@@ -239,11 +239,13 @@
       font-family: inherit; font-size: 10px; font-weight: 700;
       color: #1e5fa8;
     }
+    /* スマホでもラベルは残す（虫眼鏡だけだと押せば検索できると気づかれないため）。
+       ナビがハンバーガーに畳まれて横幅が空くので、短いラベルなら収まる */
     @media (max-width: 700px) {
-      .sn-search-btn span.sn-search-label,
       .sn-search-btn kbd { display: none; }
-      .sn-search-btn { padding: 8px; }
-      .sn-search-btn svg { width: 18px; height: 18px; }
+      .sn-search-btn { padding: 7px 10px; gap: 6px; }
+      .sn-search-btn svg { width: 16px; height: 16px; }
+      .sn-search-btn span.sn-search-label { font-size: 12px; }
     }
 
     /* パンくず */

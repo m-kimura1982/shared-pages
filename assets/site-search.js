@@ -191,10 +191,11 @@
         color: #1e5fa8;
       }
       @media (max-width: 700px) {
-        .sn-search-btn span.sn-search-label,
+        /* スマホでもラベルは残す（site-header.js 側と同じ指定。こちらが後勝ちになる） */
         .sn-search-btn kbd { display: none; }
-        .sn-search-btn { padding: 8px; }
-        .sn-search-btn svg { width: 18px; height: 18px; }
+        .sn-search-btn { padding: 7px 10px; gap: 6px; }
+        .sn-search-btn svg { width: 16px; height: 16px; }
+        .sn-search-btn span.sn-search-label { font-size: 12px; }
         .ss-overlay { padding: 12px; }
         .ss-modal { max-height: calc(100vh - 24px); border-radius: 10px; }
         .ss-input { font-size: 16px; } /* iOSズーム防止 */
