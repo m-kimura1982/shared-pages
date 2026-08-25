@@ -16,7 +16,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-14"
   },
   "加算まとめ.html": {
-    "lastUpdated": "2026-08-20"
+    "lastUpdated": "2026-08-25"
   },
   "index.html": {
     "lastUpdated": "2026-08-25"
@@ -95,7 +95,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-20"
   },
   "加算まとめ/かかりつけ薬剤師訪問加算.html": {
-    "lastUpdated": "2026-08-20"
+    "lastUpdated": "2026-08-25"
   },
   "加算まとめ/施設連携加算.html": {
     "lastUpdated": "2026-08-20",
@@ -110,6 +110,10 @@ window.__pageMeta = {
   },
   "加算まとめ/バイオ後続品調剤体制加算.html": {
     "lastUpdated": "2026-08-20"
+  },
+  "加算まとめ/在宅協力薬局.html": {
+    "lastUpdated": "2026-08-25",
+    "newUntil": "2026-09-01"
   },
   "加算まとめ/地域支援医薬品供給対応体制加算.html": {
     "lastUpdated": "2026-08-19"
@@ -128,16 +132,24 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-19"
   },
   "加算まとめ/在宅患者訪問薬剤管理指導料_算定間隔2026.html": {
-    "lastUpdated": "2026-08-20"
+    "lastUpdated": "2026-08-25"
   },
   "加算まとめ/訪問薬剤管理医師同時指導料.html": {
-    "lastUpdated": "2026-08-19"
+    "lastUpdated": "2026-08-25"
   },
   "加算まとめ/複数名薬剤管理指導訪問料.html": {
-    "lastUpdated": "2026-08-19"
+    "lastUpdated": "2026-08-25"
   },
   "加算まとめ/服薬管理指導料3・4_施設訪問・オンライン.html": {
-    "lastUpdated": "2026-08-19"
+    "lastUpdated": "2026-08-25"
+  },
+  "加算まとめ/在宅患者緊急時等共同指導料.html": {
+    "lastUpdated": "2026-08-25",
+    "newUntil": "2026-09-01"
+  },
+  "加算まとめ/在宅移行初期管理料.html": {
+    "lastUpdated": "2026-08-25",
+    "newUntil": "2026-09-01"
   },
   "加算まとめ/特定薬剤管理指導加算1.html": {
     "lastUpdated": "2026-08-20",
@@ -150,6 +162,14 @@ window.__pageMeta = {
   "加算まとめ/在宅患者訪問薬剤管理指導料.html": {
     "lastUpdated": "2026-08-19",
     "newUntil": "2026-08-26"
+  },
+  "加算まとめ/在宅患者緊急訪問薬剤管理指導料.html": {
+    "lastUpdated": "2026-08-25",
+    "newUntil": "2026-09-01"
+  },
+  "加算まとめ/夜間・休日・深夜訪問加算.html": {
+    "lastUpdated": "2026-08-25",
+    "newUntil": "2026-09-01"
   },
   "加算まとめ/薬学的有害事象等防止加算.html": {
     "lastUpdated": "2026-08-20"
@@ -165,7 +185,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-20"
   },
   "加算まとめ/在宅薬学総合体制加算2026.html": {
-    "lastUpdated": "2026-07-23"
+    "lastUpdated": "2026-08-25"
   },
   "加算まとめ/乳幼児服薬指導加算.html": {
     "lastUpdated": "2026-08-20",
@@ -331,25 +351,5 @@ window.__pageMeta = {
   },
   "事務/入力画面で解説_2026改定後の入力方法.html": {
     "lastUpdated": "2026-08-06"
-  },
-  "加算まとめ/在宅患者緊急訪問薬剤管理指導料.html": {
-    "lastUpdated": "2026-08-25",
-    "newUntil": "2026-09-01"
-  },
-  "加算まとめ/在宅患者緊急時等共同指導料.html": {
-    "lastUpdated": "2026-08-25",
-    "newUntil": "2026-09-01"
-  },
-  "加算まとめ/在宅移行初期管理料.html": {
-    "lastUpdated": "2026-08-25",
-    "newUntil": "2026-09-01"
-  },
-  "加算まとめ/在宅協力薬局.html": {
-    "lastUpdated": "2026-08-25",
-    "newUntil": "2026-09-01"
-  },
-  "加算まとめ/夜間・休日・深夜訪問加算.html": {
-    "lastUpdated": "2026-08-25",
-    "newUntil": "2026-09-01"
   }
 };
