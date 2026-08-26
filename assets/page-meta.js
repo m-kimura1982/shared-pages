@@ -12,20 +12,20 @@ window.__pageMeta = {
   "事務スタッフ向け.html": {
     "lastUpdated": "2026-08-06"
   },
-  "updates.html": {
-    "lastUpdated": "2026-08-26"
-  },
   "checklists.html": {
     "lastUpdated": "2026-08-14"
   },
   "index.html": {
-    "lastUpdated": "2026-08-26"
+    "lastUpdated": "2026-08-27"
+  },
+  "updates.html": {
+    "lastUpdated": "2026-08-27"
   },
   "tools.html": {
     "lastUpdated": "2026-08-06"
   },
   "knowledge.html": {
-    "lastUpdated": "2026-08-06"
+    "lastUpdated": "2026-08-27"
   },
   "kaitei2026.html": {
     "lastUpdated": "2026-08-26"
@@ -333,10 +333,6 @@ window.__pageMeta = {
   "ツール/服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html": {
     "lastUpdated": "2026-08-06"
   },
-  "ナレッジ/OTC類似薬の一部保険外療養.html": {
-    "lastUpdated": "2026-08-27",
-    "newUntil": "2026-09-03"
-  },
   "ナレッジ/変更調剤について.html": {
     "lastUpdated": "2026-04-18"
   },
@@ -358,6 +354,10 @@ window.__pageMeta = {
   "ナレッジ/リフィル処方箋.html": {
     "lastUpdated": "2026-08-12",
     "newUntil": "2026-08-13"
+  },
+  "ナレッジ/OTC類似薬の一部保険外療養.html": {
+    "lastUpdated": "2026-08-27",
+    "newUntil": "2026-09-03"
   },
   "事務/事務スタッフ向け_2026改定サマリ.html": {
     "lastUpdated": "2026-07-12"
