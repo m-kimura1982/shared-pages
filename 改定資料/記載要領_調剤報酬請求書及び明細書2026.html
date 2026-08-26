@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>記載要領 調剤報酬請求書及び調剤報酬明細書（2026年改定）</title>
+    <meta name="search-keywords" content="記載要領,調剤報酬請求書,調剤報酬明細書,レセプト,様式第４,様式第５,単独レセプト,単独の明細書,受付回数,件数,摘要欄,保険種別,保険者番号,公費負担者番号,特記事項,処方欄,調剤数量,単位薬剤料,分割調剤,長期収載品,選定療養,レセ電,きさいようりょう,めいさいしょ,うけつけかいすう" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+      :root {
+        --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+        --pad-card:22px; --gap-card:16px;
+        --blue:#1e5fa8; --ink:#222222;
+        --bg:#f3f4f6; --white:#ffffff;
+        --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+        --border:#d1d5db; --border-dk:#9ca3af;
+        --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-t:4px;
+        --txt-2:#444444; --txt-3:#5e6470;
+      }
+      body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.85; padding:32px 16px 60px; }
+      .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+      .page-title { border-left:var(--bw-t) solid var(--blue); padding:6px 0 6px 18px; }
+      .page-title h1 { font-size:var(--text-xl); font-weight:900; }
+      .page-title p { font-size:var(--text-sm); font-weight:500; margin-top:4px; color:var(--txt-2); }
+
+      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+      .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--ink); padding-bottom:8px; margin-bottom:16px; }
+      .section-header { border-left:var(--bw-t) solid var(--blue); padding:6px 0 6px 16px; }
+      .section-header h2 { font-size:var(--text-lg); font-weight:900; color:var(--blue); }
+      .lead-note { background:#eef4fb; border-radius:var(--radius-sm); padding:12px 16px; font-size:var(--text-sm); line-height:1.75; }
+
+      .item-heading { display:flex; align-items:flex-start; gap:10px; font-weight:900; font-size:var(--text-md); margin:18px 0 6px; padding-bottom:4px; border-bottom:var(--bw-h) solid var(--border); }
+      .item-heading:first-child { margin-top:0; }
+      .num-badge { flex-shrink:0; font-weight:900; color:var(--blue); min-width:1.8em; }
+
+      .kubun-body { display:flex; flex-direction:column; gap:2px; }
+      .reg-item { display:flex; gap:8px; align-items:flex-start; margin:6px 0; font-size:var(--text-sm); line-height:1.85; }
+      .reg-num { flex-shrink:0; font-weight:700; min-width:3.2em; }
+      .reg-body { flex:1; min-width:0; }
+      .reg-item-sub { display:flex; gap:8px; align-items:flex-start; margin:5px 0 5px 1.8em; font-size:var(--text-sm); line-height:1.85; }
+      .reg-item-sub2 { display:flex; gap:8px; align-items:flex-start; margin:4px 0 4px 3.5em; font-size:var(--text-sm); line-height:1.85; }
+      .reg-item-sub3 { display:flex; gap:8px; align-items:flex-start; margin:3px 0 3px 5.5em; font-size:var(--text-sm); line-height:1.85; }
+      .reg-num-sub { flex-shrink:0; font-weight:700; min-width:2.2em; }
+      .reg-para { font-size:var(--text-sm); line-height:1.85; margin:6px 0; }
+
+      /* 原文が表・記載例になっている箇所は字下げをそのまま残す */
+      .fig-wrap { overflow-x:auto; max-width:100%; -webkit-overflow-scrolling:touch; margin:8px 0; }
+      .fig { font-family:"Noto Sans JP",sans-serif; font-size:var(--text-sm); line-height:1.9; background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:10px 14px; white-space:pre; }
+
+      /* 目次 */
+      .toc-sec + .toc-sec { margin-top:14px; }
+      .toc-sec-ttl { display:block; font-weight:900; font-size:var(--text-sm); color:var(--blue); text-decoration:none; margin-bottom:6px; }
+      .toc-chips { display:flex; flex-wrap:wrap; gap:5px; }
+      .toc-chips a { display:inline-flex; align-items:baseline; gap:5px; font-size:var(--text-xs); color:var(--ink); text-decoration:none; border:var(--bw) solid var(--border); border-radius:4px; padding:3px 9px; background:var(--white); line-height:1.6; }
+      .toc-chips a:hover { background:var(--box-blue); border-color:#bcd3ee; }
+      .toc-chips a .k { font-weight:900; color:var(--blue); }
+
+      .rel { display:flex; flex-direction:column; gap:8px; }
+      .rel a { display:flex; align-items:center; gap:9px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; text-decoration:none; color:var(--ink); font-size:var(--text-sm); font-weight:700; }
+      .rel a::before { content:"›"; color:var(--blue); font-weight:900; }
+      .rel a:hover { background:#fafbfc; border-color:#bcd3ee; }
+      .rel a .sub { font-weight:400; color:var(--txt-3); font-size:var(--text-xs); margin-left:auto; }
+
+      [id] { scroll-margin-top: calc(var(--sn-header-h, 0px) + 16px); }
+
+      @media (max-width:640px) {
+        body { font-size:14px; padding:14px 12px 40px; line-height:1.75; }
+        :root { --text-xs:11.5px; --text-sm:13.5px; --text-md:14px; --text-lg:16px; --text-xl:18px; --pad-card:14px; --gap-card:11px; }
+        .card { padding:14px; }
+        .reg-item-sub { margin-left:0.8em; }
+        .reg-item-sub2 { margin-left:1.5em; }
+        .reg-item-sub3 { margin-left:2.2em; }
+        .rel a .sub { display:none; }
+      }
+      @media print {
+        @page { margin:10mm 9mm; size:A4; }
+        body { background:white; padding:0; font-size:10px; line-height:1.6; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        :root { --text-xs:8.5px; --text-sm:9.5px; --text-md:10px; --text-lg:11.5px; --text-xl:13px; --pad-card:8px; --gap-card:7px; }
+        .page { display:block; }
+        .card { padding:8px 10px; margin-bottom:7px; break-inside:auto; }
+        .card-title, .item-heading { break-after:avoid; }
+        .reg-item, .reg-item-sub, .reg-item-sub2, .reg-item-sub3, .fig-wrap { break-inside:avoid; }
+        #toc { display:none; }
+      }
+    </style>
+  </head>
+  <body>
+    <script src="../assets/site-header.js" defer></script>
+
+    <div class="page" id="top">
+
+      <div class="page-title">
+        <h1>記載要領　調剤報酬請求書及び調剤報酬明細書</h1>
+        <p>令和8年6月1日施行｜「診療報酬請求書等の記載要領等について」等の一部改正について（令和8年3月5日 保医発0305第6号）Ⅳ</p>
+      </div>
+
+      <div class="lead-note">
+        レセプトの各欄に何を書くかを定めた通知。単独の明細書にする点数、受付回数の数え方、摘要欄・処方欄の書き方などはここが根拠になる。摘要欄に何を書くかの一覧は <a href="別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html">別表Ⅰ</a> にある。
+      </div>
+
+      <div class="card" id="toc">
+        <div class="card-title">目次</div>
+          <div class="toc-sec"><a class="toc-sec-ttl" href="#dai1">第１　調剤報酬請求書に関する事項（様式第４）</a><div class="toc-chips"><a href="#dai1-1"><span class="k">１</span>「令和 年 月分」</a><a href="#dai1-2"><span class="k">２</span>「薬局コード」</a><a href="#dai1-3"><span class="k">３</span>「別記 殿」</a><a href="#dai1-4"><span class="k">４</span>「令和 年 月 日」</a><a href="#dai1-5"><span class="k">５</span>「保険薬局の所在地及び名称、開設者氏名」</a><a href="#dai1-6"><span class="k">６</span>「医療保険」</a><a href="#dai1-7"><span class="k">７</span>「公費負担」欄の「公費と医保の併用」</a><a href="#dai1-8"><span class="k">８</span>「公費負担」欄の「公費と公費の併用」</a><a href="#dai1-9"><span class="k">９</span>「公費負担」欄の「公費単独」</a><a href="#dai1-10"><span class="k">10</span>「②合計」</a><a href="#dai1-11"><span class="k">11</span>「総件数①＋②」</a><a href="#dai1-12"><span class="k">12</span>その他</a></div></div>
+          <div class="toc-sec"><a class="toc-sec-ttl" href="#dai1no2">第１の２　調剤報酬請求書に関する事項（様式第９）</a><div class="toc-chips"><a href="#dai1no2-1"><span class="k">１</span>「後期高齢者医療」</a><a href="#dai1no2-2"><span class="k">２</span>「公費負担」欄の「公費と後期高齢者医療の併用」</a></div></div>
+          <div class="toc-sec"><a class="toc-sec-ttl" href="#dai2-1">第２の１　調剤報酬明細書の記載要領に関する一般的事項</a><div class="toc-chips"></div></div>
+          <div class="toc-sec"><a class="toc-sec-ttl" href="#dai2-2">第２の２　調剤報酬明細書に関する事項</a><div class="toc-chips"><a href="#dai2-2-1"><span class="k">(１)</span>「令和 年 月分」</a><a href="#dai2-2-2"><span class="k">(２)</span>「都道府県番号」</a><a href="#dai2-2-3"><span class="k">(３)</span>「薬局コード」</a><a href="#dai2-2-4"><span class="k">(４)</span>「保険種別１」、「保険種別２」及び「本人・家族」</a><a href="#dai2-2-5"><span class="k">(５)</span>「保険者番号」</a><a href="#dai2-2-6"><span class="k">(６)</span>「給付割合」</a><a href="#dai2-2-7"><span class="k">(７)</span>「被保険者資格に係る記号・番号」</a><a href="#dai2-2-8"><span class="k">(８)</span>「公費負担者番号①」欄及び「公費負担者番号②」</a><a href="#dai2-2-9"><span class="k">(９)</span>「公費負担医療の受給者番号①」欄及び「公費負担医療の受給者番号②」</a><a href="#dai2-2-10"><span class="k">(10)</span>「氏名」</a><a href="#dai2-2-11"><span class="k">(11)</span>「職務上の事由」</a><a href="#dai2-2-12"><span class="k">(12)</span>「特記事項」</a><a href="#dai2-2-13"><span class="k">(13)</span>「保険薬局の所在地及び名称」</a><a href="#dai2-2-15"><span class="k">(15)</span>「保険医氏名」</a><a href="#dai2-2-16"><span class="k">(16)</span>「受付回数」</a><a href="#dai2-2-17"><span class="k">(17)</span>「医師番号」欄から「加算料」</a><a href="#dai2-2-18"><span class="k">(18)</span>「医師番号」</a><a href="#dai2-2-19"><span class="k">(19)</span>「処方月日」</a><a href="#dai2-2-20"><span class="k">(20)</span>「調剤月日」</a><a href="#dai2-2-21"><span class="k">(21)</span>「処方」</a><a href="#dai2-2-22"><span class="k">(22)</span>「単位薬剤料」</a><a href="#dai2-2-23"><span class="k">(23)</span>「調剤数量」</a><a href="#dai2-2-24"><span class="k">(24)</span>「薬剤調製料 調剤管理料」</a><a href="#dai2-2-25"><span class="k">(25)</span>「薬剤料」</a><a href="#dai2-2-26"><span class="k">(26)</span>「加算料」、「調剤基本料」、「時間外等加算」及び「薬学管理料」</a><a href="#dai2-2-27"><span class="k">(27)</span>「摘要」</a><a href="#dai2-2-28"><span class="k">(28)</span>「公費分点数」</a><a href="#dai2-2-29"><span class="k">(29)</span>「請求」欄及び「一部負担金額」</a><a href="#dai2-2-30"><span class="k">(30)</span>その他</a></div></div>
+      </div>
+
+      <div class="card" id="dai1">
+        <div class="card-title">第１　調剤報酬請求書に関する事項（様式第４）</div>
+        <div class="kubun-body">
+          <div class="item-heading" id="dai1-1"><span class="num-badge">１</span>「令和 年 月分」欄について</div>
+          <div class="reg-para">調剤年月又は外来服薬支援料１、服用薬剤調整支援料２、服薬情報等提供料３若しくは退院時共同指導料を算定した年月（以下「調剤年月等」という。）を記載すること。したがって、調剤年月等の異なる調剤報酬明細書（以下「明細書」という。）がある場合には、それぞれの調剤年月分等について調剤報酬請求書を作成すること。なお、調剤年月等の異なる明細書であっても、返戻分の再請求等やむを得ぬ事由による請求遅れ分については、この限りではないこと。</div>
+          <div class="item-heading" id="dai1-2"><span class="num-badge">２</span>「薬局コード」欄について</div>
+          <div class="reg-para">それぞれの薬局について定められた薬局コード７桁を記載すること（別添２「設定要領」の第４を参照）。</div>
+          <div class="item-heading" id="dai1-3"><span class="num-badge">３</span>「別記 殿」欄について</div>
+          <div class="reg-para">保険者名、市町村名及び公費負担者名を下記例のとおり備考欄に記載することを原則とするが、省略しても差し支えないこと。</div>
+            <div class="reg-para">（例） 別記 全国健康保険協会理事長</div>
+            <div class="reg-para">千代田区長</div>
+            <div class="reg-para">東京都知事</div>
+          <div class="item-heading" id="dai1-4"><span class="num-badge">４</span>「令和 年 月 日」欄について</div>
+          <div class="reg-para">調剤報酬請求書を提出する年月日を記載すること。</div>
+          <div class="item-heading" id="dai1-5"><span class="num-badge">５</span>「保険薬局の所在地及び名称、開設者氏名」欄について</div>
+          <div class="reg-item"><span class="reg-num">(１)</span><div class="reg-body">保険薬局の所在地及び名称、開設者氏名については、保険薬局指定申請の際等に地方厚生（支）局長に届け出た所在地、名称及び開設者氏名を記載すること。なお、開設者氏名については開設者から調剤報酬につき委任を受けている場合は、保険薬局の管理者の氏名であっても差し支えないこと。</div></div>
+          <div class="reg-item"><span class="reg-num">(２)</span><div class="reg-body">保険薬局自体で調剤報酬請求書用紙の調製をしない場合において、記名の労を省くため、保険薬局の所在地、名称及び開設者氏名のゴム印を製作の上、これを押捺することは差し支えないこと。</div></div>
+          <div class="item-heading" id="dai1-6"><span class="num-badge">６</span>「医療保険」欄について</div>
+          <div class="reg-item"><span class="reg-num">(１)</span><div class="reg-body">医療保険と公費負担医療の併用の者に係る明細書のうち医療保険に係る分及び医療保険単独の者に係る明細書について記載することとし、医療保険単独の者に係る分については医療保険制度ごとに記載すること。
+            <div class="reg-para">なお、「区分」欄の法別番号及び制度の略称は、別添２の別表１「法別番号及び制度の略称表」に示すとおりであること。</div></div></div>
+          <div class="reg-item"><span class="reg-num">(２)</span><div class="reg-body">「件数」欄には明細書の医療保険に係る件数の合計を、「処方箋受付回数」欄には明細書の受付回数の合計を、「点数」欄には明細書の「請求」欄の「保険」の項に係る「請求」の項の合計を、「一部負担金」欄には明細書の「一部負担金」欄の「保険」の項に係る「一部負担金」の項の合計を記載すること。
+            <div class="reg-para">なお、「医保単独（七〇以上一般・低所得）」欄、「医保単独（七〇以上七割）」欄、「医保単独（本人）」欄、「医保単独（家族）」欄及び「医保単独（六歳）」欄の「小計」欄にはそれぞれの合計を記載すること。</div></div></div>
+          <div class="reg-item"><span class="reg-num">(３)</span><div class="reg-body">「①合計」欄には、「医保（７０以上一般・低所得）と公費の併用」欄と「医保単独（七〇以上一般・低所得）」欄の「小計」欄と、「医保（７０以上７割）と公費の併用」欄と「医保単独（七〇以上七割）」欄の「小計」欄と、「医保本人と公費の併用」欄と「医保単独（本人）」欄の「小計」欄と、「医保家族と公費の併用」欄と「医保単独（家族）」欄の「小計」欄と、「医保（６歳）と公費の併用」欄と「医保単独（六歳）」欄の「小計」欄とを合計して記載すること。なお、処方箋受付回数及び点数については、記載を省略して差し支えない。</div></div>
+          <div class="reg-item"><span class="reg-num">(４)</span><div class="reg-body">医事会計システムの電算化が行われていない保険薬局等にあっては、「医保単独（七〇以上一般・低所得）」欄と、「医保単独（七〇以上七割）」欄とに記載すべき各項の数字を合算し、その合計を「医保単独（七〇以上一般・低所得）」欄に記載することをもって請求することができること。この場合には、当該合算を実施した上で各項を記載していることがわかるように「備考」欄に合算している旨を記載すること。</div></div>
+          <div class="item-heading" id="dai1-7"><span class="num-badge">７</span>「公費負担」欄の「公費と医保の併用」欄について</div>
+          <div class="reg-item"><span class="reg-num">(１)</span><div class="reg-body">医療保険と公費負担医療の併用の者に係る明細書のうち、公費負担医療に係る分を公費負担医療制度ごとに記載することとし、「区分」欄に不動文字が記載されていない公費負担医療がある場合には、区分の空欄に法別番号を記載し、当該制度の公費負担医療に係る分を記載すること。
+            <div class="reg-para">なお、「区分」欄の法別番号及び制度の略称は、別添２の別表１「法別番号及び制度の略称表」に示すとおりであること。</div></div></div>
+          <div class="reg-item"><span class="reg-num">(２)</span><div class="reg-body">「件数」欄には、公費負担医療制度ごとに明細書の件数を合計して、それぞれの制度の該当欄に記載すること。したがって、医療保険と２種の公費負担医療（例えば、感染症法による結核患者の適正医療と児童福祉法）の併用の場合は、１枚の明細書であっても公費負担医療に係る件数は２件となること。</div></div>
+          <div class="reg-item"><span class="reg-num">(３)</span><div class="reg-body">「処方箋受付回数」欄には、明細書の「受付回数」欄の「公費①」及び「公費②」の項を公費負担医療制度ごとに合計して、それぞれの制度の該当欄に記載すること。</div></div>
+          <div class="reg-item"><span class="reg-num">(４)</span><div class="reg-body">「点数」欄には、明細書の請求欄の「公費①」及び「公費②」の項に記載した点数を、公費負担医療制度ごとに合計して、それぞれの制度の該当欄に記載すること。ただし、「公費①」又は「公費②」の項の記載を省略した明細書については、「保険」又は「公費①」の項の点数が当該公費負担医療の点数と同じであるので、これを加えて合計すること。</div></div>
+          <div class="reg-item"><span class="reg-num">(５)</span><div class="reg-body">「一部負担金（控除額）」欄には、公費負担医療制度ごとに明細書の「一部負担金額」欄の「公費①」及び「公費②」の項の額（調剤券等に記入されている公費負担医療に係る患者負担額）を合計して、それぞれの制度の該当欄に記載すること。</div></div>
+          <div class="item-heading" id="dai1-8"><span class="num-badge">８</span>「公費負担」欄の「公費と公費の併用」欄について</div>
+          <div class="reg-item"><span class="reg-num">(１)</span><div class="reg-body">公費負担医療のみで２種以上の公費負担医療の併用が行われた場合には、当該併用の者に係る明細書分を記載すること。
+            <div class="reg-para">公費負担医療が２種の場合、例えば、感染症法による結核患者の適正医療と生活保護法による医療扶助に係る分とを併せて請求する場合には、空欄にそれぞれの公費負担医療の法別番号を記載して当該公費負担医療に係る分を記載すること。</div>
+            <div class="reg-para">なお、特例的に、生活保護法による医療扶助、感染症法による結核患者の適正医療及び障害者総合支援法による精神通院医療等の３種の公費負担医療の併用の場合があるが、この場合は、空欄を取り繕ってそれぞれの公費負担医療の法別番号を記載し、当該公費負担医療に係る分を記載すること。</div></div></div>
+          <div class="reg-item"><span class="reg-num">(２)</span><div class="reg-body">「件数」欄には、公費負担医療制度ごとに明細書の件数を合計して、それぞれの制度の該当欄に記載すること。したがって、１枚の明細書であっても、公費負担医療に係る件数は、２件ないし３件となること。</div></div>
+          <div class="reg-item"><span class="reg-num">(３)</span><div class="reg-body">「処方箋受付回数」欄には、明細書の「受付回数」欄の「公費①」及び「公費②」の項を公費負担医療制度ごとに合計して、それぞれの制度の該当欄に記載すること。</div></div>
+          <div class="reg-item"><span class="reg-num">(４)</span><div class="reg-body">「一部負担金（控除額）」欄には、公費負担医療制度ごとに明細書の「一部負担金額」欄の「公費①」及び「公費②」の項の額（調剤券等に記入されている公費負担医療に係る患者負担額）を合計して、それぞれの制度の該当欄に記載すること。</div></div>
+          <div class="reg-item"><span class="reg-num">(５)</span><div class="reg-body">「点数」欄には、明細書の「請求」欄の「公費①」及び「公費②」の項に記載した点数を、公費負担医療制度ごとに合計してそれぞれの制度の該当欄に記載すること。ただし、「請求」欄の「公費②」の項の記載を省略した明細書については、請求欄の「公費①」の項に記載した点数が、当該公費負担医療の点数と同じであるので、これを加えて合計すること。また、特例的に３種の公費負担医療の併用を行った場合には、生活保護法による医療扶助に係る点数は「請求」欄の「保険」の項の点数をも合計して記載すること。</div></div>
+          <div class="item-heading" id="dai1-9"><span class="num-badge">９</span>「公費負担」欄の「公費単独」欄について</div>
+          <div class="reg-item"><span class="reg-num">(１)</span><div class="reg-body">公費負担医療単独の者に係る明細書分を公費負担医療制度ごとに記載することとし、「区分」欄に不動文字が記載されていない公費負担医療がある場合には区分の空欄に法別番号を記載し、当該制度の公費負担医療に係る請求分を記載すること。
+            <div class="reg-para">なお、公費負担医療に係る法別番号及び制度の略称は、別添２の別表１「法別番号及び制度の</div>
+            <div class="reg-para">略称表」により示すとおりであること。</div></div></div>
+          <div class="reg-item"><span class="reg-num">(２)</span><div class="reg-body">「件数」欄には、公費負担医療制度ごとに明細書の件数を合計して、それぞれの制度の該当欄に記載すること。</div></div>
+          <div class="reg-item"><span class="reg-num">(３)</span><div class="reg-body">「処方箋受付回数」欄には、明細書の「受付回数」欄の「①」の項を公費負担医療制度ごとに合計して、それぞれの制度の該当欄に記載すること。</div></div>
+          <div class="reg-item"><span class="reg-num">(４)</span><div class="reg-body">「一部負担金（控除額）」欄には、公費負担医療制度ごとに明細書の「一部負担金額」欄の「公費①」の額（調剤券等に記入されている公費負担医療に係る患者負担額）を合計して、それぞれの制度の該当欄に記載すること。</div></div>
+          <div class="reg-item"><span class="reg-num">(５)</span><div class="reg-body">「点数」欄には、明細書の「請求」欄の「公費①」の項に記載した点数を、公費負担医療制度ごとに合計し、それぞれの制度の該当欄に記載すること。</div></div>
+          <div class="item-heading" id="dai1-10"><span class="num-badge">10</span>「②合計」欄について</div>
+          <div class="reg-para">「公費と医保の併用」、「公費と公費の併用」及び「公費単独」欄の「件数」欄の請求件数を合計して記載すること。</div>
+          <div class="item-heading" id="dai1-11"><span class="num-badge">11</span>「総件数①＋②」欄について</div>
+          <div class="reg-para">「①合計」及び「②合計」欄の請求件数を合計して記載すること。</div>
+          <div class="item-heading" id="dai1-12"><span class="num-badge">12</span>その他</div>
+          <div class="reg-item"><span class="reg-num">(１)</span><div class="reg-body">請求に係る月の処方箋受付回数を「備考」欄に記載すること。</div></div>
+          <div class="reg-item"><span class="reg-num">(２)</span><div class="reg-body">服薬管理指導料４ロ、服薬管理指導料４ハ、服用薬剤調整支援料、服薬情報等提供料、在宅患者訪問薬剤管理指導料、在宅患者緊急訪問薬剤管理指導料又は在宅患者緊急時等共同指導料を算定した月とその基となる調剤月が異なる場合は、「処方箋受付回数」は調剤月について計上すること。また、14 日分を超える投薬若しくは後発医薬品に係る分割調剤の調剤基本料を算定する場合、医師の指示による分割調剤に係る自局での初回以外の調剤を行う場合、調剤管理料（在宅協力薬局が当該分析、評価を行い、在宅基幹薬局が当該点数を算定する場合に限る。）又は服薬管理指導料４ロ、服薬管理指導料４ハ、服薬情報等提供料、在宅患者訪問薬剤管理指導料、在宅患者緊急訪問薬剤管理指導料、在宅患者緊急時等共同指導料、服用薬剤調整支援料、外来服薬支援料１、外来服薬支援料２（在宅協力薬局が当該指導等を行い、在宅基幹薬局が当該点数を算定する場合に限る。）、退院時共同指導料、経管投薬支援料、調剤後薬剤管理指導料１、調剤後薬剤管理指導料２若しくは在宅移行初期管理料のみの算定を行っている場合は、「件数」としては１件、「受付回数」としては０件として計上すること。</div></div>
+        </div>
+      </div>
+      <div class="card" id="dai1no2">
+        <div class="card-title">第１の２　調剤報酬請求書に関する事項（様式第９）</div>
+        <div class="reg-para">調剤報酬請求書に関する事項については、次に掲げる事項を除き、第１の例によること。なお、「３ 「別記 殿」欄について」は、各広域連合殿と読み替えるものであること。</div>
+        <div class="kubun-body">
+          <div class="item-heading" id="dai1no2-1"><span class="num-badge">１</span>「後期高齢者医療」欄について</div>
+          <div class="reg-item"><span class="reg-num">(１)</span><div class="reg-body">後期高齢者医療と公費負担医療の併用の者に係る明細書のうち後期高齢者医療に係る分及び後期高齢者医療単独の者に係る明細書について記載すること。</div></div>
+          <div class="reg-item"><span class="reg-num">(２)</span><div class="reg-body">「件数」欄、「処方箋受付回数」欄、「点数」欄及び「一部負担金」欄については、第１の６の(２)と同様であること。この場合、第１の６の(２)中「医療保険」とあるのは「後期高齢者医療」と読み替えるものであること。</div></div>
+          <div class="reg-item"><span class="reg-num">(３)</span><div class="reg-body">医事会計システムの電算化が行われていない保険薬局等にあっては、「後期高齢一般・低所得」欄と、「後期高齢七割」欄とに記載すべき各項の数字を合算し、その合計を「後期高齢一般・低所得」欄に記載することをもって請求することができること。この場合には、合計を記載していることがわかるように「備考」欄に合算している旨を記載すること。</div></div>
+          <div class="item-heading" id="dai1no2-2"><span class="num-badge">２</span>「公費負担」欄の「公費と後期高齢者医療の併用」欄について</div>
+          <div class="reg-item"><span class="reg-num">(１)</span><div class="reg-body">後期高齢者医療と公費負担医療の併用の者に係る明細書のうち、公費負担医療に係る分を公費負担医療制度ごとに記載することとし、「区分」欄に不動文字が記載されていない公費負担医療がある場合には、区分の空欄に法別番号を記載し、当該制度の公費負担医療に係る分を記載すること。
+            <div class="reg-para">なお、「区分」欄の法別番号及び制度の略称は、別添２の別表１「法別番号及び制度の略称表」に示すとおりであること。</div></div></div>
+          <div class="reg-item"><span class="reg-num">(２)</span><div class="reg-body">「件数」欄には、公費負担医療制度ごとに明細書の件数を合計して、それぞれの制度の該当欄に記載すること。したがって、医療保険と２種の公費負担医療（例えば、感染症法による結核患者の適正医療と児童福祉法）の併用の場合は、１枚の明細書であっても公費負担医療に係る件数は２件となること。</div></div>
+          <div class="reg-item"><span class="reg-num">(３)</span><div class="reg-body">「処方箋受付回数」欄には、明細書の「受付回数」欄の「公費①」及び「公費②」の項を公費負担医療制度ごとに合計して、それぞれの制度の該当欄に記載すること。</div></div>
+          <div class="reg-item"><span class="reg-num">(４)</span><div class="reg-body">「点数」欄には、明細書の請求欄の「公費①」及び「公費②」の項に記載した点数を、公費負担医療制度ごとに合計して、それぞれの制度の該当欄に記載すること。ただし、「公費①」又は「公費②」の項の記載を省略した明細書については、「保険」又は「公費①」の項の点数が当該公費負担医療の点数と同じであるので、これを加えて合計すること。</div></div>
+          <div class="reg-item"><span class="reg-num">(５)</span><div class="reg-body">「一部負担金」欄には、公費負担医療制度ごとに明細書の「一部負担金額」欄の「公費①」及び「公費②」の項の額（調剤券等に記入されている公費負担医療に係る患者負担額）を合計して、それぞれの制度の該当欄に記載すること。</div></div>
+        </div>
+      </div>
+
+      <div class="section-header" id="dai2"><h2>第２　調剤報酬明細書の記載要領（様式第５）</h2></div>
+      <div class="card" id="dai2-1">
+        <div class="card-title">１　調剤報酬明細書の記載要領に関する一般的事項</div>
+        <div class="kubun-body">
+          <div class="reg-item"><span class="reg-num">(１)</span><div class="reg-body">明細書は、白色紙黒色刷りとすること。</div></div>
+          <div class="reg-item"><span class="reg-num">(２)</span><div class="reg-body">左上の隅より右へ 12ｍｍ、下へ 12ｍｍの位置を中心に半径２ｍｍの穴をあけて、綴じ穴とすること。</div></div>
+          <div class="reg-item"><span class="reg-num">(３)</span><div class="reg-body">同一患者につき、同一医療機関の保険医が交付した処方箋に係る調剤分については、一括して１枚の明細書に記載すること。ただし、歯科と歯科以外の診療科の処方箋については、それぞれ別の明細書に記載すること。また、外来服薬支援料１、服用薬剤調整支援料２、服薬情報等提供料３及び退院時共同指導料に係る明細書については、処方箋に基づく調剤分に係る明細書とは別とし、それぞれ単独の明細書とすること。</div></div>
+          <div class="reg-item"><span class="reg-num">(４)</span><div class="reg-body">１枚の処方箋の使用期間が次月にまたがる場合については、当該処方箋に係る調剤実行為を行った月の調剤分として請求すること。</div></div>
+          <div class="reg-item"><span class="reg-num">(５)</span><div class="reg-body">服用薬剤調整支援料２は、服用中の薬剤の調整について処方医に文書を用いて提案した月の分として請求すること。</div></div>
+          <div class="reg-item"><span class="reg-num">(６)</span><div class="reg-body">服薬情報等提供料は、算定の対象となる情報提供を実施した月の分として請求すること。</div></div>
+          <div class="reg-item"><span class="reg-num">(７)</span><div class="reg-body">在宅患者訪問薬剤管理指導料は、算定の対象となる訪問薬剤管理指導を実施した月の分として請求すること。</div></div>
+          <div class="reg-item"><span class="reg-num">(８)</span><div class="reg-body">在宅移行初期管理料は、当該患者について初めて在宅患者訪問薬剤管理指導料、居宅療養管理指導費及び介護予防居宅療養管理指導費を算定する月の分として請求すること。</div></div>
+          <div class="reg-item"><span class="reg-num">(９)</span><div class="reg-body">月の途中において保険者番号又は本人・家族等の種別の変更があった場合は、保険者番号ごとに、それぞれ別の明細書を作成すること。高齢受給者証又は後期高齢者の資格確認書が月の途中に発行されること等により給付額を調整する必要がある場合又は公費負担医療単独の場合において公費負担者番号若しくは公費負担医療の受給者番号の変更があった場合も同様とすること。なお、それぞれ別の明細書を作成する場合は、変更後の明細書の「摘要」欄にその旨を記載すること。</div></div>
+          <div class="reg-item"><span class="reg-num">(10)</span><div class="reg-body">１枚の明細書に書ききれない場合は、明細書又は明細書と同じ大きさの用紙に、調剤年月等、薬局コード、患者氏名、保険種別（例：１社・国 １単独 ２本外）、保険者番号（公費負担医療のみの場合は第１公費の公費負担者番号）、被保険者資格に係る記号・番号（公費負担医療のみの場合は第１公費の公費負担医療の受給者番号）を記載した上、所定の内容を記載し、続紙として、当該明細書の次に重ね、左上端を貼り付けること。</div></div>
+          <div class="reg-item"><span class="reg-num">(11)</span><div class="reg-body">電子計算機の場合は、以下によること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ア</span><div class="reg-body">欄の名称を簡略化して記載しても差し支えないこと。また、複数の選択肢より○を用いて選択する欄については、特段の定めのある場合を除き、選択した項目のみ記載し、それ以外の項目は省略しても差し支えないこと。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">イ</span><div class="reg-body">枠をその都度印刷することとしても差し支えないこと。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ウ</span><div class="reg-body">用紙下端の空白部分は、ＯＣＲ処理等審査支払機関の事務処理に供するため、その他の目的には使用しないこと。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">エ</span><div class="reg-body">電子計算機用のＯＣＲ関連事項は、「レセプト基本フォーマット集（平成９年８月版）」（社会保険庁運営部編）によることが望ましいこと。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">オ</span><div class="reg-body">記載する文字は、ＪＩＳＸ０２０８において文字コードが設定された範囲とすることが望ましいこと。</div></div>
+        </div>
+      </div>
+      <div class="card" id="dai2-2">
+        <div class="card-title">２　調剤報酬明細書に関する事項</div>
+        <div class="kubun-body">
+          <div class="item-heading" id="dai2-2-1"><span class="num-badge">(１)</span>「令和 年 月分」欄について</div>
+          <div class="reg-para">調剤年月等を記載すること。</div>
+          <div class="item-heading" id="dai2-2-2"><span class="num-badge">(２)</span>「都道府県番号」欄について</div>
+          <div class="reg-para">別添２の設定要領の別表２に掲げる都道府県番号表に従い、保険薬局の所在する都道府県の番号を記載すること。</div>
+          <div class="item-heading" id="dai2-2-3"><span class="num-badge">(３)</span>「薬局コード」欄について</div>
+          <div class="reg-para">それぞれの薬局について定められた薬局コード７桁を記載すること（別添２「設定要領」の第４を参照）。</div>
+          <div class="item-heading" id="dai2-2-4"><span class="num-badge">(４)</span>「保険種別１」、「保険種別２」及び「本人・家族」欄について</div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ア</span><div class="reg-body">「保険種別１」欄については、以下の左に掲げる保険の種別に応じ、右の番号のうち１つを○で囲むこと。
+            <div class="fig-wrap"><pre class="fig">健康保険（船員保険を含む。以下同じ。）又は国民健康保険           １ 社・国
+公費負担医療（健康保険、国民健康保険又は後期高齢者医療との併用の場合を除く。）
+                                      ２ 公費
+後期高齢者医療                               ３ 後期</pre></div></div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">イ</span><div class="reg-body">「保険種別２」欄については、「保険種別１」欄のそれぞれについて、以下の左の別に応じ、右の番号のうち１つを○で囲むこと。
+            <div class="fig-wrap"><pre class="fig">単独                                   １ 単独
+１種の公費負担医療との併用                        ２ ２併
+２種以上の公費負担医療との併用                      ３ ３併</pre></div>
+            <div class="reg-para">（注）公費負担医療には、地方公共団体が独自に行う医療費助成事業（審査支払機関へ医療費を請求するものに限る。）を含むこと。</div></div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ウ</span><div class="reg-body">「本人・家族」欄については、以下の左に掲げる種別に応じて、右の番号のうち１つを○で囲むこと。なお、未就学者である患者は「４」、高齢受給者及び後期高齢者医療受給対象者は「８」又は「０」を○で囲むこととする。なお、公費負担医療については本人に該当するものとする。ただし、国民健康保険の場合は、市町村国民健康保険であって被保険者（世帯主）と被保険者（その他）の給付割合が異なるもの及び国民健康保険組合については被保険者（世帯主（高齢受給者を除く。））は「２」、被保険者（その他（未就学者である患者及び高齢受給者を除く。））は「６」を○で囲むこととし、それ以外（未就学者である患者及び高齢受給者を除く。）はいずれか一方を○で囲むこと。なお、「２ 本外」（若しくは「２ 本」）、「４ 六外」（若しくは「４ 六」）、「６家外」（若しくは「６ 家」）、「８ 高外一」（若しくは「８ 高一」）又は「０ 高外７」（若しくは「０ 高７」）の項のみを印刷したものを使用することとしても差し支えないこと。
+            <div class="fig-wrap"><pre class="fig">２ 本人外来                           ２ 本外
+４ 未就学者外来                         ４ 六外
+６ 家族外来                           ６ 家外
+８ 高齢受給者・後期高齢者医療一般・低所得者外来         ８ 高外一
+０ 高齢受給者・後期高齢者医療７割給付外来            ０ 高外７</pre></div>
+            <div class="reg-para">（注１） 後期高齢者医療一般のうち、１割負担の者と、２割負担の者の判別については、「特記事項」欄に記載される所得区分により行うため、特段の記載は必要ない。</div></div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">エ</span><div class="reg-body">電子計算機の場合は、以下のいずれかの方法によること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ア)</span><div class="reg-body">当該欄の上に選択する番号及び保険種別等のみを記載する。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(イ)</span><div class="reg-body">選択肢をすべて記載した上で、選択しないものをすべて＝線で抹消する。</div></div>
+          <div class="item-heading" id="dai2-2-5"><span class="num-badge">(５)</span>「保険者番号」欄について</div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ア</span><div class="reg-body">設定された保険者番号８桁（国民健康保険については６桁）を記載すること（別添２「設定要領」の第１を参照）。なお、国民健康保険の場合は右詰めで記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">イ</span><div class="reg-body">公費負担医療単独の場合及び公費負担医療のみの場合は、別段の定めのある場合を除き、記載しないこと。</div></div>
+          <div class="item-heading" id="dai2-2-6"><span class="num-badge">(６)</span>「給付割合」欄について</div>
+          <div class="reg-para">国民健康保険の場合、該当する給付割合を〇で囲むか、（ ）の中に給付割合を記載すること。ただし、国民健康保険については、自県分の場合は、記載を省略しても差し支えないこと。</div>
+          <div class="item-heading" id="dai2-2-7"><span class="num-badge">(７)</span>「被保険者資格に係る記号・番号」欄について</div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ア</span><div class="reg-body">資格確認書等の「記号及び番号」欄の記号及び番号を記載すること。また、後期高齢者医療資格確認書の「被保険者番号」欄の「被保険者番号」を記載すること。資格確認書等の「記号及び番号」欄に枝番の記載がある場合は、併せて枝番を記載すること。なお、電子資格確認の
+            <div class="reg-para">場合は、オンラインにより提供された資格情報から、これらの記載を行うこと。</div></div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">イ</span><div class="reg-body">記号と番号の間にスペース、「・」若しくは「－」を挿入するか、又は上段に記号、下段に番号を記載すること。また、枝番は「（枝番）」の後ろに記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ウ</span><div class="reg-body">当該記号及び番号のうち○で囲んだ文字に代えて当該文字を（ ）で囲んだものを使用して記載することも差し支えなく、記載枠に書ききれない等の場合は、（ ）を省略しても差し支えないこと。なお、被保険者が、月の途中において、記号・番号を変更した場合又は任意継続に変更した場合（給付割合に変更がない場合に限る。）は、変更後の記号・番号を記載すること。</div></div>
+          <div class="item-heading" id="dai2-2-8"><span class="num-badge">(８)</span>「公費負担者番号①」欄及び「公費負担者番号②」欄について</div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ア</span><div class="reg-body">調剤券等に記入されている公費負担者番号８桁を記載すること（別添２「設定要領」の第２を参照）。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">イ</span><div class="reg-body">別添２の別表１「法別番号及び制度の略称表」に示す順番により、先順位の公費負担者番号を「公費負担者番号①」欄に（以下「公費負担者番号①」欄に記載される公費負担医療を「第１公費」という。）、後順位の公費負担者番号を「公費負担者番号②」欄に（以下「公費負担者番号②」欄に記載される公費負担医療を「第２公費」という。）記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ウ</span><div class="reg-body">保険者番号の変更はないが、同種の公費負担医療で住所変更により月の途中において公費負担者番号の変更があった場合は、変更前の公費負担医療に係る分を第１公費とし、変更後の公費負担医療に係る分を第２公費として取り扱うものとすること。</div></div>
+          <div class="item-heading" id="dai2-2-9"><span class="num-badge">(９)</span>「公費負担医療の受給者番号①」欄及び「公費負担医療の受給者番号②」欄について</div>
+          <div class="reg-para">調剤券等に記入されている受給者番号７桁を、第１公費については「公費負担医療の受給者番号①」欄に、第２公費については「公費負担医療の受給者番号②」欄に記載すること（別添２「設定要領」の第３を参照）。</div>
+          <div class="item-heading" id="dai2-2-10"><span class="num-badge">(10)</span>「氏名」欄について</div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ア</span><div class="reg-body">姓名を記載すること。ただし、健康保険の被保険者については、姓のみの記載で差し支えないこと。
+            <div class="reg-para">なお、電子計算機の場合は、例外的に漢字を読み替えたカタカナを使用すること又はひらがなをカタカナに読み替えて記載することも差し支えないこととするが、この場合には被保険者であっても姓名を記載することとし、姓と名の間にスペースをとること。</div></div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">イ</span><div class="reg-body">性別は該当するものを○で囲むこと。なお、電子計算機の場合は、「１ 男」、「２ 女」と記載しても差し支えないこと。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ウ</span><div class="reg-body">生年月日は以下によること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ア)</span><div class="reg-body">該当する元号を○で囲み、生まれた年月日を記載すること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(イ)</span><div class="reg-body">電子計算機の場合は元号については「１ 明」、「２ 大」、「３ 昭」、「４ 平」、「５ 令」と記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">エ</span><div class="reg-body">電子レセプトによる請求を行う場合は、アによる姓名と別にカタカナによる姓名を記録することが望ましい。</div></div>
+          <div class="item-heading" id="dai2-2-11"><span class="num-badge">(11)</span>「職務上の事由」欄について</div>
+          <div class="reg-para">船員保険の被保険者については、「１ 職務上」、「２ 下船後３月以内」又は「３ 通勤災害」のうち該当するものを○で囲むこと。ただし、「１ 職務上」及び「３ 通勤災害」については、災害発生時が平成２１年１２月３１日以前のものに限る。共済組合の船員組合員については、下船後３月以内の傷病で職務上の取扱いとなる場合に「２ 下船後３月以内」の番号を○で囲むこと。</div>
+            <div class="reg-para">なお、同一月に職務上の取扱いとなる傷病及び職務外の取扱いとなる傷病が生じた場合は、それぞれ１枚の明細書の取扱いとすること。</div>
+            <div class="reg-para">電子計算機の場合は、番号と名称又は次の略称を記載することとしても差し支えないこと。</div>
+            <div class="reg-para">１ 職上（職務上）、 ２ 下３（下船後３月以内）、 ３ 通災（通勤災害）</div>
+          <div class="item-heading" id="dai2-2-12"><span class="num-badge">(12)</span>「特記事項」欄について</div>
+          <div class="reg-para">該当するものについては、Ⅱの第３の２の(13)と同様とすること。</div>
+          <div class="item-heading" id="dai2-2-13"><span class="num-badge">(13)</span>「保険薬局の所在地及び名称」欄について</div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ア</span><div class="reg-body">保険薬局指定申請の際等に地方厚生（支）局長に届け出た所在地及び名称を記載すること。また、所在地とともに、連絡先電話番号を記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">イ</span><div class="reg-body">麻薬を調剤した場合は、麻薬小売業の免許番号を欄の下部に「麻：○○○○○○○○○号」と記載すること。</div></div>
+          <div class="reg-item"><span class="reg-num">(14)</span><div class="reg-body">「保険医療機関の所在地及び名称」欄、「都道府県番号」欄、「点数表番号」欄及び「医療機関コード」欄について
+            <div class="reg-para">処方箋を発行した保険医（以下「処方医」という。）が診療に従事する保険医療機関の所在地、名称、都道府県番号、点数表番号及び医療機関コードを処方箋に基づいて記載すること。また、外来服薬支援料１、服用薬剤調整支援料２、服薬情報等提供料３及び退院時共同指導料に係る明細書については記載しないこと。</div>
+            <div class="reg-para">なお、電子計算機の場合は、例外的に所在地及び名称をカタカナで記載しても差し支えないこと。</div></div></div>
+          <div class="item-heading" id="dai2-2-15"><span class="num-badge">(15)</span>「保険医氏名」欄について</div>
+          <div class="reg-para">処方医である医師又は歯科医師の姓名を記載すること。</div>
+            <div class="reg-para">なお、同一医療機関で同一患者に対し、異なる医師又は歯科医師が処方箋を発行した場合には、当該欄に当該処方医の姓名を１の項から順番に記載すること。処方箋を発行した医師又は歯科医師の数が 10 人を超えた場合は、「摘要」欄に１１以降の番号を付して医師又は歯科医師の姓名を記載すること。また、外来服薬支援料１、服用薬剤調整支援料２、服薬情報等提供料３及び退院時共同指導料に係る明細書については記載しないこと。</div>
+            <div class="reg-para">なお、電子計算機の場合は、例外的に漢字を読み替えたカタカナを使用すること又はひらがなをカタカナに読み替えて記載することも差し支えないこととするが、この場合には姓と名の間にスペースをとること。</div>
+          <div class="item-heading" id="dai2-2-16"><span class="num-badge">(16)</span>「受付回数」欄について</div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ア</span><div class="reg-body">「保険」、「公費①」及び「公費②」の項に、それぞれ医療保険（健康保険、国民健康保険及び後期高齢者医療をいう。以下同じ。）、第１公費及び第２公費に係る処方箋の受付回数を記載すること。なお、公費負担医療のみの場合の第１公費の処方箋の受付回数は、「公費①」の項に記載すること。
+            <div class="reg-para">ただし、第１公費に係る処方箋の受付回数が医療保険に係るものと同じ場合は、第１公費に係る処方箋の受付回数を省略しても差し支えないこと。また、第２公費がある場合において、当該第２公費に係る処方箋の受付回数が第１公費に係る処方箋の受付回数と同じ場合は、第２公費に係る処方箋の受付回数の記載を省略しても差し支えないこと。</div></div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">イ</span><div class="reg-body">同一の保険医療機関で一連の診療に基づいて同一の患者に交付された処方箋を同一日に受け付けた場合は、複数診療科に係るものであっても枚数にかかわらず受付回数は１回となること。ただし、歯科診療に係る処方箋とそれ以外の処方箋についてはこの限りでない。また、以下に掲げる調剤又は薬学管理料を算定すべき薬学管理のみを行った場合については、受付回数としては計上しないこと。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ア)</span><div class="reg-body">14 日分を超える投薬又は後発医薬品に係る分割調剤に係る調剤基本料を算定すべき調剤</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(イ)</span><div class="reg-body">医師の指示による分割調剤に係る当該保険薬局における２回目以降の調剤</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ウ)</span><div class="reg-body">調剤管理料（在宅協力薬局が当該分析等を行い、在宅基幹薬局が当該点数を算定する場合に限る。）</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(エ)</span><div class="reg-body">服薬情報等提供料</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(オ)</span><div class="reg-body">在宅患者訪問薬剤管理指導料</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(カ)</span><div class="reg-body">在宅患者緊急訪問薬剤管理指導料</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(キ)</span><div class="reg-body">在宅患者緊急時等共同指導料</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ク)</span><div class="reg-body">服薬管理指導料４ロ及び４ハ</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ケ)</span><div class="reg-body">服用薬剤調整支援料</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(コ)</span><div class="reg-body">外来服薬支援料１</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(サ)</span><div class="reg-body">外来服薬支援料２（在宅協力薬局が当該指導等を行い、在宅基幹薬局が当該点数を算定する場合に限る。）</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(シ)</span><div class="reg-body">退院時共同指導料</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ス)</span><div class="reg-body">経管投薬支援料</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(セ)</span><div class="reg-body">調剤後薬剤管理指導料</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ソ)</span><div class="reg-body">在宅移行初期管理料</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(タ)</span><div class="reg-body">訪問薬剤管理医師同時指導料</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(チ)</span><div class="reg-body">複数名薬剤管理指導訪問料</div></div>
+          <div class="item-heading" id="dai2-2-17"><span class="num-badge">(17)</span>「医師番号」欄から「加算料」欄について</div>
+          <div class="reg-para">「医師番号」欄から「加算料」欄までの該当欄には、当月調剤に係るすべての医師番号等を記載すること。</div>
+            <div class="reg-para">なお、公費負担医療のみの場合であっても、当月調剤に係るすべての医師番号等を記載すること。感染症法による結核患者の適正医療と生活保護法による医療扶助との併用の場合は、生活保護法による医療扶助に係る調剤が該当するものであること。</div>
+          <div class="item-heading" id="dai2-2-18"><span class="num-badge">(18)</span>「医師番号」欄について</div>
+          <div class="reg-para">当該処方箋を発行した医師又は歯科医師の「保険医氏名」欄の該当番号を記載すること。ただし、処方箋を発行した医師又は歯科医師が１枚の明細書において１名の場合は、番号の記載を省略しても差し支えないこと。</div>
+          <div class="item-heading" id="dai2-2-19"><span class="num-badge">(19)</span>「処方月日」欄について</div>
+          <div class="reg-para">処方箋が交付された月日を記載すること。</div>
+          <div class="item-heading" id="dai2-2-20"><span class="num-badge">(20)</span>「調剤月日」欄について</div>
+          <div class="reg-para">保険薬剤師が調剤した月日を記載すること。</div>
+            <div class="reg-para">なお、「処方月日」欄の月と調剤した月とが同一の場合は、月の記載を省略しても差し支えないこと。</div>
+          <div class="item-heading" id="dai2-2-21"><span class="num-badge">(21)</span>「処方」欄について</div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ア</span><div class="reg-body">所定単位（内服薬（浸煎薬及び湯薬を除く。以下同じ。）にあっては１剤１日分、湯薬にあっては内服薬に準じ１調剤ごとに１日分、内服用滴剤、屯服薬、浸煎薬、注射薬及び外用薬にあっては１調剤分）ごとに調剤した医薬品名、用量（内服薬及び湯薬については、１日用量、内服用滴剤、注射薬及び外用薬（ただし、鎮痛・消炎に係る効能・効果を有する貼付剤（ただし、麻薬若しくは向精神薬であるもの又は専ら皮膚疾患に用いるものを除く。以下同じ。）を除く。）については、投薬全量、屯服薬については１回用量及び投薬全量）、剤形及び用法（注射薬及び外用薬については、省略して差し支えない。）を記載し、次の行との間を線で区切ること。
+            <div class="reg-para">なお、浸煎薬の用量については、投薬全量を記載し、投薬日数についても併せて記載すること。また、貼付剤の用量については、貼付剤の枚数としての投薬全量を記載するとともに、貼付剤の枚数としての１日用量又は投与日数を併せて記載すること。</div>
+            <div class="reg-para">ただし、服用時点が同一であっても投薬日数が異なる内服薬に係る調剤及び同一の保険医療機関で一連の診療に基づいて同一の患者に対して交付され、受付回数１回とされた異なる保険医の発行する処方箋に係る調剤については、それぞれ別の欄（線により区切られた部分をいう。以下同じ。）に記載すること。</div></div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">イ</span><div class="reg-body">特別調剤基本料Ａ又は特別調剤基本料Ｂを算定する保険薬局において、１処方につき７種類以上の内服薬の調剤を行い、薬剤料を所定点数の 100 分の 90 に相当する点数で算定した場合は、該当の「処方」欄の薬剤名の下に「薬剤料逓減（90/100）（内服薬）」と表示すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ウ</span><div class="reg-body">異なる調剤日に調剤を行った場合又は同一処方を異なった医師が発行した場合であっても、調剤数量以外の処方内容が同一である場合には１欄の記載のみで差し支えないこと。ただし、この場合であっても、前イに該当する調剤日と該当しない調剤日の調剤については、それぞれ別の「処方」欄として記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">エ</span><div class="reg-body">医薬品名は原則として調剤した薬剤の名称、剤形及び含量を記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">オ</span><div class="reg-body">剤形は「内服」、「内滴」、「屯服」、「浸煎」、「湯」、「注射」、「外用」と記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">カ</span><div class="reg-body">医事会計システムの電算化が行われていないものとして地方厚生（支）局長に届け出た保険薬局については、所定単位当たりの薬剤料が 175 円以下の場合は医薬品名、規格、用量の記載を省略しても差し支えないが、剤形及び用法は記載すること。
+            <div class="reg-para">なお、次の場合は医薬品名、規格、用量、剤形、用法を記載するものであること。</div></div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ア)</span><div class="reg-body">自家製剤加算（予製剤による場合又は錠剤を分割する場合を含む。以下同じ。）、麻薬・向精神薬・覚醒剤原料・毒薬加算、計量混合調剤加算（予製剤による場合を含む。以下同じ。）及び外来服薬支援料２（在宅協力薬局が当該指導等を行い、在宅基幹薬局が当該点数を算定する場合を除く。）を算定した場合</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(イ)</span><div class="reg-body">同一処方箋により、２以上の医薬品を用いて内服薬を調剤した場合であって、別剤として薬剤調製料及び調剤管理料を算定した場合</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ウ)</span><div class="reg-body">前イの薬剤料逓減に該当する場合</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">キ</span><div class="reg-body">特定保険医療材料（自己注射に用いる自己注射用ディスポーザブル注射器（針を含む。）、万年筆型注入器用注射針及び「特定保険医療材料及びその材料価格（材料価格基準）」（平成20 年３月厚生労働省告示第 61 号）の別表のⅠに規定されている特定保険医療材料）を支給した場合は、他の処方とは別の欄に名称及びセット数等を記載すること。この場合、剤形は「材料」とすること。また、支給月日は「調剤月日」欄に、支給回数は「調剤数量」欄に、単位材料料は「単位薬剤料」欄に、材料料は「薬剤料」欄にそれぞれ記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ク</span><div class="reg-body">同一明細書の同一「処方」欄において、医療保険と公費負担医療の支給薬剤が異なる場合は、当該「処方」欄の公費負担医療に係る分にアンダーラインを付すこと。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ケ</span><div class="reg-body">電子計算機の場合は、カタカナで記載しても差し支えないこと。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">コ</span><div class="reg-body">厚生労働大臣の定める評価療養、患者申出療養及び選定療養第１条第４号又は第６号に係る医薬品を投与した場合は、Ⅱの第３の２の(20)のカの(ウ)の例により「薬評」と記載し、当該医薬品名を他の医薬品と区別して記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">サ</span><div class="reg-body">厚生労働大臣の定める評価療養、患者申出療養及び選定療養第２条第 15 号に基づき、長期収載品を選定療養として調剤した場合は、当該医薬品名の後に「（選）」を記載し、所定単位につき、選定療養に係る額を除いた薬価を用いて算出した点数を記載すること。〔記載例〕
+            <div class="fig-wrap"><pre class="fig">●●●錠（選）            １錠
+△△△錠               １錠 １７×５</pre></div>
+            <div class="reg-para">また、長期収載品について、選定療養の対象とはせずに、保険給付する場合は、理由について、別表Ⅰに示す項目を参照して記載すること。</div></div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">シ</span><div class="reg-body">厚生労働大臣の定める評価療養、患者申出療養及び選定療養第２条第 16 号に基づき、近視の進行抑制を効能又は効果とした医薬品を選定療養として支給した場合は、「薬選（近視）」と記載し、「摘要」欄に薬剤名を記載すること。</div></div>
+          <div class="item-heading" id="dai2-2-22"><span class="num-badge">(22)</span>「単位薬剤料」欄について</div>
+          <div class="reg-para">「処方」欄の１単位（内服薬にあっては１剤１日分、湯薬にあっては内服薬に準じ１調剤ごとに１日分、内服用滴剤、屯服薬、浸煎薬、注射薬及び外用薬にあっては１調剤分）当たりの薬剤料を記載すること。なお、医療保険と公費負担医療の支給薬剤が異なる場合は、行を改めて公費負担医療に係る薬剤料を記載し、当該薬剤料にアンダーラインを付すか、又はその左側に「＊」を付すこと。</div>
+          <div class="item-heading" id="dai2-2-23"><span class="num-badge">(23)</span>「調剤数量」欄について</div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ア</span><div class="reg-body">「処方」欄記載の処方内容に係る調剤の単位数（内服薬及び湯薬にあっては投薬日数、内服用滴剤、浸煎薬、屯服薬、注射薬及び外用薬にあっては調剤回数）を調剤月日ごとに記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">イ</span><div class="reg-body">分割調剤の場合は以下によること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ア)</span><div class="reg-body">14 日分を超える投薬に係る分割調剤を同一保険薬局において行う場合には、単位数に分 の記号を付すこと。なお、電子計算機の場合は、分 に代えて「Ｂ」と記載することも差し支えないものであること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(イ)</span><div class="reg-body">後発医薬品に係る分割調剤を同一保険薬局において行う場合には、単位数に 試 の記号を付すこと。なお、電子計算機の場合は、試 に代えて「Ｔ」と記載することも差し支えないものであること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ウ)</span><div class="reg-body">医師の分割指示に係る分割調剤を行う場合は、単位数及び医の記号を付した総単位数を記載すること。なお、電子計算機の場合は、医に代えて「Ｄ」と記載することも差し支えないものであること。</div></div>
+          <div class="item-heading" id="dai2-2-24"><span class="num-badge">(24)</span>「薬剤調製料 調剤管理料」欄について</div>
+          <div class="reg-para">「処方」欄に掲げる調剤を行った際の調剤数量に応じた薬剤調製料及び調剤管理料の点数を記載すること。ただし、薬剤調製料及び調剤管理料が算定できない場合又は医師の指示による分割調剤の場合は、「０」を記載すること。</div>
+            <div class="reg-para">なお、内服薬及び湯薬について、14 日分を超える投薬又は後発医薬品に係る分割調剤を同一薬</div>
+            <div class="reg-para">局において行う場合には、第１回目の調剤から通算した日数に対応する薬剤調製料及び調剤管理</div>
+            <div class="reg-para">料から前回までに請求した薬剤調製料及び調剤管理料の点数を減じた点数を記載すること。</div>
+            <div class="reg-para">また、内服薬が長期処方（28 日分以上）されている患者であって、減数調剤を行うことにより、</div>
+            <div class="reg-para">実際の調剤する内服薬の投与日数が１日分以上かつ 27 日分以下となり、調剤管理料１のイを算</div>
+            <div class="reg-para">定する場合については、減数調剤を実施した年月日、減数調剤を実施した薬剤名及び調整前の日</div>
+            <div class="reg-para">数を「摘要」欄に記載すること。</div>
+          <div class="item-heading" id="dai2-2-25"><span class="num-badge">(25)</span>「薬剤料」欄について</div>
+          <div class="reg-para">「処方」欄の所定単位当たりの薬剤料に調剤数量を乗じて得た点数を記載すること。なお、前(21)のイの薬剤料逓減に該当する場合は、薬剤料の所定点数の下に、算定点数から所定点数を控除して得た点数を△書きにより記載すること。この場合、薬剤料の逓減に該当する場合であっても、控除して得た点数が０点となるものについては記載しない。</div>
+          <div class="item-heading" id="dai2-2-26"><span class="num-badge">(26)</span>「加算料」、「調剤基本料」、「時間外等加算」及び「薬学管理料」欄について</div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ア</span><div class="reg-body">通則各欄又は「摘要」欄への調剤行為等の名称（以下この項において単に「名称」という。）、回数及び点数の記載方法は、次のイからオまでのとおりであること。また、名称、回数及び点数以外の「摘要」欄に記載する事項等は、別表Ⅰ「調剤報酬明細書の「摘要」欄への記載事項等一覧」のとおりであること。
+            <div class="reg-para">なお、電子レセプトによる請求の場合、別表Ⅰの「レセプト電算処理システム用コード」欄にコードが記載された項目については、「電子情報処理組織の使用による費用の請求に関して厚生労働大臣が定める事項及び方式並びに光ディスク等を用いた費用の請求に関して厚生労働大臣が定める事項、方式及び規格」に基づき、該当するコードを選択すること。ただし、別表Ⅰ（令和８年６月１日適用の旨が表示されたコードに限る。）のコードについては、令和８年 10 月診療分以降に選択するものとして差し支えないこと。</div>
+            <div class="reg-para">書面による請求を行う場合においては、名称について、別表Ⅴ「調剤行為名称等の略号一覧」に示す略号を使用して差し支えないこと。</div></div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">イ</span><div class="reg-body">「加算料」欄について</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ア)</span><div class="reg-body">麻薬・向精神薬・覚醒剤原料・毒薬加算、時間外加算、休日加算、深夜加算、時間外加算の特例、自家製剤加算、計量混合調剤加算、予製剤加算、無菌製剤処理加算又は外来服
+            <div class="reg-para">薬支援料２を算定した場合は、当該名称を記載して加算点数（無菌製剤処理加算において</div>
+            <div class="reg-para">は加算点数に日数を乗じた点数）の合計点数（ただし、医師の指示による分割調剤にあっ</div>
+            <div class="reg-para">ては「０」）を記載すること。</div>
+            <div class="reg-para">また、外来服薬支援料２の算定対象となる剤が複数ある場合は、外来服薬支援料２を算</div>
+            <div class="reg-para">定する点数に対応する投薬日数が分かるように、原則として、当該日数が「調剤数量」欄</div>
+            <div class="reg-para">に記載されている剤の欄に（当該日数の剤が複数ある場合は、いずれかの１欄にのみ）、</div>
+            <div class="reg-para">外来服薬支援料２に係る点数（ただし、医師の指示による分割調剤にあっては「０」）を</div>
+            <div class="reg-para">記載すること。</div>
+            <div class="reg-para">ただし、同一の保険医療機関で一連の診療に基づいて同一の患者に対して交付され、受</div>
+            <div class="reg-para">付回数１回とされた異なる保険医の発行する処方箋に係る調剤については、同一調剤であ</div>
+            <div class="reg-para">っても、それぞれ別の「処方」欄に記載することとされているが、これに該当する場合であっても、これらの加算又は外来服薬支援料２はどちらか１欄にのみ記載すること。</div></div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(イ)</span><div class="reg-body">外来服薬支援料２については、上記（ア）のほか、外来服薬支援料２の算定対象となる剤が複数ある場合は、一包化を行った全ての剤の「加算料」欄に名称を記載すること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ウ)</span><div class="reg-body">調剤基本料に対応する加算点数、夜間・休日等加算に係る点数については本欄には記載しないこと。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(エ)</span><div class="reg-body">電子計算機の場合は、麻 等の□を省略して記載しても差し支えないこと。以下、麻 等の略号を使用する場合について同様であること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(オ)</span><div class="reg-body">１行で記載できない場合は、同欄において行を改めて記載しても差し支えないこと。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ウ</span><div class="reg-body">「調剤基本料」欄について</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ア)</span><div class="reg-body">医師の指示による分割調剤の場合を除き、「保険」、「公費①」及び「公費②」の項に、それぞれ医療保険、第１公費及び第２公費に係る調剤基本料（地域支援・医薬品供給対応体制加算の施設基準の届出を行った場合等にあっては、調剤基本料に地域支援・医薬品供給対応体制加算１、地域支援・医薬品供給対応体制加算２、地域支援・医薬品供給対応体制加算３、地域支援・医薬品供給対応体制加算４若しくは地域支援・医薬品供給対応体制加算５、連携強化加算、バイオ後続品調剤体制加算、在宅薬学総合体制加算１、在宅薬学総合体制加算２イ若しくは在宅薬学総合体制加算２ロ、又は区分番号００の注３、注４、注８若しくは門前薬局等立地依存減算を適用して算出した点数。）に処方箋受付回数を乗じた点数、電子的調剤情報連携体制整備加算については月１回分の点数、14 日分を超える投薬又は後発医薬品に係る分割調剤を行った場合は算定可能な分割調剤の回数に５点を乗じた点数を記載すること。また、記載した点数の上部に該当する調剤基本料及びその加算等について、名称を記載すること。なお、「公費①」及び「公費②」の項の記載については、(28)のウを参照すること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(イ)</span><div class="reg-body">本欄に記載しきれない場合は、「摘要」欄に算定する調剤基本料及びその加算等の名称及び回数を記載しても差し支えないが、合計点数は「調剤基本料」欄に記載すること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ウ)</span><div class="reg-body">近視の進行抑制を効能又は効果とする医薬品のみを調剤する場合は、調剤基本料を算定できないため、合計点数に計上しないこと。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">エ</span><div class="reg-body">「時間外等加算」欄について</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ア)</span><div class="reg-body">調剤基本料に係る時間外加算、休日加算、深夜加算若しくは時間外加算の特例又は薬剤調製料に係る夜間・休日等加算を算定した場合（ただし、医師の指示による分割調剤の場合を除く。）は、名称を「保険」の項の上欄に記載すること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(イ)</span><div class="reg-body">リフィル処方箋による調剤については、「リ１／２」のように、リフィル処方箋の総使用回数に対する当該調剤を行う回数を「時間外等加算」欄に記載すること。なお、電子計算機の場合は、それぞれの回数に対応するものを記載すること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ウ)</span><div class="reg-body">医師の指示による分割調剤の場合を除き、「保険」の項の下欄、「公費①」及び「公費②」の項に、それぞれ医療保険、第１公費及び第２公費に係る時間外等の加算点数を記載すること。
+            <div class="reg-para">なお、「公費①」及び「公費②」の項の記載については、(28)のウを参照すること。</div></div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">オ</span><div class="reg-body">「薬学管理料」欄について</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ア)</span><div class="reg-body">医師の指示による分割調剤の場合を除き、「保険」の項の上欄には、算定した薬学管理料（薬学管理料の加算及びその他の項目を含む。以下同じ。）の名称と回数を下記により記載すること。</div></div>
+          <div class="reg-item-sub3"><span class="reg-num-sub">①</span><div class="reg-body">調剤管理料の加算である調剤時残薬調整加算又は薬学的有害事象等防止加算を算定した場合は、該当するものの名称及びその回数をそれぞれ記載すること。</div></div>
+          <div class="reg-item-sub3"><span class="reg-num-sub">②</span><div class="reg-body">服薬管理指導料の「１」のイ若しくはロ、「２」のイ若しくはロ、「３」、「４」のイ、ロ、ハ若しくはニ又は注 17 の特例を算定した場合は該当するものの名称及びその回数をそれぞれ記載すること。また、麻薬管理指導加算、特定薬剤管理指導加算１、特定薬剤管理指導加算２、特定薬剤管理指導加算３、乳幼児服薬指導加算、小児特定加算又は吸入薬指導加算、かかりつけ薬剤師フォローアップ加算又はかかりつけ薬剤師訪問加算を算定した場合は、服薬管理指導料の回数の次に、該当するものの名称及びその回数をそれぞれ記載すること。</div></div>
+          <div class="reg-item-sub3"><span class="reg-num-sub">③</span><div class="reg-body">外来服薬支援料１を算定した場合は、名称及びその回数を記載すること。</div></div>
+          <div class="reg-item-sub3"><span class="reg-num-sub">④</span><div class="reg-body">施設連携加算を算定した場合は、名称及びその回数を記載すること。</div></div>
+          <div class="reg-item-sub3"><span class="reg-num-sub">⑤</span><div class="reg-body">服用薬剤調整支援料１又は服用薬剤調整支援料２を算定した場合は、該当するものの名称及びその回数を記載すること。</div></div>
+          <div class="reg-item-sub3"><span class="reg-num-sub">⑥</span><div class="reg-body">調剤後薬剤管理指導料の「１」又は「２」を算定した場合は、該当する名称及びその回数をそれぞれ記載すること。</div></div>
+          <div class="reg-item-sub3"><span class="reg-num-sub">⑦</span><div class="reg-body">在宅患者訪問薬剤管理指導料の「１」、「２」又は「３」を算定した場合は、名称及びその回数を記載すること。また、麻薬管理指導加算、在宅患者医療用麻薬持続注射療法加算、乳幼児加算、小児特定加算又は在宅中心静脈栄養法加算を算定した場合は、在宅患者訪問薬剤管理指導料の回数の次に、該当するものの名称及びその回数をそれぞれ記載すること。</div></div>
+          <div class="reg-item-sub3"><span class="reg-num-sub">⑧</span><div class="reg-body">在宅患者緊急訪問薬剤管理指導料の「１」又は「２」を算定した場合は、名称及びその回数を記載すること。また、麻薬管理指導加算、在宅患者医療用麻薬持続注射療法加算、乳幼児加算、小児特定加算、在宅中心静脈栄養法加算、夜間訪問加算、休日訪問加算又は深夜訪問加算を算定した場合は、該当するものの名称及びその回数をそれぞれ記載すること。</div></div>
+          <div class="reg-item-sub3"><span class="reg-num-sub">⑨</span><div class="reg-body">在宅患者緊急時等共同指導料を算定した場合は、名称及びその回数を記載すること。また、麻薬管理指導加算、在宅患者医療用麻薬持続注射療法加算、乳幼児加算、小児特定加算又は在宅中心静脈栄養法加算を算定した場合は、該当するものの名称及びその回数をそれぞれ記載すること。</div></div>
+          <div class="reg-item-sub3"><span class="reg-num-sub">⑩</span><div class="reg-body">退院時共同指導料を算定した場合は、名称及びその回数を記載すること。</div></div>
+          <div class="reg-item-sub3"><span class="reg-num-sub">⑪</span><div class="reg-body">服薬情報等提供料の「１」、「２」のイ、ロ若しくはハ又は「３」を算定した場合は、該当する名称及びその回数をそれぞれ記載すること。</div></div>
+          <div class="reg-item-sub3"><span class="reg-num-sub">⑫</span><div class="reg-body">経管投薬支援料を算定した場合は、名称及びその回数を記載すること。</div></div>
+          <div class="reg-item-sub3"><span class="reg-num-sub">⑬</span><div class="reg-body">在宅移行初期管理料を算定した場合は、名称及びその回数を記載すること。</div></div>
+          <div class="reg-item-sub3"><span class="reg-num-sub">⑭</span><div class="reg-body">訪問薬剤管理医師同時指導料を算定した場合は、名称及びその回数を記載すること。</div></div>
+          <div class="reg-item-sub3"><span class="reg-num-sub">⑮</span><div class="reg-body">複数名薬剤管理指導訪問料を算定した場合は、名称及びその回数を記載すること。</div></div>
+          <div class="reg-item-sub3"><span class="reg-num-sub">⑯</span><div class="reg-body">在宅基幹薬局が、在宅協力薬局で行われた調剤に係る調剤管理料及び外来服薬支援料２を算定する場合、本欄に該当する名称及びその回数をそれぞれ記載すること。なお、その際の時間外等加算については、前エのとおり記載すること。</div></div>
+          <div class="reg-item-sub3"><span class="reg-num-sub">⑰</span><div class="reg-body">調剤ベースアップ評価料を算定した場合は、名称及びその回数を記載すること。</div></div>
+          <div class="reg-item-sub3"><span class="reg-num-sub">⑱</span><div class="reg-body">調剤物価対応料を算定した場合は、名称を記載すること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(イ)</span><div class="reg-body">医師の指示による分割調剤の場合を除き、「保険」の項の下欄、「公費①」及び「公費②」の項に、それぞれ医療保険、第１公費及び第２公費に係る薬学管理料の合計点数を記載すること。
+            <div class="reg-para">なお、「公費①」及び「公費②」の項の記載については、(28)のエを参照すること。</div></div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ウ)</span><div class="reg-body">本欄に記載しきれない場合は、「摘要」欄に算定する薬学管理料又は加算の名称及び回数を記載しても差し支えないが、合計点数は「薬学管理料」欄に記載すること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(エ)</span><div class="reg-body">前(ア)の⑯の場合を除き、調剤管理料及び外来服薬支援料２に係る点数については本欄に記載せず、前(24)及び前(26)のイのとおり記載すること。</div></div>
+          <div class="item-heading" id="dai2-2-27"><span class="num-badge">(27)</span>「摘要」欄について</div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ア</span><div class="reg-body">介護保険に相当するサービスを行った場合について、居宅療養管理指導費又は介護予防居宅療養管理指導費により訪問指導を行った日を「摘要」欄に記載すること。その場合、当該請求月の最終算定時の要支援度又は要介護度を記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">イ</span><div class="reg-body">その他請求内容について特記する必要があればその事項を記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ウ</span><div class="reg-body">「摘要」欄に記載しきれない場合においては、「処方」欄下部の余白部分に必要事項を記載しても差し支えないこと。</div></div>
+          <div class="item-heading" id="dai2-2-28"><span class="num-badge">(28)</span>「公費分点数」欄について</div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ア</span><div class="reg-body">「公費分点数」欄には、併用する公費負担医療に係る調剤報酬点数を記載することとするが、調剤報酬点数が「薬剤調製料 調剤管理料」欄から「加算料」欄まで並びに「調剤基本料」欄、「時間外等加算」欄及び「薬学管理料」欄のすべてに係る調剤報酬点数と同じ場合は省略しても差し支えないこと。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">イ</span><div class="reg-body">前(21)のイの薬剤料逓減に該当する場合は、各公費負担医療の調剤報酬点数の下に前(25)において△書きにより記載した点数のうち、当該公費に係る算定点数から所定点数を控除して得た点数を△書きにより記載すること。この場合、薬剤料の逓減に該当する場合であっても、控除して得た点数が０点となるものについては記載しない。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ウ</span><div class="reg-body">医療保険と併用される公費負担医療において、医療保険単独の処方の場合は「公費分点数」欄には、「０」と記載すること。なお、公費負担医療の併用の場合も同様とすること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">エ</span><div class="reg-body">「薬剤調製料 調剤管理料」欄から「加算料」欄まで並びに「調剤基本料」欄、「時間外等加算」欄及び「薬学管理料」欄のすべてに係る調剤報酬点数と異なる公費負担医療が２種以上あるときは、「公費分点数」欄を縦に区分し、左から順次「第１公費」、「第２公費」の順で当該公費に係る調剤報酬点数を記載すること。なお、「薬剤調製料 調剤管理料」欄から「加算料」欄まで並びに「調剤基本料」欄、「時間外等加算」欄及び「薬学管理料」欄のすべてに係る調剤報酬点数と同じ調剤報酬点数の公費負担医療がある場合は、縦に区分すること及び調剤報酬点数を記載することを省略しても差し支えないこと。</div></div>
+          <div class="item-heading" id="dai2-2-29"><span class="num-badge">(29)</span>「請求」欄及び「一部負担金額」欄について</div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ア</span><div class="reg-body">「請求」欄には、「保険」、「公費①」及び「公費②」の項に、それぞれ医療保険、第１公費及び第２公費に係る合計点数（分割調剤に係るものについては当該分割調剤の分割調剤技術
+            <div class="reg-para">料、薬剤料及び特定保険医療材料料の合計点数を、それ以外については「調剤報酬点数」欄、</div>
+            <div class="reg-para">「調剤基本料」欄、「時間外等加算」欄及び「薬学管理料」欄の合計点数を計算し、それぞれ</div>
+            <div class="reg-para">合算したものをいう。(30)において同じ。）を記載すること。なお、公費負担医療のみの場合</div>
+            <div class="reg-para">の第１公費の合計点数は、「公費①」の項に記載すること。</div>
+            <div class="reg-para">ただし、第１公費に係る合計点数が医療保険に係るものと同じ場合は、第１公費に係る合計点数の記載を省略しても差し支えないこと。また、第２公費がある場合において、当該第２公費に係る合計点数が第１公費に係る合計点数と同じ場合は、第２公費に係る合計点数の記載を省略しても差し支えないこと。</div></div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">イ</span><div class="reg-body">医療保険（高齢受給者及び高齢受給者以外であって限度額適用認定証若しくは限度額適用・標準負担額減額認定証又は特定医療費受給者証、特定疾患医療受給者証若しくは小児慢性特定疾病医療受給者証（特定医療費受給者証、特定疾患医療受給者証及び小児慢性特定疾病医療受給者証にあっては、適用区分に所得区分の記載があるものに限る。）の提示又は限度額適用認定証情報若しくは限度額適用・標準負担額減額認定証情報の提供があった者で高額療養費が現物給付された者に係るものを除く。）に係る「一部負担金額」の項については、以下によること。
+            <div class="reg-para">健康保険、国民健康保険の場合は、患者の負担金額が「割」の単位で減額される場合には、減額割合を記載して「割」の字句を○で囲み、「円」単位で減額される場合には、減額される金額を記載して「円」の字句を○で囲むこと。</div>
+            <div class="reg-para">また、負担額が免除される場合は「免除」の字句を○で囲み、支払が猶予される場合は「支払猶予」の字句を○で囲むこと。</div></div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ウ</span><div class="reg-body">医療保険（高齢受給者及び高齢受給者以外であって限度額適用認定証若しくは限度額適用・標準負担額減額認定証又は特定医療費受給者証、特定疾患医療受給者証若しくは小児慢性特定疾病医療受給者証（特定医療費受給者証、特定疾患医療受給者証及び小児慢性特定疾病医療受給者証にあっては、適用区分に所得区分の記載があるものに限る。）の提示又は限度額適用認定証情報若しくは限度額適用・標準負担額減額認定証情報の提供があった者で高額療養費が現物給付された者に係るものに限る。）及び後期高齢者医療に係る「一部負担金額」の項については、以下によること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ア)</span><div class="reg-body">高額療養費が現物給付された者に限り記載することとし、支払いを受けた一部負担金の額を記載すること。なお、この場合において、一部負担金相当額の一部を公費負担医療が給付するときは、公費負担医療に係る給付対象額を「一部負担金額」の項の「保険」の項の上段に（ ）で再掲するものとし、「一部負担金額」の項には、支払いを受けた一部負担金と公費負担医療が給付する額とを合算した金額を記載すること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(イ)</span><div class="reg-body">健康保険法施行令第 43 条第１項並びに同条第５項、国民健康保険法施行令第 29 条の４第１項並びに同条第３項又は高齢者医療確保法施行令（昭和 57 年政令第 293 号）第 16 条第１項並びに同条第３項の規定が適用される者の場合は、これらの規定により算定した額（この額に１円未満の端数がある場合において、その端数金額が 50 銭未満であるときは、これを切り捨て、その端数金額が 50 銭以上であるときは、これを切り上げた額）を記載すること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ウ)</span><div class="reg-body">健康保険法施行令第 43 条第１項第２号ニ、国民健康保険法施行令第 29 条の４第１項第３号ニに掲げる者又は高齢者医療確保法施行令第 16 条第１項第１号ニに掲げる者の場合は、高額療養費が現物給付された者に限り、「摘要」欄に、「低所得Ⅰ」と記載すること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(エ)</span><div class="reg-body">健康保険法施行令第 43 条第１項第２号ハに掲げる者、国民健康保険法施行令第 29 条の４第１項第３号ハに掲げる者又は高齢者医療確保法施行令第 16 条第１項第１号ハに掲げる者の場合は、高額療養費が現物給付された者に限り、「摘要」欄に、「低所得Ⅱ」と記載すること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(オ)</span><div class="reg-body">健康保険、国民健康保険の場合は、患者の負担金額が「割」の単位で減額される場合には、減額割合を記載して「割」の字句を○で囲み、「円」単位で減額される場合には、減額後の一部負担金の金額を記載して「円」の字句を○で囲むこと。
+            <div class="reg-para">また、負担額が免除される場合は「免除」の字句を○で囲み、支払が猶予される場合は「支払猶予」の字句を○で囲むこと。</div></div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(カ)</span><div class="reg-body">後期高齢者医療の場合で、高齢者医療確保法第 69 条第１項の規定に基づき広域連合長から一部負担金の減額を受けた者の場合は、「割」の単位で減額される場合には、減額割合を記載して「割」の字句を○で囲み、「円」単位で減額される場合は、減額後の一部負担金の金額を記載して「円」を○で囲むこと。また、負担額が免除される場合は「免除」の字句を○で囲み、支払いが猶予される場合は「支払猶予」の字句を○で囲むこと。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">エ</span><div class="reg-body">「公費①」及び「公費②」の項には、それぞれ第１公費及び第２公費に係る調剤券等に記入されている公費負担医療に係る患者の負担額（一部負担金の額が医療券等に記載されている公費負担医療に係る患者の負担額を下回る場合で、「一部負担金額」の項に金額を記載するものの場合はウの(ア)により記載した額を、金額の記載を要しないものの場合は 10 円未満の端数を四捨五入する前の一部負担金の額）を記載すること。なお、後期高齢者医療又は医療保険（高齢受給者に係るものに限る。）と感染症法による結核患者の適正医療との併用の場合（高額療養費が現物給付された場合に限る。）及び医療保険（高齢受給者以外であって限度額適用認定証若しくは限度額適用・標準負担額減額認定証の提示又は限度額適用認定証情報若しくは限度額適用・標準負担額減額認定証情報の提供があった者で高額療養費が現物給付された者に係るものに限る。）と感染症法との併用の場合には、一部負担金から同負担金のうち当該公費負担医療が給付する額を控除した額（即ち、窓口で徴収した額）を記載すること。
+            <div class="reg-para">また、障害者総合支援法による精神通院医療等、児童福祉法による小児慢性特定疾病医療支援、肢体不自由児通所医療及び障害児入所医療並びに難病法による特定医療に係る患者の負担額については、10 円未満の端数を四捨五入する前の一部負担金の額を記載し、後期高齢者医療又は医療保険（高齢受給者に係るものに限る。）と障害者総合支援法による精神通院医療等、児童福祉法による肢体不自由児通所医療及び障害児入所医療並びに難病法による特定医療との併用（高額療養費が現物給付された場合に限る。）の場合に 10 円未満の端数を四捨五入した後の一部負担金の額を記載すること。</div>
+            <div class="reg-para">ただし、後期高齢者医療又は医療保険（高齢受給者に係るものに限る。）と感染症法による結核患者の適正医療との併用の場合（高額療養費が現物給付された場合を除く。）及び医療保険（高齢受給者以外であって限度額適用認定証若しくは限度額適用・標準負担額減額認定証の提示又は限度額適用認定証情報若しくは限度額適用・標準負担額減額認定証情報の提供があった者で高額療養費が現物給付化された者に係るものを除く。）と感染症法との併用の場合には、当該公費に係る患者負担額は「公費①」及び「公費②」の項には記載することを要しないこと。</div>
+            <div class="reg-para">高齢受給者の一般所得者及び低所得者であって、難病法による特定医療又は肝炎治療特別促進事業に係る公費負担医療受給者については、医療券に記載されている公費負担医療に係る患者の負担額を記載すること。ただし、当該公費負担医療の給付対象額の２割相当の額が、当該医療券に記載されている公費負担医療に係る患者の負担額を下回る場合は、当該２割相当の額(「一部負担金額」の項に金額を記載するものの場合は、10 円未満の端数を四捨五入した後の額を、金額の記載を要しないものの場合は、10 円未満の端数を四捨五入する前の額。)を「一部負担金額」の項に記載すること。</div></div></div>
+          <div class="item-heading" id="dai2-2-30"><span class="num-badge">(30)</span>その他</div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ア</span><div class="reg-body">高額長期疾病に係る特定疾病療養受療証を提出又は特定疾病療養受療証情報を提供した患者の負担額が、健康保険法施行令第 42 条第９項第１号又は同項第２号に規定する金額を超えた場合にあっては、「特記事項」欄に、それぞれ「長」又は「長２」と記載すること。
+            <div class="reg-para">ただし、患者が特定疾病療養受療証の提出又は特定疾病療養受療証情報の提供を行った際に、既に健康保険法施行令第 42 条第６項第１号又は同項第２号に規定する金額を超えて受領している場合であって、現物給付化することが困難な場合を除くこと。</div></div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">イ</span><div class="reg-body">特例的に、生活保護法による医療扶助、感染症法による結核患者の適正医療及び障害者総合支援法による精神通院医療等の３種の公費負担医療の併用の場合があるが、この場合にあっては、法別番号等によらず、次の記載要領によること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ア)</span><div class="reg-body">生活保護法による医療扶助に係る公費負担者番号は「保険者番号」欄に、公費負担医療の受給者番号は「被保険者資格に係る記号・番号」欄に記載し、感染症法による結核患者の適正医療に係る分は「公費負担者番号①」欄に、障害者総合支援法による精神通院医療等に係る分は「公費負担者番号②」欄に記載すること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(イ)</span><div class="reg-body">「職務上の事由」欄は記載しないこと。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ウ)</span><div class="reg-body">生活保護法による医療扶助に係る処方箋受付回数は「受付回数」欄の「保険」の項に記載し、感染症法による結核患者の適正医療に係る分は「受付回数」欄の「公費①」の項に、障害者総合支援法による精神通院医療等に係る分は「受付回数」欄の「公費②」の項に記載すること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(エ)</span><div class="reg-body">生活保護法による医療扶助に係る調剤基本料は「調剤基本料」欄の「保険」の項に記載し、感染症法による結核患者の適正医療に係る分は「調剤基本料」欄の「公費①」の項に、障害者総合支援法による精神通院医療等に係る分は「調剤基本料」欄の「公費②」の項に記載すること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(オ)</span><div class="reg-body">生活保護法による医療扶助に係る調剤基本料の時間外等加算は「時間外等加算」欄の「保険」の項に記載し、感染症法による結核患者の適正医療に係る分は「時間外等加算」欄の「公費①」の項に、障害者総合支援法による精神通院医療等に係る分は「時間外等加算」欄の「公費②」の項に記載すること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(カ)</span><div class="reg-body">生活保護法による医療扶助に係る薬学管理料は「薬学管理料」欄の「保険」の項に記載し、感染症法による結核患者の適正医療に係る分は「薬学管理料」欄の「公費①」の項に、障害者総合支援法による精神通院医療等に係る分は「薬学管理料」欄の「公費②」の項に記載すること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(キ)</span><div class="reg-body">「医師番号」欄から「加算料」欄までの該当欄には、生活保護法による医療扶助に係る医師番号等を記載すること。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ク)</span><div class="reg-body">「公費分点数」欄は縦に２区分し、左欄に感染症法による結核患者の適正医療、右欄に障害者総合支援法による精神通院医療等に係る調剤報酬点数を記載することとするが、生活保護法による医療扶助に係る調剤報酬点数と同じものがある場合は、縦に２区分すること及び当該調剤報酬点数を記載することを省略しても差し支えないこと。</div></div>
+          <div class="reg-item-sub2"><span class="reg-num-sub">(ケ)</span><div class="reg-body">生活保護法による医療扶助に係る合計点数は「請求」欄の「保険」の項に、感染症法による結核患者の適正医療に係る合計点数は「請求」欄の「公費①」の項に、障害者総合支援法による精神通院医療等に係る合計点数は「請求」欄の「公費②」の項に記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ウ</span><div class="reg-body">厚生労働大臣の定める評価療養、患者申出療養及び選定療養第１条第５号、第７号又は第８号に規定する医療機器を使用又は支給した場合は、Ⅱの第３の２の(26)のケの例により「摘要」欄に「器評」と記載し、当該医療機器名を他の特定保険医療材料と区別して記載すること。厚生労働大臣の定める評価療養、患者申出療養及び選定療養第１条第５号に規定する体外診断用医薬品を使用又は支給した場合は、Ⅱの第３の２の(26)のケの例により「摘要」欄に「体評」と記載し、当該体外診断用医薬品名を他の調剤報酬請求項目と区別して記載すること。厚生労働大臣の定める評価療養、患者申出療養及び選定療養第２条第 12 号に規定する医療機器を使用又は支給した場合は、Ⅱの第３の２の(26)のケの例により「摘要」欄に「器選」と記載し、当該医療機器名を他の特定保険医療材料と区別して記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">エ</span><div class="reg-body">自己負担限度額特例対象被扶養者等の場合には、「特記事項」欄に「高半」と記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">オ</span><div class="reg-body">高齢者医療確保法第 50 条第２号に該当する者（65 歳から 75 歳未満の者であって、後期高齢者医療広域連合の障害認定を受けた者）が 75 歳に到達した月に療養を受けた場合（自己負担限度額が２分の１とならない場合）には、「摘要」欄に障害と記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">カ</span><div class="reg-body">厚生労働大臣の定める評価療養、患者申出療養及び選定療養第１条第５号の２又は第７号の２に規定する再生医療等製品を使用又は支給した場合は、「摘要」欄に「加評」と記載し、当該再生医療等製品名を他の再生医療等製品と区別して記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">キ</span><div class="reg-body">70 歳未満の場合であって、「標準報酬月額 83 万円以上（国民健康保険にあっては、旧ただし書き所得 901 万円超）の世帯」の限度額適用認定証（適用区分が（ア）であるもの）が提示若しくは限度額適用認定証情報が提供された場合又は「標準報酬月額 83 万円以上（国民健康保険にあっては、旧ただし書き所得 901 万円超）の世帯」の特定医療費受給者証、特定疾患医療受給者証若しくは小児慢性特定疾病医療受給者証（適用区分が（ア）であるもの）が提示された場合、又は 70 歳以上の場合であって、「標準報酬月額 83 万円以上（国民健康保険及び後期高齢者医療にあっては、課税所得 690 万円以上）の世帯」の高齢受給者証若しくは後期高齢者医療資格確認書（一部負担金の割合（３割））の提示のみ若しくは高齢受給者証情報若しくは後期高齢者医療資格確認書情報の提供のみの場合又は「標準報酬月額 83 万円以上（国民健康保険及び後期高齢者医療にあっては、課税所得 690 万円以上）の世帯」の適用区分（Ⅵ）の記載のある特定医療費受給者証若しくは特定疾患医療受給者証が提示された場合には、「特記事項」欄に「区ア」と記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ク</span><div class="reg-body">70 歳未満の場合であって、「標準報酬月額 53 万～79 万円（国民健康保険にあっては、旧ただし書き所得 600 万円超～901 万円以下）の世帯」の限度額適用認定証（適用区分が（イ）であるもの）が提示若しくは限度額適用認定証情報が提供された場合又は「標準報酬月額 53 万～79 万円（国民健康保険にあっては、旧ただし書き所得 600 万円超～901 万円以下）の世帯」の特定医療費受給者証、特定疾患医療受給者証若しくは小児慢性特定疾病医療受給者証（適用区分が（イ）であるもの）が提示された場合、又は 70 歳以上の場合であって、「標準報酬月額53 万～79 万円（国民健康保険及び後期高齢者医療にあっては、課税所得 380 万円以上）の世帯」の限度額適用認定証（適用区分が（現役並みⅡ又は現役Ⅱ））が提示若しくは限度額適用認定証情が提供された場合又は「標準報酬月額 53 万～79 万円（国民健康保険及び後期高齢者医療にあっては、課税所得 380 万円以上）の世帯」の適用区分（Ⅴ）の記載のある特定医療費受給者証若しくは特定疾患医療受給者証が提示された場合には、「特記事項」欄に「区イ」と記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ケ</span><div class="reg-body">70 歳未満の場合であって、「標準報酬月額 28 万～50 万円（国民健康保険にあっては、旧ただし書き所得 210 万円超～600 万円以下）の世帯」の限度額適用認定証（適用区分が（ウ）であるもの）が提示若しくは限度額適用認定証情報が提供された場合又は「標準報酬月額 28 万～50 万円（国民健康保険にあっては、旧ただし書き所得 210 万円超～600 万円以下）の世帯」の特定医療費受給者証、特定疾患医療受給者証若しくは小児慢性特定疾病医療受給者証（適用区分が（ウ）であるもの）が提示された場合、又は 70 歳以上の場合であって「標準報酬月額 28 万～50 万円（国民健康保険及び後期高齢者医療にあっては、課税所得 145 万円以上）の世帯」の限度額適用認定証（適用区分が（現役並みⅠ又は現役Ⅰ））が提示若しくは限度額適用認定証情報が提供された場合又は「標準報酬月額 28 万～50 万円（国民健康保険及び後期高齢者医療にあっては、課税所得 145 万円以上）の世帯」の適用区分（Ⅳ）の記載のある特定医療費受給者証若しくは特定疾患医療受給者証が提示された場合には、「特記事項」欄に「区ウ」と記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">コ</span><div class="reg-body">70 歳未満の場合であって、「標準報酬月額 26 万円以下（国民健康保険にあっては、旧ただし書き所得 210 万円以下）の世帯」の限度額適用認定証（適用区分が（エ）であるもの）が提示された場合又は「標準報酬月額 26 万円以下（国民健康保険にあっては、旧ただし書き所得 210 万円以下）の世帯」の特定医療費受給者証、特定疾患医療受給者証若しくは小児慢性特定疾病医療受給者証（適用区分が（エ）であるもの）が提示された場合、又は 70 歳以上の場合であって、「標準報酬月額 26 万円以下（国民健康保険にあっては課税所得 145 万円未満）の世帯」の高齢受給者証（一部負担金の割合（２割））の提示のみ若しくは高齢受給者証情報の提供のみの場合又は「標準報酬月額 26 万円以下（国民健康保険にあっては課税所得 145 万円未満）の世帯」の適用区分（Ⅲ）の記載のある特定医療費受給者証若しくは特定疾患医療受給者証が提示された場合には、「特記事項」欄に「区エ」と記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">サ</span><div class="reg-body">70 歳未満の場合であって、「低所得者の世帯」の限度額適用認定証若しくは限度額適用・標準負担額減額認定証（適用区分が（オ）であるもの）が提示若しくは限度額適用認定証情報若しくは限度額適用・標準負担額減額認定証情報が提供された場合又は「低所得者の世帯」の特定医療費受給者証、特定疾患医療受給者証若しくは小児慢性特定疾病医療受給者証（適用区分が（オ）であるもの）が提示された場合、又は 70 歳以上の場合であって、「低所得者の世帯」の限度額適用認定証若しくは限度額適用・標準負担額減額認定証（適用区分が（Ⅰ又はⅡ））が提示若しくは限度額適用認定証情報若しくは限度額適用・標準負担額減額認定証情報が提供された場合又は「低所得者の世帯」の適用区分（Ⅰ又はⅡ）の記載のある特定医療費受給者証若しくは特定疾患医療受給者証が提示された場合には、「特記事項」欄に「区オ」と記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">シ</span><div class="reg-body">後期高齢者医療において「課税所得 28 万円以上 145 万円未満で年金収入とその他の合計所得金額が単身世帯で 200 万円以上（後期高齢者が２人以上の世帯の場合は 320 万円以上）」の後期高齢者医療資格確認書（一部負担金の割合（２割））が提示若しくは後期高齢者医療資格確認書情報が提供された場合、又は「課税所得 28 万円以上 145 万円未満で年金収入とその他の合計所得金額が単身世帯で 200 万円以上（後期高齢者が２人以上の世帯の場合は 320 万円以上）」の後期高齢者医療資格確認書（一部負担金の割合（２割））かつ適用区分（Ⅲ）の記載のある特定医療費受給者証若しくは特定疾患医療受給者証が提示若しくは後期高齢者医療資格確認書情報が提供かつ適用区分（Ⅲ）の記載のある特定医療費受給者証、特定疾患医療受給者証若しくは肝がん・重度肝硬変治療研究促進事業参加者証が提示された場合には、「特記事項」欄に「区カ」と記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ス</span><div class="reg-body">後期高齢者医療において「課税所得 28 万円未満（「低所得者の世帯」を除く。）若しくは課税所得 28 万円以上 145 万円未満で年金収入とその他の合計所得金額が単身世帯で 200 万円未満（後期高齢者が２人以上の世帯の場合は 320 万円未満）」の後期高齢者医療資格確認書（一部負担金の割合（１割））が提示若しくは後期高齢者医療資格確認書情報が提供された場合、又は「課税所得 28 万円未満（「低所得者の世帯」を除く。）若しくは課税所得 28 万円以上 145 万円未満で年金収入とその他の合計所得金額が単身世帯で 200 万円未満（後期高齢者が２人以上の世帯の場合は 320 万円未満）」の後期高齢者医療資格確認書（一部負担金の割合（１割））かつ適用区分（Ⅲ）の記載のある特定医療費受給者証若しくは特定疾患医療受給者証が提示若しくは後期高齢者医療資格確認書情報が提供かつ適用区分（Ⅲ）の記載のある特定医療費受給者証、特定疾患医療受給者証若しくは肝がん・重度肝硬変治療研究促進事業参加者証が提示された場合には、「特記事項」欄に「区キ」と記載すること。※ シ及びスについては、令和４年 10 月１日から適用する。令和４年９月 30 日までの間は、
+            <div class="reg-para">後期高齢者医療にあってはコに従い、従前どおり「区エ」を使用されたい。</div></div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">セ</span><div class="reg-body">医師の分割指示に係る分割調剤を行った場合は、「医師番号」欄、「処方月日」欄及び「調剤月日」欄に当該分割調剤に係る医師番号、処方月日及び調剤月日を記載すること。また、「処方」欄に指示された分割回数及び当該分割調剤が何回目の分割調剤に相当するかを記載するほか、当該分割調剤における調剤基本料及びその加算等の名称及び点数、薬剤調製料及びその加算並びに調剤管理料及びその加算等の名称及び点数、薬学管理料及びその加算の名称及び点数を記載するとともに、分割調剤技術料（当該分割調剤における調剤基本料及びその加算等、薬剤調製料及びその加算並びに薬学管理料の点数を合算し、当該合算点数を分割指示回数で除し、小数点以下第一位を四捨五入して得た点数をいう。）を併せて記載すること。ただし、服薬情報等提供料については、分割指示回数で除さず、「薬学管理料」欄に名称、回数及び点数を記載すること。</div></div>
+          <div class="reg-item-sub"><span class="reg-num-sub">ソ</span><div class="reg-body">電子情報処理組織の使用による請求又は光ディスク等を用いた請求により療養の給付等の請求を行う場合については、調剤基本料及び薬学管理料を算定した年月日を記録して請求すること。</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">関連ページ</div>
+        <div class="rel">
+          <a href="別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html">別表Ⅰ　調剤報酬明細書「摘要」欄への記載事項<span class="sub">摘要欄に書く内容の一覧</span></a>
+          <a href="別添3_調剤報酬点数表に関する事項2026.html">別添３　調剤報酬点数表に関する事項<span class="sub">算定要件の通知</span></a>
+          <a href="別表第三_調剤報酬点数表2026.html">別表第三　調剤報酬点数表<span class="sub">告示</span></a>
+          <a href="../kaitei2026.html">2026改定 資料一覧<span class="sub">一覧</span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>
