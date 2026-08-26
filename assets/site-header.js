@@ -45,6 +45,7 @@
     'ナレッジ/リフィル処方箋.html': { category: 'knowledge', title: 'リフィル処方箋' },
     'ナレッジ/基礎的医薬品追加リストR8_4.html': { category: 'knowledge', title: '基礎的医薬品 追加リスト（R8.4）' },
     'ナレッジ/調剤報酬QA.html': { category: 'knowledge', title: '調剤報酬 社内Q&A' },
+    'ナレッジ/OTC類似薬の一部保険外療養.html': { category: 'knowledge', title: 'OTC類似薬の一部保険外療養' },
     'ナレッジ/高額療養費と薬局窓口対応.html': { category: 'knowledge', title: '高額療養費と薬局窓口対応' },
     'ナレッジ/高額療養費制度の見直し2026.html': { category: 'knowledge', title: '高額療養費制度の見直し（2026年8月）' },
 
