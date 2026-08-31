@@ -269,18 +269,28 @@
     .sn-crumb-sep { color: #777; font-size: 14px; font-weight: 700; }
     .sn-crumb-current { color: #555; font-weight: 400; }
 
-    /* 最終更新日（パンくずの右端）
+    /* 最終更新日（パンくずの続き）
        検索やフォーラムのリンクで個別ページに直接来た人は、いつ時点の内容か分からなかった。
-       制度の資料なので、読み始める位置で日付が見えるようにする。 */
+       制度の資料なので、読み始める位置で日付が見えるようにする。
+       右端に置くと、タイトル右の点数バッジの真上に並んでバッジの見出しのように見える
+       （麻薬管理指導加算・特定薬剤管理指導加算２などで発生）。パンくずの続きに置く。 */
     .sn-crumb-updated {
-      margin-left: auto;
       font-size: 12px; color: #5e6470; font-weight: 500;
       white-space: nowrap;
+    }
+    .sn-crumb-updated::before {
+      content: "";
+      display: inline-block;
+      width: 1px; height: 11px;
+      background: #ccd2dc;
+      margin-right: 9px;
+      vertical-align: -1px;
     }
     .sn-crumb-updated[hidden] { display: none; }
     .sn-crumb-updated .sn-upd-date { font-weight: 700; color: #444; }
     @media (max-width: 700px) {
-      .sn-crumb-updated { margin-left: 0; width: 100%; font-size: 11px; }
+      .sn-crumb-updated { width: 100%; font-size: 11px; }
+      .sn-crumb-updated::before { display: none; }
     }
 
     /* 同じカテゴリーの他のページ（本文の最後に自動で置く）
