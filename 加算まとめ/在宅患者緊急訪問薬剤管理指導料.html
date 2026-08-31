@@ -8,6 +8,7 @@
     <meta name="search-keywords" content="緊急訪問,計画外訪問,計画以外,急変,変化,臨時処方,月8回,月4回,4のハ,末期の悪性腫瘍,注射による麻薬,16キロメートル,交通費,特別調剤基本料B,訪問指示,要訪問,口頭指示,疑義照会,新型インフルエンザ,きんきゅうほうもん,けいかくがい" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/gigi-list.css" />
+    <link rel="stylesheet" href="../assets/source-refs.css" />
     <style>
       *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
       :root {
@@ -91,20 +92,10 @@
       .fold[open] > summary::before { transform:rotate(90deg); }
       .fold .fold-body { padding:0 var(--pad-card) var(--pad-card); display:flex; flex-direction:column; gap:14px; }
       /* 新旧全文対比 */
-      .orig { display:flex; flex-direction:column; gap:9px; }
-      .orig .oh { font-weight:900; font-size:var(--text-sm); color:var(--blue); margin-top:6px; }
-      .orig .oi { display:flex; gap:9px; font-size:var(--text-sm); line-height:1.7; color:var(--txt-2); }
-      .orig .oi .lab { flex-shrink:0; min-width:28px; font-weight:900; color:var(--txt-3); }
-      .orig .cite { font-size:var(--text-xs); color:var(--txt-3); margin-top:2px; }
       .diff-row { font-size:var(--text-sm); line-height:1.85; }
       .diff-row + .diff-row { margin-top:10px; padding-top:10px; border-top:var(--bw-h) solid var(--border); }
       .diff-lbl { font-weight:900; }
       .diff-arw { text-align:center; color:var(--border-dk); font-size:15px; margin:5px 0; }
-
-      .ref-links { max-width:900px; margin:16px auto 0; padding:20px 16px 4px; border-top:1px solid #d0d8e8; }
-      .ref-links .row { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
-      .ref-links .lab { font-size:12px; color:var(--txt-2); white-space:nowrap; font-weight:bold; }
-      .ref-links a { display:inline-block; color:var(--blue); text-decoration:none; font-size:13px; border:1px solid #a0b8d8; border-radius:6px; padding:4px 12px; background:#fff; }
 
       @media (max-width:640px) {
         body { font-size:14px; padding:14px 12px 40px; line-height:1.75; }

@@ -1,0 +1,42 @@
+/* 原文まわりの共通スタイル（サイト全ページ共通）
+   ・details.fold … 「原文を見る（告示・通知）」の折りたたみ
+   ・.orig 以下   … 折りたたみの中身（告示・通知の本文）
+   ・.ref-links   … ページ最下部の「原文参照：」リンクバー（.page の外に置く）
+   見た目を変えるときはこの1ファイルだけを直す。個別ページに同じ定義を書き足さない。
+   使い方：<head> に <link rel="stylesheet" href="../assets/source-refs.css" /> を1行。 */
+
+/* ── 折りたたみ原文 ── */
+details.fold { background:var(--white,#fff); border:var(--bw,0.5px) solid var(--border,#d1d5db); border-radius:var(--radius,10px); }
+details.fold > summary { list-style:none; cursor:pointer; padding:14px var(--pad-card,22px); font-weight:700; font-size:var(--text-sm,15px); color:var(--txt-2,#444); display:flex; align-items:center; gap:8px; }
+details.fold > summary::-webkit-details-marker { display:none; }
+details.fold > summary::before { content:"▶"; font-size:10px; color:var(--txt-3,#5e6470); transition:transform .15s; }
+details.fold[open] > summary::before { transform:rotate(90deg); }
+details.fold .fold-body { padding:2px var(--pad-card,22px) var(--pad-card,22px); }
+
+/* ── 折りたたみの中身（告示・通知の本文） ── */
+.orig { display:flex; flex-direction:column; gap:9px; }
+.orig .oh { font-weight:900; font-size:var(--text-sm,15px); color:var(--blue,#1e5fa8); margin-top:6px; }
+.orig .oi { display:flex; gap:9px; font-size:var(--text-sm,15px); line-height:1.7; color:var(--txt-2,#444); }
+.orig .oi .lab { flex-shrink:0; min-width:28px; font-weight:900; color:var(--txt-3,#5e6470); }
+.orig .oi .sub { display:block; margin-top:5px; padding-left:1.1em; text-indent:-1.1em; }
+.orig .oi .sub.d2 { margin-left:1.2em; }
+.orig .oi .sub.d3 { margin-left:2.4em; }
+.orig .opara { font-weight:700; font-size:var(--text-sm,15px); color:var(--txt-2,#444); margin-top:4px; }
+.orig .cite { font-size:var(--text-xs,13px); color:var(--txt-3,#5e6470); margin-top:2px; }
+
+/* ── 最下部の原文参照リンク ── */
+.ref-links { max-width:900px; margin:16px auto 0; padding:20px 16px 4px; border-top:1px solid var(--border,#d1d5db); }
+.ref-links .row { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+.ref-links .lab { font-size:12px; color:var(--txt-2,#444); white-space:nowrap; font-weight:700; }
+.ref-links a { display:inline-block; color:var(--blue,#1e5fa8); text-decoration:none; font-size:13px; border:1px solid var(--border,#d1d5db); border-radius:6px; padding:4px 12px; background:var(--white,#fff); }
+.ref-links a:hover { background:#fafbfc; border-color:#bcd3ee; }
+.ref-links .note { font-size:var(--text-xs,13px); color:var(--txt-3,#5e6470); line-height:1.8; }
+
+@media (max-width:640px) {
+  .ref-links { padding:16px 12px 4px; }
+  .ref-links a { font-size:12.5px; padding:4px 10px; }
+}
+
+@media print {
+  details.fold { break-inside:avoid; margin-bottom:9px; }
+}

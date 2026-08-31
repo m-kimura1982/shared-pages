@@ -8,6 +8,7 @@
     <meta name="search-keywords" content="介護保険,ケアマネジャー,ケアプラン,要介護,単位,居宅,介護予防" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/gigi-list.css" />
+    <link rel="stylesheet" href="../assets/source-refs.css" />
     <style>
       *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
       :root {
@@ -135,31 +136,12 @@
       .check-item .ci-main { font-weight:900; }
       .check-item .ci-note { font-size:var(--text-xs); color:var(--txt-3); margin-top:3px; padding-left:1.2em; }
 
-      /* ── 折りたたみ（原文・施設基準など） ── */
-      details.fold { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); }
-      details.fold > summary { list-style:none; cursor:pointer; padding:14px var(--pad-card); font-weight:700; font-size:var(--text-sm); color:var(--txt-2); display:flex; align-items:center; gap:8px; }
-      details.fold > summary::-webkit-details-marker { display:none; }
-      details.fold > summary::before { content:"▶"; font-size:10px; color:var(--txt-3); transition:transform .15s; }
-      details.fold[open] > summary::before { transform:rotate(90deg); }
-      details.fold .fold-body { padding:2px var(--pad-card) var(--pad-card); }
-      .orig { display:flex; flex-direction:column; gap:9px; }
-      .orig .oh { font-weight:900; font-size:var(--text-sm); color:var(--blue); margin-top:6px; }
-      .orig .oi { display:flex; gap:9px; font-size:var(--text-sm); line-height:1.7; color:var(--txt-2); }
-      .orig .oi .lab { flex-shrink:0; min-width:28px; font-weight:900; color:var(--txt-3); }
-      .orig .cite { font-size:var(--text-xs); color:var(--txt-3); margin-top:2px; }
-
       /* ── 関連ページ（横の導線） ── */
       .rel { display:flex; flex-direction:column; gap:8px; }
       .rel a { display:flex; align-items:center; gap:9px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; text-decoration:none; color:var(--ink); font-size:var(--text-sm); font-weight:700; }
       .rel a::before { content:"›"; color:var(--blue); font-weight:900; }
       .rel a:hover { background:#fafbfc; border-color:#bcd3ee; }
       .rel a .sub { font-weight:400; color:var(--txt-3); font-size:var(--text-xs); margin-left:auto; }
-
-      /* ── 原文参照リンク（最下部・.page の外） ── */
-      .ref-links { max-width:900px; margin:16px auto 0; padding:20px 16px 4px; border-top:1px solid var(--border); }
-      .ref-links .row { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
-      .ref-links .lab { font-size:12px; color:var(--txt-2); white-space:nowrap; font-weight:bold; }
-      .ref-links a { display:inline-block; color:var(--blue); text-decoration:none; font-size:13px; border:1px solid var(--border); border-radius:6px; padding:4px 12px; background:var(--white); }
 
       @media (max-width:640px) {
         body { font-size:14px; padding:14px 12px 40px; line-height:1.75; }
@@ -336,8 +318,12 @@
 
     </div>
 
-    <div style="max-width:900px; margin:18px auto 0; font-size:var(--text-xs); color:var(--txt-3); line-height:1.8;">
-      原文参照：厚生労働省「令和６年度介護報酬改定について」の告示・留意事項通知／<a href="../yakureki/居宅療養管理指導_薬歴の記載事項.html">居宅療養管理指導の薬歴記載事項（原典）</a>
+    <div class="ref-links">
+      <div class="row">
+        <span class="lab">原文参照：</span>
+        <a href="../yakureki/居宅療養管理指導_薬歴の記載事項.html">居宅療養管理指導の薬歴記載事項</a>
+      </div>
+      <div class="note" style="margin-top:8px;">告示・留意事項通知は厚生労働省「令和６年度介護報酬改定について」による。</div>
     </div>
 
     <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
