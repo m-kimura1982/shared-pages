@@ -141,11 +141,11 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-31"
   },
   "加算まとめ/在宅患者緊急時等共同指導料.html": {
-    "lastUpdated": "2026-09-02",
+    "lastUpdated": "2026-09-03",
     "newUntil": "2026-09-01"
   },
   "加算まとめ/在宅移行初期管理料.html": {
-    "lastUpdated": "2026-09-02",
+    "lastUpdated": "2026-09-03",
     "newUntil": "2026-09-01"
   },
   "加算まとめ/特定薬剤管理指導加算1.html": {
@@ -156,11 +156,11 @@ window.__pageMeta = {
     "lastUpdated": "2026-09-02"
   },
   "加算まとめ/在宅患者訪問薬剤管理指導料.html": {
-    "lastUpdated": "2026-09-02",
+    "lastUpdated": "2026-09-03",
     "newUntil": "2026-08-26"
   },
   "加算まとめ/在宅患者緊急訪問薬剤管理指導料.html": {
-    "lastUpdated": "2026-09-02",
+    "lastUpdated": "2026-09-03",
     "newUntil": "2026-09-01"
   },
   "加算まとめ/夜間・休日・深夜訪問加算.html": {
@@ -168,7 +168,7 @@ window.__pageMeta = {
     "newUntil": "2026-09-01"
   },
   "加算まとめ/連携強化加算.html": {
-    "lastUpdated": "2026-09-02",
+    "lastUpdated": "2026-09-03",
     "newUntil": "2026-09-09"
   },
   "加算まとめ/服用薬剤調整支援料２_2026改定.html": {
@@ -191,7 +191,7 @@ window.__pageMeta = {
     "newUntil": "2026-08-02"
   },
   "加算まとめ/在宅患者医療用麻薬持続注射療法加算.html": {
-    "lastUpdated": "2026-09-02",
+    "lastUpdated": "2026-09-03",
     "newUntil": "2026-09-09"
   },
   "加算まとめ/居宅療養管理指導費.html": {
@@ -202,7 +202,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-31"
   },
   "加算まとめ/在宅中心静脈栄養法加算.html": {
-    "lastUpdated": "2026-09-02",
+    "lastUpdated": "2026-09-03",
     "newUntil": "2026-09-09"
   },
   "加算まとめ/乳幼児服薬指導加算.html": {
@@ -218,7 +218,7 @@ window.__pageMeta = {
     "newUntil": "2026-08-04"
   },
   "加算まとめ/麻薬管理指導加算.html": {
-    "lastUpdated": "2026-09-02",
+    "lastUpdated": "2026-09-03",
     "newUntil": "2026-08-19"
   },
   "加算まとめ/薬学的有害事象等防止加算.html": {
