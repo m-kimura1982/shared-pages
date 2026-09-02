@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>自家製剤加算・計量混合調剤加算｜算定項目まとめ</title>
+    <meta name="search-keywords" content="自家製剤加算,計量混合調剤加算,半錠,半割,粉砕,分割,予製剤,一包化,外来服薬支援料2,同一規格,薬価収載,賦形剤,矯味剤,坐剤,点眼剤,ドライシロップ,供給不安,流通不良" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/gigi-list.css" />
+    <link rel="stylesheet" href="../assets/source-refs.css" />
+    <style>
+      *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+      :root {
+        --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+        --pad-card:22px; --gap-card:16px;
+        --blue:#1e5fa8; --ink:#222222;
+        --bg:#f3f4f6; --white:#ffffff;
+        --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+        --border:#d1d5db; --border-dk:#9ca3af;
+        --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px;
+        --txt-2:#444444; --txt-3:#5e6470;
+      }
+      body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+      .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+      /* 見出し */
+      .page-title-wrap { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+      .page-title-left { flex:1; }
+      .page-title-left h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+      .page-title-left p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+      .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+      .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+      .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+      .sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin:18px 0 9px; }
+      .sub-title:first-child { margin-top:0; }
+      .sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+
+      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+
+      .score-block { display:flex; flex-direction:column; border:var(--bw) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; flex-shrink:0; }
+      .score-block .score-label { background:var(--box-gray); color:var(--txt-2); font-size:var(--text-xs); font-weight:700; padding:5px 16px; text-align:center; border-bottom:var(--bw) solid var(--border); }
+      .score-block .score-num { background:var(--white); font-size:28px; font-weight:900; padding:6px 20px; text-align:center; white-space:nowrap; }
+      .score-block .score-num span { font-size:var(--text-sm); font-weight:500; margin-left:2px; }
+
+      /* 強調 */
+      .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+      .em-change { color:var(--blue); font-weight:900; }
+
+      .lead-note { background:#eef4fb; border-radius:var(--radius-sm); padding:12px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray .ttl, .box-blue .ttl { display:block; font-weight:900; margin-bottom:5px; font-size:var(--text-sm); }
+      .box-gray .ttl { color:var(--blue); }
+      .box-blue .ttl { color:var(--ink); }
+
+      table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+      th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
+      td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
+      tr:last-child td { border-bottom:none; }
+      .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+
+      /* 箇条書き */
+      .list { display:flex; flex-direction:column; gap:6px; margin:4px 0 2px; }
+      .list .li { font-size:var(--text-sm); line-height:1.7; padding-left:18px; text-indent:-18px; }
+      .list .li::before { content:"・"; color:var(--txt-3); font-weight:900; margin-right:6px; }
+      .list .li b { color:var(--ink); }
+
+      /* 記号付きの箇条（ア・イ・ウ／①②③）は記号列と本文列を分けて、折り返しの縦を揃える */
+      .list .li.mk { display:flex; gap:7px; padding-left:0; text-indent:0; }
+      .list .li.mk::before { content:none; }
+      .list .li.mk > .m { flex-shrink:0; font-weight:900; color:var(--ink); }
+
+
+      /* 注1・注2 対比（2列。どちらも中立＝色で優劣を付けない） */
+      .cmp { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:4px; }
+      .cmp .col { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; display:flex; flex-direction:column; }
+      .cmp .col-head { background:#eef2f7; padding:9px 14px; display:flex; align-items:baseline; gap:9px; border-bottom:var(--bw-h) solid var(--border); }
+      .cmp .col-head .no { font-weight:900; color:var(--blue); font-size:var(--text-md); }
+      .cmp .col-head .nm { font-weight:700; font-size:var(--text-xs); color:var(--txt-2); }
+      .cmp .col-body { padding:12px 14px; font-size:var(--text-sm); line-height:1.7; flex:1; }
+      .cmp .col-body .def { margin-bottom:9px; }
+      .cmp .col-body .yk { font-size:var(--text-xs); font-weight:900; color:var(--txt-3); margin:2px 0 4px; }
+      .cmp .col-body ol { list-style:none; counter-reset:y; }
+      .cmp .col-body ol li { counter-increment:y; padding-left:20px; text-indent:-20px; font-size:var(--text-sm); line-height:1.6; margin-bottom:2px; }
+      .cmp .col-body ol li::before { content:counter(y)". "; font-weight:900; color:var(--blue); }
+
+      /* 記載例 */
+      .rei { display:block; background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; margin-top:10px; font-size:var(--text-sm); line-height:1.8; }
+      .rei .ttl { display:block; font-weight:900; color:var(--blue); font-size:var(--text-xs); margin-bottom:5px; }
+      .rei p { padding-left:14px; text-indent:-14px; }
+      .rei p + p { margin-top:6px; }
+      .rei .dot { color:var(--txt-3); font-weight:900; }
+
+      /* 摘要欄 表示文言 */
+      .disp { display:flex; flex-direction:column; gap:8px; margin-top:4px; }
+      .disp .d { border:var(--bw-h) solid var(--border); border-left:var(--bw-a) solid var(--blue); border-radius:var(--radius-sm); padding:9px 13px; font-size:var(--text-sm); line-height:1.6; }
+      .disp .d .pre { color:var(--txt-3); }
+      .disp .d .val { font-weight:900; color:var(--ink); }
+
+      /* 番号バッジ付き注意リスト */
+      .num-list { display:flex; flex-direction:column; gap:11px; }
+      .num-list .ni { display:flex; gap:11px; align-items:flex-start; }
+      .num-list .ni .n { width:23px; height:23px; border-radius:6px; background:var(--blue); color:#fff; font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+      .num-list .ni .c { flex:1; font-size:var(--text-sm); line-height:1.7; }
+      .num-list .ni .c b { color:var(--ink); }
+
+      /* 関連リンク */
+      .rel { display:flex; flex-direction:column; gap:8px; }
+      .rel a { display:flex; align-items:center; gap:9px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; text-decoration:none; color:var(--ink); font-size:var(--text-sm); font-weight:700; }
+      .rel a::before { content:"›"; color:var(--blue); font-weight:900; }
+      .rel a:hover { background:#fafbfc; border-color:#bcd3ee; }
+      .rel a .sub { font-weight:400; color:var(--txt-3); font-size:var(--text-xs); margin-left:auto; }
+
+      .musts { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 2px; }
+      .musts .m { font-size:var(--text-xs); font-weight:700; color:var(--blue); background:var(--box-blue); border-radius:4px; padding:3px 10px; }
+
+      .page-foot { font-size:var(--text-xs); color:var(--txt-3); text-align:right; padding-top:2px; }
+
+      @media (max-width:640px) {
+        body { font-size:14px; padding:14px 12px 40px; line-height:1.75; }
+        :root { --text-xs:11.5px; --text-sm:13.5px; --text-md:14px; --text-lg:16px; --text-xl:18px; --pad-card:14px; --gap-card:11px; }
+        .card { padding:14px; border-radius:8px; }
+        .page-title-wrap { flex-direction:column; gap:12px; }
+        .cmp { grid-template-columns:1fr; }
+        .rel a .sub { display:none; }
+        table { min-width:420px; }
+      }
+      @media print {
+        @page { margin:10mm 9mm; size:A4; }
+        body { background:#fff; padding:0; font-size:11px; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        /* フレックスのままだと印刷時に改ページが効かない。block に戻して gap→margin にする */
+        .page { display:block; max-width:none; }
+        /* 長いカードはページをまたいで詰めてよい（空白を作らない） */
+        .card { border:0.5px solid #ccc; padding:9px 11px; margin-bottom:7px; break-inside:auto; }
+        /* 見出しだけがページ末尾に取り残されないように */
+        .card-title, .sub-title { break-after:avoid; }
+        .card-title { margin-bottom:8px; padding-bottom:5px; }
+        /* 小さな塊は途中で切らない */
+        .lead-note, .box-gray, .box-blue, .rei, .disp .d, .check-item,
+        .cmp .col, .num-list .ni, .steps .step, .gi-row, tr { break-inside:avoid; }
+        details.fold { break-inside:avoid; }
+        .page-foot { display:none; }
+        a { color:inherit; text-decoration:none; }
+      }
+    </style>
+</head>
+  <body>
+    <script src="../assets/site-header.js" defer></script>
+    <div class="page">
+
+      <div class="page-title-wrap">
+        <div class="page-title-left">
+          <h1>自家製剤加算・計量混合調剤加算</h1>
+          <p>薬剤調製料の加算｜製剤・混合を行った場合の評価</p>
+        </div>
+      </div>
+
+      <div class="lead-note">
+        <span class="marker">自家製剤加算を算定した場合は計量混合調剤加算を算定できない</span>ので、先に自家製剤加算に該当するかを判断する。
+      </div>
+
+      <!-- 点数・区分 -->
+      <div class="card">
+        <div class="card-title">点数・区分<span class="qual">どちらも１調剤につき</span></div>
+
+        <div class="sub-title">自家製剤加算</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th style="white-space:nowrap;">区分</th><th>剤形</th><th style="text-align:right; white-space:nowrap;">点数</th></tr></thead>
+            <tbody>
+              <tr><td style="white-space:nowrap; font-weight:900;">イ(1)</td><td>錠剤、丸剤、カプセル剤、散剤、顆粒剤又はエキス剤の<b>内服薬</b></td><td style="text-align:right; font-weight:900; white-space:nowrap;">20点</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">イ(2)</td><td>錠剤、丸剤、カプセル剤、散剤、顆粒剤又はエキス剤の<b>屯服薬</b></td><td style="text-align:right; font-weight:900; white-space:nowrap;">90点</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">イ(3)</td><td>液剤（内服・屯服）</td><td style="text-align:right; font-weight:900; white-space:nowrap;">45点</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">ロ(1)</td><td>外用薬　錠剤、トローチ剤、軟・硬膏剤、パップ剤、リニメント剤、坐剤</td><td style="text-align:right; font-weight:900; white-space:nowrap;">90点</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">ロ(2)</td><td>外用薬　点眼剤、点鼻・点耳剤、浣腸剤</td><td style="text-align:right; font-weight:900; white-space:nowrap;">75点</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">ロ(3)</td><td>外用薬　液剤</td><td style="text-align:right; font-weight:900; white-space:nowrap;">45点</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sub-title">内服薬の投与日数と点数</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;">イ(1)の内服薬は、自家製剤を行った<span class="marker">投与日数が７又はその端数を増すごと</span>に20点を算定する。屯服薬・外用薬は投薬量・投薬日数に関係なく１調剤につき所定点数。</p>
+        <div class="table-wrap" style="margin-top:8px;">
+          <table>
+              <thead><tr><th style="white-space:nowrap;">投与日数</th><th style="text-align:right; white-space:nowrap;">点数</th></tr></thead>
+              <tbody>
+                <tr><td>１〜７日分</td><td style="text-align:right; font-weight:900;">20点</td></tr>
+                <tr><td>８〜14日分</td><td style="text-align:right; font-weight:900;">40点</td></tr>
+                <tr><td>15〜21日分</td><td style="text-align:right; font-weight:900;">60点</td></tr>
+                <tr><td>22〜28日分</td><td style="text-align:right; font-weight:900;">80点</td></tr>
+                <tr><td>29〜35日分</td><td style="text-align:right; font-weight:900;">100点</td></tr>
+                <tr><td>36日分以降</td><td style="text-align:right; font-weight:900;">７日ごとに＋20点</td></tr>
+              </tbody>
+            </table>
+        </div>
+
+        <div class="box-gray" style="margin-top:12px;">
+          <span class="ttl">予製剤・錠剤分割は100分の20</span>
+          <span class="marker">予製剤による場合と錠剤を分割する場合は、所定点数の100分の20</span>（小数点以下第一位を四捨五入）。屯服薬なら90点ではなく18点になる。錠剤を分割して予製剤とする場合も同じ扱い。「予製剤」とは、あらかじめ想定される調剤のために複数回分を製剤し、処方箋受付時にその製剤を投与すること。
+        </div>
+
+        <div class="sub-title">計量混合調剤加算</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th style="white-space:nowrap;">区分</th><th>剤形</th><th style="text-align:right; white-space:nowrap;">点数</th></tr></thead>
+            <tbody>
+              <tr><td style="white-space:nowrap; font-weight:900;">イ</td><td>液剤</td><td style="text-align:right; font-weight:900; white-space:nowrap;">35点</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">ロ</td><td>散剤又は顆粒剤</td><td style="text-align:right; font-weight:900; white-space:nowrap;">45点</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">ハ</td><td>軟・硬膏剤</td><td style="text-align:right; font-weight:900; white-space:nowrap;">80点</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-gray" style="margin-top:10px;">
+          こちらも予製剤による場合は100分の20。投薬量・投薬日数に関係なく、計量して混合するという<b>１調剤行為</b>に対して算定する。
+        </div>
+      </div>
+
+      <!-- 自家製剤とは -->
+      <div class="card">
+        <div class="card-title">自家製剤加算<span class="qual">何が「自家製剤」に該当するか</span></div>
+
+        <div class="sub-title">対象</div>
+        <div class="list">
+          <div class="li">薬価基準に収載されている医薬品の<b>剤形では対応できない</b>場合に、医師の指示に基づき、容易に服用できるよう<b>調剤上の特殊な技術工夫</b>（安定剤・溶解補助剤・懸濁剤等の添加剤の使用、ろ過、加温、滅菌等）を行った場合</div>
+          <div class="li">✕ <b>既製剤を単に小分けする場合は該当しない</b></div>
+        </div>
+
+        <div class="sub-title">自家製剤の例</div>
+        <div class="list">
+          <div class="li mk"><span class="m">(イ)</span><span>錠剤を粉砕して散剤とすること</span></div>
+          <div class="li mk"><span class="m">(ロ)</span><span>主薬を溶解して点眼剤を無菌に製すること</span></div>
+          <div class="li mk"><span class="m">(ハ)</span><span>主薬に基剤を加えて坐剤とすること</span></div>
+        </div>
+
+        <div class="sub-title">乳幼児に矯味剤等を加えたとき</div>
+        <div class="list">
+          <div class="li">通常、成人や６歳以上の小児には矯味剤等を加える必要がない薬剤を、６歳未満の乳幼児に調剤する場合に、薬剤師が必要性を認めて処方医の了解を得たうえで<b>単に矯味剤等を加えて製剤した場合</b>も、内服薬の点数（イ）を算定できる</div>
+        </div>
+        <div class="sub-title">算定できない場合</div>
+        <div class="list">
+          <div class="li">調剤した医薬品と<span class="marker">同一剤形及び同一規格を有する医薬品が薬価基準に収載されている</span>場合</div>
+          <div class="li">錠剤を分割する場合で、<b>分割した医薬品と同一規格を有する医薬品が薬価基準に収載されている</b>とき</div>
+          <div class="li">液剤で、承認事項において<b>用時溶解して使用することとされている</b>医薬品を交付時に溶解した場合</div>
+          <div class="li"><b>外来服薬支援料２（一包化）を算定した範囲の薬剤</b></div>
+        </div>
+
+        <div class="box-blue" style="margin-top:12px;">
+          <span class="ttl">同一規格があっても算定できる例外</span>
+          薬価基準に収載されていても、<span class="marker">供給上の問題で入手困難</span>で、調剤に必要な数量を確保できない場合は算定できる。この場合はレセプト摘要欄に薬剤名とやむを得ない事情を入力する（下の「レセプト摘要欄記載事項」を参照）。
+        </div>
+
+      </div>
+
+      <!-- 計量混合調剤加算 -->
+      <div class="card">
+        <div class="card-title">計量混合調剤加算</div>
+
+        <div class="sub-title">対象</div>
+        <div class="list">
+          <div class="li">薬価基準に収載されている<b>２種類以上</b>の医薬品（液剤、散剤若しくは顆粒剤又は軟・硬膏剤に限る）を計量し、かつ混合して、液剤・散剤・顆粒剤として内服薬又は屯服薬を調剤した場合、及び軟・硬膏剤等として外用薬を調剤した場合</div>
+          <div class="li"><b>ドライシロップ剤を液剤と混合した場合</b>は計量混合調剤加算を算定する</div>
+          <div class="li">処方された医薬品が微量で乳幼児がそのままでは<b>調剤又は服用が困難</b>な場合に、医師の了解を得て賦形剤・矯味矯臭剤等を混合し、正確に又は容易に服用できるようにした場合も算定できる</div>
+        </div>
+
+        <div class="sub-title">算定できない場合</div>
+        <div class="list">
+          <div class="li">液剤・散剤・顆粒剤・軟硬膏剤について<b>自家製剤加算を算定した</b>場合</div>
+          <div class="li">薬価基準に収載されている薬剤と<b>同一剤形及び同一規格を有する薬剤</b>を調剤した場合（乳幼児への賦形剤等の混合も同じ）</div>
+          <div class="li"><b>外来服薬支援料２（一包化）を算定した範囲の薬剤</b></div>
+        </div>
+      </div>
+
+      <!-- 一包化との関係 -->
+      <div class="card">
+        <div class="card-title">一包化（外来服薬支援料２）との関係<span class="qual">算定漏れ・過剰算定が起きやすい</span></div>
+        <div class="box-gray" style="margin-bottom:12px;">
+          <span class="ttl">以下は当社の整理</span>
+          通知は「外来服薬支援料２を算定した範囲の薬剤については、自家製剤加算及び計量混合調剤加算は算定できない」と定めるだけで、「範囲」の定義はない。
+        </div>
+        <p style="font-size:var(--text-sm); line-height:1.8;">外来服薬支援料２は<span class="marker">服用時点ごとに一包として投与すること</span>を評価した点数である。したがって併算定を禁じている「外来服薬支援料２を算定した範囲の薬剤」とは、<b>一包化の算定根拠となった服用時点の全体</b>を指す。</p>
+        <div class="list" style="margin-top:10px;">
+          <div class="li">一包化から外して別包（ユニパック等）で交付しても、<b>同じ服用時点に含まれる</b>以上は自家製剤加算を算定できない</div>
+          <div class="li"><b>服用時点が違えば算定できる。</b>例）朝食後を一包化した処方に、就寝前の錠剤分割が加わった場合、その半錠について算定できる</div>
+          <div class="li">一包化の範囲外にある錠剤分割は<span class="marker">算定漏れが起きやすい</span></div>
+        </div>
+        <p style="font-size:var(--text-sm); line-height:1.8; margin-top:10px;">具体的な処方例での判断は、下の「関連する社内Q&amp;A」を参照。</p>
+      </div>
+
+      <!-- 算定上の注意 -->
+      <div class="card">
+        <div class="card-title">算定上の注意</div>
+        <div class="list">
+          <div class="li">自家製剤を行った場合は、<span class="marker">賦形剤の名称、分量等を含め製剤工程を調剤録等に記載する</span></div>
+          <div class="li">自家製剤・計量混合調剤は、<b>医薬品の特性を十分理解し、薬学的に問題ないと判断される場合に限り行う</b>（そもそも粉砕できない製剤がある）</div>
+          <div class="li">自家製剤加算・計量混合調剤加算は、<b>時間外加算等の基礎額に含まれない</b></div>
+        </div>
+      </div>
+
+      <!-- レセプト摘要欄 -->
+      <div class="card">
+        <div class="card-title">レセプト摘要欄記載事項</div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th style="white-space:nowrap;">どんなとき</th><th>レセプト表示文言</th></tr></thead>
+            <tbody>
+              <tr>
+                <td style="white-space:nowrap; font-weight:900;">加算理由が処方から<br />分からないとき</td>
+                <td><div class="disp"><div class="d"><span class="pre">算定理由（自家製剤加算）；</span><span class="val">算定理由</span></div></div></td>
+              </tr>
+              <tr>
+                <td style="white-space:nowrap; font-weight:900;">供給の問題で<br />算定するとき</td>
+                <td><div class="disp">
+                  <div class="d"><span class="pre">調剤に必要な数量が確保できなかった薬剤名（自家製剤加算）；</span><span class="val">薬剤名</span></div>
+                  <div class="d"><span class="pre">調剤に必要な数量が確保できなかったやむを得ない事情（自家製剤加算）：</span><span class="val">医薬品の供給上の問題</span></div>
+                  <div class="d"><span class="pre">調剤に必要な数量が確保できなかったやむを得ない事情（自家製剤加算）；その他；</span><span class="val">事情</span></div>
+                </div></td>
+              </tr>
+              <tr>
+                <td style="white-space:nowrap; font-weight:900;">同一医療機関の<br />異なる保険医の<br />処方箋のとき</td>
+                <td><div class="disp">
+                  <div class="d"><span class="pre">異なる保険医の発行する処方箋に係る算定理由（自家製剤加算）；</span><span class="val">算定理由</span></div>
+                  <div class="d"><span class="pre">異なる保険医の発行する処方箋に係る算定理由（計量混合調剤加算）；</span><span class="val">算定理由</span></div>
+                </div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 原文（自動生成：node assets/build-genbun.js。マーカーの間は上書きされる） -->
+      <!-- genbun betten3="kub-01-11,kub-01-12" hyo3="ku01" note="6,7" -->
+    <details class="fold avoid-break">
+      <summary>原文を見る（告示・通知）</summary>
+      <div class="fold-body">
+        <div class="orig">
+        <div class="oh">告示（別表第三　区分０１　薬剤調製料）</div>
+        <div class="oi"><span class="lab">注６</span><span>次の薬剤を自家製剤の上調剤した場合は、自家製剤加算として、１調剤につき（イの(1)に掲げる場合にあっては、投与日数が７又はその端数を増すごとに）、それぞれ次の点数（予製剤による場合又は錠剤を分割する場合はそれぞれ次に掲げる点数の100分の20に相当する点数）を各区分の所定点数に加算する。ただし、別に厚生労働大臣が定める薬剤については、この限りでない。<span class="sub">剤形　点数</span><span class="sub">イ(1)　内服薬・屯服薬　錠剤、丸剤、カプセル剤、散剤、顆粒剤又はエキス剤の内服薬　20点</span><span class="sub">イ(2)　錠剤、丸剤、カプセル剤、散剤、顆粒剤又はエキス剤の屯服薬　90点</span><span class="sub">イ(3)　液剤（内服・屯服）　45点</span><span class="sub">ロ(1)　外用薬　錠剤、トローチ剤、軟・硬膏剤、パップ剤、リニメント剤、坐剤　90点</span><span class="sub">ロ(2)　外用薬　点眼剤、点鼻・点耳剤、浣腸剤　75点</span><span class="sub">ロ(3)　外用薬　液剤　45点</span></span></div>
+        <div class="oi"><span class="lab">注７</span><span>２種以上の薬剤（液剤、散剤若しくは顆粒剤又は軟・硬膏剤に限る。）を計量し、かつ、混合して、内服薬若しくは屯服薬又は外用薬を調剤した場合は、計量混合調剤加算として、１調剤につきそれぞれ次の点数（予製剤による場合はそれぞれ次に掲げる点数の100分の20に相当する点数）を各区分の所定点数に加算する。ただし、注６に規定する加算のある場合又は当該薬剤が注６のただし書に規定する別に厚生労働大臣が定める薬剤である場合は、この限りでない。<span class="sub">剤形　点数</span><span class="sub">イ　液剤の場合　35点</span><span class="sub">ロ　散剤又は顆粒剤の場合　45点</span><span class="sub">ハ　軟・硬膏剤の場合　80点</span></span></div>
+        <div class="oh">通知（別添3　区分０１　薬剤調製料）</div>
+        <div class="oi"><span class="lab">(11)</span><span>自家製剤加算<span class="sub">ア　自家製剤加算は、イの(1)に掲げる場合以外の場合においては、投薬量、投薬日数等に関係なく、自家製剤による１調剤行為に対し算定し、イの(1)に掲げる錠剤、丸剤、カプセル剤、散剤、顆粒剤又はエキス剤の内服薬を自家製剤の上調剤した場合においては、自家製剤を行った投与日数が７又はその端数を増すごとに所定点数を算定する。ただし、いずれの場合においても、予製剤による場合又は錠剤を分割する場合にあっては所定点数の100分の20に相当する点数を算定する。</span><span class="sub">イ　当該加算に係る自家製剤とは、個々の患者に対し薬価基準に収載されている医薬品の剤形では対応できない場合に、医師の指示に基づき、容易に服用できるよう調剤上の特殊な技術工夫（安定剤、溶解補助剤、懸濁剤等必要と認められる添加剤の使用、ろ過、加温、滅菌等）を行った次のような場合であり、既製剤を単に小分けする場合は該当しない。</span><span class="sub d2">(イ)　錠剤を粉砕して散剤とすること。</span><span class="sub d2">(ロ)　主薬を溶解して点眼剤を無菌に製すること。</span><span class="sub d2">(ハ)　主薬に基剤を加えて坐剤とすること。</span><span class="sub">ウ　「注６」のただし書に規定する「別に厚生労働大臣が定める薬剤」とは、薬価基準に収載されている薬剤と同一剤形及び同一規格を有する薬剤をいう。ただし、当該医薬品が薬価基準に収載されている場合であっても、供給上の問題により当該医薬品が入手困難であり、調剤を行う際に必要な数量を確保できない場合は除く。なお、医薬品の供給上の問題により当該加算を算定する場合には、調剤報酬明細書の摘要欄に調剤に必要な数量が確保できなかった薬剤名とともに確保できなかったやむを得ない事情を記載すること。</span><span class="sub">エ　薬価基準に収載されている医薬品に溶媒、基剤等の賦形剤を加え、当該医薬品と異なる剤形の医薬品を自家製剤の上調剤した場合に、次の場合を除き自家製剤加算を算定できる。</span><span class="sub d2">(イ)　調剤した医薬品と同一剤形及び同一規格を有する医薬品が薬価基準に収載されている場合。</span><span class="sub d2">(ロ)　液剤を調剤する場合であって、医薬品、医療機器等の品質、有効性及び安全性の確保等に関する法律（昭和35年法律第145号。以下「医薬品医療機器等法」という。）上の承認事項において用時溶解して使用することとされている医薬品を交付時に溶解した場合</span><span class="sub">オ　自家製剤加算を算定した場合には、計量混合調剤加算は算定できない。</span><span class="sub">カ　「予製剤」とは、あらかじめ想定される調剤のために、複数回分を製剤し、処方箋受付時に当該製剤を投与することをいう。</span><span class="sub">キ　「錠剤を分割する場合」とは、医師の指示に基づき錠剤を分割することをいう。ただし、分割した医薬品と同一規格を有する医薬品が薬価基準に収載されている場合は算定できない。</span><span class="sub">ク　錠剤を分割して予製剤とする場合においては、予製剤とする場合又は錠剤を分割する場合と同様に自家製剤加算の所定点数を100分の20にし、小数点以下第一位を四捨五入した点数を算定する。</span><span class="sub">ケ　通常、成人又は６歳以上の小児に対して矯味剤等を加える必要がない薬剤を６歳未満の乳幼児（以下「乳幼児」という。）に対して調剤する場合において、保険薬剤師が必要性を認めて、処方医の了解を得た後で、単に矯味剤等を加えて製剤した場合であっても、「注６」のイを算定できる。</span><span class="sub">コ　自家製剤を行った場合には、賦形剤の名称、分量等を含め製剤工程を調剤録等に記載すること。</span><span class="sub">サ　自家製剤は、医薬品の特性を十分理解し、薬学的に問題ないと判断される場合に限り行うこと。</span></span></div>
+        <div class="oh">通知（別添3　区分０１　薬剤調製料）</div>
+        <div class="oi"><span class="lab">(12)</span><span>計量混合調剤加算<span class="sub">ア　計量混合調剤加算は、薬価基準に収載されている２種類以上の医薬品（液剤、散剤若しくは顆粒剤又は軟・硬膏剤に限る。）を計量し、かつ、混合して、液剤、散剤若しくは顆粒剤として内服薬又は屯服薬を調剤した場合及び軟・硬膏剤等として外用薬を調剤した場合に、投薬量、投薬日数に関係なく、計量して混合するという１調剤行為に対し算定できる。なお、「注７」のただし書に規定する場合とは、次の場合をいう。</span><span class="sub d2">(イ)　液剤、散剤、顆粒剤、軟・硬膏剤について「注６」の自家製剤加算を算定した場合</span><span class="sub d2">(ロ)　薬価基準に収載されている薬剤と同一剤形及び同一規格を有する薬剤を調剤した場合</span><span class="sub">イ　ドライシロップ剤を液剤と混合した場合は、計量混合調剤加算を算定するものとする。</span><span class="sub">ウ　処方された医薬品が微量のため、乳幼児に対してそのままでは調剤又は服用が困難である場合において、医師の了解を得た上で賦形剤、矯味矯臭剤等を混合し、乳幼児が正確に、又は容易に服用できるようにした場合は、「注７」を算定できる。ただし、調剤した医薬品と同一剤形及び同一規格を有する医薬品が薬価基準に収載されている場合は、この限りでない。</span><span class="sub">エ　計量混合調剤は、医薬品の特性を十分理解し、薬学的に問題ないと判断される場合に限り行うこと。</span></span></div>
+        <div class="cite">出典：診療報酬の算定方法（別表第三　調剤報酬点数表）／「診療報酬の算定方法の一部改正に伴う実施上の留意事項について」（令和8年3月5日　保医発0305第6号）別添3。</div>
+        </div>
+      </div>
+    </details>
+      <!-- /genbun -->
+
+      <!-- 関連する社内Q&A（自動生成：node assets/build-gigi-list.js） -->
+      <div class="card">
+        <!-- qa-list:c-jikaseizai -->
+        <div class="card-title">関連する社内Q&amp;A<span class="qual">全4件</span></div>
+        <div class="lead-note">結論のみ記載。解説は調剤報酬Q&amp;Aで確認する。</div>
+
+        <a class="gi-row" href="../ナレッジ/調剤報酬QA.html#q-jikaseizai-1">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">一包化の対象外の薬を半錠にした場合、自家製剤加算は算定できますか？</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">算定できる。<span class="sub">一包化（外来服薬支援料２）を算定した範囲の薬剤は算定できない。その範囲外の薬を半錠にした場合は算定できる。</span></span></div>
+          <div class="gi-more">調剤報酬Q&amp;Aで解説を見る<span class="chev">›</span></div>
+        </a>
+
+        <a class="gi-row" href="../ナレッジ/調剤報酬QA.html#q-jikaseizai-2">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">調節服用のためセレコキシブを分割し、一包化に含めず別包（またはユニパック）で交付します。セレコキシブを外しても残りの薬剤で一包化の要件は満たしているのですが、外来服薬支援料２と自家製剤加算を併算定できますか？</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">このケースでは算定できない。<span class="sub">一包化から外しても、一包化した服用時点に含まれる薬剤は自家製剤加算の対象外になる。</span></span></div>
+          <div class="gi-more">調剤報酬Q&amp;Aで解説を見る<span class="chev">›</span></div>
+        </a>
+
+        <a class="gi-row" href="../ナレッジ/調剤報酬QA.html#q-jikaseizai-3">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">カロナール錠200mgを半錠にした場合、自家製剤加算は算定できますか？　カロナール細粒で対応できると思うのですが、そちらは考慮しなくてよいのでしょうか。</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">算定できる。<span class="sub">可否は、自家製剤した剤形だけで判断する。半割なら錠剤の規格、粉砕なら散剤の有無を見る。</span></span></div>
+          <div class="gi-more">調剤報酬Q&amp;Aで解説を見る<span class="chev">›</span></div>
+        </a>
+
+        <a class="gi-row" href="../ナレッジ/調剤報酬QA.html#q-jikaseizai-4">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">カロナール細粒が入手困難なため、カロナール錠を粉砕して自家製剤加算を算定しました（処方：カロナール細粒20% 〇〇g　発熱・疼痛時 10回分）。加算点数を確認したところ、自家製剤加算【頓服】錠剤等＝90点となっています。内服薬に比べて点数が高すぎるように感じますが、間違いではないでしょうか？</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">90点で問題ない。<span class="sub">頓服薬の自家製剤加算は、処方内容や回数に関わらず一律90点。</span></span></div>
+          <div class="gi-more">調剤報酬Q&amp;Aで解説を見る<span class="chev">›</span></div>
+        </a>
+        <!-- /qa-list -->
+      </div>
+
+      <!-- 関連する過去の疑義解釈 -->
+      <div class="card">
+        <div class="card-title">関連する過去の疑義解釈</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;"><a href="../ツール/gigi-search.html?q=自家製剤加算" style="color:var(--blue); font-weight:700;">疑義解釈検索ツールで「自家製剤加算」の全件を見る</a></p>
+      </div>
+
+      <!-- 関連ページ -->
+      <div class="card">
+        <div class="card-title">関連ページ</div>
+        <div class="rel">
+          <a href="薬剤調製料.html">薬剤調製料<span class="sub">「１剤」と「１調剤」の数え方</span></a>
+          <a href="外来服薬支援料2.html">外来服薬支援料２<span class="sub">一包化｜算定した範囲は併算定不可</span></a>
+          <a href="../ナレッジ/調剤報酬QA.html#c-jikaseizai">調剤報酬Q&amp;A 自家製剤加算<span class="sub">処方例つきの解説</span></a>
+          <a href="../加算まとめ.html">算定項目まとめ<span class="sub">一覧</span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ref-links">
+      <div class="row">
+        <span class="lab">原文参照：</span>
+        <a href="../改定資料/別表第三_調剤報酬点数表2026.html#ku01">別表第三 › 区分０１ 薬剤調製料</a>
+        <a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-01-11">別添３ › 自家製剤加算</a>
+        <a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-01-12">別添３ › 計量混合調剤加算</a>
+        <a href="../改定資料/別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html">別表Ⅰ › 摘要欄記載事項</a>
+      </div>
+    </div>
+
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>

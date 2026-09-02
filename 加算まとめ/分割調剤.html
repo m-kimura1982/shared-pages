@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>分割調剤｜算定項目まとめ</title>
+    <meta name="search-keywords" content="分割調剤,長期保存,後発医薬品の試用,医師の分割指示,2回目,調剤基本料,分割回数で除す,リフィル処方箋,調剤録,5点,初回,交付できる日数,使用期間,次回の調剤日,通算した日数,薬剤調製料" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/gigi-list.css" />
+    <link rel="stylesheet" href="../assets/source-refs.css" />
+    <style>
+      *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+      :root {
+        --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+        --pad-card:22px; --gap-card:16px;
+        --blue:#1e5fa8; --ink:#222222;
+        --bg:#f3f4f6; --white:#ffffff;
+        --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+        --border:#d1d5db; --border-dk:#9ca3af;
+        --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px;
+        --txt-2:#444444; --txt-3:#5e6470;
+      }
+      body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+      .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+      /* 見出し */
+      .page-title-wrap { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+      .page-title-left { flex:1; }
+      .page-title-left h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+      .page-title-left p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+      .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+      .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+      .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+      .sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin:18px 0 9px; }
+      .sub-title:first-child { margin-top:0; }
+      .sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+
+      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+
+      .score-block { display:flex; flex-direction:column; border:var(--bw) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; flex-shrink:0; }
+      .score-block .score-label { background:var(--box-gray); color:var(--txt-2); font-size:var(--text-xs); font-weight:700; padding:5px 16px; text-align:center; border-bottom:var(--bw) solid var(--border); }
+      .score-block .score-num { background:var(--white); font-size:28px; font-weight:900; padding:6px 20px; text-align:center; white-space:nowrap; }
+      .score-block .score-num span { font-size:var(--text-sm); font-weight:500; margin-left:2px; }
+
+      /* 強調 */
+      .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+      .em-change { color:var(--blue); font-weight:900; }
+
+      .lead-note { background:#eef4fb; border-radius:var(--radius-sm); padding:12px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray .ttl, .box-blue .ttl { display:block; font-weight:900; margin-bottom:5px; font-size:var(--text-sm); }
+      .box-gray .ttl { color:var(--blue); }
+      .box-blue .ttl { color:var(--ink); }
+
+      table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+      th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
+      td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
+      tr:last-child td { border-bottom:none; }
+      .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+
+      /* 箇条書き */
+      .list { display:flex; flex-direction:column; gap:6px; margin:4px 0 2px; }
+      .list .li { font-size:var(--text-sm); line-height:1.7; padding-left:18px; text-indent:-18px; }
+      .list .li::before { content:"・"; color:var(--txt-3); font-weight:900; margin-right:6px; }
+      .list .li b { color:var(--ink); }
+
+      /* 記号付きの箇条（ア・イ・ウ／①②③）は記号列と本文列を分けて、折り返しの縦を揃える */
+      .list .li.mk { display:flex; gap:7px; padding-left:0; text-indent:0; }
+      .list .li.mk::before { content:none; }
+      .list .li.mk > .m { flex-shrink:0; font-weight:900; color:var(--ink); }
+
+
+      /* 注1・注2 対比（2列。どちらも中立＝色で優劣を付けない） */
+      .cmp { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:4px; }
+      .cmp .col { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; display:flex; flex-direction:column; }
+      .cmp .col-head { background:#eef2f7; padding:9px 14px; display:flex; align-items:baseline; gap:9px; border-bottom:var(--bw-h) solid var(--border); }
+      .cmp .col-head .no { font-weight:900; color:var(--blue); font-size:var(--text-md); }
+      .cmp .col-head .nm { font-weight:700; font-size:var(--text-xs); color:var(--txt-2); }
+      .cmp .col-body { padding:12px 14px; font-size:var(--text-sm); line-height:1.7; flex:1; }
+      .cmp .col-body .def { margin-bottom:9px; }
+      .cmp .col-body .yk { font-size:var(--text-xs); font-weight:900; color:var(--txt-3); margin:2px 0 4px; }
+      .cmp .col-body ol { list-style:none; counter-reset:y; }
+      .cmp .col-body ol li { counter-increment:y; padding-left:20px; text-indent:-20px; font-size:var(--text-sm); line-height:1.6; margin-bottom:2px; }
+      .cmp .col-body ol li::before { content:counter(y)". "; font-weight:900; color:var(--blue); }
+
+      /* 記載例 */
+      .rei { display:block; background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; margin-top:10px; font-size:var(--text-sm); line-height:1.8; }
+      .rei .ttl { display:block; font-weight:900; color:var(--blue); font-size:var(--text-xs); margin-bottom:5px; }
+      .rei p { padding-left:14px; text-indent:-14px; }
+      .rei p + p { margin-top:6px; }
+      .rei .dot { color:var(--txt-3); font-weight:900; }
+
+      /* 摘要欄 表示文言 */
+      .disp { display:flex; flex-direction:column; gap:8px; margin-top:4px; }
+      .disp .d { border:var(--bw-h) solid var(--border); border-left:var(--bw-a) solid var(--blue); border-radius:var(--radius-sm); padding:9px 13px; font-size:var(--text-sm); line-height:1.6; }
+      .disp .d .pre { color:var(--txt-3); }
+      .disp .d .val { font-weight:900; color:var(--ink); }
+
+      /* 番号バッジ付き注意リスト */
+      .num-list { display:flex; flex-direction:column; gap:11px; }
+      .num-list .ni { display:flex; gap:11px; align-items:flex-start; }
+      .num-list .ni .n { width:23px; height:23px; border-radius:6px; background:var(--blue); color:#fff; font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+      .num-list .ni .c { flex:1; font-size:var(--text-sm); line-height:1.7; }
+      .num-list .ni .c b { color:var(--ink); }
+
+      /* 関連リンク */
+      .rel { display:flex; flex-direction:column; gap:8px; }
+      .rel a { display:flex; align-items:center; gap:9px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; text-decoration:none; color:var(--ink); font-size:var(--text-sm); font-weight:700; }
+      .rel a::before { content:"›"; color:var(--blue); font-weight:900; }
+      .rel a:hover { background:#fafbfc; border-color:#bcd3ee; }
+      .rel a .sub { font-weight:400; color:var(--txt-3); font-size:var(--text-xs); margin-left:auto; }
+
+      .musts { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 2px; }
+      .musts .m { font-size:var(--text-xs); font-weight:700; color:var(--blue); background:var(--box-blue); border-radius:4px; padding:3px 10px; }
+
+      .page-foot { font-size:var(--text-xs); color:var(--txt-3); text-align:right; padding-top:2px; }
+
+      @media (max-width:640px) {
+        body { font-size:14px; padding:14px 12px 40px; line-height:1.75; }
+        :root { --text-xs:11.5px; --text-sm:13.5px; --text-md:14px; --text-lg:16px; --text-xl:18px; --pad-card:14px; --gap-card:11px; }
+        .card { padding:14px; border-radius:8px; }
+        .page-title-wrap { flex-direction:column; gap:12px; }
+        .cmp { grid-template-columns:1fr; }
+        .rel a .sub { display:none; }
+        table { min-width:420px; }
+      }
+      @media print {
+        @page { margin:10mm 9mm; size:A4; }
+        body { background:#fff; padding:0; font-size:11px; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        /* フレックスのままだと印刷時に改ページが効かない。block に戻して gap→margin にする */
+        .page { display:block; max-width:none; }
+        /* 長いカードはページをまたいで詰めてよい（空白を作らない） */
+        .card { border:0.5px solid #ccc; padding:9px 11px; margin-bottom:7px; break-inside:auto; }
+        /* 見出しだけがページ末尾に取り残されないように */
+        .card-title, .sub-title { break-after:avoid; }
+        .card-title { margin-bottom:8px; padding-bottom:5px; }
+        /* 小さな塊は途中で切らない */
+        .lead-note, .box-gray, .box-blue, .rei, .disp .d, .check-item,
+        .cmp .col, .num-list .ni, .steps .step, .gi-row, tr { break-inside:avoid; }
+        details.fold { break-inside:avoid; }
+        .page-foot { display:none; }
+        a { color:inherit; text-decoration:none; }
+      }
+    </style>
+</head>
+  <body>
+    <script src="../assets/site-header.js" defer></script>
+    <div class="page">
+
+      <div class="page-title-wrap">
+        <div class="page-title-left">
+          <h1>分割調剤</h1>
+          <p>１枚の処方箋を分けて調剤したときの算定</p>
+        </div>
+      </div>
+
+      <div class="lead-note">
+        <span class="marker">医師の分割指示によるもの（注11）と、それ以外の理由によるもの（注９・注10）</span>で算定のしかたが大きく違う。注11は所定点数を分割回数で割る。
+      </div>
+
+      <!-- 点数・区分 -->
+      <div class="card">
+        <div class="card-title">3つの分割調剤<span class="qual">どれに該当するかで算定が変わる</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="white-space:nowrap;"></th>
+                <th><b>長期保存の困難性等</b><br /><span style="font-weight:400; color:var(--txt-3);">注９</span></th>
+                <th><b>後発医薬品の試用</b><br /><span style="font-weight:400; color:var(--txt-3);">注10</span></th>
+                <th><b>医師の分割指示</b><br /><span style="font-weight:400; color:var(--txt-3);">注11</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="white-space:nowrap; font-weight:900;">どんなとき</td>
+                <td>14日分を超える投薬で、薬の長期保存が難しい等</td>
+                <td>先発医薬品を初めて後発医薬品に変更するとき</td>
+                <td>分割指示に係る処方箋による（注９・注10に該当する場合を除く）</td>
+              </tr>
+              <tr>
+                <td style="white-space:nowrap; font-weight:900;">分割を決めるのは</td>
+                <td><b>薬局</b><br />受付時に医療機関へ照会する</td>
+                <td><b>患者の希望</b></td>
+                <td><b>医師</b><br />患者の同意の下で行う</td>
+              </tr>
+              <tr>
+                <td style="white-space:nowrap; font-weight:900;">加算する回</td>
+                <td>２回目以降</td>
+                <td><b>２回目に限り</b></td>
+                <td>毎回</td>
+              </tr>
+              <tr>
+                <td style="white-space:nowrap; font-weight:900;">点数</td>
+                <td><span class="marker">調剤基本料に代えて１分割調剤につき５点</span></td>
+                <td><span class="marker">調剤基本料に代えて５点</span></td>
+                <td><span class="marker">所定点数を分割回数で除した点数</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 初回と2回目 -->
+      <div class="card">
+        <div class="card-title">初回と２回目以降で算定するもの<span class="qual">長期保存・後発医薬品の試用のとき</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th style="white-space:nowrap;">算定するもの</th><th>初回</th><th>２回目以降</th></tr></thead>
+            <tbody>
+              <tr><td style="white-space:nowrap; font-weight:900;">調剤基本料</td><td>通常どおり算定する</td><td><span class="marker">算定しない。代わりに１分割調剤につき５点</span></td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">薬剤調製料</td><td>その回の日数に応じた点数</td><td><b>１回目から通算した日数</b>に対応する点数から、<b>前回までに請求した点数</b>を引いた点数</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">調剤管理料</td><td>算定できる</td><td>算定できる</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">服薬管理指導料</td><td>算定できる</td><td>注９：<b>算定しない</b>／注10：算定できる</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">外来服薬支援料２</td><td>算定できる</td><td>算定できる</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">その他の薬学管理料</td><td>算定できる</td><td><b>算定しない</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-gray" style="margin-top:12px;">
+          <span class="ttl">注11は初回・２回目以降で分けない</span>
+          毎回、合算して分割回数で除した点数を算定する。
+        </div>
+      </div>
+
+      <!-- 通則 -->
+      <div class="card">
+        <div class="card-title">共通すること</div>
+
+        <div class="sub-title">長期保存・後発医薬品の試用（注９・注10）</div>
+        <div class="list">
+          <div class="li">調剤基本料は初回のみだが、<b>異なる保険薬局で分割調剤を行う場合は、各薬局でそれぞれ算定できる</b></div>
+        </div>
+
+        <div class="sub-title">調剤ベースアップ評価料・調剤物価対応料</div>
+        <div class="list">
+          <div class="li">注９・注10・注11のいずれの分割調剤でも、<span class="marker">初回のみ算定する</span></div>
+          <div class="li">異なる保険薬局で分割調剤を行う場合は、<b>各薬局における分割調剤の初回のみ</b>それぞれ算定できる（<a href="../改定資料/疑義解釈まとめ2026.html#s12q6" style="color:var(--blue); font-weight:700;">疑義解釈その12 問６</a>）</div>
+        </div>
+
+        <div class="sub-title">同一日に複数の分割調剤を行うとき</div>
+        <div class="list">
+          <div class="li"><b>注９・注10・注11に係る分割調剤のうち複数</b>を、同一の保険薬局において同一日に行う場合は、<span class="marker">注11の分割調剤に係る点数により算定する</span></div>
+          <div class="li"><b>注９の２回目以降の調剤と注10の２回目の調剤</b>を、同一の保険薬局において同一日に行う場合は、<span class="marker">いずれか一方の分割調剤に係る点数のみ</span>を算定する</div>
+        </div>
+      </div>
+
+      <!-- 交付できる日数 -->
+      <div class="card">
+        <div class="card-title">交付できる日数と次回の調剤日</div>
+        <div class="box-blue">
+          <span class="ttl">２回目以降に交付できる日数の上限</span>
+          （<b>処方箋の使用期間の日数</b>　＋　<b>用量の日数</b>）　−　<b>１回目の調剤日から起算した日数</b>
+        </div>
+        <div class="list" style="margin-top:12px;">
+          <div class="li">使用期間の日数は、<span class="marker">処方箋交付の日を含めて４日を超える場合は４日</span>とする</div>
+          <div class="li">総量は、処方箋に記載された用量を超えてはならない</div>
+        </div>
+
+        <div class="sub-title">例）５月８日交付・使用期間４日間・14日分の処方箋を、５月９日に６日分調剤した</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th style="white-space:nowrap;"></th><th style="white-space:nowrap;">２回目が５月15日</th><th style="white-space:nowrap;">２回目が５月20日</th></tr></thead>
+            <tbody>
+              <tr><td style="white-space:nowrap; font-weight:900;">１回目（５/９）から</td><td>７日目</td><td>12日目</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">計算</td><td>（14＋４）−７＝<b>11</b></td><td>（14＋４）−12＝<b>６</b></td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">交付できる日数</td><td>11日分まで</td><td>６日分まで</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">残りの８日分は</td><td>全部交付できる</td><td><span class="marker">６日分しか交付できない</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 注9 -->
+      <div class="card">
+        <div class="card-title">注９　長期保存の困難性等による分割調剤</div>
+        <div class="sub-title">算定要件</div>
+        <div class="list">
+          <div class="li"><b>14日分を超える投薬</b>に係る処方箋で、処方薬の長期保存の困難その他の理由によって分割して調剤する必要があること</div>
+          <div class="li"><b>同一の保険薬局</b>において１処方箋の２回目以降の調剤を行った場合に算定する</div>
+        </div>
+        <div class="sub-title">やること</div>
+        <div class="list">
+          <div class="li">処方箋の受付時に、<b>処方箋を発行した医療機関等に照会</b>する</div>
+          <div class="li"><b>分割理由等の必要な事項を調剤録等に記入する</b></div>
+        </div>
+      </div>
+
+      <!-- 注10 -->
+      <div class="card">
+        <div class="card-title">注10　後発医薬品の試用のための分割調剤</div>
+        <div class="sub-title">算定要件</div>
+        <div class="list">
+          <div class="li">後発医薬品への変更が可能な処方箋で、患者の同意に基づき、処方箋に記載された<b>先発医薬品を初めて後発医薬品に変更して調剤</b>する場合</div>
+          <div class="li"><b>患者の希望により</b>分割調剤を行い、同一の保険薬局において１処方箋の<span class="marker">２回目の調剤を行った場合に限り</span>算定する</div>
+        </div>
+        <div class="sub-title">２回目の調剤で行うこと</div>
+        <div class="list">
+          <div class="li">先発医薬品から後発医薬品への変更による<b>患者の体調の変化、副作用が疑われる症状の有無等を確認</b>する</div>
+          <div class="li">患者の意向を踏まえ、<b>後発医薬品又は変更前の先発医薬品</b>の調剤を行う</div>
+          <div class="li">処方箋を発行した医療機関等にその旨を連絡し、<b>分割理由等の必要な事項を調剤録等に記入する</b></div>
+          <div class="li">患者の意向により<b>先発医薬品に再変更した場合も</b>、医療機関等に連絡し、再変更した理由等を調剤録等に記入する</div>
+        </div>
+      </div>
+
+      <!-- 注11 -->
+      <div class="card">
+        <div class="card-title">注11　医師の指示による分割調剤</div>
+        <div class="sub-title">算定要件</div>
+        <div class="list">
+          <div class="li">医師の分割指示に係る処方箋（注９・注10に該当する場合を除く）により、<b>患者の同意の下</b>で分割調剤を行った場合</div>
+          <div class="li">２回目以降の調剤については、投薬中の患者の<b>服薬状況等を確認し、処方医に情報提供</b>を行った場合に算定する</div>
+        </div>
+
+        <div class="sub-title">点数の出し方</div>
+        <div class="list">
+          <div class="li">調剤基本料及びその加算、薬剤調製料及びその加算、薬学管理料について、<span class="marker">分割調剤を実施しない場合に算定する点数を合算し、分割回数で除した点数</span>を算定する（小数点以下第一位を四捨五入）</div>
+          <div class="li"><b>服薬情報等提供料だけは、分割回数で除さず、所定点数</b>を算定できる</div>
+        </div>
+
+        <div class="sub-title">薬剤師が実施すること</div>
+        <div class="list">
+          <div class="li mk"><span class="m">(イ)</span><span>処方箋受付前に、継続的な薬学的管理及び指導のため、１回目の調剤から全ての調剤が完了するまで<b>同一の保険薬局に処方箋を持参するべきである旨を説明</b>する</span></div>
+          <div class="li mk"><span class="m">(ロ)</span><span>次回も当薬局に処方箋を持参する意向と予定時期を確認し、予定時期に来局しない場合は必要に応じ電話等で服薬状況を確認して来局を促す</span></div>
+          <div class="li mk"><span class="m">(ハ)</span><span>別の保険薬局に持参する旨の申し出があった場合は、患者の了解を得たうえで、調剤後遅滞なく、次回処方箋を持参する保険薬局に調剤の状況とともに必要な情報をあらかじめ提供する</span></div>
+          <div class="li mk"><span class="m">(ニ)</span><span>２回目以降の調剤で服薬状況・服薬期間中の体調の変化等を確認し、その結果を処方医に情報提供する（残薬の有無、残薬が生じている場合はその量及び理由、患者の服薬中の体調の変化の有無、副作用が疑われる場合はその原因の可能性がある薬剤の推定を含める）</span></div>
+        </div>
+      </div>
+
+      <!-- 算定上の注意 -->
+      <div class="card">
+        <div class="card-title">算定上の注意</div>
+        <div class="list">
+          <div class="li">分割調剤（注９・注10に限る）をしたうえで、２回目以降の調剤で一包化を行った場合の外来服薬支援料２は、<b>１回目から通算した日数に対応する点数から、前回までに請求した点数を引いて</b>加算する</div>
+        </div>
+      </div>
+
+      <!-- レセプト摘要欄 -->
+      <div class="card">
+        <div class="card-title">レセプト摘要欄記載事項</div>
+        <div class="list">
+          <div class="li">分割調剤に固有の記載事項は<b>なし</b></div>
+        </div>
+      </div>
+
+      <!-- 原文（自動生成：node assets/build-genbun.js。マーカーの間は上書きされる） -->
+      <!-- genbun betten3="kub-00-7" hyo3="ku00" note="9,10,11" -->
+    <details class="fold avoid-break">
+      <summary>原文を見る（告示・通知）</summary>
+      <div class="fold-body">
+        <div class="orig">
+        <div class="oh">告示（別表第三　区分００　調剤基本料（処方箋の受付１回につき））</div>
+        <div class="oi"><span class="lab">注９</span><span>14日分を超える投薬に係る処方箋受付において、薬剤の保存が困難であること等の理由により分割して調剤を行った場合、当該処方箋に基づく当該保険薬局における２回目以降の調剤については、１分割調剤につき５点を算定する。なお、当該調剤においては、第２節薬学管理料（区分番号１０の２に掲げる調剤管理料及び区分番号１４の２に掲げる外来服薬支援料の２を除く。）は算定しない。</span></div>
+        <div class="oi"><span class="lab">注10</span><span>後発医薬品に係る処方箋受付において、当該処方箋の発行を受けた患者が初めて当該後発医薬品を服用することとなること等の理由により分割して調剤を行った場合、当該処方箋に基づく当該保険薬局における２回目の調剤に限り、５点を算定する。なお、当該調剤においては、第２節薬学管理料（区分番号１０の２に掲げる調剤管理料、区分番号１０の３に掲げる服薬管理指導料及び区分番号１４の２に掲げる外来服薬支援料の２を除く。）は算定しない。</span></div>
+        <div class="oi"><span class="lab">注11</span><span>医師の分割指示に係る処方箋受付（注９及び注10に掲げるものを除く。）において、１回目の調剤については当該指示に基づき分割して調剤を行った場合に、２回目以降の調剤については投薬中の患者の服薬状況等を確認し、処方箋を交付した保険医（以下この表において「処方医」という。）に対して情報提供を行った場合に算定する。この場合において、区分番号００に掲げる調剤基本料及びその加算、区分番号０１に掲げる薬剤調製料及びその加算並びに第２節に掲げる薬学管理料（区分番号１５の５に掲げる服薬情報等提供料を除く。）は、それぞれの所定点数を分割回数で除した点数を１分割調剤につき算定する。</span></div>
+        <div class="oh">通知（別添3　区分００　調剤基本料　７ 分割調剤）</div>
+        <div class="oi"><span class="lab">(１)</span><span>通則<span class="sub">ア　「注９」又は「注10」に係る分割調剤を行う場合は、調剤基本料は初回のみ算定し、２回目以降については「注９」又は「注10」のとおり算定するが、異なる保険薬局で分割調剤を行う場合は、各保険薬局においてそれぞれ調剤基本料を算定できる。</span><span class="sub">イ　「注９」、「注10」又は「注11」に係る分割調剤のうち、複数の分割調剤を同一の保険薬局において同一日に行う場合にあっては、「注11」の分割調剤に係る点数により算定する。</span></span></div>
+        <div class="oi"><span class="lab">(２)</span><span>長期保存の困難性等の理由による分割調剤<span class="sub">ア　「注９」の分割調剤については、14日分を超える投薬に係る処方箋によって調剤を行う場合であって、処方薬の長期保存の困難その他の理由によって分割して調剤する必要があり、分割調剤を行った場合で、１処方箋の２回目以降の調剤を同一の保険薬局において２回目以降行った場合に算定する。</span><span class="sub">イ　「注９」に係る分割調剤を行う場合は、処方箋の受付時に、当該処方箋を発行した医療機関等に対し照会を行うとともに、分割理由等の必要な事項を調剤録等に記入すること。</span></span></div>
+        <div class="oi"><span class="lab">(３)</span><span>後発医薬品の試用のための分割調剤<span class="sub">ア　「注10」の分割調剤については、後発医薬品への変更が可能な処方箋を提出した患者の同意に基づき、処方箋に記載された先発医薬品を初めて後発医薬品に変更して調剤を行う場合であって、当該患者の希望により分割調剤を行った場合で、同一の保険薬局において１処方箋の２回目の調剤を行った場合に限り算定する。この場合において、２回目の調剤を行う際には、先発医薬品から後発医薬品への変更による患者の体調の変化、副作用が疑われる症状の有無等を確認するとともに、患者の意向を踏まえ、後発医薬品又は変更前の先発医薬品の調剤を行うこととする。なお、その際に、所定の要件を満たせば、調剤管理料、服薬管理指導料及び外来服薬支援料２を算定できる。</span><span class="sub">イ　「注10」に係る分割調剤を行った場合は、処方箋を発行した医療機関等にその旨を連絡するとともに、分割理由等の必要な事項を調剤録等に記入すること。また、２回目の調剤の際に、患者の意向により変更前の先発医薬品の調剤を行った場合も、処方箋を発行した医療機関等にその旨を連絡するとともに、先発医薬品に再変更した理由等の必要な事項を調剤録等に記入すること。</span><span class="sub">ウ　１処方箋について、「注９」の長期保存の困難性等の理由による分割調剤の２回目以降の調剤と「注10」の後発医薬品の試用のための分割調剤の２回目の調剤を同一の保険薬局において同一日に行う場合にあっては、いずれか一方の分割調剤に係る点数のみを算定する。</span></span></div>
+        <div class="oi"><span class="lab">(４)</span><span>医師の指示による分割調剤<span class="sub">ア　「注11」については、医師の分割指示に係る処方箋（「注９」の長期保存の困難性等の理由による分割調剤及び「注10」の後発医薬品の試用のための分割調剤に該当する場合を除く。）により、患者の同意の下、分割調剤を行った場合に算定する。</span><span class="sub">イ　調剤基本料及びその加算、薬剤調製料及びその加算並びに薬学管理料については、当該分割調剤を行う保険薬局が当該処方箋において分割調剤を実施しない場合に算定する点数をそれぞれ合算し、分割回数で除した点数を当該調剤時に算定する。当該点数は、小数点以下第一位を四捨五入して計算する。ただし、服薬情報等提供料については、分割回数で除していない点数を算定できる。</span><span class="sub">ウ　「注11」の医師の指示による分割調剤の場合、保険薬局の保険薬剤師は、以下を実施する。</span><span class="sub d2">(イ)　分割指示に係る処方箋の交付を受けた患者に対して、処方箋受付前に、継続的な薬学的管理及び指導のため、当該処方箋の１回目の調剤から全ての調剤が完了するまで、同一の保険薬局に処方箋を持参するべきである旨を説明する。</span><span class="sub d2">(ロ)　患者に対し、次回の自局への処方箋持参の意向の有無及び予定時期を確認するとともに、予定時期に患者が来局しない場合は、必要に応じ、電話等で服薬状況を確認し来局を促す。</span><span class="sub d2">(ハ)　また、患者から次回は別の保険薬局に処方箋を持参する旨の申し出があった場合は、患者の了解を得た上で、次回の円滑な薬剤交付に資するよう、調剤後遅滞なく、患者が次回処方箋を持参しようとする保険薬局に対し、調剤の状況とともに必要な情報をあらかじめ提供する。</span><span class="sub d2">(ニ)　２回目以降の調剤において患者の服薬状況、服薬期間中の体調の変化等について確認し、その結果を処方医に情報提供する。この場合において、次に掲げる事項を含めるものとする。・残薬の有無・残薬が生じている場合はその量及び理由・患者の服薬中の体調の変化（副作用が疑われる症状など）の有無・副作用が疑われる場合はその原因の可能性がある薬剤の推定</span></span></div>
+        <div class="cite">出典：診療報酬の算定方法（別表第三　調剤報酬点数表）／「診療報酬の算定方法の一部改正に伴う実施上の留意事項について」（令和8年3月5日　保医発0305第6号）別添3。</div>
+        </div>
+      </div>
+    </details>
+      <!-- /genbun -->
+
+      <!-- 関連する過去の疑義解釈 -->
+      <div class="card">
+        <div class="card-title">関連する過去の疑義解釈</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;"><a href="../ツール/gigi-search.html?q=分割調剤" style="color:var(--blue); font-weight:700;">疑義解釈検索ツールで「分割調剤」の全件を見る</a></p>
+      </div>
+
+      <!-- 関連ページ -->
+      <div class="card">
+        <div class="card-title">関連ページ</div>
+        <div class="rel">
+          <a href="../ナレッジ/リフィル処方箋.html">リフィル処方箋<span class="sub">分割調剤とは別の仕組み</span></a>
+          <a href="調剤基本料_2026改定.html">調剤基本料<span class="sub">初回のみ算定する</span></a>
+          <a href="外来服薬支援料2.html">外来服薬支援料２<span class="sub">２回目以降の一包化</span></a>
+          <a href="薬剤調製料.html">薬剤調製料<span class="sub">分割調剤したときの点数</span></a>
+          <a href="../加算まとめ.html">算定項目まとめ<span class="sub">一覧</span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ref-links">
+      <div class="row">
+        <span class="lab">原文参照：</span>
+        <a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-00-7">別添３ › 分割調剤</a>
+        <a href="../改定資料/別表第三_調剤報酬点数表2026.html#ku00">別表第三 › 区分００ 調剤基本料</a>
+      </div>
+    </div>
+
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>

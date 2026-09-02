@@ -59,9 +59,13 @@ function elementAt(html, id) {
   const isCard = /class="[^"]*\bcard\b/.test(openTag);
   // カードを指した時は次のカードまで、項目見出しを指した時は次の見出しまで
   const cls = names => new RegExp(`<div[^>]*class="(?:[^"]*[\\t\\n\\r ])?(?:${names})(?:[\\t\\n\\r ][^"]*)?"`, 'g');
+  // reg-item を指した時は次の reg-item まで（別添3 区分01 のように item-heading を使わない区分用）
+  const isRegItem = /class="[^"]*\breg-item\b/.test(openTag);
   const boundary = isCard
     ? cls('card|section-header')
-    : cls('card|section-header|item-heading');
+    : isRegItem
+      ? cls('card|section-header|item-heading|reg-item')
+      : cls('card|section-header|item-heading');
   boundary.lastIndex = openTagEnd;
   const m = boundary.exec(html);
   const end = m ? m.index : html.length;

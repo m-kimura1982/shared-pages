@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>手帳の活用実績が少ない保険薬局｜算定項目まとめ</title>
+    <meta name="search-keywords" content="手帳,お薬手帳,活用実績,服薬管理指導料の特例,13点,50%以下,3月以内,再来局,手帳提示,加算が算定できない,調剤時残薬調整加算,薬学的有害事象等防止加算" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/gigi-list.css" />
+    <link rel="stylesheet" href="../assets/source-refs.css" />
+    <style>
+      *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+      :root {
+        --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+        --pad-card:22px; --gap-card:16px;
+        --blue:#1e5fa8; --ink:#222222;
+        --bg:#f3f4f6; --white:#ffffff;
+        --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+        --border:#d1d5db; --border-dk:#9ca3af;
+        --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px;
+        --txt-2:#444444; --txt-3:#5e6470;
+      }
+      body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+      .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+      /* 見出し */
+      .page-title-wrap { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+      .page-title-left { flex:1; }
+      .page-title-left h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+      .page-title-left p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+      .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+      .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+      .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+      .sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin:18px 0 9px; }
+      .sub-title:first-child { margin-top:0; }
+      .sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+
+      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+
+      .score-block { display:flex; flex-direction:column; border:var(--bw) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; flex-shrink:0; }
+      .score-block .score-label { background:var(--box-gray); color:var(--txt-2); font-size:var(--text-xs); font-weight:700; padding:5px 16px; text-align:center; border-bottom:var(--bw) solid var(--border); }
+      .score-block .score-num { background:var(--white); font-size:28px; font-weight:900; padding:6px 20px; text-align:center; white-space:nowrap; }
+      .score-block .score-num span { font-size:var(--text-sm); font-weight:500; margin-left:2px; }
+
+      /* 強調 */
+      .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+      .em-change { color:var(--blue); font-weight:900; }
+
+      .lead-note { background:#eef4fb; border-radius:var(--radius-sm); padding:12px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray .ttl, .box-blue .ttl { display:block; font-weight:900; margin-bottom:5px; font-size:var(--text-sm); }
+      .box-gray .ttl { color:var(--blue); }
+      .box-blue .ttl { color:var(--ink); }
+
+      table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+      th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
+      td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
+      tr:last-child td { border-bottom:none; }
+      .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+
+      /* 箇条書き */
+      .list { display:flex; flex-direction:column; gap:6px; margin:4px 0 2px; }
+      .list .li { font-size:var(--text-sm); line-height:1.7; padding-left:18px; text-indent:-18px; }
+      .list .li::before { content:"・"; color:var(--txt-3); font-weight:900; margin-right:6px; }
+      .list .li b { color:var(--ink); }
+
+      /* 注1・注2 対比（2列。どちらも中立＝色で優劣を付けない） */
+      .cmp { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:4px; }
+      .cmp .col { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; display:flex; flex-direction:column; }
+      .cmp .col-head { background:#eef2f7; padding:9px 14px; display:flex; align-items:baseline; gap:9px; border-bottom:var(--bw-h) solid var(--border); }
+      .cmp .col-head .no { font-weight:900; color:var(--blue); font-size:var(--text-md); }
+      .cmp .col-head .nm { font-weight:700; font-size:var(--text-xs); color:var(--txt-2); }
+      .cmp .col-body { padding:12px 14px; font-size:var(--text-sm); line-height:1.7; flex:1; }
+      .cmp .col-body .def { margin-bottom:9px; }
+      .cmp .col-body .yk { font-size:var(--text-xs); font-weight:900; color:var(--txt-3); margin:2px 0 4px; }
+      .cmp .col-body ol { list-style:none; counter-reset:y; }
+      .cmp .col-body ol li { counter-increment:y; padding-left:20px; text-indent:-20px; font-size:var(--text-sm); line-height:1.6; margin-bottom:2px; }
+      .cmp .col-body ol li::before { content:counter(y)". "; font-weight:900; color:var(--blue); }
+
+      /* 記載例 */
+      .rei { display:block; background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; margin-top:10px; font-size:var(--text-sm); line-height:1.8; }
+      .rei .ttl { display:block; font-weight:900; color:var(--blue); font-size:var(--text-xs); margin-bottom:5px; }
+      .rei p { padding-left:14px; text-indent:-14px; }
+      .rei p + p { margin-top:6px; }
+      .rei .dot { color:var(--txt-3); font-weight:900; }
+
+      /* 摘要欄 表示文言 */
+      .disp { display:flex; flex-direction:column; gap:8px; margin-top:4px; }
+      .disp .d { border:var(--bw-h) solid var(--border); border-left:var(--bw-a) solid var(--blue); border-radius:var(--radius-sm); padding:9px 13px; font-size:var(--text-sm); line-height:1.6; }
+      .disp .d .pre { color:var(--txt-3); }
+      .disp .d .val { font-weight:900; color:var(--ink); }
+
+      /* 番号バッジ付き注意リスト */
+      .num-list { display:flex; flex-direction:column; gap:11px; }
+      .num-list .ni { display:flex; gap:11px; align-items:flex-start; }
+      .num-list .ni .n { width:23px; height:23px; border-radius:6px; background:var(--blue); color:#fff; font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+      .num-list .ni .c { flex:1; font-size:var(--text-sm); line-height:1.7; }
+      .num-list .ni .c b { color:var(--ink); }
+
+      /* 関連リンク */
+      .rel { display:flex; flex-direction:column; gap:8px; }
+      .rel a { display:flex; align-items:center; gap:9px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; text-decoration:none; color:var(--ink); font-size:var(--text-sm); font-weight:700; }
+      .rel a::before { content:"›"; color:var(--blue); font-weight:900; }
+      .rel a:hover { background:#fafbfc; border-color:#bcd3ee; }
+      .rel a .sub { font-weight:400; color:var(--txt-3); font-size:var(--text-xs); margin-left:auto; }
+
+      .musts { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 2px; }
+      .musts .m { font-size:var(--text-xs); font-weight:700; color:var(--blue); background:var(--box-blue); border-radius:4px; padding:3px 10px; }
+
+      .list .li.mk { display:flex; gap:7px; padding-left:0; text-indent:0; }
+      .list .li.mk::before { content:none; }
+      .list .li.mk > .m { flex-shrink:0; font-weight:900; color:var(--ink); }
+
+      .list .li .d { display:block; text-indent:0; padding-left:0.8em; margin-top:1px; }
+
+      .page-foot { font-size:var(--text-xs); color:var(--txt-3); text-align:right; padding-top:2px; }
+
+      @media (max-width:640px) {
+        body { font-size:14px; padding:14px 12px 40px; line-height:1.75; }
+        :root { --text-xs:11.5px; --text-sm:13.5px; --text-md:14px; --text-lg:16px; --text-xl:18px; --pad-card:14px; --gap-card:11px; }
+        .card { padding:14px; border-radius:8px; }
+        .page-title-wrap { flex-direction:column; gap:12px; }
+        .cmp { grid-template-columns:1fr; }
+        .rel a .sub { display:none; }
+        table { min-width:420px; }
+      }
+      @media print {
+        @page { margin:10mm 9mm; size:A4; }
+        body { background:#fff; padding:0; font-size:11px; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        /* フレックスのままだと印刷時に改ページが効かない。block に戻して gap→margin にする */
+        .page { display:block; max-width:none; }
+        /* 長いカードはページをまたいで詰めてよい（空白を作らない） */
+        .card { border:0.5px solid #ccc; padding:9px 11px; margin-bottom:7px; break-inside:auto; }
+        /* 見出しだけがページ末尾に取り残されないように */
+        .card-title, .sub-title { break-after:avoid; }
+        .card-title { margin-bottom:8px; padding-bottom:5px; }
+        /* 小さな塊は途中で切らない */
+        .lead-note, .box-gray, .box-blue, .rei, .disp .d, .check-item,
+        .cmp .col, .num-list .ni, .steps .step, .gi-row, tr { break-inside:avoid; }
+        details.fold { break-inside:avoid; }
+        .page-foot { display:none; }
+        a { color:inherit; text-decoration:none; }
+      }
+    </style>
+  </head>
+  <body>
+    <script src="../assets/site-header.js" defer></script>
+    <div class="page">
+
+      <div class="page-title-wrap">
+        <div class="page-title-left">
+          <h1>手帳の活用実績が少ない保険薬局</h1>
+          <p>該当すると服薬管理指導料が特例の点数になり、加算も算定できなくなる</p>
+        </div>
+        <div class="score-block">
+          <div class="score-label">服薬管理指導料の特例</div>
+          <div class="score-num">13<span>点</span></div>
+        </div>
+      </div>
+
+      <div class="lead-note">
+        該当している間は、手帳の持参の有無にかかわらず、<span class="marker">その薬局が受け付けた処方箋はすべて13点</span>になる。
+      </div>
+
+      <!-- 該当するとどうなる -->
+      <div class="card">
+        <div class="card-title">該当している間の算定</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th style="white-space:nowrap;">点数・加算</th><th>扱い</th></tr></thead>
+            <tbody>
+              <tr><td style="white-space:nowrap; font-weight:900;">服薬管理指導料</td><td><span class="marker">処方箋受付1回につき13点</span>になる</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">服薬管理指導料の加算</td><td>✕ 麻薬管理指導加算、特定薬剤管理指導加算１・２・３、乳幼児服薬指導加算、小児特定加算、吸入薬指導加算、かかりつけ薬剤師フォローアップ加算、かかりつけ薬剤師訪問加算は<b>算定できない</b></td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">調剤時残薬調整加算</td><td>✕ 算定できない</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">薬学的有害事象等防止加算</td><td>✕ 算定できない</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-gray" style="margin-top:12px;">
+          通知は「当該特例を算定する場合は、<b>調剤管理料及び服薬管理指導料の加算は算定できない</b>」と定めている。上の表はその内訳。
+        </div>
+      </div>
+
+      <!-- 判定 -->
+      <div class="card">
+        <div class="card-title">該当するかの判定<span class="qual">手帳の提示割合が50%以下</span></div>
+
+        <div class="sub-title">数えるもの</div>
+        <div class="list">
+          <div class="li"><b>分母</b><span class="d"><span class="marker">3月以内に再度処方箋を持参した患者</span>への服薬管理指導料の算定回数。ただし服薬管理指導料３と、服薬管理指導料４のイのうち介護老人福祉施設等の患者に係るもの、同４のロ及びハに係るものを除く</span></div>
+          <div class="li"><b>分子</b><span class="d">そのうち<b>手帳を提示した患者</b>への服薬管理指導料の算定回数</span></div>
+        </div>
+
+        <div class="box-blue" style="margin-top:12px;">
+          <span class="ttl">判定</span>
+          分子 ÷ 分母 が<span class="marker">50%以下</span>だと「適切な手帳の活用実績が相当程度あると認められない保険薬局」に該当する。<b>小数点以下は四捨五入</b>する。
+        </div>
+      </div>
+
+      <!-- 期間 -->
+      <div class="card">
+        <div class="card-title">いつの実績で、いつ適用されるか</div>
+        <div class="list">
+          <div class="li"><b>実績の期間</b><span class="d">前年5月1日から当年4月30日までの服薬管理指導料の実績</span></div>
+          <div class="li"><b>適用の期間</b><span class="d">当年6月1日から翌年5月31日まで</span></div>
+          <div class="li"><b>新規指定・開設者の変更等</b><span class="d">調剤基本料２の施設基準に定める処方箋受付回数の取扱いと同様に扱う</span></div>
+        </div>
+
+        <div class="sub-title">該当から外れるとき</div>
+        <div class="list">
+          <div class="li">いったん該当しても、<span class="marker">直近3月間の割合が50%を上回った場合は、その割合を満たした翌月から該当しなくなる</span>。適用期間の途中でも外れる</div>
+        </div>
+      </div>
+
+      <!-- レセプト摘要欄 -->
+      <div class="card">
+        <div class="card-title">レセプト摘要欄記載事項</div>
+        <div class="list">
+          <div class="li">この特例に固有の記載事項は<b>なし</b></div>
+        </div>
+      </div>
+
+      <!-- 原文（自動生成：node assets/build-genbun.js。マーカーの間は上書きされる） -->
+      <!-- genbun betten3="kub-10-3-tokureli" hyo3="ku10-3" note="17" kijun="sec-99,sec-97" -->
+    <details class="fold avoid-break">
+      <summary>原文を見る（告示・通知・施設基準）</summary>
+      <div class="fold-body">
+        <div class="orig">
+        <div class="oh">告示（別表第三　区分１０の３　服薬管理指導料）</div>
+        <div class="oi"><span class="lab">注17</span><span>別に厚生労働大臣が定める保険薬局において、注１、注２、注４又は注５に規定する必要な指導等を行った場合には、注１、注２、注４又は注５の規定にかかわらず、服薬管理指導料の特例として、処方箋受付１回につき、13点を算定する。この場合において、注６から注14までに規定する加算は算定できない。</span></div>
+        <div class="oh">通知（別添3　区分１０の３　服薬管理指導料　14 服薬管理指導料の特例（手帳の活用実績が相当程度あると認められない保険薬局が算定する服薬管理指導料））</div>
+        <div class="oi"><span class="lab">(１)</span><span>「適切な手帳の活用実績が相当程度あると認められない保険薬局」とは、３月以内に再度処方箋を持参した患者への服薬管理指導料（服薬管理指導料３並びに服薬管理指導料４のイのうち介護老人福祉施設等の患者に係るもの、同４のロ及びハに係るものを除く。）の算定回数のうち、手帳を提示した患者への服薬管理指導料の算定回数の割合が50％以下である保険薬局であること。算定回数の割合は小数点以下を四捨五入して算出する。</span></div>
+        <div class="oi"><span class="lab">(２)</span><span>当該特例への該当性は、調剤基本料の施設基準に定める処方箋受付回数の取扱いと同様に、前年５月１日から当年４月30日までの服薬管理指導料の実績をもって判断し、当年６月１日から翌年５月31日まで適用する。その他、新規に保険薬局に指定された薬局、開設者の変更等の取扱いについても、調剤基本料の施設基準に定める処方箋受付回数の取扱いと同様とする。</span></div>
+        <div class="oi"><span class="lab">(３)</span><span>当該特例に該当した場合であっても、直近３月間における（１）の割合が50％を上回った場合には、（２）にかかわらず、当該割合を満たした翌月より「適切な手帳の活用実績が相当程度あると認められない保険薬局」に該当しないものとする。</span></div>
+        <div class="oi"><span class="lab">(４)</span><span>当該特例を算定する場合は、調剤管理料及び服薬管理指導料の加算は算定できない。</span></div>
+        <div class="oh">施設基準（第99服薬管理指導料の注17に規定する保険薬局（手帳の活用実績が少ない保険薬局））</div>
+        <div class="oi"><span class="lab">１</span><span>「適切な手帳の活用実績が相当程度あると認められない保険薬局」とは、３月以内に再度処方箋を持参した患者への服薬管理指導料（服薬管理指導料３並びに服薬管理指導料４のイのうち介護老人福祉施設等の患者に係るもの、同４のロ及びハに係るものを除く。）の算定回数のうち、手帳を提示した患者への服薬管理指導料の算定回数の割合が50%以下である保険薬局であること。この場合において、小数点以下は四捨五入すること。</span></div>
+        <div class="oi"><span class="lab">２</span><span>手帳の活用実績は、「第88の２ 調剤基本料２」の「２ 調剤基本料２の施設基準に関する留意点」の(１)に定める処方箋受付回数の取扱いと同様に、前年５月１日から当年４月30日までの実績をもって該当性を判断し、当年６月１日から翌年５月31日まで適用する。その他、新規に保険薬局に指定された薬局、開設者の変更等の取扱いについても、「第88の２ 調剤基本料２」の「２ 調剤基本料２の施設基準に関する留意点」の（１）に定める処方箋受付回数の取扱いと同様とする。</span></div>
+        <div class="oi"><span class="lab">３</span><span>１及び２により「適切な手帳の活用実績が相当程度あると認められない保険薬局」に該当した場合であっても、直近３月間における１の割合が50%を上回った場合には、２にかかわらず、当該割合を満たした翌月より「適切な手帳の活用実績が相当程度あると認められない保険薬局」に該当しないものとする。</span></div>
+        <div class="opara">（第100・第101は削除） ▲ ページ先頭へ</div>
+        <div class="oh">施設基準（第97調剤管理料の注３及び注４に規定する保険薬局（手帳の活用実績が少ない保険薬局））</div>
+        <div class="oi"><span class="lab">１</span><span>「適切な手帳の活用実績が相当程度あると認められない保険薬局」とは、３月以内に再度処方箋を持参した患者への服薬管理指導料（服薬管理指導料３並びに服薬管理指導料４のイのうち介護老人福祉施設等の患者に係るもの、同４のロ及びハに係るものを除く。）の算定回数のうち、手帳を提示した患者への服薬管理指導料の算定回数の割合が50%以下である保険薬局であること。この場合において、小数点以下は四捨五入すること。</span></div>
+        <div class="oi"><span class="lab">２</span><span>手帳の活用実績は、「第88の２ 調剤基本料２」の「２ 調剤基本料２の施設基準に関する留意点」の(１)に定める処方箋受付回数の取扱いと同様に、前年５月１日から当年４月30日までの実績をもって該当性を判断し、当年６月１日から翌年５月31日まで適用する。その他、新規に保険薬局に指定された薬局、開設者の変更等の取扱いについても、「第88の２ 調剤基本料２」の「２ 調剤基本料２の施設基準に関する留意点」の（１）に定める処方箋受付回数の取扱いと同様とする。</span></div>
+        <div class="oi"><span class="lab">３</span><span>１及び２により「適切な手帳の活用実績が相当程度あると認められない保険薬局」に該当した場合であっても、直近３月間における１の割合が50%を上回った場合には、２にかかわらず、当該割合を満たした翌月より「適切な手帳の活用実績が相当程度あると認められない保険薬局」に該当しないものとする。</span></div>
+        <div class="cite">出典：診療報酬の算定方法（別表第三　調剤報酬点数表）／「診療報酬の算定方法の一部改正に伴う実施上の留意事項について」（令和8年3月5日　保医発0305第6号）別添3／「特掲診療料の施設基準等及びその届出に関する手続きの取扱いについて」別添1 第99服薬管理指導料の注17に規定する保険薬局（手帳の活用実績が少ない保険薬局）／「特掲診療料の施設基準等及びその届出に関する手続きの取扱いについて」別添1 第97調剤管理料の注３及び注４に規定する保険薬局（手帳の活用実績が少ない保険薬局）。</div>
+        </div>
+      </div>
+    </details>
+      <!-- /genbun -->
+
+      <!-- 関連する過去の疑義解釈 -->
+      <div class="card">
+        <div class="card-title">関連する過去の疑義解釈</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;"><a href="../ツール/gigi-search.html?q=手帳" style="color:var(--blue); font-weight:700;">疑義解釈検索ツールで「手帳」の全件を見る</a></p>
+      </div>
+
+      <!-- 関連ページ -->
+      <div class="card">
+        <div class="card-title">関連ページ</div>
+        <div class="rel">
+          <a href="服薬管理指導料.html">服薬管理指導料<span class="sub">特例だと13点になる</span></a>
+          <a href="調剤管理料_2026改定.html">調剤管理料<span class="sub">2つの加算が不可になる</span></a>
+          <a href="調剤時残薬調整加算.html">調剤時残薬調整加算<span class="sub">算定できなくなる</span></a>
+          <a href="薬学的有害事象等防止加算.html">薬学的有害事象等防止加算<span class="sub">算定できなくなる</span></a>
+          <a href="../加算まとめ.html">算定項目まとめ<span class="sub">一覧</span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ref-links">
+      <div class="row">
+        <span class="lab">原文参照：</span>
+        <a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-10-3-tokureli">別添３ › 服薬管理指導料の特例</a>
+        <a href="../改定資料/別表第三_調剤報酬点数表2026.html#ku10-3">別表第三 › 区分１０の３ 服薬管理指導料</a>
+        <a href="../改定資料/特掲診療料_施設基準届出_調剤関係2026.html#sec-99">施設基準 › 第99</a>
+        <a href="../改定資料/特掲診療料_施設基準届出_調剤関係2026.html#sec-97">施設基準 › 第97</a>
+      </div>
+    </div>
+
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>

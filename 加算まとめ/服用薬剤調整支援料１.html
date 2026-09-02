@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>服用薬剤調整支援料１｜算定項目まとめ</title>
+    <meta name="search-keywords" content="服用薬剤調整支援料1,減薬,ポリファーマシー,内服薬6種類以上,2種類以上減少,4週間,1銘柄1種類,屯服薬は含めない,配合剤,調整前後の種類数,高齢者の医薬品適正使用の指針" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/gigi-list.css" />
+    <link rel="stylesheet" href="../assets/source-refs.css" />
+    <style>
+      *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+      :root {
+        --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+        --pad-card:22px; --gap-card:16px;
+        --blue:#1e5fa8; --ink:#222222;
+        --bg:#f3f4f6; --white:#ffffff;
+        --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+        --border:#d1d5db; --border-dk:#9ca3af;
+        --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px;
+        --txt-2:#444444; --txt-3:#5e6470;
+      }
+      body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+      .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+      /* 見出し */
+      .page-title-wrap { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+      .page-title-left { flex:1; }
+      .page-title-left h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+      .page-title-left p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+      .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+      .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+      .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+      .sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin:18px 0 9px; }
+      .sub-title:first-child { margin-top:0; }
+      .sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+
+      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+
+      .score-block { display:flex; flex-direction:column; border:var(--bw) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; flex-shrink:0; }
+      .score-block .score-label { background:var(--box-gray); color:var(--txt-2); font-size:var(--text-xs); font-weight:700; padding:5px 16px; text-align:center; border-bottom:var(--bw) solid var(--border); }
+      .score-block .score-num { background:var(--white); font-size:28px; font-weight:900; padding:6px 20px; text-align:center; white-space:nowrap; }
+      .score-block .score-num span { font-size:var(--text-sm); font-weight:500; margin-left:2px; }
+
+      /* 強調 */
+      .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+      .em-change { color:var(--blue); font-weight:900; }
+
+      .lead-note { background:#eef4fb; border-radius:var(--radius-sm); padding:12px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; }
+      .box-gray .ttl, .box-blue .ttl { display:block; font-weight:900; margin-bottom:5px; font-size:var(--text-sm); }
+      .box-gray .ttl { color:var(--blue); }
+      .box-blue .ttl { color:var(--ink); }
+
+      table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+      th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
+      td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
+      tr:last-child td { border-bottom:none; }
+      .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+
+      /* 箇条書き */
+      .list { display:flex; flex-direction:column; gap:6px; margin:4px 0 2px; }
+      .list .li { font-size:var(--text-sm); line-height:1.7; padding-left:18px; text-indent:-18px; }
+      .list .li::before { content:"・"; color:var(--txt-3); font-weight:900; margin-right:6px; }
+      .list .li b { color:var(--ink); }
+
+      /* 注1・注2 対比（2列。どちらも中立＝色で優劣を付けない） */
+      .cmp { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:4px; }
+      .cmp .col { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; display:flex; flex-direction:column; }
+      .cmp .col-head { background:#eef2f7; padding:9px 14px; display:flex; align-items:baseline; gap:9px; border-bottom:var(--bw-h) solid var(--border); }
+      .cmp .col-head .no { font-weight:900; color:var(--blue); font-size:var(--text-md); }
+      .cmp .col-head .nm { font-weight:700; font-size:var(--text-xs); color:var(--txt-2); }
+      .cmp .col-body { padding:12px 14px; font-size:var(--text-sm); line-height:1.7; flex:1; }
+      .cmp .col-body .def { margin-bottom:9px; }
+      .cmp .col-body .yk { font-size:var(--text-xs); font-weight:900; color:var(--txt-3); margin:2px 0 4px; }
+      .cmp .col-body ol { list-style:none; counter-reset:y; }
+      .cmp .col-body ol li { counter-increment:y; padding-left:20px; text-indent:-20px; font-size:var(--text-sm); line-height:1.6; margin-bottom:2px; }
+      .cmp .col-body ol li::before { content:counter(y)". "; font-weight:900; color:var(--blue); }
+
+      /* 記載例 */
+      .rei { display:block; background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; margin-top:10px; font-size:var(--text-sm); line-height:1.8; }
+      .rei .ttl { display:block; font-weight:900; color:var(--blue); font-size:var(--text-xs); margin-bottom:5px; }
+      .rei p { padding-left:14px; text-indent:-14px; }
+      .rei p + p { margin-top:6px; }
+      .rei .dot { color:var(--txt-3); font-weight:900; }
+
+      /* 摘要欄 表示文言 */
+      .disp { display:flex; flex-direction:column; gap:8px; margin-top:4px; }
+      .disp .d { border:var(--bw-h) solid var(--border); border-left:var(--bw-a) solid var(--blue); border-radius:var(--radius-sm); padding:9px 13px; font-size:var(--text-sm); line-height:1.6; }
+      .disp .d .pre { color:var(--txt-3); }
+      .disp .d .val { font-weight:900; color:var(--ink); }
+
+      /* 番号バッジ付き注意リスト */
+      .num-list { display:flex; flex-direction:column; gap:11px; }
+      .num-list .ni { display:flex; gap:11px; align-items:flex-start; }
+      .num-list .ni .n { width:23px; height:23px; border-radius:6px; background:var(--blue); color:#fff; font-size:13px; font-weight:900; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+      .num-list .ni .c { flex:1; font-size:var(--text-sm); line-height:1.7; }
+      .num-list .ni .c b { color:var(--ink); }
+
+      /* 関連リンク */
+      .rel { display:flex; flex-direction:column; gap:8px; }
+      .rel a { display:flex; align-items:center; gap:9px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; text-decoration:none; color:var(--ink); font-size:var(--text-sm); font-weight:700; }
+      .rel a::before { content:"›"; color:var(--blue); font-weight:900; }
+      .rel a:hover { background:#fafbfc; border-color:#bcd3ee; }
+      .rel a .sub { font-weight:400; color:var(--txt-3); font-size:var(--text-xs); margin-left:auto; }
+
+      .musts { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 2px; }
+      .musts .m { font-size:var(--text-xs); font-weight:700; color:var(--blue); background:var(--box-blue); border-radius:4px; padding:3px 10px; }
+
+      .list .li.mk { display:flex; gap:7px; padding-left:0; text-indent:0; }
+      .list .li.mk::before { content:none; }
+      .list .li.mk > .m { flex-shrink:0; font-weight:900; color:var(--ink); }
+
+      .list .li .d { display:block; text-indent:0; padding-left:0.8em; margin-top:1px; }
+
+      .page-foot { font-size:var(--text-xs); color:var(--txt-3); text-align:right; padding-top:2px; }
+
+      @media (max-width:640px) {
+        body { font-size:14px; padding:14px 12px 40px; line-height:1.75; }
+        :root { --text-xs:11.5px; --text-sm:13.5px; --text-md:14px; --text-lg:16px; --text-xl:18px; --pad-card:14px; --gap-card:11px; }
+        .card { padding:14px; border-radius:8px; }
+        .page-title-wrap { flex-direction:column; gap:12px; }
+        .cmp { grid-template-columns:1fr; }
+        .rel a .sub { display:none; }
+        table { min-width:420px; }
+      }
+      @media print {
+        @page { margin:10mm 9mm; size:A4; }
+        body { background:#fff; padding:0; font-size:11px; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        /* フレックスのままだと印刷時に改ページが効かない。block に戻して gap→margin にする */
+        .page { display:block; max-width:none; }
+        /* 長いカードはページをまたいで詰めてよい（空白を作らない） */
+        .card { border:0.5px solid #ccc; padding:9px 11px; margin-bottom:7px; break-inside:auto; }
+        /* 見出しだけがページ末尾に取り残されないように */
+        .card-title, .sub-title { break-after:avoid; }
+        .card-title { margin-bottom:8px; padding-bottom:5px; }
+        /* 小さな塊は途中で切らない */
+        .lead-note, .box-gray, .box-blue, .rei, .disp .d, .check-item,
+        .cmp .col, .num-list .ni, .steps .step, .gi-row, tr { break-inside:avoid; }
+        details.fold { break-inside:avoid; }
+        .page-foot { display:none; }
+        a { color:inherit; text-decoration:none; }
+      }
+    </style>
+  </head>
+  <body>
+    <script src="../assets/site-header.js" defer></script>
+    <div class="page">
+
+      <div class="page-title-wrap">
+        <div class="page-title-left">
+          <h1>服用薬剤調整支援料１</h1>
+          <p>減薬の提案で内服薬が2種類以上減ったときの評価</p>
+        </div>
+        <div class="score-block">
+          <div class="score-label">月1回まで</div>
+          <div class="score-num">125<span>点</span></div>
+        </div>
+      </div>
+
+      <div class="lead-note">
+        提案した時点ではなく、<span class="marker">2種類以上減った状態が4週間以上続いてから</span>算定する。
+      </div>
+
+      <!-- 算定要件 -->
+      <div class="card">
+        <div class="card-title">算定要件</div>
+
+        <div class="sub-title">対象患者</div>
+        <div class="list">
+          <div class="li"><b>内服を開始して4週間以上経過した内服薬6種類以上</b><span class="d">を当該保険薬局で調剤している患者</span></div>
+        </div>
+
+        <div class="sub-title">実施すること</div>
+        <div class="list">
+          <div class="li"><b>検討する</b><span class="d">患者の意向を踏まえ、服薬アドヒアランス及び副作用の可能性等を検討する</span></div>
+          <div class="li"><b>提案する</b><span class="d">処方医に対して<span class="marker">文書を用いて</span>減薬を提案する</span></div>
+        </div>
+
+        <div class="sub-title">減薬の条件</div>
+        <div class="list">
+          <div class="li">当該保険薬局で調剤している内服薬の種類数が<b>2種類以上減少</b>すること。<span class="marker">うち少なくとも1種類は当該保険薬局の保険薬剤師が提案したもの</span>であること</div>
+          <div class="li">その状態が<b>4週間以上継続</b>すること</div>
+        </div>
+
+        <div class="sub-title">算定単位</div>
+        <div class="list">
+          <div class="li">月1回に限り125点</div>
+        </div>
+      </div>
+
+      <!-- 種類数の数え方 -->
+      <div class="card">
+        <div class="card-title">内服薬の種類数の数え方<span class="qual">ここで判断が分かれる</span></div>
+        <div class="list">
+          <div class="li"><b>1銘柄＝1種類</b><span class="d">錠剤、カプセル剤、散剤、顆粒剤及び液剤は、1銘柄ごとに1種類として計算する</span></div>
+          <div class="li"><b>屯服薬は含めない</b><span class="d">調剤している内服薬の種類数に屯服薬は数えない</span></div>
+          <div class="li"><b>服用開始4週間以内の薬剤は除く</b><span class="d">当該内服薬の服用を開始して4週間以内のものは、調整前の内服薬の種類数から除外する</span></div>
+          <div class="li"><b>減少に数えないもの</b><span class="d">調剤している内服薬と同一薬効分類の有効成分を含む配合剤への変更、及び内服薬以外の薬剤への変更を保険薬剤師が提案したことで減った分は、減少した種類数に含めない</span></div>
+        </div>
+      </div>
+
+      <!-- 算定上の注意 -->
+      <div class="card">
+        <div class="card-title">算定上の注意</div>
+
+        <div class="sub-title">1年以内にもう一度算定するとき</div>
+        <div class="list">
+          <div class="li">当該保険薬局で1年以内に算定した場合は、<span class="marker">前回の算定で減少した後の内服薬の種類数から、さらに2種類以上減少したときに限り</span>新たに算定できる</div>
+        </div>
+
+        <div class="sub-title">算定できない場合</div>
+        <div class="list">
+          <div class="li"><b>特別調剤基本料Ｂ</b>を算定している保険薬局</div>
+        </div>
+
+        <div class="sub-title">副作用の可能性を検討するときに参考にするもの</div>
+        <div class="list">
+          <div class="li">高齢者の医薬品適正使用の指針（総論編）（厚生労働省）</div>
+          <div class="li">高齢者の医薬品適正使用の指針（各論編（療養環境別））（厚生労働省）</div>
+          <div class="li">病院における高齢者のポリファーマシー対策の始め方と進め方（厚生労働省）</div>
+          <div class="li">高齢者の安全な薬物療法ガイドライン（日本老年医学会）</div>
+        </div>
+      </div>
+
+      <!-- 薬歴記載事項 -->
+      <div class="card">
+        <div class="card-title">薬歴記載事項</div>
+        <div class="list">
+          <div class="li">処方医へ提案を行う際に、<b>減薬に係る患者の意向</b>と、<b>提案に至るまでに薬学的見地から検討した内容</b>を薬歴に記載する</div>
+          <div class="li">保険医療機関から提供された<b>処方内容の調整結果に係る情報</b>は、薬歴に添付する等の方法により保存しておく</div>
+        </div>
+      </div>
+
+      <!-- レセプト摘要欄 -->
+      <div class="card">
+        <div class="card-title">レセプト摘要欄記載事項</div>
+        <div class="disp">
+          <div class="d"><span class="pre">減薬の提案を行った年月日（服用薬剤調整支援料１）；</span><span class="val">年月日</span></div>
+          <div class="d"><span class="pre">保険医療機関名（服用薬剤調整支援料１）；</span><span class="val">保険医療機関名</span></div>
+          <div class="d"><span class="pre">調整前の種類数（服用薬剤調整支援料１）；</span><span class="val">種類数</span></div>
+          <div class="d"><span class="pre">調整後の種類数（服用薬剤調整支援料１）；</span><span class="val">種類数</span></div>
+        </div>
+      </div>
+
+      <!-- 原文（自動生成：node assets/build-genbun.js。マーカーの間は上書きされる） -->
+      <!-- genbun betten3="kub-14-3" hyo3="ku14-3" note="1" -->
+    <details class="fold avoid-break">
+      <summary>原文を見る（告示・通知）</summary>
+      <div class="fold-body">
+        <div class="orig">
+        <div class="oh">告示（別表第三　区分１４の３　服用薬剤調整支援料）</div>
+        <div class="oi"><span class="lab">注１</span><span>１については、６種類以上の内服薬が処方されている患者について、処方医に対して、保険薬剤師が文書を用いて提案し、当該患者に調剤する内服薬が２種類以上減少した場合に、月１回に限り所定点数を算定する。ただし、区分番号００に掲げる調剤基本料の注２に規定する別に厚生労働大臣が定める保険薬局においては、算定できない。</span></div>
+        <div class="oh">通知（別添3　区分１４の３　服用薬剤調整支援料）</div>
+        <div class="oi"><span class="lab">(１)</span><span>服用薬剤調整支援料１<span class="sub">ア　服用薬剤調整支援料１は、内服を開始して４週間以上経過した内服薬６種類以上を保険薬局で調剤している患者に対して、当該保険薬局の保険薬剤師が、当該患者の意向を踏まえ、当該患者の服薬アドヒアランス及び副作用の可能性等を検討した上で、処方医に減薬の提案を行い、その結果、処方される内服薬が減少した場合について評価したものである。</span><span class="sub">イ　服用薬剤調整支援料１は、当該保険薬局で調剤している当該内服薬の種類数が２種類以上（うち少なくとも１種類は当該保険薬局の保険薬剤師が提案したものとする。）減少し、その状態が４週間以上継続した場合に算定する。</span><span class="sub">ウ　保険医療機関名及び保険医療機関における調整前後の薬剤の種類数を調剤報酬明細書の摘要欄に記載すること。</span><span class="sub">エ　調剤している内服薬の種類数に屯服薬は含めない。また、当該内服薬の服用を開始して４週間以内の薬剤については、調整前の内服薬の種類数から除外する。また、調剤している内服薬と同一薬効分類の有効成分を含む配合剤及び内服薬以外の薬剤への変更を保険薬剤師が提案したことで減少した場合は、減少した種類数に含めない。</span><span class="sub">オ　内服薬の種類数の計算に当たっては、錠剤、カプセル剤、散剤、顆粒剤及び液剤については、１銘柄ごとに１種類として計算する。</span><span class="sub">カ　患者の服用する薬剤の副作用の可能性の検討等を行うに当たっては、「高齢者の医薬品適正使用の指針（総論編）」（厚生労働省）、「高齢者の医薬品適正使用の指針（各論編（療養環境別））」（厚生労働省）、「病院における高齢者のポリファーマシー対策の始め方と進め方」（厚生労働省）及び日本老年医学会の関連ガイドライン（高齢者の安全な薬物療法ガイドライン）等を参考にすること。</span><span class="sub">キ　保険薬剤師は処方医へ提案を行う際に、減薬に係る患者の意向や提案に至るまでに薬学的見地から検討した内容を薬剤服用歴等に記載する。また、保険医療機関から提供された処方内容の調整結果に係る情報は、薬剤服用歴等に添付する等の方法により保存しておくこと。</span><span class="sub">ク　当該保険薬局で服用薬剤調整支援料１を１年以内に算定した場合においては、前回の算定に当たって減少した後の内服薬の種類数から更に２種類以上減少したときに限り、新たに算定することができる。</span></span></div>
+        <div class="oi"><span class="lab">(２)</span><span>服用薬剤調整支援料２<span class="sub">ア　服用薬剤調整支援料２は、複数の保険医療機関から内服薬が合計で６種類以上処方されている患者に対して、患者若しくはその家族等の求めに応じて、かかりつけ薬剤師が、当該患者の服用中の薬剤を継続的及び一元的に把握した結果、服用中の薬剤の調整を必要と認める場合であって、患者の服薬状況等に係る総合的な管理及び評価（以下「服用薬剤総合評価」という。）を実施した上で、処方医に対して、当該調整について文書を用いて提案した場合に、同一の患者に対して６月に１回に限り、かかりつけ薬剤師１人につき月４回まで算定することができる。</span><span class="sub">イ　服用薬剤調整支援料２の算定に当たっては、服用薬剤総合評価を行うために必要な研修を修了したかかりつけ薬剤師が服用薬剤総合評価を行うこと。「服用薬剤総合評価を行うために必要な研修を修了したかかりつけ薬剤師」とは、日本老年薬学会の提供する老年薬学服薬総合評価研修会を修了したかかりつけ薬剤師又は日本老年薬学会が定める老年薬学認定薬剤師であるかかりつけ薬剤師をいう。</span><span class="sub">ウ　服用薬剤総合評価の実施に当たっては、別紙様式２を用いるとともに、薬剤服用歴に保存すること。</span><span class="sub">エ　服用薬剤調整支援料２の算定にあたっては、服用薬剤総合評価として、次に掲げる事項を全て行うこと。なお、主観的情報の聴取にあたっては、「ポリファーマシー対策のための持参薬鑑別評価シート開発に関する研究」（国立高度専門医療研究センター横断的研究推進費）で作成された「おくすり問診票」を必要に応じて活用すること。</span><span class="sub d2">(イ)　薬物治療に関する患者又はその家族等からの主観的情報の聴取</span><span class="sub d2">(ロ)　検査値等の薬物治療に必要な客観的情報の収集</span><span class="sub d2">(ハ)　服薬支援に必要な患者の生活状況及び意向に関する情報の聴取</span><span class="sub d2">(ニ)　各服用薬剤がもたらす治療効果及び有害事象の評価</span><span class="sub d2">(ホ)　解決すべき薬剤関連問題の特定及び整理(へ) 服用薬剤調整後の観察計画及び対応案の立案</span><span class="sub">オ　服用薬剤総合評価の実施に当たっては、日本老年医学会及び日本老年薬学会が作成する「日本版抗コリン薬リスクスケール」や「高齢者施設の服薬簡素化提言」を参照すること。</span><span class="sub">カ　服用薬剤調整支援料２は、在宅で療養を行っている患者であって通院が困難なものについて、在宅患者訪問薬剤管理指導料等を算定している場合であっても、「１０の３」服薬管理指導料の２（２）に掲げる事項に基づき、患者からかかりつけ薬剤師としての同意を取得した上で、服用薬剤総合評価を実施したときは、算定可能である。</span><span class="sub">キ　服用薬剤調整支援料２の算定にあたっては、あらかじめ、患者又はその家族等に対し、次に掲げる事項を説明し、了解を得ること。</span><span class="sub d2">(イ)　服用薬剤総合評価を実施する意義</span><span class="sub d2">(ロ)　服用薬剤調整支援料２により発生する患者自己負担額</span><span class="sub">ク　服用薬剤総合評価の実施にあたっては、次に掲げる事項等を患者又はその家族等に対して結果の伝達を行うこと。ただし、患者又はその家族等に対して結果の伝達を行う際には、一律の内容ではなく、患者若しくはその家族等又は医療従事者との関係性等を踏まえて内容を適宜変更すること。</span><span class="sub d2">(イ)　患者への聞き取り等により確認した内容</span><span class="sub d2">(ロ)　薬物有害事象であると疑われる症状</span><span class="sub d2">(ハ)　服薬の状況（薬剤の管理状況等も含む。）</span><span class="sub d2">(ニ)　医療従事者と共有する内容</span><span class="sub d2">(ホ)　今後生活を送る上での注意点</span><span class="sub">ケ　服用薬剤調整支援料２は、特別調剤基本料Ａを算定している保険薬局において、当該保険薬局と不動産取引等その他特別な関係を有している保険医療機関へ情報提供を行った場合は算定できない。</span><span class="sub">コ　服用薬剤調整支援料２は、特別調剤基本料Ｂを算定している保険薬局は算定できない。</span><span class="sub">サ　服用薬剤調整支援料２は、令和８年６月１日から令和９年５月31日までの間は算定できない。</span></span></div>
+        <div class="cite">出典：診療報酬の算定方法（別表第三　調剤報酬点数表）／「診療報酬の算定方法の一部改正に伴う実施上の留意事項について」（令和8年3月5日　保医発0305第6号）別添3。</div>
+        </div>
+      </div>
+    </details>
+      <!-- /genbun -->
+
+      <!-- 関連する社内Q&A（自動生成：node assets/build-gigi-list.js） -->
+      <div class="card">
+        <!-- qa-list:c-chosei -->
+        <div class="card-title">関連する社内Q&amp;A<span class="qual">全1件</span></div>
+        <div class="lead-note">結論のみ記載。解説は調剤報酬Q&amp;Aで確認する。</div>
+
+        <a class="gi-row" href="../ナレッジ/調剤報酬QA.html#q-chosei-1">
+          <div class="gi-q"><span class="qbadge">Q</span><span class="qtext">減薬の提案により内服薬が8種類から6種類に減ったケースです。提案を行った薬とは別の薬について、規格や用量の変更があった場合、算定要件に影響はありますか？（例1：提案後にマグミットが250mgから330mgに変更／例2：提案後にマグミットが2錠から4錠に増量）</span></div>
+          <div class="gi-a"><span class="alabel">A</span><span class="ctext">影響しない。<span class="sub">評価の対象は内服薬の種類数が減ることであり、他の薬の規格や用量の変更は種類数に関わらない。</span></span></div>
+          <div class="gi-more">調剤報酬Q&amp;Aで解説を見る<span class="chev">›</span></div>
+        </a>
+        <!-- /qa-list -->
+      </div>
+
+      <!-- 関連する過去の疑義解釈 -->
+      <div class="card">
+        <div class="card-title">関連する過去の疑義解釈</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;"><a href="../ツール/gigi-search.html?q=服用薬剤調整支援料" style="color:var(--blue); font-weight:700;">疑義解釈検索ツールで「服用薬剤調整支援料」の全件を見る</a></p>
+      </div>
+
+      <!-- 関連ページ -->
+      <div class="card">
+        <div class="card-title">関連ページ</div>
+        <div class="rel">
+          <a href="服用薬剤調整支援料２_2026改定.html">服用薬剤調整支援料２<span class="sub">2026改定で実質新設・別の点数</span></a>
+          <a href="../ナレッジ/調剤報酬QA.html#c-chosei">調剤報酬Q&amp;A 服用薬剤調整支援料１<span class="sub">種類数の数え方</span></a>
+          <a href="../加算まとめ.html">算定項目まとめ<span class="sub">一覧</span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ref-links">
+      <div class="row">
+        <span class="lab">原文参照：</span>
+        <a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-14-3">別添３ › 服用薬剤調整支援料</a>
+        <a href="../改定資料/別表第三_調剤報酬点数表2026.html#ku14-3">別表第三 › 区分１４の３</a>
+        <a href="../改定資料/別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html">別表Ⅰ › 摘要欄記載事項</a>
+      </div>
+    </div>
+
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>
