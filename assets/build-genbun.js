@@ -222,8 +222,20 @@ function buildBlock(attrs, warn) {
     const section = SRC.betten3.html.slice(el.start, el.end);
     const headM = /<div[^>]*class="[^"]*item-heading[^"]*"[^>]*>([\s\S]*?)<\/div>/.exec(section);
     let head = headM ? plain(headM[1].replace(/<span class="num-badge">([^<]*)<\/span\s*>/, '$1 ')) : '';
-    // 見出しではなく reg-para（「１ 通則」など）を指した場合はその文言を見出しに使う
-    if (!headM) {
+    // reg-item を指した場合はその項目自身の見出し（reg-body）を使う。
+    // ここで reg-para を拾うと、節の途中の段落（注射薬の品目一覧など）が見出しになってしまう
+    const firstTag = /^<div[^>]*>/.exec(section);
+    const isRegItemTarget = !!firstTag && /class="(?:[^"]*[\t\n\r ])?reg-item(?:[\t\n\r ][^"]*)?"/.test(firstTag[0]);
+    if (!headM && isRegItemTarget) {
+      const bodyM = /<div class="reg-body">([\s\S]*?)<\/div>/.exec(section);
+      // 正本には見出しと本文が同じ reg-body に入っている項目がある（区分01の屯服薬など）。
+      // 句点を含むもの・長すぎるものは見出しではないので使わない
+      if (bodyM) {
+        const t = plain(bodyM[1]);
+        if (t && t.length <= 24 && !t.includes('。')) head = t;
+      }
+    } else if (!headM) {
+      // 見出しではなく reg-para（「１ 通則」など）を指した場合はその文言を見出しに使う
       const paraM = /<p[^>]*class="reg-para"[^>]*>([\s\S]*?)<\/p>/.exec(section);
       if (paraM) head = plain(paraM[1]);
     }
