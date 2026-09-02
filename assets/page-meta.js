@@ -28,7 +28,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-27"
   },
   "kaitei2026.html": {
-    "lastUpdated": "2026-08-26"
+    "lastUpdated": "2026-09-02"
   },
   "yakureki/薬歴の書き方_実例解説集.html": {
     "lastUpdated": "2026-07-13",
@@ -116,7 +116,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-31"
   },
   "加算まとめ/調剤基本料_2026改定.html": {
-    "lastUpdated": "2026-08-31"
+    "lastUpdated": "2026-09-02"
   },
   "加算まとめ/調剤後薬剤管理指導料.html": {
     "lastUpdated": "2026-08-20",
@@ -172,7 +172,7 @@ window.__pageMeta = {
     "newUntil": "2026-09-09"
   },
   "加算まとめ/服用薬剤調整支援料２_2026改定.html": {
-    "lastUpdated": "2026-08-31"
+    "lastUpdated": "2026-09-02"
   },
   "加算まとめ/退院時共同指導料.html": {
     "lastUpdated": "2026-08-26",
@@ -248,7 +248,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-09-02"
   },
   "改定資料/調剤ベースアップ評価料.html": {
-    "lastUpdated": "2026-08-01"
+    "lastUpdated": "2026-09-02"
   },
   "改定資料/服用薬剤調整支援料２_資格取得ステップ.html": {
     "lastUpdated": "2026-03-23"
@@ -269,7 +269,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-07-12"
   },
   "改定資料/疑義解釈まとめ2026.html": {
-    "lastUpdated": "2026-08-01",
+    "lastUpdated": "2026-09-02",
     "newUntil": "2026-09-09"
   },
   "改定資料/選定療養_概要2026.html": {
@@ -340,7 +340,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-07-12"
   },
   "ツール/gigi-search.html": {
-    "lastUpdated": "2026-08-01",
+    "lastUpdated": "2026-09-02",
     "newUntil": "2026-07-25"
   },
   "ツール/選定療養費計算ツール.html": {
