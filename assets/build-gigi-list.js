@@ -173,9 +173,14 @@ function main() {
   for (const file of listPages()) {
     const orig = fs.readFileSync(file, 'utf8');
     const name = path.relative(ROOT, file).split(path.sep).join('/');
-    const re = /([ \t]*)<!-- (gigi|qa)-list:([a-z-]+[^ >]*) -->\n?[\s\S]*?[ \t]*<!-- \/(?:gigi|qa)-list -->/g;
+    const re = /([ \t]*)<!-- (gigi|qa)-list:([a-z-]+[^ >]*) -->\r?\n?[\s\S]*?[ \t]*<!-- \/(?:gigi|qa)-list -->/g;
     if (!re.test(orig)) continue;
     re.lastIndex = 0;
+
+    // 生成ブロックの改行は、そのファイルの改行に合わせる。
+    // LF 決め打ちで書くと、CRLF のページでは中身が同じでも毎回「差分あり」と出て、
+    // 本物の差分が埋もれる（2026-09-02、調剤管理料で発見）。
+    const EOL = /\r\n/.test(orig) ? '\r\n' : '\n';
 
     let hit = 0;
     const next = orig.replace(re, (full, indent, kind, id) => {
@@ -188,7 +193,7 @@ function main() {
       hit += items.length;
       const src = relTo(file, kind === 'gigi' ? SRC_REL : QA_REL);
       const block = buildBlock(kind, items, src, indent.length);
-      return `${indent}<!-- ${kind}-list:${id} -->\n${block}\n${indent}<!-- /${kind}-list -->`;
+      return `${indent}<!-- ${kind}-list:${id} -->\n${block}\n${indent}<!-- /${kind}-list -->`.replace(/\r?\n/g, EOL);
     });
 
     if (next === orig) {

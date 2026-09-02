@@ -282,6 +282,12 @@ for (const rel of files) {
   if (!s.includes('<!-- genbun ')) continue;
   const before = s;
 
+  // 生成ブロックの改行は、そのファイルの改行に合わせる。
+  // LF 決め打ちで書くと、CRLF のページでは中身が同じでも毎回「差分あり」と出て、
+  // 本物の差分が埋もれる（2026-09-02、調剤管理料で発見）。
+  // Windows では git が checkout 時に CRLF へ変換するので、環境によって差が出ていた。
+  const EOL = /\r\n/.test(s) ? '\r\n' : '\n';
+
   s = s.replace(/([ \t]*)<!-- genbun ([^>]*?)-->[\s\S]*?<!-- \/genbun -->/g, (m, ind, attrStr) => {
     const attrs = {};
     for (const a of attrStr.matchAll(/(\w+)="([^"]*)"/g)) attrs[a[1]] = a[2];
@@ -290,7 +296,7 @@ for (const rel of files) {
     blocks++;
     warn.forEach(w => warnings.push(`${rel}: ${w}`));
     if (!body) { warnings.push(`${rel}: 生成できなかった（${attrStr.trim()}）`); return m; }
-    return `${ind}<!-- genbun ${attrStr}-->\n${body}\n${ind}<!-- /genbun -->`;
+    return `${ind}<!-- genbun ${attrStr}-->\n${body}\n${ind}<!-- /genbun -->`.replace(/\r?\n/g, EOL);
   });
 
   if (s !== before) {
