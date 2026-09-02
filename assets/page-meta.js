@@ -52,43 +52,43 @@ window.__pageMeta = {
   "yakureki/基本記載ルール.html": {
     "lastUpdated": "2026-08-20"
   },
-  "yakureki/ハイリスク_気分安定薬.html": {
-    "lastUpdated": "2026-08-20"
+  "yakureki/index.html": {
+    "lastUpdated": "2026-08-18",
+    "newUntil": "2026-07-27"
   },
-  "yakureki/ハイリスク薬指導.html": {
-    "lastUpdated": "2026-08-12"
+  "yakureki/居宅療養管理指導_薬歴の記載事項.html": {
+    "lastUpdated": "2026-08-19",
+    "newUntil": "2026-08-25"
   },
-  "yakureki/ハイリスク_抗精神病薬.html": {
-    "lastUpdated": "2026-08-12"
-  },
-  "yakureki/ハイリスク_膵臓ホルモン剤.html": {
+  "yakureki/ハイリスク_抗うつ薬.html": {
     "lastUpdated": "2026-08-12"
   },
   "yakureki/ハイリスク_抗てんかん薬.html": {
     "lastUpdated": "2026-08-20"
   },
+  "yakureki/ハイリスク_抗精神病薬.html": {
+    "lastUpdated": "2026-08-12"
+  },
+  "yakureki/ハイリスク_気分安定薬.html": {
+    "lastUpdated": "2026-08-20"
+  },
   "yakureki/ハイリスク_糖尿病用剤.html": {
+    "lastUpdated": "2026-08-12"
+  },
+  "yakureki/ハイリスク_膵臓ホルモン剤.html": {
     "lastUpdated": "2026-08-12"
   },
   "yakureki/ハイリスク_血液凝固阻止剤.html": {
     "lastUpdated": "2026-08-12"
   },
-  "yakureki/ハイリスク_抗うつ薬.html": {
+  "yakureki/ハイリスク薬指導.html": {
     "lastUpdated": "2026-08-12"
   },
   "yakureki/乳幼児服薬指導加算.html": {
     "lastUpdated": "2026-08-12"
   },
-  "yakureki/index.html": {
-    "lastUpdated": "2026-08-18",
-    "newUntil": "2026-07-27"
-  },
   "yakureki/加算別記載一覧.html": {
     "lastUpdated": "2026-08-20",
-    "newUntil": "2026-08-25"
-  },
-  "yakureki/居宅療養管理指導_薬歴の記載事項.html": {
-    "lastUpdated": "2026-08-19",
     "newUntil": "2026-08-25"
   },
   "加算まとめ/かかりつけ薬剤師訪問加算.html": {
@@ -109,7 +109,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-31"
   },
   "加算まとめ/在宅協力薬局.html": {
-    "lastUpdated": "2026-08-25",
+    "lastUpdated": "2026-09-02",
     "newUntil": "2026-09-01"
   },
   "加算まとめ/地域支援医薬品供給対応体制加算.html": {
@@ -141,11 +141,11 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-31"
   },
   "加算まとめ/在宅患者緊急時等共同指導料.html": {
-    "lastUpdated": "2026-08-25",
+    "lastUpdated": "2026-09-02",
     "newUntil": "2026-09-01"
   },
   "加算まとめ/在宅移行初期管理料.html": {
-    "lastUpdated": "2026-08-25",
+    "lastUpdated": "2026-09-02",
     "newUntil": "2026-09-01"
   },
   "加算まとめ/特定薬剤管理指導加算1.html": {
@@ -156,11 +156,11 @@ window.__pageMeta = {
     "lastUpdated": "2026-09-02"
   },
   "加算まとめ/在宅患者訪問薬剤管理指導料.html": {
-    "lastUpdated": "2026-08-26",
+    "lastUpdated": "2026-09-02",
     "newUntil": "2026-08-26"
   },
   "加算まとめ/在宅患者緊急訪問薬剤管理指導料.html": {
-    "lastUpdated": "2026-08-25",
+    "lastUpdated": "2026-09-02",
     "newUntil": "2026-09-01"
   },
   "加算まとめ/夜間・休日・深夜訪問加算.html": {
@@ -205,6 +205,22 @@ window.__pageMeta = {
     "lastUpdated": "2026-09-02",
     "newUntil": "2026-09-09"
   },
+  "加算まとめ/乳幼児服薬指導加算.html": {
+    "lastUpdated": "2026-08-20",
+    "newUntil": "2026-07-31"
+  },
+  "加算まとめ/外来服薬支援料2.html": {
+    "lastUpdated": "2026-08-20",
+    "newUntil": "2026-08-20"
+  },
+  "加算まとめ/特定薬剤管理指導加算3.html": {
+    "lastUpdated": "2026-08-20",
+    "newUntil": "2026-08-04"
+  },
+  "加算まとめ/麻薬管理指導加算.html": {
+    "lastUpdated": "2026-09-02",
+    "newUntil": "2026-08-19"
+  },
   "加算まとめ/薬学的有害事象等防止加算.html": {
     "lastUpdated": "2026-09-02"
   },
@@ -215,28 +231,12 @@ window.__pageMeta = {
   "加算まとめ/在宅薬学総合体制加算2026.html": {
     "lastUpdated": "2026-09-02"
   },
-  "加算まとめ/乳幼児服薬指導加算.html": {
-    "lastUpdated": "2026-08-20",
-    "newUntil": "2026-07-31"
-  },
-  "加算まとめ/特定薬剤管理指導加算3.html": {
-    "lastUpdated": "2026-08-20",
-    "newUntil": "2026-08-04"
-  },
   "加算まとめ/調剤時残薬調整加算.html": {
     "lastUpdated": "2026-09-02"
   },
   "加算まとめ/特定薬剤管理指導加算2.html": {
     "lastUpdated": "2026-08-20",
     "newUntil": "2026-08-18"
-  },
-  "加算まとめ/麻薬管理指導加算.html": {
-    "lastUpdated": "2026-08-20",
-    "newUntil": "2026-08-19"
-  },
-  "加算まとめ/外来服薬支援料2.html": {
-    "lastUpdated": "2026-08-20",
-    "newUntil": "2026-08-20"
   },
   "改定資料/調剤基本料フローチャート.html": {
     "lastUpdated": "2026-03-26"
@@ -272,10 +272,6 @@ window.__pageMeta = {
     "lastUpdated": "2026-09-02",
     "newUntil": "2026-09-09"
   },
-  "改定資料/選定療養_概要2026.html": {
-    "lastUpdated": "2026-08-01",
-    "newUntil": "2026-08-08"
-  },
   "改定資料/調剤報酬体系図_2026改定.html": {
     "lastUpdated": "2026-08-06"
   },
@@ -285,13 +281,7 @@ window.__pageMeta = {
   "改定資料/【簡易版】かかりつけ薬剤師に関わる管理料・加算一覧.html": {
     "lastUpdated": "2026-08-14"
   },
-  "改定資料/調剤報酬改定2026_ダイジェスト.html": {
-    "lastUpdated": "2026-08-14"
-  },
   "改定資料/門前薬局等立地依存減算.html": {
-    "lastUpdated": "2026-08-14"
-  },
-  "改定資料/在宅薬学総合体制加算2イ_特例摘要欄ガイド.html": {
     "lastUpdated": "2026-08-14"
   },
   "改定資料/記載要領_調剤報酬請求書及び明細書2026.html": {
@@ -300,6 +290,16 @@ window.__pageMeta = {
   },
   "改定資料/調剤物価対応料.html": {
     "lastUpdated": "2026-08-31"
+  },
+  "改定資料/在宅薬学総合体制加算2イ_特例摘要欄ガイド.html": {
+    "lastUpdated": "2026-08-14"
+  },
+  "改定資料/調剤報酬改定2026_ダイジェスト.html": {
+    "lastUpdated": "2026-08-14"
+  },
+  "改定資料/選定療養_概要2026.html": {
+    "lastUpdated": "2026-08-01",
+    "newUntil": "2026-08-08"
   },
   "チェックリスト/選定療養_実務チェックリスト.html": {
     "lastUpdated": "2026-06-06",
@@ -355,10 +355,6 @@ window.__pageMeta = {
   "ナレッジ/基礎的医薬品追加リストR8_4.html": {
     "lastUpdated": "2026-04-19"
   },
-  "ナレッジ/調剤報酬QA.html": {
-    "lastUpdated": "2026-07-29",
-    "newUntil": "2026-08-05"
-  },
   "ナレッジ/高額療養費制度の見直し2026.html": {
     "lastUpdated": "2026-07-30",
     "newUntil": "2026-08-06"
@@ -374,6 +370,10 @@ window.__pageMeta = {
   "ナレッジ/OTC類似薬の一部保険外療養.html": {
     "lastUpdated": "2026-08-27",
     "newUntil": "2026-09-03"
+  },
+  "ナレッジ/調剤報酬QA.html": {
+    "lastUpdated": "2026-07-29",
+    "newUntil": "2026-08-05"
   },
   "事務/事務スタッフ向け_2026改定サマリ.html": {
     "lastUpdated": "2026-07-12"
