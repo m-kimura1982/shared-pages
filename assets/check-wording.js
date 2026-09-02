@@ -38,6 +38,8 @@ const ORIG_PAGES = [
   '改定資料/別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html',
   '改定資料/別表Ⅴ_調剤行為名称等の略号一覧2026改定.html',
   '改定資料/疑義解釈まとめ2026.html',
+  '改定資料/特掲診療料_施設基準届出_調剤関係2026.html',
+  '改定資料/記載要領_調剤報酬請求書及び明細書2026.html',
   'ツール/gigi-search.html',
 ];
 
@@ -59,9 +61,9 @@ function targets() {
   return list;
 }
 
-/** 原文カード・コメント・style・script を空白で潰す（行番号を保つため改行は残す） */
+/** 原文カード・原文参照バー・コメント・style・script を空白で潰す（行番号を保つため改行は残す） */
 function mask(html) {
-  return html.replace(/<details class="fold[\s\S]*?<\/details>|<!--[\s\S]*?-->|<style[\s\S]*?<\/style>|<script[\s\S]*?<\/script>/g,
+  return html.replace(/<details class="fold[\s\S]*?<\/details>|<div class="ref-links"[\s\S]*?<\/div>\s*<\/div>|<!--[\s\S]*?-->|<style[\s\S]*?<\/style>|<script[\s\S]*?<\/script>/g,
     m => m.replace(/[^\n]/g, ' '));
 }
 
