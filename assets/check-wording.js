@@ -59,9 +59,9 @@ function targets() {
   return list;
 }
 
-/** コメント・style・script を空白で潰す（行番号を保つため改行は残す） */
+/** 原文カード・コメント・style・script を空白で潰す（行番号を保つため改行は残す） */
 function mask(html) {
-  return html.replace(/<!--[\s\S]*?-->|<style[\s\S]*?<\/style>|<script[\s\S]*?<\/script>/g,
+  return html.replace(/<details class="fold[\s\S]*?<\/details>|<!--[\s\S]*?-->|<style[\s\S]*?<\/style>|<script[\s\S]*?<\/script>/g,
     m => m.replace(/[^\n]/g, ' '));
 }
 

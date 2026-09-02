@@ -159,8 +159,10 @@ function relTo(file, rel) {
 }
 
 function main() {
-  const sections = parseMatome(fs.readFileSync(SRC, 'utf8'));
-  const qaCards = parseQaPage(fs.readFileSync(QA_SRC, 'utf8'));
+  // 正本が CRLF で保存されていても読めるように、改行を揃えてから解析する
+  const readSrc = (p) => fs.readFileSync(p, 'utf8').replace(/\r\n/g, '\n');
+  const sections = parseMatome(readSrc(SRC));
+  const qaCards = parseQaPage(readSrc(QA_SRC));
   const total = Object.values(sections).reduce((n, a) => n + a.length, 0);
   const qaTotal = Object.values(qaCards).reduce((n, a) => n + a.length, 0);
   console.log(`疑義解釈まとめ：${Object.keys(sections).length}セクション / ${total}件`);
