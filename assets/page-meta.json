@@ -1,6 +1,6 @@
 {
   "加算まとめ.html": {
-    "lastUpdated": "2026-09-02"
+    "lastUpdated": "2026-09-03"
   },
   "ページ一覧.html": {
     "lastUpdated": "2026-08-24",
@@ -13,13 +13,13 @@
     "lastUpdated": "2026-08-06"
   },
   "updates.html": {
-    "lastUpdated": "2026-09-02"
+    "lastUpdated": "2026-09-03"
   },
   "checklists.html": {
     "lastUpdated": "2026-08-14"
   },
   "index.html": {
-    "lastUpdated": "2026-09-02"
+    "lastUpdated": "2026-09-03"
   },
   "tools.html": {
     "lastUpdated": "2026-08-06"
@@ -90,6 +90,10 @@
   "yakureki/加算別記載一覧.html": {
     "lastUpdated": "2026-08-20",
     "newUntil": "2026-08-25"
+  },
+  "加算まとめ/分割調剤.html": {
+    "lastUpdated": "2026-09-03",
+    "newUntil": "2026-09-10"
   },
   "加算まとめ/かかりつけ薬剤師訪問加算.html": {
     "lastUpdated": "2026-09-02"
@@ -205,9 +209,21 @@
     "lastUpdated": "2026-09-03",
     "newUntil": "2026-09-09"
   },
+  "加算まとめ/無菌製剤処理加算.html": {
+    "lastUpdated": "2026-09-03",
+    "newUntil": "2026-09-10"
+  },
+  "加算まとめ/小児特定加算.html": {
+    "lastUpdated": "2026-09-03",
+    "newUntil": "2026-09-10"
+  },
   "加算まとめ/乳幼児服薬指導加算.html": {
     "lastUpdated": "2026-08-20",
     "newUntil": "2026-07-31"
+  },
+  "加算まとめ/自家製剤加算・計量混合調剤加算.html": {
+    "lastUpdated": "2026-09-03",
+    "newUntil": "2026-09-10"
   },
   "加算まとめ/外来服薬支援料2.html": {
     "lastUpdated": "2026-08-20",
@@ -220,6 +236,14 @@
   "加算まとめ/麻薬管理指導加算.html": {
     "lastUpdated": "2026-09-03",
     "newUntil": "2026-08-19"
+  },
+  "加算まとめ/手帳の活用実績が少ない保険薬局.html": {
+    "lastUpdated": "2026-09-03",
+    "newUntil": "2026-09-10"
+  },
+  "加算まとめ/服用薬剤調整支援料１.html": {
+    "lastUpdated": "2026-09-03",
+    "newUntil": "2026-09-10"
   },
   "加算まとめ/薬学的有害事象等防止加算.html": {
     "lastUpdated": "2026-09-02"
@@ -242,7 +266,7 @@
     "lastUpdated": "2026-03-26"
   },
   "改定資料/調剤報酬点数早見表2026.html": {
-    "lastUpdated": "2026-03-31"
+    "lastUpdated": "2026-09-03"
   },
   "改定資料/別表第三_調剤報酬点数表2026.html": {
     "lastUpdated": "2026-09-02"
@@ -263,7 +287,7 @@
     "lastUpdated": "2026-06-20"
   },
   "改定資料/別添3_調剤報酬点数表に関する事項2026.html": {
-    "lastUpdated": "2026-09-02"
+    "lastUpdated": "2026-09-03"
   },
   "改定資料/栄養保持を目的とした医薬品の保険給付の適正化.html": {
     "lastUpdated": "2026-07-12"
