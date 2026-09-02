@@ -20,6 +20,12 @@
 (function () {
   'use strict';
 
+  /* どのページにも同じ文字列で出る末尾の定型カードは目次に載せない。
+     ページを見分ける手がかりにならないのに、15項目のうち4〜5個を占めていた
+     （検索索引の SKIP_TERMS と同じ考え方。2026-09-02）。
+     「レセプト摘要欄記載事項」「薬歴記載事項」はページごとに中身が違うので残す。 */
+  var SKIP_TITLES = /^(原文|原文を見る|関連する疑義解釈|関連する過去の疑義解釈|関連する社内Q&A|関連ページ|関連する社内Q＆A)/;
+
   var STYLE = [
     '.page-toc { display:flex; flex-wrap:wrap; gap:7px; }',
     '.page-toc a { font-size:13px; font-weight:700; color:#1e5fa8; text-decoration:none;',
@@ -28,8 +34,24 @@
     '.page-toc a:hover { background:#f2f7fc; }',
     /* 共通ヘッダーが sticky なので、アンカーで飛んだとき見出しが隠れないようにする */
     '.page .card, .page details.fold, section[id] { scroll-margin-top:76px; }',
+    /* 目次の開閉（スマホだけ閉じる）。
+       PC は open のままで取っ手を隠すので、今までのチップ表示と同じ。
+       375px幅では目次チップが137〜351pxあり、服薬管理指導料（15項目）は
+       本文が1行も入らなかった（2026-09-02 の計測）。 */
+    /* 取っ手を隠すのは「開いているとき」だけ。閉じているのに取っ手も無い、
+       という開けない状態を作らないため（幅の判定が何かの理由で外れても壊れない）。 */
+    '.toc-fold[open] > .toc-more { display:none; }',
     '@media (max-width:640px) {',
     '  .page-toc { gap:6px; }',
+    '  .toc-fold { border:1px solid #bcd3ee; background:#ffffff; border-radius:8px; }',
+    '  .toc-fold > .toc-more, .toc-fold[open] > .toc-more {',
+    '    display:flex; align-items:center; gap:8px; list-style:none; cursor:pointer;',
+    '    font-size:13px; font-weight:700; color:#1e5fa8; padding:9px 13px; }',
+    '  .toc-fold > .toc-more::-webkit-details-marker { display:none; }',
+    '  .toc-fold > .toc-more::marker { content:""; }',
+    '  .toc-fold > .toc-more::before { content:"▸"; font-size:11px; }',
+    '  .toc-fold[open] > .toc-more::before { content:"▾"; }',
+    '  .toc-fold > .page-toc { padding:0 11px 11px; }',
     /* 長い見出しのチップが画面幅を超えて横スクロールを起こすので、狭い画面では折り返す */
     '  .page-toc a { font-size:11.5px; padding:4px 10px; white-space:normal; border-radius:14px; }',
     '  .page .card, .page details.fold, section[id] { scroll-margin-top:64px; }',
@@ -87,6 +109,7 @@
       }
       name = name.replace(/\s+/g, ' ').trim();
       if (!name) return;
+      if (SKIP_TITLES.test(name)) return;
 
       if (!sec.id) sec.id = 'sec-toc-' + (i + 1);
       items.push({ id: sec.id, name: name });
@@ -105,6 +128,31 @@
       a.href = '#' + it.id;
       a.textContent = it.name;
       box.appendChild(a);
+    });
+
+    /* スマホでは折りたたむ。既定を open にしておくのは、
+       JSが途中で止まっても今までどおりチップが全部見えるようにするため。 */
+    var fold = document.createElement('details');
+    fold.className = 'toc-fold';
+    fold.open = true;
+    fold.innerHTML = '<summary class="toc-more">このページの目次（' + items.length + '項目）</summary>';
+    box.parentNode.insertBefore(fold, box);
+    fold.appendChild(box);
+
+    var mq = window.matchMedia('(max-width:640px)');
+    var sync = function () {
+      var want = !mq.matches;
+      if (fold.open !== want) fold.open = want;
+    };
+    sync();
+    if (mq.addEventListener) mq.addEventListener('change', sync);
+    else if (mq.addListener) mq.addListener(sync);   /* 古いSafari */
+    window.addEventListener('resize', sync);          /* change が来ない環境の保険 */
+
+    /* 目次から飛んだあとは開いたままにしない（スマホ）。
+       閉じておくと、戻ってきたときに本文の位置が変わらない。 */
+    box.addEventListener('click', function (ev) {
+      if (ev.target.tagName === 'A' && mq.matches) fold.open = false;
     });
   });
 })();

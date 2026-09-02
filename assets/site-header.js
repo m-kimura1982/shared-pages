@@ -295,6 +295,16 @@
     @media (max-width: 700px) {
       .sn-crumb-updated { width: 100%; font-size: 11px; }
       .sn-crumb-updated::before { display: none; }
+
+      /* 個別ページ（3段）のパンくずは、スマホでは現在ページ名を出さない。
+         真下の H1 と同じ文字列で、長いページ名だと2〜3行に折り返して
+         本文が画面から押し出されていた（2026-09-02 の計測で最大117px）。
+         最終更新日は同じ行の右端に寄せて1行に収める。 */
+      .sn-crumb--page .sn-crumb-current,
+      .sn-crumb--page .sn-crumb-sep-last { display: none; }
+      .sn-crumb--page .sn-crumb-updated {
+        width: auto; margin-left: auto; font-size: 11px;
+      }
     }
 
     /* 同じカテゴリーの他のページ（本文の最後に自動で置く）
@@ -322,11 +332,26 @@
     .sn-sib-grid a::before { content: "›"; color: #1e5fa8; font-weight: 700; flex-shrink: 0; }
     .sn-sib-grid a:hover { color: #1e5fa8; }
 
+    /* 一覧の開閉（スマホだけ閉じる）。
+       PC は details を open のままにし、取っ手（summary）を隠すので今までと同じ見た目。
+       スマホでは一覧が45行・約1,500px あり、本文を読み終えた直後に通過させていた。 */
+    .sn-sib-fold[open] > .sn-sib-more { display: none; }
+
     /* モバイル */
     @media (max-width: 700px) {
       .sn-siblings { margin-top: 28px; padding: 18px 16px 4px; }
       .sn-sib-grid { grid-template-columns: 1fr; }
       .sn-sib-hub { margin-left: 0; }
+      .sn-sib-more, .sn-sib-fold[open] > .sn-sib-more {
+        display: flex; align-items: center; gap: 8px;
+        list-style: none; cursor: pointer;
+        font-size: 13px; font-weight: 700; color: #1e5fa8;
+        padding: 8px 2px 10px;
+      }
+      .sn-sib-more::-webkit-details-marker { display: none; }
+      .sn-sib-more::marker { content: ""; }
+      .sn-sib-more::before { content: "▸"; font-size: 11px; }
+      .sn-sib-fold[open] > .sn-sib-more::before { content: "▾"; }
       .sn-header { padding: 10px 16px; }
       .sn-toggle { display: flex; }
       .sn-nav {
@@ -385,11 +410,11 @@
         </nav>`;
     } else {
       crumbHtml = `
-        <nav class="sn-crumb" aria-label="パンくずリスト">
+        <nav class="sn-crumb sn-crumb--page" aria-label="パンくずリスト">
           <a href="${u('index.html')}">ホーム</a>
           <span class="sn-crumb-sep">›</span>
           <a href="${u(cat.url)}">${cat.name}</a>
-          <span class="sn-crumb-sep">›</span>
+          <span class="sn-crumb-sep sn-crumb-sep-last">›</span>
           <span class="sn-crumb-current">${pageInfo.title}</span>
           <span class="sn-crumb-updated" id="sn-updated" hidden></span>
         </nav>`;
@@ -572,20 +597,37 @@
     const nav = document.createElement('nav');
     nav.className = 'sn-siblings';
     nav.setAttribute('aria-label', '同じカテゴリーのページ');
+    // 一覧は details に入れておき、スマホのときだけ閉じる（下の mq 参照）。
+    // 既定を open にしておくのは、JSが途中で止まっても今までどおり全部見えるようにするため。
     nav.innerHTML =
       '<div class="sn-sib-head">' +
       `<span class="sn-sib-title">${esc(cat.name)}の他のページ</span>` +
       `<a class="sn-sib-hub" href="${encodeURI(u(cat.url))}">まとめページへ ›</a>` +
-      '</div><div class="sn-sib-grid">' +
+      '</div>' +
+      '<details class="sn-sib-fold" open>' +
+      `<summary class="sn-sib-more">すべて見る（${siblings.length}）</summary>` +
+      '<div class="sn-sib-grid">' +
       siblings
         .map(([file, info]) => `<a href="${encodeURI(u(file))}">${esc(info.title)}</a>`)
         .join('') +
-      '</div>';
+      '</div></details>';
 
     // ページ末尾のフッターがあればその手前に置く（フッターより下に出さない）
     const foot = document.querySelector('body > footer, body > .page-foot');
     if (foot) foot.parentNode.insertBefore(nav, foot);
     else document.body.appendChild(nav);
+
+    // スマホ幅では閉じる。幅が変わったら追従する（回転・ウィンドウ幅の変更）
+    const fold = nav.querySelector('.sn-sib-fold');
+    const mq = window.matchMedia('(max-width: 700px)');
+    const sync = () => {
+      const want = !mq.matches;
+      if (fold.open !== want) fold.open = want;
+    };
+    sync();
+    if (mq.addEventListener) mq.addEventListener('change', sync);
+    else if (mq.addListener) mq.addListener(sync);   // 古いSafari
+    window.addEventListener('resize', sync);          // change が来ない環境の保険
   }
 
   function esc(s) {
