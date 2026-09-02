@@ -92,16 +92,18 @@ window.__pageMeta = {
     "newUntil": "2026-08-25"
   },
   "加算まとめ/かかりつけ薬剤師訪問加算.html": {
-    "lastUpdated": "2026-08-31"
+    "lastUpdated": "2026-09-02"
   },
   "加算まとめ/施設連携加算.html": {
     "lastUpdated": "2026-08-20",
     "newUntil": "2026-08-22"
   },
   "加算まとめ/薬剤調製料.html": {
-    "lastUpdated": "2026-09-02", "newUntil": "2026-09-09" },
+    "lastUpdated": "2026-09-02",
+    "newUntil": "2026-09-09"
+  },
   "加算まとめ/服薬管理指導料.html": {
-    "lastUpdated": "2026-08-31"
+    "lastUpdated": "2026-09-02"
   },
   "加算まとめ/バイオ後続品調剤体制加算.html": {
     "lastUpdated": "2026-08-31"
@@ -121,7 +123,7 @@ window.__pageMeta = {
     "newUntil": "2026-08-27"
   },
   "加算まとめ/調剤管理料_2026改定.html": {
-    "lastUpdated": "2026-08-31"
+    "lastUpdated": "2026-09-02"
   },
   "加算まとめ/電子的調剤情報連携体制整備加算_2026改定.html": {
     "lastUpdated": "2026-08-31"
@@ -151,7 +153,7 @@ window.__pageMeta = {
     "newUntil": "2026-08-19"
   },
   "加算まとめ/かかりつけ薬剤師フォローアップ加算.html": {
-    "lastUpdated": "2026-08-31"
+    "lastUpdated": "2026-09-02"
   },
   "加算まとめ/在宅患者訪問薬剤管理指導料.html": {
     "lastUpdated": "2026-08-26",
@@ -166,7 +168,9 @@ window.__pageMeta = {
     "newUntil": "2026-09-01"
   },
   "加算まとめ/連携強化加算.html": {
-    "lastUpdated": "2026-09-02", "newUntil": "2026-09-09" },
+    "lastUpdated": "2026-09-02",
+    "newUntil": "2026-09-09"
+  },
   "加算まとめ/服用薬剤調整支援料２_2026改定.html": {
     "lastUpdated": "2026-08-31"
   },
@@ -187,7 +191,9 @@ window.__pageMeta = {
     "newUntil": "2026-08-02"
   },
   "加算まとめ/在宅患者医療用麻薬持続注射療法加算.html": {
-    "lastUpdated": "2026-09-02", "newUntil": "2026-09-09" },
+    "lastUpdated": "2026-09-02",
+    "newUntil": "2026-09-09"
+  },
   "加算まとめ/居宅療養管理指導費.html": {
     "lastUpdated": "2026-08-20",
     "newUntil": "2026-08-26"
@@ -196,16 +202,18 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-31"
   },
   "加算まとめ/在宅中心静脈栄養法加算.html": {
-    "lastUpdated": "2026-09-02", "newUntil": "2026-09-09" },
+    "lastUpdated": "2026-09-02",
+    "newUntil": "2026-09-09"
+  },
   "加算まとめ/薬学的有害事象等防止加算.html": {
-    "lastUpdated": "2026-08-31"
+    "lastUpdated": "2026-09-02"
   },
   "加算まとめ/外来服薬支援料1_算定事例.html": {
     "lastUpdated": "2026-07-24",
     "newUntil": "2026-07-31"
   },
   "加算まとめ/在宅薬学総合体制加算2026.html": {
-    "lastUpdated": "2026-08-31"
+    "lastUpdated": "2026-09-02"
   },
   "加算まとめ/乳幼児服薬指導加算.html": {
     "lastUpdated": "2026-08-20",
@@ -216,7 +224,7 @@ window.__pageMeta = {
     "newUntil": "2026-08-04"
   },
   "加算まとめ/調剤時残薬調整加算.html": {
-    "lastUpdated": "2026-08-31"
+    "lastUpdated": "2026-09-02"
   },
   "加算まとめ/特定薬剤管理指導加算2.html": {
     "lastUpdated": "2026-08-20",
@@ -237,7 +245,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-03-31"
   },
   "改定資料/別表第三_調剤報酬点数表2026.html": {
-    "lastUpdated": "2026-04-10"
+    "lastUpdated": "2026-09-02"
   },
   "改定資料/調剤ベースアップ評価料.html": {
     "lastUpdated": "2026-08-01"
@@ -249,13 +257,13 @@ window.__pageMeta = {
     "lastUpdated": "2026-06-20"
   },
   "改定資料/特掲診療料_施設基準届出_調剤関係2026.html": {
-    "lastUpdated": "2026-05-31"
+    "lastUpdated": "2026-09-02"
   },
   "改定資料/別表Ⅴ_調剤行為名称等の略号一覧2026改定.html": {
     "lastUpdated": "2026-06-20"
   },
   "改定資料/別添3_調剤報酬点数表に関する事項2026.html": {
-    "lastUpdated": "2026-05-30"
+    "lastUpdated": "2026-09-02"
   },
   "改定資料/栄養保持を目的とした医薬品の保険給付の適正化.html": {
     "lastUpdated": "2026-07-12"
