@@ -92,7 +92,9 @@ window.__pageMeta = {
     "newUntil": "2026-08-25"
   },
   "加算まとめ/分割調剤.html": {
-    "lastUpdated": "2026-09-03", "newUntil": "2026-09-10" },
+    "lastUpdated": "2026-09-03",
+    "newUntil": "2026-09-10"
+  },
   "加算まとめ/かかりつけ薬剤師訪問加算.html": {
     "lastUpdated": "2026-09-02"
   },
@@ -101,7 +103,7 @@ window.__pageMeta = {
     "newUntil": "2026-08-22"
   },
   "加算まとめ/薬剤調製料.html": {
-    "lastUpdated": "2026-09-02",
+    "lastUpdated": "2026-09-03",
     "newUntil": "2026-09-09"
   },
   "加算まとめ/服薬管理指導料.html": {
@@ -208,15 +210,21 @@ window.__pageMeta = {
     "newUntil": "2026-09-09"
   },
   "加算まとめ/無菌製剤処理加算.html": {
-    "lastUpdated": "2026-09-03", "newUntil": "2026-09-10" },
+    "lastUpdated": "2026-09-03",
+    "newUntil": "2026-09-10"
+  },
   "加算まとめ/小児特定加算.html": {
-    "lastUpdated": "2026-09-03", "newUntil": "2026-09-10" },
+    "lastUpdated": "2026-09-03",
+    "newUntil": "2026-09-10"
+  },
   "加算まとめ/乳幼児服薬指導加算.html": {
     "lastUpdated": "2026-08-20",
     "newUntil": "2026-07-31"
   },
   "加算まとめ/自家製剤加算・計量混合調剤加算.html": {
-    "lastUpdated": "2026-09-03", "newUntil": "2026-09-10" },
+    "lastUpdated": "2026-09-03",
+    "newUntil": "2026-09-10"
+  },
   "加算まとめ/外来服薬支援料2.html": {
     "lastUpdated": "2026-08-20",
     "newUntil": "2026-08-20"
@@ -230,9 +238,13 @@ window.__pageMeta = {
     "newUntil": "2026-08-19"
   },
   "加算まとめ/手帳の活用実績が少ない保険薬局.html": {
-    "lastUpdated": "2026-09-03", "newUntil": "2026-09-10" },
+    "lastUpdated": "2026-09-03",
+    "newUntil": "2026-09-10"
+  },
   "加算まとめ/服用薬剤調整支援料１.html": {
-    "lastUpdated": "2026-09-03", "newUntil": "2026-09-10" },
+    "lastUpdated": "2026-09-03",
+    "newUntil": "2026-09-10"
+  },
   "加算まとめ/薬学的有害事象等防止加算.html": {
     "lastUpdated": "2026-09-02"
   },
