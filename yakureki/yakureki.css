@@ -485,3 +485,30 @@ body.tpl-only .drug-block { margin-bottom: 14px; }
   body.print-checklist-only header,
   body.print-checklist-only footer { display: none !important; }
 }
+
+/* ============================================================
+   スマホ幅の寸法（2026-09-02 追加）
+
+   薬歴のセクション型ページ（yakureki.css を読む12枚）だけが、
+   2026-08-24 に資料ページ72枚を 13px→14px に揃えたときの対象から
+   漏れていて、本文16px・H1 28px のままだった。
+   調剤報酬→薬歴と移動したときに文字の大きさが変わってしまうので、
+   資料ページ側（CLAUDE.md のスマホ縮小率）に合わせる。
+
+   カード型の6枚（テンプレート3枚・乳幼児・基本記載ルール・実例解説集）は
+   yakureki.css を読んでおらず、各ページのインライン style で既に14px。
+   ============================================================ */
+@media (max-width: 640px) {
+  body { font-size: 14px; line-height: 1.75; }
+
+  .page-head { margin: 14px auto 16px; padding: 0 12px; }
+  .page-tag { font-size: 11px; padding: 3px 11px; margin-bottom: 9px; }
+  .page-title { font-size: 18px; margin-bottom: 7px; }
+  .page-desc { font-size: 13.5px; line-height: 1.75; }
+
+  main { padding: 0 12px; }
+  section { margin-bottom: 26px; }
+  .section-label { font-size: 10.5px; margin-bottom: 9px; }
+  .section-title { font-size: 16px; padding-left: 10px; margin-bottom: 12px; }
+  .subsection-title { font-size: 14px; margin: 16px 0 8px; }
+}

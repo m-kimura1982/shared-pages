@@ -481,6 +481,18 @@
     document.head.appendChild(printCss);
   }
 
+  // ── ページ頭の共通スタイル（assets/page-head.css）を全ページへ注入 ──
+  // スマホでタイトル横の点数ブロックを横1行にする。個別ページのインライン
+  // <style> より後に読み込まれるので、同じ詳細度ならこちらが勝つ。
+  // .score-block を持たないページでは何も起きないので、条件分けはしない。
+  if (!document.querySelector('link[data-sn-page-head]')) {
+    const headCss = document.createElement('link');
+    headCss.rel = 'stylesheet';
+    headCss.href = u('assets/page-head.css');
+    headCss.setAttribute('data-sn-page-head', '');
+    document.head.appendChild(headCss);
+  }
+
   // ── 検索エンジン非掲載（社内専用サイト）：全ページに noindex を注入 ──
   // 既に <meta name="robots"> があるページはスキップ（個別指定を尊重）
   if (!document.querySelector('meta[name="robots"]')) {

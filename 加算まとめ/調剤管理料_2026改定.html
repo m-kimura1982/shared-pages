@@ -110,7 +110,9 @@
       <span class="badge badge-blue">変更</span>
     </div>
 
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px;">
+    <!-- スマホでは1列に落とす（2列のままだと「イ 長期処方（28日分以上）」が3行に折り返し、
+         点数が文字の途中に割り込んで「28日分以　60点　上）」と読めてしまう） -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px; margin-bottom:16px;">
       <div style="background:var(--box-gray); border-radius:var(--radius-sm); padding:12px 16px; border:var(--bw) solid var(--border); display:flex; align-items:center; justify-content:space-between; gap:8px;">
         <div style="font-size:var(--text-md); font-weight:700;">イ 長期処方（28日分以上）</div>
         <div style="font-size:var(--text-md); font-weight:900; white-space:nowrap; flex-shrink:0;">60点</div>
@@ -123,10 +125,10 @@
 
     <div style="font-size:var(--text-xs); font-weight:700; color:#888; margin-bottom:6px;">日数区分別の変化（内服薬１）</div>
     <div class="table-wrap">
-      <table class="compare-table" style="min-width:360px;">
+      <table class="compare-table" style="width:100%;">
         <thead>
           <tr>
-            <th>日数区分（内服薬１）</th>
+            <th>日数区分</th>
             <th class="pt">改定前</th>
             <th class="pt">改定後</th>
             <th class="pt">差分</th>

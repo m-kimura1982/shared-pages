@@ -1,0 +1,47 @@
+/*
+ * ページ頭（タイトル横の点数ブロック）の共通スタイル
+ * site-header.js が全ページの <head> に自動注入する（print.css と同じ仕組み）。
+ *
+ * なぜ要るか：
+ *   .page-title-wrap はスマホで flex-direction:column になるため、点数の箱が
+ *   左に寄って縦に約94px使い、右半分が空白のまま残っていた（2026-09-02 実測）。
+ *   812px しかない画面でこれは大きい。横1行にすると約50pxで収まり、
+ *   その分だけ要約と最初のカードが1画面に入る。
+ *
+ * 効かせ方：
+ *   各ページのインライン <style> より後に読み込まれるので、同じ詳細度なら
+ *   こちらが勝つ。ページ側の @media print / @media (max-width:640px) に
+ *   同じ指定があっても上書きできる。
+ *   個別ページで別の見せ方にしたいときは、そのページ側に !important で書く。
+ *
+ * 対象は .score-block を持つ31ページ（加算まとめ・改定資料・事務）。
+ * 持たないページでは何も起きない。
+ */
+
+@media (max-width: 640px) {
+  /* ラベルを左・点数を右に置いて1行に収める */
+  .score-block {
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .score-block .score-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 0;
+    border-right: 1px solid var(--border, #d1d5db);
+    padding: 6px 14px;
+    flex-shrink: 0;
+    line-height: 1.45;
+  }
+
+  .score-block .score-num {
+    flex: 1 1 auto;
+    min-width: 0;
+    text-align: left;
+    font-size: 24px;
+    padding: 4px 16px;
+  }
+}
