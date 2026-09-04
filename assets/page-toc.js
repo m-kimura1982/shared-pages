@@ -38,14 +38,21 @@
        PC は open のままで取っ手を隠すので、今までのチップ表示と同じ。
        375px幅では目次チップが137〜351pxあり、服薬管理指導料（15項目）は
        本文が1行も入らなかった（2026-09-02 の計測）。 */
-    /* 取っ手を隠すのは「開いているとき」だけ。閉じているのに取っ手も無い、
-       という開けない状態を作らないため（幅の判定が何かの理由で外れても壊れない）。 */
-    '.toc-fold[open] > .toc-more { display:none; }',
+    /* 枠は自分で持たない。ページ側の details {...} が効いてしまい、
+       チップが枠に触れて見えるため明示的に消す（2026-09-04）。 */
+    '.toc-fold { border:0; background:none; border-radius:0; padding:0; }',
+    /* PC は開いたまま。取っ手を隠すのではなく「目次」と分かる小さな見出しにする。
+       クリックで閉じると幅の判定が走るまで開かないので、押せないようにしておく。 */
+    '.toc-fold[open] > .toc-more { display:block; list-style:none; pointer-events:none;',
+    '  font-size:12px; font-weight:700; color:#5e6470; padding:0 0 7px; background:none; }',
+    '.toc-fold > .toc-more::-webkit-details-marker { display:none; }',
+    '.toc-fold > .toc-more::marker { content:""; }',
     '@media (max-width:640px) {',
     '  .page-toc { gap:6px; }',
     '  .toc-fold { border:1px solid #bcd3ee; background:#ffffff; border-radius:8px; }',
     '  .toc-fold > .toc-more, .toc-fold[open] > .toc-more {',
     '    display:flex; align-items:center; gap:8px; list-style:none; cursor:pointer;',
+    '    pointer-events:auto; background:none;',
     '    font-size:13px; font-weight:700; color:#1e5fa8; padding:9px 13px; }',
     '  .toc-fold > .toc-more::-webkit-details-marker { display:none; }',
     '  .toc-fold > .toc-more::marker { content:""; }',
