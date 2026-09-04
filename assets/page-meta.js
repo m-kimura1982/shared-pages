@@ -13,13 +13,13 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-06"
   },
   "updates.html": {
-    "lastUpdated": "2026-09-03"
+    "lastUpdated": "2026-09-04"
   },
   "checklists.html": {
     "lastUpdated": "2026-08-14"
   },
   "index.html": {
-    "lastUpdated": "2026-09-03"
+    "lastUpdated": "2026-09-04"
   },
   "tools.html": {
     "lastUpdated": "2026-08-06"
@@ -391,13 +391,13 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-12",
     "newUntil": "2026-08-13"
   },
-  "ナレッジ/OTC類似薬の一部保険外療養.html": {
-    "lastUpdated": "2026-08-27",
-    "newUntil": "2026-09-11"
-  },
   "ナレッジ/調剤報酬QA.html": {
     "lastUpdated": "2026-07-29",
     "newUntil": "2026-08-05"
+  },
+  "ナレッジ/OTC類似薬の一部保険外療養.html": {
+    "lastUpdated": "2026-09-04",
+    "newUntil": "2026-09-11"
   },
   "事務/事務スタッフ向け_2026改定サマリ.html": {
     "lastUpdated": "2026-07-12"
