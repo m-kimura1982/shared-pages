@@ -97,7 +97,8 @@
       details { border:var(--bw) solid var(--border); border-radius:var(--radius-sm); }
       details > summary { list-style:none; cursor:pointer; padding:11px 15px; font-size:var(--text-sm); font-weight:700; color:var(--txt-2); background:#fafbfc; display:flex; align-items:center; gap:8px; }
       details > summary::-webkit-details-marker { display:none; }
-      details > summary .chev { color:var(--border-dk); transition:transform .18s; }
+      details > summary:hover { background:#f2f7fc; }
+      details > summary .chev { color:var(--txt-3); font-size:10px; transition:transform .18s; }
       details[open] > summary .chev { transform:rotate(90deg); }
       details .body { padding:13px 15px 15px; font-size:var(--text-sm); border-top:var(--bw) solid var(--border); }
 
@@ -411,7 +412,7 @@
           </div>
 
           <details>
-            <summary><span class="chev">›</span>77成分をすべて見る</summary>
+            <summary><span class="chev">▶</span>77成分をすべて見る</summary>
             <div class="body">
               <div class="tbl-wrap narrow">
                 <table>
@@ -611,15 +612,15 @@
 
         <div style="margin-top:14px" data-rev="2026-09-03">
           <details>
-            <summary><span class="chev">›</span>がん治療後や指定難病以外でも、長期使用に当たれば料金はかからない<span class="rev-chip">9/3</span></summary>
+            <summary><span class="chev">▶</span>がん治療後や指定難病以外でも、「長期使用」に該当すれば料金はかからない<span class="rev-chip">9/3</span></summary>
             <div class="body">
               <div class="stack">
-                <div>上の表で他の分類から外れても、<span class="marker">50週の長期使用が受け皿になる</span>。パブリックコメントの回答で次の例が示された。</div>
+                <div>上の表で他の分類に該当しない場合でも、<span class="marker">「長期使用」に該当すれば料金はかからない</span>。パブリックコメントの回答では、次のような例が示されている。</div>
                 <div class="blist">
-                  <div class="bullet"><span>・</span><span><b>がん治療が終わったあとの便秘に使う緩下剤</b>（酸化マグネシウム、ビサコジル、ピコスルファートナトリウム水和物）。リンパ節郭清で迷走神経が切れ、術後長く便秘が続く例。治療中ではないので「がん患者」では外れないが、長期使用に当たればかからない。</span></div>
-                  <div class="bullet"><span>・</span><span><b>指定難病でない慢性疾患</b>（関節リウマチ、線維筋痛症など）。指定難病に絞ったのは基準を作るためで、それ以外の疾患でも長期使用に当たればかからない場合がある。</span></div>
+                  <div class="bullet"><span>・</span><span><b>がん治療終了後の便秘に使用する緩下剤</b><br />酸化マグネシウム、ビサコジル、ピコスルファートナトリウム水和物など。リンパ節郭清により迷走神経が切れ、術後も長期間にわたって便秘が続くケース。治療中ではないため「がん患者」には該当しないが、長期使用の要件を満たせば料金はかからない。</span></div>
+                  <div class="bullet"><span>・</span><span><b>指定難病ではない慢性疾患</b><br />関節リウマチ、線維筋痛症など。指定難病に限定したのは基準を明確にするためであり、指定難病以外の疾患であっても、長期使用の要件を満たせば料金がかからない場合がある。</span></div>
                 </div>
-                <div class="note">長期使用の条件は上の表の「長期使用」の行を参照。年間を通じた症状の持続と治療の継続性を医師が確認し、通年で使うことが医療上必要と認めた場合に限る。</div>
+                <div class="note">長期使用の条件については、上の表の「長期使用」の行を参照。年間を通じた症状の持続と治療の継続性を医師が確認し、通年での使用が医療上必要と認められた場合に限る。</div>
               </div>
             </div>
           </details>
@@ -627,7 +628,7 @@
 
         <div style="margin-top:14px">
           <details>
-            <summary><span class="chev">›</span>湿布・保湿剤の経過措置は条件が厳しい</summary>
+            <summary><span class="chev">▶</span>湿布・保湿剤の経過措置は条件が厳しい</summary>
             <div class="body">
               <div class="stack">
                 <div>湿布や保湿剤は2028年度末までの経過措置で料金がかからない扱いにできるが、<span class="marker">通年で使っているだけでは足りない</span>。</div>
@@ -688,7 +689,7 @@
           <div>選定療養は銘柄で決まるので後発医薬品に変更すれば料金はかからなくなるが、<span class="em-change">こちらは成分で決まる</span>。<span class="marker">後発医薬品に変更しても料金はかかったまま</span>。</div>
 
           <details>
-            <summary><span class="chev">›</span>今の選定療養対象品と成分が重なるもの（目安・約60品目）</summary>
+            <summary><span class="chev">▶</span>今の選定療養対象品と成分が重なるもの（目安・約60品目）</summary>
             <div class="body">
               <div class="stack">
                 <div class="box-gray">選定療養の対象医薬品マスタ（776品目）と77成分を成分名で突き合わせた<span class="marker">目安</span>。投与経路や1日最大用量で絞り込まれるため、ここに載っていても実際は料金がかからないものが混じる。確定は告示の品目リストを待つ。</div>
