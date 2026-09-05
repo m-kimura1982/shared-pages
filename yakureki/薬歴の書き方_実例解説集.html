@@ -150,55 +150,163 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
     <div id="toc"></div>
   </div>
 
-  <div id="examples" style="display:flex; flex-direction:column; gap:var(--gap-card);"></div>
+  <div id="examples" style="display:flex; flex-direction:column; gap:var(--gap-card);">
+
+  <!-- ============================================================
+       実例の追加方法
+       この下に <section class="ex" data-kind="…" data-date="YYYY/MM/DD"> を1つ足す。
+       見出しの h2 には section-title を付ける（サイト内検索の索引に載る）。
+       「実例 N」の番号・目次・「この実例を印刷」ボタンは、下のスクリプトが
+       上から順に自動で付ける。番号を手で書かないこと。
+
+       data-kind … 目次に出す種別。「記載の見直し」／「情報の活用」
+       data-date … 目次の右端に出す日付
+
+       書式（編集ツール draft/薬歴記載例_見直し.html と同じクラスを使う）
+         <span class="fix">…</span>              見直したい箇所（グレーの波線）
+         <span class="marker">…</span>           読ませたい箇所（黄マーカー）
+         <span class="cm">…</span>               補足コメント（青の手書き風）
+         <span class="num num-b">1</span>        よくある記載例への指摘（グレーの丸）
+         <span class="num num-a">1</span>        見直し後の該当箇所（青の丸）
+       ============================================================ -->
+
+  <section class="ex" data-kind="記載の見直し" data-date="2026/07/08">
+    <div class="ex-head">
+      <div class="ex-head-t">
+        <div class="kicker"></div>
+        <h2 class="section-title">乳幼児服薬指導加算１</h2>
+      </div>
+    </div>
+
+    <div class="rx-box">
+      <p><span class="rx-lbl">処方　オセルタミビルDS3％「サワイ」２ｇ　分２　５日分</span></p>
+      <p><span class="rx-lbl">背景</span>※事例は特定されないよう内容を変えています</p>
+    </div>
+
+    <div class="card before">
+      <div class="card-head"><span class="ba-badge b">よくある記載例</span></div>
+      <div class="soap">
+        <span class="tag">S</span>
+        <div class="tx">
+          <p>体重 15.5kg。インフルエンザ陽性。熱39℃くらい。</p>
+          <p><span class="cm">←<span class="num num-b">1</span><span class="fix">普段どのように粉薬を飲んでいるかの記録がない。</span></span></p>
+          <p><span class="cm"><span class="fix">オセルタミビルの服用経験を確認した上で、記録する。</span></span></p>
+        </div>
+      </div>
+      <div class="soap">
+        <span class="tag">O</span>
+        <div class="tx">母親へ投薬</div>
+      </div>
+      <div class="soap">
+        <span class="tag">A</span>
+        <div class="tx"><span class="cm"><span class="num num-b">2</span>体重に対して用量が問題ないかアセスメントがない</span></div>
+      </div>
+      <div class="soap">
+        <span class="tag">P</span>
+        <div class="tx">
+          <p>薬効・用法説明</p>
+          <p><span class="fix"><span class="num num-b">3</span>オセルタミビルは症状良くなっても日数分飲み切ってください。ウイルスの増殖を抑え、症状を早く和らげるお薬です。</span></p>
+          <p><span class="cm">←大人と同じ指導内容。乳幼児特有の指導記録がない</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card after">
+      <div class="card-head"><span class="ba-badge a">算定要件を踏まえた記載例</span><span class="sub">一例</span></div>
+      <div class="soap">
+        <span class="tag">S</span>
+        <div class="tx">
+          <p>体重 15.5kg。インフルエンザ陽性。熱39℃くらい。</p>
+          <p><span class="num num-a">1</span><span class="marker">インフルエンザの粉薬を飲むのは初めて。</span></p>
+          <p><span class="marker">いつも粉薬は水でそのまま飲めているとのこと。</span></p>
+        </div>
+      </div>
+      <div class="soap">
+        <span class="tag">O</span>
+        <div class="tx">母親へ投薬</div>
+      </div>
+      <div class="soap">
+        <span class="tag">A</span>
+        <div class="tx">
+          <p><span class="num num-a">2</span><span class="marker">体重換算の用量問題なし</span></p>
+          <p>（2ｍｇ/ｋｇ×15.5×２＝62ｍｇ）</p>
+          <p><span class="cm">←参考に載せています。計算式まで書く必要はありません。</span></p>
+        </div>
+      </div>
+      <div class="soap">
+        <span class="tag">P</span>
+        <div class="tx">
+          <p>オセルタミビル：今日の朝の分は帰宅後すぐに服用するよう説明。５日間飲み切るよう指導。異常行動について念のため注意喚起、お子さんが一人にならないよう配慮を。</p>
+          <p><span class="num num-a">3</span><span class="marker">フルーツミックス味。苦みを感じることがあるので、そのまま飲むのを嫌がるようなら、チョコアイスやココアなど味の濃いものに混ぜて飲ませるようアドバイスをした。</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ex" data-kind="記載の見直し" data-date="2026/07/13">
+    <div class="ex-head">
+      <div class="ex-head-t">
+        <div class="kicker"></div>
+        <h2 class="section-title">外来服薬支援料１</h2>
+      </div>
+    </div>
+
+    <div class="rx-box">
+      <p><b style="color:var(--txt-2);">外来服薬支援料１（単独レセプト）　薬歴記載内容</b></p>
+    </div>
+
+    <div class="card before">
+      <div class="card-head"><span class="ba-badge b">よくある記載例</span></div>
+      <div class="soap">
+        <span class="tag">P</span>
+        <div class="tx">
+          <span class="fix">〇〇整形と〇〇内科を合わせて一包化</span>　<span class="cm">服薬支援の内容は記載あり◎</span>
+          <div><span class="cm"><span class="num num-b">1</span>処方医の了解を得た旨の記録がない</span></div>
+          <div><span class="cm"><span class="num num-b">2</span>服薬支援を行った薬剤の名称がない</span></div>
+          <div><span class="cm"><span class="num num-b">3</span>服薬支援の理由がない</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card after">
+      <div class="card-head"><span class="ba-badge a">算定要件を踏まえた記載例</span><span class="sub">一例</span></div>
+      <div class="soap">
+        <span class="tag">P</span>
+        <div class="tx">
+          <span class="marker"><span class="num num-a">3</span>飲み間違いや飲み忘れの防止のため</span>、〇〇整形の<span class="num num-a">2</span><span class="marker">持参薬（●●、●●）</span>と、〇〇内科の<span class="num num-a">2</span><span class="marker">薬（●●、●●）</span>を合わせて一包化<br>
+          上記の服薬支援に関して、<span class="num num-a">1</span><span class="marker">〇〇整形〇〇Dr、〇〇内科〇〇Dr了承済</span><span class="cm">（疑義照会や情報提供の記録を残す）</span>
+          <div><br></div>
+          <div><span class="cm">※</span><span class="cm" style="font-weight:normal;">外来服薬支援料１を繰り返して算定する場合では、「<span class="marker">繰り返しの支援が必要な理由</span>」を表紙等に残しておいたほうが良い</span></div>
+          <div>
+            <div>例：<span class="marker">複数科受診で処方日数のズレが恒常的にあり、自己管理困難のため、一包化による服薬支援を毎月継続（外来服薬支援料１）</span></div>
+            <div><span class="cm">← 服薬支援が必要となった背景・理由を分析し、<span style="font-weight:normal;">同様の支援が今後必要とならないよう努める</span>という要件があるため</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </div>
 
 </div>
 
 <script>
 /* ============================================================
-   更新方法：
-   「薬歴の記載例 見直し（編集用）」ページの保管庫で
-   「USB等へ書き出し」したJSONファイルの中身を、
-   下の LIB = に続く { ... } へまるごと貼り替える。
+   実例は上のHTMLに直接書く。ここでやるのは次の3つだけ。
+     ・「実例 N」の番号を上から順に振る（手で書かない）
+     ・目次を組み立てる
+     ・「この実例を印刷」ボタンと、1実例だけ印刷したときの注記を付ける
    ============================================================ */
-var LIB = {
-  "type": "yakureki-kisairei",
-  "version": 1,
-  "exportedAt": "2026/07/13 00:28",
-  "items": [
-    {
-      "id": "ex1783869804512",
-      "title": "外来服薬支援料１｜記載例",
-      "savedAt": "2026/07/13 00:23",
-      "data": "{\"title\":\"\\n    <div class=\\\"kicker\\\">外来服薬支援料１｜記載例</div>\\n  \",\"rx\":\"<p><font color=\\\"#444444\\\"><b>外来服薬支援料１（単独レセプト）　薬歴記載内容</b></font></p>\",\"bs\":\"\",\"bo\":\"\",\"ba\":\"\",\"bp\":\"<span class=\\\"fix\\\">〇〇整形と〇〇内科を合わせて一包化</span>　<span class=\\\"cm\\\">服薬支援の内容は記載あり◎</span><div><span style=\\\"color: rgb(30, 95, 168); font-family: Klee One, Noto Sans JP, sans-serif; font-size: 14px; font-weight: 600;\\\"><span class=\\\"num num-b\\\" contenteditable=\\\"false\\\">1</span>処方医の了解を得た旨の記録がない</span></div><div><span style=\\\"color: rgb(30, 95, 168); font-family: Klee One, Noto Sans JP, sans-serif; font-size: 14px; font-weight: 600;\\\"><span class=\\\"num num-b\\\" contenteditable=\\\"false\\\">2</span>服薬支援を行った薬剤の名称がない</span></div><div><span style=\\\"color: rgb(30, 95, 168); font-family: Klee One, Noto Sans JP, sans-serif; font-size: 14px; font-weight: 600;\\\"><span class=\\\"num num-b\\\" contenteditable=\\\"false\\\">3</span>服薬支援の理由がない</span></div><div></div>\",\"pts\":\"<div class=\\\"pt\\\"><span class=\\\"num num-b\\\" contenteditable=\\\"false\\\">1</span><div class=\\\"tx\\\"></div></div><div class=\\\"pt\\\"><span class=\\\"num num-b\\\" contenteditable=\\\"false\\\">2</span><div class=\\\"tx\\\"></div></div><div class=\\\"pt\\\"><span class=\\\"num num-b\\\" contenteditable=\\\"false\\\">3</span><div class=\\\"tx\\\"></div></div><div class=\\\"pt\\\"><span class=\\\"num num-b\\\" contenteditable=\\\"false\\\">4</span><div class=\\\"tx\\\"></div></div><div class=\\\"pt good\\\"><span class=\\\"chk\\\" contenteditable=\\\"false\\\">✓</span><div class=\\\"tx\\\"><b>良い点：</b></div></div>\",\"as\":\"\",\"ao\":\"\",\"aa\":\"\",\"ap\":\"<span style=\\\"font-family: NotoSansJP, Arial, sans-serif; font-variant-ligatures: none;\\\"><span class=\\\"marker\\\"><span class=\\\"num num-a\\\" contenteditable=\\\"false\\\">3</span>飲み間違いや飲み忘れの防止のため</span>、〇〇整形の<span class=\\\"num num-a\\\" contenteditable=\\\"false\\\">2</span><span class=\\\"marker\\\">持参薬（●●、●●）</span>と、〇〇内科の<span class=\\\"num num-a\\\" contenteditable=\\\"false\\\">2</span></span><span class=\\\"marker\\\"><span style=\\\"font-family: NotoSansJP, Arial, sans-serif; font-variant-ligatures: none;\\\">薬</span><span style=\\\"font-family: NotoSansJP, Arial, sans-serif; font-variant-ligatures: none;\\\">（●●、●●）</span></span><span style=\\\"font-family: NotoSansJP, Arial, sans-serif; font-variant-ligatures: none;\\\"></span><span style=\\\"font-family: NotoSansJP, Arial, sans-serif; font-variant-ligatures: none;\\\">を合わせて一包化</span><br style=\\\"font-family: NotoSansJP, Arial, sans-serif; font-variant-ligatures: none;\\\"><span style=\\\"font-family: NotoSansJP, Arial, sans-serif; font-variant-ligatures: none;\\\">上記の服薬支援に関して、<span class=\\\"num num-a\\\" contenteditable=\\\"false\\\">1</span></span><span class=\\\"marker\\\"><span style=\\\"font-family: NotoSansJP, Arial, sans-serif; font-variant-ligatures: none;\\\">〇〇整形〇〇</span><span style=\\\"font-family: NotoSansJP, Arial, sans-serif; font-variant-ligatures: none;\\\">Dr、〇〇内科〇〇Dr了承済</span></span><span style=\\\"font-family: NotoSansJP, Arial, sans-serif; font-variant-ligatures: none;\\\"><span class=\\\"cm\\\">（疑義照会や情報提供の記録を残す）</span></span><div><span style=\\\"font-family: NotoSansJP, Arial, sans-serif; font-variant-ligatures: none;\\\"><br></span></div><div><span style=\\\"font-family: NotoSansJP, Arial, sans-serif; font-variant-ligatures: none;\\\"><span class=\\\"cm\\\">※</span></span><span class=\\\"cm\\\" style=\\\"font-weight: normal;\\\"><span style=\\\"font-family: NotoSansJP, Arial, sans-serif; font-variant-ligatures: none;\\\">外来服薬支援料１を繰り返して算定する場合では、</span><span style=\\\"font-variant-ligatures: none; font-family: NotoSansJP, Arial, sans-serif;\\\">「<span class=\\\"marker\\\">繰り返しの支援が必要な理由</span>」を表紙等に残しておいたほうが良い</span></span><span style=\\\"font-variant-ligatures: none; font-family: NotoSansJP, Arial, sans-serif;\\\"></span></div><div><div style=\\\"\\\"><font face=\\\"NotoSansJP, Arial, sans-serif\\\"><span style=\\\"font-variant-ligatures: none;\\\">例：<span class=\\\"marker\\\">複数科受診で処方日数のズレが恒常的にあり、自己管理困難のため、一包化による服薬支援を毎月継続（外来服薬支援料１）</span></span></font></div><div style=\\\"\\\"><font face=\\\"NotoSansJP, Arial, sans-serif\\\"><span style=\\\"font-variant-ligatures: none;\\\"><span class=\\\"cm\\\">← </span><span class=\\\"cm\\\">服薬支援が必要となった背景・理由を分析し、<span style=\\\"font-weight: normal;\\\">同様の支援が今後必要とならないよう努める</span>という要件があるため</span></span></font></div></div>\",\"foot\":\"※ 事例は個人が特定されないよう内容を変えています。見直し後の記載はあくまで一例です。同じ文をそのまま使い回すのではなく、目の前の患者に合わせて書いてください。\"}"
-    },
-    {
-      "id": "ex1783435860523",
-      "title": "乳幼児服薬指導加算１",
-      "savedAt": "2026/07/08 00:47",
-      "data": "{\"title\":\"\\n    <div class=\\\"kicker\\\">薬歴の記載例 1</div>\\n    <h1>「確認だけ」で終わっていないか</h1>\\n    <p>よくある記載を例に、どこを足すと薬歴らしくなるかを見ていきます</p>\\n  \",\"rx\":\"<p><span class=\\\"rx-lbl\\\">処方　オセルタミビルDS3％「サワイ」２ｇ　分２　５日分</span></p><p><span class=\\\"rx-lbl\\\">背景</span>※事例は特定されないよう内容を変えています</p>\",\"bs\":\"<p class=\\\"MsoNormal\\\"><span lang=\\\"EN-US\\\">体重 15.5kg</span>。インフルエンザ陽性。熱<span lang=\\\"EN-US\\\">39℃</span>くらい。<span lang=\\\"EN-US\\\"><o:p></o:p></span></p><p class=\\\"MsoNormal\\\"><span class=\\\"cm\\\">←<span class=\\\"num num-b\\\" contenteditable=\\\"false\\\">1</span></span><span style=\\\"color: rgb(30, 95, 168); font-family: Klee One, Noto Sans JP, sans-serif; font-size: 14px; font-weight: 600;\\\"><span class=\\\"fix\\\">普段どのように粉薬を飲んでいるかの記録がない。</span></span></p><p class=\\\"MsoNormal\\\"><span style=\\\"color: rgb(30, 95, 168); font-family: Klee One, Noto Sans JP, sans-serif; font-size: 14px; font-weight: 600;\\\"><span class=\\\"fix\\\">オセルタミビルの服用経験を確認した上で、記録する。</span></span></p><p class=\\\"MsoNormal\\\"><span lang=\\\"EN-US\\\"><o:p></o:p></span></p>\",\"bo\":\"母親へ投薬\",\"ba\":\"<b><span style=\\\"font-size:10.5pt;mso-bidi-font-size:\\n12.0pt;font-family:&quot;游明朝&quot;,serif;mso-ascii-theme-font:minor-latin;mso-fareast-theme-font:\\nminor-fareast;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;\\nmso-bidi-theme-font:minor-bidi;mso-ansi-language:EN-US;mso-fareast-language:\\nJA;mso-bidi-language:AR-SA\\\"><span class=\\\"cm\\\"><span class=\\\"num num-b\\\" contenteditable=\\\"false\\\">2</span>体重に対して用量が問題ないかアセスメントがない</span></span></b>\",\"bp\":\"<p class=\\\"MsoNormal\\\">薬効・用法説明<span lang=\\\"EN-US\\\"><o:p></o:p></span></p>\\n\\n<p class=\\\"MsoNormal\\\"><span class=\\\"fix\\\"><span class=\\\"num num-b\\\" contenteditable=\\\"false\\\">3</span>オセルタミビルは症状良くなっても日数分飲み切ってください。ウイルスの増殖を抑え、症状を早く和らげるお薬です。</span><span lang=\\\"EN-US\\\"><o:p></o:p></span></p>\\n\\n<p class=\\\"MsoNormal\\\"><b><span lang=\\\"EN-US\\\"></span><span class=\\\"cm\\\"><span lang=\\\"EN-US\\\">←</span>大人と同じ指導内容。乳幼児特有の指導記録がない</span></b><span lang=\\\"EN-US\\\"><o:p></o:p></span></p>\",\"pts\":\"<div class=\\\"pt\\\"><span class=\\\"num num-b\\\" contenteditable=\\\"false\\\">1</span><div class=\\\"tx\\\"></div></div><div class=\\\"pt\\\"><span class=\\\"num num-b\\\" contenteditable=\\\"false\\\">2</span><div class=\\\"tx\\\"></div></div><div class=\\\"pt\\\"><span class=\\\"num num-b\\\" contenteditable=\\\"false\\\">3</span><div class=\\\"tx\\\"></div></div><div class=\\\"pt\\\"><span class=\\\"num num-b\\\" contenteditable=\\\"false\\\">4</span><div class=\\\"tx\\\"></div></div><div class=\\\"pt good\\\"><span class=\\\"chk\\\" contenteditable=\\\"false\\\">✓</span><div class=\\\"tx\\\"><b>良い点：</b></div></div>\",\"as\":\"<p class=\\\"MsoNormal\\\"><span lang=\\\"EN-US\\\">体重 15.5kg</span>。インフルエンザ陽性。熱<span lang=\\\"EN-US\\\">39℃</span>くらい。<span lang=\\\"EN-US\\\"><o:p></o:p></span></p>\\n\\n<p class=\\\"MsoNormal\\\"><span class=\\\"num num-a\\\" contenteditable=\\\"false\\\">1</span><span class=\\\"marker\\\">インフルエンザの粉薬を飲むのは初めて。</span><span lang=\\\"EN-US\\\"><o:p></o:p></span></p>\\n\\n<p class=\\\"MsoNormal\\\"><span class=\\\"marker\\\">いつも粉薬は水でそのまま飲めているとのこと。</span><span lang=\\\"EN-US\\\"><o:p></o:p></span></p>\",\"ao\":\"母親へ投薬\",\"aa\":\"<p class=\\\"MsoNormal\\\"><b><span class=\\\"num num-a\\\" contenteditable=\\\"false\\\">2</span><span class=\\\"marker\\\">体重換算の用量問題なし</span></b></p><p class=\\\"MsoNormal\\\">（<span lang=\\\"EN-US\\\">2</span>ｍｇ<span lang=\\\"EN-US\\\">/</span>ｋｇ<span lang=\\\"EN-US\\\">×15.5×</span>２＝<span lang=\\\"EN-US\\\">62</span>ｍｇ）</p><p class=\\\"MsoNormal\\\"><span lang=\\\"EN-US\\\" style=\\\"color: rgb(30, 95, 168); font-family: Klee One, Noto Sans JP, sans-serif; font-size: 14px; font-weight: 600;\\\">←</span><span style=\\\"color: rgb(30, 95, 168); font-family: Klee One, Noto Sans JP, sans-serif; font-size: 14px; font-weight: 600;\\\">参考に載せています。計算式まで書く必要はありません。</span></p><p class=\\\"MsoNormal\\\"><span lang=\\\"EN-US\\\"><o:p></o:p></span></p>\",\"ap\":\"<p class=\\\"MsoNormal\\\">オセルタミビル：今日の朝の分は帰宅後すぐに服用するよう説明。５日間飲み切るよう指導。異常行動について念のため注意喚起、お子さんが一人にならないよう配慮を。<span lang=\\\"EN-US\\\"><o:p></o:p></span></p>\\n\\n<p class=\\\"MsoNormal\\\"><span class=\\\"num num-a\\\" contenteditable=\\\"false\\\">3</span><span class=\\\"marker\\\">フルーツミックス味。苦みを感じることがあるので、そのまま飲むのを嫌がるようなら、チョコアイスやココアなど味の濃いものに混ぜて飲ませるようアドバイスをした<b>。</b></span><b></b><span lang=\\\"EN-US\\\"><o:p></o:p></span></p>\",\"foot\":\"※ 事例は個人が特定されないよう内容を変えています。見直し後の記載はあくまで一例です。同じ文をそのまま使い回すのではなく、目の前の患者に合わせて書いてください。\"}"
-    }
-  ]
-};
-/* ============================================================ */
-
 (function(){
-  // 各実例の末尾注記がこの定型と同じなら、冒頭の注意書きと重複するので表示しない
   var DEFAULT_FOOT = '※ 事例は個人が特定されないよう内容を変えています。見直し後の記載はあくまで一例です。同じ文をそのまま使い回すのではなく、目の前の患者に合わせて書いてください。';
 
-  function el(tag, cls, html){
+  function el(tag, cls, text){
     var e = document.createElement(tag);
     if (cls) e.className = cls;
-    if (html != null) e.innerHTML = html;
+    if (text != null) e.textContent = text;
     return e;
   }
-  function textOf(html){
-    return html ? el('div', '', html).textContent : '';
-  }
-  // 番号バッジ・チェック印・「良い点：」の骨組みだけの欄は「中身なし」とみなす
-  function hasText(html){
-    return textOf(html).replace(/良い点：/g, '').replace(/[0-9✓\s]/g, '') !== '';
-  }
+
   // 選んだ実例だけを印刷する（印刷後に元の表示へ戻す）
   function printOne(sec){
     document.body.classList.add('print-one');
@@ -216,101 +324,48 @@ var LIB = {
     setTimeout(cleanup, 1000); // afterprint が発火しないブラウザ対策
   }
 
-  // 中身のあるSOAP行だけを組み立てる（外来服薬支援のようにP欄のみの例に対応）
-  function soapCard(cls, headEls, d, keys){
-    var rows = [];
-    ['S', 'O', 'A', 'P'].forEach(function(tag, i){
-      var html = d[keys[i]];
-      if (!hasText(html)) return;
-      var row = el('div', 'soap');
-      row.appendChild(el('span', 'tag', tag));
-      row.appendChild(el('div', 'tx', html));
-      rows.push(row);
-    });
-    if (!rows.length) return null;
-    var card = el('div', 'card ' + cls);
-    var head = el('div', 'card-head');
-    headEls.forEach(function(h){ head.appendChild(h); });
-    card.appendChild(head);
-    rows.forEach(function(r){ card.appendChild(r); });
-    return card;
-  }
+  var toc  = document.getElementById('toc');
+  var secs = [].slice.call(document.querySelectorAll('#examples > .ex'));
 
-  var toc = document.getElementById('toc');
-  var main = document.getElementById('examples');
-
-  var items = (LIB.items || []).filter(function(x){ return x && x.data != null; });
-  // 保存日の古い順＝実例1から番号を振る
-  items.sort(function(a, b){ return String(a.savedAt || '').localeCompare(String(b.savedAt || '')); });
-
-  if (!items.length) {
+  if (!secs.length) {
     toc.appendChild(el('div', 'toc-empty', 'まだ実例はありません。'));
     return;
   }
 
-  items.forEach(function(x, i){
-    var d;
-    try { d = (typeof x.data === 'string') ? JSON.parse(x.data) : x.data; }
-    catch(e) { return; }
+  secs.forEach(function(sec, i){
     var n = i + 1;
+    sec.id = 'ex' + n;
 
-    // 見出しは保管庫で付けた名前を使う（「｜記載例」の重複は落とす）
-    var name = String(x.title || '実例').replace(/｜記載例$/, '');
+    var h2   = sec.querySelector('.ex-head h2');
+    var name = h2 ? h2.textContent.trim() : '実例 ' + n;
 
+    var kicker = sec.querySelector('.ex-head .kicker');
+    if (kicker) kicker.textContent = '実例 ' + n;
+
+    var head = sec.querySelector('.ex-head');
+    if (head) {
+      var pbtn = el('button', 'print-btn', 'この実例を印刷');
+      pbtn.type = 'button';
+      pbtn.addEventListener('click', function(){ printOne(sec); });
+      head.appendChild(pbtn);
+    }
+
+    // 1実例だけ印刷したときに付く注記（画面には出ない）
+    var pf = el('p', 'foot-note print-foot', DEFAULT_FOOT);
+    sec.appendChild(pf);
+
+    // 目次
     var row = el('a', 'toc-row');
     row.href = '#ex' + n;
     row.appendChild(el('span', 'toc-num', String(n)));
-    var tt = el('span', 'toc-t', '');
-    tt.textContent = name;
-    row.appendChild(tt);
-    var dt = String(x.savedAt || '').split(' ')[0];
+    row.appendChild(el('span', 'toc-t', name));
+    var dt = sec.getAttribute('data-date');
     if (dt) row.appendChild(el('span', 'toc-d', dt));
     toc.appendChild(row);
-
-    var sec = el('section', 'ex');
-    sec.id = 'ex' + n;
-
-    var head = el('div', 'ex-head');
-    var tblock = el('div', 'ex-head-t');
-    tblock.appendChild(el('div', 'kicker', '実例 ' + n));
-    var h2 = el('h2', '', '');
-    h2.textContent = name;
-    tblock.appendChild(h2);
-    head.appendChild(tblock);
-    var pbtn = el('button', 'print-btn', 'この実例を印刷');
-    pbtn.type = 'button';
-    pbtn.addEventListener('click', function(){ printOne(sec); });
-    head.appendChild(pbtn);
-    sec.appendChild(head);
-
-    if (hasText(d.rx)) sec.appendChild(el('div', 'rx-box', d.rx));
-
-    var before = soapCard('before', [el('span', 'ba-badge b', 'よくある記載例')], d, ['bs', 'bo', 'ba', 'bp']);
-    if (before) sec.appendChild(before);
-
-    if (hasText(d.pts)) {
-      var pts = el('div', 'card');
-      pts.appendChild(el('div', 'pts-head', '記載のポイント'));
-      pts.appendChild(el('div', '', d.pts));
-      sec.appendChild(pts);
-    }
-
-    var after = soapCard('after', [el('span', 'ba-badge a', '算定要件を踏まえた記載例'), el('span', 'sub', '一例')], d, ['as', 'ao', 'aa', 'ap']);
-    if (after) sec.appendChild(after);
-
-    if (hasText(d.foot) && textOf(d.foot).trim() !== DEFAULT_FOOT) {
-      sec.appendChild(el('p', 'foot-note', d.foot));
-    }
-
-    // 1実例だけ印刷したときに付く注記
-    var pf = el('p', 'foot-note print-foot', '');
-    pf.textContent = DEFAULT_FOOT;
-    sec.appendChild(pf);
-
-    main.appendChild(sec);
   });
 })();
 </script>
+
 <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
