@@ -13,13 +13,13 @@
     "lastUpdated": "2026-08-06"
   },
   "updates.html": {
-    "lastUpdated": "2026-09-04"
+    "lastUpdated": "2026-09-07"
   },
   "checklists.html": {
     "lastUpdated": "2026-08-14"
   },
   "index.html": {
-    "lastUpdated": "2026-09-04"
+    "lastUpdated": "2026-09-07"
   },
   "tools.html": {
     "lastUpdated": "2026-08-06"
@@ -29,10 +29,6 @@
   },
   "kaitei2026.html": {
     "lastUpdated": "2026-09-02"
-  },
-  "yakureki/薬歴の書き方_実例解説集.html": {
-    "lastUpdated": "2026-07-13",
-    "newUntil": "2026-07-20"
   },
   "yakureki/テンプレート_メンタル.html": {
     "lastUpdated": "2026-08-06"
@@ -51,10 +47,6 @@
   },
   "yakureki/基本記載ルール.html": {
     "lastUpdated": "2026-08-20"
-  },
-  "yakureki/index.html": {
-    "lastUpdated": "2026-08-18",
-    "newUntil": "2026-07-27"
   },
   "yakureki/居宅療養管理指導_薬歴の記載事項.html": {
     "lastUpdated": "2026-08-19",
@@ -90,6 +82,14 @@
   "yakureki/加算別記載一覧.html": {
     "lastUpdated": "2026-08-20",
     "newUntil": "2026-08-25"
+  },
+  "yakureki/index.html": {
+    "lastUpdated": "2026-08-18",
+    "newUntil": "2026-07-27"
+  },
+  "yakureki/薬歴の書き方_実例解説集.html": {
+    "lastUpdated": "2026-07-13",
+    "newUntil": "2026-07-20"
   },
   "加算まとめ/分割調剤.html": {
     "lastUpdated": "2026-09-03",
@@ -272,7 +272,7 @@
     "lastUpdated": "2026-09-02"
   },
   "改定資料/調剤ベースアップ評価料.html": {
-    "lastUpdated": "2026-09-02"
+    "lastUpdated": "2026-09-07"
   },
   "改定資料/服用薬剤調整支援料２_資格取得ステップ.html": {
     "lastUpdated": "2026-03-23"
@@ -285,9 +285,6 @@
   },
   "改定資料/別表Ⅴ_調剤行為名称等の略号一覧2026改定.html": {
     "lastUpdated": "2026-06-20"
-  },
-  "改定資料/別添3_調剤報酬点数表に関する事項2026.html": {
-    "lastUpdated": "2026-09-03"
   },
   "改定資料/栄養保持を目的とした医薬品の保険給付の適正化.html": {
     "lastUpdated": "2026-07-12"
@@ -324,6 +321,9 @@
   "改定資料/選定療養_概要2026.html": {
     "lastUpdated": "2026-08-01",
     "newUntil": "2026-08-08"
+  },
+  "改定資料/別添3_調剤報酬点数表に関する事項2026.html": {
+    "lastUpdated": "2026-09-03"
   },
   "チェックリスト/選定療養_実務チェックリスト.html": {
     "lastUpdated": "2026-06-06",
@@ -392,7 +392,7 @@
     "newUntil": "2026-08-13"
   },
   "ナレッジ/調剤報酬QA.html": {
-    "lastUpdated": "2026-07-29",
+    "lastUpdated": "2026-09-07",
     "newUntil": "2026-08-05"
   },
   "ナレッジ/OTC類似薬の一部保険外療養.html": {
