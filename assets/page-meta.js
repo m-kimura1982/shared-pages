@@ -89,7 +89,7 @@ window.__pageMeta = {
   },
   "yakureki/薬歴の書き方_実例解説集.html": {
     "lastUpdated": "2026-07-13",
-    "newUntil": "2026-07-20"
+    "newUntil": "2026-09-14"
   },
   "加算まとめ/分割調剤.html": {
     "lastUpdated": "2026-09-03",

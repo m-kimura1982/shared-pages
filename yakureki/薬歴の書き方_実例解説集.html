@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <title>薬歴の書き方｜実例解説集</title>
-<meta name="search-keywords" content="実例,見直し,よくある記載例,波線,通則(5),画一的,再構成" />
+<meta name="search-keywords" content="実例,見直し,よくある記載例,波線,通則(5),画一的,再構成,オンライン薬剤情報,転院,ステント,疑義照会,ロスバスタチン,ビソプロロール,クロピドグレル,二次予防,処方監査" />
+<link rel="stylesheet" href="../assets/source-refs.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Klee+One:wght@600&display=swap" rel="stylesheet">
@@ -43,6 +44,7 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
 .toc-row:hover .toc-t { color:var(--blue); }
 .toc-num { flex-shrink:0; display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:6px; background:var(--box-blue); color:var(--blue); font-size:12px; font-weight:900; align-self:center; }
 .toc-t { font-weight:700; font-size:var(--text-sm); }
+.toc-kind { flex-shrink:0; font-size:11.5px; font-weight:700; color:var(--txt-3); background:var(--box-gray); border-radius:4px; padding:1px 7px; }
 .toc-d { margin-left:auto; flex-shrink:0; font-size:12px; color:var(--txt-3); }
 .toc-empty { font-size:var(--text-sm); color:var(--txt-3); }
 
@@ -68,6 +70,8 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
 .rx-box { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:12px 16px; font-size:var(--text-sm); }
 .rx-box .rx-lbl { font-weight:900; color:var(--txt-2); margin-right:8px; }
 .rx-box p { margin:2px 0; }
+/* 薬剤名の途中で改行されないよう、1剤ずつを塊にする（区切りの／は行末に残す） */
+.rx-drugs span { display:inline-block; }
 
 .soap { display:flex; gap:10px; margin-bottom:8px; }
 .soap:last-child { margin-bottom:0; }
@@ -102,10 +106,34 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
 .pts-head { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin-bottom:12px; }
 .pts-head::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
 
+/* ===== 処方の監査型の実例で使う部品 ===== */
+.card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+.sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin-bottom:10px; }
+.sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+.li { display:flex; gap:6px; margin-bottom:2px; }
+.li > span:first-child { flex-shrink:0; color:#999; }
+.li-n { display:flex; gap:6px; margin-bottom:2px; }
+.li-n > .num { flex-shrink:0; margin:4px 4px 0 0; }
+.jd { margin-bottom:14px; }
+.jd:last-child { margin-bottom:0; }
+.jd .jd-t { font-weight:900; color:var(--blue); font-size:var(--text-sm); margin-bottom:2px; }
+.jd .jd-t .num { margin:0 6px 0 0; vertical-align:-2px; }
+.jd .jd-x { font-size:var(--text-sm); }
+.note { font-size:var(--text-sm); margin-bottom:14px; }
+.note:last-child { margin-bottom:0; }
+.lead { font-size:var(--text-sm); color:var(--txt-2); }
+.box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); }
+.box-blue .ttl { font-weight:900; color:var(--blue); margin-bottom:4px; }
+.box-gray-src { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); }
+.box-gray-src p { margin:0; }
+
 .foot-note { font-size:12px; color:var(--txt-3); line-height:1.7; }
 
 @media (max-width:640px) {
   body { padding:20px 10px 40px; font-size:var(--text-sm); }
+  /* 種別チップが入ると幅が足りない行が出るので、日付を次の行へ送る */
+  .toc-row { flex-wrap:wrap; }
+  .toc-t { flex:1 0 auto; }
   .card { padding:16px 14px; }
   .page-title h1 { font-size:19px; }
   .ex-head h2 { font-size:17px; }
@@ -130,7 +158,7 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
 
   <div class="page-title">
     <h1>薬歴の書き方｜実例解説集</h1>
-    <p>現場でよく見かける薬歴を取り上げ、各加算（項目）ごとに「薬歴に何を残すか」を解説していく</p>
+    <p>実際の事例をもとに、薬歴に何を残すか、集めた情報をどう処方の評価に使うかを解説していく</p>
   </div>
 
   <div class="card">
@@ -138,10 +166,11 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
     <div class="bullet"><span>・</span><span><span class="fix">グレーの波線</span> … 見直したい箇所</span></div>
     <div class="bullet"><span>・</span><span><span class="cm" style="margin:0">青い手書き文字</span> … 補足コメント</span></div>
     <div class="bullet"><span>・</span><span><span class="marker">黄マーカー</span> … 読んでほしい箇所（見直しで足した記載など）</span></div>
-    <div class="bullet"><span>・</span><span>番号は <span class="num num-b" style="margin:0 2px">1</span>（よくある記載例への指摘）と <span class="num num-a" style="margin:0 2px">1</span>（見直し後の該当箇所）が対応する</span></div>
+    <div class="bullet"><span>・</span><span>番号は同じもの同士が対応する。<span class="num num-b" style="margin:0 2px">1</span>＝よくある記載例への指摘、<span class="num num-a" style="margin:0 2px">1</span>＝見直し後の該当箇所、または確認点と調べた結果</span></div>
+    <div class="bullet"><span>・</span><span>目次の <span class="toc-kind">記載の見直し</span> <span class="toc-kind">情報の活用</span> は実例の種別。前者は記載を見直す例、後者は集めた情報を処方の評価に使う例</span></div>
     <div class="box-warn" style="margin-top:14px;">
-      <div class="ttl">見直し後の記載は「一例」</div>
-      薬歴は定型文を用いて画一的に記載するのではなく、患者ごとの状況に応じて記載する（薬学管理料 通則(5)）。見直し後の文をそのまま写して使うのではなく、目の前の患者に合わせて書くこと。なお、掲載している例はいずれも実際の事例をもとに、個人が特定されないよう内容を変えて再構成している。
+      <div class="ttl">掲載している記載は「一例」</div>
+      薬歴は定型文を用いて画一的に記載するのではなく、患者ごとの状況に応じて記載する。掲載している文をそのまま写して使うのではなく、目の前の患者に合わせて書くこと。なお、いずれも実際の事例をもとに、個人が特定されないよう内容を変えて再構成している。
     </div>
   </div>
 
@@ -286,8 +315,133 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
     </div>
   </section>
 
+
+
+  <section class="ex" data-kind="情報の活用" data-date="2026/09/07" data-toc-label="転院処方の監査">
+    <div class="ex-head">
+      <div class="ex-head-t">
+        <div class="kicker"></div>
+        <h2 class="section-title">転院処方の監査｜オンライン薬剤情報から何を読み取るか</h2>
+      </div>
+    </div>
+
+    <div class="rx-box">
+      <p><span class="rx-lbl">処方</span>転院初回・1日1回 朝食後</p>
+      <p class="rx-drugs"><span>クロピドグレル75mg 1錠／</span><span>ロスバスタチンOD錠10mg 2錠／</span><span>エゼチミブ10mg 1錠／</span><span>ビソプロロールフマル酸塩0.625mg <b>1錠</b>／</span><span>アジルサルタン20mg 1錠／</span><span>ランソプラゾールOD錠15mg 1錠／</span><span>フェブキソスタット10mg 1錠</span></p>
+      <p style="margin-top:10px;"><span class="rx-lbl">今回の確認点</span></p>
+      <div class="li-n"><span class="num num-a">1</span><span>ビソプロロールが1錠で処方されているが、本人の服用量の記憶があいまい</span></div>
+      <div class="li-n"><span class="num num-a">2</span><span>ロスバスタチンが1日最大用量の20mgで処方されている</span></div>
+      <p style="margin-top:8px; color:var(--txt-3);">※事例は個人が特定されないよう内容を変えています</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">オンライン薬剤情報で確認したこと<span class="qual">番号は「今回の確認点」と対応する</span></div>
+      <div class="li"><span>・</span><span>R6.12　経皮的冠動脈ステント留置術（不安定狭心症）</span></div>
+      <div class="li-n"><span class="num num-a">1</span><span>ビソプロロール0.625mg：ステント留置後から<span class="marker">2錠で継続</span>している</span></div>
+      <div class="li-n"><span class="num num-a">2</span><span>ロスバスタチン：ステント留置後、<span class="marker">途中から20mgへ増量</span>されている</span></div>
+      <div class="li"><span>・</span><span>一部の薬剤で前薬局と交付メーカーが異なる</span></div>
+      <p class="lead" style="margin-top:14px;">オンライン薬剤情報では、今回の処方内容だけでなく、<span class="em-change">これまでの用量の推移や治療の経過</span>も確認できる。この情報をもとに処方内容を評価した。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">確認した情報から、どう判断したか</div>
+      <div class="jd">
+        <div class="jd-t"><span class="num num-a">1</span>ビソプロロール</div>
+        <div class="jd-x">ステント留置後から2錠で継続しており、今回の1錠への変更はこれまでの服用状況と一致しない。本人の記憶もあいまいで、減量の意図もはっきりしないため、処方意図を確認する必要があると判断し、疑義照会。結果、従来どおり2錠となった。</div>
+      </div>
+      <div class="jd">
+        <div class="jd-t"><span class="num num-a">2</span>ロスバスタチン</div>
+        <div class="jd-x">ステント留置後、途中から20mgへ増量されている。家族性高コレステロール血症ではないことを確認したうえで、ステント留置後の冠動脈疾患二次予防として、LDL-Cを厳格に管理することを目的とした処方と考えた。</div>
+      </div>
+    </div>
+
+    <div class="card after">
+      <div class="card-head"><span class="ba-badge a">薬歴の記載例</span><span class="sub">一例</span></div>
+
+      <div class="soap">
+        <span class="tag">S</span>
+        <div class="tx">
+          <p>＃1　〇〇病院より転院。狭心症でステントを入れたとのこと。状態は安定しており、今後は地元の病院で治療を継続する。</p>
+          <p>ビソプロロールの服用量を本人に確認したが、記憶があいまい。</p>
+        </div>
+      </div>
+
+      <div class="soap">
+        <span class="tag">O</span>
+        <div class="tx">
+          <p>オンライン薬剤情報より</p>
+          <div class="li"><span>・</span><span>R6.12　経皮的冠動脈ステント留置術（不安定狭心症）</span></div>
+          <div class="li"><span>・</span><span>ビソプロロール0.625mg：ステント留置後から2錠で継続</span></div>
+          <div class="li"><span>・</span><span>ロスバスタチン：ステント留置後、途中から20mgへ増量</span></div>
+          <div class="li"><span>・</span><span>一部の薬剤で前薬局と交付メーカーが異なる</span></div>
+        </div>
+      </div>
+
+      <div class="soap">
+        <span class="tag">A</span>
+        <div class="tx">
+          <p>ビソプロロール：留置後から2錠で継続しており、今回の1錠は処方内容の引き継ぎの際に用量が変わった可能性がある。減量の意図が確認できないため、疑義照会が必要と判断。</p>
+          <p style="margin-top:8px;">ロスバスタチン20mg：家族性高コレステロール血症ではないことを確認。冠動脈疾患の二次予防として、LDL-Cを厳格に管理する目的での高用量投与と考えた。</p>
+        </div>
+      </div>
+
+      <div class="soap">
+        <span class="tag">P</span>
+        <div class="tx">
+          <p>疑義照会の結果、ビソプロロールは従来どおり2錠に変更。</p>
+          <p>各薬剤の処方意図について冠動脈疾患の二次予防の観点から説明し、服用を続けることの重要性を改めて認識していただいた。</p>
+          <p>一部の薬剤で前薬局とメーカーが異なる旨を説明。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">この事例から押さえておきたいこと</div>
+
+      <div class="sub-title">処置の記録から、その後の薬物治療を評価する</div>
+      <p class="note">オンライン薬剤情報には、薬剤の履歴だけでなく処置の記録も載っている。処置の時期が分かると、その後の用量の推移が治療経過に見合っているかを考える材料になる。ステント留置後にビソプロロールが2錠で継続され、ロスバスタチンが途中から20mgへ増量されていたことが、今回の処方を評価する手がかりになった。</p>
+
+      <div class="sub-title">処方意図を考えた過程を、薬歴に残す</div>
+      <p class="note">薬歴にステント留置の情報を残しているのは、既往歴としてだけではなく、<span class="marker">その後の薬剤の用量や処方意図を判断する材料になるから</span>である。一般的な用量とは異なる処方では、なぜその用量になっているのかを確認し、どう判断したかをアセスメントとして残す。次に同じ処方を見た薬剤師が、その背景を把握する手がかりにもなる。</p>
+
+      <div class="box-blue" style="margin-top:18px;">
+        <div class="ttl">薬剤服用歴の記載事項</div>
+        オンライン資格確認等システムを通じて取得した患者の診療情報、薬剤情報等を<b>含めて</b>、次の事項等を記載する。
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">20mgの用量をどう考えたか<span class="qual">参考</span></div>
+
+      <div class="sub-title">ロスバスタチンの用法及び用量</div>
+      <div class="box-gray-src">
+        <p><b>4. 効能又は効果</b></p>
+        <p>高コレステロール血症、家族性高コレステロール血症</p>
+        <p style="margin-top:10px;"><b>6. 用法及び用量</b></p>
+        <p>通常、成人にはロスバスタチンとして1日1回2.5mgより投与を開始するが、早期にLDL-コレステロール値を低下させる必要がある場合には5mgより投与を開始してもよい。なお、年齢・症状により適宜増減し、投与開始後あるいは増量後、4週以降にLDL-コレステロール値の低下が不十分な場合には、漸次10mgまで増量できる。10mgを投与してもLDL-コレステロール値の低下が十分でない、<span class="marker">家族性高コレステロール血症患者などの重症患者に限り</span>、さらに増量できるが、1日最大20mgまでとする。</p>
+        <p style="margin-top:10px;"><b>7.2 用法及び用量に関連する注意</b></p>
+        <p>特に20mg投与時においては腎機能に影響があらわれるおそれがある。20mg投与開始後12週までの間は原則、月に1回、それ以降は定期的（半年に1回等）に腎機能検査を行うなど、観察を十分に行うこと。</p>
+        <p style="margin-top:8px; color:var(--txt-3); font-size:var(--text-xs);">クレストール錠／OD錠　2026年3月改訂（第7版）</p>
+      </div>
+      <p class="note" style="margin-top:12px;">通常の増量は10mgまでで、20mgは「10mgでも不十分」かつ「家族性高コレステロール血症患者<b>など</b>の重症患者」に限られる。<span class="marker">「など」とあるとおり、家族性に限った用量ではない</span>。</p>
+      <p class="note">つまり家族性でないことを確認しただけでは足りず、<b>20mgがどのような意図で処方されているのか</b>まで考える必要がある。今回は、ステント留置後の冠動脈疾患二次予防を、その背景の一つと考えた。</p>
+      <p class="note">20mgは腎機能検査による経過観察が求められる用量でもある。転院初回であれば、腎機能検査が適切に行われているかを、次回以降の確認事項とすることもできる。</p>
+
+      <div class="sub-title" style="margin-top:20px;">冠動脈疾患の二次予防とLDL-C管理</div>
+      <p class="note">冠動脈疾患の二次予防では、LDL-Cを厳格に管理する。国内のガイドラインはリスクに応じた目標値を定めており、海外のガイドラインではさらに低い値が示されている。</p>
+      <p class="note">ただし今回は<span class="marker">検査値そのものを確認できていない</span>ため、目標値を達成しているかどうかを判断したわけではない。ステント留置後であること、途中から20mgへ増量されていることから、厳格なLDL-C管理を意図した処方と考えた、という位置づけである。</p>
+    </div>
+  </section>
+
   </div>
 
+</div>
+
+<div class="ref-links">
+  <div class="row">
+    <span class="lab">原文参照：</span>
+    <a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-10-ts">別添３ › 薬学管理料 通則</a>
+  </div>
 </div>
 
 <script>
@@ -298,7 +452,7 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
      ・「この実例を印刷」ボタンと、1実例だけ印刷したときの注記を付ける
    ============================================================ */
 (function(){
-  var DEFAULT_FOOT = '※ 事例は個人が特定されないよう内容を変えています。見直し後の記載はあくまで一例です。同じ文をそのまま使い回すのではなく、目の前の患者に合わせて書いてください。';
+  var DEFAULT_FOOT = '※ 事例は個人が特定されないよう内容を変えています。記載はあくまで一例です。同じ文をそのまま使い回すのではなく、目の前の患者に合わせて書いてください。';
 
   function el(tag, cls, text){
     var e = document.createElement(tag);
@@ -338,6 +492,8 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
 
     var h2   = sec.querySelector('.ex-head h2');
     var name = h2 ? h2.textContent.trim() : '実例 ' + n;
+    // 見出しが長い実例は data-toc-label で目次だけ短くする
+    var label = sec.getAttribute('data-toc-label') || name;
 
     var kicker = sec.querySelector('.ex-head .kicker');
     if (kicker) kicker.textContent = '実例 ' + n;
@@ -358,7 +514,9 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
     var row = el('a', 'toc-row');
     row.href = '#ex' + n;
     row.appendChild(el('span', 'toc-num', String(n)));
-    row.appendChild(el('span', 'toc-t', name));
+    row.appendChild(el('span', 'toc-t', label));
+    var kind = sec.getAttribute('data-kind');
+    if (kind) row.appendChild(el('span', 'toc-kind', kind));
     var dt = sec.getAttribute('data-date');
     if (dt) row.appendChild(el('span', 'toc-d', dt));
     toc.appendChild(row);
