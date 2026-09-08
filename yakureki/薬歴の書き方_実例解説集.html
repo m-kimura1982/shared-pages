@@ -130,13 +130,13 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
 .foot-note { font-size:12px; color:var(--txt-3); line-height:1.7; }
 
 @media (max-width:640px) {
-  body { padding:20px 10px 40px; font-size:var(--text-sm); }
+  body { font-size:14px; padding:14px 12px 40px; line-height:1.75; }
+  :root { --text-xs:11.5px; --text-sm:13.5px; --text-md:14px; --text-lg:16px; --text-xl:18px;
+          --pad-card:14px; --gap-card:11px; }
+  .ex-head h2 { font-size:17px; }
   /* 種別チップが入ると幅が足りない行が出るので、日付を次の行へ送る */
   .toc-row { flex-wrap:wrap; }
   .toc-t { flex:1 0 auto; }
-  .card { padding:16px 14px; }
-  .page-title h1 { font-size:19px; }
-  .ex-head h2 { font-size:17px; }
 }
 @media print {
   body { background:#fff; padding:0; }
