@@ -127,6 +127,13 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
 .box-gray-src { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); }
 .box-gray-src p { margin:0; }
 
+.table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.tbl { width:100%; border-collapse:collapse; font-size:var(--text-sm); background:var(--white); }
+.tbl th, .tbl td { border:var(--bw-h) solid var(--border); padding:8px 10px; text-align:left; vertical-align:top; }
+.tbl th { background:var(--box-gray); font-weight:900; }
+.tbl td.v { white-space:nowrap; font-weight:900; }
+.src-note { font-size:var(--text-xs); color:var(--txt-3); margin-top:6px; }
+
 .foot-note { font-size:12px; color:var(--txt-3); line-height:1.7; }
 
 @media (max-width:640px) {
@@ -428,8 +435,23 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
       <p class="note">20mgは腎機能検査による経過観察が求められる用量でもある。転院初回であれば、腎機能検査が適切に行われているかを、次回以降の確認事項とすることもできる。</p>
 
       <div class="sub-title" style="margin-top:20px;">冠動脈疾患の二次予防とLDL-C管理</div>
-      <p class="note">冠動脈疾患の二次予防では、LDL-Cを厳格に管理する。国内のガイドラインはリスクに応じた目標値を定めており、海外のガイドラインではさらに低い値が示されている。</p>
-      <p class="note">ただし今回は<span class="marker">検査値そのものを確認できていない</span>ため、目標値を達成しているかどうかを判断したわけではない。ステント留置後であること、途中から20mgへ増量されていることから、厳格なLDL-C管理を意図した処方と考えた、という位置づけである。</p>
+      <p class="note">冠動脈疾患の二次予防では、LDL-Cを厳格に管理する。国内のガイドラインは、二次予防の中でもリスクに応じて目標値を分けている。</p>
+      <div class="table-wrap">
+        <table class="tbl">
+          <thead>
+            <tr><th>対象</th><th>LDL-C管理目標値</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>二次予防（冠動脈疾患・アテローム血栓性脳梗塞）</td><td class="v">100mg/dL未満</td></tr>
+            <tr><td>上記のうち、急性冠症候群・家族性高コレステロール血症・糖尿病・冠動脈疾患とアテローム血栓性脳梗塞の合併のいずれかがある場合</td><td class="v">70mg/dL未満</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="src-note">動脈硬化性疾患予防ガイドライン2022年版（日本動脈硬化学会）</p>
+      <p class="note" style="margin-top:12px;">今回は不安定狭心症であり、<span class="marker">急性冠症候群として70mg/dL未満の管理目標が設定される対象である</span>。高用量が選ばれている背景を考える材料になる。</p>
+      <p class="note">なお海外では、2026年のACC/AHAガイドラインが、二次予防のうちリスクが特に高い患者にLDL-C 55mg/dL未満を示している（前版の70mg/dL未満から引き下げ）。国内の管理目標とは前提が異なるが、こうした値を念頭に置いた処方に出会うこともある。</p>
+      <p class="src-note">2026 ACC/AHA Guideline on the Management of Dyslipidemia</p>
+      <p class="note" style="margin-top:12px;">ただし今回は<span class="marker">検査値そのものを確認できていない</span>ため、目標値を達成しているかどうかまでは評価していない。目標値があることだけを根拠に、20mgが必要と判断したわけでもない。ステント留置後であること、途中から20mgへ増量されていることから、厳格なLDL-C管理を意図した処方と考えた、という位置づけである。</p>
     </div>
   </section>
 
