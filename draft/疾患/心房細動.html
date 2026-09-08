@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>心房細動｜疾患の勉強メモ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="shikkan.css" />
+  </head>
+  <body>
+    <script src="../../assets/site-header.js" defer></script>
+    <script src="../../assets/page-toc.js" defer></script>
+
+    <div class="page">
+      <div class="page-title">
+        <h1>心房細動</h1>
+        <p>薬剤師が投薬でつまずくところから逆算した勉強メモ</p>
+      </div>
+
+      <div class="card" data-toc="skip">
+        <div class="sibs">
+          <span class="lab">心房細動</span>
+          <span class="on">総論</span>
+          <a href="心房細動_抗凝固薬の用量.html">用量を決める</a>
+          <a href="心房細動_抗凝固薬の注意点.html">渡すときに見ること</a>
+        </div>
+      </div>
+
+      <div class="page-toc-wrap"><div id="page-toc"></div></div>
+
+      <div class="card" data-toc-label="覚えること">
+        <div class="card-title">このページで覚えること</div>
+        <div class="keys">
+          <div><span class="ck">✓</span><span class="tx">抗凝固するかどうかは <b>CHADS<sub>2</sub>スコア1点以上</b>で決まる。症状の有無は関係ない</span></div>
+          <div><span class="ck">✓</span><span class="tx">弁膜症性（<b>僧帽弁狭窄症・機械弁</b>）だけワルファリン一択</span></div>
+          <div><span class="ck">✓</span><span class="tx"><b>持続性・永続性</b>は発作性より脳梗塞リスクが高い</span></div>
+          <div><span class="ck">✓</span><span class="tx">レートの第1選択は<b>β遮断薬</b>。ジギタリスは血中濃度を測っていれば可</span></div>
+          <div><span class="ck">✓</span><span class="tx"><b>過度の持久運動</b>はむしろ心房細動を誘発する</span></div>
+        </div>
+      </div>
+
+      <div class="card" data-toc="skip">
+        <div class="next-page" style="display:flex; gap:12px; flex-wrap:wrap">
+          <a href="心房細動_抗凝固薬の用量.html" style="flex:1 1 260px">
+            <div class="t">用量を決める →</div>
+            <div class="d">腎機能の換算、CCrで見る4剤の分岐点、減量基準、ワルファリンとINR、高齢・高出血リスク</div>
+          </a>
+          <a href="心房細動_抗凝固薬の注意点.html" style="flex:1 1 260px">
+            <div class="t">渡すときに見ること →</div>
+            <div class="d">併用禁忌、製剤と服薬のしかた、出血リスク、定期採血、中和薬、窓口のチェック</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── 1. なぜ治療するのか ── -->
+      <div class="card">
+        <div class="card-title">なぜ抗凝固するのか<span class="qual">病態は薬の理屈が分かる最小限だけ</span></div>
+
+        <p>心房が細かく震えて有効に収縮しなくなると、<span class="marker">左心耳に血液がよどんで血栓ができる</span>。これが流れて脳の太い血管に詰まるのが心原性脳塞栓症で、心房細動は脳卒中の発症リスクをおよそ5倍に高める。</p>
+
+        <div class="lead-note" style="margin-top:14px">
+          心原性脳塞栓症は、動脈硬化由来のラクナ梗塞・アテローム血栓性脳梗塞に比べて<span class="em-change">梗塞が大きく、後遺症も死亡率も重い</span>。「不整脈そのものを治す」より「詰まらせない」が治療の主目的になるのはこのため。
+        </div>
+
+        <div class="sub-title">血栓ができる理屈（Virchowの3徴で整理する）</div>
+        <div class="split">
+          <div class="pal-blue">
+            <div class="t">血流のよどみ</div>
+            心房が収縮しないことそのもの。持続時間が長いほど不利になる。
+          </div>
+          <div class="pal-cream">
+            <div class="t">内皮（心房壁）の障害</div>
+            左房リモデリング。加齢・高血圧・心不全が絡んで進む。
+          </div>
+        </div>
+        <p style="font-size:var(--text-sm); color:var(--txt-2); margin-top:9px">残る1つの「血液の凝固しやすさ」は全身要因。この3つが重なるので、心房細動は抗血小板薬ではなく<span class="em-change">抗凝固薬</span>で予防する（詰まるのがフィブリン血栓であって血小板血栓ではない）。</p>
+      </div>
+
+      <!-- ── 2. 病型 ── -->
+      <div class="card">
+        <div class="card-title">病型の分類<span class="qual">治療方針に効くところだけ</span></div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>病型</th><th>ざっくり</th><th>効いてくるところ</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="nw">発作性</td><td>7日以内に自然に止まる</td><td>洞調律に戻せる可能性が高く、リズムコントロールの対象になりやすい</td></tr>
+              <tr><td class="nw">持続性</td><td>7日を超えて続く</td><td rowspan="2">発作性より<span class="em-change">脳梗塞リスクが高い</span>。CHADS<sub>2</sub>スコアが0点でも抗凝固を考慮してよい「その他のリスク」に入る</td></tr>
+              <tr><td class="nw">長期持続性<br />永続性</td><td>1年超／洞調律化を目指さないと決めたもの</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="box-blue" style="margin-top:14px">
+          <div class="sub-title" style="margin-top:0">「発作性だから軽い」は今は通らない</div>
+          かつては発作性でも持続性でも塞栓症リスクは同等とされていたが、近年のレジストリで<span class="marker">持続性・永続性のほうがリスクが高い</span>ことが繰り返し示されている。発作性から持続性へ移行した時期がもっともリスクが高いという報告もある。「たまにしか出ない」を抗凝固をやめる理由にはできない。
+        </div>
+
+        <div class="box-gray" style="margin-top:14px">
+          <div class="sub-title" style="margin-top:0">弁膜症性かどうかが最初の分岐</div>
+          <b>僧帽弁狭窄症</b>と<b>機械弁</b>だけが「弁膜症性心房細動」で、この2つは<span class="em-change">DOACが使えずワルファリン一択</span>。それ以外はすべて非弁膜症性として扱う。<br />
+          <span style="font-size:var(--text-sm); color:var(--txt-2)">生体弁は非弁膜症性に含めるが、置換後3か月間はワルファリンで管理し、それ以降にDOACへ切り替えられる。「なぜこの人はワルファリンなのか」を考えるとき、まずここを見る。</span>
+        </div>
+      </div>
+
+      <!-- ── 3. 全体像 ── -->
+      <div class="card">
+        <div class="card-title">治療の全体像<span class="qual">4段階で考える</span></div>
+        <p style="font-size:var(--text-sm); color:var(--txt-2); margin-bottom:14px">2024年のフォーカスアップデートで、心房細動の管理が4段階のステップとして整理された。薬局で関わるのは主に第2〜第4段階。</p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <div class="t">急性期の管理</div>
+              <div class="d">心拍数を抑えるか洞調律に戻すかして血行動態を安定させる。血行動態が破綻していれば緊急で電気的除細動。ここは病院の仕事。</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <div class="t">増悪因子の管理</div>
+              <div class="d">高血圧・糖尿病・心不全・冠動脈疾患・睡眠時無呼吸の治療と、肥満・喫煙・飲酒・運動不足の改善。<span class="marker">単独の危険因子だけ直しても再発は抑えられず、まとめて改善して初めて効く</span>というのが近年の知見。</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <div class="t">脳梗塞の予防</div>
+              <div class="d">リスクを評価して、必要なら抗凝固薬。薬局の中心はここ。</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <div class="t">症状の改善</div>
+              <div class="d">リズムコントロール（洞調律を保つ）とレートコントロール（心拍数を抑える）。どちらを取るかは患者・家族と話し合って決める領域。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="memo" style="margin-top:16px">
+          <div class="ttl">自分メモ</div>
+          この順番が大事で、<b>抗凝固（第3段階）は症状の有無と関係なく決まる</b>。「動悸がないから軽い」「アブレーションしたから」で抗凝固の要否は決まらない。窓口で症状の話と抗凝固の話を混ぜないこと。
+        </div>
+      </div>
+
+      <!-- ── 4. 抗凝固するかどうか ── -->
+      <div class="card">
+        <div class="card-title">抗凝固するかどうかの判断<span class="qual">CHADS<sub>2</sub>スコアで決まる</span></div>
+
+        <div class="flow">
+          <div class="flow-q">まず弁膜症性かどうか</div>
+          <div class="flow-branch">
+            <div class="pal-cream">
+              <div class="t">僧帽弁狭窄症・機械弁</div>
+              <b>ワルファリン</b>（INR 2.0〜3.0）<br />
+              <span style="font-size:var(--text-xs)">DOACは適応なし</span>
+            </div>
+            <div class="pal-blue">
+              <div class="t">それ以外＝非弁膜症性</div>
+              生体弁もここに含む<br />
+              <span style="font-size:var(--text-xs)">↓ CHADS<sub>2</sub>スコアで判断</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-title">CHADS<sub>2</sub>スコア</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th class="num">頭文字</th><th>危険因子</th><th class="num">点</th></tr></thead>
+            <tbody>
+              <tr><td class="num">C</td><td>心不全</td><td class="num">1</td></tr>
+              <tr><td class="num">H</td><td>高血圧</td><td class="num">1</td></tr>
+              <tr><td class="num">A</td><td>75歳以上</td><td class="num">1</td></tr>
+              <tr><td class="num">D</td><td>糖尿病</td><td class="num">1</td></tr>
+              <tr><td class="num">S<sub>2</sub></td><td>脳梗塞・TIAの既往</td><td class="num">2</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="split" style="margin-top:14px">
+          <div class="pal-blue">
+            <div class="t">1点以上</div>
+            <b>DOACを推奨</b>。ワルファリンも考慮可（年齢によらずINR 1.6〜2.6、なるべく2.0に近づける）。
+          </div>
+          <div class="pal-gray">
+            <div class="t">0点でも</div>
+            右の「その他のリスク」があれば、DOAC・ワルファリンとも<b>考慮可</b>。
+          </div>
+        </div>
+
+        <div class="sub-title">その他のリスク（0点でも抗凝固を考えてよい因子）</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>因子</th><th>ひとこと</th></tr></thead>
+            <tbody>
+              <tr><td class="nw">持続性・永続性心房細動</td><td>国内レジストリの結果を受けて2020年版で追加された</td></tr>
+              <tr><td class="nw">低体重（50kg以下）</td><td>同上。DOACの減量基準とは別の話なので混同しない</td></tr>
+              <tr><td class="nw">腎機能障害</td><td>同上</td></tr>
+              <tr><td class="nw">左房径 45mm超</td><td>同上。心エコーの所見</td></tr>
+              <tr><td class="nw">年齢65〜74歳</td><td>CHADS<sub>2</sub>の「75歳以上」に届かない層</td></tr>
+              <tr><td class="nw">心筋症</td><td></td></tr>
+              <tr><td class="nw">血管疾患</td><td>心筋梗塞の既往、大動脈プラーク、末梢動脈疾患など</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="memo" style="margin-top:16px">
+          <div class="ttl">自分メモ</div>
+          CHADS<sub>2</sub>は<b>5項目・最高6点</b>で、点が付くのは「脳梗塞・TIAの既往」だけが2点。窓口で処方箋と病名から暗算できる程度の軽さなので、覚えておくと「なぜこの人に抗凝固薬が出ているのか」が読める。0点なのに出ているときは、その他のリスク側に理由があるはず。
+        </div>
+      </div>
+
+      <!-- ── 5. リスクの中身 ── -->
+      <div class="card">
+        <div class="card-title">リスク評価はどう変わったか<span class="qual">2024年アップデート</span></div>
+
+        <div class="lead-note">ここは理屈の話。<b>実務で覚えるのは前のカードのCHADS<sub>2</sub>だけでよく</b>、HELT-E<sub>2</sub>S<sub>2</sub>は「そういう新しいスコアがある」で足りる。</div>
+
+        <p style="font-size:var(--text-sm); color:var(--txt-2); margin:12px 0">日本人データから作られた <b>HELT-E<sub>2</sub>S<sub>2</sub>スコア</b> が新しく推奨に入った。ただし<span class="marker">抗凝固を始める基準は従来どおりCHADS<sub>2</sub>スコア1点以上のまま</span>で、上のフローチャートは変更されていない。</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>スコア</th><th class="num">推奨</th><th>位置づけ</th></tr></thead>
+            <tbody>
+              <tr><td class="nw">CHADS<sub>2</sub></td><td class="num"><span class="rec i">クラスI</span></td><td>基本。抗凝固の開始判断はこれで行う</td></tr>
+              <tr><td class="nw">HELT-E<sub>2</sub>S<sub>2</sub></td><td class="num"><span class="rec">クラスIIa</span></td><td>日本人での予測精度は良い。ただし「何点以上で開始」は未確定</td></tr>
+              <tr><td class="nw">CHA<sub>2</sub>DS<sub>2</sub>-VASc</td><td class="num"><span class="rec">クラスIIb</span></td><td>日本人ではCHADS<sub>2</sub>を上回らなかった</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sub-title">HELT-E<sub>2</sub>S<sub>2</sub>スコア（合計7点）</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th class="num">頭文字</th><th>危険因子</th><th class="num">点</th></tr></thead>
+            <tbody>
+              <tr><td class="num">H</td><td>高血圧</td><td class="num">1</td></tr>
+              <tr><td class="num">E</td><td>75〜84歳</td><td class="num">1</td></tr>
+              <tr><td class="num">L</td><td>BMI 18.5未満（低体重）</td><td class="num">1</td></tr>
+              <tr><td class="num">T</td><td>持続性・永続性心房細動</td><td class="num">1</td></tr>
+              <tr><td class="num">E<sub>2</sub></td><td>85歳以上</td><td class="num">2</td></tr>
+              <tr><td class="num">S<sub>2</sub></td><td>脳卒中の既往</td><td class="num">2</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:var(--text-sm); color:var(--txt-2); margin-top:9px">年齢の2つは背反（どちらか一方）。抗凝固なしの脳梗塞発症率は0点で年0.57%、5点以上で年5.82%と、はっきり点数依存で上がる。</p>
+
+        <div class="box-blue" style="margin-top:16px">
+          <div class="sub-title" style="margin-top:0">CHADS<sub>2</sub>との違いが面白いところ</div>
+          日本人のレジストリを解析すると、<span class="marker">糖尿病・心不全・血管疾患は独立した危険因子として出てこなかった</span>。代わりに85歳以上・低BMI・持続性/永続性が浮かび上がった。とはいえ糖尿病も心不全も「その中に高リスクな人が混ざっている」だけなので、CHADS<sub>2</sub>の基準は妥当なまま据え置かれている。
+        </div>
+
+        <div class="sub-title">同じ「1点」でも中身が違う</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>因子</th><th>実質的にリスクが高いのはどういう人か</th></tr></thead>
+            <tbody>
+              <tr><td class="nw">高血圧</td><td>経過中の血圧管理が悪い人。<span class="em-change">収縮期136mmHg以下・拡張期80mmHg未満に保てていれば実質リスクは低い可能性</span>がある。管理不良は脳出血の危険因子でもあるので、抗凝固を始める前に血圧を整えるのが先</td></tr>
+              <tr><td class="nw">糖尿病</td><td>罹病10年以上／HbA1c 8%以上／インスリン治療中。逆に発症間もない・コントロール良好ならリスクは非糖尿病と変わらない</td></tr>
+              <tr><td class="nw">心不全</td><td><span class="em-change">心不全入院の直後（30日以内）が突出して高い</span>。その後も1年程度は高いまま。安定して治療されている慢性心不全はそこまでではない</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="memo" style="margin-top:16px">
+          <div class="ttl">自分メモ</div>
+          血圧手帳を持ってくる心房細動の患者に対して、「血圧を測りましょう」で終わらせず<b>脳梗塞と脳出血の両方に効く話としてつなげられる</b>のはここ。窓口で使える理屈だと思う。
+        </div>
+      </div>
+
+      <!-- ── 6. レート／リズム ── -->
+      <div class="card">
+        <div class="card-title">心拍数を抑えるか、洞調律に戻すか</div>
+
+        <div class="split">
+          <div class="pal-blue">
+            <div class="t">リズムコントロール</div>
+            洞調律を保つ。抗不整脈薬・電気的除細動・カテーテルアブレーション。<br /><b>発症早期ほど有利</b>（クラスIIa）。
+          </div>
+          <div class="pal-cream">
+            <div class="t">レートコントロール</div>
+            心拍数を適切に抑える。β遮断薬・ジギタリス・非ジヒドロピリジン系Ca拮抗薬。<br />洞調律維持が難しい持続性・永続性が主な対象。
+          </div>
+        </div>
+
+        <div class="sub-title">リズムコントロールが望ましい患者像</div>
+        <div class="bullet"><span>・</span><span>動悸・眼前暗黒感・胸部不快感などの症状が強い</span></div>
+        <div class="bullet"><span>・</span><span>続くことで心不全の発症・増悪が心配される</span></div>
+        <div class="bullet"><span>・</span><span>心房細動に関連する併存疾患が比較的少ない</span></div>
+        <div class="bullet"><span>・</span><span>左房径が高度に拡大していない（心房のリモデリングが軽い）</span></div>
+        <div class="bullet"><span>・</span><span>患者本人が希望している</span></div>
+        <p style="font-size:var(--text-sm); color:var(--txt-2); margin-top:9px">なお、リズムコントロールの効果を高めるには<span class="marker">高血圧・糖尿病・睡眠時呼吸障害の治療と、肥満・喫煙・飲酒の改善が前提</span>（クラスI）。薬だけでは維持できない。年齢では75歳未満のほうが恩恵が大きいというデータがある。</p>
+
+        <div class="sub-title">ジギタリスの位置づけが変わった</div>
+        <div class="box-blue">
+          長らく「漫然と使う心拍数調節は有害（クラスIII）」とされていたが、2024年のアップデートで<span class="em-change">血中濃度を定期的に管理していれば、心拍数調節やQOL改善を目的とした経口投与を考慮してもよい（クラスIIb）</span>に格上げされた。
+          <div style="margin-top:9px; font-size:var(--text-sm)">
+            根拠はRATE-AF試験。NYHA II以上の症状を伴う永続性心房細動でジゴキシンとビソプロロールを比べたところ、心拍数もQOLも同等、12か月時点のNT-proBNPはジゴキシン群のほうが低く、<b>有害事象はジゴキシン群25%対ビソプロロール群64%</b>と明らかに少なかった。
+          </div>
+        </div>
+        <p style="font-size:var(--text-sm); color:var(--txt-2); margin-top:12px">ただし第1選択がβ遮断薬であることは変わらない。条件は「<b>血中濃度を定期的に管理していれば</b>」なので、ジゴキシン血中濃度の採血がされているかどうかが薬局側の確認ポイントになる。低カリウム血症で中毒が出やすくなる点、腎機能低下で蓄積する点も従来どおり。</p>
+
+        <div class="memo" style="margin-top:16px">
+          <div class="ttl">自分メモ</div>
+          非ジヒドロピリジン系Ca拮抗薬（ベラパミル・ジルチアゼム）は<b>低心機能では使用不可</b>。心不全合併の心房細動でベラパミルが出ていたら引っかける。同時にベラパミルはP糖蛋白阻害薬なのでDOACの減量条件にも絡む。1剤で2か所に効いてくるので覚えておく。<br />
+          <b>宿題：</b>抗不整脈薬の使い分け（基礎心疾患の有無で分かれる／Vaughan Williams分類）を別カードにまとめる。2020年版の第5章に載っている。
+        </div>
+      </div>
+
+      <!-- ── 7. 生活習慣 ── -->
+      <div class="card">
+        <div class="card-title">生活習慣で言えること</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>項目</th><th>内容</th><th class="num">強さ</th></tr></thead>
+            <tbody>
+              <tr><td class="nw">アルコール</td><td>過剰摂取を避けるための助言と管理を考慮する</td><td class="num"><span class="rec">IIa</span></td></tr>
+              <tr><td class="nw">身体活動</td><td>発症・再発の予防のため適度な身体活動を指導する。<span class="em-change">ただし心房細動を誘発しうる過度の持久運動は除く</span></td><td class="num"><span class="rec">IIa</span></td></tr>
+              <tr><td class="nw">併存疾患</td><td>高血圧・糖尿病・睡眠時呼吸障害の治療、肥満・喫煙・過度の飲酒の改善</td><td class="num"><span class="rec i">I</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:var(--text-sm); color:var(--txt-2); margin-top:12px">「運動は良い」が単純ではないのがこの疾患の面白いところで、<span class="marker">マラソンのような過度の持久運動はむしろ心房細動を誘発する</span>。適度な、が本当に適度の意味。</p>
+      </div>
+
+      <!-- ── 8. 投薬時 ── -->
+      <div class="card">
+        <div class="card-title">投薬時に効く話<span class="qual">窓口で使う形にしておく</span></div>
+
+        <div class="sub-title">初回に押さえること</div>
+        <div class="bullet"><span>・</span><span><b>何のために飲む薬か</b>。「血液をさらさらに」で終わらせず「心臓にできた血のかたまりが脳に飛ぶのを防ぐ」まで言う。症状がないので目的が伝わらないと続かない</span></div>
+        <div class="bullet"><span>・</span><span><b>自己中断が一番危ない</b>。効果は飲んでいる間だけ。半減期が短いので数回抜くと切れる</span></div>
+        <div class="bullet"><span>・</span><span><b>抜歯・内視鏡・手術の前に必ず申告する</b>。「休薬するかは処置内容と出血リスクで決まるので、自己判断で止めない」までセットで</span></div>
+        <div class="bullet"><span>・</span><span><b>市販薬の注意</b>。解熱鎮痛薬のNSAIDsは出血リスクを上げる。買う前に相談を</span></div>
+        <div class="bullet"><span>・</span><span><b>受診すべき出血の目安</b>。歯ぐきや鼻血が止まらない、黒い便、赤い尿、いつもと違う頭痛やふらつき、ぶつけていないのに大きな青あざ</span></div>
+
+        <div class="sub-title">動悸で来た人に聞くこと</div>
+        <div class="bullet"><span>・</span><span>いつから、どのくらい続くか（<b>発作性か持続性かの手がかり</b>）</span></div>
+        <div class="bullet"><span>・</span><span>脈が飛ぶだけか、ふらつき・息切れ・胸の重さを伴うか</span></div>
+        <div class="bullet"><span>・</span><span>お酒・カフェイン・睡眠不足との関係（増悪因子は第2段階の管理対象）</span></div>
+        <div class="bullet"><span>・</span><span>いびき・日中の眠気（睡眠時無呼吸は再発と強く関係する）</span></div>
+
+        <div class="memo" style="margin-top:16px">
+          <div class="ttl">自分メモ・宿題</div>
+          <ul>
+            <li>抗凝固薬まわりは<a href="心房細動_抗凝固薬の用量.html">用量</a>と<a href="心房細動_抗凝固薬の注意点.html">渡すときに見ること</a>の2枚にまとめた。</li>
+            <li>抜歯・内視鏡の休薬の考え方は横串ページ「抗血栓薬の休薬」を作ってそちらへ。</li>
+            <li>アブレーション後に抗凝固をやめられるのかどうか、聞かれたときの答え方を整理する。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ── 出典 ── -->
+      <div class="card">
+        <div class="card-title">参考にした資料</div>
+        <div class="ref-links">
+          <div class="row"><span class="lab">土台：</span><span>2020年改訂版 不整脈薬物治療ガイドライン（2020年3月13日発行／2023年10月13日更新）</span></div>
+          <div class="row"><span class="lab">更新：</span><span>2024年 JCS/JHRS ガイドライン フォーカスアップデート版 不整脈治療（2024年3月8日発行／2024年9月25日更新）</span></div>
+          <div class="row"><span class="lab">診断：</span><span>2022年改訂版 不整脈の診断とリスク評価に関するガイドライン</span></div>
+          <div class="row"><span class="lab">入手先：</span><a href="https://www.j-circ.or.jp/guideline/guideline-series/" target="_blank" rel="noopener">日本循環器学会 循環器病ガイドラインシリーズ</a></div>
+        </div>
+        <div class="memo" style="margin-top:14px">
+          <div class="ttl">扱いの注意</div>
+          ガイドラインは無断転載が禁じられている。<b>本文・図表をそのまま貼らず、必ず自分の言葉と自作の表で書く</b>。原文が要るときは上のリンクから当たる。
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

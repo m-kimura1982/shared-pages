@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>抗凝固薬の用量を決める｜心房細動</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="shikkan.css" />
+  </head>
+  <body>
+    <script src="../../assets/site-header.js" defer></script>
+    <script src="../../assets/page-toc.js" defer></script>
+
+    <div class="page">
+      <div class="page-title">
+        <h1>抗凝固薬の用量を決める</h1>
+        <p>心房細動 ── 腎機能から用量が正しいかを見る</p>
+      </div>
+
+      <div class="card" data-toc="skip">
+        <div class="sibs">
+          <span class="lab">心房細動</span>
+          <a href="心房細動.html">総論</a>
+          <span class="on">用量を決める</span>
+          <a href="心房細動_抗凝固薬の注意点.html">渡すときに見ること</a>
+        </div>
+      </div>
+
+      <div class="page-toc-wrap"><div id="page-toc"></div></div>
+
+      <div class="card" data-toc-label="覚えること">
+        <div class="card-title">このページで覚えること</div>
+        <div class="keys">
+          <div><span class="ck">✓</span><span class="tx">DOACの用量は<b>CCr</b>で決まる。検査値のeGFRではない</span></div>
+          <div><span class="ck">✓</span><span class="tx">覚える線は <b>50・30・15</b> の3本</span></div>
+          <div><span class="ck">✓</span><span class="tx"><b>アピキサバンだけ</b>減量ルールが別（血清Cr・年齢・体重の2つ以上）</span></div>
+          <div><span class="ck">✓</span><span class="tx"><b>エドキサバンは体重が先</b>。60kg以下ならもともと30mgで、そこからは下げない</span></div>
+          <div><span class="ck">✓</span><span class="tx">高齢・低体重・フレイル・認知症は<b>抗凝固をやめる理由にならない</b></span></div>
+        </div>
+      </div>
+
+      <!-- ── 1. 腎機能 ── -->
+      <div class="card">
+        <div class="card-title">腎機能をどう見るか<span class="qual">ここを外すと全部ずれる</span></div>
+
+        <div class="lead-note">
+          DOACの用量基準は<span class="em-change">すべてクレアチニンクリアランス（CCr）で書かれている</span>。検査値に載っているeGFRとは単位も意味も違うので、そのまま当てはめると用量を間違える。
+        </div>
+
+        <div class="sub-title">2つの指標は別物</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>　</th><th>CCr（Cockcroft-Gault）</th><th>eGFR（日本人推算式）</th></tr></thead>
+            <tbody>
+              <tr><td class="nw">単位</td><td>mL/分</td><td>mL/分/<b>1.73m<sup>2</sup></b></td></tr>
+              <tr><td class="nw">意味</td><td><b>その人の実際の腎クリアランス</b></td><td>標準体型（体表面積1.73m<sup>2</sup>）に揃えた値</td></tr>
+              <tr><td class="nw">使う場面</td><td><span class="em-change">薬の用量設定</span></td><td>CKDの重症度分類・腎臓の評価</td></tr>
+              <tr><td class="nw">必要な情報</td><td>年齢・性別・<b>体重</b>・血清Cr</td><td>年齢・性別・血清Cr（体重は不要）</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="formula">
+          <div class="f-label">Cockcroft-Gault の式</div>
+          <div class="f-body">CCr（mL/分） ＝ <span class="frac"><span class="up">（140 − 年齢）× 体重(kg)</span><span class="dn">72 × 血清Cr(mg/dL)</span></span> <span class="f-note">女性は × 0.85</span></div>
+        </div>
+
+        <div class="box-gray" style="margin-top:14px">
+          <div class="sub-title" style="margin-top:0">やせた高齢者で何が起きるか</div>
+          eGFRは体表面積1.73m<sup>2</sup>に揃えた値なので、<span class="marker">体格の小さい人では実際のクリアランスより高い数字が出る</span>。
+          <div class="split" style="margin-top:11px">
+            <div class="pal-pink">
+              <div class="t">eGFRだけ見ると</div>
+              「55だから正常に近い」<br />→ 減量しない
+            </div>
+            <div class="pal-blue">
+              <div class="t">体重40kgでCCrを計算すると</div>
+              「35しかない」<br />→ 減量基準に該当
+            </div>
+          </div>
+          <div style="margin-top:11px; font-size:var(--text-sm)">
+            eGFRを個別化したいときは <b>eGFR × 体表面積 ÷ 1.73</b> で戻せる。ただし薬の用量はCockcroft-GaultのCCrで判断すると決まっているので、素直にCCrを計算する。<span class="em-change">体重が分からないと計算できない</span>ので、高齢者の体重は聞いておく価値がある。
+          </div>
+        </div>
+
+        <div class="memo" style="margin-top:16px">
+          <div class="ttl">自分メモ</div>
+          <ul>
+            <li>肥満の人に実測体重をそのまま入れるとCCrを過大評価する。理想体重や補正体重を使う考え方があるが、ガイドラインには書いていない。<b>自局でどう扱うか決めておく</b>。</li>
+            <li>血清Crは筋肉量の影響を受ける。<b>やせた高齢者・寝たきりの人はCrが低く出て、腎機能が良く見える</b>。CCrの計算でも同じ落とし穴があることは意識しておく。</li>
+            <li>アピキサバンだけは減量基準にCCrが入らず、<b>血清Cr・年齢・体重</b>の3項目で決まる。計算しなくても判定できる唯一の薬。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ── 2. 分岐点早見表 ── -->
+      <div class="card">
+        <div class="card-title">CCrで見る4剤の分岐点<span class="qual">早見表</span></div>
+
+        <div class="table-wrap">
+          <table class="wide">
+            <thead>
+              <tr>
+                <th class="nw">CCr</th>
+                <th class="nw">ダビガトラン</th>
+                <th class="nw">リバーロキサバン</th>
+                <th class="nw">アピキサバン</th>
+                <th class="nw">エドキサバン</th>
+                <th class="nw">ワルファリン</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="nw"><b>50超</b></td>
+                <td>150mg 1日2回</td>
+                <td>15mg 1日1回<br /><span class="sm">食後</span></td>
+                <td rowspan="3" class="apix">CCrでは決まらない<br /><span class="sm">血清Cr 1.5以上／80歳以上／体重60kg以下 のうち<b>2つ以上</b>で 5mg→2.5mg 1日2回</span></td>
+                <td>体重60kg超：60mg<br />体重60kg以下：30mg<br /><span class="sm">いずれも1日1回</span></td>
+                <td rowspan="4">投与可能</td>
+              </tr>
+              <tr>
+                <td class="nw"><b>30〜50</b></td>
+                <td>110mg 1日2回を考慮</td>
+                <td>10mg 1日1回<span class="sm">※1</span></td>
+                <td>30mg 1日1回</td>
+              </tr>
+              <tr>
+                <td class="nw"><b>15〜30</b></td>
+                <td class="ng">禁忌</td>
+                <td>10mg 1日1回<br /><span class="sm">適否を慎重に検討</span></td>
+                <td>30mg 1日1回<br /><span class="sm">有効性・安全性は未確立。適否を慎重に判断。15mgも考慮</span></td>
+              </tr>
+              <tr>
+                <td class="nw"><b>15未満</b></td>
+                <td class="ng">禁忌</td>
+                <td class="ng">禁忌</td>
+                <td class="ng">禁忌</td>
+                <td class="ng">禁忌</td>
+              </tr>
+              <tr>
+                <td class="nw"><b>維持透析</b></td>
+                <td class="ng">禁忌</td>
+                <td class="ng">禁忌</td>
+                <td class="ng">禁忌</td>
+                <td class="ng">禁忌</td>
+                <td class="ng">原則禁忌<span class="sm">※2</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="sm" style="margin-top:8px">
+          ※1 <b>境界の扱いが1つずれる。</b>リバーロキサバンは「CCr 30〜49」で10mg（＝ちょうど50なら15mg）。エドキサバンは「30以上50以下」で30mg（＝ちょうど50でも30mg）。ダビガトランの110mg考慮は「CCr 30〜50」。<br />
+          ※2 アブレーション周術期・機械弁術後・脳梗塞の二次予防など、使わざるを得ない場面は例外として認められている。
+        </p>
+
+        <div class="sub-title">覚えるのは3本の線だけ</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th class="num">線</th><th>そこで何が起きるか</th></tr></thead>
+            <tbody>
+              <tr><td class="num"><b>50</b></td><td>ダビガトラン・リバーロキサバン・エドキサバンが<span class="em-change">減量に切り替わる</span></td></tr>
+              <tr><td class="num"><b>30</b></td><td><span class="em-change">ダビガトランだけ禁忌</span>になる</td></tr>
+              <tr><td class="num"><b>15</b></td><td><span class="em-change">DOACが全部禁忌</span>になり、ワルファリンだけになる</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="box-blue" style="margin-top:14px">
+          <div class="sub-title" style="margin-top:0">アピキサバンだけ仲間はずれ</div>
+          他の3剤がCCrの線で切り替わるのに対し、<span class="marker">アピキサバンの減量はCCrではなく「血清Cr 1.5mg/dL以上・80歳以上・体重60kg以下」の3項目のうち2つ以上</span>で決まる。CCr 15未満が禁忌なのは同じだが、用量の分岐だけが別ルール。混同しやすいので、この薬だけは別枠で覚える。
+        </div>
+
+        <div class="memo" style="margin-top:16px">
+          <div class="ttl">覚え方</div>
+          <b>リバーロキサバンの減量域は「30〜49」ではなく「15〜49」</b>（＝CCr 50未満はすべて10mg）。CCr 20台の人に15mgが出ていたら過量。最初に書いたとき自分が間違えたところなので、ここは強く覚えておく。
+        </div>
+
+        <div class="memo" style="margin-top:11px">
+          <div class="ttl">自分メモ</div>
+          <b>CCr 15〜30の欄は「投与できる」ではない。</b>リバーロキサバンは「適否を慎重に検討したうえで」、エドキサバンは「有効性及び安全性は確立していない」と電子添文に書いてある。用量だけ見て素通りしないこと。
+        </div>
+      </div>
+
+      <!-- ── 3. 減量基準 ── -->
+      <div class="card">
+        <div class="card-title">減量基準は4剤それぞれ違う</div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th class="nw">薬剤</th><th class="nw">通常</th><th class="nw">減量</th><th>減量する条件</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="nw">ダビガトラン<br /><span class="sm">プラザキサ</span></td>
+                <td class="nw">150mg<br />1日2回</td>
+                <td class="nw">110mg<br />1日2回</td>
+                <td>次のいずれかで<b>減量を考慮</b>：CCr 50未満／P糖蛋白阻害薬の併用／70歳以上／消化管出血の既往</td>
+              </tr>
+              <tr>
+                <td class="nw">リバーロキサバン<br /><span class="sm">イグザレルト</span></td>
+                <td class="nw">15mg<br />1日1回<br /><span class="sm">食後</span></td>
+                <td class="nw">10mg<br />1日1回</td>
+                <td><b>CCr 50未満</b>（＝15〜49）。条件はこれ1つだけ</td>
+              </tr>
+              <tr>
+                <td class="nw">アピキサバン<br /><span class="sm">エリキュース</span></td>
+                <td class="nw">5mg<br />1日2回</td>
+                <td class="nw">2.5mg<br />1日2回</td>
+                <td>血清Cr 1.5mg/dL以上／80歳以上／体重60kg以下 の<span class="em-change">2つ以上</span>に該当</td>
+              </tr>
+              <tr>
+                <td class="nw">エドキサバン<br /><span class="sm">リクシアナ</span></td>
+                <td class="nw">体重60kg超<br />60mg 1日1回<br /><span class="sm">60kg以下は<br />はじめから30mg</span></td>
+                <td class="nw">30mg<br />1日1回</td>
+                <td>CCr 30〜50／P糖蛋白阻害薬の併用 で減量。<span class="em-change">体重は減量基準ではなく用量そのもの</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="box-gray" style="margin-top:14px">
+          <div class="sub-title" style="margin-top:0">エドキサバンだけ表の作りが違う</div>
+          ガイドラインの表は4剤をそろえて「体重60kg以下も減量基準」と書いているが、<span class="marker">電子添文では体重60kg以下は最初から30mgが通常用量</span>で、減量（60mg→30mg）にあたるのは腎機能とP糖蛋白阻害薬だけ。<br />
+          <span class="sm">結論として出てくる用量は同じなので実務では困らないが、「体重で減量する薬」と覚えると、体重60kg以下でCCr 40の人を二重に減らしてしまう。<b>60kg以下ならもともと30mgで、そこからは下げない</b>（15mgは別条件）。</span>
+        </div>
+
+        <div class="split" style="margin-top:14px">
+          <div class="pal-blue">
+            <div class="t">アピキサバンは「2つ以上」</div>
+            3項目のうち<b>2つ</b>そろって初めて減量。1つだけで減らすと過少投与になる。
+          </div>
+          <div class="pal-cream">
+            <div class="t">エドキサバンは体重が先</div>
+            <b>まず体重で60か30が決まり</b>、そのうえで腎機能とP糖蛋白阻害薬を見る、の2段構え。
+          </div>
+        </div>
+
+        <div class="box-gray" style="margin-top:14px">
+          <div class="sub-title" style="margin-top:0">ダビガトランだけ「考慮」</div>
+          他の3剤は条件に当たれば減量が決まるが、ダビガトランの基準は<b>減量を考慮する</b>という書き方。判断に幅がある。<br />
+          <span class="sm">また、出血リスクが高い患者にはアピキサバン・ダビガトラン110mg・エドキサバンが選ばれやすい（大規模臨床試験で大出血の発生率が低かったため）。</span>
+        </div>
+
+        <div class="sub-title">P糖蛋白阻害薬に何が入るか</div>
+        <p class="sm" style="margin-bottom:10px">エドキサバンの電子添文だけが薬剤名を明記して2段階に分けている。ここが一番具体的なので、そのまま覚えるとよい。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th class="nw">エドキサバンでの扱い</th><th>薬剤</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="nw">併用する場合は<br /><b>30mgにする</b></td>
+                <td>キニジン、<b>ベラパミル</b>、エリスロマイシン、シクロスポリン</td>
+              </tr>
+              <tr>
+                <td class="nw">有益性を考えたうえで<br />併用するなら30mgを考慮</td>
+                <td>アジスロマイシン、<b>クラリスロマイシン</b>、イトラコナゾール、<b>ジルチアゼム</b>、<b>アミオダロン</b>、HIVプロテアーゼ阻害剤（リトナビル等）</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="sm" style="margin-top:8px">ダビガトランでは、ベラパミル・アミオダロン・キニジン・タクロリムス・シクロスポリン・リトナビル等で110mg 1日2回を考慮。クラリスロマイシンは「顕著な影響は受けないが上昇することがある」と一段弱い書き方になっている。<b>アピキサバンは用量を変える相互作用の規定がない。</b></p>
+
+        <div class="box-blue" style="margin-top:14px">
+          <div class="sub-title" style="margin-top:0">ベラパミルは飲む時間まで決まっている</div>
+          ダビガトランとベラパミルを<span class="marker">新しく併用し始めるときは、開始から3日間はベラパミルの2時間以上前にダビガトランを飲ませる</span>。単回のベラパミルを1時間前に入れるとダビガトランのAUCが2.4倍になるのに対し、2時間前にダビガトランを飲めば1.2倍に収まる、というデータが根拠。<br />
+          <span class="sm">「併用注意」で終わらせず服用タイミングまで指示できる、数少ない例。継続中の人ではなく<b>新たにベラパミルが追加されたとき</b>の話なので、処方変更を見ている薬局が拾う場面そのもの。</span>
+        </div>
+
+        <p class="sm" style="margin-top:12px">心房細動ではベラパミル・ジルチアゼム・アミオダロンがレートコントロールの薬として出てくる。<b>同じ1剤がDOACの減量条件でもある</b>ので、1剤で2か所に効いてくる。</p>
+
+        <div class="memo" style="margin-top:16px">
+          <div class="ttl">宿題</div>
+          この一覧はエドキサバンの電子添文が基準。<b>4剤を横に並べた相互作用の表</b>は、横串ページ「相互作用の勘所（CYP・P糖蛋白）」を作ってそちらへ。ここには心房細動で実際に出会うものだけ残す。
+        </div>
+      </div>
+
+      <!-- ── 4. ワルファリン ── -->
+      <div class="card">
+        <div class="card-title">ワルファリンを使う場面とINR目標</div>
+
+        <div class="sub-title">ワルファリンが選ばれるとき</div>
+        <div class="bullet"><span>・</span><span><b>弁膜症性心房細動</b>（僧帽弁狭窄症・機械弁）── DOACの適応がない</span></div>
+        <div class="bullet"><span>・</span><span><b>CCr 15未満で非透析</b>の末期腎機能障害 ── DOACが全部禁忌になるため</span></div>
+        <div class="bullet"><span>・</span><span>生体弁の置換後3か月間（それ以降はDOACへ切り替え可）</span></div>
+        <div class="bullet"><span>・</span><span>維持透析患者への投与は<span class="em-change">原則禁忌</span>。出血だけでなく塞栓症も増やす可能性が指摘されている</span></div>
+
+        <div class="sub-title">INRの管理目標</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>対象</th><th class="nw">目標INR</th></tr></thead>
+            <tbody>
+              <tr><td>弁膜症性心房細動</td><td class="nw"><b>2.0 〜 3.0</b></td></tr>
+              <tr><td>非弁膜症性・一次予防で比較的低リスク（CHADS<sub>2</sub> 2点以下）</td><td class="nw"><b>1.6 〜 2.6</b><br /><span class="sm">年齢によらず</span></td></tr>
+              <tr><td>非弁膜症性・二次予防や高リスク（CHADS<sub>2</sub> 3点以上、がんなど）で<b>70歳以上</b></td><td class="nw"><b>1.6 〜 2.6</b><br /><span class="sm">なるべく2.0以上</span></td></tr>
+              <tr><td>同上で<b>70歳未満</b></td><td class="nw"><b>2.0 〜 3.0</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="sm" style="margin-top:8px">非弁膜症性で1.6〜2.6のときも「なるべく2.0に近づける」とされている。下限ぎりぎりを狙う値ではない。</p>
+
+        <div class="sub-title">窓口で言うこと</div>
+        <div class="bullet"><span>・</span><span>納豆・青汁・クロレラは避ける。緑黄色野菜は<b>やめるのではなく量を一定に</b></span></div>
+        <div class="bullet"><span>・</span><span>PT-INRの値を聞く。前回から大きく動いていないか</span></div>
+        <div class="bullet"><span>・</span><span>抗菌薬・抗真菌薬で大きく振れる。<b>短期の処方でも確認する</b></span></div>
+        <div class="bullet"><span>・</span><span>市販の解熱鎮痛薬・サプリメントを勝手に足さない</span></div>
+
+        <div class="box-blue" style="margin-top:14px">
+          アドヒアランスは良いのに<span class="marker">INRが目標範囲に収まっている時間（TTR）が悪い</span>場合、あるいは患者がDOACを希望する場合は、DOACへの変更を考慮してよいとされている（禁忌でなければ）。「ずっとワルファリンだから」で固定される話ではない。
+        </div>
+      </div>
+
+      <!-- ── 5. 高齢・高リスク ── -->
+      <div class="card">
+        <div class="card-title">高齢・出血リスクが高い人をどう考えるか<span class="qual">2024年アップデートの中心</span></div>
+
+        <p class="sm" style="margin-bottom:14px">高齢だから、やせているから、飲み合わせが多いから、という理由で抗凝固をやめる方向に流れやすい。ここに対して2024年の改訂ははっきり「やめない」側に舵を切った。</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th class="nw">場面</th><th>推奨</th><th class="num">強さ</th></tr></thead>
+            <tbody>
+              <tr><td class="nw">CCr 30〜50</td><td>抗凝固を行う。ワルファリンよりDOACを優先</td><td class="num"><span class="rec i">I</span></td></tr>
+              <tr><td class="nw">CCr 15〜30</td><td>ダビガトラン以外のDOACを考慮</td><td class="num"><span class="rec">IIa</span></td></tr>
+              <tr><td class="nw">低体重</td><td>低体重の有無によらず抗凝固を考慮</td><td class="num"><span class="rec">IIa</span></td></tr>
+              <tr><td class="nw">フレイル</td><td>フレイルの有無によらず抗凝固を考慮</td><td class="num"><span class="rec">IIa</span></td></tr>
+              <tr><td class="nw">認知機能低下</td><td>MMSE 23点以下の有無によらず抗凝固を考慮</td><td class="num"><span class="rec">IIa</span></td></tr>
+              <tr><td class="nw">ポリファーマシー</td><td>薬剤数を最小限にし、<span class="em-change">抗血小板薬やNSAIDsなど出血リスクを高める薬を最大限避ける</span></td><td class="num"><span class="rec i">I</span></td></tr>
+              <tr><td class="nw">抗血小板薬の併用</td><td>原則として使用すべきでない（PCI後1年以内を除く）</td><td class="num"><span class="rec no">III<br />Harm</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="box-blue" style="margin-top:16px">
+          <div class="sub-title" style="margin-top:0">薬剤師の出番はポリファーマシーの行にある</div>
+          「抗凝固を続ける」がクラスIで示された一方、<span class="marker">出血リスクを上げる薬を減らすことがクラスIで求められている</span>。つまり抗凝固薬そのものを減らすのではなく、<b>まわりの薬を整理するのが正しい方向</b>。抗血小板薬の漫然併用、痛み止めのNSAIDs、市販の解熱鎮痛薬。ここは処方箋と併用薬を見ている薬局が一番拾いやすい。
+        </div>
+
+        <div class="sub-title">承認用量が難しい超高齢者にはエドキサバン15mg</div>
+        <p class="sm">通常用量での投与が困難な超高齢・高出血リスク患者に対して、エドキサバン15mgの開始が <span class="rec i">クラスI</span> で推奨されている。電子添文では <b>80歳以上を目安</b> とし、次の<b>2つの条件を両方</b>満たす場合とされている。</p>
+
+        <div class="steps" style="margin-top:12px">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <div class="t">出血性素因を1つ以上もつ</div>
+              <div class="d">
+                頭蓋内・眼内・消化管など重要器官の出血の既往／低体重（45kg以下）／CCr 15以上30未満／NSAIDsの常用／抗血小板薬の使用
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <div class="t">通常用量や他の抗凝固薬の承認用量では、出血リスクのため投与できない</div>
+              <div class="d">ここが抜けやすい。<b>片方だけでは条件を満たさない。</b></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="memo" style="margin-top:16px">
+          <div class="ttl">自分メモ</div>
+          エドキサバン15mgを「減量のさらに下」と捉えると分かりにくい。<b>通常用量が使えない人のための独立した用法</b>と理解しておく。ガイドラインが下2つ（NSAIDsの常用・抗血小板薬の使用）に「まず必要性を吟味」と但し書きを付けているのは、<b>その薬をやめれば通常用量で行ける人がいる</b>という意味。ここも薬局で拾える。
+        </div>
+      </div>
+
+      <!-- ── 出典 ── -->
+      <div class="card">
+        <div class="card-title">参考にした資料</div>
+        <div class="ref-links">
+          <div class="row"><span class="lab">土台：</span><span>2020年改訂版 不整脈薬物治療ガイドライン（2020年3月13日発行／2023年10月13日更新）第5章</span></div>
+          <div class="row"><span class="lab">更新：</span><span>2024年 JCS/JHRS ガイドライン フォーカスアップデート版 不整脈治療 第3章</span></div>
+          <div class="row"><span class="lab">用量：</span><span>各薬剤の電子添文</span></div>
+        </div>
+        <div class="table-wrap" style="margin-top:11px">
+          <table>
+            <thead><tr><th class="nw">薬剤</th><th class="nw">確認した版</th></tr></thead>
+            <tbody>
+              <tr><td class="nw">プラザキサ（ダビガトラン）</td><td class="nw">2025年11月改訂 第5版</td></tr>
+              <tr><td class="nw">イグザレルト（リバーロキサバン）</td><td class="nw">2026年3月改訂 第10版</td></tr>
+              <tr><td class="nw">エリキュース（アピキサバン）</td><td class="nw">2026年3月改訂 第9版</td></tr>
+              <tr><td class="nw">リクシアナ（エドキサバン）</td><td class="nw">2025年11月改訂 第8版</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="ref-links" style="margin-top:11px">
+          <div class="row"><span class="lab">入手先：</span><a href="https://www.j-circ.or.jp/guideline/guideline-series/" target="_blank" rel="noopener">日本循環器学会 循環器病ガイドラインシリーズ</a>／<a href="https://www.pmda.go.jp/PmdaSearch/iyakuSearch/" target="_blank" rel="noopener">PMDA 添付文書検索</a></div>
+        </div>
+        <div class="memo" style="margin-top:14px">
+          <div class="ttl">扱いの注意</div>
+          用量・禁忌・相互作用は<b>電子添文が正</b>。ガイドラインの記述と食い違うときは電子添文を採る（エドキサバンの体重の扱いが実例）。ガイドライン本文・図表の転載はしない。<br />
+          <b>電子添文は改訂される。</b>上の版より新しいものが出ていないか、大きく書き換えるときに確認する。
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
