@@ -146,7 +146,7 @@
       .ss-hint {
         padding: 8px 14px;
         border-top: 1px solid #eef0f4;
-        font-size: 11px; color: #888;
+        font-size: 11px; color: #5e6470;
         display: flex; gap: 14px; flex-wrap: wrap;
       }
       .ss-hint kbd {

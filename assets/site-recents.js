@@ -146,7 +146,7 @@
     #site-recents-section .recents-clear {
       background: transparent; border: none;
       font-family: inherit; font-size: 11.5px;
-      color: #999; cursor: pointer;
+      color: #5e6470; cursor: pointer;
       padding: 2px 4px;
       text-decoration: underline;
     }
