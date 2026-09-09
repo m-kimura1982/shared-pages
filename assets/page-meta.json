@@ -13,13 +13,13 @@
     "lastUpdated": "2026-08-06"
   },
   "updates.html": {
-    "lastUpdated": "2026-09-08"
+    "lastUpdated": "2026-09-09"
   },
   "checklists.html": {
     "lastUpdated": "2026-08-14"
   },
   "index.html": {
-    "lastUpdated": "2026-09-08"
+    "lastUpdated": "2026-09-09"
   },
   "tools.html": {
     "lastUpdated": "2026-08-06"
@@ -28,7 +28,7 @@
     "lastUpdated": "2026-08-27"
   },
   "kaitei2026.html": {
-    "lastUpdated": "2026-09-02"
+    "lastUpdated": "2026-09-09"
   },
   "yakureki/テンプレート_メンタル.html": {
     "lastUpdated": "2026-08-06"
@@ -318,12 +318,12 @@
   "改定資料/調剤報酬改定2026_ダイジェスト.html": {
     "lastUpdated": "2026-08-14"
   },
-  "改定資料/選定療養_概要2026.html": {
-    "lastUpdated": "2026-08-01",
-    "newUntil": "2026-09-16"
-  },
   "改定資料/別添3_調剤報酬点数表に関する事項2026.html": {
     "lastUpdated": "2026-09-08"
+  },
+  "改定資料/選定療養_概要2026.html": {
+    "lastUpdated": "2026-09-09",
+    "newUntil": "2026-09-16"
   },
   "チェックリスト/選定療養_実務チェックリスト.html": {
     "lastUpdated": "2026-06-06",
@@ -379,6 +379,10 @@
   "ナレッジ/基礎的医薬品追加リストR8_4.html": {
     "lastUpdated": "2026-04-19"
   },
+  "ナレッジ/OTC類似薬の一部保険外療養.html": {
+    "lastUpdated": "2026-09-09",
+    "newUntil": "2026-09-16"
+  },
   "ナレッジ/高額療養費制度の見直し2026.html": {
     "lastUpdated": "2026-07-30",
     "newUntil": "2026-08-06"
@@ -394,10 +398,6 @@
   "ナレッジ/調剤報酬QA.html": {
     "lastUpdated": "2026-09-07",
     "newUntil": "2026-08-05"
-  },
-  "ナレッジ/OTC類似薬の一部保険外療養.html": {
-    "lastUpdated": "2026-09-04",
-    "newUntil": "2026-09-16"
   },
   "事務/事務スタッフ向け_2026改定サマリ.html": {
     "lastUpdated": "2026-07-12"
