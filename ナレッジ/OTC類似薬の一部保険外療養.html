@@ -149,6 +149,15 @@
         table,
         .tbl-wrap.mid table,
         .tbl-wrap.narrow table { font-size:13px; min-width:0; }
+        /* 計算式の表は縦積みにする。横スクロールだと答えの金額が画面の外に出てしまう */
+        .tbl-wrap.keisan { overflow:visible; }
+        .keisan table, .keisan tbody, .keisan tr, .keisan td { display:block; min-width:0; }
+        .keisan thead { display:none; }
+        .keisan tr { padding:9px 0; border-bottom:var(--bw-h) solid var(--border); }
+        .keisan tr:last-child { border-bottom:none; }
+        .keisan td { padding:0; border:none; }
+        .keisan td.k { white-space:normal; margin-bottom:2px; }
+        .keisan td.num { text-align:right; font-weight:900; margin-top:2px; }
         /* 記号3列＋料金の表だけは詰めない。潰すと料金列が1文字ずつ折り返す */
         /* 記号表はスマホでは縦積みにする。4列のまま詰めると料金の説明が読めず、
            横スクロールにすると右側が見えないままになるため。記載のない欄は出さない */
@@ -485,22 +494,34 @@
 
           <div id="c-kingaku" data-rev="2026-09-09">
             <div class="sub-title">金額の出し方<span class="qual">令和8年9月9日に示された</span><span class="rev-chip">9/9</span></div>
-            <div><span class="marker">特別の料金は、点数に換算せず円のまま計算する</span>。薬価の4分の1に投薬全量を掛け、最後に1の位を四捨五入する。保険で残る4分の3は、これまでどおり薬剤料として点数に換算する。</div>
+            <div><span class="marker">特別の料金は、点数に換算せず円のまま計算する</span>。薬価の4分の1に投薬全量を掛け、最後に1の位を四捨五入する。残りの4分の3は保険対象となる費用として、これまでどおり薬剤料の点数に換算する。</div>
 
             <div class="box-gray" style="margin-top:14px">
-              <div class="sub-title">例）薬価16.5円の錠剤を1日2錠・30日分</div>
+              <div class="sub-title">例）内服薬を1日2錠・30日分<span class="qual">厚生労働省の資料の例</span></div>
               <div class="tbl-wrap mid">
+                <table>
+                  <thead>
+                    <tr><th class="num">薬価</th><th class="num wrap">対象医薬品の価格の4分の1</th><th class="num wrap">保険外併用療養費の算出に用いる価格</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="num">16.50</td><td class="new num">4.13</td><td class="num">12.38</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="note-xs" style="margin-top:6px">薬価16.5円の4分の1が4.13円（16.5÷4＝4.125）、残りの4分の3が12.38円（16.5×3/4＝12.375）。</div>
+
+              <div class="tbl-wrap mid keisan" style="margin-top:14px">
                 <table>
                   <thead><tr><th></th><th>計算</th><th class="num">金額</th></tr></thead>
                   <tbody>
                     <tr><td class="k">特別の料金</td><td>4.13円 × 1回1錠 × 1日2回 × 30日 ＝ 247.8円</td><td class="new num">250円</td></tr>
-                    <tr><td class="k">保険で残る分<small>10割</small></td><td>12.38円 × 2錠 ＝ 24.76円 → 2点、× 30日 ＝ 60点</td><td class="num">600円</td></tr>
+                    <tr><td class="k">保険対象となる費用<small>10割</small></td><td>12.38円 × 2錠 ＝ 24.76円 → 2点、× 30日 ＝ 60点</td><td class="num">600円</td></tr>
                     <tr><td class="k">保険分の自己負担<small>3割の場合</small></td><td>600円 × 0.3</td><td class="num">180円</td></tr>
                     <tr><td class="k">窓口で払う薬剤費</td><td>250円 ＋ 180円</td><td class="new num">430円</td></tr>
                   </tbody>
                 </table>
               </div>
-              <div class="note-xs" style="margin-top:8px">4.13円は薬価16.5円の4分の1（16.5÷4＝4.125）、12.38円は残りの4分の3（16.5×3/4＝12.375）。厚生労働省の資料の例をそのまま使っている。技術料は含めていない。</div>
+              <div class="note-xs" style="margin-top:8px">技術料は含めていない。</div>
             </div>
 
             <div style="margin-top:14px">長期収載品の選定療養も、<a href="#c-sentei">2027年3月から同じ計算方法に変更となる</a>。</div>
