@@ -320,7 +320,7 @@ window.__pageMeta = {
   },
   "改定資料/選定療養_概要2026.html": {
     "lastUpdated": "2026-08-01",
-    "newUntil": "2026-08-08"
+    "newUntil": "2026-09-16"
   },
   "改定資料/別添3_調剤報酬点数表に関する事項2026.html": {
     "lastUpdated": "2026-09-08"
@@ -397,7 +397,7 @@ window.__pageMeta = {
   },
   "ナレッジ/OTC類似薬の一部保険外療養.html": {
     "lastUpdated": "2026-09-04",
-    "newUntil": "2026-09-11"
+    "newUntil": "2026-09-16"
   },
   "事務/事務スタッフ向け_2026改定サマリ.html": {
     "lastUpdated": "2026-07-12"
