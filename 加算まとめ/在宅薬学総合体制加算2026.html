@@ -50,7 +50,7 @@
     .change-badge.new { background:var(--box-blue); color:var(--blue); }
 
     .pts-compare { display:flex; align-items:center; gap:10px; justify-content:center; flex-wrap:wrap; }
-    .pts-old { font-size:20px; font-weight:900; color:var(--border-dk); text-decoration:line-through; }
+    .pts-old { font-size:20px; font-weight:900; color:var(--txt-3); text-decoration:line-through; }
     .pts-arrow { color:var(--border-dk); font-size:18px; }
     .pts-new { font-size:36px; font-weight:900; color:var(--ink); line-height:1; }
     .pts-unit { font-size:var(--text-sm); font-weight:700; }
@@ -97,6 +97,7 @@
 </head>
 <body>
     <script src="../assets/site-header.js" defer></script>
+    <script src="../assets/page-toc.js" defer></script>
 <div class="page">
 
   <!-- タイトル（H1：装飾なし） -->
@@ -104,6 +105,9 @@
     <h1>在宅薬学総合体制加算　2026改定</h1>
     <p>加算１・加算２の変更点と施設基準</p>
   </div>
+
+  <!-- ページ内目次（assets/page-toc.js が見出しから自動生成。手入力しない） -->
+  <div class="page-toc-wrap"><div id="page-toc"></div></div>
 
   <!-- ① 加算１の変更点 -->
   <div class="card avoid-break">
@@ -164,7 +168,7 @@
       <div>
         <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
           <span class="change-badge strict">要件変更</span>
-          <span style="font-weight:900;"><span style="text-decoration:line-through; color:var(--border-dk);">無菌室等の設備の保有</span> → 麻薬・無菌・小児在宅の実績に変更</span>
+          <span style="font-weight:900;"><span style="text-decoration:line-through; color:var(--txt-3);">無菌室等の設備の保有</span> → 麻薬・無菌・小児在宅の実績に変更</span>
         </div>
         <div style="font-size:var(--text-sm); margin-bottom:8px;">これまでは設備の保有が必須だったが、今回から以下のいずれかの実績（直近1年間）に変更された</div>
         <div class="box-gray" style="font-size:var(--text-sm); display:flex; flex-direction:column; gap:6px;">
@@ -297,7 +301,7 @@
   </div>
 
   <!-- ⑤ 加算２「イ」算定の特例 -->
-  <div class="card avoid-break print-break-before">
+  <div class="card avoid-break print-break-before" data-toc-label="加算２「イ」算定の特例">
     <div class="card-title">加算２「イ」算定の特例（単一建物の人数にかかわらず100点）<span class="badge badge-blue">5/29訂正通知</span></div>
     <div style="font-size:var(--text-sm); margin-bottom:14px;">
       令和8年5月29日の訂正通知（事務連絡）により、別添３(7)(8)に新たな取扱いが追記された。下の<strong>ア・イのいずれか</strong>に該当する薬局が、<strong>ウ・エ</strong>に該当する重症・要介護等の患者に在宅患者訪問薬剤管理指導料を算定する場合は、<strong class="marker">単一建物の人数にかかわらず加算２の「イ」（100点）を算定できる</strong>。
