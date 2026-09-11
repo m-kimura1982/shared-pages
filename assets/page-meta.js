@@ -1,6 +1,6 @@
 window.__pageMeta = {
   "加算まとめ.html": {
-    "lastUpdated": "2026-09-03"
+    "lastUpdated": "2026-09-11"
   },
   "ページ一覧.html": {
     "lastUpdated": "2026-08-24",
@@ -10,22 +10,22 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-02"
   },
   "事務スタッフ向け.html": {
-    "lastUpdated": "2026-08-06"
-  },
-  "updates.html": {
-    "lastUpdated": "2026-09-09"
-  },
-  "checklists.html": {
-    "lastUpdated": "2026-08-14"
+    "lastUpdated": "2026-09-11"
   },
   "index.html": {
-    "lastUpdated": "2026-09-09"
+    "lastUpdated": "2026-09-11"
+  },
+  "checklists.html": {
+    "lastUpdated": "2026-09-11"
+  },
+  "updates.html": {
+    "lastUpdated": "2026-09-11"
   },
   "tools.html": {
-    "lastUpdated": "2026-08-06"
+    "lastUpdated": "2026-09-11"
   },
   "knowledge.html": {
-    "lastUpdated": "2026-08-27"
+    "lastUpdated": "2026-09-11"
   },
   "kaitei2026.html": {
     "lastUpdated": "2026-09-09"
