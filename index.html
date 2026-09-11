@@ -58,7 +58,9 @@
         content:""; position:absolute; top:-80px; bottom:-80px; left:calc(57% - 2px); width:2px;
         background:var(--main); transform:skewX(-18deg); transform-origin:top;
       }
-      .hero-inner > * { position:relative; z-index:1; }
+      /* min-width:0 がないと、最近見たページの長い名前（1行で「…」にする）に合わせて列が広がり、
+         スマホで右端が見切れる（ヒーローは overflow:hidden なので横スクロールも出ない） */
+      .hero-inner > * { position:relative; z-index:1; min-width:0; }
       .hero-inner { position:relative; display:grid; grid-template-columns:1.35fr 1fr; gap:48px; align-items:center; }
 
       /* 最近見たページ：直近3件だけ「探す」の中に文字で出す。

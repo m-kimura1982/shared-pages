@@ -16,29 +16,24 @@
 
   // スタイル注入
   const style = document.createElement('style');
+  // 2026-09-11：カード右下に重ねる（absolute）のをやめ、題名・説明文のまとまりの末尾に1行として並べる。
+  // 重ねると説明文が長いカードで文字の上に被っていた。トップの棚カードと同じく、補助情報は本文の下に置く。
   style.textContent = `
-    .card, .tool-card, .card-digest { position: relative; }
-    .lu-text {
-      position: absolute;
-      bottom: 6px;
-      right: 32px;
-      font-size: 10.5px;
-      color: #777;
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      pointer-events: none;
-    }
-    /* 7日以内はもう一段濃くする。どちらも本文として読める濃さにする（薄すぎ厳禁） */
-    .lu-text.lu-mid { color: #555; font-weight: 500; font-size: 11px; }
-    .lu-pill {
-      position: absolute;
-      bottom: 6px;
-      right: 32px;
-      display: inline-flex;
+    .lu-text, .lu-pill {
+      display: flex;
       align-items: center;
       gap: 5px;
+      margin-top: 6px;
       pointer-events: none;
     }
+    .lu-text {
+      font-size: 12px;
+      color: #5e6470;   /* 補助テキストの基準色（白地で5.9）。#777 以下は薄すぎ */
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+    /* 7日以内はもう一段濃くする */
+    .lu-text.lu-mid { color: #444444; font-weight: 500; }
     /* 塗りの青に小さな白文字は読みにくいので、淡い青地に青文字（2026-09-11） */
     .lu-pill .lu-pill-badge {
       display: inline-block;
@@ -55,30 +50,10 @@
       font-weight: 700;
       color: #1e5fa8;
     }
-    /* 薬歴マニュアルのハブカード（.hub-main）は説明文が幅いっぱいまで来るので、
-       絶対配置にせず説明文の下へ普通に流す */
-    .hub-main .lu-text,
-    .hub-main .lu-pill {
-      position: static;
-      margin-top: 8px;
-      display: inline-flex;
-      align-items: center;
-    }
-
-    /* card-digest（横長カード）はサブタイトルと被るため右上に配置 */
-    .card-digest .lu-text,
-    .card-digest .lu-pill {
-      bottom: auto;
-      top: 8px;
-      right: 32px;
-    }
     @media (max-width: 700px) {
-      .lu-text, .lu-pill { right: 28px; bottom: 4px; }
-      .lu-text { font-size: 10px; }
-      .lu-pill .lu-pill-badge { font-size: 9px; padding: 1px 6px; }
-      .lu-pill .lu-pill-when { font-size: 10.5px; }
-      .card-digest .lu-text,
-      .card-digest .lu-pill { top: 6px; right: 28px; }
+      .lu-text { font-size: 11.5px; }
+      .lu-pill .lu-pill-badge { font-size: 10.5px; }
+      .lu-pill .lu-pill-when { font-size: 11px; }
     }
   `;
   document.head.appendChild(style);
@@ -145,6 +120,20 @@
       if (diffDays <= 7) el.classList.add('lu-mid');
       el.textContent = label;
     }
-    card.appendChild(el);
+    placeLine(card, el);
   });
+
+  // 題名・説明文のまとまりの末尾に入れる。カードの組み方はハブごとに違う：
+  //   縦積み（加算まとめ・薬歴）         … カードの末尾
+  //   アイコン＋本文＋矢印の横並び       … 本文の箱（題名の親）の末尾
+  //   横並びで題名がカード直下（改定資料） … 題名の中の末尾（題名の下の行になる）
+  function placeLine(card, el) {
+    const title = card.querySelector('.tool-name, .digest-title, .hub-title, .card-title');
+    if (!title) { card.appendChild(el); return; }
+    const box = title.parentElement;
+    if (box !== card) { box.appendChild(el); return; }
+    const cs = getComputedStyle(card);
+    const row = cs.display.indexOf('flex') !== -1 && cs.flexDirection.indexOf('row') === 0;
+    (row ? title : card).appendChild(el);
+  }
 })();
