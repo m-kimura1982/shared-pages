@@ -115,9 +115,9 @@
         color: var(--blue);
       } /* 青：増点 */
       .cb.new {
-        background: #fde8e8;
-        color: var(--red);
-      } /* 赤：新設 */
+        background: #e8f0fb;
+        color: var(--blue);
+      } /* 青：新設（新規＝青。赤は使わない 2026-09-11） */
       .cb.dn {
         background: #f3e8ff;
         color: #6b21a8;
@@ -159,14 +159,14 @@
       }
 
       /* 変更バッジタブ：本文バッジと同配色・枠線なし */
-      #chg-tab-bar .tab[data-chg="new"]        { background: #fde8e8; color: var(--red);   border-color: transparent; }
+      #chg-tab-bar .tab[data-chg="new"]        { background: #e8f0fb; color: var(--blue);   border-color: transparent; }
       #chg-tab-bar .tab[data-chg="up"]         { background: #e8f0fb; color: var(--blue);  border-color: transparent; }
       #chg-tab-bar .tab[data-chg="dn"]         { background: #f3e8ff; color: #6b21a8;      border-color: transparent; }
       #chg-tab-bar .tab[data-chg="rfm"]        { background: #e6f4ea; color: #0d652d;      border-color: transparent; }
       #chg-tab-bar .tab[data-chg="abol"]       { background: transparent; border-color: #9ca3af; color: #6b7280; }
 
       /* アクティブ時：やや濃く */
-      #chg-tab-bar .tab[data-chg="new"].active  { background: #f8b4b4; color: var(--red); }
+      #chg-tab-bar .tab[data-chg="new"].active  { background: #cfe0f3; color: var(--blue); }
       #chg-tab-bar .tab[data-chg="up"].active   { background: #c2d6f5; color: var(--blue); }
       #chg-tab-bar .tab[data-chg="dn"].active   { background: #ddb6f7; color: #6b21a8; }
       #chg-tab-bar .tab[data-chg="rfm"].active  { background: #b7e1c0; color: #0d652d; }
