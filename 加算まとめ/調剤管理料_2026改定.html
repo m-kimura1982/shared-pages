@@ -88,6 +88,13 @@
       .compare-table th, .compare-table td { padding:5px 10px; font-size:11px; }
     }
   </style>
+<style>
+/* 見出しの型をサイトの基準に揃える（2026-09-11）：ページの題名は飾りなし、段落の見出し（.card-title）に青い縦棒。
+   既存の見出しCSSは書き方がページごとに違うので、ここで上書きする */
+.page-title, .page-title-left { border-left:0; padding-left:0; }
+.card-title { position:relative; padding-left:15px; }
+.card-title::before { content:""; position:absolute; left:0; top:.38em; top:calc((1lh - 1.05em) / 2); width:4px; height:1.05em; border-radius:2px; background:var(--blue, #1e5fa8); }
+</style>
 </head>
 <body>
     <script src="../assets/site-header.js" defer></script>
@@ -393,7 +400,7 @@
   .sim-input::-webkit-inner-spin-button { -webkit-appearance:none; }
   .sim-input:focus { border-color:var(--blue); }
   .sim-input.has-value { background:var(--white); }  /* 入力済み→白 */
-  .sim-input::placeholder { color:#bbb; font-weight:400; }
+  .sim-input::placeholder { color:#6b7280; font-weight:400; }
 
   @media (max-width:640px) {
     .sim-input { width:72px; font-size:12px; }

@@ -187,6 +187,11 @@ ol.reg-list li { font-size:var(--text-sm); line-height:1.8; }
 }
 
 </style>
+<style>
+/* 見出しの型をサイトの基準に揃える（2026-09-11）：ページの題名は飾りなし。
+   既存の見出しCSSは書き方がページごとに違うので、ここで上書きする */
+.page-title, .page-title-left { border-left:0; padding-left:0; }
+</style>
 </head>
 <body>
     <script src="../assets/site-header.js" defer></script>

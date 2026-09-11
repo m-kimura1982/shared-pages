@@ -39,12 +39,13 @@
       gap: 5px;
       pointer-events: none;
     }
+    /* 塗りの青に小さな白文字は読みにくいので、淡い青地に青文字（2026-09-11） */
     .lu-pill .lu-pill-badge {
       display: inline-block;
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 700;
-      color: #fff;
-      background: #1e5fa8;
+      color: #1e5fa8;
+      background: #e4eef9;
       padding: 1px 7px;
       border-radius: 3px;
       letter-spacing: 0.04em;

@@ -100,6 +100,13 @@
       table { min-width:unset; }
     }
   </style>
+<style>
+/* 見出しの型をサイトの基準に揃える（2026-09-11）：ページの題名は飾りなし、段落の見出し（.card-title）に青い縦棒。
+   既存の見出しCSSは書き方がページごとに違うので、ここで上書きする */
+.page-title, .page-title-left { border-left:0; padding-left:0; }
+.card-title { position:relative; padding-left:15px; }
+.card-title::before { content:""; position:absolute; left:0; top:.38em; top:calc((1lh - 1.05em) / 2); width:4px; height:1.05em; border-radius:2px; background:var(--blue, #1e5fa8); }
+</style>
 </head>
 <body>
     <script src="../assets/site-header.js" defer></script>

@@ -77,8 +77,7 @@
       .hero h1 em { font-style:normal; color:var(--main); background:linear-gradient(transparent 66%, var(--accent-soft) 66%); }
       .hero-desc { margin-top:14px; font-size:17px; font-weight:500; color:var(--ink-2); }
 
-      /* 最新の更新：今の公開トップと同じ1行の帯 */
-      /* 1行目にタグ・日付・履歴、2行目にタイトル（1行に詰めるとタイトルが「…」で切れる） */
+      /* 最新の更新：1行目にタグ・日付・履歴、2行目にタイトル（1行に詰めるとタイトルが「…」で切れる） */
       .hu {
         max-width:500px; margin-top:22px; display:flex; flex-wrap:wrap; align-items:center; gap:4px 10px;
         background:var(--surface); border:var(--bw) solid var(--border); border-radius:12px; padding:10px 16px 11px;
@@ -95,7 +94,6 @@
       .find { display:flex; flex-direction:column; gap:12px; padding-left:28px; }
       .find-ttl { font-size:20px; font-weight:900; }
       .find-ttl b { font-family:var(--en); font-size:34px; color:var(--main); margin-right:2px; font-variant-numeric:tabular-nums; }
-      .find-stat { margin-top:-10px; font-size:13px; font-weight:700; color:var(--ink-2); }
       /* 本物の入力欄。送信すると検索語を付けてページ一覧へ（?q= で絞り込んだ状態で開く） */
       .find-form { display:flex; align-items:center; gap:8px; padding:6px 6px 6px 14px; border:1.5px solid var(--border); border-radius:10px; background:#fafbfc; }
       .find-form:focus-within { border-color:var(--main); background:var(--surface); }
@@ -213,7 +211,6 @@
         <div class="find">
           <!-- 収録ページ数は page-meta から数える -->
           <span class="find-ttl"><span id="st-total-wrap" hidden><b id="st-total"></b>件の資料から</span><span id="st-plain">資料を</span>探す</span>
-          <span class="find-stat" id="find-stat" hidden>調剤報酬 <span id="st-c"></span>件・薬歴 <span id="st-y"></span>件</span>
           <form class="find-form" action="ページ一覧.html" method="get" role="search">
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" /><line x1="16.5" y1="16.5" x2="21" y2="21" /></svg>
             <input type="search" name="q" placeholder="キーワードで検索" aria-label="キーワード" autocomplete="off" />
@@ -321,11 +318,8 @@
         });
         if (c + y > 0) {
           document.getElementById("st-total").textContent = c + y;
-          document.getElementById("st-c").textContent = c;
-          document.getElementById("st-y").textContent = y;
           document.getElementById("st-total-wrap").hidden = false;
           document.getElementById("st-plain").hidden = true;
-          document.getElementById("find-stat").hidden = false;
         }
 
         // ── 最近見たページ（直近3件） ──

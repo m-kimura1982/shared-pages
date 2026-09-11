@@ -374,8 +374,18 @@
     }
 
     /* 印刷時は共通ヘッダー・パンくずを除外（本文だけ印刷） */
+    /* 全ページ最下部の免責（buildDisclaimer）。読ませる文字なので --txt-3 相当の濃さ */
+    .sn-disclaimer {
+      max-width: 1000px; margin: 32px auto 0; padding: 16px 24px 0;
+      border-top: 0.5px solid #d1d5db;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 12.5px; line-height: 1.7; color: #5e6470; text-align: center;
+    }
+    @media (max-width: 700px) {
+      .sn-disclaimer { margin-top: 24px; padding: 14px 16px 0; font-size: 12px; }
+    }
     @media print {
-      .sn-header, .sn-crumb, .sn-siblings { display: none !important; }
+      .sn-header, .sn-crumb, .sn-siblings, .sn-disclaimer { display: none !important; }
     }
   `;
 
@@ -652,9 +662,28 @@
     return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', buildSiblings);
-  } else {
+  // ── 全ページの最下部に免責の一文 ──
+  // 検索やフォーラムのリンクから資料ページに直接来た人にも、公式の通知ではないことが伝わるように。
+  // 以前はトップ・一部のハブにしか書いていなかった（2026-09-11 に119枚中16枚と判明）。
+  // ページ本文に同じ文言が既にあるページ（トップ・改定資料一覧・更新履歴）は出さない。
+  // 印刷では出さない（1枚に収めてあるチェックリスト等が2枚目に押し出されるため）。
+  const DISCLAIMER = '公式の通知・告示ではありません';
+  function buildDisclaimer() {
+    if (document.querySelector('.sn-disclaimer')) return;
+    if (document.body.textContent.indexOf(DISCLAIMER) !== -1) return;
+    const p = document.createElement('p');
+    p.className = 'sn-disclaimer';
+    p.textContent = '※このサイトの資料は情報管理室が独自に作成したものです。' + DISCLAIMER + '。';
+    document.body.appendChild(p);
+  }
+
+  function buildFoot() {
     buildSiblings();
+    buildDisclaimer();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', buildFoot);
+  } else {
+    buildFoot();
   }
 })();

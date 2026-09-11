@@ -89,7 +89,7 @@
         background: transparent; color: #222;
         padding: 4px 0;
       }
-      .ss-input::placeholder { color: #aab0bc; }
+      .ss-input::placeholder { color: #6b7280; }
       .ss-close {
         background: #f0f2f5; border: none;
         width: 28px; height: 28px; border-radius: 6px;
