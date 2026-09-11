@@ -49,3 +49,105 @@
   .band-panel { clip-path:none; background:none; padding:0; min-height:0; }
   .band-panel::after, .band-en { display:none; }
 }
+
+/* ============================================================
+   最近更新した資料（assets/hub-recent.js が作る横に送るカードの帯）
+   淡い青の面で囲み、下の白い一覧と見分けがつくようにする。
+   カードは白＋細い枠（ハブに常時の影は持ち込まない）。日付・分類名・題名・説明の順
+   ============================================================ */
+.rs { background:#eaf1f9; border-radius:14px; padding:14px 16px 16px; }
+.rs-head { display:flex; align-items:center; gap:10px; margin:0 2px 10px; }
+.rs-ttl { font-size:15px; font-weight:900; color:#222222; }
+.rs-sub { font-size:12.5px; color:#5e6470; }
+.rs-nav { margin-left:auto; display:flex; gap:6px; }
+.rs-nav button {
+  width:32px; height:32px; border-radius:50%; border:0.5px solid #c9d8ee; background:#ffffff;
+  color:var(--blue, #1e5fa8); font-size:17px; line-height:1; cursor:pointer; font-family:inherit;
+}
+.rs-nav button:hover:not(:disabled) { border-color:var(--blue, #1e5fa8); }
+.rs-nav button:disabled { color:#b9c3d0; cursor:default; }
+.rs-track {
+  display:grid; grid-auto-flow:column; grid-auto-columns:calc((100% - 24px) / 3); gap:12px;
+  overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; scrollbar-width:none; padding:1px;
+}
+.rs-track::-webkit-scrollbar { display:none; }
+.rs-card {
+  scroll-snap-align:start; display:flex; flex-direction:column; gap:5px; min-height:0;
+  padding:13px 15px 14px; background:#ffffff; border:0.5px solid #d6e2f0; border-radius:10px;
+  text-decoration:none; color:#222222; transition:border-color .2s;
+}
+.rs-card:hover { border-color:var(--blue, #1e5fa8); }
+.rs-card:hover .rs-name { color:var(--blue, #1e5fa8); }
+.rs-meta { display:flex; align-items:center; flex-wrap:wrap; gap:4px 8px; font-size:12.5px; line-height:1.5; }
+.rs-date { font-weight:700; color:var(--blue, #1e5fa8); }
+.rs-group { color:#5e6470; }
+.rs-group::before { content:"・"; margin-right:2px; }
+.rs-new { font-size:11px; font-weight:700; color:var(--blue, #1e5fa8); background:#e4eef9; padding:0 7px; border-radius:3px; }
+.rs-name { font-size:15px; font-weight:700; line-height:1.5; }
+.rs-desc { display:none; }   /* 帯のカードも一覧と同じく題名だけ（説明は出さない） */
+@media (max-width:640px) {
+  .rs { padding:12px 12px 14px; }
+  .rs-track { grid-auto-columns:80%; }
+  .rs-nav { display:none; }
+}
+
+/* ============================================================
+   行の一覧（10件を超えるハブ：算定項目まとめ）。入れ物に class="hub-rows"
+   一覧は「探して開く索引」なので題名だけにする（2026-09-12）。説明（.tool-meta）は画面に出さないが
+   DOM には残すので検索では引っかかる。番号違い（特定1・2・3など）も説明で見分けさせない（開けば分かる）。
+   ・分類は「箱」にせず区切る：見出しは面の外に青い文字＋下線
+   ・PCは3列で縦に読む順（上から下へ、次の列へ）。段数はページ側のJSが --rows に入れる
+   ・区切り線は各マスの「上と左」に引く（1列目の左・1段目の上は面の端で切れ、空欄のまわりに線が出ない）
+   ・行では「○日前更新」を出さない（最近更新した資料の帯で見せる）。NEW・今日/昨日の更新だけ残す
+   ============================================================ */
+.hub-rows .cat-block { scroll-margin-top:calc(var(--sn-header-h, 0px) + 14px); }
+.hub-rows .cat-block + .cat-block { margin-top:30px; }
+.hub-rows .cat {
+  display:flex; align-items:baseline; gap:8px; margin:0 0 10px; padding:0 2px 7px;
+  font-size:15px; font-weight:900; color:var(--blue, #1e5fa8); border-bottom:1px solid var(--border, #d8dde8);
+}
+.hub-rows .cat .n { margin-left:auto; font-size:13px; font-weight:700; color:#5e6470; }
+.hub-rows .grid {
+  display:grid; grid-template-columns:repeat(3, 1fr); grid-auto-flow:column; grid-template-rows:repeat(var(--rows, 4), auto);
+  gap:0; background:#ffffff; border-radius:10px; overflow:hidden;
+}
+.hub-rows .tool-card {
+  position:relative; display:flex; flex-direction:column; justify-content:center; min-height:52px;
+  padding:12px 28px 12px 16px; background:#ffffff; border:0; border-radius:0;
+  box-shadow:-0.5px 0 0 var(--border, #d8dde8), 0 -0.5px 0 var(--border, #d8dde8);
+  transform:none; transition:background .15s;
+}
+/* 矢印は「押せる」合図として残すが、題名より目立たないよう薄く小さく */
+.hub-rows .tool-card::after {
+  content:""; position:absolute; right:13px; top:50%; width:6px; height:6px;
+  border-right:1.5px solid #c4c9d2; border-top:1.5px solid #c4c9d2; transform:translateY(-50%) rotate(45deg);
+}
+.hub-rows .tool-card:hover {
+  background:#f5f8fc; transform:none; border-color:transparent;
+  box-shadow:-0.5px 0 0 var(--border, #d8dde8), 0 -0.5px 0 var(--border, #d8dde8);
+}
+.hub-rows .tool-card:hover .tool-name { color:var(--blue, #1e5fa8); }
+.hub-rows .tool-card:hover::after { border-color:var(--blue, #1e5fa8); }
+.hub-rows .tool-name { font-size:15px; font-weight:700; line-height:1.45; }
+.hub-rows .tool-meta { display:none; }
+.hub-rows .lu-text { display:none; }
+@media (max-width:640px) {
+  .hub-rows .cat-block + .cat-block { margin-top:24px; }
+  .hub-rows .cat { font-size:14.5px; }
+  .hub-rows .grid { grid-template-columns:1fr; grid-auto-flow:row; grid-template-rows:none; }
+  .hub-rows .tool-card { min-height:46px; }
+}
+
+/* ============================================================
+   件数の少ないハブ（チェックリスト・ナレッジ・事務・ツール）：PCはカードを2列に
+   1列で900px幅いっぱいに並べると右が空いたまま白い帯が続くため。スマホは1列のまま
+   ============================================================ */
+@media (min-width:700px) {
+  .tool-list:not(:has(.group)) { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .tool-list .group { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .tool-list .group > .group-title { grid-column:1 / -1; }
+  .tool-list .tool-card { padding:18px 20px; gap:14px; }
+}
+/* ナレッジの分類見出しを、算定項目まとめと同じ「青い文字＋下線」に */
+.tool-list .group-title { padding:0 2px 7px; border-bottom:1px solid var(--border, #d8dde8); }
+.tool-list .group-title::before { display:none; }

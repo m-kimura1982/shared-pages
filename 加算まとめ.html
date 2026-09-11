@@ -63,6 +63,7 @@ body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: va
     <script src="assets/site-header.js" defer></script>
     <script src="assets/page-meta.js" defer></script>
     <script src="assets/last-updated.js" defer></script>
+    <script src="assets/hub-recent.js" defer></script>
 <div class="page">
 
   <div class="band">
@@ -81,59 +82,63 @@ body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: va
     <a href="#cat-zaitaku">薬学管理料（在宅）</a>
     <a href="#cat-baseup">ベースアップ等</a>
   </nav>
+  <p class="note" style="padding:0 2px;margin-top:-6px">各分類の中は五十音順に並べています。</p>
 
-  <div id="kasan-list">
+  <!-- 最近更新した資料（assets/hub-recent.js が page-meta から作る。30日以内の更新が無ければ出ない） -->
+  <div data-hub-recent data-links="#kasan-list a.tool-card" data-group=".cat-block" data-group-title=".cat" data-name=".tool-name" data-desc=".tool-meta"></div>
+
+  <div id="kasan-list" class="hub-rows">
 
     <div class="cat-block" id="cat-kihon">
       <div class="cat">調剤技術料</div>
       <div class="grid">
-        <a class="tool-card" href="加算まとめ/調剤基本料_2026改定.html" data-keywords="調剤基本料 集中率 施設基準 ちょうざいきほんりょう">
-          <div class="tool-name">調剤基本料</div>
-          <div class="tool-meta">点数・施設基準・集中率の計算</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/地域支援医薬品供給対応体制加算.html" data-keywords="地域支援 医薬品供給 体制加算 届出 ちいきしえん いやくひんきょうきゅう たいせいかさん">
-          <div class="tool-name">地域支援・医薬品供給対応体制加算</div>
-          <div class="tool-meta">届出区分・施設基準・実績</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/連携強化加算.html" data-keywords="連携強化加算 災害 新興感染症 第二種協定指定医療機関 個人防護具 検査キット れんけいきょうかかさん さいがい しんこうかんせんしょう">
-          <div class="tool-name">連携強化加算</div>
-          <div class="tool-meta">5点・届出｜災害・新興感染症への体制</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/在宅薬学総合体制加算2026.html" data-keywords="在宅薬学総合体制加算 在総体 在宅 体制 ざいたくやくがくそうごうたいせい ざいそうたい">
+        <a class="tool-card" data-yomi="ざいたくやくがくそうごうたいせいかさん" href="加算まとめ/在宅薬学総合体制加算2026.html" data-keywords="在宅薬学総合体制加算 在総体 在宅 体制 ざいたくやくがくそうごうたいせい ざいそうたい">
           <div class="tool-name">在宅薬学総合体制加算</div>
           <div class="tool-meta">区分1・2｜施設基準・実績要件</div>
         </a>
-        <a class="tool-card" href="加算まとめ/バイオ後続品調剤体制加算.html" data-keywords="バイオ後続品 バイオシミラー 体制加算 ばいおこうぞくひん">
-          <div class="tool-name">バイオ後続品調剤体制加算</div>
-          <div class="tool-meta">届出｜バイオ後続品の調剤体制</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/電子的調剤情報連携体制整備加算_2026改定.html" data-keywords="電子的調剤情報連携 電子処方箋 連携 体制 でんしてきちょうざいじょうほうれんけい">
-          <div class="tool-name">電子的調剤情報連携体制整備加算</div>
-          <div class="tool-meta">届出｜電子処方箋等の連携体制</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/薬剤調製料.html" data-keywords="薬剤調製料 一剤 一調剤 剤数 内服薬 屯服薬 外用薬 注射薬 浸煎薬 湯薬 自家製剤加算 計量混合調剤加算 やくざいちょうせいりょう いちざい いっちょうざい">
-          <div class="tool-name">薬剤調製料</div>
-          <div class="tool-meta">剤形ごとの算定単位｜「１剤」と「１調剤」の数え方</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/自家製剤加算・計量混合調剤加算.html" data-keywords="自家製剤加算 計量混合調剤加算 半錠 半割 粉砕 分割 予製剤 一包化 同一規格 賦形剤 じかせいざい けいりょうこんごう はんじょう ふんさい">
+        <a class="tool-card" data-yomi="じかせいざいかさんけいりょうこんごうちょうざいかさん" href="加算まとめ/自家製剤加算・計量混合調剤加算.html" data-keywords="自家製剤加算 計量混合調剤加算 半錠 半割 粉砕 分割 予製剤 一包化 同一規格 賦形剤 じかせいざい けいりょうこんごう はんじょう ふんさい">
           <div class="tool-name">自家製剤加算・計量混合調剤加算</div>
           <div class="tool-meta">1調剤につき｜一包化の範囲・半割と粉砕の判断</div>
         </a>
-        <a class="tool-card" href="加算まとめ/無菌製剤処理加算.html" data-keywords="無菌製剤処理加算 無菌室 クリーンベンチ 安全キャビネット 無菌調剤室 共同利用 中心静脈栄養法用輸液 抗悪性腫瘍剤 むきんせいざいしょり">
-          <div class="tool-name">無菌製剤処理加算</div>
-          <div class="tool-meta">1日につき・届出｜中心静脈栄養・抗悪性腫瘍剤・麻薬</div>
+        <a class="tool-card" data-yomi="ちいきしえんいやくひんきょうきゅうたいおうたいせいかさん" href="加算まとめ/地域支援医薬品供給対応体制加算.html" data-keywords="地域支援 医薬品供給 体制加算 届出 ちいきしえん いやくひんきょうきゅう たいせいかさん">
+          <div class="tool-name">地域支援・医薬品供給対応体制加算</div>
+          <div class="tool-meta">届出区分・施設基準・実績</div>
         </a>
-        <a class="tool-card" href="加算まとめ/分割調剤.html" data-keywords="分割調剤 長期投薬 後発医薬品の試用 医師の分割指示 分割回数で除す ぶんかつちょうざい">
+        <a class="tool-card" data-yomi="ちょうざいきほんりょう" href="加算まとめ/調剤基本料_2026改定.html" data-keywords="調剤基本料 集中率 施設基準 ちょうざいきほんりょう">
+          <div class="tool-name">調剤基本料</div>
+          <div class="tool-meta">点数・施設基準・集中率の計算</div>
+        </a>
+        <a class="tool-card" data-yomi="でんしてきちょうざいじょうほうれんけいたいせいせいびかさん" href="加算まとめ/電子的調剤情報連携体制整備加算_2026改定.html" data-keywords="電子的調剤情報連携 電子処方箋 連携 体制 でんしてきちょうざいじょうほうれんけい">
+          <div class="tool-name">電子的調剤情報連携体制整備加算</div>
+          <div class="tool-meta">届出｜電子処方箋等の連携体制</div>
+        </a>
+        <a class="tool-card" data-yomi="ばいおこうぞくひんちょうざいたいせいかさん" href="加算まとめ/バイオ後続品調剤体制加算.html" data-keywords="バイオ後続品 バイオシミラー 体制加算 ばいおこうぞくひん">
+          <div class="tool-name">バイオ後続品調剤体制加算</div>
+          <div class="tool-meta">届出｜バイオ後続品の調剤体制</div>
+        </a>
+        <a class="tool-card" data-yomi="ぶんかつちょうざい" href="加算まとめ/分割調剤.html" data-keywords="分割調剤 長期投薬 後発医薬品の試用 医師の分割指示 分割回数で除す ぶんかつちょうざい">
           <div class="tool-name">分割調剤</div>
           <div class="tool-meta">注９・注10・注11｜理由ごとに算定が違う</div>
         </a>
-        <a class="tool-card" href="改定資料/門前薬局等立地依存減算.html" data-keywords="門前薬局 立地依存 減算 集中率 もんぜんやっきょく りっちいぞん げんさん">
+        <a class="tool-card" data-yomi="むきんせいざいしょりかさん" href="加算まとめ/無菌製剤処理加算.html" data-keywords="無菌製剤処理加算 無菌室 クリーンベンチ 安全キャビネット 無菌調剤室 共同利用 中心静脈栄養法用輸液 抗悪性腫瘍剤 むきんせいざいしょり">
+          <div class="tool-name">無菌製剤処理加算</div>
+          <div class="tool-meta">1日につき・届出｜中心静脈栄養・抗悪性腫瘍剤・麻薬</div>
+        </a>
+        <a class="tool-card" data-yomi="もんぜんやっきょくとうりっちいぞんげんさん" href="改定資料/門前薬局等立地依存減算.html" data-keywords="門前薬局 立地依存 減算 集中率 もんぜんやっきょく りっちいぞん げんさん">
           <div class="tool-name">門前薬局等立地依存減算</div>
           <div class="tool-meta">新設｜特定の医療機関への依存度が高い薬局への減算</div>
         </a>
-        <a class="tool-card" href="ナレッジ/リフィル処方箋.html" data-keywords="リフィル処方箋 リフィル 反復利用 上限3回 りふぃるしょほうせん">
+        <a class="tool-card" data-yomi="やくざいちょうせいりょう" href="加算まとめ/薬剤調製料.html" data-keywords="薬剤調製料 一剤 一調剤 剤数 内服薬 屯服薬 外用薬 注射薬 浸煎薬 湯薬 自家製剤加算 計量混合調剤加算 やくざいちょうせいりょう いちざい いっちょうざい">
+          <div class="tool-name">薬剤調製料</div>
+          <div class="tool-meta">剤形ごとの算定単位｜「１剤」と「１調剤」の数え方</div>
+        </a>
+        <a class="tool-card" data-yomi="りふぃるしょほうせんによるちょうざい" href="ナレッジ/リフィル処方箋.html" data-keywords="リフィル処方箋 リフィル 反復利用 上限3回 りふぃるしょほうせん">
           <div class="tool-name">リフィル処方箋による調剤</div>
           <div class="tool-meta">基本ルールと対応時の注意点</div>
+        </a>
+        <a class="tool-card" data-yomi="れんけいきょうかかさん" href="加算まとめ/連携強化加算.html" data-keywords="連携強化加算 災害 新興感染症 第二種協定指定医療機関 個人防護具 検査キット れんけいきょうかかさん さいがい しんこうかんせんしょう">
+          <div class="tool-name">連携強化加算</div>
+          <div class="tool-meta">5点・届出｜災害・新興感染症への体制</div>
         </a>
       </div>
     </div>
@@ -141,15 +146,15 @@ body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: va
     <div class="cat-block" id="cat-kanri">
       <div class="cat">調剤管理料・関連加算</div>
       <div class="grid">
-        <a class="tool-card" href="加算まとめ/調剤管理料_2026改定.html" data-keywords="調剤管理料 長期処方 ちょうざいかんりりょう">
+        <a class="tool-card" data-yomi="ちょうざいかんりりょう" href="加算まとめ/調剤管理料_2026改定.html" data-keywords="調剤管理料 長期処方 ちょうざいかんりりょう">
           <div class="tool-name">調剤管理料</div>
           <div class="tool-meta">長期60点／その他10点｜算定の注意</div>
         </a>
-        <a class="tool-card" href="加算まとめ/調剤時残薬調整加算.html" data-keywords="残薬 残薬調整 減数調剤 調剤日数 疑義照会 ざんやく ざんやくちょうせい げんすうちょうざい">
+        <a class="tool-card" data-yomi="ちょうざいじざんやくちょうせいかさん" href="加算まとめ/調剤時残薬調整加算.html" data-keywords="残薬 残薬調整 減数調剤 調剤日数 疑義照会 ざんやく ざんやくちょうせい げんすうちょうざい">
           <div class="tool-name">調剤時残薬調整加算</div>
           <div class="tool-meta">区分イ〜ニ｜残薬調整で調剤日数変更</div>
         </a>
-        <a class="tool-card" href="加算まとめ/薬学的有害事象等防止加算.html" data-keywords="有害事象 防止加算 重複投薬 相互作用 疑義照会 ゆうがいじしょう ぼうしかさん">
+        <a class="tool-card" data-yomi="やくがくてきゆうがいじしょうとうぼうしかさん" href="加算まとめ/薬学的有害事象等防止加算.html" data-keywords="有害事象 防止加算 重複投薬 相互作用 疑義照会 ゆうがいじしょう ぼうしかさん">
           <div class="tool-name">薬学的有害事象等防止加算</div>
           <div class="tool-meta">区分イ〜ニ｜照会による処方変更</div>
         </a>
@@ -159,85 +164,85 @@ body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: va
     <div class="cat-block" id="cat-yakkan">
       <div class="cat">薬学管理料（外来）</div>
       <div class="grid">
-        <a class="tool-card" href="加算まとめ/服薬管理指導料.html" data-keywords="服薬管理指導料 服管 かかりつけ 1のイ 2のイ ふくやくかんりしどうりょう ふくかん">
-          <div class="tool-name">服薬管理指導料（1・2／かかりつけ）</div>
-          <div class="tool-meta">区分1・2｜かかりつけ要件・薬歴記載</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/服薬管理指導料3・4_施設訪問・オンライン.html" data-keywords="服薬管理指導料3 服薬管理指導料4 施設 オンライン 服薬指導 ふくやくかんりしどうりょう">
-          <div class="tool-name">服薬管理指導料 3・4</div>
-          <div class="tool-meta">区分3・4｜施設訪問・オンライン服薬指導</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/特定薬剤管理指導加算1.html" data-keywords="特定薬剤管理指導加算1 特管1 特薬管1 ハイリスク薬 特に安全管理が必要な医薬品 抗悪性腫瘍剤 免疫抑制剤 不整脈用剤 抗てんかん剤 血液凝固阻止剤 ジギタリス テオフィリン カリウム製剤 精神神経用剤 糖尿病用剤 膵臓ホルモン剤 抗HIV薬 とくていやくざいかんりしどうかさん はいりすくやく">
-          <div class="tool-name">特定薬剤管理指導加算1</div>
-          <div class="tool-meta">イ10点・ロ5点｜ハイリスク薬・イとロの分かれ方・薬歴記載</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/特定薬剤管理指導加算2.html" data-keywords="特定薬剤管理指導加算2 特管2 特薬管2 抗悪性腫瘍剤 抗がん剤 レジメン 連携充実加算 外化連 制吐剤 支持療法 電話 フォローアップ 文書提供 とくていやくざいかんりしどうかさん こうあくせいしゅようざい こうがんざい れじめん れんけいじゅうじつかさん">
-          <div class="tool-name">特定薬剤管理指導加算2</div>
-          <div class="tool-meta">100点・月1回｜レジメン確認・電話等での確認・医療機関へ文書提供</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/特定薬剤管理指導加算3.html" data-keywords="特定薬剤管理指導加算3 特管3 特薬管3 RMP 選定療養 流通不良 供給不安定 銘柄変更 バイオ後続品 緊急安全性情報 とくていやくざいかんりしどうかさん とっかん せんていりょうよう りゅうつうふりょう めいがらへんこう">
-          <div class="tool-name">特定薬剤管理指導加算3</div>
-          <div class="tool-meta">イ5点・ロ10点｜RMP・選定療養・流通不良・バイオ後続品</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/吸入薬指導加算2026.html" data-keywords="吸入 喘息 COPD 吸入手技 きゅうにゅう きゅうにゅうやくしどう ぜんそく">
-          <div class="tool-name">吸入薬指導加算</div>
-          <div class="tool-meta">30点・6月1回｜手技指導・情報提供・薬歴</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/かかりつけ薬剤師フォローアップ加算.html" data-keywords="かかりつけ フォローアップ 電話 継続 ふぉろーあっぷ">
-          <div class="tool-name">かかりつけ薬剤師フォローアップ加算</div>
-          <div class="tool-meta">50点・3月1回｜電話フォロー・双方向性</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/かかりつけ薬剤師訪問加算.html" data-keywords="かかりつけ 訪問 患家 ほうもん">
-          <div class="tool-name">かかりつけ薬剤師訪問加算</div>
-          <div class="tool-meta">230点・6月1回｜患家訪問・次回算定</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/服用薬剤調整支援料１.html" data-keywords="服用薬剤調整支援料 減薬 ポリファーマシー 種類数 ふくようやくざいちょうせいしえんりょう げんやく">
-          <div class="tool-name">服用薬剤調整支援料１</div>
-          <div class="tool-meta">125点・月1回｜内服薬が2種類以上減ったとき</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/服用薬剤調整支援料２_2026改定.html" data-keywords="服用薬剤調整支援料 ポリファーマシー 減薬 ふくようやくざいちょうせいしえん ぽりふぁーましー">
-          <div class="tool-name">服用薬剤調整支援料2</div>
-          <div class="tool-meta">ポリファーマシー｜算定区分・記録要件</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/調剤後薬剤管理指導料.html" data-keywords="調剤後薬剤管理指導料 糖尿病 慢性心不全 フォローアップ 電話 情報提供 ちょうざいご やくざいかんり しどうりょう とうにょうびょう まんせいしんふぜん">
-          <div class="tool-name">調剤後薬剤管理指導料</div>
-          <div class="tool-meta">糖尿病・慢性心不全｜調剤後の電話等での確認と情報提供</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/外来服薬支援料1.html" data-keywords="外来服薬支援料 一包化 服薬カレンダー 持参薬 注1 注2 がいらいふくやくしえんりょう いっぽうか もちさんやく">
+        <a class="tool-card" data-yomi="がいらいふくやくしえんりょう1" href="加算まとめ/外来服薬支援料1.html" data-keywords="外来服薬支援料 一包化 服薬カレンダー 持参薬 注1 注2 がいらいふくやくしえんりょう いっぽうか もちさんやく">
           <div class="tool-name">外来服薬支援料1</div>
           <div class="tool-meta">185点・月1回｜注1・注2の切り分け</div>
         </a>
-        <a class="tool-card" href="加算まとめ/外来服薬支援料1_算定事例.html" data-keywords="外来服薬支援料 算定事例 事例 まる ばつ 注1 注2 がいらいふくやくしえんりょう さんていじれい じれい">
+        <a class="tool-card" data-yomi="がいらいふくやくしえんりょう1さんていじれい" href="加算まとめ/外来服薬支援料1_算定事例.html" data-keywords="外来服薬支援料 算定事例 事例 まる ばつ 注1 注2 がいらいふくやくしえんりょう さんていじれい じれい">
           <div class="tool-name">外来服薬支援料1 算定事例</div>
           <div class="tool-meta">○×事例と判断実例｜注1・注2の具体例</div>
         </a>
-        <a class="tool-card" href="加算まとめ/外来服薬支援料2.html" data-keywords="外来服薬支援料 一包化 分包 一包化加算 委託 がいらいふくやくしえんりょう いっぽうか ぶんぽう いたく">
+        <a class="tool-card" data-yomi="がいらいふくやくしえんりょう2" href="加算まとめ/外来服薬支援料2.html" data-keywords="外来服薬支援料 一包化 分包 一包化加算 委託 がいらいふくやくしえんりょう いっぽうか ぶんぽう いたく">
           <div class="tool-name">外来服薬支援料2</div>
           <div class="tool-meta">34〜240点・処方箋受付ごと｜一包化の算定と薬歴</div>
         </a>
-        <a class="tool-card" href="加算まとめ/施設連携加算.html" data-keywords="施設連携加算 特養 介護老人福祉施設 地域密着型 施設職員 一包化 ショートステイ しせつれんけいかさん とくよう かいごろうじんふくししせつ しせつしょくいん">
+        <a class="tool-card" data-yomi="かかりつけやくざいしふぉろーあっぷかさん" href="加算まとめ/かかりつけ薬剤師フォローアップ加算.html" data-keywords="かかりつけ フォローアップ 電話 継続 ふぉろーあっぷ">
+          <div class="tool-name">かかりつけ薬剤師フォローアップ加算</div>
+          <div class="tool-meta">50点・3月1回｜電話フォロー・双方向性</div>
+        </a>
+        <a class="tool-card" data-yomi="かかりつけやくざいしほうもんかさん" href="加算まとめ/かかりつけ薬剤師訪問加算.html" data-keywords="かかりつけ 訪問 患家 ほうもん">
+          <div class="tool-name">かかりつけ薬剤師訪問加算</div>
+          <div class="tool-meta">230点・6月1回｜患家訪問・次回算定</div>
+        </a>
+        <a class="tool-card" data-yomi="きゅうにゅうやくしどうかさん" href="加算まとめ/吸入薬指導加算2026.html" data-keywords="吸入 喘息 COPD 吸入手技 きゅうにゅう きゅうにゅうやくしどう ぜんそく">
+          <div class="tool-name">吸入薬指導加算</div>
+          <div class="tool-meta">30点・6月1回｜手技指導・情報提供・薬歴</div>
+        </a>
+        <a class="tool-card" data-yomi="しせつれんけいかさん" href="加算まとめ/施設連携加算.html" data-keywords="施設連携加算 特養 介護老人福祉施設 地域密着型 施設職員 一包化 ショートステイ しせつれんけいかさん とくよう かいごろうじんふくししせつ しせつしょくいん">
           <div class="tool-name">施設連携加算</div>
           <div class="tool-meta">50点・月1回｜特養を訪問し施設職員と協働した服薬管理</div>
         </a>
-        <a class="tool-card" href="加算まとめ/乳幼児服薬指導加算.html" data-keywords="乳幼児服薬指導加算 6歳未満 手帳 誤飲防止 小児特定加算 にゅうようじふくやくしどうかさん てちょう">
-          <div class="tool-name">乳幼児服薬指導加算</div>
-          <div class="tool-meta">12点｜6歳未満・手帳記載・小児特定加算との関係</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/小児特定加算.html" data-keywords="小児特定加算 障害児 児童福祉法 18歳未満 医療的ケア児 乳幼児加算 しょうにとくてい しょうがいじ">
+        <a class="tool-card" data-yomi="しょうにとくていかさん" href="加算まとめ/小児特定加算.html" data-keywords="小児特定加算 障害児 児童福祉法 18歳未満 医療的ケア児 乳幼児加算 しょうにとくてい しょうがいじ">
           <div class="tool-name">小児特定加算</div>
           <div class="tool-meta">外来350点・在宅450点｜障害児への指導</div>
         </a>
-        <a class="tool-card" href="加算まとめ/手帳の活用実績が少ない保険薬局.html" data-keywords="手帳の活用実績 お薬手帳 服薬管理指導料の特例 13点 手帳提示 50%以下 てちょう とくれい">
+        <a class="tool-card" data-yomi="ちょうざいごやくざいかんりしどうりょう" href="加算まとめ/調剤後薬剤管理指導料.html" data-keywords="調剤後薬剤管理指導料 糖尿病 慢性心不全 フォローアップ 電話 情報提供 ちょうざいご やくざいかんり しどうりょう とうにょうびょう まんせいしんふぜん">
+          <div class="tool-name">調剤後薬剤管理指導料</div>
+          <div class="tool-meta">糖尿病・慢性心不全｜調剤後の電話等での確認と情報提供</div>
+        </a>
+        <a class="tool-card" data-yomi="てちょうのかつようじっせきがすくないほけんやっきょく" href="加算まとめ/手帳の活用実績が少ない保険薬局.html" data-keywords="手帳の活用実績 お薬手帳 服薬管理指導料の特例 13点 手帳提示 50%以下 てちょう とくれい">
           <div class="tool-name">手帳の活用実績が少ない保険薬局</div>
           <div class="tool-meta">服薬管理指導料13点｜加算が算定できなくなる</div>
         </a>
-        <a class="tool-card" href="加算まとめ/麻薬管理指導加算.html" data-keywords="麻薬管理指導加算 麻薬 オピオイド 疼痛 がん疼痛 緩和ケア 残薬 保管 麻薬廃棄届 返納 在宅患者医療用麻薬持続注射療法加算 まやくかんりしどうかさん まやく とうつう かんわけあ ざんやく はいき">
-          <div class="tool-name">麻薬管理指導加算</div>
-          <div class="tool-meta">外来22点・在宅100点｜外来と在宅で異なる要件・薬歴記載事項</div>
+        <a class="tool-card" data-yomi="とくていやくざいかんりしどうかさん1" href="加算まとめ/特定薬剤管理指導加算1.html" data-keywords="特定薬剤管理指導加算1 特管1 特薬管1 ハイリスク薬 特に安全管理が必要な医薬品 抗悪性腫瘍剤 免疫抑制剤 不整脈用剤 抗てんかん剤 血液凝固阻止剤 ジギタリス テオフィリン カリウム製剤 精神神経用剤 糖尿病用剤 膵臓ホルモン剤 抗HIV薬 とくていやくざいかんりしどうかさん はいりすくやく">
+          <div class="tool-name">特定薬剤管理指導加算1</div>
+          <div class="tool-meta">イ10点・ロ5点｜ハイリスク薬・イとロの分かれ方・薬歴記載</div>
         </a>
-        <a class="tool-card" href="加算まとめ/服薬情報等提供料.html" data-keywords="服薬情報等提供料 トレーシングレポート 情報提供 ケアマネ 介護支援専門員 リフィル 入院前 ふくやくじょうほうとうていきょうりょう とれーしんぐれぽーと じょうほうていきょう けあまね">
+        <a class="tool-card" data-yomi="とくていやくざいかんりしどうかさん2" href="加算まとめ/特定薬剤管理指導加算2.html" data-keywords="特定薬剤管理指導加算2 特管2 特薬管2 抗悪性腫瘍剤 抗がん剤 レジメン 連携充実加算 外化連 制吐剤 支持療法 電話 フォローアップ 文書提供 とくていやくざいかんりしどうかさん こうあくせいしゅようざい こうがんざい れじめん れんけいじゅうじつかさん">
+          <div class="tool-name">特定薬剤管理指導加算2</div>
+          <div class="tool-meta">100点・月1回｜レジメン確認・電話等での確認・医療機関へ文書提供</div>
+        </a>
+        <a class="tool-card" data-yomi="とくていやくざいかんりしどうかさん3" href="加算まとめ/特定薬剤管理指導加算3.html" data-keywords="特定薬剤管理指導加算3 特管3 特薬管3 RMP 選定療養 流通不良 供給不安定 銘柄変更 バイオ後続品 緊急安全性情報 とくていやくざいかんりしどうかさん とっかん せんていりょうよう りゅうつうふりょう めいがらへんこう">
+          <div class="tool-name">特定薬剤管理指導加算3</div>
+          <div class="tool-meta">イ5点・ロ10点｜RMP・選定療養・流通不良・バイオ後続品</div>
+        </a>
+        <a class="tool-card" data-yomi="にゅうようじふくやくしどうかさん" href="加算まとめ/乳幼児服薬指導加算.html" data-keywords="乳幼児服薬指導加算 6歳未満 手帳 誤飲防止 小児特定加算 にゅうようじふくやくしどうかさん てちょう">
+          <div class="tool-name">乳幼児服薬指導加算</div>
+          <div class="tool-meta">12点｜6歳未満・手帳記載・小児特定加算との関係</div>
+        </a>
+        <a class="tool-card" data-yomi="ふくやくかんりしどうりょう1" href="加算まとめ/服薬管理指導料.html" data-keywords="服薬管理指導料 服管 かかりつけ 1のイ 2のイ ふくやくかんりしどうりょう ふくかん">
+          <div class="tool-name">服薬管理指導料（1・2／かかりつけ）</div>
+          <div class="tool-meta">区分1・2｜かかりつけ要件・薬歴記載</div>
+        </a>
+        <a class="tool-card" data-yomi="ふくやくかんりしどうりょう3" href="加算まとめ/服薬管理指導料3・4_施設訪問・オンライン.html" data-keywords="服薬管理指導料3 服薬管理指導料4 施設 オンライン 服薬指導 ふくやくかんりしどうりょう">
+          <div class="tool-name">服薬管理指導料 3・4</div>
+          <div class="tool-meta">区分3・4｜施設訪問・オンライン服薬指導</div>
+        </a>
+        <a class="tool-card" data-yomi="ふくやくじょうほうとうていきょうりょう" href="加算まとめ/服薬情報等提供料.html" data-keywords="服薬情報等提供料 トレーシングレポート 情報提供 ケアマネ 介護支援専門員 リフィル 入院前 ふくやくじょうほうとうていきょうりょう とれーしんぐれぽーと じょうほうていきょう けあまね">
           <div class="tool-name">服薬情報等提供料1・2・3</div>
           <div class="tool-meta">30・20・50点｜きっかけと提供先で区分</div>
+        </a>
+        <a class="tool-card" data-yomi="ふくようやくざいちょうせいしえんりょう1" href="加算まとめ/服用薬剤調整支援料１.html" data-keywords="服用薬剤調整支援料 減薬 ポリファーマシー 種類数 ふくようやくざいちょうせいしえんりょう げんやく">
+          <div class="tool-name">服用薬剤調整支援料１</div>
+          <div class="tool-meta">125点・月1回｜内服薬が2種類以上減ったとき</div>
+        </a>
+        <a class="tool-card" data-yomi="ふくようやくざいちょうせいしえんりょう2" href="加算まとめ/服用薬剤調整支援料２_2026改定.html" data-keywords="服用薬剤調整支援料 ポリファーマシー 減薬 ふくようやくざいちょうせいしえん ぽりふぁーましー">
+          <div class="tool-name">服用薬剤調整支援料2</div>
+          <div class="tool-meta">ポリファーマシー｜算定区分・記録要件</div>
+        </a>
+        <a class="tool-card" data-yomi="まやくかんりしどうかさん" href="加算まとめ/麻薬管理指導加算.html" data-keywords="麻薬管理指導加算 麻薬 オピオイド 疼痛 がん疼痛 緩和ケア 残薬 保管 麻薬廃棄届 返納 在宅患者医療用麻薬持続注射療法加算 まやくかんりしどうかさん まやく とうつう かんわけあ ざんやく はいき">
+          <div class="tool-name">麻薬管理指導加算</div>
+          <div class="tool-meta">外来22点・在宅100点｜外来と在宅で異なる要件・薬歴記載事項</div>
         </a>
       </div>
     </div>
@@ -245,61 +250,61 @@ body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: va
     <div class="cat-block" id="cat-zaitaku">
       <div class="cat">薬学管理料（在宅）</div>
       <div class="grid">
-        <a class="tool-card" href="加算まとめ/在宅患者訪問薬剤管理指導料.html" data-keywords="在宅 訪問 在宅患者訪問薬剤管理指導料 単一建物 薬学的管理指導計画 在宅協力薬局 ざいたく ほうもん たんいつたてもの">
-          <div class="tool-name">在宅患者訪問薬剤管理指導料</div>
-          <div class="tool-meta">点数・算定要件・単一建物診療患者</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/在宅患者訪問薬剤管理指導料_算定間隔2026.html" data-keywords="在宅 訪問 在宅患者訪問薬剤管理指導料 算定間隔 ざいたく ほうもん">
-          <div class="tool-name">訪問薬剤管理指導料の算定間隔</div>
-          <div class="tool-meta">算定間隔・回数の整理</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/居宅療養管理指導費.html" data-keywords="居宅療養管理指導費 介護保険 要介護 要支援 介護予防居宅療養管理指導費 単一建物居住者 ケアマネジャー 介護支援専門員 きょたく りょうよう かんり しどうひ かいごほけん かいごよぼう">
+        <a class="tool-card" data-yomi="きょたくりょうようかんりしどうひ" href="加算まとめ/居宅療養管理指導費.html" data-keywords="居宅療養管理指導費 介護保険 要介護 要支援 介護予防居宅療養管理指導費 単一建物居住者 ケアマネジャー 介護支援専門員 きょたく りょうよう かんり しどうひ かいごほけん かいごよぼう">
           <div class="tool-name">居宅療養管理指導費（薬局の薬剤師）</div>
           <div class="tool-meta">介護保険で算定する訪問｜単位数・算定要件</div>
         </a>
-        <a class="tool-card" href="加算まとめ/在宅患者緊急訪問薬剤管理指導料.html" data-keywords="在宅 緊急訪問 計画外 急変 変化 臨時処方 在宅患者緊急訪問薬剤管理指導料 きんきゅうほうもん けいかくがい ざいたく">
-          <div class="tool-name">在宅患者緊急訪問薬剤管理指導料</div>
-          <div class="tool-meta">令和8年で緩和｜計画外に訪問した場合</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/夜間・休日・深夜訪問加算.html" data-keywords="夜間訪問加算 休日訪問加算 深夜訪問加算 時間外 開局時間 在宅 やかん きゅうじつ しんや ほうもん">
-          <div class="tool-name">夜間・休日・深夜訪問加算</div>
-          <div class="tool-meta">400／600／1,000点｜開局時間外の緊急訪問</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/在宅患者医療用麻薬持続注射療法加算.html" data-keywords="在宅患者医療用麻薬持続注射療法加算 持続注射 医療用麻薬 残液 注入ポンプ 麻薬小売業者 モルヒネ フェンタニル じぞくちゅうしゃ いりょうようまやく">
-          <div class="tool-name">在宅患者医療用麻薬持続注射療法加算</div>
-          <div class="tool-meta">1回250点・届出｜麻薬管理指導加算とは併算定不可</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/在宅中心静脈栄養法加算.html" data-keywords="在宅中心静脈栄養法加算 中心静脈栄養 高カロリー輸液 配合変化 遮光 輸液バッグ ちゅうしんじょうみゃくえいよう こうかろりーゆえき はいごうへんか">
-          <div class="tool-name">在宅中心静脈栄養法加算</div>
-          <div class="tool-meta">1回150点・届出｜配合変化防止の指導</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/在宅患者緊急時等共同指導料.html" data-keywords="共同指導料 カンファレンス 多職種 ビデオ通話 ケアマネ 在宅 きょうどうしどう かんふぁれんす ざいたく">
-          <div class="tool-name">在宅患者緊急時等共同指導料</div>
-          <div class="tool-meta">月2回・700点｜カンファレンスを踏まえた訪問指導</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/在宅移行初期管理料.html" data-keywords="在宅移行初期管理料 移行初期 契約前 退院直後 残薬整理 単一建物 在宅 いこうしょき ざんやく ざいたく">
-          <div class="tool-name">在宅移行初期管理料</div>
-          <div class="tool-meta">初回算定月に1回・230点｜計画的な訪問を始める前の訪問</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/退院時共同指導料.html" data-keywords="退院時共同指導料 退院カンファ 退院時 入院 ビデオ通話 単独レセプト 在宅 たいいんじ きょうどうしどう にゅういん">
-          <div class="tool-name">退院時共同指導料</div>
-          <div class="tool-meta">入院中1回・600点｜入院先と共同で指導し文書を渡す</div>
-        </a>
-        <a class="tool-card" href="加算まとめ/経管投薬支援料.html" data-keywords="経管投薬支援料 簡易懸濁法 胃瘻 腸瘻 経鼻経管 粉砕 介助者 在宅 けいかんとうやく かんいけんだく いろう ちょうろう">
+        <a class="tool-card" data-yomi="けいかんとうやくしえんりょう" href="加算まとめ/経管投薬支援料.html" data-keywords="経管投薬支援料 簡易懸濁法 胃瘻 腸瘻 経鼻経管 粉砕 介助者 在宅 けいかんとうやく かんいけんだく いろう ちょうろう">
           <div class="tool-name">経管投薬支援料</div>
           <div class="tool-meta">初回1回・100点｜簡易懸濁法で飲めるようにする支援</div>
         </a>
-        <a class="tool-card" href="加算まとめ/在宅協力薬局.html" data-keywords="在宅協力薬局 サポート薬局 在宅基幹薬局 基幹薬局 代わりに訪問 合議 在宅 きょうりょくやっきょく きかんやっきょく ざいたく">
+        <a class="tool-card" data-yomi="ざいたくいこうしょきかんりりょう" href="加算まとめ/在宅移行初期管理料.html" data-keywords="在宅移行初期管理料 移行初期 契約前 退院直後 残薬整理 単一建物 在宅 いこうしょき ざんやく ざいたく">
+          <div class="tool-name">在宅移行初期管理料</div>
+          <div class="tool-meta">初回算定月に1回・230点｜計画的な訪問を始める前の訪問</div>
+        </a>
+        <a class="tool-card" data-yomi="ざいたくかんじゃいりょうようまやくじぞくちゅうしゃりょうほうかさん" href="加算まとめ/在宅患者医療用麻薬持続注射療法加算.html" data-keywords="在宅患者医療用麻薬持続注射療法加算 持続注射 医療用麻薬 残液 注入ポンプ 麻薬小売業者 モルヒネ フェンタニル じぞくちゅうしゃ いりょうようまやく">
+          <div class="tool-name">在宅患者医療用麻薬持続注射療法加算</div>
+          <div class="tool-meta">1回250点・届出｜麻薬管理指導加算とは併算定不可</div>
+        </a>
+        <a class="tool-card" data-yomi="ざいたくかんじゃきんきゅうじとうきょうどうしどうりょう" href="加算まとめ/在宅患者緊急時等共同指導料.html" data-keywords="共同指導料 カンファレンス 多職種 ビデオ通話 ケアマネ 在宅 きょうどうしどう かんふぁれんす ざいたく">
+          <div class="tool-name">在宅患者緊急時等共同指導料</div>
+          <div class="tool-meta">月2回・700点｜カンファレンスを踏まえた訪問指導</div>
+        </a>
+        <a class="tool-card" data-yomi="ざいたくかんじゃきんきゅうほうもんやくざいかんりしどうりょう" href="加算まとめ/在宅患者緊急訪問薬剤管理指導料.html" data-keywords="在宅 緊急訪問 計画外 急変 変化 臨時処方 在宅患者緊急訪問薬剤管理指導料 きんきゅうほうもん けいかくがい ざいたく">
+          <div class="tool-name">在宅患者緊急訪問薬剤管理指導料</div>
+          <div class="tool-meta">令和8年で緩和｜計画外に訪問した場合</div>
+        </a>
+        <a class="tool-card" data-yomi="ざいたくかんじゃほうもんやくざいかんりしどうりょう" href="加算まとめ/在宅患者訪問薬剤管理指導料.html" data-keywords="在宅 訪問 在宅患者訪問薬剤管理指導料 単一建物 薬学的管理指導計画 在宅協力薬局 ざいたく ほうもん たんいつたてもの">
+          <div class="tool-name">在宅患者訪問薬剤管理指導料</div>
+          <div class="tool-meta">点数・算定要件・単一建物診療患者</div>
+        </a>
+        <a class="tool-card" data-yomi="ざいたくきょうりょくやっきょく" href="加算まとめ/在宅協力薬局.html" data-keywords="在宅協力薬局 サポート薬局 在宅基幹薬局 基幹薬局 代わりに訪問 合議 在宅 きょうりょくやっきょく きかんやっきょく ざいたく">
           <div class="tool-name">在宅協力薬局</div>
           <div class="tool-meta">基幹薬局に代わって訪問したときの算定と記録</div>
         </a>
-        <a class="tool-card" href="加算まとめ/複数名薬剤管理指導訪問料.html" data-keywords="複数名 在宅 訪問 ふくすうめい ほうもん">
+        <a class="tool-card" data-yomi="ざいたくちゅうしんじょうみゃくえいようほうかさん" href="加算まとめ/在宅中心静脈栄養法加算.html" data-keywords="在宅中心静脈栄養法加算 中心静脈栄養 高カロリー輸液 配合変化 遮光 輸液バッグ ちゅうしんじょうみゃくえいよう こうかろりーゆえき はいごうへんか">
+          <div class="tool-name">在宅中心静脈栄養法加算</div>
+          <div class="tool-meta">1回150点・届出｜配合変化防止の指導</div>
+        </a>
+        <a class="tool-card" data-yomi="たいいんじきょうどうしどうりょう" href="加算まとめ/退院時共同指導料.html" data-keywords="退院時共同指導料 退院カンファ 退院時 入院 ビデオ通話 単独レセプト 在宅 たいいんじ きょうどうしどう にゅういん">
+          <div class="tool-name">退院時共同指導料</div>
+          <div class="tool-meta">入院中1回・600点｜入院先と共同で指導し文書を渡す</div>
+        </a>
+        <a class="tool-card" data-yomi="ふくすうめいやくざいかんりしどうほうもんりょう" href="加算まとめ/複数名薬剤管理指導訪問料.html" data-keywords="複数名 在宅 訪問 ふくすうめい ほうもん">
           <div class="tool-name">複数名薬剤管理指導訪問料</div>
           <div class="tool-meta">新設｜複数薬剤師の訪問指導</div>
         </a>
-        <a class="tool-card" href="加算まとめ/訪問薬剤管理医師同時指導料.html" data-keywords="医師同時 訪問 在宅 いしどうじ ほうもん">
+        <a class="tool-card" data-yomi="ほうもんやくざいかんりいしどうじしどうりょう" href="加算まとめ/訪問薬剤管理医師同時指導料.html" data-keywords="医師同時 訪問 在宅 いしどうじ ほうもん">
           <div class="tool-name">訪問薬剤管理医師同時指導料</div>
           <div class="tool-meta">新設・6月1回｜医師と同時の訪問</div>
+        </a>
+        <a class="tool-card" data-yomi="ほうもんやくざいかんりしどうりょうのさんていかんかく" href="加算まとめ/在宅患者訪問薬剤管理指導料_算定間隔2026.html" data-keywords="在宅 訪問 在宅患者訪問薬剤管理指導料 算定間隔 ざいたく ほうもん">
+          <div class="tool-name">訪問薬剤管理指導料の算定間隔</div>
+          <div class="tool-meta">算定間隔・回数の整理</div>
+        </a>
+        <a class="tool-card" data-yomi="やかんきゅうじつしんやほうもんかさん" href="加算まとめ/夜間・休日・深夜訪問加算.html" data-keywords="夜間訪問加算 休日訪問加算 深夜訪問加算 時間外 開局時間 在宅 やかん きゅうじつ しんや ほうもん">
+          <div class="tool-name">夜間・休日・深夜訪問加算</div>
+          <div class="tool-meta">400／600／1,000点｜開局時間外の緊急訪問</div>
         </a>
       </div>
     </div>
@@ -307,13 +312,13 @@ body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: va
     <div class="cat-block" id="cat-baseup">
       <div class="cat">ベースアップ等</div>
       <div class="grid">
-        <a class="tool-card" href="改定資料/調剤ベースアップ評価料.html" data-keywords="調剤ベースアップ評価料 ベースアップ 賃上げ べーすあっぷひょうかりょう">
-          <div class="tool-name">調剤ベースアップ評価料</div>
-          <div class="tool-meta">令和8年6月〜｜賃上げの評価</div>
-        </a>
-        <a class="tool-card" href="改定資料/調剤物価対応料.html" data-keywords="調剤物価対応料 物価 ぶっかたいおうりょう">
+        <a class="tool-card" data-yomi="ちょうざいぶっかたいおうりょう" href="改定資料/調剤物価対応料.html" data-keywords="調剤物価対応料 物価 ぶっかたいおうりょう">
           <div class="tool-name">調剤物価対応料</div>
           <div class="tool-meta">新設｜令和9年6月より2点へ増点</div>
+        </a>
+        <a class="tool-card" data-yomi="ちょうざいべーすあっぷひょうかりょう" href="改定資料/調剤ベースアップ評価料.html" data-keywords="調剤ベースアップ評価料 ベースアップ 賃上げ べーすあっぷひょうかりょう">
+          <div class="tool-name">調剤ベースアップ評価料</div>
+          <div class="tool-meta">令和8年6月〜｜賃上げの評価</div>
         </a>
       </div>
     </div>
@@ -357,8 +362,41 @@ body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: va
       total += shown;
     });
     empty.style.display = total ? 'none' : 'block';
+    // 検索中は「最近更新した資料」の帯を隠す（結果と紛らわしいため）
+    var recent = document.querySelector('[data-hub-recent]');
+    if (recent) recent.style.display = q ? 'none' : '';
   });
 })();
+</script>
+<script>
+// 各分類の中を題名の読み（data-yomi）で五十音順に並べる。項目を足すときは data-yomi を書けば正しい位置に入る
+(function () {
+  var coll = new Intl.Collator("ja", { numeric: true });
+  document.querySelectorAll("#kasan-list .grid").forEach(function (g) {
+    Array.prototype.slice.call(g.children)
+      .sort(function (a, b) { return coll.compare(a.dataset.yomi || a.textContent, b.dataset.yomi || b.textContent); })
+      .forEach(function (c) { g.appendChild(c); });
+  });
+})();
+// 分類の見出しの右端に件数
+document.querySelectorAll("#kasan-list .cat-block").forEach(function (b) {
+  var h = b.querySelector(".cat");
+  if (!h || h.querySelector(".n")) return;
+  var sp = document.createElement("span");
+  sp.className = "n";
+  sp.textContent = b.querySelectorAll(".tool-card").length + "件";
+  h.appendChild(sp);
+});
+// PCの3列を縦に読む順にするため、分類ごとの段数（表示中の件数÷3の切り上げ）を入れる。検索で絞ったら数え直す
+function setHubRows() {
+  document.querySelectorAll("#kasan-list .grid").forEach(function (g) {
+    var n = Array.prototype.filter.call(g.children, function (c) { return c.style.display !== "none"; }).length;
+    g.style.setProperty("--rows", Math.max(1, Math.ceil(n / 3)));
+  });
+}
+setHubRows();
+var kasanSearch = document.getElementById("kasan-search");
+if (kasanSearch) kasanSearch.addEventListener("input", setHubRows);
 </script>
 <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

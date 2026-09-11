@@ -145,13 +145,14 @@
       .digest-arrow { font-size: 20px; color: var(--text-sub); flex-shrink: 0; }
 
       /* ── セクションタイトル ── */
+      /* 分類の見出し：算定項目まとめと同じ「青い文字＋下線」（2026-09-12） */
       .section-title {
-        font-size: 14px;
-        font-weight: 700;
+        font-size: 15px;
+        font-weight: 900;
         color: var(--accent);
-        border-left: 3px solid var(--accent);
-        padding-left: 10px;
-        margin-bottom: 0.75rem;
+        padding: 0 2px 7px;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 10px;
         scroll-margin-top: 80px;
       }
 
@@ -167,6 +168,17 @@
         transition: border-color 0.15s, box-shadow 0.15s;
       }
       .card:hover { border-color: var(--accent-mid); box-shadow: 0 2px 8px rgba(30, 95, 168, 0.1); }
+      /* 一覧は「行」にする（42件あるので、1件ずつの箱にすると題名の密度が下がる。2026-09-12）
+         分類ごとに外周の枠のない白い面を1枚、中は細い線で区切る。行では「○日前更新」を出さない
+         （上の「最近更新した資料」の帯で見せる）。NEW・今日/昨日の更新だけ残す */
+      .card-list { gap: 0; background: var(--surface); border-radius: 10px; overflow: hidden; }
+      .card-list .card { border: 0; border-radius: 0; border-bottom: 0.5px solid var(--border); padding: 11px 16px; box-shadow: none; transition: background 0.15s; }
+      .card-list .card:nth-child(odd) { border-right: 0.5px solid var(--border); }
+      .card-list .card:last-child,
+      .card-list .card:nth-last-child(2):nth-child(odd) { border-bottom: 0; }
+      .card-list .card:hover { background: #f5f8fc; box-shadow: none; }
+      .card-list .card:hover .card-title { color: var(--accent); }
+      .card-list .lu-text { display: none; }
       .card-icon {
         width: 36px; height: 36px; border-radius: 6px;
         background: var(--accent-light);
@@ -262,6 +274,8 @@
       @media (max-width: 640px) {
         .page-title { font-size: 20px; }
         .card-list { grid-template-columns: 1fr; }
+        .card-list .card:nth-child(odd) { border-right: 0; }
+        .card-list .card:nth-last-child(2):nth-child(odd) { border-bottom: 0.5px solid var(--border); }
         .overview-cards { grid-template-columns: 1fr; }
         .card-digest { padding: 14px 16px; }
         .digest-title { font-size: 14px; }
@@ -277,6 +291,7 @@
     <script src="assets/site-header.js" defer></script>
     <script src="assets/page-meta.js" defer></script>
     <script src="assets/last-updated.js" defer></script>
+    <script src="assets/hub-recent.js" defer></script>
 
     <main class="page-shell">
       <aside class="side-index" aria-label="資料カテゴリ">
@@ -361,6 +376,9 @@
       </div>
 
       <!-- 便利ツール -->
+      <!-- 最近更新した資料（assets/hub-recent.js が page-meta から作る。30日以内の更新が無ければ出ない） -->
+      <div data-hub-recent data-links=".page-main .card-list a.card" data-group-title=".section-title" data-name=".card-title" style="margin-bottom:1.5rem"></div>
+
       <p class="section-title" id="tools">便利ツール</p>
       <div class="card-list" style="margin-top:0">
         <a class="card" href="ツール/gigi-search.html">
@@ -631,11 +649,13 @@
         document.querySelectorAll('.card-list').forEach(cl => cl.style.display = '');
         document.querySelectorAll('.section-title').forEach(st => st.style.display = '');
         document.querySelector('.point-seiri-wrap').style.display = '';
+        document.querySelectorAll('[data-hub-recent]').forEach(r => r.style.display = '');
         searchCount.textContent = '';
         return;
       }
 
       let total = 0;
+      document.querySelectorAll('[data-hub-recent]').forEach(r => r.style.display = 'none');   // 検索中は最近の更新の帯を隠す
       document.querySelectorAll('.card').forEach(card => {
         const title = card.querySelector('.card-title');
         const match = title && title.textContent.toLowerCase().includes(query);
