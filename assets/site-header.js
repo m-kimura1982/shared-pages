@@ -588,7 +588,7 @@
     document.head.appendChild(s);
   }
 
-  // ── 最近見たページ（履歴記録＋index描画）を自動ロード ──
+  // ── 最近見たページ（履歴の記録）を自動ロード ──
   if (!document.querySelector('script[data-site-recents]')) {
     const s = document.createElement('script');
     s.src = u('assets/site-recents.js');

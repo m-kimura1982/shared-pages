@@ -193,7 +193,8 @@
   <body>
     <script src="assets/site-header.js" defer></script>
     <script src="assets/page-meta.js" defer></script>
-    <script src="assets/site-recents.js" defer></script>
+    <!-- 「探す」の欄の履歴に使う。data-site-recents があると site-header.js は二重に読まない -->
+    <script src="assets/site-recents.js" defer data-site-recents="1"></script>
 
     <div class="hero">
       <div class="wrap hero-inner">
@@ -367,10 +368,17 @@
           "yakureki/": ["薬歴", "#e5e0f2", "#4b3f80"],
           "チェックリスト/": ["チェックリスト", "#f2f2f2", "#444444"],
           "ツール/": ["ツール", "#f2f2f2", "#444444"],
-          "事務/": ["事務", "#f2f2f2", "#444444"]
+          "事務/": ["事務", "#f2f2f2", "#444444"],
+          // ハブそのものへのリンク
+          "加算まとめ.html": ["算定項目", "#dfe9f6", "#2a5580"],
+          "kaitei2026.html": ["改定資料", "#f3e8d0", "#7a5718"],
+          "knowledge.html": ["ナレッジ", "#e3efe0", "#3d6b2e"],
+          "checklists.html": ["チェックリスト", "#f2f2f2", "#444444"],
+          "tools.html": ["ツール", "#f2f2f2", "#444444"],
+          "事務スタッフ向け.html": ["事務", "#f2f2f2", "#444444"]
         };
         document.querySelectorAll(".u-row").forEach(function (a) {
-          var key = decodeURIComponent(a.getAttribute("href").replace(/^\.\.\//, "").split("#")[0]);
+          var key = decodeURIComponent(a.getAttribute("href").split("#")[0]);
           var chip = document.createElement("span");
           chip.className = "u-chip";
           chip.textContent = "サイト全体";   // フォルダに入っていないページ（トップ・ページ一覧など）
