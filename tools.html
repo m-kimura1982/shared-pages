@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>実務ツール集｜調剤報酬・薬歴まとめ</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/hub.css">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 :root {
@@ -16,9 +17,6 @@
 body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: var(--ink); font-size: var(--text-md); line-height: 1.8; padding: 32px 16px 60px; }
 .page { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
 
-.page-title { border-left: 4px solid var(--blue); padding: 6px 0 6px 18px; }
-.page-title h1 { font-size: var(--text-xl); font-weight: 900; }
-.page-title p { font-size: var(--text-sm); font-weight: 500; margin-top: 4px; color: var(--sub); }
 
 .tool-list { display: flex; flex-direction: column; gap: 12px; }
 
@@ -68,9 +66,9 @@ body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: va
 
   
 
-  <div class="page-title">
-    <h1>実務ツール集</h1>
-    <p>業務でそのまま使えるツール・チェック表をまとめています</p>
+  <div class="band">
+    <div class="band-panel" data-wm="TOOLS"><span class="band-en">TOOLS</span><h1>実務ツール集</h1></div>
+    <p class="band-desc">業務でそのまま使えるツール・チェック表をまとめています。</p>
   </div>
 
   <div class="tool-list">

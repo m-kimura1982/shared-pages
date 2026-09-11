@@ -1,0 +1,51 @@
+/* ============================================================
+   hub.css — ハブページの見出しの帯
+   トップの「調剤報酬」「薬歴」の見出しと同じ部品（淡い青の斜め面＋
+   英字ラベル＋題名、右に説明文、英字の透かし）。
+   帯の見た目はこの1ファイルで直す。各ハブは head で読むだけ。
+
+   <div class="band">
+     <div class="band-panel" data-wm="KASAN"><span class="band-en">KASAN</span><h1>算定項目まとめ</h1></div>
+     <p class="band-desc">説明文は1文。</p>
+   </div>
+
+   英字はカテゴリ名（site-header.js の CATEGORIES の id）の大文字。
+   英字の書体 Barlow Condensed は head の Google Fonts の行で読む
+   （family=Barlow+Condensed:wght@700 を足す）。ラベルと透かしにだけ使う。
+   ============================================================ */
+.band { display:grid; grid-template-columns:minmax(260px, 40%) 1fr; align-items:center; gap:24px; }
+.band-panel {
+  position:relative; overflow:hidden; min-height:92px;
+  background:#e4eef9; border-radius:12px 0 0 12px;
+  clip-path:polygon(0 0, 100% 0, 88% 100%, 0 100%);
+  padding:14px 60px 12px 22px; display:flex; flex-direction:column; justify-content:center;
+}
+/* 英字の透かし。上端と斜めの切り口で切れるように置く（丸ごと見えると挿絵に見える） */
+.band-panel::after {
+  content:attr(data-wm); position:absolute; right:6%; top:-20px;
+  font-family:"Barlow Condensed", "Noto Sans JP", sans-serif;
+  font-size:96px; font-weight:700; line-height:1; letter-spacing:.02em;
+  color:var(--blue, #1e5fa8); opacity:.07; white-space:nowrap; pointer-events:none;
+}
+.band-panel > * { position:relative; z-index:1; }
+.band-en {
+  font-family:"Barlow Condensed", "Noto Sans JP", sans-serif;
+  font-size:13px; font-weight:700; letter-spacing:.14em; color:var(--blue, #1e5fa8);
+}
+.band-panel h1 { font-size:var(--text-xl, 22px); font-weight:900; line-height:1.3; }
+.band-desc { font-size:var(--text-sm, 15px); font-weight:500; color:#444444; line-height:1.7; }
+
+@media (max-width:640px) {
+  .band { grid-template-columns:1fr; gap:8px; }
+  .band-panel {
+    min-height:76px; border-radius:12px 12px 0 0;
+    clip-path:polygon(0 0, 100% 0, calc(100% - 36px) 100%, 0 100%);
+    padding:12px 52px 10px 16px;
+  }
+  .band-panel::after { font-size:76px; top:-16px; }
+  .band-desc { padding:0 2px; }
+}
+@media print {
+  .band-panel { clip-path:none; background:none; padding:0; min-height:0; }
+  .band-panel::after, .band-en { display:none; }
+}

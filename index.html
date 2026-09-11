@@ -19,880 +19,386 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon.png" />
     <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
       rel="stylesheet"
     />
     <style>
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        -webkit-tap-highlight-color: transparent;
-      }
+      *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+      /* 配色はサイトの青。黄は見出しの「現場で使える形」の下線だけ（黄は本文で「読ませたい箇所」の印なので飾りに使わない） */
       :root {
-        --blue: #1e5fa8;
-        --blue-mid: #2d7dd6;
-        --blue-light: #e8f0fb;
-        --ink: #222222;
-        --sub: #666666;
-        --border: #d8dde8;
-        --white: #ffffff;
-        --bg: #f3f4f6;
-        --radius: 12px;
-        --radius-sm: 8px;
+        --base:#f3f4f6; --surface:#ffffff; --border:#d1d5db; --line:#e5e7eb;
+        --ink:#1d2433; --ink-2:#434a57; --ink-3:#5e6470;
+        --main:#1e5fa8; --main-tint:#e4eef9;
+        --accent-soft:#fff59d;   /* 本文の黄マーカーと同じ色 */
+        --en:"Barlow Condensed", "Noto Sans JP", sans-serif;
+        --radius:12px; --bw:0.5px;   /* 罫線は既存のハブ・資料ページと同じ太さ */
       }
-      body {
-        font-family: "Noto Sans JP", sans-serif;
-        background: var(--bg);
-        color: var(--ink);
-        line-height: 1.7;
-      }
+      body { font-family:"Noto Sans JP", sans-serif; background:var(--base); color:var(--ink); line-height:1.75; font-size:16px; }
+      a { color:inherit; text-decoration:none; }
+      [hidden] { display:none !important; }
+      [id] { scroll-margin-top:calc(var(--sn-header-h, 0px) + 16px); }
+      .wrap { max-width:1040px; margin:0 auto; padding:0 24px; }
 
-      /* ヘッダーは assets/site-header.js が注入する（このページ側の定義は不要） */
+      /* 矢印：先を上下2本にして「→」と読めるようにする（片側だけだと旗やかぎ線に見える） */
+      .arrow { display:inline-block; position:relative; width:22px; height:2px; border-radius:1px; background:currentColor; transition:width .25s; flex-shrink:0; }
+      .arrow::before, .arrow::after { content:""; position:absolute; right:0; top:0; width:9px; height:2px; border-radius:1px; background:currentColor; transform-origin:right center; }
+      .arrow::before { transform:rotate(40deg); }
+      .arrow::after  { transform:rotate(-40deg); }
+      .cta { display:flex; align-items:center; gap:10px; font-size:14px; font-weight:700; color:var(--main); }
 
-      /* ── Hero ── */
-      .hero {
-        background: linear-gradient(180deg, #f5f9ff 0%, #ffffff 100%);
-        padding: 48px 24px 52px;
-        text-align: center;
-        border-bottom: 1px solid var(--border);
+      /* ── Hero（主役は見出しだけ） ── */
+      /* 箱ではなく「帯」：画面の端から端まで淡い青、右側だけ白い斜め面、境目に青の細線。
+         箱にすると下のカードと同じ見た目になり、中の白い箱と入れ子になって窮屈に見える */
+      .hero { position:relative; overflow:hidden; background:var(--main-tint); padding:52px 0 56px; }
+      .hero-inner::before {
+        content:""; position:absolute; top:-80px; bottom:-80px; left:57%; right:-100vw;
+        background:var(--surface); transform:skewX(-18deg); transform-origin:top;
       }
-      .hero-inner {
-        max-width: 900px;
-        margin: 0 auto;
+      .hero-inner::after {
+        content:""; position:absolute; top:-80px; bottom:-80px; left:calc(57% - 2px); width:2px;
+        background:var(--main); transform:skewX(-18deg); transform-origin:top;
       }
-      .hero-label {
-        display: inline-block;
-        font-size: 14px;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        color: var(--blue);
-        background: var(--blue-light);
-        padding: 5px 16px;
-        border-radius: 100px;
-        margin-bottom: 24px;
-      }
-      .hero h1 {
-        font-size: 36px;
-        font-weight: 900;
-        line-height: 1.35;
-        color: var(--ink);
-        margin-bottom: 20px;
-        letter-spacing: -0.02em;
-      }
-      /* 折り返す場合は意味の切れ目で分かれるようにする（「に。」だけが行末に残らない） */
-      .hero h1 .nb { display: inline-block; }
-      .hero h1 em {
-        color: var(--blue);
-        font-style: normal;
-      }
-      .hero-desc {
-        font-size: 15px;
-        color: var(--sub);
-        line-height: 1.9;
-      }
+      .hero-inner > * { position:relative; z-index:1; }
+      .hero-inner { position:relative; display:grid; grid-template-columns:1.35fr 1fr; gap:48px; align-items:center; }
 
-      /* ── Main ── */
-      main {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 48px 24px 72px;
-        display: flex;
-        flex-direction: column;
-        gap: 56px;
-      }
+      /* 最近見たページ：直近3件だけ「探す」の中に文字で出す。
+         10件のチップを棚の前に並べるとヒーローと棚の間に大きな塊ができる。
+         全件は共通ヘッダーの検索（空のまま開くと履歴10件）で見られる */
+      .rv { margin-top:4px; padding-top:12px; border-top:1px solid var(--line); }
+      .rv-label { font-size:13px; font-weight:700; color:var(--ink-2); }
+      .rv-list { list-style:none; margin-top:2px; }
+      .rv-list li { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+      .rv-list li::before { content:"・"; color:var(--ink-3); }
+      .rv-list a { font-size:14px; font-weight:500; color:var(--main); }
+      .rv-list a:hover { text-decoration:underline; }
 
-      /* ── Section header ── */
-      .sec-tag {
-        font-size: 11px;
-        font-weight: 700;
-        color: var(--blue);
-        letter-spacing: 0.14em;
-        margin-bottom: 10px;
-      }
-      .sec-heading {
-        font-size: 26px;
-        font-weight: 900;
-        letter-spacing: -0.01em;
-        margin-bottom: 28px;
-      }
+      .hero h1 { font-size:clamp(28px, 4vw, 44px); font-weight:900; line-height:1.4; letter-spacing:-.01em; }
+      .hero h1 .nb { display:inline-block; }
+      .hero h1 em { font-style:normal; color:var(--main); background:linear-gradient(transparent 66%, var(--accent-soft) 66%); }
+      .hero-desc { margin-top:14px; font-size:17px; font-weight:500; color:var(--ink-2); }
 
-      /* ── 二本柱の大型入口カード ── */
-      .pillar-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 18px;
+      /* 最新の更新：今の公開トップと同じ1行の帯 */
+      /* 1行目にタグ・日付・履歴、2行目にタイトル（1行に詰めるとタイトルが「…」で切れる） */
+      .hu {
+        max-width:500px; margin-top:22px; display:flex; flex-wrap:wrap; align-items:center; gap:4px 10px;
+        background:var(--surface); border:var(--bw) solid var(--border); border-radius:12px; padding:10px 16px 11px;
       }
-      .pillar-card {
-        background: var(--white);
-        border: 1.5px solid var(--border);
-        border-radius: var(--radius);
-        padding: 28px 28px 24px;
-        text-decoration: none;
-        color: var(--ink);
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        transition:
-          border-color 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
-          box-shadow 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
-          transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-      }
-      .pillar-card:hover {
-        border-color: var(--blue);
-        box-shadow: 0 10px 36px rgba(30, 95, 168, 0.10);
-        transform: translateY(-4px);
-      }
-      .pillar-head {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-      }
-      .pillar-icon {
-        width: 52px;
-        height: 52px;
-        border-radius: 13px;
-        background: var(--blue-light);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-      }
-      .pillar-icon svg {
-        width: 26px;
-        height: 26px;
-        stroke: var(--blue);
-        fill: none;
-        stroke-width: 1.7;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-      .pillar-name {
-        font-size: 21px;
-        font-weight: 900;
-        line-height: 1.35;
-      }
-      .pillar-desc {
-        font-size: 13.5px;
-        color: var(--sub);
-        line-height: 1.8;
-        flex: 1;
-      }
-      .pillar-cta {
-        font-size: 13px;
-        font-weight: 700;
-        color: var(--blue);
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
-      .pillar-cta svg {
-        width: 14px;
-        height: 14px;
-        stroke: var(--blue);
-        fill: none;
-        stroke-width: 2.5;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        transition: transform 0.15s;
-      }
-      .pillar-card:hover .pillar-cta svg {
-        transform: translateX(3px);
-      }
+      /* 塗りの青に小さな白文字は読みにくいので、サイトの変更バッジと同じ「淡い青地に青文字」 */
+      .hu-tag { flex-shrink:0; font-size:13px; font-weight:700; color:var(--main); background:var(--main-tint); padding:1px 10px; border-radius:4px; }
+      .hu-date { flex-shrink:0; font-size:13px; font-weight:500; color:var(--ink-3); font-variant-numeric:tabular-nums; }
+      .hu-title { order:3; flex:1 1 100%; font-size:14.5px; font-weight:700; line-height:1.6; }
+      .hu-title:hover { color:var(--main); text-decoration:underline; }
+      .hu-more { flex-shrink:0; margin-left:auto; font-size:13px; font-weight:700; color:var(--main); }
+      .hu-more:hover { text-decoration:underline; }
 
-      /* ── Contents cards ── */
-      .contents-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-      }
-      .content-card {
-        background: var(--white);
-        border: 1.5px solid var(--border);
-        border-radius: var(--radius);
-        padding: 20px 22px;
-        text-decoration: none;
-        color: var(--ink);
-        display: grid;
-        grid-template-columns: auto 1fr;
-        grid-template-rows: auto 1fr auto auto;
-        grid-template-areas:
-          "icon name"
-          "desc desc"
-          "meta meta"
-          "cta  cta";
-        column-gap: 14px;
-        row-gap: 11px;
-        align-items: center;
-        transition:
-          border-color 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
-          box-shadow 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
-          transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-      }
-      .content-card > .card-icon-wrap { grid-area: icon; }
-      .content-card > .card-name { grid-area: name; }
-      .content-card > .card-desc { grid-area: desc; align-self: start; }
-      .content-card > .card-meta { grid-area: meta; }
-      .content-card > .card-cta { grid-area: cta; }
-      .content-card:not(.disabled):hover {
-        border-color: var(--blue);
-        box-shadow: 0 10px 36px rgba(30, 95, 168, 0.10);
-        transform: translateY(-4px);
-      }
-      .content-card.disabled {
-        opacity: 0.45;
-        cursor: default;
-        pointer-events: none;
-      }
-      .card-icon-wrap {
-        width: 44px;
-        height: 44px;
-        border-radius: 11px;
-        background: var(--blue-light);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .card-icon-wrap svg {
-        width: 22px;
-        height: 22px;
-        stroke: var(--blue);
-        fill: none;
-        stroke-width: 1.7;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-      .card-name {
-        font-size: 17px;
-        font-weight: 700;
-        line-height: 1.4;
-      }
-      .card-desc {
-        font-size: 13px;
-        color: var(--sub);
-        line-height: 1.75;
-        flex: 1;
-      }
-      .card-meta {
-        font-size: 12px;
-        font-weight: 700;
-        color: var(--blue);
-      }
-      .card-meta:empty {
-        display: none;
-      }
-      .card-cta {
-        margin-top: 4px;
-        font-size: 13px;
-        font-weight: 700;
-        color: var(--blue);
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
-      .card-cta svg {
-        width: 14px;
-        height: 14px;
-        stroke: var(--blue);
-        fill: none;
-        stroke-width: 2.5;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        transition: transform 0.15s;
-      }
-      .content-card:hover .card-cta svg {
-        transform: translateX(3px);
-      }
-      .badge-soon {
-        display: inline-block;
-        font-size: 11px;
-        font-weight: 700;
-        color: #fff;
-        background: #9ca3af;
-        padding: 2px 10px;
-        border-radius: 4px;
-        width: fit-content;
-      }
+      /* 探す：PC幅では白い斜め面そのものが検索の場所（白い面に白いカードを載せると枠が消える） */
+      .find { display:flex; flex-direction:column; gap:12px; padding-left:28px; }
+      .find-ttl { font-size:20px; font-weight:900; }
+      .find-ttl b { font-family:var(--en); font-size:34px; color:var(--main); margin-right:2px; font-variant-numeric:tabular-nums; }
+      .find-stat { margin-top:-10px; font-size:13px; font-weight:700; color:var(--ink-2); }
+      /* 本物の入力欄。送信すると検索語を付けてページ一覧へ（?q= で絞り込んだ状態で開く） */
+      .find-form { display:flex; align-items:center; gap:8px; padding:6px 6px 6px 14px; border:1.5px solid var(--border); border-radius:10px; background:#fafbfc; }
+      .find-form:focus-within { border-color:var(--main); background:var(--surface); }
+      .find-form svg { width:20px; height:20px; stroke:var(--main); fill:none; stroke-width:2; stroke-linecap:round; flex-shrink:0; }
+      .find-form input { flex:1; min-width:0; font:inherit; font-size:15px; border:0; background:transparent; outline:0; color:var(--ink); }
+      .find-form button { font:inherit; font-size:14px; font-weight:700; color:#fff; background:var(--main); border:0; border-radius:7px; padding:7px 16px; cursor:pointer; }
+      .find .cta:hover .arrow { width:30px; }
 
+      /* ── 棚の見出しの帯（淡い斜め面＋英字の透かし。ハブの見出しは assets/hub.css に同じ部品） ── */
+      section { padding-top:56px; }
+      .band { display:grid; grid-template-columns:minmax(280px, 44%) 1fr; align-items:center; gap:28px; margin-bottom:18px; }
+      .band-panel {
+        position:relative; overflow:hidden; min-height:96px;
+        background:var(--main-tint); border-radius:12px 0 0 12px;
+        clip-path:polygon(0 0, 100% 0, 88% 100%, 0 100%);
+        padding:16px 64px 14px 24px; display:flex; flex-direction:column; justify-content:center;
+      }
+      .band-panel::after {
+        content:attr(data-wm); position:absolute; right:6%; top:-22px;
+        font-family:var(--en); font-size:104px; font-weight:700; line-height:1; letter-spacing:.02em;
+        color:var(--main); opacity:.07; white-space:nowrap; pointer-events:none;
+      }
+      .band-panel > * { position:relative; z-index:1; }
+      .band-en { font-family:var(--en); font-size:14px; font-weight:700; letter-spacing:.14em; color:var(--main); }
+      .band-ja { font-size:26px; font-weight:900; line-height:1.3; }
+      .band-desc { font-size:15px; color:var(--ink-2); }
 
-      /* ── Updates（リニューアル：2段組・5件・短文） ── */
-      .updates-box {
-        background: var(--white);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        overflow: hidden;
+      /* ── 棚（タイトル ＞ 説明 ＞ 件数） ── */
+      .shelf { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
+      .shelf.two { grid-template-columns:repeat(2, 1fr); }
+      .s-card {
+        background:var(--surface); border:var(--bw) solid var(--border); border-radius:var(--radius);
+        padding:20px 22px 16px; display:flex; flex-direction:column; gap:8px;
+        transition:border-color .2s, box-shadow .25s, transform .25s cubic-bezier(.2,.8,.2,1);
       }
-      .updates-list {
-        list-style: none;
-      }
-      .updates-list li {
-        padding: 14px 22px;
-        border-bottom: 1px solid #f0f2f5;
-      }
-      .updates-list li:last-child {
-        border-bottom: none;
-      }
-      .update-line1 {
-        display: flex;
-        align-items: baseline;
-        gap: 12px;
-        margin-bottom: 2px;
-      }
-      .update-date {
-        color: var(--sub);
-        white-space: nowrap;
-        font-size: 12px;
-        font-weight: 700;
-        min-width: 36px;
-        text-align: right;
-        font-variant-numeric: tabular-nums;
-      }
-      .update-name {
-        font-size: 14px;
-        font-weight: 700;
-        color: var(--ink);
-        text-decoration: none;
-        line-height: 1.5;
-        flex: 1;
-        min-width: 0;
-      }
-      .update-name:hover {
-        color: var(--blue);
-        text-decoration: underline;
-      }
-      .update-desc {
-        font-size: 12.5px;
-        color: var(--sub);
-        margin-left: 44px;
-        line-height: 1.6;
-      }
-      .update-desc ul { list-style: none; margin: 3px 0 0; }
-      .update-desc li { padding-left: 14px; text-indent: -14px; }
-      .update-desc li::before { content: "・"; color: #9aa3b2; }
-      .badge-new {
-        display: inline-block;
-        font-size: 10px;
-        font-weight: 700;
-        color: #fff;
-        background: var(--blue);
-        padding: 1px 7px;
-        border-radius: 4px;
-        margin-left: 6px;
-        vertical-align: middle;
-      }
-      .updates-all {
-        display: flex;
-        justify-content: flex-end;
-        padding: 12px 22px;
-        border-top: 1px solid var(--border);
-      }
-      .updates-all a {
-        font-size: 12px;
-        color: var(--blue);
-        text-decoration: none;
-        font-weight: 700;
-      }
-      .updates-all a:hover {
-        text-decoration: underline;
-      }
+      .s-card:hover { border-color:var(--main); box-shadow:0 10px 30px rgba(30,95,168,.10); transform:translateY(-3px); }
+      .s-card:hover .arrow { width:30px; }
+      .s-head { display:flex; align-items:center; gap:12px; }
+      .s-icon { width:40px; height:40px; border-radius:10px; background:var(--main-tint); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+      .s-icon svg { width:21px; height:21px; stroke:var(--main); fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+      .s-name { font-size:18px; font-weight:900; line-height:1.4; }
+      .s-desc { font-size:14.5px; color:var(--ink-2); line-height:1.8; flex:1; }
+      .s-foot { display:flex; align-items:center; justify-content:space-between; margin-top:4px; padding-top:10px; border-top:1px solid var(--line); }
+      .s-count { font-size:13px; font-weight:700; color:var(--ink-2); }
 
-      /* ── 全ページ一覧への導線 ── */
-      .all-pages {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 16px 22px;
-        background: var(--white);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        text-decoration: none;
-        color: var(--ink);
-        transition: border-color 0.2s, box-shadow 0.2s;
-      }
-      .all-pages:hover {
-        border-color: var(--blue);
-        box-shadow: 0 6px 22px rgba(30, 95, 168, 0.09);
-      }
-      .all-pages-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-      .all-pages-main { font-size: 15px; font-weight: 700; }
-      .all-pages-sub { font-size: 12px; color: #666; line-height: 1.6; }
-      .all-pages-arrow { margin-left: auto; font-size: 20px; color: #666; flex-shrink: 0; }
-      @media (max-width: 640px) {
-        .all-pages { padding: 14px 16px; }
-        .all-pages-main { font-size: 14px; }
-      }
+      /* ── 更新情報（静かなリスト。日付は補助、NEWは付けない） ── */
+      .sec-head { margin-bottom:16px; }
+      .sec-en { font-family:var(--en); font-size:14px; font-weight:700; letter-spacing:.14em; color:var(--main); }
+      .sec-ja { font-size:24px; font-weight:900; }
+      .updates { background:var(--surface); border:var(--bw) solid var(--border); border-radius:var(--radius); overflow:hidden; }
+      .u-row { display:grid; grid-template-columns:2.6em 6.5em 1fr; align-items:baseline; gap:12px; padding:13px 22px; border-bottom:1px solid var(--line); }
+      .u-row:hover .u-title { color:var(--main); text-decoration:underline; }
+      .u-date { font-size:13px; font-weight:500; color:var(--ink-3); text-align:right; font-variant-numeric:tabular-nums; }
+      .u-chip { justify-self:start; font-size:12px; font-weight:700; padding:1px 9px; border-radius:4px; background:#f2f2f2; color:#444444; white-space:nowrap; }
+      .u-title { font-size:15px; font-weight:700; line-height:1.6; }
+      .u-all { display:flex; justify-content:flex-end; padding:12px 22px; }
 
-      /* ── Footer ── */
-      footer {
-        background: var(--white);
-        border-top: 1px solid var(--border);
-        padding: 28px 24px;
-        text-align: center;
-        font-size: 11px;
-        color: var(--sub);
-        line-height: 1.8;
-      }
+      footer { margin-top:72px; padding:28px 24px; text-align:center; font-size:12.5px; color:var(--ink-2); border-top:var(--bw) solid var(--border); background:var(--surface); }
 
-      /* ── Mobile ── */
-      .sp-br {
-        display: none;
+      @media (max-width:900px) {
+        .hero-inner { grid-template-columns:1fr; gap:28px; }
+        /* 縦一列になったら斜め面は消し、探すは白いカードに戻す */
+        .hero-inner::before, .hero-inner::after { display:none; }
+        .find { padding:20px 22px; background:var(--surface); border:var(--bw) solid var(--border); border-radius:16px; }
+        .shelf { grid-template-columns:repeat(2, 1fr); }
       }
-      @media (max-width: 700px) {
-        .sp-br {
-          display: inline;
-        }
-        .hero {
-          padding: 40px 20px 44px;
-        }
-        .hero h1 {
-          font-size: 25px;
-        }
-        .hero-desc {
-          font-size: 14px;
-        }
-        .pillar-grid {
-          grid-template-columns: 1fr;
-          gap: 12px;
-        }
-        .pillar-card {
-          padding: 22px 20px 20px;
-        }
-        .pillar-name {
-          font-size: 18px;
-        }
-        .contents-grid {
-          grid-template-columns: 1fr;
-          gap: 12px;
-        }
-        main {
-          padding: 36px 16px 56px;
-          gap: 44px;
-        }
-        .sec-heading {
-          font-size: 20px;
-        }
-        .update-desc {
-          margin-left: 0;
-          margin-top: 4px;
-        }
+      @media (max-width:640px) {
+        body { font-size:14px; }
+        .wrap { padding:0 14px; }
+        .hero { padding:28px 0 32px; }
+        .hero-desc { font-size:15px; }
+        .hu { padding:9px 14px 10px; }
+        .hu-more { font-size:12px; }
+        .hu-title { font-size:13.5px; }
+        .find { padding:18px; }
+        .find-ttl { font-size:18px; }
+        section { padding-top:44px; }
+        .band { grid-template-columns:1fr; gap:8px; }
+        .band-panel { min-height:80px; border-radius:12px 12px 0 0; clip-path:polygon(0 0, 100% 0, calc(100% - 40px) 100%, 0 100%); padding:14px 56px 12px 18px; }
+        .band-panel::after { font-size:84px; top:-18px; }
+        .band-ja { font-size:21px; }
+        .band-desc { font-size:14px; padding:0 2px; }
+        .shelf, .shelf.two { grid-template-columns:1fr; gap:12px; }
+        .s-card { padding:16px 16px 12px; }
+        .s-name { font-size:16.5px; }
+        .s-desc { font-size:14px; }
+        .sec-ja { font-size:20px; }
+        .u-row { grid-template-columns:auto 1fr; gap:4px 10px; padding:12px 16px; }
+        .u-date { text-align:left; }
+        .u-title { grid-column:1 / -1; font-size:14px; }
       }
+      @media (prefers-reduced-motion:reduce) { *, *::before, *::after { transition:none !important; } }
     </style>
   </head>
   <body>
     <script src="assets/site-header.js" defer></script>
-    <script src="assets/site-recents.js" defer></script>
     <script src="assets/page-meta.js" defer></script>
-    <script src="assets/hero-updates.js" defer></script>
+    <script src="assets/site-recents.js" defer></script>
 
     <div class="hero">
-      <div class="hero-inner">
-        <p class="hero-label">調剤報酬・薬歴</p>
-        <h1><span class="nb">調剤報酬も薬歴も</span><span class="nb"><em>「現場で使える形」</em>に。</span></h1>
-        <p class="hero-desc">
-          日々の業務に必要な情報を、<br
-            class="sp-br"
-          />ひとまとめに。
-        </p>
+      <div class="wrap hero-inner">
+        <div>
+          <h1><span class="nb">調剤報酬も薬歴も、</span><span class="nb"><em>「現場で使える形」</em>に。</span></h1>
+          <p class="hero-desc">日々の業務に必要な情報を、ひとまとめに。</p>
+          <!-- 最新の更新1件（下の更新情報から自動で作る。30日より前なら出さない） -->
+          <div class="hu" id="hu" hidden>
+            <span class="hu-tag">最新の更新</span>
+            <span class="hu-date"></span>
+            <a class="hu-title" href="#"></a>
+            <a class="hu-more" href="updates.html">すべての更新履歴 ›</a>
+          </div>
+        </div>
+
+        <div class="find">
+          <!-- 収録ページ数は page-meta から数える -->
+          <span class="find-ttl"><span id="st-total-wrap" hidden><b id="st-total"></b>件の資料から</span><span id="st-plain">資料を</span>探す</span>
+          <span class="find-stat" id="find-stat" hidden>調剤報酬 <span id="st-c"></span>件・薬歴 <span id="st-y"></span>件</span>
+          <form class="find-form" action="ページ一覧.html" method="get" role="search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" /><line x1="16.5" y1="16.5" x2="21" y2="21" /></svg>
+            <input type="search" name="q" placeholder="キーワードで検索" aria-label="キーワード" autocomplete="off" />
+            <button type="submit">検索</button>
+          </form>
+          <a class="cta" href="ページ一覧.html">カテゴリー別の一覧から探す<span class="arrow"></span></a>
+          <!-- 最近見たページ（履歴がある人にだけ出す。site-recents.js の履歴から直近3件） -->
+          <div class="rv" id="rv" hidden>
+            <span class="rv-label">最近見たページ</span>
+            <ul class="rv-list"></ul>
+          </div>
+        </div>
       </div>
     </div>
 
-
-    <main>
-      <!-- ── 二本柱 ── -->
-      <section>
-        <div class="pillar-grid">
-          <a class="pillar-card" href="#chozai">
-            <div class="pillar-head">
-              <div class="pillar-icon">
-                <svg viewBox="0 0 24 24">
-                  <polygon points="12 2 2 7 12 12 22 7 12 2" />
-                  <polyline points="2 17 12 22 22 17" />
-                  <polyline points="2 12 12 17 22 12" />
-                </svg>
-              </div>
-              <div class="pillar-name">調剤報酬</div>
-            </div>
-            <p class="pillar-desc">
-              加算の算定要件・2026年改定・疑義解釈・チェックリスト・ツール。
-            </p>
-            <span class="pillar-cta">
-              一覧を見る
-              <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6" /></svg>
-            </span>
+    <section id="chozai">
+      <div class="wrap">
+        <div class="band">
+          <div class="band-panel" data-wm="CHOZAI"><span class="band-en">CHOZAI HOSHU</span><h2 class="band-ja">調剤報酬</h2></div>
+          <p class="band-desc">加算の算定要件・2026年改定・疑義解釈・チェックリスト・ツール。</p>
+        </div>
+        <div class="shelf">
+          <a class="s-card" href="加算まとめ.html" data-count-from="加算まとめ.html" data-count-selector=".tool-card" data-count-suffix="資料収録">
+            <div class="s-head"><div class="s-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></svg></div><div class="s-name">算定項目まとめ</div></div>
+            <p class="s-desc">算定要件・点数・薬歴記載・摘要欄の注意点を、加算・管理料などの項目ごとに確認できます。</p>
+            <div class="s-foot"><span class="s-count"></span><span class="cta">一覧を見る<span class="arrow"></span></span></div>
           </a>
-
-          <!-- 薬歴は行き先が薬歴マニュアル1つなので、下の棚を経由せず直接開く -->
-          <a class="pillar-card" href="yakureki/index.html">
-            <div class="pillar-head">
-              <div class="pillar-icon">
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 20h9" />
-                  <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z" />
-                </svg>
-              </div>
-              <div class="pillar-name">薬歴マニュアル</div>
-            </div>
-            <p class="pillar-desc">
-              基本記載ルール・個別指導で問われやすい項目・加算別の記載事項・文例集。
-            </p>
-            <span class="pillar-cta">
-              マニュアルを開く
-              <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6" /></svg>
-            </span>
+          <a class="s-card" href="checklists.html" data-count-from="checklists.html" data-count-selector=".tool-card" data-count-suffix="リスト収録">
+            <div class="s-head"><div class="s-icon"><svg viewBox="0 0 24 24"><path d="M9 2h6a1 1 0 0 1 1 1v1h1a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1V3a1 1 0 0 1 1-1z" /><path d="M9 13l2 2 4-4" /></svg></div><div class="s-name">算定チェックリスト</div></div>
+            <p class="s-desc">印刷して現場で使える、算定もれ防止と業務手順の確認リストをまとめています。</p>
+            <div class="s-foot"><span class="s-count"></span><span class="cta">一覧を見る<span class="arrow"></span></span></div>
+          </a>
+          <a class="s-card" href="kaitei2026.html" data-count-from="kaitei2026.html" data-count-selector=".card,.card-digest" data-count-suffix="資料収録">
+            <div class="s-head"><div class="s-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></svg></div><div class="s-name">2026年 調剤報酬改定</div></div>
+            <p class="s-desc">2026年改定で変更・新設された項目を整理。ダイジェスト・算定フロー・早見表・別表などを収録。</p>
+            <div class="s-foot"><span class="s-count"></span><span class="cta">資料一覧を見る<span class="arrow"></span></span></div>
+          </a>
+          <a class="s-card" href="tools.html" data-count-from="tools.html" data-count-selector=".tool-card" data-count-suffix="ツール収録">
+            <div class="s-head"><div class="s-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></svg></div><div class="s-name">実務ツール集</div></div>
+            <p class="s-desc">疑義解釈検索・届出判定・併算定可否チェックなど、現場ですぐ使えるツールをまとめています。</p>
+            <div class="s-foot"><span class="s-count"></span><span class="cta">ツール一覧を見る<span class="arrow"></span></span></div>
+          </a>
+          <a class="s-card" href="knowledge.html" data-count-from="knowledge.html" data-count-selector=".tool-card" data-count-suffix="資料収録">
+            <div class="s-head"><div class="s-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></svg></div><div class="s-name">実務ナレッジ集</div></div>
+            <p class="s-desc">日々の業務で役立つ実務知識・Q&amp;Aをまとめています。</p>
+            <div class="s-foot"><span class="s-count"></span><span class="cta">ナレッジ一覧を見る<span class="arrow"></span></span></div>
+          </a>
+          <a class="s-card" href="事務スタッフ向け.html" data-count-from="事務スタッフ向け.html" data-count-selector=".tool-card" data-count-suffix="資料収録">
+            <div class="s-head"><div class="s-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="s-name">事務スタッフ向け</div></div>
+            <p class="s-desc">改定ポイント・レセコンの入力方法（Pharnes）・摘要欄の記載事項・高額療養費の窓口対応など、事務スタッフ向け資料をまとめています。</p>
+            <div class="s-foot"><span class="s-count"></span><span class="cta">資料一覧を見る<span class="arrow"></span></span></div>
           </a>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- 最近見たページ（履歴がある時だけ site-recents.js が表示する）。
-           毎日使う人は「この前見たページをもう一度」が多いので、棚より前に置く -->
-      <section id="site-recents-section" style="display:none">
-        <p class="sec-tag">RECENTS</p>
-        <h2 class="sec-heading">最近見たページ</h2>
-        <div id="site-recents-container"></div>
-      </section>
-
-      <!-- ── 調剤報酬の棚 ── -->
-      <section id="chozai">
-        <p class="sec-tag">CHOZAI HOSHU</p>
-        <h2 class="sec-heading">調剤報酬</h2>
-        <div class="contents-grid">
-          <a
-            class="content-card"
-            href="加算まとめ.html"
-            data-count-from="加算まとめ.html"
-            data-count-selector=".tool-card"
-            data-count-suffix="資料収録"
-          >
-            <div class="card-icon-wrap">
-              <svg viewBox="0 0 24 24">
-                <polygon points="12 2 2 7 12 12 22 7 12 2" />
-                <polyline points="2 17 12 22 22 17" />
-                <polyline points="2 12 12 17 22 12" />
-              </svg>
-            </div>
-            <div class="card-name">算定項目まとめ</div>
-            <div class="card-desc">
-              算定要件・点数・薬歴記載・摘要欄の注意点を、加算・管理料などの項目ごとに確認できます。
-            </div>
-            <div class="card-meta"></div>
-            <div class="card-cta">
-              一覧を見る
-              <svg viewBox="0 0 24 24">
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </div>
+    <section id="yakureki">
+      <div class="wrap">
+        <div class="band">
+          <div class="band-panel" data-wm="YAKUREKI"><span class="band-en">YAKUREKI</span><h2 class="band-ja">薬歴</h2></div>
+          <p class="band-desc">基本記載ルール・個別指導で問われやすい項目・加算別の記載事項・文例集。</p>
+        </div>
+        <div class="shelf two">
+          <a class="s-card" href="yakureki/index.html">
+            <div class="s-head"><div class="s-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></svg></div><div class="s-name">薬歴マニュアル</div></div>
+            <p class="s-desc">基本記載ルール・個別指導で問われやすい項目・加算別の記載事項・ハイリスク薬の記載例・文例集。薬歴の書き方はここから。</p>
+            <div class="s-foot"><span class="s-count"></span><span class="cta">マニュアルを開く<span class="arrow"></span></span></div>
           </a>
-
-          <a
-            class="content-card"
-            href="checklists.html"
-            data-count-from="checklists.html"
-            data-count-selector=".tool-card"
-            data-count-suffix="リスト収録"
-          >
-            <div class="card-icon-wrap">
-              <svg viewBox="0 0 24 24">
-                <path d="M9 2h6a1 1 0 0 1 1 1v1h1a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1V3a1 1 0 0 1 1-1z" />
-                <path d="M9 13l2 2 4-4" />
-              </svg>
-            </div>
-            <div class="card-name">算定チェックリスト</div>
-            <div class="card-desc">
-              印刷して現場で使える、算定もれ防止と業務手順の確認リストをまとめています。
-            </div>
-            <div class="card-meta"></div>
-            <div class="card-cta">
-              一覧を見る
-              <svg viewBox="0 0 24 24">
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </div>
-          </a>
-
-          <a
-            class="content-card"
-            href="kaitei2026.html"
-            data-count-from="kaitei2026.html"
-            data-count-selector=".card,.card-digest"
-            data-count-suffix="資料収録"
-          >
-            <div class="card-icon-wrap">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                />
-                <polyline points="14 2 14 8 20 8" />
-                <line x1="16" y1="13" x2="8" y2="13" />
-                <line x1="16" y1="17" x2="8" y2="17" />
-              </svg>
-            </div>
-            <div class="card-name">2026年 調剤報酬改定</div>
-            <div class="card-desc">
-              2026年改定で変更・新設された項目を整理。ダイジェスト・算定フロー・早見表・別表などを収録。
-            </div>
-            <div class="card-meta"></div>
-            <div class="card-cta">
-              資料一覧を見る
-              <svg viewBox="0 0 24 24">
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </div>
-          </a>
-
-          <a
-            class="content-card"
-            href="tools.html"
-            data-count-from="tools.html"
-            data-count-selector=".tool-card"
-            data-count-suffix="ツール収録"
-          >
-            <div class="card-icon-wrap">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
-                />
-              </svg>
-            </div>
-            <div class="card-name">実務ツール集</div>
-            <div class="card-desc">
-              疑義解釈検索・届出判定・併算定可否チェックなど、現場ですぐ使えるツールをまとめています。
-            </div>
-            <div class="card-meta"></div>
-            <div class="card-cta">
-              ツール一覧を見る
-              <svg viewBox="0 0 24 24">
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </div>
-          </a>
-
-          <a
-            class="content-card"
-            href="knowledge.html"
-            data-count-from="knowledge.html"
-            data-count-selector=".tool-card"
-            data-count-suffix="資料収録"
-          >
-            <div class="card-icon-wrap">
-              <svg viewBox="0 0 24 24">
-                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-              </svg>
-            </div>
-            <div class="card-name">実務ナレッジ集</div>
-            <div class="card-desc">
-              日々の業務で役立つ実務知識・Q&amp;Aをまとめています。
-            </div>
-            <div class="card-meta"></div>
-            <div class="card-cta">
-              ナレッジ一覧を見る
-              <svg viewBox="0 0 24 24">
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </div>
-          </a>
-
-          <a
-            class="content-card"
-            href="事務スタッフ向け.html"
-            data-count-from="事務スタッフ向け.html"
-            data-count-selector=".tool-card"
-            data-count-suffix="資料収録"
-          >
-            <div class="card-icon-wrap">
-              <svg viewBox="0 0 24 24">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                <circle cx="9" cy="7" r="4"/>
-                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-              </svg>
-            </div>
-            <div class="card-name">事務スタッフ向け</div>
-            <div class="card-desc">
-              改定ポイント整理・サマリ・入力画面で解説（Pharnes）・別表Ⅰなど、事務スタッフ向け資料をまとめています。
-            </div>
-            <div class="card-meta"></div>
-            <div class="card-cta">
-              資料一覧を見る
-              <svg viewBox="0 0 24 24">
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </div>
+          <a class="s-card" href="yakureki/薬歴の書き方_実例解説集.html">
+            <div class="s-head"><div class="s-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9" /><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z" /></svg></div><div class="s-name">薬歴の書き方｜実例解説集</div></div>
+            <p class="s-desc">現場でよく見かける薬歴を取り上げ、加算ごとに「薬歴に何を残すか」を添削形式で解説しています。</p>
+            <div class="s-foot"><span class="s-count"></span><span class="cta">実例解説を見る<span class="arrow"></span></span></div>
           </a>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- ── 薬歴の棚 ── -->
-      <section id="yakureki">
-        <p class="sec-tag">YAKUREKI</p>
-        <h2 class="sec-heading">薬歴</h2>
-        <div class="contents-grid">
-          <a class="content-card" href="yakureki/index.html">
-            <div class="card-icon-wrap">
-              <svg viewBox="0 0 24 24">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-              </svg>
-            </div>
-            <div class="card-name">薬歴マニュアル</div>
-            <div class="card-desc">
-              基本記載ルール・個別指導で問われやすい項目・加算別の記載事項・ハイリスク薬の記載例・文例集。薬歴の書き方はここから。
-            </div>
-            <div class="card-meta"></div>
-            <div class="card-cta">
-              マニュアルを開く
-              <svg viewBox="0 0 24 24">
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </div>
-          </a>
-
-          <a class="content-card" href="yakureki/薬歴の書き方_実例解説集.html">
-            <div class="card-icon-wrap">
-              <svg viewBox="0 0 24 24">
-                <path d="M12 20h9" />
-                <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z" />
-              </svg>
-            </div>
-            <div class="card-name">薬歴の書き方｜実例解説集</div>
-            <div class="card-desc">
-              現場でよく見かける薬歴を取り上げ、加算ごとに「薬歴に何を残すか」を添削形式で解説しています。
-            </div>
-            <div class="card-meta"></div>
-            <div class="card-cta">
-              実例解説を見る
-              <svg viewBox="0 0 24 24">
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </div>
-          </a>
+    <section>
+      <div class="wrap">
+        <div class="sec-head"><p class="sec-en">UPDATES</p><h2 class="sec-ja">更新情報</h2></div>
+        <div class="updates">
+          <a class="u-row" href="index.html"><span class="u-date">9/11</span><span class="u-title">トップページを刷新し、トップから直接キーワードで資料を探せるようにしました</span></a>
+          <a class="u-row" href="ナレッジ/OTC類似薬の一部保険外療養.html"><span class="u-date">9/9</span><span class="u-title">OTC類似薬の一部保険外療養に、処方箋の新しい欄と特別の料金の計算方法を反映しました</span></a>
+          <a class="u-row" href="改定資料/選定療養_概要2026.html"><span class="u-date">9/9</span><span class="u-title">選定療養の改定ポイントに、2027年3月からの計算方法の変更を追加しました</span></a>
+          <a class="u-row" href="yakureki/薬歴の書き方_実例解説集.html"><span class="u-date">9/7</span><span class="u-title">薬歴の実例解説集に、オンライン薬剤情報を活用した監査・薬歴の記載事例を追加しました</span></a>
+          <a class="u-row" href="ナレッジ/調剤報酬QA.html#q-baseup-1"><span class="u-date">9/7</span><span class="u-title">複数の医療機関の処方箋を同時に受け付けたときのベースアップ評価料の算定に関するQ&amp;Aを追加しました</span></a>          <div class="u-all"><a class="cta" href="updates.html">すべての更新履歴を見る<span class="arrow"></span></a></div>
         </div>
-      </section>
-
-      <section>
-        <p class="sec-tag">UPDATES</p>
-        <h2 class="sec-heading">更新情報</h2>
-        <div class="updates-box">
-          <ul class="updates-list">
-            <li>
-              <div class="update-line1">
-                <span class="update-date">9/9</span>
-                <a class="update-name" href="ナレッジ/OTC類似薬の一部保険外療養.html">OTC類似薬の一部保険外療養に、処方箋の新しい欄と特別の料金の計算方法を反映しました</a>
-              </div>
-            </li>
-            <li>
-              <div class="update-line1">
-                <span class="update-date">9/9</span>
-                <a class="update-name" href="改定資料/選定療養_概要2026.html">選定療養の改定ポイントに、2027年3月からの計算方法の変更を追加しました</a>
-              </div>
-            </li>
-            <li>
-              <div class="update-line1">
-                <span class="update-date">9/7</span>
-                <a class="update-name" href="yakureki/薬歴の書き方_実例解説集.html">薬歴の実例解説集に、オンライン薬剤情報を活用した監査・薬歴の記載事例を追加しました</a>
-              </div>
-            </li>
-            <li>
-              <div class="update-line1">
-                <span class="update-date">9/7</span>
-                <a class="update-name" href="ナレッジ/調剤報酬QA.html#q-baseup-1">複数の医療機関の処方箋を同時に受け付けたときのベースアップ評価料の算定に関するQ&amp;Aを追加しました</a>
-              </div>
-            </li>
-            <li>
-              <div class="update-line1">
-                <span class="update-date">9/4</span>
-                <a class="update-name" href="ナレッジ/OTC類似薬の一部保険外療養.html">OTC類似薬の一部保険外療養に、9月3日の新しい情報を反映しました</a>
-              </div>
-            </li>
-
-                                                                                                                                    </ul>
-          <div class="updates-all">
-            <a href="updates.html">すべての更新履歴を見る →</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- 全ページ一覧（調剤報酬・薬歴のどちらにも属さないので独立させる。
-           更新情報を見たあと「他も探そう」となる流れなので、更新情報の下に置く） -->
-      <section>
-        <a class="all-pages" href="ページ一覧.html">
-          <span class="all-pages-text">
-            <span class="all-pages-main">ページ一覧・サイト内検索</span>
-            <span class="all-pages-sub">キーワード検索やカテゴリー別の一覧から探せます。</span>
-          </span>
-          <span class="all-pages-arrow">›</span>
-        </a>
-      </section>
-
-    </main>
+      </div>
+    </section>
 
     <footer>
-      <p>
-        ※各加算のまとめ資料は情報管理室が<br
-          class="sp-br"
-        />独自に作成したものです。公式の通知・告示ではありません。
-      </p>
+      <p>※各加算のまとめ資料は情報管理室が独自に作成したものです。公式の通知・告示ではありません。</p>
     </footer>
 
     <script>
-      // ── 更新情報の NEW バッジを page-meta から出す ──
-      // 手書きだと期限が来ても消えず、各ページ側のバッジと食い違うため、
-      // page-meta.json の newUntil（＝ハブページと同じ基準）だけで判定する。
       document.addEventListener("DOMContentLoaded", function () {
-        var meta = window.__pageMeta;
-        if (!meta) return;
-        var today = new Date();
-        today.setHours(0, 0, 0, 0);
+        var meta = window.__pageMeta || {};
 
-        document.querySelectorAll(".update-name[href]").forEach(function (a) {
-          // index.html はサイトルート直下にあるので href がそのままキーになる
-          var key = decodeURIComponent(
-            a.getAttribute("href").split("#")[0].split("?")[0]
-          );
-          var entry = meta[key];
-          if (!entry || !entry.newUntil) return;
-          var until = new Date(entry.newUntil + "T23:59:59");
-          if (isNaN(until.getTime()) || today > until) return;
+        // ── 収録ページ数（フォルダごとに数える） ──
+        var CHOZAI_DIRS = ["加算まとめ/", "チェックリスト/", "改定資料/", "ツール/", "ナレッジ/", "事務/"];
+        var c = 0, y = 0;
+        Object.keys(meta).forEach(function (k) {
+          if (k.indexOf("yakureki/") === 0) { if (k !== "yakureki/index.html") y++; }
+          else if (CHOZAI_DIRS.some(function (d) { return k.indexOf(d) === 0; })) c++;
+        });
+        if (c + y > 0) {
+          document.getElementById("st-total").textContent = c + y;
+          document.getElementById("st-c").textContent = c;
+          document.getElementById("st-y").textContent = y;
+          document.getElementById("st-total-wrap").hidden = false;
+          document.getElementById("st-plain").hidden = true;
+          document.getElementById("find-stat").hidden = false;
+        }
 
-          var badge = document.createElement("span");
-          badge.className = "badge-new";
-          badge.textContent = "NEW";
-          a.appendChild(badge);
+        // ── 最近見たページ（直近3件） ──
+        var rec = (window.SITE_RECENTS && window.SITE_RECENTS.get()) || [];
+        if (rec.length) {
+          var ul = document.querySelector("#rv .rv-list");
+          rec.slice(0, 3).forEach(function (r) {
+            var li = document.createElement("li");
+            var a = document.createElement("a");
+            a.href = (window.SITE_ROOT || "") + r.file;
+            a.textContent = r.title;
+            li.appendChild(a);
+            ul.appendChild(li);
+          });
+          document.getElementById("rv").hidden = false;
+        }
+
+        // ── ヒーローに最新の更新1件（下の更新情報の先頭から作る。30日より前なら出さない） ──
+        var first = document.querySelector(".u-row");
+        if (first) {
+          var m = first.querySelector(".u-date").textContent.match(/(\d{1,2})\/(\d{1,2})/);
+          var now = new Date();
+          var dt = m && new Date(now.getFullYear(), Number(m[1]) - 1, Number(m[2]));
+          if (dt && dt - now > 45 * 86400000) dt.setFullYear(dt.getFullYear() - 1);
+          if (dt && (now - dt) / 86400000 <= 30) {
+            var hu = document.getElementById("hu");
+            hu.querySelector(".hu-date").textContent = m[0];
+            var t = hu.querySelector(".hu-title");
+            t.href = first.getAttribute("href");
+            t.textContent = first.querySelector(".u-title").textContent;
+            hu.hidden = false;
+          }
+        }
+
+        // ── 更新情報の分類ラベル（リンク先のフォルダで決める。トップは最新5件なので NEW は付けない） ──
+        var CHIPS = {
+          "加算まとめ/": ["算定項目", "#dfe9f6", "#2a5580"],
+          "改定資料/": ["改定資料", "#f3e8d0", "#7a5718"],
+          "ナレッジ/": ["ナレッジ", "#e3efe0", "#3d6b2e"],
+          "yakureki/": ["薬歴", "#e5e0f2", "#4b3f80"],
+          "チェックリスト/": ["チェックリスト", "#f2f2f2", "#444444"],
+          "ツール/": ["ツール", "#f2f2f2", "#444444"],
+          "事務/": ["事務", "#f2f2f2", "#444444"]
+        };
+        document.querySelectorAll(".u-row").forEach(function (a) {
+          var key = decodeURIComponent(a.getAttribute("href").replace(/^\.\.\//, "").split("#")[0]);
+          var chip = document.createElement("span");
+          chip.className = "u-chip";
+          chip.textContent = "サイト全体";   // フォルダに入っていないページ（トップ・ページ一覧など）
+          Object.keys(CHIPS).some(function (dir) {
+            if (key.indexOf(dir) !== 0) return false;
+            chip.textContent = CHIPS[dir][0];
+            chip.style.background = CHIPS[dir][1];
+            chip.style.color = CHIPS[dir][2];
+            return true;
+          });
+          a.insertBefore(chip, a.querySelector(".u-title"));
         });
       });
 
-      // ── コンテンツカードの収録数を自動カウント ──
-      // data-count-from / data-count-selector / data-count-suffix 属性を持つ要素について、
-      // 対象ページをフェッチして指定セレクタの内部リンクカード数をカウントし、
-      // .card-meta に「N◯◯」と表示する。
-      (function () {
-        const cards = document.querySelectorAll("[data-count-from]");
-        cards.forEach((card) => {
-          const url = card.dataset.countFrom;
-          const selector = card.dataset.countSelector || ".card";
-          const suffix = card.dataset.countSuffix || "件";
-          const meta = card.querySelector(".card-meta");
-          if (!meta) return;
-
-          fetch(url)
-            .then((res) => res.text())
-            .then((html) => {
-              const doc = new DOMParser().parseFromString(html, "text/html");
-              const items = doc.querySelectorAll(selector);
-              // 内部リンクのみカウント（http/https始まりの外部リンクは除外）
-              const count = Array.from(items).filter((el) => {
-                const href = el.getAttribute("href") || "";
-                return !/^https?:\/\//i.test(href);
-              }).length;
-              meta.textContent = count + suffix;
-            })
-            .catch(() => {
-              /* 失敗時はデフォルトテキストのまま */
-            });
-        });
-      })();
+      // ── 棚カードの収録数（各ハブの .tool-card 等を数える。ハブ側のクラス名を変えないこと） ──
+      document.querySelectorAll("[data-count-from]").forEach(function (card) {
+        var out = card.querySelector(".s-count");
+        fetch(card.dataset.countFrom)
+          .then(function (r) { return r.text(); })
+          .then(function (html) {
+            var doc = new DOMParser().parseFromString(html, "text/html");
+            var n = Array.from(doc.querySelectorAll(card.dataset.countSelector)).filter(function (el) {
+              return !/^https?:\/\//i.test(el.getAttribute("href") || "");
+            }).length;
+            out.textContent = n + card.dataset.countSuffix;
+          })
+          .catch(function () {});
+      });
     </script>
     <script
       data-goatcounter="https://kimura-chozai.goatcounter.com/count"
