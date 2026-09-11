@@ -2,13 +2,13 @@ window.__pageMeta = {
   "加算まとめ.html": {
     "lastUpdated": "2026-09-11"
   },
-  "index.html": {
-    "lastUpdated": "2026-09-11"
-  },
   "404.html": {
     "lastUpdated": "2026-08-02"
   },
   "事務スタッフ向け.html": {
+    "lastUpdated": "2026-09-11"
+  },
+  "index.html": {
     "lastUpdated": "2026-09-11"
   },
   "checklists.html": {
