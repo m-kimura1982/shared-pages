@@ -2,17 +2,13 @@ window.__pageMeta = {
   "加算まとめ.html": {
     "lastUpdated": "2026-09-11"
   },
-  "ページ一覧.html": {
-    "lastUpdated": "2026-09-11",
-    "newUntil": "2026-08-13"
+  "index.html": {
+    "lastUpdated": "2026-09-11"
   },
   "404.html": {
     "lastUpdated": "2026-08-02"
   },
   "事務スタッフ向け.html": {
-    "lastUpdated": "2026-09-11"
-  },
-  "index.html": {
     "lastUpdated": "2026-09-11"
   },
   "checklists.html": {
@@ -26,6 +22,10 @@ window.__pageMeta = {
   },
   "knowledge.html": {
     "lastUpdated": "2026-09-11"
+  },
+  "ページ一覧.html": {
+    "lastUpdated": "2026-09-11",
+    "newUntil": "2026-08-13"
   },
   "kaitei2026.html": {
     "lastUpdated": "2026-09-11"
@@ -125,9 +125,6 @@ window.__pageMeta = {
   "加算まとめ/調剤後薬剤管理指導料.html": {
     "lastUpdated": "2026-08-20",
     "newUntil": "2026-08-27"
-  },
-  "加算まとめ/調剤管理料_2026改定.html": {
-    "lastUpdated": "2026-09-02"
   },
   "加算まとめ/電子的調剤情報連携体制整備加算_2026改定.html": {
     "lastUpdated": "2026-08-31"
@@ -244,6 +241,9 @@ window.__pageMeta = {
   "加算まとめ/服用薬剤調整支援料１.html": {
     "lastUpdated": "2026-09-03",
     "newUntil": "2026-09-10"
+  },
+  "加算まとめ/調剤管理料_2026改定.html": {
+    "lastUpdated": "2026-09-02"
   },
   "加算まとめ/薬学的有害事象等防止加算.html": {
     "lastUpdated": "2026-09-02"
