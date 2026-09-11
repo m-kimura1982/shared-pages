@@ -1,6 +1,6 @@
 window.__pageMeta = {
   "加算まとめ.html": {
-    "lastUpdated": "2026-09-11"
+    "lastUpdated": "2026-09-12"
   },
   "404.html": {
     "lastUpdated": "2026-08-02"
@@ -28,7 +28,7 @@ window.__pageMeta = {
     "newUntil": "2026-08-13"
   },
   "kaitei2026.html": {
-    "lastUpdated": "2026-09-11"
+    "lastUpdated": "2026-09-12"
   },
   "yakureki/テンプレート_メンタル.html": {
     "lastUpdated": "2026-08-06"
