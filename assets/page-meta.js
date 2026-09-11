@@ -3,7 +3,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-09-11"
   },
   "ページ一覧.html": {
-    "lastUpdated": "2026-08-24",
+    "lastUpdated": "2026-09-11",
     "newUntil": "2026-08-13"
   },
   "404.html": {
@@ -28,7 +28,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-09-11"
   },
   "kaitei2026.html": {
-    "lastUpdated": "2026-09-09"
+    "lastUpdated": "2026-09-11"
   },
   "yakureki/テンプレート_メンタル.html": {
     "lastUpdated": "2026-08-06"
@@ -84,7 +84,7 @@ window.__pageMeta = {
     "newUntil": "2026-08-25"
   },
   "yakureki/index.html": {
-    "lastUpdated": "2026-09-08",
+    "lastUpdated": "2026-09-11",
     "newUntil": "2026-07-27"
   },
   "yakureki/薬歴の書き方_実例解説集.html": {
