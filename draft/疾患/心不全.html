@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>心不全｜疾患の勉強メモ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="shikkan.css" />
+  </head>
+  <body>
+    <script src="../../assets/site-header.js" defer></script>
+    <script src="../../assets/page-toc.js" defer></script>
+
+    <div class="page">
+      <div class="page-title">
+        <h1>心不全</h1>
+        <p>薬剤師が投薬でつまずくところから逆算した勉強メモ</p>
+      </div>
+
+      <div class="card" data-toc="skip">
+        <div class="sibs">
+          <span class="lab">心不全</span>
+          <span class="on">総論</span>
+          <a href="心不全_薬物療法.html">薬物療法</a>
+          <a href="心不全_うっ血と利尿薬.html">うっ血と利尿薬</a>
+          <a href="心不全_渡すときに見ること.html">渡すときに見ること</a>
+        </div>
+      </div>
+
+      <div class="page-toc-wrap"><div id="page-toc"></div></div>
+
+      <div class="card" data-toc-label="覚えること">
+        <div class="card-title">このページで覚えること</div>
+        <div class="keys">
+          <div><span class="ck">✓</span><span class="tx">心不全は<b>病名ではなく症候群</b>。だから「心不全の薬」ではなく<b>処方を3層に分けて読む</b>（予後を変える薬／症状を取る薬／原因と併存症の薬）</span></div>
+          <div><span class="ck">✓</span><span class="tx"><b>同じ薬でも心不全では顔が変わる。</b>ARBもβ遮断薬もMRAも、ここでは降圧薬ではなく<b>心保護薬</b>。だから開始量が桁違いに小さく、血圧が高くなくても出る</span></div>
+          <div><span class="ck">✓</span><span class="tx">分かれ道は<b>LVEF（左室駆出率）</b>。40%以下のHFrEFだけが薬で予後を変えられる領域で、薬物療法の話はほぼここ</span></div>
+          <div><span class="ck">✓</span><span class="tx">心不全は<b>入院のたびに階段を下りる</b>。増悪を1回減らすことに価値がある ── 窓口の仕事がここに効く</span></div>
+          <div><span class="ck">✓</span><span class="tx">増悪の誘因は<b>怠薬・塩分・感染・過活動・薬剤</b>。どれも薬局で拾える</span></div>
+        </div>
+      </div>
+
+      <div class="card" data-toc="skip">
+        <div class="next-page" style="display:flex; gap:12px; flex-wrap:wrap">
+          <a href="心不全_薬物療法.html" style="flex:1 1 220px">
+            <div class="t">薬物療法 →</div>
+            <div class="d">HFrEFの4本柱、用量と増量のしかた、上乗せの薬、HFpEF・HFmrEF</div>
+          </a>
+          <a href="心不全_うっ血と利尿薬.html" style="flex:1 1 220px">
+            <div class="t">うっ血と利尿薬 →</div>
+            <div class="d">ループ・サイアザイド・トルバプタンの使い分け、体重と電解質の見方</div>
+          </a>
+          <a href="心不全_渡すときに見ること.html" style="flex:1 1 220px">
+            <div class="t">渡すときに見ること →</div>
+            <div class="d">増悪のサイン、避ける薬・気をつける薬、セルフケア、聞くこと</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── 1. なぜ治療するのか ── -->
+      <div class="card">
+        <div class="card-title">なぜ治療するのか<span class="qual">病態は薬の理屈が分かる最小限だけ</span></div>
+
+        <p>心臓のポンプが弱る、あるいは硬くて広がらないと、①送り出せない ②手前に水が溜まる、の2つが起きる。<span class="marker">息切れとむくみ</span>という代表的な症状は、このうちの「水が溜まる」ほうから来ている。</p>
+
+        <div class="lead-note" style="margin-top:14px">
+          心不全は病名ではなく<span class="em-change">症候群</span>。虚血・弁膜症・心筋症・高血圧・不整脈など原因はばらばらで、「心不全」と書かれていても中身は同じではない。だから処方も一本の型では読めない。
+        </div>
+
+        <div class="sub-title">悪くなるたびに戻りきらない</div>
+        <p>心不全は良くなったり悪くなったりを繰り返すが、<span class="marker">増悪のたびに前の水準まで戻りきらず、階段を下りるように機能が落ちる</span>。これが「増悪を1回減らす」ことに価値がある理由で、心不全治療の目的は症状を取ることだけではない。</p>
+
+        <div class="box-blue" style="margin-top:14px">
+          <div class="sub-title" style="margin-top:0">薬局の仕事がどこに効くか</div>
+          増悪の引き金は<b>怠薬・塩分の摂りすぎ・過活動</b>といった生活側の因子と、<b>感染・不整脈・虚血・貧血・腎機能悪化・薬剤</b>といった病態側の因子に分かれる。前者と、薬剤性の増悪は<span class="em-change">窓口で拾える</span>側にある。心不全の投薬が「服薬指導」で終わらないのはこのため。
+        </div>
+
+        <div class="sub-title">ステージという考え方</div>
+        <p style="margin-bottom:9px">心不全は発症してからの重症度だけでなく、<b>発症前を含めた進み方</b>で捉える。逆流しない一方通行の分類で、良くなってもステージは戻らない。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th class="nw">ステージ</th><th>どういう人か</th><th>薬局から見ると</th></tr></thead>
+            <tbody>
+              <tr><td class="nw">A｜リスク</td><td>高血圧・糖尿病・肥満などはあるが、心臓自体はまだ傷んでいない</td><td>いちばん人数が多い層。ここの治療が心不全の予防そのもの</td></tr>
+              <tr><td class="nw">B｜前心不全</td><td>心筋梗塞の既往・弁膜症・左室肥大など、心臓に傷はあるが症状はない</td><td>症状がないのに心保護薬が出る層。「なぜ飲むのか」が伝わりにくい</td></tr>
+              <tr><td class="nw">C｜心不全</td><td>症状が出たことがある（今は落ち着いていてもここに入る）</td><td>薬物療法の主戦場。一度入ったら戻らない</td></tr>
+              <tr><td class="nw">D｜治療抵抗性</td><td>治療を尽くしても症状が残り、入院を繰り返す</td><td>補助人工心臓・移植・緩和ケアが視野に入る</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="memo" style="margin-top:16px">
+          <div class="ttl">自分メモ</div>
+          「症状が良くなった＝ステージCから戻った」ではない、というのがこの分類の肝。<b>落ち着いている人こそステージCで、薬を続ける対象</b>。窓口で「もう良くなったのに」と言われたときの答えの根拠がここにある。
+        </div>
+      </div>
+
+      <!-- ── 2. 分類 ── -->
+      <div class="card">
+        <div class="card-title">LVEFによる分類<span class="qual">治療方針が分かれる唯一の軸</span></div>
+
+        <p style="margin-bottom:14px">左室駆出率（LVEF＝1回の収縮で左室が何％の血液を送り出せるか）で3つに分ける。<span class="marker">この数字だけで、その人に効く薬があるかどうかが変わる</span>。</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th class="nw">分類</th><th class="nw">LVEF</th><th>中身</th><th>薬で予後を変えられるか</th></tr></thead>
+            <tbody>
+              <tr><td class="nw">HFrEF<br /><span class="sm">（ヘフレフ）</span></td><td class="nw">40%以下</td><td>収縮する力が落ちている。拡張型心筋症・心筋梗塞後など</td><td><b>変えられる。</b>大規模試験が揃っている唯一の領域で、薬物療法の話はほぼここ</td></tr>
+              <tr><td class="nw">HFmrEF<br /><span class="sm">（ヘフエムレフ）</span></td><td class="nw">41〜49%</td><td>その中間。HFrEFから改善してきた人も、これから落ちる人も混ざる</td><td>HFrEFに準じた治療を考慮する、という位置づけ</td></tr>
+              <tr><td class="nw">HFpEF<br /><span class="sm">（ヘフペフ）</span></td><td class="nw">50%以上</td><td>収縮は保たれているが硬くて広がらない。高齢・高血圧・女性に多い</td><td><b>限られる。</b>SGLT2阻害薬だけが明確。あとは併存症の治療とうっ血の管理</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="box-gray" style="margin-top:14px">
+          <div class="sub-title" style="margin-top:0">HFimpEF ── 改善した心不全</div>
+          もとがHFrEFで、治療によってLVEFが40%を超えて改善した状態。ここが大事で、<span class="em-change">改善しても薬はやめず、HFrEFの治療をそのまま続ける</span>。中止すると再び悪化することが示されている。<br />
+          <span class="sm">「心機能が良くなったのでもう薬は要らないのでは」と聞かれたときは、この話。判断は医師だが、こちらが理屈を知らないと会話が止まる。</span>
+        </div>
+
+        <div class="memo" style="margin-top:16px">
+          <div class="ttl">自分メモ</div>
+          薬局にLVEFの数字は普通は来ない。だが<b>処方の中身から逆に推定できる</b>（下の「処方から病態を読む」）。エコーの結果を持ってくる患者もいるので、40と50の2本の線だけは覚えておく。
+        </div>
+      </div>
+
+      <!-- ── 3. 治療の全体像 ── -->
+      <div class="card">
+        <div class="card-title">治療の全体像<span class="qual">何を目指しているのか</span></div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <div class="t">溜まった水を抜く（うっ血の解除）</div>
+              <div class="d">利尿薬。<span class="marker">症状はここで取れるが、予後は変わらない</span>。LVEFによらず必要になる。</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <div class="t">心臓が弱っていく速度を落とす（心保護）</div>
+              <div class="d">ACE阻害薬／ARB／ARNI、β遮断薬、MRA、SGLT2阻害薬の4系統。<b>できるだけ早く入れて、忍容性があるかぎり目標量まで増やす</b>のが基本方針。効いている実感はない薬。</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <div class="t">原因と併存症を叩く</div>
+              <div class="d">虚血なら血行再建、弁膜症なら手術やカテーテル、心房細動ならアブレーション。腎機能・貧血・鉄欠乏・糖尿病・睡眠時無呼吸の管理もここ。<b>HFpEFではここが治療の中心になる</b>。</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <div class="t">増悪させない（疾病管理）</div>
+              <div class="d">服薬の継続、塩分と水分、体重測定、感染予防、ワクチン、運動。<span class="em-change">ここが薬局の持ち場</span>。薬剤師の関与で服薬アドヒアランスが上がり再入院が減る、というメタ解析が引かれている。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="memo" style="margin-top:16px">
+          <div class="ttl">自分メモ</div>
+          この4段が分かっていると、処方が増えたとき「どの段が強化されたのか」で読める。<b>利尿薬が増えた＝1段目＝いま水が溜まっている</b>、<b>心保護薬が増えた・増量された＝2段目＝落ち着いているうちに固めにいっている</b>。意味がまったく違う。
+        </div>
+      </div>
+
+      <!-- ── 4. 処方を疾患の切り口で読む（主軸） ── -->
+      <div class="card">
+        <div class="card-title">処方を疾患の切り口で読む<span class="qual">このページの本題</span></div>
+
+        <div class="lead-note">
+          心不全の処方は、薬を<b>効能・効果で見ると読み違える</b>。ARBが出ていても降圧目的とはかぎらず、SGLT2阻害薬が出ていても糖尿病とはかぎらない。<span class="em-change">その薬がこの患者の何をしているか</span>で見る。
+        </div>
+
+        <div class="sub-title">まず3層に分ける</div>
+        <div class="table-wrap">
+          <table class="wide">
+            <thead><tr><th class="nw">層</th><th>目的</th><th>代表</th><th>抜けたらどうなるか</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="nw">① 予後を変える薬<br /><span class="sm">＝心保護</span></td>
+                <td>心臓が弱っていく速度を落とす</td>
+                <td>ACE阻害薬／ARB／ARNI、β遮断薬、MRA、SGLT2阻害薬</td>
+                <td><b>当面なにも起きない。</b>数か月〜数年後の入院と死亡が増える</td>
+              </tr>
+              <tr>
+                <td class="nw">② 症状を取る薬<br /><span class="sm">＝うっ血の解除</span></td>
+                <td>いま溜まっている水を抜く</td>
+                <td>ループ利尿薬、サイアザイド、トルバプタン</td>
+                <td><b>数日でむくみと息切れが出る。</b>ただし予後そのものは変えない</td>
+              </tr>
+              <tr>
+                <td class="nw">③ 原因・併存症の薬</td>
+                <td>心不全にした元、悪くしている元を叩く</td>
+                <td>抗血小板薬・スタチン（虚血）、抗凝固薬（心房細動）、降圧薬、鉄剤、甲状腺の薬</td>
+                <td>疾患による</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p style="margin-top:12px"><span class="marker">①は飲んでいて効いた実感がまったくない薬</span>。しかも症状が落ち着くほど「もう要らないのでは」となる。自己中断がいちばん出やすいのはここで、窓口で言うべきことも変わる。</p>
+
+        <div class="sub-title">同じ薬でも、心不全では顔が変わる</div>
+        <p style="margin-bottom:12px">ここが疾患の切り口でいちばん効くところ。<b>ふだん降圧薬・糖尿病薬として見ている薬が、心不全では別の役をしている</b>。役が変われば用量も、飲み始め方も、やめ方の意味も変わる。</p>
+        <div class="table-wrap">
+          <table class="wide">
+            <thead><tr><th class="nw">薬</th><th>ふだんの顔</th><th>心不全での顔</th><th>処方から読める手がかり</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="nw">ACE阻害薬<br />ARB</td>
+                <td>降圧薬</td>
+                <td><b>心保護薬。</b>血管を広げるためでなく、心筋のリモデリングを抑えるために飲む</td>
+                <td>エナラプリル2.5mg、カンデサルタン4mgなど<span class="em-change">降圧目的にしては中途半端に少ない量で始まる</span>。血圧が高くなくても出る</td>
+              </tr>
+              <tr>
+                <td class="nw">ARNI</td>
+                <td>高血圧の薬でもある</td>
+                <td><b>HFrEFの中心。</b>ACE阻害薬を上回った唯一の薬</td>
+                <td>国内では<b>ACE阻害薬・ARBから切り替えて使う</b>決まりなので、新規でいきなり出ることは通常ない。前の処方に必ずACE阻害薬かARBがある</td>
+              </tr>
+              <tr>
+                <td class="nw">β遮断薬</td>
+                <td>降圧・脈を抑える</td>
+                <td><b>心保護薬。</b>交感神経の刺激から心筋を守る</td>
+                <td><span class="marker">カルベジロールとビソプロロールだけ</span>（系統の効果ではなく、この2剤で試験がある）。カルベジロール1.25〜2.5mgのような、高血圧ではまず見ない量から始まる</td>
+              </tr>
+              <tr>
+                <td class="nw">MRA</td>
+                <td>カリウム保持性利尿薬・降圧薬</td>
+                <td><b>予後改善薬。</b>利尿を足すために入れているのではない</td>
+                <td>スピロノラクトン12.5〜25mg、エプレレノン25mg。<b>利尿薬と一緒に出ていても、狙いは利尿ではない</b></td>
+              </tr>
+              <tr>
+                <td class="nw">SGLT2阻害薬</td>
+                <td>糖尿病薬</td>
+                <td><b>心不全そのものの薬。</b>糖尿病がなくても出る</td>
+                <td>ダパグリフロジン・エンパグリフロジンとも<b>10mg固定で増量しない</b>。他に糖尿病薬がなければ、糖尿病ではなく心不全か腎臓が理由</td>
+              </tr>
+              <tr>
+                <td class="nw">ループ利尿薬</td>
+                <td>むくみの薬</td>
+                <td>同じくむくみの薬。<b>ただし予後は変えない</b></td>
+                <td>心保護薬が何もなくループ利尿薬だけ、という形は<span class="em-change">単独使用が予後不良と関連する</span>とされる形。理由があるはずなので、次回の確認事項にする</td>
+              </tr>
+              <tr>
+                <td class="nw">ジゴキシン</td>
+                <td>心房細動の脈を抑える</td>
+                <td>洞調律のHFrEFでも入院を減らす目的で使うことがある</td>
+                <td>低用量で、<b>血中濃度0.9 ng/mLを超えない範囲</b>で使う薬。採血がされているかを見る</td>
+              </tr>
+              <tr>
+                <td class="nw">イバブラジン</td>
+                <td>（心不全以外に出番がない）</td>
+                <td>心拍数<b>だけ</b>を下げる。血圧はほぼ下げない</td>
+                <td>洞調律で安静時75回/分以上、が条件。<b>β遮断薬を増やしきれない人</b>に入る薬なので、出ていれば血圧か心機能に余裕がないと読める</td>
+              </tr>
+              <tr>
+                <td class="nw">ベルイシグアト</td>
+                <td>（同上）</td>
+                <td>4本柱を入れてもなお増悪した人への上乗せ</td>
+                <td>2.5→5→10mgと2週ごとに増える。出ていれば<b>直近に増悪があった</b>と読める</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sub-title">逆から読む ── 処方で病態が見える</div>
+        <div class="bullet"><span>・</span><span><b>カルベジロール1.25mg 分2</b> ── 高血圧では出ない量。心不全の導入期か、増やしきれていない人</span></div>
+        <div class="bullet"><span>・</span><span><b>サクビトリルバルサルタン</b> ── 切り替えの縛りがあるので、ほぼHFrEFで、すでに一段治療が進んでいる</span></div>
+        <div class="bullet"><span>・</span><span><b>スピロノラクトン12.5mgが循環器の処方に混じる</b> ── 利尿ではなく予後目的。カリウムと腎機能を見る合図</span></div>
+        <div class="bullet"><span>・</span><span><b>イバブラジン・ベルイシグアトがある</b> ── 4本柱では足りていない層。増悪の既往を疑う</span></div>
+        <div class="bullet"><span>・</span><span><b>ループ利尿薬が2剤、あるいはトルバプタンが乗っている</b> ── うっ血が取りきれていない</span></div>
+        <div class="bullet"><span>・</span><span><b>SGLT2阻害薬10mgだけで他に糖尿病薬がない</b> ── 心不全か慢性腎臓病。糖尿病と決めつけて指導しない</span></div>
+
+        <div class="sub-title">心不全では通らない読み替え</div>
+        <p style="margin-bottom:10px">ふだんの疾患の感覚で読むと逆になるところ。<b>ここを間違えると、良かれと思った声かけが自己調整を後押しする</b>。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>つい思うこと</th><th>心不全では</th></tr></thead>
+            <tbody>
+              <tr><td class="ng">血圧が下がってきたのでβ遮断薬を減らしたほうがよさそう</td><td>β遮断薬は降圧目的で飲んでいない。減量・中止は予後に直結するので医師の判断。<b>薬局から減量を示唆しない</b></td></tr>
+              <tr><td class="ng">むくみが取れたから利尿薬はもう不要</td><td>用量調整は医師が体重とうっ血を見て決める。自己判断の中止・再開が増悪の典型的な引き金</td></tr>
+              <tr><td class="ng">心機能が良くなったから心保護薬は卒業</td><td>改善した心不全（HFimpEF）でも治療は続ける</td></tr>
+              <tr><td class="ng">心不全が悪くなったのだからβ遮断薬は止めるはず</td><td>急性増悪で入院しても、<b>β遮断薬はなるべく継続</b>が推奨されている</td></tr>
+              <tr><td class="ng">カリウムが上がったのでMRAは中止だろう</td><td>中止すると心血管イベントが増える、という報告もある。カリウム吸着薬で続ける選択肢がある</td></tr>
+              <tr><td class="ng">効いている実感がないと言うので、まず飲みやすい薬に絞る</td><td>実感がないのが心保護薬。<b>実感で優先順位を付けると、いちばん残すべき薬が落ちる</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="memo" style="margin-top:16px">
+          <div class="ttl">自分メモ</div>
+          この表が、疾患を勉強する意味そのものだと思う。<b>薬から見ると「ARB＝降圧薬」で終わるが、疾患から見ると同じ薬が別の仕事をしている</b>。薬効群で覚えているうちは、心不全の処方は読めない。<br />
+          同じ構造は他の疾患にもある（心房細動でのジギタリス、糖尿病でのSGLT2阻害薬）。<b>宿題：</b>横串ページ「疾患で顔が変わる薬」を作れないか考える。
+        </div>
+      </div>
+
+      <!-- ── 5. 投薬時 ── -->
+      <div class="card">
+        <div class="card-title">投薬時に効く話<span class="qual">詳しくは「渡すときに見ること」へ</span></div>
+
+        <div class="sub-title">まずこの3つを押さえる</div>
+        <div class="bullet"><span>・</span><span><b>体重。</b>心不全でいちばん早く動くのが体重で、<span class="marker">3日で2kg以上増えたら受診</span>が目安。毎日同じ条件で測って記録してもらう</span></div>
+        <div class="bullet"><span>・</span><span><b>息切れの出方。</b>同じ距離で前より息が切れる、横になると苦しい、夜中に苦しくて目が覚める ── この3つは受診につなぐ</span></div>
+        <div class="bullet"><span>・</span><span><b>効いている実感がない薬がある</b>ことを先に言っておく。あとから「効いていないので減らした」を防ぐ</span></div>
+
+        <div class="sub-title">増悪の引き金として窓口で拾えるもの</div>
+        <div class="bullet"><span>・</span><span>飲み忘れ・自己調整（とくに利尿薬の飲んだり飲まなかったり）</span></div>
+        <div class="bullet"><span>・</span><span>塩分の摂りすぎ（外食・惣菜・麺類の汁）</span></div>
+        <div class="bullet"><span>・</span><span>感染（かぜ・肺炎・尿路感染）。ワクチンの話につながる</span></div>
+        <div class="bullet"><span>・</span><span>やりすぎた運動・暑い時期の脱水</span></div>
+        <div class="bullet"><span>・</span><span><b>薬剤性</b>。市販の解熱鎮痛薬（NSAIDs）は塩分と水を溜める。他院処方も含めて確認する</span></div>
+
+        <div class="next-page" style="margin-top:16px">
+          <a href="心不全_渡すときに見ること.html">
+            <div class="t">渡すときに見ること →</div>
+            <div class="d">増悪のサインの詳細、避ける薬・気をつける薬の一覧、セルフケア（塩分・水分・入浴・ワクチン）、初回に言うこと</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── 出典 ── -->
+      <div class="card">
+        <div class="card-title">参考にした資料</div>
+        <div class="ref-links">
+          <div class="row"><span class="lab">土台：</span><span>2025年改訂版 心不全診療ガイドライン（日本循環器学会／日本心不全学会合同ガイドライン。2025年3月28日発行／2025年12月19日更新）</span></div>
+          <div class="row"><span class="lab">入手先：</span><a href="https://www.j-circ.or.jp/guideline/guideline-series/" target="_blank" rel="noopener">日本循環器学会 循環器病ガイドラインシリーズ</a></div>
+          <div class="row"><span class="lab">用量・禁忌：</span><a href="https://www.pmda.go.jp/PmdaSearch/iyakuSearch/" target="_blank" rel="noopener">PMDA 医療用医薬品 添付文書等検索</a></div>
+        </div>
+        <div class="memo" style="margin-top:14px">
+          <div class="ttl">扱いの注意</div>
+          ガイドラインは無断転載が禁じられている。<b>本文・図表をそのまま貼らず、自分の言葉と自作の表で書く</b>。原文が要るときは上のリンクから当たる。<br />
+          用量・禁忌・相互作用は<b>添付文書が正</b>。このページの用量はガイドラインの記載をもとにしているので、実務で使う前に添付文書で確かめる。
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
