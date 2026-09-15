@@ -7,6 +7,7 @@
     <title>高額療養費制度の見直し（2026年8月）｜実務ナレッジ集</title>
     <meta name="search-keywords" content="限度額,自己負担限度額,見直し,引き上げ" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/fold.css" />
     <style>
       *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
       :root {
@@ -75,12 +76,7 @@
       .legend i { width:22px; height:0; border-top:3px solid var(--blue); flex-shrink:0; }
       .legend i.before { border-top:2px dashed var(--border-dk); }
 
-      details { border:var(--bw) solid var(--border); border-radius:var(--radius-sm); }
-      details > summary { list-style:none; cursor:pointer; padding:11px 15px; font-size:var(--text-sm); font-weight:700; color:var(--txt-2); background:#fafbfc; display:flex; align-items:center; gap:8px; }
-      details > summary::-webkit-details-marker { display:none; }
-      details > summary .chev { color:var(--border-dk); transition:transform .18s; }
-      details[open] > summary .chev { transform:rotate(90deg); }
-      details .body { padding:13px 15px 15px; font-size:var(--text-sm); border-top:var(--bw) solid var(--border); }
+      details .body { padding:13px 15px 15px; font-size:var(--text-sm); }
 
       a { color:var(--blue); }
 
@@ -364,8 +360,8 @@
         <p class="note" style="margin-bottom:12px;">
           2027年8月から、所得区分が細かく分かれる。70歳未満はア〜オの5区分が13区分になり、記号もなくなる。<span class="em-change">今回（2026年8月）は区分の記号も境目も変わらない</span>ため、2026年8月の時点で区分を覚え直す必要はない。
         </p>
-        <details>
-          <summary><span class="chev">›</span>2027年8月からの自己負担限度額（70歳未満）</summary>
+        <details class="fold-in" open>
+          <summary>2027年8月からの自己負担限度額（70歳未満）</summary>
           <div class="body">
             <div class="tbl-wrap">
               <table>

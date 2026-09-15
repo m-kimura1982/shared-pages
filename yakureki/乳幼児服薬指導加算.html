@@ -7,6 +7,7 @@
   <title>乳幼児服薬指導加算（薬歴記載）｜薬歴マニュアル</title>
   <meta name="search-keywords" content="乳幼児,6歳未満,保護者,体重,ドライシロップ,ミルク,離乳食,手帳記載,服薬拒否" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/fold.css" />
   <style>
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
     :root {
@@ -158,12 +159,7 @@
     .ba-good { border-color:var(--blue); }
 
     /* 原文 折りたたみ */
-    details.original { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); overflow:hidden; }
-    details.original > summary { list-style:none; cursor:pointer; padding:13px 18px; font-size:var(--text-sm); font-weight:900; color:var(--blue); display:flex; align-items:center; gap:9px; }
-    details.original > summary::-webkit-details-marker { display:none; }
-    details.original > summary::before { content:"▶"; font-size:10px; transition:transform .15s; }
-    details.original[open] > summary::before { transform:rotate(90deg); }
-    details.original .obody { padding:6px 18px 18px; border-top:var(--bw) solid var(--border); }
+    details.original .obody { padding:14px 18px 18px; }
     details.original .ocite { font-size:var(--text-xs); color:var(--txt-3); margin:10px 0; }
     .orig { display:flex; flex-direction:column; gap:9px; }
     .orig .oi { display:flex; gap:9px; font-size:var(--text-sm); line-height:1.7; }
@@ -499,7 +495,7 @@ P）塗布量・塗布回数・塗布後の注意点を説明。患児が触っ�
     </div>
 
     <!-- ── 原文・疑義解釈（折りたたみ） ── -->
-    <details class="original">
+    <details class="original fold">
       <summary>算定要件の原文・疑義解釈を見る</summary>
       <div class="obody">
         <div class="orig">

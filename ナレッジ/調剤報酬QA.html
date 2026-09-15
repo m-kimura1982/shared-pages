@@ -10,6 +10,7 @@
     <!-- 試作（案B改良2：Q＋結論は常時表示、根拠・場合分けだけ折りたたみ）。
          draft/ 内プレビュー用にリンク・画像は  付き。ルートへ昇格する時は  を外すこと。 -->
     <link rel="stylesheet" href="../assets/source-refs.css" />
+    <link rel="stylesheet" href="../assets/fold.css" />
     <style>
       *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
       :root {
@@ -64,12 +65,10 @@
       .qa-concl .ctext { flex:1; font-weight:900; padding-top:1px; }
       .qa-concl .ctext .sub { display:block; font-weight:500; color:var(--txt-2); margin-top:3px; }
 
-      details.qa-detail { border-top:var(--bw-h) solid var(--border); }
-      details.qa-detail > summary { list-style:none; cursor:pointer; padding:9px 15px 9px 52px; font-size:var(--text-xs); font-weight:700; color:var(--txt-3); display:flex; align-items:center; gap:7px; background:#fafbfc; }
-      details.qa-detail > summary::-webkit-details-marker { display:none; }
-      details.qa-detail > summary:hover { background:#f2f5f9; }
-      details.qa-detail > summary .chev { color:var(--border-dk); font-size:15px; transition:transform .18s; }
-      details.qa-detail[open] > summary .chev { transform:rotate(90deg); }
+      /* 解説の折りたたみ：見た目は assets/fold.css。Q&Aカードの下端に帯として置き、本文の頭に揃える */
+      details.qa-detail.fold-in { border:0; border-top:var(--bw-h) solid var(--border); border-radius:0; }
+      details.qa-detail.fold-in > summary { padding-left:52px; }
+      details.qa-detail.fold-in > .qa-body { padding-top:12px; }
       .qa-body { padding:4px 15px 15px 52px; font-size:var(--text-sm); }
       .qa-body > * + * { margin-top:10px; }
       /* ①②③・ア〜エのように項目に番号・記号が付くとき。
@@ -121,7 +120,7 @@
         .intro-bar { flex-direction:column; gap:8px; }
         .toggle-all { align-self:flex-end; }
         .qbadge, .alabel { width:22px; height:22px; font-size:13px; border-radius:6px; }
-        details.qa-detail > summary { padding-left:15px; }
+        details.qa-detail.fold-in > summary { padding-left:13px; }
         .qa-body { padding-left:15px; }
       }
       @media print {
@@ -132,7 +131,7 @@
         .qa { break-inside:avoid; }
         .toggle-all, .find-bar { display:none; }
         .new-chip { display:none; }
-        details.qa-detail > summary { display:none; }
+        details.qa-detail.fold-in > summary { display:none; }
         a { color:inherit; text-decoration:none; border:none !important; padding:0 !important; }
       }
     </style>
@@ -173,8 +172,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">残薬調整で27日以下になっても「1のイ（長期処方）」で算定する。</span><span class="sub">ただし対象薬を削除（0日）した場合は対象外。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>この取扱いは疑義解釈その7 問4に示されている。前提は、①疑義照会による調剤日数の変更／②減数調剤（処方箋指示）の<strong>いずれも「1日分以上を調剤すること」</strong>である。</div>
               <div>
@@ -208,8 +207,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">徴収しない場合は「入力しない」のままでよい。</span><span class="sub">徴収するには事前の報告（地方厚生（支）局長へ別紙様式４）が必要。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <figure class="screen-shot">
                 <img src="../images（レセコン画像など）/pharnes/7e94c34be349fd37334a912900e71b9fe5366ce9.png" alt="レセコン：時間外の選定療養の設定画面（入力しない／入力する）" loading="lazy" />
@@ -235,8 +234,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">基礎額と同額〜2倍程度が目安。</span><span class="sub">金額は薬局が任意に設定できるが、報告する金額は1つだけ。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>通知では<strong>「時間外加算の所定点数相当額」が標準</strong>とされている。基礎額（調剤基本料・調剤管理料等）に対する割合は次のとおり。</div>
               <table class="rate-table">
@@ -267,8 +266,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">残薬調整の「方法」によって異なる。</span><span class="sub">いずれも手帳を用いて服薬管理指導を行う場合が対象。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div class="case">
                 <div class="row">
@@ -294,8 +293,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">プロトコルの規定内容しだい。</span><span class="sub">原則として、0日への変更（処方削除）は疑義照会が必要。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>簡素化プロトコルは「疑義照会を簡略化するための手順」を地域で定めたもの。</div>
               <div class="case">
@@ -330,8 +329,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">今回の調剤時ではなく、次回の来局時（処方受付時）に算定する。</span><span class="sub">服薬情報等提供料は同一月に１回まで算定可能。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>服薬情報等提供料２ロは、リフィル処方箋の２回目以降の調剤後に、服薬状況や体調の変化などを確認し、その内容を文書で処方医へ情報提供した場合に算定する（20点）。</div>
               <div>この情報提供は、投薬時に確認した服薬状況や副作用、治療効果などを踏まえて行うものである。そのため、調剤時に算定することは適切ではなく、<strong>算定は次回の来局時（処方受付時）に行う</strong>。</div>
@@ -363,8 +362,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">服薬情報等提供料２ではなく、服薬情報等提供料１を算定できる。</span><span class="sub">医師の指示に基づく情報提供であり、医療機関からの求めに該当するため。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>服薬情報等提供料１は、医療機関からの求めに応じて情報提供を行った場合に算定する。</div>
               <div>今回は、医師の指示に基づく吸入指導の結果を処方医へ情報提供するものであり、医療機関から求められた情報提供に該当するため、服薬情報等提供料１の算定対象となる。</div>
@@ -386,8 +385,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">薬価が下がるという案内だけでは、算定根拠として不十分である。</span><span class="sub">患者個別の服薬状況に基づく情報提供ではなく、薬剤についての一般的な案内にあたるためである。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>服薬情報等提供料は、保険薬局が調剤後も患者の服用薬や服薬状況を把握し、その情報を保険医療機関へ提供することを評価する点数である。</div>
               <div>保険医療機関へ提供する情報の内容は、別添３(5)で次のアからエに限定されている。</div>
@@ -418,8 +417,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">服薬管理指導料１イ・２イを算定している患者でも、服薬情報等提供料１・２・３のいずれも算定できる。</span><span class="sub">令和6年度までのかかりつけ薬剤師指導料では算定できなかったが、令和8年度改定で服薬管理指導料に統合されたことに伴い算定可能になった。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>令和6年度までは、かかりつけ薬剤師指導料を算定する患者について、服薬情報等提供料を算定することはできなかった。「かかりつけ薬剤師は服薬情報等提供料を算定できない」という理解は、この時期のものである。</div>
               <div>令和8年度改定でかかりつけ薬剤師指導料が<strong>服薬管理指導料１イ・２イ</strong>に統合され、これに伴って服薬情報等提供料１・２・３のいずれも算定できるようになった。</div>
@@ -444,8 +443,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">すべての情報提供に求められる算定要件ではない。</span><span class="sub">ただし、残薬に係る情報提供では、情報提供後も服薬状況を継続して把握することが求められている。残薬以外の場合も、継続的な薬学的管理の一環として、次回来局時以降に経過を確認することが望ましい。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>保険医療機関への情報提供すべてについて、「次回来局時に確認して薬歴に記載する」ことが算定要件として定められているわけではない。</div>
               <div>一方、残薬に係る情報提供については、別添３(2)(3)に次の定めがある。</div>
@@ -479,8 +478,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">添付文書どおりの用法・用量へ修正するための疑義照会では、薬学的有害事象等防止加算の算定対象とはならないと考えられる。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>薬学的有害事象等防止加算は、<strong>患者個別の薬学的評価に基づいて</strong>疑義照会を行い、処方変更につながった場合に算定できる。</div>
               <div>今回は、添付文書で定められた増量間隔を満たしていない処方であったため、規定どおりの用法・用量へ修正した事例である。この疑義照会は、<strong class="marker">患者個別の薬学的評価に基づくものではなく</strong>、処方内容を適正化するために行われたものである。</div>
@@ -513,8 +512,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">算定できる。</span><span class="sub">算定要件の「そのほか薬学的観点から必要と認める事項」に当たる。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>薬学的有害事象等防止加算は、薬歴や患者・家族からの情報等に基づいて処方医に連絡・確認を行い、処方が変更された場合に算定する。対象となる内容は次の3つで、重複や相互作用に限られない。</div>
               <div class="box-gray">
@@ -558,8 +557,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">ご認識のとおり、算定対象外。</span><span class="sub">前回調剤した銘柄が確保できず、やむを得ず別銘柄に変更した場合が算定対象となる。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>要件の柱は<strong>「前回調剤された銘柄」が確保できないこと</strong>である。今回が初めての処方で、その薬の在庫がなかったという場合は、前回の銘柄からの「変更」に当たらない。</div>
               <div style="border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:12px 15px;">
@@ -589,8 +588,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">患者が前回の薬を覚えていて、変更を説明する必要があるかどうかで判断する。</span><span class="sub">期間の線引きは通知にはない。以下は各店舗のおおよその運用。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div class="box-gray">
                 <strong>ここからは算定要件ではなく、社内の運用の目安。</strong>通知に期間の定めはないため、店舗ごとに判断が分かれる。判断のよりどころは、メーカー変更による不安の解消や説明の必要性があるかどうかである。1年前の臨時処方について「銘柄が変わりました」と説明しても、患者には伝わらない。
@@ -626,8 +625,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">前回ミヤBM錠を調剤していれば算定できる。</span><span class="sub">成分名や剤形が同じであることは要件になっていない。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>要件に当てはめると、流通不良に伴い、前回調剤した銘柄（ミヤBM錠）が確保できず、別銘柄（ミヤBM細粒）に変更することを説明しているので、要件を満たす。</div>
               <div>「成分名が同一であること」「剤形が同じであること」といった要件はないため、<strong class="marker">ミヤBM錠からビオフェルミン配合散</strong>のように成分や剤形が異なる変更であっても、疑義照会を経て変更し、その理由を説明すれば算定できる。変更にあたって患者の同意を得ることは前提となる。</div>
@@ -650,8 +649,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">その認識で問題ない。</span><span class="sub">薬剤師が説明の必要性があると判断し、指導を行ったかどうかで算定の可否を判断する。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>医師からの説明があったかどうか、疑義照会をしたかどうかは、算定の可否を分ける要素ではない。医師が説明済みであっても、薬剤師の観点から補足すべきことは多い。「流通不良で変わりました」と伝えるだけで終わらせず、薬学的な指導を加える。</div>
               <div style="border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:12px 15px;">
@@ -680,8 +679,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">算定できる。</span><span class="sub">一包化（外来服薬支援料２）を算定した範囲の薬剤は算定できない。その範囲外の薬を半錠にした場合は算定できる。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>別添３ 外来服薬支援料２(8)に「外来服薬支援料２を算定した範囲の薬剤については、<strong class="marker">自家製剤加算及び計量混合調剤加算は算定できない</strong>」とある。裏を返せば、一包化の範囲に入っていない薬を分割した場合は自家製剤加算の対象になる。</div>
               <div>
@@ -721,8 +720,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">このケースでは算定できない。</span><span class="sub">一包化から外しても、一包化した服用時点に含まれる薬剤は自家製剤加算の対象外になる。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>外来服薬支援料２は<strong>服用時点ごとに一包として投与すること</strong>を評価した点数である。したがって、併算定を禁じている「外来服薬支援料２を算定した範囲の薬剤」とは、<strong class="marker">一包化の算定根拠となった服用時点の全体</strong>を指すことになる。</div>
               <div>セレコキシブを半錠にして一包化から外しても、朝食後という同じ服用時点に含まれる以上、自家製剤加算は算定できない。</div>
@@ -745,8 +744,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">算定できる。</span><span class="sub">可否は、自家製剤した剤形だけで判断する。半割なら錠剤の規格、粉砕なら散剤の有無を見る。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div class="case">
                 <div class="row">
@@ -791,8 +790,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">90点で問題ない。</span><span class="sub">頓服薬の自家製剤加算は、処方内容や回数に関わらず一律90点。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>内服薬は投与日数が7日またはその端数を増すごとに20点ずつ加算されるのに対し、<strong class="marker">頓服薬は1調剤につき90点</strong>で、回数による違いはない。1回分でも10回分でも90点となる。</div>
               <table class="rate-table">
@@ -844,8 +843,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">算定できる。</span><span class="sub">要件に剤形の縛りはない。要件を満たしていれば処方内容は問わない。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>錠剤のみが処方されるケースでは、まず<strong>錠剤の服用経験があるか</strong>を聞き取り、処方された剤形で問題ないかを評価する。服用が難しいようなら、剤形の変更や粉砕が必要になる。そのうえで、錠剤を飲むためのコツや注意点を指導すれば要件を満たす。</div>
               <div>
@@ -875,8 +874,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">算定できる。</span><span class="sub">調剤済みの薬を含めて一包化する支援に当たる。繰り返す場合は理由を薬歴に残す。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>調剤済み（服用中）の薬剤を含めて一包化する支援なので、外来服薬支援料１で算定する（このとき外来服薬支援料２は算定できない）。事前に処方医の了解を得ているため<strong>注１</strong>に当たる。</div>
               <div>繰り返し算定する場合は、<strong class="marker">繰り返しになる理由</strong>（例：予約の都合で処方日数を合わせることが難しい）を毎回薬歴に記載する。同様の支援が今後必要とならないよう努めることが求められているため、繰り返すにはやむを得ない事情が要る。</div>
@@ -894,8 +893,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">算定できる。</span><span class="sub">調剤済みの薬への支援に当たる。他の処方箋と同日受付でまとめる場合は算定できない。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>長期処方の受付時に、調剤済みの他の保険医療機関の薬を合わせて一包化する形は外来服薬支援料１に当たる。</div>
               <div>一方、他の保険医療機関の<strong>処方箋も同じ日に受け付けて</strong>、受け付けた処方薬どうしを一包化した場合は「調剤済みの薬剤への支援」に当たらないため算定できない。</div>
@@ -913,8 +912,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">算定できる。</span><span class="sub">院内調剤の薬が続く限り支援の必要も続くため、繰り返し算定するやむを得ない理由になる。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>服用薬の整理等の支援を行った場合は、支援が必要となった背景・理由を分析し、<strong class="marker">同様の支援が今後必要とならないように努める</strong>こととされている。院内調剤の薬を院外処方に切り替えてもらうことは現実には難しく、薬局側では解消できない事情に当たるため、支援を続ける必要がある間は繰り返しの算定が認められると考えられる。</div>
               <div>繰り返しになる理由（院内調剤の薬を含めた整理が毎月必要である旨など）は毎回薬歴に記載する。</div>
@@ -932,8 +931,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">算定できる。</span><span class="sub">調剤済みの薬剤への服薬支援に当たる。処方医の了解を得ているので注１。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>別の日に分包（調剤）済みの薬を当日の薬と合わせて一包化するのは、調剤済みの薬剤への服薬支援に当たる。事前に処方医の了解を得ているため注１で算定する。</div>
               <div class="qa-src"><span class="lab">出典・関連：</span><a href="../改定資料/別添3_調剤報酬点数表に関する事項2026.html#kub-14-2-1">別添３ 外来服薬支援料１</a></div>
@@ -950,8 +949,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">同日に持参している場合は算定できない。</span><span class="sub">受け付けた処方薬どうしの一包化は「調剤済みの薬剤への支援」に当たらない。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>外来服薬支援料１は、患者が服薬中（＝調剤済み）の薬剤への支援を評価するもの。同じ日に受け付けた処方箋の薬どうしをまとめて一包化した場合は、一方が一包化の要件（処方箋の指示、又は疑義照会による了解）を満たせば<strong>外来服薬支援料２</strong>で算定し、満たさなければいずれも算定できない。</div>
               <div>調剤済みの他の保険医療機関の薬を持参された場合は、外来服薬支援料１で算定できる。</div>
@@ -974,8 +973,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">影響しない。</span><span class="sub">評価の対象は内服薬の種類数が減ることであり、他の薬の規格や用量の変更は種類数に関わらない。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>服用薬剤調整支援料１は、内服薬の<strong class="marker">種類数が2種類以上減少</strong>し、その状態が4週間以上続いた場合に算定する。種類数の数え方は、錠剤・カプセル剤・散剤・顆粒剤・液剤について<strong>1銘柄ごとに1種類</strong>である。</div>
               <div>マグミットの規格変更や増量は、銘柄が増減するわけではないので種類数に影響しない。減薬した薬以外の処方に変更があっても、算定要件には影響しないと考えられる。</div>
@@ -1001,8 +1000,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">在宅訪問をしている患者であれば、居宅療養管理指導費の算定の有無に関わらず、受付の都度算定できる。</span><span class="sub">在宅業務を行うための体制を評価した、調剤基本料の加算だから。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>在宅薬学総合体制加算は、在宅患者に対する薬学的管理及び指導を行うにつき<strong class="marker">必要な体制を評価するもの</strong>であり、在宅患者訪問薬剤管理指導料や居宅療養管理指導費等を算定する患者等が提出する処方箋を受け付けて調剤を行った場合に算定できる。訪問した日の調剤に限る、という要件ではない。</div>
               <div class="box-gray">
@@ -1035,8 +1034,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">原本が届くまでは、FAX等で送付された処方箋を処方箋とみなして調剤してよい。</span><span class="sub">対面に切り替えた場合も同じ。原本を入手したら、先に送付された処方箋情報とともに保管する。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>医療機関から処方箋情報の送付を受けた薬局は、原本を入手するまでの間、FAX・メール等で送付された処方箋を薬剤師法第23条から第27条まで及び薬機法第49条における処方箋とみなして調剤等を行える。オンライン服薬指導から対面に切り替わった場合の取扱いも、実施要領に明記されている。</div>
               <div class="box-gray">
@@ -1071,8 +1070,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">がん性疼痛に使用する場合は処方枚数制限の対象外。それ以外の鎮痛・消炎に使用する場合は、ジクトルテープも合計63枚に含める。</span><span class="sub">使用目的と枚数によって、対応は3つに分かれる。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>鎮痛・消炎効果のある貼付剤（麻薬、向精神薬、専ら皮膚疾患に用いるものを除く）は、<strong class="marker">その作用機序に関わらず</strong>、原則として1処方につき合計63枚の投与制限の対象となる。これはロコアテープも同様である。</div>
               <div>ジクトルテープについても、令和4年度の疑義解釈資料（その47）問2で<strong>処方枚数制限の対象となる</strong>ことが示されている。全身作用を有する経皮吸収型製剤で薬効分類は解熱鎮痛消炎剤だが、他の湿布薬と共通する鎮痛・消炎の効能・効果を有する貼付剤であるため、同じ扱いとなる。</div>
@@ -1112,8 +1111,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">63枚を超えて投与した理由を確認し、その確認方法を摘要欄に記載する。</span><span class="sub">理由そのものを書くのは医科のレセプト。薬局が書くのは、理由をどう確認したか。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>医師が疾患の特性等により必要性があると判断し、やむを得ず63枚を超えて投薬する場合は、その理由を処方箋及び診療報酬明細書に記載することになっている。薬局は、その理由を処方箋または疑義照会で確認したうえで、<strong>どちらで確認したか</strong>を摘要欄に記載する。</div>
               <div>
@@ -1162,8 +1161,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">それぞれの要件を満たせば、両方算定できる。</span><span class="sub">評価している業務が重ならないため。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>フォローアップ加算が評価しているのは<strong>患者本人への電話等による服薬状況・残薬状況の確認</strong>であり、医療機関等への情報提供は要件に入っていない。一方の服薬情報等提供料は<strong>医療機関等への情報提供</strong>を評価する点数である。</div>
               <div>業務内容が重複しないため、併算定を妨げるものはない。</div>
@@ -1181,8 +1180,8 @@
             <span class="alabel">A</span>
             <span class="ctext"><span class="marker">5/1のA病院処方箋の受付時に算定できる。</span><span class="sub">間にB医療機関の処方箋をはさんでも影響しない。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>別添３(3)ウに「<strong>フォローアップを実施する要因となった処方箋を発行した医療機関以外からの処方箋を持参した場合は、これに含まれない</strong>」と明記されている。B医療機関の処方箋は数に入らないため、算定の可否には影響しない。</div>
               <div>4/27のB医療機関の処方箋ではフォローアップ加算は算定できない。</div>
@@ -1204,8 +1203,8 @@
             <span class="alabel">A</span>
             <span class="ctext">処方箋の受付1回につき算定するので、<span class="marker">受付の回数分算定できる</span>。<span class="sub">2か所からなら2回。</span></span>
           </div>
-          <details class="qa-detail">
-            <summary>解説<span class="chev">›</span></summary>
+          <details class="qa-detail fold-in">
+            <summary>解説</summary>
             <div class="qa-body">
               <div>調剤ベースアップ評価料は「処方箋の受付１回につき」算定する（区分40 注1）。複数の医療機関が交付した同一患者の処方箋を同時にまとめて受け付けた場合は、受付回数をそれぞれ数えて2回以上になる。</div>
               <table class="rate-table">

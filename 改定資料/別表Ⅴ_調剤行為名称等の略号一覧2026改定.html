@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fold.css" />
 <style>
 :root {
   --blue: #1e5fa8; --red: #cc0000; --ink: #222222;
@@ -60,14 +61,9 @@ table.main-tbl td { border: 1px solid var(--border); padding: 8px 10px; vertical
 .row-changed td { background: var(--chg-bg); border-color: var(--chg-bd); }
 .row-deleted td { background: var(--del-bg); color: #5e6470; border-color: var(--del-bd); }
 
-.section-del { border-left: 4px solid var(--border-dk); background: var(--box-gray); color: #444; font-weight: 900; font-size: 14px; padding: 6px 12px; margin-top: 4px; cursor: pointer; list-style: none; user-select: none; }
-.section-del::-webkit-details-marker { display: none; }
-.del-toggle { font-size: 12px; font-weight: 700; color: var(--blue); }
-.del-details[open] > .section-del { margin-bottom: 0; }
-.del-details[open] .del-toggle::before { content: "▼ クリックで折りたたむ"; }
-.del-details[open] .del-toggle { font-size: 0; }
-.del-details[open] .del-toggle::before { font-size: 12px; }
-.del-details > .tbl-wrap { margin-top: 4px; }
+.del-details { margin-top: 4px; }
+/* 折りたたみの枠の中に表を置くので、表側の枠と余白は消す（二重線になるため） */
+.del-details > .tbl-wrap { margin: 0; border: 0; border-radius: 0 0 8px 8px; }
 .notes { font-size: 12px; color: #555; border-top: 1px solid var(--border); padding-top: 8px; }
 .notes p { margin-bottom: 4px; }
 
@@ -338,8 +334,8 @@ tr.filter-hidden { display: none; }
 </div>
 
 
-<details class="del-details" id="del-details">
-<summary class="section-del" id="section-del">廃止項目（改定前のみ）　<span class="del-toggle">▶ クリックで展開</span></summary>
+<details class="del-details fold-in" id="del-details">
+<summary class="section-del" id="section-del">廃止項目（改定前のみ）</summary>
 <div class="tbl-wrap" id="deleted-wrap">
 <table class="main-tbl"><thead><tr>
   <th class="c-no">項番</th>

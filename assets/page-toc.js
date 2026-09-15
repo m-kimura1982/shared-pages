@@ -38,27 +38,24 @@
        PC は open のままで取っ手を隠すので、今までのチップ表示と同じ。
        375px幅では目次チップが137〜351pxあり、服薬管理指導料（15項目）は
        本文が1行も入らなかった（2026-09-02 の計測）。 */
-    /* 枠は自分で持たない。ページ側の details {...} が効いてしまい、
-       チップが枠に触れて見えるため明示的に消す（2026-09-04）。 */
-    '.toc-fold { border:0; background:none; border-radius:0; padding:0; }',
-    /* PC は開いたまま。取っ手を隠すのではなく「目次」と分かる小さな見出しにする。
-       クリックで閉じると幅の判定が走るまで開かないので、押せないようにしておく。 */
-    '.toc-fold[open] > .toc-more { display:block; list-style:none; pointer-events:none;',
+    /* 開閉の見た目はサイト共通の assets/fold.css（class="fold-in"）。
+       PC では枠も「開く／閉じる」も出さず、「目次」と分かる小さな見出しにする。
+       クリックで閉じると幅の判定が走るまで開かないので、押せないようにしておく。
+       ページ側の details {...} が効かないよう、枠は明示的に消す（2026-09-04）。 */
+    'details.toc-fold { border:0; background:none; border-radius:0; padding:0; }',
+    'details.toc-fold[open] > .toc-more { display:block; min-height:0; pointer-events:none; border:0;',
     '  font-size:12px; font-weight:700; color:#5e6470; padding:0 0 7px; background:none; }',
-    '.toc-fold > .toc-more::-webkit-details-marker { display:none; }',
-    '.toc-fold > .toc-more::marker { content:""; }',
+    'details.toc-fold > .toc-more::after { display:none; }',
     '@media (max-width:640px) {',
     '  .page-toc { gap:6px; }',
-    '  .toc-fold { border:1px solid #bcd3ee; background:#ffffff; border-radius:8px; }',
-    '  .toc-fold > .toc-more, .toc-fold[open] > .toc-more {',
-    '    display:flex; align-items:center; gap:8px; list-style:none; cursor:pointer;',
-    '    pointer-events:auto; background:none;',
-    '    font-size:13px; font-weight:700; color:#1e5fa8; padding:9px 13px; }',
-    '  .toc-fold > .toc-more::-webkit-details-marker { display:none; }',
-    '  .toc-fold > .toc-more::marker { content:""; }',
-    '  .toc-fold > .toc-more::before { content:"▸"; font-size:11px; }',
-    '  .toc-fold[open] > .toc-more::before { content:"▾"; }',
-    '  .toc-fold > .page-toc { padding:0 11px 11px; }',
+    /* スマホは閉じておくので、共通の折りたたみ（枠と「開く」）に戻す */
+    '  details.toc-fold { border:1px solid var(--fold-line, #c9d3df); background:#ffffff; border-radius:8px; }',
+    '  details.toc-fold > .toc-more, details.toc-fold[open] > .toc-more {',
+    '    display:flex; min-height:46px; pointer-events:auto; color:#222222;',
+    '    font-size:13.5px; padding:8px 10px 8px 13px; }',
+    '  details.toc-fold[open] > .toc-more { border-bottom:1px solid var(--fold-rule, #e3e8ee); }',
+    '  details.toc-fold > .toc-more::after { display:block; }',
+    '  details.toc-fold > .page-toc { padding:11px 11px 12px; }',
     /* 長い見出しのチップが画面幅を超えて横スクロールを起こすので、狭い画面では折り返す */
     '  .page-toc a { font-size:11.5px; padding:4px 10px; white-space:normal; border-radius:14px; }',
     '  .page .card, .page details.fold, section[id] { scroll-margin-top:64px; }',
@@ -140,7 +137,7 @@
     /* スマホでは折りたたむ。既定を open にしておくのは、
        JSが途中で止まっても今までどおりチップが全部見えるようにするため。 */
     var fold = document.createElement('details');
-    fold.className = 'toc-fold';
+    fold.className = 'toc-fold fold-in';
     fold.open = true;
     fold.innerHTML = '<summary class="toc-more">このページの目次（' + items.length + '項目）</summary>';
     box.parentNode.insertBefore(fold, box);

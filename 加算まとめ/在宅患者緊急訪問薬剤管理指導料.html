@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/gigi-list.css" />
     <link rel="stylesheet" href="../assets/source-refs.css" />
+    <link rel="stylesheet" href="../assets/fold.css" />
     <style>
       *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
       :root {
@@ -85,11 +86,6 @@
       .note { font-size:var(--text-xs); color:var(--txt-2); margin-top:10px; line-height:1.7; }
 
       /* 折りたたみ（施行済みの改定経緯を格納） */
-      .fold { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); }
-      .fold > summary { list-style:none; cursor:pointer; padding:14px var(--pad-card); font-weight:700; font-size:var(--text-sm); color:var(--txt-2); display:flex; align-items:center; gap:8px; }
-      .fold > summary::-webkit-details-marker { display:none; }
-      .fold > summary::before { content:"▶"; font-size:10px; color:var(--txt-3); transition:transform .15s; }
-      .fold[open] > summary::before { transform:rotate(90deg); }
       .fold .fold-body { padding:0 var(--pad-card) var(--pad-card); display:flex; flex-direction:column; gap:14px; }
       /* 新旧全文対比 */
       .diff-row { font-size:var(--text-sm); line-height:1.85; }
@@ -352,7 +348,7 @@
 
       <!-- 改定の経緯：施行済みのため格納。返戻対応の根拠用に全文を残す -->
       <details class="fold" data-toc-label="改定の経緯・新旧全文対比">
-        <summary>改定の経緯・別添３本文の新旧全文対比（折りたたみ）</summary>
+        <summary>改定の経緯・別添３本文の新旧全文対比</summary>
         <div class="fold-body">
           <div style="font-size:var(--text-sm);">
             返戻時の確認に使えるよう、令和6年から令和8年で本文がどう変わったかを並べた。黄色マーカーが変わった箇所。

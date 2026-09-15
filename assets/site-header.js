@@ -340,24 +340,20 @@
 
     /* 一覧の開閉（スマホだけ閉じる）。
        PC は details を open のままにし、取っ手（summary）を隠すので今までと同じ見た目。
-       スマホでは一覧が45行・約1,500px あり、本文を読み終えた直後に通過させていた。 */
-    .sn-sib-fold[open] > .sn-sib-more { display: none; }
+       スマホでは一覧が45行・約1,500px あり、本文を読み終えた直後に通過させていた。
+       スマホの開閉の見た目はサイト共通の assets/fold.css（class="fold-in"）。 */
+    details.sn-sib-fold { border: 0; background: none; border-radius: 0; }
+    details.sn-sib-fold[open] > .sn-sib-more { display: none; }
 
     /* モバイル */
     @media (max-width: 700px) {
       .sn-siblings { margin-top: 28px; padding: 18px 16px 4px; }
       .sn-sib-grid { grid-template-columns: 1fr; }
       .sn-sib-hub { margin-left: 0; }
-      .sn-sib-more, .sn-sib-fold[open] > .sn-sib-more {
-        display: flex; align-items: center; gap: 8px;
-        list-style: none; cursor: pointer;
-        font-size: 13px; font-weight: 700; color: #1e5fa8;
-        padding: 8px 2px 10px;
-      }
-      .sn-sib-more::-webkit-details-marker { display: none; }
-      .sn-sib-more::marker { content: ""; }
-      .sn-sib-more::before { content: "▸"; font-size: 11px; }
-      .sn-sib-fold[open] > .sn-sib-more::before { content: "▾"; }
+      details.sn-sib-fold { border: 1px solid var(--fold-line, #c9d3df); background: #fff; border-radius: 8px; margin-bottom: 14px; }
+      details.sn-sib-fold[open] > .sn-sib-more { display: flex; }
+      details.sn-sib-fold > .sn-sib-more { font-size: 13.5px; }
+      details.sn-sib-fold > .sn-sib-grid { padding: 6px 13px 8px; }
       .sn-header { padding: 10px 16px; }
       .sn-toggle { display: flex; }
       .sn-nav {
@@ -509,6 +505,16 @@
     document.head.appendChild(headCss);
   }
 
+  // ── 折りたたみの共通の見た目（assets/fold.css）を全ページへ注入 ──
+  // 折りたたみのあるページは <head> で読み込んでいる（読み込みが遅れて一瞬古い見た目になるのを防ぐため）。
+  // 書き忘れたページと、このファイルが作る「他のページ」の一覧のために、無ければここで足す。
+  if (!document.querySelector('link[href$="assets/fold.css"]')) {
+    const foldCss = document.createElement('link');
+    foldCss.rel = 'stylesheet';
+    foldCss.href = u('assets/fold.css');
+    document.head.appendChild(foldCss);
+  }
+
   // ── 検索エンジン非掲載（社内専用サイト）：全ページに noindex を注入 ──
   // 既に <meta name="robots"> があるページはスキップ（個別指定を尊重）
   if (!document.querySelector('meta[name="robots"]')) {
@@ -632,7 +638,7 @@
       `<span class="sn-sib-title">${esc(cat.name)}の他のページ</span>` +
       `<a class="sn-sib-hub" href="${encodeURI(u(cat.url))}">まとめページへ ›</a>` +
       '</div>' +
-      '<details class="sn-sib-fold" open>' +
+      '<details class="sn-sib-fold fold-in" open>' +
       `<summary class="sn-sib-more">すべて見る（${siblings.length}）</summary>` +
       '<div class="sn-sib-grid">' +
       siblings

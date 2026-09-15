@@ -7,6 +7,7 @@
   <title>基本記載ルール｜薬歴マニュアル</title>
   <meta name="search-keywords" content="SOAP,ア〜オ,10項目,別添3,通則,患者情報,継続的な薬学的管理,記載例" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/fold.css" />
   <style>
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
     :root {
@@ -99,12 +100,7 @@
     .ref a { color:var(--blue); }
 
     /* 原文 折りたたみ */
-    details.original { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); overflow:hidden; }
-    details.original > summary { list-style:none; cursor:pointer; padding:13px 18px; font-size:var(--text-sm); font-weight:900; color:var(--blue); display:flex; align-items:center; gap:9px; }
-    details.original > summary::-webkit-details-marker { display:none; }
-    details.original > summary::before { content:"▶"; font-size:10px; transition:transform .15s; }
-    details.original[open] > summary::before { transform:rotate(90deg); }
-    details.original .obody { padding:2px 18px 16px; border-top:var(--bw) solid var(--border); }
+    details.original .obody { padding:14px 18px 16px; }
     details.original .ocite { font-size:var(--text-xs); color:var(--txt-3); margin:10px 0; }
     .orig { display:flex; flex-direction:column; gap:7px; }
     .orig .oi { display:flex; gap:9px; font-size:var(--text-sm); line-height:1.7; }
@@ -160,7 +156,7 @@
     </div>
 
     <!-- ── 原文（折りたたみ） ── -->
-    <details class="original" data-sec="intro">
+    <details class="original fold" data-sec="intro">
       <summary>薬歴10項目の原文を見る</summary>
       <div class="obody">
         <div class="ocite">オンライン資格確認等システムを通じて取得した患者の診療情報、薬剤情報等を含めて、次の事項等を記載する。</div>

@@ -7,6 +7,7 @@
   <title>選定療養 計算ツール（社内・非公開）</title>
   <meta name="search-keywords" content="長期収載品,特別の料金,計算,差額,先発品" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/fold.css" />
   <style>
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
     :root {
@@ -99,11 +100,7 @@
     .btn-primary { background:var(--blue); color:#fff; border-color:var(--blue); }
 
     .breakdown { margin-top:12px; }
-    .breakdown > summary { cursor:pointer; font-size:var(--text-sm); font-weight:700; color:var(--txt-2); list-style:none; display:flex; align-items:center; gap:7px; }
-    .breakdown > summary::-webkit-details-marker { display:none; }
-    .breakdown > summary::before { content:"▶"; font-size:10px; color:var(--txt-3); }
-    .breakdown[open] > summary::before { content:"▼"; }
-    .bd-body { margin-top:10px; font-size:var(--text-sm); }
+    .bd-body { padding:10px 14px 12px; font-size:var(--text-sm); }
     .bd-body table, .grp-table { width:100%; border-collapse:collapse; }
     .bd-body td { padding:6px 8px; border-bottom:var(--bw-h) solid var(--border); }
     .bd-body td:last-child { text-align:right; font-weight:700; }
@@ -412,7 +409,7 @@
     if(hasOld){
       if(AFTER_SWITCH){
         html+=gengoPrimary;
-        html+='<details class="breakdown no-print" style="margin-top:12px;"><summary>前回（5月）からの変化を見る</summary><div class="bd-body"><div class="sub-line" style="background:var(--box-blue);margin-top:0;">'+mayNote+mayTable+'</div></div></details>';
+        html+='<details class="breakdown fold-in no-print" style="margin-top:12px;"><summary>前回（5月）からの変化を見る</summary><div class="bd-body"><div class="sub-line" style="background:var(--box-blue);margin-top:0;">'+mayNote+mayTable+'</div></div></details>';
       } else {
         html+='<div class="sub-line" style="background:var(--box-blue);"><div style="font-weight:900;margin-bottom:2px;">先月（5月）と比べて</div>'+mayNote+mayTable+'</div>';
         html+=gengoSub;
@@ -424,7 +421,7 @@
     html+='<div class="unit-note no-print" style="margin-top:8px;">同じ剤に複数の先発がある場合、選定療養費は合算して計算されます。特管3ロの再算定可否は薬剤ごとの判断となるため、単品モードで確認してください。</div>';
     html+='<div class="actions no-print"><button class="btn" onclick="window.print()">印刷（患者に渡す）</button></div>';
     var ul=naifuku?'（1日分あたり）':'（1調剤＝総量あたり）';
-    html+='<details class="breakdown no-print"><summary>計算の内訳</summary><div class="bd-body"><table>'+
+    html+='<details class="breakdown fold-in no-print"><summary>計算の内訳</summary><div class="bd-body"><table>'+
       '<tr><td>選定分の薬価 '+ul+'</td><td>'+d.sentei+'円 × '+qty+' ＝ '+r2(d.sentei*qty)+'円</td></tr>'+
       '<tr><td>選定分の点数（R8.6）</td><td>'+r2(d.sentei*qty)+'円 ÷10 → '+ptNew+'点'+(naifuku?(' ×'+days+'日 ＝ '+(ptNew*days)+'点'):'')+'</td></tr>'+
       (d.senteiOld!=null?('<tr><td>（参考）R8.5までの選定点数</td><td>'+d.senteiOld+'円 × '+qty+' ＝ '+r2(d.senteiOld*qty)+'円 → '+ptOld+'点</td></tr>'):'')+
@@ -534,13 +531,13 @@
       '後発品 合計 <b>'+yen(gGe)+'円</b>　／　先発（希望） 合計 <b>'+yen(total)+'円</b>　→　後発品を選ぶと <span class="marker">'+yen(diff)+'円 安くなります</span>。</div>';
     if(AFTER_SWITCH){
       html+=gengoPrimary2;
-      html+='<details class="breakdown no-print" style="margin-top:12px;"><summary>前回（5月）からの変化を見る</summary><div class="bd-body"><div class="sub-line" style="background:var(--box-blue);margin-top:0;">'+mayNote2+mayTable2+'</div></div></details>';
+      html+='<details class="breakdown fold-in no-print" style="margin-top:12px;"><summary>前回（5月）からの変化を見る</summary><div class="bd-body"><div class="sub-line" style="background:var(--box-blue);margin-top:0;">'+mayNote2+mayTable2+'</div></div></details>';
     } else {
       html+='<div class="sub-line" style="background:var(--box-blue);"><div style="font-weight:900;margin-bottom:2px;">先月（5月）と比べて</div>'+mayNote2+mayTable2+'</div>';
       html+=gengoSub2;
     }
     html+='<div class="src" style="margin-top:6px;">※選定対象薬のみの概算です。実際の窓口負担（端数整理・公費・他剤の影響）と異なる場合があります。</div>';
-    html+='<details class="breakdown no-print" open><summary>剤・品目ごとの内訳（社内確認用）</summary><div class="bd-body"><table class="grp-table">'+
+    html+='<details class="breakdown fold-in no-print" open><summary>剤・品目ごとの内訳（社内確認用）</summary><div class="bd-body"><table class="grp-table">'+
       '<tr><th>剤／品目</th><th style="text-align:right;">選定点数</th><th style="text-align:right;">選定療養費</th></tr>'+rows+'</table></div></details>';
     html+='<div class="actions no-print"><button class="btn" onclick="window.print()">印刷（患者に渡す）</button></div>';
     out2El.innerHTML=html;

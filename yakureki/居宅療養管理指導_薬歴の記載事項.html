@@ -11,35 +11,11 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="yakureki.css" />
+    <link rel="stylesheet" href="../assets/fold.css" />
     <style>
-      .guide-details {
-        margin: 10px 0 14px;
-        border: 1px solid #c9def5;
-        border-radius: 4px;
-        background: #fafcff;
-      }
-      .guide-details summary {
-        cursor: pointer; padding: 10px 14px;
-        font-size: 13px; font-weight: 700;
-        color: var(--blue);
-        background: #eff5fc;
-        list-style: none;
-        border-radius: 4px;
-        display: flex; align-items: center; gap: 8px;
-      }
-      .guide-details[open] summary {
-        border-radius: 4px 4px 0 0;
-        border-bottom: 1px solid #c9def5;
-      }
-      .guide-details summary:hover { background: #e3edf8; }
-      .guide-details summary::-webkit-details-marker { display: none; }
-      .guide-details summary::before {
-        content: "▶";
-        font-size: 11px;
-        display: inline-block;
-        transition: transform 0.15s;
-      }
-      .guide-details[open] summary::before { transform: rotate(90deg); }
+      /* 詳細・背景知識の折りたたみ：見た目は assets/fold.css */
+      .guide-details { margin: 10px 0 14px; }
+      details.guide-details.fold-in > summary { font-size: 13.5px; }
       .guide-details-body {
         padding: 8px 18px 14px; font-size: 13.5px; line-height: 1.75;
       }
@@ -136,7 +112,7 @@
       </section>
 
       <section>
-        <details class="guide-details">
+        <details class="guide-details fold-in">
           <summary>この通知に「全文」がない理由と、本ページの作成方法</summary>
           <div class="guide-details-body">
             <p>
@@ -160,7 +136,7 @@
           </div>
         </details>
 
-        <details class="guide-details">
+        <details class="guide-details fold-in">
           <summary>調剤報酬との違い・併算定について</summary>
           <div class="guide-details-body">
             <p>

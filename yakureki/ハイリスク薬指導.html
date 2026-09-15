@@ -11,6 +11,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="yakureki.css" />
+    <link rel="stylesheet" href="../assets/fold.css" />
     <style>
       /* 薬剤名逆引き（五十音索引） */
       .kana-row { display: flex; gap: 10px; align-items: flex-start; padding: 7px 0; border-bottom: 1px solid var(--border); }
@@ -22,9 +23,8 @@
       /* ===== 個別ページ准拠：サイドスティッキー目次（PC 880px+）＋スマホ用インライン目次 ===== */
       [id] { scroll-margin-top:calc(var(--sn-header-h, 0px) + 16px); }
       .sticky-toc { display: none; }
-      .toc-inline { border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--white); padding: 10px 14px; margin: 0 0 18px; }
-      .toc-inline summary { font-weight: 700; font-size: 13px; color: var(--blue); cursor: pointer; }
-      .toc-inline .toc-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+      .toc-inline { margin: 0 0 18px; }
+      .toc-inline .toc-links { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 14px 14px; }
       .toc-inline .toc-links a { font-size: 12px; background: var(--blue-light); color: var(--blue); border-radius: 4px; padding: 2px 9px; text-decoration: none; }
       @media (min-width: 880px) { .toc-inline { display: none; } }
 
@@ -101,8 +101,8 @@
     </div>
 
     <main>
-      <details class="toc-inline">
-        <summary>目次（タップで開閉）</summary>
+      <details class="toc-inline fold-in">
+        <summary>目次</summary>
         <div class="toc-links">
           <a href="#kubun">算定区分（イ／ロ）</a>
           <a href="#kyotsu">薬歴記載の共通原則</a>

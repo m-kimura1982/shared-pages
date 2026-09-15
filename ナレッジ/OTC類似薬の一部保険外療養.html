@@ -7,6 +7,7 @@
     <title>OTC類似薬の一部保険外療養｜実務ナレッジ集</title>
     <meta name="search-keywords" content="OTC類似薬,一部保険外療養,特別の料金,4分の1,77成分,ヒルドイド,ロキソニン,ムコダイン,リンデロン,タリオン,ナゾネックス,ラミシール,ゾビラックス,ロゼレム,湿布,保湿剤,保険外併用療養費,中医協,セルフメディケーション,白色ワセリン,オリブ油,基剤,在宅患者,施設入所者,悪性リンパ腫,白血病,脳腫瘍,がん疑い,エピナスチン,関節リウマチ,月経困難症,プロアクティブ療法,ステロイド外用薬,消費税,非課税,税制改正要望,パブリックコメント,医療保険部会,処方箋様式,一部保険外療養欄,掲示義務,投薬全量,四捨五入,経過措置,諮問,療養担当規則,変更不可,患者希望" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/fold.css" />
     <style>
       *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
       :root {
@@ -112,13 +113,7 @@
       .legend div { display:flex; align-items:center; gap:7px; }
       .legend i { width:16px; height:16px; border-radius:3px; border:var(--bw) solid var(--border-dk); flex-shrink:0; }
 
-      details { border:var(--bw) solid var(--border); border-radius:var(--radius-sm); }
-      details > summary { list-style:none; cursor:pointer; padding:11px 15px; font-size:var(--text-sm); font-weight:700; color:var(--txt-2); background:#fafbfc; display:flex; align-items:center; gap:8px; }
-      details > summary::-webkit-details-marker { display:none; }
-      details > summary:hover { background:#f2f7fc; }
-      details > summary .chev { color:var(--txt-3); font-size:10px; transition:transform .18s; }
-      details[open] > summary .chev { transform:rotate(90deg); }
-      details .body { padding:13px 15px 15px; font-size:var(--text-sm); border-top:var(--bw) solid var(--border); }
+      details .body { padding:13px 15px 15px; font-size:var(--text-sm); }
 
       a { color:var(--blue); }
       [id] { scroll-margin-top:calc(var(--sn-header-h, 0px) + 16px); }
@@ -566,8 +561,8 @@
             <div class="note" style="margin-top:10px">令和7年12月に公表された一覧から、<span class="em-change">ラメルテオンが追加</span>、ポリエンホスファチジルコリンが削除された。</div>
           </div>
 
-          <details>
-            <summary><span class="chev">▶</span>77成分をすべて見る</summary>
+          <details class="fold-in">
+            <summary>77成分をすべて見る</summary>
             <div class="body">
               <div class="tbl-wrap narrow">
                 <table>
@@ -766,8 +761,8 @@
         </div>
 
         <div style="margin-top:14px">
-          <details>
-            <summary><span class="chev">▶</span>がん治療後や指定難病以外でも、「長期使用」に該当すれば料金はかからない</summary>
+          <details class="fold-in">
+            <summary>がん治療後や指定難病以外でも、「長期使用」に該当すれば料金はかからない</summary>
             <div class="body">
               <div class="stack">
                 <div>上の表で他の分類に該当しない場合でも、<span class="marker">「長期使用」に該当すれば料金はかからない</span>。パブリックコメントの回答では、次のような例が示されている。</div>
@@ -782,8 +777,8 @@
         </div>
 
         <div style="margin-top:14px">
-          <details>
-            <summary><span class="chev">▶</span>湿布・保湿剤の経過措置は条件が厳しい</summary>
+          <details class="fold-in">
+            <summary>湿布・保湿剤の経過措置は条件が厳しい</summary>
             <div class="body">
               <div class="stack">
                 <div>湿布や保湿剤は2028年度末までの経過措置で料金がかからない扱いにできるが、<span class="marker">通年で使っているだけでは足りない</span>。</div>
@@ -845,8 +840,8 @@
 
           <div>配慮の有無も逆になる。<span class="marker">選定療養は小児にも、公費負担医療を受けている人にも同じように特別の料金がかかる</span>が、一部保険外療養は18歳になった年度の3月31日まで・生活保護受給者・国の公費負担医療の受給者は対象外。<span class="em-change">同じ患者でも、どちらの制度かで結論が変わる</span>。</div>
 
-          <details>
-            <summary><span class="chev">▶</span>今の選定療養対象品と成分が重なるもの（目安・約60品目）</summary>
+          <details class="fold-in">
+            <summary>今の選定療養対象品と成分が重なるもの（目安・約60品目）</summary>
             <div class="body">
               <div class="stack">
                 <div class="box-gray">選定療養の対象医薬品マスタ（776品目）と77成分を成分名で突き合わせた<span class="marker">目安</span>。投与経路や1日最大用量で絞り込まれるため、ここに載っていても実際は料金がかからないものが混じる。確定は告示の品目リストを待つ。</div>

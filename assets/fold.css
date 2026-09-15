@@ -1,0 +1,94 @@
+/* 折りたたみの共通の見た目（サイト全ページ共通）
+
+   2026-09-16 に作り直した。事務スタッフが既存の折りたたみに気づいていなかった
+   （左端の小さな「›」が薄いグレーで、帯の地もほぼ白く、見出しの帯に見えていた）。
+   そこで、どのページの折りたたみも
+     ・枠で囲んだ帯にする（押せるものに見せる）
+     ・右端に「開く／閉じる」の言葉と向きの分かる印を出す
+     ・題名は薄くせず本文と同じ濃さにする
+   に揃えた。見た目を変えるときはこの1ファイルだけを直す。個別ページに同じ定義を書き足さない。
+
+   使い方
+   ・カードと同じ並びに置く独立した折りたたみ（原文を見る など）
+       <details class="fold"><summary>題名</summary><div class="fold-body">…</div></details>
+   ・カードの中に置く折りたたみ（解説・詳細・一覧の続き など）
+       <details class="fold-in"><summary>題名</summary><div class="fold-body">…</div></details>
+   ・summary の中に ▶ や › を書かない。右端の「開く／閉じる」はこのファイルが付ける。
+   ・<head> で各ページの <style> より前に読み込む：<link rel="stylesheet" href="../assets/fold.css" />
+     （書き忘れても site-header.js が補うが、読み込みが遅れて一瞬古い見た目になる）
+   ・読者に必要な情報は畳まない。畳むのは原文・長い補足・一覧の続きだけ。 */
+
+:root {
+  --fold-line:#c9d3df;        /* カードの中の折りたたみの枠（白地で見える濃さ） */
+  --fold-rule:#e3e8ee;        /* 開いたときの帯と中身の区切り */
+  --fold-hover:#f4f8fc;
+  --fold-pill:#e4f0f8;        /* 「開く」の地。青文字とのコントラスト 5.6 */
+  --fold-pill-hover:#d3e5f5;  /* 同 5.0 */
+}
+
+/* ── 入れ物 ── */
+details.fold { background:var(--white,#fff); border:var(--bw,0.5px) solid var(--border,#d1d5db); border-radius:var(--radius,10px); }
+details.fold-in { background:var(--white,#fff); border:1px solid var(--fold-line); border-radius:8px; }
+
+/* ── 帯（押すところ） ── */
+details.fold > summary,
+details.fold-in > summary {
+  list-style:none; cursor:pointer;
+  display:flex; align-items:center; gap:12px;
+  min-height:48px; padding:9px 12px 9px 16px;
+  font-size:var(--text-sm,15px); font-weight:700; line-height:1.6; color:var(--ink,#222);
+  border-radius:inherit;
+  -webkit-user-select:none; user-select:none;
+}
+details.fold > summary { padding-left:var(--pad-card,22px); }
+details.fold > summary::-webkit-details-marker,
+details.fold-in > summary::-webkit-details-marker { display:none; }
+details.fold > summary::marker,
+details.fold-in > summary::marker { content:""; }
+
+details.fold[open] > summary,
+details.fold-in[open] > summary { border-bottom:1px solid var(--fold-rule); border-bottom-left-radius:0; border-bottom-right-radius:0; }
+
+details.fold > summary:hover,
+details.fold-in > summary:hover { background:var(--fold-hover); }
+details.fold > summary:focus-visible,
+details.fold-in > summary:focus-visible { outline:2px solid var(--blue,#1e5fa8); outline-offset:2px; }
+
+/* ── 右端の「開く／閉じる」 ── */
+details.fold > summary::after,
+details.fold-in > summary::after {
+  content:"開く";
+  margin-left:auto; flex-shrink:0; align-self:center;
+  font-size:13px; font-weight:700; line-height:1; letter-spacing:0.02em; white-space:nowrap;
+  color:var(--blue,#1e5fa8);
+  background:var(--fold-pill) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1.2 1.6 6 6.4l4.8-4.8' fill='none' stroke='%231e5fa8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 11px center / 11px 7px;
+  padding:7px 29px 7px 13px; border-radius:999px;
+}
+details.fold[open] > summary::after,
+details.fold-in[open] > summary::after {
+  content:"閉じる";
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1.2 6.4 6 1.6l4.8 4.8' fill='none' stroke='%231e5fa8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+details.fold > summary:hover::after,
+details.fold-in > summary:hover::after { background-color:var(--fold-pill-hover); }
+
+/* ── 中身 ── */
+details.fold > .fold-body { padding:14px var(--pad-card,22px) var(--pad-card,22px); }
+details.fold-in > .fold-body { padding:12px 16px 14px; }
+
+@media (max-width:640px) {
+  details.fold > summary,
+  details.fold-in > summary { min-height:46px; padding:8px 10px 8px 13px; gap:10px; }
+  details.fold > summary { padding-left:var(--pad-card,14px); }
+  details.fold > summary::after,
+  details.fold-in > summary::after { font-size:12px; padding:6px 26px 6px 11px; background-position:right 10px center; }
+  details.fold-in > .fold-body { padding:11px 13px 13px; }
+}
+
+@media print {
+  details.fold, details.fold-in { break-inside:avoid; }
+  details.fold > summary::after,
+  details.fold-in > summary::after { display:none; }
+  details.fold > summary,
+  details.fold-in > summary { min-height:0; }
+}

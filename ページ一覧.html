@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ページ一覧｜調剤報酬・薬歴まとめ</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/fold.css" />
 <style>
 *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
 :root {
@@ -56,16 +57,10 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
 .grp + .grp { margin-top:10px; }
 /* 開いたカテゴリーへスクロールしたとき、共通ヘッダーに隠れないようにする */
 .grp { scroll-margin-top:70px; }
-.grp > summary {
-  list-style:none; cursor:pointer; padding:15px var(--pad-card);
-  display:flex; align-items:center; gap:11px; flex-wrap:wrap;
-}
-.grp > summary::-webkit-details-marker { display:none; }
-.grp > summary::before {
-  content:"▶"; font-size:10px; color:var(--txt-3); transition:transform .15s; flex-shrink:0;
-}
-.grp[open] > summary::before { transform:rotate(90deg); }
-.grp > summary:hover { background:#fafbfc; }
+details.grp.fold-in { border:var(--bw) solid var(--border); border-radius:var(--radius); overflow:hidden; }
+details.grp.fold-in > summary { padding:12px 14px 12px var(--pad-card); gap:11px; flex-wrap:wrap; }
+/* 「まとめページへ」を右に寄せ、「開く」はその右隣に置く（両方が左の余白を取り合って中央に寄るため） */
+details.grp.fold-in > summary::after { margin-left:14px; }
 .grp .gname { font-size:var(--text-lg); font-weight:900; }
 .grp .gcnt { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
 .grp .ghub { margin-left:auto; font-size:var(--text-xs); font-weight:700; color:var(--blue); text-decoration:none; white-space:nowrap; }
@@ -92,9 +87,10 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
   body { font-size:14px; padding:14px 12px 40px; line-height:1.75; }
   :root { --text-xs:11.5px; --text-sm:13.5px; --text-md:14px; --text-lg:16px; --text-xl:18px; --pad-card:14px; --gap-card:11px; }
   .card { padding:14px; border-radius:8px; }
-  .grp > summary { padding:12px 14px; }
+  details.grp.fold-in > summary { padding:10px 10px 10px 14px; }
   .grp .rows { padding:0 14px 10px; }
-  .grp .ghub { margin-left:0; width:100%; }
+  .grp .ghub { margin-left:0; width:100%; order:2; }
+  details.grp.fold-in > summary::after { margin-left:auto; }
   /* 16px 未満だと iOS が入力時に拡大するので下げない */
   .finder input { font-size:16px; padding:15px 16px 15px 44px; }
   .finder .box svg { left:15px; width:19px; height:19px; }
@@ -105,7 +101,6 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
   body { background:#fff; padding:0; font-size:10.5px; line-height:1.45; }
   .page { display:block; max-width:none; }
   .grp { border:0.5px solid #ccc; margin-bottom:7px; break-inside:auto; }
-  .grp > summary::before { display:none; }
   .card:has(.finder), .note { display:none; }
   .row { break-inside:avoid; padding:3px 2px; }
   a { color:inherit; text-decoration:none; }
@@ -186,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!items.length) return;
     total += items.length;
     var cat = CATS[c] || { name: c, url: '' };
-    html += '<details class="grp" data-group="' + c + '">';
+    html += '<details class="grp fold-in" data-group="' + c + '">';
     html += '<summary>' +
             '<span class="gname">' + esc(cat.name) + '</span>' +
             '<span class="gcnt"><span class="cnt">' + items.length + '</span>件</span>' +

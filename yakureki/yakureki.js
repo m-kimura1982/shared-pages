@@ -39,18 +39,16 @@
   var label = guide.querySelector(".section-label");
   if (!cards || guide.querySelector("details.guide-fold")) return;
 
+  /* 開閉の見た目はサイト共通の assets/fold.css（class="fold-in"）。
+     PC は枠を消し、開いているときは取っ手を隠す */
   var css = [
-    ".guide-fold[open] > .guide-more { display:none; }",
+    "details.guide-fold { border:0; background:none; border-radius:0; }",
+    "details.guide-fold[open] > .guide-more { display:none; }",
     "@media (max-width:640px) {",
-    "  .guide-fold { border:1px solid var(--border); background:var(--white); border-radius:var(--radius-sm); }",
-    "  .guide-fold > .guide-more, .guide-fold[open] > .guide-more {",
-    "    display:flex; align-items:center; gap:8px; list-style:none; cursor:pointer;",
-    "    font-size:13px; font-weight:700; color:var(--blue); padding:9px 13px; }",
-    "  .guide-fold > .guide-more::-webkit-details-marker { display:none; }",
-    "  .guide-fold > .guide-more::marker { content:''; }",
-    "  .guide-fold > .guide-more::before { content:'▸'; font-size:11px; }",
-    "  .guide-fold[open] > .guide-more::before { content:'▾'; }",
-    "  .guide-fold > .guide-cards { padding:0 11px 11px; }",
+    "  details.guide-fold { border:1px solid var(--fold-line, #c9d3df); background:#fff; border-radius:8px; }",
+    "  details.guide-fold[open] > .guide-more { display:flex; }",
+    "  details.guide-fold > .guide-more { font-size:13.5px; }",
+    "  details.guide-fold > .guide-cards { padding:11px 11px 12px; }",
     "}"
   ].join("\n");
   var st = document.createElement("style");
@@ -58,7 +56,7 @@
   document.head.appendChild(st);
 
   var fold = document.createElement("details");
-  fold.className = "guide-fold";
+  fold.className = "guide-fold fold-in";
   fold.open = true;
   fold.innerHTML = '<summary class="guide-more">このページの使い方</summary>';
   cards.parentNode.insertBefore(fold, cards);

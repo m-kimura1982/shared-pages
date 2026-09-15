@@ -15,6 +15,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="yakureki.css" />
+    <link rel="stylesheet" href="../assets/fold.css" />
     <style>
       /* 薬剤群ブロック */
       .drug-block {
@@ -108,36 +109,11 @@
       .drug-check-box ul li { font-size: 13px; line-height: 1.7; margin-bottom: 2px; }
 
       /* 折りたたみ式 指導補足 */
-      .guide-details {
-        margin: 10px 0 14px;
-        border: 1px solid #c9def5;
-        border-radius: 4px;
-        background: #fafcff;
-      }
-      .guide-details summary {
-        cursor: pointer; padding: 10px 14px;
-        font-size: 13px; font-weight: 700;
-        color: var(--blue);
-        background: #eff5fc;
-        list-style: none;
-        border-radius: 4px;
-        display: flex; align-items: center; gap: 8px;
-      }
-      .guide-details[open] summary {
-        border-radius: 4px 4px 0 0;
-        border-bottom: 1px solid #c9def5;
-      }
-      .guide-details summary:hover { background: #e3edf8; }
-      .guide-details summary::-webkit-details-marker { display: none; }
-      .guide-details summary::before {
-        content: "▶";
-        font-size: 11px;
-        display: inline-block;
-        transition: transform 0.15s;
-      }
-      .guide-details[open] summary::before { transform: rotate(90deg); }
+      /* 詳細・背景知識の折りたたみ：見た目は assets/fold.css */
+      .guide-details { margin: 10px 0 14px; }
+      details.guide-details.fold-in > summary { font-size: 13.5px; }
       .guide-details-body {
-        padding: 2px 18px 14px; font-size: 13.5px; line-height: 1.75;
+        padding: 12px 18px 14px; font-size: 13.5px; line-height: 1.75;
       }
       .guide-details-body h4 {
         font-size: 13px; font-weight: 700;
@@ -261,9 +237,8 @@
       .sticky-toc { display: none; }
 
       /* ===== スマホ用インライン目次（880px未満のみ表示） ===== */
-      .toc-inline { border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--white); padding: 10px 14px; margin: 0 0 18px; }
-      .toc-inline summary { font-weight: 700; font-size: 13px; color: var(--blue); cursor: pointer; }
-      .toc-inline .toc-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+      .toc-inline { margin: 0 0 18px; }
+      .toc-inline .toc-links { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 14px 14px; }
       .toc-inline .toc-links a { font-size: 12px; background: var(--blue-light); color: var(--blue); border-radius: 4px; padding: 2px 9px; text-decoration: none; }
       @media (min-width: 880px) { .toc-inline { display: none; } }
 
@@ -493,8 +468,8 @@
         <button type="button" data-mode="all" class="active">解説＋テンプレ</button>
         <button type="button" data-mode="tpl">テンプレのみ</button>
       </div>
-      <details class="toc-inline">
-        <summary>目次（タップで開閉）</summary>
+      <details class="toc-inline fold-in">
+        <summary>目次</summary>
         <div class="toc-links">
           <a href="#guide">このページの使い方</a>
           <a href="#lowline">算定時の記載ポイント</a>
@@ -687,7 +662,7 @@
             </ul>
           </div>
 
-          <details class="guide-details">
+          <details class="guide-details fold-in">
             <summary>詳細・背景知識</summary>
             <div class="guide-details-body">
               <h4>薬効の説明ポイント</h4>
@@ -833,7 +808,7 @@
             </ul>
           </div>
 
-          <details class="guide-details">
+          <details class="guide-details fold-in">
             <summary>詳細・背景知識</summary>
             <div class="guide-details-body">
               <h4>薬効の説明ポイント</h4>
@@ -942,7 +917,7 @@
             </ul>
           </div>
 
-          <details class="guide-details">
+          <details class="guide-details fold-in">
             <summary>詳細・背景知識</summary>
             <div class="guide-details-body">
               <h4>薬効の説明ポイント</h4>
@@ -1042,7 +1017,7 @@
             </ul>
           </div>
 
-          <details class="guide-details">
+          <details class="guide-details fold-in">
             <summary>詳細・背景知識</summary>
             <div class="guide-details-body">
               <h4>薬効の説明ポイント</h4>
@@ -1151,7 +1126,7 @@
             </ul>
           </div>
 
-          <details class="guide-details">
+          <details class="guide-details fold-in">
             <summary>詳細・背景知識</summary>
             <div class="guide-details-body">
               <h4>薬効の説明ポイント</h4>
@@ -1277,7 +1252,7 @@
             </ul>
           </div>
 
-          <details class="guide-details">
+          <details class="guide-details fold-in">
             <summary>詳細・背景知識</summary>
             <div class="guide-details-body">
               <h4>薬効・作用機序の説明ポイント</h4>
@@ -1373,7 +1348,7 @@
           <p style="font-size:13px;line-height:1.75;color:var(--ink);margin-bottom:8px;">
             <strong>賦活症候群・セロトニン症候群・中止後症候群</strong>など、抗うつ薬で注意したい内容をまとめている。説明した場合は、必要に応じて薬歴に追記する。
           </p>
-          <details class="guide-details">
+          <details class="guide-details fold-in">
             <summary>共通副作用の背景知識</summary>
             <div class="guide-details-body">
               <h4>賦活症候群（アクティベーション・シンドローム）</h4>
@@ -1495,7 +1470,7 @@
       <section id="section1" style="margin-bottom:28px;">
         <div class="section-label">参考</div>
         <h2 class="section-title">抗うつ薬の共通確認ポイント（日薬GL）</h2>
-        <details class="guide-details">
+        <details class="guide-details fold-in">
           <summary>共通確認ポイントを見る</summary>
           <div class="guide-details-body">
             <dl class="ci-list" style="margin:0;">
@@ -1552,7 +1527,7 @@
            § SOURCE（折りたたみ）
            ============================================================ -->
       <section>
-        <details class="guide-details">
+        <details class="guide-details fold-in">
           <summary>本ページの根拠（出典・通知）</summary>
           <div class="guide-details-body">
             <div class="source-box">
