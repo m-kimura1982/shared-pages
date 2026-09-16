@@ -155,12 +155,37 @@
 
       footer { margin-top:72px; padding:28px 24px; text-align:center; font-size:12.5px; color:var(--ink-2); border-top:var(--bw) solid var(--border); background:var(--surface); }
 
+
+      /* ── 注目情報（手で選ぶ。地の灰色をひとすじ挟んで、ヒーローの青と切り分ける） ── */
+      .pickup { background:var(--main-tint); margin-top:14px; padding:24px 0 28px; }
+      .pickup .sec-head { margin-bottom:12px; }
+      .pickup .sec-en { line-height:1.35; }
+      .pickup .sec-ja { line-height:1.35; }
+      .pickup + section { padding-top:52px; }
+      .pu-list { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
+      .pu-card {
+        background:var(--surface); border:var(--bw) solid var(--border); border-radius:var(--radius);
+        padding:14px 20px 11px; display:flex; flex-direction:column; gap:5px;
+        transition:border-color .2s, box-shadow .25s, transform .25s cubic-bezier(.2,.8,.2,1);
+      }
+      .pu-card:hover { border-color:var(--main); box-shadow:0 10px 30px rgba(30,95,168,.10); transform:translateY(-3px); }
+      .pu-card:hover .arrow { width:30px; }
+      /* 番号は英字書体の飾り。読まなくても意味が通るので薄くてよい */
+      .pu-head { display:flex; align-items:baseline; gap:10px; }
+      .pu-no { font-family:var(--en); font-size:15px; font-weight:700; letter-spacing:.1em; color:var(--main); opacity:.55; flex-shrink:0; }
+      .pu-name { font-size:17px; font-weight:900; line-height:1.45; }
+      .pu-why { font-size:13.5px; color:var(--ink-2); line-height:1.7; flex:1; }
+      .pu-foot { display:flex; justify-content:flex-end; margin-top:4px; padding-top:9px; border-top:1px solid var(--line); }
+
       @media (max-width:900px) {
         .hero-inner { grid-template-columns:1fr; gap:28px; }
         /* 縦一列になったら斜め面は消し、探すは白いカードに戻す */
         .hero-inner::before, .hero-inner::after { display:none; }
         .find { padding:20px 22px; background:var(--surface); border:var(--bw) solid var(--border); border-radius:16px; }
         .shelf { grid-template-columns:repeat(2, 1fr); }
+        /* 注目情報は3枚とも短いので3列のまま。題名だけ少し詰める */
+        .pu-card { padding:14px 16px 11px; }
+        .pu-name { font-size:16px; }
       }
       @media (max-width:640px) {
         body { font-size:14px; }
@@ -182,6 +207,10 @@
         .s-card { padding:16px 16px 12px; }
         .s-name { font-size:16.5px; }
         .s-desc { font-size:14px; }
+        .pickup { margin-top:10px; padding:26px 0 30px; }
+        .pu-list { grid-template-columns:1fr; gap:12px; }
+        .pu-card { padding:13px 16px 10px; }
+        .pu-name { font-size:16px; }
         .sec-ja { font-size:20px; }
         .u-row { grid-template-columns:auto 1fr; gap:4px 10px; padding:12px 16px; }
         .u-date { text-align:left; }
@@ -227,6 +256,30 @@
         </div>
       </div>
     </div>
+
+    <!-- 注目情報：手で3つ選ぶ。data-picked は選んだ日（入れ替えの目安） -->
+    <section class="pickup">
+      <div class="wrap">
+        <div class="sec-head"><p class="sec-en">PICK UP</p><h2 class="sec-ja">注目情報</h2></div>
+        <div class="pu-list">
+          <a class="pu-card" href="ナレッジ/OTC類似薬の一部保険外療養.html" data-picked="2026-09-16">
+            <span class="pu-head"><span class="pu-no">01</span><span class="pu-name">OTC類似薬の一部保険外療養</span></span>
+            <p class="pu-why">2027年3月施行。対象は77成分</p>
+            <span class="pu-foot"><span class="cta">資料を開く<span class="arrow"></span></span></span>
+          </a>
+          <a class="pu-card" href="ナレッジ/高額療養費制度の見直し2026.html" data-picked="2026-09-16">
+            <span class="pu-head"><span class="pu-no">02</span><span class="pu-name">高額療養費制度の見直し</span></span>
+            <p class="pu-why">2026年8月からの変更点を整理</p>
+            <span class="pu-foot"><span class="cta">資料を開く<span class="arrow"></span></span></span>
+          </a>
+          <a class="pu-card" href="ナレッジ/調剤報酬QA.html" data-picked="2026-09-16">
+            <span class="pu-head"><span class="pu-no">03</span><span class="pu-name">調剤報酬 社内Q&amp;A</span></span>
+            <p class="pu-why">算定で迷ったら、まずここ</p>
+            <span class="pu-foot"><span class="cta">資料を開く<span class="arrow"></span></span></span>
+          </a>
+        </div>
+      </div>
+    </section>
 
     <section id="chozai">
       <div class="wrap">
@@ -294,11 +347,11 @@
       <div class="wrap">
         <div class="sec-head"><p class="sec-en">UPDATES</p><h2 class="sec-ja">更新情報</h2></div>
         <div class="updates">
+          <a class="u-row" href="index.html"><span class="u-date">9/16</span><span class="u-title">トップページに「注目情報」を追加しました</span></a>
           <a class="u-row" href="ページ一覧.html"><span class="u-date">9/16</span><span class="u-title">表や解説が隠れている欄に「開く」を付けて、見つけやすくしました</span></a>
           <a class="u-row" href="index.html"><span class="u-date">9/11</span><span class="u-title">トップページを刷新し、トップから直接キーワードで資料を探せるようにしました</span></a>
           <a class="u-row" href="ナレッジ/OTC類似薬の一部保険外療養.html"><span class="u-date">9/9</span><span class="u-title">OTC類似薬の一部保険外療養に、処方箋の新しい欄と特別の料金の計算方法を反映しました</span></a>
           <a class="u-row" href="改定資料/選定療養_概要2026.html"><span class="u-date">9/9</span><span class="u-title">選定療養の改定ポイントに、2027年3月からの計算方法の変更を追加しました</span></a>
-          <a class="u-row" href="yakureki/薬歴の書き方_実例解説集.html"><span class="u-date">9/7</span><span class="u-title">薬歴の実例解説集に、オンライン薬剤情報を活用した監査・薬歴の記載事例を追加しました</span></a>
           <div class="u-all"><a class="cta" href="updates.html">すべての更新履歴を見る<span class="arrow"></span></a></div>
         </div>
       </div>
