@@ -77,6 +77,7 @@
       .legend div { display:flex; align-items:center; gap:7px; }
       .legend i { width:22px; height:0; border-top:3px solid var(--blue); flex-shrink:0; }
       .legend i.before { border-top:2px dashed var(--border-dk); }
+      .legend i.refund { height:12px; border-top:none; background:var(--box-blue); }
 
       details .body { padding:13px 15px 15px; font-size:var(--text-sm); }
 
@@ -100,16 +101,27 @@
   </head>
   <body>
     <script src="../assets/site-header.js" defer></script>
+    <script src="../assets/correction.js" defer></script>
 
     <div class="page">
 
       <div class="page-title-left">
         <h1>高額療養費制度の見直し（2026年8月）</h1>
-        <p>令和8年8月1日から。上限額の引き上げと、年単位の上限の新設</p>
+        <p>令和8年8月1日から。上限額の引き上げと、年間上限の新設</p>
         <p class="lead-ref">
-          このページは2026年8月からの変更点をまとめたもの。仕組み・合算のルール・窓口での見方は
-          <a href="高額療養費と薬局窓口対応.html">高額療養費と薬局窓口対応</a>を参照。
+          仕組み・合算のルール・窓口での見方は、<a href="高額療養費と薬局窓口対応.html">高額療養費と薬局窓口対応</a>を参照。
         </p>
+      </div>
+
+      <div class="correction" data-until="2026-10-16" hidden>
+        <div class="correction-title">9月16日に訂正した箇所</div>
+        <div class="correction-wrap"><table>
+          <thead><tr><th>以前の記載</th><th>正しい内容</th></tr></thead>
+          <tbody>
+            <tr><td>2027年8月から、住民税非課税の外来特例は月13,000円</td><td>13,000円は低所得Ⅱだけ。低所得Ⅰは月8,000円のまま</td></tr>
+            <tr><td>（記載なし）</td><td>70歳以上の一般も、年収約200万円未満と確認できた人は年間上限410,000円</td></tr>
+          </tbody>
+        </table></div>
       </div>
 
       <!-- 3つの変更点 -->
@@ -120,7 +132,7 @@
           <div class="pt-n">1</div>
           <div class="pt-b">
             <div class="pt-t">月の上限額が引き上げられる<span class="pt-e now">窓口の負担額が変わる</span></div>
-            <div class="pt-d">8月1日調剤分から。<span class="marker">70歳以上の外来だけの上限（外来特例）も、低所得Ⅰを除いて上がる。</span>これまで上限額まで支払っていた患者から、負担額が変わった理由を聞かれることがある。</div>
+            <div class="pt-d">8月1日調剤分から。<span class="marker">70歳以上の外来だけの上限（外来特例）も、低所得Ⅰを除いて上がる。</span></div>
           </div>
         </div>
 
@@ -150,7 +162,7 @@
       <!-- 70歳未満 -->
       <div class="card">
         <div class="card-title">自己負担限度額<span class="qual">70歳未満</span></div>
-        <p class="note" style="margin-bottom:12px;">薬局の窓口では、この上限額をその患者のその薬局での自己負担に当てはめる。70歳以上は使う上限額が違うので、<a href="高額療養費と薬局窓口対応.html">高額療養費と薬局窓口対応</a>を参照。</p>
+        <p class="note" style="margin-bottom:12px;">薬局の窓口では、この上限額を、その薬局での自己負担に当てはめる。</p>
         <div class="tbl-wrap">
           <table>
             <thead>
@@ -192,7 +204,7 @@
         </div>
         <div class="box-blue" style="margin-top:14px;">
           <span class="marker">多数回該当（ア〜オの順に 140,100／93,000／44,400／44,400／24,600円）はすべて据え置き。</span><br />
-          <span class="note">直近12か月に3回該当した場合、4回目から適用される。詳しくは<a href="高額療養費と薬局窓口対応.html">高額療養費と薬局窓口対応</a>を参照。</span>
+          <span class="note">直近12か月に3回該当した場合、4回目から適用される。</span>
         </div>
         <div class="box-gray" style="margin-top:12px;">
           <div class="blist">
@@ -234,7 +246,7 @@
                 <td class="k">一般<small>年収 〜約370万円<br />課税所得 145万円未満</small></td>
                 <td class="old">57,600</td>
                 <td class="new">61,500</td>
-                <td class="yr new">530,000</td>
+                <td class="yr new">530,000<sup>※</sup></td>
               </tr>
               <tr>
                 <td class="k">低所得Ⅱ<small>住民税非課税</small></td>
@@ -251,10 +263,11 @@
             </tbody>
           </table>
         </div>
-        <p class="note" style="margin-top:10px;"><span class="marker">現役並みⅠ〜Ⅲは、外来も入院もこの上限額。</span>薬局の窓口でもこの額を使う。<br />一般・低所得の3区分だけは、外来に限ってこれより低い上限（次の外来特例）があり、窓口ではそちらを使う。この表の額は、外来と入院を合わせた世帯ごとの上限になる。</p>
+        <p style="margin-top:10px; font-size:var(--text-sm);"><span class="marker">現役並みⅠ〜Ⅲは、外来も入院もこの上限額で、薬局の窓口でもこの額を使う。</span><br />一般・低所得Ⅱ・低所得Ⅰの3区分は、外来に限ってこれより低い上限（次の外来特例）があり、窓口ではそちらを使う。この3区分では、上の表の額は外来と入院を合わせた世帯ごとの上限になる。</p>
+        <p class="note" style="margin-top:6px;">※一般のうち年収約200万円未満と確認できた人は、年間上限が530,000円ではなく410,000円になる。払い戻しは2027年8月以降。</p>
 
         <div class="sub-title" style="margin-top:22px;">外来だけの上限（外来特例）</div>
-        <p class="note" style="margin-bottom:10px;">一般・低所得の3区分にだけある、外来を個人ごとに見た上限。現役並みの3区分にはこれがなく、外来も上の表の額をそのまま使う。</p>
+        <p class="note" style="margin-bottom:10px;">外来を個人ごとに見た上限。</p>
         <div class="tbl-wrap narrow">
           <table>
             <thead>
@@ -286,7 +299,7 @@
         </div>
 
         <div class="box-blue" style="margin-top:12px;">
-          <div class="sub-title">変わった理由を説明できるようにしておく</div>
+          <div class="sub-title">8月から負担が増える患者がいる</div>
           薬局だけで上限に届くのは高額な薬剤を扱うときに限られるので、該当する患者は多くない。ただし<span class="marker">該当する人は毎月同じ額を支払ってきた人</span>なので、8月から上がった理由を聞かれることがある。一般区分なら月18,000円が上限だった患者が、22,000円まで負担することになる。
         </div>
         <div class="box-gray" style="margin-top:12px;">
@@ -294,7 +307,7 @@
             <div class="bullet"><span>・</span><span>多数回該当は現役並みⅢ 140,100／Ⅱ 93,000／Ⅰ・一般 44,400円で、70歳未満と同額のまま据え置き。低所得Ⅱは今回から24,600円が多数回該当額として設定される。現行の月の上限額と同じ額なので、4回目以降の負担は今までどおり。低所得Ⅰには多数回該当がない。</span></div>
             <div class="bullet"><span>・</span><span>窓口負担割合は、現役並み所得者が3割、70〜74歳が2割、75歳以上は原則1割（一定以上の所得があれば2割）。</span></div>
             <div class="bullet"><span>・</span><span>健康保険では標準報酬月額で区分する（現役並みⅢ 83万円以上／Ⅱ 53〜79万円／Ⅰ 28〜50万円）。</span></div>
-            <div class="bullet"><span>・</span><span>75歳になる月は、その月に受けた療養の算定基準額が上記の半分になる。誕生日が月の初日のときは、月の途中で保険者が変わらないので対象外。</span></div>
+            <div class="bullet"><span>・</span><span>75歳になる月は、その月の上限額が通常の半分になる。誕生日が月の初日のときは、月の途中で保険者が変わらないので対象外。</span></div>
           </div>
         </div>
       </div>
@@ -306,7 +319,14 @@
           <span class="marker">その年の8月から翌年7月までに支払った自己負担額の合計に、上限が設けられる。</span>月の上限額に届かない月が続いても、1年分の合計が上限を超えれば、超えた分は保険者から払い戻される。
         </p>
 
-        <div class="svgbox">
+        <div class="box-gray" style="margin-bottom:16px;">
+          <div class="sub-title">「年間上限」という言い方が2つあるので注意</div>
+          <div class="blist">
+            <div class="bullet"><span>・</span><span><strong>今回新設される年間上限</strong>　外来も入院も通じた自己負担額の合計に対する上限。年齢を問わない。70歳以上の一般なら530,000円。</span></div>
+            <div class="bullet"><span>・</span><span><strong>外来特例の年間上限</strong>　70歳以上の外来だけを個人ごとに見た額。8月から一般は216,000円、低所得Ⅱは96,000円。一般には以前からあり144,000円だったものが上がる。低所得Ⅱは今回の新設。</span></div>
+          </div>
+          <div class="note" style="margin-top:8px;">どちらも8月から翌年7月までで数える。患者から「年間の上限」と言われたら、どちらの話か確かめる。</div>
+                <div class="svgbox">
           <svg viewBox="0 0 700 250" role="img" aria-label="自己負担の累積が年間上限530,000円で頭打ちになる図">
             <!-- 軸 -->
             <line x1="60" y1="205" x2="620" y2="205" stroke="#9ca3af" stroke-width="1" />
@@ -342,29 +362,23 @@
         <div class="legend">
           <div><i class="before"></i>年間上限がない場合</div>
           <div><i></i>年間上限がある場合</div>
+          <div><i class="refund"></i>払い戻される分</div>
         </div>
 
         <div class="box-blue" style="margin-top:16px;">
           <div class="sub-title">薬局ではこれまでどおり</div>
           年間上限は、1年間に医療機関と薬局で支払った額を合算して判定する。<span class="marker">薬局には他所での支払額が分からないので、窓口では判定できない。</span><br />
           そのため薬局では、これまでどおり月の上限額までを受け取る。年間上限を超えた分は、あとから保険者が払い戻す。窓口で1年分の合計を気にしたり、患者に確認したりする必要はない。<br />
-          <span class="note">払い戻しは当初、患者本人の申出を前提とした運用で始まるとされている。患者に聞かれても「自動で戻る」とは言わず、保険者から案内があると伝えるにとどめる。</span>
+          <span class="note">払い戻しは当初、患者本人の申出を前提とした運用で始まるとされている。患者に聞かれても「自動で戻る」とは言わず、手続きは加入している保険者に確認してもらう。</span>
         </div>
-        <div class="box-gray" style="margin-top:12px;">
-          <div class="sub-title">「年間上限」という言い方が2つあるので注意</div>
-          <div class="blist">
-            <div class="bullet"><span>・</span><span><strong>今回新設される年間上限</strong>　外来も入院も通じた自己負担額の合計に対する上限。年齢を問わない。70歳以上の一般なら530,000円。</span></div>
-            <div class="bullet"><span>・</span><span><strong>外来特例の年間上限</strong>　70歳以上の外来だけを個人ごとに見た額。8月から一般は216,000円、低所得Ⅱは96,000円。一般には以前からあり144,000円だったものが上がる。低所得Ⅱは今回の新設。</span></div>
-          </div>
-          <div class="note" style="margin-top:8px;">どちらも8月から翌年7月までで数える。患者から「年間の上限」と言われたら、どちらの話か確かめる。</div>
-        </div>
+</div>
       </div>
 
       <!-- 2027年 -->
       <div class="card">
         <div class="card-title">この先<span class="qual">2027年8月</span></div>
         <p class="note" style="margin-bottom:12px;">
-          2027年8月から、所得区分が細かく分かれる。70歳未満はア〜オの5区分が13区分になり、記号もなくなる。<span class="em-change">今回（2026年8月）は区分の記号も境目も変わらない</span>ため、2026年8月の時点で区分を覚え直す必要はない。
+          2027年8月から、所得区分が細かく分かれる。70歳未満はア〜オの5区分が13区分になり、記号もなくなる。<span class="em-change">今回（2026年8月）は区分の記号も境目も変わらない。</span>
         </p>
         <details class="fold-in" open>
           <summary>2027年8月からの自己負担限度額（70歳未満）</summary>
@@ -372,7 +386,7 @@
             <div class="tbl-wrap">
               <table>
                 <thead>
-                  <tr><th>年収換算</th><th>月単位の上限額</th><th>多数回該当</th><th>年間上限</th></tr>
+                  <tr><th>年収換算</th><th>月の上限額</th><th>多数回該当</th><th>年間上限</th></tr>
                 </thead>
                 <tbody>
                   <tr><td class="k">約1,650万円〜</td><td>342,000＋（医療費－1,140,000）×1％</td><td class="yr">140,100</td><td class="yr">1,680,000</td></tr>
@@ -393,7 +407,7 @@
             </div>
             <div class="blist" style="margin-top:12px;">
               <div class="bullet"><span>・</span><span>年収約200万円までの層だけ、多数回該当が44,400円から<strong>34,500円に下がる</strong>。他の区分は据え置き。</span></div>
-              <div class="bullet"><span>・</span><span>70歳以上の外来特例も分かれ、年収約200〜370万円の層は月28,000円、年収約200万円までは月22,000円になる。年間上限はどちらも216,000円。住民税非課税は月13,000円・年96,000円。</span></div>
+              <div class="bullet"><span>・</span><span>70歳以上の外来特例も分かれ、年収約200〜370万円の層は月28,000円、年収約200万円までは月22,000円になる。年間上限はどちらも216,000円。低所得Ⅱは月13,000円・年96,000円、低所得Ⅰは月8,000円のまま。</span></div>
             </div>
           </div>
         </details>
@@ -404,9 +418,9 @@
         <div class="card-title">出典</div>
         <div class="blist">
           <div class="bullet"><span>・</span><span>厚生労働省「高額療養費制度の見直しについて（令和8年8月診療分から）」<br /><span class="note">このページの金額は、同資料の「患者負担割合及び高額療養費自己負担限度額」の表から転記した。</span></span></div>
-          <div class="bullet"><span>・</span><span>厚生労働省「高額療養費制度に関する参考資料」<br /><span class="note">医療費が増えたときの限度額の例はこの資料による。</span></span></div>
+          <div class="bullet"><span>・</span><span>厚生労働省「高額療養費制度に関する参考資料」</span></div>
+          <div class="bullet"><span>・</span><span>厚生労働省保険局「高額療養費制度の見直しについて」（令和7年12月25日 社会保障審議会医療保険部会 資料1－2）<br /><span class="note">年間上限の払い戻しを患者本人の申出を前提とした運用で始めることは、この資料による。</span></span></div>
           <div class="bullet"><span>・</span><span><a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/juuyou/kougakuiryou/index.html">厚生労働省　高額療養費制度（制度の見直し）</a></span></div>
-          <div class="bullet"><span>・</span><span><a href="../files/高額療養費制度の見直しに伴う窓口の入力方法.pdf">高額療養費制度の見直しに伴う窓口の入力方法（PDF）</a><br /><span class="note">レセコンの入力手順はこちら。</span></span></div>
         </div>
       </div>
 
