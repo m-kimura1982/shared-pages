@@ -100,7 +100,7 @@ window.__pageMeta = {
   },
   "加算まとめ/施設連携加算.html": {
     "lastUpdated": "2026-08-20",
-    "newUntil": "2026-08-22"
+    "newUntil": "2026-09-25"
   },
   "加算まとめ/薬剤調製料.html": {
     "lastUpdated": "2026-09-03",

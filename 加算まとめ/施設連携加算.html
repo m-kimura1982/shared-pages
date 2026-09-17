@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>施設連携加算｜算定項目まとめ</title>
-    <meta name="search-keywords" content="特養,介護老人福祉施設,地域密着型,施設職員,一包化,老健,ショートステイ,短期入所生活介護,外来服薬支援料1,配置医師" />
+    <meta name="search-keywords" content="特養,介護老人福祉施設,地域密着型,施設職員,一包化,老健,ショートステイ,短期入所生活介護,外来服薬支援料1,配置医師,別包,ホチキス止め,粉砕,簡易懸濁,用法変更,異なる方法" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/gigi-list.css" />
     <link rel="stylesheet" href="../assets/source-refs.css" />
@@ -86,6 +86,15 @@
         .page-title-wrap { flex-direction:column; gap:12px; }
         .rel a .sub { display:none; }
         table { min-width:420px; }
+        /* 算定できる場合の表は、スマホでは縦に積む（右の列が隠れないように） */
+        .req-table { min-width:0; }
+        .req-table thead { display:none; }
+        .req-table tbody tr { display:block; padding:9px 0; border-bottom:var(--bw-h) solid var(--border); }
+        .req-table tbody tr:last-child { border-bottom:none; }
+        .req-table td { display:block; padding:0; border:none; }
+        .req-table td.kubun { margin-bottom:3px; }
+        .req-table td[data-l] { margin-top:5px; }
+        .req-table td[data-l]::before { content:attr(data-l); display:block; font-size:var(--text-xs); font-weight:700; color:var(--txt-3); margin-bottom:1px; }
       }
       @media print {
         @page { margin:10mm 9mm; size:A4; }
@@ -136,9 +145,9 @@
 
         <div class="sub-title">具体例</div>
         <div class="list">
-          <div class="li">例）他の薬局の薬と院内投薬の薬が別々に一包化されていたので、当薬局の分と合わせて一包化し直す</div>
-          <div class="li">例）嚥下機能の低下により粉砕・簡易懸濁の可否を確認し、その結果を職員に伝える。困難な場合は剤形の変更を処方医に相談する</div>
-          <div class="li">例）職員が服薬の支援・管理を行ううえで注意する点（副作用が疑われる症状など）を具体的に伝える</div>
+          <div class="li">例）<b>入所時</b>に、他の薬局の薬と院内投薬の薬が別々に一包化されていたので、当薬局の分と合わせて一包化し直す</div>
+          <div class="li">例）<b>マグミットが追加</b>になり、便の状態に応じた調節が必要となったため、別包にしてホチキス止めにし、軟便時の対応を職員と取り決める</div>
+          <div class="li">例）<b>飲み込みにくくなったと職員から相談</b>があり、粉砕・簡易懸濁に変更し、つぶし方や溶かし方を職員と取り決める</div>
         </div>
       </div>
 
@@ -161,9 +170,51 @@
 
       <!-- 算定できる場合 -->
       <div class="card">
-        <div class="card-title">算定できる場合<span class="qual">摘要欄の表示文言</span></div>
+        <div class="card-title">算定できる場合</div>
         <p style="font-size:var(--text-sm); line-height:1.8; margin-bottom:12px;">
-          特に重点的な服薬管理の支援が必要な、次のいずれかの場合に限られる。いずれも<span class="marker">薬剤師が服薬支援の必要を認めたことが前提</span>になる。該当する表示文言を摘要欄に入力する。
+          特に重点的な服薬管理の支援が必要な、次の<span class="marker">いずれかの場合に限られる</span>。きっかけがあるだけでは足りず、加えて必要なこともそろってはじめて算定の対象になる。
+        </p>
+        <div class="table-wrap">
+          <table class="req-table">
+            <thead>
+              <tr><th style="width:5%"></th><th style="width:44%">きっかけ</th><th>加えて必要なこと</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="kubun">ア</td>
+                <td data-l="きっかけ">入所時で、服用している薬剤が多い</td>
+                <td data-l="加えて必要なこと">施設職員と協働した服薬支援が必要と薬剤師が認めた</td>
+              </tr>
+              <tr>
+                <td class="kubun">イ</td>
+                <td data-l="きっかけ">新たな薬剤が処方された、又は用法・用量が変更となった</td>
+                <td data-l="加えて必要なこと"><span class="em-change">これまでの服薬管理とは異なる方法等</span>での服薬支援が必要と薬剤師が認めた</td>
+              </tr>
+              <tr>
+                <td class="kubun">ウ</td>
+                <td data-l="きっかけ">副作用・体調の変化等について施設職員から相談があり、服薬状況等を確認した</td>
+                <td data-l="加えて必要なこと"><span class="em-change">これまでの服薬管理とは異なる方法等</span>での服薬支援が必要と薬剤師が認めた</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-gray" style="margin-top:12px;">
+          <span class="ttl">実務メモ　「これまでの服薬管理とは異なる方法等」</span>
+          原文に具体的な定義はない。判断の目安は、<span class="marker">施設職員の服薬支援・管理のしかたが変わるか</span>どうかだと考えられる。調節が必要なため別包にしてホチキス止めにする、粉砕・簡易懸濁に変える、といった場合が挙げられる。<br />
+          用法が変わって配薬の枠が1つ増えるだけの場合や、変更内容を職員に伝えただけの場合は、該当するとは考えにくい。施設のルールにより、患者の状況にかかわらず一律に行っている対応も、それだけでは該当するとは考えにくい。<br />
+          患者の状況から必要となって方法を変えた場合は、施設のルールにある方法であっても、患者に応じた服薬支援として考える。
+        </div>
+        <div class="box-gray" style="margin-top:10px;">
+          <span class="ttl">算定できない場合</span>
+          施設の要望で服用薬の一包化等を行い、施設職員に服薬の支援・管理に関する情報共有をしただけでは算定できない。<span class="marker">薬剤師が施設を訪問し、療養生活の状態を直接確認していること</span>が必要になる。
+        </div>
+      </div>
+
+      <!-- 摘要欄 -->
+      <div class="card">
+        <div class="card-title">摘要欄の表示文言</div>
+        <p style="font-size:var(--text-sm); line-height:1.8; margin-bottom:12px;">
+          ア〜ウのうち該当する表示文言を摘要欄に入力する。
         </p>
         <div class="table-wrap">
           <table>
@@ -185,10 +236,6 @@
               </tr>
             </tbody>
           </table>
-        </div>
-        <div class="box-gray" style="margin-top:12px;">
-          <span class="ttl">算定できない場合</span>
-          施設の要望で服用薬の一包化等を行い、施設職員に服薬の支援・管理に関する情報共有をしただけでは算定できない。<span class="marker">薬剤師が施設を訪問し、療養生活の状態を直接確認していること</span>が必要になる。
         </div>
       </div>
 
