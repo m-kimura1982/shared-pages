@@ -1,7 +1,4 @@
 window.__pageMeta = {
-  "updates.html": {
-    "lastUpdated": "2026-09-16"
-  },
   "加算まとめ.html": {
     "lastUpdated": "2026-09-12"
   },
@@ -12,10 +9,13 @@ window.__pageMeta = {
     "lastUpdated": "2026-09-11"
   },
   "index.html": {
-    "lastUpdated": "2026-09-16"
+    "lastUpdated": "2026-09-18"
   },
   "checklists.html": {
     "lastUpdated": "2026-09-11"
+  },
+  "updates.html": {
+    "lastUpdated": "2026-09-18"
   },
   "tools.html": {
     "lastUpdated": "2026-09-11"
@@ -99,7 +99,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-09-02"
   },
   "加算まとめ/施設連携加算.html": {
-    "lastUpdated": "2026-08-20",
+    "lastUpdated": "2026-09-18",
     "newUntil": "2026-09-25"
   },
   "加算まとめ/薬剤調製料.html": {
