@@ -374,7 +374,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-06"
   },
   "ナレッジ/高額療養費制度の見直し2026.html": {
-    "lastUpdated": "2026-09-16",
+    "lastUpdated": "2026-09-23",
     "newUntil": "2026-08-06"
   },
   "ナレッジ/変更調剤について.html": {
@@ -388,7 +388,7 @@ window.__pageMeta = {
     "newUntil": "2026-09-23"
   },
   "ナレッジ/高額療養費と薬局窓口対応.html": {
-    "lastUpdated": "2026-08-06",
+    "lastUpdated": "2026-09-23",
     "newUntil": "2026-08-06"
   },
   "ナレッジ/リフィル処方箋.html": {
