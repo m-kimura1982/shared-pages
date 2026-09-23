@@ -6,6 +6,7 @@
     <meta name="robots" content="noindex,nofollow,noarchive" />
     <title>疾患の勉強メモ</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../assets/fold.css" />
     <link rel="stylesheet" href="shikkan.css" />
   </head>
   <body>
@@ -17,108 +18,126 @@
         <p>薬剤師が投薬でつまずくところから逆算した、自分用の勉強場所</p>
       </div>
 
-      <div class="card">
-        <div class="card-title">このフォルダの決めごと</div>
-        <div class="bullet"><span>・</span><span>公開サイトからの導線は作らない。ここが唯一の入口</span></div>
-        <div class="bullet"><span>・</span><span><b>正確さが先。</b>そのうえで「何を覚えるか」を上に載せる。順序を逆にしない ── 誤って覚えると公開ページの誤記より直しにくい</span></div>
-        <div class="bullet"><span>・</span><span>各ページは5層で書く ── <b>①なぜ治療するのか ②分類 ③治療の全体像 ④薬物療法の各論 ⑤投薬時に効く話</b></span></div>
-        <div class="bullet"><span>・</span><span>先頭に<b>「このページで覚えること」</b>を3〜6行。まとめではなくページの地図</span></div>
-        <div class="bullet"><span>・</span><span>⑤は必ず独立したカードにする。ここが投薬力に直結し、あとから足し続ける場所</span></div>
-        <div class="bullet"><span>・</span><span>ガイドラインの情報を並べるだけにしない。<b>薬局でどう使うかまで落とす</b></span></div>
-        <div class="bullet"><span>・</span><span>表は<b>「軸」が1本に決まるときだけ</b>作る。CCr→薬剤選択のように縦軸が決まるなら効くが、軸が2つ3つと増えるものを表にすると読めなくなる</span></div>
-        <div class="bullet"><span>・</span><span><b>専門用語は消さない。</b>日本語で意味を先に置いてから用語を出す（「血流のよどみ」→ Virchowの3徴、の順）</span></div>
-        <div class="bullet"><span>・</span><span>言葉は多少くだけてよい。<b>自然な日本語かより、頭に残る日本語か</b>を基準にする。ただし薬剤名・スコア名などの用語は崩さない</span></div>
-        <div class="bullet"><span>・</span><span>ガイドラインは<b>本文も図表も転載しない</b>。自分の言葉と自作の表で書く</span></div>
-        <div class="bullet"><span>・</span><span>1枚が長くなったら割る。薬物療法が膨らんだら子ページへ逃がす</span></div>
+      <!-- 疾患ごとの枠。先頭の行が総論、その下が子ページ -->
+      <div class="dz-grid">
+        <section class="dz">
+          <div class="dz-name">心房細動</div>
+          <a class="dz-row" href="心房細動.html">
+            <span class="t">総論</span>
+            <span class="d">病型、抗凝固するかどうか（CHADS<sub>2</sub>）、レートとリズム</span>
+          </a>
+          <a class="dz-row" href="心房細動_抗凝固薬の用量.html">
+            <span class="t">抗凝固薬の用量を決める</span>
+            <span class="d">CCrの分岐点、4剤の減量基準、INRの目標、高齢・高出血リスク</span>
+          </a>
+          <a class="dz-row" href="心房細動_抗凝固薬の注意点.html">
+            <span class="t">抗凝固薬を渡すときに見ること</span>
+            <span class="d">併用禁忌、飲み忘れ・一包化、出血リスク、採血の間隔、中和薬</span>
+          </a>
+        </section>
 
-        <div class="sub-title">枠の外は事実、枠の中は自分の頭</div>
-        <p class="sm">本文（枠の外）はガイドラインと電子添文から取った事実だけを書く。それ以外は点線の枠に入れ、見出しで種類が分かるようにする。</p>
-        <div class="table-wrap" style="margin-top:9px">
-          <table>
-            <thead><tr><th class="nw">見出し</th><th>中身</th></tr></thead>
-            <tbody>
-              <tr><td class="nw">自分メモ</td><td>自分の理解・他とのつなげ方</td></tr>
-              <tr><td class="nw">覚え方</td><td>学習上の整理（「3本の線」など）</td></tr>
-              <tr><td class="nw">要確認</td><td>まだ裏を取っていないこと</td></tr>
-              <tr><td class="nw">宿題</td><td>別ページに切り出す予定のもの</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+        <section class="dz">
+          <div class="dz-name">心不全</div>
+          <a class="dz-row" href="心不全.html">
+            <span class="t">総論</span>
+            <span class="d">ステージとLVEF、治療の全体像、処方を疾患の切り口で読む</span>
+          </a>
+          <a class="dz-row" href="心不全_薬物療法.html">
+            <span class="t">薬物療法</span>
+            <span class="d">4本柱の用量と増やし方、上乗せの薬、使わない薬、HFpEF、腎機能</span>
+          </a>
+          <a class="dz-row" href="心不全_うっ血と利尿薬.html">
+            <span class="t">うっ血と利尿薬</span>
+            <span class="d">体重の見方、利尿薬の使い分け、電解質、水分と塩分、退院直後</span>
+          </a>
+          <a class="dz-row" href="心不全_渡すときに見ること.html">
+            <span class="t">渡すときに見ること</span>
+            <span class="d">増悪のサイン、見るところが変わる薬、併存症、生活で言えること</span>
+          </a>
+        </section>
 
-      <div class="card">
-        <div class="card-title">循環器</div>
-        <div class="list">
-          <a href="心房細動.html">
-            <div class="t">心房細動</div>
-            <div class="d">病態、病型、治療の4段階、抗凝固するかどうかの判断（CHADS<sub>2</sub>）、レートとリズム、投薬時に使う話</div>
+        <section class="dz">
+          <div class="dz-name">冠動脈疾患</div>
+          <a class="dz-row" href="冠動脈疾患.html">
+            <span class="t">総論</span>
+            <span class="d">狭心症とACS、症状の薬と予防の薬、胸痛のない心筋梗塞、ニトロ</span>
           </a>
-          <a href="心房細動_抗凝固薬の用量.html">
-            <div class="t">└ 抗凝固薬の用量を決める</div>
-            <div class="d">腎機能の換算、CCrで見る4剤の分岐点、減量基準、ワルファリンとINR目標、高齢・高出血リスクへの対応</div>
+          <a class="dz-row" href="冠動脈疾患_抗血栓療法.html">
+            <span class="t">抗血栓療法</span>
+            <span class="d">DAPTの期間、単剤への移行、心房細動を合併したとき、休薬</span>
           </a>
-          <a href="心房細動_抗凝固薬の注意点.html">
-            <div class="t">└ 抗凝固薬を渡すときに見ること</div>
-            <div class="d">併用禁忌、製剤と服薬のしかた（飲み忘れ・一包化・食事・休薬）、出血リスク、定期採血、中和薬、窓口のチェック</div>
+        </section>
+
+        <section class="dz">
+          <div class="dz-name">弁膜症</div>
+          <a class="dz-row" href="弁膜症.html">
+            <span class="t">総論</span>
+            <span class="d">狭窄と逆流、薬の役目、人工弁の抗血栓療法、抜歯とワルファリン</span>
           </a>
-          <a href="心不全.html">
-            <div class="t">心不全</div>
-            <div class="d">症候群としての捉え方、ステージとLVEFの分類、治療の4段階、<b>処方を疾患の切り口で読む</b>（3層に分ける／同じ薬でも心不全では顔が変わる／処方から病態を読む）</div>
+          <a class="dz-row" href="弁膜症_感染性心内膜炎の予防.html">
+            <span class="t">感染性心内膜炎の予防</span>
+            <span class="d">対象と処置、アモキシシリン2g単回、経口セフェム、発熱したとき</span>
           </a>
-          <a href="心不全_薬物療法.html">
-            <div class="t">└ 薬物療法</div>
-            <div class="d">HFrEFの4本柱と何を止めているか、用量と増やし方、上乗せの薬、使ってはいけない薬、HFpEF・HFmrEF、腎機能別の可否</div>
-          </a>
-          <a href="心不全_うっ血と利尿薬.html">
-            <div class="t">└ うっ血と利尿薬</div>
-            <div class="d">肺うっ血と体うっ血、体重の見方、ループ・サイアザイド・トルバプタンの使い分け、電解質と腎機能、水分と塩分、退院直後の脆弱期</div>
-          </a>
-          <a href="心不全_渡すときに見ること.html">
-            <div class="t">└ 渡すときに見ること</div>
-            <div class="d">増悪のサインと受診の目安、心不全があると見るところが変わる薬、併存症、生活で言えること、窓口で聞くこと</div>
-          </a>
-          <a href="冠動脈疾患.html">
-            <div class="t">冠動脈疾患</div>
-            <div class="d">狭心症とACSの分かれ目、治療の全体像、<b>処方を疾患の切り口で読む</b>（症状の薬と予防の薬／アスピリンとスタチンの顔／ニトロの使い方）</div>
-          </a>
-          <a href="冠動脈疾患_抗血栓療法.html">
-            <div class="t">└ 抗血栓療法</div>
-            <div class="d">DAPTの期間、単剤への移行とデ・エスカレーション、心房細動を合併したときの3段階、手術・抜歯の休薬、減った処方の読み方</div>
-          </a>
-          <a href="弁膜症.html">
-            <div class="t">弁膜症</div>
-            <div class="d">狭窄と逆流、薬の役目は3つだけ、ASで降圧薬を低用量から始める理由、人工弁の抗血栓療法（機械弁・生体弁・TAVI後）、抜歯とワルファリン</div>
-          </a>
-          <a href="弁膜症_感染性心内膜炎の予防.html">
-            <div class="t">└ 感染性心内膜炎の予防</div>
-            <div class="d">誰が対象か、どの処置で要るか、<b>アモキシシリン2g単回の意味</b>、歯科で出る経口セフェムの見方、歯磨きのほうが効く理由、発熱時に残薬を飲ませない</div>
-          </a>
-        </div>
+        </section>
       </div>
 
       <div class="card">
         <div class="card-title">これから作る<span class="qual">思いついた順に足す</span></div>
-        <div class="list list-todo">
-          <div class="t">心不全の続き <span class="wip">— 4枚書いたので、足りないところを足す</span></div>
+        <div class="todo">
+          <div class="t">心不全の続き</div>
           <div class="d">急性増悪で入院したあとの流れ／心アミロイドーシス（高齢者の心不全で見落とされやすい）／緩和ケアとACP。<b>薬歴の記載例は循環器の定型文集を書き直す形で</b></div>
         </div>
-        <div class="list list-todo" style="margin-top:9px">
-          <div class="t">横串ページ <span class="wip">— 疾患を2〜3枚書いたら着手</span></div>
-          <div class="d">腎機能で用量が変わる薬／抗血栓薬の休薬／相互作用の勘所（CYP・P糖蛋白）／検査値の読み方／高齢者で注意する薬</div>
+        <div class="todo">
+          <div class="t">横串ページ</div>
+          <div class="d">腎機能で用量が変わる薬／抗血栓薬の休薬／相互作用の勘所（CYP・P糖蛋白）／疾患で顔が変わる薬／検査値の読み方／高齢者で注意する薬</div>
         </div>
       </div>
 
-      <div class="card">
-        <div class="card-title">資料の当て方</div>
-        <div class="bullet"><span>・</span><span><b>学会ガイドライン</b>を最初に当てる。PDFは手元に置くだけで、このリポジトリには入れない（再配布になるうえ容量を食う）</span></div>
-        <div class="bullet"><span>・</span><span><b>用量・禁忌・相互作用は添付文書とインタビューフォームが正</b>。ガイドラインの記述と食い違うときは添付文書を採る</span></div>
-        <div class="bullet"><span>・</span><span><b>版と発行年は必ず自分で確認してから書く</b>。フォーカスアップデート版は土台になる本体のガイドラインとセットで見ないと全体が分からない</span></div>
-        <div class="bullet"><span>・</span><span>有料でしか読めないものは追わない。無料で読める一次資料だけで十分に足りる</span></div>
-        <div class="ref-links" style="margin-top:12px">
-          <div class="row"><span class="lab">入手先：</span><a href="https://www.j-circ.or.jp/guideline/guideline-series/" target="_blank" rel="noopener">日本循環器学会 循環器病ガイドラインシリーズ</a></div>
-          <div class="row"><span class="lab">　　　　</span><a href="https://www.pmda.go.jp/PmdaSearch/iyakuSearch/" target="_blank" rel="noopener">PMDA 医療用医薬品 添付文書等検索</a></div>
+      <details class="fold">
+        <summary>書き方の決めごと</summary>
+        <div class="fold-body">
+          <div class="bullet"><span>・</span><span>公開サイトからの導線は作らない。ここが唯一の入口</span></div>
+          <div class="bullet"><span>・</span><span><b>正確さが先。</b>そのうえで「何を覚えるか」を上に載せる。順序を逆にしない ── 誤って覚えると公開ページの誤記より直しにくい</span></div>
+          <div class="bullet"><span>・</span><span>各ページは5層で書く ── <b>①なぜ治療するのか ②分類 ③治療の全体像 ④薬物療法の各論 ⑤投薬時に効く話</b></span></div>
+          <div class="bullet"><span>・</span><span>先頭に<b>「このページで覚えること」</b>を3〜6行。まとめではなくページの地図</span></div>
+          <div class="bullet"><span>・</span><span>⑤は必ず独立したカードにする。ここが投薬力に直結し、あとから足し続ける場所</span></div>
+          <div class="bullet"><span>・</span><span>ガイドラインの情報を並べるだけにしない。<b>薬局でどう使うかまで落とす</b></span></div>
+          <div class="bullet"><span>・</span><span>表は<b>「軸」が1本に決まるときだけ</b>作る。CCr→薬剤選択のように縦軸が決まるなら効くが、軸が2つ3つと増えるものを表にすると読めなくなる</span></div>
+          <div class="bullet"><span>・</span><span><b>専門用語は消さない。</b>日本語で意味を先に置いてから用語を出す（「血流のよどみ」→ Virchowの3徴、の順）</span></div>
+          <div class="bullet"><span>・</span><span>言葉は多少くだけてよい。<b>自然な日本語かより、頭に残る日本語か</b>を基準にする。ただし薬剤名・スコア名などの用語は崩さない</span></div>
+          <div class="bullet"><span>・</span><span>ガイドラインは<b>本文も図表も転載しない</b>。自分の言葉と自作の表で書く</span></div>
+          <div class="bullet"><span>・</span><span>1枚が長くなったら割る。薬物療法が膨らんだら子ページへ逃がす</span></div>
+          <div class="bullet"><span>・</span><span>判断に効く補足は<b>小さい薄グレー（.sm）に置かない</b>。本文の補足は .note、.sm は表の中の添え書きだけ</span></div>
+
+          <div class="sub-title">枠の外は事実、枠の中は自分の頭</div>
+          <p class="note">本文（枠の外）はガイドラインと電子添文から取った事実だけを書く。それ以外は点線の枠に入れ、見出しで種類が分かるようにする。</p>
+          <div class="table-wrap" style="margin-top:9px">
+            <table>
+              <thead><tr><th class="nw">見出し</th><th>中身</th></tr></thead>
+              <tbody>
+                <tr><td class="nw">自分メモ</td><td>自分の理解・他とのつなげ方</td></tr>
+                <tr><td class="nw">覚え方</td><td>学習上の整理（「3本の線」など）</td></tr>
+                <tr><td class="nw">要確認</td><td>まだ裏を取っていないこと</td></tr>
+                <tr><td class="nw">宿題</td><td>別ページに切り出す予定のもの</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
+      </details>
+
+      <details class="fold">
+        <summary>資料の当て方</summary>
+        <div class="fold-body">
+          <div class="bullet"><span>・</span><span><b>学会ガイドライン</b>を最初に当てる。PDFは手元に置くだけで、このリポジトリには入れない（再配布になるうえ容量を食う）</span></div>
+          <div class="bullet"><span>・</span><span><b>用量・禁忌・相互作用は添付文書とインタビューフォームが正</b>。ガイドラインの記述と食い違うときは添付文書を採る</span></div>
+          <div class="bullet"><span>・</span><span><b>版と発行年は必ず自分で確認してから書く</b>。フォーカスアップデート版は土台になる本体のガイドラインとセットで見ないと全体が分からない</span></div>
+          <div class="bullet"><span>・</span><span>有料でしか読めないものは追わない。無料で読める一次資料だけで十分に足りる</span></div>
+          <div class="ref-links" style="margin-top:12px">
+            <div class="row"><span class="lab">入手先：</span><a href="https://www.j-circ.or.jp/guideline/guideline-series/" target="_blank" rel="noopener">日本循環器学会 循環器病ガイドラインシリーズ</a></div>
+            <div class="row"><span class="lab">　　　　</span><a href="https://www.pmda.go.jp/PmdaSearch/iyakuSearch/" target="_blank" rel="noopener">PMDA 医療用医薬品 添付文書等検索</a></div>
+          </div>
+        </div>
+      </details>
     </div>
   </body>
 </html>
