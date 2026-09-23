@@ -497,6 +497,27 @@
   table { font-size:11.5px; min-width:480px; }
   th,td { padding:6px 8px; }
 }
+
+      /* このページの要点：1行ずつ本文の該当箇所へ飛べる。本文を縮めた要約なので、細かい数字は入れない
+         （手本は ナレッジ/OTC医薬品の区分と販売ルール.html の #yoten） */
+      [id] { scroll-margin-top:calc(var(--sn-header-h, 0px) + 16px); }
+      .sum .card-title { margin-bottom:6px; }
+      .sum .rows { display:flex; flex-direction:column; }
+      .sum a.pt { display:grid; grid-template-columns:8em minmax(0,1fr) auto; gap:4px 14px; align-items:baseline; padding:11px 6px; border-top:var(--bw) solid var(--border); text-decoration:none; color:var(--ink); font-size:var(--text-sm); line-height:1.75; border-radius:4px; }
+      .sum a.pt:first-child { border-top:none; }
+      .sum a.pt:hover { background:#f5f8fc; }
+      .sum .pt .k { font-weight:900; color:var(--blue); }
+      .sum .pt .go { color:var(--blue); font-size:var(--text-xs); font-weight:700; align-self:center; white-space:nowrap; }
+      .sum .pt .go::after { content:"›"; font-weight:900; margin-left:4px; }
+      .sum a.pt:hover .go { text-decoration:underline; }
+      @media (max-width:640px) {
+        .sum a.pt { grid-template-columns:minmax(0,1fr) auto; padding:10px 2px; }
+        .sum .pt .k { grid-column:1; grid-row:1; }
+        .sum .pt .go { grid-column:2; grid-row:1; }
+        .sum .pt .v { grid-column:1 / span 2; grid-row:2; }
+      }
+      /* 印刷は2枚に収めた改ページの位置を保つため、要点を出さない（中身は本文と同じ） */
+      @media print { .sum { display:none; } }
     </style>
   </head>
   <body>
@@ -514,8 +535,20 @@
       <!-- ページ内目次（assets/page-toc.js がカード見出しから自動生成。手入力しない） -->
       <div class="page-toc-wrap"><div id="page-toc"></div></div>
 
+      <!-- このページの要点（細かい数字は入れない。黄マーカーは1か所だけ） -->
+      <div class="card sum" id="yoten" data-toc="skip">
+        <div class="card-title">このページの要点</div>
+        <div class="rows">
+          <a class="pt" href="#tensu"><span class="k">点数</span><span class="v">かかりつけ薬剤師指導料は廃止され、服薬管理指導料の「イ」に統合された。かかりつけ薬剤師もかかりつけ以外も同じ点数。「イ」を算定できるのは、同じ月に1か所の薬局の1人の薬剤師だけ。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#doui"><span class="k">同意の取り方</span><span class="v">書面の同意書はなくなった。手帳の基本情報ページに「かかりつけ」と薬剤師名を記入し、そのページをコピー等で保管して、薬歴に記載する。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#gyomu"><span class="k">かかりつけ業務</span><span class="v">服用薬の一元的な把握、開局時間外の相談体制などを担う。やむを得ずほかの薬剤師が対応したときは「ロ」を算定する。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#todokede"><span class="k">要件と届出</span><span class="v">薬剤師の勤務時間・在籍期間の要件は緩和され、薬局全体の体制要件が新設された。<span class="marker">経過措置があるのは体制要件だけ</span>で、薬剤師個人の要件は改定日から満たす必要がある。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#kako-doui"><span class="k">改定前の同意</span><span class="v">引き続き有効。ただし、手帳への記入とコピー保管がまだの患者は対応が必要。</span><span class="go">詳しく</span></a>
+        </div>
+      </div>
+
       <!-- 点数早見表 -->
-      <div class="card avoid-break">
+      <div class="card avoid-break" id="tensu">
         <div class="card-title">服薬管理指導料　2026改定</div>
         <div style="border-left: var(--bw-a) solid var(--blue); padding: 6px 0 6px 12px; margin-bottom: 14px; font-weight: 700;">
           従来の<span style="text-decoration: line-through; color: var(--txt-3);">かかりつけ薬剤師指導料 76点</span>が廃止され、<span class="em-blue">かかりつけ薬剤師もかかりつけ以外も同額</span>に統一。<br>
@@ -609,7 +642,7 @@
 
 
       <!-- 同意取得後に行うこと -->
-      <div class="card avoid-break">
+      <div class="card avoid-break" id="doui">
         <div class="card-title">同意取得後に行うこと<span class="qual">別添3 ２の(２)ウ</span></div>
         <div style="border-left: var(--bw-a) solid var(--blue); padding: 6px 0 6px 12px; margin-bottom: 16px; font-weight: 700;">
           <span class="em-change">書面での同意書は廃止</span>。手帳への記入＋コピー保管が新たな同意取得の方法。
@@ -708,7 +741,7 @@
       </div>
 
       <!-- かかりつけ薬剤師の業務要件（全要件） -->
-      <div class="card avoid-break">
+      <div class="card avoid-break" id="gyomu">
         <div class="card-title">かかりつけ薬剤師の主な業務要件</div>
         <div style="font-size: var(--text-sm); font-weight: 500; margin-bottom: 14px; color: var(--txt-2);">
           服薬管理指導料「１のイ」「２のイ」算定時に求められる業務。
@@ -923,7 +956,7 @@
         </div>
 
         <!-- 届出のチェックポイント -->
-        <div class="card col-span-2 avoid-break">
+        <div class="card col-span-2 avoid-break" id="todokede">
           <div class="card-title">
             届出で見落としがちなポイント
             <span class="badge badge-gray">要注意</span>
@@ -961,7 +994,7 @@
         </div>
 
         <!-- 過去に取得した同意 -->
-        <div class="card col-span-2 avoid-break">
+        <div class="card col-span-2 avoid-break" id="kako-doui">
           <div class="card-title">過去に取得した同意の扱い</div>
           <div>
             令和8年5月31日以前に取得した同意も<span class="em-change">引き続き有効</span>。ただし、<span class="marker">手帳への「かかりつけ」記入＋コピー保管が未実施の場合は対応が必要</span>。
