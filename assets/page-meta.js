@@ -18,7 +18,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-09-11"
   },
   "tools.html": {
-    "lastUpdated": "2026-09-11"
+    "lastUpdated": "2026-09-23"
   },
   "ページ一覧.html": {
     "lastUpdated": "2026-09-11",
@@ -28,7 +28,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-09-12"
   },
   "knowledge.html": {
-    "lastUpdated": "2026-09-11"
+    "lastUpdated": "2026-09-23"
   },
   "yakureki/テンプレート_メンタル.html": {
     "lastUpdated": "2026-08-06"
@@ -373,6 +373,10 @@ window.__pageMeta = {
   "ツール/服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html": {
     "lastUpdated": "2026-08-06"
   },
+  "ツール/OTC販売の掲示物と様式.html": {
+    "lastUpdated": "2026-09-23",
+    "newUntil": "2026-09-30"
+  },
   "ナレッジ/高額療養費制度の見直し2026.html": {
     "lastUpdated": "2026-09-23",
     "newUntil": "2026-08-06"
@@ -382,6 +386,10 @@ window.__pageMeta = {
   },
   "ナレッジ/基礎的医薬品追加リストR8_4.html": {
     "lastUpdated": "2026-04-19"
+  },
+  "ナレッジ/OTC医薬品の区分と販売ルール.html": {
+    "lastUpdated": "2026-09-23",
+    "newUntil": "2026-09-30"
   },
   "ナレッジ/OTC類似薬の一部保険外療養.html": {
     "lastUpdated": "2026-09-23",
