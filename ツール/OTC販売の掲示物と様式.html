@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="sn-no-print-css" content="1">
+  <meta name="search-keywords" content="掲示,掲示物,様式,別添,指定濫用防止医薬品,販売制度,苦情相談窓口,確認シート,医薬品販売記録,販売者カード,名札,日薬,手順書モデル" />
+  <title>OTC販売の掲示物と様式｜調剤報酬・薬歴まとめ</title>
+  <!--
+    日本薬剤師会「業務手順書モデル」R8.2 の別添（１）〜（８）を当社向けの配色で組み直したもの（2026-09-23 に draft/掲示/ から ツール/ へ移して公開）。
+    ・sn-no-print-css：共通の印刷用CSSを入れない（A4 の縦横を様式ごとに自前で指定しているため）。
+    ・文言は日薬の原本（.ppt/.doc/.xls）から抜き出したものをそのまま使う。変えてよいのはレイアウトと配色だけ。
+      原本で行送りのために入っていた空白（「枠　は」「又は　四角囲み」「18 歳」）だけは詰めてある。
+    ・○○薬局・電話番号などのひな形の部分だけを入力欄にしてある。
+    ・（８）の「薬剤師名」は 薬剤師名／登録販売者名／販売者名 から選べる（指定濫用防止医薬品の多くは第２類で登録販売者も販売するため。本人了承 2026-09-23）。
+    ・画面は ①選ぶ → ②入力 → ③印刷。選んだ様式に関係する入力欄と見本だけを出す。初期は（１）（３）（５）（本人：１３５は実質必須、２４は既存があれば不要）。
+    ・（２）の名札の「氏名」だけは 氏名／姓／氏名又は姓 から選べる（R4.6.27 薬生発0627第11号で姓のみ等も可になったため。本人指摘 2026-09-23）。
+    ・配色は黒・白・グレー＋強調の青文字だけ。色の面に白文字は使わない（本人指摘 2026-09-23）。
+    ・掲示物（１）〜（５）に会社ロゴを小さく入れる（販売者カードは幅が足りないので入れない）（assets/icons/会社ロゴ_掲示物.png）。
+    ・公開サイトに置くことは本人了承済み（2026-09-23）。日薬の原本を使いたい人向けに日薬のページへのリンクを置く。
+  -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+    :root {
+      --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+      --pad-card:22px; --gap-card:16px;
+      --blue:#1e5fa8; --ink:#222222;
+      --bg:#f3f4f6; --white:#ffffff;
+      --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+      --border:#d1d5db; --border-dk:#9ca3af;
+      --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px;
+      --txt-2:#444444; --txt-3:#5e6470;
+    }
+    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+    .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+    .page-title h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+    .page-title p  { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+    .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:16px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+    .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+    .note { font-size:var(--text-sm); color:var(--txt-2); }
+    .note + .note { margin-top:4px; }
+
+    /* ── 入力欄 ── */
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px 18px; }
+    .form-grid .full { grid-column:1 / -1; }
+    .fld label { display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:3px; }
+    .fld label small { font-weight:500; color:var(--txt-3); margin-left:6px; font-size:var(--text-xs); }
+    .fld input, .fld textarea { width:100%; font:inherit; font-size:var(--text-md); padding:7px 10px; border:1px solid var(--border-dk); border-radius:var(--radius-sm); background:#fff; color:var(--ink); }
+    .fld textarea { min-height:64px; resize:vertical; line-height:1.6; }
+    .fld input::placeholder, .fld textarea::placeholder { color:#6b7280; }
+    .fld .where { font-size:var(--text-xs); color:var(--txt-3); margin-top:2px; }
+    .radios { display:flex; flex-wrap:wrap; gap:6px 20px; font-size:var(--text-md); }
+    .radios label { display:flex; gap:6px; align-items:center; font-weight:500; cursor:pointer; }
+    .pair { display:grid; grid-template-columns:1.3fr 1fr; gap:8px; }
+    .form-sec .sec-note { font-weight:500; color:var(--txt-3); margin-left:8px; }
+    .form-sec { grid-column:1 / -1; font-size:var(--text-sm); font-weight:900; color:var(--blue); border-bottom:1px solid var(--border); padding-bottom:3px; margin-top:6px; }
+
+    /* ── 配色の切り替え・印刷ボタン ── */
+    .bar { display:flex; flex-wrap:wrap; align-items:center; gap:12px 20px; }
+    .seg { display:inline-flex; border:1px solid var(--border-dk); border-radius:8px; overflow:hidden; }
+    .seg button { font:inherit; font-size:var(--text-sm); font-weight:700; padding:7px 16px; border:0; background:#fff; color:var(--txt-2); cursor:pointer; }
+    .seg button + button { border-left:1px solid var(--border-dk); }
+    .seg button[aria-pressed="true"] { background:var(--box-blue); color:var(--blue); }
+    .btn-print { font:inherit; font-size:var(--text-md); font-weight:900; padding:9px 22px; border:0; border-radius:8px; background:var(--blue); color:#fff; cursor:pointer; margin-left:auto; }
+    .warn { font-size:var(--text-sm); background:#fff8e1; border:1px solid #e5c200; border-radius:var(--radius-sm); padding:8px 12px; }
+    .warn[hidden] { display:none; }
+    .presets { display:flex; flex-wrap:wrap; gap:6px; }
+    .presets button { font:inherit; font-size:var(--text-sm); font-weight:700; padding:6px 14px; border:1px solid var(--border-dk); border-radius:999px; background:#fff; color:var(--txt-2); cursor:pointer; }
+    .presets button[aria-pressed="true"] { border-color:var(--blue); background:var(--box-blue); color:var(--blue); }
+    .groups { display:flex; flex-direction:column; gap:16px; }
+    .grp-h { font-size:var(--text-md); font-weight:900; }
+    .grp-h small { display:block; font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:1px; }
+    .grp-list { display:flex; flex-direction:column; gap:4px; margin-top:6px; }
+    .grp-list label { display:flex; gap:10px; align-items:flex-start; cursor:pointer; font-size:var(--text-md); padding:6px 10px; border:1px solid var(--border); border-radius:var(--radius-sm); }
+    .grp-list label:has(input:checked) { border-color:var(--blue); background:var(--box-blue); }
+    .grp-list input { margin-top:6px; width:17px; height:17px; flex-shrink:0; }
+    .grp-list .sub { display:block; font-size:var(--text-sm); color:var(--txt-3); }
+    [data-for].is-off { display:none; }
+    .sheet-head.is-off, .sheet-frame.is-off { display:none !important; }
+    .picklist { display:grid; grid-template-columns:1fr 1fr; gap:4px 18px; font-size:var(--text-sm); }
+    .picklist label { display:flex; gap:8px; align-items:flex-start; cursor:pointer; }
+    .picklist input { margin-top:6px; }
+
+    /* ── 様式の見出し（画面だけ） ── */
+    .sheet-head { display:flex; align-items:center; gap:10px; flex-wrap:wrap; font-size:var(--text-sm); margin:18px 0 6px; }
+    .sheet-head b { font-size:var(--text-md); font-weight:900; }
+    .sheet-head .use { color:var(--txt-3); }
+    .sheet-head label { margin-left:auto; display:flex; gap:6px; align-items:center; cursor:pointer; }
+    .sheet-frame { background:#fff; box-shadow:0 1px 4px rgba(0,0,0,.18); margin:0 auto; width:fit-content; }
+    .sheet-frame.off { opacity:.45; }
+
+    /* ============================================================
+       様式の配色：黒・白・グレー＋強調の青文字だけ（2026-09-23 本人指摘で作り直し）。
+       色の付いた面に白文字は使わない。面は淡いグレー、罫線はグレー。
+       ============================================================ */
+    .sheets {
+      --k-ink:#222222; --k-blue:#1e5fa8; --k-panel:#f3f4f6; --k-head:#f3f4f6;
+      --k-line:#d1d5db; --k-line-dk:#9ca3af; --k-sub:#5e6470;
+    }
+
+    /* ── A4 の用紙 ── */
+    .sheet {
+      position:relative;
+      width:210mm; height:297mm; padding:20mm 15mm 14mm; overflow:hidden;
+      display:flex; flex-direction:column; background:#fff; color:var(--k-ink);
+      font-family:"Noto Sans JP",sans-serif; line-height:1.6;
+      -webkit-print-color-adjust:exact; print-color-adjust:exact;
+    }
+    .p-logo { position:absolute; top:8mm; right:15mm; height:8mm; width:auto; }
+    td.b-empty { display:table-cell !important; }
+    .b-empty { display:inline-block; min-width:6em; border-bottom:1px dashed #b8860b; background:#fff3c4; color:#7a5718; font-weight:500; }
+    .b-empty::before { content:attr(data-ph); font-size:.7em; }
+
+    /* 横向き（A4横）。日薬の原本（別添１〜５）が横向きなので合わせる */
+    @page land { size:A4 landscape; margin:0; }
+    .sheet.land { width:297mm; height:210mm; padding:17mm 16mm 12mm; page:land; }
+    .sheet.land .p-logo { top:7mm; right:16mm; }
+    .sheet.land .p-title { margin-bottom:7mm; padding-bottom:3mm; }
+
+    /* 題名：黒の太字＋下に黒の細線。要の語だけ青 */
+    .p-title { padding-bottom:4mm; border-bottom:0.5mm solid var(--k-ink); margin-bottom:9mm; }
+    .p-title h2 { font-size:24pt; font-weight:900; line-height:1.35; letter-spacing:0; text-wrap:balance; }
+    .p-title .kw { color:var(--k-blue); }
+    .em { color:var(--k-blue); font-weight:900; }
+
+    /* 問い合わせ先（掲示の下端） */
+    .p-contact { margin-top:auto; margin-left:auto; min-width:92mm; border:0.3mm solid var(--k-line-dk); border-radius:3mm; padding:5mm 7mm; background:#fff; }
+    .p-contact .lab { font-size:13pt; font-weight:700; color:var(--k-sub); }
+    .p-contact .shop { font-size:17pt; font-weight:900; }
+    .p-contact .tel { font-size:22pt; font-weight:900; letter-spacing:.03em; line-height:1.3; }
+
+    /* 別添（１） */
+    .s1 .alert { background:var(--k-panel); border-radius:2.5mm; padding:5mm 6mm; font-size:19pt; font-weight:900; color:var(--k-blue); line-height:1.5; margin-bottom:7mm; }
+    .s1 .lead { font-size:16pt; font-weight:500; text-indent:1em; line-height:1.7; margin-bottom:7mm; }
+    .s1 .box { border:0.3mm solid var(--k-line-dk); border-radius:3mm; padding:5mm 7mm 5.5mm; margin-bottom:8mm; }
+    .s1 .box-lead { font-size:14.5pt; font-weight:900; padding-bottom:3mm; margin-bottom:3.5mm; border-bottom:0.3mm solid var(--k-line); }
+    .s1 ul { list-style:none; }
+    .s1 li { font-size:14.5pt; font-weight:500; display:flex; gap:3.2mm; align-items:flex-start; line-height:1.55; }
+    .s1 li + li { margin-top:2mm; }
+    .s1 li::before { content:""; flex-shrink:0; width:4.4mm; height:4.4mm; border:0.4mm solid #444; border-radius:.6mm; margin-top:1.6mm; background:#fff; }
+
+    /* 別添（１）横：左に注意と前文、右に確認事項 */
+    .s1 .cols { flex:1; display:grid; grid-template-columns:1fr 1.12fr; gap:10mm; min-height:0; }
+    .s1 .col-l { display:flex; flex-direction:column; }
+    .s1 .box { margin-bottom:0; }
+    .s1 .p-contact { margin-left:0; min-width:0; }
+
+    /* 別添（２） */
+    .s2 table { width:100%; border-collapse:collapse; table-layout:fixed; font-size:12pt; }
+    .s2 th, .s2 td { border:0.3mm solid var(--k-line-dk); padding:2.4mm 3.5mm; vertical-align:middle; line-height:1.5; }
+    .s2 th { background:var(--k-head); font-weight:700; text-align:left; }
+    .s2 td { font-weight:500; white-space:pre-line; }
+    .s2 .c { text-align:center; white-space:nowrap; }
+    .s2 .tall td, .s2 .tall th { height:19mm; vertical-align:top; }
+    .s2 .tag-row { display:grid; grid-template-columns:34mm 1fr; row-gap:1.5mm; white-space:normal; }
+    .s2 .p-title h2 { font-size:21pt; }
+
+    /* 別添（３） */
+    .sheet.land.s3 { padding:12.5mm 8mm 7mm; }
+    .sheet.land.s3 .p-logo { top:4.5mm; right:8mm; height:7mm; }
+    .s3 .p-title { margin-bottom:4mm; padding-bottom:2mm; }
+    .s3 .p-title h2 { font-size:18pt; }
+    .s3 table { width:100%; border-collapse:collapse; table-layout:fixed; font-size:8.4pt; line-height:1.38; }
+    .s3 th, .s3 td { border:0.25mm solid var(--k-line-dk); padding:1.1mm 1.8mm; vertical-align:middle; }
+    .s3 thead th { background:var(--k-head); font-weight:700; text-align:center; font-size:8.8pt; line-height:1.35; }
+    .s3 thead th small { display:block; font-size:6.3pt; font-weight:500; color:var(--k-sub); }
+    .s3 thead th.narrow { font-size:7.6pt; padding-left:.6mm; padding-right:.6mm; letter-spacing:-.02em; }
+    .s3 .cat { font-weight:900; text-align:center; font-size:9.5pt; }
+    .s3 .cat small { display:block; font-weight:500; font-size:7pt; text-align:left; line-height:1.45; margin-top:1mm; }
+    .s3 .cat small + small { margin-top:1.5mm; }
+    .s3 .ippan { font-weight:900; font-size:9.5pt; writing-mode:vertical-rl; text-align:center; letter-spacing:.3em; padding:2mm 0; }
+    .s3 .center { text-align:center; }
+    .s3 .vert { writing-mode:vertical-rl; text-align:left; margin:0 auto; line-height:1.6; letter-spacing:.05em; height:90mm; }
+    .s3 .pkg { display:inline-block; border:0.4mm solid #222; padding:.2mm 1.1mm; margin-top:.6mm; font-weight:700; font-size:7.2pt; white-space:nowrap; line-height:1.4; background:#fff; letter-spacing:0; }
+    .s3 .pkg-2c { display:inline-block; border:0.3mm solid #222; border-radius:50%; width:1.35em; height:1.35em; line-height:1.25em; text-align:center; }
+    .s3 .pkg-2s { display:inline-block; border:0.3mm solid #222; width:1.35em; height:1.35em; line-height:1.25em; text-align:center; }
+    .s3 .em { font-weight:700; }
+    .s3 .foot-note { font-size:8pt; margin-top:1.5mm; line-height:1.5; padding-left:1.2em; text-indent:-1.2em; }
+    .s3 .foot-row { display:grid; grid-template-columns:1.75fr 1fr; gap:3mm; margin-top:1.5mm; align-items:stretch; }
+    .s3 .foot-row > div { margin-top:0 !important; }
+    .s3 .relief { display:grid; grid-template-columns:auto 1fr; gap:1mm 4mm; align-items:center; margin-top:2.5mm; border-radius:2mm; padding:2.6mm 3.5mm; background:var(--k-panel); }
+    .s3 .relief .h { font-size:12pt; font-weight:900; color:var(--k-blue); }
+    .s3 .relief .d { font-size:9pt; line-height:1.4; font-weight:700; }
+    .s3 .relief .d { grid-column:1 / -1; }
+    .s3 .relief .q { grid-column:1 / -1; font-size:9pt; font-weight:700; background:#fff; border-radius:1.2mm; padding:1mm 3mm; display:flex; flex-wrap:wrap; gap:0 5mm; }
+    .s3 .complain { display:flex; flex-direction:column; justify-content:center; gap:1.2mm; align-items:center; margin-top:2.5mm; border:0.3mm solid var(--k-line-dk); border-radius:2mm; padding:2.4mm 3.5mm; }
+    .s3 .complain .h { white-space:nowrap; text-align:left; font-size:12pt; font-weight:900; }
+    .s3 .complain table, .s3 .complain tbody { display:flex; flex-direction:column; font-size:10.5pt; }
+    .s3 .complain tr { display:flex; }
+    .s3 .complain tr[hidden] { display:none; }
+    .s3 .complain td { border:0; padding:.3mm 6mm .3mm 0; font-weight:700; white-space:nowrap; }
+
+    /* 別添（４）（５） */
+    .s4 .body, .s5 .panel { font-size:23pt; font-weight:500; line-height:1.75; }
+    .s4 .body p { text-indent:1em; }
+    .s4 .body p + p { margin-top:9mm; }
+    .s4 .must { background:var(--k-panel); border-radius:2.5mm; padding:4mm 5mm; text-indent:0 !important; }
+    .s5 .panel { background:var(--k-panel); border-radius:3.5mm; padding:8mm 8mm 9mm; margin-bottom:10mm; }
+    .s5 .panel p + p { margin-top:8mm; text-indent:1em; }
+    .s5 .panel .em { font-size:25pt; }
+
+    /* 別添（６）店内で使う様式なのでロゴは入れない */
+    .s6 { padding:14mm 15mm 12mm; }
+    .s6 .p-title { margin-bottom:5mm; padding-bottom:3mm; }
+    .s6 .p-title h2 { font-size:17pt; }
+    .s6 .legend { font-size:9.5pt; line-height:1.6; background:var(--k-panel); border-radius:2mm; padding:3mm 4mm; margin-bottom:4mm; }
+    .s6 .legend .sm { font-size:8pt; padding-left:1.5em; }
+    .s6 ul { list-style:none; font-size:10.5pt; line-height:1.5; }
+    .s6 li { display:flex; gap:2.6mm; padding:1.05mm 0; border-bottom:0.25mm dotted var(--k-line-dk); }
+    .s6 li::before { content:""; flex-shrink:0; width:3.8mm; height:3.8mm; border:0.4mm solid #444; border-radius:.5mm; margin-top:1.1mm; }
+    .s6 li.sub { padding-left:7mm; border-bottom:0; padding-top:.6mm; padding-bottom:.6mm; font-size:10.2pt; }
+    .s6 li.sub2 { padding-left:14mm; }
+    .s6 li.sub2::before, .s6 li.sub::before { width:3.4mm; height:3.4mm; }
+    .s6 .tag { color:var(--k-blue); font-weight:700; white-space:nowrap; }
+    .s6 .sec { margin-top:4mm; }
+    .s6 .sec-h { font-size:11pt; font-weight:900; background:var(--k-panel); border-radius:1.5mm; padding:2mm 3.5mm; margin-bottom:1mm; }
+    .s6 .last { margin-top:4mm; border-top:0.4mm solid var(--k-ink); padding-top:1mm; }
+    .s6 .last li { border-bottom:0; }
+
+    /* 別添（７）医薬品販売記録（店内用なのでロゴは入れない） */
+    .s7 { padding:13mm 15mm 11mm; }
+    .s7 .p-title { margin-bottom:3mm; padding-bottom:2.5mm; }
+    .s7 .p-title h2 { font-size:17pt; }
+    .s7 .lead7 { font-size:8.8pt; font-weight:700; line-height:1.55; margin-bottom:2.5mm; }
+    .s7 .lead7 .n { font-weight:500; }
+    .s7 .t7 { width:100%; border-collapse:collapse; table-layout:fixed; font-size:9.6pt; line-height:1.5; }
+    .s7 .t7 th, .s7 .t7 td { border:0.25mm solid var(--k-line-dk); padding:1.2mm 2.4mm; vertical-align:middle; }
+    .s7 .t7 th { background:var(--k-head); font-weight:700; text-align:center; font-size:9.2pt; line-height:1.4; }
+    .s7 .t7 th small { display:block; font-weight:500; font-size:7.6pt; margin-top:.5mm; }
+    .s7 .t7.strong { border:0.6mm solid var(--k-ink); }
+    .s7 i { font-style:normal; font-size:.75em; vertical-align:super; color:var(--k-blue); font-weight:700; }
+    .s7 .cb { display:inline-block; width:3.3mm; height:3.3mm; border:0.3mm solid #444; border-radius:.4mm; vertical-align:-0.35mm; margin:0 1mm 0 0; }
+    .s7 .opts .cb:not(:first-child) { margin-left:3mm; }
+    .s7 .t7 td > .paren, .s7 .t7 td > div { padding:.3mm 0; }
+    .s7 .gap { display:inline-block; width:40mm; }
+    .s7 .gap.w { width:70mm; }
+    .s7 .sp { display:inline-block; }
+    .s7 .memo7 { height:10mm; border:0.25mm solid var(--k-line-dk); border-radius:2mm; margin-top:1mm; }
+    .s7 .sep7 { font-size:8.8pt; font-weight:700; margin:4mm 0 1.5mm; padding-top:2.5mm; border-top:0.4mm solid var(--k-ink); }
+    .s7 .tiny { font-size:7.6pt; vertical-align:top; color:#444; }
+    .s7 .c { text-align:center; }
+    .s7 .t7 td { height:8.4mm; }
+    .s7 .tall7 { height:21mm !important; vertical-align:top; }
+    .s7 .vert7 { writing-mode:vertical-rl; letter-spacing:.2em; padding:2mm 0; }
+
+    /* 別添（８）販売者カード：3列×7段 */
+    .s8 { padding:8mm 10mm; }
+    .s8 .cards { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); grid-auto-rows:40mm; flex:1; }
+    .s8 .cardx { border:0.2mm dashed var(--k-line-dk); padding:2.6mm 3mm 2mm; display:flex; flex-direction:column; }
+    .s8 .cap { font-size:7.6pt; font-weight:700; border-bottom:0.3mm solid var(--k-ink); padding-bottom:.6mm; margin-bottom:1.2mm; white-space:nowrap; }
+    .s8 table { width:100%; border-collapse:collapse; font-size:7.6pt; table-layout:fixed; flex:1; }
+    .s8 th, .s8 td { border:0.25mm solid var(--k-line-dk); padding:.5mm 1.2mm; line-height:1.3; }
+    .s8 th { width:15mm; font-size:7pt; background:var(--k-head); font-weight:700; text-align:center; }
+    .s8 td { font-weight:700; text-align:center; }
+    .s8 .date { text-align:right; letter-spacing:.02em; }
+    .s8 .shopcell th { vertical-align:middle; }
+    .s8 .shopcell td { font-size:8.3pt; line-height:1.45; }
+    .s8 .shopcell .tel2 { font-size:8.8pt; }
+    .s8 .foot { font-size:6.4pt; text-align:center; margin-top:1mm; color:#444; }
+    .s8 .b-empty { min-width:0; background:none; border:0; }
+    .s8 .b-empty::before { content:""; }
+
+    @media (max-width:640px) {
+      body { font-size:14px; padding:14px 12px 40px; line-height:1.75; }
+      :root { --text-xs:11.5px; --text-sm:13.5px; --text-md:14px; --text-lg:16px; --text-xl:18px; --pad-card:14px; --gap-card:11px; }
+      .form-grid, .picklist { grid-template-columns:1fr; }
+      .btn-print { margin-left:0; }
+    }
+
+    /* ── 印刷：チェックした様式だけを A4 1枚ずつ ── */
+    @page { size:A4 portrait; margin:0; }
+    @media print {
+      body { background:#fff; padding:0; }
+      .page > :not(.sheets) { display:none !important; }
+      .page { max-width:none; display:block; }
+      .sheet-head { display:none !important; }
+      .sheet-frame { box-shadow:none; zoom:1 !important; margin:0; }
+      .sheet-frame.off { display:none !important; }
+      .sheet { break-after:page; }
+      .b-empty { background:none; border:0; }
+      .b-empty::before { content:""; }
+    }
+  </style>
+</head>
+<body>
+<script src="../assets/site-header.js" defer></script>
+<div class="page">
+
+  <div class="page-title">
+    <h1>OTC販売の掲示物と様式</h1>
+    <p>日本薬剤師会の業務手順書モデル（令和8年2月）の掲示物・様式を、文言はそのままに当社向けのデザインで組み直したものです。店舗の情報を入力して A4 で印刷してください。</p>
+    <p>日本薬剤師会の様式をそのまま使いたい場合は、<a href="https://www.nichiyaku.or.jp/yakuzaishi/n20100209" target="_blank" rel="noopener">日本薬剤師会のページ（業務手順書の作成にあたって）</a>から入手できます。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">① 必要なものを選ぶ</div>
+    <div class="presets" role="group" aria-label="よく使う組み合わせ">
+      <button type="button" data-preset="s1 s3 s5">指定濫用防止医薬品の対応</button>
+      <button type="button" data-preset="s2 s3 s4 s5">掲示物だけ</button>
+      <button type="button" data-preset="s1 s6 s7 s8">販売時に使う書類だけ</button>
+      <button type="button" data-preset="s1 s2 s3 s4 s5 s6 s7 s8">すべて</button>
+    </div>
+    <p class="note" style="margin:8px 0 14px">押すとまとめてチェックが入ります。そのあと1枚ずつ付け外しできます。</p>
+    <div class="groups" id="picklist"></div>
+  </div>
+
+  <div class="card" id="form-card">
+    <div class="card-title">② 店舗の情報を入れる</div>
+    <p class="note" id="form-none" hidden>選んだ様式には、入力する欄はありません。</p>
+    <div class="form-grid">
+      <div class="fld" data-for="s1 s2 s4 s5 s8">
+        <label for="f-shop">薬局名</label>
+        <input id="f-shop" data-key="shop" placeholder="例）ハロー薬局 ○○店" />
+      </div>
+      <div class="fld" data-for="s1 s4 s5 s8">
+        <label for="f-tel">電話番号</label>
+        <input id="f-tel" data-key="tel" placeholder="例）03-1234-5678" />
+      </div>
+
+      <div class="form-sec" data-for="s2">（２）管理及び運営に関する事項</div>
+      <div class="fld" data-for="s2">
+        <label for="f-owner">開設者</label>
+        <input id="f-owner" data-key="owner" />
+      </div>
+      <div class="fld" data-for="s2">
+        <label for="f-kanri">管理薬剤師氏名</label>
+        <input id="f-kanri" data-key="kanri" />
+      </div>
+      <div class="fld" data-for="s2">
+        <label for="f-yaku">勤務する薬剤師（担当業務）<small>改行できます</small></label>
+        <textarea id="f-yaku" data-key="yaku"></textarea>
+      </div>
+      <div class="fld" data-for="s2">
+        <label for="f-toro">勤務する登録販売者（担当業務）<small>改行できます</small></label>
+        <textarea id="f-toro" data-key="toro"></textarea>
+      </div>
+      <div class="fld full" data-for="s2">
+        <label for="f-kubun">取り扱う一般用医薬品等の区分<small>日薬の記載のまま。取り扱わない区分があれば消す</small></label>
+        <input id="f-kubun" data-key="kubun" data-default="要指導医薬品・第一類医薬品・第二類医薬品・第三類医薬品" />
+      </div>
+      <div class="fld" data-for="s2">
+        <label for="f-hours">営業時間<small>改行できます</small></label>
+        <textarea id="f-hours" data-key="hours" placeholder="例）月〜金 9時00分〜18時00分"></textarea>
+      </div>
+      <div class="fld" data-for="s2">
+        <label for="f-offhours">営業時間外の相談対応時間</label>
+        <input id="f-offhours" data-key="offhours" />
+      </div>
+      <div class="fld full" data-for="s2">
+        <label for="f-emg">相談時・緊急時の連絡先</label>
+        <input id="f-emg" data-key="emg" placeholder="例）0XX-XXX-XXXX（夜間転送）" />
+      </div>
+      <div class="fld full" data-for="s2">
+        <label>名札の記載<small>店舗の名札に合わせて選ぶ</small></label>
+        <div class="radios" id="nafuda">
+          <label><input type="radio" name="nafuda" value="氏名"> 氏名（日薬の記載のまま）</label>
+          <label><input type="radio" name="nafuda" value="姓"> 姓</label>
+          <label><input type="radio" name="nafuda" value="氏名又は姓"> 氏名又は姓</label>
+        </div>
+        <div class="where">令和4年6月の厚労省通知で、名札は姓のみや旧姓なども認められています。</div>
+      </div>
+
+      <div class="form-sec" data-for="s3">（３）苦情相談窓口<span class="sec-note">薬局への苦情を受け付ける連絡先（会社・保健所など）。手順書12章の相談窓口（濫用や依存が疑われる人に案内する相談先）とは別</span></div>
+      <div class="fld full" data-for="s3">
+        <label>窓口1</label>
+        <div class="pair">
+          <input data-key="cw1" aria-label="窓口1の名称" placeholder="名称　例）○○保健所" />
+          <input data-key="cw1tel" aria-label="窓口1の電話番号" placeholder="電話番号" />
+        </div>
+      </div>
+      <div class="fld full" data-for="s3">
+        <label>窓口2<small>空欄なら行ごと出しません</small></label>
+        <div class="pair">
+          <input data-key="cw2" aria-label="窓口2の名称" placeholder="名称　例）○○薬剤師会" />
+          <input data-key="cw2tel" aria-label="窓口2の電話番号" placeholder="電話番号" />
+        </div>
+      </div>
+
+      <div class="form-sec" data-for="s8">（８）販売者カード</div>
+      <div class="fld full" data-for="s8">
+        <label>氏名の欄の見出し<small>登録販売者が販売する店舗は変える</small></label>
+        <div class="radios" id="cardlabel">
+          <label><input type="radio" name="cardlabel" value="薬剤師名"> 薬剤師名（日薬の記載のまま）</label>
+          <label><input type="radio" name="cardlabel" value="登録販売者名"> 登録販売者名</label>
+          <label><input type="radio" name="cardlabel" value="販売者名"> 販売者名</label>
+        </div>
+      </div>
+      <div class="fld" data-for="s8">
+        <label for="f-cname">カードに印字する氏名<small>空欄なら手書き</small></label>
+        <input id="f-cname" data-key="cname" />
+      </div>
+      <div class="fld" data-for="s8">
+        <label for="f-cyear">販売日の年<small>空欄なら手書き</small></label>
+        <input id="f-cyear" data-key="cyear" placeholder="例）2026" inputmode="numeric" />
+      </div>
+    </div>
+    <p class="note" style="margin-top:12px">入力した内容と選んだ様式は、このパソコンのブラウザに保存されます。次に同じパソコンで開いたときは、その状態から始まります。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">③ 印刷する</div>
+    <div class="bar">
+      <div class="warn" id="warn" hidden></div>
+      <button type="button" class="btn-print" id="btn-print">選んだ様式を印刷</button>
+    </div>
+    <p class="note" style="margin-top:10px">印刷の設定は「用紙 A4」「余白 なし」「背景のグラフィック オン」にしてください。縦・横の向きは様式ごとに自動で切り替わります。<br><b>Edge か Chrome で開いて印刷してください</b>（ほかのブラウザでは向きがそろわないことがあります）。</p>
+  </div>
+
+  <div class="sheets" id="sheets">
+
+    <!-- ===== 別添（１） ===== -->
+    <div class="sheet-head" data-sheet="s1"><b>別添（１）　指定濫用防止医薬品説明事項</b><span class="use">新設。販売時の説明書面。印刷してラミネートし、販売時に見せながら説明する</span></div>
+    <div class="sheet-frame" data-sheet="s1">
+      <section class="sheet land s1">
+        <img class="p-logo" src="../assets/icons/会社ロゴ_掲示物.png" alt="Hello Group">
+        <header class="p-title"><h2><span class="kw">指定濫用防止医薬品</span>をご購入のみなさまへ</h2></header>
+        <div class="cols">
+        <div class="col-l">
+        <div class="alert">指定濫用防止医薬品の濫用をした場合、保健衛生上の危害が発生するおそれがあります。</div>
+        <p class="lead">指定濫用防止医薬品の販売にあたり、OTC医薬品の各区分で確認する事項に加え、以下を確認させていただきますのでご理解の程よろしくお願いします。</p>
+        <div class="p-contact">
+          <div class="shop"><span data-bind="shop" data-ph="薬局名"></span></div>
+          <div class="lab">ご購入後のご相談はこちらまで</div>
+          <div class="tel"><span data-bind="tel" data-ph="電話番号"></span></div>
+        </div>
+        </div>
+        <div class="box">
+          <div class="box-lead">購入者が18歳未満の場合、複数個・大容量の販売はできません。</div>
+          <ul>
+            <li>年齢</li>
+            <li>他の薬剤又は医薬品の使用の状況</li>
+            <li>購入しようとする者が18歳未満である場合には、当該者の氏名</li>
+            <li>当該製品及び他の指定濫用防止医薬品の購入又は譲り受けの状況</li>
+            <li>大容量製品又は複数個の購入に該当する場合、その理由</li>
+            <li>適正な使用であることを確認するために必要な事項</li>
+            <li>その他情報提供を行うために必要な事項</li>
+          </ul>
+        </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== 別添（２） ===== -->
+    <div class="sheet-head" data-sheet="s2"><b>別添（２）　【掲示】薬局又は店舗の管理及び運営に関する事項</b><span class="use">以前からの掲示。指定濫用防止医薬品の記載なし</span></div>
+    <div class="sheet-frame" data-sheet="s2">
+      <section class="sheet land s2">
+        <img class="p-logo" src="../assets/icons/会社ロゴ_掲示物.png" alt="Hello Group">
+        <header class="p-title"><h2><span data-bind="shop" data-ph="薬局名"></span>の管理及び運営に関する事項</h2></header>
+        <table>
+          <colgroup><col style="width:78mm"><col style="width:26mm"><col style="width:28mm"><col></colgroup>
+          <tr><th>許可の区分の別</th><td class="c">薬　局</td><th class="c">開設者</th><td data-bind="owner" data-ph="開設者"></td></tr>
+          <tr><th colspan="3">薬局の名称・許可番号・許可年月日・所在地・有効期間</th><td>薬局開設許可証（別掲）を参照</td></tr>
+          <tr><th>管理薬剤師氏名</th><td colspan="3" data-bind="kanri" data-ph="管理薬剤師氏名"></td></tr>
+          <tr class="tall"><th>勤務する薬剤師（担当業務）</th><td colspan="3" data-bind="yaku" data-ph="勤務する薬剤師"></td></tr>
+          <tr class="tall"><th>勤務する登録販売者（担当業務）</th><td colspan="3" data-bind="toro" data-ph="勤務する登録販売者"></td></tr>
+          <tr><th>取り扱う一般用医薬品等の区分</th><td colspan="3" data-bind="kubun" data-ph="区分"></td></tr>
+          <tr><th>当薬局勤務者の区別について</th><td colspan="3"><div class="tag-row"><span>薬剤師</span><span>名札に<span data-nafuda>氏名</span>及び「薬剤師」と記載</span><span>登録販売者</span><span>名札に<span data-nafuda>氏名</span>及び「登録販売者」と記載</span><span>その他の勤務者</span><span>名札に<span data-nafuda>氏名</span>を記載</span></div></td></tr>
+          <tr><th>営業時間</th><td colspan="3" data-bind="hours" data-ph="営業時間"></td></tr>
+          <tr><th>営業時間外の相談対応時間</th><td colspan="3" data-bind="offhours" data-ph="相談対応時間"></td></tr>
+          <tr><th>相談時・緊急時の連絡先</th><td colspan="3" data-bind="emg" data-ph="連絡先"></td></tr>
+        </table>
+      </section>
+    </div>
+
+    <!-- ===== 別添（３） ===== -->
+    <div class="sheet-head" data-sheet="s3"><b>別添（３）　【掲示】薬局製剤、要指導医薬品及び一般用医薬品の販売に関する制度に関する事項</b><span class="use">以前からの掲示に指定濫用防止医薬品の行が加わった</span></div>
+    <div class="sheet-frame" data-sheet="s3">
+      <section class="sheet land s3">
+        <img class="p-logo" src="../assets/icons/会社ロゴ_掲示物.png" alt="Hello Group">
+        <header class="p-title"><h2>当薬局におけるお薬の販売方法について</h2></header>
+        <table>
+          <colgroup><col style="width:9mm"><col style="width:46mm"><col style="width:74mm"><col style="width:62mm"><col style="width:48mm"><col style="width:21mm"><col style="width:21mm"></colgroup>
+          <thead>
+            <tr>
+              <th colspan="2">分類と外箱表示※<small>※その他表示事項については関係法規による</small></th>
+              <th>定　　　義</th>
+              <th>陳列方法</th>
+              <th>情報<br>提供</th>
+              <th class="narrow">対応する<br>専門家</th>
+              <th class="narrow">相談へ<br>の対応</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cat" colspan="2">薬局製造販売医薬品</td>
+              <td>薬局開設者が当該薬局における設備及び器具をもって製造し、当該薬局において直接消費者に販売し、又は授与する医薬品。具体的な品目は、厚生労働省が通知（薬局製剤指針）で定めています</td>
+              <td>調剤室又は販売時に薬剤師による対面での情報提供を適切に行うため、鍵をかけた場所か消費者が直接手の触れられない場所に陳列します</td>
+              <td class="shared" rowspan="3">書面等を用いて、適正使用のため必要な情報の提供を行います</td>
+              <td class="shared center" rowspan="3">薬剤師</td>
+              <td class="shared" rowspan="6"><div class="vert">相談に応じて、適正使用のため必要な情報を提供します</div></td>
+            </tr>
+            <tr>
+              <td class="cat" colspan="2">要指導医薬品<br><span class="pkg">要指導医薬品</span></td>
+              <td>副作用等により日常生活に支障を来す程度の健康被害が生ずるおそれがある医薬品のうち、その使用に関し特に注意が必要で、新しく市販された成分等を含むもの</td>
+              <td>販売時に薬剤師による対面での情報提供を適切に行うため、鍵をかけた場所か消費者が直接手の触れられない場所に陳列します</td>
+            </tr>
+            <tr>
+              <td class="ippan" rowspan="3">一般用医薬品</td>
+              <td class="cat">第一類医薬品<br><span class="pkg">第１類医薬品</span></td>
+              <td>副作用等により日常生活に支障を来す程度の健康被害が生ずるおそれがある医薬品のうち、その使用に関し特に注意が必要なもの（要指導医薬品を除く）</td>
+              <td>販売時に薬剤師による情報提供を適切に行うため、鍵をかけた場所か消費者が直接手の触れられない場所に陳列します</td>
+            </tr>
+            <tr>
+              <td class="cat">指定第二類医薬品<br><span class="pkg">第<span class="pkg-2c">２</span>類医薬品</span> <span class="pkg">第<span class="pkg-2s">２</span>類医薬品</span><br><span style="display:block;margin-top:1.2mm">第二類医薬品</span><span class="pkg">第２類医薬品</span></td>
+              <td>副作用等により日常生活に支障を来す程度の健康被害が生ずるおそれがある医薬品（要指導医薬品、第一類医薬品を除く）<br><span class="em" style="display:block;margin-top:1.5mm">注）　指定第二類医薬品は、第二類医薬品のうち、特別の注意を要する医薬品です<br>『してはいけないこと』の確認をおこない、使用について薬剤師や登録販売者にご相談ください</span></td>
+              <td>第一類医薬品と同様、販売時に情報提供を行う機会を確保しやすいよう、情報提供を行う場所（７ｍ以内）に陳列します</td>
+              <td class="shared" rowspan="2">適正な使用のため必要な情報提供に努めます</td>
+              <td class="shared center" rowspan="3">薬剤師<br><br>または<br><br>登録<br>販売者</td>
+            </tr>
+            <tr>
+              <td class="cat">第三類医薬品<br><span class="pkg">第３類医薬品</span></td>
+              <td>第一類医薬品及び第二類医薬品以外の一般用医薬品</td>
+              <td>法令では直接手に取ることができる陳列でもよいとされていますが、当薬局では、情報提供を行いやすい場所に陳列します</td>
+            </tr>
+            <tr>
+              <td class="cat" colspan="2">指定濫用防止医薬品<small>①内容量が厚生労働大臣が定める数量以下のもの：「要確認」の字句を記載。枠は四角枠とする。</small><small>②上記以外のもの：「要確認」の「要」を丸囲み又は四角囲みにした字句を記載。枠は四角枠とする。</small></td>
+              <td>濫用した場合に中枢神経系の興奮若しくは抑制又は幻覚を生ずるおそれがあり、その防止を図る必要がある医薬品として厚労大臣が薬事審議会の意見を聴いて指定する医薬品</td>
+              <td>販売時に必要な確認と情報提供を適切に行うため、鍵をかけた場所か消費者が直接手の触れられない場所に陳列します</td>
+              <td class="shared">要指導医薬品等それぞれ定められている事項のほか、指定濫用防止医薬品の濫用した場合における保健衛生上の危害の発生のおそれがある旨を書面等を用いて適正使用のため必要な情報の提供を行います</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="foot-note">※　医薬品の安全使用のために症状等の情報をお伺いさせていただくことがあります。個人情報は個人情報保護法等に基づき適切に管理を行い、医薬品の安全使用以外の目的で利用はしません。</p>
+        <div class="foot-row">
+        <div class="relief">
+          <div class="h">ご存知ですか？　医薬品副作用被害救済制度</div>
+          <div class="d">医薬品の副作用等による被害を受けられた方を救済する公的な制度があります</div>
+          <div class="q"><span>問合せ先　独立行政法人　医薬品医療機器総合機構</span><span>電話　０１２０－１４９－９３１（フリーダイヤル）</span></div>
+        </div>
+        <div class="complain">
+          <div class="h">苦情相談窓口</div>
+          <table>
+            <tr><td data-bind="cw1" data-ph="窓口の名称"></td><td>TEL <span data-bind="cw1tel" data-ph="電話番号"></span></td></tr>
+            <tr data-hide-if-empty="cw2,cw2tel"><td data-bind="cw2" data-ph="窓口の名称"></td><td>TEL <span data-bind="cw2tel" data-ph="電話番号"></span></td></tr>
+          </table>
+        </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== 別添（４） ===== -->
+    <div class="sheet-head" data-sheet="s4"><b>別添（４）　【掲示】指定第二類医薬品の販売に関する事項</b><span class="use">以前からの掲示。指定濫用防止医薬品の記載なし</span></div>
+    <div class="sheet-frame" data-sheet="s4">
+      <section class="sheet land s4">
+        <img class="p-logo" src="../assets/icons/会社ロゴ_掲示物.png" alt="Hello Group">
+        <header class="p-title"><h2><span class="kw">指定第二類医薬品</span>をご購入のみなさまへ</h2></header>
+        <div class="body">
+          <p>指定第二類医薬品は、第二類医薬品のうち、特別の注意が必要なお薬になります。</p>
+          <p class="must"><span class="em">ご使用の前に必ず使用上の注意の『してはいけない』項目をご確認の上</span>、ご使用ください。</p>
+          <p>また、ご不明な点やご懸念がある場合については、お気軽に近くの薬剤師又は登録販売者まで、ご相談ください。</p>
+        </div>
+        <div class="p-contact">
+          <div class="shop"><span data-bind="shop" data-ph="薬局名"></span></div>
+          <div class="lab">ご購入後のご相談はこちらまで</div>
+          <div class="tel"><span data-bind="tel" data-ph="電話番号"></span></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== 別添（５） ===== -->
+    <div class="sheet-head" data-sheet="s5"><b>別添（５）　【掲示】指定濫用防止医薬品の販売に関する事項</b><span class="use">新設の掲示</span></div>
+    <div class="sheet-frame" data-sheet="s5">
+      <section class="sheet land s5">
+        <img class="p-logo" src="../assets/icons/会社ロゴ_掲示物.png" alt="Hello Group">
+        <header class="p-title"><h2><span class="kw">指定濫用防止医薬品</span>をご購入のみなさまへ</h2></header>
+        <div class="panel">
+          <p><span class="em">「指定濫用防止医薬品」</span>は、<br>濫用した場合に中枢神経系の興奮若しくは抑制又は幻覚を生じるおそれがあり、その防止を図る必要がある医薬品として厚生労働省令で定められた、特別の注意が必要なお薬になります。</p>
+          <p>ご使用にあたって、ご不明な点やご懸念がある場合については、お気軽に近くの薬剤師又は登録販売者まで、ご相談ください。</p>
+        </div>
+        <div class="p-contact">
+          <div class="lab">＜ご購入後のご相談はこちらまで＞</div>
+          <div class="shop"><span data-bind="shop" data-ph="薬局名"></span></div>
+          <div class="tel"><span data-bind="tel" data-ph="電話番号"></span></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== 別添（６） ===== -->
+    <div class="sheet-head" data-sheet="s6"><b>別添（６）　OTC医薬品販売時確認シート</b><span class="use">販売者用。指定濫用防止医薬品の確認事項が加わった</span></div>
+    <div class="sheet-frame" data-sheet="s6">
+      <section class="sheet s6">
+        <header class="p-title"><h2>［OTC医薬品販売時確認シート］販売者用</h2></header>
+        <div class="legend">
+          <div>※【製・要・１・濫】の記載は、法令上の必須事項であることを示す。</div>
+          <div class="sm">（注）製＝薬局製剤（毒薬及び劇薬であるものを除く）　要＝要指導医薬品　1＝第一類医薬品　濫＝指定濫用防止医薬品</div>
+          <div>※リスク区分や法令の定め等に関わらず、医薬品の適正使用のためには、購入者・使用者情報を確認の上で販売する必要がある。</div>
+        </div>
+        <ul>
+          <li><span>購入者が使用者本人か否か<span class="tag">【要】</span></span></li>
+          <li><span>年齢<span class="tag">【製・要・１・濫】</span></span></li>
+          <li class="sub"><span>指定濫用防止医薬品に該当する成分である場合、購入者が18歳以上／未満 を確認<span class="tag">【濫】</span></span></li>
+          <li class="sub sub2"><span>18歳未満である場合、複数個・大容量の販売は不可</span></li>
+          <li class="sub sub2"><span>18歳以上であっても、複数個・大容量の販売は、理由を確認し、適正な使用を確保できないと認められる場合は販売しない</span></li>
+          <li><span>他の薬剤又は医薬品の使用の状況<span class="tag">【製・要・1・濫】</span></span></li>
+          <li><span>性別<span class="tag">【製・要・1 】</span></span></li>
+          <li><span>症状<span class="tag">【製・要・1 】</span></span></li>
+          <li><span>当該症状での医師等の診断を受けたか否かの別及び診断を受けたことがある場合にはその診断の内容<span class="tag">【製・要・1 】</span></span></li>
+          <li><span>現にかかっている他の疾病の有無・病名<span class="tag">【製・要・1 】</span></span></li>
+          <li><span>妊娠の有無・週数<span class="tag">【製・要・1 】</span></span></li>
+          <li><span>授乳の有無<span class="tag">【製・要・1 】</span></span></li>
+          <li><span>当該医薬品に係る購入、譲受けまたは使用経験の有無<span class="tag">【製・要・1 】</span></span></li>
+          <li><span>調剤された薬剤又は医薬品の副作用その他の事由によると疑われる疾病にかかったことがあるか否か（有：症状・時期・薬名称・成分・服用量や服用状況）<span class="tag">【製・要・1 】</span></span></li>
+          <li><span>その他確認が必要な事項<span class="tag">【製・要・1 】</span></span></li>
+        </ul>
+        <div class="sec">
+          <div class="sec-h">■指定濫用防止医薬品は、リスク区分に関わらず以下についても確認の上販売すること。</div>
+          <ul>
+            <li><span>購入しようとする者等が18歳未満である場合は当該者の氏名<span class="tag">【濫】</span></span></li>
+            <li><span>購入しようとする者等の当該指定濫用防止医薬品及びその他の指定濫用防止医薬品の購入又は譲受けの状況<span class="tag">【濫】</span></span></li>
+            <li><span>指定濫用防止医薬品の適正な使用のために必要と認められる数量として厚生労働大臣が定める数量を超えて購入し、又は譲り受けようとする場合はその理由<span class="tag">【濫】</span></span></li>
+            <li><span>適正な使用を目的とする購入又は譲受けであることを確認するために必要な事項<span class="tag">【濫】</span></span></li>
+            <li><span>その他指定濫用防止医薬品に係る情報の提供を行うために確認が必要な事項<span class="tag">【濫】</span></span></li>
+          </ul>
+        </div>
+        <div class="last">
+          <ul><li><span>情報提供内容の理解及び質問の有無の確認<span class="tag">【製・要・１・濫】</span></span></li></ul>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== 別添（７） ===== -->
+    <div class="sheet-head" data-sheet="s7"><b>別添（７）　医薬品販売記録</b><span class="use">指定濫用防止医薬品の記録欄がある</span></div>
+    <div class="sheet-frame" data-sheet="s7">
+      <section class="sheet s7">
+        <header class="p-title"><h2>医薬品販売記録</h2></header>
+        <div class="lead7">
+          <div>◇薬局医薬品・要指導医薬品・第一類医薬品は、法令上、販売記録が必須。</div>
+          <div>◇指定濫用防止医薬品は、頻回購入・多量購入の防止対応のため、法令上の定めに関わらず記録を行うこととする。</div>
+          <div>※印：法令上記録必須事項【薬局医薬品・要指導医薬品・第１類医薬品】<span class="n">（記載日より２年間保存）</span></div>
+        </div>
+        <table class="t7 strong">
+          <colgroup><col style="width:44mm"><col></colgroup>
+          <tr><th>販売した製品<i>※</i></th><td>
+            <div class="opts"><span class="cb"></span>薬局医薬品<span class="cb"></span>薬局製剤<span class="cb"></span>要指導医薬品<span class="cb"></span>第一類<span class="cb"></span>第二類<span class="cb"></span>第三類</div>
+            <div class="opts"><span class="cb"></span>指定濫用防止医薬品に該当</div>
+            <div>製品名（<span class="gap w"></span>）</div>
+            <div>当該製品の使用経験　<span class="cb"></span>無　・<span class="cb"></span>有（いつごろ<span class="gap"></span>）</div>
+          </td></tr>
+          <tr><th>販売個数<i>※</i></th><td><span class="sp" style="width:26mm"></span>個</td></tr>
+          <tr><th>販売日時<i>※</i></th><td><span class="sp" style="width:20mm"></span>年<span class="sp" style="width:12mm"></span>月<span class="sp" style="width:12mm"></span>日（<span class="sp" style="width:7mm"></span>）<span class="sp" style="width:16mm"></span>時<span class="sp" style="width:14mm"></span>分ごろ</td></tr>
+          <tr><th>販売、情報提供・指導を行った者の氏名</th><td>薬剤師氏名<i>※</i><span class="sp" style="width:38mm"></span>（登録販売者氏名<span class="gap"></span>）</td></tr>
+          <tr><th>情報提供の<br>理解の確認<i>※</i></th><td><span class="cb"></span>理解したことを確認済</td></tr>
+        </table>
+        <table class="t7 strong" style="margin-top:3mm">
+          <colgroup><col style="width:44mm"><col></colgroup>
+          <tr><th>その他特記事項<small>（指定濫用防止医薬品頻回購入等防止のため）</small></th><td>
+            <div class="opts">● 購入者の年齢確認方法　<span class="cb"></span>身分証確認<span class="cb"></span>自己申告等（<span class="sp" style="width:24mm"></span>）</div>
+            <div>● 購入者の特徴、他薬局・店舗での指定濫用防止医薬品の購入状況等</div>
+            <div class="memo7"></div>
+          </td></tr>
+        </table>
+        <div class="sep7">◇以下については、法令上記録必須事項ではないが、可能な限り医薬品の適正使用のために記録する。</div>
+        <table class="t7">
+          <colgroup><col style="width:26mm"><col style="width:38mm"><col style="width:26mm"><col style="width:16mm"><col style="width:17mm"><col></colgroup>
+          <tr><th>購入者氏名</th><td class="tiny"><span class="cb"></span>使用者本人</td><td style="white-space:nowrap">年齢（<span class="sp" style="width:6mm"></span>）</td><td class="c">男・女</td><th>連絡先</th><td class="tiny">携帯電話等</td></tr>
+          <tr><th>使用者氏名</th><td class="tiny">購入者と使用者が異なる場合</td><td style="white-space:nowrap">年齢（<span class="sp" style="width:6mm"></span>）</td><td class="c">男・女</td><th>連絡先</th><td class="tiny">携帯電話等</td></tr>
+        </table>
+        <table class="t7" style="margin-top:3mm">
+          <colgroup><col style="width:9mm"><col style="width:30mm"><col></colgroup>
+          <tr><th class="vert7" rowspan="9">使用者の基礎情報の確認</th><th rowspan="2">症　状</th><td class="tall7">【主症状】<br><br>【随伴症状・いつごろから・程度等】<br><br></td></tr>
+          <tr><td>医師又は歯科医師への受診<br><span class="cb"></span>受診なし　・　<span class="cb"></span>受診あり（傷病名：<span class="gap"></span>）</td></tr>
+          <tr><th>お薬手帳</th><td><span class="cb"></span>持っていない・<span class="cb"></span>持っている（持参・持参なし）</td></tr>
+          <tr><th>医薬品・健康食品等の使用</th><td><span class="cb"></span>使用なし　・　<span class="cb"></span>使用あり（併用：<span class="gap"></span>）</td></tr>
+          <tr><th>既往歴</th><td><span class="cb"></span>なし　・　<span class="cb"></span>あり（<span class="gap"></span>）</td></tr>
+          <tr><th>副作用歴</th><td><span class="cb"></span>なし　・　<span class="cb"></span>あり（<span class="gap"></span>）</td></tr>
+          <tr><th>アレルギー</th><td><span class="cb"></span>なし　・　<span class="cb"></span>あり（<span class="gap"></span>）</td></tr>
+          <tr><th rowspan="2">妊娠・授乳</th><td><span class="cb"></span>妊娠していない　・　<span class="cb"></span>妊娠している（<span class="sp" style="width:16mm"></span>週目<span class="sp" style="width:6mm"></span>）</td></tr>
+          <tr><td><span class="cb"></span>授乳していない　・　<span class="cb"></span>授乳している</td></tr>
+        </table>
+      </section>
+    </div>
+
+    <!-- ===== 別添（８） ===== -->
+    <div class="sheet-head" data-sheet="s8"><b>別添（８）　販売者カード例</b><span class="use">A4 1枚に21枚。点線で切り分けて使う</span></div>
+    <div class="sheet-frame" data-sheet="s8">
+      <section class="sheet s8">
+        <div class="cards" id="cards"></div>
+      </section>
+    </div>
+
+  </div>
+</div>
+
+<template id="card-tpl">
+  <div class="cardx">
+    <div class="cap">この薬は私が販売・情報提供いたしました。</div>
+    <table>
+      <tr><th>販売日</th><td class="date"><span data-bind="cyear" data-ph=""></span>年　　　月　　　日</td></tr>
+      <tr class="shopcell"><th>薬局・<br>店舗名</th><td data-bind="shop" data-ph=""></td></tr>
+      <tr class="shopcell"><th>連絡先tel</th><td class="tel2" data-bind="tel" data-ph=""></td></tr>
+      <tr><th data-cardlabel>薬剤師名</th><td data-bind="cname" data-ph=""></td></tr>
+    </table>
+    <div class="foot">ご不明な点、気になる点はお気軽にご相談下さい。</div>
+  </div>
+</template>
+
+<script>
+(function () {
+  const KEY = 'otc-keiji-v1';
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { saved = {}; }
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {} };
+
+  // 販売者カードを21枚並べる
+  const cards = document.getElementById('cards');
+  const tpl = document.getElementById('card-tpl');
+  for (let i = 0; i < 21; i++) cards.appendChild(tpl.content.cloneNode(true));
+
+  // 入力欄 → 様式
+  const inputs = document.querySelectorAll('[data-key]');
+  const REQUIRED = { shop:'薬局名', tel:'電話番号', owner:'開設者', kanri:'管理薬剤師氏名', emg:'相談時・緊急時の連絡先', cw1:'苦情相談窓口の名称', cw1tel:'苦情相談窓口の電話番号' };
+  function values() {
+    const v = {};
+    inputs.forEach(el => { v[el.dataset.key] = el.value.trim(); });
+    return v;
+  }
+  function render() {
+    const v = values();
+    document.querySelectorAll('[data-bind]').forEach(el => {
+      const val = v[el.dataset.bind] || '';
+      el.textContent = val;
+      el.classList.toggle('b-empty', !val && el.dataset.ph !== '');
+    });
+    document.querySelectorAll('[data-hide-if-empty]').forEach(el => {
+      el.hidden = el.dataset.hideIfEmpty.split(',').every(k => !v[k]);
+    });
+    // 未入力の警告（印刷する様式に関係するものだけ）
+    const on = new Set([...document.querySelectorAll('#picklist input:checked')].map(c => c.value));
+    const need = { shop:['s1','s2','s4','s5','s8'], tel:['s1','s4','s5','s8'], owner:['s2'], kanri:['s2'], emg:['s2'], cw1:['s3'], cw1tel:['s3'] };
+    const miss = Object.keys(REQUIRED).filter(k => !v[k] && need[k].some(s => on.has(s))).map(k => REQUIRED[k]);
+    const warn = document.getElementById('warn');
+    warn.hidden = miss.length === 0;
+    warn.textContent = miss.length ? '未入力：' + miss.join('、') + '（空欄のまま印刷されます）' : '';
+  }
+  inputs.forEach(el => {
+    if (saved[el.dataset.key] != null) el.value = saved[el.dataset.key];
+    else if (el.dataset.default) el.value = el.dataset.default;
+    el.addEventListener('input', () => { saved[el.dataset.key] = el.value; save(); render(); });
+  });
+
+  // 販売者カードの氏名の見出し
+  const LABELS = ['薬剤師名', '登録販売者名', '販売者名'];
+  const cardSet = v => {
+    document.querySelectorAll('[data-cardlabel]').forEach(el => { el.textContent = v; });
+    document.querySelectorAll('#cardlabel input').forEach(r => { r.checked = r.value === v; });
+  };
+  document.querySelectorAll('#cardlabel input').forEach(r => r.addEventListener('change', () => {
+    saved._cardlabel = r.value; save(); cardSet(r.value);
+  }));
+
+  // 名札の記載
+  const nafudaSet = v => {
+    document.querySelectorAll('[data-nafuda]').forEach(el => { el.textContent = v; });
+    document.querySelectorAll('#nafuda input').forEach(r => { r.checked = r.value === v; });
+  };
+  document.querySelectorAll('#nafuda input').forEach(r => r.addEventListener('change', () => {
+    saved._nafuda = r.value; save(); nafudaSet(r.value);
+  }));
+  nafudaSet(['氏名', '姓', '氏名又は姓'].includes(saved._nafuda) ? saved._nafuda : '氏名');
+
+  // ① 必要なものを選ぶ（初期は（１）（３）（５））
+  const GROUPS = [
+    { h:'必ず用意するもの', sub:'指定濫用防止医薬品のために新しくできた掲示・書面と、中身が変わった掲示です。（３）は今の掲示に書き足してもかまいません。',
+      items:[['s1','（１）指定濫用防止医薬品説明事項','販売時の説明書面。1枚ずつ渡さなくてよい。ラミネートしてカウンターに置き、販売時に見せながら説明する'],
+             ['s3','（３）【掲示】販売制度に関する事項','指定濫用防止医薬品の行が加わった'],
+             ['s5','（５）【掲示】指定濫用防止医薬品の販売に関する事項','新しい掲示']] },
+    { h:'今のものに指定濫用防止医薬品の欄がなければ、書き足すか差し替える', sub:'店舗で使っている様式に、指定濫用防止医薬品の確認・記録の欄があれば不要です。なければ今の様式に書き足しても構いません。',
+      items:[['s6','（６）OTC医薬品販売時確認シート','指定濫用防止医薬品の確認事項が加わった'],
+             ['s7','（７）医薬品販売記録','指定濫用防止医薬品の記録欄がある']] },
+    { h:'すでに掲示・用意していれば不要', sub:'指定濫用防止医薬品の記載はありません。貼り替えたいときだけ選びます。',
+      items:[['s2','（２）【掲示】薬局の管理及び運営に関する事項',''],
+             ['s4','（４）【掲示】指定第二類医薬品の販売に関する事項',''],
+             ['s8','（８）販売者カード','']] },
+  ];
+  const picklist = document.getElementById('picklist');
+  const ons = new Set(Array.isArray(saved._on) ? saved._on : ['s1', 's3', 's5']);
+  function markPreset() {
+    const cur = [...ons].sort().join(' ');
+    document.querySelectorAll('[data-preset]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.preset.split(' ').sort().join(' ') === cur)));
+  }
+  document.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => {
+    ons.clear(); b.dataset.preset.split(' ').forEach(s => ons.add(s));
+    document.querySelectorAll('#picklist input').forEach(cb => { cb.checked = ons.has(cb.value); });
+    saved._on = [...ons]; save(); applyOn();
+  }));
+  function applyOn() {
+    markPreset();
+    document.querySelectorAll('.sheet-head, .sheet-frame').forEach(el => el.classList.toggle('is-off', !ons.has(el.dataset.sheet)));
+    let any = false;
+    document.querySelectorAll('[data-for]').forEach(el => {
+      const on = el.dataset.for.split(' ').some(s => ons.has(s));
+      el.classList.toggle('is-off', !on);
+      if (on) any = true;
+    });
+    document.getElementById('form-none').hidden = any;
+    document.getElementById('btn-print').disabled = ons.size === 0;
+    render(); fit();
+  }
+  GROUPS.forEach(g => {
+    const box = document.createElement('div');
+    box.innerHTML = '<div class="grp-h"></div><div class="grp-list"></div>';
+    box.querySelector('.grp-h').textContent = g.h;
+    const s = document.createElement('small'); s.textContent = g.sub; box.querySelector('.grp-h').appendChild(s);
+    g.items.forEach(([id, name, sub]) => {
+      const lab = document.createElement('label');
+      const cb = document.createElement('input');
+      cb.type = 'checkbox'; cb.value = id; cb.checked = ons.has(id);
+      const t = document.createElement('span'); t.textContent = name;
+      if (sub) { const u = document.createElement('span'); u.className = 'sub'; u.textContent = sub; t.appendChild(u); }
+      lab.append(cb, t);
+      box.querySelector('.grp-list').appendChild(lab);
+      cb.addEventListener('change', () => {
+        cb.checked ? ons.add(id) : ons.delete(id);
+        saved._on = [...ons]; save(); applyOn();
+      });
+    });
+    picklist.appendChild(box);
+  });
+
+  const sheets = document.getElementById('sheets');
+
+  // 画面幅に合わせて A4 を縮めて見せる（印刷は原寸）
+  function fit() {
+    const w = sheets.clientWidth;
+    document.querySelectorAll('.sheet-frame').forEach(f => {
+      f.style.zoom = '';
+      const sw = f.firstElementChild.getBoundingClientRect().width;
+      f.style.zoom = sw > w ? (w / sw).toFixed(3) : '';
+    });
+  }
+  window.addEventListener('resize', fit);
+
+  document.getElementById('btn-print').addEventListener('click', () => {
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => window.print());
+  });
+
+  cardSet(LABELS.includes(saved._cardlabel) ? saved._cardlabel : '薬剤師名');
+  applyOn();
+})();
+</script>
+<script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

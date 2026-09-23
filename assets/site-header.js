@@ -39,6 +39,7 @@
     'ツール/地域支援医薬品供給対応体制加算_届出判定ツール.html': { category: 'tools', title: '地域支援・届出判定ツール' },
     'ツール/服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html': { category: 'tools', title: '別表１（１）併算定可否チェック' },
     'ツール/選定療養費計算ツール.html': { category: 'tools', title: '選定療養費 計算ツール' },
+    'ツール/OTC販売の掲示物と様式.html': { category: 'tools', title: 'OTC販売の掲示物と様式' },
 
     // 実務ナレッジ
     'ナレッジ/変更調剤について.html': { category: 'knowledge', title: '変更調剤について' },
@@ -48,6 +49,7 @@
     'ナレッジ/OTC類似薬の一部保険外療養.html': { category: 'knowledge', title: 'OTC類似薬の一部保険外療養' },
     'ナレッジ/高額療養費と薬局窓口対応.html': { category: 'knowledge', title: '高額療養費と薬局窓口対応' },
     'ナレッジ/高額療養費制度の見直し2026.html': { category: 'knowledge', title: '高額療養費制度の見直し（2026年8月）' },
+    'ナレッジ/OTC医薬品の区分と販売ルール.html': { category: 'knowledge', title: 'OTC医薬品の区分と販売ルール' },
 
     // 薬歴（2026-07-20公開。サブディレクトリ yakureki/ 配下・パスキーで登録）
     'yakureki/薬歴の書き方_実例解説集.html': { category: 'yakureki', title: '薬歴の書き方｜実例解説集' },
