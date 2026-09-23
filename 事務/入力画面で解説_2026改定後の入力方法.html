@@ -127,6 +127,22 @@
       border-radius:2px;
     }
 
+    /* ── 1つの項目の中の小見出し（調剤管理料の残薬調整など） ── */
+    .step-head {
+      font-size:16px; font-weight:900; color:var(--ink);
+      margin:28px 0 6px; padding-top:18px;
+      border-top:1px solid var(--border);
+    }
+
+    /* ── 順序のある手順（青地・白文字の角丸四角の番号。CLAUDE.md の番号バッジ） ──
+       「画面1：…」の見出し（.screen-label）と同じ見た目だと手順だと気づきにくいので分けた（2026-09-23） */
+    .step { display:flex; align-items:flex-start; gap:10px; margin:22px 0 8px; font-size:15px; font-weight:700; line-height:1.6; color:var(--ink); }
+    .step-num { flex-shrink:0; min-width:26px; height:26px; padding:0 6px; border-radius:7px; background:var(--blue); color:#fff;
+      font-size:14px; font-weight:900; display:flex; align-items:center; justify-content:center; margin-top:-1px; }
+    .step-num.step-sub { background:#f2f2f2; color:#444; font-size:12px; border:1px solid #d1d5db; }
+    .step-note { font-size:13px; font-weight:500; color:#5e6470; }
+    .step-cap { font-size:13.5px; font-weight:700; color:#444; margin:12px 0 6px 36px; }
+
     /* ── 画像枠 ── */
     .shot {
       margin:6px 0 4px;
@@ -325,7 +341,7 @@
   <div class="lead">
     2026年改定により新設・変更された加算・管理料の入力方法を、<strong>Pharnesシリーズの実画面</strong>を用いて整理しました。
     <div style="margin-top:10px;padding:8px 12px;background:#eaf4e8;border-left:3px solid #5cb85c;border-radius:0 4px 4px 0;font-size:12.5px;color:#2d5e2a;">
-      <strong>全項目の画像差し替えが完了しました。</strong>「この項目も載せて欲しい」「ここがわかりにくい」など、引き続きご意見・ご要望をお寄せください。
+      「この項目も載せて欲しい」「ここがわかりにくい」など、ご意見・ご要望をお寄せください。
     </div>
   </div>
 
@@ -378,13 +394,47 @@
           <div class="desc">
             <ul>
               <li>4段階 → 2段階に整理。28日分以上：60点／27日分以下：10点</li>
+              <li>28日分以上で処方された内服薬を、残薬調整で27日分以下に減らして調剤した場合も<strong>60点（調管減）</strong>で算定する。入力方法は下の「残薬調整で日数を減らした場合」</li>
             </ul>
           </div>
           <div class="screen-label">画面：薬学管理料算定画面</div>
           <div class="shot"><img src="../images（レセコン画像など）/pharnes/kanri.png" alt="調剤管理料 薬学管理料算定画面"></div>
           <div class="tekiyo">
             <div class="tekiyo-label"></div>
-            <div class="tekiyo-none">記載不要</div>
+            <div class="tekiyo-none">通常は記載不要（残薬調整で日数を減らした場合は下記）</div>
+          </div>
+
+          <!-- 2026-09-23 追加：6/26 のバージョンアップ後の入力手順（ハローフォーラム 6/28 の投稿から） -->
+          <div class="step-head">残薬調整で日数を減らした場合（調管減・60点）</div>
+          <div class="desc">
+            <ul>
+              <li>例）28日分で処方された内服薬を、残薬調整により21日分で入力する場合</li>
+              <li><strong>摘要欄のコメントは自動では出てこない。</strong>下の手順5で、3つのコメントを自分で選んで入力する</li>
+            </ul>
+          </div>
+          <div class="step"><span class="step-num">1</span><span>残薬調整後の実際の調剤日数（21日分）で入力する</span></div>
+          <div class="step"><span class="step-num">2</span><span>対象の［内服薬］の行を選び、右クリックまたは［F4 入力補助］を開く</span></div>
+          <div class="shot"><img src="../images（レセコン画像など）/調剤管理料/1.png" alt="調剤管理料 残薬調整 内服薬の行で入力補助を開く"></div>
+          <div class="step"><span class="step-num">3</span><span>「調剤管理料を28日以上で算定する」を選ぶ</span></div>
+          <div class="shot"><img src="../images（レセコン画像など）/調剤管理料/2.png" alt="調剤管理料 残薬調整 入力補助メニュー"></div>
+          <div class="step"><span class="step-num">4</span><span>残薬調整前の調剤日数を入力し、［F12 登録］を押す（初期値の21日分を28日分に直す）</span></div>
+          <div class="shot"><img src="../images（レセコン画像など）/調剤管理料/3.png" alt="調剤管理料 残薬調整前調剤日数設定画面"></div>
+          <div class="step"><span class="step-num step-sub">補足</span><span>あとから日数を直すときは、「残薬調整前の調剤日数」の行を選んで［Enter］、または日数をクリックする</span></div>
+          <div class="shot"><img src="../images（レセコン画像など）/調剤管理料/4.png" alt="調剤管理料 残薬調整前の調剤日数の編集"></div>
+          <div class="step"><span class="step-num">5</span><span>「チョウサ」で呼び出し、摘要欄コメントを1つずつ選んで入力する（3つとも入れる）</span></div>
+          <div class="shot"><img src="../images（レセコン画像など）/調剤管理料/5.jpeg" alt="調剤管理料 チョウサ呼び出しの候補リスト"></div>
+          <div class="shot"><img src="../images（レセコン画像など）/調剤管理料/5.png" alt="調剤管理料 摘要欄コメント3種類の入力"></div>
+          <div class="step-cap">入力後、3つのコメントが入っているか確かめる</div>
+          <div class="shot"><img src="../images（レセコン画像など）/調剤管理料/6.png" alt="調剤管理料 入力された摘要欄コメント"></div>
+          <div class="step"><span class="step-num">6</span><span>調剤管理料（内服薬・残薬調整）60点が算定される<br><span class="step-note">薬学管理料算定画面から処方入力画面に戻ったときの表示</span></span></div>
+          <div class="shot"><img src="../images（レセコン画像など）/調剤管理料/7.png" alt="調剤管理料 調管減60点の算定結果"></div>
+          <div class="tekiyo">
+            <div class="tekiyo-label"></div>
+            <ul>
+              <li>減数調剤を実施した年月日</li>
+              <li>減数調剤を実施した薬剤名</li>
+              <li>調整前の日数</li>
+            </ul>
           </div>
           <div class="detail-link"><a href="../事務/事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s06">→ 事務向けポイント整理を見る</a></div>
         </div>
@@ -446,13 +496,13 @@
             </ul>
             <div style="font-size:11px;font-weight:700;color:var(--blue);margin:8px 0 2px;">区分ロ〜ニ・7日分以上の変更の場合</div>
             <ul>
-              <li>指定された記載事項はなし。ただし<strong>変更内容を併記</strong>することが望ましい（例：残薬があるため、〇〇を△△日→▲▲日へ日数調整）</li>
+              <li>指定された記載事項はなし。〔社内運用〕<strong>変更内容を併記</strong>する（例：残薬があるため、〇〇を△△日→▲▲日へ日数調整）</li>
             </ul>
             <div style="font-size:11px;font-weight:700;color:var(--blue);margin:8px 0 2px;">区分ロ〜ニ・6日分以下の変更の場合</div>
             <ul>
               <li>調整する必要性（<span class="tekiyo-quote">高額医薬品</span><span class="tekiyo-quote">治療終了日調整</span><span class="tekiyo-quote">投与間隔が長い薬剤</span><span class="tekiyo-quote">その他薬学的専門的観点</span> から選択）</li>
               <li>変更のあった主な薬剤名</li>
-              <li>上記に加え、<strong>具体的な変更内容も併記</strong>することが望ましい（例：残薬があるため、〇〇を△△日→▲▲日へ日数調整）</li>
+              <li>〔社内運用〕上記に加え、<strong>具体的な変更内容も併記</strong>する（例：残薬があるため、〇〇を△△日→▲▲日へ日数調整）</li>
             </ul>
           </div>
           <div class="detail-link"><a href="../事務/事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s07">→ 事務向けポイント整理を見る</a></div>
@@ -541,7 +591,7 @@
           <div class="desc">
             <ul>
               <li>算定間隔：3月に1回 → <strong>6月に1回</strong>に変更（点数は30点で変更なし）</li>
-              <li>対象疾患に<strong>インフルエンザ吸入薬</strong>を追加（喘息・COPDに加えて）</li>
+              <li>対象疾患に<strong>インフルエンザ</strong>を追加（喘息・COPDに加えて）</li>
             </ul>
           </div>
           <div class="screen-label">画面：薬学管理料算定画面</div>
@@ -598,7 +648,10 @@
 
           <div class="tekiyo">
             <div class="tekiyo-label"></div>
-            <div class="tekiyo-none">記載不要</div>
+            <ul>
+              <li>通常は記載不要</li>
+              <li>重症・要介護等の患者について、単一建物の人数にかかわらず加算２の「イ」を算定する<strong>特例</strong>の場合は、薬局区分と患者の状態の2つを記載する。<a href="../改定資料/在宅薬学総合体制加算2イ_特例摘要欄ガイド.html" style="color:var(--blue); font-weight:700;">在宅薬学総合体制加算２「イ」特例 算定ガイド</a>を参照</li>
+            </ul>
           </div>
           <div class="detail-link"><a href="../事務/事務スタッフ向け_2026調剤報酬改定ポイント整理.html#s_zaitaku_taisei">→ 事務向けポイント整理を見る</a></div>
         </div>
@@ -640,7 +693,7 @@
             <ul>
               <li><strong>入力方法は変更なし</strong>。従来通り[薬学管理料算定画面]または[処方入力画面]で算定</li>
               <li>算定間隔：「中6日以上」→ <strong>週1回</strong>に変更（週の起算日は<strong>日曜</strong>）</li>
-              <li>服薬管理指導料4ロ（オンライン）も同様に<strong>週1回</strong></li>
+              <li>服薬管理指導料４のロ（オンライン）と<strong>合わせて週1回</strong></li>
               <li>同一週内で2回以上算定しようとした場合に<strong>確認メッセージ</strong>が表示される</li>
             </ul>
           </div>
@@ -808,7 +861,7 @@
           <h3>処方入力画面での「加算の入力」について</h3>
           <div class="desc">
             <ul>
-              <li>「処方入力画面」で全ての入力を完結させるスタイルの方もいらっしゃると思いますので、補足です。</li>
+              <li>処方入力画面だけで加算まで入力する場合の手順。</li>
               <li>処方入力画面で加算まで入力したい場合は、<strong>加算より先に対応する管理料を入力</strong>する必要があります。管理料が未入力のまま加算を入力すると、下記のエラーが表示されます。</li>
             </ul>
           </div>
