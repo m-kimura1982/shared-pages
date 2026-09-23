@@ -20,7 +20,7 @@
       --pad-card: 22px;
       --gap-card: 16px;
       --blue:     #1e5fa8;
-      --red:      #cc0000;
+      --red:      #cc0000;  --amber:#b45309;
       --ink:      #222222;
       --bg:       #f3f4f6;
       --white:    #ffffff;
@@ -47,7 +47,7 @@
 
     .page { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--gap-card); }
 
-    .page-title { border-left: var(--bw-t) solid var(--red); padding: 6px 0 6px 18px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .page-title { border-left: var(--bw-t) solid var(--amber); padding: 6px 0 6px 18px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
     .page-title h1 { font-size: var(--text-xl); font-weight: 900; }
     .page-title p  { font-size: var(--text-sm); font-weight: 500; margin-top: 4px; }
 
@@ -60,7 +60,7 @@
     }
 
     .badge { font-size: var(--text-sm); font-weight: 700; padding: 3px 12px; border-radius: 4px; }
-    .badge-red  { background: #fde8e8; color: var(--red); }
+    .badge-red  { background: #fdf0e3; color: #92400e; }
     .badge-blue { background: var(--box-blue); color: var(--blue); }
 
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-card); }
@@ -69,7 +69,7 @@
     .box-gray { background: var(--box-gray); border-radius: var(--radius-sm); padding: 14px 18px; border: var(--bw) solid var(--border); }
     .box-red  { background: #fdf2f2; border-radius: var(--radius-sm); padding: 14px 18px; border: var(--bw) solid #f5c6c6; }
 
-    .em-red  { color: var(--red);  font-weight: 900; }
+    .em-red  { color: var(--amber);  font-weight: 900; }
     .em-blue { color: var(--blue); font-weight: 900; }
 
     /* 条件ブロック */
@@ -101,8 +101,8 @@
     .label-blue { background: var(--blue); color: var(--white); }
 
     /* 大きな数値 */
-    .big-num { font-size: 26px; font-weight: 900; color: var(--red); line-height: 1; }
-    .mid-num { font-size: 19px; font-weight: 900; color: var(--red); line-height: 1; }
+    .big-num { font-size: 26px; font-weight: 900; color: var(--amber); line-height: 1; }
+    .mid-num { font-size: 19px; font-weight: 900; color: var(--amber); line-height: 1; }
 
     /* 細分岐リスト */
     .sub-list { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
@@ -314,7 +314,7 @@
     <div class="card" style="padding:18px 22px;">
       <div class="card-title" style="margin-bottom:12px;">その他の留意点</div>
       <div style="display:flex; flex-direction:column; gap:8px; font-size:var(--text-sm);">
-        <div style="border-left:var(--bw-a) solid var(--red); padding-left:12px;">
+        <div style="border-left:var(--bw-a) solid var(--amber); padding-left:12px;">
           <strong>特別調剤基本料Ａ</strong>を算定する保険薬局には本減算は適用しない
         </div>
         <div style="border-left:var(--bw-a) solid var(--ink); padding-left:12px;">

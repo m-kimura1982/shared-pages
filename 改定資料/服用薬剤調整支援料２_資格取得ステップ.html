@@ -12,7 +12,7 @@
       --text-xs: 13px; --text-sm: 15px; --text-md: 16px;
       --text-lg: 18px; --text-xl: 22px;
       --pad-card: 22px; --gap-card: 16px;
-      --blue: #1e5fa8; --red: #cc0000; --ink: #222222;
+      --blue: #1e5fa8; --red: #cc0000;  --amber:#b45309; --ink: #222222;
       --bg: #f3f4f6; --white: #ffffff;
       --box-blue: #e4f0f8; --box-gray: #f2f2f2;
       --border: #d1d5db; --border-dk: #9ca3af;
@@ -32,7 +32,7 @@
     .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:var(--gap-card); }
     .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:14px 18px; }
     .box-gray { background:var(--box-gray); border-radius:var(--radius-sm); padding:14px 18px; border:var(--bw) solid var(--border); }
-    .em-red { color:var(--red); font-weight:900; }
+    .em-red { color:var(--amber); font-weight:900; }
     .sub-title { font-weight:900; font-size:var(--text-md); padding:6px 0 6px 12px; border-left:var(--bw-t) solid var(--blue); margin-bottom:10px; }
     .divider { border:none; border-top:var(--bw-h) solid var(--border); margin:12px 0; }
 
@@ -56,7 +56,7 @@
     .bullet-list li::before { content:"・"; flex-shrink:0; font-weight:700; }
 
     /* 注意ボックス */
-    .notice-box { border-left:var(--bw-t) solid var(--red); background:var(--box-gray); padding:10px 14px; border-radius:0 var(--radius-sm) var(--radius-sm) 0; font-size:var(--text-sm); font-weight:500; line-height:1.75; }
+    .notice-box { border-left:var(--bw-t) solid var(--amber); background:var(--box-gray); padding:10px 14px; border-radius:0 var(--radius-sm) var(--radius-sm) 0; font-size:var(--text-sm); font-weight:500; line-height:1.75; }
 
     /* 3カラム */
     .grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:8px; }

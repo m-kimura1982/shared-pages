@@ -14,7 +14,7 @@
   --blue: #1e5fa8; --red: #cc0000; --ink: #222222;
   --bg: #f3f4f6; --white: #ffffff;
   --box-gray: #f2f2f2; --border: #d1d5db; --border-dk: #9ca3af;
-  --new-bg: #fff0f0; --new-bd: #fca5a5;
+  --new-bg: #eef4fb; --new-bd: #a9c6e8;
   --chg-bg: #fffbeb; --chg-bd: #fcd34d;
   --del-bg: #f9fafb; --del-bd: #e5e7eb;
 }
@@ -39,7 +39,7 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: va
 .lb-del { background: var(--del-bg); }
 
 .badge { font-size: 10px; font-weight: 900; padding: 2px 7px; border-radius: 3px; white-space: nowrap; vertical-align: middle; margin-left: 3px; }
-.badge-new     { background: #fde8e8; color: var(--red); }
+.badge-new     { background: var(--box-blue, #e4f0f8); color: var(--blue); }
 .badge-changed { background: #fffbeb; color: #92400e; border: 1px solid var(--chg-bd); }
 .badge-deleted { background: var(--box-gray); color: #444; border: 1px solid var(--border-dk); }
 
@@ -146,7 +146,7 @@ tr.filter-hidden { display: none; }
   <span class="sum-label">変更点サマリー（改定前 → 改定後）</span>
   <div class="sum-item">
     <span class="leg-box lb-new"></span>新設
-    <span class="sum-num" style="color:var(--red)">43</span>件
+    <span class="sum-num" style="color:var(--blue)">43</span>件
   </div>
   <div class="sum-item">
     <span class="leg-box lb-chg"></span>変更

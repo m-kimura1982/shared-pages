@@ -30,12 +30,12 @@
       .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
       .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--ink); padding-bottom:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
       .badge { font-size:var(--text-sm); font-weight:700; padding:3px 12px; border-radius:4px; }
-      .badge-red { background:#fde8e8; color:var(--red); }
+      .badge-red { background:var(--box-blue); color:var(--blue); }
       .badge-blue { background:var(--box-blue); color:var(--blue); }
       .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:var(--gap-card); }
       .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:14px 18px; }
       .box-gray { background:var(--box-gray); border-radius:var(--radius-sm); padding:14px 18px; border:var(--bw) solid var(--border); }
-      .em-red { color:var(--red); font-weight:900; }
+      .em-red { color:var(--blue); font-weight:900; }
       .em-blue { color:var(--blue); font-weight:900; }
       .section-title { font-weight:900; font-size:var(--text-md); margin-bottom:8px; }
       .sub-title { font-weight:900; font-size:var(--text-md); padding:6px 0 6px 12px; border-left:var(--bw-t) solid var(--blue); margin-bottom:10px; }
@@ -47,7 +47,7 @@
 
       /* バッジ */
       .req-badge { display:inline-flex; align-items:center; justify-content:center; font-size:11px; font-weight:900; padding:1px 0; border-radius:3px; flex-shrink:0; white-space:nowrap; width:56px; }
-      .req-must   { background:#fde8e8; color:var(--red); }
+      .req-must   { background:#fdf0e3; color:#92400e; }
       .req-effort { background:#fef9ee; color:#92400e; }
       .req-alpha  { background:var(--box-gray); color:var(--ink); }
 
@@ -131,7 +131,7 @@
       .count-inputs input[type="number"].filled { background:var(--input-filled); }
       .count-result { font-size:var(--text-sm); font-weight:900; width:28px; text-align:center; flex-shrink:0; white-space:nowrap; }
       .r-ok { color:var(--blue); font-weight:900; }
-      .r-ng { color:var(--red); font-weight:900; }
+      .r-ng { color:#444444; font-weight:900; }
       /* 月次目標 */
       .count-monthly { font-size:var(--text-xs); color:#5e6470; white-space:nowrap; text-align:right; width:62px; flex-shrink:0; }
       .count-monthly strong { color:#5e6470; }
@@ -1169,7 +1169,7 @@
           return;
         }
         const ok = v >= th;
-        if (resEl) { resEl.textContent = ok ? '達成' : '未達'; resEl.className = 'count-result '+(ok?'r-ok':'r-ng'); }
+        if (resEl) { resEl.textContent = ok ? '達成' : '× 未達'; resEl.className = 'count-result '+(ok?'r-ok':'r-ng'); }
         if (rowEl) rowEl.classList.toggle('row-ok', ok);
       });
       const {cleared:cl, ok2, ok3} = getJisseki2();
@@ -1198,7 +1198,7 @@
           return;
         }
         const ok = v >= calcTh(BASE4[k], rx, isKe);
-        if (resEl) { resEl.textContent = ok ? '達成' : '未達'; resEl.className = 'count-result '+(ok?'r-ok':'r-ng'); }
+        if (resEl) { resEl.textContent = ok ? '達成' : '× 未達'; resEl.className = 'count-result '+(ok?'r-ok':'r-ng'); }
         if (rowEl) rowEl.classList.toggle('row-ok', ok);
       });
       const {cleared:cl, ok4, ok5} = getJisseki4();
@@ -1378,7 +1378,7 @@
           th{background:#f2f2f2;padding:6px 10px;text-align:left;font-size:11px;border-bottom:2px solid #999;}
           td{padding:6px 10px;border-bottom:1px solid #e5e5e5;font-size:11px;}
           td:last-child{text-align:right;font-weight:900;}
-          .ok{color:#1e5fa8;} .ng{color:#cc0000;} .note{font-size:10px;color:#555;}
+          .ok{color:#1e5fa8;} .ng{color:#444444;} .note{font-size:10px;color:#555;}
         </style></head><body>
         <h2>地域支援・医薬品供給対応体制加算　実績入力サマリー</h2>
         <p class="note">印刷日：${new Date().toLocaleDateString('ja-JP')}</p>`;

@@ -11,7 +11,7 @@
 
 :root {
   --blue:      #1e5fa8;
-  --red:       #cc0000;
+  --red:       #cc0000;  --amber:#b45309;
   --ink:       #222222;
   --bg:        #f3f4f6;
   --white:     #ffffff;
@@ -85,7 +85,7 @@ body {
   background: var(--white);
 }
 .arm-label-yes { color: var(--blue); border: var(--bw-h) solid var(--blue); }
-.arm-label-no  { color: var(--red);  border: var(--bw-h) solid var(--red); }
+.arm-label-no  { color: var(--amber);  border: var(--bw-h) solid var(--amber); }
 
 /* ── 縦矢印 ── */
 .arrow-down {
@@ -96,8 +96,8 @@ body {
 .arrow-down-head { width:0; height:0; border-left:7px solid transparent; border-right:7px solid transparent; border-top:10px solid var(--border-dk); }
 .arrow-down.blue .arrow-down-line { background: var(--blue); }
 .arrow-down.blue .arrow-down-head { border-top-color: var(--blue); }
-.arrow-down.red  .arrow-down-line { background: var(--red); }
-.arrow-down.red  .arrow-down-head { border-top-color: var(--red); }
+.arrow-down.red  .arrow-down-line { background: var(--amber); }
+.arrow-down.red  .arrow-down-head { border-top-color: var(--amber); }
 
 /* ── 結果バッジ（白地＋左ボーダー） ── */
 .result-badge {
@@ -109,10 +109,10 @@ body {
   padding: 14px 18px;
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
 }
-.result-badge.red-accent { border-left-color: var(--red); }
+.result-badge.red-accent { border-left-color: var(--amber); }
 .result-name { font-size: 19px; font-weight: 900; }
 .result-sub  { font-size: 15px; font-weight: 700; margin-top: 4px; color: var(--blue); }
-.result-sub.red  { color: var(--red); }
+.result-sub.red  { color: var(--amber); }
 .result-sub.gray { color: var(--ink); font-weight: 500; }
 .result-pts  { font-size: 38px; font-weight: 900; white-space: nowrap; flex-shrink: 0; }
 .result-pts .u { font-size: 16px; font-weight: 700; }
@@ -155,8 +155,8 @@ body {
   margin-top: 8px;
 }
 .continue-bar.red {
-  color: var(--red);
-  border-left: 3px solid var(--red);
+  color: var(--amber);
+  border-left: 3px solid var(--amber);
 }
 
 /* ── STEP間矢印（太め） ── */
@@ -192,7 +192,7 @@ strong { font-weight: 900; }
   font-size: 15px; font-weight: 900;
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
-.supp-hd-icon.red { background: var(--red); }
+.supp-hd-icon.red { background: var(--amber); }
 .supp-title { font-size: 16px; font-weight: 900; }
 .supp-body  { padding: 20px 24px; font-size: 15px; line-height: 1.8; }
 .supp-rule  { margin-bottom: 18px; }
@@ -453,7 +453,7 @@ strong { font-weight: 900; }
             グループ規模が小さい薬局、または単独店舗・少数店舗のグループはここに該当する。<br><br>
             → <strong>STEP 3 へ進む</strong>
           </div>
-          <div class="continue-bar" style="margin-top:10px; color:var(--red); border-left:3px solid var(--red);">STEP 3 へ ↓</div>
+          <div class="continue-bar" style="margin-top:10px; color:var(--amber); border-left:3px solid var(--amber);">STEP 3 へ ↓</div>
         </div>
       </div>
     </div>
@@ -481,7 +481,7 @@ strong { font-weight: 900; }
             </div>
             <div class="result-pts">25<span class="u">点</span></div>
           </div>
-          <div class="continue-bar" style="font-size:15px; color:var(--red); border-left:3px solid var(--red);">集中率 <span class="em-num">≤ 85%</span> かつ 不動産関係なし → STEP 4 へ ↓</div>
+          <div class="continue-bar" style="font-size:15px; color:var(--amber); border-left:3px solid var(--amber);">集中率 <span class="em-num">≤ 85%</span> かつ 不動産関係なし → STEP 4 へ ↓</div>
         </div>
 
         <!-- いいえ側 -->
@@ -492,7 +492,7 @@ strong { font-weight: 900; }
             一般的な地域密着型薬局や中小グループはここに該当することが多い。<br><br>
             → <strong>STEP 4 へ進む</strong>
           </div>
-          <div class="continue-bar" style="margin-top:10px; color:var(--red); border-left:3px solid var(--red);">STEP 4 へ ↓</div>
+          <div class="continue-bar" style="margin-top:10px; color:var(--amber); border-left:3px solid var(--amber);">STEP 4 へ ↓</div>
         </div>
       </div>
     </div>
