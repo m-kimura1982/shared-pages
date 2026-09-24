@@ -105,7 +105,7 @@
     /* ── A4 の用紙 ── */
     .sheet {
       position:relative;
-      width:210mm; height:297mm; padding:20mm 15mm 14mm; overflow:hidden;
+      width:210mm; height:296mm; padding:20mm 15mm 14mm; overflow:hidden;
       display:flex; flex-direction:column; background:#fff; color:var(--k-ink);
       font-family:"Noto Sans JP",sans-serif; line-height:1.6;
       -webkit-print-color-adjust:exact; print-color-adjust:exact;
@@ -117,7 +117,7 @@
 
     /* 横向き（A4横）。日薬の原本（別添１〜５）が横向きなので合わせる */
     @page land { size:A4 landscape; margin:0; }
-    .sheet.land { width:297mm; height:210mm; padding:17mm 16mm 12mm; page:land; }
+    .sheet.land { width:297mm; height:209mm; padding:17mm 16mm 12mm; page:land; }
     .sheet.land .p-logo { top:7mm; right:16mm; }
     .sheet.land .p-title { margin-bottom:7mm; padding-bottom:3mm; }
 
@@ -280,10 +280,23 @@
       .sheet-head { display:none !important; }
       .sheet-frame { box-shadow:none; zoom:1 !important; margin:0; }
       .sheet-frame.off { display:none !important; }
-      .sheet { break-after:page; }
+      .sheet { break-after:page; page-break-after:always; }
+      .sheet-frame.last .sheet { break-after:auto; page-break-after:auto; }
       .b-empty { background:none; border:0; }
       .b-empty::before { content:""; }
+      /* Safari：向きごとに分けて印刷し、Safari 側の余白に収まるよう少し縮める */
+      body.split .sheet-frame { zoom:.92 !important; margin:0 auto; }
+      body.split.print-land .sheet-frame:not(.land) { display:none !important; }
+      body.split.print-port .sheet-frame.land { display:none !important; }
+      body.split.print-land .sheet-frame.last-land .sheet,
+      body.split.print-port .sheet-frame.last-port .sheet { break-after:auto; page-break-after:auto; }
     }
+    .print-btns { display:flex; flex-wrap:wrap; gap:10px; margin-left:auto; }
+    .print-btns .btn-print { margin-left:0; }
+    .howto { font-size:var(--text-sm); color:var(--txt-2); margin-top:12px; }
+    .howto ol { padding-left:1.5em; margin-top:2px; }
+    .howto li + li { margin-top:2px; }
+    .howto[hidden] { display:none; }
   </style>
 </head>
 <body>
@@ -405,9 +418,26 @@
     <div class="card-title">③ 印刷する</div>
     <div class="bar">
       <div class="warn" id="warn" hidden></div>
-      <button type="button" class="btn-print" id="btn-print">選んだ様式を印刷</button>
+      <div class="print-btns" id="print-btns">
+        <button type="button" class="btn-print" id="btn-print">選んだ様式を印刷</button>
+      </div>
     </div>
-    <p class="note" style="margin-top:10px">印刷の設定は「用紙 A4」「余白 なし」「背景のグラフィック オン」にしてください。縦・横の向きは様式ごとに自動で切り替わります。<br><b>Edge か Chrome で開いて印刷してください</b>（ほかのブラウザでは向きがそろわないことがあります）。</p>
+    <div class="howto" id="howto-std">
+      <b>PDF に保存してから印刷すると、レイアウトが崩れません。</b>
+      <ol>
+        <li>「選んだ様式を印刷」を押し、印刷画面の「送信先」を「PDF に保存」にする。余白は「なし」、「背景のグラフィック」はオンにする</li>
+        <li>保存した PDF を開いて印刷する。大きさは「実際のサイズ（100%）」にする</li>
+      </ol>
+      <p style="margin-top:4px">プリンターへ直接送ると、プリンターの設定によっては横向きの様式が縮んだり、向きが変わったりすることがあります。PDF は保存しておけば、次から刷り直しに使えます。</p>
+    </div>
+    <div class="howto" id="howto-safari" hidden>
+      <b>Safari では、縦向きと横向きを別々に印刷します</b>（1回で両方を印刷すると向きがそろわないため）。
+      <ol>
+        <li>上のボタンを押し、印刷画面の「詳細を表示」で用紙サイズを A4、方向をボタンに書いた向き（横／縦）にする。「背景を印刷」にチェックを入れ、「ヘッダとフッタを印刷」は外す</li>
+        <li>左下の「PDF」から「PDF として保存」を選び、保存した PDF を印刷する。大きさは 100% にする</li>
+      </ol>
+      <p style="margin-top:4px">Safari 側の余白に収まるように、少し縮めて印刷されます。Chrome か Edge があれば、そちらで開くと原寸で1回で印刷できます。</p>
+    </div>
   </div>
 
   <div class="sheets" id="sheets">
@@ -796,6 +826,50 @@
              ['s4','（４）【掲示】指定第二類医薬品の販売に関する事項',''],
              ['s8','（８）販売者カード','']] },
   ];
+  // ③ 印刷する
+  // Safari は @page の向きの指定（縦横の混在）が効かず、横の様式が縦の紙に崩れて出る（2026-09-24 Mac の店舗から報告）。
+  // Safari のときだけ、向きごとにボタンを分けて1回に1つの向きだけ印刷し、Safari 側の余白に収まるよう 92% に縮める。
+  // 動作確認用に ?split を付けると Safari でなくてもこの動きになる。
+  const ua = navigator.userAgent;
+  const SPLIT = (/Safari\//.test(ua) && !/Chrome\/|Chromium\/|CriOS\/|FxiOS\/|Edg\/|EdgiOS\/|OPR\//.test(ua)) || /[?&]split\b/.test(location.search);
+  document.body.classList.toggle('split', SPLIT);
+  document.getElementById('howto-std').hidden = SPLIT;
+  document.getElementById('howto-safari').hidden = !SPLIT;
+  document.querySelectorAll('.sheet-frame').forEach(f => f.classList.toggle('land', !!f.querySelector('.sheet.land')));
+  const pageStyle = document.createElement('style');
+  document.head.appendChild(pageStyle);
+  function doPrint(mode) {
+    document.body.classList.remove('print-land', 'print-port');
+    if (mode) document.body.classList.add('print-' + mode);
+    pageStyle.textContent = mode ? '@page { size:A4 ' + (mode === 'land' ? 'landscape' : 'portrait') + '; margin:0; }' : '';
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => window.print());
+  }
+  function printButtons(shown) {
+    const box = document.getElementById('print-btns');
+    box.textContent = '';
+    const add = (label, mode, disabled) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'btn-print'; b.textContent = label; b.disabled = !!disabled;
+      b.addEventListener('click', () => doPrint(mode));
+      box.appendChild(b);
+    };
+    if (!SPLIT) { add('選んだ様式を印刷', '', shown.length === 0); return; }
+    const land = shown.filter(f => f.classList.contains('land')).length;
+    const port = shown.length - land;
+    if (land) add('横向きの様式を印刷（' + land + '枚）', 'land');
+    if (port) add('縦向きの様式を印刷（' + port + '枚）', 'port');
+    if (!shown.length) add('選んだ様式を印刷', '', true);
+    // 向きごとに印刷するときは、その向きの最後の1枚で改ページを止める
+    ['land', 'port'].forEach(m => {
+      const list = shown.filter(f => f.classList.contains('land') === (m === 'land'));
+      list.forEach((f, i) => f.classList.toggle('last-' + m, i === list.length - 1));
+    });
+  }
+  window.addEventListener('afterprint', () => {
+    document.body.classList.remove('print-land', 'print-port');
+    pageStyle.textContent = '';
+  });
+
   const picklist = document.getElementById('picklist');
   const ons = new Set(Array.isArray(saved._on) ? saved._on : ['s1', 's3', 's5']);
   function markPreset() {
@@ -817,7 +891,9 @@
       if (on) any = true;
     });
     document.getElementById('form-none').hidden = any;
-    document.getElementById('btn-print').disabled = ons.size === 0;
+    const shown = [...document.querySelectorAll('.sheet-frame')].filter(f => ons.has(f.dataset.sheet));
+    document.querySelectorAll('.sheet-frame').forEach(f => f.classList.toggle('last', f === shown[shown.length - 1]));
+    printButtons(shown);
     render(); fit();
   }
   GROUPS.forEach(g => {
@@ -853,10 +929,6 @@
     });
   }
   window.addEventListener('resize', fit);
-
-  document.getElementById('btn-print').addEventListener('click', () => {
-    (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => window.print());
-  });
 
   cardSet(LABELS.includes(saved._cardlabel) ? saved._cardlabel : '薬剤師名');
   applyOn();
