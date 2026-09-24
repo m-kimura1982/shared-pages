@@ -94,6 +94,20 @@
       .overlay .nm { font-weight:900; color:var(--blue); margin-right:6px; }
 
       /* 年齢と数量の早見 */
+      .age-t td.v { font-weight:900; vertical-align:middle; width:31%; }
+      .age-t .nb { display:inline-block; white-space:nowrap; }
+      .age-t td.v .x { color:var(--txt-3); margin-right:4px; }
+      .age-t td.rh { white-space:normal; min-width:9em; }
+      .age-t .or { display:block; margin:10px 0 6px; padding-top:8px; border-top:var(--bw) dashed var(--border-dk); font-size:var(--text-xs); font-weight:700; color:var(--txt-3); }
+      .yk-row { margin:8px 0 6px; }
+      .age-t .mk-sp { display:block; margin-top:6px; font-size:var(--text-xs); font-weight:400; color:var(--txt-3); }
+      .age-t .mk-sp .yk { margin-left:6px; }
+      .cmp td.mk .yk { display:flex; width:max-content; margin:2px 0 4px; }
+      .cmp td.mk .law { margin-top:6px; }
+      .cmp td.mk .yk .c, .cmp td.mk .yk .s { margin:0 2px; }
+      .yk { display:inline-flex; align-items:center; gap:1px; border:1.5px solid var(--ink); padding:1px 6px; font-weight:700; font-size:var(--text-sm); line-height:1.4; color:var(--ink); background:var(--white); margin:2px 6px 2px 0; }
+      .yk .c, .yk .s { display:inline-flex; align-items:center; justify-content:center; width:1.4em; height:1.4em; border:1.5px solid var(--ink); margin-right:2px; }
+      .yk .c { border-radius:50%; }
       .age { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:4px; }
       .age .col { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; }
       .age .hd { background:var(--box-gray); padding:7px 12px; font-weight:900; font-size:var(--text-sm); border-bottom:var(--bw-h) solid var(--border); }
@@ -123,6 +137,10 @@
         .kmap { grid-template-columns:1fr; }
         .kmap .cols { grid-template-columns:1fr; }
         .age { grid-template-columns:1fr; }
+        .age-t td.rh { min-width:0; width:30%; }
+        .age-t td.v { width:35%; }
+        .age-t td.v .x { margin-right:2px; }
+        .age-t th, .age-t td { padding-left:7px; padding-right:7px; }
         .rel a .sub { display:none; }
         .sum a.pt { grid-template-columns:minmax(0,1fr) auto; padding:10px 2px; }
         .sum .pt .k { grid-column:1; grid-row:1; }
@@ -162,7 +180,7 @@
         </div>
         <div class="grp-lab">指定濫用防止医薬品（2026年5月〜）</div>
         <div class="rows">
-          <a class="pt" href="#shitei"><span class="k">対象</span><span class="v">新しい区分ではない。<span class="marker">対象の８成分を含む飲み薬</span>なら、どの区分の製品でも該当し、その区分のルールに加えて守る。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#shitei"><span class="k">対象</span><span class="v">新しい区分ではない。<span class="marker">対象の８成分を含む内服薬</span>なら、どの区分の製品でも該当し、その区分のルールに加えて守る。</span><span class="go">詳しく</span></a>
           <a class="pt" href="#uwanose"><span class="k">販売のたびに</span><span class="v">濫用の危険を書面で説明し、年齢・他の薬の使用状況・購入状況を確認する。「説明はいらない」と言われても省略しない。</span><span class="go">詳しく</span></a>
           <a class="pt" href="#suryo"><span class="k">年齢と数量</span><span class="v">18歳未満には大容量品・複数個を販売しない。18歳以上でも、大容量品・複数個は理由を確認する。</span><span class="go">詳しく</span></a>
           <a class="pt" href="#sonae"><span class="k">店舗の備え</span><span class="v">実物は患者の手の届かない場所に置く。売場には空箱か商品カードを置けばよい。販売の手順は手順書に書き、そのとおりに販売する。</span><span class="go">詳しく</span></a>
@@ -222,6 +240,13 @@
             </thead>
             <tbody>
               <tr>
+                <td class="rh">外箱の表示</td>
+                <td class="mk"><span class="yk">要指導医薬品</span></td>
+                <td class="mk"><span class="yk">第1類医薬品</span></td>
+                <td class="mk"><span class="yk">第2類医薬品</span><span class="law">指定第２類医薬品</span><span class="yk">第<span class="c">2</span>類医薬品</span><span class="yk">第<span class="s">2</span>類医薬品</span></td>
+                <td class="mk"><span class="yk">第3類医薬品</span></td>
+              </tr>
+              <tr>
                 <td class="rh">販売する人</td>
                 <td>薬剤師</td><td>薬剤師</td><td>薬剤師又は登録販売者</td><td>薬剤師又は登録販売者</td>
               </tr>
@@ -261,6 +286,7 @@
           </table>
         </div>
         <div class="list" style="margin-top:12px;">
+          <div class="li">区分の表示は、販売名が書かれた面（正面など）すべてにある。指定濫用防止医薬品の<a href="#yokakunin">「要確認」</a>は、バーコードのある面に書かれる。</div>
           <div class="li">要指導医薬品・第１類・第２類・第３類は<b>混在させずに区分ごとに陳列</b>する。</div>
           <div class="li">相談を受けたときの情報提供は、<b>どの区分でも義務</b>（第３類を含む）。</div>
           <div class="li">販売の記録に書くのは、品名・数量・販売の日時・販売した人と説明した人の氏名・説明を理解したことの確認の結果。</div>
@@ -289,10 +315,10 @@
         <div class="table-wrap" style="margin-top:10px;">
           <table class="ing">
             <thead>
-              <tr><th>成分</th><th>主な薬効群<span style="font-weight:500;">（飲み薬）</span></th></tr>
+              <tr><th>成分</th><th>主な薬効群<span style="font-weight:500;">（内服薬）</span></th></tr>
             </thead>
             <tbody>
-              <tr><td>エフェドリン</td><td>集計時点で、飲み薬の品目はなかった</td></tr>
+              <tr><td>エフェドリン</td><td>内服薬の品目はない（令和7年10月時点。外用の痔の薬が3品目あるのみ）</td></tr>
               <tr><td>コデイン</td><td>鎮咳去痰薬</td></tr>
               <tr><td>ジヒドロコデイン</td><td>かぜ薬、鎮咳去痰薬</td></tr>
               <tr><td>ジフェンヒドラミン <span class="em-change" style="font-size:var(--text-xs);">新規</span></td><td>催眠鎮静薬（睡眠改善薬）、かぜ薬、鎮うん薬（乗り物酔い）、鎮咳去痰薬、アレルギー用薬</td></tr>
@@ -303,18 +329,28 @@
             </tbody>
           </table>
         </div>
-        <p class="note">主な薬効群は、厚生労働省の部会資料（令和7年10月時点のPMDA登録品目の集計）から、飲み薬で品目の多いものを挙げた。</p>
+        <p class="note">主な薬効群は、厚生労働省の部会資料（令和7年10月時点のPMDA登録品目の集計）から、内服薬で品目の多いものを挙げた。</p>
         <div class="box-gray">
           <span class="ttl">区分は製品ごとに決まる</span>
           第何類かは製品ごとに定められているので、同じ成分でも、配合の組み合わせや量、剤形によって区分が違うことがある。<b>指定濫用防止医薬品に当たるかは成分で決まり、製品の区分は外箱の表示で確認する。</b>
         </div>
 
         <div class="sub-title">外用剤は対象外</div>
-        <p class="txt">外用剤には、塗り薬・貼り薬のほか、口の中や鼻・目などに使う剤形も含まれる。<b>対象になるのは飲み薬（錠剤・カプセル剤・液剤など）</b>。</p>
+        <p class="txt">外用剤には、塗り薬・貼り薬のほか、口の中や鼻・目などに使う剤形も含まれる。<b>対象になるのは内服薬（錠剤・カプセル剤・液剤など）</b>。</p>
         <div class="chips">
           <span>口腔用錠剤</span><span>トローチ剤</span><span>バッカル錠</span><span>吸入剤</span><span>点眼剤</span><span>点耳剤</span><span>点鼻剤</span><span>坐剤</span><span>軟膏剤</span><span>貼付剤</span><span>膣錠</span>
         </div>
         <p class="txt" style="margin-top:10px;">例）ジフェンヒドラミンは、かゆみ止めの塗り薬や痔の薬に多く入っているが、これらは対象外。咳止めでもトローチ剤は対象外。</p>
+
+        <div class="sub-title" id="yokakunin">外箱の「要確認」の表示</div>
+        <p class="txt">指定濫用防止医薬品の外箱には、メーカーが「要確認」の文字を表示する。「要」を丸か四角で囲んだものは大容量品（<a href="#suryo">年齢と数量</a>を参照）。</p>
+        <p class="txt yk-row"><span class="yk">要確認</span><span class="yk"><span class="c">要</span>確認</span><span class="yk"><span class="s">要</span>確認</span></p>
+        <div class="list">
+          <div class="li">バーコードのある面に書かれる。正面ではなく底面のこともある。</div>
+          <div class="li">正面の「第②類医薬品」の囲みは指定第２類医薬品の印で、「要確認」とは関係がない。</div>
+          <div class="li">表示は製品ごとに順次切り替わる。経過措置は2029年4月まで。</div>
+        </div>
+        <p class="txt" style="margin-top:8px;"><b>まだ旧表示の製品も流通しているため、「要確認」の表示がなくても、成分表示から指定濫用防止医薬品に当たるかを確認する。</b></p>
       </div>
 
       <!-- 上乗せルール -->
@@ -365,20 +401,26 @@
           </table>
         </div>
         <p class="txt" style="margin-top:8px;">例）デキストロメトルファンを含むかぜ薬で、用法が「１回２錠、１日３回」なら、７日分は42錠。42錠を超えて入っている箱が大容量品になる。</p>
-        <p class="txt" style="margin-top:12px;">大容量品・複数個の販売と、18歳未満への販売は<b>原則として禁止</b>で、次の場合だけ認められる。</p>
-        <div class="age">
-          <div class="col">
-            <div class="hd">18歳以上</div>
-            <div class="row"><span class="k">小容量品を１個</span><span class="v">販売できる</span></div>
-            <div class="row"><span class="k">大容量品・複数個</span><span class="v">理由を確認し、対面等で説明すれば販売できる</span></div>
-          </div>
-          <div class="col">
-            <div class="hd">18歳未満</div>
-            <div class="row"><span class="k">小容量品を１個</span><span class="v">対面等で説明すれば販売できる</span></div>
-            <div class="row"><span class="k">大容量品・複数個</span><span class="v"><span class="x">×</span>販売できない</span></div>
-          </div>
+        <p class="txt" style="margin-top:12px;">大容量品・複数個の販売と、18歳未満への販売には、<b>次の条件</b>がある。</p>
+        <div class="table-wrap">
+          <table class="age-t">
+            <thead><tr><th>買うもの</th><th>18歳以上</th><th>18歳未満</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="rh"><span class="nb">小容量品を</span><span class="nb">１個</span><span class="mk-sp">外箱の表示<span class="yk">要確認</span></span></td>
+                <td class="v"><span class="nb">販売できる</span></td>
+                <td class="v"><span class="nb">対面等で</span><span class="nb">説明すれば</span><span class="nb">販売できる</span></td>
+              </tr>
+              <tr>
+                <td class="rh">大容量品<span class="mk-sp">外箱の表示<span class="yk"><span class="c">要</span>確認</span><span class="yk"><span class="s">要</span>確認</span></span>
+                  <span class="or">または</span><span class="nb">小容量品を</span><span class="nb">２個以上</span><span class="law">同じ成分を含む別の製品を１個ずつ買う場合も</span></td>
+                <td class="v"><span class="nb">理由を</span><span class="nb">確認し、</span><span class="nb">対面等で</span><span class="nb">説明すれば</span><span class="nb">販売できる</span></td>
+                <td class="v"><span class="nb"><span class="x">×</span>販売できない</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <p class="txt" style="margin-top:10px;"><b>どの場合も、上の説明と確認は行う。</b></p>
+                <p class="txt" style="margin-top:10px;"><b>表のどの欄でも、濫用の危険の説明（書面）と、年齢・購入状況などの確認は必要。18歳以上に小容量品を１個売る場合も省略できない。</b></p>
         <p class="txt" style="margin-top:8px;">「対面等」にはビデオ通話を含み、電話・チャット・書面だけのやりとりは含まない。</p>
         <div class="list" style="margin-top:10px;">
           <div class="li">大容量品・複数個を認める理由は一律には決まらない。下のような理由でも、その理由に見合った数量かを判断し、事情に応じた説明をしてから販売する。</div>
@@ -479,8 +521,9 @@
               <tr><td>指定濫用防止医薬品販売等手順書に係る関係団体作成ガイドラインの周知について（医薬総発0130第2号 令和8年1月30日）<br><a href="https://www.mhlw.go.jp/content/11120000/001649557.pdf" target="_blank" rel="noopener">PDF</a></td><td>手順書のガイドライン（日本薬剤師会ほか）</td></tr>
               <tr><td>一般用医薬品等の適正使用のための情報提供等及び依存の疑いのある事例の副作用等報告の実施について（医薬安発0430第6号・医薬総発0430第1号 令和8年4月30日）<br><a href="https://www.mhlw.go.jp/web/t_doc?dataId=00td0077&amp;dataType=1&amp;pageNo=1" target="_blank" rel="noopener">厚生労働省 法令等データベース</a></td><td>依存の疑いの副作用等報告</td></tr>
               <tr><td>医薬品等安全対策部会 資料1-2「指定濫用防止医薬品の指定について」（令和8年1月23日）<br><a href="https://www.mhlw.go.jp/content/11120000/001638681.pdf" target="_blank" rel="noopener">PDF</a></td><td>主な薬効群、2026年4月までとの違い</td></tr>
+              <tr><td>改正法等の施行等について（令和8年5月1日施行事項関係）（医薬総発1226第1号 令和7年12月26日）<br><a href="https://www.mhlw.go.jp/content/11120000/001649560.pdf" target="_blank" rel="noopener">PDF</a>（全国配置薬協会の周知資料に収録）</td><td>「要確認」の表示のしかた、バーコード面への記載、表示の経過措置</td></tr>
               <tr><td>医薬品、医療機器等の品質、有効性及び安全性の確保等に関する法律<br><a href="https://laws.e-gov.go.jp/law/335AC0000000145" target="_blank" rel="noopener">e-Gov法令検索</a></td><td>第36条の5・第36条の6（要指導医薬品）、第36条の9・第36条の10（一般用医薬品）、第36条の11（指定濫用防止医薬品）</td></tr>
-              <tr><td>同法施行規則<br><a href="https://laws.e-gov.go.jp/law/336M50000100001" target="_blank" rel="noopener">e-Gov法令検索</a></td><td>第14条（販売記録）、第159条の18の5（確認事項）、第159条の18の6（数量・18歳）、第159条の18の7（手順書）、第218条の3〜第218条の5（陳列）、第15条の15・別表第一の二（掲示）。区分の定義は法第4条・第36条の7、掲示は法第9条の5</td></tr>
+              <tr><td>同法施行規則<br><a href="https://laws.e-gov.go.jp/law/336M50000100001" target="_blank" rel="noopener">e-Gov法令検索</a></td><td>第14条（販売記録）、第159条の18の5（確認事項）、第159条の18の6（数量・18歳）、第159条の18の7（手順書）、第218条の3〜第218条の5（陳列）、第15条の15・別表第一の二（掲示）、第209条の2・第209条の3（外箱の区分表示）。区分の定義は法第4条・第36条の7、掲示は法第9条の5</td></tr>
               <tr><td>薬局並びに店舗販売業及び配置販売業の業務を行う体制を定める省令<br><a href="https://laws.e-gov.go.jp/law/339M50000100003" target="_blank" rel="noopener">e-Gov法令検索</a></td><td>第1条第2項第4号・第5号（手順書の作成と実施）</td></tr>
               <tr><td>厚生労働省「令和７年の薬機法等の一部改正について」<br><a href="https://www.mhlw.go.jp/stf/newpage_58083.html" target="_blank" rel="noopener">厚生労働省</a></td><td>上の通知・Q&amp;A・ガイドラインの掲載ページ</td></tr>
             </tbody>
