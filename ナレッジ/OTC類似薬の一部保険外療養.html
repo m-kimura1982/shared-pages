@@ -22,7 +22,7 @@
         /* 図解パレット（CLAUDE.md の淡色パレット） */
         --fig-hoken-bg:#dfe9f6;  --fig-hoken-tx:#2a5580;
         --fig-teiritsu-bg:#f2f2f2; --fig-teiritsu-tx:#444444;
-        --fig-tokubetsu-bg:#f3e8d0; --fig-tokubetsu-tx:#7a5718;
+        --fig-tokubetsu-bg:#fdebdd; --fig-tokubetsu-tx:#9a4414; --fig-tokubetsu-line:#d9681e;
       }
       body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
       .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
@@ -73,7 +73,7 @@
       .fq-t { font-weight:700; font-size:var(--text-sm); }
       .fq-x { font-size:var(--text-xs); color:var(--txt-3); margin-top:2px; }
       /* 行き着く先は「料金がかかる」なので、表と同じクリーム */
-      .fq-goal { background:var(--fig-tokubetsu-bg); border-left:3px solid var(--fig-tokubetsu-tx); border-radius:0 var(--radius-sm) var(--radius-sm) 0; padding:11px 15px; font-size:var(--text-sm); }
+      .fq-goal { background:var(--fig-tokubetsu-bg); border-left:3px solid var(--fig-tokubetsu-line); border-radius:0 var(--radius-sm) var(--radius-sm) 0; padding:11px 15px; font-size:var(--text-sm); }
       .fq-goal b { color:var(--fig-tokubetsu-tx); font-weight:900; }
 
       /* 表 */
@@ -111,7 +111,7 @@
       th.c-off { background:var(--fig-hoken-bg); color:var(--fig-hoken-tx); }
       th.c-on  { background:var(--fig-tokubetsu-bg); color:var(--fig-tokubetsu-tx); }
       td.c-off { background:#f2f7fc; }
-      td.c-on  { background:#fbf5ea; }
+      td.c-on  { background:#fef5ee; }
       .tbl-wrap.narrow table { min-width:320px; }
       .tbl-wrap.mid table { min-width:440px; }
       /* 画面からはみ出す表には、横に動かせることを文字で出す（細い影では気づかれない） */
@@ -201,7 +201,7 @@
         .stack-sp td.c-off, .stack-sp td.c-on { padding:8px 11px; border-radius:var(--radius-sm); margin-top:6px; }
         .stack-sp td.none { display:none; }   /* 縦積みでは「料金がかかる：なし」の箱は要らない（かからない側だけで分かる） */
         .stack-sp td.c-off { background:#f2f7fc; }
-        .stack-sp td.c-on  { background:#fbf5ea; }
+        .stack-sp td.c-on  { background:#fef5ee; }
         .stack-sp td.c-off::before, .stack-sp td.c-on::before { display:block; font-weight:700; font-size:var(--text-xs); margin-bottom:3px; }
         .stack-sp td.c-off::before { content:"料金がかからない"; color:var(--fig-hoken-tx); }
         .stack-sp td.c-on::before  { content:"料金がかかる"; color:var(--fig-tokubetsu-tx); }
@@ -688,10 +688,10 @@
               <text x="56" y="147" text-anchor="end" font-size="13" font-weight="700" fill="#444">見直し後</text>
               <rect x="64" y="122" width="262" height="40" fill="#dfe9f6" />
               <rect x="326" y="122" width="113" height="40" fill="#f2f2f2" />
-              <rect x="439" y="122" width="125" height="40" fill="#f3e8d0" />
+              <rect x="439" y="122" width="125" height="40" fill="#fdebdd" />
               <text x="195" y="147" text-anchor="middle" font-size="13" font-weight="700" fill="#2a5580">保険給付 945円</text>
               <text x="382" y="147" text-anchor="middle" font-size="12" font-weight="700" fill="#444">定率負担 405円</text>
-              <text x="501" y="147" text-anchor="middle" font-size="12" font-weight="700" fill="#7a5718">特別の料金 450円</text>
+              <text x="501" y="147" text-anchor="middle" font-size="12" font-weight="700" fill="#9a4414">特別の料金 450円</text>
               <path d="M326 168 v6 h238 v-6" fill="none" stroke="#9ca3af" stroke-width="1" />
               <text x="445" y="189" text-anchor="middle" font-size="12" font-weight="700" fill="#222">47.5%・855円</text>
             </svg>
@@ -706,13 +706,13 @@
               <text x="266" y="90" text-anchor="middle" font-size="12" fill="#444">30%・540円</text>
 
               <text x="8" y="128" font-size="12" font-weight="700" fill="#444">見直し後</text>
-              <text x="312" y="128" text-anchor="end" font-size="11" font-weight="700" fill="#7a5718">特別の料金</text>
+              <text x="312" y="128" text-anchor="end" font-size="11" font-weight="700" fill="#9a4414">特別の料金</text>
               <rect x="8" y="136" width="160" height="38" fill="#dfe9f6" />
               <rect x="168" y="136" width="68" height="38" fill="#f2f2f2" />
-              <rect x="236" y="136" width="76" height="38" fill="#f3e8d0" />
+              <rect x="236" y="136" width="76" height="38" fill="#fdebdd" />
               <text x="88" y="160" text-anchor="middle" font-size="12" font-weight="700" fill="#2a5580">保険給付 945円</text>
               <text x="202" y="160" text-anchor="middle" font-size="11" font-weight="700" fill="#444">定率 405円</text>
-              <text x="274" y="160" text-anchor="middle" font-size="11" font-weight="700" fill="#7a5718">450円</text>
+              <text x="274" y="160" text-anchor="middle" font-size="11" font-weight="700" fill="#9a4414">450円</text>
               <path d="M168 180 v6 h144 v-6" fill="none" stroke="#9ca3af" stroke-width="1" />
               <text x="240" y="202" text-anchor="middle" font-size="12" font-weight="700" fill="#222">47.5%・855円</text>
             </svg>
