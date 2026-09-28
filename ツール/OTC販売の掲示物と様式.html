@@ -17,6 +17,9 @@
     ・（２）の名札の「氏名」だけは 氏名／姓／氏名又は姓 から選べる（R4.6.27 薬生発0627第11号で姓のみ等も可になったため。本人指摘 2026-09-23）。
     ・配色は黒・白・グレー＋強調の青文字だけ。色の面に白文字は使わない（本人指摘 2026-09-23）。
     ・掲示物（１）〜（５）に会社ロゴを小さく入れる（販売者カードは幅が足りないので入れない）（assets/icons/会社ロゴ_掲示物.png）。
+    ・②の先頭に「この店舗の登録販売者として保健所に届け出ている人がいるか」を置き、「いない」（初期値）なら登録販売者の記載を（２）（３）（４）（５）（７）（８）から外す。
+      登録販売者の資格者が勤めていても保健所に届け出ていなければ、保健所から掲示を「薬剤師のみ」とするよう指導されるため（本社の指示 2026-09-29）。
+      外す箇所には class="toro-only" を付ける。（２）の勤務する登録販売者の欄は「なし」と出す。
     ・公開サイトに置くことは本人了承済み（2026-09-23）。日薬の原本を使いたい人向けに日薬のページへのリンクを置く。
   -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
@@ -297,16 +300,36 @@
     .howto ol { padding-left:1.5em; margin-top:2px; }
     .howto li + li { margin-top:2px; }
     .howto[hidden] { display:none; }
+    body.no-toro .toro-only { display:none !important; }
+    .radios label.is-disabled { color:var(--txt-3); cursor:default; }
   </style>
 </head>
 <body>
 <script src="../assets/site-header.js" defer></script>
+<script src="../assets/correction.js" defer></script>
 <div class="page">
 
   <div class="page-title">
     <h1>OTC販売の掲示物と様式</h1>
     <p>日本薬剤師会の業務手順書モデル（令和8年2月）の掲示物・様式を、文言はそのままに当社向けのデザインで組み直したものです。店舗の情報を入力して A4 で印刷してください。</p>
     <p>日本薬剤師会の様式をそのまま使いたい場合は、<a href="https://www.nichiyaku.or.jp/yakuzaishi/n20100209" target="_blank" rel="noopener">日本薬剤師会のページ（業務手順書の作成にあたって）</a>から入手できます。</p>
+  </div>
+
+  <div class="correction" data-until="2026-10-29" hidden>
+    <div class="correction-title">9月29日に変更した箇所（登録販売者の記載）</div>
+    <p style="margin-bottom:8px">登録販売者の資格を持つ人が勤めていても、その店舗の登録販売者として保健所に届け出ていない場合は、立入検査や開局前の保健所の確認で、掲示を「薬剤師のみ」にするよう指導されることがあります。そのため、②の最初に<b>この店舗の登録販売者として保健所に届け出ている人がいるか</b>を選ぶ欄を設けました。初期値は「いない」です。「いない」を選ぶと、次のように変わります。</p>
+    <div class="correction-wrap"><table>
+      <thead><tr><th>これまでの記載</th><th>「いない」を選んだとき</th></tr></thead>
+      <tbody>
+        <tr><td>（３）対応する専門家：薬剤師または登録販売者</td><td>薬剤師</td></tr>
+        <tr><td>（３）指定第二類の注：薬剤師や登録販売者にご相談ください</td><td>薬剤師にご相談ください</td></tr>
+        <tr><td>（４）（５）近くの薬剤師又は登録販売者まで</td><td>近くの薬剤師まで</td></tr>
+        <tr><td>（２）勤務する登録販売者：入力した氏名</td><td>なし</td></tr>
+        <tr><td>（２）名札の区別：登録販売者の行</td><td>行を削除</td></tr>
+        <tr><td>（７）（登録販売者氏名　　）</td><td>欄を削除</td></tr>
+      </tbody>
+    </table></div>
+    <p style="margin-top:8px">登録販売者を保健所に届け出ていない店舗で、（２）〜（５）をすでに印刷している場合は、刷り直してください。届け出ている店舗は、これまでの掲示のままで問題ありません。</p>
   </div>
 
   <div class="card">
@@ -325,6 +348,14 @@
     <div class="card-title">② 店舗の情報を入れる</div>
     <p class="note" id="form-none" hidden>選んだ様式には、入力する欄はありません。</p>
     <div class="form-grid">
+      <div class="fld full" data-for="s2 s3 s4 s5 s7 s8">
+        <label>この店舗の登録販売者として保健所に届け出ている人がいるか</label>
+        <div class="radios" id="toro-reg">
+          <label><input type="radio" name="toro-reg" value="none"> いない</label>
+          <label><input type="radio" name="toro-reg" value="yes"> いる</label>
+        </div>
+        <div class="where">資格を持つ人が勤めていても、保健所に届け出ていなければ「いない」を選びます。「いない」を選ぶと、掲示物から登録販売者の記載が消えます。以前に入力した登録販売者の氏名も印刷されません。</div>
+      </div>
       <div class="fld" data-for="s1 s2 s4 s5 s8">
         <label for="f-shop">薬局名</label>
         <input id="f-shop" data-key="shop" placeholder="例）ハロー薬局 ○○店" />
@@ -347,7 +378,7 @@
         <label for="f-yaku">勤務する薬剤師（担当業務）<small>改行できます</small></label>
         <textarea id="f-yaku" data-key="yaku"></textarea>
       </div>
-      <div class="fld" data-for="s2">
+      <div class="fld toro-only" data-for="s2">
         <label for="f-toro">勤務する登録販売者（担当業務）<small>改行できます</small></label>
         <textarea id="f-toro" data-key="toro"></textarea>
       </div>
@@ -488,9 +519,9 @@
           <tr><th colspan="3">薬局の名称・許可番号・許可年月日・所在地・有効期間</th><td>薬局開設許可証（別掲）を参照</td></tr>
           <tr><th>管理薬剤師氏名</th><td colspan="3" data-bind="kanri" data-ph="管理薬剤師氏名"></td></tr>
           <tr class="tall"><th>勤務する薬剤師（担当業務）</th><td colspan="3" data-bind="yaku" data-ph="勤務する薬剤師"></td></tr>
-          <tr class="tall"><th>勤務する登録販売者（担当業務）</th><td colspan="3" data-bind="toro" data-ph="勤務する登録販売者"></td></tr>
+          <tr class="tall"><th>勤務する登録販売者（担当業務）</th><td colspan="3" data-toro-cell data-bind="toro" data-ph="勤務する登録販売者"></td></tr>
           <tr><th>取り扱う一般用医薬品等の区分</th><td colspan="3" data-bind="kubun" data-ph="区分"></td></tr>
-          <tr><th>当薬局勤務者の区別について</th><td colspan="3"><div class="tag-row"><span>薬剤師</span><span>名札に<span data-nafuda>氏名</span>及び「薬剤師」と記載</span><span>登録販売者</span><span>名札に<span data-nafuda>氏名</span>及び「登録販売者」と記載</span><span>その他の勤務者</span><span>名札に<span data-nafuda>氏名</span>を記載</span></div></td></tr>
+          <tr><th>当薬局勤務者の区別について</th><td colspan="3"><div class="tag-row"><span>薬剤師</span><span>名札に<span data-nafuda>氏名</span>及び「薬剤師」と記載</span><span class="toro-only">登録販売者</span><span class="toro-only">名札に<span data-nafuda>氏名</span>及び「登録販売者」と記載</span><span>その他の勤務者</span><span>名札に<span data-nafuda>氏名</span>を記載</span></div></td></tr>
           <tr><th>営業時間</th><td colspan="3" data-bind="hours" data-ph="営業時間"></td></tr>
           <tr><th>営業時間外の相談対応時間</th><td colspan="3" data-bind="offhours" data-ph="相談対応時間"></td></tr>
           <tr><th>相談時・緊急時の連絡先</th><td colspan="3" data-bind="emg" data-ph="連絡先"></td></tr>
@@ -538,10 +569,10 @@
             </tr>
             <tr>
               <td class="cat">指定第二類医薬品<br><span class="pkg">第<span class="pkg-2c">２</span>類医薬品</span> <span class="pkg">第<span class="pkg-2s">２</span>類医薬品</span><br><span style="display:block;margin-top:1.2mm">第二類医薬品</span><span class="pkg">第２類医薬品</span></td>
-              <td>副作用等により日常生活に支障を来す程度の健康被害が生ずるおそれがある医薬品（要指導医薬品、第一類医薬品を除く）<br><span class="em" style="display:block;margin-top:1.5mm">注）　指定第二類医薬品は、第二類医薬品のうち、特別の注意を要する医薬品です<br>『してはいけないこと』の確認をおこない、使用について薬剤師や登録販売者にご相談ください</span></td>
+              <td>副作用等により日常生活に支障を来す程度の健康被害が生ずるおそれがある医薬品（要指導医薬品、第一類医薬品を除く）<br><span class="em" style="display:block;margin-top:1.5mm">注）　指定第二類医薬品は、第二類医薬品のうち、特別の注意を要する医薬品です<br>『してはいけないこと』の確認をおこない、使用について薬剤師<span class="toro-only">や登録販売者</span>にご相談ください</span></td>
               <td>第一類医薬品と同様、販売時に情報提供を行う機会を確保しやすいよう、情報提供を行う場所（７ｍ以内）に陳列します</td>
               <td class="shared" rowspan="2">適正な使用のため必要な情報提供に努めます</td>
-              <td class="shared center" rowspan="3">薬剤師<br><br>または<br><br>登録<br>販売者</td>
+              <td class="shared center" rowspan="3">薬剤師<span class="toro-only"><br><br>または<br><br>登録<br>販売者</span></td>
             </tr>
             <tr>
               <td class="cat">第三類医薬品<br><span class="pkg">第３類医薬品</span></td>
@@ -583,7 +614,7 @@
         <div class="body">
           <p>指定第二類医薬品は、第二類医薬品のうち、特別の注意が必要なお薬になります。</p>
           <p class="must"><span class="em">ご使用の前に必ず使用上の注意の『してはいけない』項目をご確認の上</span>、ご使用ください。</p>
-          <p>また、ご不明な点やご懸念がある場合については、お気軽に近くの薬剤師又は登録販売者まで、ご相談ください。</p>
+          <p>また、ご不明な点やご懸念がある場合については、お気軽に近くの薬剤師<span class="toro-only">又は登録販売者</span>まで、ご相談ください。</p>
         </div>
         <div class="p-contact">
           <div class="shop"><span data-bind="shop" data-ph="薬局名"></span></div>
@@ -601,7 +632,7 @@
         <header class="p-title"><h2><span class="kw">指定濫用防止医薬品</span>をご購入のみなさまへ</h2></header>
         <div class="panel">
           <p><span class="em">「指定濫用防止医薬品」</span>は、<br>濫用した場合に中枢神経系の興奮若しくは抑制又は幻覚を生じるおそれがあり、その防止を図る必要がある医薬品として厚生労働省令で定められた、特別の注意が必要なお薬になります。</p>
-          <p>ご使用にあたって、ご不明な点やご懸念がある場合については、お気軽に近くの薬剤師又は登録販売者まで、ご相談ください。</p>
+          <p>ご使用にあたって、ご不明な点やご懸念がある場合については、お気軽に近くの薬剤師<span class="toro-only">又は登録販売者</span>まで、ご相談ください。</p>
         </div>
         <div class="p-contact">
           <div class="lab">＜ご購入後のご相談はこちらまで＞</div>
@@ -674,7 +705,7 @@
           </td></tr>
           <tr><th>販売個数<i>※</i></th><td><span class="sp" style="width:26mm"></span>個</td></tr>
           <tr><th>販売日時<i>※</i></th><td><span class="sp" style="width:20mm"></span>年<span class="sp" style="width:12mm"></span>月<span class="sp" style="width:12mm"></span>日（<span class="sp" style="width:7mm"></span>）<span class="sp" style="width:16mm"></span>時<span class="sp" style="width:14mm"></span>分ごろ</td></tr>
-          <tr><th>販売、情報提供・指導を行った者の氏名</th><td>薬剤師氏名<i>※</i><span class="sp" style="width:38mm"></span>（登録販売者氏名<span class="gap"></span>）</td></tr>
+          <tr><th>販売、情報提供・指導を行った者の氏名</th><td>薬剤師氏名<i>※</i><span class="sp" style="width:38mm"></span><span class="toro-only">（登録販売者氏名<span class="gap"></span>）</span></td></tr>
           <tr><th>情報提供の<br>理解の確認<i>※</i></th><td><span class="cb"></span>理解したことを確認済</td></tr>
         </table>
         <table class="t7 strong" style="margin-top:3mm">
@@ -777,6 +808,8 @@
       el.textContent = val;
       el.classList.toggle('b-empty', !val && el.dataset.ph !== '');
     });
+    // 登録販売者を届け出ていない店舗は、入力済みの氏名があっても「なし」と出す
+    if (noToro()) document.querySelectorAll('[data-toro-cell]').forEach(el => { el.textContent = 'なし'; el.classList.remove('b-empty'); });
     document.querySelectorAll('[data-hide-if-empty]').forEach(el => {
       el.hidden = el.dataset.hideIfEmpty.split(',').every(k => !v[k]);
     });
@@ -794,14 +827,30 @@
     el.addEventListener('input', () => { saved[el.dataset.key] = el.value; save(); render(); });
   });
 
+  // 登録販売者の保健所への届出（初期は「いない」。多くの店舗が未登録のため）
+  const noToro = () => saved._toro !== 'yes';
+
   // 販売者カードの氏名の見出し
   const LABELS = ['薬剤師名', '登録販売者名', '販売者名'];
   const cardSet = v => {
+    if (noToro() && v === '登録販売者名') v = '薬剤師名';
     document.querySelectorAll('[data-cardlabel]').forEach(el => { el.textContent = v; });
     document.querySelectorAll('#cardlabel input').forEach(r => { r.checked = r.value === v; });
   };
   document.querySelectorAll('#cardlabel input').forEach(r => r.addEventListener('change', () => {
     saved._cardlabel = r.value; save(); cardSet(r.value);
+  }));
+  const toroSet = () => {
+    const none = noToro();
+    document.body.classList.toggle('no-toro', none);
+    document.querySelectorAll('#toro-reg input').forEach(r => { r.checked = r.value === (none ? 'none' : 'yes'); });
+    const lab = document.querySelector('#cardlabel input[value="登録販売者名"]');
+    lab.disabled = none; lab.parentElement.classList.toggle('is-disabled', none);
+    cardSet(LABELS.includes(saved._cardlabel) ? saved._cardlabel : '薬剤師名');
+    render();
+  };
+  document.querySelectorAll('#toro-reg input').forEach(r => r.addEventListener('change', () => {
+    saved._toro = r.value; save(); toroSet(); fit();
   }));
 
   // 名札の記載
@@ -932,8 +981,8 @@
   }
   window.addEventListener('resize', fit);
 
-  cardSet(LABELS.includes(saved._cardlabel) ? saved._cardlabel : '薬剤師名');
   applyOn();
+  toroSet();
 })();
 </script>
 <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
