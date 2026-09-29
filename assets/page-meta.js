@@ -393,7 +393,7 @@ window.__pageMeta = {
   },
   "ナレッジ/OTC類似薬の一部保険外療養.html": {
     "lastUpdated": "2026-09-23",
-    "newUntil": "2026-09-23"
+    "newUntil": "2026-10-06"
   },
   "ナレッジ/高額療養費と薬局窓口対応.html": {
     "lastUpdated": "2026-09-23",
