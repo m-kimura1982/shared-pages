@@ -186,6 +186,7 @@
                              font-size:var(--text-sm); line-height:1.6; margin:0 14px 3px 0; }
         .tbl-marks td.mark:empty { display:none; }
         .tbl-marks td.mark::before { content:attr(data-lab)" "; font-weight:500; font-size:var(--text-xs); color:var(--txt-3); }
+        .tbl-marks td.disp::before { content:"控えの表示 "; font-weight:500; font-size:var(--text-xs); color:var(--txt-3); }
         .marks-note { display:none; }   /* 縦積みでは空欄そのものが出ないので不要 */
         /* 「かかる／かからない」の対比表も縦積みにする。3列のままだと1列が100px前後になり、
            13pxの字が6〜8文字で折り返して、がん患者の1行だけで画面の3分の2を占めてしまう。
@@ -397,18 +398,27 @@
                 <figcaption>処方内容（控え）の出力例（枠内は拡大）。左の欄の「患者希望」「医療上必要」は今までどおりの表示。</figcaption>
               </figure>
 
-              <div class="tbl-wrap narrow" style="margin-top:14px">
-                <table>
-                  <thead><tr><th class="wrap">紙の処方箋の「一部保険外療養」欄</th><th class="wrap">控えの表示</th></tr></thead>
+              <div class="tbl-wrap mid marks" style="margin-top:14px">
+                <table class="tbl-marks">
+                  <thead>
+                    <tr>
+                      <th class="mark">変更不可<small>医療上必要</small></th>
+                      <th class="mark">患者希望</th>
+                      <th class="mark">一部保険外療養</th>
+                      <th class="wrap">控えの表示</th>
+                    </tr>
+                  </thead>
                   <tbody>
-                    <tr><td>○（料金がかかる）</td><td><b>類似薬</b></td></tr>
-                    <tr><td>ー（一部保険外療養の対象外）</td><td><b>類似薬 外</b></td></tr>
-                    <tr><td>記載なし（OTC類似薬でない）</td><td>空白</td></tr>
+                  <tr class="grp"><td colspan="4">OTC類似薬を処方するとき<span class="qual">長期収載品ではない薬</span></td></tr>
+                  <tr><td class="mark" data-lab="変更不可"></td><td class="mark" data-lab="患者希望"></td><td class="mark" data-lab="一部保険外療養">○</td><td class="disp"><b>類似薬</b></td></tr>
+                  <tr><td class="mark" data-lab="変更不可"></td><td class="mark" data-lab="患者希望"></td><td class="mark" data-lab="一部保険外療養">ー</td><td class="disp"><b>類似薬 外</b></td></tr>
+                  <tr class="grp"><td colspan="4">長期収載品でもある薬を処方するとき</td></tr>
+                  <tr><td class="mark" data-lab="変更不可"></td><td class="mark" data-lab="患者希望"></td><td class="mark" data-lab="一部保険外療養">○</td><td class="disp"><b>類似薬</b></td></tr>
+                  <tr><td class="mark" data-lab="変更不可"></td><td class="mark" data-lab="患者希望">×</td><td class="mark" data-lab="一部保険外療養">ー</td><td class="disp"><b>患者希望</b></td></tr>
+                  <tr><td class="mark" data-lab="変更不可">×</td><td class="mark" data-lab="患者希望"></td><td class="mark" data-lab="一部保険外療養">ー</td><td class="disp"><b>医療上必要</b></td></tr>
                   </tbody>
                 </table>
               </div>
-
-              <div style="margin-top:14px">長期収載品でもある薬で、患者が先発品を希望したときや、医師が後発品への変更を不可としたときは、控えには「類似薬 外」ではなく「患者希望」「医療上必要」と表示される。</div>
             </div>
 
             <div class="box-gray" style="margin-top:14px">
