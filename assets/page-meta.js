@@ -1,5 +1,5 @@
 window.__pageMeta = {
-  "index.html": {
+  "updates.html": {
     "lastUpdated": "2026-09-29"
   },
   "加算まとめ.html": {
@@ -11,14 +11,14 @@ window.__pageMeta = {
   "事務スタッフ向け.html": {
     "lastUpdated": "2026-09-11"
   },
+  "index.html": {
+    "lastUpdated": "2026-09-29"
+  },
   "checklists.html": {
     "lastUpdated": "2026-09-11"
   },
   "tools.html": {
     "lastUpdated": "2026-09-23"
-  },
-  "updates.html": {
-    "lastUpdated": "2026-09-29"
   },
   "ページ一覧.html": {
     "lastUpdated": "2026-09-11",
@@ -392,7 +392,7 @@ window.__pageMeta = {
     "newUntil": "2026-09-30"
   },
   "ナレッジ/OTC類似薬の一部保険外療養.html": {
-    "lastUpdated": "2026-09-23",
+    "lastUpdated": "2026-09-29",
     "newUntil": "2026-10-06"
   },
   "ナレッジ/高額療養費と薬局窓口対応.html": {
