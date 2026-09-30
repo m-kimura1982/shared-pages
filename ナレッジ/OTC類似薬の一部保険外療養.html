@@ -5,1116 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex,nofollow,noarchive" />
     <title>OTC類似薬の一部保険外療養｜実務ナレッジ集</title>
-    <meta name="search-keywords" content="OTC類似薬,一部保険外療養,特別の料金,4分の1,77成分,ヒルドイド,ロキソニン,ムコダイン,リンデロン,タリオン,ナゾネックス,ラミシール,ゾビラックス,ロゼレム,湿布,保湿剤,保険外併用療養費,中医協,セルフメディケーション,白色ワセリン,オリブ油,基剤,在宅患者,施設入所者,悪性リンパ腫,白血病,脳腫瘍,がん疑い,エピナスチン,関節リウマチ,月経困難症,プロアクティブ療法,ステロイド外用薬,消費税,非課税,税制改正要望,パブリックコメント,医療保険部会,処方箋様式,一部保険外療養欄,掲示義務,投薬全量,四捨五入,経過措置,諮問,療養担当規則,変更不可,患者希望,リアクティブ療法,受給者証,登録者証,臨床調査個人票,指定難病,50週,長期使用,お薬手帳,オンライン資格確認,別途の負担,別途の負担を求めない者,電子処方箋,処方内容（控え）,類似薬 外,薬品補足区分" />
+    <meta name="search-keywords" content="OTC類似薬,一部保険外療養,特別の料金,4分の1,77成分,1042品目,窓口の流れ,保険外併用療養費,この先の予定,施行日,2027年3月1日" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/fold.css" />
-    <style>
-      *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
-      :root {
-        --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
-        --pad-card:22px; --gap-card:16px;
-        --blue:#1e5fa8; --ink:#222222;
-        --bg:#f3f4f6; --white:#ffffff;
-        --box-blue:#e4f0f8; --box-gray:#f2f2f2;
-        --border:#d1d5db; --border-dk:#9ca3af;
-        --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px;
-        --txt-2:#444444; --txt-3:#5e6470;
-        /* 図解パレット（CLAUDE.md の淡色パレット） */
-        --fig-hoken-bg:#dfe9f6;  --fig-hoken-tx:#2a5580;
-        --fig-teiritsu-bg:#f2f2f2; --fig-teiritsu-tx:#444444;
-        --fig-tokubetsu-bg:#fdebdd; --fig-tokubetsu-tx:#9a4414; --fig-tokubetsu-line:#d9681e;
-      }
-      body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
-      .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
-
-      .page-title-left h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
-      .page-title-left p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
-
-      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); scroll-margin-top:calc(var(--sn-header-h, 0px) + 16px); }
-      .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:16px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
-      .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
-      .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
-
-      .sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin-bottom:10px; }
-      .sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
-      .sub-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
-
-      .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
-      .em-change { color:var(--blue); font-weight:900; }
-      .note { font-size:var(--text-sm); color:var(--txt-2); }
-      .note-xs { font-size:var(--text-xs); color:var(--txt-3); }
-      .box-gray { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); }
-      .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); }
-      .stack > * + * { margin-top:14px; }
-
-      /* このページの要点：1行ずつ本文の該当箇所へ飛べる。本文を縮めた要約なので、細かい数字は入れない
-         （手本は OTC医薬品の区分と販売ルール.html の #yoten） */
-      .sum .card-title { margin-bottom:6px; }
-      .sum .rows { display:flex; flex-direction:column; }
-      .sum a.pt { display:grid; grid-template-columns:8em minmax(0,1fr) auto; gap:4px 14px; align-items:baseline; padding:11px 6px; border-top:var(--bw) solid var(--border); text-decoration:none; color:var(--ink); font-size:var(--text-sm); line-height:1.75; border-radius:4px; }
-      .sum a.pt:first-child { border-top:none; }
-      .sum a.pt:hover { background:#f5f8fc; }
-      .sum .pt .k { font-weight:900; color:var(--blue); }
-      .sum .pt .go { color:var(--blue); font-size:var(--text-xs); font-weight:700; align-self:center; white-space:nowrap; }
-      .sum .pt .go::after { content:"›"; font-weight:900; margin-left:4px; }
-      .sum a.pt:hover .go { text-decoration:underline; }
-      .bullet { display:flex; gap:7px; line-height:1.8; }
-      .bullet > span:first-child { flex-shrink:0; color:#999; }
-      .blist { display:flex; flex-direction:column; gap:7px; font-size:var(--text-sm); }
-
-      /* 進み具合の3段 */
-      .stage + .stage { margin-top:14px; padding-top:14px; border-top:var(--bw) solid var(--border); }      .stage-h { display:flex; align-items:center; gap:10px; font-weight:900; margin-bottom:7px; }
-      .stage-tag { font-size:var(--text-xs); font-weight:700; padding:2px 10px; border-radius:4px; background:var(--box-gray); color:var(--txt-2); flex-shrink:0; }
-      .stage-tag.fixed { background:var(--box-blue); color:var(--blue); }
-
-      /* 判定の流れ（上から順に確認し、該当すれば「料金はかからない」へ抜ける） */
-      .fq { border-left:3px solid var(--border); padding:9px 0 9px 15px; position:relative; }   /* 縦線は構造。色の意味は持たせない */
-      .fq::before { content:""; position:absolute; left:-6px; top:15px; width:9px; height:9px; border-radius:50%; background:var(--blue); }
-      .fq-t { font-weight:700; font-size:var(--text-sm); }
-      .fq-x { font-size:var(--text-xs); color:var(--txt-3); margin-top:2px; }
-      /* 行き着く先は「料金がかかる」なので、表と同じクリーム */
-      .fq-goal { background:var(--fig-tokubetsu-bg); border-left:3px solid var(--fig-tokubetsu-line); border-radius:0 var(--radius-sm) var(--radius-sm) 0; padding:11px 15px; font-size:var(--text-sm); }
-      .fq-goal b { color:var(--fig-tokubetsu-tx); font-weight:900; }
-
-      /* 表 */
-      .tbl-wrap { overflow-x:auto; }
-      table { width:100%; min-width:600px; border-collapse:collapse; font-size:var(--text-sm); }
-      th { background:var(--box-gray); font-weight:900; padding:8px 11px; text-align:left; border-bottom:2px solid var(--border-dk); white-space:nowrap; }
-      td { padding:8px 11px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
-      tr:last-child td { border-bottom:none; }
-      td.k { font-weight:700; white-space:nowrap; }
-      td.k small { display:block; font-weight:500; color:var(--txt-3); font-size:var(--text-xs); }
-      td.old { color:var(--txt-3); }
-      td.new { color:var(--blue); font-weight:700; }
-      td.num { white-space:nowrap; text-align:right; }
-      th.num { text-align:right; }   /* 数字の列は見出しも右に寄せる（左のままだと値とずれて見える） */
-      th.mark, td.mark { text-align:center; white-space:nowrap; }   /* 「○」「ー」のような記号の列。右そろえだと字ごとに見え方がずれる */
-      th.mark small { display:block; font-weight:500; font-size:var(--text-xs); color:var(--txt-3); }
-      /* 処方箋の記号表：列幅を固定して欄の位置を処方箋と同じに保つ。記号は行の中央に置く */
-      .tbl-marks { table-layout:fixed; }
-      .tbl-marks th:nth-child(1) { width:20%; }
-      .tbl-marks th:nth-child(2) { width:17%; }
-      .tbl-marks th:nth-child(3) { width:21%; }
-      .tbl-marks th { white-space:normal; }   /* 列幅を固定しているので、狭い画面では見出しを折り返す（nowrap だと隣の列にはみ出す） */
-      .tbl-marks td { padding:7px 11px; }   /* 1行1ケースに詰めて、記号の並びが目で追えるようにする */
-      .tbl-marks td.mark { vertical-align:middle; font-size:var(--text-lg); font-weight:700; line-height:1; }
-      .tbl-marks tr.grp .qual { font-weight:500; color:var(--txt-3); margin-left:9px; }
-      .tbl-marks tr.grp td { background:var(--box-gray); font-weight:900; font-size:var(--text-xs); padding:5px 11px; border-bottom:var(--bw-h) solid var(--border-dk); }
-      /* 処方箋様式の抜粋。原寸を超えて拡大しない（拡大するとぼやけるため） */
-      .form-fig { margin-top:14px; }
-      .form-fig .frame { overflow-x:auto; -webkit-overflow-scrolling:touch; border:var(--bw) solid var(--border); border-radius:var(--radius-sm); background:var(--white); }
-      .form-fig picture { display:block; }
-      .form-fig img { display:block; max-width:100%; height:auto; margin:0 auto; }
-      .form-fig figcaption { font-size:var(--text-xs); color:var(--txt-3); margin-top:6px; line-height:1.7; }
-      th.wrap { white-space:normal; }   /* 長い見出しは折り返す。nowrap のままだと表全体が横に伸びる */
-      /* 負担がかかる側／かからない側を列で塗り分ける（内訳図と同じ色の使い方） */
-      th.c-off { background:var(--fig-hoken-bg); color:var(--fig-hoken-tx); }
-      th.c-on  { background:var(--fig-tokubetsu-bg); color:var(--fig-tokubetsu-tx); }
-      td.c-off { background:#f2f7fc; }
-      td.c-on  { background:#fef5ee; }
-      .tbl-wrap.narrow table { min-width:320px; }
-      .tbl-wrap.mid table { min-width:440px; }
-      /* 画面からはみ出す表には、横に動かせることを文字で出す（細い影では気づかれない） */
-      .scroll-hint { font-size:var(--text-xs); color:var(--txt-3); margin-top:5px; }
-      /* 「最新の動き」の過去分。最新1日分だけ開いた状態にして、先頭が伸び続けないようにする */
-      #rev-log .rev-past { margin-top:15px; }
-      #rev-log .rev-past .rev-day + .rev-day { margin-top:15px; padding-top:15px; }
-
-      /* 負担の内訳図 */
-      .svgbox { overflow-x:auto; }
-      .svgbox svg { display:block; width:100%; height:auto; margin:0 auto; }
-      .svgbox svg.pc { min-width:560px; max-width:660px; }
-      .svgbox svg.sp { display:none; }   /* スマホ幅で入れ替え（下の media query） */
-      .legend { display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:10px; font-size:var(--text-sm); justify-content:center; }
-      .legend div { display:flex; align-items:center; gap:7px; }
-      .legend i { width:16px; height:16px; border-radius:3px; border:var(--bw) solid var(--border-dk); flex-shrink:0; }
-
-      details .body { padding:13px 15px 15px; font-size:var(--text-sm); }
-
-      a { color:var(--blue); }
-      [id] { scroll-margin-top:calc(var(--sn-header-h, 0px) + 16px); }
-
-      /* 「最新の動き」・日付チップ・追記分の絞り込み */
-      .rev-chip { display:inline-block; font-size:var(--text-xs); font-weight:700; color:var(--txt-3); background:var(--white); border:1px solid var(--border); border-radius:4px; padding:0 7px; margin-left:7px; line-height:1.65; white-space:nowrap; }
-      .rev-chip.new { color:var(--blue); border-color:#bcd3ee; background:var(--box-blue); }
-      .rev-day + .rev-day { margin-top:14px; padding-top:14px; border-top:var(--bw) solid var(--border); }
-      .rev-day-h { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; font-weight:900; font-size:var(--text-sm); margin-bottom:8px; }
-      .rev-day-h .src { font-size:var(--text-xs); font-weight:500; color:var(--txt-3); }
-      .rev-del { color:var(--txt-3); text-decoration:line-through; }
-      .rev-bar { display:flex; flex-wrap:wrap; gap:9px 12px; align-items:center; margin-bottom:15px; padding-bottom:14px; border-bottom:var(--bw) solid var(--border); }
-      .rev-bar button { font-family:inherit; font-size:var(--text-xs); font-weight:700; color:var(--blue); background:var(--white); border:1px solid #bcd3ee; border-radius:6px; padding:6px 13px; cursor:pointer; }
-      .rev-bar button:hover { background:#f2f7fc; }
-      .rev-bar button.on { background:var(--blue); color:#fff; border-color:var(--blue); }
-      .rev-bar .hint { font-size:var(--text-xs); color:var(--txt-3); }
-      /* 絞り込み中：該当箇所以外を薄くし、該当箇所に青の縦棒を付ける */
-      .dim { opacity:.22; }
-      body.rev-focus .rev-latest:not(tr) { box-shadow:inset 3px 0 0 var(--blue); }
-      /* 自前の余白を持たない要素にだけ足す。box-gray / box-blue は元から余白があるので触らない */
-      body.rev-focus .rev-latest:not(tr):not(.box-gray):not(.box-blue) { padding:10px 14px; }
-      body.rev-focus tr.rev-latest td:first-child { box-shadow:inset 3px 0 0 var(--blue); }
-
-      @media (max-width:640px) {
-        body { font-size:14px; padding:14px 12px 40px; line-height:1.75; }
-        :root { --text-xs:11.5px; --text-sm:13.5px; --text-md:14px; --text-lg:16px; --text-xl:18px; --pad-card:14px; --gap-card:11px; }
-        /* 最小幅は中身に任せる。一律に広げると収まる表まで横スクロールになる */
-        table,
-        .tbl-wrap.mid table,
-        .tbl-wrap.narrow table { font-size:13px; min-width:0; }
-        /* 計算式の表は縦積みにする。横スクロールだと答えの金額が画面の外に出てしまう */
-        .tbl-wrap.keisan { overflow:visible; }
-        .keisan table, .keisan tbody, .keisan tr, .keisan td { display:block; min-width:0; }
-        .keisan thead { display:none; }
-        .keisan tr { padding:9px 0; border-bottom:var(--bw-h) solid var(--border); }
-        .keisan tr:last-child { border-bottom:none; }
-        .keisan td { padding:0; border:none; }
-        .keisan td.k { white-space:normal; margin-bottom:2px; }
-        .keisan td.num { text-align:right; font-weight:900; margin-top:2px; }
-        /* 記号3列＋料金の表だけは詰めない。潰すと料金列が1文字ずつ折り返す */
-        /* 記号表はスマホでは縦積みにする。4列のまま詰めると料金の説明が読めず、
-           横スクロールにすると右側が見えないままになるため。記載のない欄は出さない */
-        .tbl-wrap.marks { overflow:visible; }
-        .tbl-marks { display:block; min-width:0; }
-        .tbl-marks thead { display:none; }
-        .tbl-marks tbody { display:block; }
-        .tbl-marks tr { display:block; padding:9px 0; border-bottom:var(--bw-h) solid var(--border); }
-        .tbl-marks tr:last-child { border-bottom:none; }
-        .tbl-marks tr.grp { padding:0; border-bottom:none; }
-        .tbl-marks td { display:block; padding:0; border:none; }
-        .tbl-marks td.c-on, .tbl-marks td.c-off { padding:3px 8px; border-radius:var(--radius-sm); }
-        .tbl-marks tr.grp td { padding:6px 10px; margin-bottom:2px; }
-        .tbl-marks td.mark { display:inline-block; width:auto; text-align:left; background:none;
-                             font-size:var(--text-sm); line-height:1.6; margin:0 14px 3px 0; }
-        .tbl-marks td.mark:empty { display:none; }
-        .tbl-marks td.mark::before { content:attr(data-lab)" "; font-weight:500; font-size:var(--text-xs); color:var(--txt-3); }
-        .tbl-marks td.disp::before { content:"控えの表示 "; font-weight:500; font-size:var(--text-xs); color:var(--txt-3); }
-        .marks-note { display:none; }   /* 縦積みでは空欄そのものが出ないので不要 */
-        /* 「かかる／かからない」の対比表も縦積みにする。3列のままだと1列が100px前後になり、
-           13pxの字が6〜8文字で折り返して、がん患者の1行だけで画面の3分の2を占めてしまう。
-           分類名を見出しにして、かかる側・かからない側を上下に並べる */
-        .tbl-wrap.stack-sp { overflow:visible; }
-        .stack-sp table, .stack-sp tbody, .stack-sp tr, .stack-sp td { display:block; min-width:0; }
-        .stack-sp thead { display:none; }
-        .stack-sp tr { padding:11px 0; border-bottom:var(--bw-h) solid var(--border); }
-        .stack-sp tr:last-child { border-bottom:none; }
-        .stack-sp td { padding:0; border:none; background:none; }
-        .stack-sp td.k { white-space:normal; font-size:var(--text-md); margin-bottom:5px; }
-        .stack-sp td.k small { display:inline; margin-left:6px; }
-        .stack-sp td.c-off, .stack-sp td.c-on { padding:8px 11px; border-radius:var(--radius-sm); margin-top:6px; }
-        .stack-sp td.none { display:none; }   /* 縦積みでは「料金がかかる：なし」の箱は要らない（かからない側だけで分かる） */
-        .stack-sp td.c-off { background:#f2f7fc; }
-        .stack-sp td.c-on  { background:#fef5ee; }
-        .stack-sp td.c-off::before, .stack-sp td.c-on::before { display:block; font-weight:700; font-size:var(--text-xs); margin-bottom:3px; }
-        .stack-sp td.c-off::before { content:"料金がかからない"; color:var(--fig-hoken-tx); }
-        .stack-sp td.c-on::before  { content:"料金がかかる"; color:var(--fig-tokubetsu-tx); }
-        /* 効能・効果の表は「OTCにあるか」が対比の軸なので、見出しの言葉をそのまま出す */
-        .stack-sp.kounou td.c-on::before  { content:"料金がかかる（OTCにもある効能・効果）"; }
-        .stack-sp.kounou td.c-off::before { content:"かからない（OTCにない効能・効果）"; }
-        th, td { padding:6px 8px; }
-        /* 欄だけの切り出し画像は縦に長く、下半分は空の枠なので、欄の見出しと「処」の字までで切る */
-        .form-fig picture img { width:282px; height:200px; object-fit:cover; object-position:top; }
-        .sum a.pt { grid-template-columns:minmax(0,1fr) auto; padding:10px 2px; }
-        .sum .pt .k { grid-column:1; grid-row:1; }
-        .sum .pt .go { grid-column:2; grid-row:1; }
-        .sum .pt .v { grid-column:1 / span 2; grid-row:2; }
-        /* 内訳図は横スクロールさせず、縦2段の図に差し替える */
-        .svgbox svg.pc { display:none; }
-        .svgbox svg.sp { display:block; max-width:340px; }
-      }
-      @media print {
-        body { background:#fff; padding:0; font-size:11pt; }
-        .card { break-inside:avoid; border-color:#999; }
-        th, td.c-off, td.c-on, .box-blue, .box-gray, .fq-goal, rect { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-        .svgbox, .tbl-wrap { overflow:visible; }
-        details { border:none; }
-        details .body { display:block; }
-        .rev-bar { display:none; }
-        .dim { opacity:1; }
-        .sum .pt .go { display:none; }
-      }
-    </style>
+    <link rel="stylesheet" href="../assets/otc-ruiji.css" />
   </head>
   <body>
     <script src="../assets/site-header.js" defer></script>
-    <script src="../assets/page-toc.js" defer></script>
 
     <div class="page">
 
       <div class="page-title-left">
         <h1>OTC類似薬の一部保険外療養</h1>
-        <p>2027年3月1日施行予定。告示前なので、変わる可能性がある。</p>
+        <p>2027年3月1日施行。2026年9月30日の通知・事務連絡までを反映。</p>
       </div>
 
-      <!-- ページ内目次（assets/page-toc.js が見出しから自動生成。手入力しない） -->
-      <div class="page-toc-wrap"><div id="page-toc"></div></div>
+      <nav class="otc-nav" aria-label="OTC類似薬のページ">
+        <span class="otc-nav-i cur" aria-current="page">全体の流れ</span>
+        <a class="otc-nav-i" href="OTC類似薬_処方箋と窓口対応.html">処方箋と窓口対応</a>
+        <a class="otc-nav-i" href="OTC類似薬_対象の薬と料金がかからない場合.html">対象の薬と、料金がかからない場合</a>
+        <a class="otc-nav-i" href="OTC類似薬_特別の料金の計算.html">特別の料金の計算</a>
+        <a class="otc-nav-i sub" href="OTC類似薬_これまでの動き.html">これまでの動き</a>
+      </nav>
 
-      <!-- このページの要点（冒頭のリード文を置き換えたもの。細かい数字は入れない。黄マーカーは1か所だけ） -->
-      <div class="card sum" id="yoten" data-toc="skip">
-        <div class="card-title">このページの要点</div>
-        <div class="rows">
-          <a class="pt" href="#c-futan"><span class="k">仕組み</span><span class="v">OTC医薬品と成分が同じ医療用医薬品を使うと、薬剤費の4分の1が保険給付から外れ、患者が「特別の料金」として別に払う。技術料は今までどおり。</span><span class="go">詳しく</span></a>
-          <a class="pt" href="#c-yakkyoku"><span class="k">薬局の役割</span><span class="v">料金がかかるかどうかは医師が判断し、処方箋の「一部保険外療養」欄に記載される。薬局は判断せず、処方箋の記載と合わないと思ったら疑義照会する。</span><span class="go">詳しく</span></a>
-          <a class="pt" href="#c-seibun"><span class="k">対象の薬</span><span class="v">対象かどうかは成分で決まり、先発品か後発品かは問わない。同じ成分でも、OTCにない効能・効果で処方されたときは料金がかからない。</span><span class="go">詳しく</span></a>
-          <a class="pt" href="#c-hanni"><span class="k">かからない人</span><span class="v">18歳になった年度末までの子ども、生活保護、がん・難病の治療、入院中、長期使用などは料金がかからない。在宅患者・施設入所者にはかかる。</span><span class="go">詳しく</span></a>
-          <a class="pt" href="#c-sentei"><span class="k">選定療養との関係</span><span class="v">両方に該当するときは一部保険外療養が優先され、選定療養の料金はかからない。選定療養と違って、<span class="marker">後発医薬品に変更しても料金はかかる</span>。</span><span class="go">詳しく</span></a>
+
+      <!-- しくみ：厚生労働省の概要資料の「制度の仕組み」の図を、薬局の窓口の言葉で描き直したもの -->
+      <div class="card" id="c-shikumi">
+        <div class="card-title">しくみ</div>
+        <div class="stack">
+          <div>対象は、OTC医薬品と成分・投与経路が同じで、1日最大用量も変わらない医療用医薬品（<b>77成分・1,042品目</b>）。先発品か後発品かは問わない。</div>
+          <div>これらが処方されると、原則として<span class="marker">薬剤費の4分の1が保険から外れ、患者が「特別の料金」として別に払う</span>。</div>
+          <div>
+            <div class="shikumi-bar" role="img" aria-label="技術料は今までどおり保険。薬剤費のうち4分の3は保険、4分の1は特別の料金として患者が全額払う">
+              <div class="gi"><b>技術料</b><small>今までどおり保険</small></div>
+              <div class="hk"><b>薬剤費の4分の3</b><small>保険（1〜3割を自己負担）</small></div>
+              <div class="tk"><b>4分の1</b><small>特別の料金（全額）</small></div>
+            </div>
+            <div class="shikumi-cap"><span></span><span>対象の薬の薬剤費</span></div>
+          </div>
+          <div class="box-blue">料金がかかるかどうかは、<b>国の基準に沿って処方医が判断し</b>、処方箋の「一部保険外療養」欄に記載する。<b>薬局はその記載に従う。</b>18歳の年度末までの子どもや、がん・指定難病の治療、長期にわたる使用などでは、料金はかからない。</div>
         </div>
       </div>
 
-      <!-- 0. 最新の動き（新しい資料が出るたびに1日分ずつ足す。本文側には data-rev と .rev-chip を付ける）
-           見出しに「改訂」「改定」は使わない。制度の改定と紛らわしく、ルールが変わったように読めるため（2026-09-04） -->
-      <div class="card" id="rev-log">
+      <!-- 窓口の流れ：各段から、その場で要る知識のページへ飛ぶ -->
+      <div class="card" id="c-nagare">
+        <div class="card-title">窓口での流れ<span class="qual">院外処方の場合</span></div>
+        <div class="flow">
+          <div class="step">
+            <div class="step-t">処方箋の「一部保険外療養」欄を確認する</div>
+            <div class="step-v"><b>○</b>なら特別の料金がかかり、<b>―</b>ならかからない。長期収載品でもある薬は、―でも選定療養の料金がかかることがある。</div>
+            <div class="step-go"><a href="OTC類似薬_処方箋と窓口対応.html#c-shohosen">欄の見方</a><a href="OTC類似薬_対象の薬と料金がかからない場合.html#c-hanni">料金がかからない人・場面</a><a href="OTC類似薬_処方箋と窓口対応.html#c-sentei">選定療養との関係</a></div>
+          </div>
+          <div class="step">
+            <div class="step-t">対象の薬で欄が空欄なら、疑義照会する</div>
+            <div class="step-v">記載漏れのときの扱い。ただし18歳の年度末までの患者と、一覧の薬を処方された妊婦・授乳婦は、記載がなくても料金がかからないことが明らかなので、疑義照会せずに料金を求めなくてよい。後で処方医に報告する。</div>
+            <div class="step-go"><a href="OTC類似薬_処方箋と窓口対応.html#c-kinyu-nashi">空欄・旧様式・施行前の処方箋</a><a href="OTC類似薬_対象の薬と料金がかからない場合.html#c-seibun">対象の77成分</a></div>
+          </div>
+          <div class="step">
+            <div class="step-t">金額を計算する</div>
+            <div class="step-v">特別の料金は、薬価の4分の1に投薬全量を掛けて円のまま計算する。点数にはしない。処方箋ごとに合算してから、10円単位に丸める。</div>
+            <div class="step-go"><a href="OTC類似薬_特別の料金の計算.html#c-kingaku">金額の出し方</a><a href="OTC類似薬_特別の料金の計算.html#c-futan">負担はどう変わるか</a></div>
+          </div>
+          <div class="step">
+            <div class="step-t">会計・請求</div>
+            <div class="step-v">領収書・明細書では特別の料金が分けて表示され、レセプトでは薬品名の後に「（類）」が付く。</div>
+            <div class="step-go"><a href="OTC類似薬_処方箋と窓口対応.html#c-kaikei">領収書・明細書・レセプト</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="c-saishin">
         <div class="card-title">最新の動き</div>
-
-        <div class="rev-bar">
-          <button type="button" id="revFocus">追加・修正した箇所だけを表示する</button>
-          <span class="hint">日付チップは、その情報を足した日。青が最新分。</span>
-        </div>
-
-        <div class="rev-day" data-rev-day="2026-09-29">
-          <div class="rev-day-h">2026年9月29日<span class="src">第11回 電子処方箋等検討ワーキンググループ 資料1（厚生労働省 政策統括官付 医療情報連携担当参事官室）</span></div>
+        <div data-rev-day="2026-09-30">
+          <div class="rev-day-h">2026年9月30日<span class="src">政令・省令・告示の公布、通知・事務連絡（厚生労働省 保険局）</span></div>
           <div class="blist">
-            <div class="bullet"><span>・</span><span><b>電子処方箋では、処方内容（控え）に「類似薬」「類似薬 外」と表示される。</b>長期収載品でもある薬で、患者が先発品を希望したときや、医師が後発品への変更を不可としたときは、「類似薬 外」ではなく「患者希望」「医療上必要」と表示される。<a href="#c-shohosen">処方箋の記載</a></span></div>
+            <div class="bullet"><span>・</span><span><b>施行日が2027年3月1日に決まった。</b><a href="#c-yotei">この先の予定</a></span></div>
+            <div class="bullet"><span>・</span><span><b>対象医薬品リスト（1,042品目）</b>と、料金がかからない効能・効果の一覧、妊婦・授乳婦で料金がかからない薬の一覧が公表された。<a href="OTC類似薬_対象の薬と料金がかからない場合.html#c-seibun">対象の薬</a>・<a href="OTC類似薬_対象の薬と料金がかからない場合.html#c-kounou">効能・効果</a></span></div>
+            <div class="bullet"><span>・</span><span><b>「一部保険外療養」欄が空欄なら疑義照会する。</b>18歳の年度末までの患者と、一覧の薬を処方された妊婦・授乳婦は、照会せずに料金を求めなくてよい。<a href="OTC類似薬_処方箋と窓口対応.html#c-kuuran">欄が空欄のとき</a></span></div>
+            <div class="bullet"><span>・</span><span><b>施行前に発行された処方箋には料金がかからない。</b>旧様式の処方箋では、薬品名の近くに○か―が書き添えられる。<a href="OTC類似薬_処方箋と窓口対応.html#c-kyuyoshiki">旧様式・施行前の処方箋</a></span></div>
+            <div class="bullet"><span>・</span><span><b>特別の料金は処方箋ごとに合算して10円単位に丸める。</b><a href="OTC類似薬_特別の料金の計算.html#c-kingaku">金額の出し方</a></span></div>
+            <div class="bullet"><span>・</span><span>頓服・がん・指定難病の確認書類など、料金がかからない場合の細かい扱いが示された。<a href="OTC類似薬_対象の薬と料金がかからない場合.html#c-hanni">料金がかからない人・場面</a></span></div>
+            <div class="bullet"><span>・</span><span>長期収載品の選定療養も、2027年3月から同じ丸め方にしたあと消費税を加える計算になる。<a href="OTC類似薬_処方箋と窓口対応.html#c-sentei">選定療養との関係</a></span></div>
           </div>
         </div>
-
-        <div class="rev-day" data-rev-day="2026-09-16">
-          <div class="rev-day-h">2026年9月16日<span class="src">社会保障審議会医療保険部会 資料1「OTC類似薬の保険給付の見直しの実施に向けたとりまとめ（案）」／中央社会保険医療協議会 答申（厚生労働省 保険局）</span></div>
-          <div class="blist">
-            <div class="bullet"><span>・</span><span><b>施行は2027年3月1日の予定</b>と示された。<a href="#c-yotei">この先の予定</a></span></div>
-            <div class="bullet"><span>・</span><span><b>アトピー性皮膚炎のプロアクティブ療法は、料金がかからない。</b>通年で定期的に使うステロイド外用薬が対象。中止したあとや、症状が出たときだけ使うリアクティブ療法は料金がかかる。<a href="#c-hanni">料金がかからない人・場面</a></span></div>
-            <div class="bullet"><span>・</span><span><b>長期使用は、少なくとも6か月程度の使用実績で確認する。</b>「おおむね50週（1年）」は目安で、1年分の実績を求めるものではない。転院した場合は前後の治療歴を合わせてよい。<a href="#c-hanni">同上</a></span></div>
-            <div class="bullet"><span>・</span><span><b>指定難病は、受給者証・登録者証で確認する。</b>2027年度末までは、指定難病だと客観的に確認できる書類でもよい。<a href="#c-hanni">同上</a></span></div>
-          </div>
-        </div>
-
-        <div class="rev-day" data-rev-day="2026-09-09">
-          <div class="rev-day-h">2026年9月9日<span class="src">中央社会保険医療協議会 総会 総-2「OTC類似薬の保険給付の見直しの実施について（その２）」・総-3-2「一部保険外療養の創設に伴う療養担当規則等の所要の見直しについて」（厚生労働省 保険局）</span></div>
-          <div class="blist">
-            <div class="bullet"><span>・</span><span><b>特別の料金の計算方法が示された。</b>点数に換算せず、薬価の4分の1に投薬全量を掛けて円で計算し、1の位を四捨五入する。<a href="#c-kingaku">金額の出し方</a></span></div>
-            <div class="bullet"><span>・</span><span>処方箋に<b>「一部保険外療養」欄</b>が追加される。料金がかかるなら「○」、かからないなら「ー」。<a href="#c-shohosen">処方箋の記載</a></span></div>
-            <div class="bullet"><span>・</span><span><b>薬局内・ウェブサイトへの掲示義務は課さない</b>。どの薬局でも内容も金額も同じであるため。選定療養とはここが違う。<a href="#c-shohosen">同上</a></span></div>
-            <div class="bullet"><span>・</span><span><span class="marker">長期収載品の選定療養も、2027年3月から同じ計算方法に変更となる</span>。点数に換算せず、差額の2分の1に投薬全量を掛ける。<a href="#c-sentei">選定療養との関係</a></span></div>
-            <div class="bullet"><span>・</span><span>一部保険外療養の内容を「要指導医薬品又は一般用医薬品との代替性が特に高い医療用医薬品の処方又は調剤」と定める。<a href="#c-shinchoku">今どこまで決まったか</a></span></div>
-            <div class="bullet"><span>・</span><span>厚生労働大臣が中医協に<b>諮問し</b>、省令・告示を改める手続きに入った。<a href="#c-yotei">この先の予定</a></span></div>
-            <div class="bullet"><span>・</span><span>消費税の扱いは<b>政府内で検討中</b>のまま。</span></div>
-          </div>
-        </div>
-
-        <div class="rev-day" data-rev-day="2026-09-03">
-          <div class="rev-day-h">2026年9月3日<span class="src">第214回 社会保障審議会医療保険部会 資料2（厚生労働省 保険局）／令和9年度 税制改正要望</span></div>
-          <div class="blist">
-            <div class="bullet"><span>・</span><span>軟膏の<b>基剤として混ぜた白色ワセリン・オリブ油</b>のほか、高濃度の外用薬、エピナスチン点眼0.1%、関節リウマチの関節痛にも<b>料金がかかる</b>。<a href="#c-kounou">効能・効果で分かれる</a></span></div>
-            <div class="bullet"><span>・</span><span><b>在宅患者・施設入所者には料金がかかる</b>（入院とは別扱い）。<a href="#c-hanni">料金がかからない人・場面</a></span></div>
-            <div class="bullet"><span>・</span><span>脳腫瘍・白血病などの悪性腫瘍も「がん」に含まれ、料金はかからない。一方「がん疑い」の段階はかかる。<a href="#c-hanni">同上</a></span></div>
-            <div class="bullet"><span>・</span><span>検査や処置の最中に使った薬は料金がかからない。リハビリの経過観察中の処方や、月に数日だけ使う鎮痛薬は料金がかかる。<a href="#c-hanni">同上</a></span></div>
-            <div class="bullet"><span>・</span><span>デノスマブ治療時の<b>カルシウム・ビタミンD補充</b>にも料金がかかる。<a href="#c-kounou">効能・効果で分かれる</a></span></div>
-            <div class="bullet"><span>・</span><span>がん治療後の緩下剤や指定難病でない慢性疾患も、<b>長期使用に当たれば料金はかからない</b>。<a href="#c-hanni">料金がかからない人・場面</a></span></div>
-            <div class="bullet"><span>・</span><span>料金がかかるかどうかを判断するのは医師で、<b>薬局は判断しない</b>ことが改めて示された。<a href="#c-yakkyoku">薬局がやること</a></span></div>
-            <div class="bullet"><span>・</span><span>特別の料金の消費税を <span class="rev-del">かかる</span> → <b>未定</b> に改めた。非課税を求める税制改正要望が出ている。<a href="#rev-zei">負担額の注記へ</a></span></div>
-          </div>
-        </div>
+        <div class="note-xs" style="margin-top:12px">それより前の動きと出典は<a href="OTC類似薬_これまでの動き.html">これまでの動き</a>。</div>
       </div>
 
-      <!-- 1. 薬局がやること -->
-      <div class="card" id="c-yakkyoku">
-        <div class="card-title">薬局がやること<span class="qual">院外処方の場合</span></div>
-
-        <div class="stack">
-          <div class="box-gray">
-            判定は2段階。どちらも<span class="marker">保険医療機関が行い、薬局は判断しない</span>。まず<b>薬が77成分に入っているか</b>、次に<b>その患者・その処方が料金のかからない場合に該当するか</b>を確認する。前者は成分で決まり、後者は診断名や年齢によって変わる。結果は<span class="em-change">処方箋に記載される</span>。
-          </div>
-
-          <div>
-            <div class="fq">
-              <div class="fq-t">処方する薬が77成分に該当するか</div>
-              <div class="fq-x">該当しなければ 料金はかからない</div>
-            </div>
-            <div class="fq">
-              <div class="fq-t">患者が18歳になった年度の3月31日までか、生活保護の医療扶助か</div>
-              <div class="fq-x">該当すれば 料金はかからない</div>
-            </div>
-            <div class="fq">
-              <div class="fq-t">OTC医薬品にない効能・効果での処方か</div>
-              <div class="fq-x">該当すれば 料金はかからない</div>
-            </div>
-            <div class="fq">
-              <div class="fq-t">がん・難病の治療、公費負担医療、処置等に伴う14日以内の処方、年間を通じた使用、妊婦・授乳婦のいずれかに該当するか</div>
-              <div class="fq-x">該当すれば 料金はかからない。範囲は下の「料金がかからない人・場面」</div>
-            </div>
-            <div class="fq-goal">どれにも該当しなければ<b>特別の料金がかかる</b>。処方箋の「一部保険外療養」欄に「○」が記載される</div>
-          </div>
-
-          <div class="note-xs">料金がかからないときは、その理由が保険医療機関のレセプトに記載される。</div>
-
-          <div id="c-shohosen" data-rev="2026-09-09">
-            <div class="sub-title">処方箋に「一部保険外療養」欄が追加される<span class="qual">2027年3月以降</span><span class="rev-chip">9/9</span></div>
-            <div>対象の77成分に当たる薬を処方するとき、料金が<b>かかるなら「○」</b>、<b>かからないなら「ー」</b>が記載される。</div>
-
-            <figure class="form-fig">
-              <div class="frame">
-                <picture>
-                  <!-- スマホは欄だけの切り出し。全体版は縮むと記載要領の字が読めないため -->
-                  <source media="(max-width:640px)" srcset="../images（レセコン画像など）/処方箋様式の改定2.png" />
-                  <img src="../images（レセコン画像など）/処方箋様式の改定.png"
-                       alt="処方箋の処方欄。左から「変更不可（医療上必要）」「患者希望」に続けて「一部保険外療養」の欄が並び、右側に記載要領が書かれている" />
-                </picture>
-              </div>
-              <figcaption>処方欄の左に<b>「一部保険外療養」欄</b>が追加される（赤字が追加される部分）。記載要領にも、対象医薬品を処方したときは特別の料金の対象なら「○」、対象外なら「ー」を記載する、という一文が入る。「変更不可」欄・「患者希望」欄は今までどおり「レ」又は「×」。</figcaption>
-            </figure>
-
-            <div class="tbl-wrap mid marks" style="margin-top:14px">
-              <table class="tbl-marks">
-                <thead>
-                  <tr>
-                    <th class="mark">変更不可<small>医療上必要</small></th>
-                    <th class="mark">患者希望</th>
-                    <th class="mark">一部保険外療養</th>
-                    <th class="wrap">患者が別に払う料金</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="grp"><td colspan="4">OTC類似薬を処方するとき<span class="qual">長期収載品ではない薬</span></td></tr>
-                  <tr><td class="mark" data-lab="変更不可"></td><td class="mark" data-lab="患者希望"></td><td class="mark" data-lab="一部保険外療養">○</td><td class="c-on">薬剤費の4分の1</td></tr>
-                  <tr><td class="mark" data-lab="変更不可"></td><td class="mark" data-lab="患者希望"></td><td class="mark" data-lab="一部保険外療養">ー</td><td class="c-off">なし</td></tr>
-                  <tr class="grp"><td colspan="4">長期収載品でもある薬を処方するとき</td></tr>
-                  <tr><td class="mark" data-lab="変更不可"></td><td class="mark" data-lab="患者希望"></td><td class="mark" data-lab="一部保険外療養">○</td><td class="c-on">薬剤費の4分の1<span class="note-xs"> ／ 一部保険外療養が優先され、選定療養の料金はかからない</span></td></tr>
-                  <tr><td class="mark" data-lab="変更不可"></td><td class="mark" data-lab="患者希望">×</td><td class="mark" data-lab="一部保険外療養">ー</td><td class="c-on">先発品と後発品の差額の2分の1</td></tr>
-                  <tr><td class="mark" data-lab="変更不可">×</td><td class="mark" data-lab="患者希望"></td><td class="mark" data-lab="一部保険外療養">ー</td><td class="c-off">なし</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="note-xs marks-note" style="margin-top:8px">空欄は、その欄に記載がないという意味。</div>
-
-            <div class="box-gray" style="margin-top:14px"><span class="marker">「ー」は一部保険外療養の対象外という意味であって、別に払う料金がかからないという意味ではない。</span>長期収載品でもある薬で、患者希望欄が「×」なら、選定療養の特別の料金がかかる。</div>
-
-            <div style="margin-top:14px">薬局はこの欄を確認し、患者に特別の料金を説明する。<b>OTC類似薬の対象・対象外の理由は処方箋に記載されない</b>ので、<span class="marker">上の表と合わないときや、患者から「自分は料金がかからないはず」と申し出があったとき</span>は、<b>薬局で判断せずに疑義照会する</b>。</div>
-
-            <div data-rev="2026-09-29" style="margin-top:22px">
-              <div class="sub-title">電子処方箋では、控えに「類似薬」「類似薬 外」と表示される<span class="rev-chip">9/29</span></div>
-              <figure class="form-fig">
-                <div class="frame">
-                  <img src="../images（レセコン画像など）/電子処方箋_処方内容控え_OTC類似薬.png"
-                       alt="電子処方箋の処方内容（控え）の出力例。処方内容の薬品名の左に「類似薬」「類似薬 外」と表示され、その部分が拡大されている" />
-                </div>
-                <figcaption>処方内容（控え）の出力例（枠内は拡大）。左の欄の「患者希望」「医療上必要」は今までどおりの表示。</figcaption>
-              </figure>
-
-              <div class="tbl-wrap mid marks" style="margin-top:14px">
-                <table class="tbl-marks">
-                  <thead>
-                    <tr>
-                      <th class="mark">変更不可<small>医療上必要</small></th>
-                      <th class="mark">患者希望</th>
-                      <th class="mark">一部保険外療養</th>
-                      <th class="wrap">控えの表示</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  <tr class="grp"><td colspan="4">OTC類似薬を処方するとき<span class="qual">長期収載品ではない薬</span></td></tr>
-                  <tr><td class="mark" data-lab="変更不可"></td><td class="mark" data-lab="患者希望"></td><td class="mark" data-lab="一部保険外療養">○</td><td class="disp"><b>類似薬</b></td></tr>
-                  <tr><td class="mark" data-lab="変更不可"></td><td class="mark" data-lab="患者希望"></td><td class="mark" data-lab="一部保険外療養">ー</td><td class="disp"><b>類似薬 外</b></td></tr>
-                  <tr class="grp"><td colspan="4">長期収載品でもある薬を処方するとき</td></tr>
-                  <tr><td class="mark" data-lab="変更不可"></td><td class="mark" data-lab="患者希望"></td><td class="mark" data-lab="一部保険外療養">○</td><td class="disp"><b>類似薬</b></td></tr>
-                  <tr><td class="mark" data-lab="変更不可"></td><td class="mark" data-lab="患者希望">×</td><td class="mark" data-lab="一部保険外療養">ー</td><td class="disp"><b>患者希望</b></td></tr>
-                  <tr><td class="mark" data-lab="変更不可">×</td><td class="mark" data-lab="患者希望"></td><td class="mark" data-lab="一部保険外療養">ー</td><td class="disp"><b>医療上必要</b></td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <div class="box-gray" style="margin-top:14px">
-              <div class="sub-title">旧様式の処方箋が来たとき</div>
-              <div>経過措置で、当面は変更前の様式も使える。そのため施行後もしばらくは、<span class="marker">「一部保険外療養」欄のない処方箋が届く</span>。旧様式では対象かどうかを処方箋で確認できないので、<b>対象薬を見落とすおそれがある</b>。旧様式で対象薬が処方されたときの扱いは、<b>示されていない</b>。</div>
-            </div>
-
-            <div class="box-blue" style="margin-top:14px">
-              <div class="sub-title">薬局内・ウェブサイトへの掲示は不要</div>
-              <div>選定療養では内容と費用の掲示が義務づけられているが、一部保険外療養はどの薬局でも内容も金額も同じなので、掲示は義務づけられない。</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4. 対象成分 -->
-      <div class="card" id="c-seibun">
-        <div class="card-title">対象は77成分<span class="qual">令和8年8月1日時点</span></div>
-
-        <div class="stack">
-          <div>OTC医薬品と成分・投与経路が同じで、1日最大用量が変わらない医療用医薬品を機械的に選んだもの。<span class="marker">対象の成分かどうかは薬で決まり</span>、先発・後発による区別はない。実際に料金がかかるかどうかは、患者や処方の内容によってさらに分かれる（<a href="#c-hanni">料金がかからない人・場面</a>）。77成分で1,042品目あり、確定リストは告示待ち。</div>
-
-          <div>
-            <div class="sub-title">現場でよく出る薬効群</div>
-            <div class="tbl-wrap mid">
-              <table>
-                <thead><tr><th>薬効群</th><th>主な成分</th></tr></thead>
-                <tbody>
-                  <tr><td class="k">抗アレルギー</td><td>フェキソフェナジン、ロラタジン、エピナスチン、ケトチフェン、ベポタスチン、ペミロラスト、アシタザノラスト</td></tr>
-                  <tr><td class="k">点鼻・点眼</td><td>モメタゾン、フルチカゾン、塩酸テトラヒドロゾリン・プレドニゾロン、ホウ酸、ホウ砂</td></tr>
-                  <tr><td class="k">解熱鎮痛・消炎</td><td>ロキソプロフェン、イブプロフェン、ジクロフェナク、インドメタシン、フェルビナク、サリチル酸メチル配合の貼付剤・塗布剤</td></tr>
-                  <tr><td class="k">胃腸・便秘</td><td>酸化マグネシウム、ピコスルファート、ビサコジル、マルツエキス、イトプリド、炭酸水素ナトリウム、ベルベリン・ゲンノショウコ</td></tr>
-                  <tr><td class="k">皮膚（保湿・保護）</td><td>ヘパリン類似物質、尿素、白色ワセリン、酸化亜鉛、チンク油、オリブ油</td></tr>
-                  <tr><td class="k">ステロイド外用</td><td>ベタメタゾン吉草酸エステル、ヒドロコルチゾン酪酸エステル、プレドニゾロン吉草酸エステル酢酸エステル、デキサメタゾン</td></tr>
-                  <tr><td class="k">抗真菌外用</td><td>テルビナフィン、ミコナゾール、クロトリマゾール、イソコナゾール、オキシコナゾール、ブテナフィン</td></tr>
-                  <tr><td class="k">抗ウイルス</td><td>アシクロビル、ビダラビン</td></tr>
-                  <tr><td class="k">消毒</td><td>ポビドンヨード、各種エタノール、オキシドール、クロルヘキシジン、ベンザルコニウム、次亜塩素酸ナトリウム、ヨウ素</td></tr>
-                  <tr><td class="k">その他</td><td>L-カルボシステイン、ラメルテオン、フラボキサート、トリアムシノロン、静脈血管叢エキス</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="note" style="margin-top:10px">令和7年12月に公表された一覧から、<span class="em-change">ラメルテオンが追加</span>、ポリエンホスファチジルコリンが削除された。</div>
-          </div>
-
-          <details class="fold-in">
-            <summary>77成分をすべて見る</summary>
-            <div class="body">
-              <div class="tbl-wrap narrow">
-                <table>
-                  <thead><tr><th>有効成分</th><th>用途</th></tr></thead>
-                  <tbody>
-                    <tr><td>アシクロビル</td><td>抗ウイルス薬</td></tr>
-                    <tr><td>アシタザノラスト水和物</td><td>抗アレルギー薬</td></tr>
-                    <tr><td>アスコルビン酸</td><td>ビタミン剤</td></tr>
-                    <tr><td>アンモニア水</td><td>鎮痛鎮痒収斂消炎剤</td></tr>
-                    <tr><td>イソコナゾール硝酸塩</td><td>抗真菌薬</td></tr>
-                    <tr><td>イソプロパノール</td><td>殺菌消毒剤</td></tr>
-                    <tr><td>イトプリド塩酸塩</td><td>胃薬</td></tr>
-                    <tr><td>イブプロフェン</td><td>非ステロイド性抗炎症薬（NSAIDs）</td></tr>
-                    <tr><td>イブプロフェンピコノール</td><td>非ステロイド系消炎鎮痛剤</td></tr>
-                    <tr><td>インドメタシン</td><td>鎮痛消炎剤</td></tr>
-                    <tr><td>エタノール</td><td>殺菌消毒剤</td></tr>
-                    <tr><td>エピナスチン塩酸塩</td><td>抗アレルギー薬</td></tr>
-                    <tr><td>L-カルボシステイン</td><td>去痰薬</td></tr>
-                    <tr><td>塩酸テトラヒドロゾリン・プレドニゾロン</td><td>点鼻用血管収縮剤</td></tr>
-                    <tr><td>オキシコナゾール硝酸塩</td><td>抗真菌薬</td></tr>
-                    <tr><td>オキシテトラサイクリン塩酸塩・ヒドロコルチゾン</td><td>抗生物質・副腎皮質ホルモン配合剤</td></tr>
-                    <tr><td>オキシドール</td><td>殺菌消毒剤</td></tr>
-                    <tr><td>オリブ油</td><td>皮膚保護剤</td></tr>
-                    <tr><td>希ヨードチンキ</td><td>殺菌消毒剤</td></tr>
-                    <tr><td>クロトリマゾール</td><td>抗真菌薬</td></tr>
-                    <tr><td>クロラムフェニコール</td><td>抗生物質</td></tr>
-                    <tr><td>クロラムフェニコール・フラジオマイシン硫酸塩・プレドニゾロン</td><td>抗生物質</td></tr>
-                    <tr><td>クロルヘキシジングルコン酸塩</td><td>殺菌消毒剤</td></tr>
-                    <tr><td>ケトチフェンフマル酸塩</td><td>抗アレルギー薬</td></tr>
-                    <tr><td>サリチルアミド・アセトアミノフェン・無水カフェイン・プロメタジンメチレンジサリチル酸塩</td><td>総合感冒剤</td></tr>
-                    <tr><td>サリチル酸</td><td>寄生性皮膚疾患剤</td></tr>
-                    <tr><td>サリチル酸メチル・dl-カンフル・トウガラシエキス</td><td>鎮痛消炎剤</td></tr>
-                    <tr><td>サリチル酸メチル・l-メントール・dl-カンフル</td><td>鎮痛消炎剤</td></tr>
-                    <tr><td>サリチル酸メチル・l-メントール・dl-カンフル・グリチルレチン酸</td><td>鎮痛消炎剤</td></tr>
-                    <tr><td>酸化マグネシウム</td><td>制酸・緩下剤</td></tr>
-                    <tr><td>酸化亜鉛</td><td>収れん・消炎・保護剤</td></tr>
-                    <tr><td>次亜塩素酸ナトリウム</td><td>殺菌消毒剤</td></tr>
-                    <tr><td>ジクロフェナクナトリウム</td><td>非ステロイド性抗炎症薬（NSAIDs）</td></tr>
-                    <tr><td>消毒用エタノール</td><td>殺菌消毒剤</td></tr>
-                    <tr><td>静脈血管叢エキス</td><td>痔治療薬</td></tr>
-                    <tr><td>精製水</td><td>溶解剤</td></tr>
-                    <tr><td>炭酸水素ナトリウム</td><td>胃腸薬</td></tr>
-                    <tr><td>沈降炭酸カルシウム・コレカルシフェロール・炭酸マグネシウム</td><td>カルシウム配合剤</td></tr>
-                    <tr><td>チンク油</td><td>消炎薬</td></tr>
-                    <tr><td>デキサメタゾン</td><td>ステロイド</td></tr>
-                    <tr><td>テルビナフィン塩酸塩</td><td>抗真菌薬</td></tr>
-                    <tr><td>トコフェロール酢酸エステル</td><td>ビタミン剤</td></tr>
-                    <tr><td>トリアムシノロンアセトニド</td><td>口内炎・舌炎薬</td></tr>
-                    <tr><td>尿素</td><td>皮膚軟化剤</td></tr>
-                    <tr><td>白色ワセリン</td><td>軟膏基剤</td></tr>
-                    <tr><td>ハチミツ</td><td>矯味剤</td></tr>
-                    <tr><td>ピコスルファートナトリウム水和物</td><td>緩下剤</td></tr>
-                    <tr><td>ビサコジル</td><td>便秘薬</td></tr>
-                    <tr><td>ビダラビン</td><td>抗ウイルス薬</td></tr>
-                    <tr><td>ヒドロコルチゾン酪酸エステル</td><td>ステロイド</td></tr>
-                    <tr><td>フェキソフェナジン塩酸塩</td><td>抗アレルギー薬</td></tr>
-                    <tr><td>フェキソフェナジン塩酸塩・塩酸プソイドエフェドリン</td><td>抗アレルギー薬</td></tr>
-                    <tr><td>フェルビナク</td><td>非ステロイド性抗炎症薬（NSAIDs）</td></tr>
-                    <tr><td>ブテナフィン塩酸塩</td><td>抗真菌薬</td></tr>
-                    <tr><td>複方ヨード・グリセリン</td><td>口腔用殺菌消毒剤</td></tr>
-                    <tr><td>ブドウ酒</td><td>滋養強壮薬</td></tr>
-                    <tr><td>フラボキサート塩酸塩</td><td>頻尿・残尿感薬</td></tr>
-                    <tr><td>フルチカゾンプロピオン酸エステル</td><td>ステロイド</td></tr>
-                    <tr><td>プレドニゾロン吉草酸エステル酢酸エステル</td><td>ステロイド</td></tr>
-                    <tr><td>ベタメタゾン吉草酸エステル</td><td>ステロイド</td></tr>
-                    <tr><td>ベタメタゾン吉草酸エステル・フラジオマイシン硫酸塩</td><td>ステロイド</td></tr>
-                    <tr><td>ヘパリン類似物質</td><td>血行促進・皮膚保湿剤</td></tr>
-                    <tr><td>ベポタスチンベシル酸塩</td><td>抗アレルギー薬</td></tr>
-                    <tr><td>ペミロラストカリウム</td><td>抗アレルギー薬</td></tr>
-                    <tr><td>ベルベリン塩化物水和物・ゲンノショウコエキス</td><td>止瀉剤</td></tr>
-                    <tr><td>ベンザルコニウム塩化物</td><td>殺菌消毒剤</td></tr>
-                    <tr><td>ホウ砂</td><td>眼科用剤</td></tr>
-                    <tr><td>ホウ酸</td><td>眼洗浄・消毒薬</td></tr>
-                    <tr><td>ポビドンヨード</td><td>殺菌消毒剤</td></tr>
-                    <tr><td>マルツエキス</td><td>乳幼児用便秘薬</td></tr>
-                    <tr><td>ミコナゾール硝酸塩</td><td>抗真菌薬</td></tr>
-                    <tr><td>無水エタノール</td><td>殺菌消毒剤</td></tr>
-                    <tr><td>モメタゾンフランカルボン酸エステル水和物</td><td>アレルギー性鼻炎治療薬</td></tr>
-                    <tr><td>ヨウ素</td><td>殺菌消毒剤</td></tr>
-                    <tr><td>ラメルテオン</td><td>睡眠導入剤</td></tr>
-                    <tr><td>ロキソプロフェンナトリウム水和物</td><td>解熱消炎鎮痛剤</td></tr>
-                    <tr><td>ロラタジン</td><td>抗アレルギー薬</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </details>
-        </div>
-      </div>
-
-      <!-- 5. 効能・効果 -->
-      <div class="card" id="c-kounou" data-toc-label="効能・効果で分かれる">
-        <div class="card-title">同じ成分でも、効能・効果によって分かれる</div>
-
-        <div class="stack">
-          <div>料金がかかるのは、医療用医薬品とOTC医薬品で効能・効果が対応する場合。<span class="marker">OTCにない効能・効果で処方されたときはかからない</span>。</div>
-
-          <div class="tbl-wrap stack-sp kounou">
-            <table>
-              <thead><tr><th>成分</th><th class="c-on wrap">料金がかかる<br />OTCにもある効能・効果</th><th class="c-off wrap">かからない<br />OTCにない効能・効果</th></tr></thead>
-              <tbody>
-                <tr>
-                  <td class="k">フェキソフェナジン塩酸塩</td>
-                  <td class="c-on">アレルギー性鼻炎</td>
-                  <td class="c-off">蕁麻疹／皮膚疾患（湿疹・皮膚炎、皮膚そう痒症、アトピー性皮膚炎）に伴うそう痒</td>
-                </tr>
-                <tr>
-                  <td class="k">ヘパリン類似物質</td>
-                  <td class="c-on">肥厚性瘢痕・ケロイド、進行性指掌角皮症、皮脂欠乏症、外傷後の腫脹・血腫・腱鞘炎・筋肉痛・関節炎、凍瘡</td>
-                  <td class="c-off">血栓性静脈炎、血行障害に基づく疼痛と炎症性疾患、筋性斜頸（乳児期）</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="note-xs" style="margin-top:8px">今のところ示されているのはこの2成分だけ。</div>
-
-          <div>成分ごとの対応関係は国が一覧を公表する予定で、<span class="marker">現時点では出ていない</span>。</div>
-
-          <div>
-            <div class="sub-title">料金がかかるとされたもの<span class="qual">パブリックコメントへの回答</span></div>
-            <div class="blist">
-              <div class="bullet"><span>・</span><span><b>白色ワセリン・オリブ油</b>を軟膏やクリームの<span class="marker">基剤として混ぜた場合も料金がかかる</span>。基剤であっても皮膚の保護・乾燥防止という点でOTCの効能・効果に対応する、という整理。</span></div>
-              <div class="bullet"><span>・</span><span>OTCにない<b>高い濃度の外用薬</b>にもかかる。濃度が一致しなくても、一日最大用量の定めがなければ「医療用のほうが明らかに多い」とはいえないため。</span></div>
-              <div class="bullet"><span>・</span><span><b>エピナスチン塩酸塩点眼液</b>は、OTCにない0.1%・1日2回の製剤にもかかる。一日最大用量がOTCと変わらないため。</span></div>
-              <div class="bullet"><span>・</span><span><b>関節リウマチ・関節炎</b>の関節痛にもかかる。対象疾患に通常伴う症状として扱われる。</span></div>
-              <div class="bullet"><span>・</span><span><b>カルシウム・ビタミンDの補充</b>（沈降炭酸カルシウム、コレカルシフェロール）にもかかる。デノスマブなどの治療で低カルシウム血症を防ぐ目的でも、補充である以上はOTCの効能・効果に対応する、という整理。<span class="marker">長期使用に当たればかからない</span>。</span></div>
-            </div>
-          </div>
-
-          <div class="box-gray">
-            判定は診断名を踏まえて医師が行う。薬局側からは処方箋の記載でしか分からないため、<span class="marker">同じ薬でも患者によって金額が違う</span>場面が出る。
-          </div>
-        </div>
-      </div>
-
-      <!-- 6. 料金がかからない人・場面 -->
-      <div class="card" id="c-hanni" data-toc-label="料金がかからない人・場面">
-        <div class="card-title">料金がかからない人・場面</div><div class="note-xs" style="margin-bottom:10px">厚生労働省の医療保険部会の資料では「別途の負担を求めない者・療養」と呼ばれている。</div>
-
-        <div class="tbl-wrap stack-sp">
-          <table>
-            <thead><tr><th>分類</th><th class="c-off">料金がかからない</th><th class="c-on">料金がかかる</th></tr></thead>
-            <tbody>
-              <tr>
-                <td class="k">年齢</td>
-                <td class="c-off">18歳になった年度の3月31日まで</td>
-                <td class="note-xs c-on none">なし</td>
-              </tr>
-              <tr>
-                <td class="k">生活保護</td>
-                <td class="c-off">生活保護受給者</td>
-                <td class="note-xs c-on none">なし</td>
-              </tr>
-              <tr>
-                <td class="k">がん患者</td>
-                <td class="c-off">がんの治療中に、がんやその治療に関連して生じた状態に使った場合。副作用・有害事象への対応、免疫抑制状態への対応を含む。<span class="marker">脳腫瘍・骨肉腫・白血病・悪性リンパ腫など、診断名に「がん」と付かない悪性腫瘍も含む</span></td>
-                <td class="c-on">がんと関係の薄い症状（花粉症・水虫・便秘・風邪・腰痛など）。治療終了後の投薬、経過観察中、再発疑いで精査中、前がん病変の段階。<span class="marker">「がん疑い」の段階</span><br /><span class="note-xs">「がん疑い」は明確な基準を作れず医師によって判断が分かれるため、かかる側とされた。</span></td>
-              </tr>
-              <tr data-rev="2026-09-16">
-                <td class="k">難病患者</td>
-                <td class="c-off">指定難病（医療費助成の対象かどうかを問わない）と、それに付随して起きた傷病の治療。18〜20歳の小児慢性特定疾病も同じ扱い。<br /><span class="marker">確認は受給者証・登録者証で行う</span>。2027年度末までは、指定難病だと客観的に確認できる書類でもよい<span class="rev-chip">9/16</span><br /><span class="note-xs">9月11日の資料では臨床調査個人票（写しを含む）・不認定通知書が例に挙がっていた。具体名は今後の通知等で示される。</span></td>
-                <td class="c-on">指定難病およびそれに付随する傷病以外の治療</td>
-              </tr>
-              <tr>
-                <td class="k">公費</td>
-                <td class="c-off">国の公費負担医療の対象者が、その公費負担医療を受ける際に使った場合</td>
-                <td class="c-on"><span class="marker">地方単独の公費負担医療</span>（国の公費に該当する場合を除く）</td>
-              </tr>
-              <tr>
-                <td class="k">入院</td>
-                <td class="c-off">入院中（退院時を含む）の処方</td>
-                <td class="c-on"><span class="marker">在宅患者・施設入所者への処方</span><br /><span class="note-xs">入院とは治療環境が異なるため、とされた。</span></td>
-              </tr>
-              <tr>
-                <td class="k">処置等の一環</td>
-                <td class="c-off">処置等の前に同一・類似の薬が出ておらず、処置等と同日に新たに処方された場合。<span class="em-change">14日分まで</span>。外来の検査（生検・穿刺など侵襲を伴うもの）・処置・手術に伴う疼痛管理や感染予防が該当する。<span class="marker">検査や処置の最中に使ったもの</span>（胃カメラの炭酸水素ナトリウム、消毒用エタノールなど）</td>
-                <td class="c-on">処置等の前からあった症状への処方。14日分を超える処方。<span class="marker">リハビリの経過観察中の処方</span><br /><span class="note-xs">治癒が遅れても、14日は延びない。</span></td>
-              </tr>
-              <tr data-rev="2026-09-16">
-                <td class="k">長期使用<small>内服薬</small></td>
-                <td class="c-off">6か月程度以上にわたって症状の持続・反復と継続使用が確認でき、通年で使うこと（直近を含め<span class="em-change">おおむね50週（1年）</span>）が医療上必要と医師が認めた場合。初診・再診を問わず、<span class="marker">転院した場合は転院前と転院後の治療歴を合わせて6か月以上あればよい</span>（診療情報提供書・お薬手帳などで確認する）。</td>
-                <td class="c-on">使用実績が6か月以内。通年で使う必要が認められない場合。<span class="marker">今後半年以内に治療が終わる見込みの場合</span>。月経困難症など、月に数日だけ使う場合</td>
-              </tr>
-              <tr data-rev="2026-09-16">
-                <td class="k">長期使用<small>外用薬</small></td>
-                <td class="c-off">アトピー性皮膚炎に対するヘパリン類似物質・尿素の通年使用。<span class="em-change">アトピー性皮膚炎のプロアクティブ療法として通年で定期的に使うステロイド外用薬</span>。ほかに湿布と保湿剤等の経過措置あり（下の折りたたみ）<span class="rev-chip">9/16</span></td>
-                <td class="c-on">ステロイド外用薬（上のプロアクティブ療法を除く）、抗真菌外用薬、消毒薬。点眼薬（通年性のアレルギー性結膜炎などを除く）<br /><span class="note-xs">プロアクティブ療法を一定期間続けたあと中止した場合や、症状が出たときだけ使うリアクティブ療法は料金がかかる。</span></td>
-              </tr>
-              <tr>
-                <td class="k">妊婦・授乳婦</td>
-                <td class="c-off">OTCの添付文書で妊婦等に「服用しないこと」とされ、医療用では有益性投与とされている成分（例：イトプリド）</td>
-                <td class="c-on">年齢・疾患・症状・併用薬・使用期間を理由に「服用しないこと」とされている場合は、他の患者と同じく料金がかかる</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- 以前は折りたたみだったが、表だけ見ると「がん治療後・指定難病以外はかかる」と読めてしまうので開いて出す（2026-09-23） -->
-        <div style="margin-top:18px">
-          <div class="sub-title">ほかの分類に当たらなくても、長期使用に当たれば料金はかからない</div>
-          <div class="blist">
-            <div class="bullet"><span>・</span><span><b>がん治療が終わったあとの便秘に使う緩下剤</b>（酸化マグネシウム、ビサコジル、ピコスルファートなど）。リンパ節郭清で迷走神経が切れ、術後も便秘が長く続く場合など。治療中ではないので「がん患者」には当たらないが、長期使用の条件を満たせば料金はかからない。</span></div>
-            <div class="bullet"><span>・</span><span><b>指定難病ではない慢性疾患</b>（関節リウマチ、線維筋痛症など）。長期使用の条件を満たせば、料金がかからない場合がある。</span></div>
-          </div>
-        </div>
-
-        <div style="margin-top:14px">
-          <details class="fold-in">
-            <summary>湿布・保湿剤の経過措置は条件が厳しい</summary>
-            <div class="body">
-              <div class="stack">
-                <div>湿布や保湿剤は2028年度末までの経過措置で料金がかからない扱いにできるが、<span class="marker">通年で使っているだけでは足りない</span>。</div>
-                <div class="blist">
-                  <div class="bullet"><span>・</span><span><b>鎮痛消炎剤</b>… 通年で使っていることに加えて、慢性かつ重度の疾患であることが客観的に把握でき（例：変形性膝関節症のKellgren–Lawrence分類Grade4）、医師が年間を通じた疼痛管理として継続使用が必要と判断した場合に限る。</span></div>
-                  <div class="bullet"><span>・</span><span><b>皮膚保湿剤・皮膚保護剤・角化症治療剤</b>… 通年で使っていることに加えて、症状または疾患活動性が十分に改善せず、免疫抑制剤等による全身療法を併用した治療歴があり、医師が毎日使うよう指示して処方する場合に限る。</span></div>
-                </div>
-                <div class="note">2028年度末までに見直される。</div>
-              </div>
-            </div>
-          </details>
-        </div>
-      </div>
-
-      <!-- 3. 患者の負担 -->
-      <div class="card" id="c-futan">
-        <div class="card-title">患者の負担はどう変わるか</div>
-
-        <div class="stack">
-          <div>対象の成分を使うと、<span class="marker">薬剤費の4分の1が保険給付から外れて、患者が「特別の料金」として別に払う</span>。技術料（調剤基本料・薬学管理料など）は今までどおり保険給付で、影響を受けるのは薬剤費だけ。</div>
-
-          <div>
-            <div class="sub-title">厚生労働省が示した試算<span class="qual">3割負担・薬剤料のみ</span></div>
-            <div class="tbl-wrap">
-              <table>
-                <thead>
-                  <tr><th>例</th><th class="num">見直し前</th><th class="num">見直し後</th><th class="num">参考：OTCで買った場合</th></tr>
-                </thead>
-                <tbody>
-                  <tr data-rev="2026-09-16"><td class="k">解熱鎮痛薬<small>5日分</small></td><td class="old num">50円</td><td class="new num">70円</td><td class="num">約500円</td></tr>
-                  <tr data-rev="2026-09-16"><td class="k">去痰薬<small>5日分</small></td><td class="old num">50円</td><td class="new num">70円</td><td class="num">約1,500円</td></tr>
-                  <tr data-rev="2026-09-16"><td class="k">便秘薬<small>30日分</small></td><td class="old num">360円</td><td class="new num">550円</td><td class="num">約2,000円</td></tr>
-                  <tr data-rev="2026-09-16"><td class="k">抗アレルギー薬<small>30日分</small></td><td class="old num">540円</td><td class="new num">790円</td><td class="num">約1,000円</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="note-xs" style="margin-top:8px">医療用医薬品は例示した医薬品のうち最もシェアの高いものの額。OTC医薬品は代替可能なもののうち確認できた範囲でのネット上の最安値で、日数をそろえた比較ではない。別に初診料や調剤基本料等の技術料がかかる。</div>
-            <div class="note" style="margin-top:8px">上げ幅だけを見ると重いが、<span class="marker">この試算では、見直し後も薬剤費の自己負担はOTCで買うより少ない</span>。</div>
-          </div>
-
-          <div class="sub-title" style="margin-bottom:0">内訳<span class="qual">薬剤費1,800円・3割負担の場合</span></div>
-
-          <div class="svgbox">
-            <svg class="pc" viewBox="0 0 640 200" role="img" aria-label="抗アレルギー薬30日分・3割負担の場合。薬剤費1,800円のうち、見直し前は保険給付1,260円と定率負担540円で、自己負担は30パーセントの540円。見直し後は保険給付945円、定率負担405円、特別の料金450円となり、自己負担は47.5パーセントの855円に増える">
-              <text x="56" y="63" text-anchor="end" font-size="13" font-weight="700" fill="#444">見直し前</text>
-              <rect x="64" y="38" width="350" height="40" fill="#dfe9f6" />
-              <rect x="414" y="38" width="150" height="40" fill="#f2f2f2" />
-              <text x="239" y="63" text-anchor="middle" font-size="13" font-weight="700" fill="#2a5580">保険給付 1,260円</text>
-              <text x="489" y="63" text-anchor="middle" font-size="13" font-weight="700" fill="#444">定率負担 540円</text>
-              <path d="M414 84 v6 h150 v-6" fill="none" stroke="#9ca3af" stroke-width="1" />
-              <text x="489" y="105" text-anchor="middle" font-size="12" fill="#444">30%・540円</text>
-
-              <text x="56" y="147" text-anchor="end" font-size="13" font-weight="700" fill="#444">見直し後</text>
-              <rect x="64" y="122" width="262" height="40" fill="#dfe9f6" />
-              <rect x="326" y="122" width="113" height="40" fill="#f2f2f2" />
-              <rect x="439" y="122" width="125" height="40" fill="#fdebdd" />
-              <text x="195" y="147" text-anchor="middle" font-size="13" font-weight="700" fill="#2a5580">保険給付 945円</text>
-              <text x="382" y="147" text-anchor="middle" font-size="12" font-weight="700" fill="#444">定率負担 405円</text>
-              <text x="501" y="147" text-anchor="middle" font-size="12" font-weight="700" fill="#9a4414">特別の料金 450円</text>
-              <path d="M326 168 v6 h238 v-6" fill="none" stroke="#9ca3af" stroke-width="1" />
-              <text x="445" y="189" text-anchor="middle" font-size="12" font-weight="700" fill="#222">47.5%・855円</text>
-            </svg>
-
-            <svg class="sp" viewBox="0 0 320 212" role="img" aria-label="抗アレルギー薬30日分・3割負担の場合。薬剤費1,800円のうち、見直し前は保険給付1,260円と定率負担540円で、自己負担は30パーセントの540円。見直し後は保険給付945円、定率負担405円、特別の料金450円となり、自己負担は47.5パーセントの855円に増える">
-              <text x="8" y="16" font-size="12" font-weight="700" fill="#444">見直し前</text>
-              <rect x="8" y="24" width="213" height="38" fill="#dfe9f6" />
-              <rect x="221" y="24" width="91" height="38" fill="#f2f2f2" />
-              <text x="114" y="48" text-anchor="middle" font-size="12" font-weight="700" fill="#2a5580">保険給付 1,260円</text>
-              <text x="266" y="48" text-anchor="middle" font-size="11" font-weight="700" fill="#444">定率負担 540円</text>
-              <path d="M221 68 v6 h91 v-6" fill="none" stroke="#9ca3af" stroke-width="1" />
-              <text x="266" y="90" text-anchor="middle" font-size="12" fill="#444">30%・540円</text>
-
-              <text x="8" y="128" font-size="12" font-weight="700" fill="#444">見直し後</text>
-              <text x="312" y="128" text-anchor="end" font-size="11" font-weight="700" fill="#9a4414">特別の料金</text>
-              <rect x="8" y="136" width="160" height="38" fill="#dfe9f6" />
-              <rect x="168" y="136" width="68" height="38" fill="#f2f2f2" />
-              <rect x="236" y="136" width="76" height="38" fill="#fdebdd" />
-              <text x="88" y="160" text-anchor="middle" font-size="12" font-weight="700" fill="#2a5580">保険給付 945円</text>
-              <text x="202" y="160" text-anchor="middle" font-size="11" font-weight="700" fill="#444">定率 405円</text>
-              <text x="274" y="160" text-anchor="middle" font-size="11" font-weight="700" fill="#9a4414">450円</text>
-              <path d="M168 180 v6 h144 v-6" fill="none" stroke="#9ca3af" stroke-width="1" />
-              <text x="240" y="202" text-anchor="middle" font-size="12" font-weight="700" fill="#222">47.5%・855円</text>
-            </svg>
-          </div>
-          <div class="legend">
-            <div><i style="background:var(--fig-hoken-bg)"></i>保険給付</div>
-            <div><i style="background:var(--fig-teiritsu-bg)"></i>定率負担（3割）</div>
-            <div><i style="background:var(--fig-tokubetsu-bg)"></i>特別の料金（薬剤費の4分の1）</div>
-          </div>
-          <div class="note-xs" style="text-align:center">薬剤費1,800円に対する内訳。技術料は含めていない。</div>
-
-          <div>
-            <div class="sub-title">負担割合による違い</div>
-            <div>保険給付の対象として残る4分の3に定率負担がかかり、残りの4分の1は全額を払うので、見直し後の薬剤費の自己負担はおおよそ次の割合になる。</div>
-
-            <div class="box-blue" style="text-align:center;font-weight:700;margin-top:14px">
-              薬剤費 ×（ 負担割合 × 0.75 ＋ 0.25 ）
-            </div>
-
-            <div class="tbl-wrap mid" style="margin-top:14px">
-              <table>
-                <thead>
-                  <tr><th>負担割合</th><th class="num">見直し前</th><th class="num">見直し後</th><th class="num">倍率</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td class="k">3割</td><td class="old num">薬剤費の30%</td><td class="new num">47.5%</td><td class="num">約1.6倍</td></tr>
-                  <tr><td class="k">2割</td><td class="old num">薬剤費の20%</td><td class="new num">40%</td><td class="num">2倍</td></tr>
-                  <tr><td class="k">1割</td><td class="old num">薬剤費の10%</td><td class="new num">32.5%</td><td class="num"><span class="marker">3.25倍</span></td></tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div style="margin-top:14px"><span class="em-change">負担割合が低い人ほど、増え方が大きい。</span>特別の料金は負担割合に関係なく薬剤費の4分の1をそのまま払うので、もともとの負担が軽い人ほど上乗せの比率が大きくなる。</div>
-
-            <div class="box-gray" style="margin-top:14px" id="rev-zei">
-              <div>この倍率は薬剤費に対する概算。実際は<a href="#c-kingaku">下の計算</a>のとおり、特別の料金の側で1の位を四捨五入し、保険の側で点数に換算するので、窓口の金額は前後する。上の割合も厚生労働省の試算も、消費税は含めていない。</div>
-              <div style="margin-top:9px">消費税がかかるかどうかは<b>決まっていない</b>。9月9日の資料でも「政府内で検討中」とされている。選定療養では上乗せされているが、一部保険外療養については非課税を求める税制改正要望が出ている。方向が決まるのは、例年どおりなら年末の税制改正大綱。</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3b. 金額の出し方（事務が窓口の金額を確かめるときに引くので、独立したカードにした） -->
-      <div class="card" id="c-kingaku" data-rev="2026-09-09" data-toc-label="金額の出し方">
-        <div class="card-title">金額の出し方<span class="qual">令和8年9月9日に示された</span><span class="rev-chip">9/9</span></div>
-        <div class="stack">
-          <div>
-            <div><span class="marker">特別の料金は、点数に換算せず円のまま計算する</span>。薬価の4分の1に投薬全量を掛け、最後に1の位を四捨五入する。残りの4分の3は保険対象となる費用として、これまでどおり薬剤料の点数に換算する。</div>
-
-            <div class="box-gray" style="margin-top:14px">
-              <div class="sub-title">例）内服薬を1日2錠・30日分<span class="qual">厚生労働省の資料の例</span></div>
-              <div class="tbl-wrap mid">
-                <table>
-                  <thead>
-                    <tr><th class="num">薬価</th><th class="num wrap">対象医薬品の価格の4分の1</th><th class="num wrap">保険外併用療養費の算出に用いる価格<br /><small>（残りの4分の3）</small></th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td class="num">16.50</td><td class="new num">4.13</td><td class="num">12.38</td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="note-xs" style="margin-top:6px">薬価16.5円の4分の1が4.13円（16.5÷4＝4.125）、残りの4分の3が12.38円（16.5×3/4＝12.375）。</div>
-
-              <div class="tbl-wrap mid keisan" style="margin-top:14px">
-                <table>
-                  <thead><tr><th></th><th>計算</th><th class="num">金額</th></tr></thead>
-                  <tbody>
-                    <tr><td class="k">特別の料金</td><td>4.13円 × 1回1錠 × 1日2回 × 30日 ＝ 247.8円</td><td class="new num">250円</td></tr>
-                    <tr><td class="k">保険対象となる費用<small>10割</small></td><td>12.38円 × 2錠 ＝ 24.76円 → 2点、× 30日 ＝ 60点</td><td class="num">600円</td></tr>
-                    <tr><td class="k">保険分の自己負担<small>3割の場合</small></td><td>600円 × 0.3</td><td class="num">180円</td></tr>
-                    <tr><td class="k">窓口で払う薬剤費</td><td>250円 ＋ 180円</td><td class="new num">430円</td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="note-xs" style="margin-top:8px">技術料は含めていない。</div>
-            </div>
-
-            <div style="margin-top:14px">長期収載品の選定療養も、<a href="#c-sentei">2027年3月から同じ計算方法に変更となる</a>。</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 7. 選定療養との関係 -->
-      <div class="card" id="c-sentei" data-toc-label="選定療養との関係">
-        <div class="card-title">長期収載品の選定療養との関係</div>
-
-        <div class="stack">
-          <div>
-            <div class="sub-title">両方に該当するときは、一部保険外療養が優先される</div>
-            患者が払うのは薬剤費の4分の1だけで、<span class="marker">選定療養の特別の料金は重ねてかからない</span>。制度が複雑にならないようにするため。なお、処方箋の「一部保険外療養」欄が「ー」なら、選定療養の料金がかかることがある。<a href="#c-shohosen">処方箋の記載</a>を参照。
-          </div>
-
-          <div class="tbl-wrap">
-            <table>
-              <thead><tr><th></th><th>長期収載品の選定療養</th><th>OTC類似薬の一部保険外療養</th></tr></thead>
-              <tbody>
-                <tr>
-                  <td class="k">負担を求める理由</td>
-                  <td>後発品があるのに先発品を選んだから<br /><span class="note-xs">患者の選択に対して</span></td>
-                  <td class="new">OTCで買える薬を保険で受けたから<br /><span class="note-xs">薬の性質に対して</span></td>
-                </tr>
-                <tr>
-                  <td class="k">対象になる薬</td>
-                  <td>選定療養の対象となる長期収載品</td>
-                  <td class="new">77成分（1,042品目）</td>
-                </tr>
-                <tr>
-                  <td class="k">何で決まるか</td>
-                  <td>銘柄<br /><span class="note-xs">先発品を選んだかどうか</span></td>
-                  <td class="new"><span class="marker">成分</span><br /><span class="note-xs">77成分に該当するかどうか</span></td>
-                </tr>
-                <tr>
-                  <td class="k">金額</td>
-                  <td>（先発品薬価 − 後発品最高薬価）× 1/2<br /><span class="note-xs">2026年6月から1/4→1/2</span></td>
-                  <td class="new">薬剤費 × 1/4</td>
-                </tr>
-                <tr>
-                  <td class="k">料金がかからない人</td>
-                  <td>設けられていない</td>
-                  <td class="new">年齢・がん・難病・公費・入院・処置後・長期使用・妊婦・生活保護</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div>選定療養は銘柄で決まるので、後発医薬品に変更すれば料金はかからなくなる。一部保険外療養は成分で決まるので、<span class="marker">後発医薬品に変更しても料金はかかる</span>。</div>
-
-          <div>料金がかからない人も逆になる。選定療養は子どもにも、公費負担医療を受けている人にも特別の料金がかかるが、一部保険外療養は18歳になった年度の3月31日まで・生活保護受給者・国の公費負担医療の受給者にはかからない。<b>同じ患者でも、どちらの制度かで結論が変わる。</b></div>
-
-          <details class="fold-in">
-            <summary>今の選定療養対象品と成分が重なるもの（目安・約60品目）</summary>
-            <div class="body">
-              <div class="stack">
-                <div class="box-gray">選定療養の対象医薬品マスタ（776品目）と77成分を成分名で突き合わせた<span class="marker">目安</span>。投与経路や1日最大用量で絞り込まれるため、ここに載っていても実際は料金がかからないものが混じる。確定は告示の品目リストを待つ。</div>
-                <div class="tbl-wrap mid">
-                  <table>
-                    <thead><tr><th>成分</th><th>選定療養対象として挙がっている品目</th></tr></thead>
-                    <tbody>
-                      <tr><td class="k">ヘパリン類似物質</td><td>ヒルドイド ソフト軟膏／クリーム／ローション／ゲル／フォーム 0.3%</td></tr>
-                      <tr><td class="k">ベタメタゾン吉草酸エステル</td><td>リンデロン-V 軟膏／クリーム／ローション、ベトネベート 軟膏／クリーム</td></tr>
-                      <tr><td class="k">尿素</td><td>ウレパールクリーム10%、パスタロンクリーム20%、ケラチナミンコーワクリーム20%</td></tr>
-                      <tr><td class="k">ジクロフェナクナトリウム</td><td>ボルタレン錠25mg、ボルタレンゲル／ローション1%、ナボールゲル1%、ジクロード点眼液0.1%</td></tr>
-                      <tr><td class="k">ロキソプロフェンナトリウム水和物</td><td>ロキソニン錠60mg</td></tr>
-                      <tr><td class="k">フェルビナク</td><td>ナパゲルンローション3%</td></tr>
-                      <tr><td class="k">L-カルボシステイン</td><td>ムコダインシロップ5%</td></tr>
-                      <tr><td class="k">ロラタジン</td><td>クラリチン錠10mg、レディタブ錠10mg、ドライシロップ1%</td></tr>
-                      <tr><td class="k">ベポタスチンベシル酸塩</td><td>タリオン錠5／10mg、タリオンOD錠5／10mg</td></tr>
-                      <tr><td class="k">ケトチフェンフマル酸塩</td><td>ザジテンドライシロップ0.1%、点眼液0.05%、点鼻液0.05%</td></tr>
-                      <tr><td class="k">エピナスチン塩酸塩</td><td>アレジオン点眼液0.05%、アレジオンLX点眼液0.1%</td></tr>
-                      <tr><td class="k">ペミロラストカリウム</td><td>ペミラストン錠5mg、アレギサール点眼液0.1%</td></tr>
-                      <tr><td class="k">モメタゾンフランカルボン酸エステル水和物</td><td>ナゾネックス点鼻液50μg 56噴霧用／112噴霧用</td></tr>
-                      <tr><td class="k">フェキソフェナジン・<br />プソイドエフェドリン</td><td>ディレグラ配合錠</td></tr>
-                      <tr><td class="k">テルビナフィン塩酸塩</td><td>ラミシールクリーム1%、ラミシール外用液1%</td></tr>
-                      <tr><td class="k">クロトリマゾール</td><td>エンペシドクリーム1%</td></tr>
-                      <tr><td class="k">イソコナゾール硝酸塩</td><td>アデスタン腟錠300mg</td></tr>
-                      <tr><td class="k">オキシコナゾール硝酸塩</td><td>オキナゾール腟錠100mg／600mg</td></tr>
-                      <tr><td class="k">アシクロビル</td><td>ゾビラックス顆粒40%、軟膏5%、クリーム5%</td></tr>
-                      <tr><td class="k">ビダラビン</td><td>アラセナ-A軟膏3%、クリーム3%</td></tr>
-                      <tr><td class="k">トリアムシノロンアセトニド</td><td>レダコート軟膏0.1%</td></tr>
-                      <tr><td class="k">デキサメタゾン</td><td>アフタゾロン口腔用軟膏0.1%</td></tr>
-                      <tr><td class="k">ポビドンヨード</td><td>イソジン液10%、ゲル10%、スクラブ液7.5%、フィールド液10%</td></tr>
-                      <tr><td class="k">イトプリド塩酸塩</td><td>ガナトン錠50mg</td></tr>
-                      <tr><td class="k">ピコスルファートナトリウム水和物</td><td>ラキソベロン内用液0.75%</td></tr>
-                      <tr><td class="k">ベルベリン・ゲンノショウコ</td><td>フェロベリン配合錠</td></tr>
-                      <tr><td class="k">ラメルテオン</td><td>ロゼレム錠8mg</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </details>
-
-          <div data-rev="2026-09-09">
-            <div class="sub-title">選定療養の計算方法も、2027年3月から変更となる<span class="rev-chip">9/9</span></div>
-            <div>一部保険外療養の施行に合わせて、長期収載品の特別の料金も<span class="marker">点数に換算せず、差額の2分の1に投薬全量を掛けて計算する</span>。<span class="em-change">料金の割合（2分の1）や対象品目は変わらない</span>。</div>
-            <div style="margin-top:10px">計算方法が変わるので、同じ処方でも金額が動く。端数の扱いは示されていない。</div>
-          </div>
-
-          <div class="note">2026年改定の変更点と、2027年3月からの新旧の計算方法は<a href="../改定資料/選定療養_概要2026.html">選定療養の改定ポイント</a>、窓口での手順は<a href="../チェックリスト/選定療養_実務チェックリスト.html">選定療養 算定チェックリスト</a>、金額の計算は<a href="../ツール/選定療養費計算ツール.html">選定療養 計算ツール</a>を参照。<span class="note-xs">いずれも今の計算方法にもとづくもので、2027年3月に合わせて直す。</span></div>
-        </div>
-      </div>
-
-      <!-- 2. 進み具合 -->
-      <div class="card" id="c-shinchoku">
-        <div class="card-title">今どこまで決まったか<span class="qual">令和8年9月16日時点</span></div>
-
-        <div class="stage">
-          <div class="stage-h"><span class="stage-tag fixed">決まっている</span>制度の中身</div>
-          <div class="blist">
-            <div class="bullet"><span>・</span><span>健康保険法に「<span class="em-change">一部保険外療養</span>」を新設した。保険外併用療養費のひとつだが、<span class="marker">選定療養とは別の区分</span>。医療用医薬品の給付を受ける患者とOTC医薬品で対応している患者との公平性を確保し、現役世代を中心とする保険料負担の上昇を抑えるための制度。</span></div>
-            <div class="bullet" data-rev="2026-09-16"><span>・</span><span>施行は<span class="em-change">2027年3月1日</span>の予定。正式な日付は政令で決まる。<span class="rev-chip">9/16</span></span></div>
-            <div class="bullet"><span>・</span><span>制度の中身：<a href="#c-seibun">対象の77成分</a>、<a href="#c-kounou">効能・効果による違い</a>、<a href="#c-hanni">料金がかからない人・場面</a>、<a href="#c-shohosen">処方箋の記載</a>、<a href="#c-kingaku">金額の出し方</a>、<a href="#c-sentei">選定療養との関係</a></span></div>
-          </div>
-          <div class="note-xs" style="margin-top:7px">いずれも令和8年9月16日までに、中医協と医療保険部会で了承されている。正式には公布・通知で示される。</div>
-        </div>
-
-        <div class="stage">
-          <div class="stage-h"><span class="stage-tag">まだ決まっていない</span>施行までに示されるもの</div>
-          <div class="blist">
-            <div class="bullet"><span>・</span><span><span class="marker">対象1,042品目の確定リスト</span>。今出ているのは成分の一覧だけ。</span></div>
-            <div class="bullet" data-rev="2026-09-09"><span>・</span><span>特別の料金に<span class="marker">消費税がかかるかどうか</span>。政府内で検討中。<span class="rev-chip">9/9</span></span></div>
-            <div class="bullet" data-rev="2026-09-09"><span>・</span><span>領収書での表示方法と、薬局レセプトの記載方法。<span class="rev-chip">9/9</span></span></div>
-            <div class="bullet" data-rev="2026-09-16"><span>・</span><span>全国共通のQ&amp;A、患者説明用の資料など。施行までに国が作る。<a href="#c-yotei">この先の予定</a><span class="rev-chip">9/16</span></span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 8. この先 -->
       <div class="card" id="c-yotei">
         <div class="card-title">この先の予定</div>
-
         <div class="tbl-wrap narrow">
           <table>
             <thead><tr><th>時期</th><th>内容</th></tr></thead>
             <tbody>
-              <tr data-rev="2026-09-16"><td class="k">2026年9月16日</td><td>中医協と医療保険部会で、<b>制度の中身が了承された</b><span class="rev-chip">9/16</span></td></tr>
-              <tr data-rev="2026-09-16"><td class="k">近日</td><td>正式なとりまとめの公表と、省令・告示の公布<span class="rev-chip">9/16</span></td></tr>
-              <tr data-rev="2026-09-09"><td class="k">その後</td><td>告示・通知等により、対象品目の確定リスト、消費税の扱い、レセプト・領収書の記載方法などが示される<span class="rev-chip">9/9</span></td></tr>
-              <tr data-rev="2026-09-16"><td class="k">施行まで</td><td>国が全国共通のQ&amp;A、処方箋・レセプトへの記載方法、患者説明用の資料、紙カルテ向けのチェックシートを作って公表する<span class="rev-chip">9/16</span></td></tr>
-              <tr data-rev="2026-09-16"><td class="k" style="color:var(--blue)">2027年3月1日</td><td class="new">施行（予定）<span class="rev-chip">9/16</span></td></tr>
-              <tr><td class="k">2027年度以降</td><td>対象範囲を拡大していく。特別の料金の割合の引き上げも併せて検討</td></tr>
+              <tr><td class="k">2026年末</td><td>特別の料金に消費税がかかるかどうかが示される見込み</td></tr>
+              <tr><td class="k">施行まで</td><td>全国共通のQ&amp;A、患者向けのリーフレット・解説資料が、厚生労働省の特設ページで順次公表される</td></tr>
+              <tr><td class="k" style="color:var(--blue)">2027年3月1日</td><td class="new">施行</td></tr>
+              <tr><td class="k">毎年4月1日</td><td>対象医薬品リストの更新（3月頃に事前に公表）</td></tr>
+              <tr><td class="k">2027年度以降</td><td>対象範囲を広げていく（処方箋医薬品は含まない）。特別の料金の割合の引き上げも検討</td></tr>
+              <tr><td class="k">2028年3月31日</td><td>指定難病を受給者証・登録者証以外の書類で確認できる期限</td></tr>
               <tr><td class="k">2028年度末</td><td>湿布・保湿剤等の経過措置の期限</td></tr>
             </tbody>
           </table>
         </div>
-
-        <div class="box-gray" style="margin-top:14px">
-          将来的には<span class="marker">対象範囲を相当部分にまで拡大することを目指す</span>とされている。広げる先はOTC医薬品と同じ症状に使える医療用医薬品で、処方箋医薬品は含まない。
-        </div>
       </div>
 
-      <!-- 10. 出典 -->
-      <div class="card" data-toc="skip">
-        <div class="card-title">出典</div>
-        <div class="blist">
-          <div class="bullet"><span>・</span><span>健康保険法等の一部を改正する法律（令和8年法律第31号）<br /><span class="note">一部保険外療養は第63条第2項第6号。</span></span></div>
-          <div class="bullet" data-rev="2026-09-16"><span>・</span><span><a href="../files/OTC類似薬の保険給付の見直しの実施に向けた中間とりまとめ_20260806.pdf" target="_blank" rel="noopener">OTC類似薬の保険給付の見直しの実施に向けた技術的検討会「中間とりまとめ」（令和8年8月6日）（PDF）</a><span class="rev-chip">9/16</span><br /><span class="note">料金がかからない人・場面の範囲、効能・効果の考え方、外用薬の扱いと経過措置。</span></span></div>
-          <div class="bullet"><span>・</span><span><a href="../files/OTC類似薬の保険給付の見直しの実施について.pdf" target="_blank" rel="noopener">中央社会保険医療協議会 総会 総-2「OTC類似薬の保険給付の見直しの実施について」（令和8年8月26日）（PDF）</a><br /><span class="note">制度の概要、77成分、実務フロー、負担額の試算。倍率の計算と現場向けの補足は当社で加えた。</span></span></div>
-          <div class="bullet"><span>・</span><span>令和９年度 税制改正要望事項（令和8年8月31日 厚生労働省）2ページ「医療保険」<br /><span class="note">非課税の要望は要望事項の本文になく、報道（令和8年9月1日・2日）による。</span></span></div>
-          <div class="bullet"><span>・</span><span><a href="../files/OTC類似薬の保険給付の見直しの実施について_20260903.pdf" target="_blank" rel="noopener">第214回 社会保障審議会医療保険部会 資料2「OTC類似薬の保険給付の見直しの実施について」（令和8年9月3日）（PDF）</a><br /><span class="note">パブリックコメント897件への回答。</span></span></div>
-          <div class="bullet"><span>・</span><span><a href="../files/OTC類似薬の保険給付の見直しの実施について（その２）_20260909.pdf" target="_blank" rel="noopener">中央社会保険医療協議会 総会 総-2「OTC類似薬の保険給付の見直しの実施について（その２）」（令和8年9月9日）（PDF）</a><br /><span class="note">金額の出し方、処方箋様式。</span></span></div>
-          <div class="bullet"><span>・</span><span><a href="../files/一部保険外療養の創設に伴う療養担当規則等の所要の見直しについて_20260909.pdf" target="_blank" rel="noopener">同 総-3-2「一部保険外療養の創設に伴う療養担当規則等の所要の見直しについて」（令和8年9月9日）（PDF）</a><br /><span class="note">掲示義務、制度の位置づけ、選定療養の計算方法の変更。あわせて<a href="../files/諮問書（一部保険外療養の創設に伴う療養担当規則等の所要の見直しについて）_20260909.pdf" target="_blank" rel="noopener">諮問書（PDF）</a>。</span></span></div>
-          <div class="bullet" data-rev="2026-09-16"><span>・</span><span><a href="../files/OTC類似薬の保険給付の見直しの実施について_20260911.pdf" target="_blank" rel="noopener">第215回 社会保障審議会医療保険部会 資料1「OTC類似薬の保険給付の見直しの実施について」（令和8年9月11日）（PDF）</a><span class="rev-chip">9/16</span><br /><span class="note">プロアクティブ療法を中止した場合・リアクティブ療法の扱い、指定難病の確認書類の例。</span></span></div>
-          <div class="bullet" data-rev="2026-09-16"><span>・</span><span><a href="../files/答申書（一部保険外療養の創設に伴う療養担当規則等の所要の見直しについて）_20260916.pdf" target="_blank" rel="noopener">中央社会保険医療協議会 総会 総-3「答申について（答申書）」（令和8年9月16日）（PDF）</a><span class="rev-chip">9/16</span><br /><span class="note">あわせて<a href="../files/答申_別紙1_省令（一部保険外療養の創設に伴う療養担当規則等の所要の見直しについて）_20260916.pdf" target="_blank" rel="noopener">別紙1 省令（PDF）</a>・<a href="../files/答申_別紙2_告示（一部保険外療養の創設に伴う療養担当規則等の所要の見直しについて）_20260916.pdf" target="_blank" rel="noopener">別紙2 告示（PDF）</a>。制度の定義、保険薬局の基準、施行日の改正案。</span></span></div>
-          <div class="bullet" data-rev="2026-09-16"><span>・</span><span><a href="../files/OTC類似薬の保険給付の見直しの実施について_20260916.pdf" target="_blank" rel="noopener">第216回 社会保障審議会医療保険部会 資料1「OTC類似薬の保険給付の見直しの実施に向けたとりまとめ（案）」（令和8年9月16日）（PDF）</a><span class="rev-chip">9/16</span><br /><span class="note">長期使用の目安の位置づけ、試算の金額。</span></span></div>
-          <div class="bullet" data-rev="2026-09-29"><span>・</span><span><a href="../files/第11回電子処方箋等検討ワーキンググループ資料_20260929.pdf" target="_blank" rel="noopener">第11回 電子処方箋等検討ワーキンググループ 資料1（令和8年9月29日）（PDF）</a><span class="rev-chip">9/29</span><br /><span class="note">電子処方箋の処方内容（控え）の表示、薬品補足区分。</span></span></div>
-          <div class="bullet"><span>・</span><span class="note">「今の選定療養対象品と成分が重なるもの」は、サイト内の選定療養対象医薬品マスタと77成分を成分名で突き合わせた目安で、厚生労働省が公表したものではない。</span></div>
-        </div>
-      </div>
+      <nav class="otc-nav bottom" aria-label="OTC類似薬のページ">
+        <span class="otc-nav-i cur" aria-current="page">全体の流れ</span>
+        <a class="otc-nav-i" href="OTC類似薬_処方箋と窓口対応.html">処方箋と窓口対応</a>
+        <a class="otc-nav-i" href="OTC類似薬_対象の薬と料金がかからない場合.html">対象の薬と、料金がかからない場合</a>
+        <a class="otc-nav-i" href="OTC類似薬_特別の料金の計算.html">特別の料金の計算</a>
+        <a class="otc-nav-i sub" href="OTC類似薬_これまでの動き.html">これまでの動き</a>
+      </nav>
 
     </div>
 
-    <script>
-      // 「最新の動き」：最新の追記分のチップを青くし、その箇所だけを残す絞り込みを付ける。
-      // 本文側は data-rev="YYYY-MM-DD" と <span class="rev-chip">M/D</span> を書くだけでよい。
-      (function () {
-        var page = document.querySelector('.page');
-        if (!page) return;
-        var marks = [].slice.call(page.querySelectorAll('[data-rev]'));
-        if (!marks.length) return;
-
-        // 最新の追記日を求める（次の追記を足せば、前回分のチップは自動でグレーに落ちる）
-        var latest = marks.map(function (el) { return el.getAttribute('data-rev'); }).sort().pop();
-        var label = latest.slice(5, 7).replace(/^0/, '') + '月' + latest.slice(8, 10).replace(/^0/, '') + '日';
-
-        function paint(el) {
-          [].forEach.call(el.querySelectorAll('.rev-chip'), function (c) { c.classList.add('new'); });
-        }
-        // 絞り込みで残すのは最新日の分だけ。data-rev があるだけで残すと、前回以前の分まで出てしまう
-        marks.forEach(function (el) {
-          if (el.getAttribute('data-rev') !== latest) return;
-          paint(el);
-          el.classList.add('rev-latest');
-        });
-        [].forEach.call(page.querySelectorAll('.rev-day'), function (d) {
-          if (d.getAttribute('data-rev-day') === latest) paint(d);
-        });
-
-        var btn = document.getElementById('revFocus');
-        if (!btn) return;
-        // 薄くする単位。該当箇所を含むものと、上の一覧カード自体は薄くしない
-        var UNITS = '.card > *:not(.card-title), .stage, .fq, .fq-goal, .bullet, .stack > div, .box-gray, .box-blue, .tbl-wrap, .svgbox, .legend, details, tbody > tr';
-        var OFF = label + 'に追加・修正した箇所だけを表示する';
-        var ON = '全体を表示する';
-        btn.textContent = OFF;
-
-        btn.addEventListener('click', function () {
-          var on = document.body.classList.toggle('rev-focus');
-          btn.classList.toggle('on', on);
-          btn.textContent = on ? ON : OFF;
-          [].forEach.call(page.querySelectorAll('.dim'), function (el) { el.classList.remove('dim'); });
-          if (!on) return;
-          // 文書順に見るので、外側を薄くしたら内側は触らない（重ねると薄くなりすぎる）
-          [].forEach.call(page.querySelectorAll(UNITS), function (el) {
-            if (el.closest('#rev-log') || el.closest('.page-toc-wrap')) return;   // 一覧カードと目次は残す
-            if (el.matches('.rev-latest') || el.querySelector('.rev-latest') || el.closest('.rev-latest')) return;
-            if (el.parentElement && el.parentElement.closest('.dim')) return;
-            el.classList.add('dim');
-          });
-        });
-      })();
-
-      // 「最新の動き」は資料が出るたびに1日分ずつ伸びるので、最新の1日分だけ開いておき、
-      // それより前は畳む。日付ブロックを1つ足すだけ、という書き方は変えない
-      (function () {
-        var log = document.getElementById('rev-log');
-        if (!log) return;
-        var days = [].slice.call(log.querySelectorAll('.rev-day'));
-        if (days.length < 2) return;
-
-        var box = document.createElement('details');
-        box.className = 'fold-in rev-past';
-        var head = document.createElement('summary');
-        head.textContent = 'これまでの動き（' + (days.length - 1) + '日分）';
-        var body = document.createElement('div');
-        body.className = 'body';   // このページの折りたたみは .body で余白を付けている
-        days.slice(1).forEach(function (el) { body.appendChild(el); });
-        box.appendChild(head);
-        box.appendChild(body);
-        log.appendChild(box);
-      })();
-
-      // 画面からはみ出す表に、横に動かせることを文字で添える。
-      // 影や矢印だと読者が気づかないため（折りたたみの取っ手と同じ理由）
-      (function () {
-        var wraps = [].slice.call(document.querySelectorAll('.tbl-wrap'));
-        if (!wraps.length) return;
-
-        function refresh() {
-          wraps.forEach(function (w) {
-            var over = w.scrollWidth - w.clientWidth > 4;
-            var hint = w.nextElementSibling;
-            var has = hint && hint.classList.contains('scroll-hint');
-            if (over && !has) {
-              var el = document.createElement('div');
-              el.className = 'scroll-hint';
-              el.textContent = '表は横に動かせる';
-              w.parentNode.insertBefore(el, w.nextSibling);
-            } else if (!over && has) {
-              hint.remove();
-            }
-          });
-        }
-        refresh();
-
-        // 幅が変わった直後は表の幅が確定していないので、少し置いてから測り直す
-        var timer;
-        function later() { clearTimeout(timer); timer = setTimeout(refresh, 150); }
-        window.addEventListener('resize', later);
-        // 画面の回転や横幅の変化は resize が飛ばないことがあるので、表そのものの幅も見張る
-        if (window.ResizeObserver) {
-          var ro = new ResizeObserver(later);
-          wraps.forEach(function (w) { ro.observe(w); });
-        }
-        // 折りたたみの中の表は、開いて幅が決まってから測る
-        [].forEach.call(document.querySelectorAll('details'), function (d) {
-          d.addEventListener('toggle', refresh);
-        });
-      })();
-    </script>
-
+    <script src="../assets/otc-ruiji.js"></script>
     <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   </body>
 </html>

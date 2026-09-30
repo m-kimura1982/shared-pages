@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>OTC類似薬：処方箋と窓口対応｜実務ナレッジ集</title>
+    <meta name="search-keywords" content="OTC類似薬,一部保険外療養,特別の料金,4分の1,処方箋様式,一部保険外療養欄,変更不可,患者希望,空欄,疑義照会,旧様式,リフィル,分割調剤,電子処方箋,処方内容（控え）,類似薬 外,薬品補足区分,長期収載品,選定療養,（類）,領収書,明細書,レセプト,掲示義務,ヒルドイド,リンデロン,タリオン,ロキソニン" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/fold.css" />
+    <link rel="stylesheet" href="../assets/otc-ruiji.css" />
+  </head>
+  <body>
+    <script src="../assets/site-header.js" defer></script>
+    <script src="../assets/page-toc.js" defer></script>
+
+    <div class="page">
+
+      <div class="page-title-left">
+        <div class="otc-kicker">OTC類似薬の一部保険外療養</div>
+        <h1>処方箋と窓口対応</h1>
+      </div>
+
+      <nav class="otc-nav" aria-label="OTC類似薬のページ">
+        <a class="otc-nav-i" href="OTC類似薬の一部保険外療養.html">全体の流れ</a>
+        <span class="otc-nav-i cur" aria-current="page">処方箋と窓口対応</span>
+        <a class="otc-nav-i" href="OTC類似薬_対象の薬と料金がかからない場合.html">対象の薬と、料金がかからない場合</a>
+        <a class="otc-nav-i" href="OTC類似薬_特別の料金の計算.html">特別の料金の計算</a>
+        <a class="otc-nav-i sub" href="OTC類似薬_これまでの動き.html">これまでの動き</a>
+      </nav>
+
+      <div class="page-toc-wrap"><div id="page-toc"></div></div>
+
+
+      <div class="card" id="c-shohosen" data-rev="2026-09-09" data-toc-label="「一部保険外療養」欄">
+        <div class="card-title">処方箋の「一部保険外療養」欄<span class="rev-chip">9/9</span></div>
+        <div>対象の77成分の薬には、一部保険外療養の料金が<b>かかるなら「○」</b>、<b>かからないなら「―」</b>が記載される。</div>
+      
+        <figure class="form-fig">
+          <div class="frame">
+            <picture>
+              <!-- スマホは欄だけの切り出し。全体版は縮むと記載要領の字が読めないため -->
+              <source media="(max-width:640px)" srcset="../images（レセコン画像など）/処方箋様式の改定2.png" />
+              <img src="../images（レセコン画像など）/処方箋様式の改定.png"
+                   alt="処方箋の処方欄。左から「変更不可（医療上必要）」「患者希望」に続けて「一部保険外療養」の欄が並び、右側に記載要領が書かれている" />
+            </picture>
+          </div>
+          <figcaption>赤字が追加される部分（処方欄の左の<b>「一部保険外療養」欄</b>と、記載要領の一文）。「変更不可」欄・「患者希望」欄は今までどおり「✓」又は「×」。</figcaption>
+        </figure>
+      
+        <div class="tbl-wrap mid marks" style="margin-top:14px">
+          <table class="tbl-marks">
+            <thead>
+              <tr>
+                <th class="mark">変更不可<small>医療上必要</small></th>
+                <th class="mark">患者希望</th>
+                <th class="mark">一部保険外療養</th>
+                <th class="wrap">患者が別に払う料金</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="grp"><td colspan="4">長期収載品ではない薬</td></tr>
+              <tr><td class="mark" data-lab="変更不可"></td><td class="mark" data-lab="患者希望"></td><td class="mark" data-lab="一部保険外療養">○</td><td class="c-on">薬剤費の4分の1</td></tr>
+              <tr><td class="mark" data-lab="変更不可"></td><td class="mark" data-lab="患者希望"></td><td class="mark" data-lab="一部保険外療養">―</td><td class="c-off">なし</td></tr>
+              <tr class="grp"><td colspan="4">長期収載品でもある薬</td></tr>
+              <tr><td class="mark" data-lab="変更不可"></td><td class="mark" data-lab="患者希望"></td><td class="mark" data-lab="一部保険外療養">○</td><td class="c-on">薬剤費の4分の1<span class="note-xs"> ／ 一部保険外療養が優先され、選定療養の料金はかからない</span></td></tr>
+              <tr><td class="mark" data-lab="変更不可"></td><td class="mark" data-lab="患者希望">×</td><td class="mark" data-lab="一部保険外療養">―</td><td class="c-on">先発品と後発品の差額の2分の1<span class="kome">※</span></td></tr>
+              <tr><td class="mark" data-lab="変更不可">×</td><td class="mark" data-lab="患者希望"></td><td class="mark" data-lab="一部保険外療養">―</td><td class="c-off">なし</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note-xs marks-note" style="margin-top:8px">空欄は、その欄に記載がないという意味。</div>
+      
+        <div class="box-gray" style="margin-top:14px"><span class="marker">「―」は一部保険外療養の対象外という印で、ほかの料金もかからないとは限らない。</span><br />※ 長期収載品でもある薬で患者希望欄が「×」なら、選定療養の特別の料金がかかる。<span data-rev="2026-09-30">変更不可欄・患者希望欄のどちらにも記載がなく、薬局で患者が先発品を希望したときも同じ。<span class="rev-chip">9/30</span></span></div>
+      
+      
+      </div>
+
+      <div class="card" id="c-kinyu-nashi" data-toc-label="空欄・旧様式・施行前">
+        <div class="card-title">欄が空欄のとき・旧様式・施行前の処方箋</div>
+        <div class="stack">
+          <div id="c-kuuran" data-rev="2026-09-30">
+            <div class="sub-title">対象の薬で欄が空欄のとき<span class="rev-chip">9/30</span></div>
+            <div>「一部保険外療養」欄には、処方医が対象の薬ごとに○か―を記載することになっている。記載がなければ、<span class="marker">処方医に疑義照会する</span>。</div>
+            <div style="margin-top:8px">対象の薬かどうかは、厚生労働省の<a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/juuyou/kougakuiryou/index_00001.html" target="_blank" rel="noopener">対象医薬品リスト（Excel・1,042品目）</a>で確認できる。請求に使う医薬品マスターにも掲載されている。</div>
+            <div class="box-blue" style="margin-top:10px">ただし次の2つは、記載がなくても、年齢や妊娠・授乳を確かめれば料金がかからないことが明らかなので、<b>疑義照会せずに料金を求めなくてよい</b>。その場合も<b>後で処方医に報告する</b>。
+              <div class="blist" style="margin-top:6px">
+                <div class="bullet"><span>・</span><span>18歳の年度末までの患者</span></div>
+                <div class="bullet"><span>・</span><span>妊婦・授乳婦で、その薬が<a href="OTC類似薬_対象の薬と料金がかからない場合.html#c-ninpu">料金がかからない薬の一覧</a>に記載されている場合</span></div>
+              </div>
+            </div>
+          </div>
+          <div id="c-kyuyoshiki" data-rev="2026-09-30">
+            <div class="sub-title">旧様式・施行前の処方箋が来たとき<span class="rev-chip">9/30</span></div>
+            <div class="blist">
+              <div class="bullet"><span>・</span><span><b>旧様式</b>…当分の間、手書き等で修正して使用できる。対象の薬には、<span class="marker">薬品名の近くに○か―が書き添えられる</span>。何も記載されていなければ、処方医に疑義照会する。上の2つの例外も同じ扱い。</span></div>
+              <div class="bullet"><span>・</span><span><b>2027年3月1日より前に発行された処方箋</b>…施行後に受け付けても<span class="marker">料金はかからない</span>。リフィル処方箋や分割調剤の2回目以降も同じ。</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="c-denshi" data-rev="2026-09-29" data-toc-label="電子処方箋">
+        <div class="card-title">電子処方箋の控えの表示<span class="rev-chip">9/29</span></div>
+          <div>電子処方箋では、処方内容（控え）に「類似薬」「類似薬 外」と表示される。</div>
+        <figure class="form-fig">
+          <div class="frame">
+            <img src="../images（レセコン画像など）/電子処方箋_処方内容控え_OTC類似薬.png"
+                 alt="電子処方箋の処方内容（控え）の出力例。処方内容の薬品名の左に「類似薬」「類似薬 外」と表示され、その部分が拡大されている" />
+          </div>
+          <figcaption>処方内容（控え）の出力例（枠内は拡大）。左の欄の「患者希望」「医療上必要」は今までどおりの表示。</figcaption>
+        </figure>
+      
+        <div class="tbl-wrap mid marks" style="margin-top:14px">
+          <table class="tbl-marks">
+            <thead>
+              <tr>
+                <th class="mark">変更不可<small>医療上必要</small></th>
+                <th class="mark">患者希望</th>
+                <th class="mark">一部保険外療養</th>
+                <th class="wrap">控えの表示</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr class="grp"><td colspan="4">長期収載品ではない薬</td></tr>
+            <tr><td class="mark" data-lab="変更不可"></td><td class="mark" data-lab="患者希望"></td><td class="mark" data-lab="一部保険外療養">○</td><td class="disp"><b>類似薬</b></td></tr>
+            <tr><td class="mark" data-lab="変更不可"></td><td class="mark" data-lab="患者希望"></td><td class="mark" data-lab="一部保険外療養">―</td><td class="disp"><b>類似薬 外</b></td></tr>
+            <tr class="grp"><td colspan="4">長期収載品でもある薬</td></tr>
+            <tr><td class="mark" data-lab="変更不可"></td><td class="mark" data-lab="患者希望"></td><td class="mark" data-lab="一部保険外療養">○</td><td class="disp"><b>類似薬</b></td></tr>
+            <tr><td class="mark" data-lab="変更不可"></td><td class="mark" data-lab="患者希望">×</td><td class="mark" data-lab="一部保険外療養">―</td><td class="disp"><b>患者希望</b></td></tr>
+            <tr><td class="mark" data-lab="変更不可">×</td><td class="mark" data-lab="患者希望"></td><td class="mark" data-lab="一部保険外療養">―</td><td class="disp"><b>医療上必要</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card" id="c-sentei" data-toc-label="選定療養との関係">
+        <div class="card-title">長期収載品の選定療養との関係</div>
+      
+        <div class="stack">
+          <div>
+            <div class="sub-title">両方に該当するとき</div>
+            <span class="marker">一部保険外療養が優先され</span>、選定療養の特別の料金はかからない。制度を複雑にしないための整理とされている。
+          </div>
+      
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th></th><th>長期収載品の選定療養</th><th>OTC類似薬の一部保険外療養</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="k">負担を求める理由</td>
+                  <td>患者の希望で、後発医薬品ではなく先発品を選ぶため<br /><span class="note-xs">患者の選択による</span></td>
+                  <td class="new">OTC医薬品で購入可能な薬であるため<br /><span class="note-xs">薬の性質による</span></td>
+                </tr>
+                <tr>
+                  <td class="k">対象になる薬</td>
+                  <td>選定療養の対象となる長期収載品</td>
+                  <td class="new">77成分（1,042品目）</td>
+                </tr>
+                <tr>
+                  <td class="k">何で決まるか</td>
+                  <td>銘柄<br /><span class="note-xs">先発品を選んだかどうか</span></td>
+                  <td class="new"><span class="marker">成分</span><br /><span class="note-xs">77成分に該当するかどうか</span></td>
+                </tr>
+                <tr>
+                  <td class="k">金額</td>
+                  <td>（先発品薬価 − 後発品最高薬価）× 1/2<br /><span class="note-xs">2026年6月から1/4→1/2</span></td>
+                  <td class="new">薬剤費 × 1/4</td>
+                </tr>
+                <tr>
+                  <td class="k">料金がかからない人</td>
+                  <td>生活保護の患者は対象外。医療上の必要がなければ後発医薬品を調剤する。子どもや公費負担医療の患者にはかかる</td>
+                  <td class="new">年齢・がん・難病・公費・入院・処置後・長期使用・妊婦・生活保護</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      
+          <div>選定療養は銘柄で決まるので、後発医薬品に変更すれば料金はかからなくなる。一部保険外療養は成分で決まるので、<span class="marker">後発医薬品に変更しても料金はかかる</span>。</div>
+      
+          <details class="fold-in" data-rev="2026-09-30">
+            <summary>OTC類似薬でもある長期収載品（48品目）</summary>
+            <div class="body">
+              <div class="stack">
+                <div>厚生労働省の対象医薬品リストと、長期収載品の選定療養の対象医薬品リストの両方に載っている品目。処方箋の「一部保険外療養」欄が○なら一部保険外療養、―なら選定療養の料金がかかることがある。<span class="rev-chip">9/30</span></div>
+                <div class="tbl-wrap mid">
+                  <table>
+                    <thead><tr><th>成分</th><th>品目</th></tr></thead>
+                    <tbody>
+                      <tr><td class="k">アシクロビル</td><td>ゾビラックス軟膏5%、ゾビラックスクリーム5%</td></tr>
+                      <tr><td class="k">イソコナゾール硝酸塩</td><td>アデスタン腟錠300mg</td></tr>
+                      <tr><td class="k">イトプリド塩酸塩</td><td>ガナトン錠50mg</td></tr>
+                      <tr><td class="k">エピナスチン塩酸塩</td><td>アレジオン点眼液0.05%、アレジオンLX点眼液0.1%</td></tr>
+                      <tr><td class="k">L-カルボシステイン</td><td>ムコダインシロップ5%</td></tr>
+                      <tr><td class="k">オキシコナゾール硝酸塩</td><td>オキナゾール腟錠100mg、オキナゾール腟錠600mg</td></tr>
+                      <tr><td class="k">クロトリマゾール</td><td>エンペシドクリーム1%</td></tr>
+                      <tr><td class="k">ケトチフェンフマル酸塩</td><td>ザジテンドライシロップ0.1%、ザジテン点眼液0.05%</td></tr>
+                      <tr><td class="k">ジクロフェナクナトリウム</td><td>ナボールゲル1%、ボルタレンゲル1%、ボルタレンローション1%</td></tr>
+                      <tr><td class="k">テルビナフィン塩酸塩</td><td>ラミシールクリーム1%、ラミシール外用液1%</td></tr>
+                      <tr><td class="k">尿素</td><td>ウレパールクリーム10%、パスタロンクリーム20%、ケラチナミンコーワクリーム20%</td></tr>
+                      <tr><td class="k">ピコスルファートナトリウム水和物</td><td>ラキソベロン内用液0.75%</td></tr>
+                      <tr><td class="k">ビダラビン</td><td>アラセナ-A軟膏3%、アラセナ-Aクリーム3%</td></tr>
+                      <tr><td class="k">フェキソフェナジン塩酸塩・塩酸プソイドエフェドリン</td><td>ディレグラ配合錠</td></tr>
+                      <tr><td class="k">フェルビナク</td><td>ナパゲルンローション3%</td></tr>
+                      <tr><td class="k">ベタメタゾン吉草酸エステル</td><td>リンデロン-V軟膏0.12%、ベトネベート軟膏0.12%、リンデロン-Vクリーム0.12%、ベトネベートクリーム0.12%、リンデロン-Vローション</td></tr>
+                      <tr><td class="k">ヘパリン類似物質</td><td>ヒルドイドゲル0.3%、ヒルドイドソフト軟膏0.3%、ヒルドイドクリーム0.3%、ヒルドイドローション0.3%、ヒルドイドフォーム0.3%</td></tr>
+                      <tr><td class="k">ベポタスチンベシル酸塩</td><td>タリオン錠5mg、タリオン錠10mg、タリオンOD錠5mg、タリオンOD錠10mg</td></tr>
+                      <tr><td class="k">ペミロラストカリウム</td><td>アレギサール点眼液0.1%</td></tr>
+                      <tr><td class="k">ベルベリン塩化物水和物・ゲンノショウコエキス</td><td>フェロベリン配合錠</td></tr>
+                      <tr><td class="k">モメタゾンフランカルボン酸エステル水和物</td><td>ナゾネックス点鼻液50μg56噴霧用、ナゾネックス点鼻液50μg112噴霧用</td></tr>
+                      <tr><td class="k">ロキソプロフェンナトリウム水和物</td><td>ロキソニン錠60mg</td></tr>
+                      <tr><td class="k">ロラタジン</td><td>クラリチン錠10mg、クラリチンレディタブ錠10mg、クラリチンドライシロップ1%</td></tr>
+                      <tr><td class="k">ラメルテオン</td><td>ロゼレム錠8mg</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </details>
+      
+        </div>
+      </div>
+
+      <div class="card" id="c-kaikei" data-rev="2026-09-30" data-toc-label="会計・レセプト">
+        <div class="card-title">会計・レセプト<span class="rev-chip">9/30</span></div>
+        <div class="blist">
+          <div class="bullet"><span>・</span><span><b>領収書・明細書</b>…特別の料金は、保険の一部負担金とは分けて表示される。明細書では、料金がかかる薬の名前に「（類）」が付き、最後に「一部保険外療養　〇〇円」の行が記載される。選定療養の料金もあるときは、それぞれ分けて表示される。</span></div>
+          <div class="bullet"><span>・</span><span><b>レセプト</b>…料金がかかる薬は、薬品名の後に「（類）」が付き、点数は「保険外併用療養費の算出に用いる価格」で計算される。料金がかからない理由は処方した医療機関のレセプトに記載され、薬局のレセプトには記載されない。</span></div>
+        </div>
+        <div class="box-blue" style="margin-top:14px">
+          <div class="sub-title">薬局内・ウェブサイトへの掲示は不要</div>
+          <div>選定療養では内容と費用の掲示が義務づけられているが、一部保険外療養はどの薬局でも内容も金額も同じなので、掲示は義務づけられない。</div>
+        </div>
+      </div>
+
+
+      <nav class="otc-nav bottom" aria-label="OTC類似薬のページ">
+        <a class="otc-nav-i" href="OTC類似薬の一部保険外療養.html">全体の流れ</a>
+        <span class="otc-nav-i cur" aria-current="page">処方箋と窓口対応</span>
+        <a class="otc-nav-i" href="OTC類似薬_対象の薬と料金がかからない場合.html">対象の薬と、料金がかからない場合</a>
+        <a class="otc-nav-i" href="OTC類似薬_特別の料金の計算.html">特別の料金の計算</a>
+        <a class="otc-nav-i sub" href="OTC類似薬_これまでの動き.html">これまでの動き</a>
+      </nav>
+
+    </div>
+
+    <script src="../assets/otc-ruiji.js"></script>
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>
