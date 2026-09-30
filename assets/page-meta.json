@@ -1,6 +1,6 @@
 {
   "updates.html": {
-    "lastUpdated": "2026-09-29"
+    "lastUpdated": "2026-10-01"
   },
   "加算まとめ.html": {
     "lastUpdated": "2026-09-12"
@@ -12,7 +12,7 @@
     "lastUpdated": "2026-09-11"
   },
   "index.html": {
-    "lastUpdated": "2026-09-29"
+    "lastUpdated": "2026-10-01"
   },
   "checklists.html": {
     "lastUpdated": "2026-09-11"
@@ -20,15 +20,15 @@
   "tools.html": {
     "lastUpdated": "2026-09-23"
   },
+  "knowledge.html": {
+    "lastUpdated": "2026-10-01"
+  },
   "ページ一覧.html": {
     "lastUpdated": "2026-09-11",
     "newUntil": "2026-08-13"
   },
   "kaitei2026.html": {
     "lastUpdated": "2026-09-12"
-  },
-  "knowledge.html": {
-    "lastUpdated": "2026-09-23"
   },
   "yakureki/テンプレート_メンタル.html": {
     "lastUpdated": "2026-08-06"
@@ -388,12 +388,24 @@
     "newUntil": "2026-09-30"
   },
   "ナレッジ/OTC類似薬の一部保険外療養.html": {
-    "lastUpdated": "2026-09-29",
-    "newUntil": "2026-10-06"
+    "lastUpdated": "2026-10-01",
+    "newUntil": "2026-10-08"
   },
   "ナレッジ/高額療養費制度の見直し2026.html": {
     "lastUpdated": "2026-09-30",
     "newUntil": "2026-08-06"
+  },
+  "ナレッジ/OTC類似薬_特別の料金の計算.html": {
+    "lastUpdated": "2026-10-01"
+  },
+  "ナレッジ/OTC類似薬_これまでの動き.html": {
+    "lastUpdated": "2026-10-01"
+  },
+  "ナレッジ/OTC類似薬_対象の薬と料金がかからない場合.html": {
+    "lastUpdated": "2026-10-01"
+  },
+  "ナレッジ/OTC類似薬_処方箋と窓口対応.html": {
+    "lastUpdated": "2026-10-01"
   },
   "ナレッジ/高額療養費と薬局窓口対応.html": {
     "lastUpdated": "2026-09-23",
