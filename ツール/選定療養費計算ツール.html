@@ -234,6 +234,8 @@
       .zsel { flex:1; min-width:0; }
       .res-big .v { font-size:28px; }
       .card-title .right { margin-left:0; }
+      /* スマホでは副題と「社内用ツール」の札を出さず、検索欄までのスクロールを減らす（データの時期は下部の注意にもある） */
+      .page-title p, .draft-tag { display:none; }
       /* iPhone は16px未満の入力欄で入力時に画面を拡大するので、入力欄と選択欄は16pxに保つ */
       .search-input, .num, .zsel, .list-ctrl .search-input { font-size:16px; }
     }
@@ -273,7 +275,7 @@
       <div class="card no-print">
         <div class="card-title">薬を追加</div>
         <div class="search-wrap">
-          <input id="q" class="search-input" type="text" placeholder="品名・成分名で検索（例：レクサプロ、えすたぞらむ）" autocomplete="off" aria-label="薬を検索">
+          <input id="q" class="search-input" type="text" placeholder="品名・成分名で検索" autocomplete="off" aria-label="薬を検索">
           <button id="qClear" class="search-clear hidden" type="button" aria-label="検索欄を消す">×</button>
         </div>
         <div id="results" class="results"></div>
