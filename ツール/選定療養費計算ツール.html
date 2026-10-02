@@ -302,7 +302,7 @@
         <label class="chk"><input id="lstOk" type="checkbox"> 特管3ロ 再算定可のみ</label>
         <button id="lstReset" class="btn btn-sm" type="button" style="margin-bottom:6px;">↺ 元に戻す</button>
       </div>
-      <div class="list-note">点数と再算定可否は、入力した数量（内服は1日量、外用・注射は総量）での値です。同じ薬で算定済みなら、「可」でも算定できません。列見出しを押すと並び替えます。「追加」で計算の処方に入ります。</div>
+      <div class="list-note">点数と再算定可否は、入力した数量（内服は1日量、外用・注射は総量）での値です。同じ薬で算定済みなら、「可」でも算定できません。列見出しを押すと並び替えます。1錠で再算定可になる薬を探すときは、数量1・「再算定可のみ」にして「価格差1/2」で並べ替えます。「追加」で計算の処方に入ります。</div>
       <div class="list-count" id="lstCount"></div>
       <div class="list-table-wrap" id="listBody"></div>
     </div>
@@ -374,9 +374,11 @@
     if(d.sentei>0) for(var n=1;n<=5000;n++){ if(tokkan(d,n).ok){ m=n; break; } }
     return (d._minQ = m);
   }
-  function tokkanGuide(d, perDay){
+  // short：薬の行に出す短い形。錠・カプセル等で1日量が10を超えるなら、現実にない数字は出さない
+  function tokkanGuide(d, perDay, short){
     var m = tokkanMinQty(d);
     if(m==null) return '5月と点数が変わらないため対象外';
+    if(short && perDay && m>10 && /錠|カプセル|包|個/.test(d.unit)) return '通常の1日量では再算定にならない';
     return (perDay?'1日量 ':'')+m+(d.unit||'')+'以上なら再算定可';
   }
 
@@ -483,7 +485,7 @@
   }
   function tkBadge(t, d, perDay){
     return '<span class="tk-badge '+(t.ok?'ok':'ng')+'" title="選定療養の点数 5月まで '+(t.ptOld!=null?t.ptOld:'—')+'点 → 6月から '+t.ptNew+'点">'+(t.ok?'✓ 特管3ロ 再算定可':'× 特管3ロ 再算定不可')+'</span>'+
-      '<span class="tk-note">'+(t.ok?'同じ薬で算定済みなら不可':(t.ptOld!=null?'点数が5月と同じ（'+t.ptNew+'点）。':'')+esc(tokkanGuide(d, perDay)))+'</span>';
+      '<span class="tk-note">'+(t.ok?'同じ薬で算定済みなら不可':(t.ptOld!=null?'点数が5月と同じ（'+t.ptNew+'点）。':'')+esc(tokkanGuide(d, perDay, true)))+'</span>';
   }
   function rowHtml(it){
     var d = it.d, perDay = it.kind==='in';
@@ -611,7 +613,7 @@
         '<div class="line">保険分の薬価 '+r2(c.hk)+'円 → '+c.ptH+'点'+md+' → ×10円×'+rate+' ＝ '+yen(c.ichibu)+'円</div>';
       c.its.forEach(function(it){
         var t = tokkan(it.d, it.qty);
-        lines += '<div class="line sub">'+esc(it.d.name)+'：薬価 '+it.d.yakka+'円・後発 '+it.d.ge+'円・価格差1/2 '+it.d.sentei+'円。特管3ロ '+(t.ok?'再算定可':'再算定不可')+'（5月まで '+(t.ptOld!=null?t.ptOld:'—')+'点 → 6月から '+t.ptNew+'点）'+(t.ok?'':'。'+tokkanGuide(it.d, c.perDay)+'。')+'</div>';
+        lines += '<div class="line sub">'+esc(it.d.name)+'：薬価 '+it.d.yakka+'円・後発 '+it.d.ge+'円・価格差1/2 '+it.d.sentei+'円・保険外併用価格 '+it.d.hoken+'円。特管3ロ '+(t.ok?'再算定可':'再算定不可')+'（5月まで '+(t.ptOld!=null?t.ptOld:'—')+'点 → 6月から '+t.ptNew+'点）'+(t.ok?'':'。'+tokkanGuide(it.d, c.perDay)+'。')+'</div>';
       });
     });
     var total = gFee+gIchibu, diff = total-gGe;
