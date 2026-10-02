@@ -111,7 +111,8 @@
     .num::-webkit-outer-spin-button, .num::-webkit-inner-spin-button { -webkit-appearance:none; margin:0; }
     .num:focus, .zsel:focus { outline:none; border-color:var(--blue); box-shadow:0 0 0 3px rgba(30,95,168,.15); }
     .rx-act { display:flex; align-items:center; gap:6px; }
-    .zsel { font-size:var(--text-xs); padding:5px 6px; border:var(--bw-h) solid var(--border-dk); border-radius:var(--radius-sm); background:var(--white); color:var(--txt-2); max-width:150px; }
+    .rx-how { grid-column:1 / -1; display:flex; align-items:center; gap:8px; }
+    .zsel { font-size:var(--text-sm); padding:5px 8px; border:var(--bw-h) solid var(--border-dk); border-radius:var(--radius-sm); background:var(--white); color:var(--ink); max-width:100%; }
     .del { width:32px; height:32px; border:none; background:transparent; color:var(--txt-3); font-size:18px; border-radius:50%; cursor:pointer; }
     .del:hover { background:var(--box-gray); color:var(--ink); }
     .rx-foot { display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-top:4px; font-size:var(--text-xs); color:var(--txt-3); }
@@ -134,6 +135,7 @@
     .ge-box { margin-top:12px; background:var(--box-blue); border-radius:var(--radius-sm); padding:11px 14px; font-size:var(--text-sm); }
     .ge-box .t { font-weight:900; margin-bottom:2px; }
     .ge-box b { font-weight:900; }
+    .ge-box .marker { white-space:nowrap; }
     .res-note { font-size:var(--text-xs); color:var(--txt-3); margin-top:10px; }
     .fold-in { margin-top:12px; }
     .bd { padding:8px 12px 10px; font-size:var(--text-xs); }
@@ -203,9 +205,10 @@
       .card { border-radius:8px; }
       .tabs button { padding:8px 12px; }
       .rx-row { grid-template-columns:minmax(0,1fr) auto; }
-      .rx-row .qty { grid-column:1; }
-      .rx-row .rx-act { grid-column:2; grid-row:1 / span 2; flex-direction:column; align-items:flex-end; }
-      .zsel { max-width:120px; }
+      .rx-row .qty { grid-column:1 / -1; }
+      .rx-row .rx-act { grid-column:2; grid-row:1; align-self:start; }
+      .rx-how { grid-column:1 / -1; }
+      .zsel { flex:1; min-width:0; }
       .res-big .v { font-size:28px; }
       .card-title .right { margin-left:0; }
     }
@@ -217,7 +220,7 @@
       .calc-grid { grid-template-columns:1fr; }
       .col-side { position:static; }
       .card { border:0.5px solid #bbb; break-inside:avoid; }
-      .step, .del, .zsel { display:none; }
+      .step, .del, .rx-how { display:none; }
       .num { border:none; width:auto; }
     }
   </style>
@@ -262,7 +265,7 @@
         </div>
         <div id="rx"></div>
         <div class="rx-foot no-print" id="rxFoot">
-          <span>内服は同じ飲み方の薬を1つの剤にまとめて計算します。飲み方が違う薬は「剤」の欄で分けてください。</span>
+          <span>飲み方（用法）が違う内服薬は、その薬の「飲み方」で「別の飲み方にする」を選ぶと剤が分かれます。同じ剤の薬は薬価を合算して計算します。</span>
           <button class="linkbtn" id="clearAll" type="button">すべて消す</button>
         </div>
       </div>
@@ -441,20 +444,29 @@
 
   /* ---------- 処方の一覧 ---------- */
   var rxEl = document.getElementById('rx');
+  // 飲み方の選択肢。今いる剤は「剤1（30日分）」、ほかの剤は「〜にまとめる」と動作で書く
   function zaiOptions(it){
     var h = '';
-    groups.forEach(function(g, gi){ h += '<option value="g'+g.id+'"'+(it.kind==='in'&&it.gid===g.id?' selected':'')+'>剤'+(gi+1)+'</option>'; });
-    h += '<option value="new">別の剤に分ける</option>';
-    h += '<option value="ton"'+(it.kind==='ton'?' selected':'')+'>頓服として計算</option>';
+    groups.forEach(function(g, gi){
+      var mine = it.kind==='in' && it.gid===g.id;
+      h += '<option value="g'+g.id+'"'+(mine?' selected':'')+'>剤'+(gi+1)+'（'+g.days+'日分）'+(mine?'':'にまとめる')+'</option>';
+    });
+    h += '<option value="new">'+(it.kind==='ton'?'内服に戻す（新しい剤）':'別の飲み方にする（剤を分ける）')+'</option>';
+    h += '<option value="ton"'+(it.kind==='ton'?' selected':'')+'>'+(it.kind==='ton'?'頓服':'頓服にする')+'</option>';
     return h;
+  }
+  // 日数を変えたら、選択肢の「（○日分）」も書き換える（入力中の欄を作り直さないよう選択肢だけ）
+  function refreshZaiLabels(){
+    [].forEach.call(rxEl.querySelectorAll('.zsel'), function(sel){
+      var it = findItem(+sel.closest('.rx-row').dataset.uid); if(it) sel.innerHTML = zaiOptions(it);
+    });
   }
   function rowHtml(it){
     var d = it.d, perDay = it.kind==='in';
     var t = tokkan(d, it.qty);
     var tk = it.qty>0 ? '<span class="tk-badge '+(t.ok?'ok':'ng')+'" title="選定療養の点数 5月まで '+(t.ptOld!=null?t.ptOld:'—')+'点 → 6月から '+t.ptNew+'点">特管3ロ '+(t.ok?'再算定可':'再算定不可')+'</span>' : '';
-    var act = '';
-    if(d.route==='in') act += '<select class="zsel" data-act="zai" aria-label="剤">'+zaiOptions(it)+'</select>';
-    act += '<button class="del" data-act="del" type="button" aria-label="削除" title="削除">×</button>';
+    var how = d.route==='in' ? '<label class="rx-how"><span class="ql">飲み方</span><select class="zsel" data-act="zai">'+zaiOptions(it)+'</select></label>' : '';
+    var act = '<button class="del" data-act="del" type="button" aria-label="削除" title="削除">×</button>';
     return '<div class="rx-row'+(it.uid===flashUid?' flash':'')+'" data-uid="'+it.uid+'">'+
       '<div class="rx-name"><b>'+esc(d.name)+'</b><span>'+esc(d.ingredient)+'／'+esc(d.spec)+'</span><div class="tk">'+tk+'</div></div>'+
       '<div class="qty"><span class="ql">'+(perDay?'1日量':'総量')+'</span>'+
@@ -462,7 +474,7 @@
         '<input class="num" data-act="qty" type="number" inputmode="decimal" min="0" step="any" value="'+it.qty+'" aria-label="'+(perDay?'1日量':'総量')+'">'+
         '<button class="step" data-act="plus" type="button" aria-label="増やす">＋</button>'+
         '<span class="unit">'+esc(d.unit)+'</span></div>'+
-      '<div class="rx-act">'+act+'</div></div>';
+      '<div class="rx-act">'+act+'</div>'+how+'</div>';
   }
   function renderRx(){
     document.getElementById('tabCnt').textContent = items.length ? items.length : '';
@@ -477,7 +489,7 @@
       if(!its.length) return;
       h += '<div class="grp"><div class="grp-head"><span class="chip in">内服</span><b>剤'+(gi+1)+'</b>'+
         '<label class="days">日数 <input class="num" data-act="days" data-gid="'+g.id+'" type="number" inputmode="numeric" min="1" step="1" value="'+g.days+'"> 日分</label>'+
-        (its.length>1 ? '<span class="gnote">同じ飲み方として薬価を合算</span>' : '')+'</div>'+
+        (its.length>1 ? '<span class="gnote">この'+its.length+'品目は同じ飲み方として薬価を合算</span>' : '')+'</div>'+
         its.map(rowHtml).join('')+'</div>';
     });
     items.forEach(function(it){
@@ -509,7 +521,7 @@
   rxEl.addEventListener('input', function(e){
     var el = e.target, a = el.dataset.act;
     if(a==='qty'){ var it = findItem(+el.closest('.rx-row').dataset.uid); if(!it) return; it.qty = parseFloat(el.value)||0; updateRowBadge(it); compute(); }
-    else if(a==='days'){ var g = groups[groupIndex(+el.dataset.gid)]; if(g){ g.days = parseInt(el.value,10)||0; compute(); } }
+    else if(a==='days'){ var g = groups[groupIndex(+el.dataset.gid)]; if(g){ g.days = parseInt(el.value,10)||0; compute(); refreshZaiLabels(); } }
   });
   rxEl.addEventListener('change', function(e){
     var el = e.target; if(el.dataset.act!=='zai') return;
