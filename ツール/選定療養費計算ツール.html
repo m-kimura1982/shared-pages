@@ -609,11 +609,15 @@
       outEl.innerHTML = '<div class="empty-msg">'+(items.length ? '数量・日数を入れると計算します。' : '薬を追加すると、ここに金額が出ます。')+'</div>';
       return;
     }
-    var gFee=0, gIchibu=0, gGe=0, rows='', lines='';
+    var gFee=0, gIchibu=0, gGe=0, gFeeOld=0, gIchibuOld=0, rows='', lines='';
     calcs.forEach(function(c){
       c.ptS=toTen(c.s); c.ptH=toTen(c.hk); c.ptG=toTen(c.ge);
       c.fee=c.ptS*c.mult*11; c.ichibu=Math.round(c.ptH*c.mult*10*rate); c.geCost=Math.round(c.ptG*c.mult*10*rate);
       gFee+=c.fee; gIchibu+=c.ichibu; gGe+=c.geCost;
+      // 5月まで（価格差の1/4）で同じ処方を計算した場合
+      var sOld=0, hkOld=0;
+      c.its.forEach(function(it){ var so = it.d.senteiOld!=null ? it.d.senteiOld : it.d.sentei; sOld+=so*it.qty; hkOld+=(it.d.yakka-so)*it.qty; });
+      gFeeOld += toTen(sOld)*c.mult*11; gIchibuOld += Math.round(toTen(hkOld)*c.mult*10*rate);
       var names = c.its.map(function(it){ return esc(it.d.name)+'（'+it.qty+esc(it.d.unit)+(c.perDay?'/日':'')+'）'; }).join('<br>');
       rows += '<tr><td><b>'+esc(c.label)+'</b><div class="sub">'+names+'</div></td><td class="r">'+(c.ptS*c.mult)+'点</td><td class="r">'+yen(c.fee)+'円</td></tr>';
       var md = c.perDay ? ' ×'+c.mult+'日' : '';
@@ -627,6 +631,13 @@
     });
     var total = gFee+gIchibu, diff = total-gGe;
     lastTotals = { fee:gFee, total:total, has:true }; updateBar();
+    var totalOld = gFeeOld+gIchibuOld;
+    function dif(n){ n=Math.round(n); return (n>0?'＋':n<0?'−':'±')+yen(Math.abs(n))+'円'; }
+    var mayFold = '<details class="fold-in no-print"><summary>5月（価格差の1/4）と比べる</summary><div class="bd"><table>'+
+      '<tr><th></th><th class="r">5月まで</th><th class="r">6月から</th><th class="r">差額</th></tr>'+
+      '<tr><td>特別の料金</td><td class="r">'+yen(gFeeOld)+'円</td><td class="r">'+yen(gFee)+'円</td><td class="r"><b>'+dif(gFee-gFeeOld)+'</b></td></tr>'+
+      '<tr><td>窓口負担の合計（'+(rate*10)+'割）</td><td class="r">'+yen(totalOld)+'円</td><td class="r">'+yen(total)+'円</td><td class="r"><b>'+dif(total-totalOld)+'</b></td></tr>'+
+      '</table></div></details>';
 
     outEl.innerHTML =
       '<div class="res-big"><div class="k">特別の料金（選定療養費・税込）</div><div class="v">'+yen(gFee)+'<small>円</small></div></div>'+
@@ -636,7 +647,7 @@
       '</table>'+
       '<div class="ge-box"><div class="t">後発品を選んだ場合</div>窓口負担 <b>'+yen(gGe)+'円</b>（<span class="marker">'+yen(diff)+'円 安くなります</span>）</div>'+
       '<div class="res-note">※選定療養の対象薬だけの概算です。端数整理・公費・同じ剤の他の薬は含みません。</div>'+
-      '<details class="fold-in"'+(calcs.length>1?' open':'')+'><summary>剤ごとの特別の料金</summary><div class="bd"><table><tr><th>剤・品目</th><th class="r">点数</th><th class="r">特別の料金</th></tr>'+rows+'</table></div></details>'+
+      '<details class="fold-in"'+(calcs.length>1?' open':'')+'><summary>剤ごとの特別の料金</summary><div class="bd"><table><tr><th>剤・品目</th><th class="r">点数</th><th class="r">特別の料金</th></tr>'+rows+'</table></div></details>'+mayFold+
       '<details class="fold-in no-print"><summary>計算の内訳</summary><div class="bd">'+lines+'</div></details>'+
       '<div class="print-btn no-print"><button class="btn btn-sm" type="button" onclick="window.print()">印刷</button></div>';
   }
