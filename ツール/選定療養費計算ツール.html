@@ -121,8 +121,10 @@
 
     /* 特管3ロの判定 */
     .tk-badge { font-size:12px; font-weight:700; line-height:1.6; padding:0 7px; border-radius:4px; white-space:nowrap; border:var(--bw-h) solid; }
-    .tk-badge.ok { color:var(--blue); border-color:#a9c7e6; background:#f5f9fd; }
-    .tk-badge.ng { color:var(--txt-3); border-color:var(--border); background:var(--white); }
+    /* 特管3ロ：可＝淡い緑（算定してよい側）／不可＝淡いピンク（算定しないよう気をつける側）。記号でも見分けられるよう ✓ と × を付ける */
+    .tk-badge.ok { color:#3d6b2e; border-color:#bcd6b2; background:#e3efe0; }
+    .tk-badge.ng { color:#8c3a2e; border-color:#efc3bb; background:#fbe4e0; }
+    .tk-note { font-size:11.5px; color:var(--txt-3); }
 
     /* 結果 */
     .res-big .k { font-size:var(--text-xs); font-weight:700; color:var(--txt-3); }
@@ -289,7 +291,7 @@
         <label class="chk"><input id="lstOk" type="checkbox"> 特管3ロ 再算定可のみ</label>
         <button id="lstReset" class="btn btn-sm" type="button" style="margin-bottom:6px;">↺ 元に戻す</button>
       </div>
-      <div class="list-note">点数と再算定可否は、入力した数量（内服は1日量、外用・注射は総量）での値です。列見出しを押すと並び替えます。「追加」で計算の処方に入ります。</div>
+      <div class="list-note">点数と再算定可否は、入力した数量（内服は1日量、外用・注射は総量）での値です。同じ薬で算定済みなら、「可」でも算定できません。列見出しを押すと並び替えます。「追加」で計算の処方に入ります。</div>
       <div class="list-count" id="lstCount"></div>
       <div class="list-table-wrap" id="listBody"></div>
     </div>
@@ -461,10 +463,14 @@
       var it = findItem(+sel.closest('.rx-row').dataset.uid); if(it) sel.innerHTML = zaiOptions(it);
     });
   }
+  function tkBadge(t){
+    return '<span class="tk-badge '+(t.ok?'ok':'ng')+'" title="選定療養の点数 5月まで '+(t.ptOld!=null?t.ptOld:'—')+'点 → 6月から '+t.ptNew+'点">'+(t.ok?'✓ 特管3ロ 再算定可':'× 特管3ロ 再算定不可')+'</span>'+
+      (t.ok?'<span class="tk-note">同じ薬で算定済みなら不可</span>':'');
+  }
   function rowHtml(it){
     var d = it.d, perDay = it.kind==='in';
     var t = tokkan(d, it.qty);
-    var tk = it.qty>0 ? '<span class="tk-badge '+(t.ok?'ok':'ng')+'" title="選定療養の点数 5月まで '+(t.ptOld!=null?t.ptOld:'—')+'点 → 6月から '+t.ptNew+'点">特管3ロ '+(t.ok?'再算定可':'再算定不可')+'</span>' : '';
+    var tk = it.qty>0 ? tkBadge(t) : '';
     var how = d.route==='in' ? '<label class="rx-how"><span class="ql">飲み方</span><select class="zsel" data-act="zai">'+zaiOptions(it)+'</select></label>' : '';
     var act = '<button class="del" data-act="del" type="button" aria-label="削除" title="削除">×</button>';
     return '<div class="rx-row'+(it.uid===flashUid?' flash':'')+'" data-uid="'+it.uid+'">'+
@@ -504,7 +510,7 @@
     var row = rxEl.querySelector('.rx-row[data-uid="'+it.uid+'"] .tk'); if(!row) return;
     if(!(it.qty>0)){ row.innerHTML=''; return; }
     var t = tokkan(it.d, it.qty);
-    row.innerHTML = '<span class="tk-badge '+(t.ok?'ok':'ng')+'" title="選定療養の点数 5月まで '+(t.ptOld!=null?t.ptOld:'—')+'点 → 6月から '+t.ptNew+'点">特管3ロ '+(t.ok?'再算定可':'再算定不可')+'</span>';
+    row.innerHTML = tkBadge(t);
   }
   rxEl.addEventListener('click', function(e){
     var b = e.target.closest('[data-act]'); if(!b || b.tagName==='INPUT' || b.tagName==='SELECT') return;
@@ -665,7 +671,7 @@
         '<td><span class="chip '+(d.route==='in'?'in':'ex')+'">'+ROUTE_LABEL[d.route]+'</span></td>'+
         '<td class="r">'+d.yakka+'</td><td class="r">'+d.ge+'</td><td class="r">'+d.sentei+'</td>'+
         '<td class="r">'+(r.t.ptOld!=null?r.t.ptOld:'—')+' → '+r.t.ptNew+'点</td>'+
-        '<td>'+(r.t.ok?'<span class="tk-badge ok">可</span>':'<span class="tk-badge ng">不可</span>')+'</td>'+
+        '<td>'+(r.t.ok?'<span class="tk-badge ok">✓ 可</span>':'<span class="tk-badge ng">× 不可</span>')+'</td>'+
         '<td><button class="btn btn-sm" type="button" data-add="'+d._i+'">追加</button></td></tr>';
     });
     if(!rows.length) h += '<tr><td colspan="8" style="color:var(--txt-3);">該当なし。'+(lst.okOnly?'「特管3ロ 再算定可のみ」を外すと、すべての対象薬から探せます。':'一覧にない薬は選定療養の対象外です。')+'</td></tr>';
