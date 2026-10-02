@@ -104,7 +104,7 @@ window.__pageMeta = {
   },
   "加算まとめ/薬剤調製料.html": {
     "lastUpdated": "2026-09-03",
-    "newUntil": "2026-09-09"
+    "newUntil": "2026-10-09"
   },
   "加算まとめ/バイオ後続品調剤体制加算.html": {
     "lastUpdated": "2026-08-31"
