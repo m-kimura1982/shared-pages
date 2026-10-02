@@ -89,7 +89,18 @@
     .empty-msg { font-size:var(--text-sm); color:var(--txt-3); padding:14px 4px; }
     .grp { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); margin-bottom:10px; overflow:hidden; }
     .grp-head { display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:8px 12px; background:#f8f9fb; border-bottom:var(--bw-h) solid var(--border); font-size:var(--text-sm); }
-    .grp-head b { font-weight:900; }
+    .grp-head .gname { font-size:var(--text-md); font-weight:900; }
+    /* 剤の帯：区分の色（内服＝青／外用・注射＝クリーム／頓服＝藤）で帯を塗り、左に線。剤の番号ごとに色は変えない */
+    .grp.k-in  { border-left:4px solid var(--kind-in-tx); }
+    .grp.k-in  .grp-head { background:var(--kind-in-bg); }
+    .grp.k-in  .gname { color:var(--kind-in-tx); }
+    .grp.k-ex  { border-left:4px solid var(--kind-ex-tx); }
+    .grp.k-ex  .grp-head { background:var(--kind-ex-bg); }
+    .grp.k-ex  .gname { color:var(--kind-ex-tx); }
+    .grp.k-ton { border-left:4px solid var(--kind-ton-tx); }
+    .grp.k-ton .grp-head { background:var(--kind-ton-bg); }
+    .grp.k-ton .gname { color:var(--kind-ton-tx); }
+    .grp-head .gnote { color:var(--txt-2); }
     .grp-head .days { display:inline-flex; align-items:center; gap:6px; font-weight:700; color:var(--txt-2); }
     .grp-head .days input { width:64px; }
     .grp-head .gnote { font-size:var(--text-xs); color:var(--txt-3); }
@@ -493,15 +504,15 @@
     groups.forEach(function(g, gi){
       var its = items.filter(function(it){ return it.kind==='in' && it.gid===g.id; });
       if(!its.length) return;
-      h += '<div class="grp"><div class="grp-head"><span class="chip in">内服</span><b>剤'+(gi+1)+'</b>'+
+      h += '<div class="grp k-in"><div class="grp-head"><span class="gname">内服 剤'+(gi+1)+'</span>'+
         '<label class="days">日数 <input class="num" data-act="days" data-gid="'+g.id+'" type="number" inputmode="numeric" min="1" step="1" value="'+g.days+'"> 日分</label>'+
         (its.length>1 ? '<span class="gnote">この'+its.length+'品目は同じ飲み方として薬価を合算</span>' : '')+'</div>'+
         its.map(rowHtml).join('')+'</div>';
     });
     items.forEach(function(it){
       if(it.kind==='in') return;
-      var lab = it.kind==='ton' ? '<span class="chip ton">頓服</span>' : '<span class="chip ex">'+ROUTE_LABEL[it.d.route]+'</span>';
-      h += '<div class="grp"><div class="grp-head">'+lab+'<span class="gnote">1調剤（総量で計算）</span></div>'+rowHtml(it)+'</div>';
+      var k = it.kind==='ton' ? 'ton' : 'ex', lab = '<span class="gname">'+(it.kind==='ton' ? '頓服' : ROUTE_LABEL[it.d.route])+'</span>';
+      h += '<div class="grp k-'+k+'"><div class="grp-head">'+lab+'<span class="gnote">1調剤（総量で計算）</span></div>'+rowHtml(it)+'</div>';
     });
     rxEl.innerHTML = h;
     flashUid = null;
