@@ -367,10 +367,17 @@
     var ok = ptOld!=null ? ptNew>ptOld : ptNew>=2;
     return { ok:ok, ptNew:ptNew, ptOld:ptOld };
   }
+  // 再算定可になる最小の数量（1ずつ増やして実際の判定で探す）。見つからなければ null
+  function tokkanMinQty(d){
+    if(d._minQ !== undefined) return d._minQ;
+    var m = null;
+    if(d.sentei>0) for(var n=1;n<=5000;n++){ if(tokkan(d,n).ok){ m=n; break; } }
+    return (d._minQ = m);
+  }
   function tokkanGuide(d, perDay){
-    if(!(d.sentei>0)) return '価格差が0のため変わりません。';
-    var thr = 15/d.sentei;
-    return perDay ? '目安：1日量 '+(Math.floor(thr)+1)+' 以上で再算定可。' : '目安：総量 '+(Math.round(thr*10)/10)+' を超えると再算定可。';
+    var m = tokkanMinQty(d);
+    if(m==null) return '5月と点数が変わらないため対象外';
+    return (perDay?'1日量 ':'')+m+(d.unit||'')+'以上なら再算定可';
   }
 
   function search(needle, limit){
@@ -474,14 +481,14 @@
       var it = findItem(+sel.closest('.rx-row').dataset.uid); if(it) sel.innerHTML = zaiOptions(it);
     });
   }
-  function tkBadge(t){
+  function tkBadge(t, d, perDay){
     return '<span class="tk-badge '+(t.ok?'ok':'ng')+'" title="選定療養の点数 5月まで '+(t.ptOld!=null?t.ptOld:'—')+'点 → 6月から '+t.ptNew+'点">'+(t.ok?'✓ 特管3ロ 再算定可':'× 特管3ロ 再算定不可')+'</span>'+
-      (t.ok?'<span class="tk-note">同じ薬で算定済みなら不可</span>':'');
+      '<span class="tk-note">'+(t.ok?'同じ薬で算定済みなら不可':(t.ptOld!=null?'点数が5月と同じ（'+t.ptNew+'点）。':'')+esc(tokkanGuide(d, perDay)))+'</span>';
   }
   function rowHtml(it){
     var d = it.d, perDay = it.kind==='in';
     var t = tokkan(d, it.qty);
-    var tk = it.qty>0 ? tkBadge(t) : '';
+    var tk = it.qty>0 ? tkBadge(t, d, perDay) : '';
     var how = d.route==='in' ? '<label class="rx-how"><span class="ql">飲み方</span><select class="zsel" data-act="zai">'+zaiOptions(it)+'</select></label>' : '';
     var act = '<button class="del" data-act="del" type="button" aria-label="削除" title="削除">×</button>';
     return '<div class="rx-row'+(it.uid===flashUid?' flash':'')+'" data-uid="'+it.uid+'">'+
@@ -521,7 +528,7 @@
     var row = rxEl.querySelector('.rx-row[data-uid="'+it.uid+'"] .tk'); if(!row) return;
     if(!(it.qty>0)){ row.innerHTML=''; return; }
     var t = tokkan(it.d, it.qty);
-    row.innerHTML = tkBadge(t);
+    row.innerHTML = tkBadge(t, it.d, it.kind==='in');
   }
   rxEl.addEventListener('click', function(e){
     var b = e.target.closest('[data-act]'); if(!b || b.tagName==='INPUT' || b.tagName==='SELECT') return;
@@ -604,7 +611,7 @@
         '<div class="line">保険分の薬価 '+r2(c.hk)+'円 → '+c.ptH+'点'+md+' → ×10円×'+rate+' ＝ '+yen(c.ichibu)+'円</div>';
       c.its.forEach(function(it){
         var t = tokkan(it.d, it.qty);
-        lines += '<div class="line sub">'+esc(it.d.name)+'：薬価 '+it.d.yakka+'円・後発 '+it.d.ge+'円・価格差1/2 '+it.d.sentei+'円。特管3ロ '+(t.ok?'再算定可':'再算定不可')+'（5月まで '+(t.ptOld!=null?t.ptOld:'—')+'点 → 6月から '+t.ptNew+'点）'+(t.ok?'':'。'+tokkanGuide(it.d, c.perDay))+'</div>';
+        lines += '<div class="line sub">'+esc(it.d.name)+'：薬価 '+it.d.yakka+'円・後発 '+it.d.ge+'円・価格差1/2 '+it.d.sentei+'円。特管3ロ '+(t.ok?'再算定可':'再算定不可')+'（5月まで '+(t.ptOld!=null?t.ptOld:'—')+'点 → 6月から '+t.ptNew+'点）'+(t.ok?'':'。'+tokkanGuide(it.d, c.perDay)+'。')+'</div>';
       });
     });
     var total = gFee+gIchibu, diff = total-gGe;
