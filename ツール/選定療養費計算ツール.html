@@ -234,6 +234,8 @@
       .zsel { flex:1; min-width:0; }
       .res-big .v { font-size:28px; }
       .card-title .right { margin-left:0; }
+      /* iPhone は16px未満の入力欄で入力時に画面を拡大するので、入力欄と選択欄は16pxに保つ */
+      .search-input, .num, .zsel, .list-ctrl .search-input { font-size:16px; }
     }
     @media print {
       .no-print, .sumbar, .toast { display:none !important; }
