@@ -381,7 +381,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-04-18"
   },
   "ナレッジ/OTC類似薬の一部保険外療養.html": {
-    "lastUpdated": "2026-10-01",
+    "lastUpdated": "2026-10-02",
     "newUntil": "2026-10-08"
   },
   "ナレッジ/基礎的医薬品追加リストR8_4.html": {
@@ -392,7 +392,7 @@ window.__pageMeta = {
     "newUntil": "2026-09-30"
   },
   "ナレッジ/OTC類似薬_これまでの動き.html": {
-    "lastUpdated": "2026-10-01"
+    "lastUpdated": "2026-10-02"
   },
   "ナレッジ/高額療養費制度の見直し2026.html": {
     "lastUpdated": "2026-09-30",
@@ -400,6 +400,10 @@ window.__pageMeta = {
   },
   "ナレッジ/OTC類似薬_特別の料金の計算.html": {
     "lastUpdated": "2026-10-01"
+  },
+  "ナレッジ/調剤報酬QA.html": {
+    "lastUpdated": "2026-10-02",
+    "newUntil": "2026-08-05"
   },
   "ナレッジ/OTC類似薬_対象の薬と料金がかからない場合.html": {
     "lastUpdated": "2026-10-01"
@@ -414,10 +418,6 @@ window.__pageMeta = {
   "ナレッジ/リフィル処方箋.html": {
     "lastUpdated": "2026-08-12",
     "newUntil": "2026-08-13"
-  },
-  "ナレッジ/調剤報酬QA.html": {
-    "lastUpdated": "2026-09-07",
-    "newUntil": "2026-08-05"
   },
   "事務/事務スタッフ向け_2026調剤報酬改定ポイント整理.html": {
     "lastUpdated": "2026-09-23"
