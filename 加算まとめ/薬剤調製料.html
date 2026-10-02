@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex,nofollow,noarchive" />
     <title>薬剤調製料｜算定項目まとめ</title>
-    <meta name="search-keywords" content="薬剤調製料,調剤料,剤数,１剤,服用時点,食直前,食前30分,別剤,配合不適,内服用滴剤,ドライシロップ,トローチ,屯服薬,浸煎薬,湯薬,注射薬,外用薬,３剤まで,分割調剤,ざいすう,ないふくようてきざい,しんせんやく,とうやく,とんぷく" />
+    <meta name="search-keywords" content="薬剤調製料,同一剤形,同一有効成分,口腔内崩壊錠,OD錠,普通錠,混合比率,調剤料,剤数,１剤,服用時点,食直前,食前30分,別剤,配合不適,内服用滴剤,ドライシロップ,トローチ,屯服薬,浸煎薬,湯薬,注射薬,外用薬,３剤まで,分割調剤,ざいすう,ないふくようてきざい,しんせんやく,とうやく,とんぷく" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/gigi-list.css" />
     <link rel="stylesheet" href="../assets/source-refs.css" />
@@ -244,7 +244,7 @@
         <div class="list">
           <div class="li">２種類以上の薬剤を調剤する場合、<span class="marker">それぞれを個別の薬包等に調剤しても、服用時点が同一なら１剤</span>として算定する</div>
           <div class="li">服用時点が同一である薬剤は、<b>投与日数にかかわらず１剤</b>として算定する</div>
-          <div class="li">同一有効成分であって同一剤形の薬剤が複数ある場合は、その数にかかわらず１剤として算定する</div>
+          <div class="li">同一有効成分であって同一剤形の薬剤が複数ある場合は、服用時点が違っても、その数にかかわらず１剤として算定する（剤形の範囲は下の「同一有効成分・同一剤形の扱い」を参照）</div>
         </div>
 
         <div class="box-gray" style="margin-top:12px;">
@@ -263,6 +263,30 @@
 
         <div class="sub-title">剤数に数えないもの</div>
         <p style="font-size:var(--text-sm); line-height:1.8;"><b>内服用滴剤</b>は剤数に含めない。投薬日数にかかわらず１調剤につき10点を算定する。内服用滴剤とは、内服用の液剤であって、１回の使用量が極めて少量（１滴ないし数滴）で、スポイト・滴瓶等により分割使用するものをいう。</p>
+      </div>
+
+      <div class="card" id="dozai">
+        <div class="card-title">同一有効成分・同一剤形の扱い<span class="qual">内服薬は１剤、外用薬は１調剤</span></div>
+        <p style="font-size:var(--text-sm); line-height:1.8;">同一有効成分で同一剤形の薬剤が複数あるときは、内服薬は服用時点が違っても<b>１剤</b>、外用薬は使用部位や回数が違っても<b>１調剤</b>として数える。「同一剤形」の範囲は、平成28年の疑義解釈で次のように示されている。<span class="marker">ここに並んだ剤形どうしは別剤形</span>として扱う。</p>
+        <div class="table-wrap" style="margin-top:10px;">
+          <table>
+            <thead><tr><th style="white-space:nowrap;">区分</th><th>それぞれ別剤形として扱う剤形</th></tr></thead>
+            <tbody>
+              <tr><td style="white-space:nowrap; font-weight:900;">内用薬</td><td>錠剤、口腔内崩壊錠、分散錠、粒状錠、カプセル剤、丸剤、散剤、顆粒剤、細粒剤、末剤、液剤、シロップ剤、ドライシロップ剤、経口ゼリー剤、チュアブル、バッカル、舌下錠</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">外用薬</td><td>軟膏剤、クリーム剤、ローション剤、液剤、スプレー剤、ゼリー、パウダー剤、ゲル剤、吸入粉末剤、吸入液剤、吸入エアゾール剤、点眼剤、眼軟膏、点鼻剤、点耳剤、耳鼻科用吸入剤・噴霧剤、パップ剤、貼付剤、テープ剤、硬膏剤、坐剤、膣剤、注腸剤、口嗽剤、トローチ剤</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:var(--text-sm); line-height:1.8; margin-top:8px;">この範囲は薬剤調製料を数えるためのもので、後発医薬品への変更調剤で認められる剤形の範囲とは別である。</p>
+
+        <div class="sub-title" style="margin-top:16px;">例）同じ成分の普通錠とOD錠</div>
+        <div class="list">
+          <div class="li">アムロジピン錠2.5mg（朝食後）とアムロジピンOD錠5mg（<b>朝食後</b>）→ 服用時点が同じなので<b>１剤</b></div>
+          <div class="li">アムロジピン錠2.5mg（朝食後）とアムロジピンOD錠5mg（<b>夕食後</b>）→ 錠剤と口腔内崩壊錠は別剤形なので、服用時点ごとに<b>２剤</b>。両方とも普通錠なら１剤</div>
+        </div>
+
+        <div class="sub-title" style="margin-top:16px;">例外：比率を変えて混合したもの</div>
+        <p style="font-size:var(--text-sm); line-height:1.8;">同じ薬剤の組み合わせでも、<span class="marker">比率を変えて混合したものは別調剤</span>になり、それぞれで薬剤調製料と計量混合調剤加算を算定できる（平成28年の疑義解釈）。比率が同じなら、使用部位が違っても１調剤。<br />例）ロコイド軟膏5g＋プロペト10g（体）と、ロコイド軟膏5g＋プロペト20g（顔）は２調剤</p>
       </div>
 
       <div class="card">
@@ -293,7 +317,7 @@
         <div class="sub-title">外用薬</div>
         <div class="list">
           <div class="li">投与日数にかかわらず、<b>１調剤</b>につき算定する</div>
-          <div class="li"><b>同一有効成分で同一剤形</b>の外用薬が複数ある場合は、その数にかかわらず１調剤として取り扱う。ただし、<span class="marker">同じ薬剤の組み合わせでも比率を変えて混合したもの</span>は別調剤になる（平成28年の疑義解釈）。例）ロコイド軟膏5g＋プロペト10g（体）と、ロコイド軟膏5g＋プロペト20g（顔）は２調剤</div>
+          <div class="li"><b>同一有効成分で同一剤形</b>の外用薬が複数ある場合は、その数にかかわらず１調剤として取り扱う。剤形の範囲と、比率を変えて混合したときの例外は、上の「同一有効成分・同一剤形の扱い」を参照</div>
           <div class="li">トローチは外用薬として算定する</div>
         </div>
 
@@ -404,6 +428,7 @@
 <div class="card">
         <div class="card-title">関連する過去の疑義解釈</div>
         <p style="font-size:var(--text-sm); line-height:1.8;"><a href="../ツール/gigi-search.html?q=薬剤調製料">疑義解釈検索ツールで「薬剤調製料」の全件を見る</a></p>
+        <p style="font-size:var(--text-sm); line-height:1.8;"><a href="../ツール/gigi-search.html?q=調剤料%20調剤">令和６年改定より前の「調剤料」（旧名称）の疑義解釈を見る</a></p>
       </div>
 
       <div class="card">
