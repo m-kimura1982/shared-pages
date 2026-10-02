@@ -156,6 +156,9 @@
     .ge-box .t { font-weight:900; margin-bottom:2px; }
     .ge-box b { font-weight:900; }
     .ge-box .marker { white-space:nowrap; }
+    .ge-box .ge-sub { font-size:var(--text-xs); color:var(--txt-2); margin-top:4px; }
+    .res-big .vs-now { font-size:var(--text-sm); color:var(--txt-2); margin-top:2px; }
+    .res-big .vs-now b { color:var(--ink); }
     .res-note { font-size:var(--text-xs); color:var(--txt-3); margin-top:10px; }
     .fold-in { margin-top:12px; }
     .bd { padding:8px 12px 10px; font-size:var(--text-xs); }
@@ -693,12 +696,13 @@
       '</table></div></details>';
 
     outEl.innerHTML =
-      '<div class="res-big"><div class="k">特別の料金（選定療養費・税込）</div><div class="v">'+yen(gFee)+'<small>円</small></div></div>'+
+      '<div class="res-big"><div class="k">特別の料金（選定療養費・税込）</div><div class="v">'+yen(gFee)+'<small>円</small></div>'+
+        (method==='r9' ? '<div class="vs-now">今の計算方法（'+yen(feeNow)+'円）より <b>'+(r9Fee===feeNow?'変わらない':yen(Math.abs(r9Fee-feeNow))+'円'+(r9Fee<feeNow?'安い':'高い'))+'</b></div>' : '')+'</div>'+
       '<table class="res-table">'+
         '<tr><td>保険分の一部負担（'+(rate*10)+'割）</td><td>'+yen(gIchibu)+'円</td></tr>'+
         '<tr class="total"><td>窓口負担の合計</td><td>'+yen(total)+'円</td></tr>'+
       '</table>'+
-      '<div class="ge-box"><div class="t">後発品を選んだ場合</div>窓口負担 <b>'+yen(gGe)+'円</b>（<span class="marker">'+yen(diff)+'円 安くなります</span>）</div>'+
+      '<div class="ge-box"><div class="t">後発品を選んだ場合</div>窓口負担 <b>'+yen(gGe)+'円</b>（<span class="marker">'+yen(diff)+'円 安くなります</span>）<div class="ge-sub">後発品の中でいちばん高い薬価で計算。実際に使う後発品が安ければ、さらに安くなります。</div></div>'+
       '<div class="res-note">※選定療養の対象薬だけの概算です。端数整理・公費・同じ剤の他の薬は含みません。</div>'+
       (method==='r9'
         ? '<details class="fold-in"'+(calcs.length>1?' open':'')+'><summary>品目ごとの金額（丸める前・税抜）</summary><div class="bd"><table><tr><th>品目</th><th class="r">投薬全量</th><th class="r">価格差1/2×全量</th></tr>'+r9Rows+
