@@ -1,6 +1,6 @@
 window.__pageMeta = {
-  "updates.html": {
-    "lastUpdated": "2026-10-01"
+  "index.html": {
+    "lastUpdated": "2026-10-02"
   },
   "加算まとめ.html": {
     "lastUpdated": "2026-09-12"
@@ -11,8 +11,8 @@ window.__pageMeta = {
   "事務スタッフ向け.html": {
     "lastUpdated": "2026-09-11"
   },
-  "index.html": {
-    "lastUpdated": "2026-10-01"
+  "updates.html": {
+    "lastUpdated": "2026-10-02"
   },
   "checklists.html": {
     "lastUpdated": "2026-09-11"
@@ -103,8 +103,8 @@ window.__pageMeta = {
     "newUntil": "2026-09-25"
   },
   "加算まとめ/薬剤調製料.html": {
-    "lastUpdated": "2026-09-03",
-    "newUntil": "2026-09-09"
+    "lastUpdated": "2026-10-02",
+    "newUntil": "2026-10-09"
   },
   "加算まとめ/バイオ後続品調剤体制加算.html": {
     "lastUpdated": "2026-08-31"
@@ -218,10 +218,6 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-20",
     "newUntil": "2026-07-31"
   },
-  "加算まとめ/自家製剤加算・計量混合調剤加算.html": {
-    "lastUpdated": "2026-09-03",
-    "newUntil": "2026-09-10"
-  },
   "加算まとめ/外来服薬支援料2.html": {
     "lastUpdated": "2026-08-20",
     "newUntil": "2026-08-20"
@@ -244,6 +240,10 @@ window.__pageMeta = {
   },
   "加算まとめ/調剤管理料_2026改定.html": {
     "lastUpdated": "2026-09-02"
+  },
+  "加算まとめ/自家製剤加算・計量混合調剤加算.html": {
+    "lastUpdated": "2026-10-02",
+    "newUntil": "2026-10-09"
   },
   "加算まとめ/薬学的有害事象等防止加算.html": {
     "lastUpdated": "2026-09-02"
@@ -366,10 +366,6 @@ window.__pageMeta = {
   "ツール/服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html": {
     "lastUpdated": "2026-08-06"
   },
-  "ツール/gigi-search.html": {
-    "lastUpdated": "2026-09-02",
-    "newUntil": "2026-07-25"
-  },
   "ツール/地域支援医薬品供給対応体制加算_届出判定ツール.html": {
     "lastUpdated": "2026-07-12"
   },
@@ -377,8 +373,20 @@ window.__pageMeta = {
     "lastUpdated": "2026-09-29",
     "newUntil": "2026-09-30"
   },
+  "ツール/gigi-search.html": {
+    "lastUpdated": "2026-10-02",
+    "newUntil": "2026-07-25"
+  },
   "ナレッジ/変更調剤について.html": {
     "lastUpdated": "2026-04-18"
+  },
+  "ナレッジ/調剤報酬QA.html": {
+    "lastUpdated": "2026-10-02",
+    "newUntil": "2026-08-05"
+  },
+  "ナレッジ/OTC類似薬の一部保険外療養.html": {
+    "lastUpdated": "2026-10-02",
+    "newUntil": "2026-10-08"
   },
   "ナレッジ/基礎的医薬品追加リストR8_4.html": {
     "lastUpdated": "2026-04-19"
@@ -387,9 +395,8 @@ window.__pageMeta = {
     "lastUpdated": "2026-09-24",
     "newUntil": "2026-09-30"
   },
-  "ナレッジ/OTC類似薬の一部保険外療養.html": {
-    "lastUpdated": "2026-10-01",
-    "newUntil": "2026-10-08"
+  "ナレッジ/OTC類似薬_これまでの動き.html": {
+    "lastUpdated": "2026-10-02"
   },
   "ナレッジ/高額療養費制度の見直し2026.html": {
     "lastUpdated": "2026-09-30",
@@ -398,11 +405,8 @@ window.__pageMeta = {
   "ナレッジ/OTC類似薬_特別の料金の計算.html": {
     "lastUpdated": "2026-10-01"
   },
-  "ナレッジ/OTC類似薬_これまでの動き.html": {
-    "lastUpdated": "2026-10-01"
-  },
   "ナレッジ/OTC類似薬_対象の薬と料金がかからない場合.html": {
-    "lastUpdated": "2026-10-01"
+    "lastUpdated": "2026-10-02"
   },
   "ナレッジ/OTC類似薬_処方箋と窓口対応.html": {
     "lastUpdated": "2026-10-01"
@@ -414,10 +418,6 @@ window.__pageMeta = {
   "ナレッジ/リフィル処方箋.html": {
     "lastUpdated": "2026-08-12",
     "newUntil": "2026-08-13"
-  },
-  "ナレッジ/調剤報酬QA.html": {
-    "lastUpdated": "2026-09-07",
-    "newUntil": "2026-08-05"
   },
   "事務/事務スタッフ向け_2026調剤報酬改定ポイント整理.html": {
     "lastUpdated": "2026-09-23"
