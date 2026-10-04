@@ -4,1151 +4,486 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex,nofollow,noarchive" />
-    <title>ハイリスク薬｜膵臓ホルモン剤（インスリン製剤）｜薬歴マニュアル</title>
-    <meta name="search-keywords" content="インスリン,自己注射,注射,ランタス,グラルギン,トレシーバ,デグルデク,ノボラピッド,アスパルト,ヒューマログ,ヒューマリン,ノボリン,ライゾデグ,フィアスプ,ルムジェブ,ソリクア,フレックスタッチ,フレックスペン,デバイス,単位,低血糖,シックデイ,手技,ローテーション" />
-    <meta property="og:title" content="ハイリスク薬の薬歴記載｜膵臓ホルモン剤（インスリン製剤）" />
-    <meta property="og:description" content="特定薬剤管理指導加算1の薬歴記載例。インスリン製剤について、製剤群ごとに「何を確認し、どう指導し、薬歴にどう残すか」を整理したページ。" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://m-kimura1982.github.io/shared-pages/yakureki/ハイリスク_膵臓ホルモン剤.html" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="yakureki.css" />
+    <title>ハイリスク薬 インスリン製剤｜薬歴マニュアル</title>
+    <meta name="search-keywords" content="膵臓ホルモン剤,インスリン,持効型,週1回,アウィクリ,イコデク,超速効型,速効型,混合型,配合型,ランタス,ランタスXR,トレシーバ,レベミル,グラルギン,ノボラピッド,ヒューマログ,アピドラ,フィアスプ,ルムジェブ,ヒューマリンR,ノボリンR,ノボラピッド30ミックス,ヒューマログミックス,ライゾデグ,ゾルトファイ,ソリクア,単位,ドーズ,空打ち,注射部位,しこり,硬結,低血糖,シックデイ,グルカゴン" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/fold.css" />
-    <style>
-      /* 薬剤群ブロック */
-      .drug-block {
-        background: var(--white);
-        border: 1px solid var(--border);        border-radius: var(--radius-sm);
-        padding:  18px 20px;
-        margin-bottom:  18px;
-      }
-      .drug-block-head {
-        display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
-        margin-bottom: 10px; padding-bottom: 8px;
-        border-bottom: 1px solid var(--border);
-      }
-      .drug-block-name { font-size: 17px; font-weight: 700; color: var(--ink); }
-      .drug-block-sub  { font-size: 12px; color: var(--sub); }
-
-      /* テンプレ直上の注意（重要語のみ赤） */
-      .tpl-warn {
-        background: var(--warn-bg);
-        border: 1px solid var(--warn-border);
-        border-radius: 4px;
-        padding: 10px 14px;
-        margin: 12px 0 8px;
-        font-size: 13px;
-        line-height: 1.7;
-        color: var(--ink);
-      }
-      .tpl-warn-title {
-        font-weight: 700; color: var(--ink);
-        font-size: 13px; margin-bottom: 4px;
-      }
-      .tpl-warn ul { margin: 4px 0 0 20px; padding: 0; }
-      .tpl-warn ul li { margin-bottom: 2px; }
-      .tpl-warn strong { color: var(--ink); font-weight: 700; }
-
-      /* 算定要件・改定注記の警告（オレンジ系） */
-      .caveat-box {
-        background: #fff7e6;
-        border: 1px solid #f5d4a1;
-        border-radius: 4px;
-        padding: 10px 14px;
-        margin: 12px 0;
-        font-size: 12.5px;
-        line-height: 1.7;
-        color: var(--ink);
-      }
-      .caveat-box-title {
-        font-weight: 700; color: #b45309;
-        font-size: 13px; margin-bottom: 4px;
-      }
-
-      /* 短文テンプレ（基本 / 追記） */
-      .tpl-set { margin-top: 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
-      .tpl-mini {
-        display: flex; align-items: flex-start; gap: 10px;
-        background: var(--white); border: none;
-        border-bottom: 1px solid #edf0f4;
-        padding: 11px 14px; margin: 0;
-        position: relative;
-      }
-      .tpl-mini:last-child { border-bottom: none; }
-      .tpl-mini:nth-child(even) { background: #fafbfd; }
-      .tpl-mini .tpl-tag {
-        flex-shrink: 0; font-size: 11px; font-weight: 700;
-        padding: 3px 10px; border-radius: 100px;
-        letter-spacing: .04em; line-height: 1.6;
-        white-space: nowrap;
-      }
-      .tpl-mini .tpl-tag.base   { background: var(--blue-light); color: var(--blue); }
-      .tpl-mini .tpl-tag.init   { background: var(--blue-light); color: var(--blue); }
-      .tpl-mini .tpl-tag.change { background: #e0f2f1; color: #0a6b63; border: none; }
-      .tpl-mini .tpl-tag.add    { background: #f2f4f8; color: #4b5563; border: 1px solid #d7dce3; }
-      .tpl-mini .tpl-tag.se     { background: #fef3e8; color: #b45309; border: 1px solid #f5d4a1; }
-
-      /* 薬剤ブロック内：確認項目 */
-      .drug-check-box {
-        background: #f7f8fa;
-        border: 1px solid #e1e5ea;        border-radius: 4px;
-        padding: 12px 16px;
-        margin: 8px 0 12px;
-      }
-      .drug-check-box-title {
-        font-weight: 700; color: var(--blue);
-        font-size: 12.5px; letter-spacing: .04em;
-        margin-bottom: 4px;
-      }
-      .drug-check-box ul { margin: 0; padding-left: 20px; }
-      .drug-check-box ul li { font-size: 13px; line-height: 1.7; margin-bottom: 2px; }
-
-      /* 折りたたみ式 指導補足 */
-      /* 詳細・背景知識の折りたたみ：見た目は assets/fold.css */
-      .guide-details { margin: 10px 0 14px; }
-      details.guide-details.fold-in > summary { font-size: 13.5px; }
-      .guide-details-body {
-        padding: 12px 18px 14px; font-size: 13.5px; line-height: 1.75;
-      }
-      .guide-details-body h4 {
-        font-size: 13px; font-weight: 700;
-        margin: 8px 0 4px; color: var(--ink);
-      }
-      .guide-details-body p { margin: 4px 0; }
-      .guide-details-body ul { margin: 4px 0; padding-left: 22px; }
-      .guide-details-body ul li { margin-bottom: 2px; }
-      .guide-details-body .patient-say {
-        background: #fff; border-left: 3px solid #c9def5;
-        padding: 6px 10px; margin-top: 6px;
-        font-size: 12.5px; color: var(--sub);
-      }
-
-      /* 薬剤名索引 */
-      .drug-index {
-        background: #fafbfc;
-        border: 1px solid #e1e5ea;
-        border-radius: 6px;
-        padding: 12px 16px;
-        margin-bottom: 16px;
-      }
-      .drug-index-title {
-        font-size: 12px; font-weight: 700;
-        color: var(--blue);
-        letter-spacing: .04em;
-        margin-bottom: 8px;
-      }
-      .drug-index-row {
-        display: flex; align-items: baseline; gap: 6px;
-        flex-wrap: wrap; margin-bottom: 4px; font-size: 12.5px;
-      }
-      .drug-index-row .di-group {
-        color: var(--sub); font-weight: 700;
-        min-width: 7em; flex-shrink: 0;
-      }
-      .drug-index-row a {
-        background: #fff; border: 1px solid #d7dce3;
-        border-radius: 100px; padding: 3px 11px;
-        color: var(--ink); text-decoration: none;
-        white-space: nowrap;
-      }
-      .drug-index-row a:hover {
-        background: var(--blue); color: #fff; border-color: var(--blue);
-      }
-
-      .tag-legend {
-        display: flex; flex-wrap: wrap; gap: 10px;
-        margin: 8px 0 16px; font-size: 12px; color: var(--sub);
-      }
-      .tag-legend span { display: inline-flex; align-items: center; gap: 4px; }
-      .tag-legend i {
-        display: inline-block; width: 10px; height: 10px; border-radius: 2px;
-      }
-      .tpl-mini .tpl-text {
-        flex: 1; font-size: 13.5px; line-height: 1.7;
-        padding-right: 56px; white-space: pre-wrap;
-      }
-      .tpl-mini .copy-mini {
-        position: absolute; top: 10px; right: 10px;
-        background: #f3f4f6; color: #374151; border: 1px solid #d1d5db;
-        border-radius: 4px; font-size: 11px; font-weight: 700;
-        padding: 4px 10px; cursor: pointer;
-        font-family: "Noto Sans JP", sans-serif;
-      }
-      .tpl-mini .copy-mini:hover { background: #e5e7eb; border-color: #9ca3af; }
-      .tpl-mini .copy-mini.copied { background: var(--good-border); color: #fff; border-color: var(--good-border); }
-
-      /* モバイル：tpl-mini を縦積み */
-      @media (max-width: 640px) {
-        .tpl-mini {
-          flex-direction: column;
-          align-items: stretch;
-          gap: 6px;
-          padding-bottom: 36px;
-        }
-        .tpl-mini .tpl-tag {
-          align-self: flex-start;
-          max-width: 100%;
-          white-space: normal;
-        }
-        .tpl-mini .tpl-text { padding-right: 0; }
-        .tpl-mini .copy-mini { top: auto; bottom: 6px; right: 8px; }
-      }
-
-      .warn-box ul { padding-left: 22px; margin-top: 4px; }
-      .warn-box ul li { margin-bottom: 4px; line-height: 1.7; }
-
-      /* SECTION 1 確認事項 */
-      .ci-list dt {
-        font-size: 14px; font-weight: 700; color: var(--ink);
-        background: #f2f4f8; padding: 8px 14px; border-radius: 4px;
-        margin-top: 10px;
-      }
-      .ci-list dd {
-        padding: 6px 14px 6px 14px; font-size: 13px; line-height: 1.75;
-      }
-
-      /* インスリン特有チェックリスト（SECTION 1.5） */
-      .insulin-check {
-        background: #f7f8fa;
-        border: 1px solid #e1e5ea;        border-radius: var(--radius-sm);
-        padding: 14px 18px;
-        margin: 10px 0 16px;
-      }
-      .insulin-check-title {
-        font-weight: 700; color: var(--blue);
-        font-size: 14px; margin-bottom: 8px;
-      }
-      .insulin-check ol {
-        margin: 0; padding-left: 22px;
-        font-size: 13px; line-height: 1.85;
-      }
-      .insulin-check ol li { margin-bottom: 4px; }
-      .insulin-check ol li strong { color: var(--ink); }
-
-      /* ===== サイドスティッキー目次（PC 880px+） ===== */
-      [id] { scroll-margin-top:calc(var(--sn-header-h, 0px) + 16px); }
-      .sticky-toc { display: none; }
-
-      /* ===== スマホ用インライン目次（880px未満のみ表示） ===== */
-      .toc-inline { margin: 0 0 18px; }
-      .toc-inline .toc-links { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 14px 14px; }
-      .toc-inline .toc-links a { font-size: 12px; background: var(--blue-light); color: var(--blue); border-radius: 4px; padding: 2px 9px; text-decoration: none; }
-      @media (min-width: 880px) { .toc-inline { display: none; } }
-
-      @media (min-width: 880px) {
-        .layout-outer {
-          max-width: 1240px;
-          margin: 0 auto;
-          padding: 28px 20px 0;
-          display: grid;
-          grid-template-columns: 220px minmax(0, 1fr);
-          gap: 28px;
-          align-items: start;
-        }
-        .layout-outer .page-head { max-width: none; margin: 0 0 16px; padding: 0; }
-        .layout-outer main { max-width: none; margin: 0; padding: 0; }
-
-        .sticky-toc {
-          display: block;
-          position: sticky;
-          top: calc(var(--sn-header-h, 0px) + 20px);
-          background: var(--white);
-          border: 1px solid var(--border);
-          border-radius: var(--radius-sm);
-          padding: 12px 8px 14px;
-          max-height: calc(100vh - var(--sn-header-h, 0px) - 40px);
-          overflow-y: auto;
-          scrollbar-width: thin;
-          scrollbar-color: var(--border) transparent;
-        }
-        .sticky-toc::-webkit-scrollbar { width: 4px; }
-        .sticky-toc::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-
-        .sticky-toc-head {
-          padding: 0 8px 8px;
-          margin-bottom: 6px;
-          border-bottom: 1px solid var(--border);
-        }
-        .sticky-toc-label {
-          display: block;
-          font-size: 11px;
-          font-weight: 700;
-          color: var(--blue);
-          letter-spacing: 0.12em;
-        }
-        .sticky-toc-group {
-          font-size: 10px;
-          font-weight: 700;
-          color: var(--sub);
-          letter-spacing: 0.08em;
-          padding: 10px 10px 4px;
-          margin-top: 4px;
-        }
-        .sticky-toc a {
-          display: block;
-          font-size: 13px;
-          color: var(--ink);
-          text-decoration: none;
-          padding: 5px 10px;
-          border-radius: 4px;
-          line-height: 1.45;
-          border-left: 3px solid transparent;
-          margin-bottom: 1px;
-          transition: background 0.12s, color 0.12s, border-color 0.12s;
-        }
-        .sticky-toc a:hover {
-          background: var(--blue-light);
-          color: var(--blue);
-        }
-        .sticky-toc a.is-active {
-          background: var(--blue-light);
-          color: var(--blue);
-          font-weight: 700;
-          border-left-color: var(--blue);
-        }
-      }
-      @media print {
-        .sticky-toc { display: none !important; }
-        .layout-outer { display: block !important; padding: 0; }
-      }
-    </style>
+    <link rel="stylesheet" href="hairisk.css" />
   </head>
   <body>
-  <script src="../assets/site-header.js" defer></script>
+    <script src="../assets/site-header.js" defer></script>
 
+    <div class="page">
 
-    <div class="layout-outer">
-
-    <nav class="sticky-toc" aria-label="目次">
-      <div class="sticky-toc-head">
-        <span class="sticky-toc-label">CONTENTS</span>
+      <div class="page-title">
+        <h1>インスリン製剤</h1>
+        <p>膵臓ホルモン剤で確認する項目と記載例。飲み薬とGLP-1受容体作動薬は糖尿病用剤のページ。</p>
       </div>
-      <a href="#guide">このページの使い方</a>
-      <div class="sticky-toc-group">▼ まず確認</div>
-      <a href="#lowline">算定時の記載ポイント</a>
-      <a href="#sec-checklist">簡易チェックリスト</a>
-      <a href="#drug-search">薬剤名から探す</a>
-      <div class="sticky-toc-group">▼ 製剤群別</div>
-      <a href="#basal">持効型・基礎インスリン</a>
-      <a href="#bolus">速効型・超速効型・食事インスリン</a>
-      <a href="#mix">混合型・配合型インスリン</a>
-      <a href="#glp1-combo">インスリン＋GLP-1配合剤</a>
-      <div class="sticky-toc-group">▼ 必要時</div>
-      <a href="#section3">副作用・服薬状況等の変化によるロ</a>
-      <div class="sticky-toc-group">▼ 参考</div>
-      <a href="#section1">共通確認ポイント</a>
-      <a href="#section1-5">インスリン指導の確認事項</a>
-      <a href="#kobetsu">個別指導</a>
-      <div class="sticky-toc-group">▼ 他の薬効群</div>
-      <a href="ハイリスク_血液凝固阻止剤.html">血液凝固阻止剤</a>
-      <a href="ハイリスク_糖尿病用剤.html">糖尿病用剤</a>
-      <a href="ハイリスク_抗精神病薬.html">抗精神病薬</a>
-      <a href="ハイリスク_抗うつ薬.html">抗うつ薬</a>
-      <a href="ハイリスク_気分安定薬.html">気分安定薬</a>
-      <a href="ハイリスク_抗てんかん薬.html">抗てんかん薬</a>
-    </nav>
 
-    <div>
+      <nav class="hr-nav" aria-label="ハイリスク薬のページ">
+        <div class="row">
+          <a class="i" href="ハイリスク薬指導.html">全体の流れ</a>
+          <a class="i" href="ハイリスク_薬歴の書き方.html">薬歴の書き方</a>
+        </div>
+        <div class="row grp">
+          <a class="i" href="ハイリスク_血液凝固阻止剤.html">血液凝固阻止剤</a>
+          <a class="i" href="ハイリスク_糖尿病用剤.html">糖尿病用剤</a>
+          <span class="i cur" aria-current="page">インスリン製剤</span>
+          <a class="i" href="ハイリスク_抗精神病薬.html">抗精神病薬</a>
+          <a class="i" href="ハイリスク_抗うつ薬.html">抗うつ薬</a>
+          <a class="i" href="ハイリスク_気分安定薬.html">気分安定薬</a>
+          <a class="i" href="ハイリスク_抗てんかん薬.html">抗てんかん薬</a>
+        </div>
+      </nav>
 
-    <div class="page-head">
-      <span class="page-tag">HIGH-RISK 10</span>
-      <h1 class="page-title">膵臓ホルモン剤（インスリン製剤）</h1>
-      <p class="page-desc">
-        <strong>インスリン製剤</strong>の特定薬剤管理指導加算1の薬歴記載例。新規（イ）・用法用量変更（ロ）に加え、副作用・服薬状況等の変化によるロも扱う。<br />
-        経口糖尿病薬・GLP-1作動薬（注射）は別ページ（糖尿病用剤）。
-      </p>
+      <div class="card" id="point">
+        <div class="card-title">この薬効群で記載すること</div>
+        <div class="blist">
+          <div class="check"><span>✓</span><span>単位数と注射のタイミングを本人が理解していること</span></div>
+          <div class="check"><span>✓</span><span>低血糖の症状と対処を、本人と家族に伝えたこと</span></div>
+          <div class="check"><span>✓</span><span>注射の手技（空打ち・注射する場所・針の扱い）と保管方法</span></div>
+          <div class="check"><span>✓</span><span>シックデイ（発熱・下痢・嘔吐で食事がとれないとき）の対応</span></div>
+          <div class="check"><span>✓</span><span>本人が続けて打てるか（視力・手指の動き・理解）と、家族の支援</span></div>
+        </div>
+        <div class="grp-chips" style="margin-top:14px;">
+          <a href="#common">共通の注意</a>
+          <a href="#basal">持効型</a>
+          <a href="#bolus">超速効型・速効型</a>
+          <a href="#mix">混合型・配合型</a>
+          <a href="#glp1-combo">GLP-1との配合剤<small>ゾルトファイ・ソリクア</small></a>
+        </div>
+      </div>
+
+      <!-- ===== 共通 ===== -->
+      <div class="card" id="common">
+        <div class="card-title">どの製剤にも共通の注意</div>
+        <div class="stack">
+          <div>
+            <div class="sub-title">電子添文で患者への指導が求められていること</div>
+            <div class="blist">
+              <div class="bullet"><span>・</span><span>低血糖の注意と対処を、本人と家族に十分に伝える。低血糖の症状と対処は<a href="ハイリスク_糖尿病用剤.html#common">糖尿病用剤の「低血糖とシックデイ」</a>を参照。</span></div>
+              <div class="bullet"><span>・</span><span>ほかのインスリン製剤と取り違えないよう、注射の前に毎回ラベルを確認する。</span></div>
+              <div class="bullet"><span>・</span><span>注射する場所は前回から2〜3cm離し、しこりや硬いところには打たない。同じ場所に打ち続けると皮膚アミロイドーシスやリポジストロフィーが起こり、インスリンが吸収されにくくなる。</span></div>
+              <div class="bullet"><span>・</span><span>針を付けたときに液漏れしたら、新しい針に替える。</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="sub-title">シックデイ</div>
+            <div class="blist">
+              <div class="bullet"><span>・</span><span>食事がとれないときは必ず主治医に連絡するよう、普段から伝えておく。<span class="marker">インスリンの減量や中止は自己判断せず、主治医の指示に従う。</span></span></div>
+              <div class="bullet"><span>・</span><span>糖尿病標準診療マニュアルの目安：普段の半分くらい食べられれば、食前の速効型・超速効型も半量。持効型は通常量。それより食べられないときは点滴が必要になるので受診する。実際の調整は主治医の指示に従う。</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="sub-title">保管</div>
+            <div class="blist">
+              <div class="bullet"><span>・</span><span>使う前のものは冷蔵庫で保管し、凍らせない。使い始めたものは室温で遮光して保管し、製剤ごとに決められた期間（4週間など）のうちに使い切る。使用中に冷蔵庫に入れてよいかは製剤ごとに違う（ノボラピッドは冷蔵庫も可、ノボラピッド30ミックスは入れない）。</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== 持効型 ===== -->
+      <div class="card" id="basal">
+        <div class="card-title">持効型</div>
+        <div class="drugs">ランタス・ランタスXR・インスリン グラルギンBS（インスリン グラルギン）／トレシーバ（インスリン デグルデク）／レベミル（インスリン デテミル）／週1回：アウィクリ（インスリン イコデク）</div>
+
+        <div class="tpl-sec">確認する項目</div>
+        <div class="kakunin">
+          <div class="check"><span>✓</span><span>処方目的と医師から受けた説明</span></div>
+          <div class="check"><span>✓</span><span>単位数と、打つ時刻（アウィクリは曜日）</span></div>
+          <div class="check"><span>✓</span><span>低血糖の症状、特に夜間・早朝の低血糖（寝汗・朝のだるさ）</span></div>
+          <div class="check"><span>✓</span><span>注射の手技・注射する場所のしこり・保管方法</span></div>
+          <div class="check"><span>✓</span><span>飲み薬（SU薬など）との併用</span></div>
+        </div>
+
+        <div class="tpl-sec">記載例をつくる</div>
+        <div class="mk" data-purpose="2型糖尿病の血糖コントロール|1型糖尿病">
+          <div class="mk-h">製剤</div>
+          <div class="mk-scenes mk-drug">
+            <label><input type="radio" name="bd" value="ランタス" checked><span>ランタス</span></label>
+            <label><input type="radio" name="bd" value="トレシーバ"><span>トレシーバ</span></label>
+            <label><input type="radio" name="bd" value="レベミル"><span>レベミル</span></label>
+            <label><input type="radio" name="bd" value="アウィクリ"><span>アウィクリ</span></label>
+            <label><input type="radio" name="bd" value="〇〇"><span>その他</span></label>
+          </div>
+          <div class="mk-h">場面</div>
+          <div class="mk-scenes">
+            <label><input type="radio" name="b" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
+            <label><input type="radio" name="b" value="up" data-text="{薬}：〇単位→〇単位に増量。空腹時血糖が高いため増量と本人より。"><span><b>ロ</b>増量</span></label>
+            <label><input type="radio" name="b" value="sw" data-text="{薬}：〇〇から変更。"><span><b>ロ</b>製剤の変更</span></label>
+            <label><input type="radio" name="b" value="night" data-text="{薬}：明け方に寝汗をかき、朝にだるさがあると本人より。夜間の低血糖の可能性があり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>夜間の低血糖</span></label>
+            <label><input type="radio" name="b" value="lump" data-text="{薬}：おなかの同じあたりに打っていて、しこりがあると本人より。吸収が悪くなり血糖が安定しなくなるため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>注射部位のしこり</span></label>
+          </div>
+          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <label class="mk-p"><input type="checkbox" data-on="i sw"><span>単位数と注射のタイミングを本人が理解していることを確認。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="up sw"><span>低血糖の症状なし。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="up sw"><span>注射の手技に問題なし。注射する場所にしこりなし。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>視力・手指の動きに問題なく、本人が単位を合わせて打てることを確認。</span></label>
+          <div class="mk-h">指導</div>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>注射の手技を実演で確認。毎回空打ちをしてから打ち、注射する場所は前回から2〜3cm離し、しこりのあるところには打たないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i sw"><span>ほかのインスリン製剤と取り違えないよう、注射の前に毎回ラベルを確認するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>低血糖の症状（強い空腹感・冷や汗・ふるえ）と、起きたときはブドウ糖や糖分を含むものをとるよう説明。家族にも伝えるよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>使う前のものは冷蔵庫で凍らせずに保管し、使い始めたものは室温で遮光して保管するよう説明。針は毎回新しいものに替え、使用済みの針は〇〇に捨てるよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>シックデイ（発熱・下痢・嘔吐で食事がとれないとき）も自己判断で中止せず、主治医に連絡してその指示に従うよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="トレシーバ"><span>注射時刻を変える必要があるときは、通常の時刻の前後8時間以内で変え、その後は通常の時刻に戻すよう説明。前の注射との間隔が短くなるときは低血糖に注意するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="アウィクリ" data-on="i sw"><span>週1回の製剤のため、決めた曜日に打ち、毎日は打たないよう指導。単位数は計算し直さず、指示された単位数をそのまま合わせるよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="アウィクリ" data-on="sw"><span>これまで毎日打っていた持効型（〇〇）は中止し、アウィクリだけを週1回打つよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="アウィクリ" data-on="i"><span>打ち忘れたときは気づいた時点で打ち、次は4日以上あけて打つよう説明。その後はその日と同じ曜日に週1回打つよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="トレシーバ" data-on="i"><span>打ち忘れたときは気づいた時点で打ち、次は8時間以上あけてから、その後はいつもの時刻に打つよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="sw"><span>変更前の製剤との違い（ペンの操作・単位数・打つ回数）を説明し、実演で手技を確認。単位数は医師の指示どおりに合わせるよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="night"><span>次回受診を待たずに主治医に相談するよう指導。夜中に冷や汗・ふるえで目が覚めたときはブドウ糖をとるよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="lump"><span>しこりのある場所には打たず、前回から2〜3cm離して打つよう指導。正常な場所に変えると効きがよくなり低血糖が起きることがあるため、低血糖に注意し、しこりがあることを主治医にも伝えるよう説明。</span></label>
+          <div class="mk-h">重篤な副作用<span class="mk-sub">説明したときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox"><span>全身の発疹、息苦しさ、顔や唇の腫れが出たときはすぐに受診するよう説明。</span><span class="mk-tag">アナフィラキシー</span></label>
+          <div class="mk-out"></div>
+          <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
+        </div>
+
+        <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>食事と関係なく一日中ゆっくり効く。中断すると高血糖やケトアシドーシスにつながるので、食べられない日も自己判断で中止しない。</span></div>
+            <div class="bullet"><span>・</span><span>毎日ほぼ同じ時刻に打つ。時刻は製剤ごとの用法と主治医の指示に従う。トレシーバは、成人で注射時刻を変える必要があるときは、通常の時刻の前後8時間以内で変え、その後は通常の時刻に戻す（電子添文）。</span></div>
+            <div class="bullet"><span>・</span><span>アウィクリは週1回の持効型。毎日の持効型と取り違えて連日打つ、単位数を多く合わせるといった過誤で重い低血糖が起きるおそれがあるため、週1回であることと単位の合わせ方を患者に十分指導するよう電子添文で求められている。毎日の持効型から変えるときは、それまでの1日量の7倍を目安にし、初回だけ増やすことがある。</span></div>
+            <div class="bullet"><span>・</span><span>しこりのある場所では吸収が悪く、効きが悪いぶん単位が増えていることがある。その単位のまま正常な場所に打つと低血糖が起きることがあるので、単位の調整は主治医に相談する（電子添文）。</span></div>
+          </div>
+        </div></details>
+      </div>
+
+      <!-- ===== 超速効型・速効型 ===== -->
+      <div class="card" id="bolus">
+        <div class="card-title">超速効型・速効型</div>
+        <div class="drugs">超速効型：ノボラピッド（インスリン アスパルト）／ヒューマログ（インスリン リスプロ）／アピドラ（インスリン グルリジン）／フィアスプ／ルムジェブ<br>速効型：ヒューマリンR・ノボリンR（インスリン ヒト）</div>
+
+        <div class="tpl-sec">注射のタイミング（電子添文）</div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>製剤</th><th>いつ打つか</th></tr></thead>
+            <tbody>
+              <tr><td class="k">ノボラピッド</td><td>毎食直前</td></tr>
+              <tr><td class="k">ヒューマログ・アピドラ</td><td>毎食直前（15分以内）</td></tr>
+              <tr><td class="k">フィアスプ・ルムジェブ</td><td>食事開始前2分以内。食事開始後に打つ場合は、食事開始から20分以内</td></tr>
+              <tr><td class="k">ヒューマリンR・ノボリンR</td><td>毎食前（通常は食事の30分前）</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tpl-sec">確認する項目</div>
+        <div class="kakunin">
+          <div class="check"><span>✓</span><span>処方目的と医師から受けた説明</span></div>
+          <div class="check"><span>✓</span><span>単位数と、食事とのタイミング（製剤で違う）</span></div>
+          <div class="check"><span>✓</span><span>食事を抜く・量が少ない日があるか</span></div>
+          <div class="check"><span>✓</span><span>低血糖の症状と、起きた時間帯</span></div>
+          <div class="check"><span>✓</span><span>注射の手技・注射する場所のしこり・保管方法</span></div>
+        </div>
+
+        <div class="tpl-sec">記載例をつくる</div>
+        <div class="mk" data-purpose="2型糖尿病の血糖コントロール|1型糖尿病">
+          <div class="mk-h">製剤</div>
+          <div class="mk-scenes mk-drug">
+            <label><input type="radio" name="sd" value="ノボラピッド" checked><span>ノボラピッド</span></label>
+            <label><input type="radio" name="sd" value="ヒューマログ"><span>ヒューマログ</span></label>
+            <label><input type="radio" name="sd" value="フィアスプ"><span>フィアスプ</span></label>
+            <label><input type="radio" name="sd" value="ルムジェブ"><span>ルムジェブ</span></label>
+            <label><input type="radio" name="sd" value="ヒューマリンR"><span>ヒューマリンR</span></label>
+            <label><input type="radio" name="sd" value="〇〇"><span>その他</span></label>
+          </div>
+          <div class="mk-h">場面</div>
+          <div class="mk-scenes">
+            <label><input type="radio" name="s" value="i" checked data-text="{薬}：新規。〇〇（持効型）に追加。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
+            <label><input type="radio" name="s" value="up" data-text="{薬}：〇〇の単位を〇単位→〇単位に増量。食後血糖が高いため増量と本人より。"><span><b>ロ</b>増量</span></label>
+            <label><input type="radio" name="s" value="skip" data-text="{薬}：昼食を抜く日があり、その日も打っていると本人より。食事をとらずに打つと低血糖が起きるため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>食事を抜く日がある</span></label>
+            <label><input type="radio" name="s" value="late" data-drug="ノボラピッド|ヒューマログ|フィアスプ|ルムジェブ|〇〇" data-text="{薬}：打ってから食事まで30分ほどあくことがあると本人より。食事の前に低血糖が起きるおそれがあるため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>打つタイミングのずれ（超速効型）</span></label>
+          </div>
+          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>単位数と注射のタイミングを本人が理解していることを確認。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="up"><span>低血糖の症状なし。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="up"><span>注射の手技に問題なし。注射する場所にしこりなし。</span></label>
+          <div class="mk-h">指導</div>
+          <label class="mk-p"><input type="checkbox" data-on="i late"><span>食事とのタイミングを守るよう指導。早く打ちすぎると食事の前に低血糖が起きることがあると説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i skip"><span>食事をとらないときは打たないよう、また食事の量が少ないときの単位は主治医の指示に従うよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>注射の手技を実演で確認。毎回空打ちをしてから打ち、注射する場所は前回から2〜3cm離し、しこりのあるところには打たないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>持効型と取り違えないよう、注射の前に毎回ラベルを確認するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up skip"><span>低血糖の症状（強い空腹感・冷や汗・ふるえ）と、起きたときはブドウ糖や糖分を含むものをとるよう説明。家族にも伝えるよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>使う前のものは冷蔵庫で凍らせずに保管し、使い始めたものは室温で遮光して保管するよう説明。針は毎回新しいものに替え、使用済みの針は〇〇に捨てるよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>シックデイ（発熱・下痢・嘔吐で食事がとれないとき）の単位は、主治医の指示に従うよう指導。持効型は自己判断で中止しないよう説明。</span></label>
+          <div class="mk-h">重篤な副作用<span class="mk-sub">説明したときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox"><span>全身の発疹、息苦しさ、顔や唇の腫れが出たときはすぐに受診するよう説明。</span><span class="mk-tag">アナフィラキシー</span></label>
+          <div class="mk-out"></div>
+          <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
+        </div>
+
+        <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>速効型から超速効型に変わると、打つタイミングが「食事の30分前」から「食直前」に変わる。変更のときは、タイミングの違いを伝えたことを残す。</span></div>
+            <div class="bullet"><span>・</span><span>シックデイには、食べられる量に合わせて単位を減らすことが多い（糖尿病標準診療マニュアル：半分くらい食べられれば半量）。持効型と組み合わせている人には、持効型は通常量で続けることも合わせて伝える。</span></div>
+          </div>
+        </div></details>
+      </div>
+
+      <!-- ===== 混合型・配合型 ===== -->
+      <div class="card" id="mix">
+        <div class="card-title">混合型・配合型</div>
+        <div class="drugs">混合型：ノボラピッド30・50・70ミックス／ヒューマログミックス25・50／ノボリン30R／ヒューマリン3/7<br>配合型：ライゾデグ（インスリン デグルデク＋インスリン アスパルト）</div>
+
+        <div class="tpl-sec">確認する項目</div>
+        <div class="kakunin">
+          <div class="check"><span>✓</span><span>処方目的と医師から受けた説明</span></div>
+          <div class="check"><span>✓</span><span>単位数と、打つタイミング（1日1回か2回か）</span></div>
+          <div class="check"><span>✓</span><span>混合型：使う前に十分に懸濁しているか（配合型は懸濁しない）</span></div>
+          <div class="check"><span>✓</span><span>低血糖の症状と、起きた時間帯</span></div>
+          <div class="check"><span>✓</span><span>注射の手技・注射する場所のしこり・保管方法</span></div>
+        </div>
+
+        <div class="tpl-sec">記載例をつくる</div>
+        <div class="mk" data-purpose="2型糖尿病の血糖コントロール|1型糖尿病">
+          <div class="mk-h">製剤</div>
+          <div class="mk-scenes mk-drug">
+            <label><input type="radio" name="md" value="ノボラピッド30ミックス" checked><span>ノボラピッド30ミックス</span></label>
+            <label><input type="radio" name="md" value="ヒューマログミックス25"><span>ヒューマログミックス25</span></label>
+            <label><input type="radio" name="md" value="ライゾデグ"><span>ライゾデグ</span></label>
+            <label><input type="radio" name="md" value="〇〇"><span>その他</span></label>
+          </div>
+          <div class="mk-h">場面</div>
+          <div class="mk-scenes">
+            <label><input type="radio" name="m" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
+            <label><input type="radio" name="m" value="sw" data-text="{薬}：〇〇から変更。"><span><b>ロ</b>製剤の変更</span></label>
+            <label><input type="radio" name="m" value="hypo" data-text="{薬}：昼前に冷や汗とふるえがあり、甘いものをとって治まったと本人より。低血糖の可能性があり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>低血糖があった</span></label>
+          </div>
+          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <label class="mk-p"><input type="checkbox" data-on="i sw"><span>単位数と注射のタイミングを本人が理解していることを確認。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="sw"><span>低血糖の症状なし。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="ノボラピッド30ミックス|ヒューマログミックス25" data-on="sw hypo"><span>使う前に十分に懸濁していることを確認。</span></label>
+          <div class="mk-h">指導</div>
+          <label class="mk-p"><input type="checkbox" data-drug="ノボラピッド30ミックス|ヒューマログミックス25|〇〇" data-on="i"><span>懸濁製剤のため、使う前に製剤ごとに決められた方法で十分に懸濁し、均一に白く濁ったことを確認してから打つよう実演で指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="ライゾデグ" data-on="i sw"><span>透明な溶液で、懸濁する必要はないと説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="ノボラピッド30ミックス|ヒューマログミックス25|ライゾデグ" data-on="i"><span>食事の直前に打つよう指導。食事をとらないときの打ち方は主治医の指示に従うよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="〇〇" data-on="i"><span>〇〇に打つよう指導。食事をとらないときの打ち方は主治医の指示に従うよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>注射の手技を実演で確認。毎回空打ちをしてから打ち、注射する場所は前回から2〜3cm離し、しこりのあるところには打たないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i sw"><span>ほかのインスリン製剤と取り違えないよう、注射の前に毎回ラベルを確認するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i hypo"><span>低血糖の症状（強い空腹感・冷や汗・ふるえ）と、起きたときはブドウ糖や糖分を含むものをとるよう説明。家族にも伝えるよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>使う前のものは冷蔵庫で凍らせずに保管し、使い始めたものは室温で遮光して保管するよう説明。針は毎回新しいものに替え、使用済みの針は〇〇に捨てるよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>シックデイ（発熱・下痢・嘔吐で食事がとれないとき）も自己判断で中止せず、主治医に連絡してその指示に従うよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="sw"><span>製剤によって懸濁の要否や打つタイミングが変わるため、違いを説明し、実演で手技を確認。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="hypo"><span>ブドウ糖を持ち歩くよう指導。次回受診を待たずに主治医へ伝えるよう指導。</span></label>
+          <div class="mk-h">重篤な副作用<span class="mk-sub">説明したときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox"><span>全身の発疹、息苦しさ、顔や唇の腫れが出たときはすぐに受診するよう説明。</span><span class="mk-tag">アナフィラキシー</span></label>
+          <div class="mk-out"></div>
+          <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
+        </div>
+
+        <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>混合型は懸濁製剤で、懸濁が不十分だと1回ごとに効き方が変わる。懸濁の手順は製剤ごとに電子添文に書かれている（例：ノボラピッド30ミックスは、新しいペンを室温に戻し、手のひらにはさんで10回以上転がしてから上下に振る）。</span></div>
+            <div class="bullet"><span>・</span><span>ライゾデグは溶解製剤で、懸濁しない。1日1回のときは主たる食事の直前に毎日一定、1日2回のときは朝食直前と夕食直前。</span></div>
+          </div>
+        </div></details>
+      </div>
+
+      <!-- ===== GLP-1との配合剤 ===== -->
+      <div class="card" id="glp1-combo">
+        <div class="card-title">GLP-1受容体作動薬との配合剤</div>
+        <div class="drugs">ゾルトファイ（インスリン デグルデク＋リラグルチド）／ソリクア（インスリン グラルギン＋リキシセナチド）</div>
+
+        <div class="tpl-sec">確認する項目</div>
+        <div class="kakunin">
+          <div class="check"><span>✓</span><span>処方目的と医師から受けた説明</span></div>
+          <div class="check"><span>✓</span><span>ドーズ数と、打つタイミング</span></div>
+          <div class="check"><span>✓</span><span>吐き気・食欲低下・便秘・下痢</span></div>
+          <div class="check"><span>✓</span><span>低血糖の症状</span></div>
+          <div class="check"><span>✓</span><span>ほかのGLP-1受容体作動薬を使っていないか</span></div>
+        </div>
+
+        <div class="tpl-sec">記載例をつくる</div>
+        <div class="mk" data-purpose="2型糖尿病の血糖コントロール">
+          <div class="mk-h">製剤</div>
+          <div class="mk-scenes mk-drug">
+            <label><input type="radio" name="gd" value="ゾルトファイ" checked><span>ゾルトファイ</span></label>
+            <label><input type="radio" name="gd" value="ソリクア"><span>ソリクア</span></label>
+          </div>
+          <div class="mk-h">場面</div>
+          <div class="mk-scenes">
+            <label><input type="radio" name="g" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
+            <label><input type="radio" name="g" value="up" data-text="{薬}：〇ドーズ→〇ドーズに増量。"><span><b>ロ</b>増量</span></label>
+            <label><input type="radio" name="g" value="nausea" data-text="{薬}：増量後から吐き気があり、食事の量が減っていると本人より。消化器症状の副作用の可能性があり、食事量が減ると低血糖も起きやすくなるため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>吐き気・食欲低下</span></label>
+          </div>
+          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>ドーズ数と注射のタイミングを本人が理解していることを確認。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="up"><span>低血糖の症状、吐き気などの消化器症状なし。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>ほかのGLP-1受容体作動薬の使用なし。</span></label>
+          <div class="mk-h">指導</div>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>単位は「ドーズ」で、インスリンとGLP-1受容体作動薬が一定の割合で入っていると説明。医師の指示どおりのドーズ数で打つよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="ゾルトファイ" data-on="i"><span>毎日決まった時刻に打つよう指導。打ち忘れたときは気づいた時点で打ち、次は8時間以上あけてから、その後はいつもの時刻に打つよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="ソリクア" data-on="i"><span>朝食前1時間以内に打ち、食後には打たないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>吐き気・食欲低下・便秘・下痢が出ることがあり、食事がとれない状態が続くときは主治医に連絡するよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>始めたときや増量したときの吐き気などは、続けるうちに軽くなることが多いと説明し、自己判断で中止しないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="ゾルトファイ" data-on="i"><span>吐き気を伴う激しい腹痛が続くときは、使用を中止してすぐに受診するよう指導。</span><span class="mk-tag">急性膵炎</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>低血糖の症状（強い空腹感・冷や汗・ふるえ）と、起きたときはブドウ糖や糖分を含むものをとるよう説明。家族にも伝えるよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>注射の手技を実演で確認。毎回空打ちをしてから打ち、注射する場所は前回から2〜3cm離し、しこりのあるところには打たないよう指導。ほかの注射薬と取り違えないよう、毎回ラベルを確認するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>シックデイ（発熱・下痢・嘔吐で食事がとれないとき）も自己判断で中止せず、主治医に連絡してその指示に従うよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="nausea"><span>少量ずつ数回に分けて食べるよう説明。水分がとれない・嘔吐が続くときは次回受診を待たずに主治医へ連絡するよう指導。</span></label>
+          <div class="mk-h">重篤な副作用<span class="mk-sub">説明したときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox" data-drug="ソリクア"><span>吐き気を伴う激しい腹痛が続くときは、使用を中止してすぐに受診するよう説明。</span><span class="mk-tag">急性膵炎</span></label>
+          <label class="mk-p"><input type="checkbox"><span>全身の発疹、息苦しさ、顔や唇の腫れが出たときはすぐに受診するよう説明。</span><span class="mk-tag">アナフィラキシー</span></label>
+          <div class="mk-out"></div>
+          <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
+        </div>
+
+        <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>1ドーズに含まれる量：ゾルトファイはインスリン デグルデク1単位＋リラグルチド0.036mg（上限50ドーズ）、ソリクアはインスリン グラルギン1単位＋リキシセナチド1μg（上限20ドーズ）。ドーズを増やすと両方の成分が同時に増える。</span></div>
+            <div class="bullet"><span>・</span><span>GLP-1受容体作動薬を含むので、ほかのGLP-1受容体作動薬（オゼンピックなど）とは併用しない。GLP-1の注意は<a href="ハイリスク_糖尿病用剤.html#glp1">糖尿病用剤のGLP-1受容体作動薬</a>を参照。</span></div>
+          </div>
+        </div></details>
+      </div>
+
+      <div class="card">
+        <div class="card-title">この薬効群の対象</div>
+        <div class="stack">
+          <p class="note">インスリン製剤は膵臓ホルモン剤として算定の対象になる。ゾルトファイ・ソリクアは薬効分類では糖尿病用剤（396）に当たるが、インスリンを含み、注射の手技や低血糖の指導がインスリン製剤と同じなので、このページで扱う。GLP-1受容体作動薬だけの注射（オゼンピックなど）は糖尿病用剤のページで扱う。</p>
+          <div class="src">
+            <div>令和8年3月5日 保医発0305第6号 別添3「調剤報酬点数表に関する事項」特定薬剤管理指導加算1</div>
+            <div><a href="https://www.nichiyaku.or.jp/yakuzaishi/pharmacy-info/other/guideline01" target="_blank" rel="noopener">日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2.1版・令和8年6月）」</a></div>
+            <div>日本糖尿病・生活習慣病ヒューマンデータ学会「糖尿病標準診療マニュアル2026」</div>
+            <div>各製剤の電子添文・患者向医薬品ガイド</div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <main>
-      <div class="tpl-toggle" role="tablist" aria-label="表示切替">
-        <button type="button" data-mode="all" class="active">解説＋テンプレ</button>
-        <button type="button" data-mode="tpl">テンプレのみ</button>
-      </div>
-      <details class="toc-inline fold-in">
-        <summary>目次</summary>
-        <div class="toc-links">
-          <a href="#guide">このページの使い方</a>
-          <a href="#lowline">算定時の記載ポイント</a>
-          <a href="#sec-checklist">簡易チェックリスト</a>
-          <a href="#drug-search">薬剤名から探す</a>
-          <a href="#basal">持効型・基礎</a>
-          <a href="#bolus">速効型・超速効型</a>
-          <a href="#mix">混合型・配合型</a>
-          <a href="#glp1-combo">インスリン＋GLP-1</a>
-          <a href="#section3">副作用・服薬状況等の変化によるロ</a>
-          <a href="#section1">共通確認ポイント</a>
-          <a href="#section1-5">インスリン指導の確認事項</a>
-          <a href="#kobetsu">個別指導</a>
-          <a href="ハイリスク_血液凝固阻止剤.html">→ 血液凝固阻止剤</a>
-          <a href="ハイリスク_糖尿病用剤.html">→ 糖尿病用剤</a>
-          <a href="ハイリスク_抗精神病薬.html">→ 抗精神病薬</a>
-          <a href="ハイリスク_抗うつ薬.html">→ 抗うつ薬</a>
-          <a href="ハイリスク_気分安定薬.html">→ 気分安定薬</a>
-          <a href="ハイリスク_抗てんかん薬.html">→ 抗てんかん薬</a>
-        </div>
-      </details>
-
-      <!-- ============================================================
-           § まず見るところ（導線3カード／最低ライン／チェックリスト／薬剤名から探す）
-           ============================================================ -->
-      <!-- § このページの使い方（導線3カード） -->
-      <section id="guide" style="margin-bottom:24px;">
-        <div class="section-label">このページの使い方</div>
-        <div class="guide-cards">
-          <a class="guide-card" href="#lowline"><span class="gc-no">1</span><span class="gc-title">算定前に記載内容を確認する</span><span class="gc-desc">記載のポイントと簡易チェックリストで、算定根拠として不足がないか確認する。</span></a>
-          <a class="guide-card" href="#drug-search"><span class="gc-no">2</span><span class="gc-title">製剤名から記載例を探す</span><span class="gc-desc">薬剤名・デバイス名を選択し、該当する製剤群の記載例へ移動する。</span></a>
-          <a class="guide-card" href="#section3"><span class="gc-no">3</span><span class="gc-title">副作用・服薬状況等の変化によるロの記載例を見る</span><span class="gc-desc">用法・用量の変更がなくても、副作用・服薬状況等の変化により、特に指導が必要と判断した場合の記載例。理由の要点の書き方も確認できる。</span></a>
-        </div>
-      </section>
-
-      <!-- § 最低ライン -->
-      <section id="lowline" style="margin-bottom:28px;">
-        <div class="section-label">算定時の記録</div>
-        <h2 class="section-title">算定時の記載ポイント</h2>
-        <div class="minline">
-          <p class="minline-lead">
-            特定薬剤管理指導加算1は、服薬管理指導料に対する加算であり、対象薬が処方されていることだけを理由に算定する加算ではない。算定する場合は、通常の服薬指導に加えて、対象薬に関する確認を行い、患者の状態・服薬状況等を踏まえたプラスαの指導を行う必要がある。
-          </p>
-          <p class="minline-lead" style="margin-bottom:6px;">算定する場面は次の3つ。</p>
-          <ul style="margin:0 0 12px; padding-left:20px; font-size:13.5px; line-height:1.75; color:var(--ink);">
-            <li style="margin-bottom:3px;"><strong>イ</strong>　初回処方時</li>
-            <li style="margin-bottom:3px;"><strong>ロ</strong>　用法・用量等の変更時</li>
-            <li><strong>ロ</strong>　副作用・服薬状況等の変化により、薬剤師が必要と認めて指導した場合</li>
-          </ul>
-          <p class="minline-lead" style="margin-bottom:14px;">
-            算定時は、対象薬について確認した内容と行った指導の要点を薬歴に記録する。従来と同一の処方内容でロを算定する場合は、特に指導が必要と判断した理由の要点も記載する。
-          </p>
-          <div class="minline-checks">
-            <div class="minline-check"><span class="mc-no">①</span><b>「薬剤名 単位数 タイミング：〜」の形で書き始める</b><span class="mc-note">どの薬についての指導記録かを明確にする（例：「トレシーバ 10単位 朝食前：…」）。</span></div>
-            <div class="minline-check"><span class="mc-no">②</span><b>確認した内容を記録する</b><span class="mc-note">単位数・注射タイミング・注射手技・低血糖・シックデイ時の対応・併用薬・検査値（HbA1c・血糖・自己測定値）など、確認した内容を残す。</span></div>
-            <div class="minline-check"><span class="mc-no">③</span><b>患者の状況に応じた指導内容を残す</b><span class="mc-note">一般的な薬効・用法説明だけでなく、注射手技・低血糖症状と対処（ブドウ糖）・シックデイ時に自己判断で中止しないことなど、その患者に必要な指導を具体的に記録する。</span></div>
-            <div class="minline-check"><span class="mc-no">④</span><b>記載内容から場面（新規・変更・変化）が分かるようにする</b><span class="mc-note"><strong>従来と同一処方でロを算定する場合は、副作用・服薬状況・併用薬・生活状況等の変化と、追加指導が必要と判断した理由を記録する</strong>。これがロの算定根拠になる。</span></div>
-          </div>
-          <div class="guard-note"><b>算定根拠として不十分になりやすい例</b>　一般的な薬効・用法説明のみで、確認した内容や患者の状況に応じた指導内容が薬歴から確認できない。</div>
-
-          <h3 class="subsection-title" style="margin-top:18px;">よくある薬歴と修正例（インスリン製剤）</h3>
-          <div class="example-pair">
-            <div class="example-box bad">
-              <span class="example-label">✕ 算定根拠として不十分な例</span>
-              <pre>トレシーバ：新規。効果と副作用を説明し、継続して注射するよう指導した。</pre>
-            </div>
-            <div class="example-box good">
-              <span class="example-label">○ 修正例（製剤群テンプレートを参考にした例）</span>
-              <pre>トレシーバ 10単位 朝食前：新規導入。単位数・注射タイミングを確認。基礎インスリンを補う薬で、自己判断で中止すると高血糖・ケトアシドーシスのリスクがあることを説明。注射手技（空打ち・部位ローテーション）・保管を実演で確認。低血糖症状（冷汗・ふるえ・動悸・強い空腹感）が出たらブドウ糖を摂取するよう指導。シックデイ（発熱・食事摂取不良）時は自己判断で中止・調整せず医師に相談するよう説明。視力・手指の動き・家族支援も確認。</pre>
-            </div>
-          </div>
-          <p style="font-size:12px;color:var(--sub);margin-top:4px;">※ ✕は確認した内容や患者ごとのプラスαの指導が読み取れない。○は「<a href="#drug-search" class="link-inline" style="color:var(--blue);">薬剤名から探す</a>」から持効型インスリン初回イの記載例を参考にしたもの。薬効・用法説明だけで終わらず、単位数・注射手技・低血糖／シックデイ対応の確認と、患者の状況に応じた指導が薬歴から確認できるようにする。</p>
-        </div>
-      </section>
-
-      <!-- § 印刷用チェックリスト -->
-      <section id="sec-checklist" style="margin-bottom:28px;">
-        <div class="section-label">印刷用</div>
-        <h2 class="section-title">算定前セルフチェック<button class="print-btn" type="button">このチェックリストを印刷</button></h2>
-        <div class="checklist-card">
-          <div class="cl-group">
-            <div class="cl-head">確認・記録する項目（基本）</div>
-            <label class="cl-item"><input type="checkbox"><span>対象薬剤が分かるように記載した（<b>「薬剤名 単位数 タイミング：〜」</b>）</span></label>
-            <label class="cl-item"><input type="checkbox"><span>記載内容から<b>新規／変更／変化のどれに当たるか分かる</b>。<b>副作用・服薬状況等の変化によるロは、変化の内容と、追加指導が必要と判断した理由</b>も記載した</span></label>
-            <label class="cl-item"><input type="checkbox"><span><b>症状・受診の経緯を聞き取り処方内容・適応・単位数・注射タイミングを確認</b>した（<b>継続・変更時は実施状況・打ち忘れ</b>も）</span></label>
-            <label class="cl-item"><input type="checkbox"><span><b>低血糖症状と対処（ブドウ糖）</b>を説明した</span></label>
-            <label class="cl-item"><input type="checkbox"><span><b>注射手技</b>（空打ち・部位ローテーション）・<b>保管</b>・針の取扱いを確認した</span></label>
-            <label class="cl-item"><input type="checkbox"><span><b>シックデイ時に自己判断で中止・調整しないこと</b>を説明した（持効型の中断は高血糖・ケトアシドーシス）</span></label>
-            <label class="cl-item"><input type="checkbox"><span><b>患者の状況に応じた指導内容</b>を記録した</span></label>
-          </div>
-          <div class="cl-group">
-            <div class="cl-head">必要に応じて確認・説明する項目（インスリン製剤）</div>
-            <label class="cl-item"><input type="checkbox"><span><b>「続けられるか」</b>（視力・手指の動き・理解力・家族支援）を確認した</span></label>
-            <label class="cl-item"><input type="checkbox"><span><b>夜間低血糖</b>（朝の倦怠感・寝汗）の有無を確認した（特に持効型・増量後）</span></label>
-            <label class="cl-item"><input type="checkbox"><span><b>重症低血糖の備え</b>（家族へのブドウ糖・グルカゴン製剤の準備）を確認した</span></label>
-            <label class="cl-item"><input type="checkbox"><span>混合型／配合型：<b>懸濁の要否</b>（混合型は要懸濁／ライゾデグ等の配合型は振らない）を正しく指導した</span></label>
-            <label class="cl-item"><input type="checkbox"><span>インスリン＋GLP-1配合剤：<b>悪心・食欲低下・急性膵炎</b>の注意を説明した</span></label>
-            <label class="cl-item"><input type="checkbox"><span>針の<b>廃棄方法</b>（店舗・自治体の運用）を説明した</span></label>
-          </div>
-          <div class="guard-note"><b>算定根拠として不十分になりやすい例</b>　一般的な薬効説明のみで、確認した内容や患者の状況に応じた指導内容が薬歴から確認できない。</div>
-        </div>
-      </section>
-
-      <!-- § 薬剤名から探す -->
-      <section id="drug-search" style="margin-bottom:28px;">
-        <div class="section-label">薬剤名から探す</div>
-        <h2 class="section-title">製剤名・デバイス名から記載例を探す</h2>
-        <p style="font-size:13px;color:var(--sub);margin-bottom:10px;">薬剤名・デバイス名をタップすると、該当する製剤群別テンプレートに移動する。</p>
-        <div class="drug-index">
-          <div class="drug-index-row">
-            <span class="di-group">持効型</span>
-            <a href="#basal">ランタス</a><a href="#basal">ランタスXR</a><a href="#basal">レベミル</a><a href="#basal">トレシーバ</a><a href="#basal">グラルギンBS</a><a href="#basal">ソロスター</a><a href="#basal">フレックスペン</a><a href="#basal">フレックスタッチ</a><a href="#basal">イノレット</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">速効・超速効</span>
-            <a href="#bolus">ヒューマログ</a><a href="#bolus">ノボラピッド</a><a href="#bolus">アピドラ</a><a href="#bolus">フィアスプ</a><a href="#bolus">ルムジェブ</a><a href="#bolus">ヒューマリンR</a><a href="#bolus">ノボリンR</a><a href="#bolus">ミリオペン</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">混合・配合</span>
-            <a href="#mix">ヒューマログMix25</a><a href="#mix">ヒューマログMix50</a><a href="#mix">ノボラピッド30Mix</a><a href="#mix">ノボラピッド50Mix</a><a href="#mix">ノボラピッド70Mix</a><a href="#mix">ライゾデグ</a><a href="#mix">ノボリン30R</a><a href="#mix">イノレット30R</a><a href="#mix">ヒューマリン3/7</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">GLP-1配合</span>
-            <a href="#glp1-combo">ゾルトファイ</a><a href="#glp1-combo">ソリクア</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- § 参考  共通確認ポイント（日薬GL由来・折りたたみ） -->
-      <section id="section1" style="margin-bottom:28px;">
-        <div class="section-label">参考</div>
-        <h2 class="section-title">膵臓ホルモン剤の共通確認ポイント（日薬GL）</h2>
-
-        <details class="guide-details fold-in">
-          <summary>共通確認ポイント（日薬GL 6項目）を見る</summary>
-          <div class="guide-details-body">
-            <dl class="ci-list" style="margin:0;">
-              <dt>① 患者に対する処方内容の確認</dt>
-              <dd>薬剤名・<strong>単位数</strong>・注射タイミング等を確認</dd>
-
-              <dt>② アドヒアランスの確認（Sick day時の対処法の指導を含む）</dt>
-              <dd>打ち忘れ・実施状況／Sick day（発熱・下痢・嘔吐・食事摂取不良）時の対処理解を確認</dd>
-
-              <dt>③ 副作用モニタリング・重篤な副作用発生時の対処方法の教育</dt>
-              <dd>低血糖症状（冷汗・ふるえ・動悸・強い空腹感・脱力感等）の自覚と、出現時の対処法（ブドウ糖摂取）の指導を確認</dd>
-
-              <dt>④ 効果の確認</dt>
-              <dd>適正な単位数、可能な場合は検査値（HbA1c・血糖値・自己測定値）のモニター</dd>
-
-              <dt>⑤ 併用薬・食事との相互作用の確認</dt>
-              <dd>他の糖尿病薬（経口・GLP-1作動薬）・OTC医薬品・サプリメント等の併用と、食事との関係を確認</dd>
-
-              <dt>⑥ 注射手技の確認</dt>
-              <dd>薬剤の保管方法、空打ちの意義、投与部位、注射針の取り扱い方法等を確認・指導</dd>
-            </dl>
-            <p style="font-size:12px;color:var(--sub);margin-top:8px;">※ 出典：日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2.1版）」(10)膵臓ホルモン剤</p>
-            <p style="font-size:12px;color:var(--blue);margin-top:8px;font-weight:700;">→ 各製剤群ごとの具体的な指導内容は SECTION 2 を参照</p>
-          </div>
-        </details>
-      </section>
-
-      <!-- ============================================================
-           § 1.5  インスリン指導で特に確認すること
-           ============================================================ -->
-      <section id="section1-5">
-        <div class="section-label">インスリン共通</div>
-        <h2 class="section-title">インスリン指導で特に確認すること</h2>
-        <p style="font-size:13px;color:var(--sub);margin-bottom:12px;">
-          インスリン製剤では、経口薬と異なり、<strong>「打てるか・続けられるか・低血糖時に対応できるか」</strong>の確認が特に重要である。製剤群を問わず以下の項目が重要で、<strong>新規処方時・用法用量変更時・患者状況に変化がある場合</strong>は、必要に応じて確認・指導する。
-        </p>
-
-        <div class="insulin-check">
-          <div class="insulin-check-title">インスリン指導 共通8項目</div>
-          <ol>
-            <li><strong>単位数</strong>：薬剤名・用法用量と合わせて、薬歴冒頭に「〇〇 XX単位 朝食前」のように記載</li>
-            <li><strong>注射タイミング</strong>：食前／食直前／就寝前等、製剤ごとの違いの理解</li>
-            <li><strong>打ち忘れ</strong>：打ち忘れ時の対応（次回どうするか）の理解、頻度の確認</li>
-            <li><strong>低血糖</strong>：症状（冷汗・ふるえ・動悸・強い空腹感等）の自覚と、ブドウ糖摂取等の対処の理解</li>
-            <li><strong>注射手技</strong>：空打ち・部位ローテーション・針の取り付け／取り外し・皮膚硬結の有無</li>
-            <li><strong>保管</strong>：使用前は冷蔵、開封後は室温など製剤ごとのルール</li>
-            <li><strong>針の取り扱い・廃棄</strong>：使い回し禁止／廃棄方法は<strong>店舗・自治体の運用に従う</strong></li>
-            <li><strong>Sick day時の対応</strong>：自己判断で中止・調整せず、医師の指示を確認（特に持効型インスリンは中断で高血糖・ケトアシドーシスのリスク）</li>
-          </ol>
-        </div>
-
-        <div class="insulin-check">
-          <div class="insulin-check-title">「続けられるか」の確認項目</div>
-          <ol>
-            <li><strong>視力</strong>：単位目盛りが見えているか、注射部位を確認できているか</li>
-            <li><strong>手指の動き（巧緻性）</strong>：ダイヤルが回せるか、針の取り付け／取り外しができるか</li>
-            <li><strong>理解力</strong>：手順・低血糖対応の説明を理解できているか</li>
-            <li><strong>家族支援</strong>：本人が打てない・対処できない場合の家族のサポート体制、グルカゴン製剤の準備状況</li>
-          </ol>
-          <p style="font-size:12px;color:var(--sub);margin-top:8px;">※ 高齢者・視力低下・認知機能低下例では特に重要。家族同伴の確認や、店舗側からの提案も検討する。</p>
-        </div>
-      </section>
-
-      <!-- ============================================================
-           § 2  製剤群別テンプレート
-           ============================================================ -->
-      <section id="section2">
-        <div class="section-label">SECTION 2</div>
-        <h2 class="section-title">製剤群別テンプレート</h2>
-        <p style="font-size:13px;color:var(--sub);margin-bottom:8px;">
-          薬歴を作成する際は、<strong>新規処方または変更があった製剤群</strong>を確認し、患者の状況に近い記載例を参考にする。必要に応じて、確認した内容や追加で行った指導を追記する。<br />
-          本ページは、特定薬剤管理指導加算1のうち、<strong>新規処方時のイ、用法・用量変更時のロ、副作用・服薬状況等の変化によるロ</strong>を想定した薬歴記載例である。継続処方時の通常確認を記録するためのテンプレートではない。<br />
-          <span style="font-size:12px;">※ 併用薬については、各製剤群で<strong>低血糖リスクに関係する代表的な組み合わせ</strong>を中心に記載している。その他の相互作用や注意すべき併用薬がある場合は、確認した内容と患者へ説明した内容を個別に追記する。</span><br />
-          <span style="font-size:12px;">※ 製剤群の並びは、現場での使用頻度・指導上の重要度を考慮して配置している。</span>
-        </p>
-        <div class="tpl-warn" style="margin:12px 0;">
-          <div class="tpl-warn-title">副作用説明の記載について</div>
-          副作用に関する記載例は、<strong>実際に説明した内容に応じて追記</strong>する。インスリン製剤の主な副作用（低血糖）は初回イ本体に含めている。<strong>まれな重篤副作用</strong>（インスリン＋GLP-1配合剤の急性膵炎など）は、患者へ不安を与えすぎないよう、<strong>症状と相談・受診の目安を中心に説明</strong>する。薬歴上で説明内容を明確に残したい場合は、<strong>「副作用説明の追記」から該当するものを追加</strong>する。
-        </div>
-        <div class="tpl-warn" id="copy-rule" style="margin:12px 0;">
-          <div class="tpl-warn-title">コピーする前に必ず確認（全製剤群共通）</div>
-          下のテンプレは「指導・説明」部分の記載例である。そのままコピペすると要件不足になるので、以下を確認する。
-          <ul>
-            <li>ハイリスク指導記録は <strong>「薬剤名 単位数 タイミング：〜」</strong> の形で記載（例：「トレシーバ 10単位 朝食前：注射手技と低血糖対応を指導…」）</li>
-            <li><strong>確認した内容（注射手技・症状・聞き取り結果・食事状況 など）</strong>もテンプレに足す</li>
-            <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
-            <li>針の廃棄方法は<strong>店舗・自治体の運用に従って</strong>記載する</li>
-          </ul>
-        </div>
-        <div class="tag-legend">
-          <span><i style="background:var(--blue-light);border:1px solid var(--blue)"></i>初回イ（新規導入／併用下追加／高齢例 など）</span>
-          <span><i style="background:#e0f2f1;border:1px solid #0a6b63"></i>変更ロ（増量／減量／用量変更／製剤変更 など）</span>
-          <span><i style="background:#f2f4f8;border:1px solid #d7dce3"></i>必要時追記</span>
-          <span><i style="background:#fef3e8;border:1px solid #f5d4a1"></i>副作用説明の追記（説明した分だけ追加）</span>
-        </div>
-
-        <!-- 持効型・基礎インスリン -->
-        <div class="drug-block" id="basal">
-          <div class="drug-block-head">
-            <span class="drug-block-name">持効型・基礎インスリン</span>
-            <span class="drug-block-sub">ランタス／ランタスXR（ソロスター）／レベミル（フレックスペン／イノレット）／トレシーバ（フレックスタッチ）／インスリン グラルギンBS 等</span>
-          </div>
-
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この製剤の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容：薬剤名・<strong>単位数</strong>・注射タイミング（朝／夕／就寝前 等）</li>
-              <li>注射手技・空打ち・投与部位ローテーション／皮膚硬結・しこりの有無</li>
-              <li>保管方法（使用前冷蔵／開封後室温）・針の取扱い・廃棄方法</li>
-              <li>低血糖症状の自覚・既往（特に<strong>夜間低血糖</strong>）／ブドウ糖等の準備</li>
-              <li>食事量・欠食・運動・飲酒の状況／Sick day時の対応理解</li>
-              <li>他の糖尿病薬（経口・GLP-1作動薬）との併用</li>
-              <li>視力・手指の動き・理解力／家族支援の有無／グルカゴン製剤の準備状況</li>
-              <li>効果指標：HbA1c・血糖値・自己測定値の推移</li>
-            </ul>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>指導時の補足</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p>1日中ゆっくり効いて、<strong>基礎分泌（食事と関係ない一定のインスリン）</strong>を補う製剤。1日1〜2回、毎日決まった時間に注射する。中断すると高血糖・ケトアシドーシスのリスクがあるため、自己判断で休まないことが大切。</p>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li>注射タイミングは医師の指示通り（朝／夕／就寝前 など製剤・処方によって違う）</li>
-                <li>毎回<strong>空打ち</strong>でインスリンが出ることを確認してから注射</li>
-                <li>注射部位は<strong>毎回ローテーション</strong>（腹部・大腿・上腕。同じ場所に続けて打たない）</li>
-                <li>低血糖症状（冷汗・ふるえ・動悸・強い空腹感等）が出たらブドウ糖を摂取</li>
-                <li>運転中・運転前は低血糖に注意。症状を感じたら速やかに運転を中断</li>
-              </ul>
-
-              <h4>注射手技・部位ローテーション（背景知識）</h4>
-              <p>注射手技の確認は初回時に実演で。投与部位（腹部・大腿・上腕）を毎回少しずつずらすよう指導。同じ部位に続けて打つと<strong>皮膚硬結・しこり（リポハイパートロフィー）</strong>を生じ、吸収が不安定になる。</p>
-
-              <h4>保管方法</h4>
-              <p>使用前は<strong>2〜8℃の冷蔵庫</strong>で保管（凍結させない）。開封後（使用開始後）は<strong>室温保管</strong>が可能で、製剤ごとに使用可能期間が異なる（4〜8週間が目安）。直射日光・高温は避ける。</p>
-
-              <h4>Sick day時の対応</h4>
-              <p>Sick day（発熱・下痢・嘔吐・食事摂取不良）時は<strong>自己判断で中止・調整せず、医師の指示を確認</strong>するよう伝える。特に<strong>持効型インスリンは中断により高血糖・ケトアシドーシスのリスクがある</strong>ため、継続可否を含めて医師の指示を仰ぐ。普段から「こういう時はどうするか」を医師と決めておくのが理想。</p>
-
-              <h4>重症低血糖時の備え（背景知識）</h4>
-              <p>意識を失うレベルの重症低血糖を起こすことがあるため、家族にもブドウ糖摂取の方法・救急要請の判断を共有しておく。意識障害時には<strong>グルカゴン製剤（鼻腔投与のバクスミー等）</strong>を備えておくと安心（処方医に相談）。</p>
-
-              <div class="patient-say">患者への伝え方の例：<br />「決まった時間に毎日打ってください。風邪などで食事が摂れない時でも、自己判断で中止せず、必ず医師か薬局に相談してください。冷汗やふるえなど、いつもと違うと感じたら早めにブドウ糖を取ってください。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名 単位数 タイミング：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規導入</span>
-              <div class="tpl-text">持効型インスリン新規導入。単位数・注射タイミングを確認。注射手技、保管、針の扱い、低血糖症状とブドウ糖対応、Sick day時は自己判断で中止しないことを指導。視力・手指の動き・家族支援も確認。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：経口薬・GLP-1併用下追加</span>
-              <div class="tpl-text">経口糖尿病薬／GLP-1作動薬併用下で持効型インスリンを新規導入。注射手技・保管・低血糖対応を指導。SU薬併用時やインスリン増量時は低血糖リスクに注意し、低血糖症状（冷汗・ふるえ・動悸・強い空腹感等）と対処（ブドウ糖摂取）を指導。GLP-1作動薬併用時は、悪心・食欲低下による食事量低下にも注意するよう説明。Sick day時は自己判断で中止・調整せず、医師の指示を確認するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
-              <div class="tpl-text">高齢者への持効型インスリン新規導入。視力・手指の動き・理解力を確認、家族支援の有無も確認。低血糖症状が遷延・自覚しにくい可能性があることを本人・家族に説明。注射手技を本人だけでなく家族にも実演で確認。グルカゴン製剤の準備について、必要に応じて処方医へ相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">増量前の低血糖症状を確認（冷汗・ふるえ・動悸等の訴えなし）。増量に伴い低血糖（特に夜間低血糖）リスクが上がる可能性があるため、低血糖症状と対処を再指導。症状出現時は次回受診を待たず連絡するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：減量</span>
-              <div class="tpl-text">減量に至った経緯（低血糖傾向等）を確認。減量後も低血糖症状（冷汗・ふるえ・動悸・強い空腹感等）の有無を継続して確認するよう指導。減量しても自己判断で中止しないよう注意喚起、症状再発時は連絡するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：製剤変更（持効型同士の切替）</span>
-              <div class="tpl-text">他の持効型インスリン（〇〇）から本剤への切替を確認。デバイス・操作方法が変わる場合は実演で再確認・指導。切替時の単位数の調整内容を確認、低血糖症状と対処を再指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">Sick day（発熱・下痢・嘔吐・食事摂取不良）あり。自己判断で中止・調整せず、医師の指示を確認するよう指導。持効型インスリンは中断により高血糖・ケトアシドーシスのリスクがある旨を説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">注射部位の皮膚硬結・しこりあり（リポハイパートロフィー疑い）。投与部位のローテーションを再指導、症状が続く場合は主治医に相談するよう説明。吸収が不安定になり血糖変動の原因になり得ることも伝える。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">運転あり。運転前の低血糖注意、車内へのブドウ糖常備を説明。運転中に低血糖症状を少しでも感じたら、速やかに運転を中断するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">夜間低血糖の訴えあり（朝の倦怠感・寝汗等）。注射タイミング・単位数、就寝前補食の要否を含めて主治医に相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">家族支援あり。本人が打てない・対処できない場合に備え、家族にも注射手技・低血糖対応を説明。グルカゴン製剤が処方されている場合は家族にも使用方法を説明、未準備の場合は必要に応じて処方医へ相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">視力低下／手指巧緻性低下あり。単位目盛りの確認・ダイヤル操作の確認を行い、必要に応じて家族支援や処方医への相談（製剤・デバイス変更）を提案。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- 速効型・超速効型・食事インスリン -->
-        <div class="drug-block" id="bolus">
-          <div class="drug-block-head">
-            <span class="drug-block-name">速効型・超速効型・食事インスリン</span>
-            <span class="drug-block-sub">ヒューマログ（ミリオペン）／ノボラピッド（フレックスペン／フレックスタッチ）／アピドラ（ソロスター）／フィアスプ／ルムジェブ／ヒューマリンR／ノボリンR 等</span>
-          </div>
-
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この製剤の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容：薬剤名・<strong>単位数</strong>・注射タイミング（医師指示に従う／一般に超速効型は食直前、速効型は食前30分程度）</li>
-              <li>注射手技・空打ち・投与部位ローテーション／皮膚硬結・しこりの有無</li>
-              <li>保管方法（使用前冷蔵／開封後室温）・針の取扱い・廃棄方法</li>
-              <li>食事量・欠食の有無／食事と注射のタイミングのずれ</li>
-              <li>低血糖症状の自覚・既往／ブドウ糖等の準備</li>
-              <li>Sick day時の対応理解（食事量に応じた単位調整の医師指示の有無）</li>
-              <li>視力・手指の動き・理解力／家族支援の有無／グルカゴン製剤の準備状況</li>
-              <li>効果指標：HbA1c・血糖値・自己測定値（食後血糖）の推移</li>
-            </ul>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>指導時の補足</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p>食事に合わせて短時間で効く製剤で、<strong>追加分泌（食事の血糖上昇を抑えるインスリン）</strong>を補う。<strong>注射のタイミングと食事のタイミングがずれると低血糖を起こしやすい</strong>ため、製剤ごとの注射タイミングを正確に守ることが重要。</p>
-
-              <h4>製剤ごとの注射タイミング</h4>
-              <ul>
-                <li><strong>超速効型</strong>（ヒューマログ／ノボラピッド／アピドラ／フィアスプ／ルムジェブ）：<strong>食直前</strong>（食事開始直前）</li>
-                <li><strong>速効型</strong>（ヒューマリンR／ノボリンR）：医師指示に従う／一般に<strong>食前30分</strong>程度</li>
-                <li>フィアスプ・ルムジェブは食事開始後（〜20分以内）の注射も可能だが、医師の指示に従う</li>
-              </ul>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li>注射タイミングを守る（食直前／食前30分程度）／注射したら必ず食事を摂る</li>
-                <li>毎回<strong>空打ち</strong>でインスリンが出ることを確認してから注射</li>
-                <li>注射部位は<strong>毎回ローテーション</strong>（腹部・大腿・上腕）</li>
-                <li>低血糖症状（冷汗・ふるえ・動悸・強い空腹感等）が出たらブドウ糖を摂取</li>
-                <li>食事を抜く場合は自己判断で打たず、医師の指示を確認</li>
-              </ul>
-
-              <h4>食事タイミングのずれと低血糖（背景知識）</h4>
-              <p>速効型・超速効型は注射してから一定時間内にインスリンが効くため、<strong>食事が遅れる・食べられない</strong>と低血糖になりやすい。患者には「打ったら必ず食べる」を徹底し、外食・外出時の食事の遅れにも注意するよう伝える。</p>
-
-              <h4>Sick day時の対応</h4>
-              <p>Sick day（発熱・下痢・嘔吐・食事摂取不良）時は<strong>自己判断で中止・調整せず、医師の指示を確認</strong>するよう伝える。食事量に応じた単位調整の指示があらかじめ医師から出ている場合は、その指示に従う。指示がない・分からない場合は必ず相談を。</p>
-
-              <div class="patient-say">患者への伝え方の例：<br />「打ったら必ず食べてください。食事が摂れない時や量が大きく減る時は、自己判断で調整せず、医師から指示された対応を確認してください。冷汗やふるえが出たらすぐにブドウ糖を取ってください。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名 単位数 タイミング：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規導入</span>
-              <div class="tpl-text">超速効型／速効型インスリン新規導入。単位数・注射タイミング（食直前／食前指示）を確認。注射手技、打ったら必ず食事を摂ること、低血糖症状とブドウ糖対応、Sick day時は自己判断せず医師に相談することを指導。視力・手指の動き・家族支援も確認。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：持効型併用下追加</span>
-              <div class="tpl-text">持効型インスリン継続中に食事インスリン（超速効型／速効型）追加（強化療法）。併用製剤と単位数を確認。基礎＋追加の役割を説明、低血糖リスクが上がる旨と対処を指導。注射タイミング・食事との関係を再確認。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
-              <div class="tpl-text">高齢者への食事インスリン新規導入。視力・手指の動き・理解力を確認、家族支援の有無も確認。食事と注射のタイミングのずれによる低血糖リスクを本人・家族に説明。注射手技を本人だけでなく家族にも実演で確認。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">増量前の低血糖症状を確認（冷汗・ふるえ・動悸等の訴えなし）。増量に伴い低血糖リスクが上がる可能性があるため、低血糖症状と対処を再指導。食事を抜かないこと、症状出現時は連絡するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：減量</span>
-              <div class="tpl-text">減量に至った経緯（低血糖傾向等）を確認。減量後も低血糖症状（冷汗・ふるえ・動悸・強い空腹感等）の有無を継続して確認するよう指導。食事量との兼ね合いも医師に相談しながら調整するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：製剤変更（速効→超速効への切替等）</span>
-              <div class="tpl-text">他の食事インスリン（〇〇）から本剤への切替を確認。<strong>注射タイミングが変わる</strong>場合（速効型→超速効型なら食前30分→食直前等）の違いを具体的に説明。デバイス・操作方法の違いも実演で再確認・指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">Sick day（発熱・下痢・嘔吐・食事摂取不良）あり。自己判断で中止・調整せず、医師の指示を確認するよう指導。食事量に応じた単位調整の指示があらかじめ出ていればそれに従い、なければ必ず相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">注射部位の皮膚硬結・しこりあり。投与部位のローテーションを再指導、症状が続く場合は主治医に相談するよう説明。吸収が不安定になり血糖変動の原因になり得ることも伝える。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">食事のタイミングが不規則／外食多いとの訴え。注射と食事のずれによる低血糖リスクを説明。打ってから必ず食事を摂れる状況で注射するよう徹底指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">打ち忘れあり。打ち忘れ時の対応は自己判断で追加投与せず、あらかじめ医師から指示された対応を確認するよう指導。次回以降の打ち忘れ防止策（食卓に置く・家族の声かけ等）を提案。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">運転あり。運転前の低血糖注意、車内へのブドウ糖常備を説明。運転中に低血糖症状を少しでも感じたら、速やかに運転を中断するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- 混合型・配合型インスリン -->
-        <div class="drug-block" id="mix">
-          <div class="drug-block-head">
-            <span class="drug-block-name">混合型・配合型インスリン</span>
-            <span class="drug-block-sub">ヒューマログMix25／ヒューマログMix50（ミリオペン）／ノボラピッド30Mix・50Mix・70Mix（フレックスペン）／ライゾデグ（フレックスタッチ）／ノボリン30R・イノレット30R／ヒューマリン3/7 等</span>
-          </div>
-
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この製剤の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容：薬剤名・<strong>単位数</strong>・注射タイミング（基本は<strong>食前</strong>）</li>
-              <li><strong>含有成分</strong>（超速効型＋持効型／速効型＋NPH 等）と混合比の理解</li>
-              <li>製剤による違い：<strong>混合型（プレ混合）は使用前に懸濁／配合型（ライゾデグ等）は懸濁不要</strong></li>
-              <li>注射手技・空打ち・投与部位ローテーション／皮膚硬結・しこりの有無</li>
-              <li>保管方法（使用前冷蔵／開封後室温）・針の取扱い・廃棄方法</li>
-              <li>食事量・欠食の有無／低血糖症状の自覚・既往／ブドウ糖等の準備</li>
-              <li>視力・手指の動き・理解力／家族支援の有無／グルカゴン製剤の準備状況</li>
-              <li>効果指標：HbA1c・血糖値・自己測定値の推移</li>
-            </ul>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>指導時の補足</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p>1本に<strong>2種類のインスリンが入っている</strong>製剤。基礎分泌と追加分泌を1回の注射でまかなえるため、注射回数を減らせる。中身の比率や種類によって性格が違うので、製剤ごとの注意点を確認。</p>
-
-              <h4>混合型と配合型の違い（重要）</h4>
-              <ul>
-                <li><strong>混合型（プレ混合）</strong>：超速効型または速効型＋NPH（中間型）。<strong>使用前に懸濁（白濁させる）が必要</strong>。<br>例：ヒューマログMix25／50、ノボラピッド30/50/70Mix</li>
-                <li><strong>配合型</strong>：超速効型＋持効型を均一に配合。<strong>懸濁不要</strong>（澄明な溶液）。<br>例：ライゾデグ（デグルデク＋アスパルト）</li>
-              </ul>
-              <p>同じ「混合」イメージで扱うと、ライゾデグを誤って振ってしまう等の事故が起き得るため、製剤ごとに確認が必要。</p>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li><strong>懸濁が必要な製剤</strong>：<strong>製剤ごとの手順に従い</strong>、使用前に十分に懸濁して白濁を確認する（手順・回数は製剤により異なる。激しく振らない）</li>
-                <li><strong>配合型（ライゾデグ等）</strong>：澄明なまま使用、振らない</li>
-                <li>注射タイミング（食前 等）は医師の指示に従う</li>
-                <li>毎回<strong>空打ち</strong>でインスリンが出ることを確認</li>
-                <li>注射部位は<strong>毎回ローテーション</strong></li>
-                <li>低血糖症状と対処（ブドウ糖摂取）を理解</li>
-              </ul>
-
-              <h4>Sick day時の対応</h4>
-              <p>Sick day時は<strong>自己判断で中止・調整せず、医師の指示を確認</strong>するよう伝える。混合型・配合型は基礎成分も含むため、中断により高血糖・ケトアシドーシスのリスクがあることを説明。食事量に応じた調整指示があればそれに従う。</p>
-
-              <div class="patient-say">患者への伝え方の例：<br />「この薬は2種類のインスリンが入っています。使う前に〇〇（懸濁する／そのまま使う）してください。食事の前に打ったら必ず食事を摂ってください。具合が悪くて食事が摂れない時も、自己判断で中止せず必ず相談してください。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名 単位数 タイミング：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
-          <ul style="font-size:12px;margin:0 0 8px;padding-left:1.6em;">
-            <li><strong>含有成分（超速効＋持効／超速効＋NPH 等）と懸濁の要否</strong>を必ず患者の使う製剤に合わせて記載</li>
-          </ul>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規導入（混合型・要懸濁）</span>
-              <div class="tpl-text">混合型インスリン（〇〇＋NPH）新規導入。単位数・注射タイミングを確認。<strong>製剤ごとの手順に従い、使用前に十分に懸濁し白濁を確認する</strong>手技を実演で指導。注射手技・低血糖対応・Sick day時の医師指示確認も指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規導入（配合型・懸濁不要）</span>
-              <div class="tpl-text">配合型インスリン（〇〇）新規導入。単位数・注射タイミングを確認。<strong>澄明な溶液のまま使用し、振らない</strong>ことを実演で指導。注射手技・低血糖対応・Sick day時の医師指示確認も指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
-              <div class="tpl-text">高齢者への混合型／配合型インスリン新規導入。視力・手指の動き・理解力を確認、家族支援の有無も確認。懸濁の要否を含めた手技を本人だけでなく家族にも実演で確認。低血糖症状が自覚しにくい可能性も家族に説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">増量前の低血糖症状を確認（冷汗・ふるえ・動悸等の訴えなし）。増量に伴い低血糖リスクが上がる可能性があるため、低血糖症状と対処を再指導。食事を抜かないこと、症状出現時は連絡するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：製剤変更（混合型↔配合型 等）</span>
-              <div class="tpl-text">他の混合型／配合型製剤（〇〇）から本剤への切替を確認。<strong>懸濁の要否が変わる場合は実演で確認・指導</strong>。注射タイミング・デバイス操作の違いも再確認。低血糖症状と対処を再指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">Sick day（発熱・下痢・嘔吐・食事摂取不良）あり。自己判断で中止・調整せず、医師の指示を確認するよう指導。基礎成分も含むため中断により高血糖・ケトアシドーシスのリスクがある旨を説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">懸濁の理解不十分／振り方が雑な訴え。製剤ごとの手順に従って十分に懸濁し白濁を確認するよう再指導（激しく振らない）。配合型の場合は懸濁不要であることを再説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">注射部位の皮膚硬結・しこりあり。投与部位のローテーションを再指導、症状が続く場合は主治医に相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">打ち忘れあり。打ち忘れ時の対応の医師指示を確認するよう指導。次回以降の打ち忘れ防止策を提案。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- インスリン＋GLP-1配合剤 -->
-        <div class="drug-block" id="glp1-combo">
-          <div class="drug-block-head">
-            <span class="drug-block-name">インスリン＋GLP-1配合剤</span>
-            <span class="drug-block-sub">ゾルトファイ（デグルデク＋リラグルチド／フレックスタッチ）／ソリクア（グラルギン＋リキシセナチド／ソロスター）</span>
-          </div>
-
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この製剤の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容：薬剤名・<strong>単位数（ドーズ単位）</strong>・注射タイミング（通常1日1回）</li>
-              <li>含有成分：<strong>持効型インスリン＋GLP-1作動薬</strong>の配合</li>
-              <li>注射手技・空打ち・投与部位ローテーション／皮膚硬結・しこりの有無</li>
-              <li>保管方法（使用前冷蔵／開封後室温）・針の取扱い・廃棄方法</li>
-              <li>低血糖症状の自覚・既往／ブドウ糖等の準備</li>
-              <li>悪心・嘔気・食欲低下・体重減少（GLP-1作用）の有無</li>
-              <li>Sick day時の対応理解／視力・手指の動き／家族支援</li>
-              <li>効果指標：HbA1c・血糖値・体重の推移</li>
-            </ul>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>指導時の補足</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p><strong>持効型インスリンとGLP-1作動薬を組み合わせた1日1回の注射薬</strong>。インスリンの低血糖リスクと、GLP-1作動薬の食欲低下・体重減少・急性膵炎の両方に注意が必要。注射回数を減らせる一方、注意点は両方を引き継ぐ。</p>
-
-              <h4>主な配合剤（ドーズ・タイミングの違い）</h4>
-              <ul>
-                <li><strong>ゾルトファイ</strong>（フレックスタッチ）：デグルデク（トレシーバ相当）＋リラグルチド（ビクトーザ相当）<br>
-                  1ドーズ＝デグルデク1単位＋リラグルチド0.036mg／<strong>1日1回・毎日一定時刻</strong>／開始10ドーズ目安／<strong>最大50ドーズ</strong></li>
-                <li><strong>ソリクア</strong>（ソロスター）：グラルギン（ランタス相当）＋リキシセナチド（リキスミア相当）<br>
-                  1ドーズ＝グラルギン1単位＋リキシセナチド1µg／<strong>1日1回・朝食前1時間以内</strong>／開始5〜10ドーズ目安／<strong>最大20ドーズ</strong></li>
-              </ul>
-              <p>単位は「ドーズ」表記（インスリンとGLP-1が一定比率で含まれる）。インスリン単位とは別概念のため、患者にも処方医の指示の単位（ドーズ）通りに打つよう徹底。<strong>特にソリクアは朝食前のタイミングが大事</strong>（リキシセナチドが食後血糖の上昇を抑える役割を持つため）。</p>
-
-              <h4>ドーズ変更時の注意（重要）</h4>
-              <p>ドーズ数の変更により<strong>インスリン成分とGLP-1成分が同時に変わる</strong>ため、増量時は低血糖だけでなく<strong>悪心・食欲低下</strong>にも注意するよう説明。</p>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li>1日1回、決まった時間に注射（食事との関係は医師指示に従う）</li>
-                <li>毎回<strong>空打ち</strong>でインスリンが出ることを確認</li>
-                <li>注射部位は<strong>毎回ローテーション</strong></li>
-                <li>低血糖症状（冷汗・ふるえ・動悸・強い空腹感等）が出たらブドウ糖を摂取</li>
-                <li>悪心・食欲低下は初期に多く徐々に軽快することが多い／強い場合や続く場合は相談</li>
-                <li>強い腹痛・嘔吐などは急性膵炎の可能性があるため、速やかに受診</li>
-              </ul>
-
-              <h4>GLP-1作動薬部分の注意（背景知識）</h4>
-              <p>配合剤にはGLP-1作動薬が含まれるため、<strong>悪心・嘔気・食欲低下・体重減少</strong>が起こりうる。強い食欲低下が続く場合は栄養不良・脱水のリスク。また稀に<strong>急性膵炎</strong>を起こすことがある（添付文書で警告）ため、強い腹痛・嘔吐・圧痛が出現した場合は速やかに受診し、使用継続の可否を含めて主治医に相談するよう伝える。</p>
-
-              <h4>患者説明のスタンス</h4>
-              <p>急性膵炎は頻度としては稀。患者には病名を前面に出さず、強い腹痛・嘔吐が続く場合の相談・受診を中心に説明する。薬歴上で病名と症状をセットで残したい場合は<strong>「副作用説明の追記」から追加コピー</strong>。</p>
-
-              <h4>Sick day時の対応</h4>
-              <p>Sick day時は<strong>自己判断で中止・調整せず、医師の指示を確認</strong>するよう伝える。持効型インスリン成分の中断は高血糖・ケトアシドーシスのリスクがある一方、食事摂取不良時のGLP-1部分による影響もあるため、必ず医師に相談を。</p>
-
-              <p style="margin-top:8px;font-weight:700;">→ GLP-1作動薬としての指導内容は、糖尿病用剤ページの「GLP-1注射」ブロックも合わせて参照する。</p>
-
-              <div class="patient-say">患者への伝え方の例：<br />「1日1回、決まった時間に打ってください。最初は気持ち悪さや食欲低下が出ることもありますが、たいてい治まります。強く続く場合や、お腹を強く痛がる・吐き気が止まらない場合はすぐ連絡してください。具合が悪くて食事が摂れない時も、自己判断で中止せず必ず相談してください。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名 単位数 タイミング：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
-          <ul style="font-size:12px;margin:0 0 8px;padding-left:1.6em;">
-            <li>副作用説明を行った場合は、<strong>「副作用説明の追記」</strong>から該当する記載例を追加（説明していない副作用は追加しない）</li>
-          </ul>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規導入</span>
-              <div class="tpl-text">インスリン＋GLP-1配合剤（〇〇）新規導入。ドーズ数・注射タイミングを確認。持効型インスリンとGLP-1作動薬の配合剤であることを説明。注射手技・低血糖対応・悪心や食欲低下の経過観察、まれではあるが強い腹痛・嘔吐が続く場合は早めに相談・受診すること、Sick day時は自己判断せず医師に相談することを指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：他剤併用下追加</span>
-              <div class="tpl-text">他剤併用下でインスリン＋GLP-1配合剤を新規導入。SU・速効/超速効インスリン併用で低血糖リスクが上がるため、低血糖症状（冷汗・ふるえ・動悸・強い空腹感等）と対処（ブドウ糖摂取）を指導。悪心・食欲低下の経過観察、まれではあるが強い腹痛・嘔吐が続く場合は早めに相談・受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
-              <div class="tpl-text">高齢者へのインスリン＋GLP-1配合剤新規導入。視力・手指の動き・理解力を確認、家族支援の有無も確認。注射手技を本人だけでなく家族にも実演で確認。低血糖症状が自覚しにくい可能性も家族に説明。食欲低下・体重減少が強い場合の栄養不良・脱水リスクも家族に共有。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">増量前に低血糖症状・悪心・食欲低下を確認（冷汗・ふるえ・動悸・悪心・食欲低下等の訴えなし）。増量後は低血糖と消化器症状の両方に注意し、強い場合や食事量低下が続く場合は相談するよう再指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：減量</span>
-              <div class="tpl-text">減量に至った経緯を確認。減量後も低血糖症状（冷汗・ふるえ・動悸等）・消化器症状（悪心・食欲低下等）の有無を継続して確認するよう指導。自己判断で中止しないよう注意喚起。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">急性膵炎様症状（強い腹痛・嘔吐）について、まれではあるが症状が出た場合は早めに相談・受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">Sick day（発熱・下痢・嘔吐・食事摂取不良）あり。自己判断で中止・調整せず、医師の指示を確認するよう指導。インスリン成分の中断による高血糖・ケトアシドーシスのリスクと、GLP-1部分の影響の両方がある旨を説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">食欲低下強い／持続あり。脱水・栄養不良に注意し、医療機関に相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">注射部位の皮膚硬結・しこりあり。投与部位のローテーションを再指導、症状が続く場合は主治医に相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <p style="font-size:12px;color:var(--sub);margin-top:8px;">
-          ※ 「変更のあった製剤」を起点に、状況に最も近いバリエーションを1つ選び、必要なら必要時追記から該当するものを足す想定。<br />
-          ※ 製剤名・単位数（ドーズ数）・注射タイミングはテンプレに含めず、ハイリスク指導記録の冒頭に薬剤師が記載する（加算1は「どの薬剤について指導したか」が薬歴上で分かる必要があるため）。
-        </p>
-      </section>
-
-      <!-- ============================================================
-           § 3  副作用・服薬状況等の変化によるロ — 薬歴記載例
-           ============================================================ -->
-      <section id="section3">
-        <div class="section-label">SECTION 3</div>
-        <h2 class="section-title">副作用・服薬状況等の変化によるロ — 薬歴記載例</h2>
-
-        <div class="warn-box">
-          <div class="warn-box-title">この区分の位置づけと使い方</div>
-          <p style="margin-bottom:8px;">加算1の<strong>ロ</strong>には、次の2つの場面がある。</p>
-          <ul style="margin-bottom:10px;">
-            <li>①<strong>用法・用量の変更</strong>に伴い必要と認めて指導した場合 → <strong>SECTION 2 の変更ロ</strong></li>
-            <li>②<strong>副作用の発現状況・服薬状況等の変化</strong>に基づき必要と認めて指導した場合 → <strong>このセクション</strong></li>
-          </ul>
-          <p style="margin-bottom:8px;">②は、同一処方であっても、患者の体調・服薬状況・生活状況等の変化に薬剤師が気付き、<strong>追加の指導が必要と判断</strong>し、<strong>その理由の要点を薬歴に記載</strong>したときに算定する。</p>
-          <p style="margin-bottom:8px;">記録は<strong>「変化の確認 → 指導の方向性を判断 → 指導」</strong>の流れで簡潔に。</p>
-          <p>以下は記載例。患者の状況に合わせて書き換える。</p>
-        </div>
-
-        <div class="tpl-warn">
-          <div class="tpl-warn-title">コピーする前に必ず確認</div>
-          <ul>
-            <li>ハイリスク指導記録は <strong>「薬剤名 単位数：〜」</strong> の形で記載（書き方例では製剤群名で書いているが、実運用では具体薬剤名・単位数で始める）</li>
-            <li><strong>変化の具体内容・確認した内容</strong>を患者の状況に合わせて書き換える（「指導が必要と判断」のフレーズは加算根拠として残す）</li>
-            <li>説明・指導していない項目は<strong>削除</strong>する</li>
-          </ul>
-        </div>
-
-        <div class="tpl-set" style="margin-top:14px;">
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">朝の倦怠感・寝汗の訴えあり。持効型インスリン使用中の夜間低血糖が疑われるため指導が必要と判断。就寝前補食の要否や単位数・注射タイミングについて主治医に相談するよう指導、症状の頻度・時刻を次回受診時に伝えるよう説明。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">注射部位の皮膚硬結・しこりあり（リポハイパートロフィー疑い）。吸収不安定による血糖変動の懸念があるため指導が必要と判断。投与部位のローテーションを再指導、症状が続く場合は主治医に相談するよう説明。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">発熱・下痢ありとの訴え。インスリン使用中のSick dayでは、自己判断で中止すると高血糖・ケトアシドーシスのリスクがあるため指導が必要と判断。自己判断で中止・調整せず、医師の指示を確認するよう指導。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">「最近見えにくい」との訴え。単位目盛りの確認や注射部位の確認に支障が出る懸念があるため指導が必要と判断。家族支援の状況を再確認、必要に応じて処方医に相談（製剤・デバイス変更）を提案するよう説明。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">残薬確認で打ち忘れが増加。血糖コントロール悪化と中断による高血糖リスクの懸念があるため指導が必要と判断。打ち忘れ時の医師指示を再確認、生活動線での声かけ・記録などの工夫を提案。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">他者の介助を要する重度低血糖の既往ありとの情報。再発リスクが高く家族支援が必要なため指導が必要と判断。家族にもブドウ糖摂取を説明、グルカゴン製剤が処方されている場合は使用方法も家族と共有（未準備なら処方医へ相談を）。症状出現時は主治医にすぐ連絡するよう指導。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">食事量低下・体重減少が続くとの訴え（GLP-1配合剤服用下）。栄養不良・脱水のリスクが懸念されるため指導が必要と判断。医療機関に相談するよう指導。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- § 個別指導での指摘事例 -->
-      <section id="kobetsu">
-        <div class="section-label">個別指導</div>
-        <h2 class="section-title">個別指導での指摘事例</h2>
-        <div class="drug-check-box">
-          <div class="drug-check-box-title">この薬効群で特に確認されやすいポイント</div>
-          <ul>
-            <li>記録から<strong>対象薬剤（「薬剤名 単位数 タイミング：〜」）</strong>が分かるか</li>
-            <li>何を確認したか（単位数・注射タイミング・注射手技・低血糖・シックデイ対応・服薬状況・検査値）が書かれているか</li>
-            <li>確認しただけで終わらず、<strong>患者の状況に応じた指導内容</strong>になっているか</li>
-            <li>注射手技・低血糖症状と対処・シックデイ時に自己判断で中止しないことなど、必要な指導を記録したか</li>
-            <li>「副作用・服薬状況等の変化によるロ」では、<strong>変化の確認・指導が必要と判断した理由・指導内容</strong>が残っているか</li>
-          </ul>
-        </div>
-        <p style="font-size:12px;color:var(--sub);margin-top:10px;">
-          ※ 個別指導の一般的な考え方・過去の指摘の読み方は <a href="ハイリスク_薬歴の書き方.html#kobetsu" style="color:var(--blue);">ハイリスク薬の薬歴の書き方「個別指導で見られる点」</a> にまとめている。
-        </p>
-      </section>
-
-      <!-- ============================================================
-           § SOURCE（折りたたみ）
-           ============================================================ -->
-      <section>
-        <details class="guide-details fold-in">
-          <summary>本ページの根拠（出典・通知）</summary>
-          <div class="guide-details-body">
-            <div class="source-box">
-              <span class="source-box-label">ガイドライン</span>
-              <div><a href="https://www.nichiyaku.or.jp/yakuzaishi/pharmacy-info/other/guideline01" target="_blank" rel="noopener" style="color:var(--blue);">日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2.1版・令和8年6月）」</a>(10)膵臓ホルモン剤</div>
-              <div class="source-cite">→ 確認・指導事項の根拠</div>
-            </div>
-            <div class="source-box" style="margin-top:12px;">
-              <span class="source-box-label">通知</span>
-              <div>令和8年3月5日 保医発0305第6号 別添3「調剤報酬点数表に関する事項」 特定薬剤管理指導加算1</div>
-              <div class="source-cite">→ 算定要件・薬歴記載要件の原文</div>
-            </div>
-            <p style="font-size:12px;color:var(--sub);margin-top:14px;">※ 経口糖尿病薬・GLP-1作動薬（注射）は別ページ「糖尿病用剤」で扱う。インスリン＋GLP-1配合剤のGLP-1作動薬部分の詳細指導は、糖尿病用剤ページの「GLP-1注射」ブロックも参照。</p>
-            <p style="font-size:12px;color:var(--sub);margin-top:6px;">※ 針の廃棄方法・回収運用は店舗・自治体によって異なる。社内・店舗の運用ルールに従う。</p>
-          </div>
-        </details>
-      </section>
-
-    </main>
-
-    </div><!-- /右カラム -->
-    </div><!-- /.layout-outer -->
-
-    <footer>調剤報酬・薬歴まとめ ／ 薬歴マニュアル ／ ハイリスク薬指導 ／ 膵臓ホルモン剤</footer>
-
     <script>
-      // チェックリストだけ印刷
-      document.querySelectorAll('.print-btn').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          document.body.classList.add('print-checklist-only');
-          window.print();
-        });
-      });
-      window.addEventListener('afterprint', function () {
-        document.body.classList.remove('print-checklist-only');
-      });
-    </script>
-    <script>
-      document.querySelectorAll('.copy-mini').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const parent = btn.parentElement;
-          const tplText = parent.querySelector('.tpl-text');
-          let text;
-          if (tplText) {
-            text = tplText.innerText;
-          } else {
-            const spans = parent.querySelectorAll('span:not(.dcb-label)');
-            text = Array.from(spans).map(s => s.innerText).join('\n');
+      // 記載例を組み立てる：場面を選ぶと、その場面でよく使う部品に自動でチェックが入る。
+      // チェックは自由に付け外しでき、下の枠に1つの文として組み上がる。
+      // 枠の中の〇〇は入力欄になっていて、打った値はチェックを付け外ししても残る。
+      // 部品の data-drug は「|」区切りで複数の薬剤に出せる。薬剤の「その他」は値が〇〇で、文の中で入力欄になる。
+      // 入力した内容は画面の中だけで使い、保存も送信もしない。
+      document.querySelectorAll('.mk').forEach(function (mk) {
+        var out = mk.querySelector('.mk-out'), hint = mk.querySelector('.mk-bar .hint'), hint0 = hint.textContent;
+        var scenes = [].slice.call(mk.querySelectorAll('.mk-scenes:not(.mk-drug) input'));
+        var drugs = [].slice.call(mk.querySelectorAll('.mk-drug input'));
+        var parts = [].slice.call(mk.querySelectorAll('.mk-p input'));
+        var purposes = (mk.dataset.purpose || '').split('|').filter(Boolean);
+        var vals = {};
+        function drugEl() { return drugs.filter(function (x) { return x.checked; })[0]; }
+        function drug() { var d = drugEl(); return d ? d.value : (mk.dataset.drug || '〇〇'); }
+        function scene() { return scenes.filter(function (x) { return x.checked; })[0]; }
+        function applyDefaults() {
+          var d = drug();
+          // 製剤で限った場面（data-drug）は、その製剤以外では隠す
+          scenes.forEach(function (x) {
+            var ok = !x.dataset.drug || x.dataset.drug.split('|').indexOf(d) >= 0;
+            x.closest('label').hidden = !ok;
+            if (!ok && x.checked) { x.checked = false; scenes[0].checked = true; }
+          });
+          var s = scene().value;
+          parts.forEach(function (p) {
+            var on = (p.dataset.on || '').split(' ').indexOf(s) >= 0;
+            var okDrug = !p.dataset.drug || p.dataset.drug.split('|').indexOf(d) >= 0;
+            p.checked = on && okDrug;
+            p.closest('.mk-p').hidden = !okDrug;
+          });
+          // 見出しの下に表示する部品がなければ、見出しも隠す
+          [].slice.call(mk.querySelectorAll('.mk-h')).forEach(function (hd) {
+            if (!hd.querySelector('.mk-sub')) return;
+            var el = hd.nextElementSibling, any = false;
+            while (el && el.classList.contains('mk-p')) { if (!el.hidden) any = true; el = el.nextElementSibling; }
+            hd.hidden = !any;
+          });
+        }
+        function segments() {
+          var segs = [{ id: 's:' + scene().value, text: scene().dataset.text }];
+          parts.forEach(function (p, i) { if (p.checked && !p.closest('.mk-p').hidden) segs.push({ id: 'p' + i, text: p.nextElementSibling.textContent }); });
+          var d = drug();
+          segs.forEach(function (g) { g.text = g.text.split('{薬}').join(d); });
+          return segs;
+        }
+        function purposeText() {
+          var v = vals.purpose || '';
+          if (v === '__other') return vals.purposeOther || '';
+          return v;
+        }
+        function plain() {
+          var t = '';
+          segments().forEach(function (g) {
+            var n = 0;
+            g.text.split(/(\{目的\}|〇+)/).forEach(function (tok) {
+              if (tok === '{目的}') t += purposeText() || '〇〇';
+              else if (/^〇+$/.test(tok)) { t += vals[g.id + '#' + (n++)] || tok; }
+              else t += tok;
+            });
+          });
+          return t;
+        }
+        function sizeOf(el) { el.size = Math.max(2, (el.value || '').length * 2 + 1); }
+        function input(key, ph) {
+          var el = document.createElement('input');
+          el.className = 'mk-in'; el.value = vals[key] || ''; el.placeholder = ph; el.setAttribute('aria-label', '入力');
+          sizeOf(el);
+          el.addEventListener('input', function () { vals[key] = el.value; sizeOf(el); });
+          return el;
+        }
+        function purposeSelect() {
+          var wrap = document.createElement('span');
+          var sel = document.createElement('select');
+          sel.className = 'mk-in';
+          [['', '処方目的を選択する']].concat(purposes.map(function (p) { return [p, p]; })).concat([['__other', 'その他（入力する）']])
+            .forEach(function (o) { var op = document.createElement('option'); op.value = o[0]; op.textContent = o[1]; sel.appendChild(op); });
+          sel.value = vals.purpose || '';
+          wrap.appendChild(sel);
+          var other = input('purposeOther', '処方目的');
+          other.hidden = sel.value !== '__other';
+          wrap.appendChild(other);
+          sel.addEventListener('change', function () { vals.purpose = sel.value; other.hidden = sel.value !== '__other'; if (!other.hidden) other.focus(); });
+          return wrap;
+        }
+        function render() {
+          out.innerHTML = ''; var fb = mk.querySelector('.mk-fallback'); if (fb) fb.hidden = true; hint.textContent = hint0; hint.classList.remove('warn');
+          segments().forEach(function (g) {
+            var n = 0;
+            g.text.split(/(\{目的\}|〇+)/).forEach(function (tok) {
+              if (!tok) return;
+              if (tok === '{目的}') out.appendChild(purposeSelect());
+              else if (/^〇+$/.test(tok)) out.appendChild(input(g.id + '#' + (n++), tok));
+              else out.appendChild(document.createTextNode(tok));
+            });
+          });
+        }
+        scenes.concat(drugs).forEach(function (x) { x.addEventListener('change', function () { applyDefaults(); render(); }); });
+        parts.forEach(function (x) { x.addEventListener('change', render); });
+        mk.querySelector('[data-act=clear]').addEventListener('click', function () { parts.forEach(function (p) { p.checked = false; }); render(); });
+        mk.querySelector('[data-act=reset]').addEventListener('click', function () { applyDefaults(); render(); });
+        mk.querySelector('.mk-bar button').addEventListener('click', function () {
+          var b = this, t = plain();
+          var left = (t.match(/〇+/g) || []).length;
+          function ok() {
+            b.textContent = 'コピーしました';
+            hint.textContent = left ? '未入力が' + left + 'か所ある（〇〇のままコピーした）' : hint0;
+            hint.classList.toggle('warn', !!left);
+            setTimeout(function () { b.textContent = 'コピー'; }, 1500);
           }
-          navigator.clipboard.writeText(text).then(() => {
-            btn.classList.add('copied');
-            const orig = btn.textContent;
-            btn.textContent = '済';
-            setTimeout(() => { btn.classList.remove('copied'); btn.textContent = orig; }, 1200);
-          });
+          function ng() {
+            // 枠の中（ハローナビ等）でクリップボードが使えないときは、完成した文を選択した状態で出し、Ctrl+C を促す
+            var ta = mk.querySelector('.mk-fallback');
+            if (!ta) { ta = document.createElement('textarea'); ta.className = 'mk-fallback'; ta.readOnly = true; mk.querySelector('.mk-bar').after(ta); }
+            ta.value = t; ta.hidden = false; ta.focus(); ta.select();
+            hint.textContent = 'コピーできなかった。下の枠の文が選択されているので Ctrl+C でコピーする';
+            hint.classList.add('warn');
+          }
+          function legacy() {
+            var ta = document.createElement('textarea');
+            ta.value = t; ta.setAttribute('readonly', '');
+            ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
+            document.body.appendChild(ta); ta.select();
+            var done = false; try { done = document.execCommand('copy'); } catch (e) {}
+            document.body.removeChild(ta);
+            done ? ok() : ng();
+          }
+          if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(ok, legacy); else legacy();
         });
+        applyDefaults(); render();
       });
     </script>
-    <script>
-      // サイドスティッキーTOC アクティブハイライト
-      (function () {
-        const navLinks = document.querySelectorAll('.sticky-toc a[href^="#"]');
-        const sections = Array.from(navLinks)
-          .map(a => document.querySelector(a.getAttribute('href')))
-          .filter(Boolean);
-        if (!sections.length) return;
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const id = entry.target.id;
-              navLinks.forEach(a => {
-                a.classList.toggle('is-active', a.getAttribute('href') === '#' + id);
-              });
-            }
-          });
-        }, { rootMargin: '-40px 0px -70% 0px', threshold: 0 });
-        sections.forEach(s => observer.observe(s));
-      })();
-    </script>
-    <script src="yakureki.js" defer></script>
-    <script src="../assets/site-fab.js" defer></script>
     <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   </body>
 </html>
