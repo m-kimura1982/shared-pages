@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow,noarchive">
-  <title>選定療養 計算ツール（社内・非公開）</title>
-  <meta name="search-keywords" content="長期収載品,特別の料金,計算,差額,先発品" />
+  <title>選定療養 計算ツール</title>
+  <meta name="search-keywords" content="長期収載品,特別の料金,計算,差額,先発品,特管3ロ,再算定" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/fold.css" />
   <style>
@@ -17,162 +17,238 @@
       --bg:#f3f4f6; --white:#ffffff;
       --box-blue:#e4f0f8; --box-gray:#f2f2f2;
       --border:#d1d5db; --border-dk:#9ca3af;
-      --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px; --bw-t:4px;
+      --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px;
       --txt-2:#444444; --txt-3:#5e6470;
+      /* 区分の色（図解の淡色パレット）：内服＝青／外用・注射＝クリーム／頓服＝藤 */
+      --kind-in-bg:#dfe9f6;  --kind-in-tx:#2a5580;
+      --kind-ex-bg:#f3e8d0;  --kind-ex-tx:#7a5718;
+      --kind-ton-bg:#e5e0f2; --kind-ton-tx:#4b3f80;
     }
-    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:28px 16px 60px; }
-    .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.7; padding:28px 16px 60px; }
+    .page { max-width:1040px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
     .hidden { display:none !important; }
     .print-only { display:none; }
+    button, input, select { font-family:inherit; }
 
     .draft-tag { align-self:flex-start; font-size:var(--text-xs); font-weight:700; color:var(--txt-2); background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:5px; padding:2px 10px; }
     .page-title h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
     .page-title p  { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
 
-    .modetabs { display:flex; border:var(--bw-h) solid var(--border-dk); border-radius:var(--radius-sm); overflow:hidden; }
-    .modetabs button { flex:1; font-family:inherit; font-size:var(--text-sm); font-weight:700; padding:11px 10px; background:var(--white); border:none; border-right:var(--bw-h) solid var(--border); cursor:pointer; color:var(--txt-2); }
-    .modetabs button:last-child { border-right:none; }
-    .modetabs button.on { background:var(--blue); color:#fff; }
+    /* タブ */
+    .tabs { display:flex; gap:6px; border-bottom:var(--bw-h) solid var(--border-dk); }
+    .tabs button { font-size:var(--text-sm); font-weight:700; padding:9px 18px; background:transparent; border:var(--bw-h) solid transparent; border-bottom:none; border-radius:var(--radius-sm) var(--radius-sm) 0 0; color:var(--txt-2); cursor:pointer; margin-bottom:-1px; }
+    .tabs button.on { background:var(--white); border-color:var(--border-dk); color:var(--blue); }
+    .tabs .cnt { display:inline-block; min-width:20px; margin-left:6px; padding:0 6px; font-size:12px; line-height:20px; border-radius:10px; background:var(--kind-in-bg); color:var(--kind-in-tx); text-align:center; }
+    .tabs .cnt:empty { display:none; }
 
     .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
     .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
     .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
     .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
-
+    .card-title .right { margin-left:auto; }
     .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
-    .em-change { color:var(--blue); font-weight:900; }
 
-    .search-input { width:100%; font-size:var(--text-md); font-family:inherit; padding:11px 14px; border:var(--bw-h) solid var(--border-dk); border-radius:var(--radius-sm); }
-    .search-input:focus { outline:none; border-color:var(--blue); }
+    /* 2段組（PC）：左＝入力、右＝結果 */
+    .calc-grid { display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:var(--gap-card); align-items:start; }
+    .col-main { display:flex; flex-direction:column; gap:var(--gap-card); min-width:0; }
+    .col-side { position:sticky; top:calc(var(--sn-header-h, 0px) + 14px); }
+
+    /* 検索 */
+    .search-wrap { position:relative; }
+    .search-input { width:100%; font-size:var(--text-md); padding:12px 44px 12px 14px; border:var(--bw-h) solid var(--border-dk); border-radius:var(--radius-sm); background:var(--white); }
+    .search-input::placeholder { color:#6b7280; }
+    .search-input:focus { outline:none; border-color:var(--blue); box-shadow:0 0 0 3px rgba(30,95,168,.15); }
+    .search-clear { position:absolute; right:6px; top:50%; transform:translateY(-50%); width:34px; height:34px; border:none; border-radius:50%; background:transparent; color:var(--txt-3); font-size:20px; line-height:1; cursor:pointer; }
+    .search-clear:hover { background:var(--box-gray); color:var(--ink); }
     .search-hint { font-size:var(--text-xs); color:var(--txt-3); margin-top:6px; }
-    .results { margin-top:10px; display:flex; flex-direction:column; max-height:320px; overflow-y:auto; border:var(--bw) solid var(--border); border-radius:var(--radius-sm); }
+    .results { margin-top:8px; max-height:340px; overflow-y:auto; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); }
     .results:empty { display:none; }
-    .res-item { padding:9px 13px; border-bottom:var(--bw-h) solid var(--border); cursor:pointer; font-size:var(--text-sm); }
+    .res-item { display:flex; align-items:center; gap:10px; padding:9px 12px; border-bottom:var(--bw-h) solid var(--border); cursor:pointer; }
     .res-item:last-child { border-bottom:none; }
-    .res-item:hover, .res-item.kbd { background:#f0f6fc; }
-    .res-item .nm { font-weight:700; }
+    .res-item:hover, .res-item.kbd { background:#eef4fb; }
+    .res-item .rb { flex:1; min-width:0; }
+    .res-item .nm { font-weight:700; font-size:var(--text-sm); }
     .res-item .meta { font-size:var(--text-xs); color:var(--txt-3); }
-    .res-more { padding:8px 13px; font-size:var(--text-xs); color:var(--txt-3); background:var(--box-gray); }
+    .res-item .add { flex-shrink:0; font-size:var(--text-xs); font-weight:700; color:var(--blue); }
+    .res-item .added { flex-shrink:0; font-size:var(--text-xs); font-weight:700; color:var(--txt-3); }
+    .res-head { padding:7px 12px; font-size:var(--text-xs); font-weight:700; color:var(--ink); background:var(--box-gray); border-bottom:var(--bw-h) solid var(--border); }
+    .res-head.none { color:var(--txt-2); background:var(--box-gray); border-bottom:none; }
+    .res-item .by-ing { margin-left:8px; font-size:11.5px; font-weight:700; color:var(--txt-2); background:var(--box-gray); border:var(--bw-h) solid var(--border); border-radius:4px; padding:0 6px; white-space:nowrap; }
+    .res-more { padding:8px 12px; font-size:var(--text-xs); color:var(--txt-3); background:var(--box-gray); }
 
-    .drug-box { margin-top:12px; background:var(--box-blue); border-radius:var(--radius-sm); padding:13px 16px; }
-    .drug-box .dn { font-weight:900; font-size:var(--text-md); }
-    .drug-box .di { font-size:var(--text-xs); color:var(--txt-2); margin-top:2px; }
-    .drug-box .dvals { display:flex; flex-wrap:wrap; gap:14px; margin-top:8px; font-size:var(--text-sm); }
-    .drug-box .dvals span b { color:var(--blue); }
+    .chip { display:inline-block; font-size:12px; font-weight:700; line-height:1.6; padding:0 8px; border-radius:4px; white-space:nowrap; flex-shrink:0; }
+    .chip.in  { background:var(--kind-in-bg);  color:var(--kind-in-tx); }
+    .chip.ex  { background:var(--kind-ex-bg);  color:var(--kind-ex-tx); }
+    .chip.ton { background:var(--kind-ton-bg); color:var(--kind-ton-tx); }
 
-    .field { margin-bottom:14px; }
-    .field:last-child { margin-bottom:0; }
-    .field > label { display:block; font-size:var(--text-sm); font-weight:700; color:var(--txt-2); margin-bottom:6px; }
-    .seg { display:inline-flex; border:var(--bw-h) solid var(--border-dk); border-radius:var(--radius-sm); overflow:hidden; }
-    .seg button { font-family:inherit; font-size:var(--text-sm); font-weight:700; padding:8px 16px; background:var(--white); border:none; border-right:var(--bw-h) solid var(--border); cursor:pointer; color:var(--txt-2); }
+    /* 負担割合 */
+    .seg { display:inline-flex; border:var(--bw-h) solid var(--border-dk); border-radius:var(--radius-sm); overflow:hidden; vertical-align:middle; }
+    .seg button { font-size:var(--text-sm); font-weight:700; padding:6px 14px; background:var(--white); border:none; border-right:var(--bw-h) solid var(--border); cursor:pointer; color:var(--txt-2); }
     .seg button:last-child { border-right:none; }
     .seg button.on { background:var(--blue); color:#fff; }
-    .qty-row { display:flex; gap:16px; flex-wrap:wrap; }
-    .qty-row .field { margin-bottom:0; }
-    .num-input { width:120px; font-size:var(--text-md); font-family:inherit; padding:9px 12px; border:var(--bw-h) solid var(--border-dk); border-radius:var(--radius-sm); }
-    .num-input:focus { outline:none; border-color:var(--blue); }
-    .unit-note { font-size:var(--text-xs); color:var(--txt-3); margin-top:4px; }
+    .method-row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:-4px 0 12px; }
+    .method-row .ml { font-size:var(--text-xs); font-weight:700; color:var(--txt-2); }
+    .seg-sm button { font-size:var(--text-xs); padding:5px 10px; }
+    .method-note { font-size:var(--text-xs); color:var(--ink); background:#fdf0e3; border:var(--bw-h) solid #e8c9a3; border-radius:var(--radius-sm); padding:8px 11px; margin-bottom:12px; line-height:1.7; }
+    .rate-row { display:flex; align-items:center; gap:10px; font-size:var(--text-sm); font-weight:700; color:var(--txt-2); }
 
-    .verdict { border-radius:var(--radius-sm); padding:16px 18px; display:flex; align-items:flex-start; gap:14px; }
-    .verdict .mark { font-size:30px; font-weight:900; line-height:1; flex-shrink:0; }
-    .verdict .vt { font-size:var(--text-lg); font-weight:900; }
-    .verdict .vr { font-size:var(--text-sm); margin-top:4px; }
-    .verdict.ok { background:var(--box-blue); }
-    .verdict.ok .mark, .verdict.ok .vt { color:var(--blue); }
-    .verdict.ng { background:var(--box-gray); border:var(--bw) solid var(--border); }
-    .verdict.ng .mark { color:var(--txt-3); }
-    .verdict.ng .vt { color:var(--txt-2); }
+    /* 処方の一覧 */
+    .empty-msg { font-size:var(--text-sm); color:var(--txt-3); padding:14px 4px; }
+    .grp { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); margin-bottom:10px; overflow:hidden; }
+    .grp-head { display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:8px 12px; background:#f8f9fb; border-bottom:var(--bw-h) solid var(--border); font-size:var(--text-sm); }
+    .grp-head .gname { font-size:var(--text-md); font-weight:900; }
+    /* 剤の帯：区分の色（内服＝青／外用・注射＝クリーム／頓服＝藤）で帯を塗り、左に線。剤の番号ごとに色は変えない */
+    .grp.k-in  { border-left:4px solid var(--kind-in-tx); }
+    .grp.k-in  .grp-head { background:var(--kind-in-bg); }
+    .grp.k-in  .gname { color:var(--kind-in-tx); }
+    .grp.k-ex  { border-left:4px solid var(--kind-ex-tx); }
+    .grp.k-ex  .grp-head { background:var(--kind-ex-bg); }
+    .grp.k-ex  .gname { color:var(--kind-ex-tx); }
+    .grp.k-ton { border-left:4px solid var(--kind-ton-tx); }
+    .grp.k-ton .grp-head { background:var(--kind-ton-bg); }
+    .grp.k-ton .gname { color:var(--kind-ton-tx); }
+    .grp-head .gnote { color:var(--txt-2); }
+    .grp-head .days { display:inline-flex; align-items:center; gap:6px; font-weight:700; color:var(--txt-2); }
+    .grp-head .days input { width:64px; }
+    .grp-head .gnote { font-size:var(--text-xs); color:var(--txt-3); }
+    .rx-row { display:grid; grid-template-columns:minmax(0,1fr) auto auto; gap:6px 14px; align-items:center; padding:10px 12px; border-top:var(--bw-h) solid var(--border); }
+    .rx-row:first-of-type { border-top:none; }
+    .grp-head + .rx-row { border-top:none; }
+    .rx-row.flash { animation:flash 1.2s ease-out; }
+    @keyframes flash { from { background:#fff7c2; } to { background:transparent; } }
+    .rx-name b { font-weight:700; font-size:var(--text-sm); display:block; }
+    .rx-name span { font-size:var(--text-xs); color:var(--txt-3); }
+    .rx-name .tk { margin-top:3px; display:flex; gap:6px; flex-wrap:wrap; align-items:center; }
+    .qty { display:inline-flex; align-items:center; gap:4px; }
+    .qty .ql { font-size:var(--text-xs); font-weight:700; color:var(--txt-3); margin-right:2px; white-space:nowrap; }
+    .qty .unit { font-size:var(--text-xs); color:var(--txt-2); min-width:2em; }
+    .step { flex-shrink:0; width:32px; height:32px; border:var(--bw-h) solid var(--border-dk); background:var(--white); border-radius:var(--radius-sm); font-size:18px; line-height:1; cursor:pointer; color:var(--txt-2); }
+    .step:hover { background:var(--box-gray); }
+    .num { flex-shrink:0; width:64px; height:32px; text-align:center; font-size:var(--text-md); padding:0 4px; border:var(--bw-h) solid var(--border-dk); border-radius:var(--radius-sm); }
+    .num { -moz-appearance:textfield; }
+    .num::-webkit-outer-spin-button, .num::-webkit-inner-spin-button { -webkit-appearance:none; margin:0; }
+    .num:focus, .zsel:focus { outline:none; border-color:var(--blue); box-shadow:0 0 0 3px rgba(30,95,168,.15); }
+    .rx-act { display:flex; align-items:center; gap:6px; }
+    .rx-how { grid-column:1 / -1; display:flex; align-items:center; gap:8px; }
+    .zsel { font-size:var(--text-sm); padding:5px 8px; border:var(--bw-h) solid var(--border-dk); border-radius:var(--radius-sm); background:var(--white); color:var(--ink); max-width:100%; }
+    .del { width:32px; height:32px; border:none; background:transparent; color:var(--txt-3); font-size:18px; border-radius:50%; cursor:pointer; }
+    .del:hover { background:var(--box-gray); color:var(--ink); }
+    .rx-foot { display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-top:4px; font-size:var(--text-xs); color:var(--txt-3); }
+    .linkbtn { background:none; border:none; color:var(--txt-3); font-size:var(--text-xs); font-weight:700; cursor:pointer; text-decoration:underline; padding:4px; }
+    .linkbtn:hover { color:var(--ink); }
 
-    .nums { display:flex; flex-wrap:wrap; gap:12px; margin-top:14px; }
-    .num-card { flex:1; min-width:150px; border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; }
-    .num-card .k { font-size:var(--text-xs); color:var(--txt-3); font-weight:700; }
-    .num-card .v { font-size:23px; font-weight:900; margin-top:2px; }
-    .num-card .v small { font-size:var(--text-sm); font-weight:500; color:var(--txt-3); }
-    .num-card.accent { background:var(--box-blue); border-color:#bcd6ec; }
-    .num-card.accent .v { color:var(--blue); }
+    /* 特管3ロの判定 */
+    .tk-badge { font-size:12px; font-weight:700; line-height:1.6; padding:0 7px; border-radius:4px; white-space:nowrap; border:var(--bw-h) solid; }
+    /* 特管3ロ：可＝淡い緑（算定してよい側）／不可＝淡いピンク（算定しないよう気をつける側）。記号でも見分けられるよう ✓ と × を付ける */
+    .tk-badge.ok { color:#3d6b2e; border-color:#bcd6b2; background:#e3efe0; }
+    .tk-badge.ng { color:#8c3a2e; border-color:#efc3bb; background:#fbe4e0; }
+    .tk-note { font-size:11.5px; color:var(--txt-3); }
 
-    .sub-line { margin-top:12px; font-size:var(--text-sm); color:var(--txt-2); background:var(--box-gray); border-radius:var(--radius-sm); padding:10px 14px; }
-    .sub-line b { color:var(--ink); }
+    /* 結果 */
+    .res-big .k { font-size:var(--text-xs); font-weight:700; color:var(--txt-3); }
+    .res-big .v { font-size:32px; font-weight:900; color:var(--blue); line-height:1.3; }
+    .res-big .v small { font-size:var(--text-sm); font-weight:700; margin-left:2px; }
+    .res-table { width:100%; border-collapse:collapse; margin-top:10px; font-size:var(--text-sm); }
+    .res-table td { padding:7px 0; border-top:var(--bw-h) solid var(--border); }
+    .res-table td:last-child { text-align:right; font-weight:700; white-space:nowrap; }
+    .res-table tr.total td { font-weight:900; font-size:var(--text-md); }
+    .ge-box { margin-top:12px; background:var(--box-gray); border-radius:var(--radius-sm); padding:11px 14px; font-size:var(--text-sm); }
+    .ge-box .t { font-weight:900; margin-bottom:2px; }
+    .ge-box b { font-weight:900; }
+    .ge-box .marker { white-space:nowrap; }
+    .ge-box .ge-sub { font-size:var(--text-xs); color:var(--txt-2); margin-top:4px; }
+    .res-big .vs-now { font-size:var(--text-sm); color:var(--txt-2); margin-top:2px; }
+    .res-big .vs-now b { color:var(--ink); }
+    .res-note { font-size:var(--text-xs); color:var(--txt-3); margin-top:10px; }
+    .fold-in { margin-top:12px; }
+    .bd { padding:8px 12px 10px; font-size:var(--text-xs); }
+    .bd table { width:100%; border-collapse:collapse; }
+    .bd th { text-align:left; font-weight:900; color:var(--txt-2); padding:5px 4px; border-bottom:var(--bw-h) solid var(--border-dk); }
+    .bd td { padding:5px 4px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
+    .bd td.r, .bd th.r { text-align:right; white-space:nowrap; }
+    .bd .sub { color:var(--txt-3); }
+    .bd .grp-ttl { font-weight:900; margin:10px 0 2px; }
+    .bd .grp-ttl:first-child { margin-top:0; }
+    .bd .line { color:var(--txt-2); }
+    .print-btn { margin-top:10px; }
 
-    .actions { margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
-    .btn { font-family:inherit; font-size:var(--text-sm); font-weight:700; padding:9px 16px; border-radius:var(--radius-sm); border:var(--bw-h) solid var(--border-dk); background:var(--white); color:var(--txt-2); cursor:pointer; }
+    .btn { font-size:var(--text-sm); font-weight:700; padding:7px 14px; border-radius:var(--radius-sm); border:var(--bw-h) solid var(--border-dk); background:var(--white); color:var(--txt-2); cursor:pointer; }
     .btn:hover { background:#f6f8fb; }
-    .btn-primary { background:var(--blue); color:#fff; border-color:var(--blue); }
+    .btn-sm { font-size:var(--text-xs); padding:4px 10px; }
 
-    .breakdown { margin-top:12px; }
-    .bd-body { padding:10px 14px 12px; font-size:var(--text-sm); }
-    .bd-body table, .grp-table { width:100%; border-collapse:collapse; }
-    .bd-body td { padding:6px 8px; border-bottom:var(--bw-h) solid var(--border); }
-    .bd-body td:last-child { text-align:right; font-weight:700; }
-    .bd-body tr:last-child td { border-bottom:none; }
-    .grp-table th { background:var(--box-gray); font-size:var(--text-xs); font-weight:900; padding:7px 8px; text-align:left; border-bottom:2px solid var(--border-dk); }
-    .grp-table td { font-size:var(--text-sm); padding:7px 8px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
-    .grp-table tr:last-child td { border-bottom:none; }
-    .badge-ok { font-size:11px; font-weight:700; color:var(--blue); background:var(--box-blue); border-radius:4px; padding:1px 8px; white-space:nowrap; }
-    .badge-ng { font-size:11px; font-weight:700; color:var(--txt-3); background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:4px; padding:1px 8px; white-space:nowrap; }
+    /* スマホ下部の合計バー */
+    .sumbar { position:fixed; left:0; right:0; bottom:0; z-index:50; background:var(--white); border-top:var(--bw-h) solid var(--border-dk); box-shadow:0 -2px 10px rgba(0,0,0,.06); padding:8px 14px calc(8px + env(safe-area-inset-bottom)); display:none; align-items:center; gap:12px; }
+    .sumbar.show { display:flex; }
+    /* 合計バーが出ている間は、共通の「TOP」ボタンと通知をバーの上へ逃がす */
+    body.bar-on .sf-top { bottom:76px !important; }
+    body.bar-on .toast { bottom:80px; }
+    .sumbar .s { flex:1; display:flex; gap:14px; flex-wrap:wrap; font-size:var(--text-xs); color:var(--txt-2); }
+    .sumbar .s b { font-size:var(--text-md); color:var(--ink); font-weight:900; }
+    .sumbar .s .fee b { color:var(--blue); }
 
-    /* 剤ブロック（複数品目） */
-    .zai-card { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:13px 15px; margin-bottom:12px; }
-    .zai-card.gaiyo { border-left:var(--bw-t) solid var(--border-dk); }
-    .zai-card.naifuku { border-left:var(--bw-t) solid var(--blue); }
-    .zai-head { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:8px; }
-    .zai-title { font-weight:900; font-size:var(--text-sm); }
-    .zai-head label { font-size:var(--text-xs); font-weight:700; color:var(--txt-3); display:inline-flex; align-items:center; gap:6px; }
-    .zai-head .num-sm { width:64px; }
-    .zai-del { margin-left:auto; font-size:var(--text-xs); color:var(--txt-3); background:none; border:none; cursor:pointer; font-weight:700; }
-    .zai-del:hover { color:var(--ink); }
-    .zai-drug { display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:7px 0; border-top:var(--bw-h) solid var(--border); }
-    .zai-drug:first-child { border-top:none; }
-    .zai-drug .zd-nm { font-weight:700; font-size:var(--text-sm); flex:1; min-width:140px; }
-    .zai-drug label { font-size:var(--text-xs); font-weight:700; color:var(--txt-3); display:inline-flex; align-items:center; gap:6px; }
-    .zai-drug .zd-del { font-size:var(--text-xs); color:var(--txt-3); background:none; border:none; cursor:pointer; font-weight:700; }
-    .num-sm { width:78px; padding:6px 9px; font-size:var(--text-sm); font-family:inherit; border:var(--bw-h) solid var(--border-dk); border-radius:var(--radius-sm); }
-    .zai-add { margin-top:9px; }
-    .zai-search { width:100%; font-size:var(--text-sm); font-family:inherit; padding:8px 11px; border:var(--bw-h) solid var(--border-dk); border-radius:var(--radius-sm); }
-    .zai-search:focus { outline:none; border-color:var(--blue); }
-    .zai-results { margin-top:6px; display:flex; flex-direction:column; max-height:240px; overflow-y:auto; border-radius:var(--radius-sm); }
-    .zai-results:empty { display:none; }
-    .zai-results .res-item { border:var(--bw) solid var(--border); border-bottom:none; }
-    .zai-results .res-item:last-child { border-bottom:var(--bw) solid var(--border); }
-    .zai-hint { font-size:11px; color:var(--txt-3); margin-top:7px; }
-    .add-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:4px; }
-    .empty-msg { font-size:var(--text-sm); color:var(--txt-3); padding:6px 2px; }
+    .toast { position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(20px); background:#2b2f36; color:#fff; font-size:var(--text-sm); padding:9px 16px; border-radius:20px; opacity:0; pointer-events:none; transition:opacity .2s, transform .2s; z-index:60; max-width:calc(100% - 32px); }
+    .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
 
+    /* 注意 */
     .notes { font-size:var(--text-xs); color:var(--txt-2); line-height:1.85; }
     .notes .bullet { display:flex; gap:7px; }
     .notes .bullet > span:first-child { color:#999; flex-shrink:0; }
+    .notes .bullet + .bullet { margin-top:3px; }
     .src { font-size:var(--text-xs); color:var(--txt-3); margin-top:8px; }
 
     /* 対象薬リスト */
     .list-ctrl { display:flex; gap:14px; flex-wrap:wrap; align-items:flex-end; margin-bottom:10px; }
+    .list-ctrl .field > label { display:block; font-size:var(--text-xs); font-weight:700; color:var(--txt-2); margin-bottom:4px; }
+    .list-ctrl .chk { display:inline-flex; align-items:center; gap:7px; font-size:var(--text-sm); font-weight:700; color:var(--txt-2); padding-bottom:6px; }
+    .list-ctrl .search-input { padding:8px 12px; font-size:var(--text-sm); }
+    .list-ctrl .num { width:80px; height:38px; }
     .list-count { font-size:var(--text-xs); color:var(--txt-3); margin-bottom:8px; }
+    .list-note { font-size:var(--text-xs); color:var(--txt-3); margin-bottom:8px; }
     .list-table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
-    .list-table { width:100%; border-collapse:collapse; font-size:var(--text-sm); min-width:600px; }
+    .list-table { width:100%; border-collapse:collapse; font-size:var(--text-sm); min-width:640px; }
     .list-table th { background:var(--box-gray); font-size:var(--text-xs); font-weight:900; padding:8px 9px; text-align:left; border-bottom:2px solid var(--border-dk); white-space:nowrap; }
     .list-table th[data-key] { cursor:pointer; user-select:none; }
     .list-table th[data-key]:hover { color:var(--blue); }
     .list-table th .arw { color:var(--blue); font-size:10px; margin-left:2px; }
     .list-table th .arw-i { color:var(--border-dk); }
-    .list-table td { padding:7px 9px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
-    .list-table td.r { text-align:right; white-space:nowrap; }
+    .list-table td { padding:7px 9px; border-bottom:var(--bw-h) solid var(--border); vertical-align:middle; }
+    .list-table td.r, .list-table th.r { text-align:right; white-space:nowrap; }
     .list-table tr:hover td { background:#f7f9fc; }
     .list-table .lt-nm { font-weight:700; }
-    .list-table .lt-sub { font-size:11px; color:var(--txt-3); }
+    .list-table .lt-sub { font-size:11.5px; color:var(--txt-3); }
 
+    @media (max-width:880px) {
+      .calc-grid { grid-template-columns:minmax(0,1fr); }
+      .col-side { position:static; }
+      body.has-bar { padding-bottom:90px; }
+    }
     @media (max-width:640px) {
-      body { font-size:14px; padding:14px 12px 40px; }
+      body { font-size:14px; padding:14px 12px 40px; line-height:1.7; }
       :root { --text-xs:11.5px; --text-sm:13.5px; --text-md:14px; --text-lg:16px; --text-xl:18px; --pad-card:14px; --gap-card:11px; }
-      .card { padding:14px; border-radius:8px; }
-      .num-card .v { font-size:19px; }
-      .verdict .mark { font-size:24px; }
+      .card { border-radius:8px; }
+      .tabs button { padding:8px 12px; }
+      .rx-row { grid-template-columns:minmax(0,1fr) auto; }
+      .rx-row .qty { grid-column:1 / -1; }
+      .rx-row .rx-act { grid-column:2; grid-row:1; align-self:start; }
+      .rx-how { grid-column:1 / -1; }
+      .zsel { flex:1; min-width:0; }
+      .res-big .v { font-size:28px; }
+      .card-title .right { margin-left:0; }
+      /* スマホでは副題と「社内用ツール」の札を出さず、検索欄までのスクロールを減らす（データの時期は下部の注意にもある） */
+      .page-title p, .draft-tag { display:none; }
+      /* iPhone は16px未満の入力欄で入力時に画面を拡大するので、入力欄と選択欄は16pxに保つ */
+      .search-input, .num, .zsel, .list-ctrl .search-input { font-size:16px; }
     }
     @media print {
-      .no-print { display:none !important; }
+      .no-print, .sumbar, .toast { display:none !important; }
       .print-only { display:block !important; }
       body { background:#fff; padding:8mm; }
       .page { gap:10px; max-width:100%; }
+      .calc-grid { grid-template-columns:1fr; }
+      .col-side { position:static; }
       .card { border:0.5px solid #bbb; break-inside:avoid; }
-      a { color:inherit; text-decoration:none; }
+      .step, .del, .rx-how { display:none; }
+      .num { border:none; width:auto; }
     }
   </style>
 </head>
@@ -180,103 +256,74 @@
 <script src="../assets/site-header.js" defer></script>
 <div class="page">
 
-  <div class="print-only" style="font-weight:900; font-size:18px; border-bottom:1px solid #999; padding-bottom:6px; margin-bottom:4px;">選定療養 費用のご案内</div>
+  <div class="print-only" style="font-weight:900; font-size:18px; border-bottom:1px solid #999; padding-bottom:6px;">選定療養 費用の目安</div>
 
   <span class="draft-tag no-print">社内用ツール</span>
   <div class="page-title no-print">
     <h1>選定療養 計算ツール</h1>
-    <p>長期収載品の選定療養費・特管3（ロ）再算定可否を計算｜R8.6（価格差1/2）データ</p>
+    <p>選定療養の対象薬かどうかの確認と、特別の料金（選定療養費）・窓口負担の計算に使えます｜令和8年6月からの対象医薬品リスト（価格差の1/2）</p>
   </div>
 
-  <div class="modetabs no-print" id="modetabs">
-    <button data-m="check" class="on">特管3ロ 再算定チェック（単品）</button>
-    <button data-m="calc">選定療養費 計算（複数品目）</button>
-    <button data-m="list">対象薬リスト</button>
+  <div class="tabs no-print" id="tabs" role="tablist">
+    <button data-v="calc" class="on" role="tab">計算する<span class="cnt" id="tabCnt"></span></button>
+    <button data-v="list" role="tab">対象薬リスト</button>
   </div>
 
-  <!-- 検索（単品モードのみ） -->
-  <div class="card no-print" id="searchCard">
-    <div class="card-title">薬剤を選ぶ</div>
-    <input id="q" class="search-input" type="text" placeholder="品名・成分名で検索（ひらがな・半角カナOK）" autocomplete="off">
-    <div class="search-hint">リストに無い薬剤は選定療養の対象外です。</div>
-    <div id="results" class="results"></div>
-    <div id="drug" class="drug-box hidden"></div>
-  </div>
-
-  <!-- ===== モード1：単品チェック ===== -->
-  <div id="modeCheck">
-    <div class="card no-print" style="margin-bottom:var(--gap-card);">
-      <div class="card-title">条件を入れる</div>
-      <div class="field">
-        <label>剤形 <span style="font-weight:500; color:var(--txt-3);">＝点数化する単位（内服は1日分、外用・頓服は1調剤分）</span></label>
-        <div class="seg" id="segZ">
-          <button data-z="naifuku" class="on">内服薬</button>
-          <button data-z="gaiyo">外用・頓服</button>
+  <!-- ===== 計算する ===== -->
+  <div id="viewCalc" class="calc-grid">
+    <div class="col-main">
+      <div class="card no-print">
+        <div class="card-title">薬を追加</div>
+        <div class="search-wrap">
+          <input id="q" class="search-input" type="text" placeholder="品名・成分名で検索" autocomplete="off" aria-label="薬を検索">
+          <button id="qClear" class="search-clear hidden" type="button" aria-label="検索欄を消す">×</button>
         </div>
-        <div class="unit-note" id="zNote">内服薬：1日量ごとに点数化して日数を掛けます。</div>
+        <div id="results" class="results"></div>
+        <div class="search-hint">ひらがな・半角カナでも探せます。選ぶ（Enter でも可）と下の処方に並び、続けて次の薬を検索できます。<b>一覧に出てこない薬は選定療養の対象外</b>です。</div>
       </div>
-      <div class="qty-row">
-        <div class="field" id="fQty">
-          <label id="qtyLabel">1日量（錠・g 等）</label>
-          <input id="qty" class="num-input" type="number" inputmode="decimal" min="0" step="any" value="1">
+
+      <div class="card">
+        <div class="card-title">処方
+          <div class="rate-row right no-print">負担割合
+            <div class="seg" id="segRate">
+              <button data-r="0.3" class="on">3割</button><button data-r="0.2">2割</button><button data-r="0.1">1割</button>
+            </div>
+          </div>
         </div>
-        <div class="field" id="fDays">
-          <label>日数</label>
-          <input id="days" class="num-input" type="number" inputmode="numeric" min="1" step="1" value="30">
-        </div>
-      </div>
-      <div class="field" style="margin-top:14px;">
-        <label>負担割合</label>
-        <div class="seg" id="segR">
-          <button data-r="0.3" class="on">3割</button>
-          <button data-r="0.2">2割</button>
-          <button data-r="0.1">1割</button>
+        <div id="rx"></div>
+        <div class="rx-foot no-print" id="rxFoot">
+          <span>飲み方（用法）が違う内服薬は、その薬の「飲み方」で「別の飲み方にする」を選ぶと剤が分かれます。同じ剤の薬は薬価を合算して計算します。</span>
+          <button class="linkbtn" id="clearAll" type="button">すべて消す</button>
         </div>
       </div>
     </div>
+
+    <div class="col-side">
+      <div class="card" id="resultCard">
+        <div class="card-title">計算結果<span class="qual" id="rateQual">3割負担</span></div>
+        <div class="method-row no-print">
+          <span class="ml">計算方法</span>
+          <div class="seg seg-sm" id="segMethod">
+            <button data-m="now" class="on">今（2027年2月まで）</button><button data-m="r9">2027年3月から</button>
+          </div>
+        </div>
+        <div class="method-note hidden" id="methodNote"><b>2027年3月からの計算方法</b>で計算しています。特別の料金は処方箋全体で合算して10円単位に丸め、消費税を加えます（保険分は今と同じ）。対象薬と単価は令和8年6月のリストのままです。</div>
+        <div id="out"><div class="empty-msg">薬を追加すると、ここに金額が出ます。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 対象薬リスト ===== -->
+  <div id="viewList" class="hidden">
     <div class="card">
-      <div class="card-title">判定<span class="qual no-print">特管3ロ 再算定可否</span></div>
-      <div id="out"><div class="empty-msg">薬剤を選ぶと判定します。</div></div>
-    </div>
-  </div>
-
-  <!-- ===== モード2：複数品目（剤ごと） ===== -->
-  <div id="modeCalc" class="hidden">
-    <div class="card no-print" style="margin-bottom:var(--gap-card);">
-      <div class="card-title">処方を入力<span class="qual">剤（用法）ごとに薬を追加</span></div>
-      <div class="field">
-        <label>負担割合</label>
-        <div class="seg" id="segR2">
-          <button data-r="0.3" class="on">3割</button>
-          <button data-r="0.2">2割</button>
-          <button data-r="0.1">1割</button>
-        </div>
-      </div>
-      <div id="zaiList" style="margin-top:14px;"></div>
-      <div class="add-row">
-        <button class="btn" id="addNaifuku">＋ 内服の剤を追加</button>
-        <button class="btn" id="addGaiyo">＋ 外用・頓服を追加</button>
-      </div>
-      <div class="unit-note" style="margin-top:10px;">同じ飲み方（同一用法）の先発は<strong>1つの剤にまとめて</strong>入れてください＝薬価を合算してから点数に直します。別の用法・外用は別の剤に。</div>
-      <div class="unit-note" style="margin-top:4px;">このモードは<strong>選定療養費（特別の料金）の合計</strong>を出すものです。特管3ロの再算定可否は薬剤ごとの判断なので「単品」モードで確認してください。</div>
-    </div>
-    <div class="card">
-      <div class="card-title">合計<span class="qual no-print">選定療養費・患者負担</span></div>
-      <div id="out2"><div class="empty-msg">「内服の剤を追加」または「外用・頓服を追加」から始めてください。</div></div>
-    </div>
-  </div>
-
-  <!-- ===== モード3：対象薬リスト ===== -->
-  <div id="modeList" class="hidden">
-    <div class="card">
-      <div class="card-title">対象薬リスト<span class="qual">点数・再算定可否を一覧／並び替え</span></div>
+      <div class="card-title">対象薬リスト<span class="qual">点数・特管3ロの再算定可否を一覧で</span></div>
       <div class="list-ctrl">
-        <div class="field" style="margin:0;"><label>数量（使用量）</label><input id="lstQty" class="num-input" type="number" inputmode="decimal" min="0" step="any" value="1" style="width:90px;"></div>
-        <div class="field" style="margin:0; flex:1; min-width:160px;"><label>品名・成分名でしぼり込み</label><input id="lstFilter" class="search-input" type="text" placeholder="例：オランザピン／ヒルドイド"></div>
-        <label style="display:inline-flex; align-items:center; gap:7px; font-size:var(--text-sm); font-weight:700; color:var(--txt-2); padding-bottom:8px;"><input id="lstOk" type="checkbox" checked> 再算定可のみ</label>
-        <button id="lstReset" class="btn" type="button" style="padding:7px 12px; font-size:var(--text-xs); margin-bottom:8px;">↺ 標準の並びに戻す</button>
+        <div class="field" style="flex:1; min-width:180px;"><label for="lstFilter">品名・成分名でしぼり込み</label><input id="lstFilter" class="search-input" type="text" placeholder="例：オランザピン／ヒルドイド"></div>
+        <div class="field"><label for="lstQty">数量</label><input id="lstQty" class="num" type="number" inputmode="decimal" min="0" step="any" value="1"></div>
+        <label class="chk"><input id="lstOk" type="checkbox"> 特管3ロ 再算定可のみ</label>
+        <button id="lstReset" class="btn btn-sm" type="button" style="margin-bottom:6px;">↺ 元に戻す</button>
       </div>
-      <div class="unit-note" style="margin-bottom:8px;">数量は、計算したい使用量を入力してください。内服薬は1日量、外用・頓服は1調剤分の総量として計算します。点数・再算定可否はこの数量での値です。<strong>⇅の列見出しをクリック（タップ）で並び替え</strong>。「1錠で上がる薬」＝数量1・可のみ・価格差1/2で降順。</div>
+      <div class="list-note">点数と再算定可否は、入力した数量（内服は1日量、外用・注射は総量）での値です。同じ薬で算定済みなら、「可」でも算定できません。列見出しを押すと並び替えます。1錠で再算定可になる薬を探すときは、数量1・「再算定可のみ」にして「価格差1/2」で並べ替えます。「追加」で計算の処方に入ります。</div>
       <div class="list-count" id="lstCount"></div>
       <div class="list-table-wrap" id="listBody"></div>
     </div>
@@ -284,367 +331,478 @@
 
   <!-- 注意 -->
   <div class="card no-print">
-    <div class="card-title">注意</div>
+    <div class="card-title">計算のしかたと注意</div>
     <div class="notes">
-      <div class="bullet"><span>・</span><span>特管3ロの再算定は、<b>薬剤（医薬品）ごとの判断</b>です。選定療養費（特別の料金）が変更となる医薬品について、最初の1回に限り算定可とされています。<b>患者負担の総額ではなく、特別の料金の変更で判断</b>します。同じ薬で算定済みの場合は算定できません。</span></div>
-      <div class="bullet"><span>・</span><span>一部負担金・患者負担総額は、<b>選定対象薬のみの概算</b>です。同じ剤に含まれる後発品・選定対象外薬剤、処方全体での10円単位の端数整理、公費等は反映していません。患者さんへの説明の参考として使用してください。</span></div>
-      <div class="bullet"><span>・</span><span>医療上の必要性がある場合や、後発品の在庫がないため保険給付とする場合は、選定療養の対象外です。</span></div>
-      <div class="bullet"><span>・</span><span>外用薬の混合など、複数薬剤を1調剤として扱う場合は、個別に確認してください。本ツールでは、外用・頓服は「1品目＝1調剤」として計算します。</span></div>
-      <div class="src">点数への換算：所定単位の薬価を「10円＝1点」として点数に換算します。端数は0.5以下を切り捨て、0.5超を切り上げます（五捨五超入）。15円以下は1点です。データ：厚労省マスタ（R8.6）</div>
+      <div class="bullet"><span>・</span><span>金額は<b>選定療養の対象薬だけの概算</b>です。同じ剤の後発品や対象外の薬、処方全体での10円単位の端数整理、公費は含みません。</span></div>
+      <div class="bullet"><span>・</span><span>内服は、同じ飲み方（同一用法）の対象薬を1つの剤にまとめ、薬価を合算してから点数にします。外用・注射・頓服は1品目＝1調剤として総量で計算します。外用薬の混合など、複数の薬を1調剤として扱う場合は個別に確認してください。</span></div>
+      <div class="bullet"><span>・</span><span>特管3ロ（特定薬剤管理指導加算３ロ）の再算定は<b>薬剤ごとの判断</b>です。特別の料金が変わった医薬品について、最初に処方された1回に限り算定できます。判断するのは患者負担の総額ではなく特別の料金の変化で、同じ薬で算定済みなら算定できません。各薬の「特管3ロ」の表示は、その薬1品目・入力した数量で、5月まで（価格差の1/4）と6月から（1/2）の点数を比べた結果です。</span></div>
+      <div class="bullet"><span>・</span><span><b>2027年3月から</b>は特別の料金の計算方法が変わります。点数に換算せず、価格差の1/2に投薬全量を掛け、処方箋全体で合算して10円単位に丸め（5円未満は切り捨て、5円以上は切り上げ、10円未満は10円）、そのあと消費税を加えます。保険分の計算は変わりません。結果欄の「計算方法」で切り替えられます（2027年3月1日からは自動で新しい方法になります）。</span></div>
+      <div class="bullet"><span>・</span><span>医療上の必要性がある場合や、後発品の在庫がなく保険給付とする場合は、選定療養の対象外です。</span></div>
+      <div class="src">点数への換算：所定単位の薬価を「10円＝1点」として点数にします。端数は0.5以下を切り捨て、0.5超を切り上げます（五捨五超入）。15円以下は1点です。特別の料金は点数×10円に消費税を加えた額です。データ：厚労省「長期収載品の選定療養 対象医薬品リスト」（令和8年6月1日から適用分）。</div>
     </div>
   </div>
 
   <p class="no-print" style="font-size:var(--text-xs); color:var(--txt-3); text-align:center; margin-top:4px;">社内資料につき、無断転載・再配布はご遠慮ください。</p>
-
 </div>
+
+<div class="sumbar no-print" id="sumbar">
+  <div class="s"><span class="fee">特別の料金 <b id="sbFee">0</b>円</span><span>窓口合計 <b id="sbTotal">0</b>円</span></div>
+  <button class="btn btn-sm" id="sbGo" type="button">結果を見る ↓</button>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="../assets/data-r86.js"></script>
 <script>
 (function(){
   var DATA = window.SENTEI_DATA || [];
-  var mode = 'check';
-  var single = { drug:null, z:'naifuku', rate:0.3 };
-  var calc = { rate:0.3, zai:[], nextId:1 };
-  var kbd = -1, curList = [];
-  // 比較の主役を時期で切替：〜8月末＝「5月との変化」が主役／9月以降＝「後発との比較」が主役（5月分は折りたたみ）
-  var AFTER_SWITCH = (new Date() >= new Date(2026,8,1));
+  var RATE_KEY = 'sentei-calc-rate';
 
+  /* ---------- 共通 ---------- */
   function norm(s){
     if(!s) return '';
     try { s = s.normalize('NFKC'); } catch(e){}
     s = s.replace(/[ぁ-ゖ]/g, function(c){ return String.fromCharCode(c.charCodeAt(0)+0x60); });
     return s.replace(/[\s　]/g,'').toLowerCase();
   }
+  // 薬価を点数に（10円＝1点、五捨五超入、15円以下は1点）
   function toTen(yen){ return Math.max(1, Math.ceil(yen/10 - 0.5 - 1e-9)); }
   function yen(n){ return Math.round(n).toLocaleString('ja-JP'); }
-  function sgn(n){ n=Math.round(n); return (n>0?'+':n<0?'−':'±')+yen(Math.abs(n)); }
   function r2(n){ return Math.round(n*100)/100; }
-  function esc(s){ return (s||'').replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}); }
-  function matchHits(needle,limit){
-    var hits=[]; for(var i=0;i<DATA.length;i++){ var d=DATA[i];
-      if(norm(d.name).indexOf(needle)>=0||norm(d.ingredient).indexOf(needle)>=0){ hits.push({d:d,idx:i}); if(hits.length>=limit) break; } }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function nf(s){ try { return s.normalize('NFKC'); } catch(e){ return s; } }
+
+  // 区分：薬価基準コードの5〜7桁目（001〜399 内用／400〜699 注射／700〜 外用）
+  DATA.forEach(function(d, i){
+    d._i = i;
+    var n = d.code ? parseInt(d.code.slice(4,7),10) : NaN;
+    d.route = isNaN(n) ? (/錠|カプセル|包/.test(d.spec) ? 'in' : 'ex') : (n < 400 ? 'in' : n < 700 ? 'inj' : 'ex');
+    var sp = nf(d.spec).replace(/（.*?）|\(.*?\)/g,'');
+    var m = sp.match(/[\d.]+\s*([^\d.]+)$/);
+    d.unit = m ? m[1] : '';
+    d._nn = norm(d.name);
+    d._key = d._nn + '|' + norm(d.ingredient);
+  });
+  var ROUTE_LABEL = { 'in':'内服', 'ex':'外用', 'inj':'注射' };
+
+  // 特管3ロ：その薬1品目・この数量で、5月（1/4）→6月（1/2）の点数が上がるか
+  function tokkan(d, qty){
+    var ptNew = toTen(d.sentei*qty), ptOld = d.senteiOld!=null ? toTen(d.senteiOld*qty) : null;
+    var ok = ptOld!=null ? ptNew>ptOld : ptNew>=2;
+    return { ok:ok, ptNew:ptNew, ptOld:ptOld };
+  }
+  // 再算定可になる最小の数量（1ずつ増やして実際の判定で探す）。見つからなければ null
+  function tokkanMinQty(d){
+    if(d._minQ !== undefined) return d._minQ;
+    var m = null;
+    if(d.sentei>0) for(var n=1;n<=5000;n++){ if(tokkan(d,n).ok){ m=n; break; } }
+    return (d._minQ = m);
+  }
+  // short：薬の行に出す短い形。錠・カプセル等で1日量が10を超えるなら、現実にない数字は出さない
+  function tokkanGuide(d, perDay, short){
+    var m = tokkanMinQty(d);
+    if(m==null) return '5月と点数が変わらないため対象外';
+    if(short && perDay && m>10 && /錠|カプセル|包|個/.test(d.unit)) return '通常の1日量では再算定にならない';
+    return (perDay?'1日量 ':'')+m+(d.unit||'')+'以上なら再算定可';
+  }
+
+  function search(needle, limit){
+    var hits=[]; if(!needle) return hits;
+    for(var i=0;i<DATA.length;i++){ if(DATA[i]._key.indexOf(needle)>=0){ hits.push(DATA[i]); if(hits.length>=limit) break; } }
     return hits;
   }
 
-  var q=document.getElementById('q'), resultsEl=document.getElementById('results'),
-      drugEl=document.getElementById('drug'), outEl=document.getElementById('out'),
-      out2El=document.getElementById('out2'), zaiListEl=document.getElementById('zaiList');
-
-  /* ===== 単品モードの検索 ===== */
-  function search(){
-    var needle=norm(q.value); resultsEl.innerHTML=''; kbd=-1;
-    if(needle.length<1){ curList=[]; return; }
-    var hits=matchHits(needle,60); curList=hits.map(function(h){return h.d;});
-    if(hits.length===0){ resultsEl.innerHTML='<div class="res-more">該当なし（リストに無い薬剤は選定療養の対象外です）</div>'; return; }
-    var frag=document.createDocumentFragment();
-    hits.slice(0,40).forEach(function(h,idx){
-      var d=h.d, el=document.createElement('div'); el.className='res-item'; el.dataset.idx=idx;
-      el.innerHTML='<div class="nm">'+esc(d.name)+'</div><div class="meta">'+esc(d.ingredient)+'／'+esc(d.spec)+'　薬価'+d.yakka+'・後発'+d.ge+'</div>';
-      el.addEventListener('click',function(){ pickSingle(d); });
-      frag.appendChild(el);
-    });
-    if(hits.length>40){ var m=document.createElement('div'); m.className='res-more'; m.textContent='ほか '+(hits.length-40)+' 件（絞り込んでください）'; frag.appendChild(m); }
-    resultsEl.appendChild(frag);
-  }
-  function pickSingle(d){
-    single.drug=d; q.value=d.name; resultsEl.innerHTML='';
-    drugEl.classList.remove('hidden');
-    drugEl.innerHTML='<div class="dn">'+esc(d.name)+'</div>'+
-      '<div class="di">'+esc(d.ingredient)+'／'+esc(d.spec)+'／'+esc(d.maker)+'</div>'+
-      '<div class="dvals"><span>薬価 <b>'+d.yakka+'円</b></span><span>後発最高 <b>'+d.ge+'円</b></span>'+
-      '<span>価格差1/2（選定分） <b>'+d.sentei+'円</b></span><span>保険外併用価格 <b>'+d.hoken+'円</b></span></div>';
-    computeSingle();
-  }
-  function computeSingle(){
-    var d=single.drug;
-    if(!d){ outEl.innerHTML='<div class="empty-msg">薬剤を選ぶと判定します。</div>'; return; }
-    var qty=parseFloat(document.getElementById('qty').value)||0;
-    var days=parseInt(document.getElementById('days').value,10)||0;
-    var rate=single.rate, naifuku=single.z==='naifuku';
-    if(qty<=0 || (naifuku && days<=0)){ outEl.innerHTML='<div class="empty-msg">数量'+(naifuku?'・日数':'')+'を入力してください。</div>'; return; }
-    var mult=naifuku?days:1;
-    var ptNew=toTen(d.sentei*qty), ptOld=(d.senteiOld!=null?toTen(d.senteiOld*qty):null);
-    var ptH=toTen(d.hoken*qty), ptGE=toTen(d.ge*qty);
-    var fee=ptNew*mult*11, ichibu=Math.round(ptH*mult*10*rate), ge=Math.round(ptGE*mult*10*rate);
-    var total=fee+ichibu, diff=total-ge, unitName=naifuku?'1日量':'総量';
-    // R8.5（価格差1/4）の同条件での金額（hoken = yakka − sentei の関係から再構成）
-    var hasOld = d.senteiOld!=null;
-    var feeOld=null, totalOld=null, feeDiff=null, totalDiff=null;
-    if(hasOld){
-      feeOld = ptOld*mult*11;
-      var ptHOld = toTen((d.yakka - d.senteiOld)*qty);
-      var ichibuOld = Math.round(ptHOld*mult*10*rate);
-      totalOld = feeOld+ichibuOld;
-      feeDiff = fee-feeOld; totalDiff = total-totalOld;
-    }
-    var ok=(ptOld!=null)?(ptNew>ptOld):(ptNew>=2);
-    var ptChange='選定点数 R8.5まで '+(ptOld!=null?ptOld:'—')+'点 → R8.6以降 '+ptNew+'点';
-    var html='<div class="print-only" style="font-weight:700; margin-bottom:8px;">'+esc(d.name)+'（'+esc(d.spec)+'）</div>';
-    if(ok){
-      html+='<div class="verdict ok no-print"><div class="mark">◯</div><div><div class="vt">特管3ロ 再算定 可</div>'+
-        '<div class="vr"><b>特別の料金（選定療養費）が増えます</b>（'+ptChange+'）。<span class="marker">この薬の最初の処方1回に限り再算定できます</span>。</div></div></div>';
-    } else {
-      var thr = d.sentei>0 ? 15/d.sentei : Infinity, guide;
-      if(!isFinite(thr)) guide='価格差が0のため対象外。';
-      else if(naifuku) guide='目安：1日量が <b>'+(Math.floor(thr)+1)+'</b> 以上で再算定可。';
-      else guide='目安：総量が <b>'+(Math.round(thr*10)/10)+'</b> を超えると再算定可。';
-      html+='<div class="verdict ng no-print"><div class="mark">×</div><div><div class="vt">特管3ロ 再算定 不可</div>'+
-        '<div class="vr"><b>特別の料金（選定療養費）が5月と変わりません</b>（'+ptChange+'）。患者負担の総額ではなく特別の料金で判断します。'+guide+'</div></div></div>';
-    }
-    html+='<div class="nums">'+
-      '<div class="num-card accent"><div class="k">選定療養費（特別の料金・税込）</div><div class="v">'+yen(fee)+'<small>円</small></div></div>'+
-      '<div class="num-card"><div class="k">一部負担（'+(rate*10)+'割・先発）</div><div class="v">'+yen(ichibu)+'<small>円</small></div></div>'+
-      '<div class="num-card"><div class="k">患者負担 総額</div><div class="v">'+yen(total)+'<small>円</small></div></div></div>';
-    // 5月との変化テーブル（共通）
-    var mayTable='<table style="width:100%;border-collapse:collapse;">'+
-      '<tr style="font-size:var(--text-xs);color:var(--txt-3);"><td></td><td style="text-align:right;padding:2px 0;">5月 → 今月</td><td style="text-align:right;padding:2px 0 2px 10px;white-space:nowrap;">差額</td></tr>'+
-      '<tr><td style="padding:3px 0;">選定療養費（特別の料金）</td><td style="text-align:right;">'+yen(feeOld)+'円 → <b>'+yen(fee)+'円</b></td><td style="text-align:right;padding-left:10px;white-space:nowrap;"><b class="em-change">'+sgn(feeDiff)+'円</b><small style="color:var(--txt-3);font-weight:500;"> 増</small></td></tr>'+
-      '<tr><td style="padding:3px 0;">窓口負担の総額（'+(rate*10)+'割）</td><td style="text-align:right;">'+yen(totalOld)+'円 → <b>'+yen(total)+'円</b></td><td style="text-align:right;padding-left:10px;white-space:nowrap;"><b class="em-change">'+sgn(totalDiff)+'円</b><small style="color:var(--txt-3);font-weight:500;"> 増</small></td></tr>'+
-      '</table>';
-    var mayNote='<div style="font-size:var(--text-xs);color:var(--txt-3);margin-bottom:6px;">6月から選定療養費のルールが変わりました（価格差 1/4 → 1/2）</div>';
-    // 後発との比較（補足／主役）
-    var gengoSub='<div class="sub-line">後発品を選んだ場合：<b>'+yen(ge)+'円</b>　→　先発希望で <b class="em-change">'+yen(diff)+'円</b> 高くなります。</div>';
-    var gengoPrimary='<div class="sub-line" style="background:var(--box-blue);"><div style="font-weight:900;margin-bottom:4px;">後発品にすると、いくら安いか</div>'+
-      '後発品 <b>'+yen(ge)+'円</b>　／　先発（希望） <b>'+yen(total)+'円</b>　→　後発品を選ぶと <span class="marker">'+yen(diff)+'円 安くなります</span>。</div>';
-    if(hasOld){
-      if(AFTER_SWITCH){
-        html+=gengoPrimary;
-        html+='<details class="breakdown fold-in no-print" style="margin-top:12px;"><summary>前回（5月）からの変化を見る</summary><div class="bd-body"><div class="sub-line" style="background:var(--box-blue);margin-top:0;">'+mayNote+mayTable+'</div></div></details>';
-      } else {
-        html+='<div class="sub-line" style="background:var(--box-blue);"><div style="font-weight:900;margin-bottom:2px;">先月（5月）と比べて</div>'+mayNote+mayTable+'</div>';
-        html+=gengoSub;
-      }
-    } else {
-      html+=gengoSub;
-    }
-    html+='<div class="src no-print" style="margin-top:6px;">※選定対象薬のみの概算です。実際の窓口負担（端数整理・公費・他剤の影響）と異なる場合があります。</div>';
-    html+='<div class="unit-note no-print" style="margin-top:8px;">同じ剤に複数の先発がある場合、選定療養費は合算して計算されます。特管3ロの再算定可否は薬剤ごとの判断となるため、単品モードで確認してください。</div>';
-    html+='<div class="actions no-print"><button class="btn" onclick="window.print()">印刷（患者に渡す）</button></div>';
-    var ul=naifuku?'（1日分あたり）':'（1調剤＝総量あたり）';
-    html+='<details class="breakdown fold-in no-print"><summary>計算の内訳</summary><div class="bd-body"><table>'+
-      '<tr><td>選定分の薬価 '+ul+'</td><td>'+d.sentei+'円 × '+qty+' ＝ '+r2(d.sentei*qty)+'円</td></tr>'+
-      '<tr><td>選定分の点数（R8.6）</td><td>'+r2(d.sentei*qty)+'円 ÷10 → '+ptNew+'点'+(naifuku?(' ×'+days+'日 ＝ '+(ptNew*days)+'点'):'')+'</td></tr>'+
-      (d.senteiOld!=null?('<tr><td>（参考）R8.5までの選定点数</td><td>'+d.senteiOld+'円 × '+qty+' ＝ '+r2(d.senteiOld*qty)+'円 → '+ptOld+'点</td></tr>'):'')+
-      '<tr><td>選定療養費（税込）</td><td>'+(ptNew*mult)+'点 ×10 ×1.1 ＝ '+yen(fee)+'円</td></tr>'+
-      '<tr><td>保険分の点数</td><td>'+r2(d.hoken*qty)+'円 ÷10 → '+ptH+'点'+(naifuku?(' ×'+days+'日 ＝ '+(ptH*days)+'点'):'')+'</td></tr>'+
-      '<tr><td>一部負担（'+(rate*10)+'割）</td><td>'+(ptH*mult)+'点 ×10 ×'+rate+' ＝ '+yen(ichibu)+'円</td></tr></table></div></details>';
-    outEl.innerHTML=html;
+  var toastEl = document.getElementById('toast'), toastT;
+  function toast(msg){
+    toastEl.textContent = msg; toastEl.classList.add('show');
+    clearTimeout(toastT); toastT = setTimeout(function(){ toastEl.classList.remove('show'); }, 1800);
   }
 
-  /* ===== 複数品目モード（剤ごと） ===== */
-  function findZai(id){ for(var i=0;i<calc.zai.length;i++){ if(calc.zai[i].id===id) return calc.zai[i]; } return null; }
-  function addZai(type){ calc.zai.push({ id:calc.nextId++, type:type, days:30, items:[] }); renderZai(); computeCalc(); }
+  /* ---------- 状態 ---------- */
+  var rate = 0.3;
+  // 計算方法：now＝今（点数に換算）／r9＝2027年3月から（投薬全量を掛けて処方箋全体で合算し10円単位に丸める）
+  var method = (new Date() >= new Date(2027,2,1)) ? 'r9' : 'now';
+  try { var sr = parseFloat(localStorage.getItem(RATE_KEY)); if([0.1,0.2,0.3].indexOf(sr)>=0) rate = sr; } catch(e){}
+  // items: {uid, d, qty, kind:'in'|'ton'|'ex', gid}   groups（内服の剤）: {id, days}
+  var items = [], groups = [], uidSeq = 1, gidSeq = 1, lastGid = null, flashUid = null;
 
-  function renderZai(){
-    if(calc.zai.length===0){ zaiListEl.innerHTML=''; return; }
-    var h='';
-    calc.zai.forEach(function(z,zi){
-      var naifuku=z.type==='naifuku';
-      h+='<div class="zai-card '+(naifuku?'naifuku':'gaiyo')+'" data-zid="'+z.id+'">';
-      h+='<div class="zai-head"><span class="zai-title">'+(naifuku?('内服 剤'+(zi+1)):('外用・頓服 剤'+(zi+1)))+'</span>';
-      if(naifuku) h+='<label>日数 <input class="num-sm" type="number" min="1" step="1" value="'+z.days+'" data-act="days"></label>';
-      h+='<button class="zai-del" data-act="delzai">剤を削除</button></div>';
-      // 薬リスト
-      z.items.forEach(function(it,ii){
-        h+='<div class="zai-drug"><span class="zd-nm">'+esc(it.drug.name)+'</span>'+
-           '<label>'+(naifuku?'1日量':'総量')+' <input class="num-sm" type="number" min="0" step="any" value="'+it.qty+'" data-act="qty" data-ii="'+ii+'"></label>'+
-           '<button class="zd-del" data-act="deldrug" data-ii="'+ii+'">×削除</button></div>';
-      });
-      // 追加（内服は何品でも／外用は1品まで）
-      if(naifuku || z.items.length===0){
-        h+='<div class="zai-add"><input class="zai-search" type="text" placeholder="'+(naifuku?'この剤に薬を追加（ひらがな・半角カナOK）':'薬を選ぶ')+'" data-act="search" autocomplete="off"><div class="zai-results"></div></div>';
-      }
-      h+='<div class="zai-hint">'+(naifuku?'同じ飲み方の先発はこの剤にまとめると合算されます。':'外用・頓服は1調剤ごと。別の品目は「外用・頓服を追加」で別の剤に。')+'</div>';
-      h+='</div>';
-    });
-    zaiListEl.innerHTML=h;
+  function groupIndex(gid){ for(var i=0;i<groups.length;i++) if(groups[i].id===gid) return i; return -1; }
+  function newGroup(days){
+    var last = groups[groups.length-1];
+    var g = { id:gidSeq++, days: days || (last ? last.days : 30) };
+    groups.push(g); return g;
   }
-
-  zaiListEl.addEventListener('click',function(e){
-    var card=e.target.closest('.zai-card'); if(!card) return;
-    var z=findZai(+card.dataset.zid); if(!z) return;
-    var res=e.target.closest('.res-item');
-    if(res){ var d=DATA[+res.dataset.didx]; if(d){ z.items.push({drug:d, qty:1}); renderZai(); computeCalc(); } return; }
-    var act=e.target.closest('[data-act]'); if(!act) return;
-    var a=act.dataset.act;
-    if(a==='delzai'){ calc.zai=calc.zai.filter(function(x){return x.id!==z.id;}); renderZai(); computeCalc(); }
-    else if(a==='deldrug'){ z.items.splice(+act.dataset.ii,1); renderZai(); computeCalc(); }
-  });
-  zaiListEl.addEventListener('input',function(e){
-    var card=e.target.closest('.zai-card'); if(!card) return;
-    var z=findZai(+card.dataset.zid); if(!z) return;
-    var el=e.target.closest('[data-act]'); if(!el) return;
-    var a=el.dataset.act;
-    if(a==='search'){
-      var needle=norm(el.value); var box=card.querySelector('.zai-results');
-      if(needle.length<1){ box.innerHTML=''; return; }
-      var hits=matchHits(needle,30);
-      box.innerHTML = hits.length===0 ? '<div class="res-more">該当なし</div>'
-        : hits.map(function(h){ return '<div class="res-item" data-didx="'+h.idx+'"><div class="nm">'+esc(h.d.name)+'</div><div class="meta">'+esc(h.d.ingredient)+'／'+esc(h.d.spec)+'</div></div>'; }).join('');
-    }
-    else if(a==='days'){ z.days=parseInt(el.value,10)||0; computeCalc(); }
-    else if(a==='qty'){ z.items[+el.dataset.ii].qty=parseFloat(el.value)||0; computeCalc(); }
-  });
-
-  function computeCalc(){
-    var rate=calc.rate, groups=[];
-    calc.zai.forEach(function(z,zi){
-      var items=z.items.filter(function(it){return it.qty>0;});
-      if(items.length===0) return;
-      if(z.type==='naifuku'){
-        if(z.days<=0) return;
-        var s=0,hk=0,g=0,sOld=0,hkOld=0,names=[];
-        items.forEach(function(it){ var so=(it.drug.senteiOld!=null?it.drug.senteiOld:it.drug.sentei);
-          s+=it.drug.sentei*it.qty; hk+=it.drug.hoken*it.qty; g+=it.drug.ge*it.qty;
-          sOld+=so*it.qty; hkOld+=(it.drug.yakka-so)*it.qty; names.push(it.drug.name+'（'+it.qty+'/日）'); });
-        groups.push({label:'内服 剤'+(zi+1)+'（'+z.days+'日）', mult:z.days, names:names, sentei:s, hoken:hk, ge:g, sOld:sOld, hkOld:hkOld});
-      } else {
-        items.forEach(function(it){ var so=(it.drug.senteiOld!=null?it.drug.senteiOld:it.drug.sentei);
-          groups.push({label:'外用・頓服 剤'+(zi+1), mult:1, names:[it.drug.name+'（'+it.qty+'）'], sentei:it.drug.sentei*it.qty, hoken:it.drug.hoken*it.qty, ge:it.drug.ge*it.qty, sOld:so*it.qty, hkOld:(it.drug.yakka-so)*it.qty}); });
-      }
-    });
-    if(groups.length===0){ out2El.innerHTML='<div class="empty-msg">剤を追加し、薬と数量を入れると計算します。</div>'; return; }
-    var gFee=0,gIchibu=0,gGe=0,gFeeOld=0,gIchibuOld=0, rows='';
-    groups.forEach(function(g){
-      var ptS=toTen(g.sentei), ptH=toTen(g.hoken), ptGE=toTen(g.ge);
-      var fee=ptS*g.mult*11, ichibu=Math.round(ptH*g.mult*10*rate), ge=Math.round(ptGE*g.mult*10*rate);
-      gFee+=fee; gIchibu+=ichibu; gGe+=ge;
-      var ptSOld=toTen(g.sOld), ptHOld=toTen(g.hkOld);
-      gFeeOld+=ptSOld*g.mult*11; gIchibuOld+=Math.round(ptHOld*g.mult*10*rate);
-      rows+='<tr><td>'+esc(g.label)+'<div style="color:var(--txt-3);font-size:11px;">'+esc(g.names.join('＋'))+'</div></td>'+
-        '<td style="text-align:right;">'+ptS+'点</td><td style="text-align:right;font-weight:700;">'+yen(fee)+'円</td></tr>';
-    });
-    var total=gFee+gIchibu, diff=total-gGe;
-    var totalOld=gFeeOld+gIchibuOld, feeDiff=gFee-gFeeOld, totalDiff=total-totalOld;
-    var html='<div class="nums">'+
-      '<div class="num-card accent"><div class="k">選定療養費 合計（特別の料金・税込）</div><div class="v">'+yen(gFee)+'<small>円</small></div></div>'+
-      '<div class="num-card"><div class="k">患者負担 総額（概算・'+(rate*10)+'割）</div><div class="v">'+yen(total)+'<small>円</small></div></div>'+
-      '<div class="num-card"><div class="k">後発との差額</div><div class="v">+'+yen(diff)+'<small>円</small></div></div></div>';
-    var mayTable2='<table style="width:100%;border-collapse:collapse;">'+
-      '<tr style="font-size:var(--text-xs);color:var(--txt-3);"><td></td><td style="text-align:right;padding:2px 0;">5月 → 今月</td><td style="text-align:right;padding:2px 0 2px 10px;white-space:nowrap;">差額</td></tr>'+
-      '<tr><td style="padding:3px 0;">選定療養費（特別の料金）合計</td><td style="text-align:right;">'+yen(gFeeOld)+'円 → <b>'+yen(gFee)+'円</b></td><td style="text-align:right;padding-left:10px;white-space:nowrap;"><b class="em-change">'+sgn(feeDiff)+'円</b><small style="color:var(--txt-3);font-weight:500;"> 増</small></td></tr>'+
-      '<tr><td style="padding:3px 0;">窓口負担の総額（'+(rate*10)+'割）</td><td style="text-align:right;">'+yen(totalOld)+'円 → <b>'+yen(total)+'円</b></td><td style="text-align:right;padding-left:10px;white-space:nowrap;"><b class="em-change">'+sgn(totalDiff)+'円</b><small style="color:var(--txt-3);font-weight:500;"> 増</small></td></tr>'+
-      '</table>';
-    var mayNote2='<div style="font-size:var(--text-xs);color:var(--txt-3);margin-bottom:6px;">6月から選定療養費のルールが変わりました（価格差 1/4 → 1/2）</div>';
-    var gengoSub2='<div class="sub-line">先発を希望される場合、後発に比べ自己負担が合計 <b class="em-change">'+yen(diff)+'円</b> 増えます（選定対象薬のみの概算）。</div>';
-    var gengoPrimary2='<div class="sub-line" style="background:var(--box-blue);"><div style="font-weight:900;margin-bottom:4px;">後発品にすると、いくら安いか</div>'+
-      '後発品 合計 <b>'+yen(gGe)+'円</b>　／　先発（希望） 合計 <b>'+yen(total)+'円</b>　→　後発品を選ぶと <span class="marker">'+yen(diff)+'円 安くなります</span>。</div>';
-    if(AFTER_SWITCH){
-      html+=gengoPrimary2;
-      html+='<details class="breakdown fold-in no-print" style="margin-top:12px;"><summary>前回（5月）からの変化を見る</summary><div class="bd-body"><div class="sub-line" style="background:var(--box-blue);margin-top:0;">'+mayNote2+mayTable2+'</div></div></details>';
-    } else {
-      html+='<div class="sub-line" style="background:var(--box-blue);"><div style="font-weight:900;margin-bottom:2px;">先月（5月）と比べて</div>'+mayNote2+mayTable2+'</div>';
-      html+=gengoSub2;
-    }
-    html+='<div class="src" style="margin-top:6px;">※選定対象薬のみの概算です。実際の窓口負担（端数整理・公費・他剤の影響）と異なる場合があります。</div>';
-    html+='<details class="breakdown fold-in no-print" open><summary>剤・品目ごとの内訳（社内確認用）</summary><div class="bd-body"><table class="grp-table">'+
-      '<tr><th>剤／品目</th><th style="text-align:right;">選定点数</th><th style="text-align:right;">選定療養費</th></tr>'+rows+'</table></div></details>';
-    html+='<div class="actions no-print"><button class="btn" onclick="window.print()">印刷（患者に渡す）</button></div>';
-    out2El.innerHTML=html;
+  function pruneGroups(){
+    groups = groups.filter(function(g){ return items.some(function(it){ return it.kind==='in' && it.gid===g.id; }); });
+    if(lastGid!=null && groupIndex(lastGid)<0) lastGid = groups.length ? groups[groups.length-1].id : null;
   }
+  function addDrug(d, qty){
+    var it = { uid:uidSeq++, d:d, qty: qty>0 ? qty : 1, kind: d.route==='in' ? 'in' : 'ex', gid:null };
+    if(it.kind==='in'){
+      if(lastGid==null || groupIndex(lastGid)<0) lastGid = newGroup().id;
+      it.gid = lastGid;
+    }
+    items.push(it); flashUid = it.uid;
+    renderRx(); compute();
+  }
+  function findItem(uid){ for(var i=0;i<items.length;i++) if(items[i].uid===uid) return items[i]; return null; }
 
-  /* ===== モード切替・共通入力 ===== */
-  document.getElementById('modetabs').addEventListener('click',function(e){
-    var b=e.target.closest('button'); if(!b) return;
-    mode=b.dataset.m;
-    [].forEach.call(this.children,function(c){ c.classList.toggle('on', c===b); });
-    document.getElementById('modeCheck').classList.toggle('hidden', mode!=='check');
-    document.getElementById('modeCalc').classList.toggle('hidden', mode!=='calc');
-    document.getElementById('searchCard').classList.toggle('hidden', mode!=='check');
-    document.getElementById('modeList').classList.toggle('hidden', mode!=='list');
-    if(mode==='calc'){ renderZai(); computeCalc(); }
-    if(mode==='list'){ renderList(); }
-  });
-  document.getElementById('addNaifuku').addEventListener('click',function(){ addZai('naifuku'); });
-  document.getElementById('addGaiyo').addEventListener('click',function(){ addZai('gaiyo'); });
-
-  document.getElementById('segZ').addEventListener('click',function(e){
-    var b=e.target.closest('button'); if(!b) return;
-    single.z=b.dataset.z;
-    [].forEach.call(this.children,function(c){ c.classList.toggle('on', c===b); });
-    var naifuku=single.z==='naifuku';
-    document.getElementById('qtyLabel').textContent = naifuku?'1日量（錠・g 等）':'総量（g・枚・回 等）';
-    document.getElementById('fDays').style.display = naifuku?'':'none';
-    document.getElementById('zNote').textContent = naifuku
-      ? '内服薬：1日量ごとに点数化して日数を掛けます。'
-      : '外用・頓服：総量（g・枚・回）をまとめて1回だけ点数化します（日数は使いません）。';
-    computeSingle();
-  });
-  document.getElementById('segR').addEventListener('click',function(e){
-    var b=e.target.closest('button'); if(!b) return;
-    single.rate=parseFloat(b.dataset.r);
-    [].forEach.call(this.children,function(c){ c.classList.toggle('on', c===b); });
-    computeSingle();
-  });
-  document.getElementById('segR2').addEventListener('click',function(e){
-    var b=e.target.closest('button'); if(!b) return;
-    calc.rate=parseFloat(b.dataset.r);
-    [].forEach.call(this.children,function(c){ c.classList.toggle('on', c===b); });
-    computeCalc();
-  });
-  q.addEventListener('input',search);
-  document.getElementById('qty').addEventListener('input',computeSingle);
-  document.getElementById('days').addEventListener('input',computeSingle);
-  q.addEventListener('keydown',function(e){
-    var items=resultsEl.querySelectorAll('.res-item'); if(items.length===0) return;
-    if(e.key==='ArrowDown'){ e.preventDefault(); kbd=Math.min(kbd+1,items.length-1); }
-    else if(e.key==='ArrowUp'){ e.preventDefault(); kbd=Math.max(kbd-1,0); }
-    else if(e.key==='Enter'){ if(kbd>=0 && curList[kbd]){ e.preventDefault(); pickSingle(curList[kbd]); } return; }
+  /* ---------- 検索（計算タブ） ---------- */
+  var q = document.getElementById('q'), qClear = document.getElementById('qClear'), resEl = document.getElementById('results');
+  var cur = [], kbd = -1;
+  function renderResults(){
+    var needle = norm(q.value);
+    qClear.classList.toggle('hidden', !q.value);
+    kbd = -1; cur = [];
+    if(!needle){ resEl.innerHTML=''; return; }
+    // 品名で一致したものを先に、成分名だけで一致したものを後に並べる
+    var hits = search(needle, 99999);
+    hits = hits.filter(function(d){ return d._nn.indexOf(needle)>=0; }).concat(hits.filter(function(d){ return d._nn.indexOf(needle)<0; }));
+    cur = hits.slice(0,40);
+    if(!hits.length){ resEl.innerHTML='<div class="res-head none">「'+esc(q.value.trim())+'」に当たる対象薬はありません。一覧にない薬は選定療養の対象外です。</div>'; return; }
+    var nameHits = hits.filter(function(d){ return d._nn.indexOf(needle)>=0; }).length;
+    var inRx = {}; items.forEach(function(it){ inRx[it.d._i]=1; });
+    var h = '<div class="res-head">選定療養の対象薬：'+hits.length+'件'+(nameHits===0?'（品名では一致せず、成分名で一致した先発品です）':'')+'</div>';
+    h += cur.map(function(d, i){
+      var cls = d.route==='in' ? 'in' : 'ex';
+      return '<div class="res-item" data-i="'+i+'"><span class="chip '+cls+'">'+ROUTE_LABEL[d.route]+'</span>'+
+        '<div class="rb"><div class="nm">'+esc(d.name)+(d._nn.indexOf(needle)<0?'<span class="by-ing">成分名で一致</span>':'')+'</div><div class="meta">'+esc(d.ingredient)+'／'+esc(d.spec)+'　薬価 '+d.yakka+'円・後発 '+d.ge+'円</div></div>'+
+        (inRx[d._i] ? '<span class="added">追加済み</span>' : '<span class="add">＋追加</span>')+'</div>';
+    }).join('');
+    if(hits.length>40) h += '<div class="res-more">ほかにも該当があります。もう少し文字を足してしぼり込んでください。</div>';
+    resEl.innerHTML = h;
+  }
+  function pick(i){
+    var d = cur[i]; if(!d) return;
+    addDrug(d, 1);
+    q.value=''; renderResults();
+    // 外用・注射は総量を入れることが多いので数量の欄へ。内服は続けて次の薬を検索できるよう検索欄へ
+    var qtyEl = d.route!=='in' && rxEl.querySelector('.rx-row[data-uid="'+(uidSeq-1)+'"] input[data-act="qty"]');
+    if(qtyEl){ qtyEl.focus(); toast('追加しました。総量を入れてください'); }
+    else { q.focus(); toast(d.name+' を追加しました'); }
+  }
+  q.addEventListener('input', renderResults);
+  q.addEventListener('keydown', function(e){
+    var els = resEl.querySelectorAll('.res-item');
+    if(e.key==='Escape'){ q.value=''; renderResults(); return; }
+    if(!els.length) return;
+    if(e.key==='ArrowDown'){ e.preventDefault(); kbd=Math.min(kbd+1, els.length-1); }
+    else if(e.key==='ArrowUp'){ e.preventDefault(); kbd=Math.max(kbd-1, 0); }
+    else if(e.key==='Enter'){ e.preventDefault(); pick(kbd>=0 ? kbd : 0); return; }
     else return;
-    items.forEach(function(it,i){ it.classList.toggle('kbd', i===kbd); if(i===kbd) it.scrollIntoView({block:'nearest'}); });
+    [].forEach.call(els, function(el, i){ el.classList.toggle('kbd', i===kbd); if(i===kbd) el.scrollIntoView({block:'nearest'}); });
+  });
+  resEl.addEventListener('click', function(e){ var el=e.target.closest('.res-item'); if(el) pick(+el.dataset.i); });
+  qClear.addEventListener('click', function(){ q.value=''; renderResults(); q.focus(); });
+
+  /* ---------- 処方の一覧 ---------- */
+  var rxEl = document.getElementById('rx');
+  // 飲み方の選択肢。今いる剤は「剤1（30日分）」、ほかの剤は「〜にまとめる」と動作で書く
+  function zaiOptions(it){
+    var h = '';
+    groups.forEach(function(g, gi){
+      var mine = it.kind==='in' && it.gid===g.id;
+      h += '<option value="g'+g.id+'"'+(mine?' selected':'')+'>剤'+(gi+1)+'（'+g.days+'日分）'+(mine?'':'にまとめる')+'</option>';
+    });
+    h += '<option value="new">'+(it.kind==='ton'?'内服に戻す（新しい剤）':'別の飲み方にする（剤を分ける）')+'</option>';
+    h += '<option value="ton"'+(it.kind==='ton'?' selected':'')+'>'+(it.kind==='ton'?'頓服':'頓服にする')+'</option>';
+    return h;
+  }
+  // 日数を変えたら、選択肢の「（○日分）」も書き換える（入力中の欄を作り直さないよう選択肢だけ）
+  function refreshZaiLabels(){
+    [].forEach.call(rxEl.querySelectorAll('.zsel'), function(sel){
+      var it = findItem(+sel.closest('.rx-row').dataset.uid); if(it) sel.innerHTML = zaiOptions(it);
+    });
+  }
+  function tkBadge(t, d, perDay){
+    if(method==='r9') return '';
+    return '<span class="tk-badge '+(t.ok?'ok':'ng')+'" title="選定療養の点数 5月まで '+(t.ptOld!=null?t.ptOld:'—')+'点 → 6月から '+t.ptNew+'点">'+(t.ok?'✓ 特管3ロ 再算定可':'× 特管3ロ 再算定不可')+'</span>'+
+      '<span class="tk-note">'+(t.ok?'同じ薬で算定済みなら不可':(t.ptOld!=null?'点数が5月と同じ（'+t.ptNew+'点）。':'')+esc(tokkanGuide(d, perDay, true)))+'</span>';
+  }
+  function rowHtml(it){
+    var d = it.d, perDay = it.kind==='in';
+    var t = tokkan(d, it.qty);
+    var tk = it.qty>0 ? tkBadge(t, d, perDay) : '';
+    var how = d.route==='in' ? '<label class="rx-how"><span class="ql">飲み方</span><select class="zsel" data-act="zai">'+zaiOptions(it)+'</select></label>' : '';
+    var act = '<button class="del" data-act="del" type="button" aria-label="削除" title="削除">×</button>';
+    return '<div class="rx-row'+(it.uid===flashUid?' flash':'')+'" data-uid="'+it.uid+'">'+
+      '<div class="rx-name"><b>'+esc(d.name)+'</b><span>'+esc(d.ingredient)+'／'+esc(d.spec)+'</span><div class="tk">'+tk+'</div></div>'+
+      '<div class="qty"><span class="ql">'+(perDay?'1日量':'総量')+'</span>'+
+        '<button class="step" data-act="minus" type="button" aria-label="減らす">−</button>'+
+        '<input class="num" data-act="qty" type="number" inputmode="decimal" min="0" step="any" value="'+it.qty+'" aria-label="'+(perDay?'1日量':'総量')+'">'+
+        '<button class="step" data-act="plus" type="button" aria-label="増やす">＋</button>'+
+        '<span class="unit">'+esc(d.unit)+'</span></div>'+
+      '<div class="rx-act">'+act+'</div>'+how+'</div>';
+  }
+  function renderRx(){
+    document.getElementById('tabCnt').textContent = items.length ? items.length : '';
+    document.getElementById('rxFoot').classList.toggle('hidden', !items.length);
+    if(!items.length){
+      rxEl.innerHTML = '<div class="empty-msg">上の検索欄から薬を追加してください。1品目だけでも、複数でも同じ手順です。</div>';
+      return;
+    }
+    var h = '';
+    groups.forEach(function(g, gi){
+      var its = items.filter(function(it){ return it.kind==='in' && it.gid===g.id; });
+      if(!its.length) return;
+      h += '<div class="grp k-in"><div class="grp-head"><span class="gname">内服 剤'+(gi+1)+'</span>'+
+        '<label class="days">日数 <input class="num" data-act="days" data-gid="'+g.id+'" type="number" inputmode="numeric" min="1" step="1" value="'+g.days+'"> 日分</label>'+
+        (its.length>1 ? '<span class="gnote">この'+its.length+'品目は同じ飲み方として薬価を合算</span>' : '')+'</div>'+
+        its.map(rowHtml).join('')+'</div>';
+    });
+    items.forEach(function(it){
+      if(it.kind==='in') return;
+      var k = it.kind==='ton' ? 'ton' : 'ex', lab = '<span class="gname">'+(it.kind==='ton' ? '頓服' : ROUTE_LABEL[it.d.route])+'</span>';
+      h += '<div class="grp k-'+k+'"><div class="grp-head">'+lab+'<span class="gnote">1調剤（総量で計算）</span></div>'+rowHtml(it)+'</div>';
+    });
+    rxEl.innerHTML = h;
+    flashUid = null;
+  }
+  function updateRowBadge(it){
+    var row = rxEl.querySelector('.rx-row[data-uid="'+it.uid+'"] .tk'); if(!row) return;
+    if(!(it.qty>0)){ row.innerHTML=''; return; }
+    var t = tokkan(it.d, it.qty);
+    row.innerHTML = tkBadge(t, it.d, it.kind==='in');
+  }
+  rxEl.addEventListener('click', function(e){
+    var b = e.target.closest('[data-act]'); if(!b || b.tagName==='INPUT' || b.tagName==='SELECT') return;
+    var row = b.closest('.rx-row'); var it = row && findItem(+row.dataset.uid); if(!it) return;
+    var a = b.dataset.act;
+    if(a==='del'){ items = items.filter(function(x){ return x!==it; }); pruneGroups(); renderRx(); compute(); renderResults(); }
+    else if(a==='plus' || a==='minus'){
+      var step = 1, v = (+it.qty||0) + (a==='plus'?step:-step);
+      if(v<0) v=0; v = r2(v);
+      it.qty = v; row.querySelector('input[data-act="qty"]').value = v;
+      updateRowBadge(it); compute();
+    }
+  });
+  rxEl.addEventListener('input', function(e){
+    var el = e.target, a = el.dataset.act;
+    if(a==='qty'){ var it = findItem(+el.closest('.rx-row').dataset.uid); if(!it) return; it.qty = parseFloat(el.value)||0; updateRowBadge(it); compute(); }
+    else if(a==='days'){ var g = groups[groupIndex(+el.dataset.gid)]; if(g){ g.days = parseInt(el.value,10)||0; compute(); refreshZaiLabels(); } }
+  });
+  rxEl.addEventListener('change', function(e){
+    var el = e.target; if(el.dataset.act!=='zai') return;
+    var it = findItem(+el.closest('.rx-row').dataset.uid); if(!it) return;
+    var v = el.value, fromDays = it.kind==='in' && groupIndex(it.gid)>=0 ? groups[groupIndex(it.gid)].days : null;
+    if(v==='ton'){ it.kind='ton'; it.gid=null; }
+    else if(v==='new'){ var g = newGroup(fromDays); it.kind='in'; it.gid=g.id; lastGid=g.id; }
+    else { it.kind='in'; it.gid=+v.slice(1); lastGid=it.gid; }
+    flashUid = it.uid;
+    pruneGroups(); renderRx(); compute();
+  });
+  // 数量の欄はクリックで全選択（上書きしやすく）
+  rxEl.addEventListener('focusin', function(e){ if(e.target.classList.contains('num')) { try{ e.target.select(); }catch(x){} } });
+  document.getElementById('clearAll').addEventListener('click', function(){
+    if(!items.length) return;
+    items=[]; groups=[]; lastGid=null; renderRx(); compute(); renderResults(); q.focus();
   });
 
-  /* ===== 対象薬リスト ===== */
-  var lst = { qty:1, filter:'', okOnly:true, key:'yakka', dir:1 };
+  /* ---------- 負担割合 ---------- */
+  var segRate = document.getElementById('segRate');
+  function syncRate(){
+    [].forEach.call(segRate.children, function(c){ c.classList.toggle('on', parseFloat(c.dataset.r)===rate); });
+    document.getElementById('rateQual').textContent = (rate*10)+'割負担';
+  }
+  segRate.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    rate = parseFloat(b.dataset.r); try { localStorage.setItem(RATE_KEY, rate); } catch(x){}
+    syncRate(); compute();
+  });
+
+  /* ---------- 計算方法 ---------- */
+  var segMethod = document.getElementById('segMethod');
+  function syncMethod(){
+    [].forEach.call(segMethod.children, function(c){ c.classList.toggle('on', c.dataset.m===method); });
+    document.getElementById('methodNote').classList.toggle('hidden', method!=='r9');
+  }
+  segMethod.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    method = b.dataset.m; syncMethod(); renderRx(); compute();
+  });
+  // 2027年3月からの丸め：10円未満は10円。10円以上は5円未満を切り捨て、5円以上を10円に切り上げ
+  function round10(x){
+    x = Math.round(x*100)/100;
+    if(x < 10) return 10;
+    var r = x % 10, b = x - r;
+    return r < 5 - 1e-9 ? b : b + 10;
+  }
+
+  /* ---------- 計算 ---------- */
+  var outEl = document.getElementById('out');
+  var lastTotals = { fee:0, total:0, has:false };
+  function compute(){
+    var calcs = [];
+    groups.forEach(function(g, gi){
+      var its = items.filter(function(it){ return it.kind==='in' && it.gid===g.id && it.qty>0; });
+      if(!its.length || !(g.days>0)) return;
+      var s=0, hk=0, ge=0;
+      its.forEach(function(it){ s+=it.d.sentei*it.qty; hk+=it.d.hoken*it.qty; ge+=it.d.ge*it.qty; });
+      calcs.push({ label:'内服 剤'+(gi+1)+'（'+g.days+'日分）', its:its, mult:g.days, perDay:true, s:s, hk:hk, ge:ge });
+    });
+    items.forEach(function(it){
+      if(it.kind==='in' || !(it.qty>0)) return;
+      calcs.push({ label:(it.kind==='ton'?'頓服':ROUTE_LABEL[it.d.route]), its:[it], mult:1, perDay:false, s:it.d.sentei*it.qty, hk:it.d.hoken*it.qty, ge:it.d.ge*it.qty });
+    });
+
+    if(!calcs.length){
+      lastTotals = { fee:0, total:0, has:false }; updateBar();
+      outEl.innerHTML = '<div class="empty-msg">'+(items.length ? '数量・日数を入れると計算します。' : '薬を追加すると、ここに金額が出ます。')+'</div>';
+      return;
+    }
+    var gFee=0, gIchibu=0, gGe=0, gFeeOld=0, gIchibuOld=0, rows='', lines='', hokenLines='';
+    calcs.forEach(function(c){
+      c.ptS=toTen(c.s); c.ptH=toTen(c.hk); c.ptG=toTen(c.ge);
+      c.fee=c.ptS*c.mult*11; c.ichibu=Math.round(c.ptH*c.mult*10*rate); c.geCost=Math.round(c.ptG*c.mult*10*rate);
+      gFee+=c.fee; gIchibu+=c.ichibu; gGe+=c.geCost;
+      // 5月まで（価格差の1/4）で同じ処方を計算した場合
+      var sOld=0, hkOld=0;
+      c.its.forEach(function(it){ var so = it.d.senteiOld!=null ? it.d.senteiOld : it.d.sentei; sOld+=so*it.qty; hkOld+=(it.d.yakka-so)*it.qty; });
+      gFeeOld += toTen(sOld)*c.mult*11; gIchibuOld += Math.round(toTen(hkOld)*c.mult*10*rate);
+      var names = c.its.map(function(it){ return esc(it.d.name)+'（'+it.qty+esc(it.d.unit)+(c.perDay?'/日':'')+'）'; }).join('<br>');
+      rows += '<tr><td><b>'+esc(c.label)+'</b><div class="sub">'+names+'</div></td><td class="r">'+(c.ptS*c.mult)+'点</td><td class="r">'+yen(c.fee)+'円</td></tr>';
+      var md = c.perDay ? ' ×'+c.mult+'日' : '';
+      lines += '<div class="grp-ttl">'+esc(c.label)+'</div>'+
+        '<div class="line">選定分の薬価 '+r2(c.s)+'円'+(c.perDay?'（1日分）':'')+' → '+c.ptS+'点'+md+' → ×10円×1.1 ＝ <b>'+yen(c.fee)+'円</b></div>'+
+        '<div class="line">保険分の薬価 '+r2(c.hk)+'円 → '+c.ptH+'点'+md+' → ×10円×'+rate+' ＝ '+yen(c.ichibu)+'円</div>';
+      hokenLines += '<div class="line">'+esc(c.label)+'：保険分の薬価 '+r2(c.hk)+'円 → '+c.ptH+'点'+md+' → ×10円×'+rate+' ＝ '+yen(c.ichibu)+'円</div>';
+      c.its.forEach(function(it){
+        var t = tokkan(it.d, it.qty);
+        lines += '<div class="line sub">'+esc(it.d.name)+'：薬価 '+it.d.yakka+'円・後発 '+it.d.ge+'円・価格差1/2 '+it.d.sentei+'円・保険外併用価格 '+it.d.hoken+'円。特管3ロ '+(t.ok?'再算定可':'再算定不可')+'（5月まで '+(t.ptOld!=null?t.ptOld:'—')+'点 → 6月から '+t.ptNew+'点）'+(t.ok?'':'。'+tokkanGuide(it.d, c.perDay)+'。')+'</div>';
+      });
+    });
+    // 2027年3月からの特別の料金：品目ごとに 価格差1/2×投薬全量 を出し、処方箋全体で合算して丸める
+    var r9Raw = 0, r9Rows = '', r9Lines = '';
+    calcs.forEach(function(c){
+      c.its.forEach(function(it){
+        var zen = c.perDay ? it.qty*c.mult : it.qty, v = it.d.sentei*zen;
+        r9Raw += v;
+        r9Rows += '<tr><td>'+esc(it.d.name)+'<div class="sub">'+esc(c.label)+'</div></td><td class="r">'+r2(zen)+esc(it.d.unit)+'</td><td class="r">'+r2(v)+'円</td></tr>';
+        r9Lines += '<div class="line sub">'+esc(it.d.name)+'：価格差1/2 '+it.d.sentei+'円 × 投薬全量 '+r2(zen)+esc(it.d.unit)+' ＝ '+r2(v)+'円</div>';
+      });
+    });
+    var r9Round = round10(r9Raw), r9Fee = Math.round(r9Round*1.1);
+    var feeNow = gFee;
+    if(method==='r9') gFee = r9Fee;
+    var total = gFee+gIchibu, diff = total-gGe;
+    lastTotals = { fee:gFee, total:total, has:true }; updateBar();
+    var totalOld = gFeeOld+gIchibuOld;
+    function dif(n){ n=Math.round(n); return (n>0?'＋':n<0?'−':'±')+yen(Math.abs(n))+'円'; }
+    var totalNow = feeNow+gIchibu;
+    var cmpR9 = '<details class="fold-in no-print"><summary>今の計算方法と比べる</summary><div class="bd"><table>'+
+      '<tr><th></th><th class="r">今</th><th class="r">2027年3月から</th><th class="r">差額</th></tr>'+
+      '<tr><td>特別の料金</td><td class="r">'+yen(feeNow)+'円</td><td class="r">'+yen(r9Fee)+'円</td><td class="r"><b>'+dif(r9Fee-feeNow)+'</b></td></tr>'+
+      '<tr><td>窓口負担の合計（'+(rate*10)+'割）</td><td class="r">'+yen(totalNow)+'円</td><td class="r">'+yen(r9Fee+gIchibu)+'円</td><td class="r"><b>'+dif(r9Fee-feeNow)+'</b></td></tr>'+
+      '</table></div></details>';
+    var mayFold = '<details class="fold-in no-print"><summary>5月（価格差の1/4）と比べる</summary><div class="bd"><table>'+
+      '<tr><th></th><th class="r">5月まで</th><th class="r">6月から</th><th class="r">差額</th></tr>'+
+      '<tr><td>特別の料金</td><td class="r">'+yen(gFeeOld)+'円</td><td class="r">'+yen(gFee)+'円</td><td class="r"><b>'+dif(gFee-gFeeOld)+'</b></td></tr>'+
+      '<tr><td>窓口負担の合計（'+(rate*10)+'割）</td><td class="r">'+yen(totalOld)+'円</td><td class="r">'+yen(total)+'円</td><td class="r"><b>'+dif(total-totalOld)+'</b></td></tr>'+
+      '</table></div></details>';
+
+    outEl.innerHTML =
+      '<div class="res-big"><div class="k">特別の料金（選定療養費・税込）</div><div class="v">'+yen(gFee)+'<small>円</small></div>'+
+        (method==='r9' ? '<div class="vs-now">今の計算方法（'+yen(feeNow)+'円）より <b>'+(r9Fee===feeNow?'変わらない':yen(Math.abs(r9Fee-feeNow))+'円'+(r9Fee<feeNow?'安い':'高い'))+'</b></div>' : '')+'</div>'+
+      '<table class="res-table">'+
+        '<tr><td>保険分の一部負担（'+(rate*10)+'割）</td><td>'+yen(gIchibu)+'円</td></tr>'+
+        '<tr class="total"><td>窓口負担の合計</td><td>'+yen(total)+'円</td></tr>'+
+      '</table>'+
+      '<div class="ge-box"><div class="t">後発品を選んだ場合</div>窓口負担 <b>'+yen(gGe)+'円</b>（<span class="marker">'+yen(diff)+'円 安くなります</span>）<div class="ge-sub">後発品の中でいちばん高い薬価で計算。実際に使う後発品が安ければ、さらに安くなります。</div></div>'+
+      '<div class="res-note">※選定療養の対象薬だけの概算です。端数整理・公費・同じ剤の他の薬は含みません。</div>'+
+      (method==='r9'
+        ? '<details class="fold-in"'+(calcs.length>1?' open':'')+'><summary>品目ごとの金額（丸める前・税抜）</summary><div class="bd"><table><tr><th>品目</th><th class="r">投薬全量</th><th class="r">価格差1/2×全量</th></tr>'+r9Rows+
+            '<tr><td><b>合計</b></td><td></td><td class="r"><b>'+r2(r9Raw)+'円</b></td></tr></table></div></details>'+cmpR9+
+          '<details class="fold-in no-print"><summary>計算の内訳</summary><div class="bd"><div class="grp-ttl">特別の料金（処方箋全体）</div>'+r9Lines+
+            '<div class="line">合計 '+r2(r9Raw)+'円 → 10円単位 '+yen(r9Round)+'円 → ×1.1 ＝ <b>'+yen(r9Fee)+'円</b></div>'+
+            '<div class="grp-ttl">保険分（剤ごと・今と同じ）</div>'+hokenLines+'</div></details>'
+        : '<details class="fold-in"'+(calcs.length>1?' open':'')+'><summary>剤ごとの特別の料金</summary><div class="bd"><table><tr><th>剤・品目</th><th class="r">点数</th><th class="r">特別の料金</th></tr>'+rows+'</table></div></details>'+mayFold+
+          '<details class="fold-in no-print"><summary>計算の内訳</summary><div class="bd">'+lines+'</div></details>')+
+      '<div class="print-btn no-print"><button class="btn btn-sm" type="button" onclick="window.print()">印刷</button></div>';
+  }
+
+  /* ---------- スマホ下部の合計バー ---------- */
+  var bar = document.getElementById('sumbar'), resultCard = document.getElementById('resultCard'), resultVisible = false;
+  function updateBar(){
+    document.getElementById('sbFee').textContent = yen(lastTotals.fee);
+    document.getElementById('sbTotal').textContent = yen(lastTotals.total);
+    var narrow = window.matchMedia('(max-width:880px)').matches;
+    var show = narrow && lastTotals.has && !resultVisible && view==='calc';
+    bar.classList.toggle('show', show);
+    document.body.classList.toggle('bar-on', show);
+    document.body.classList.toggle('has-bar', narrow && lastTotals.has && view==='calc');
+  }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ resultVisible = es[0].isIntersecting; updateBar(); }, { threshold:0.15 }).observe(resultCard);
+  }
+  window.addEventListener('resize', updateBar);
+  document.getElementById('sbGo').addEventListener('click', function(){ resultCard.scrollIntoView({ behavior:'smooth', block:'start' }); });
+
+  /* ---------- タブ ---------- */
+  var view = 'calc';
+  document.getElementById('tabs').addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    view = b.dataset.v;
+    [].forEach.call(this.children, function(c){ c.classList.toggle('on', c===b); });
+    document.getElementById('viewCalc').classList.toggle('hidden', view!=='calc');
+    document.getElementById('viewList').classList.toggle('hidden', view!=='list');
+    if(view==='list') renderList();
+    updateBar();
+  });
+
+  /* ---------- 対象薬リスト ---------- */
+  var lst = { qty:1, filter:'', okOnly:false, key:'yakka', dir:1 };
   function renderList(){
-    var needle=norm(lst.filter), rows=[];
-    for(var i=0;i<DATA.length;i++){ var d=DATA[i];
-      if(needle && norm(d.name).indexOf(needle)<0 && norm(d.ingredient).indexOf(needle)<0) continue;
-      var ptNew=toTen(d.sentei*lst.qty), ptOld=(d.senteiOld!=null?toTen(d.senteiOld*lst.qty):null);
-      var ok=(ptOld!=null)?(ptNew>ptOld):(ptNew>=2);
-      if(lst.okOnly && !ok) continue;
-      rows.push({d:d, ptNew:ptNew, ptOld:ptOld, ok:ok});
+    var needle = norm(lst.filter), rows = [];
+    for(var i=0;i<DATA.length;i++){ var d = DATA[i];
+      if(needle && d._key.indexOf(needle)<0) continue;
+      var t = tokkan(d, lst.qty);
+      if(lst.okOnly && !t.ok) continue;
+      rows.push({ d:d, t:t });
     }
     rows.sort(function(a,b){
-      var k=lst.key, va, vb;
+      var k = lst.key, va, vb;
       if(k==='name') return lst.dir*a.d.name.localeCompare(b.d.name,'ja');
       if(k==='yakka'){ va=a.d.yakka; vb=b.d.yakka; }
-      else if(k==='ptNew'){ va=a.ptNew; vb=b.ptNew; }
+      else if(k==='ptNew'){ va=a.t.ptNew; vb=b.t.ptNew; }
       else { va=a.d.sentei; vb=b.d.sentei; }
       return lst.dir*((va||0)-(vb||0));
     });
-    document.getElementById('lstCount').textContent='対象薬 '+DATA.length+'品目中 '+rows.length+'件を表示'+(lst.okOnly?'（再算定可のみ）':'');
-    function arw(k){ return lst.key===k?('<span class="arw">'+(lst.dir<0?'▼':'▲')+'</span>'):'<span class="arw arw-i">⇅</span>'; }
-    var h='<table class="list-table"><thead><tr>'+
-      '<th data-key="name">品名（成分名）'+arw('name')+'</th>'+
-      '<th class="r" data-key="yakka">薬価'+arw('yakka')+'</th>'+
-      '<th class="r">後発</th>'+
+    document.getElementById('lstCount').textContent = '対象薬 '+DATA.length+'品目中 '+rows.length+'件'+(lst.okOnly?'（特管3ロ 再算定可のみ）':'');
+    function arw(k){ return lst.key===k ? '<span class="arw">'+(lst.dir<0?'▼':'▲')+'</span>' : '<span class="arw arw-i">⇅</span>'; }
+    var h = '<table class="list-table"><thead><tr>'+
+      '<th data-key="name">品名（成分名）'+arw('name')+'</th><th>区分</th>'+
+      '<th class="r" data-key="yakka">薬価'+arw('yakka')+'</th><th class="r">後発</th>'+
       '<th class="r" data-key="sentei">価格差1/2'+arw('sentei')+'</th>'+
-      '<th class="r" data-key="ptNew">点数 R8.5→R8.6'+arw('ptNew')+'</th>'+
-      '<th>再算定</th></tr></thead><tbody>';
-    rows.forEach(function(r){ var d=r.d;
-      h+='<tr><td><span class="lt-nm">'+esc(d.name)+'</span><div class="lt-sub">'+esc(d.ingredient)+'</div></td>'+
+      '<th class="r" data-key="ptNew">点数 5月→6月'+arw('ptNew')+'</th><th>特管3ロ</th><th></th></tr></thead><tbody>';
+    rows.forEach(function(r){ var d = r.d;
+      h += '<tr><td><span class="lt-nm">'+esc(d.name)+'</span><div class="lt-sub">'+esc(d.ingredient)+'／'+esc(d.spec)+'</div></td>'+
+        '<td><span class="chip '+(d.route==='in'?'in':'ex')+'">'+ROUTE_LABEL[d.route]+'</span></td>'+
         '<td class="r">'+d.yakka+'</td><td class="r">'+d.ge+'</td><td class="r">'+d.sentei+'</td>'+
-        '<td class="r">'+(r.ptOld!=null?r.ptOld:'—')+' → '+r.ptNew+'点</td>'+
-        '<td>'+(r.ok?'<span class="badge-ok">可</span>':'<span class="badge-ng">不可</span>')+'</td></tr>';
+        '<td class="r">'+(r.t.ptOld!=null?r.t.ptOld:'—')+' → '+r.t.ptNew+'点</td>'+
+        '<td>'+(r.t.ok?'<span class="tk-badge ok">✓ 可</span>':'<span class="tk-badge ng">× 不可</span>')+'</td>'+
+        '<td><button class="btn btn-sm" type="button" data-add="'+d._i+'">追加</button></td></tr>';
     });
-    h+='</tbody></table>';
-    document.getElementById('listBody').innerHTML=h;
+    if(!rows.length) h += '<tr><td colspan="8" style="color:var(--txt-3);">該当なし。'+(lst.okOnly?'「特管3ロ 再算定可のみ」を外すと、すべての対象薬から探せます。':'一覧にない薬は選定療養の対象外です。')+'</td></tr>';
+    h += '</tbody></table>';
+    document.getElementById('listBody').innerHTML = h;
   }
-  document.getElementById('listBody').addEventListener('click',function(e){
-    var th=e.target.closest('th[data-key]'); if(!th) return;
-    var k=th.dataset.key;
+  document.getElementById('listBody').addEventListener('click', function(e){
+    var add = e.target.closest('[data-add]');
+    if(add){ var d = DATA[+add.dataset.add]; addDrug(d, lst.qty>0?lst.qty:1); toast(d.name+' を「計算する」に追加しました'); return; }
+    var th = e.target.closest('th[data-key]'); if(!th) return;
+    var k = th.dataset.key;
     if(lst.key===k) lst.dir=-lst.dir; else { lst.key=k; lst.dir=(k==='name'?1:-1); }
     renderList();
   });
-  document.getElementById('lstQty').addEventListener('input',function(){ lst.qty=parseFloat(this.value)||0; renderList(); });
-  document.getElementById('lstFilter').addEventListener('input',function(){ lst.filter=this.value; renderList(); });
-  document.getElementById('lstOk').addEventListener('change',function(){ lst.okOnly=this.checked; renderList(); });
-  document.getElementById('lstReset').addEventListener('click',function(){
-    lst.filter=''; lst.okOnly=true; lst.key='yakka'; lst.dir=1;
-    document.getElementById('lstFilter').value=''; document.getElementById('lstOk').checked=true;
+  document.getElementById('lstQty').addEventListener('input', function(){ lst.qty=parseFloat(this.value)||0; renderList(); });
+  document.getElementById('lstFilter').addEventListener('input', function(){ lst.filter=this.value; renderList(); });
+  document.getElementById('lstOk').addEventListener('change', function(){ lst.okOnly=this.checked; renderList(); });
+  document.getElementById('lstReset').addEventListener('click', function(){
+    lst = { qty:1, filter:'', okOnly:false, key:'yakka', dir:1 };
+    document.getElementById('lstFilter').value=''; document.getElementById('lstQty').value=1; document.getElementById('lstOk').checked=false;
     renderList();
   });
+
+  syncRate(); syncMethod(); renderRx(); compute();
 })();
 </script>
 <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
