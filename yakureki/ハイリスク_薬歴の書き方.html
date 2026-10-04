@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>ハイリスク薬の薬歴の書き方｜薬歴マニュアル</title>
+    <meta name="search-keywords" content="特管1,ハイリスク薬,処方目的,適応外,共通5項目,相互作用,個別指導,同一処方,変化のロ" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/fold.css" />
+    <link rel="stylesheet" href="hairisk.css" />
+  </head>
+  <body>
+    <script src="../assets/site-header.js" defer></script>
+
+    <div class="page">
+
+      <div class="page-title">
+        <h1>ハイリスク薬の薬歴の書き方</h1>
+        <p>特定薬剤管理指導加算1を算定するときの薬歴。各薬効群の記載例に共通する書き方をまとめた。</p>
+      </div>
+
+      <nav class="hr-nav" aria-label="ハイリスク薬のページ">
+        <div class="row">
+          <a class="i" href="ハイリスク薬指導.html">全体の流れ</a>
+          <span class="i cur" aria-current="page">薬歴の書き方</span>
+        </div>
+      </nav>
+
+      <div class="card sum" id="yoten">
+        <div class="card-title">このページの要点</div>
+        <div class="rows">
+          <a class="pt" href="#bamen"><span class="k">算定する場面</span><span class="v">新たに処方されたとき（イ）、用法・用量が変更されたとき（ロ）、副作用や服薬状況の変化に基づいて指導したとき（ロ）の3つ。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#mokuteki"><span class="k">処方目的</span><span class="v">患者が医師から受けた説明と処方内容が合っているかを、最初に確認する。目的によっては算定の対象にならない。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#kakunin"><span class="k">確認する項目</span><span class="v">日薬ガイドラインの共通5項目と薬効群ごとの項目に沿って確認し、その結果を記載する。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#shido"><span class="k">指導内容</span><span class="v">薬の一般的な説明ではなく、その患者に必要と判断した指導を、理由とあわせて記載する。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#sogo"><span class="k">相互作用</span><span class="v">併用する薬、注意が必要な期間、患者に伝えた注意の3点を記載する。</span><span class="go">詳しく</span></a>
+        </div>
+      </div>
+
+      <!-- 算定する場面 -->
+      <div class="card" id="bamen">
+        <div class="card-title">算定する場面</div>
+        <div class="stack">
+          <p>特定薬剤管理指導加算1は、服薬管理指導料の指導に加えて、<span class="marker">特に安全管理が必要な医薬品であることを患者に伝え、これまでの指導内容も踏まえて指導を行ったとき</span>に算定する。</p>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th>場面</th><th>薬歴に記載すること</th></tr></thead>
+              <tbody>
+                <tr><td class="k">イ<small>新たに処方されたとき</small></td><td>処方目的、確認した内容、行った指導</td></tr>
+                <tr><td class="k">ロ<small>用法・用量の変更</small></td><td>変更の内容と経緯、変更に伴って行った指導</td></tr>
+                <tr><td class="k">ロ<small>副作用・服薬状況等の変化</small></td><td>気づいた変化、<span class="marker">指導が必要と判断した理由</span>、行った指導</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note">前回と同じ処方でロを算定するときは、指導が必要と判断した理由の要点の記載が求められている。理由がないと、毎回の確認との違いが薬歴から分からない。</p>
+          <div class="ex ng"><div class="lab">判断の理由がない</div>ワーファリン：出血症状の有無を確認。出血時は連絡するよう指導。</div>
+          <div class="ex ok"><div class="lab">変化と判断の理由がある</div>ワーファリン：先月から鼻血が増え、止まりにくいとの訴えあり。作用が強く出ている可能性があり、指導が必要と判断。自己判断で中止せず主治医に伝えるよう指導。黒色便や止まらない出血があれば、すぐに受診するよう説明。</div>
+          <p class="note-xs">対象の医薬品が複数あっても、算定は処方箋の受付1回につき1回。イとロの両方に該当しても、重複して算定はできない。</p>
+        </div>
+      </div>
+
+      <!-- 処方目的 -->
+      <div class="card" id="mokuteki">
+        <div class="card-title">処方目的の確認</div>
+        <div class="stack">
+          <p>日薬ガイドラインは、ハイリスク薬の指導ではまず、<span class="marker">医師から受けた説明や指導の内容を患者から聞き取る</span>よう求めている。薬の説明より先に、患者が何の薬と説明を受けているかと、処方内容が合っているかを確認する。</p>
+          <div>
+            <div class="sub-title">処方目的によっては算定の対象にならない</div>
+            <p>同じ薬でも、対象の薬効の目的で処方されていなければ算定の対象にならない。たとえばSGLT2阻害薬（フォシーガ・ジャディアンス）を心不全や慢性腎臓病の治療で使う場合は、糖尿病用剤として扱われない。バルプロ酸を片頭痛発作の発症抑制で使う場合も対象にならない（てんかん、躁病・躁うつ病の躁状態で使う場合は対象）。</p>
+          </div>
+          <div class="ex ng"><div class="lab">薬の説明だけ</div>リスパダール：新規。症状の安定を助ける薬であることを説明。</div>
+          <div class="ex ok"><div class="lab">処方目的を確認した結果がある</div>リスパダール：新規。処方目的は<span class="ph">統合失調症</span>。本人が医師から受けた説明と相違なし。</div>
+          <p class="note">病名を聞き出すことが目的ではない。答えにくそうなときは無理に聞かず、薬情を示して医師の説明と違いがないかを確認する。</p>
+        </div>
+      </div>
+
+      <!-- 確認する項目 -->
+      <div class="card" id="kakunin">
+        <div class="card-title">確認する項目<span class="qual">共通5項目＋薬効群ごとの項目</span></div>
+        <div class="stack">
+          <p>日薬ガイドラインは、どのハイリスク薬にも共通する5項目に、薬効群ごとの項目を加える形で確認事項を示している。各薬効群ページの「確認する項目」も、この形で並べている。</p>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th>共通5項目</th><th>確認する内容</th></tr></thead>
+              <tbody>
+                <tr><td class="k">1 処方内容</td><td>薬剤名・用法・用量。処方目的もここで確認する</td></tr>
+                <tr><td class="k">2 アドヒアランス</td><td>飲み忘れや自己中断の有無、飲み忘れたときの対応</td></tr>
+                <tr><td class="k">3 副作用</td><td>副作用の有無、重い副作用が出たときの対処</td></tr>
+                <tr><td class="k">4 効果</td><td>用量が適正か。分かる場合は検査値</td></tr>
+                <tr><td class="k">5 相互作用</td><td>併用薬・OTC医薬品・サプリメント・食事との相互作用</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note">薬効群ごとの項目の例：血液凝固阻止剤では抜歯・手術前の休薬指示、糖尿病用剤ではシックデイの対処、精神神経用剤では転倒・転落。</p>
+          <p>薬歴には「確認した」ではなく、<span class="marker">確認の結果</span>を記載する。副作用がなかったときも「なし」と記載する。</p>
+          <div class="ex ng"><div class="lab">結果がない</div>ワーファリン：2mg→2.5mgに増量。用量変更を確認。出血症状・併用薬を確認。</div>
+          <div class="ex ok"><div class="lab">結果がある</div>ワーファリン：2mg→2.5mgに増量。前回のPT-INRが<span class="ph">1.4</span>で目標に届かず増量になったと本人より。出血症状なし。新たな併用薬なし。</div>
+        </div>
+      </div>
+
+      <!-- 指導内容 -->
+      <div class="card" id="shido">
+        <div class="card-title">指導内容の書き方</div>
+        <div class="stack">
+          <p>指導内容は、<span class="marker">なぜそうするのか、いつ何に気をつけるのか</span>まで記載する。「自己判断で中止しないよう指導」だけでは、どの患者にも同じ文になる。</p>
+          <div class="ex ng"><div class="lab">どの患者にも同じ</div>レクサプロ：新規。自己判断で中止しないよう指導。副作用説明済み。</div>
+          <div class="ex ok"><div class="lab">理由と時期がある</div>レクサプロ：新規。効果が出るまで数週間かかるため、すぐに効果がなくても自己判断で中止しないよう指導。飲み始めの吐き気は1〜2週で治まることが多く、続く場合は相談するよう説明。落ち着かない、眠れない、いらいらするなど普段と違う変化があれば、次回を待たずに連絡するよう説明。</div>
+          <p class="note">日薬ガイドラインも、患者への説明として「いつごろ効果が期待できるか」「服用を継続する意義」を挙げている。</p>
+          <div class="box-gray">
+            <div style="font-weight:900; margin-bottom:4px;">避けたい書き方</div>
+            <div class="blist">
+              <div class="bullet"><span>・</span><span>薬の一般的な説明（「症状の安定を助ける薬」「気持ちの落ち込みを和らげる薬」など）。どの患者にも当てはまる</span></div>
+              <div class="bullet"><span>・</span><span>「注意喚起」「副作用説明済み」だけの記載。何を伝えたかが分からない</span></div>
+              <div class="bullet"><span>・</span><span>薬効群名で書き始める記載（「SDA系新規処方」）。どの薬の指導か分からない</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 相互作用 -->
+      <div class="card" id="sogo">
+        <div class="card-title">相互作用の書き方</div>
+        <div class="stack">
+          <p>相互作用は、併用する薬や期間によって内容が変わるため、定型文にしにくい。次の3点を記載する。</p>
+          <div class="kata">
+            <div><div class="h">併用する薬</div>薬剤名と期間</div>
+            <div><div class="h">起きやすいこと</div>作用が強まる・弱まる、出血しやすくなる など</div>
+            <div><div class="h">患者に伝えた注意</div>期間中に気をつける症状と、出たときの対応</div>
+          </div>
+          <div class="ex ok"><div class="lab">臨時の抗菌薬が併用された例</div>ワーファリン：他院で抗菌薬（<span class="ph">〇〇</span>）<span class="ph">〇日分</span>の処方あり。服用中はワーファリンの作用が強まり出血しやすくなるため、飲み終わるまでは、あざ・鼻血・歯ぐきの出血に注意し、出血があれば連絡するよう指導。</div>
+          <p class="note">期間を記載しておくと、次回来局時にその間の出血の有無を確認できる。</p>
+          <p class="note">併用薬の一覧は薬歴の別の欄にあるため、指導内容には書き写さない。</p>
+        </div>
+      </div>
+
+      <!-- 記載例を使うとき -->
+      <div class="card" id="tpl">
+        <div class="card-title">記載例を使うとき</div>
+        <div class="stack">
+          <div class="blist">
+            <div class="check"><span>✓</span><span>薬剤名から書き始める（例）リクシアナ：…）</span></div>
+            <div class="check"><span>✓</span><span>処方目的と確認の結果を書き加える</span></div>
+            <div class="check"><span>✓</span><span>説明していないこと、確認していないことは削除する</span></div>
+            <div class="check"><span>✓</span><span>まれな重い副作用は、説明したときだけ書き加える</span></div>
+          </div>
+          <p class="note">記載例は薬歴に残す文で、患者への説明の台本ではない。重い副作用の伝え方は、患者の理解や不安に合わせて選ぶ。</p>
+          <p class="note">薬歴は「定型文を用いて画一的に記載するのではなく」とされている。記載例はそのまま使わず、患者ごとに書き換える。</p>
+        </div>
+      </div>
+
+      <!-- 個別指導 -->
+      <div class="card" id="kobetsu">
+        <div class="card-title">個別指導で見られる点</div>
+        <div class="stack">
+          <div class="blist">
+            <div class="check"><span>✓</span><span>どの薬の指導か分かるか</span></div>
+            <div class="check"><span>✓</span><span>何を確認し、結果がどうだったかが記載されているか</span></div>
+            <div class="check"><span>✓</span><span>確認だけで終わらず、その患者に応じた指導が記載されているか</span></div>
+            <div class="check"><span>✓</span><span>前回と同じ処方でロを算定した日に、気づいた変化と、指導が必要と判断した理由が記載されているか</span></div>
+          </div>
+          <div class="box-blue">処方された病状について確認し、必要と判断した指導を行い、その内容を記載することで算定根拠として十分になる。副作用の有無の確認だけでは不十分とされている。<div class="note-xs" style="margin-top:6px;">過去の個別指導の記録より。改定前（対象薬を調剤するたびに指導していた時期）の指摘だが、考え方は変わらない。</div></div>
+          <p class="note">処方内容そのものへの指摘（漫然投与・適応外など）は <a href="個別指導で問われる記載.html">個別指導で問われる項目と薬歴の残し方</a> を参照。</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">出典</div>
+        <div class="src">
+          <div>令和8年3月5日 保医発0305第6号 別添3「調剤報酬点数表に関する事項」特定薬剤管理指導加算1</div>
+          <div><a href="https://www.nichiyaku.or.jp/yakuzaishi/pharmacy-info/other/guideline01" target="_blank" rel="noopener">日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2.1版・令和8年6月）」</a></div>
+        </div>
+      </div>
+
+    </div>
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>

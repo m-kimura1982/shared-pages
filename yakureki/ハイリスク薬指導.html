@@ -4,337 +4,91 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex,nofollow,noarchive" />
-    <title>ハイリスク薬指導（特定薬剤管理指導加算1）｜薬歴マニュアル</title>
-    <meta name="search-keywords" content="特管1,ハイリスク薬,特定薬剤管理指導加算,薬剤名から探す,逆引き,10点,5点" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="yakureki.css" />
+    <title>ハイリスク薬の指導記録｜薬歴マニュアル</title>
+    <meta name="search-keywords" content="特管1,ハイリスク薬,特定薬剤管理指導加算,薬剤名から探す" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/fold.css" />
-    <style>
-      /* 薬剤名逆引き（五十音索引） */
-      .kana-row { display: flex; gap: 10px; align-items: flex-start; padding: 7px 0; border-bottom: 1px solid var(--border); }
-      .kana-row:last-child { border-bottom: none; }
-      .kana-label { flex-shrink: 0; width: 4.5em; font-size: 12px; font-weight: 700; color: var(--blue); padding-top: 2px; }
-      .kana-links { display: flex; flex-wrap: wrap; gap: 6px; }
-      .kana-links .item-tag { margin-right: 0; }
-
-      /* ===== 個別ページ准拠：サイドスティッキー目次（PC 880px+）＋スマホ用インライン目次 ===== */
-      [id] { scroll-margin-top:calc(var(--sn-header-h, 0px) + 16px); }
-      .sticky-toc { display: none; }
-      .toc-inline { margin: 0 0 18px; }
-      .toc-inline .toc-links { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 14px 14px; }
-      .toc-inline .toc-links a { font-size: 12px; background: var(--blue-light); color: var(--blue); border-radius: 4px; padding: 2px 9px; text-decoration: none; }
-      @media (min-width: 880px) { .toc-inline { display: none; } }
-
-      @media (min-width: 880px) {
-        .layout-outer {
-          max-width: 1240px; margin: 0 auto; padding: 28px 20px 0;
-          display: grid; grid-template-columns: 220px minmax(0, 1fr);
-          gap: 28px; align-items: start;
-        }
-        .layout-outer .page-head { max-width: none; margin: 0 0 16px; padding: 0; }
-        .layout-outer main { max-width: none; margin: 0; padding: 0; }
-        .sticky-toc {
-          display: block; position: sticky; top: calc(var(--sn-header-h, 0px) + 20px);
-          background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm);
-          padding: 12px 8px 14px; max-height: calc(100vh - var(--sn-header-h, 0px) - 40px); overflow-y: auto;
-          scrollbar-width: thin; scrollbar-color: var(--border) transparent;
-        }
-        .sticky-toc::-webkit-scrollbar { width: 4px; }
-        .sticky-toc::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-        .sticky-toc-head { padding: 0 8px 8px; margin-bottom: 6px; border-bottom: 1px solid var(--border); }
-        .sticky-toc-label { display: block; font-size: 11px; font-weight: 700; color: var(--blue); letter-spacing: 0.12em; }
-        .sticky-toc a {
-          display: block; font-size: 13px; color: var(--ink); text-decoration: none;
-          padding: 5px 10px; border-radius: 4px; line-height: 1.45;
-          border-left: 3px solid transparent; margin-bottom: 1px;
-          transition: background 0.12s, color 0.12s, border-color 0.12s;
-        }
-        .sticky-toc a:hover { background: var(--blue-light); color: var(--blue); }
-        .sticky-toc a.is-active { background: var(--blue-light); color: var(--blue); font-weight: 700; border-left-color: var(--blue); }
-      }
-      @media print {
-        .sticky-toc { display: none !important; }
-        .layout-outer { display: block !important; padding: 0; }
-      }
-
-      /* 縦棒削減：注意枠・ルール枠を左縦棒→フル枠（＋ルール枠は上アクセント）に。縦棒は見出し(section-label)・引用(kobetsu-quote)のみに限定 */
-      .warn-box { border: 1px solid #cbddf2; border-radius: var(--radius-sm); }
-      .rule-box { border: 1px solid var(--border); border-top: 3px solid var(--blue); border-radius: var(--radius-sm); }
-
-      /* 個別ページ准拠：確認ポイントは控えめなグレー枠（青はタイトル文字のみ）。色数を絞る */
-      .drug-check-box { background: #f7f8fa; border: 1px solid #e1e5ea; border-radius: 4px; padding: 12px 16px; margin: 8px 0 12px; }
-      .drug-check-box-title { font-weight: 700; color: var(--blue); font-size: 12.5px; letter-spacing: .04em; margin-bottom: 4px; }
-      .drug-check-box ul { margin: 0; padding-left: 20px; }
-      .drug-check-box ul li { font-size: 13px; line-height: 1.7; margin-bottom: 2px; }
-      .drug-check-box p { margin: 0; font-size: 13px; line-height: 1.75; }
-    </style>
+    <link rel="stylesheet" href="hairisk.css" />
   </head>
   <body>
-  <script src="../assets/site-header.js" defer></script>
+    <script src="../assets/site-header.js" defer></script>
 
+    <div class="page">
 
-    <div class="layout-outer">
-
-    <nav class="sticky-toc" aria-label="目次">
-      <div class="sticky-toc-head">
-        <span class="sticky-toc-label">CONTENTS</span>
+      <div class="page-title">
+        <h1>ハイリスク薬の指導記録</h1>
+        <p>特定薬剤管理指導加算1を算定するときの薬歴の書き方と、薬効群ごとの記載例。</p>
       </div>
-      <a href="#kubun">算定区分（イ／ロ）</a>
-      <a href="#kyotsu">薬歴記載の共通原則</a>
-      <a href="#groups">薬効群別ページ</a>
-      <a href="#gyakubiki">薬剤名から探す</a>
-      <a href="#shido-chui">個別指導での注意点</a>
-    </nav>
 
-    <div>
-
-    <div class="page-head">
-      <span class="page-tag">HIGH-RISK</span>
-      <h1 class="page-title">ハイリスク薬指導（特定薬剤管理指導加算1）</h1>
-      <p class="page-desc">
-        特定薬剤管理指導加算1の算定区分（イ／ロ）と、薬歴記載の共通原則をまとめたページ。<br />
-        具体的な記載例は薬効群別のページに分け、変更のあった薬について「何を確認し、どう指導し、薬歴にどう残すか」が分かるようにしている。
-      </p>
-    </div>
-
-    <main>
-      <details class="toc-inline fold-in">
-        <summary>目次</summary>
-        <div class="toc-links">
-          <a href="#kubun">算定区分（イ／ロ）</a>
-          <a href="#kyotsu">薬歴記載の共通原則</a>
-          <a href="#groups">薬効群別ページ</a>
-          <a href="#gyakubiki">薬剤名から探す</a>
-          <a href="#shido-chui">個別指導での注意点</a>
+      <nav class="hr-nav" aria-label="ハイリスク薬のページ">
+        <div class="row">
+          <span class="i cur" aria-current="page">全体の流れ</span>
+          <a class="i" href="ハイリスク_薬歴の書き方.html">薬歴の書き方</a>
         </div>
-      </details>
+      </nav>
 
-      <!-- ============================================================
-           § 1  算定区分の整理（イ／ロ）
-           ============================================================ -->
-      <section id="kubun">
-        <div class="section-label">SECTION 1</div>
-        <h2 class="section-title">算定区分の整理（イ／ロ）</h2>
-        <p style="font-size:13px;color:var(--sub);margin-bottom:12px;">
-          薬効群別ページの記載例は、下記の3場面を想定して作成している。点数・算定要件の詳細は原典を参照。
-        </p>
-        <table class="gtable">
-          <tr>
-            <th style="width:8em;">区分</th>
-            <th>場面</th>
-            <th>薬歴記載の要点</th>
-          </tr>
-          <tr>
-            <td><strong>イ</strong></td>
-            <td>対象薬が<strong>新たに処方</strong>された場合</td>
-            <td>新規処方時に確認した事項と、特に重点的に行った指導の内容</td>
-          </tr>
-          <tr>
-            <td><strong>ロ</strong>（用法用量変更）</td>
-            <td>対象薬の<strong>用法・用量が変更</strong>された場合</td>
-            <td>変更内容と、変更に伴い確認・指導した内容</td>
-          </tr>
-          <tr>
-            <td><strong>ロ</strong>（副作用・服薬状況等の変化）</td>
-            <td>患者の<strong>副作用・服薬状況等の変化</strong>に薬剤師が気付き、指導の必要性を判断した場合</td>
-            <td>「変化の確認 → 指導が必要と判断 → 指導」の流れ。<strong>判断した根拠</strong>を必ず残す</td>
-          </tr>
-        </table>
-        <p style="font-size:12px;color:var(--sub);margin-top:10px;">
-          出典：令和8年3月5日 保医発0305第6号 別添3「調剤報酬点数表に関する事項」 特定薬剤管理指導加算1
-        </p>
-      </section>
-
-      <!-- ============================================================
-           § 2  薬歴記載の共通原則
-           ============================================================ -->
-      <section id="kyotsu">
-        <div class="section-label">SECTION 2</div>
-        <h2 class="section-title">薬歴記載の共通原則</h2>
-        <div class="rule-box">
-          <div class="rule-box-title">全薬効群共通のルール</div>
-          <ul style="padding-left:1.4em; font-size:14px; line-height:1.85;">
-            <li>ハイリスク指導の記録は <strong>「薬剤名：〜」</strong> の形で書き始め、通常の薬歴と区別できるようにする</li>
-            <li>副作用・服薬状況等の変化によるロでは、<strong>「指導が必要と判断」した根拠</strong>（何の変化に気付いたか）を加算の根拠として残す</li>
-            <li>記載例をコピーした場合、<strong>説明・指導していない項目は削除</strong>し、患者の状況に合わせて書き換える（通則(5)）</li>
-            <li>継続処方時の通常確認の記録は、薬効群別ページの定型テンプレの対象外（基本記載ルールに従って記載）</li>
-          </ul>
+      <div class="card" id="flow">
+        <div class="card-title">指導の流れ</div>
+        <div class="three">
+          <div class="s"><span class="n">1</span><div>
+            <div class="t">確認する</div>
+            <div class="v">日薬ガイドラインの確認事項（共通5項目と薬効群ごとの項目）に沿って確認する。最初に、患者が医師から受けた説明と処方内容が合っているか（処方目的）を確認する。</div>
+          </div></div>
+          <div class="s"><span class="n">2</span><div>
+            <div class="t">指導する</div>
+            <div class="v">確認の結果を踏まえ、その患者に必要な指導を行う。</div>
+          </div></div>
+          <div class="s"><span class="n">3</span><div>
+            <div class="t">記載する</div>
+            <div class="v">確認した内容と指導の要点を薬歴に記載する。前回と同じ処方でロを算定するときは、指導が必要と判断した理由の要点も記載する。</div>
+          </div></div>
         </div>
-        <p style="font-size:13px;color:var(--sub);margin-top:10px;">
-          確認・指導事項の根拠：<a href="https://www.nichiyaku.or.jp/yakuzaishi/pharmacy-info/other/guideline01" target="_blank" rel="noopener" style="color:var(--blue);">日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2.1版・令和8年6月）」</a>（日薬サイト・PDF）
-        </p>
-      </section>
+        <p class="note" style="margin-top:16px;">算定する場面や相互作用の書き方は <a href="ハイリスク_薬歴の書き方.html">ハイリスク薬の薬歴の書き方</a> にまとめた。</p>
+      </div>
 
-      <!-- ============================================================
-           § 3  薬効群別ページ
-           ============================================================ -->
-      <section id="groups">
-        <div class="section-label">SECTION 3</div>
-        <h2 class="section-title">薬効群別ページ</h2>
-        <div class="card-grid">
-          <a href="ハイリスク_血液凝固阻止剤.html" class="card">
-            <div class="card-num">HIGH-RISK 05</div>
-            <div class="card-title">血液凝固阻止剤</div>
-            <div class="card-desc">ワーファリン／DOAC／抗血小板薬。出血症状・相互作用・抜歯/手術/内視鏡時の対応。</div>
-          </a>
-          <a href="ハイリスク_糖尿病用剤.html" class="card">
-            <div class="card-num">HIGH-RISK 09</div>
-            <div class="card-title">糖尿病用剤</div>
-            <div class="card-desc">経口血糖降下薬・GLP-1受容体作動薬。低血糖・シックデイ対応。</div>
-          </a>
-          <a href="ハイリスク_膵臓ホルモン剤.html" class="card">
-            <div class="card-num">HIGH-RISK 10</div>
-            <div class="card-title">膵臓ホルモン剤（インスリン製剤）</div>
-            <div class="card-desc">インスリン製剤。手技・単位・低血糖・保管。</div>
-          </a>
-          <a href="ハイリスク_抗精神病薬.html" class="card">
-            <div class="card-num">HIGH-RISK 08-1</div>
-            <div class="card-title">抗精神病薬（精神神経用薬）</div>
-            <div class="card-desc">定型・非定型抗精神病薬。錐体外路症状・代謝系副作用・アドヒアランス。</div>
-          </a>
-          <a href="ハイリスク_抗うつ薬.html" class="card">
-            <div class="card-num">HIGH-RISK 08-2</div>
-            <div class="card-title">抗うつ薬（精神神経用薬）</div>
-            <div class="card-desc">SSRI・SNRI等。賦活症候群・中断症候群・消化器症状。</div>
-          </a>
-          <a href="ハイリスク_気分安定薬.html" class="card">
-            <div class="card-num">HIGH-RISK 08-3</div>
-            <div class="card-title">気分安定薬（精神神経用薬）</div>
-            <div class="card-desc">リチウム／バルプロ酸／カルバマゼピン／ラモトリギン。血中濃度モニタリング・催奇形性・重篤皮疹。</div>
-          </a>
-          <a href="ハイリスク_抗てんかん薬.html" class="card">
-            <div class="card-num">HIGH-RISK 04</div>
-            <div class="card-title">抗てんかん薬</div>
-            <div class="card-desc">バルプロ酸／カルバマゼピン／ラモトリギン／レベチラセタム 等。発作状況・自己中止リスク・血中濃度・重篤皮疹。てんかん目的が算定の前提。</div>
-          </a>
+      <div class="card" id="groups">
+        <div class="card-title">薬効群ごとの記載例</div>
+        <div class="grp-grid">
+          <a class="grp-card" href="ハイリスク_血液凝固阻止剤.html"><div class="t">血液凝固阻止剤</div><div class="d">ワーファリン・DOAC・抗血小板薬</div></a>
+          <a class="grp-card" href="ハイリスク_糖尿病用剤.html"><div class="t">糖尿病用剤</div><div class="d">経口血糖降下薬・GLP-1受容体作動薬</div></a>
+          <a class="grp-card" href="ハイリスク_膵臓ホルモン剤.html"><div class="t">インスリン製剤</div><div class="d">膵臓ホルモン剤</div></a>
+          <a class="grp-card" href="ハイリスク_抗精神病薬.html"><div class="t">抗精神病薬</div><div class="d">定型・非定型（SDA・MARTA・DSS）</div></a>
+          <a class="grp-card" href="ハイリスク_抗うつ薬.html"><div class="t">抗うつ薬</div><div class="d">SSRI・SNRI・NaSSA・三環系 ほか</div></a>
+          <a class="grp-card" href="ハイリスク_気分安定薬.html"><div class="t">気分安定薬</div><div class="d">リチウム・バルプロ酸・カルバマゼピン・ラモトリギン</div></a>
+          <a class="grp-card" href="ハイリスク_抗てんかん薬.html"><div class="t">抗てんかん薬</div><div class="d">バルプロ酸・カルバマゼピン・レベチラセタム ほか</div></a>
         </div>
+        <p class="note-xs" style="margin-top:12px;">バルプロ酸・カルバマゼピン・ラモトリギンは、気分安定薬と抗てんかん薬の両方のページに記載例がある。抗悪性腫瘍剤・免疫抑制剤・不整脈用剤・テオフィリン製剤・抗HIV薬などの記載例は載せていない。</p>
+      </div>
 
-        <div class="warn-box" style="margin-top:16px;">
-          <div class="warn-box-title">今後の追加候補（未収載）</div>
-          <p>
-            抗悪性腫瘍剤・免疫抑制剤・不整脈用剤・テオフィリン製剤・抗HIV薬 ほか、特定薬剤管理指導加算1の対象薬効群がある。順次追加していく予定（追加時期は未定）。<br />
-            <span style="font-size:12px;color:var(--sub);">※ 本サイトは特定薬剤管理指導加算1の<strong>算定対象薬</strong>を扱う。日本薬剤師会の業務ガイドライン（第2.1版）の薬効分類と、加算1の算定対象は一致しない（GLには加算対象外の薬剤も含まれる）。たとえば<strong>催眠鎮静剤・抗不安剤（薬効分類112／BZD系・睡眠薬等）</strong>は第2.1版でGL上「催眠鎮静薬」として独立したが、<strong>加算1の算定対象ではない</strong>ため本サイトでは扱わない。</span>
-          </p>
-        </div>
-      </section>
-
-      <!-- ============================================================
-           § 4  薬剤名から探す（逆引き）
-           ============================================================ -->
-      <section id="gyakubiki">
-        <div class="section-label">SECTION 4</div>
-        <h2 class="section-title">薬剤名から探す（逆引き）</h2>
-        <p style="font-size:13px;color:var(--sub);margin-bottom:12px;">
-          変更のあった薬の商品名から、薬効群ページの該当ブロックへ直接飛べます。<br />
-          <span style="font-size:12px;">※ ページ内検索（PC：Ctrl+F／スマホ：ブラウザメニューの「ページ内を検索」）に商品名を入力すると早く見つかります。後発品は先発の商品名で探してください。</span>
-        </p>
-        <div class="kana-index">
-          <div class="kana-row">
-            <span class="kana-label">ア行</span>
-            <div class="kana-links"><a href="ハイリスク_糖尿病用剤.html#tzd" class="item-tag">アクトス</a><a href="ハイリスク_抗うつ薬.html#tca" class="item-tag">アナフラニール</a><a href="ハイリスク_膵臓ホルモン剤.html#bolus" class="item-tag">アピドラ</a><a href="ハイリスク_糖尿病用剤.html#su" class="item-tag">アマリール</a><a href="ハイリスク_抗うつ薬.html#tca" class="item-tag">アモキサン</a><a href="ハイリスク_血液凝固阻止剤.html#doac" class="item-tag">イグザレルト</a><a href="ハイリスク_糖尿病用剤.html#combo" class="item-tag">イニシンク</a><a href="ハイリスク_膵臓ホルモン剤.html#mix" class="item-tag">イノレット30R</a><a href="ハイリスク_抗うつ薬.html#snri" class="item-tag">イフェクサーSR</a><a href="ハイリスク_抗精神病薬.html#sda" class="item-tag">インヴェガ</a><a href="ハイリスク_糖尿病用剤.html#dpp4" class="item-tag">エクア</a><a href="ハイリスク_糖尿病用剤.html#combo" class="item-tag">エクメット</a><a href="ハイリスク_抗精神病薬.html#dss-dsam" class="item-tag">エビリファイ</a><a href="ハイリスク_血液凝固阻止剤.html#antiplatelet" class="item-tag">エフィエント</a><a href="ハイリスク_血液凝固阻止剤.html#doac" class="item-tag">エリキュース</a><a href="ハイリスク_糖尿病用剤.html#su" class="item-tag">オイグルコン</a><a href="ハイリスク_糖尿病用剤.html#glp1-inj" class="item-tag">オゼンピック</a><a href="ハイリスク_糖尿病用剤.html#dpp4" class="item-tag">オングリザ</a></div>
-          </div>
-          <div class="kana-row">
-            <span class="kana-label">カ行</span>
-            <div class="kana-links"><a href="ハイリスク_糖尿病用剤.html#sglt2" class="item-tag">カナグル</a><a href="ハイリスク_糖尿病用剤.html#combo" class="item-tag">カナリア</a><a href="ハイリスク_糖尿病用剤.html#dpp4" class="item-tag">グラクティブ</a><a href="ハイリスク_膵臓ホルモン剤.html#basal" class="item-tag">グラルギンBS</a><a href="ハイリスク_糖尿病用剤.html#su" class="item-tag">グリミクロン</a><a href="ハイリスク_糖尿病用剤.html#agi" class="item-tag">グルコバイ</a><a href="ハイリスク_糖尿病用剤.html#su" class="item-tag">グルファスト</a><a href="ハイリスク_糖尿病用剤.html#combo" class="item-tag">グルベス</a><a href="ハイリスク_抗精神病薬.html#typical" class="item-tag">コントミン</a></div>
-          </div>
-          <div class="kana-row">
-            <span class="kana-label">サ行</span>
-            <div class="kana-links"><a href="ハイリスク_抗うつ薬.html#snri" class="item-tag">サインバルタ</a><a href="ハイリスク_抗うつ薬.html#zuranolone" class="item-tag">ザズベイ</a><a href="ハイリスク_糖尿病用剤.html#dpp4" class="item-tag">ザファテック</a><a href="ハイリスク_抗うつ薬.html#ssri" class="item-tag">ジェイゾロフト</a><a href="ハイリスク_抗精神病薬.html#marta" class="item-tag">ジプレキサ</a><a href="ハイリスク_糖尿病用剤.html#sglt2" class="item-tag">ジャディアンス</a><a href="ハイリスク_糖尿病用剤.html#dpp4" class="item-tag">ジャヌビア</a><a href="ハイリスク_糖尿病用剤.html#su" class="item-tag">シュアポスト</a><a href="ハイリスク_糖尿病用剤.html#sglt2" class="item-tag">スーグラ</a><a href="ハイリスク_糖尿病用剤.html#combo" class="item-tag">スージャヌ</a><a href="ハイリスク_糖尿病用剤.html#su" class="item-tag">スターシス</a><a href="ハイリスク_糖尿病用剤.html#agi" class="item-tag">セイブル</a><a href="ハイリスク_気分安定薬.html#vpa" class="item-tag">セレニカR</a><a href="ハイリスク_抗精神病薬.html#typical" class="item-tag">セレネース</a><a href="ハイリスク_抗精神病薬.html#marta" class="item-tag">セロクエル</a><a href="ハイリスク_糖尿病用剤.html#combo" class="item-tag">ソニアス</a><a href="ハイリスク_膵臓ホルモン剤.html#glp1-combo" class="item-tag">ソリクア</a><a href="ハイリスク_膵臓ホルモン剤.html#glp1-combo" class="item-tag">ゾルトファイ</a></div>
-          </div>
-          <div class="kana-row">
-            <span class="kana-label">タ行</span>
-            <div class="kana-links"><a href="ハイリスク_糖尿病用剤.html#imeglimin" class="item-tag">ツイミーグ</a><a href="ハイリスク_気分安定薬.html#cbz" class="item-tag">テグレトール</a><a href="ハイリスク_抗うつ薬.html#nassa-sari" class="item-tag">デジレル</a><a href="ハイリスク_気分安定薬.html#vpa" class="item-tag">デパケン／デパケンR</a><a href="ハイリスク_抗うつ薬.html#tca" class="item-tag">テトラミド</a><a href="ハイリスク_糖尿病用剤.html#dpp4" class="item-tag">テネリア</a><a href="ハイリスク_抗うつ薬.html#ssri" class="item-tag">デプロメール</a><a href="ハイリスク_糖尿病用剤.html#sglt2" class="item-tag">デベルザ</a><a href="ハイリスク_抗うつ薬.html#tca" class="item-tag">トフラニール</a><a href="ハイリスク_糖尿病用剤.html#dpp4" class="item-tag">トラゼンタ</a><a href="ハイリスク_糖尿病用剤.html#combo" class="item-tag">トラディアンス</a><a href="ハイリスク_抗うつ薬.html#tca" class="item-tag">トリプタノール</a><a href="ハイリスク_抗うつ薬.html#srim" class="item-tag">トリンテリックス</a><a href="ハイリスク_糖尿病用剤.html#glp1-inj" class="item-tag">トルリシティ</a><a href="ハイリスク_膵臓ホルモン剤.html#basal" class="item-tag">トレシーバ</a><a href="ハイリスク_抗うつ薬.html#snri" class="item-tag">トレドミン</a></div>
-          </div>
-          <div class="kana-row">
-            <span class="kana-label">ナ行</span>
-            <div class="kana-links"><a href="ハイリスク_糖尿病用剤.html#dpp4" class="item-tag">ネシーナ</a><a href="ハイリスク_膵臓ホルモン剤.html#bolus" class="item-tag">ノボラピッド</a><a href="ハイリスク_膵臓ホルモン剤.html#mix" class="item-tag">ノボラピッド30/50/70Mix</a><a href="ハイリスク_膵臓ホルモン剤.html#mix" class="item-tag">ノボリン30R</a><a href="ハイリスク_膵臓ホルモン剤.html#bolus" class="item-tag">ノボリンR</a><a href="ハイリスク_抗うつ薬.html#tca" class="item-tag">ノリトレン</a></div>
-          </div>
-          <div class="kana-row">
-            <span class="kana-label">ハ行</span>
-            <div class="kana-links"><a href="ハイリスク_血液凝固阻止剤.html#antiplatelet" class="item-tag">バイアスピリン</a><a href="ハイリスク_気分安定薬.html#vpa" class="item-tag">バレリン</a><a href="ハイリスク_抗うつ薬.html#ssri" class="item-tag">パキシル</a><a href="ハイリスク_糖尿病用剤.html#glp1-inj" class="item-tag">ビクトーザ</a><a href="ハイリスク_抗精神病薬.html#marta" class="item-tag">ビプレッソ</a><a href="ハイリスク_膵臓ホルモン剤.html#mix" class="item-tag">ヒューマリン3/7</a><a href="ハイリスク_膵臓ホルモン剤.html#bolus" class="item-tag">ヒューマリンR</a><a href="ハイリスク_膵臓ホルモン剤.html#bolus" class="item-tag">ヒューマログ</a><a href="ハイリスク_膵臓ホルモン剤.html#mix" class="item-tag">ヒューマログMix25・50</a><a href="ハイリスク_抗精神病薬.html#typical" class="item-tag">ヒルナミン</a><a href="ハイリスク_糖尿病用剤.html#su" class="item-tag">ファスティック</a><a href="ハイリスク_膵臓ホルモン剤.html#bolus" class="item-tag">フィアスプ</a><a href="ハイリスク_糖尿病用剤.html#sglt2" class="item-tag">フォシーガ</a><a href="ハイリスク_血液凝固阻止剤.html#doac" class="item-tag">プラザキサ</a><a href="ハイリスク_血液凝固阻止剤.html#antiplatelet" class="item-tag">プラビックス</a><a href="ハイリスク_血液凝固阻止剤.html#antiplatelet" class="item-tag">ブリリンタ</a><a href="ハイリスク_血液凝固阻止剤.html#antiplatelet" class="item-tag">プレタール</a><a href="ハイリスク_糖尿病用剤.html#agi" class="item-tag">ベイスン</a></div>
-          </div>
-          <div class="kana-row">
-            <span class="kana-label">マ行</span>
-            <div class="kana-links"><a href="ハイリスク_糖尿病用剤.html#dpp4" class="item-tag">マリゼブ</a><a href="ハイリスク_糖尿病用剤.html#gip-glp1" class="item-tag">マンジャロ</a><a href="ハイリスク_糖尿病用剤.html#combo" class="item-tag">メタクト</a><a href="ハイリスク_糖尿病用剤.html#combo" class="item-tag">メトアナ</a><a href="ハイリスク_糖尿病用剤.html#bg" class="item-tag">メトグルコ</a><a href="ハイリスク_糖尿病用剤.html#bg" class="item-tag">メトホルミン</a></div>
-          </div>
-          <div class="kana-row">
-            <span class="kana-label">ヤ〜ワ行</span>
-            <div class="kana-links"><a href="ハイリスク_膵臓ホルモン剤.html#mix" class="item-tag">ライゾデグ</a><a href="ハイリスク_抗精神病薬.html#sda" class="item-tag">ラツーダ</a><a href="ハイリスク_気分安定薬.html#ltg" class="item-tag">ラミクタール</a><a href="ハイリスク_膵臓ホルモン剤.html#basal" class="item-tag">ランタス</a><a href="ハイリスク_膵臓ホルモン剤.html#basal" class="item-tag">ランタスXR</a><a href="ハイリスク_気分安定薬.html#lithium" class="item-tag">リーマス</a><a href="ハイリスク_血液凝固阻止剤.html#doac" class="item-tag">リクシアナ</a><a href="ハイリスク_抗精神病薬.html#sda" class="item-tag">リスパダール</a><a href="ハイリスク_抗うつ薬.html#nassa-sari" class="item-tag">リフレックス</a><a href="ハイリスク_糖尿病用剤.html#glp1-po" class="item-tag">リベルサス</a><a href="ハイリスク_抗精神病薬.html#sda" class="item-tag">ルーラン</a><a href="ハイリスク_抗うつ薬.html#tca" class="item-tag">ルジオミール</a><a href="ハイリスク_糖尿病用剤.html#sglt2" class="item-tag">ルセフィ</a><a href="ハイリスク_抗うつ薬.html#ssri" class="item-tag">ルボックス</a><a href="ハイリスク_膵臓ホルモン剤.html#bolus" class="item-tag">ルムジェブ</a><a href="ハイリスク_抗精神病薬.html#dss-dsam" class="item-tag">レキサルティ</a><a href="ハイリスク_抗うつ薬.html#ssri" class="item-tag">レクサプロ</a><a href="ハイリスク_抗うつ薬.html#nassa-sari" class="item-tag">レスリン</a><a href="ハイリスク_膵臓ホルモン剤.html#basal" class="item-tag">レベミル</a><a href="ハイリスク_抗うつ薬.html#nassa-sari" class="item-tag">レメロン</a><a href="ハイリスク_抗精神病薬.html#sda" class="item-tag">ロナセン</a><a href="ハイリスク_血液凝固阻止剤.html#warfarin" class="item-tag">ワーファリン</a></div>
-          </div>
-        </div>
-        <p style="font-size:12px;color:var(--sub);margin-top:10px;">
-          ※ インスリンのペン型デバイス名（ソロスター・フレックスタッチ・フレックスペン・ミリオペン等）は複数製剤で共通のため収載していません。製剤名で探してください。<br />
-          ※ 未収載の薬効群の薬剤は、ページ公開時に追加します。
-        </p>
-      </section>
-
-      <!-- ============================================================
-           § 5  個別指導での注意点（作成中）
-           ============================================================ -->
-      <section id="shido-chui">
-        <div class="section-label">SECTION 5</div>
-        <h2 class="section-title">個別指導での注意点</h2>
-        <div class="drug-check-box" style="margin-bottom:12px;">
-          <div class="drug-check-box-title">確認の方向性</div>
-          <p>副作用の有無を確認することは重要だが、それだけで特定薬剤管理指導加算1を算定するものではない。患者の状態・服薬状況等を確認したうえで、必要なプラスαの指導を行い、その内容を薬歴に記録することが算定根拠として重要。</p>
-        </div>
-
-        <div class="kobetsu-quote">
-          <span class="kq-k">個別指導</span>
-          <span class="kq-t">特定薬剤管理指導加算は服薬管理指導料に対する加算であり、プラスαの指導を求めるもの。薬そのものというより、その処方がなされた病状に対して（日薬の確認項目に沿って）確認を行い、別途説明が必要な場合に説明し、その内容を記録することで算定できる。副作用の確認等だけで算定できると誤解されることがあるが、あくまで指導の加算であり、患者の病状をモニタリングしたうえで必要な指導を行い、記録して初めて算定できる。</span>
-          <span class="kq-cite">過去の個別指導の記録より</span>
-        </div>
-
-        <p style="font-size:12px;color:var(--sub);margin-top:8px;line-height:1.75;">
-          ※ <strong>この指摘は改定前</strong>（対象薬を調剤するたびに指導が必要だった時期）のもの。現在は算定機会が<strong>初回（イ）・用法用量変更（ロ）・副作用・服薬状況等の変化によるロ</strong>に整理された。ただし、確認だけでなく状態に応じた指導を行って記録するという考え方は変わらない。
-        </p>
-
-        <div class="drug-check-box" style="margin-top:12px;">
-          <div class="drug-check-box-title">確認されやすい共通ポイント</div>
-          <ul>
-            <li>記録から<strong>対象薬剤（「薬剤名：〜」）</strong>が分かるか</li>
-            <li>何を確認したか（症状・受診の経緯、併用薬、服薬状況、検査値等）が書かれているか</li>
-            <li>確認しただけで終わらず、<strong>患者の状況に応じた指導内容</strong>になっているか</li>
-            <li>「副作用・服薬状況等の変化によるロ」では、<strong>変化の確認・指導が必要と判断した理由・指導内容</strong>が残っているか</li>
-          </ul>
-        </div>
-
-        <p style="font-size:12px;color:var(--sub);margin-top:10px;">
-          ※ 各薬効群ページには、その薬効に特有の「確認されやすいポイント」を記載している。<br />
-          処方内容そのものへの指摘（漫然投与・適応外等）は <a href="個別指導で問われる記載.html" style="color:var(--blue);">個別指導で問われる項目</a> を参照。
-        </p>
-      </section>
-    </main>
+      <div class="card finder" id="find">
+        <div class="card-title">薬剤名で探す</div>
+        <input type="search" id="q" placeholder="商品名を入力（例：リクシアナ、デパケン）" autocomplete="off" />
+        <div class="res" id="res"></div>
+        <div class="empty" id="empty" hidden>見つからない場合は、先発品の商品名で探す。</div>
+      </div>
 
     </div>
-    </div>
-
-    <footer>調剤報酬・薬歴まとめ ／ 薬歴マニュアル ／ ハイリスク薬指導</footer>
 
     <script>
-      // サイドスティッキーTOC アクティブハイライト
-      (function () {
-        const navLinks = document.querySelectorAll('.sticky-toc a[href^="#"]');
-        const sections = Array.from(navLinks)
-          .map(a => document.querySelector(a.getAttribute('href')))
-          .filter(Boolean);
-        if (!sections.length) return;
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const id = entry.target.id;
-              navLinks.forEach(a => {
-                a.classList.toggle('is-active', a.getAttribute('href') === '#' + id);
-              });
-            }
-          });
-        }, { rootMargin: '-40px 0px -70% 0px', threshold: 0 });
-        sections.forEach(s => observer.observe(s));
-      })();
+      // [商品名, 薬効群ページ, 見出しのid]。公開時はページ名を正式に揃える
+      var DRUGS = [["アクトス","糖尿病用剤","tzd"],["アナフラニール","抗うつ薬","tca"],["アピドラ","膵臓ホルモン剤","bolus"],["アマリール","糖尿病用剤","su"],["アモキサン","抗うつ薬","tca"],["イグザレルト","血液凝固阻止剤","doac"],["イニシンク","糖尿病用剤","combo"],["イノレット30R","膵臓ホルモン剤","mix"],["イフェクサーSR","抗うつ薬","snri"],["インヴェガ","抗精神病薬","sda"],["エクア","糖尿病用剤","dpp4"],["エクメット","糖尿病用剤","combo"],["エビリファイ","抗精神病薬","dss-dsam"],["エフィエント","血液凝固阻止剤","antiplatelet"],["エリキュース","血液凝固阻止剤","doac"],["オイグルコン","糖尿病用剤","su"],["オゼンピック","糖尿病用剤","glp1-inj"],["オングリザ","糖尿病用剤","dpp4"],["カナグル","糖尿病用剤","sglt2"],["カナリア","糖尿病用剤","combo"],["グラクティブ","糖尿病用剤","dpp4"],["グラルギンBS","膵臓ホルモン剤","basal"],["グリミクロン","糖尿病用剤","su"],["グルコバイ","糖尿病用剤","agi"],["グルファスト","糖尿病用剤","su"],["グルベス","糖尿病用剤","combo"],["コントミン","抗精神病薬","typical"],["サインバルタ","抗うつ薬","snri"],["ザズベイ","抗うつ薬","zuranolone"],["ザファテック","糖尿病用剤","dpp4"],["ジェイゾロフト","抗うつ薬","ssri"],["ジプレキサ","抗精神病薬","marta"],["ジャディアンス","糖尿病用剤","sglt2"],["ジャヌビア","糖尿病用剤","dpp4"],["シュアポスト","糖尿病用剤","su"],["スーグラ","糖尿病用剤","sglt2"],["スージャヌ","糖尿病用剤","combo"],["スターシス","糖尿病用剤","su"],["セイブル","糖尿病用剤","agi"],["セレニカR","気分安定薬","vpa"],["セレネース","抗精神病薬","typical"],["セロクエル","抗精神病薬","marta"],["ソニアス","糖尿病用剤","combo"],["ソリクア","膵臓ホルモン剤","glp1-combo"],["ゾルトファイ","膵臓ホルモン剤","glp1-combo"],["ツイミーグ","糖尿病用剤","imeglimin"],["テグレトール","気分安定薬","cbz"],["デジレル","抗うつ薬","nassa-sari"],["デパケン／デパケンR","気分安定薬","vpa"],["テトラミド","抗うつ薬","tca"],["テネリア","糖尿病用剤","dpp4"],["デプロメール","抗うつ薬","ssri"],["デベルザ","糖尿病用剤","sglt2"],["トフラニール","抗うつ薬","tca"],["トラゼンタ","糖尿病用剤","dpp4"],["トラディアンス","糖尿病用剤","combo"],["トリプタノール","抗うつ薬","tca"],["トリンテリックス","抗うつ薬","srim"],["トルリシティ","糖尿病用剤","glp1-inj"],["トレシーバ","膵臓ホルモン剤","basal"],["トレドミン","抗うつ薬","snri"],["ネシーナ","糖尿病用剤","dpp4"],["ノボラピッド","膵臓ホルモン剤","bolus"],["ノボラピッド30/50/70Mix","膵臓ホルモン剤","mix"],["ノボリン30R","膵臓ホルモン剤","mix"],["ノボリンR","膵臓ホルモン剤","bolus"],["ノリトレン","抗うつ薬","tca"],["バイアスピリン","血液凝固阻止剤","antiplatelet"],["バレリン","気分安定薬","vpa"],["パキシル","抗うつ薬","ssri"],["ビクトーザ","糖尿病用剤","glp1-inj"],["ビプレッソ","抗精神病薬","marta"],["ヒューマリン3/7","膵臓ホルモン剤","mix"],["ヒューマリンR","膵臓ホルモン剤","bolus"],["ヒューマログ","膵臓ホルモン剤","bolus"],["ヒューマログMix25・50","膵臓ホルモン剤","mix"],["ヒルナミン","抗精神病薬","typical"],["ファスティック","糖尿病用剤","su"],["フィアスプ","膵臓ホルモン剤","bolus"],["フォシーガ","糖尿病用剤","sglt2"],["プラザキサ","血液凝固阻止剤","doac"],["プラビックス","血液凝固阻止剤","antiplatelet"],["ブリリンタ","血液凝固阻止剤","antiplatelet"],["プレタール","血液凝固阻止剤","antiplatelet"],["ベイスン","糖尿病用剤","agi"],["マリゼブ","糖尿病用剤","dpp4"],["マンジャロ","糖尿病用剤","gip-glp1"],["メタクト","糖尿病用剤","combo"],["メトアナ","糖尿病用剤","combo"],["メトグルコ","糖尿病用剤","bg"],["メトホルミン","糖尿病用剤","bg"],["ライゾデグ","膵臓ホルモン剤","mix"],["ラツーダ","抗精神病薬","sda"],["ラミクタール","気分安定薬","ltg"],["ランタス","膵臓ホルモン剤","basal"],["ランタスXR","膵臓ホルモン剤","basal"],["リーマス","気分安定薬","lithium"],["リクシアナ","血液凝固阻止剤","doac"],["リスパダール","抗精神病薬","sda"],["リフレックス","抗うつ薬","nassa-sari"],["リベルサス","糖尿病用剤","glp1-po"],["ルーラン","抗精神病薬","sda"],["ルジオミール","抗うつ薬","tca"],["ルセフィ","糖尿病用剤","sglt2"],["ルボックス","抗うつ薬","ssri"],["ルムジェブ","膵臓ホルモン剤","bolus"],["レキサルティ","抗精神病薬","dss-dsam"],["レクサプロ","抗うつ薬","ssri"],["レスリン","抗うつ薬","nassa-sari"],["レベミル","膵臓ホルモン剤","basal"],["レメロン","抗うつ薬","nassa-sari"],["ロナセン","抗精神病薬","sda"],["ワーファリン","血液凝固阻止剤","warfarin"],["デパケン","抗てんかん薬","vpa"],["デパケンR","抗てんかん薬","vpa"],["セレニカR","抗てんかん薬","vpa"],["バレリン","抗てんかん薬","vpa"],["テグレトール","抗てんかん薬","cbz"],["ラミクタール","抗てんかん薬","ltg"],["イーケプラ","抗てんかん薬","lev"],["ビムパット","抗てんかん薬","lcm"],["フィコンパ","抗てんかん薬","per"],["トピナ","抗てんかん薬","tpm"],["エクセグラン","抗てんかん薬","zns"],["アレビアチン","抗てんかん薬","pht"],["ヒダントール","抗てんかん薬","pht"],["フェノバール","抗てんかん薬","phb"],["マイスタン","抗てんかん薬","bzd-ae"],["リボトリール","抗てんかん薬","bzd-ae"],["ランドセン","抗てんかん薬","bzd-ae"],["ガバペン","抗てんかん薬","gbp"],["ザロンチン","抗てんかん薬","esm"],["エピレオプチマル","抗てんかん薬","esm"],["ダイアップ","抗てんかん薬","rescue"],["ブコラム","抗てんかん薬","rescue"],["スピジア","抗てんかん薬","rescue"]];
+      var LABEL = { '膵臓ホルモン剤':'インスリン製剤' };
+      var q = document.getElementById('q'), res = document.getElementById('res'), empty = document.getElementById('empty');
+      function kata(s){ return s.replace(/[\u3041-\u3096]/g, function(c){ return String.fromCharCode(c.charCodeAt(0)+0x60); }).replace(/\s/g,'').toUpperCase(); }
+      function render(){
+        var v = kata(q.value); res.innerHTML = ''; empty.hidden = true;
+        if (!v) return;
+        var hit = DRUGS.filter(function(d){ return kata(d[0]).indexOf(v) >= 0; });
+        hit.forEach(function(d){
+          var a = document.createElement('a');
+          a.href = 'ハイリスク_' + d[1] + '.html#' + d[2];
+          a.innerHTML = d[0] + '<small>' + (LABEL[d[1]] || d[1]) + '</small>';
+          res.appendChild(a);
+        });
+        empty.hidden = hit.length > 0;
+      }
+      q.addEventListener('input', render);
     </script>
-      <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   </body>
 </html>

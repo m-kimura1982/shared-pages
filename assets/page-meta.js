@@ -53,7 +53,8 @@ window.__pageMeta = {
     "newUntil": "2026-08-25"
   },
   "yakureki/ハイリスク薬指導.html": {
-    "lastUpdated": "2026-08-12"
+    "lastUpdated": "2026-08-12",
+    "newUntil": "2026-10-11"
   },
   "yakureki/乳幼児服薬指導加算.html": {
     "lastUpdated": "2026-08-12"
@@ -85,7 +86,8 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-12"
   },
   "yakureki/ハイリスク_血液凝固阻止剤.html": {
-    "lastUpdated": "2026-08-12"
+    "lastUpdated": "2026-08-12",
+    "newUntil": "2026-10-11"
   },
   "yakureki/加算別記載一覧.html": {
     "lastUpdated": "2026-08-20",
@@ -427,5 +429,9 @@ window.__pageMeta = {
   },
   "事務/事務スタッフ向け_2026改定サマリ.html": {
     "lastUpdated": "2026-09-23"
+  },
+  "yakureki/ハイリスク_薬歴の書き方.html": {
+    "lastUpdated": "2026-10-04",
+    "newUntil": "2026-10-11"
   }
 };
