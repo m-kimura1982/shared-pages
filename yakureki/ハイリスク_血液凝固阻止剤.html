@@ -45,7 +45,6 @@
           <div class="check"><span>✓</span><span>抜歯・手術・内視鏡の予定と、休薬は医師の指示に従うこと</span></div>
           <div class="check"><span>✓</span><span>DOACは、年齢・体重・腎機能から見た用量の妥当性</span></div>
         </div>
-        <div class="box-blue" style="margin-top:14px;">記載例は<b>薬歴に残す文</b>で、患者への説明の台本ではない。重い副作用の伝え方は、患者の理解や不安に合わせて選ぶ。</div>
         <div class="grp-chips" style="margin-top:14px;">
           <a href="#warfarin">ワーファリン</a>
           <a href="#doac">DOAC<small>リクシアナ・エリキュース・イグザレルト・プラザキサ</small></a>
@@ -91,6 +90,10 @@
           <label class="mk-p"><input type="checkbox" data-on="i"><span>ビタミンKで効果が弱まるため、納豆・クロレラ・青汁は避けるよう説明。</span></label>
           <label class="mk-p"><input type="checkbox" data-on="i"><span>歯科や他科の受診時、市販薬を使うときは服用中であることを伝えるよう指導。</span></label>
           <label class="mk-p"><input type="checkbox" data-on="up down"><span>次回のPT-INRの検査予定を確認。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>妊娠中は服用できない薬のため、妊娠を希望するときや妊娠がわかったときは、すぐに主治医に相談するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>月経時の出血量が増えることがあるため、量が多いときや長引くときは主治医に相談するよう説明。</span></label>
+          <div class="mk-h">重篤な副作用<span class="mk-sub">説明したときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox"><span>飲み始めの時期に、皮膚が急に赤くなる・強く痛む・色が変わるなどが出たときはすぐに受診するよう説明。</span><span class="mk-tag">皮膚壊死</span></label>
           <div class="mk-out"></div>
           <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
         </div>
@@ -163,6 +166,9 @@
           <label class="mk-p"><input type="checkbox" data-on="i"><span>痛み止めなどの市販薬を使うとき、歯科を受診するときは服用中であることを伝えるよう指導。</span></label>
           <label class="mk-p"><input type="checkbox" data-on="down"><span>下痢や発熱で水分がとれないと腎機能がさらに下がり出血しやすくなるため、体調を崩したときは早めに主治医に連絡するよう説明。</span></label>
           <label class="mk-p"><input type="checkbox" data-drug="プラザキサ" data-on="i"><span>湿気に弱いため、服用の直前にPTPシートから取り出し、カプセルは開けずに服用するよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="プラザキサ" data-on="i"><span>食道にとどまると潰瘍を起こすことがあるため、コップ1杯程度の水で服用するよう指導。飲み込みにくさ・胸の痛み・強い胸やけが続くときは相談するよう説明。</span><span class="mk-tag">食道潰瘍</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="イグザレルト" data-on="i"><span>咳・血痰・息苦しさ・発熱が出たときは、速やかに主治医に連絡するよう指導。</span><span class="mk-tag">間質性肺疾患</span></label>
+          <label class="mk-p"><input type="checkbox"><span>月経時の出血量が増えることがあるため、量が多いときや長引くときは主治医に相談するよう説明。</span></label>
           <div class="mk-out"></div>
           <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
         </div>
@@ -228,10 +234,17 @@
           <label class="mk-p"><input type="checkbox" data-on="dapt"><span>ステント内に血栓ができるのを防ぐため、2剤とも自己判断で中止しないよう指導。</span></label>
           <label class="mk-p"><input type="checkbox" data-on="end"><span>残る1剤も再発予防のため続ける必要があり、自己判断で中止しないよう指導。</span></label>
           <label class="mk-p"><input type="checkbox" data-on="i dapt"><span>出血が止まりにくいときや、身に覚えのないあざが増えたときは主治医に連絡し、胃の痛みが続くときや黒い便が出たときは早めに受診するよう説明。</span></label>
-          <label class="mk-p"><input type="checkbox" data-on="head"><span>飲み始めに出やすく、続けるうちに軽くなることが多いと説明。強い場合や続く場合は、自己判断で中止せず主治医に相談するよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="head"><span>強い場合や続く場合は、自己判断で中止せず主治医に相談するよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>頭痛・動悸は飲み始めに出やすく、続けるうちに軽くなることが多いと説明。</span></label>
           <label class="mk-p"><input type="checkbox" data-on="gf"><span>休薬するかどうかは検査を行う医師と主治医の指示に従い、自己判断で中止しないよう指導。検査の予約時に服用中であることを伝えるよう説明。</span></label>
           <label class="mk-p"><input type="checkbox" data-on="i dapt"><span>抜歯や手術の予定があるときは、服用中であることを歯科医師・医師に伝えるよう指導。</span></label>
           <label class="mk-p"><input type="checkbox" data-drug="バイアスピリン" data-on="i dapt"><span>腸溶錠のため、かんだり砕いたりせずに服用するよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="ブリリンタ" data-on="i dapt"><span>飲み忘れたときは次の予定時刻に1回分を服用し、2回分を一度に飲まないよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>月経時の出血量が増えることがあるため、量が多いときや長引くときは主治医に相談するよう説明。</span></label>
+          <div class="mk-h">重篤な副作用<span class="mk-sub">説明したときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox" data-drug="プラビックス|エフィエント"><span>発熱、手足の点状のあざ、強いだるさ、食欲がない、意識がぼんやりするなどの症状が出たときはすぐに受診するよう説明。</span><span class="mk-tag">TTP</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="プラビックス|エフィエント"><span>突然の高熱、寒気、のどの痛みが出たときはすぐに受診するよう説明。</span><span class="mk-tag">無顆粒球症</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="プレタール"><span>胸の痛みや強い動悸が出たときは主治医に連絡するよう説明。</span><span class="mk-tag">狭心症</span></label>
           <div class="mk-out"></div>
           <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
         </div>
@@ -264,6 +277,7 @@
       // 記載例を組み立てる：場面を選ぶと、その場面でよく使う部品に自動でチェックが入る。
       // チェックは自由に付け外しでき、下の枠に1つの文として組み上がる。
       // 枠の中の〇〇は入力欄になっていて、打った値はチェックを付け外ししても残る。
+      // 部品の data-drug は「|」区切りで複数の薬剤に出せる。
       // 入力した内容は画面の中だけで使い、保存も送信もしない。
       document.querySelectorAll('.mk').forEach(function (mk) {
         var out = mk.querySelector('.mk-out'), hint = mk.querySelector('.mk-bar .hint'), hint0 = hint.textContent;
@@ -278,9 +292,16 @@
           var s = scene().value, d = drug();
           parts.forEach(function (p) {
             var on = (p.dataset.on || '').split(' ').indexOf(s) >= 0;
-            var okDrug = !p.dataset.drug || p.dataset.drug === d;
+            var okDrug = !p.dataset.drug || p.dataset.drug.split('|').indexOf(d) >= 0;
             p.checked = on && okDrug;
             p.closest('.mk-p').hidden = !okDrug;
+          });
+          // 見出しの下に表示する部品がなければ、見出しも隠す
+          [].slice.call(mk.querySelectorAll('.mk-h')).forEach(function (hd) {
+            if (!hd.querySelector('.mk-sub')) return;
+            var el = hd.nextElementSibling, any = false;
+            while (el && el.classList.contains('mk-p')) { if (!el.hidden) any = true; el = el.nextElementSibling; }
+            hd.hidden = !any;
           });
         }
         function segments() {
@@ -319,7 +340,7 @@
           var wrap = document.createElement('span');
           var sel = document.createElement('select');
           sel.className = 'mk-in';
-          [['', '処方目的を選ぶ']].concat(purposes.map(function (p) { return [p, p]; })).concat([['__other', 'その他（入力する）']])
+          [['', '処方目的を選択する']].concat(purposes.map(function (p) { return [p, p]; })).concat([['__other', 'その他（入力する）']])
             .forEach(function (o) { var op = document.createElement('option'); op.value = o[0]; op.textContent = o[1]; sel.appendChild(op); });
           sel.value = vals.purpose || '';
           wrap.appendChild(sel);

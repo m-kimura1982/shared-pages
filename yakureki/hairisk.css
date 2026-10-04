@@ -179,6 +179,9 @@ select.mk-in { padding:1px 2px; cursor:pointer; }
 .mk-bar .hint.warn { color:#9a4414; font-weight:700; }
 .mk-bar button { white-space:nowrap; flex-shrink:0; }
 .mk-h .mk-tools { float:right; display:flex; gap:6px; }
+.mk-p .mk-tag { order:-1; flex-shrink:0; align-self:flex-start; margin-top:2px; font-size:var(--text-xs); font-weight:700; line-height:1.6; color:#8c3a2e; background:#fbe4e0; border-radius:4px; padding:1px 7px; white-space:nowrap; }
+.mk-p input { order:-2; }
+.mk-h .mk-sub { font-weight:500; color:var(--txt-3); margin-left:8px; }
 .mk-tools button { font:inherit; font-size:var(--text-xs); font-weight:700; color:var(--blue); background:var(--white); border:1px solid #bcd3ee; border-radius:5px; padding:1px 9px; cursor:pointer; }
 .mk-tools button:hover { background:var(--box-blue); }
 .mk-fallback { display:block; width:100%; margin-top:8px; min-height:7em; font:inherit; font-size:var(--text-sm); line-height:1.8; padding:10px 12px; border:1.5px solid #d9681e; border-radius:var(--radius-sm); background:#fff; }

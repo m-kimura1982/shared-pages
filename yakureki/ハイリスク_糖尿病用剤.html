@@ -4,1646 +4,662 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex,nofollow,noarchive" />
-    <title>ハイリスク薬｜糖尿病用剤｜薬歴マニュアル</title>
-    <meta name="search-keywords" content="糖尿病,経口血糖降下薬,DPP-4,SGLT2,SU薬,ビグアナイド,メトホルミン,メトグルコ,ジャヌビア,トラゼンタ,エクア,アマリール,グリメピリド,フォシーガ,ジャディアンス,GLP-1,リベルサス,オゼンピック,マンジャロ,ツイミーグ,イメグリミン,低血糖,シックデイ,HbA1c" />
-    <meta property="og:title" content="ハイリスク薬の薬歴記載｜糖尿病用剤" />
-    <meta property="og:description" content="特定薬剤管理指導加算1の薬歴記載例。糖尿病用剤について、薬効群ごとに「何を確認し、どう指導し、薬歴にどう残すか」を整理したページ。" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://m-kimura1982.github.io/shared-pages/yakureki/ハイリスク_糖尿病用剤.html" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="yakureki.css" />
+    <title>ハイリスク薬 糖尿病用剤｜薬歴マニュアル</title>
+    <meta name="search-keywords" content="糖尿病,血糖降下薬,DPP-4,ジャヌビア,グラクティブ,トラゼンタ,エクア,テネリア,ネシーナ,ザファテック,マリゼブ,メトホルミン,メトグルコ,ビグアナイド,SGLT2,フォシーガ,ジャディアンス,カナグル,スーグラ,ルセフィ,デベルザ,SU薬,アマリール,グリミクロン,オイグルコン,グリニド,スターシス,ファスティック,グルファスト,シュアポスト,GLP-1,リベルサス,オゼンピック,トルリシティ,ビクトーザ,マンジャロ,α-GI,ベイスン,セイブル,グルコバイ,アクトス,ピオグリタゾン,ツイミーグ,配合剤,エクメット,スージャヌ,低血糖,ブドウ糖,シックデイ,造影剤,ケトアシドーシス" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/fold.css" />
-    <style>
-      /* 薬剤群ブロック */
-      .drug-block {
-        background: var(--white);
-        border: 1px solid var(--border);        border-radius: var(--radius-sm);
-        padding:  18px 20px;
-        margin-bottom:  18px;
-      }
-      .drug-block-head {
-        display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
-        margin-bottom: 10px; padding-bottom: 8px;
-        border-bottom: 1px solid var(--border);
-      }
-      .drug-block-name { font-size: 17px; font-weight: 700; color: var(--ink); }
-      .drug-block-sub  { font-size: 12px; color: var(--sub); }
-
-      /* テンプレ直上の注意（重要語のみ赤） */
-      .tpl-warn {
-        background: var(--warn-bg);
-        border: 1px solid var(--warn-border);
-        border-radius: 4px;
-        padding: 10px 14px;
-        margin: 12px 0 8px;
-        font-size: 13px;
-        line-height: 1.7;
-        color: var(--ink);
-      }
-      .tpl-warn-title {
-        font-weight: 700; color: var(--ink);
-        font-size: 13px; margin-bottom: 4px;
-      }
-      .tpl-warn ul { margin: 4px 0 0 20px; padding: 0; }
-      .tpl-warn ul li { margin-bottom: 2px; }
-      .tpl-warn strong { color: var(--ink); font-weight: 700; }
-
-      /* 短文テンプレ（基本 / 追記） */
-      .tpl-set { margin-top: 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
-      .tpl-mini {
-        display: flex; align-items: flex-start; gap: 10px;
-        background: var(--white); border: none;
-        border-bottom: 1px solid #edf0f4;
-        padding: 11px 14px; margin: 0;
-        position: relative;
-      }
-      .tpl-mini:last-child { border-bottom: none; }
-      .tpl-mini:nth-child(even) { background: #fafbfd; }
-      .tpl-mini .tpl-tag {
-        flex-shrink: 0; font-size: 11px; font-weight: 700;
-        padding: 3px 10px; border-radius: 100px;
-        letter-spacing: .04em; line-height: 1.6;
-        white-space: nowrap;
-      }
-      .tpl-mini .tpl-tag.base   { background: var(--blue-light); color: var(--blue); }
-      .tpl-mini .tpl-tag.init   { background: var(--blue-light); color: var(--blue); }
-      .tpl-mini .tpl-tag.change { background: #e0f2f1; color: #0a6b63; border: none; }
-      .tpl-mini .tpl-tag.add    { background: #f2f4f8; color: #4b5563; border: 1px solid #d7dce3; }
-      .tpl-mini .tpl-tag.se     { background: #fef3e8; color: #b45309; border: 1px solid #f5d4a1; }
-
-      /* 薬剤ブロック内：この薬で確認すること */
-      .drug-check-box {
-        background: #f7f8fa;
-        border: 1px solid #e1e5ea;        border-radius: 4px;
-        padding: 12px 16px;
-        margin: 8px 0 12px;
-      }
-      .drug-check-box-title {
-        font-weight: 700; color: var(--blue);
-        font-size: 12.5px; letter-spacing: .04em;
-        margin-bottom: 4px;
-      }
-      .drug-check-box ul { margin: 0; padding-left: 20px; }
-      .drug-check-box ul li { font-size: 13px; line-height: 1.7; margin-bottom: 2px; }
-      /* 確認／伝える 2行構造 */
-      .drug-check-box .dcb-row {
-        display: flex; gap: 8px; align-items: flex-start;
-        margin: 4px 0; font-size: 13px; line-height: 1.75;
-      }
-      .drug-check-box .dcb-label {
-        flex-shrink: 0; font-size: 10px; font-weight: 700;
-        padding: 1px 9px; border-radius: 100px;
-        letter-spacing: .04em; line-height: 1.8;
-        background: var(--blue-light); color: var(--blue);
-        min-width: 3em; text-align: center;
-      }
-      .drug-check-box .dcb-row.tell .dcb-label {
-        background: #fef3e8; color: #b45309;
-        border: none; padding: 1px 9px;
-      }
-      .drug-check-box .dcb-row.role .dcb-label {
-        background: #f1f5f9; color: #475569;
-        border: none; padding: 1px 9px;
-      }
-      .drug-check-box .dcb-row.role {
-        position: relative; padding-right: 56px;
-      }
-      .drug-check-box .dcb-row.role .copy-mini {
-        position: absolute; top: 2px; right: 4px;
-        background: #475569; color: var(--white); border: none;
-        border-radius: 4px; font-size: 11px; font-weight: 700;
-        padding: 3px 8px; cursor: pointer;
-        font-family: "Noto Sans JP", sans-serif;
-      }
-      .drug-check-box .dcb-row.role .copy-mini:hover { background: #334155; }
-      .drug-check-box .dcb-row.role .copy-mini.copied { background: var(--good-border); }
-
-      /* 折りたたみ式 指導補足 */
-      /* 詳細・背景知識の折りたたみ：見た目は assets/fold.css */
-      .guide-details { margin: 10px 0 14px; }
-      details.guide-details.fold-in > summary { font-size: 13.5px; }
-      .guide-details-body {
-        padding: 12px 18px 14px; font-size: 13.5px; line-height: 1.75;
-      }
-      .guide-details-body h4 {
-        font-size: 13px; font-weight: 700;
-        margin: 8px 0 4px; color: var(--ink);
-      }
-      .guide-details-body p { margin: 4px 0; }
-      .guide-details-body ul { margin: 4px 0; padding-left: 22px; }
-      .guide-details-body ul li { margin-bottom: 2px; }
-      .guide-details-body .patient-say {
-        background: #fff; border-left: 3px solid #c9def5;
-        padding: 6px 10px; margin-top: 6px;
-        font-size: 12.5px; color: var(--sub);
-      }
-
-      /* 薬剤名索引 */
-      .drug-index {
-        background: #fafbfc;
-        border: 1px solid #e1e5ea;
-        border-radius: 6px;
-        padding: 12px 16px;
-        margin-bottom: 16px;
-      }
-      .drug-index-title {
-        font-size: 12px; font-weight: 700;
-        color: var(--blue);
-        letter-spacing: .04em;
-        margin-bottom: 8px;
-      }
-      .drug-index-row {
-        display: flex; align-items: baseline; gap: 6px;
-        flex-wrap: wrap; margin-bottom: 4px; font-size: 12.5px;
-      }
-      .drug-index-row .di-group {
-        color: var(--sub); font-weight: 700;
-        min-width: 5.5em; flex-shrink: 0;
-      }
-      .drug-index-row a {
-        background: #fff; border: 1px solid #d7dce3;
-        border-radius: 100px; padding: 3px 11px;
-        color: var(--ink); text-decoration: none;
-        white-space: nowrap;
-      }
-      .drug-index-row a:hover {
-        background: var(--blue); color: #fff; border-color: var(--blue);
-      }
-
-      /* 注意バナー（防波堤） */
-      .caveat-box {
-        background: #fff8e6; border: 1px solid #f5d98a;
-        border-left: 4px solid #d97706;
-        border-radius: var(--radius-sm);
-        padding: 12px 16px; margin: 8px 0 16px;
-      }
-      .caveat-box-title {
-        font-weight: 700; color: #92400e;
-        font-size: 14px; margin-bottom: 4px;
-      }
-      .caveat-box p { font-size: 13px; line-height: 1.7; margin: 0; }
-      .tag-legend {
-        display: flex; flex-wrap: wrap; gap: 10px;
-        margin: 8px 0 16px; font-size: 12px; color: var(--sub);
-      }
-      .tag-legend span { display: inline-flex; align-items: center; gap: 4px; }
-      .tag-legend i {
-        display: inline-block; width: 10px; height: 10px; border-radius: 2px;
-      }
-      .tpl-mini .tpl-text {
-        flex: 1; font-size: 13.5px; line-height: 1.7;
-        padding-right: 56px; white-space: pre-wrap;
-      }
-      .tpl-mini .copy-mini {
-        position: absolute; top: 10px; right: 10px;
-        background: #f3f4f6; color: #374151; border: 1px solid #d1d5db;
-        border-radius: 4px; font-size: 11px; font-weight: 700;
-        padding: 4px 10px; cursor: pointer;
-        font-family: "Noto Sans JP", sans-serif;
-      }
-      .tpl-mini .copy-mini:hover { background: #e5e7eb; border-color: #9ca3af; }
-      .tpl-mini .copy-mini.copied { background: var(--good-border); color: #fff; border-color: var(--good-border); }
-
-      /* モバイル：tpl-mini を縦積みにする（タグが横圧縮で縦長になる対策） */
-      @media (max-width: 640px) {
-        .tpl-mini {
-          flex-direction: column;
-          align-items: stretch;
-          gap: 6px;
-          padding-bottom: 36px;
-        }
-        .tpl-mini .tpl-tag {
-          align-self: flex-start;
-          max-width: 100%;
-          white-space: normal;
-        }
-        .tpl-mini .tpl-text { padding-right: 0; }
-        .tpl-mini .copy-mini { top: auto; bottom: 6px; right: 8px; }
-      }
-
-      /* インスリン誘導 */
-      .pivot-box {
-        display: block;
-        background: #f3f8ff; border: 1px solid #c9def5;
-        border-left: 4px solid var(--blue);
-        border-radius: var(--radius-sm);
-        padding: 14px 18px;
-        text-decoration: none; color: var(--ink);
-      }
-      .pivot-box:hover { background: #e8f1fb; }
-      .pivot-box-title { font-weight: 700; color: var(--blue); margin-bottom: 4px; }
-      .pivot-box-desc  { font-size: 13px; color: var(--ink); line-height: 1.65; }
-
-      .warn-box ul { padding-left: 22px; margin-top: 4px; }
-      .warn-box ul li { margin-bottom: 4px; line-height: 1.7; }
-
-      /* SECTION 1 確認事項 - 簡潔dl */
-      .ci-list dt {
-        font-size: 14px; font-weight: 700; color: var(--ink);
-        background: #f2f4f8; padding: 8px 14px; border-radius: 4px;
-        margin-top: 10px;
-      }
-      .ci-list dd {
-        padding: 6px 14px 6px 14px; font-size: 13px; line-height: 1.75;
-      }
-      .ci-list dd .ci-l { display: inline-block; min-width: 4.5em; font-weight: 700; color: var(--blue); }
-
-      /* ===== サイドスティッキー目次（PC 880px+） ===== */
-      [id] { scroll-margin-top:calc(var(--sn-header-h, 0px) + 16px); }
-      .sticky-toc { display: none; }
-
-      /* ===== スマホ用インライン目次（880px未満のみ表示） ===== */
-      .toc-inline { margin: 0 0 18px; }
-      .toc-inline .toc-links { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 14px 14px; }
-      .toc-inline .toc-links a { font-size: 12px; background: var(--blue-light); color: var(--blue); border-radius: 4px; padding: 2px 9px; text-decoration: none; }
-      @media (min-width: 880px) { .toc-inline { display: none; } }
-
-      @media (min-width: 880px) {
-        .layout-outer {
-          max-width: 1240px;
-          margin: 0 auto;
-          padding: 28px 20px 0;
-          display: grid;
-          grid-template-columns: 220px minmax(0, 1fr);
-          gap: 28px;
-          align-items: start;
-        }
-        /* PCでは page-head・main の max-width をリセット */
-        .layout-outer .page-head { max-width: none; margin: 0 0 16px; padding: 0; }
-        .layout-outer main { max-width: none; margin: 0; padding: 0; }
-
-        .sticky-toc {
-          display: block;
-          position: sticky;
-          top: calc(var(--sn-header-h, 0px) + 20px);
-          background: var(--white);
-          border: 1px solid var(--border);
-          border-radius: var(--radius-sm);
-          padding: 12px 8px 14px;
-          max-height: calc(100vh - var(--sn-header-h, 0px) - 40px);
-          overflow-y: auto;
-          scrollbar-width: thin;
-          scrollbar-color: var(--border) transparent;
-        }
-        .sticky-toc::-webkit-scrollbar { width: 4px; }
-        .sticky-toc::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-
-        .sticky-toc-head {
-          padding: 0 8px 8px;
-          margin-bottom: 6px;
-          border-bottom: 1px solid var(--border);
-        }
-        .sticky-toc-label {
-          display: block;
-          font-size: 11px;
-          font-weight: 700;
-          color: var(--blue);
-          letter-spacing: 0.12em;
-        }
-        .sticky-toc-group {
-          font-size: 10px;
-          font-weight: 700;
-          color: var(--sub);
-          letter-spacing: 0.08em;
-          padding: 10px 10px 4px;
-          margin-top: 4px;
-        }
-        .sticky-toc a {
-          display: block;
-          font-size: 13px;
-          color: var(--ink);
-          text-decoration: none;
-          padding: 5px 10px;
-          border-radius: 4px;
-          line-height: 1.45;
-          border-left: 3px solid transparent;
-          margin-bottom: 1px;
-          transition: background 0.12s, color 0.12s, border-color 0.12s;
-        }
-        .sticky-toc a:hover {
-          background: var(--blue-light);
-          color: var(--blue);
-        }
-        .sticky-toc a.is-active {
-          background: var(--blue-light);
-          color: var(--blue);
-          font-weight: 700;
-          border-left-color: var(--blue);
-        }
-      }
-      @media print {
-        .sticky-toc { display: none !important; }
-        .layout-outer { display: block !important; padding: 0; }
-      }
-
-    </style>
+    <link rel="stylesheet" href="hairisk.css" />
   </head>
   <body>
-  <script src="../assets/site-header.js" defer></script>
+    <script src="../assets/site-header.js" defer></script>
 
+    <div class="page">
 
-    <div class="layout-outer">
-
-    <nav class="sticky-toc" aria-label="目次">
-      <div class="sticky-toc-head">
-        <span class="sticky-toc-label">CONTENTS</span>
+      <div class="page-title">
+        <h1>糖尿病用剤</h1>
+        <p>飲み薬とGLP-1受容体作動薬の確認する項目と記載例。インスリン製剤は別のページ。</p>
       </div>
-      <a href="#guide">このページの使い方</a>
-      <div class="sticky-toc-group">▼ まず確認</div>
-      <a href="#lowline">算定時の記載ポイント</a>
-      <a href="#sec-checklist">簡易チェックリスト</a>
-      <a href="#drug-search">薬剤名から探す</a>
-      <div class="sticky-toc-group">▼ 薬剤群別</div>
-      <a href="#dpp4">DPP-4阻害薬</a>
-      <a href="#sglt2">SGLT2阻害薬</a>
-      <a href="#su">SU薬・グリニド系</a>
-      <a href="#bg">ビグアナイド系（BG）</a>
-      <a href="#glp1-po">GLP-1経口（リベルサス）</a>
-      <a href="#glp1-inj">GLP-1注射</a>
-      <a href="#gip-glp1">GIP/GLP-1（マンジャロ）</a>
-      <a href="#agi">α-GI</a>
-      <a href="#tzd">チアゾリジン系（TZD）</a>
-      <a href="#imeglimin">イメグリミン（ツイミーグ）</a>
-      <a href="#combo">配合剤</a>
-      <div class="sticky-toc-group">▼ 必要時</div>
-      <a href="#section3">副作用・服薬状況等の変化によるロ</a>
-      <div class="sticky-toc-group">▼ 参考</div>
-      <a href="#section1">共通確認ポイント</a>
-      <a href="#kobetsu">個別指導</a>
-      <div class="sticky-toc-group">▼ 他の薬効群</div>
-      <a href="ハイリスク_血液凝固阻止剤.html">血液凝固阻止剤</a>
-      <a href="ハイリスク_膵臓ホルモン剤.html">インスリン製剤</a>
-      <a href="ハイリスク_抗精神病薬.html">抗精神病薬</a>
-      <a href="ハイリスク_抗うつ薬.html">抗うつ薬</a>
-      <a href="ハイリスク_気分安定薬.html">気分安定薬</a>
-      <a href="ハイリスク_抗てんかん薬.html">抗てんかん薬</a>
-    </nav>
 
-    <div>
+      <nav class="hr-nav" aria-label="ハイリスク薬のページ">
+        <div class="row">
+          <a class="i" href="ハイリスク薬指導.html">全体の流れ</a>
+          <a class="i" href="ハイリスク_薬歴の書き方.html">薬歴の書き方</a>
+        </div>
+        <div class="row grp">
+          <a class="i" href="ハイリスク_血液凝固阻止剤.html">血液凝固阻止剤</a>
+          <span class="i cur" aria-current="page">糖尿病用剤</span>
+          <a class="i" href="ハイリスク_膵臓ホルモン剤.html">インスリン製剤</a>
+          <a class="i" href="ハイリスク_抗精神病薬.html">抗精神病薬</a>
+          <a class="i" href="ハイリスク_抗うつ薬.html">抗うつ薬</a>
+          <a class="i" href="ハイリスク_気分安定薬.html">気分安定薬</a>
+          <a class="i" href="ハイリスク_抗てんかん薬.html">抗てんかん薬</a>
+        </div>
+      </nav>
 
-    <div class="page-head">
-      <span class="page-tag">HIGH-RISK 09</span>
-      <h1 class="page-title">糖尿病用剤</h1>
-      <p class="page-desc">
-        <strong>糖尿病用剤</strong>（経口血糖降下薬・GLP-1受容体作動薬）の特定薬剤管理指導加算1の薬歴記載例。新規（イ）・用法用量変更（ロ）に加え、副作用・服薬状況等の変化によるロも扱う。<br />
-        インスリン製剤（膵臓ホルモン剤）は別ページ。
-      </p>
+      <div class="card" id="point">
+        <div class="card-title">この薬効群で記載すること</div>
+        <div class="blist">
+          <div class="check"><span>✓</span><span>新たに処方されたときは、処方目的と医師から受けた説明（SGLT2阻害薬は糖尿病の治療か）</span></div>
+          <div class="check"><span>✓</span><span>低血糖の症状の有無と、起きたときの対処を伝えたこと（どの薬も電子添文で説明が求められている）</span></div>
+          <div class="check"><span>✓</span><span>発熱・下痢・嘔吐で食事がとれないとき（シックデイ）の対応</span></div>
+          <div class="check"><span>✓</span><span>薬ごとに気をつけること（メトホルミンの造影剤検査、SGLT2阻害薬の脱水、GLP-1の吐き気など）</span></div>
+        </div>
+        <div class="grp-chips" style="margin-top:14px;">
+          <a href="#common">低血糖・シックデイ</a>
+          <a href="#dpp4">DPP-4阻害薬</a>
+          <a href="#bg">メトホルミン</a>
+          <a href="#sglt2">SGLT2阻害薬</a>
+          <a href="#su">SU薬・グリニド</a>
+          <a href="#glp1">GLP-1受容体作動薬<small>リベルサス・オゼンピック・マンジャロなど</small></a>
+          <a href="#agi">α-GI</a>
+          <a href="#tzd">アクトス</a>
+          <a href="#imeglimin">ツイミーグ</a>
+          <a href="#combo">配合剤</a>
+        </div>
+      </div>
+
+      <!-- ===== 共通：低血糖とシックデイ ===== -->
+      <div class="card" id="common">
+        <div class="card-title">どの薬にも共通：低血糖とシックデイ</div>
+        <div class="stack">
+          <div>
+            <div class="sub-title">低血糖</div>
+            <div class="blist">
+              <div class="bullet"><span>・</span><span>患者向医薬品ガイドの自覚症状：強い空腹感、冷や汗、ふるえ、動悸、顔色が悪くなる、頭痛、めまい。進むと、ぼんやりする・意識がなくなる。</span></div>
+              <div class="bullet"><span>・</span><span>人の助けが必要なほどの低血糖（重症低血糖）が一度でも起きたら、すぐに主治医に連絡するよう伝えておく（糖尿病標準診療マニュアル）。</span></div>
+              <div class="bullet"><span>・</span><span>どの薬も、低血糖の症状と対処を患者に説明するよう電子添文に書かれている。起きやすいのはSU薬・グリニド・インスリン。DPP-4阻害薬・メトホルミン・SGLT2阻害薬・GLP-1は単独では起こしにくいが、これらと併用すると起きやすくなる。</span></div>
+              <div class="bullet"><span>・</span><span>対処はブドウ糖、または砂糖や糖分を含むジュースをとる。<span class="marker">α-GIを併用している人は、砂糖では回復が遅れるのでブドウ糖をとる。</span></span></div>
+              <div class="bullet"><span>・</span><span>食事を抜いたとき・遅れたとき、いつもより体を動かしたとき、飲酒したときに起きやすい。車の運転中に起きると危ないので、運転する人には特に伝えておく。</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="sub-title">シックデイ</div>
+            <div class="blist">
+              <div class="bullet"><span>・</span><span>発熱・下痢・嘔吐で食事がとれない日は、薬によって休むもの・減らすものがある。どうするかは患者ごとに主治医が決める。<span class="marker">食事がとれないときは必ず主治医に連絡するよう普段から伝えておき、それを記載する</span>（糖尿病標準診療マニュアル）。</span></div>
+              <div class="bullet"><span>・</span><span>メトホルミンは、シックデイのときはいったん服用を中止して医師に相談するよう患者に指導することが、電子添文で求められている。SGLT2阻害薬は、シックデイには必ず休薬するよう患者に説明することが、糖尿病標準診療マニュアルで求められている。</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== DPP-4阻害薬 ===== -->
+      <div class="card" id="dpp4">
+        <div class="card-title">DPP-4阻害薬</div>
+        <div class="drugs">ジャヌビア・グラクティブ（シタグリプチン）／トラゼンタ（リナグリプチン）／エクア（ビルダグリプチン）／テネリア（テネリグリプチン）／ネシーナ（アログリプチン）／オングリザ／スイニー／週1回：ザファテック・マリゼブ</div>
+
+        <div class="tpl-sec">確認する項目</div>
+        <div class="kakunin">
+          <div class="check"><span>✓</span><span>処方目的と医師から受けた説明</span></div>
+          <div class="check"><span>✓</span><span>SU薬・インスリンとの併用（低血糖が起きやすくなる）、GLP-1との重複</span></div>
+          <div class="check"><span>✓</span><span>腎機能（薬によって腎機能で用量が変わる）</span></div>
+          <div class="check"><span>✓</span><span>強い腹痛・嘔吐、皮膚の水ぶくれ・ただれがないか</span></div>
+        </div>
+
+        <div class="tpl-sec">記載例をつくる</div>
+        <div class="mk" data-purpose="2型糖尿病の血糖コントロール">
+          <div class="mk-h">薬剤</div>
+          <div class="mk-scenes mk-drug">
+            <label><input type="radio" name="pd" value="ジャヌビア" checked><span>ジャヌビア</span></label>
+            <label><input type="radio" name="pd" value="グラクティブ"><span>グラクティブ</span></label>
+            <label><input type="radio" name="pd" value="トラゼンタ"><span>トラゼンタ</span></label>
+            <label><input type="radio" name="pd" value="エクア"><span>エクア</span></label>
+            <label><input type="radio" name="pd" value="テネリア"><span>テネリア</span></label>
+            <label><input type="radio" name="pd" value="〇〇"><span>その他</span></label>
+          </div>
+          <div class="mk-h">場面</div>
+          <div class="mk-scenes">
+            <label><input type="radio" name="p" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
+            <label><input type="radio" name="p" value="add" data-text="{薬}：新規。〇〇（SU薬）を服用中で、低血糖が起きやすくなる組み合わせのため、指導が必要と判断。"><span><b>イ</b>SU薬に追加</span></label>
+            <label><input type="radio" name="p" value="down" data-text="{薬}：〇mg→〇mgに減量。腎機能の低下による減量と本人より。"><span><b>ロ</b>減量</span></label>
+          </div>
+          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <label class="mk-p"><input type="checkbox" data-on="add down"><span>低血糖の症状なし。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>SU薬・インスリンの併用なし。</span></label>
+          <div class="mk-h">指導</div>
+          <label class="mk-p"><input type="checkbox" data-on="i add"><span>低血糖の症状（強い空腹感・冷や汗・ふるえ）と、起きたときはブドウ糖や糖分を含むものをとるよう説明。空腹時や食事が遅れたときに起きやすいと説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i add"><span>激しい腹痛が続く・吐くときはすぐに受診するよう説明。</span><span class="mk-tag">急性膵炎</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i add"><span>皮膚に水ぶくれ・ただれが出たときは早めに主治医に連絡するよう説明。</span><span class="mk-tag">類天疱瘡</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i add down"><span>血液検査の結果を薬局でも見せてもらうよう依頼。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>週1回の薬のため、服用する曜日を決めるよう説明。飲み忘れたときは〇〇するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i add"><span>血糖値が下がっても自己判断で中止しないよう指導。シックデイ（発熱・下痢・嘔吐で食事がとれないとき）の飲み方は、主治医の指示に従うよう説明。</span></label>
+          <div class="mk-h">重篤な副作用<span class="mk-sub">説明したときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox"><span>ひどい便秘、おなかの強い張り、腹痛・嘔吐が続くときはすぐに受診するよう説明。</span><span class="mk-tag">腸閉塞</span></label>
+          <div class="mk-out"></div>
+          <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
+        </div>
+
+        <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>SU薬・グリニド・インスリンと併用すると低血糖が起きやすくなるため、電子添文ではこれらの減量を検討することとされている。糖尿病標準診療マニュアルでは、SU薬に追加するときはSU薬を半量にするとしている。GLP-1との併用は避ける。SU薬が減らずに追加されたときは、低血糖の症状と対処を伝えたことを残す。</span></div>
+            <div class="bullet"><span>・</span><span>腎機能で用量を調節する薬：ジャヌビア・グラクティブ、ネシーナ、オングリザ、ザファテック、マリゼブなど。トラゼンタ・テネリアは腎機能による調節が要らない。</span></div>
+            <div class="bullet"><span>・</span><span>重大な副作用に急性膵炎と類天疱瘡がある。急性膵炎は、持続的な激しい腹痛・嘔吐などの初期症状が出たら速やかに受診するよう患者に指導することが、電子添文で求められている。類天疱瘡は水ぶくれ・ただれで気づく。まれなので、病名ではなく症状と連絡の目安で伝えることが多い。</span></div>
+          </div>
+        </div></details>
+      </div>
+
+      <!-- ===== メトホルミン ===== -->
+      <div class="card" id="bg">
+        <div class="card-title">メトホルミン<span class="qual">ビグアナイド</span></div>
+        <div class="drugs">メトグルコ・メトホルミン塩酸塩（メトホルミン）</div>
+
+        <div class="tpl-sec">確認する項目</div>
+        <div class="kakunin">
+          <div class="check"><span>✓</span><span>処方目的と医師から受けた説明</span></div>
+          <div class="check"><span>✓</span><span>腎機能（eGFR 30未満は禁忌）</span></div>
+          <div class="check"><span>✓</span><span>飲酒の量（多量の飲酒は禁忌）</span></div>
+          <div class="check"><span>✓</span><span>造影剤を使う検査（CTなど）の予定</span></div>
+          <div class="check"><span>✓</span><span>吐き気・下痢・食欲がないなどの消化器症状</span></div>
+        </div>
+
+        <div class="tpl-sec">記載例をつくる</div>
+        <div class="mk" data-drug="メトグルコ" data-purpose="2型糖尿病の血糖コントロール">
+          <div class="mk-h">場面</div>
+          <div class="mk-scenes">
+            <label><input type="radio" name="b" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
+            <label><input type="radio" name="b" value="up" data-text="{薬}：〇mg→〇mgに増量。血糖値が下がりきらないため増量と本人より。"><span><b>ロ</b>増量</span></label>
+            <label><input type="radio" name="b" value="ct" data-text="{薬}：〇月〇日に造影剤を使うCT検査の予定ありと本人より。検査の前後は服用を中止する必要があるため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>造影剤検査の予定</span></label>
+            <label><input type="radio" name="b" value="gi" data-text="{薬}：飲み始めてから下痢と吐き気があると本人より。乳酸アシドーシスの初期症状のこともあるため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>下痢・吐き気</span></label>
+          </div>
+          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>飲酒は〇〇程度と本人より。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>直近のeGFRは〇〇。</span></label>
+          <div class="mk-h">指導</div>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>吐き気・下痢・食欲がないなどの症状が続くときは主治医に相談するよう説明。シックデイ（発熱・下痢・嘔吐で食事や水分がとれないとき）は、いったん服用を中止して主治医に相談するよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>お酒を多く飲むと副作用が起きやすくなるため、飲みすぎないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>低血糖の症状（強い空腹感・冷や汗・ふるえ）と、起きたときはブドウ糖や糖分を含むものをとるよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>造影剤を使う検査を受けるときは、服用中であることを医師に伝えるよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="ct"><span>中止と再開の時期は検査を行う医師の指示に従うよう指導（検査後48時間は再開しない）。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="gi"><span>強いだるさ・筋肉痛・息が荒くなるなどを伴うときや、症状が強くなるときはすぐに受診するよう指導。食事がとれないときはいったん服用を中止して主治医に相談するよう説明。</span><span class="mk-tag">乳酸アシドーシス</span></label>
+          <div class="mk-out"></div>
+          <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
+        </div>
+
+        <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>警告は乳酸アシドーシス。起こしやすいのは腎機能の低下、脱水、多量の飲酒、高齢、造影剤の使用など。自覚症状は吐き気・嘔吐・腹痛・下痢、倦怠感、筋肉痛、過呼吸。</span></div>
+            <div class="bullet"><span>・</span><span>ヨード造影剤を使う検査では一時的に中止し、検査後48時間は再開しない（緊急の検査を除く）。糖尿病標準診療マニュアルでは、eGFR 60未満または不明なら検査の48時間前から、60以上なら検査当日から、いずれも検査後48時間まで休薬としている。</span></div>
+            <div class="bullet"><span>・</span><span>禁忌：eGFR 30未満、重度の肝機能障害、脱水、多量の飲酒、重症感染症・手術前後など。eGFR 30〜45は、治療上の有益性が危険性を上回ると判断される場合にのみ投与する。妊婦にも禁忌。75歳以上の新規投与は原則として推奨されない（糖尿病標準診療マニュアル）。</span></div>
+            <div class="bullet"><span>・</span><span>メトホルミンを含む配合剤（エクメット・イニシンク・メトアナ・メタクト）も同じ注意がかかる。</span></div>
+          </div>
+        </div></details>
+      </div>
+
+      <!-- ===== SGLT2阻害薬 ===== -->
+      <div class="card" id="sglt2">
+        <div class="card-title">SGLT2阻害薬</div>
+        <div class="drugs">フォシーガ（ダパグリフロジン）／ジャディアンス（エンパグリフロジン）／カナグル（カナグリフロジン）／スーグラ（イプラグリフロジン）／ルセフィ／デベルザ</div>
+
+        <div class="tpl-sec">確認する項目</div>
+        <div class="kakunin">
+          <div class="check"><span>✓</span><span>処方目的。<span class="marker">心不全・慢性腎臓病の治療で処方されているときは算定の対象にならない</span></span></div>
+          <div class="check"><span>✓</span><span>水分のとり方（高齢者・利尿薬の併用は脱水に注意）</span></div>
+          <div class="check"><span>✓</span><span>排尿時の痛み・陰部のかゆみなど、尿路・性器の感染症の症状</span></div>
+          <div class="check"><span>✓</span><span>手術の予定（手術前後は禁忌）</span></div>
+        </div>
+
+        <div class="tpl-sec">記載例をつくる</div>
+        <div class="mk" data-purpose="2型糖尿病の血糖コントロール|1型糖尿病（インスリンとの併用）">
+          <div class="mk-h">薬剤</div>
+          <div class="mk-scenes mk-drug">
+            <label><input type="radio" name="sd" value="フォシーガ" checked><span>フォシーガ</span></label>
+            <label><input type="radio" name="sd" value="ジャディアンス"><span>ジャディアンス</span></label>
+            <label><input type="radio" name="sd" value="カナグル"><span>カナグル</span></label>
+            <label><input type="radio" name="sd" value="スーグラ"><span>スーグラ</span></label>
+            <label><input type="radio" name="sd" value="〇〇"><span>その他</span></label>
+          </div>
+          <div class="mk-h">場面</div>
+          <div class="mk-scenes">
+            <label><input type="radio" name="s" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
+            <label><input type="radio" name="s" value="itch" data-text="{薬}：陰部のかゆみがあると本人より。性器の感染症の可能性があり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>陰部のかゆみ</span></label>
+            <label><input type="radio" name="s" value="ope" data-text="{薬}：〇月〇日に手術の予定ありと本人より。手術前後は服用しない薬のため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>手術の予定</span></label>
+          </div>
+          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <label class="mk-p"><input type="checkbox" data-on="ope"><span>排尿時の痛み・陰部のかゆみなし。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>利尿薬（〇〇）を服用中。</span></label>
+          <div class="mk-h">指導</div>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>尿の量が増えて脱水になりやすいため、こまめに水分をとるよう指導。のどの渇き・ふらつき・立ちくらみが出たときは主治医に相談するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>排尿時の痛み、尿のにごり、陰部のかゆみが出たときは早めに受診し、陰部の痛み・腫れに発熱を伴うときはすぐに受診するよう説明。</span><span class="mk-tag">フルニエ壊疽</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>吐き気・嘔吐、食欲がない、腹痛、強いのどの渇き、だるさ、息苦しさが出たときは、血糖値が高くなくてもすぐに受診するよう指導。</span><span class="mk-tag">ケトアシドーシス</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>シックデイ（発熱・下痢・嘔吐で食事が十分とれないとき）は服用を休み、主治医に連絡するよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>低血糖の症状（強い空腹感・冷や汗・ふるえ）と、起きたときはブドウ糖や糖分を含むものをとるよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="itch"><span>早めに受診し、受診先の医師に服用中であることを伝えるよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="ope"><span>中止と再開の時期は、手術を行う医師と主治医の指示に従うよう指導。手術の予約時に服用中であることを伝えるよう説明。</span></label>
+          <div class="mk-out"></div>
+          <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
+        </div>
+
+        <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>フォシーガ・ジャディアンスは心不全と慢性腎臓病にも適応がある。糖尿病のない人に処方されていれば、心不全・慢性腎臓病の治療と考えられる。処方目的は本人に確認し、分からないときは処方医に問い合わせる。</span></div>
+            <div class="bullet"><span>・</span><span>ケトアシドーシスは、血糖値がそれほど高くなくても起こる。症状（吐き気・嘔吐、食欲がない、腹痛、強いのどの渇き、だるさ、息苦しさ、意識障害）と、血糖値が高くなくても起こること、症状が出たらすぐに受診することを患者に指導するよう、電子添文で求められている。インスリンの減量・中止、極端な糖質制限、食事がとれないとき、感染症、脱水で起きやすい。</span></div>
+            <div class="bullet"><span>・</span><span>手術の予定があるときは、術前3日前から休薬し、食事が十分とれるようになってから再開するのが目安（糖尿病標準診療マニュアル）。実際の時期は手術を行う医師の指示に従う。</span></div>
+            <div class="bullet"><span>・</span><span>まれに外陰部・会陰部の壊死性筋膜炎（フルニエ壊疽）が起こる。陰部の痛み・腫れ・発熱があればすぐに受診が必要。</span></div>
+          </div>
+        </div></details>
+      </div>
+
+      <!-- ===== SU薬・グリニド ===== -->
+      <div class="card" id="su">
+        <div class="card-title">SU薬・グリニド</div>
+        <div class="drugs">SU薬：アマリール（グリメピリド）／グリミクロン（グリクラジド）／オイグルコン（グリベンクラミド）<br>グリニド：スターシス・ファスティック（ナテグリニド）／グルファスト（ミチグリニド）／シュアポスト（レパグリニド）</div>
+
+        <div class="tpl-sec">確認する項目</div>
+        <div class="kakunin">
+          <div class="check"><span>✓</span><span>処方目的と医師から受けた説明</span></div>
+          <div class="check"><span>✓</span><span>低血糖の症状と、起きた時間帯</span></div>
+          <div class="check"><span>✓</span><span>食事の時間・量が不規則でないか（高齢・一人暮らしなど）</span></div>
+          <div class="check"><span>✓</span><span>腎機能・肝機能（低下すると低血糖が長引く）</span></div>
+          <div class="check"><span>✓</span><span>グリニド：食直前に服用しているか</span></div>
+        </div>
+
+        <div class="tpl-sec">記載例をつくる</div>
+        <div class="mk" data-purpose="2型糖尿病の血糖コントロール">
+          <div class="mk-h">薬剤</div>
+          <div class="mk-scenes mk-drug">
+            <label><input type="radio" name="ud" value="アマリール" checked><span>アマリール</span></label>
+            <label><input type="radio" name="ud" value="グリミクロン"><span>グリミクロン</span></label>
+            <label><input type="radio" name="ud" value="スターシス"><span>スターシス</span></label>
+            <label><input type="radio" name="ud" value="グルファスト"><span>グルファスト</span></label>
+            <label><input type="radio" name="ud" value="シュアポスト"><span>シュアポスト</span></label>
+            <label><input type="radio" name="ud" value="〇〇"><span>その他</span></label>
+          </div>
+          <div class="mk-h">場面</div>
+          <div class="mk-scenes">
+            <label><input type="radio" name="u" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
+            <label><input type="radio" name="u" value="up" data-text="{薬}：〇mg→〇mgに増量。〇〇のため増量と本人より。"><span><b>ロ</b>増量</span></label>
+            <label><input type="radio" name="u" value="hypo" data-text="{薬}：〇〇ごろに冷や汗とふるえがあり、甘いものをとって治まったと本人より。低血糖の可能性があり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>低血糖があった</span></label>
+            <label><input type="radio" name="u" value="meal" data-text="{薬}：最近食欲が落ち、食事の量が以前の半分ほどと本人より。低血糖が起きやすくなるため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>食事の量が減った</span></label>
+          </div>
+          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <label class="mk-p"><input type="checkbox" data-on="up"><span>低血糖の症状なし。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="スターシス|グルファスト|シュアポスト" data-on="up"><span>毎食直前に服用していると本人より。</span></label>
+          <div class="mk-h">指導</div>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>強い空腹感・冷や汗・ふるえ・動悸が出たらブドウ糖や糖分を含むものをとるよう説明。食事を抜いたときや遅れたとき、いつもより体を動かしたときに起きやすいと説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>車の運転中に症状が出たらすぐに車を止めて糖分をとるよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="スターシス|グルファスト|シュアポスト" data-on="i"><span>食事の直前に服用するよう指導。早く飲むと食事の前に低血糖が起きることがあり、食事をとらないときは服用しないよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="hypo meal"><span>ブドウ糖を持ち歩くよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="hypo meal"><span>次回受診を待たずに主治医へ伝えるよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>自己判断で中止しないよう指導。シックデイ（発熱・下痢・嘔吐で食事がとれないとき）は主治医に連絡し、その指示に従うよう説明。</span></label>
+          <div class="mk-out"></div>
+          <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
+        </div>
+
+        <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>SU薬の低血糖は長引き、いったん治まってもぶり返すことがある。高齢、腎機能・肝機能の低下、食事が不規則な人で起きやすく、作用時間の長いオイグルコン・アマリールで起こりやすい（糖尿病標準診療マニュアル）。</span></div>
+            <div class="bullet"><span>・</span><span>SU薬とグリニドの併用は不可。</span></div>
+            <div class="bullet"><span>・</span><span>グリニドは効き始めが早く、効いている時間が短い。食前30分に服用すると、食事の前に低血糖が起きることがある。</span></div>
+            <div class="bullet"><span>・</span><span>DPP-4阻害薬・GLP-1を追加すると低血糖が起きやすくなるため、SU薬の減量が検討される。</span></div>
+          </div>
+        </div></details>
+      </div>
+
+      <!-- ===== GLP-1受容体作動薬 ===== -->
+      <div class="card" id="glp1">
+        <div class="card-title">GLP-1受容体作動薬<span class="qual">GIP/GLP-1を含む</span></div>
+        <div class="drugs">飲み薬：リベルサス（セマグルチド）<br>注射：オゼンピック（セマグルチド・週1回）／トルリシティ（デュラグルチド・週1回）／マンジャロ（チルゼパチド・週1回）／ビクトーザ（リラグルチド・1日1回）</div>
+
+        <div class="tpl-sec">確認する項目</div>
+        <div class="kakunin">
+          <div class="check"><span>✓</span><span>処方目的と医師から受けた説明</span></div>
+          <div class="check"><span>✓</span><span>吐き気・食欲低下・便秘・下痢</span></div>
+          <div class="check"><span>✓</span><span>SU薬・インスリンとの併用（低血糖が起きやすくなる）</span></div>
+          <div class="check"><span>✓</span><span>リベルサス：飲み方を守れているか</span></div>
+          <div class="check"><span>✓</span><span>注射：手技・注射する場所・使用済みの針の捨て方</span></div>
+        </div>
+
+        <div class="tpl-sec">飲み忘れ・打ち忘れのときの対応（電子添文）</div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>薬剤</th><th>忘れたとき</th></tr></thead>
+            <tbody>
+              <tr><td class="k">リベルサス<small>1日1回</small></td><td>その日は飲まず、翌日いつもどおり飲む</td></tr>
+              <tr><td class="k">オゼンピック<small>週1回</small></td><td>次の予定日まで2日（48時間）以上あれば気づいたときに打つ。2日未満なら打たずに次の予定日に打つ</td></tr>
+              <tr><td class="k">トルリシティ<small>週1回</small></td><td>次の予定日まで3日（72時間）以上あれば気づいたときに打つ。3日未満なら打たずに次の予定日に打つ</td></tr>
+              <tr><td class="k">マンジャロ<small>週1回</small></td><td>次の予定日まで3日（72時間）以上あれば気づいたときに打つ。3日未満なら打たずに次の予定日に打つ</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note-xs" style="margin-top:6px;">2回分を一度に使わない。</p>
+
+        <div class="tpl-sec">記載例をつくる</div>
+        <div class="mk" data-purpose="2型糖尿病の血糖コントロール">
+          <div class="mk-h">薬剤</div>
+          <div class="mk-scenes mk-drug">
+            <label><input type="radio" name="gd" value="リベルサス" checked><span>リベルサス</span></label>
+            <label><input type="radio" name="gd" value="オゼンピック"><span>オゼンピック</span></label>
+            <label><input type="radio" name="gd" value="トルリシティ"><span>トルリシティ</span></label>
+            <label><input type="radio" name="gd" value="マンジャロ"><span>マンジャロ</span></label>
+            <label><input type="radio" name="gd" value="ビクトーザ"><span>ビクトーザ</span></label>
+          </div>
+          <div class="mk-h">場面</div>
+          <div class="mk-scenes">
+            <label><input type="radio" name="g" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
+            <label><input type="radio" name="g" value="up" data-text="{薬}：〇mg→〇mgに増量。段階的に増やす予定と本人より。"><span><b>ロ</b>増量</span></label>
+            <label><input type="radio" name="g" value="nausea" data-text="{薬}：増量後から吐き気があり、食事の量が減っていると本人より。消化器症状の副作用の可能性があり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>吐き気・食欲低下</span></label>
+          </div>
+          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <label class="mk-p"><input type="checkbox" data-on="up"><span>吐き気・便秘・下痢などの症状なし。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="オゼンピック|トルリシティ|マンジャロ|ビクトーザ" data-on="up"><span>注射の手技に問題なし。注射する場所を毎回ずらしていると本人より。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="リベルサス" data-on="up"><span>起床時の空腹時に、少量の水で服用していると本人より。</span></label>
+          <div class="mk-h">指導</div>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>吐き気・食欲低下・便秘・下痢が出ることがあり、食事がとれない状態が続くときは主治医に連絡するよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>始めたときや増量したときの吐き気などは、続けるうちに軽くなることが多いと説明し、自己判断で中止しないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>吐き気を伴う激しい腹痛が続くときは、使用を中止してすぐに受診するよう指導。</span><span class="mk-tag">急性膵炎</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>低血糖の症状（強い空腹感・冷や汗・ふるえ）と、起きたときはブドウ糖や糖分を含むものをとるよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="リベルサス" data-on="i"><span>吸収されにくい薬のため、起床時の空腹時にコップ半分（120mL）以下の水で服用し、服用後30分は飲食と他の薬の服用を避けるよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="オゼンピック|トルリシティ|マンジャロ" data-on="i"><span>週1回のため、注射する曜日を決めるよう説明。打ち忘れたときは〇〇するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="オゼンピック|トルリシティ|マンジャロ|ビクトーザ" data-on="i"><span>注射の手技を実演で確認。注射する場所を毎回ずらすよう指導。使用済みの針は〇〇に捨てるよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="nausea"><span>少量ずつ数回に分けて食べ、脂っこい食事を控えるよう説明。水分がとれない・嘔吐が続くときは次回受診を待たずに主治医へ連絡するよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>血糖値が下がっても自己判断で中止しないよう指導。シックデイ（発熱・下痢・嘔吐で食事がとれないとき）の使い方は、主治医の指示に従うよう説明。</span></label>
+          <div class="mk-h">重篤な副作用<span class="mk-sub">説明したときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox"><span>腹痛に発熱を伴うときや、皮膚や白目が黄色くなったときは受診するよう説明。</span><span class="mk-tag">胆のう炎</span></label>
+          <div class="mk-out"></div>
+          <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
+        </div>
+
+        <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>少量から始めて段階的に増やす薬が多い。増量の間隔は電子添文で決まっている（例：マンジャロは4週間以上）。間隔が短い処方は疑義照会の対象になる。</span></div>
+            <div class="bullet"><span>・</span><span>重大な副作用に急性膵炎がある。嘔吐を伴う持続的な激しい腹痛が出たら使用を中止して速やかに受診するよう患者に指導することが、電子添文で求められている。胆石・胆のう炎も報告がある。</span></div>
+            <div class="bullet"><span>・</span><span>同じ成分で肥満症の薬（ウゴービ・ゼップバウンド）がある。糖尿病の薬とは別の製品で、用量も違う。</span></div>
+          </div>
+        </div></details>
+      </div>
+
+      <!-- ===== α-GI ===== -->
+      <div class="card" id="agi">
+        <div class="card-title">α-GI<span class="qual">α-グルコシダーゼ阻害薬</span></div>
+        <div class="drugs">ベイスン（ボグリボース）／セイブル（ミグリトール）／グルコバイ（アカルボース）</div>
+
+        <div class="tpl-sec">確認する項目</div>
+        <div class="kakunin">
+          <div class="check"><span>✓</span><span>処方目的と医師から受けた説明</span></div>
+          <div class="check"><span>✓</span><span>食直前に服用しているか</span></div>
+          <div class="check"><span>✓</span><span>おなかの張り・おならの増加・便秘</span></div>
+          <div class="check"><span>✓</span><span>SU薬・グリニド・インスリンとの併用（低血糖の対処が変わる）</span></div>
+        </div>
+
+        <div class="tpl-sec">記載例をつくる</div>
+        <div class="mk" data-purpose="糖尿病の食後過血糖の改善|耐糖能異常における2型糖尿病の発症抑制（ベイスン0.2mg）">
+          <div class="mk-h">薬剤</div>
+          <div class="mk-scenes mk-drug">
+            <label><input type="radio" name="ad" value="ベイスン" checked><span>ベイスン</span></label>
+            <label><input type="radio" name="ad" value="セイブル"><span>セイブル</span></label>
+            <label><input type="radio" name="ad" value="グルコバイ"><span>グルコバイ</span></label>
+          </div>
+          <div class="mk-h">場面</div>
+          <div class="mk-scenes">
+            <label><input type="radio" name="a" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
+            <label><input type="radio" name="a" value="gas" data-text="{薬}：おなかが張っておならが増えたと本人より。副作用の可能性があり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>おなかの張り</span></label>
+          </div>
+          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <label class="mk-p"><input type="checkbox"><span>〇〇（SU薬・インスリン）を併用中。</span></label>
+          <div class="mk-h">指導</div>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>食事の直前に服用するよう指導。食後に飲んでも効果が出にくいと説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>おなかの張り・おならの増加が出ることがあり、強いときや続くときは主治医に相談するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>おなかの張り・おならの増加は、続けるうちに軽くなることが多いと説明し、自己判断で中止しないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>低血糖の症状（強い空腹感・冷や汗・ふるえ）を説明。起きたときは、砂糖では回復が遅れるためブドウ糖をとるよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="gas"><span>ひどい便秘、おなかが強く張る、腹痛・嘔吐があるときはすぐに受診するよう指導。</span><span class="mk-tag">腸閉塞</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>血糖値が下がっても自己判断で中止しないよう指導。シックデイ（発熱・下痢・嘔吐で食事がとれないとき）の飲み方は、主治医の指示に従うよう説明。</span></label>
+          <div class="mk-h">重篤な副作用<span class="mk-sub">説明したときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox"><span>強いだるさ、皮膚や白目が黄色くなるなどの症状が出たときはすぐに受診するよう説明。</span><span class="mk-tag">肝機能障害</span></label>
+          <div class="mk-out"></div>
+          <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
+        </div>
+
+        <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>糖の吸収を遅らせる薬で、砂糖（ショ糖）の分解も遅れる。SU薬・グリニド・インスリンと併用している人には、低血糖の対処はブドウ糖と伝える。</span></div>
+            <div class="bullet"><span>・</span><span>重大な副作用に腸閉塞がある。開腹手術や腸閉塞の既往がある人で起きやすい。劇症肝炎・重い肝機能障害の報告もある。</span></div>
+            <div class="bullet"><span>・</span><span>ベイスン0.2mgは、耐糖能異常（境界型）から2型糖尿病への進行を抑える目的でも処方される。この目的のときは、食事・運動療法を3〜6か月行っても改善せず、かつ高血圧・脂質異常症・肥満・2親等以内の糖尿病家族歴のいずれかがある場合に限られる。</span></div>
+          </div>
+        </div></details>
+      </div>
+
+      <!-- ===== アクトス ===== -->
+      <div class="card" id="tzd">
+        <div class="card-title">アクトス<span class="qual">チアゾリジン</span></div>
+        <div class="drugs">アクトス（ピオグリタゾン）</div>
+
+        <div class="tpl-sec">確認する項目</div>
+        <div class="kakunin">
+          <div class="check"><span>✓</span><span>処方目的と医師から受けた説明</span></div>
+          <div class="check"><span>✓</span><span>心不全・心不全の既往（禁忌）</span></div>
+          <div class="check"><span>✓</span><span>むくみ・急な体重増加・息切れ</span></div>
+          <div class="check"><span>✓</span><span>血尿・頻尿・排尿時の痛み</span></div>
+        </div>
+
+        <div class="tpl-sec">記載例をつくる</div>
+        <div class="mk" data-drug="アクトス" data-purpose="2型糖尿病の血糖コントロール">
+          <div class="mk-h">場面</div>
+          <div class="mk-scenes">
+            <label><input type="radio" name="t" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
+            <label><input type="radio" name="t" value="edema" data-text="{薬}：足のむくみがあり、ここ1か月で体重が〇kg増えたと本人より。水分がたまる副作用の可能性があり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>むくみ・体重増加</span></label>
+          </div>
+          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>心不全の既往なし。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="edema"><span>息切れ・息苦しさなし。</span></label>
+          <div class="mk-h">指導</div>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>体に水分がたまりやすくなるため、むくみ・急な体重増加・息切れが出たときは服用を中止して受診するよう指導。体重を定期的に測るよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>血尿・頻尿・排尿時の痛みが出たときはすぐに受診するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>低血糖の症状（強い空腹感・冷や汗・ふるえ）と、起きたときはブドウ糖や糖分を含むものをとるよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="edema"><span>服用を中止して早めに受診するよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>血糖値が下がっても自己判断で中止しないよう指導。シックデイ（発熱・下痢・嘔吐で食事がとれないとき）の飲み方は、主治医の指示に従うよう説明。</span></label>
+          <div class="mk-h">重篤な副作用<span class="mk-sub">説明したときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox"><span>強いだるさ、皮膚や白目が黄色くなるなどの症状が出たときはすぐに受診するよう説明。</span><span class="mk-tag">肝機能障害</span></label>
+          <div class="mk-out"></div>
+          <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
+        </div>
+
+        <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>むくみは女性、45mgへの増量後、インスリンとの併用で起きやすい。電子添文では、むくみ・急な体重増加などが出たら直ちに服用を中止して受診するよう患者に指導することとされている。妊婦にも禁忌。心不全を悪化させることがあるので、心不全とその既往は禁忌。</span></div>
+            <div class="bullet"><span>・</span><span>膀胱がんのリスクが否定できないため、電子添文では、投与前にそのリスクを説明し、血尿・頻尿・排尿痛が出たら直ちに受診するよう患者に指導することとされている。</span></div>
+            <div class="bullet"><span>・</span><span>アクトスを含む配合剤：メタクト（＋メトホルミン）、ソニアス（＋グリメピリド）、リオベル（＋アログリプチン）。</span></div>
+          </div>
+        </div></details>
+      </div>
+
+      <!-- ===== ツイミーグ ===== -->
+      <div class="card" id="imeglimin">
+        <div class="card-title">ツイミーグ<span class="qual">イメグリミン</span></div>
+        <div class="drugs">ツイミーグ（イメグリミン）</div>
+
+        <div class="tpl-sec">確認する項目</div>
+        <div class="kakunin">
+          <div class="check"><span>✓</span><span>処方目的と医師から受けた説明</span></div>
+          <div class="check"><span>✓</span><span>メトホルミンとの併用（吐き気・下痢が増える）</span></div>
+          <div class="check"><span>✓</span><span>SU薬・インスリンとの併用（低血糖が起きやすくなる）</span></div>
+          <div class="check"><span>✓</span><span>腎機能（eGFR 45未満は用量を減らす）</span></div>
+        </div>
+
+        <div class="tpl-sec">記載例をつくる</div>
+        <div class="mk" data-drug="ツイミーグ" data-purpose="2型糖尿病の血糖コントロール">
+          <div class="mk-h">場面</div>
+          <div class="mk-scenes">
+            <label><input type="radio" name="m" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
+            <label><input type="radio" name="m" value="bg" data-text="{薬}：新規。メトグルコを服用中で、併用すると吐き気・下痢が出やすくなるため、指導が必要と判断。"><span><b>イ</b>メトホルミンに追加</span></label>
+          </div>
+          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <label class="mk-p"><input type="checkbox"><span>直近のeGFRは〇〇。用量は腎機能に照らして適正。</span></label>
+          <div class="mk-h">指導</div>
+          <label class="mk-p"><input type="checkbox" data-on="i bg"><span>吐き気・下痢・便秘が出ることがあり、続くときは主治医に連絡するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i bg"><span>低血糖の症状（強い空腹感・冷や汗・ふるえ）と、起きたときはブドウ糖や糖分を含むものをとるよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i bg"><span>血糖値が下がっても自己判断で中止しないよう指導。シックデイ（発熱・下痢・嘔吐で食事がとれないとき）の飲み方は、主治医の指示に従うよう説明。</span></label>
+          <div class="mk-out"></div>
+          <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
+        </div>
+        <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>腎機能で用量を変える：eGFR 15〜45は1回500mgを1日2回、10〜15は1回500mgを1日1回（有益性が危険性を上回る場合のみ）。eGFR 10未満（透析を含む）には勧められない。</span></div>
+            <div class="bullet"><span>・</span><span>メトホルミンと作用の一部が共通している可能性があり、併用すると消化器症状が多かった。</span></div>
+          </div>
+        </div></details>
+      </div>
+
+      <!-- ===== 配合剤 ===== -->
+      <div class="card" id="combo">
+        <div class="card-title">配合剤</div>
+        <p class="note">配合剤は、含まれている成分のカードの記載例を使う。薬剤名は配合剤の名前で記載する。</p>
+        <div class="tbl-wrap" style="margin-top:12px;">
+          <table>
+            <thead><tr><th>配合剤</th><th>成分</th></tr></thead>
+            <tbody>
+              <tr><td class="k">エクメット</td><td>エクア ＋ メトホルミン</td></tr>
+              <tr><td class="k">イニシンク</td><td>ネシーナ ＋ メトホルミン</td></tr>
+              <tr><td class="k">メトアナ</td><td>スイニー ＋ メトホルミン</td></tr>
+              <tr><td class="k">スージャヌ</td><td>ジャヌビア ＋ スーグラ</td></tr>
+              <tr><td class="k">カナリア</td><td>テネリア ＋ カナグル</td></tr>
+              <tr><td class="k">トラディアンス</td><td>トラゼンタ ＋ ジャディアンス</td></tr>
+              <tr><td class="k">メタクト</td><td>アクトス ＋ メトホルミン</td></tr>
+              <tr><td class="k">ソニアス</td><td>アクトス ＋ アマリール</td></tr>
+              <tr><td class="k">リオベル</td><td>ネシーナ ＋ アクトス</td></tr>
+              <tr><td class="k">グルベス</td><td>グルファスト ＋ ベイスン</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">この薬効群の対象</div>
+        <div class="stack">
+          <p class="note">飲み薬の糖尿病用剤と、GLP-1受容体作動薬（注射を含む）が対象になる。インスリン製剤は膵臓ホルモン剤として別に扱う。SGLT2阻害薬を心不全・慢性腎臓病の治療で使う場合は対象にならない。</p>
+          <div class="src">
+            <div>令和8年3月5日 保医発0305第6号 別添3「調剤報酬点数表に関する事項」特定薬剤管理指導加算1</div>
+            <div><a href="https://www.nichiyaku.or.jp/yakuzaishi/pharmacy-info/other/guideline01" target="_blank" rel="noopener">日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2.1版・令和8年6月）」</a></div>
+            <div>日本糖尿病・生活習慣病ヒューマンデータ学会「糖尿病標準診療マニュアル2026」</div>
+            <div>各薬剤の電子添文・患者向医薬品ガイド</div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <main>
-      <div class="tpl-toggle" role="tablist" aria-label="表示切替">
-        <button type="button" data-mode="all" class="active">解説＋テンプレ</button>
-        <button type="button" data-mode="tpl">テンプレのみ</button>
-      </div>
-      <details class="toc-inline fold-in">
-        <summary>目次</summary>
-        <div class="toc-links">
-          <a href="#guide">このページの使い方</a>
-          <a href="#lowline">算定時の記載ポイント</a>
-          <a href="#sec-checklist">簡易チェックリスト</a>
-          <a href="#drug-search">薬剤名から探す</a>
-          <a href="#dpp4">DPP-4阻害薬</a>
-          <a href="#sglt2">SGLT2阻害薬</a>
-          <a href="#su">SU薬・グリニド系</a>
-          <a href="#bg">ビグアナイド系</a>
-          <a href="#glp1-po">GLP-1経口</a>
-          <a href="#glp1-inj">GLP-1注射</a>
-          <a href="#gip-glp1">GIP/GLP-1</a>
-          <a href="#agi">α-GI</a>
-          <a href="#tzd">TZD</a>
-          <a href="#imeglimin">イメグリミン</a>
-          <a href="#combo">配合剤</a>
-          <a href="#section3">副作用・服薬状況等の変化によるロ</a>
-          <a href="#section1">共通確認ポイント</a>
-          <a href="#kobetsu">個別指導</a>
-          <a href="ハイリスク_血液凝固阻止剤.html">→ 血液凝固阻止剤</a>
-          <a href="ハイリスク_膵臓ホルモン剤.html">→ インスリン製剤</a>
-          <a href="ハイリスク_抗精神病薬.html">→ 抗精神病薬</a>
-          <a href="ハイリスク_抗うつ薬.html">→ 抗うつ薬</a>
-          <a href="ハイリスク_気分安定薬.html">→ 気分安定薬</a>
-          <a href="ハイリスク_抗てんかん薬.html">→ 抗てんかん薬</a>
-        </div>
-      </details>
-
-      <!-- ============================================================
-           § まず見るところ（導線3カード／最低ライン／チェックリスト／薬剤名から探す）
-           ============================================================ -->
-      <!-- § このページの使い方（導線3カード） -->
-      <section id="guide" style="margin-bottom:24px;">
-        <div class="section-label">このページの使い方</div>
-        <div class="guide-cards">
-          <a class="guide-card" href="#lowline"><span class="gc-no">1</span><span class="gc-title">算定前に記載内容を確認する</span><span class="gc-desc">記載のポイントと簡易チェックリストで、算定根拠として不足がないか確認する。</span></a>
-          <a class="guide-card" href="#drug-search"><span class="gc-no">2</span><span class="gc-title">薬剤名から記載例を探す</span><span class="gc-desc">薬剤名を選択し、該当する薬剤群の記載例へ移動する。</span></a>
-          <a class="guide-card" href="#section3"><span class="gc-no">3</span><span class="gc-title">副作用・服薬状況等の変化によるロの記載例を見る</span><span class="gc-desc">用法・用量の変更がなくても、副作用・服薬状況等の変化により、特に指導が必要と判断した場合の記載例。理由の要点の書き方も確認できる。</span></a>
-        </div>
-      </section>
-
-      <!-- § 最低ライン -->
-      <section id="lowline" style="margin-bottom:28px;">
-        <div class="section-label">算定時の記録</div>
-        <h2 class="section-title">算定時の記載ポイント</h2>
-        <div class="minline">
-          <p class="minline-lead">
-            特定薬剤管理指導加算1は、服薬管理指導料に対する加算であり、対象薬が処方されていることだけを理由に算定する加算ではない。算定する場合は、通常の服薬指導に加えて、対象薬に関する確認を行い、患者の状態・服薬状況等を踏まえたプラスαの指導を行う必要がある。
-          </p>
-          <p class="minline-lead" style="margin-bottom:6px;">算定する場面は次の3つ。</p>
-          <ul style="margin:0 0 12px; padding-left:20px; font-size:13.5px; line-height:1.75; color:var(--ink);">
-            <li style="margin-bottom:3px;"><strong>イ</strong>　初回処方時</li>
-            <li style="margin-bottom:3px;"><strong>ロ</strong>　用法・用量等の変更時</li>
-            <li><strong>ロ</strong>　副作用・服薬状況等の変化により、薬剤師が必要と認めて指導した場合</li>
-          </ul>
-          <p class="minline-lead" style="margin-bottom:14px;">
-            算定時は、対象薬について確認した内容と行った指導の要点を薬歴に記録する。従来と同一の処方内容でロを算定する場合は、特に指導が必要と判断した理由の要点も記載する。
-          </p>
-          <div class="minline-checks">
-            <div class="minline-check"><span class="mc-no">①</span><b>「薬剤名：〜」の形で書き始める</b><span class="mc-note">どの薬についての指導記録かを明確にする（例：「ジャヌビア：…」）。</span></div>
-            <div class="minline-check"><span class="mc-no">②</span><b>確認した内容を記録する</b><span class="mc-note">症状や受診の経緯（医師から受けた説明を含む）を聞き取って処方内容を確認し、適応・併用薬（低血糖リスクを高めるSU薬・インスリン等）・シックデイ時の対応・検査値（HbA1c・血糖・腎機能）などを記録する。継続例では服薬状況の変化も残す。</span></div>
-            <div class="minline-check"><span class="mc-no">③</span><b>患者の状況に応じた指導内容を残す</b><span class="mc-note">一般的な薬効・用法説明だけでなく、低血糖症状と対処（ブドウ糖）・シックデイ時の対応・自己中断の回避など、その患者に必要な指導を具体的に記録する。</span></div>
-            <div class="minline-check"><span class="mc-no">④</span><b>記載内容から場面（新規・変更・変化）が分かるようにする</b><span class="mc-note"><strong>従来と同一処方でロを算定する場合は、副作用・服薬状況・併用薬・生活状況等の変化と、追加指導が必要と判断した理由を記録する</strong>。これがロの算定根拠になる。</span></div>
-          </div>
-          <div class="guard-note"><b>算定根拠として不十分になりやすい例</b>　一般的な薬効・用法説明のみで、確認した内容や患者の状況に応じた指導内容が薬歴から確認できない。</div>
-
-          <h3 class="subsection-title" style="margin-top:18px;">よくある薬歴と修正例（糖尿病用剤）</h3>
-          <div class="example-pair">
-            <div class="example-box bad">
-              <span class="example-label">✕ 算定根拠として不十分な例（新規）</span>
-              <pre>ジャヌビア：新規。効果と副作用について説明し、継続して服用するよう指導した。</pre>
-            </div>
-            <div class="example-box good">
-              <span class="example-label">○ 修正例（薬剤群テンプレートを参考にした例）</span>
-              <pre>ジャヌビア：新規（処方目的：2型糖尿病）。併用薬を確認し、低血糖リスクを高める薬（SU薬・インスリン）の併用なし。血糖を下げる薬で、単剤では低血糖を起こしにくいことを説明。まれに急性膵炎（強い腹痛・嘔吐）・類天疱瘡（皮膚の水疱・ただれ）が起こりうるため、症状があれば早めに相談・受診するよう説明。</pre>
-            </div>
-          </div>
-          <div class="example-pair" style="margin-top:10px;">
-            <div class="example-box bad">
-              <span class="example-label">✕ 算定根拠として不十分な例（増量）</span>
-              <pre>アマリール：1mg→2mgへ増量。用量変更を確認。低血糖に注意するよう指導した。</pre>
-            </div>
-            <div class="example-box good">
-              <span class="example-label">○ 修正例（変更ロ：増量のテンプレートを使った例）</span>
-              <pre>アマリール：1mg→2mgへ増量説明。増量に伴い低血糖が起こりやすくなるため、冷汗・ふるえ・動悸・強い空腹感などの低血糖症状と対処（ブドウ糖摂取）を再指導。食事量が少ない日や欠食時に特に出やすい旨を説明し、症状がみられた場合は次回受診を待たず連絡するよう指導。</pre>
-            </div>
-          </div>
-          <p style="font-size:12px;color:var(--sub);margin-top:4px;">※ 増量の✕は「低血糖に注意」で終わり、どの症状が出たらどう対処するかが読めない。指導の中身は具体的な症状の言葉で残す（確認の結果はSに記載する）。</p>
-          <p style="font-size:12px;color:var(--sub);margin-top:4px;">※ ✕は確認した内容や患者ごとのプラスαの指導が読み取れない。○は「<a href="#drug-search" class="link-inline" style="color:var(--blue);">薬剤名から探す</a>」からDPP-4初回イの記載例を参考にしたもの。薬効・用法説明だけで終わらず、症状・経緯の聞き取りと処方内容・併用薬・低血糖リスクの確認、患者の状況に応じた指導が薬歴から確認できるようにする。</p>
-        </div>
-      </section>
-
-      <!-- § 印刷用チェックリスト -->
-      <section id="sec-checklist" style="margin-bottom:28px;">
-        <div class="section-label">印刷用</div>
-        <h2 class="section-title">算定前セルフチェック<button class="print-btn" type="button">このチェックリストを印刷</button></h2>
-        <div class="checklist-card">
-          <div class="cl-group">
-            <div class="cl-head">確認・記録する項目（基本）</div>
-            <label class="cl-item"><input type="checkbox"><span>対象薬剤が分かるように記載した（<b>「薬剤名：〜」</b>）</span></label>
-            <label class="cl-item"><input type="checkbox"><span>記載内容から<b>新規／変更／変化のどれに当たるか分かる</b>。<b>副作用・服薬状況等の変化によるロは、変化の内容と、追加指導が必要と判断した理由</b>も記載した</span></label>
-            <label class="cl-item"><input type="checkbox"><span><b>用法・用量の変更時</b>は、変更内容と、<b>変更前後の症状・血糖の状況の変化</b>を記載した（SOAP運用ではS/Oへの記載でよい）</span></label>
-            <label class="cl-item"><input type="checkbox"><span><b>症状・受診の経緯を聞き取り処方内容・適応を確認</b>した（<b>継続・変更時は服薬状況</b>も）</span></label>
-            <label class="cl-item"><input type="checkbox"><span>低血糖リスクを高める併用薬（<b>SU薬・インスリン等</b>）・市販薬・サプリを確認した</span></label>
-            <label class="cl-item"><input type="checkbox"><span><b>自己判断で中止しないこと</b>を説明した（<b>SU・インスリン併用など低血糖リスクがある場合</b>は低血糖症状と対処（ブドウ糖）も）</span></label>
-            <label class="cl-item"><input type="checkbox"><span><b>患者の状況に応じた指導内容</b>を記録した</span></label>
-          </div>
-          <div class="cl-group">
-            <div class="cl-head">必要に応じて確認・説明する項目（糖尿病用剤）</div>
-            <label class="cl-item"><input type="checkbox"><span><b>シックデイ</b>（発熱・下痢・嘔吐・食事摂取不良）時の対応を説明した（特にBG・SGLT2）</span></label>
-            <label class="cl-item"><input type="checkbox"><span>SGLT2：<b>脱水（ふらつき・立ちくらみ・口渇）・尿路／性器感染・ケトアシドーシス</b>（食事摂取不良時）の注意、水分補給を説明した</span></label>
-            <label class="cl-item"><input type="checkbox"><span>BG（メトホルミン）：<b>腎機能・ヨード造影剤の休薬</b>・乳酸アシドーシスの注意を確認・説明した</span></label>
-            <label class="cl-item"><input type="checkbox"><span>SU薬・グリニド：<b>遷延性低血糖</b>（高齢・腎機能低下・食事不規則）の注意を確認・説明した</span></label>
-            <label class="cl-item"><input type="checkbox"><span>GLP-1／GIP・GLP-1：<b>消化器症状・急性膵炎</b>、注射手技・保管を確認・説明した</span></label>
-            <label class="cl-item"><input type="checkbox"><span>α-GI：低血糖時は<b>必ずブドウ糖</b>（砂糖は分解が阻害され効きが遅い）、開腹手術歴・腹部症状を確認・説明した</span></label>
-          </div>
-          <div class="guard-note"><b>算定根拠として不十分になりやすい例</b>　一般的な薬効説明のみで、確認した内容や患者の状況に応じた指導内容が薬歴から確認できない。</div>
-        </div>
-      </section>
-
-      <!-- § 薬剤名から探す -->
-      <section id="drug-search" style="margin-bottom:28px;">
-        <div class="section-label">薬剤名から探す</div>
-        <h2 class="section-title">薬剤名から記載例を探す</h2>
-        <p style="font-size:13px;color:var(--sub);margin-bottom:10px;">薬剤名をタップすると、該当する薬剤群別テンプレートに移動する。</p>
-        <div class="drug-index">
-          <div class="drug-index-row">
-            <span class="di-group">DPP-4</span>
-            <a href="#dpp4">ジャヌビア／グラクティブ</a><a href="#dpp4">トラゼンタ</a><a href="#dpp4">エクア</a><a href="#dpp4">テネリア</a><a href="#dpp4">オングリザ</a><a href="#dpp4">ネシーナ</a><a href="#dpp4">ザファテック</a><a href="#dpp4">マリゼブ</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">SGLT2</span>
-            <a href="#sglt2">ジャディアンス</a><a href="#sglt2">フォシーガ</a><a href="#sglt2">スーグラ</a><a href="#sglt2">カナグル</a><a href="#sglt2">デベルザ</a><a href="#sglt2">ルセフィ</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">SU・グリニド</span>
-            <a href="#su">アマリール</a><a href="#su">グリミクロン</a><a href="#su">オイグルコン</a><a href="#su">スターシス／ファスティック</a><a href="#su">グルファスト</a><a href="#su">シュアポスト</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">BG</span>
-            <a href="#bg">メトグルコ</a><a href="#bg">メトホルミン</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">GLP-1経口</span>
-            <a href="#glp1-po">リベルサス</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">GLP-1注射</span>
-            <a href="#glp1-inj">トルリシティ</a><a href="#glp1-inj">オゼンピック</a><a href="#glp1-inj">ビクトーザ</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">GIP/GLP-1</span>
-            <a href="#gip-glp1">マンジャロ</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">α-GI</span>
-            <a href="#agi">ベイスン</a><a href="#agi">グルコバイ</a><a href="#agi">セイブル</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">TZD</span>
-            <a href="#tzd">アクトス</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">イメグリミン</span>
-            <a href="#imeglimin">ツイミーグ</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">配合剤</span>
-            <a href="#combo">エクメット</a><a href="#combo">メトアナ</a><a href="#combo">カナリア</a><a href="#combo">トラディアンス</a><a href="#combo">スージャヌ</a><a href="#combo">イニシンク</a><a href="#combo">グルベス</a><a href="#combo">ソニアス</a><a href="#combo">メタクト</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- § 参考  共通確認ポイント（日薬GL由来・折りたたみ） -->
-      <section id="section1" style="margin-bottom:28px;">
-        <div class="section-label">参考</div>
-        <h2 class="section-title">糖尿病用剤の共通確認ポイント（日薬GL）</h2>
-
-        <details class="guide-details fold-in">
-          <summary>共通確認ポイント（日薬GL 6項目）を見る</summary>
-          <div class="guide-details-body">
-            <dl class="ci-list" style="margin:0;">
-              <dt>① 患者に対する処方内容の確認</dt>
-              <dd>薬剤名・用法・用量・服用タイミング等を確認</dd>
-
-              <dt>② アドヒアランスの確認（Sick day時の対処法の指導を含む）</dt>
-              <dd>飲み忘れ・残薬の有無、服薬の継続状況／Sick day（発熱・下痢・嘔吐・食事摂取不良）時の対処理解を確認</dd>
-
-              <dt>③ 副作用モニタリング・重篤な副作用発生時の対処方法の教育</dt>
-              <dd>低血糖症状（冷汗・ふるえ・動悸・強い空腹感・脱力感等）の自覚と、出現時の対処法（ブドウ糖摂取）の指導を確認</dd>
-
-              <dt>④ 効果の確認</dt>
-              <dd>適正な用量、可能な場合は検査値（HbA1c・血糖値）のモニター</dd>
-
-              <dt>⑤ 併用薬・食事との相互作用の確認</dt>
-              <dd>他の糖尿病薬・OTC医薬品・サプリメント等の併用と、食事との相互作用を確認</dd>
-
-              <dt>⑥ 注射手技の確認（注射薬の場合）</dt>
-              <dd>薬剤の保管方法、空打ちの意義、投与部位、注射針の取り扱い方法等を確認・指導</dd>
-            </dl>
-            <p style="font-size:12px;color:var(--sub);margin-top:8px;">※ 出典：日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2.1版）」(9)糖尿病用剤・(10)膵臓ホルモン剤</p>
-            <p style="font-size:12px;color:var(--blue);margin-top:8px;font-weight:700;">→ 各薬剤群ごとの具体的な指導内容は SECTION 2 を参照</p>
-          </div>
-        </details>
-
-        <p style="font-size:12px;color:var(--sub);margin-top:8px;">
-          ※ 注射薬の手技確認は GLP-1注射／GIP／GLP-1（マンジャロ）の各ブロックに、インスリン製剤は別ページ（膵臓ホルモン剤）で扱う。
-        </p>
-      </section>
-
-      <!-- ============================================================
-           § 2  薬剤群別テンプレート（初回イ／変更ロ／必要時追記）
-           ============================================================ -->
-      <section id="section2">
-        <div class="section-label">SECTION 2</div>
-        <h2 class="section-title">薬剤群別テンプレート</h2>
-        <p style="font-size:13px;color:var(--sub);margin-bottom:8px;">
-          薬歴を作成する際は、<strong>新規処方または変更があった薬剤群</strong>を確認し、患者の状況に近い記載例を参考にする。必要に応じて、確認した内容や追加で行った指導を追記する。<br />
-          本ページは、特定薬剤管理指導加算1のうち、<strong>新規処方時のイ、用法・用量変更時のロ、副作用・服薬状況等の変化によるロ</strong>を想定した薬歴記載例である。継続処方時の通常確認を記録するためのテンプレートではない。<br />
-          <span style="font-size:12px;">※ 併用薬については、各薬剤群で<strong>低血糖リスクに関係する代表的な組み合わせ</strong>を中心に記載している。その他の相互作用や注意すべき併用薬がある場合は、確認した内容と患者へ説明した内容を個別に追記する。</span><br />
-          <span style="font-size:12px;">※ 薬剤群の並びは、日薬ガイドライン順ではなく、現場での探しやすさを優先し、処方頻度・指導上の重要度・薬歴記載で迷いやすい薬剤を考慮して配置している。</span>
-        </p>
-        <div class="tpl-warn" style="margin:12px 0;">
-          <div class="tpl-warn-title">副作用説明の記載について</div>
-          副作用に関する記載例は、<strong>実際に説明した内容に応じて追記</strong>する。まれな重篤副作用は、患者へ不安を与えすぎないよう、<strong>症状と相談・受診の目安を中心に説明</strong>する。薬歴上で説明内容を明確に残したい場合は、<strong>「副作用説明の追記」から該当するものを追加</strong>する。
-        </div>
-        <div class="tpl-warn" id="copy-rule" style="margin:12px 0;">
-          <div class="tpl-warn-title">コピーする前に必ず確認（全薬剤群共通）</div>
-          下のテンプレは「指導・説明」部分の記載例である。そのままコピペすると要件不足になるので、以下を確認する。
-          <ul>
-            <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（例：「ジャヌビア：低血糖リスク併用薬なし。強い腹痛・嘔吐、皮膚の水疱・ただれ等があれば早めに相談するよう説明…」）</li>
-            <li><strong>確認した内容（検査値・症状・聞き取り結果 など）</strong>もテンプレに足す</li>
-            <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
-            <li>相互作用に注意すべき併用薬がある場合は、<strong>相互作用の内容と患者への指導内容を個別に記載</strong></li>
-            <li>副作用説明を行った場合は、<strong>「副作用説明の追記」</strong>から該当する記載例を追加（説明していない副作用は追加しない）</li>
-          </ul>
-        </div>
-        <div class="tag-legend">
-          <span><i style="background:var(--blue-light);border:1px solid var(--blue)"></i>初回イ（単剤新規／併用下追加／高齢例 など）</span>
-          <span><i style="background:#e0f2f1;border:1px solid #0a6b63"></i>変更ロ（増量／減量／用量変更 など）</span>
-          <span><i style="background:#f2f4f8;border:1px solid #d7dce3"></i>必要時追記</span>
-          <span><i style="background:#fef3e8;border:1px solid #f5d4a1"></i>副作用説明の追記（説明した分だけ追加）</span>
-        </div>
-
-        <!-- DPP-4 -->
-        <div class="drug-block" id="dpp4">
-          <div class="drug-block-head">
-            <span class="drug-block-name">DPP-4阻害薬</span>
-            <span class="drug-block-sub">ジャヌビア・グラクティブ／トラゼンタ／エクア／テネリア／オングリザ／ネシーナ 等</span>
-          </div>
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容・用法用量</li>
-              <li>低血糖リスクを高める併用薬（SU・インスリン）の有無</li>
-              <li>腎機能（eGFR）に応じた用量調整</li>
-              <li>効果指標：HbA1c・血糖値の推移</li>
-            </ul>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>指導時の補足</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p>食事に合わせて血糖を下げる体の働き（インクレチン）を助ける薬。<strong>単剤では低血糖を起こしにくい</strong>が、SU・インスリン併用時はリスクが上がる。稀に重篤な副作用（急性膵炎・類天疱瘡）に注意。</p>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li>強い腹痛・嘔吐・圧痛など気になる症状が出たら早めに相談・受診</li>
-                <li>皮膚に水疱・びらんが出たら早めに相談・受診</li>
-                <li>SU・インスリン併用時は低血糖症状（冷汗・ふるえ・動悸等）と対処（ブドウ糖）</li>
-              </ul>
-
-              <h4>急性膵炎様症状（背景知識）</h4>
-              <p>DPP-4阻害薬の使用中に、<strong>嘔吐や強い腹痛・圧痛</strong>などの急性膵炎様症状を起こすことがある。出現時は速やかに受診し、服用継続の可否を含めて主治医に相談するよう伝える。</p>
-
-              <h4>類天疱瘡様症状（背景知識）</h4>
-              <p>DPP-4阻害薬の使用中に、<strong>水疱・びらん</strong>などの類天疱瘡様の皮膚病変を起こすことがある。皮膚に変化が出た場合は早めに主治医または薬剤師に相談するよう伝える。</p>
-
-              <h4>患者説明のスタンス</h4>
-              <p>急性膵炎・類天疱瘡はいずれも頻度としては稀。患者には病名を前面に出さず、症状（強い腹痛・嘔吐、皮膚の水疱・ただれ）と相談・受診の目安を中心に説明する。薬歴上で病名と症状をセットで残したい場合は<strong>「副作用説明の追記」から追加コピー</strong>。</p>
-
-              <h4>腎機能による用量調整（薬剤別）</h4>
-              <p>DPP-4阻害薬は薬剤ごとに腎機能調整の必要性が異なる。用量変更の理由として腎機能変化が関わることもあるため、定期的な血液検査結果は薬局でも見せてもらうよう促す。</p>
-              <ul>
-                <li><strong>腎機能に応じた用量調整が必要</strong>：ジャヌビア／グラクティブ（シタグリプチン）、ネシーナ（アログリプチン）、オングリザ（サキサグリプチン）、ザファテック（トレラグリプチン）、マリゼブ（オマリグリプチン）等</li>
-                <li><strong>腎機能による用量調整は基本不要</strong>：トラゼンタ（リナグリプチン）、テネリア（テネリグリプチン）</li>
-                <li><strong>中等度以上で用量調整</strong>：エクア（ビルダグリプチン）</li>
-              </ul>
-
-              <div class="patient-say">患者への伝え方の例：<br />「お腹が強く痛い・吐き気が止まらない、または皮膚に水ぶくれやただれが出たら、放置せず早めに連絡してください。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：単剤新規</span>
-              <div class="tpl-text">新規処方。低血糖リスクを高める併用薬がないことを確認。食事に合わせて血糖を下げる体の働きを助ける薬であることを説明。まれではあるが、強い腹痛・嘔吐や皮膚の水疱・ただれ等が出た場合は早めに相談・受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：SU・インスリン併用下追加</span>
-              <div class="tpl-text">他剤併用下（SU/インスリン）でDPP-4新規追加。SU/インスリン併用で低血糖リスクが上がるため、低血糖症状と対処（ブドウ糖摂取）を指導。まれではあるが、強い腹痛・嘔吐や皮膚の水疱・ただれ等が出た場合は早めに相談・受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更</span>
-              <div class="tpl-text">〇mg→〇mgへ変更説明。単剤では低血糖リスクは低いが、SU・インスリン併用中は低血糖症状（冷汗・ふるえ・動悸等）に注意するよう指導。強い腹痛・嘔吐や皮膚の水疱・ただれがみられた場合は早めに相談・受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">急性膵炎様症状（強い腹痛・嘔吐）について、まれではあるが症状が出た場合は早めに相談・受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">類天疱瘡様症状（皮膚の水疱・ただれ）について、まれではあるが症状が出た場合は早めに相談・受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">併用薬変更あり（薬剤名：〇〇）。既存薬との相互作用・低血糖リスクを確認、SU/インスリン追加時は低血糖症状と対処を再指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">SU・インスリン併用あり。低血糖リスクが上がるため、低血糖症状と対処（ブドウ糖摂取）を再指導。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- SGLT2 -->
-        <div class="drug-block" id="sglt2">
-          <div class="drug-block-head">
-            <span class="drug-block-name">SGLT2阻害薬</span>
-            <span class="drug-block-sub">ジャディアンス／フォシーガ／スーグラ／カナグル／デベルザ／ルセフィ 等</span>
-          </div>
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容・用法用量／水分摂取量・口渇・尿量増加・ふらつき、立ちくらみ等の脱水症状の有無</li>
-              <li>排尿時痛・陰部の痛み・腫れ・発赤・発熱の有無</li>
-              <li>Sick day（発熱・下痢・嘔吐・食事摂取不良）の有無・対応理解</li>
-              <li>利尿薬併用／高齢／低血糖リスクを高める併用薬（SU・インスリン）の有無</li>
-              <li>腎機能（eGFR）</li>
-              <li>効果指標：HbA1c・血糖値・体重の推移</li>
-            </ul>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>指導時の補足</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p>尿から余分な糖を排泄して血糖を下げる薬。薬剤や患者背景によっては心不全・腎機能の面でも使われることがある。一方で<strong>尿量増加による脱水</strong>、<strong>陰部症状</strong>（尿路感染・性器感染）、<strong>Sick day時の正常血糖ケトアシドーシス</strong>に注意が必要。</p>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li>こまめな水分補給（特に夏場・発汗時・高齢・利尿薬併用時）</li>
-                <li>陰部の痛み・腫れ・発熱が出たら早めに相談・受診</li>
-                <li>発熱・下痢・嘔吐・食事摂取不良時は自己判断で継続・中止せず相談</li>
-              </ul>
-
-              <h4>Sick day</h4>
-              <p><strong>Sick day とは：</strong>糖尿病の方が、発熱・下痢・嘔吐などで食事や水分を十分に取れない状態、または骨折など大きな外傷があった場合のこと。</p>
-              <p><strong>SGLT2特有のリスク：</strong>食事が取れない状態で脱水と糖代謝の乱れが重なり、<strong>正常血糖でもケトアシドーシス</strong>を起こすことがある。「血糖が低くなければ大丈夫」ではない。</p>
-              <ul>
-                <li>自己判断で継続・中止せず必ず相談</li>
-                <li>食事が十分摂れない場合でも、可能な範囲で<strong>水分・糖質（おかゆ・うどん・ジュースなど）を摂る</strong>よう説明。嘔吐持続・強い倦怠感がある場合は早めに医療機関へ相談</li>
-                <li>体を温めて安静、水分・電解質をこまめに摂取</li>
-              </ul>
-
-              <h4>脱水</h4>
-              <ul>
-                <li>尿量が増える薬なので、<strong>意識的な水分摂取</strong>を伝える</li>
-                <li>高齢、利尿薬併用、夏場、発汗時はより注意</li>
-                <li>口渇・倦怠感・立ちくらみ等の脱水症状を伝えておく</li>
-              </ul>
-
-              <h4>陰部症状（背景知識）</h4>
-              <p>排尿時痛・陰部の痛み・腫れ・発赤・発熱は尿路感染・性器感染のほか、<strong>まれに会陰部の重篤な感染症（フルニエ壊疽）</strong>に至ることがある。急速に進行するため、症状があれば早めの受診を強く伝える。</p>
-
-              <h4>患者説明のスタンス</h4>
-              <p>フルニエ壊疽は頻度としては稀。患者には病名を前面に出さず、症状（陰部の痛み・腫れ・発赤・発熱）と早めの受診を中心に説明する。薬歴上で病名と症状をセットで残したい場合は<strong>「副作用説明の追記」から追加コピー</strong>。</p>
-
-              <div class="patient-say">患者への伝え方の例：<br />「水分を多めに取ってください。発熱や下痢でご飯が食べられない日は、薬を飲んだ方がいいか相談してください。食欲がなくてもおかゆやジュースで糖質と水分は取ってください。陰部に痛みや腫れ、発熱があったら、様子を見ずにすぐ受診してください。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：単剤新規</span>
-              <div class="tpl-text">新規処方。低血糖リスクを高める併用薬の有無、利尿薬併用・腎機能・脱水リスク（高齢・飲水量）を確認。尿から余分な糖を排泄して血糖を下げる薬であることを説明。服用開始初期は尿量増加により脱水傾向となることがあるため、こまめな水分補給を指導。ふらつき・立ちくらみ、強い口渇、倦怠感がある場合は早めに相談するよう説明。陰部の痛み・腫れ・発赤・発熱が出た場合は早めに相談・受診、発熱・下痢・嘔吐・食事摂取不良時は自己判断で継続・中止せず相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：SU・インスリン併用下追加</span>
-              <div class="tpl-text">他剤併用下（SU/インスリン）でSGLT2新規追加。脱水＋低血糖リスク上昇のため、こまめな水分補給と、低血糖症状（冷汗・ふるえ・動悸等）に注意するよう指導。陰部症状・Sick day時の対応も説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
-              <div class="tpl-text">新規処方。高齢で脱水症状（口渇・ふらつき・立ちくらみ等）の自覚が遅れやすいため、こまめな水分補給と早めの相談を本人・家族に説明。陰部症状・Sick day時の対応も説明。体重減少・食欲低下が続く場合はフレイル・サルコペニアのリスクもあるため主治医に相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴い尿量増加・脱水傾向が出やすくなるため、こまめな水分補給を再指導。口渇・ふらつきや、排尿時の違和感・陰部のかゆみがみられた場合は相談するよう説明。発熱・下痢・食事がとれない時（シックデイ）の休薬は医師の指示を確認するよう再指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">フルニエ壊疽（会陰部の重篤な感染症）について、まれではあるが陰部の痛み・腫れ・発赤・発熱が出た場合は、急速に進行することもあるため様子を見ず早めに受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">併用薬変更あり（薬剤名：〇〇）。SU/インスリン追加時は脱水＋低血糖の重複リスクを説明・指導。利尿薬追加時は脱水傾向に注意するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">Sick day（発熱・下痢・嘔吐・食事摂取不良）あり。自己判断で服用を継続・中止せず、医療機関または薬局へ相談するよう指導。正常血糖でもケトアシドーシスのリスクがある旨を説明。食事が十分摂れない場合でも、可能な範囲で水分・糖質（おかゆ・うどん・ジュースなど）を摂るよう説明。嘔吐持続・強い倦怠感があれば早めに医療機関へ相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">利尿薬併用あり。脱水傾向に注意し、こまめな水分補給を再指導。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- SU・グリニド -->
-        <div class="drug-block" id="su">
-          <div class="drug-block-head">
-            <span class="drug-block-name">SU薬・グリニド系</span>
-            <span class="drug-block-sub">グリメピリド／グリクラジド／グリベンクラミド／ナテグリニド／ミチグリニド／レパグリニド 等</span>
-          </div>
-
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容（薬剤名・用法・用量・服用タイミング＝食前／食直前）</li>
-              <li>食事パターン（時間・回数・欠食の有無）／飲酒・運動量・運転の有無</li>
-              <li>低血糖症状（冷汗・ふるえ・動悸・強い空腹感等）の自覚・既往／ブドウ糖等の準備</li>
-              <li>併用薬（α-GI／インスリン／DPP-4 等）の有無</li>
-              <li>高齢・腎機能低下／家族支援の有無</li>
-              <li>効果指標：HbA1c・血糖値の推移</li>
-            </ul>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>指導時の補足</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p>膵臓からのインスリン分泌を促して血糖を下げる薬。欠食・運動量増加・空腹時飲酒で低血糖を起こしやすい。</p>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li>低血糖時はまずブドウ糖（α-GI併用ならショ糖は分解されにくいので不可）</li>
-                <li>欠食時は自己判断せず医師に確認</li>
-                <li>運転・運動・空腹時飲酒は低血糖に注意</li>
-                <li>家族とブドウ糖の置き場を共有しておく</li>
-              </ul>
-
-              <h4>低血糖時の説明（背景知識）</h4>
-              <p><strong>症状（典型例）：</strong>冷汗・ふるえ・動悸・強い空腹感・脱力感・頭がぼうっとする・眠気。高齢者では症状が分かりにくく、家族が「いつもと違う」と気付くことも多い。</p>
-              <p style="margin-top:6px;"><strong>対処：</strong></p>
-              <ul>
-                <li>まず<strong>ブドウ糖10g</strong>（または砂糖20g、ジュース150〜200ml 等の糖分）を摂取</li>
-                <li>α-GI併用時はショ糖が分解されにくいため、<strong>ブドウ糖を必ず常備</strong>するよう指導</li>
-                <li>15分待っても改善しなければもう一度摂取、それでも改善しない・繰り返す場合は受診</li>
-                <li>意識障害がある場合は無理に飲ませず、頬粘膜にブドウ糖を塗って救急要請</li>
-              </ul>
-              <p style="margin-top:6px;"><strong>背景：</strong>SU薬は治療上やむを得ず低血糖を起こしうる。高齢・腎機能低下・飲酒・欠食・運動量増加で遷延しやすい。空腹時の飲酒で翌朝に低血糖を起こすケースもある。</p>
-              <div class="patient-say">患者への伝え方の例：<br />「冷汗やふるえなど、いつもと違うと感じたら早めに糖分を取ってください。ブドウ糖が一番効くので、できれば持ち歩いて、車を運転する方は車にも置いておくと安心です。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：単剤新規</span>
-              <div class="tpl-text">新規処方。低血糖リスクを高める併用薬がなく、食事パターン（1日3食・欠食なし）を確認。膵臓からのインスリン分泌を促して血糖を下げる薬であることを説明。低血糖症状（冷汗・ふるえ・動悸・強い空腹感等）とブドウ糖・糖分での対処、食前服用を指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：併用下追加</span>
-              <div class="tpl-text">他剤併用下で新規追加。併用薬（〇〇）の相互作用注意点（〇〇）について患者に説明・指導。食事パターン（1日3食・欠食なし）を確認。併用で低血糖リスクが上がるため、低血糖症状と対処（ブドウ糖摂取）を指導。α-GI併用時はショ糖ではなくブドウ糖で対応するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢・腎機能低下例</span>
-              <div class="tpl-text">新規処方。高齢・腎機能低下を確認、家族支援の有無も確認。低血糖症状が遷延・自覚しにくい可能性があることを本人・家族に説明。ブドウ糖の家族間共有と保管場所も指導。他者の介助を要する重度低血糖の既往がある場合は再発リスクが高く、症状出現時は主治医にすぐ連絡するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴い低血糖が起こりやすくなるため、冷汗・ふるえ・動悸・強い空腹感などの低血糖症状と対処（ブドウ糖摂取）を再指導。食事量が少ない日や欠食時に特に出やすい旨を説明し、症状がみられた場合は次回受診を待たず連絡するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：減量</span>
-              <div class="tpl-text">減量に至った経緯（低血糖傾向等）を確認。減量後も低血糖症状（冷汗・ふるえ・動悸等）の有無を継続して確認するよう指導。空腹感が強い場合・症状再発時は連絡するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">併用薬変更あり(薬剤名：〇〇)。SU/グリニドとの相互作用・低血糖リスクを確認、低血糖症状と対処を再指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">欠食あり。低血糖リスクがあるため、欠食時の対応について自己判断せず医師の指示を確認するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">運動量増加あり。運動時・運動後の低血糖に注意し、ブドウ糖等を携帯するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">飲酒あり。飲酒により低血糖が遷延する可能性があるため、空腹時飲酒を避け、低血糖症状に注意するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">運転あり。運転前の低血糖注意、車内へのブドウ糖常備を説明。運転中に低血糖症状を少しでも感じたら、速やかに運転を中断するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">β遮断薬併用あり。低血糖症状（冷汗・ふるえ・動悸等）がマスクされる可能性があるため、空腹感・脱力感など他の症状にも注意するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- BG -->
-        <div class="drug-block" id="bg">
-          <div class="drug-block-head">
-            <span class="drug-block-name">ビグアナイド系（BG）</span>
-            <span class="drug-block-sub">メトホルミン（メトグルコ 等）</span>
-          </div>
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容・用法用量／消化器症状（食欲不振・下痢・嘔気）の有無・経過</li>
-              <li>Sick day（発熱・下痢・嘔吐・食事摂取不良）の有無・対応理解</li>
-              <li>ヨード造影剤検査の予定／多量飲酒の有無</li>
-              <li>低血糖リスクを高める併用薬（SU・インスリン等）の有無</li>
-              <li>腎機能（eGFR）・脱水傾向</li>
-              <li>効果指標：HbA1c・血糖値の推移</li>
-            </ul>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>指導時の補足</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p>肝臓での糖新生を抑え、インスリンの効きを良くする薬。単剤では低血糖を起こしにくい。一方で<strong>脱水・腎機能低下・造影剤・多量飲酒</strong>が重なると重篤な副作用（乳酸アシドーシス）のリスクがある。</p>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li>消化器症状（食欲不振・下痢・嘔気）は服用初期に出やすく、続く場合は相談</li>
-                <li>発熱・下痢・嘔吐・食事摂取不良時は自己判断で継続・中止せず必ず相談</li>
-                <li>CT・血管造影など造影剤検査の予定があれば事前に医師に伝える</li>
-                <li>多量飲酒は避ける（飲酒量と頻度をほどほどに）</li>
-              </ul>
-
-              <h4>乳酸アシドーシスとは（背景知識）</h4>
-              <p>BG使用中、<strong>脱水・低酸素・腎機能低下・多量飲酒</strong>などが重なると、体内に乳酸がたまって重篤な状態（倦怠感・嘔気・過呼吸・意識障害）になることがある。発症すれば致死的になりうるため、リスク状況を避けるよう日頃から伝える。</p>
-
-              <h4>患者説明のスタンス</h4>
-              <p>乳酸アシドーシス自体は頻度としては稀。患者にはSick day・造影剤・多量飲酒などのリスク状況を避ける行動と、強い倦怠感・嘔気・過呼吸が出た場合の相談を中心に説明する。</p>
-
-              <h4>Sick day</h4>
-              <p><strong>Sick day とは：</strong>糖尿病の方が、発熱・下痢・嘔吐などで食事や水分を十分に取れない状態、または骨折など大きな外傷があった場合のこと。病気のストレスや脱水で血糖が上昇する一方、食事量低下で低血糖のリスクもあり、血糖コントロールが難しい状態。</p>
-              <ul>
-                <li>BGは脱水・腎機能悪化を介して乳酸アシドーシスのリスクが上がる</li>
-                <li>自己判断で継続・中止せず、医療機関または薬局へ相談するよう伝える</li>
-                <li>食事が十分摂れない場合でも、可能な範囲で<strong>水分・糖質（おかゆ・うどん・ジュースなど）を摂る</strong>よう説明。嘔吐持続・強い倦怠感がある場合は早めに医療機関へ相談</li>
-                <li>体を温めて安静、水分・電解質をこまめに摂取</li>
-                <li>普段から「こういう時はどうするか」を医師と決めておくのが理想</li>
-              </ul>
-
-              <h4>ヨード造影剤検査</h4>
-              <p>ヨード造影剤と併用すると腎機能悪化を介して乳酸アシドーシスのリスクが上がるため、<strong>検査前後で休薬</strong>が必要な場合がある。CT・血管造影等の予定があれば、事前に処方医に申告するよう伝える。</p>
-
-              <h4>長期服用でのビタミンB12欠乏（背景知識）</h4>
-              <p>メトホルミンの長期服用で<strong>ビタミンB12の吸収が低下</strong>することが知られており、PMDAも注意喚起している。手足のしびれ・倦怠感・貧血様症状などが出た場合は処方医に相談するよう伝える。定期的な血液検査でB12値も確認できると安心。</p>
-
-              <div class="patient-say">患者への伝え方の例：<br />「ご飯が食べられない時、熱や下痢の時はこの薬を無理に飲まずに相談してください。食欲がなくてもおかゆやジュースなどで糖質と水分は取ってください。CTで造影剤を使う予定があれば必ず事前に教えてください。お酒の量も気をつけてください。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：単剤新規</span>
-              <div class="tpl-text">新規処方。低血糖リスクを高める併用薬なし、消化器症状の自覚なし、腎機能・脱水傾向を確認。肝臓での糖新生を抑えインスリンの効きを良くする薬であることを説明。消化器症状（食欲不振・下痢・嘔気）は服用初期に出やすく続く場合は相談するよう指導。乳酸アシドーシス様症状（強い倦怠感・嘔気・過呼吸）について、まれではあるが症状時は早めに相談・受診するよう説明。Sick day時・造影剤検査時・多量飲酒は乳酸アシドーシスのリスクが上がるため、自己判断で継続・中止せず医師の指示を確認するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：併用下追加</span>
-              <div class="tpl-text">他剤併用下でメトホルミン新規追加。併用薬（〇〇）の相互作用注意点（〇〇）について患者に説明・指導。単剤では低血糖リスクは低いが、SU/インスリン併用時は低血糖症状と対処を指導。乳酸アシドーシス様症状（強い倦怠感・嘔気・過呼吸）について、まれではあるが症状時は早めに相談・受診するよう説明。Sick day・造影剤検査時・多量飲酒は乳酸アシドーシスのリスクが上がるため、自己判断で継続・中止せず医師の指示を確認するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴い悪心・下痢などの消化器症状が出やすくなるため、続く場合は相談するよう指導。強い倦怠感・嘔気・過呼吸など普段と違う体調不良（乳酸アシドーシス）がみられた場合は速やかに受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">併用薬変更あり（薬剤名：〇〇）。SU/インスリン追加時は低血糖症状と対処を指導。ヨード造影剤検査の追加予定があれば前後の休薬について医師の指示を確認。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">Sick day（発熱・下痢・嘔吐・食事摂取不良）あり。自己判断で服用を継続・中止せず、医療機関または薬局へ相談するよう指導。食事が十分摂れない場合でも、可能な範囲で水分・糖質（おかゆ・うどん・ジュースなど）を摂るよう説明。嘔吐持続・強い倦怠感があれば早めに医療機関へ相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">ヨード造影剤検査の予定あり。前後の休薬が必要な場合があるため、事前に医師に伝えるよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">多量飲酒あり。乳酸アシドーシスのリスクが上がるため、飲酒量・頻度をほどほどにするよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">長期服用例。手足のしびれ・倦怠感などビタミンB12欠乏に関連する症状が出た場合は処方医に相談するよう指導。定期的な血液検査でB12値も確認できると安心。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- GLP-1 経口 -->
-        <div class="drug-block" id="glp1-po">
-          <div class="drug-block-head">
-            <span class="drug-block-name">GLP-1受容体作動薬（経口）</span>
-            <span class="drug-block-sub">リベルサス（経口セマグルチド）</span>
-          </div>
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容・用法用量</li>
-              <li>服用ルール（起床時・コップ約半分の水・服用後30分は飲食/他剤不可）の理解</li>
-              <li>悪心・嘔気・食欲低下・体重減少・食事摂取量の変化</li>
-              <li>他薬との服用間隔（30分絶食）</li>
-              <li>低血糖リスクを高める併用薬（SU・インスリン）の有無</li>
-              <li>効果指標：HbA1c・血糖値・体重の推移</li>
-            </ul>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>指導時の補足</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p>食事に合わせて血糖を下げる体の働き（インクレチン）を助け、食欲も抑える内服薬。吸収が不安定なため、<strong>起床時・少量の水・30分絶食</strong>の服用ルール厳守が必要。単剤では低血糖を起こしにくい。</p>
-
-              <h4>患者への伝え方（服用ルール）</h4>
-              <ul>
-                <li><strong>起床時</strong>に空腹のまま服用</li>
-                <li>水は<strong>コップ約半分（120mL以下）</strong>で（多いと吸収が下がる）</li>
-                <li>服用後<strong>30分は飲食・他剤（サプリ含む）不可</strong></li>
-                <li>悪心は初期に多く軽快することが多い／強い場合や続く場合は相談</li>
-                <li>食欲低下が強い場合や続く場合は栄養不良・脱水に注意、相談を</li>
-              </ul>
-
-              <h4>消化器症状・食欲低下（背景知識）</h4>
-              <p>GLP-1作動薬の主な副作用は<strong>悪心・嘔気・食欲低下・体重減少</strong>。多くは服用初期に出やすく、徐々に軽快することが多い。ただし強い食欲低下・体重減少が続く場合は栄養不良・脱水のリスクがあるため、相談・受診を促す。</p>
-
-              <h4>急性膵炎様症状（背景知識）</h4>
-              <p>GLP-1作動薬の使用中に、稀に<strong>急性膵炎</strong>を起こすことがある（添付文書で警告あり）。<strong>強い腹痛・嘔吐・圧痛</strong>などが出現した場合は速やかに受診し、服用継続の可否を含めて主治医に相談するよう伝える。</p>
-
-              <h4>患者説明のスタンス</h4>
-              <p>急性膵炎は頻度としては稀。患者には病名を前面に出さず、強い腹痛・嘔吐が続く場合の相談・受診を中心に説明する。薬歴上で病名と症状をセットで残したい場合は<strong>「副作用説明の追記」から追加コピー</strong>。</p>
-
-              <div class="patient-say">患者への伝え方の例：<br />「朝起きてすぐ、コップ半分の水で飲んでください。その後30分は何も食べたり飲んだりしないでください。最初の数週間は気持ち悪さが出ることもありますが、たいてい治まります。強く続く場合や、お腹を強く痛がる・吐き気が止まらない場合は連絡してください。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：単剤新規</span>
-              <div class="tpl-text">新規処方。低血糖リスクを高める併用薬がないことを確認。食事に合わせて血糖を下げる働きを助け、食欲も抑える内服薬であることを説明。起床時・コップ約半分の水・服用後30分は飲食他剤不可の服用ルールを厳守するよう指導。悪心は初期に多く軽快することが多い旨を説明、強い場合や続く場合は相談するよう指導。まれではあるが、強い腹痛・嘔吐が続く場合は早めに相談・受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：SU・インスリン併用下追加</span>
-              <div class="tpl-text">他剤併用下（SU/インスリン）で経口セマグルチド新規追加。服用ルール（起床時・コップ半分の水・30分絶食）を厳格に指導。SU/インスリン併用で低血糖リスクが上がるため、低血糖症状と対処を指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">〇mg→〇mgへ増量説明。増量後は悪心・食欲低下が出やすくなるため、強い場合や食事量の低下が続く場合は相談するよう指導。効果を保つため、起床時・コップ半分の水・30分絶食の服用ルールを再指導。強い腹痛・嘔吐が続く場合は早めに受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">急性膵炎様症状（強い腹痛・嘔吐）について、まれではあるが症状が出た場合は早めに相談・受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">食欲低下強い／持続あり。脱水・栄養不良に注意し、医療機関に相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">服用ルールの理解不十分。起床時・コップ半分の水・服用後30分絶食を再指導。守れないと吸収が下がり効果が出ない旨を説明。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- GLP-1 注射 -->
-        <div class="drug-block" id="glp1-inj">
-          <div class="drug-block-head">
-            <span class="drug-block-name">GLP-1受容体作動薬（注射）</span>
-            <span class="drug-block-sub">トルリシティ（デュラグルチド）／オゼンピック（セマグルチド）／ビクトーザ（リラグルチド） 等</span>
-          </div>
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容・投与曜日（週1回製剤の場合）／打ち忘れ時の対応理解</li>
-              <li>注射手技・保管（冷蔵／室温）・投与部位ローテーションの理解</li>
-              <li>注射部位の皮膚硬結・しこりの有無</li>
-              <li>悪心・嘔気・食欲低下・体重減少・食事摂取量の変化</li>
-              <li>低血糖リスクを高める併用薬（SU・インスリン）の有無</li>
-              <li>効果指標：HbA1c・血糖値・体重の推移</li>
-            </ul>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>指導時の補足</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p>食事に合わせて血糖を下げる体の働き（インクレチン）を助け、食欲も抑える皮下注射薬。週1回製剤と1日1回製剤がある。単剤では低血糖を起こしにくい。</p>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li>週1回製剤は<strong>曜日固定</strong>で習慣化／打ち忘れ時の対応を具体的に</li>
-                <li>注射部位はローテーション（同じ場所に続けて打たない）</li>
-                <li>保管は製剤ごとに違う（冷蔵／室温／使用開始後の扱い）</li>
-                <li>悪心は初期に多く軽快／食欲低下が強い場合や続く場合は相談</li>
-                <li>SU・インスリン併用時は低血糖症状（冷汗・ふるえ等）と対処（ブドウ糖）</li>
-              </ul>
-
-              <h4>注射手技・投与部位（背景知識）</h4>
-              <p>注射手技の確認は初回時に実演で。投与部位（腹部・大腿・上腕）を毎回ローテーションするよう指導。同じ部位に続けて打つと<strong>皮膚硬結・しこり</strong>を生じ、吸収が不安定になる。</p>
-
-              <h4>消化器症状・食欲低下</h4>
-              <p>主な副作用は<strong>悪心・嘔気・食欲低下・体重減少</strong>。多くは初期に出やすく徐々に軽快。強い食欲低下・体重減少が続く場合は栄養不良・脱水のリスク、相談・受診を促す。</p>
-
-              <h4>急性膵炎様症状（背景知識）</h4>
-              <p>GLP-1作動薬の使用中に、稀に<strong>急性膵炎</strong>を起こすことがある（添付文書で警告あり）。<strong>強い腹痛・嘔吐・圧痛</strong>などが出現した場合は速やかに受診し、使用継続の可否を含めて主治医に相談するよう伝える。</p>
-
-              <h4>患者説明のスタンス</h4>
-              <p>急性膵炎は頻度としては稀。患者には病名を前面に出さず、強い腹痛・嘔吐が続く場合の相談・受診を中心に説明する。薬歴上で病名と症状をセットで残したい場合は<strong>「副作用説明の追記」から追加コピー</strong>。</p>
-
-              <div class="patient-say">患者への伝え方の例：<br />「週1回、決まった曜日に打ちましょう。打つ場所は毎回ずらしてください。最初は気持ち悪くなることもありますが、たいてい慣れていきます。強く続く場合や、お腹を強く痛がる・吐き気が止まらない場合は連絡してください。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：単剤新規</span>
-              <div class="tpl-text">新規処方。低血糖リスクを高める併用薬がないことを確認。食事に合わせて血糖を下げる働きを助け、食欲も抑える注射薬であることを説明。注射手技・投与部位ローテーション・保管・打ち忘れ時対応を実演で確認・指導。週1回製剤は曜日固定で習慣化、悪心は初期に多く軽快する旨を説明。まれではあるが、強い腹痛・嘔吐が続く場合は早めに相談・受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：SU・インスリン併用下追加</span>
-              <div class="tpl-text">他剤併用下（SU/インスリン）でGLP-1注射新規追加。注射手技を実演で確認・指導。SU/インスリン併用で低血糖リスクが上がるため、低血糖症状と対処を指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">〇mg→〇mgへ増量説明。増量後は悪心・食欲低下が出やすくなるため、強い場合や食事量の低下が続く場合は相談するよう指導。嘔吐が続く場合や強い腹痛がみられた場合は早めに受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">急性膵炎様症状（強い腹痛・嘔吐）について、まれではあるが症状が出た場合は早めに相談・受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">併用薬変更あり（薬剤名：〇〇）。SU/インスリン追加時は低血糖症状と対処を指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">週1回製剤の打ち忘れあり。曜日固定で習慣化するよう再指導。打ち忘れ時の対応も再確認。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">食欲低下強い／持続あり。脱水・栄養不良に注意し、医療機関に相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">注射部位の皮膚硬結・しこりあり。投与部位のローテーションを再指導、症状が続く場合は主治医に相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- GIP/GLP-1 (マンジャロ) -->
-        <div class="drug-block" id="gip-glp1">
-          <div class="drug-block-head">
-            <span class="drug-block-name">GIP／GLP-1受容体作動薬（注射）</span>
-            <span class="drug-block-sub">チルゼパチド（マンジャロ）</span>
-          </div>
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容・投与曜日（週1回）／打ち忘れ時の対応理解</li>
-              <li>注射手技・保管・投与部位ローテーションの理解</li>
-              <li>注射部位の皮膚硬結・しこりの有無</li>
-              <li>悪心・嘔気・<strong>食欲低下・体重減少（強い作用）</strong>・食事摂取量の変化</li>
-              <li>低血糖リスクを高める併用薬（SU・インスリン）の有無</li>
-              <li>効果指標：HbA1c・血糖値・体重の推移</li>
-            </ul>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>指導時の補足</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p>2種類の食欲・血糖関連ホルモン（GIP／GLP-1）の働きを補う週1回注射薬。血糖改善作用に加え、<strong>食欲低下・体重減少がみられることがある</strong>（GLP-1単独製剤と比べて目立ちやすい）。単剤では低血糖を起こしにくい。</p>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li>週1回、<strong>曜日固定</strong>で習慣化／打ち忘れ時の対応を具体的に</li>
-                <li>注射部位はローテーション（同じ場所に続けて打たない）</li>
-                <li>悪心は初期に多く軽快／食欲低下・体重減少が強い場合は<strong>栄養不良・脱水に注意</strong>し相談</li>
-                <li>SU・インスリン併用時は低血糖症状（冷汗・ふるえ等）と対処（ブドウ糖）</li>
-              </ul>
-
-              <h4>強い食欲低下・体重減少（背景知識）</h4>
-              <p>マンジャロはGLP-1製剤よりも食欲抑制・体重減少作用が強い。<strong>食事量が極端に減ったり、急激な体重減少が続く</strong>と栄養不良・脱水を起こすことがある。患者の変化を継続的に確認し、強く出ている場合は医療機関に相談を促す。</p>
-
-              <h4>注射手技・投与部位</h4>
-              <p>注射手技の確認は初回時に実演で。投与部位（腹部・大腿・上腕）を毎回ローテーション。同じ部位に続けて打つと<strong>皮膚硬結・しこり</strong>を生じ、吸収が不安定になる。</p>
-
-              <h4>急性膵炎様症状（背景知識）</h4>
-              <p>GLP-1／GIP関連薬の使用中に、稀に<strong>急性膵炎</strong>を起こすことがある（添付文書で警告あり）。<strong>強い腹痛・嘔吐・圧痛</strong>などが出現した場合は速やかに受診し、使用継続の可否を含めて主治医に相談するよう伝える。</p>
-
-              <h4>患者説明のスタンス</h4>
-              <p>急性膵炎は頻度としては稀。患者には病名を前面に出さず、強い腹痛・嘔吐が続く場合の相談・受診を中心に説明する。薬歴上で病名と症状をセットで残したい場合は<strong>「副作用説明の追記」から追加コピー</strong>。</p>
-
-              <div class="patient-say">患者への伝え方の例：<br />「週1回、決まった曜日に打ちましょう。食欲が落ちる方が多いですが、急に体重が落ちる・ご飯が食べられない状態が続く場合は連絡してください。お腹を強く痛がる・吐き気が止まらない場合もすぐ連絡を。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：単剤新規</span>
-              <div class="tpl-text">チルゼパチド（マンジャロ）新規処方。低血糖リスクを高める併用薬がないことを確認。血糖を下げ、食欲低下・体重減少もみられることがある週1回注射薬（GIP／GLP-1作用）であることを説明。注射手技・投与曜日・保管・打ち忘れ時の対応を実演で確認・指導。悪心は初期に多く軽快、食欲低下・体重減少が強い場合は栄養不良・脱水に注意し相談するよう指導。まれではあるが、強い腹痛・嘔吐が続く場合は早めに相談・受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：SU・インスリン併用下追加</span>
-              <div class="tpl-text">他剤併用下（SU/インスリン）でチルゼパチド新規追加。SU/インスリン併用で低血糖リスクが上がるため、低血糖症状と対処（ブドウ糖摂取）を指導。注射手技・投与曜日も実演で確認・指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">〇mg→〇mgへ増量説明。増量後は悪心・食欲低下が強く出る場合があるため、食事量の低下や嘔吐が続く場合は相談するよう指導。強い腹痛がみられた場合は早めに受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">急性膵炎様症状（強い腹痛・嘔吐）について、まれではあるが症状が出た場合は早めに相談・受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">体重減少が強い／食欲低下持続あり。栄養不良・脱水に注意し、医療機関に相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">週1回製剤の打ち忘れあり。曜日固定で習慣化するよう再指導。打ち忘れ時の対応も再確認。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">注射部位の皮膚硬結・しこりあり。投与部位のローテーションを再指導、症状が続く場合は主治医に相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- α-GI -->
-        <div class="drug-block" id="agi">
-          <div class="drug-block-head">
-            <span class="drug-block-name">α-グルコシダーゼ阻害薬（α-GI）</span>
-            <span class="drug-block-sub">ボグリボース／アカルボース／ミグリトール</span>
-          </div>
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容・服用タイミング（食直前）の理解／飲み忘れ時のスキップ理解</li>
-              <li>腹部膨満感・放屁・下痢などの消化器症状の有無・経過</li>
-              <li>開腹手術歴・腸閉塞の既往（腸閉塞リスク）</li>
-              <li>低血糖リスクを高める併用薬（SU・インスリン）の有無</li>
-              <li>効果指標：HbA1c・食後血糖値の推移</li>
-            </ul>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>指導時の補足</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p>食事中の糖の分解・吸収を遅らせ、食後の血糖上昇を抑える薬。<strong>食直前服用</strong>（食事を口に入れる直前）でないと十分な効果が得られない。食後に気づいて服用しても効果が期待できないため、その回はスキップする。</p>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li>食事を口に入れる直前に服用、飲み忘れた回はスキップ（食後の服用では効果が得られない）</li>
-                <li>初期の腹部症状（膨満・放屁・下痢）は服用継続で軽快することが多い／続く場合は相談</li>
-                <li>SU・インスリン併用時の低血糖は<strong>ショ糖（砂糖）では分解されにくいためブドウ糖で対応</strong></li>
-                <li>ブドウ糖が手元にない場合は、成分表示を確認しブドウ糖を含む糖分で応急対応（原則はブドウ糖を常備するよう指導）</li>
-              </ul>
-
-              <h4>肝機能障害（背景知識）</h4>
-              <p>α-GIは稀に肝機能障害を起こすことがある。<strong>倦怠感・発熱・黄疸</strong>などが出現した場合は速やかに受診し、服用継続の可否を含めて主治医に相談するよう伝える。定期的な血液検査結果は薬局でも見せてもらうよう促す。</p>
-
-              <h4>患者説明のスタンス</h4>
-              <p>肝機能障害・腸閉塞はいずれも頻度としては稀。患者には病名を前面に出さず、強いだるさ・黄疸・褐色尿や、強い腹痛・嘔吐・排ガスや排便の停止などが出た場合の相談・受診を中心に説明する。薬歴上で病名と症状をセットで残したい場合は<strong>「副作用説明の追記」から追加コピー</strong>。</p>
-
-              <h4>Sick day</h4>
-              <p>α-GIは食直前服用が前提のため、食事を摂らない回に服用する意義は乏しい。自己判断で対応せず、<strong>食事摂取状況に応じた服用可否を医師・薬局に確認</strong>するよう説明。Sick day時の対応を普段から医師と話し合っておくよう伝える。</p>
-
-              <div class="patient-say">患者への伝え方の例：<br />「食事を口に入れる直前に飲んでください。食後に気づいた時は、その回は飛ばしてください。お腹が張ったりおならが増えても、続けていると慣れることが多いです。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：単剤新規</span>
-              <div class="tpl-text">新規処方。低血糖リスクを高める併用薬がないことを確認。食事中の糖の吸収を遅らせ食後の血糖上昇を抑える薬であることを説明。食直前（食事を口に入れる直前）服用の意義と、飲み忘れ時は食後時間が経っていればその回は服用しないよう説明。初期は腹部膨満・放屁・下痢が出やすいが服用継続で軽快することが多い旨を説明、続く場合は相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：SU・インスリン併用下追加</span>
-              <div class="tpl-text">他剤併用下（SU/インスリン）でα-GI新規追加。低血糖時はショ糖（砂糖）では分解されにくいためブドウ糖で対応するよう指導、ブドウ糖を常備するよう説明。食直前服用を徹底。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴いおなかの張り・おなら・下痢などの腹部症状が出やすくなるため、続く場合は相談するよう指導。食直前の服用を再指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">肝機能障害（強いだるさ・黄疸・褐色尿）について、まれではあるが症状が出た場合は早めに相談・受診するよう説明。定期的な血液検査結果は薬局でも提示するよう併せて指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">腸閉塞様症状（強い腹痛・嘔吐・排ガスや排便の停止）について、まれではあるが症状が出た場合は早めに相談・受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">併用薬変更あり（薬剤名：〇〇）。SU/インスリン追加時は低血糖時のブドウ糖対応（ショ糖不可）を再指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">飲み忘れあり。食後30分以上経ってからの服用では効果が期待できないため、次の食事までスキップするよう再指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">腹部症状（膨満・放屁・下痢）の持続あり。通常は時間経過で軽減するが、症状が続く場合は主治医に相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">Sick day（発熱・下痢・嘔吐・食事摂取不良）あり。食事を摂らない場合の服用可否は自己判断せず、医師の指示を確認するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- TZD -->
-        <div class="drug-block" id="tzd">
-          <div class="drug-block-head">
-            <span class="drug-block-name">チアゾリジン系（TZD）</span>
-            <span class="drug-block-sub">アクトス（ピオグリタゾン）</span>
-          </div>
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容・用法用量</li>
-              <li><strong>浮腫</strong>（足のむくみ・目が腫れぼったい）／<strong>体重増加</strong>／<strong>息切れ</strong>の有無</li>
-              <li>心不全既往の有無</li>
-              <li>低血糖リスクを高める併用薬（SU・インスリン）の有無</li>
-              <li>体重変化・減塩状況／適度な運動・食事療法の実施状況</li>
-              <li>骨折歴・転倒の有無（特に閉経後女性・高齢者）</li>
-              <li>効果指標：HbA1c・血糖値・体重の推移</li>
-            </ul>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>指導時の補足</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p>体内でのインスリンの効きを良くする薬。水分が体にたまりやすく、<strong>浮腫・体重増加・息切れ</strong>に注意が必要。<strong>心不全・心不全の既往がある患者には禁忌</strong>。単剤では低血糖を起こしにくい。</p>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li>急な体重増加・足のむくみ・<strong>目が腫れぼったい</strong>・息切れが出たらすぐ連絡</li>
-                <li>体重の自己測定／減塩を心がける</li>
-                <li>体重増加をきたしやすいため、適度な運動と適切な食事療法に努める</li>
-                <li>SU・インスリン併用時は低血糖症状と対処（ブドウ糖）</li>
-              </ul>
-
-              <h4>浮腫・心不全（背景知識）</h4>
-              <p>TZDは水分貯留作用があり、心不全を悪化させる・誘発することがある。<strong>急激な体重増加（短期間で2〜3kg以上）、足のむくみ、目の腫れぼったさ、息切れ・呼吸困難</strong>は心不全の徴候として早めに連絡するよう伝える。</p>
-
-              <h4>骨折リスク（背景知識）</h4>
-              <p>TZD（特にピオグリタゾン）の長期使用で<strong>骨折リスクの上昇</strong>が報告されている（特に<strong>閉経後女性・高齢者</strong>）。転倒予防と、骨折歴・骨粗鬆症がある場合は処方医と相談を促す。</p>
-
-              <div class="patient-say">患者への伝え方の例：<br />「足がむくむ、目が腫れぼったい、急に体重が増えた、階段で息切れする…こういう症状が出たら早めに連絡してください。普段から体重を測っておくと変化に気づきやすいです。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：単剤新規</span>
-              <div class="tpl-text">新規処方。低血糖リスクを高める併用薬がなく、心不全・心不全既往もないことを確認（心不全に禁忌のため）。体内でのインスリンの効きを良くする薬であることを説明。急な体重増加・足のむくみ・目の腫れぼったさ・息切れが出た場合はすぐ連絡するよう指導。体重の自己測定と減塩、適度な運動も指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：SU・インスリン併用下追加</span>
-              <div class="tpl-text">他剤併用下（SU/インスリン）でピオグリタゾン新規追加。SU/インスリン併用で低血糖リスクが上がるため、低血糖症状と対処を指導。浮腫・体重増加・息切れ出現時の連絡も再指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴い浮腫・体重増加が出やすくなるため、むくみ・急な体重増加・息切れがみられた場合は早めに相談・受診するよう指導。女性・インスリン併用では特に出やすい旨を説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">体重増加傾向あり。減塩と体重の自己測定、適度な運動と食事療法を指導。浮腫・息切れの有無も再確認。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">足のむくみ・目の腫れぼったさあり。浮腫の徴候として主治医に相談するよう指導。体重変化・息切れの有無も確認。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">閉経後女性／高齢例。長期使用で骨折リスク上昇の報告があるため、転倒予防と、骨折歴・骨粗鬆症がある場合は処方医に相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- イメグリミン -->
-        <div class="drug-block" id="imeglimin">
-          <div class="drug-block-head">
-            <span class="drug-block-name">イメグリミン系</span>
-            <span class="drug-block-sub">イメグリミン（ツイミーグ）</span>
-          </div>
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容・1日2回服用の継続性</li>
-              <li>消化器症状（悪心・下痢等）の有無・経過（特にメトホルミン併用時は増悪に注意）</li>
-              <li>低血糖リスクを高める併用薬（SU・インスリン等）の有無</li>
-              <li>腎機能（eGFR 10〜45未満で投与量・投与間隔の調節／eGFR 10未満で投与は推奨されない）</li>
-              <li>効果指標：HbA1c・血糖値の推移</li>
-            </ul>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>指導時の補足</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p>インスリンの分泌と効きの両方を整える薬（1日2回）。単剤では低血糖を起こしにくい。<strong>メトホルミン併用時は消化器症状が増悪</strong>しやすく、<strong>腎機能低下時は用量調整・禁忌</strong>に注意。</p>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li>1日2回継続して服用</li>
-                <li>消化器症状（悪心・下痢等）は初期に多いが続く場合は相談</li>
-                <li>SU・インスリン併用時は低血糖症状と対処（ブドウ糖）</li>
-                <li>定期的な血液検査結果は薬局でも提示するよう促す（腎機能確認のため）</li>
-              </ul>
-
-              <h4>メトホルミン併用時（背景知識）</h4>
-              <p>イメグリミンとメトホルミンは作用機序が一部重なり、<strong>消化器症状（悪心・下痢・嘔気）が増悪</strong>しやすい。併用処方時は特に消化器症状の経過を確認し、続く場合は処方医に相談するよう伝える。</p>
-
-              <h4>腎機能による用量調整（PMDA 2025年改訂）</h4>
-              <p>PMDA 2025年改訂で記載が見直された。<br />
-              ・<strong>eGFR 10以上45未満：投与量・投与間隔の調節が必要</strong>（特に eGFR 10以上15未満は有益性と危険性を慎重に判断）<br />
-              ・<strong>eGFR 10未満：投与は推奨されない</strong><br />
-              腎機能の経時的変化を確認するため、定期検査結果を薬局でも見せてもらえると安心。低下時は用量・継続可否を医師と相談するよう促す。</p>
-
-              <div class="patient-say">患者への伝え方の例：<br />「朝晩の1日2回、続けて飲んでください。最初は気持ち悪さや下痢が出ることもありますが、続けて治まるか様子を見てください。続く場合は連絡してください。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：単剤新規</span>
-              <div class="tpl-text">イメグリミン（ツイミーグ）新規処方。低血糖リスクを高める併用薬がないことを確認。インスリンの分泌と効きの両方を整える薬であることを説明。1日2回継続して服用するよう指導。消化器症状（悪心・下痢等）は服用初期に出やすく、続く場合は相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：メトホルミン併用下追加</span>
-              <div class="tpl-text">メトホルミン継続中にイメグリミン新規追加。両剤併用で消化器症状（悪心・下痢等）が増悪しやすい旨を説明、続く場合は処方医に相談するよう指導。乳酸アシドーシス様症状（強い倦怠感・嘔気・過呼吸）にも注意し、症状時は早めに相談・受診するよう説明。1日2回継続服用も指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：SU・インスリン併用下追加</span>
-              <div class="tpl-text">他剤併用下（SU/インスリン）でイメグリミン新規追加。SU/インスリン併用で低血糖リスクが上がるため、低血糖症状と対処（ブドウ糖摂取）を指導。1日2回継続服用も指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">〇mg→〇mgへ変更説明。悪心・下痢などの消化器症状が出やすくなることがあるため、続く場合は相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">腎機能経過の確認継続のため、定期検査結果は薬局でも提示するよう指導。低下時は用量・継続可否を医師と相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- 配合剤 -->
-        <div class="drug-block" id="combo">
-          <div class="drug-block-head">
-            <span class="drug-block-name">配合剤（薬歴の書き方ガイド）</span>
-            <span class="drug-block-sub">エクメット／メトアナ／カナリア／トラディアンス／スージャヌ／イニシンク／グルベス／ソニアス／メタクト 等</span>
-          </div>
-
-          <div class="tpl-warn">
-            <div class="tpl-warn-title">配合剤はテンプレ集ではなく書き方ガイド</div>
-            配合剤は含有成分ごとに注意点が異なるため、定型テンプレでは要件を満たせない。<br />
-            <strong>「どの成分が追加・変更になったか」を判断 → その成分の単剤ブロックのテンプレを使う</strong>のが原則（DPP-4／BG／SGLT2／SU 等の単剤ブロックを参照）。
-          </div>
-
-          <details class="guide-details" open>
-            <summary>配合剤の薬歴を書くときの考え方</summary>
-            <div class="guide-details-body">
-              <h4>実臨床で最も多いパターン</h4>
-              <p>「既存薬を継続中の患者に、もう1成分を含む配合剤に切り替え」というケースが圧倒的多数。この場合、<strong>新規となるのは追加成分のみ</strong>で、追加成分の単剤ブロックを参照して薬歴を書く。</p>
-
-              <h4>主な配合剤と成分（参考）</h4>
-              <ul>
-                <li>エクメット・メトアナ・イニシンク：DPP-4＋BG</li>
-                <li>カナリア・トラディアンス・スージャヌ：DPP-4＋SGLT2</li>
-                <li>ソニアス：SU＋TZD ／ メタクト：BG＋TZD</li>
-                <li>グルベス：α-GI＋グリニド</li>
-              </ul>
-
-              <h4>ケース別の対応</h4>
-              <ul>
-                <li><strong>既存薬＋追加成分（最頻）</strong>：追加成分の単剤ブロックの「初回イ：単剤新規」を参照して指導内容を書く</li>
-                <li><strong>両成分とも新規（稀）</strong>：両成分の単剤ブロックを組み合わせて書く</li>
-                <li><strong>単剤併用 → 配合剤へ集約</strong>：含有成分は変わらず服薬負担軽減のみのため、新たな指導の必要性は乏しく、原則として加算1は算定不可</li>
-                <li><strong>配合剤の用量変更</strong>：用量が変わった含有成分の単剤ブロックの変更ロ（増量・減量）を参照</li>
-              </ul>
-
-              <h4>配合剤特有の注意点（必要に応じて追記）</h4>
-              <ul>
-                <li>OTCや他院処方で<strong>同効薬を重複しない</strong>よう注意（特にDPP-4・SGLT2は単剤と配合剤の重複事故が起きやすい）</li>
-                <li>服用タイミングは医師指示通り</li>
-                <li>低血糖等の対処は含有成分に応じて（SU含有なら低血糖、SGLT2含有ならSick day、等）</li>
-              </ul>
-
-              <h4>薬歴記載イメージ</h4>
-              <p style="font-size:12px;color:var(--sub);margin-bottom:4px;">例：メトホルミン継続中の患者にエクメット（DPP-4＋BG）への切替が処方された場合</p>
-              <div class="patient-say" style="font-size:13px;">エクメット：メトホルミン継続中の患者にエクメットへ切替（<strong>DPP-4が新規追加成分</strong>）。DPP-4ブロック「初回イ：単剤新規」を参照し、強い腹痛・嘔吐や皮膚の水疱・びらん等の症状が出た場合は速やかに相談・受診するよう指導。同効成分の重複（DPP-4単剤との併用）に注意するよう説明。</div>
-            </div>
-          </details>
-        </div>
-
-        <p style="font-size:12px;color:var(--sub);margin-top:8px;">
-          ※ 「変更のあった薬」を起点に、状況に最も近いバリエーションを1つ選び、必要なら必要時追記から該当するものを足す想定。<br />
-          ※ 併用薬がある場合は薬歴冒頭に併用薬名を明記。<strong>追加された薬がハイリスク薬なら、その追加薬について「新規イ」として扱う</strong>のが基本。既存ハイリスク薬の相互作用・リスクが変化した場合は「必要時追記」で「併用薬変更あり」として記載するか、必要に応じて<strong>「副作用・服薬状況等の変化によるロ」</strong>として個別判断する。
-        </p>
-      </section>
-
-      <!-- ============================================================
-           § 3  副作用・服薬状況等の変化によるロ — 判断理由の書き方例
-           ============================================================ -->
-      <section id="section3">
-        <div class="section-label">SECTION 3</div>
-        <h2 class="section-title">副作用・服薬状況等の変化によるロ — 薬歴記載例</h2>
-
-        <div class="warn-box">
-          <div class="warn-box-title">この区分の位置づけと使い方</div>
-          <p style="margin-bottom:8px;">加算1の<strong>ロ</strong>には、次の2つの場面がある。</p>
-          <ul style="margin-bottom:10px;">
-            <li>①<strong>用法・用量の変更</strong>に伴い必要と認めて指導した場合 → <strong>SECTION 2 の変更ロ</strong></li>
-            <li>②<strong>副作用の発現状況・服薬状況等の変化</strong>に基づき必要と認めて指導した場合 → <strong>このセクション</strong></li>
-          </ul>
-          <p style="margin-bottom:8px;">②は、同一処方であっても、患者の体調・服薬状況・生活状況等の変化に薬剤師が気付き、<strong>追加の指導が必要と判断</strong>し、<strong>その理由の要点を薬歴に記載</strong>したときに算定する。</p>
-          <p style="margin-bottom:8px;">記録は<strong>「変化の確認 → 指導の方向性を判断 → 指導」</strong>の流れで簡潔に。</p>
-          <p>以下は記載例。患者の状況に合わせて書き換える。</p>
-        </div>
-
-        <div class="tpl-warn">
-          <div class="tpl-warn-title">コピーする前に必ず確認</div>
-          <ul>
-            <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（書き方例では薬効群名で書いているが、実運用では具体薬剤名で始める）</li>
-            <li><strong>変化の具体内容・確認した内容</strong>を患者の状況に合わせて書き換える（「指導が必要と判断」のフレーズは加算根拠として残す）</li>
-            <li>説明・指導していない項目は<strong>削除</strong>する</li>
-          </ul>
-        </div>
-
-        <div class="tpl-set" style="margin-top:14px;">
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">朝に冷汗・ふるえの訴えあり。低血糖発生の可能性があるため指導が必要と判断。ブドウ糖摂取と、症状の頻度・時刻を次回受診時に医師へ伝えるよう指導。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">残薬確認で飲み忘れが増加。血糖コントロール悪化の懸念があるため指導が必要と判断。服用タイミングを生活動線で確認、お薬カレンダー併用を提案。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">食欲低下で1食抜くことありとの訴え。SGLT2服用下の食事摂取不良はケトアシドーシスのリスクが上がるため指導が必要と判断。水分補給と、続く場合は医療機関に相談するよう指導。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">発熱・下痢ありとの訴え。BG服用下のSick dayは乳酸アシドーシスのリスクが上がるため指導が必要と判断。自己判断で服用を継続・中止せず、医療機関または薬局へ相談するよう指導。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">排尿時痛・口渇の訴え。SGLT2服用下の尿路感染・脱水傾向が疑われるため指導が必要と判断。水分補給・外陰部清潔を指導、発熱を伴う場合は受診するよう説明。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">「効果実感が乏しい」との訴え。自己中断による血糖コントロール悪化の懸念があるため指導が必要と判断。薬の作用が出るまでに時間がかかる旨を説明、自己判断で中止せず次回受診時に医師に相談するよう指導。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">他院で同種薬（DPP-4・SGLT2 等）の処方確認。配合剤との同効成分重複の懸念があるため指導が必要と判断。両処方医に重複事実を伝えるよう指導、必要に応じて情報提供書を発行。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-        </div>
-      </section>
-
-
-
-      <!-- § 個別指導での指摘事例 -->
-      <section id="kobetsu">
-        <div class="section-label">個別指導</div>
-        <h2 class="section-title">個別指導での指摘事例</h2>
-        <div class="drug-check-box">
-          <div class="drug-check-box-title">この薬効群で特に確認されやすいポイント</div>
-          <ul>
-            <li>記録から<strong>対象薬剤（「薬剤名：〜」）</strong>が分かるか</li>
-            <li>何を確認したか（症状・受診の経緯・適応・併用薬・低血糖リスク・服薬状況・検査値）が書かれているか</li>
-            <li>確認しただけで終わらず、<strong>患者の状況に応じた指導内容</strong>になっているか</li>
-            <li>低血糖症状と対処（ブドウ糖）・シックデイ時の対応・自己判断で中止しないことなど、必要な指導を記録したか</li>
-            <li>「副作用・服薬状況等の変化によるロ」では、<strong>変化の確認・指導が必要と判断した理由・指導内容</strong>が残っているか</li>
-          </ul>
-        </div>
-        <p style="font-size:12px;color:var(--sub);margin-top:10px;">
-          ※ 個別指導の一般的な考え方・過去の指摘の読み方は <a href="ハイリスク_薬歴の書き方.html#kobetsu" style="color:var(--blue);">ハイリスク薬の薬歴の書き方「個別指導で見られる点」</a> にまとめている。
-        </p>
-      </section>
-
-      <!-- ============================================================
-           § SOURCE（折りたたみ）
-           ============================================================ -->
-      <section>
-        <details class="guide-details fold-in">
-          <summary>本ページの根拠（出典・通知）</summary>
-          <div class="guide-details-body">
-            <div class="source-box">
-              <span class="source-box-label">ガイドライン</span>
-              <div><a href="https://www.nichiyaku.or.jp/yakuzaishi/pharmacy-info/other/guideline01" target="_blank" rel="noopener" style="color:var(--blue);">日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2.1版・令和8年6月）」</a>糖尿病用剤</div>
-              <div class="source-cite">→ 確認・指導事項の根拠</div>
-            </div>
-            <div class="source-box" style="margin-top:12px;">
-              <span class="source-box-label">通知</span>
-              <div>令和8年3月5日 保医発0305第6号 別添3「調剤報酬点数表に関する事項」 特定薬剤管理指導加算1</div>
-              <div class="source-cite">→ 算定要件・薬歴記載要件の原文</div>
-            </div>
-            <p style="font-size:12px;color:var(--sub);margin-top:14px;">※ インスリン製剤は別ページで扱う（ハイリスク薬指導カードページから「膵臓ホルモン剤」を参照）。</p>
-          </div>
-        </details>
-      </section>
-
-    </main>
-
-    </div><!-- /右カラム -->
-    </div><!-- /.layout-outer -->
-
-    <footer>調剤報酬・薬歴まとめ ／ 薬歴マニュアル ／ ハイリスク薬指導 ／ 糖尿病用剤</footer>
-
     <script>
-      // チェックリストだけ印刷
-      document.querySelectorAll('.print-btn').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          document.body.classList.add('print-checklist-only');
-          window.print();
-        });
-      });
-      window.addEventListener('afterprint', function () {
-        document.body.classList.remove('print-checklist-only');
-      });
-    </script>
-    <script>
-      document.querySelectorAll('.copy-mini').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const parent = btn.parentElement;
-          const tplText = parent.querySelector('.tpl-text');
-          let text;
-          if (tplText) {
-            text = tplText.innerText;
-          } else {
-            // dcb-row role 等：label 以外の span を取得
-            const spans = parent.querySelectorAll('span:not(.dcb-label)');
-            text = Array.from(spans).map(s => s.innerText).join('\n');
+      // 記載例を組み立てる：場面を選ぶと、その場面でよく使う部品に自動でチェックが入る。
+      // チェックは自由に付け外しでき、下の枠に1つの文として組み上がる。
+      // 枠の中の〇〇は入力欄になっていて、打った値はチェックを付け外ししても残る。
+      // 部品の data-drug は「|」区切りで複数の薬剤に出せる。薬剤の「その他」は値が〇〇で、文の中で入力欄になる。
+      // 入力した内容は画面の中だけで使い、保存も送信もしない。
+      document.querySelectorAll('.mk').forEach(function (mk) {
+        var out = mk.querySelector('.mk-out'), hint = mk.querySelector('.mk-bar .hint'), hint0 = hint.textContent;
+        var scenes = [].slice.call(mk.querySelectorAll('.mk-scenes:not(.mk-drug) input'));
+        var drugs = [].slice.call(mk.querySelectorAll('.mk-drug input'));
+        var parts = [].slice.call(mk.querySelectorAll('.mk-p input'));
+        var purposes = (mk.dataset.purpose || '').split('|').filter(Boolean);
+        var vals = {};
+        function drug() { var d = drugs.filter(function (x) { return x.checked; })[0]; return d ? d.value : (mk.dataset.drug || '〇〇'); }
+        function scene() { return scenes.filter(function (x) { return x.checked; })[0]; }
+        function applyDefaults() {
+          var s = scene().value, d = drug();
+          parts.forEach(function (p) {
+            var on = (p.dataset.on || '').split(' ').indexOf(s) >= 0;
+            var okDrug = !p.dataset.drug || p.dataset.drug.split('|').indexOf(d) >= 0;
+            p.checked = on && okDrug;
+            p.closest('.mk-p').hidden = !okDrug;
+          });
+          // 見出しの下に表示する部品がなければ、見出しも隠す
+          [].slice.call(mk.querySelectorAll('.mk-h')).forEach(function (hd) {
+            if (!hd.querySelector('.mk-sub')) return;
+            var el = hd.nextElementSibling, any = false;
+            while (el && el.classList.contains('mk-p')) { if (!el.hidden) any = true; el = el.nextElementSibling; }
+            hd.hidden = !any;
+          });
+        }
+        function segments() {
+          var segs = [{ id: 's:' + scene().value, text: scene().dataset.text }];
+          parts.forEach(function (p, i) { if (p.checked && !p.closest('.mk-p').hidden) segs.push({ id: 'p' + i, text: p.nextElementSibling.textContent }); });
+          var d = drug();
+          segs.forEach(function (g) { g.text = g.text.split('{薬}').join(d); });
+          return segs;
+        }
+        function purposeText() {
+          var v = vals.purpose || '';
+          if (v === '__other') return vals.purposeOther || '';
+          return v;
+        }
+        function plain() {
+          var t = '';
+          segments().forEach(function (g) {
+            var n = 0;
+            g.text.split(/(\{目的\}|〇+)/).forEach(function (tok) {
+              if (tok === '{目的}') t += purposeText() || '〇〇';
+              else if (/^〇+$/.test(tok)) { t += vals[g.id + '#' + (n++)] || tok; }
+              else t += tok;
+            });
+          });
+          return t;
+        }
+        function sizeOf(el) { el.size = Math.max(2, (el.value || '').length * 2 + 1); }
+        function input(key, ph) {
+          var el = document.createElement('input');
+          el.className = 'mk-in'; el.value = vals[key] || ''; el.placeholder = ph; el.setAttribute('aria-label', '入力');
+          sizeOf(el);
+          el.addEventListener('input', function () { vals[key] = el.value; sizeOf(el); });
+          return el;
+        }
+        function purposeSelect() {
+          var wrap = document.createElement('span');
+          var sel = document.createElement('select');
+          sel.className = 'mk-in';
+          [['', '処方目的を選択する']].concat(purposes.map(function (p) { return [p, p]; })).concat([['__other', 'その他（入力する）']])
+            .forEach(function (o) { var op = document.createElement('option'); op.value = o[0]; op.textContent = o[1]; sel.appendChild(op); });
+          sel.value = vals.purpose || '';
+          wrap.appendChild(sel);
+          var other = input('purposeOther', '処方目的');
+          other.hidden = sel.value !== '__other';
+          wrap.appendChild(other);
+          sel.addEventListener('change', function () { vals.purpose = sel.value; other.hidden = sel.value !== '__other'; if (!other.hidden) other.focus(); });
+          return wrap;
+        }
+        function render() {
+          out.innerHTML = ''; var fb = mk.querySelector('.mk-fallback'); if (fb) fb.hidden = true; hint.textContent = hint0; hint.classList.remove('warn');
+          segments().forEach(function (g) {
+            var n = 0;
+            g.text.split(/(\{目的\}|〇+)/).forEach(function (tok) {
+              if (!tok) return;
+              if (tok === '{目的}') out.appendChild(purposeSelect());
+              else if (/^〇+$/.test(tok)) out.appendChild(input(g.id + '#' + (n++), tok));
+              else out.appendChild(document.createTextNode(tok));
+            });
+          });
+        }
+        scenes.concat(drugs).forEach(function (x) { x.addEventListener('change', function () { applyDefaults(); render(); }); });
+        parts.forEach(function (x) { x.addEventListener('change', render); });
+        mk.querySelector('[data-act=clear]').addEventListener('click', function () { parts.forEach(function (p) { p.checked = false; }); render(); });
+        mk.querySelector('[data-act=reset]').addEventListener('click', function () { applyDefaults(); render(); });
+        mk.querySelector('.mk-bar button').addEventListener('click', function () {
+          var b = this, t = plain();
+          var left = (t.match(/〇+/g) || []).length;
+          function ok() {
+            b.textContent = 'コピーしました';
+            hint.textContent = left ? '未入力が' + left + 'か所ある（〇〇のままコピーした）' : hint0;
+            hint.classList.toggle('warn', !!left);
+            setTimeout(function () { b.textContent = 'コピー'; }, 1500);
           }
-          navigator.clipboard.writeText(text).then(() => {
-            btn.classList.add('copied');
-            const orig = btn.textContent;
-            btn.textContent = '済';
-            setTimeout(() => { btn.classList.remove('copied'); btn.textContent = orig; }, 1200);
-          });
+          function ng() {
+            // 枠の中（ハローナビ等）でクリップボードが使えないときは、完成した文を選択した状態で出し、Ctrl+C を促す
+            var ta = mk.querySelector('.mk-fallback');
+            if (!ta) { ta = document.createElement('textarea'); ta.className = 'mk-fallback'; ta.readOnly = true; mk.querySelector('.mk-bar').after(ta); }
+            ta.value = t; ta.hidden = false; ta.focus(); ta.select();
+            hint.textContent = 'コピーできなかった。下の枠の文が選択されているので Ctrl+C でコピーする';
+            hint.classList.add('warn');
+          }
+          function legacy() {
+            var ta = document.createElement('textarea');
+            ta.value = t; ta.setAttribute('readonly', '');
+            ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
+            document.body.appendChild(ta); ta.select();
+            var done = false; try { done = document.execCommand('copy'); } catch (e) {}
+            document.body.removeChild(ta);
+            done ? ok() : ng();
+          }
+          if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(ok, legacy); else legacy();
         });
+        applyDefaults(); render();
       });
     </script>
-    <script>
-      // サイドスティッキーTOC アクティブハイライト
-      (function () {
-        const navLinks = document.querySelectorAll('.sticky-toc a[href^="#"]');
-        const sections = Array.from(navLinks)
-          .map(a => document.querySelector(a.getAttribute('href')))
-          .filter(Boolean);
-        if (!sections.length) return;
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const id = entry.target.id;
-              navLinks.forEach(a => {
-                a.classList.toggle('is-active', a.getAttribute('href') === '#' + id);
-              });
-            }
-          });
-        }, { rootMargin: '-40px 0px -70% 0px', threshold: 0 });
-        sections.forEach(s => observer.observe(s));
-      })();
-    </script>
-    <script src="yakureki.js" defer></script>
-    <script src="../assets/site-fab.js" defer></script>
     <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   </body>
 </html>
