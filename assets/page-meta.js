@@ -63,10 +63,6 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-20",
     "newUntil": "2026-08-25"
   },
-  "yakureki/ハイリスク_糖尿病用剤.html": {
-    "lastUpdated": "2026-10-04",
-    "newUntil": "2026-10-11"
-  },
   "yakureki/ハイリスク_膵臓ホルモン剤.html": {
     "lastUpdated": "2026-10-04",
     "newUntil": "2026-10-11"
@@ -91,11 +87,15 @@ window.__pageMeta = {
     "lastUpdated": "2026-10-04",
     "newUntil": "2026-07-27"
   },
-  "yakureki/ハイリスク_血液凝固阻止剤.html": {
+  "yakureki/ハイリスク薬指導.html": {
     "lastUpdated": "2026-10-04",
     "newUntil": "2026-10-11"
   },
-  "yakureki/ハイリスク薬指導.html": {
+  "yakureki/ハイリスク_糖尿病用剤.html": {
+    "lastUpdated": "2026-10-04",
+    "newUntil": "2026-10-11"
+  },
+  "yakureki/ハイリスク_血液凝固阻止剤.html": {
     "lastUpdated": "2026-10-04",
     "newUntil": "2026-10-11"
   },
