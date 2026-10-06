@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>定型文集（申し送り・評価と指導）｜薬歴マニュアル</title>
+    <meta name="search-keywords" content="定型文,テンプレート,文例,申し送り,次回確認,AP,評価,計画,SOAP,安定期,Do処方,継続処方,書くことがない,汎用,メンタル,精神科,循環器,高血圧,心不全,心房細動,ワルファリン,DOAC,抗血小板薬,弁膜症,家庭血圧,体重,PT-INR,頓服,残薬,飲み忘れ" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/fold.css" />
+    <link rel="stylesheet" href="hairisk.css" />
+    <style>
+      /* 系統の切り替え（JSが効かないときは全部表示） */
+      .sys-tabs { display:flex; flex-wrap:wrap; gap:4px; background:#e6ebf1; border-radius:10px; padding:4px; }
+      .sys-tabs a { font-size:var(--text-sm); font-weight:700; text-decoration:none; color:var(--ink); padding:7px 18px; border-radius:7px; }
+      .sys-tabs a:hover { background:#f4f7fb; color:var(--blue); }
+      .sys-tabs a.cur { background:var(--white); color:var(--blue); box-shadow:0 1px 3px rgba(20,40,70,.18); }
+      .sys-tabs a small { font-weight:500; color:var(--txt-3); font-size:var(--text-xs); margin-left:6px; }
+      .sys { display:flex; flex-direction:column; gap:var(--gap-card); }
+      .sys[hidden] { display:none; }
+      /* 文例の並び：観点ごとの見出し＋1行ずつコピー */
+      .bank-g + .bank-g { margin-top:16px; }
+      .bank-h { font-weight:900; font-size:var(--text-sm); color:var(--blue); margin-bottom:6px; }
+      .bank-h small { font-weight:500; color:var(--txt-3); font-size:var(--text-xs); margin-left:8px; }
+      .ln { display:flex; gap:10px; align-items:flex-start; padding:7px 10px; border:var(--bw) solid var(--border); border-radius:var(--radius-sm); background:var(--white); font-size:var(--text-sm); line-height:1.75; }
+      .ln + .ln { margin-top:5px; }
+      .ln .t { flex:1; }
+      .ln button { flex-shrink:0; font:inherit; font-size:var(--text-xs); font-weight:700; color:var(--blue); background:var(--white); border:1px solid #bcd3ee; border-radius:5px; padding:2px 10px; cursor:pointer; margin-top:2px; }
+      .ln button:hover { background:var(--box-blue); }
+      .ln button.done { background:var(--blue); color:#fff; border-color:var(--blue); }
+      .ln .ph { color:var(--blue); font-weight:700; }
+      .ln .who { display:inline-block; font-size:var(--text-xs); font-weight:700; color:var(--txt-3); margin-right:6px; }
+      @media (max-width:640px) {
+        .sys-tabs { display:grid; grid-template-columns:repeat(3, 1fr); }
+        .sys-tabs a { text-align:center; padding:7px 4px; }
+        .sys-tabs a small { display:none; }
+      }
+      @media print { .sys[hidden] { display:flex; } .sys-tabs, .ln button { display:none; } }
+    </style>
+  </head>
+  <body>
+    <script src="../assets/site-header.js" defer></script>
+
+    <div class="page">
+
+      <div class="page-title">
+        <h1>定型文集（申し送り・評価と指導）</h1>
+        <p>処方が変わらず、特に指導することが少ない日の申し送りと評価・指導（A・P）の文例。電子薬歴の定型文に登録して使う。</p>
+      </div>
+
+      <nav class="sys-tabs" aria-label="系統">
+        <a href="#general" data-sys="general" class="cur">汎用</a>
+        <a href="#mental" data-sys="mental">メンタル系</a>
+        <a href="#cardio" data-sys="cardio">循環器系<small>高血圧・心不全・抗凝固薬など</small></a>
+      </nav>
+
+      <div class="card">
+        <div class="card-title">使い方</div>
+        <div class="blist">
+          <div class="check"><span>✓</span><span><span class="marker">同じ観点でも言い回しを何通りか登録しておき、来局ごとに替える。</span>長くDo処方が続く患者で毎回同じ文が並ぶと、画一的な記載として個別指導で指摘されやすい。</span></div>
+          <div class="check"><span>✓</span><span>文例の「訴えなし」「変化なし」は、何について確認したかが分かる形にしてある。確認していないことの文は使わない。</span></div>
+          <div class="check"><span>✓</span><span>文は「確認した観点 → 判断 → 理由をつけた指導」の順で書いてある。観点を具体的な言葉で書き、判断に理由を添えると、書くことが少ない日でも確認と判断の記録として読める。</span></div>
+          <div class="check"><span>✓</span><span>申し送りの書き方は <a href="基本記載ルール.html#エ">基本記載ルール「エ 継続的な薬学的管理」</a>。処方の変更や新しい指導があった日は、その内容を書く。</span></div>
+        </div>
+      </div>
+
+      <!-- =========================== 汎用 =========================== -->
+      <section class="sys" id="general" data-sys="general">
+
+        <div class="card">
+          <div class="card-title">次回への申し送り<span class="qual">汎用</span></div>
+          <div class="bank-g"><div class="bank-h">効果・治療目標</div>
+            <div class="ln"><span class="t">血圧・血糖などの検査値や自覚症状の推移を確認し、治療目標を維持できているか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">前回からの症状の変化を確認し、コントロールの悪化を示す兆候がないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">次回の検査結果を確認し、前回の値からの変化を評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">処方されている目的を本人がどう理解しているか確認し、薬識不足が服薬の継続の妨げになっていないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">病識・薬識を確認し、症状がないことを理由に自己判断で中断するおそれがないか評価する。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">副作用・体調</div>
+            <div class="ln"><span class="t">服用中の薬で起こりうるふらつき・胃の不快感・発疹などの有無を確認し、服薬継続に支障がないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">前回からの体調の変化を確認し、副作用を疑う症状がないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">服用期間が長くなってきたため、長く飲んで出やすい副作用がないか確認する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">季節の変わり目のため、体調の変化と服薬への影響を確認する。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">服薬・残薬</div>
+            <div class="ln"><span class="t">服薬状況と残薬を把握し、飲み忘れ・自己調整・自己中断につながる要因がないか確認する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">受診間隔と処方日数にずれがないか確認し、ずれがあれば残薬の状況を確認する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">飲み忘れやすい時間帯がないか確認し、服用時刻の工夫が必要か検討する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">今の薬の管理方法（カレンダー・一包化など）で飲めているか確認し、管理の工夫が必要か検討する。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">併用薬・他科受診</div>
+            <div class="ln"><span class="t">他院の処方・市販薬・サプリメントの変更を確認し、相互作用や重複がないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">他科受診の状況を確認し、新しく始まった薬がないか把握する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">お薬手帳で他院の処方内容を確認し、重複や飲み合わせの問題がないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">健康食品・サプリメントの使用を確認し、飲み合わせに問題がないか評価する。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">生活・服薬の継続</div>
+            <div class="ln"><span class="t">食事・睡眠・活動などの生活リズムの変化を確認し、服薬への影響がないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">治療や薬についての不安・困りごとを確認し、受診や服薬の継続に支障となる要因がないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">仕事や家庭の状況の変化を確認し、決められた時間・回数で服用できているか確認する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">暑い時期のため、水分のとり方と、脱水を疑う症状がないか確認する。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">全般</div>
+            <div class="ln"><span class="t">前回からの体調・生活面の大きな変化の有無を確認し、服薬継続に影響する問題がないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">服用中に気になる点や質問がないか確認し、必要に応じて情報提供する。</span><button type="button">コピー</button></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">今日の評価・指導（A・P）<span class="qual">汎用</span></div>
+          <div class="bank-g"><div class="bank-h">効果・治療目標</div>
+            <div class="ln"><span class="t">検査値・自覚症状の推移に大きな変化はなく、現時点で治療目標は維持できていると判断。自己判断で中止・減量すると症状が悪化するおそれがあるため、処方どおり服薬を続けるよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">症状の悪化を示す訴えはなく、コントロールは概ね安定していると判断。症状が落ち着いていても治療の継続が必要なことを説明し、変化があれば早めに相談するよう指導。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t"><span class="who">症状が出る病気</span>前回の受診以降、症状の再燃・再発はないと本人より。現在の治療で症状は落ち着いていると判断し、良い状態を保つため処方どおり続けるよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t"><span class="who">検査値で見る病気</span>直近の検査結果に大きな変動はないと本人より。検査値は安定して推移していると判断。自覚症状がなくても治療を続ける必要があることを説明し、検査結果を薬局でも確認できるよう次回の持参を依頼。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">副作用・体調</div>
+            <div class="ln"><span class="t">服用中の薬で起こりうるふらつき・胃の不快感・発疹などについて確認し、訴えなし。服薬継続に支障となる副作用は認めないと判断。気になる症状が出たときは自己判断で中断せず相談するよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">前回からの体調変化について確認し、副作用を疑う症状の訴えなし。現時点で服薬継続に問題はないと判断し、引き続き処方どおり服薬するよう指導。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">服用期間は長くなってきたが、新たな症状の訴えはなく経過は安定。長く飲んでから出る副作用もあるため、いつもと違う症状があれば早めに相談するよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">体調面に大きな変化はなく、日常生活に支障なしと本人より。服薬による影響は特にみられないと判断し、今の治療を続けるよう説明。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">服薬・残薬</div>
+            <div class="ln"><span class="t">服薬状況・残薬に大きな問題はなく、飲み忘れや自己調整なし。服薬は良好と判断し、処方どおり継続するよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">残薬なし。処方日数と受診間隔にずれはなく、指示どおり服用できていると判断。今の飲み方を続けるよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">飲み忘れは時々ある程度で、残薬に大きな問題はなし。服薬状況は概ね良好と判断。飲み忘れたときの対応を再確認し、2回分を一度に飲まないよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">今の管理方法（カレンダー・一包化など）で問題なく服用できていると本人より。管理方法は適切と判断し、続けるよう説明。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">併用薬・他科受診</div>
+            <div class="ln"><span class="t">併用薬の変更なし。OTC・サプリメントの新規使用もなく、相互作用・重複の問題はないと判断。新たに使い始めるときは薬局へ相談するよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">他科受診・処方変更なしと本人より。お薬手帳でも他院の処方に変更がないことを確認。受診時は手帳を提示するよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">他院の処方内容に変更はなく、飲み合わせの問題なし。市販のかぜ薬や痛み止めを使うときは、購入前に相談するよう説明。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">生活・不安</div>
+            <div class="ln"><span class="t">生活リズム（食事・睡眠・活動）に大きな変化はなく、服薬への影響なし。現在の服用方法を続けるよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">治療や薬に関する不安・困りごとの訴えはなく、服薬の継続に支障となる要因はないと判断。気になる点があれば早めに相談するよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">気になる点や質問はないと本人より。困ったことがあれば、来局時に限らず電話でも相談できることを案内。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">暑い時期のため、脱水による体調の変化について説明。水分をこまめにとり、ふらつき・食欲低下などがあれば相談するよう指導。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">全般</div>
+            <div class="ln"><span class="t">前回からの体調・生活面に大きな変化はなく、服薬継続に影響する問題なし。安定した状態を保てるよう、処方どおりの服薬継続を指導。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">処方変更なし。体調・服薬状況とも安定しており、現在の治療を問題なく続けられていると判断。引き続き経過を確認していく。</span><button type="button">コピー</button></div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- =========================== メンタル系 =========================== -->
+      <section class="sys" id="mental" data-sys="mental">
+
+        <div class="card">
+          <div class="card-title">次回への申し送り<span class="qual">メンタル系</span></div>
+          <div class="bank-g"><div class="bank-h">気分・症状</div>
+            <div class="ln"><span class="t">前回からの気分の落ち込みや不安の変化を確認し、症状の再燃・悪化の兆候がないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">イライラや落ち着かなさを確認し、気分の不安定さが強まっていないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">意欲や日中の活動の様子を確認し、生活への支障がないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">仕事・学校など生活面の変化を確認し、気分への影響がないか評価する。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">睡眠・日中の影響</div>
+            <div class="ln"><span class="t">寝つき・途中で起きる・熟睡感など睡眠の状況を確認し、生活に支障がないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">日中の眠気・ふらつき・集中力の低下を確認し、仕事や家事への影響がないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">睡眠薬の服用時刻と翌朝の眠気の残りを確認し、生活への影響がないか評価する。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">服薬・頓服</div>
+            <div class="ln"><span class="t">服薬状況と残薬を把握し、飲み忘れ・自己調整・自己中断につながる要因がないか確認する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">頓服薬の使用回数を確認し、使用が増えて症状の悪化を示していないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">よくなったと感じて自己判断で減らしていないか確認する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">病識・薬識を確認し、病気や薬への理解の不足から自己中断に至るおそれがないか評価する。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">副作用・服薬の不安</div>
+            <div class="ln"><span class="t">口の渇き・便秘・尿が出にくいなどを確認し、服薬継続に支障がないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">食欲や体重の変化を確認し、副作用や症状の悪化がないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">手のふるえ・そわそわ感の有無を確認し、服薬継続に支障がないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">薬への不安や気になる症状を確認し、自己中断につながる要因がないか確認する。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">全般</div>
+            <div class="ln"><span class="t">体調や生活面に前回からの大きな変化がないか確認し、服薬継続に影響する問題がないか評価する。</span><button type="button">コピー</button></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">今日の評価・指導（A・P）<span class="qual">メンタル系</span></div>
+          <div class="bank-g"><div class="bank-h">気分・症状</div>
+            <div class="ln"><span class="t">前回からの気分の落ち込みや不安感に大きな変化はなく、症状の再燃・悪化を疑う訴えなし。再燃を防ぐため、自己判断で中止・減量せず服薬を続けるよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">焦燥感・イライラ感の増悪はなく、前回から気分は概ね安定。落ち着かなさや気分の変化があれば早めに相談するよう説明し、服薬を続けるよう指導。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">意欲や日中の活動状況に大きな変化はなく、生活への支障はみられない。安定した状態を保てるよう、処方どおりの服薬継続を説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">仕事・家事など日常生活は大きな支障なく続けられていると本人より。症状は落ち着いていると判断し、良い状態を保つためにも服薬を続けるよう説明。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">睡眠・日中の影響</div>
+            <div class="ln"><span class="t">睡眠の状況に大きな支障はなく、日常生活への影響もみられない。服用のタイミングを守り、処方どおり服薬を続けるよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">日中の眠気・ふらつき・集中力低下の訴えはなく、日常生活への影響は認められない。症状が出た場合は自己判断で中断せず相談するよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">寝つき・途中で目が覚めることについて確認し、前回から大きな変化なし。睡眠は概ね保たれていると判断。眠気が残る日は車の運転を控えるよう説明。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">服薬・頓服</div>
+            <div class="ln"><span class="t">服薬状況・残薬に大きな問題はなく、飲み忘れや自己調整なし。症状の再燃・悪化を防ぐため、自己判断で中止・減量せず続けるよう指導。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">頓服薬の使用頻度の増加はなく、症状悪化を示唆する変化なし。指示された用法・用量の範囲で使用し、使用回数が増える場合は相談するよう指導。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">調子の良い日も自己判断で減らさず服用できていると本人より。服薬への理解は十分と判断し、今の飲み方を続けるよう説明。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">副作用・服薬の不安</div>
+            <div class="ln"><span class="t">口渇・便秘・排尿困難など抗コリン作用を疑う訴えなし。服薬継続に支障となる副作用はなく、気になる症状が出た場合は自己判断で中断せず相談するよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">食欲や体重に前回からの大きな変化はなく、服薬継続に影響する訴えなし。気になる変化がある場合は自己判断で中断せず相談するよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">手のふるえ・そわそわ感など、体の動きに関する気になる症状の訴えなし。服薬継続に支障なしと判断。変化を感じたときは早めに相談するよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">服薬に伴う気になる症状や不安はなく、自己中断につながる訴えなし。再燃を防ぐため、自己判断で中止・減量せず続けるよう説明。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">全般</div>
+            <div class="ln"><span class="t">体調・生活面に前回からの大きな変化はなく、服薬継続に影響する問題なし。安定した状態を保てるよう、処方どおりの服薬継続を指導。</span><button type="button">コピー</button></div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- =========================== 循環器系 =========================== -->
+      <section class="sys" id="cardio" data-sys="cardio">
+
+        <div class="card">
+          <div class="card-title">次回への申し送り<span class="qual">循環器系</span></div>
+          <div class="bank-g"><div class="bank-h">高血圧</div>
+            <div class="ln"><span class="t">家庭血圧のふだんの値と、測定・記録が続いているか確認する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">立ちくらみ・ふらつきを確認し、血圧の下げすぎを疑う症状がないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">季節による家庭血圧の変化を確認し、降圧目標を維持できているか評価する。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">心不全</div>
+            <div class="ln"><span class="t">体重の急な増加（目安：1週間で2kg以上）や足のむくみを確認し、心不全の悪化の兆候がないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">階段や坂道での息切れ、夜間の息苦しさの変化を確認する。「息切れなし」の返事でも、動くのを控えて症状を避けていないか動作の程度で確認する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">利尿薬を含めた服薬状況と、市販の痛み止め・かぜ薬（NSAIDs）を使っていないか確認する。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">心房細動・抗凝固薬</div>
+            <div class="ln"><span class="t">抗凝固薬の飲み忘れや自己中断がないか確認する。自覚症状がない人が多いため、脳梗塞予防という目的を理解して続けられているかもみる。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">動悸・脈の乱れ・めまいがある場合、頻度が増えていないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">あざ・歯ぐきからの出血・血尿・黒い便など、出血の兆候がないか確認する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t"><span class="who">ワルファリン</span>直近のPT-INRと用量変更の有無を確認し、コントロールが安定しているか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t"><span class="who">ワルファリン</span>納豆・青汁・クロレラなどの摂取や、食生活の大きな変化がないか確認する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t"><span class="who">DOAC</span>飲み忘れがないか残薬とあわせて確認し、服薬が途切れる要因がないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t"><span class="who">DOAC</span>直近の腎機能の検査値と用量の変更の有無を確認し、今の用量が合っているか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">新しく始まった薬・市販薬・サプリメントがないか確認する。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">虚血性心疾患・抗血小板薬</div>
+            <div class="ln"><span class="t">動いたときの胸の痛み・圧迫感の再発がないか確認し、受診が必要な変化がないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">硝酸薬（頓用）の使用回数を確認し、発作が増えていないか評価する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">手術・抜歯の予定や、2剤から1剤への変更の指示がないか確認する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">あざ・黒い便・胃の痛みなど、出血や胃腸の症状がないか確認する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">スタチンによる筋肉痛・脱力の有無を確認し、服薬継続に支障がないか評価する。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">弁膜症</div>
+            <div class="ln"><span class="t"><span class="who">機械弁</span>抜歯・手術・内視鏡検査など、ワルファリンの休薬に関わる予定がないか確認する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t"><span class="who">生体弁</span>抗凝固薬・抗血小板薬の服用予定の期間を確認し、術後どの段階かを把握する。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t"><span class="who">経過観察</span>息切れ・むくみ・動悸が出ていないか確認し、受診が必要な変化がないか評価する。</span><button type="button">コピー</button></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">今日の評価・指導（A・P）<span class="qual">循環器系</span></div>
+          <div class="bank-g"><div class="bank-h">高血圧</div>
+            <div class="ln"><span class="t">家庭血圧は普段どおりの値で安定し、立ちくらみ・ふらつきの訴えなし。飲み忘れなく服薬できており、今の服薬と血圧測定を続けるよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">家庭血圧の記録は続けられており、大きな変動はないと本人より。降圧は概ね良好と判断。記録は受診時に医師へ見せるよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">普段より血圧が低めとの訴えあり。ふらつき・立ちくらみはなし。低めが続くときやふらつきが出るときは、家庭血圧の記録を持って早めに受診するよう説明。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">心不全</div>
+            <div class="ln"><span class="t">体重の急な増加や浮腫・息切れの訴えはなく、増悪の兆候なし。毎日の体重測定を続け、1週間で2kg以上増えたときやむくみが出たときは早めに受診するよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">階段・坂道での息切れは前回と変わりないと本人より。日常の動作に支障はなく、状態は安定していると判断。息切れが強くなったときは早めに受診するよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">利尿薬を含め服薬状況に問題なく、自己調整なし。市販の痛み止めには心不全に影響するものがあるため、購入前に相談するよう説明。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">心房細動・抗凝固薬</div>
+            <div class="ln"><span class="t">もともと自覚症状はなく、体調にも変化なし。飲み忘れなく服薬は安定しており、症状がなくても脳梗塞予防のため継続が必要であることを説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">動悸・脈の乱れの自覚に変化なし。症状の頻度が増えるときは受診するよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">あざ・歯ぐきの出血など出血傾向の訴えはなく、抗凝固療法は安定して続けられていると判断。出血が止まりにくいときや黒い便が出たときは早めに相談するよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t"><span class="who">ワルファリン</span>PT-INRは目標範囲内で推移し、用量変更なし。納豆・青汁などの摂取なく、あざ・出血傾向の訴えもなし。引き続き検査結果を確認しながら服薬を続けるよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t"><span class="who">DOAC</span>出血兆候・飲み忘れの訴えなし。定期的に血液検査を受けており、用量変更なし。腎機能に応じて量が決まる薬のため、検査を続けて受けるよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">併用薬・市販薬の追加なし。新しい薬やサプリメントを始めるときは事前に相談するよう説明。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">虚血性心疾患・抗血小板薬</div>
+            <div class="ln"><span class="t">胸部症状の再発なく、出血や胃の症状の訴えもなし。症状がなくても再発予防のため服薬を続ける必要があることを説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">ニトロの使用はなく、動いたときの胸部症状も出ていないと本人より。状態は安定していると判断。胸の痛みが長く続くときはすぐに受診するよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">抗血小板薬の自己中断なし。手術・抜歯の予定が決まったときは、事前に医師・薬局へ相談するよう指導。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t">スタチン服用に伴う筋肉痛・脱力の訴えなし。服薬継続に支障なしと判断し、続けるよう説明。</span><button type="button">コピー</button></div>
+          </div>
+          <div class="bank-g"><div class="bank-h">弁膜症</div>
+            <div class="ln"><span class="t"><span class="who">機械弁</span>服薬は安定し、飲み忘れなし。機械弁のためワルファリンは生涯続ける必要があり、自己判断で中止しないよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t"><span class="who">生体弁</span>術後経過は安定し、胸部症状・息切れの訴えなし。抗凝固薬は医師の指示どおり継続中。定期受診（心エコー）を続けるよう説明。</span><button type="button">コピー</button></div>
+            <div class="ln"><span class="t"><span class="who">経過観察</span>息切れ・むくみなどの症状なく安定。定期の受診・検査を続け、坂道や階段での息切れやむくみが出たときは早めに受診するよう説明。</span><button type="button">コピー</button></div>
+          </div>
+          <p class="note-xs" style="margin-top:12px;">体重や検査値の目安は、医師の指示があればそちらを優先する。抗凝固薬・抗血小板薬の新規・変更は <a href="ハイリスク_血液凝固阻止剤.html">ハイリスク薬（血液凝固阻止剤）</a>。</p>
+        </div>
+
+      </section>
+
+      <div class="card">
+        <div class="card-title">根拠</div>
+        <div class="stack">
+          <p class="note">薬歴は「定型文を用いて画一的に記載するのではなく、指導等を行った保険薬剤師が必要事項を判断して記載すること」とされている。このページの文例は、患者ごとの状況に合わせて選び、書き換えて使う。</p>
+          <div class="src"><div>令和8年3月5日 保医発0305第6号 別添3「調剤報酬点数表に関する事項」薬学管理料 通則(5)</div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+      // 系統の切り替え：#general / #mental / #cardio。JSが効かないときは全部表示のまま
+      (function () {
+        var tabs = [].slice.call(document.querySelectorAll('.sys-tabs a'));
+        var secs = [].slice.call(document.querySelectorAll('section.sys'));
+        function show(id) {
+          if (!secs.some(function (s) { return s.id === id; })) id = 'general';
+          secs.forEach(function (s) { s.hidden = s.id !== id; });
+          tabs.forEach(function (a) { a.classList.toggle('cur', a.dataset.sys === id); });
+        }
+        tabs.forEach(function (a) {
+          a.addEventListener('click', function (e) { e.preventDefault(); show(a.dataset.sys); try { history.replaceState(null, '', '#' + a.dataset.sys); } catch (err) {} });
+        });
+        show((location.hash || '').slice(1));
+      })();
+
+      // 文例の 〇〇 を青く見せる（コピーする文は変えない）。「ワルファリン」などの札はコピーに入れない
+      document.querySelectorAll('.ln .t').forEach(function (t) {
+        t.dataset.src = [].map.call(t.childNodes, function (n) { return n.nodeType === 3 ? n.textContent : (n.classList && n.classList.contains('who') ? '' : n.textContent); }).join('');
+        [].slice.call(t.childNodes).forEach(function (n) {
+          if (n.nodeType !== 3 || n.textContent.indexOf('〇') < 0) return;
+          var f = document.createDocumentFragment();
+          n.textContent.split(/(〇+)/).forEach(function (s) { if (!s) return; if (/^〇+$/.test(s)) { var b = document.createElement('span'); b.className = 'ph'; b.textContent = s; f.appendChild(b); } else f.appendChild(document.createTextNode(s)); });
+          t.replaceChild(f, n);
+        });
+      });
+
+      // 1行コピー。枠の中（ハローナビ等）でクリップボードが使えないときは、文を選択した状態にする
+      function copyText(text, btn) {
+        function ok() { btn.textContent = 'コピーしました'; btn.classList.add('done'); setTimeout(function () { btn.textContent = 'コピー'; btn.classList.remove('done'); }, 1400); }
+        function legacy() {
+          var ta = document.createElement('textarea');
+          ta.value = text; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
+          document.body.appendChild(ta); ta.select();
+          var done = false; try { done = document.execCommand('copy'); } catch (e) {}
+          document.body.removeChild(ta);
+          if (done) ok(); else { var r = document.createRange(); r.selectNodeContents(btn.parentElement.querySelector('.t')); var s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Ctrl+C で'; }
+        }
+        if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(ok, legacy); else legacy();
+      }
+      document.querySelectorAll('.ln button').forEach(function (b) {
+        b.addEventListener('click', function () { copyText(b.parentElement.querySelector('.t').dataset.src.trim(), b); });
+      });
+    </script>
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>

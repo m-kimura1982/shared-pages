@@ -1,201 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow,noarchive">
-  <title>乳幼児服薬指導加算（薬歴記載）｜薬歴マニュアル</title>
-  <meta name="search-keywords" content="乳幼児,6歳未満,保護者,体重,ドライシロップ,ミルク,離乳食,手帳記載,服薬拒否" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../assets/fold.css" />
+  <title>乳幼児服薬指導加算の薬歴記載｜薬歴マニュアル</title>
+  <meta name="search-keywords" content="乳幼児服薬指導加算,乳幼児加算,6歳未満,小児,体重,用量,粉薬,ドライシロップ,シロップ,水薬,苦い,嫌がる,飲ませ方,混ぜる,アイス,ヨーグルト,マクロライド,クラリスロマイシン,アジスロマイシン,カルボシステイン,吐いた,保育園,昼の薬,兄弟,きょうだい,取り違え,坐薬,アンヒバ,点眼,軟膏,誤飲,手帳,シール">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/fold.css">
+  <link rel="stylesheet" href="hairisk.css">
   <style>
-    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
-    :root {
-      --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
-      --pad-card:22px; --gap-card:16px;
-      --blue:#1e5fa8; --ink:#222222;
-      --bg:#f3f4f6; --white:#ffffff;
-      --box-blue:#e4f0f8; --box-gray:#f2f2f2;
-      --border:#d1d5db; --border-dk:#9ca3af;
-      --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px;
-      --amber:#b45309; --amber-bg:#fdf0e3; --amber-bd:#e8c9a3;
-      --txt-2:#444444; --txt-3:#5e6470;
-      --warn-bg:#fffbe6; --warn-bd:#e0b000;
-    }
-    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:0 16px 60px; }
-    .draft-banner { margin:0 -16px 18px; background:#fff8e1; border-bottom:var(--bw-h) solid #e5c200; color:#5f4b00; font-size:var(--text-xs); font-weight:700; text-align:center; padding:7px 16px; }
-    .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+    /* 要点：3つ（順序がないので青い四角の番号は使わず、太字の見出し語） */
+    .pts { display:flex; flex-direction:column; gap:10px; }
+    .pt { display:grid; grid-template-columns:9.5em minmax(0,1fr); gap:4px 14px; padding:10px 2px; border-top:var(--bw) solid var(--border); font-size:var(--text-sm); }
+    .pt:first-child { border-top:none; padding-top:2px; }
+    .pt .k { font-weight:900; color:var(--blue); }
+    .card-title .act { margin-left:auto; font:inherit; font-size:var(--text-xs); font-weight:700; color:var(--blue); background:var(--white); border:1px solid #bcd3ee; border-radius:5px; padding:3px 11px; cursor:pointer; }
+    .card-title .act:hover { background:var(--box-blue); }
 
-    .page-title-wrap { padding:6px 0; }
-    .page-title-wrap h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
-    .page-title-wrap p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+    /* 場面を選ぶ */
+    .scene-pick .row { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px; }
+    .scene-pick .row + .row { margin-top:10px; }
+    .scene-pick .lab { flex-basis:5em; flex-shrink:0; font-size:var(--text-xs); font-weight:900; color:var(--txt-3); }
+    .scene-pick button { font:inherit; font-size:var(--text-sm); border:1px solid var(--border-dk); border-radius:6px; padding:4px 12px; background:var(--white); cursor:pointer; color:var(--ink); }
+    .scene-pick button:hover { border-color:var(--blue); color:var(--blue); }
+    .scene-pick button.cur { background:var(--box-blue); border-color:var(--blue); color:var(--blue); font-weight:700; }
+    .scene-pick .all { margin-top:12px; font-size:var(--text-xs); }
+    .scene-pick .all a { color:var(--txt-3); }
 
-    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
-    .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:13px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
-    .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
-    .card-title .tag { font-size:var(--text-sm); font-weight:900; color:var(--blue); background:var(--box-blue); padding:1px 10px; border-radius:4px; line-height:1.5; }
-    .imp { margin-left:auto; font-size:var(--text-xs); font-weight:700; padding:2px 11px; border-radius:4px; white-space:nowrap; }
-    .imp.top { background:var(--amber-bg); color:var(--amber); }
-    .imp.key { background:var(--box-blue); color:var(--blue); }
+    /* 場面のカード：左に薬歴、右に手帳 */
+    .sc[hidden] { display:none; }
+    .sc .card-title .back { margin-left:auto; font-size:var(--text-xs); font-weight:700; color:var(--blue); text-decoration:none; }
+    .sc .card-title .back::before { content:"↑ "; }
+    .sc .grid { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:16px; }
+    .sc .col-h { display:flex; align-items:center; gap:8px; font-size:var(--text-xs); font-weight:900; color:var(--txt-2); margin-bottom:6px; }
+    .sc .col-h .who { font-weight:700; border-radius:4px; padding:1px 8px; }
+    .sc .col-h .who.y { color:var(--blue); background:var(--box-blue); }
+    .sc .col-h .who.t { color:#7a5718; background:#f3e8d0; }
+    .sc .col-h button { margin-left:auto; }
+    .tx { display:flex; gap:10px; align-items:flex-start; border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:9px 12px; font-size:var(--text-sm); line-height:1.75; background:var(--white); }
+    .tx + .tx { margin-top:6px; }
+    .tx .t { flex:1; white-space:pre-line; }
+    .tx.rec { background:#f7f9fc; border-color:#bcd3ee; }
+    .cp { flex-shrink:0; font:inherit; font-size:var(--text-xs); font-weight:700; color:var(--blue); background:var(--white); border:1px solid #bcd3ee; border-radius:5px; padding:2px 10px; cursor:pointer; margin-top:2px; }
+    .cp:hover { background:var(--box-blue); }
+    .cp.done { background:var(--blue); color:#fff; border-color:var(--blue); }
+    .sc .why { font-size:var(--text-xs); color:var(--txt-3); margin-top:8px; line-height:1.7; }
+    .sc .none { font-size:var(--text-xs); color:var(--txt-3); padding:8px 2px; }
+    .sc details.fold-in { margin-top:12px; }
 
-    .em-change { color:var(--blue); font-weight:900; }
-    .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
-
-    .lead { font-size:var(--text-sm); line-height:1.85; margin-bottom:10px; }
-    .lead-note { background:var(--box-blue); border-radius:var(--radius-sm); padding:12px 16px; font-size:var(--text-sm); line-height:1.8; }
-    .lead-note b { color:var(--ink); }
-
-    /* H3：小さな青四角 */
-    .sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:baseline; gap:9px; margin:20px 0 9px; flex-wrap:wrap; }
-    .sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); align-self:center; flex-shrink:0; }
-    .sub-title .q { font-size:var(--text-xs); font-weight:700; }
-    .sub-title .q.key { color:var(--blue); }
-    .sub-title.sub2 { font-size:var(--text-sm); margin:15px 0 8px; }
-    .sub-title.sub2::before { width:7px; height:7px; }
-    .card > .sub-title:first-of-type { margin-top:4px; }
-
-    /* 箇条書き */
-    .list { display:flex; flex-direction:column; gap:5px; margin:6px 0 2px; }
-    .list .li { font-size:var(--text-sm); line-height:1.7; padding-left:18px; text-indent:-18px; }
-    .list .li::before { content:"・"; color:var(--txt-3); font-weight:900; margin-right:6px; }
-    .list .li b { color:var(--ink); }
-
-    /* 必須要素タグ */
-    .musts { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 2px; }
-    .musts .m { font-size:var(--text-xs); font-weight:700; color:var(--blue); background:var(--box-blue); border-radius:4px; padding:3px 10px; }
-
-    /* 記載例（基本記載ルールと同形） */
-    .rei { display:block; background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:11px 13px; margin-top:9px; font-size:var(--text-sm); line-height:1.8; }
-    .rei .ttl { display:block; font-weight:900; color:var(--blue); font-size:var(--text-xs); margin-bottom:5px; }
-    .rei p { padding-left:1.6em; text-indent:-1.6em; }
-    .rei p + p { margin-top:5px; }
-    .rei .lab { font-weight:900; color:var(--txt-3); margin-right:4px; }
-    .rei .dot { color:var(--txt-3); font-weight:900; }
-    /* 青下線＝最低限の算定根拠（黄マーカーは本文強調に使うため記載例内では青下線で区別） */
-    .u-need { text-decoration:underline; text-decoration-thickness:2px; text-decoration-color:var(--blue); text-underline-offset:3px; font-weight:700; }
-    .need-note { background:var(--box-blue); border-left:var(--bw-a) solid var(--blue); border-radius:var(--radius-sm); padding:10px 13px; margin:10px 0; font-size:var(--text-sm); line-height:1.7; }
-    .need-note b { color:var(--ink); }
-
-    /* コピー可能テンプレ */
-    .scene { margin-top:10px; }
-    .scene-ctx { font-size:var(--text-xs); color:var(--txt-3); margin:2px 0 7px; padding-left:11px; border-left:var(--bw-a) solid var(--border); line-height:1.65; }
-    .tpl-cat { font-size:var(--text-xs); font-weight:900; color:var(--txt-3); margin:11px 0 5px; }
-    .scene > .tpl-cat:first-child { margin-top:2px; }
-    .tpl { display:flex; gap:10px; align-items:flex-start; background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:9px 12px; margin-bottom:7px; }
-    .tpl .tpl-text { flex:1; font-size:var(--text-sm); line-height:1.7; }
-    .tpl .tpl-text.ml { white-space:pre-line; }
-    .copy-mini { flex-shrink:0; font-family:inherit; cursor:pointer; border:var(--bw-h) solid var(--blue); background:var(--white); color:var(--blue); font-size:var(--text-xs); font-weight:700; padding:5px 13px; border-radius:100px; white-space:nowrap; }
-    .copy-mini:hover { background:var(--box-blue); }
-    .copy-mini.copied { background:var(--blue); color:#fff; border-color:var(--blue); }
-    /* まとめてコピー（カテゴリ単位・カード全体） */
-    .copy-group { align-self:center; margin-left:auto; font-family:inherit; cursor:pointer; border:var(--bw-h) solid var(--blue); background:var(--white); color:var(--blue); font-size:var(--text-xs); font-weight:700; padding:3px 12px; border-radius:100px; white-space:nowrap; }
-    .copy-group:hover { background:var(--box-blue); }
-    .copy-group.copied { background:var(--blue); color:#fff; }
-
-    /* 印刷用チェックリスト */
-    .print-btn { margin-left:auto; font-family:inherit; cursor:pointer; border:var(--bw-h) solid var(--blue); background:var(--blue); color:#fff; font-size:var(--text-xs); font-weight:700; padding:5px 14px; border-radius:100px; white-space:nowrap; }
-    .print-btn:hover { background:#17508f; }
-    .cl-group { margin-top:13px; }
-    .cl-group + .cl-group { margin-top:15px; }
-    .cl-head { font-weight:900; font-size:var(--text-sm); color:var(--blue); display:flex; align-items:center; gap:9px; margin-bottom:7px; }
-    .cl-head::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
-    .cl-item { display:flex; gap:11px; align-items:flex-start; padding:8px 12px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); margin-bottom:6px; font-size:var(--text-sm); line-height:1.6; cursor:pointer; }
-    .cl-item input[type=checkbox] { appearance:none; -webkit-appearance:none; width:19px; height:19px; border:2px solid var(--border-dk); border-radius:4px; flex-shrink:0; margin-top:1px; cursor:pointer; position:relative; }
-    .cl-item input[type=checkbox]:checked { background:var(--blue); border-color:var(--blue); }
-    .cl-item input[type=checkbox]:checked::after { content:""; position:absolute; left:5px; top:1px; width:6px; height:10px; border:solid #fff; border-width:0 2.5px 2.5px 0; transform:rotate(45deg); }
-    .cl-item input[type=checkbox]:checked + span { color:var(--txt-3); }
-
-    /* 個別指導の引用 */
-    .source { border-left:var(--bw-a) solid var(--border-dk); padding:2px 0 2px 13px; margin-top:11px; }
-    .source .k { font-size:var(--text-xs); font-weight:900; color:var(--txt-3); margin-right:9px; }
-    .source .t { font-size:var(--text-sm); line-height:1.75; color:var(--txt-2); }
-    .source .cite { display:block; font-size:var(--text-xs); color:var(--txt-3); margin-top:4px; }
-
-    /* 社内ルール／メモ */
-    .box-rule { background:var(--box-gray); border:var(--bw) solid var(--border); border-left:var(--bw-a) solid var(--blue); border-radius:var(--radius-sm); padding:13px 16px; margin-top:13px; }
-    .box-rule .ttl { font-weight:900; color:var(--blue); margin-bottom:6px; font-size:var(--text-sm); }
-    .box-rule p, .box-rule .list .li { color:var(--txt-2); font-size:var(--text-sm); }
-
-    /* 注意（黄） */
-    .guard { display:block; margin-top:11px; padding:9px 12px; background:var(--warn-bg); border-left:var(--bw-a) solid var(--warn-bd); border-radius:4px; font-size:var(--text-sm); line-height:1.65; }
-    .guard b { font-weight:900; color:var(--ink); }
-
-    /* テーブル */
-    .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
-    table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
-    th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
-    td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; line-height:1.7; }
-    tr:last-child td { border-bottom:none; }
-    th.k, td.k { white-space:nowrap; width:9em; font-weight:900; }
-
-    /* NG（算定しにくい）：中立グレー＋✕ */
-    .ng { display:flex; flex-direction:column; gap:8px; margin-top:6px; }
-    .ng .ng-i { display:flex; gap:9px; font-size:var(--text-sm); line-height:1.65; }
-    .ng .ng-i .x { flex-shrink:0; color:var(--txt-3); font-weight:900; }
-
-    /* チェック項目 */
-    .checks { display:flex; flex-direction:column; gap:8px; margin-top:6px; }
-    .check-item { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:10px 14px; font-size:var(--text-sm); line-height:1.65; }
-    .check-item .ci-note { font-size:var(--text-xs); color:var(--txt-3); margin-top:3px; padding-left:1.4em; }
-
-    /* Q&A */
-    .qa-block { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; }
-    .qa-q { background:var(--box-gray); padding:10px 14px; font-size:var(--text-sm); border-bottom:var(--bw-h) solid var(--border); }
-    .qa-a { padding:10px 14px; font-size:var(--text-sm); }
-    .qa-q .qa-label, .qa-a .qa-label { display:inline-block; font-weight:900; color:var(--ink); margin-right:6px; }
-    .qa-src { font-size:var(--text-xs); color:var(--txt-3); margin-top:6px; }
-
-    .link-inline { color:var(--blue); font-weight:700; text-decoration:none; border-bottom:1px solid var(--box-blue); }
-
-    /* 目次（ジャンプ） */
-    .toc { display:flex; flex-direction:column; gap:2px; }
-    .toc a { display:block; color:var(--blue); font-size:var(--text-sm); font-weight:700; text-decoration:none; padding:9px 10px; border-radius:var(--radius-sm); border-bottom:var(--bw) solid var(--border); }
-    .toc a:last-child { border-bottom:none; }
-    .toc a:hover { background:var(--box-blue); }
-    .card[id] { scroll-margin-top:calc(var(--sn-header-h, 0px) + 14px); }
-
-    /* 最低ラインのビフォーアフター */
-    .ba-bad .ttl { color:var(--txt-3) !important; }
-    .ba-good { border-color:var(--blue); }
-
-    /* 原文 折りたたみ */
-    details.original .obody { padding:14px 18px 18px; }
-    details.original .ocite { font-size:var(--text-xs); color:var(--txt-3); margin:10px 0; }
-    .orig { display:flex; flex-direction:column; gap:9px; }
-    .orig .oi { display:flex; gap:9px; font-size:var(--text-sm); line-height:1.7; }
-    .orig .oi .lab { flex-shrink:0; min-width:30px; font-weight:900; color:var(--blue); }
-
-    .page-foot { font-size:var(--text-xs); color:var(--txt-3); text-align:right; padding-top:2px; }
+    /* 個別指導の発言 */
+    .voice { border-left:3px solid var(--border-dk); padding:4px 0 4px 12px; font-size:var(--text-sm); color:var(--txt-2); }
+    .voice + .voice { margin-top:10px; }
+    .voice .c { display:block; font-size:var(--text-xs); color:var(--txt-3); margin-top:2px; }
 
     @media (max-width:640px) {
-      body { font-size:14px; padding:0 12px 40px; line-height:1.75; }
-      :root { --text-xs:11.5px; --text-sm:13.5px; --text-md:14px; --text-lg:16px; --text-xl:18px; --pad-card:14px; --gap-card:11px; }
-      .draft-banner { margin:0 -12px 14px; }
-      .card { padding:14px; border-radius:8px; }
-      table { min-width:480px; }
-      .tpl { flex-direction:column; gap:7px; }
-      .copy-mini { align-self:flex-end; }
+      .pt { grid-template-columns:1fr; gap:2px; }
+      .sc .grid { grid-template-columns:1fr; gap:14px; }
+      .scene-pick .lab { flex-basis:100%; }
     }
     @media print {
-      @page { size:A4 portrait; margin:8mm; }
-      body { background:#fff; padding:0; font-size:10.5px; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-      .draft-banner, header, .copy-mini, .copy-group, .print-btn, details.original { display:none !important; }
-      /* 紙では目次・更新メモは不要 */
-      .card:has(.toc), .page-foot { display:none !important; }
-      .page { gap:6px; max-width:none; }
-      /* 「このチェックリストを印刷」ボタン時：チェックリストのカードだけ印刷 */
-      body.print-checklist-only .page > *:not(#sec-checklist) { display:none !important; }
-      body.print-checklist-only .cl-item { padding:6px 9px; font-size:10px; }
-      body.print-checklist-only .cl-item input[type=checkbox] { width:15px; height:15px; }
-      /* カードは分割を許可（スカスカの改ページを防ぐ）。小さな塊だけ分割禁止にする */
-      .card { border:0.5px solid #ccc; border-radius:6px; padding:9px 12px; break-inside:auto; }
-      .card-title { font-size:13px; margin-bottom:7px; padding-bottom:5px; break-after:avoid; }
-      .sub-title { break-after:avoid; }
-      /* 分割禁止は小さい塊だけ。大きい記載例(.rei)・Q&Aは分割を許可して余白を減らす */
-      .tpl, .check-item, .cl-item, .source, .scene-ctx, .guard, tr { break-inside:avoid; }
-      .rei p, .qa-q, .qa-a { break-inside:avoid; }
-      .lead, .lead-note, .list .li, .rei, .tpl, .box-rule, .guard, td, th { font-size:9.5px; }
-      a { color:inherit; text-decoration:none; }
+      body.print-pts .page > :not(#pts) { display:none !important; }
+      .sc[hidden] { display:block; }
+      .scene-pick, .cp, .card-title .act, .sc .col-h button, .sc .back { display:none !important; }
     }
   </style>
 </head>
@@ -203,396 +70,513 @@
   <script src="../assets/site-header.js" defer></script>
 
   <div class="page">
-    <div class="page-title-wrap">
-      <h1>乳幼児服薬指導加算（薬歴記載）</h1>
-      <p>6歳未満の乳幼児に必要な確認・指導と、その内容を薬歴・手帳に残すときの書き方をまとめたページ。</p>
+    <div class="page-title">
+      <h1>乳幼児服薬指導加算の薬歴記載</h1>
+      <p>6歳未満の子どもに薬を渡すときに確認・指導することと、薬歴・手帳に記載する文の例。</p>
     </div>
 
-    <!-- ── リード：考え方 ── -->
-    <div class="lead-note">
-      乳幼児服薬指導加算（<b>12点</b>）は、<b>6歳未満であることだけを理由に算定する加算ではない</b>。年齢・体重・剤形・服薬状況等を確認したうえで、<span class="marker">患児の状況に応じた服薬方法・誤飲防止等を指導</span>し、その内容を<span class="marker">薬歴と手帳の両方</span>に記載することが算定要件となる。
+    <!-- ===== 要点 ===== -->
+    <div class="card" id="pts">
+      <div class="card-title">算定するときに薬歴に残すこと<button class="act" type="button" data-print>このカードを印刷</button></div>
+      <p class="note" style="margin-bottom:10px;">6歳未満であることだけを理由に算定する加算ではない。次の3つが薬歴から分かるようにし、<span class="marker">指導した内容を手帳にも記載する</span>（12点）。</p>
+      <div class="pts">
+        <div class="pt"><span class="k">体重と用量</span><span>体重を聞き、体重に対して用量が適正かを判断した記録（S：体重〇kg → A：用量は適正）。乳幼児は体重の変動が大きく、用量確認の根拠になる。体重欄は毎回の更新を意識する（社内運用）。</span></div>
+        <div class="pt"><span class="k">どう飲ませているか</span><span>剤形の経験と、普段どう飲ませているか（そのまま・何かに混ぜる・嫌がる）。同じ処方なら、前回飲めたか・吐かなかったか。</span></div>
+        <div class="pt"><span class="k">患児に合わせた指導</span><span>大人と同じ薬効・用法の説明だけでは足りない。聞き取ったことに合わせた飲ませ方の工夫や、剤形に応じた注意（誤飲防止・保管・塗ったあとの注意など）を残す。</span></div>
+        <div class="pt"><span class="k">あわせて聞くこと</span><span>保育園で昼の薬を飲ませてもらえるか、年齢の近いきょうだいがいるか、食事・ミルク・離乳食の様子、保護者が困っていること。初めて聞いたことは表紙（特記事項）にも書く。</span></div>
+      </div>
     </div>
 
-    <!-- ── 最低ライン（ここだけは外さない） ── -->
-    <div class="card">
-      <div class="card-title"><span class="tag">最低ライン</span>算定時のポイント</div>
-      <div class="lead">乳幼児服薬指導加算を算定する場合は、通常の薬効・用法説明だけでなく、<span class="marker">乳幼児特有の確認・指導が薬歴から分かるように</span>記録する。内服薬では、下記の3点が薬歴から確認できるようにする。</div>
-
-      <div class="checks">
-        <div class="check-item"><b>① 体重・年齢を踏まえて用量を確認する</b><div class="ci-note">体重・年齢を踏まえて処方量が適切か確認し、算定時は薬歴に記載する。</div></div>
-        <div class="check-item"><b>② どのように飲ませているかを確認する</b><div class="ci-note">剤形や服薬経験の確認。普段どのように飲ませているかを聞き取り、内容を残す（同じ処方なら前回飲めたかも確認）。</div></div>
-        <div class="check-item"><b>③ 患児に合わせた飲ませ方を指導する</b><div class="ci-note">成人と同じ薬効・用法説明だけでなく、患児の状況に応じた飲ませ方や工夫を記録する。</div></div>
+    <!-- ===== 場面を選ぶ ===== -->
+    <div class="card scene-pick" id="pick">
+      <div class="card-title">場面を選ぶ</div>
+      <div class="row"><span class="lab">飲ませ方</span>
+        <button type="button" data-s="nomeru">そのまま飲める</button>
+        <button type="button" data-s="mazeru">何かに混ぜている</button>
+        <button type="button" data-s="nigate">粉薬が苦手・嫌がる</button>
+        <button type="button" data-s="hajimete">初めての粉薬</button>
+        <button type="button" data-s="milk">ミルクに混ぜたい</button>
       </div>
-
-      <div class="guard"><b>剤形に応じて追加で確認すること</b><br>誤飲防止や保管方法の指導は、剤形や家庭状況に応じて行う。外用薬では、塗布後に患児が触る可能性や保管場所を確認する。水薬では、計量方法や保管方法、使用期間を確認する。年齢の近い兄弟がいる場合は、薬の取り違え防止について確認・指導する。粉薬は、保管方法よりも飲ませ方・混ぜ方など実際の服薬に関わる内容を優先して記録する。</div>
-
-      <div class="sub-title sub2">よくある薬歴と修正例</div>
-      <div class="rei ba-bad">
-        <span class="ttl">✕ 算定根拠として不十分な例</span>
-        <p><span class="lab">S）</span>保護者より、発熱・鼻水があり受診したとのこと。</p>
-        <p><span class="lab">A/P）</span>薬効・用法を説明。解熱剤はつらい時に使用してよいこと、他の薬と併用してよいことを説明。</p>
+      <div class="row"><span class="lab">剤形</span>
+        <button type="button" data-s="syrup">シロップ</button>
+        <button type="button" data-s="ds">ドライシロップ</button>
+        <button type="button" data-s="zayaku">坐薬</button>
+        <button type="button" data-s="tape">貼り薬</button>
+        <button type="button" data-s="tengan">点眼薬</button>
+        <button type="button" data-s="gaiyo">塗り薬</button>
       </div>
-      <div class="scene-ctx">体重・用量、どのように飲ませているか、患児に合わせた飲ませ方の記録がなく、乳幼児加算の算定根拠としては不十分。</div>
-      <div class="rei ba-good">
-        <span class="ttl">○ 修正例</span>
-        <p><span class="lab">S/O）</span><span class="u-need">体重〇kg</span>。発熱・鼻水あり。シロップは<span class="u-need">普段スポイトで問題なく飲めている</span>。</p>
-        <p><span class="lab">A）</span>体重〇kgに対し、<span class="u-need">用量は適正</span>。</p>
-        <p><span class="lab">P）</span><span class="u-need">よく振って1回量を正確に量り、頬の内側へ少しずつ入れて飲ませる</span>よう説明。発熱が続く・水分がとれない場合は受診するよう案内。</p>
+      <div class="row"><span class="lab">こんなとき</span>
+        <button type="button" data-s="tonpuku">熱が出たときの頓服</button>
+        <button type="button" data-s="keiren">けいれん予防と熱さましの坐薬</button>
+        <button type="button" data-s="macro">苦い抗菌薬</button>
+        <button type="button" data-s="vomit">吐いてしまった</button>
+        <button type="button" data-s="hoikuen">保育園で昼が飲めない</button>
+        <button type="button" data-s="kyodai">年齢の近いきょうだい</button>
+        <button type="button" data-s="goin">誤飲を防ぐ</button>
+        <button type="button" data-s="techo">手帳を忘れた</button>
       </div>
+      <div class="all"><a href="#all" data-s="all">すべての場面を並べて表示する</a></div>
+    </div>
 
-      <div class="box-rule">
-        <div class="ttl">運用上の考え方</div>
-        <p><b>個別指導を控える店舗</b>では、確認内容や指導内容をできるだけ具体的に残す。<b>通常運用</b>でも、上記3点は薬歴から確認できるようにする。</p>
+    <!-- ===== 場面 ===== -->
+    <div class="card sc" id="s-nomeru">
+      <div class="card-title">そのまま飲める</div>
+      <div class="grid">
+        <div>
+          <div class="col-h"><span class="who y">薬歴に記載</span></div>
+          <div class="tx rec"><span class="t">S/O）体重〇kg。〇〇（剤形）の服用経験あり。普段は〇〇の方法で問題なく飲めている。
+A）体重〇kgに対し、用量は適正。
+P）これまでと同じ方法で服用するよう説明。今後飲みにくくなった場合は、自己判断で食品に混ぜず、薬局へ相談するよう説明。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+        <div>
+          <div class="col-h"><span class="who t">手帳に記載（保護者向け）</span></div>
+          <div class="tx"><span class="t">今までと同じ方法で飲ませてください。飲みにくくなったときは、食べ物に混ぜる前に薬局にご相談ください。</span><button class="cp" type="button">コピー</button></div>
+        </div>
       </div>
-      <div class="box-rule">
-        <div class="ttl">併算定・服用期間中の対応</div>
-        <div class="list">
-          <div class="li"><b>小児特定加算とは併算定不可。</b></div>
-          <div class="li">服用期間中に家族等から電話等で問い合わせがあった場合は、適切に対応・指導し、<b>対応内容を薬歴に残す</b>。</div>
+      <p class="why">問題なく飲めている場合も、飲ませ方を確認し、乳幼児特有の注意を伝えて記録したときに算定する。</p>
+    </div>
+
+    <div class="card sc" id="s-mazeru">
+      <div class="card-title">何かに混ぜている</div>
+      <div class="grid">
+        <div>
+          <div class="col-h"><span class="who y">薬歴に記載</span></div>
+          <div class="tx rec"><span class="t">S/O）体重〇kg。粉薬は普段〇〇に混ぜて服用。問題なく飲めている。
+A）体重〇kgに対し、用量は適正。
+P）薬によっては混ぜる食品との相性に注意が必要であることを説明。主食に混ぜると食事自体を嫌がることがあるため、1回で食べきれる少量に混ぜるよう説明。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+        <div>
+          <div class="col-h"><span class="who t">手帳に記載（保護者向け）</span><button class="cp" type="button" data-all>まとめてコピー</button></div>
+          <div class="tx"><span class="t">食べ慣れているものに少量ずつ混ぜると飲みやすくなります。薬によって相性があるため、混ぜてよいかはご相談ください。ミルク・パン・離乳食などの主食に混ぜるのは避けてください。</span><button class="cp" type="button">コピー</button></div>
+          <div class="tx"><span class="t">混ぜるときは、飲みきれる少量にしてください。量が多いと、残したときに必要な量を飲めなくなります。</span><button class="cp" type="button">コピー</button></div>
+          <div class="tx"><span class="t">飲ませる直前に1回分だけ混ぜてください。作り置きはしないでください。</span><button class="cp" type="button">コピー</button></div>
         </div>
       </div>
     </div>
 
-    <!-- ── 目次（ジャンプ） ── -->
-    <div class="card">
-      <div class="card-title"><span class="tag">目次</span></div>
-      <div class="toc">
-        <a href="#sec-checklist">★ 簡易チェックリスト（印刷用）</a>
-        <a href="#sec-uketsuke">① 保護者・家族等に確認すること</a>
-        <a href="#sec-kisai">② 薬歴記載事項（飲める／混ぜる／苦手の記載例）</a>
-        <a href="#sec-bamen">③ 場面別の指導文（コピー用）</a>
-        <a href="#sec-kobetsu">④ 個別指導の指摘事例</a>
-        <a href="#sec-chui">⑤ 算定の判断に注意するケース</a>
-      </div>
-    </div>
-
-    <!-- ── 現場チェックリスト（印刷用） ── -->
-    <div class="card" id="sec-checklist">
-      <div class="card-title"><span class="tag">印刷用</span>簡易チェックリスト<button class="print-btn" type="button">このチェックリストを印刷</button></div>
-      <div class="cl-group">
-        <label class="cl-item"><input type="checkbox"><span>年齢・体重を確認し、<b>用量が妥当と判断した記録</b>を薬歴に残した</span></label>
-        <label class="cl-item"><input type="checkbox"><span>剤形が適切か確認した</span></label>
-        <label class="cl-item"><input type="checkbox"><span><b>乳幼児特有の指導</b>を行った</span></label>
-        <label class="cl-item"><input type="checkbox"><span>乳幼児特有の指導内容を<b>薬歴・手帳の両方</b>に記載した</span></label>
-      </div>
-
-      <div class="cl-group">
-        <div class="cl-head">乳幼児特有の指導（例。患児に応じて工夫）</div>
-        <label class="cl-item"><input type="checkbox"><span>粉・水薬が飲めるか／普段どう飲ませているかを確認し、飲ませ方を指導した</span></label>
-        <label class="cl-item"><input type="checkbox"><span>剤形に応じた注意点（誤飲防止・保管・点眼のコツ等）を指導した</span></label>
-        <label class="cl-item"><input type="checkbox"><span>保育園・昼の服用・兄弟・食事／ミルク／離乳食など、必要な情報を収集した</span></label>
-        <label class="cl-item"><input type="checkbox"><span>兄弟がいる場合は、薬の取り違え防止を指導した</span></label>
-      </div>
-
-      <div class="guard"><b>これだと算定できない</b>　大人と同じ服薬指導内容しか記載がない／体重の記載がない場合は、算定要件を満たさない。</div>
-    </div>
-
-    <!-- ── 受付時に確認すること ── -->
-    <div class="card" id="sec-uketsuke">
-      <div class="card-title"><span class="tag">1</span>保護者・家族等に確認すること</div>
-      <div class="lead">6歳未満の乳幼児について、必要な情報を保護者・家族等に確認する。</div>
-
-      <div class="sub-title">体重と用量を確認する<span class="q key">重点</span></div>
-      <div class="list">
-        <div class="li">体重・年齢を踏まえて<b>処方量が適切か</b>を確認する。6歳未満は体重変動が大きく、用量確認の根拠になる。</div>
-        <div class="li">算定時は、体重（S）に対して<b>用量が妥当か（A）</b>まで薬歴に残す。</div>
-      </div>
-      <div class="box-rule"><div class="ttl">社内運用</div><p>算定要件の原文は「受付時の確認」で、毎回の記載までは求めていない。社内運用として、乳幼児では<b>体重欄の記載・更新を毎回意識する</b>（聞き取り自体は必ずしも毎回でなくてよい）。</p></div>
-
-      <div class="sub-title">剤形・服薬経験を確認する</div>
-      <div class="list">
-        <div class="li">粉薬・水薬の<b>服用経験があるか</b>（手帳の服用歴で確認、または口頭で聞き取り）。</div>
-        <div class="li">経験がある場合は、<b>飲めるか／苦手か</b>（抗生剤は苦手 など）、<b>どう飲ませているか</b>（水でペースト状・溶かす・ヨーグルトやジュースに混ぜる・スポイト・哺乳瓶の乳首・ゼリー状オブラート など）を確認する。</div>
-      </div>
-
-      <div class="sub-title">服薬に影響する生活背景を確認する</div>
-      <div class="list">
-        <div class="li">昼の薬を服用できるか（家庭・保育園等での対応）、食事・ミルク・離乳食の状況（ミルクは1日何回・何時間おき、離乳食を始めたか 等）。</div>
-        <div class="li">保育園に行っているか・<b>保育園で薬を飲ませてもらえるか</b>、年齢の近い兄弟がいるか。</div>
-        <div class="li">保護者が<b>困っていること・服薬管理上の不安・希望する飲ませ方</b>。</div>
-      </div>
-      <div class="guard"><b>注意</b>　聞き取った情報に応じて指導する。<span style="font-weight:700;">薬剤師からの一方的な説明だけでは不十分</span>。初めて聞き取った情報は服薬指導欄に記載し、<b>表紙（特記事項）にも転記</b>して次回以降の指導に活かす。</div>
-    </div>
-
-    <!-- ── 薬歴に残す基本項目 ── -->
-    <div class="card" id="sec-kisai">
-      <div class="card-title"><span class="tag">2</span>薬歴記載事項</div>
-      <div class="lead">S/Oで確認した内容をもとに、用量や剤形、服薬上の問題点を評価し、患児の状況に応じた指導内容を記録する。<span class="marker">「確認 → 評価 → 指導」がつながっていること</span>が算定根拠として重要。</div>
-      <div class="sub-title sub2">記載例（内服薬：3パターン）</div>
-      <div class="lead">服薬状況によって書き方が変わる。<b>①そのまま飲める／②混ぜて飲んでいる／③苦手</b>の3パターンを示す。<span class="marker">〇〇は患児ごとに言い換える</span>。</div>
-      <div class="guard"><b>基本は「普段どう飲ませているか」を確認して書く</b><br>新しく出た薬では、過去の服薬経験から<b>普段の飲ませ方</b>を確認して記録する（「前回この薬を飲めたか」は同じ処方のときの確認）。現在の方法で問題なく飲めている場合も、飲ませ方の確認や乳幼児特有の注意点を記録したときに算定する。</div>
-      <div class="scene">
-        <div class="tpl-cat">① そのまま飲める</div>
-        <div class="tpl"><span class="tpl-text ml">S/O）体重〇kg。〇〇（剤形）の服用経験あり。普段は〇〇の方法で問題なく飲めている。
-A）体重〇kgに対し、用量は適正。
-P）これまでと同じ方法で服用するよう説明。今後飲みにくくなった場合は、自己判断で食品に混ぜず、薬局へ相談するよう説明。</span><button class="copy-mini">コピー</button></div>
-        <div class="tpl-cat">② 何かに混ぜて飲んでいる</div>
-        <div class="tpl"><span class="tpl-text ml">S/O）体重〇kg。粉薬は普段〇〇に混ぜて服用。問題なく飲めている。
-A）体重〇kgに対し、用量は適正。
-P）薬によっては混ぜる食品との相性に注意が必要であることを説明。主食に混ぜると食事自体を嫌がることがあるため、1回で食べきれる少量に混ぜるよう説明。</span><button class="copy-mini">コピー</button></div>
-        <div class="tpl-cat">③ 苦手・嫌がる</div>
-        <div class="tpl"><span class="tpl-text ml">S/O）体重〇kg。粉薬を嫌がることが多く、服用に時間がかかるとのこと。普段は〇〇の方法で飲ませている。
+    <div class="card sc" id="s-nigate">
+      <div class="card-title">粉薬が苦手・嫌がる</div>
+      <div class="grid">
+        <div>
+          <div class="col-h"><span class="who y">薬歴に記載</span></div>
+          <div class="tx rec"><span class="t">S/O）体重〇kg。粉薬を嫌がることが多く、服用に時間がかかるとのこと。普段は〇〇の方法で飲ませている。
 A）体重〇kgに対し、用量は適正。飲ませ方の工夫が必要。
-P）少量の水で練る方法、混ぜる食品の選び方、服用タイミング等を説明。次回、実際に飲めたか確認する。</span><button class="copy-mini">コピー</button></div>
-      </div>
-      <div class="scene-ctx">③の苦手パターンは患児ごとに違い、定型化が難しい。実際に飲めた方法を具体的に残し、店舗ごとによく使う記載例を増やしていく（場面別の指導文は <a href="#sec-bamen" class="link-inline">③場面別の指導文</a> も参照）。</div>
-
-      <div class="tpl-cat" style="margin-top:14px;">外用薬</div>
-      <div class="scene">
-        <div class="tpl"><span class="tpl-text ml">S/O）体重〇kg。外用薬の使用経験【あり／なし】。塗布部位・使用状況・患児が触る可能性について確認。
-A）塗布後に患児が触る／舐める可能性があるため、使用方法と保管方法の説明が必要。
-P）塗布量・塗布回数・塗布後の注意点を説明。患児が触った手を口に入れないよう注意し、薬は手の届かない場所に保管するよう指導。</span><button class="copy-mini">コピー</button></div>
-      </div>
-      <div class="scene-ctx">※ 聞き取った生活背景（保育園・兄弟・食事等）は、表紙の生活像にも反映し、次回以降の指導に活かす。</div>
-
-      <div class="sub-title sub2">③の詳しい記載例（粉薬が苦手な乳児・初回）</div>
-      <div class="need-note"><b>青下線</b>は、確認・指導の手がかりとなるポイント。実際の薬歴では、「確認 → 評価 → 患児に合わせた指導」としてつながっているかを確認する（書き方や分量は患者ごとに調整）。</div>
-      <div class="rei">
-        <p><span class="lab">処方）</span>フェキソフェナジンDS 0.6g 分2朝夕食後 4日分（7か月）</p>
-        <p><span class="lab">S/O）</span>保護者へ確認。<span class="u-need">体重8kg</span>。鼻水・鼻閉があり、苦しそうとのこと。<span class="u-need">粉薬を嫌がる</span>ことが多く、普段は<span class="u-need">水でペースト状</span>に練って服用。<span class="u-need">離乳食2回</span>、ヨーグルトが好き。</p>
-        <p><span class="lab">A）</span>体重8kgに対し<span class="u-need">用量は適正</span>。粉薬に苦手意識があり、<span class="u-need">飲ませ方の工夫が必要</span>。</p>
-        <p><span class="lab">P）</span>少量の水でペースト状にして<span class="u-need">頬の内側または上顎</span>に塗り、すぐ水やミルクで飲ませる方法を説明。食後に嫌がる場合は、食事の影響を確認したうえで、ミルクや離乳食の前に服用する方法も説明。本剤はドライシロップで水に溶けやすいため、少量の水でシロップ状にする方法も提案。主食（ミルク・パン・離乳食）に混ぜると食事自体を嫌がる可能性があるため避け、<span class="u-need">薬との相性を確認し、食べ慣れている食品に少量混ぜる</span>方法を説明。</p>
-        <p><span class="lab">表紙）</span>粉薬やや苦手意識あり。離乳食2回・ヨーグルト好き。水でペースト状にして服用。</p>
-      </div>
-    </div>
-
-    <!-- ── 場面別の記載例（コピー可能） ── -->
-    <div class="card" id="sec-bamen">
-      <div class="card-title"><span class="tag">3</span>場面別の指導文（コピー用）<button class="copy-all" type="button">この章を全部コピー</button></div>
-      <div class="lead">あくまで一例。<span class="marker">患児の状況に応じて加筆・修正して活用する</span>。<span style="font-size:var(--text-xs);color:var(--txt-3);">薬歴端末がオフラインの場合は、見出しごとの「まとめてコピー」か「この章を全部コピー」で一度にテキストへ書き出せる。</span></div>
-
-      <div class="sub-title sub2">粉薬が苦手／飲ませ方の工夫<button class="copy-group" type="button">まとめてコピー</button></div>
-      <div class="scene-ctx">食前・食後の指定や食事の影響は薬剤により異なる。服用タイミングを変える案内をする場合は、対象薬で問題ないか確認する。</div>
-      <div class="scene">
-        <div class="tpl"><span class="tpl-text">少量の水でペースト状にして頬の内側や上顎に塗り、その後、水またはミルクを飲ませてください。</span><button class="copy-mini">コピー</button></div>
-        <div class="tpl"><span class="tpl-text">食後でお腹がいっぱいになり飲むのを嫌がる場合は、ミルクや離乳食の前に飲ませる方法もあります。</span><button class="copy-mini">コピー</button></div>
-        <div class="tpl"><span class="tpl-text">水に溶けやすいお薬なので、スプーンの上で少量の水に溶かしてシロップ状にすると飲みやすくなります。</span><button class="copy-mini">コピー</button></div>
-        <div class="tpl"><span class="tpl-text">食べ慣れているものに少量ずつ混ぜると飲みやすくなります。ただし薬によって相性があるため、混ぜてよいかはご相談ください。主食（ミルク・パン・離乳食）に混ぜるのは避けてください。</span><button class="copy-mini">コピー</button></div>
-        <div class="tpl"><span class="tpl-text">粉薬を水に溶かす場合は、飲む直前に溶かしてください。時間が経つと苦味が出たり、飲みにくくなることがあります。</span><button class="copy-mini">コピー</button></div>
-        <div class="tpl"><span class="tpl-text">食品や水に混ぜる場合は、飲みきれる少量に混ぜてください。量が多いと、残したときに必要量を飲めなくなることがあります。</span><button class="copy-mini">コピー</button></div>
-        <div class="tpl"><span class="tpl-text">泣いているときに飲ませると、むせたり吐いたりすることがあります。落ち着いてから飲ませてください。</span><button class="copy-mini">コピー</button></div>
-      </div>
-
-      <div class="sub-title sub2">マクロライド系抗生剤（苦味対策）<button class="copy-group" type="button">まとめてコピー</button></div>
-      <div class="scene-ctx">酸性下では苦味成分が溶け出すため、酸味のあるものと混ぜると苦くなる。ジスロマック・クラリスロマイシン・エリスロシン等。カルボシステイン（酸性）との同時服用にも注意。</div>
-      <div class="scene">
-        <div class="tpl"><span class="tpl-text">酸味のあるもの（オレンジジュース、ヨーグルト、乳酸菌飲料、スポーツ飲料など）と混ぜると苦みが増すので、混ぜたり一緒に飲ませたりしないでください。</span><button class="copy-mini">コピー</button></div>
-        <div class="tpl"><span class="tpl-text">牛乳・ココア・アイスクリームなどと混ぜると飲みやすくなります。酸味のあるものとは混ぜないようにしてください。</span><button class="copy-mini">コピー</button></div>
-        <div class="tpl"><span class="tpl-text">カルボシステインと一緒に飲むと苦くなります。カルボシステインを飲んだ後に水で口をすすいでから本剤を飲むと、苦みを感じにくくなります。</span><button class="copy-mini">コピー</button></div>
-      </div>
-
-      <div class="sub-title sub2">薬を嫌がる<button class="copy-group" type="button">まとめてコピー</button></div>
-      <div class="scene">
-        <div class="tpl"><span class="tpl-text">アイスなど冷たいものに混ぜると、冷たさで舌の感覚が鈍くなり薬の味を感じにくくなります。アイスは早めに冷凍庫から出して少し溶かすと混ぜやすいです。</span><button class="copy-mini">コピー</button></div>
-        <div class="tpl"><span class="tpl-text">ココア・チョコレートクリーム・練乳など味の濃いものと混ぜると、薬の味を感じにくくなります。</span><button class="copy-mini">コピー</button></div>
-      </div>
-
-      <div class="sub-title sub2">水薬<button class="copy-group" type="button">まとめてコピー</button></div>
-      <div class="scene">
-        <div class="tpl"><span class="tpl-text">付属のスポイトや計量カップで1回量を正確に量り、頬の内側に少しずつ入れて飲ませてください。よく振ってから量ると濃さが均一になります。</span><button class="copy-mini">コピー</button></div>
-        <div class="tpl"><span class="tpl-text">指示された保管方法で保管し、指定された期間内に使用してください。残ったものは次回に持ち越さないでください。</span><button class="copy-mini">コピー</button></div>
-        <div class="tpl"><span class="tpl-text">使用したスポイト・カップ・シリンジ等は、使用後に洗って乾燥させてください。</span><button class="copy-mini">コピー</button></div>
-        <div class="tpl"><span class="tpl-text">飲み物に混ぜる場合は、飲ませる直前に1回分だけ混ぜてください。作り置きはしないでください。</span><button class="copy-mini">コピー</button></div>
-      </div>
-
-      <div class="sub-title sub2">外用薬（軟膏・クリーム等）<button class="copy-group" type="button">まとめてコピー</button></div>
-      <div class="scene">
-        <div class="tpl"><span class="tpl-text">塗ったあと、薬を触った手を口に入れないよう注意してください。薬は手の届かない場所に保管してください。</span><button class="copy-mini">コピー</button></div>
-        <div class="tpl"><span class="tpl-text">もし口の中に入ってしまった場合は口をすすいで様子をみてください。多量に口に入った場合や、体調に変化があるときは薬局または医療機関へご相談ください。</span><button class="copy-mini">コピー</button></div>
-      </div>
-
-      <div class="sub-title sub2">点眼薬</div>
-      <div class="scene">
-        <div class="tpl"><span class="tpl-text">嫌がって目を閉じてしまう場合は、無理に開けようとせず、寝ている時や落ち着いている時に点眼する方法もあります。容器の先がまつ毛や目に触れないよう注意してください。</span><button class="copy-mini">コピー</button></div>
-      </div>
-
-      <div class="sub-title sub2">保育園で昼の薬を飲ませてもらえない（分3処方）<button class="copy-group" type="button">まとめてコピー</button></div>
-      <div class="scene-ctx">帰宅後〜就寝まで4時間程度あけられない場合は疑義照会。</div>
-      <div class="scene">
-        <div class="tpl"><span class="tpl-text">お昼の分は帰宅後に服用し、4時間程度あけてから夕食後の分を飲ませてください。</span><button class="copy-mini">コピー</button></div>
-        <div class="tpl"><span class="tpl-text">食事の影響を受けにくいお薬なので、食後でなくても服用できます。</span><button class="copy-mini">コピー</button></div>
-      </div>
-
-      <div class="sub-title sub2">年齢の近い兄弟がいる（取り違え防止）<button class="copy-group" type="button">まとめてコピー</button></div>
-      <div class="scene">
-        <div class="tpl"><span class="tpl-text">年齢の近い兄弟がいるため、分包紙に名前を印字し、飲み間違いがないよう注意した。</span><button class="copy-mini">コピー</button></div>
-        <div class="tpl"><span class="tpl-text">〇〇さんの薬と区別がつくよう名前を印字してお渡しし、必ず名前を確認してから服用するよう指導した。</span><button class="copy-mini">コピー</button></div>
-      </div>
-
-      <div class="sub-title sub2">手帳の扱い（忘れ／未利用）</div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th class="k">状況</th><th>対応</th></tr></thead>
-          <tbody>
-            <tr><td class="k">持参し忘れ<br>（手帳利用あり）</td><td>シール等を交付してよい。<b>次回以降に持参したら、そのシール等が貼付されていることを確認</b>する。</td></tr>
-            <tr><td class="k">手帳を利用していない</td><td><b>手帳を交付した場合</b>に算定できる。</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="scene" style="margin-top:9px;">
-        <div class="tpl"><span class="tpl-text">手帳を持参されていないため、指導内容を記載したシールを交付。次回持参時に貼付を確認予定。</span><button class="copy-mini">コピー</button></div>
-      </div>
-    </div>
-
-    <!-- ── 個別指導で問われる点 ── -->
-    <div class="card" id="sec-kobetsu">
-      <div class="card-title"><span class="tag">4</span>個別指導の指摘事例<span class="imp top">最重要</span></div>
-      <div class="lead">過去の個別指導記録より抜粋。共通の指摘は、<span class="marker">「患児の状況を確認したうえで、それに応じた指導を行っているか」</span>という点。</div>
-
-      <div class="source">
-        <span class="k">個別指導</span>
-        <span class="t">「なぜ体重を聞くかというと、6歳未満は体重の変動が大きいから。体重確認は用量の確認のため。指導内容を書く前に、前回薬が飲めたかどうかの確認が必要。粉薬をどうやって飲ませたのか、飲んだら吐いてしまったのか等の確認が必要。そうした情報収集を元に指導する。一般的な指導は対象とならない。患者個々の状況に合わせた指導内容が必要で、さらに服薬後の注意事項を伝えないと算定要件を満たさない」</span>
-        <span class="cite">過去の個別指導の記録より</span>
-      </div>
-      <div class="source">
-        <span class="k">個別指導</span>
-        <span class="t">「今まで使ったことのある剤形や、薬をどのように服薬しているかの記録がない。そうした情報を確認したうえで乳幼児特有の指導をした際に算定できる加算。誤飲防止に関する記録もない。算定要件としては不十分な薬歴」</span>
-        <span class="cite">過去の個別指導の記録より</span>
-      </div>
-      <div class="source">
-        <span class="k">個別指導</span>
-        <span class="t">「ライフスタイルは非常に重要。1日3回飲めるのかなど、指導に必要な情報は記載する。兄弟がいる・保育園で昼の薬を飲ませてくれるかといった生活像は重要。普段どのように薬を飲んでいるか確認したうえで、飲めない場合は飲ませ方の工夫を指導し記録を残すこと。誤飲防止の指導も重要」</span>
-        <span class="cite">過去の個別指導の記録より</span>
-      </div>
-      <div class="source">
-        <span class="k">個別指導</span>
-        <span class="t">「大人と同じ説明（指導）では算定要件を満たさない。『服薬指導の加算』なのでプラスαのことを書かなければ要件を満たさない。お子様向けの指導をしたら算定できるので、指導した際は算定してほしい。手帳にも同じ指導文を載せていることが分かるように記載」</span>
-        <span class="cite">過去の個別指導の記録より</span>
-      </div>
-
-      <div class="sub-title">個別指導で確認されやすいポイント</div>
-      <div class="checks">
-        <div class="check-item">□ 体重を確認・記載したか<div class="ci-note">※ 6歳未満は変動が大きく、用量確認の根拠になる</div></div>
-        <div class="check-item">□ 体重に対する用量の妥当性を評価したか<div class="ci-note">※ 確認だけで終わっていないか</div></div>
-        <div class="check-item">□ 剤形・これまでの服用経験（飲めるか／どう飲ませているか）を確認したか</div>
-        <div class="check-item">□ 普段どう飲ませているか（Do処方なら前回飲めたか・吐いていないか）を確認したか<div class="ci-note">※ Do処方でも「いつも通り」で済ませず確認する</div></div>
-        <div class="check-item">□ 成人と同じ説明ではなく、患児に合わせた“プラスα”の指導になっているか</div>
-        <div class="check-item">□ 誤飲防止・兄弟の取り違え防止の指導を記録したか</div>
-        <div class="check-item">□ 手帳にも同じ指導内容を記載したか（薬歴と手帳の両方）</div>
-      </div>
-    </div>
-
-    <!-- ── 算定しにくいケース ── -->
-    <div class="card" id="sec-chui">
-      <div class="card-title"><span class="tag">5</span>算定の判断に注意するケース</div>
-      <div class="lead">通常の服薬指導に加えて、<span class="marker">乳幼児特有の確認・指導</span>を行い、薬歴と手帳に記録して算定する。次のような場合は算定を控える。</div>
-      <div class="ng">
-        <div class="ng-i"><span class="x">✕</span><span>年齢のみで算定し、患児ごとの確認事項や指導内容が残っていない。</span></div>
-        <div class="ng-i"><span class="x">✕</span><span>手帳に指導内容を記載していない、または手帳貼付用のシール等を交付していない。</span></div>
-        <div class="ng-i"><span class="x">✕</span><span>体重や服薬状況の確認がない。</span></div>
-        <div class="ng-i"><span class="x">✕</span><span>成人と同じ一般的な説明だけで、患児に合わせた指導がない。</span></div>
-        <div class="ng-i"><span class="x">✕</span><span>Do処方で、前回飲めたか等の確認も、今回の具体的な指導内容もない。</span></div>
-        <div class="ng-i"><span class="x">✕</span><span>外用薬のみの処方で、誤飲防止・塗布後の注意・保管方法など、乳幼児特有の指導が記録されていない。</span></div>
-        <div class="ng-i"><span class="x">✕</span><span>「いつも通り説明」など、具体的な指導内容が分からない。</span></div>
-      </div>
-
-      <div class="sub-title">Do処方でも算定できる場合</div>
-      <div class="rei">
-        <span class="ttl">記載例（前回うまく飲めず、今回も指導が必要）</span>
-        <p>前回、粉薬を嫌がり飲み残しがあったとのこと。今回も同一処方を継続。少量の水で練って頬の内側に塗る方法、嫌がる時は薬との相性を確認したうえで〇〇に少量混ぜる方法を改めて説明。次回、飲めたか確認する。</p>
-      </div>
-      <div class="lead" style="margin-top:8px;">Do処方で算定できるのは、<span class="marker">前回うまく飲めておらず、今回も飲ませ方の指導が必要なケースに限られる</span>。問題なく飲めていて新たな指導がなければ算定しない。</div>
-    </div>
-
-    <!-- ── 原文・疑義解釈（折りたたみ） ── -->
-    <details class="original fold">
-      <summary>算定要件の原文・疑義解釈を見る</summary>
-      <div class="obody">
-        <div class="orig">
-          <div class="oi"><span class="lab">注10</span>6歳未満の乳幼児に係る調剤に際して必要な情報等を直接患者又はその家族等に確認した上で、服用に関して必要な指導等を行い、かつ、当該指導等の内容等を手帳に記載した場合に、乳幼児服薬指導加算として12点を所定点数に加算する。</div>
-          <div class="oi"><span class="lab">(1)</span>乳幼児に係る処方箋の受付の際に、年齢、体重、適切な剤形その他必要な事項等の確認を行った上で、患者の家族等に対して適切な服薬方法、誤飲防止等の必要な服薬指導を行った場合に算定する。</div>
-          <div class="oi"><span class="lab">(2)</span>算定した処方箋中の薬剤の服用期間中に、患者の家族等から電話等により当該処方薬剤に係る問い合わせがあった場合には、適切な対応及び指導等を行うこと。</div>
-          <div class="oi"><span class="lab">通則(5)</span>定型文を用いて画一的に記載するのではなく、薬学管理料やその加算を算定する場合には、その根拠及び指導内容等について簡潔に記載すること。情報提供した場合は、文書等の写し又は要点等を記載又は添付すること。</div>
+P）少量の水で練る方法、混ぜる食品の選び方、服用のタイミングを説明。次回、実際に飲めたか確認する。</span><button class="cp" type="button">コピー</button></div>
         </div>
-        <div class="ocite">出典：令和8年3月5日 保医発0305第6号 別表第三 注10／別添3 区分10の3・9／薬学管理料 通則(5)</div>
+        <div>
+          <div class="col-h"><span class="who t">手帳に記載（保護者向け）</span><button class="cp" type="button" data-all>まとめてコピー</button></div>
+          <div class="tx"><span class="t">少量の水でペースト状にして頬の内側や上あごに塗り、そのあと水やミルクを飲ませてください。</span><button class="cp" type="button">コピー</button></div>
+          <div class="tx"><span class="t">食後でお腹がいっぱいになり嫌がるときは、ミルクや離乳食の前に飲ませる方法もあります。</span><button class="cp" type="button">コピー</button></div>
+          <div class="tx"><span class="t">アイスなど冷たいものに混ぜると、薬の味を感じにくくなります。アイスは少し溶かしてから混ぜると混ぜやすいです。</span><button class="cp" type="button">コピー</button></div>
+          <div class="tx"><span class="t">ココア・チョコレートクリーム・練乳など味の濃いものと混ぜると、薬の味を感じにくくなります。</span><button class="cp" type="button">コピー</button></div>
+          <div class="tx"><span class="t">泣いているときに飲ませると、むせたり吐いたりすることがあります。落ち着いてから飲ませてください。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+      </div>
+      <p class="why">食前・食後の指定や食事の影響は薬によって違う。服用のタイミングを変える案内をするときは、その薬で問題ないか確認する。苦手の程度や効いた方法は子どもごとに違うので、実際に飲めた方法を具体的に残す。</p>
+      <details class="fold-in"><summary>詳しい記載例（粉薬が苦手な乳児・初回）</summary><div class="fold-body">
+        <div class="tx rec"><span class="t">処方）フェキソフェナジンDS 0.6g 分2朝夕食後 4日分（7か月）
+S/O）保護者へ確認。体重8kg。鼻水・鼻閉があり、苦しそうとのこと。粉薬を嫌がることが多く、普段は水でペースト状に練って服用。離乳食2回、ヨーグルトが好き。
+A）体重8kgに対し用量は適正。粉薬に苦手意識があり、飲ませ方の工夫が必要。
+P）少量の水でペースト状にして頬の内側または上あごに塗り、すぐ水やミルクで飲ませる方法を説明。食後に嫌がる場合は、食事の影響を確認したうえで、ミルクや離乳食の前に飲ませる方法も説明。水に溶けやすいドライシロップのため、少量の水でシロップ状にする方法も提案。主食に混ぜると食事を嫌がる可能性があるため避け、薬との相性を確認して食べ慣れた食品に少量混ぜる方法を説明。
+表紙）粉薬やや苦手意識あり。離乳食2回・ヨーグルト好き。水でペースト状にして服用。</span><button class="cp" type="button">コピー</button></div>
+      </div></details>
+    </div>
 
-        <div class="qa-block">
-          <div class="qa-q"><span class="qa-label">Q</span>手帳を持参していない患者に、手帳に貼付するシール等を交付した場合や、手帳を交付した場合でも算定できるか。</div>
-          <div class="qa-a"><span class="qa-label">A</span>手帳を利用しているが持参し忘れた患者にはシール等を交付することでよい。手帳を利用していない患者に対しては、手帳を交付した場合に算定できる。なお、シール等を交付した患者が次回以降に手帳を持参した場合は、そのシール等が貼付されていることを確認すること。<div class="qa-src">疑義解釈資料の送付について（その1）問26（H28.3.31）</div></div>
+    <div class="card sc" id="s-syrup">
+      <div class="card-title">シロップ（水薬）</div>
+      <div class="grid">
+        <div>
+          <div class="col-h"><span class="who y">薬歴に記載</span></div>
+          <div class="tx rec"><span class="t">S/O）体重〇kg。シロップの服用経験あり。普段は〇〇（スポイト・カップなど）で飲ませているとのこと。
+A）体重〇kgに対し、用量は適正。計量と保管の説明が必要。
+P）よく振ってから付属の〇〇で1回量を量り、頬の内側に少しずつ入れて飲ませるよう説明。保管場所（〇〇：冷蔵庫・室温）を伝え、飲みきれずに残った分は次に具合が悪くなったときに使わないよう説明。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+        <div>
+          <div class="col-h"><span class="who t">手帳に記載（保護者向け）</span><button class="cp" type="button" data-all>まとめてコピー</button></div>
+          <div class="tx"><span class="t">よく振ってから、付属のスポイトやカップで1回分を量り、頬の内側に少しずつ入れて飲ませてください。</span><button class="cp" type="button">コピー</button></div>
+          <div class="tx"><span class="t">このお薬は〇〇（冷蔵庫・室温）で保管してください。飲みきれずに残った分は、次に具合が悪くなったときに使わず処分してください。</span><button class="cp" type="button">コピー</button></div>
+          <div class="tx"><span class="t">使ったスポイトやカップは、洗って乾かしてください。</span><button class="cp" type="button">コピー</button></div>
+          <div class="tx"><span class="t">飲み物に混ぜるときは、飲ませる直前に1回分だけ混ぜてください。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card sc" id="s-ds">
+      <div class="card-title">ドライシロップ</div>
+      <div class="grid">
+        <div>
+          <div class="col-h"><span class="who y">薬歴に記載</span></div>
+          <div class="tx rec"><span class="t">S/O）体重〇kg。ドライシロップは普段、水に溶かして飲ませているとのこと。
+A）体重〇kgに対し、用量は適正。
+P）飲ませる直前に1回分だけ溶かすよう説明（時間がたつと苦みが出ることがある）。作り置きはしないよう説明。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+        <div>
+          <div class="col-h"><span class="who t">手帳に記載（保護者向け）</span><button class="cp" type="button" data-all>まとめてコピー</button></div>
+          <div class="tx"><span class="t">水に溶けやすいお薬です。スプーンの上で少量の水に溶かし、シロップのようにすると飲みやすくなります。</span><button class="cp" type="button">コピー</button></div>
+          <div class="tx"><span class="t">水に溶かすときは、飲ませる直前に溶かしてください。時間がたつと苦みが出て、飲みにくくなることがあります。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card sc" id="s-zayaku">
+      <div class="card-title">坐薬（熱さまし・吐き気止めなど）</div>
+      <div class="grid">
+        <div>
+          <div class="col-h"><span class="who y">薬歴に記載</span></div>
+          <div class="tx rec"><span class="t">S/O）体重〇kg。坐薬の使用経験【あり／なし】。
+A）体重〇kgに対し、用量は適正。使い方と使う目安の説明が必要。
+P）〇〇℃以上を目安に使い、次に使うまで〇時間以上あけるよう説明。先端を水で濡らして挿入し、しばらく押さえておくよう指導。すぐに出てきたときの対応は、薬局に相談するよう伝えた。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+        <div>
+          <div class="col-h"><span class="who t">手帳に記載（保護者向け）</span><button class="cp" type="button" data-all>まとめてコピー</button></div>
+          <div class="tx"><span class="t">先端を水で少し濡らしてから入れ、しばらく押さえておいてください。</span><button class="cp" type="button">コピー</button></div>
+          <div class="tx"><span class="t">〇〇℃以上を目安に使い、次に使うまで〇時間以上あけてください。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+      </div>
+      <p class="why">使う目安の体温と間隔は、処方医の指示とその薬の用法に合わせて記載する。</p>
+    </div>
+
+    <div class="card sc" id="s-tengan">
+      <div class="card-title">点眼薬</div>
+      <div class="grid">
+        <div>
+          <div class="col-h"><span class="who y">薬歴に記載</span></div>
+          <div class="tx rec"><span class="t">S/O）体重〇kg。点眼を嫌がって目を閉じてしまうとのこと。
+A）点眼のしかたの工夫が必要。
+P）寝ているときや落ち着いているときに、目頭に1滴落としてまばたきさせる方法を説明。容器の先がまつ毛や目に触れないよう説明。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+        <div>
+          <div class="col-h"><span class="who t">手帳に記載（保護者向け）</span></div>
+          <div class="tx"><span class="t">嫌がって目を閉じてしまうときは、無理に開けず、寝ているときや落ち着いているときにさしてください。容器の先がまつ毛や目に触れないよう注意してください。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card sc" id="s-gaiyo">
+      <div class="card-title">塗り薬（軟膏・クリーム）</div>
+      <div class="grid">
+        <div>
+          <div class="col-h"><span class="who y">薬歴に記載</span></div>
+          <div class="tx rec"><span class="t">S/O）体重〇kg。外用薬の使用経験【あり／なし】。塗る部位は〇〇。患児が触る可能性について確認。
+A）塗ったあとに患児が触る・なめる可能性があるため、使い方と保管の説明が必要。
+P）塗る量・回数と塗ったあとの注意点を説明。触った手を口に入れないよう注意し、手の届かない場所に保管するよう指導。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+        <div>
+          <div class="col-h"><span class="who t">手帳に記載（保護者向け）</span><button class="cp" type="button" data-all>まとめてコピー</button></div>
+          <div class="tx"><span class="t">塗ったあと、薬を触った手を口に入れないよう注意してください。薬は子どもの手の届かない場所に保管してください。</span><button class="cp" type="button">コピー</button></div>
+          <div class="tx"><span class="t">口に入ってしまったときは、口をすすいで様子をみてください。たくさん口に入ったときや具合が悪いときは、薬局または医療機関にご相談ください。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+      </div>
+      <p class="why">塗り薬だけの処方でも、誤飲防止・塗ったあとの注意・保管などの乳幼児特有の指導が記録されていれば算定根拠になる。</p>
+    </div>
+
+    <div class="card sc" id="s-macro">
+      <div class="card-title">苦い抗菌薬（マクロライド系）</div>
+      <div class="grid">
+        <div>
+          <div class="col-h"><span class="who y">薬歴に記載</span></div>
+          <div class="tx rec"><span class="t">S/O）体重〇kg。〇〇（クラリスロマイシン・アジスロマイシンなど）が初めて処方。普段は〇〇に混ぜて飲ませているとのこと。
+A）体重〇kgに対し、用量は適正。酸味のあるものと混ぜると苦みが増すため、混ぜる物の説明が必要。
+P）ヨーグルト・ジュース・スポーツ飲料など酸味のあるものとは混ぜず、牛乳・ココア・アイスなどに混ぜるよう説明。カルボシステインと一緒に飲ませるときは、先にカルボシステインを飲ませて口をすすいでから飲ませるよう説明。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+        <div>
+          <div class="col-h"><span class="who t">手帳に記載（保護者向け）</span><button class="cp" type="button" data-all>まとめてコピー</button></div>
+          <div class="tx"><span class="t">オレンジジュース・ヨーグルト・乳酸菌飲料・スポーツ飲料など酸味のあるものと混ぜると苦みが増すので、混ぜたり一緒に飲ませたりしないでください。</span><button class="cp" type="button">コピー</button></div>
+          <div class="tx"><span class="t">牛乳・ココア・アイスクリームなどと混ぜると飲みやすくなります。</span><button class="cp" type="button">コピー</button></div>
+          <div class="tx"><span class="t">カルボシステインと一緒に飲むと苦くなります。カルボシステインを先に飲ませ、水で口をすすいでからこのお薬を飲ませてください。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+      </div>
+      <p class="why">クラリスロマイシン・アジスロマイシン・エリスロマイシンなど。酸性のものと一緒になると苦み成分が溶け出す。</p>
+    </div>
+
+    <div class="card sc" id="s-vomit">
+      <div class="card-title">吐いてしまった・飲めなかった</div>
+      <div class="grid">
+        <div>
+          <div class="col-h"><span class="who y">薬歴に記載</span></div>
+          <div class="tx rec"><span class="t">S/O）体重〇kg。前回、飲ませた直後に吐いてしまったことがあるとのこと。
+A）体重〇kgに対し、用量は適正。飲ませ方とあわせて、吐いたときの対応の説明が必要。
+P）泣いているときは避け、落ち着いてから少量ずつ飲ませるよう説明。吐いたときに飲み直すかは薬によって違うため、その都度薬局に相談するよう説明。</span><button class="cp" type="button">コピー</button></div>
+          <div class="tx rec"><span class="t">前回、粉薬を嫌がり飲み残しがあったとのこと。今回も同じ処方。少量の水で練って頬の内側に塗る方法、嫌がるときは薬との相性を確認したうえで〇〇に少量混ぜる方法を改めて説明。次回、飲めたか確認する。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+        <div>
+          <div class="col-h"><span class="who t">手帳に記載（保護者向け）</span><button class="cp" type="button" data-all>まとめてコピー</button></div>
+          <div class="tx"><span class="t">飲んですぐに吐いてしまったときに飲み直すかどうかは、お薬によって違います。その都度、薬局にご相談ください。</span><button class="cp" type="button">コピー</button></div>
+          <div class="tx"><span class="t">泣いているときに飲ませると、むせたり吐いたりすることがあります。落ち着いてから飲ませてください。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+      </div>
+      <p class="why">同じ処方（Do処方）で算定できるのは、前回うまく飲めておらず、今回も飲ませ方の指導が必要な場合（2つめの例）。問題なく飲めていて新しい指導がなければ算定しない。</p>
+    </div>
+
+    <div class="card sc" id="s-hoikuen">
+      <div class="card-title">保育園で昼の薬が飲めない</div>
+      <div class="grid">
+        <div>
+          <div class="col-h"><span class="who y">薬歴に記載</span></div>
+          <div class="tx rec"><span class="t">S/O）体重〇kg。保育園に通っており、昼の薬は飲ませてもらえないとのこと。帰宅は〇時ごろ。
+A）体重〇kgに対し、用量は適正。1日3回の服用時間の調整が必要。
+P）昼の分は帰宅後に飲ませ、4時間程度あけてから夕食後の分を飲ませるよう説明。食事の影響を受けにくい薬のため、食後でなくてよいことを説明。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+        <div>
+          <div class="col-h"><span class="who t">手帳に記載（保護者向け）</span><button class="cp" type="button" data-all>まとめてコピー</button></div>
+          <div class="tx"><span class="t">お昼の分は帰宅後に飲ませ、4時間ほどあけてから夕食後の分を飲ませてください。</span><button class="cp" type="button">コピー</button></div>
+          <div class="tx"><span class="t">食事の影響を受けにくいお薬なので、食後でなくても飲ませて大丈夫です。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+      </div>
+      <p class="why">帰宅後から寝るまで4時間程度あけられない場合は、処方医に1日2回への変更を相談する。照会したときはその内容も残す。</p>
+    </div>
+
+    <div class="card sc" id="s-kyodai">
+      <div class="card-title">年齢の近いきょうだいがいる</div>
+      <div class="grid">
+        <div>
+          <div class="col-h"><span class="who y">薬歴に記載</span></div>
+          <div class="tx rec"><span class="t">S/O）体重〇kg。年齢の近いきょうだい（〇歳）も同じ時期に受診し、薬が出ているとのこと。
+A）体重〇kgに対し、用量は適正。取り違えのおそれがある。
+P）分包紙に名前を印字して交付し、飲ませる前に名前を確認するよう説明。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+        <div>
+          <div class="col-h"><span class="who t">手帳に記載（保護者向け）</span></div>
+          <div class="tx"><span class="t">お薬の袋に名前を印字しています。飲ませる前に、必ず名前を確認してください。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card sc" id="s-techo">
+      <div class="card-title">手帳を忘れた・使っていない</div>
+      <div class="grid">
+        <div>
+          <div class="col-h"><span class="who y">薬歴に記載</span></div>
+          <div class="tx rec"><span class="t">手帳を持参していないため、指導内容を記載したシールを交付。次回持参時に貼付を確認予定。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+        <div>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th>手帳の状況</th><th>対応</th></tr></thead>
+              <tbody>
+                <tr><td class="k">持参し忘れ<small>手帳は使っている</small></td><td>シール等を交付してよい。次回持参したら、貼ってあることを確認する。</td></tr>
+                <tr><td class="k">使っていない</td><td>手帳を交付した場合に算定できる。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card sc" id="s-hajimete">
+      <div class="card-title">初めての粉薬</div>
+      <div class="grid">
+        <div>
+          <div class="col-h"><span class="who y">薬歴に記載</span></div>
+          <div class="tx rec"><span class="t">S/O）体重〇kg。粉薬の服用経験なし。普段はミルク〇回／離乳食〇回とのこと。
+A）体重〇kgに対し、用量は適正。初めての粉薬のため、飲ませ方の説明が必要。
+P）少量の水で練って頬の内側や上あごに塗り、すぐに水やミルクを飲ませる方法を説明。飲めなかったときや吐いたときは相談するよう説明。次回、飲めたか確認する。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+        <div>
+          <div class="col-h"><span class="who t">手帳に記載（保護者向け）</span><button class="cp" type="button" data-all>まとめてコピー</button></div>
+          <div class="tx"><span class="t">少量の水でペースト状にして頬の内側や上あごに塗り、そのあと水やミルクを飲ませてください。</span><button class="cp" type="button">コピー</button></div>
+          <div class="tx"><span class="t">うまく飲めなかったときや、吐いてしまったときは薬局にご相談ください。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card sc" id="s-milk">
+      <div class="card-title">ミルクに混ぜたい</div>
+      <div class="grid">
+        <div>
+          <div class="col-h"><span class="who y">薬歴に記載</span></div>
+          <div class="tx rec"><span class="t">S/O）体重〇kg。粉薬をミルクに混ぜて飲ませたいとのこと。
+A）体重〇kgに対し、用量は適正。ミルクに混ぜると飲み残したときに必要な量を飲めず、ミルク自体を嫌がるようになることがある。
+P）ミルクには混ぜず、少量の水で練って塗る方法や、スポイトで少しずつ飲ませる方法を説明。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+        <div>
+          <div class="col-h"><span class="who t">手帳に記載（保護者向け）</span></div>
+          <div class="tx"><span class="t">ミルクに混ぜると、飲み残したときに必要な量が飲めず、ミルクを嫌がるようになることがあります。ミルクには混ぜず、少量の水で練って口の中に塗る方法をお試しください。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card sc" id="s-tonpuku">
+      <div class="card-title">熱が出たときの頓服（飲み薬）</div>
+      <div class="grid">
+        <div>
+          <div class="col-h"><span class="who y">薬歴に記載</span></div>
+          <div class="tx rec"><span class="t">S/O）体重〇kg。解熱剤の頓服は初めてとのこと。
+A）体重〇kgに対し、1回量は適正。使う目安と間隔の説明が必要。
+P）〇〇℃以上でつらそうなときに使い、次に使うまで〇時間以上あけるよう説明。熱があっても機嫌がよく、水分がとれて眠れているときは無理に使わなくてよいことを説明。ぐったりしている、水分やおしっこが少ない、呼びかけへの反応が鈍いときは受診するよう説明。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+        <div>
+          <div class="col-h"><span class="who t">手帳に記載（保護者向け）</span><button class="cp" type="button" data-all>まとめてコピー</button></div>
+          <div class="tx"><span class="t">〇〇℃以上でつらそうなときに飲ませてください。次に飲ませるまで〇時間以上あけてください。熱があっても、機嫌がよく水分がとれて眠れているときは、無理に使わなくて大丈夫です。</span><button class="cp" type="button">コピー</button></div>
+          <div class="tx"><span class="t">ぐったりしている、水分やおしっこが少ない、呼びかけへの反応が鈍いときは受診してください。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+      </div>
+      <p class="why">使う目安の体温・間隔・回数は、処方医の指示とその薬の用法に合わせて記載する。</p>
+    </div>
+
+    <div class="card sc" id="s-keiren">
+      <div class="card-title">熱性けいれんの坐薬と熱さましの坐薬</div>
+      <div class="grid">
+        <div>
+          <div class="col-h"><span class="who y">薬歴に記載</span></div>
+          <div class="tx rec"><span class="t">S/O）体重〇kg。熱性けいれんの既往あり。ダイアップ坐剤と解熱剤の坐薬が処方。
+A）体重〇kgに対し、用量は適正。2種類の坐薬を使う順番の説明が必要。
+P）熱が出たら先にダイアップを使い、解熱剤の坐薬は30分以上あけてから使うよう説明。使ったあとは眠気やふらつきが出るため、様子をよく見るよう説明。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+        <div>
+          <div class="col-h"><span class="who t">手帳に記載（保護者向け）</span><button class="cp" type="button" data-all>まとめてコピー</button></div>
+          <div class="tx"><span class="t">熱が出たら、先にけいれん予防の坐薬（ダイアップ）を入れてください。熱さましの坐薬は30分以上あけてから入れてください。</span><button class="cp" type="button">コピー</button></div>
+          <div class="tx"><span class="t">けいれん予防の坐薬を使ったあとは、眠くなったりふらついたりすることがあります。転ばないよう様子を見てください。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+      </div>
+      <p class="why">熱さましの坐薬を先に入れると、けいれん予防の坐薬が吸収されにくくなる。熱性けいれんの予防目的のダイアップは特定薬剤管理指導加算1の対象にならないが、乳幼児服薬指導加算の指導としては記載できる。</p>
+    </div>
+
+    <div class="card sc" id="s-tape">
+      <div class="card-title">貼り薬（ツロブテロールテープ）</div>
+      <div class="grid">
+        <div>
+          <div class="col-h"><span class="who y">薬歴に記載</span></div>
+          <div class="tx rec"><span class="t">S/O）体重〇kg。ホクナリンテープ〇mgが処方。テープの使用経験【あり／なし】。
+A）体重〇kgに対し、用量は適正。貼る場所と貼り替えの説明が必要。
+P）1日1回、背中など子どもの手が届かない場所に貼るよう説明。貼る場所を毎回変え、はがれたときは〇〇するよう説明。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+        <div>
+          <div class="col-h"><span class="who t">手帳に記載（保護者向け）</span><button class="cp" type="button" data-all>まとめてコピー</button></div>
+          <div class="tx"><span class="t">1日1回、背中など子どもの手が届かない場所に貼ってください。貼る場所は毎回少しずつずらしてください。</span><button class="cp" type="button">コピー</button></div>
+          <div class="tx"><span class="t">はがれてしまったときは、〇〇してください。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+      </div>
+      <p class="why">貼る部位は胸・背中・上腕のいずれか。子どもは自分ではがしてしまうので、背中に貼ることが多い。</p>
+    </div>
+
+    <div class="card sc" id="s-goin">
+      <div class="card-title">誤飲を防ぐ（保管）</div>
+      <div class="grid">
+        <div>
+          <div class="col-h"><span class="who y">薬歴に記載</span></div>
+          <div class="tx rec"><span class="t">S/O）体重〇kg。〇歳で、手の届く場所の物を口に入れることが多いとのこと。
+A）誤飲のおそれがあるため、保管の説明が必要。
+P）薬は子どもの手が届かず、見えない場所に保管するよう説明。家族の薬も同じように保管するよう説明。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+        <div>
+          <div class="col-h"><span class="who t">手帳に記載（保護者向け）</span><button class="cp" type="button" data-all>まとめてコピー</button></div>
+          <div class="tx"><span class="t">お薬は、子どもの手が届かず目に入らない場所に保管してください。ご家族のお薬も同じように保管してください。</span><button class="cp" type="button">コピー</button></div>
+          <div class="tx"><span class="t">誤って飲んでしまったときは、飲んだ量と時間を確認して医療機関や薬局にご相談ください。</span><button class="cp" type="button">コピー</button></div>
+        </div>
+      </div>
+      <p class="why">誤飲防止は算定要件に明記された指導内容。剤形を問わず、つかまり立ちから歩き始める頃は特に伝える。</p>
+    </div>
+
+    <!-- ===== 算定の判断・個別指導 ===== -->
+    <div class="card" id="judge">
+      <div class="card-title">算定の判断</div>
+      <div class="stack">
+        <div>
+          <div class="sub-title">算定を控えるとき</div>
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>年齢だけで算定し、患児ごとの確認事項や指導内容が残っていない。</span></div>
+            <div class="bullet"><span>・</span><span>体重や服薬状況の確認がない。</span></div>
+            <div class="bullet"><span>・</span><span>大人と同じ一般的な説明だけで、患児に合わせた指導がない（「いつも通り説明」など）。</span></div>
+            <div class="bullet"><span>・</span><span>手帳に指導内容を記載していない、または手帳に貼るシール等を交付していない。</span></div>
+            <div class="bullet"><span>・</span><span>同じ処方で、前回飲めたかの確認も、今回の具体的な指導もない。</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="sub-title">よくある薬歴と直し方</div>
+          <div class="ex ng"><div class="lab">算定根拠として不十分</div>S）保護者より、発熱・鼻水があり受診したとのこと。<br>A/P）薬効・用法を説明。解熱剤はつらいときに使用してよいこと、他の薬と併用してよいことを説明。<div class="why">体重と用量、どう飲ませているか、患児に合わせた飲ませ方の記録がない。</div></div>
+          <div class="ex ok"><div class="lab">直した例</div>S/O）体重〇kg。発熱・鼻水あり。シロップは普段スポイトで問題なく飲めている。<br>A）体重〇kgに対し、用量は適正。<br>P）よく振って1回量を正確に量り、頬の内側へ少しずつ入れて飲ませるよう説明。熱が続く・水分がとれないときは受診するよう説明。</div>
+        </div>
+        <div>
+          <div class="sub-title">そのほか</div>
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>小児特定加算とは併算定できない。</span></div>
+            <div class="bullet"><span>・</span><span>服用期間中に家族から電話等で問い合わせがあったときは、対応し、その内容を薬歴に残す。</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="kobetsu">
+      <div class="card-title">個別指導で言われたこと</div>
+      <p class="note" style="margin-bottom:12px;">共通しているのは、<span class="marker">患児の状況を確認したうえで、それに合わせた指導をしているか</span>という点。</p>
+      <div class="voice">「なぜ体重を聞くかというと、6歳未満は体重の変動が大きいから。体重確認は用量の確認のため。指導内容を書く前に、前回薬が飲めたかどうかの確認が必要。粉薬をどうやって飲ませたのか、飲んだら吐いてしまったのか等の確認が必要。そうした情報収集を元に指導する。一般的な指導は対象とならない」<span class="c">過去の個別指導の記録より</span></div>
+      <div class="voice">「今まで使ったことのある剤形や、薬をどのように服薬しているかの記録がない。誤飲防止に関する記録もない。算定要件としては不十分な薬歴」<span class="c">過去の個別指導の記録より</span></div>
+      <div class="voice">「1日3回飲めるのかなど、指導に必要な情報は記載する。兄弟がいる・保育園で昼の薬を飲ませてくれるかといった生活像は重要。飲めない場合は飲ませ方の工夫を指導し記録を残すこと」<span class="c">過去の個別指導の記録より</span></div>
+      <div class="voice">「大人と同じ説明では算定要件を満たさない。お子様向けの指導をしたら算定できるので、指導した際は算定してほしい。手帳にも同じ指導文を載せていることが分かるように記載」<span class="c">過去の個別指導の記録より</span></div>
+    </div>
+
+    <details class="fold">
+      <summary>算定要件の原文・疑義解釈</summary>
+      <div class="fold-body">
+        <div class="blist">
+          <div class="bullet"><span>・</span><span><b>注10</b>　6歳未満の乳幼児に係る調剤に際して必要な情報等を直接患者又はその家族等に確認した上で、服用に関して必要な指導等を行い、かつ、当該指導等の内容等を手帳に記載した場合に、乳幼児服薬指導加算として12点を所定点数に加算する。</span></div>
+          <div class="bullet"><span>・</span><span><b>(1)</b>　乳幼児に係る処方箋の受付の際に、年齢、体重、適切な剤形その他必要な事項等の確認を行った上で、患者の家族等に対して適切な服薬方法、誤飲防止等の必要な服薬指導を行った場合に算定する。</span></div>
+          <div class="bullet"><span>・</span><span><b>(2)</b>　算定した処方箋中の薬剤の服用期間中に、患者の家族等から電話等により当該処方薬剤に係る問い合わせがあった場合には、適切な対応及び指導等を行うこと。</span></div>
+          <div class="bullet"><span>・</span><span><b>通則(5)</b>　定型文を用いて画一的に記載するのではなく、薬学管理料やその加算を算定する場合には、その根拠及び指導内容等について簡潔に記載すること。</span></div>
+        </div>
+        <p class="src" style="margin-top:8px;">令和8年3月5日 保医発0305第6号 別表第三 注10／別添3 区分10の3・9／薬学管理料 通則(5)</p>
+        <div class="box-gray" style="margin-top:12px;">
+          <b>Q</b>　手帳を持参していない患者に、手帳に貼付するシール等を交付した場合や、手帳を交付した場合でも算定できるか。<br>
+          <b>A</b>　手帳を利用しているが持参し忘れた患者にはシール等を交付することでよい。手帳を利用していない患者に対しては、手帳を交付した場合に算定できる。なお、シール等を交付した患者が次回以降に手帳を持参した場合は、そのシール等が貼付されていることを確認すること。
+          <div class="src" style="margin-top:4px;">疑義解釈資料の送付について（その1）問26（H28.3.31）</div>
         </div>
       </div>
     </details>
 
-    <div class="box-rule">
-      <div class="ttl">関連ページ</div>
-      <p>各加算の薬歴記載を横断的に確認するときは <a href="加算別記載一覧.html" class="link-inline">加算別 薬歴記載一覧</a>、薬歴10項目の基本は <a href="基本記載ルール.html" class="link-inline">基本記載ルール</a> を参照。</p>
-    </div>
-
-    <div class="page-foot">薬歴マニュアル</div>
+    <p class="note-xs">各加算の薬歴記載は <a href="加算別記載一覧.html">加算別 薬歴記載一覧</a>、薬歴の基本は <a href="基本記載ルール.html">基本記載ルール</a>。</p>
   </div>
 
   <script>
-    function copyText(text, btn, label) {
-      var done = function () {
-        var orig = btn.getAttribute('data-orig') || btn.textContent;
-        btn.setAttribute('data-orig', orig);
-        btn.textContent = label || 'コピー済';
-        btn.classList.add('copied');
-        setTimeout(function () { btn.textContent = orig; btn.classList.remove('copied'); }, 1300);
-      };
-      var fallback = function () {
-        var ta = document.createElement('textarea');
-        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-        document.body.appendChild(ta); ta.select();
-        try { document.execCommand('copy'); done(); } catch (e) {}
-        document.body.removeChild(ta);
-      };
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(done, fallback);
-      } else {
-        fallback();
+    // 場面の切り替え：ボタンで1つだけ表示。#s-○○ で直接開ける。「すべて」で全部並べる
+    (function () {
+      var btns = [].slice.call(document.querySelectorAll('.scene-pick [data-s]'));
+      var scs = [].slice.call(document.querySelectorAll('.sc'));
+      function show(id, scroll, quiet) {
+        var all = id === 'all';
+        if (!all && !scs.some(function (s) { return s.id === 's-' + id; })) id = 'nomeru';
+        scs.forEach(function (s) { s.hidden = !all && s.id !== 's-' + id; });
+        btns.forEach(function (b) { b.classList.toggle('cur', b.dataset.s === id); });
+        if (!quiet) try { history.replaceState(null, '', all ? '#all' : '#s-' + id); } catch (e) {}
+        if (scroll) { var t = all ? scs[0] : document.getElementById('s-' + id); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       }
+      btns.forEach(function (b) { b.addEventListener('click', function (e) { e.preventDefault(); show(b.dataset.s, true); }); });
+      var h = (location.hash || '').slice(1);
+      if (h === 'all') show('all'); else if (/^s-/.test(h)) show(h.slice(2), true); else show('nomeru', false, true);
+      // 各場面のカードから選び直せるように
+      scs.forEach(function (s) { var a = document.createElement('a'); a.href = '#pick'; a.className = 'back'; a.textContent = '別の場面を選ぶ'; s.querySelector('.card-title').appendChild(a); });
+    })();
+
+    // コピー：1つずつ、または手帳の文をまとめて。枠の中でクリップボードが使えないときは文を選択した状態にする
+    function copyText(text, btn, node) {
+      function ok() { var o = btn.textContent; btn.textContent = 'コピーしました'; btn.classList.add('done'); setTimeout(function () { btn.textContent = o; btn.classList.remove('done'); }, 1300); }
+      function legacy() {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
+        document.body.appendChild(ta); ta.select();
+        var done = false; try { done = document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+        if (done) ok(); else if (node) { var r = document.createRange(); r.selectNodeContents(node); var s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Ctrl+C で'; }
+      }
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(ok, legacy); else legacy();
     }
-
-    // 個別コピー
-    document.querySelectorAll('.copy-mini').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var el = btn.parentElement.querySelector('.tpl-text');
-        if (el) copyText(el.textContent.trim(), btn);
-      });
-    });
-
-    // カテゴリ単位でまとめてコピー（見出し直後の .scene 内のテンプレを全部）
-    document.querySelectorAll('.copy-group').forEach(function (btn) {
-      btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        var node = btn.closest('.sub-title'), scene = null;
-        while (node && (node = node.nextElementSibling)) {
-          if (node.classList && node.classList.contains('scene')) { scene = node; break; }
-          if (node.classList && node.classList.contains('sub-title')) break;
+    document.querySelectorAll('.cp').forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (b.hasAttribute('data-all')) {
+          var col = b.closest('.col-h').parentElement;
+          copyText([].map.call(col.querySelectorAll('.tx .t'), function (t) { return t.textContent.trim(); }).join('\n'), b, col);
+        } else {
+          var t = b.parentElement.querySelector('.t'); copyText(t.textContent.trim(), b, t);
         }
-        if (!scene) return;
-        var texts = [].map.call(scene.querySelectorAll('.tpl-text'), function (t) { return t.textContent.trim(); }).filter(Boolean);
-        copyText(texts.join('\n\n'), btn, 'コピーしました');
       });
     });
 
-    // 章ごと全部コピー（見出しを区切りに入れてテキストへ書き出し）
-    document.querySelectorAll('.copy-all').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var card = btn.closest('.card'), out = [];
-        card.querySelectorAll('.sub-title, .tpl-text').forEach(function (el) {
-          if (el.classList.contains('sub-title')) {
-            out.push('\n■ ' + el.textContent.replace('まとめてコピー', '').trim());
-          } else {
-            out.push(el.textContent.trim());
-          }
-        });
-        copyText(out.join('\n').trim(), btn, 'コピーしました');
-      });
+    // 要点のカードだけ印刷
+    document.querySelectorAll('[data-print]').forEach(function (b) {
+      b.addEventListener('click', function () { document.body.classList.add('print-pts'); window.print(); });
     });
-
-    // チェックリストだけ印刷
-    document.querySelectorAll('.print-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        document.body.classList.add('print-checklist-only');
-        window.print();
-      });
-    });
-    window.addEventListener('afterprint', function () {
-      document.body.classList.remove('print-checklist-only');
-    });
+    window.addEventListener('afterprint', function () { document.body.classList.remove('print-pts'); });
   </script>
-    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-  </body>
+  <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
 </html>

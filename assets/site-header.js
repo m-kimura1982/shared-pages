@@ -72,10 +72,7 @@
     'yakureki/ハイリスク_抗うつ薬.html': { category: 'yakureki', title: 'ハイリスク薬 抗うつ薬' },
     'yakureki/ハイリスク_気分安定薬.html': { category: 'yakureki', title: 'ハイリスク薬 気分安定薬' },
     'yakureki/ハイリスク_抗てんかん薬.html': { category: 'yakureki', title: 'ハイリスク薬 抗てんかん薬' },
-    'yakureki/テンプレート集.html': { category: 'yakureki', title: '薬歴テンプレート・文例集' },
-    'yakureki/テンプレート_汎用.html': { category: 'yakureki', title: '汎用 定型文集' },
-    'yakureki/テンプレート_メンタル.html': { category: 'yakureki', title: 'メンタル系 定型文集' },
-    'yakureki/テンプレート_循環器.html': { category: 'yakureki', title: '循環器系 定型文集' },
+    'yakureki/定型文集.html': { category: 'yakureki', title: '定型文集（申し送り・評価と指導）' },
 
     // 加算まとめ（恒久ページ。kaitei2026 のカードからもリンクされるが、所属は加算まとめ）
     '加算まとめ/調剤基本料_2026改定.html': { category: 'kasan', title: '調剤基本料' },
