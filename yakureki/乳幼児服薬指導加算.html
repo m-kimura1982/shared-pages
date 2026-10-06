@@ -125,15 +125,22 @@
         <div>
           <div class="col-h"><span class="who y">薬歴に記載</span></div>
           <div class="tx rec"><span class="t">S/O）体重〇kg。〇〇（剤形）の服用経験あり。普段は〇〇の方法で問題なく飲めている。
-A）体重〇kgに対し、用量は適正。
-P）これまでと同じ方法で服用するよう説明。今後飲みにくくなった場合は、自己判断で食品に混ぜず、薬局へ相談するよう説明。</span><button class="cp" type="button">コピー</button></div>
+A）体重〇kgに対し、用量は適正。</span><button class="cp" type="button">コピー</button></div>
+          <p class="why" style="margin-top:10px;">P は、今回の薬で伝えることで決まるので型にしていない。今回の処方に当てはまる場面の記載例を使う。</p>
         </div>
         <div>
-          <div class="col-h"><span class="who t">手帳に記載（保護者向け）</span></div>
-          <div class="tx"><span class="t">今までと同じ方法で飲ませてください。飲みにくくなったときは、食べ物に混ぜる前に薬局にご相談ください。</span><button class="cp" type="button">コピー</button></div>
+          <div class="col-h"><span class="who" style="color:var(--txt-2);background:var(--box-gray);">今回の薬で伝えることの例</span></div>
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>初めての剤形 → <a href="#s-hajimete" data-go="hajimete">初めての粉薬</a></span></div>
+            <div class="bullet"><span>・</span><span>シロップの量り方・保管 → <a href="#s-syrup" data-go="syrup">シロップ</a></span></div>
+            <div class="bullet"><span>・</span><span>水に溶かすタイミング → <a href="#s-ds" data-go="ds">ドライシロップ</a></span></div>
+            <div class="bullet"><span>・</span><span>苦みが出る薬 → <a href="#s-macro" data-go="macro">苦い抗菌薬</a></span></div>
+            <div class="bullet"><span>・</span><span>1日3回で昼の分がある → <a href="#s-hoikuen" data-go="hoikuen">保育園で昼が飲めない</a></span></div>
+            <div class="bullet"><span>・</span><span>熱が出たときに使う薬 → <a href="#s-tonpuku" data-go="tonpuku">熱が出たときの頓服</a>・<a href="#s-zayaku" data-go="zayaku">坐薬</a></span></div>
+          </div>
         </div>
       </div>
-      <p class="why">問題なく飲めている場合も、飲ませ方を確認し、乳幼児特有の注意を伝えて記録したときに算定する。</p>
+      <p class="why">飲めている場合は、今回の薬について乳幼児特有の注意を伝えて記録したときに算定根拠になる。今回の薬について伝えることがなければ算定しない。</p>
     </div>
 
     <div class="card sc" id="s-mazeru">
@@ -143,7 +150,7 @@ P）これまでと同じ方法で服用するよう説明。今後飲みにく�
           <div class="col-h"><span class="who y">薬歴に記載</span></div>
           <div class="tx rec"><span class="t">S/O）体重〇kg。粉薬は普段〇〇に混ぜて服用。問題なく飲めている。
 A）体重〇kgに対し、用量は適正。
-P）薬によっては混ぜる食品との相性に注意が必要であることを説明。主食に混ぜると食事自体を嫌がることがあるため、1回で食べきれる少量に混ぜるよう説明。</span><button class="cp" type="button">コピー</button></div>
+P）今回の〇〇（薬剤名）は〇〇に混ぜてよい薬であることを説明。主食に混ぜると食事自体を嫌がることがあるため、1回で食べきれる少量に混ぜるよう説明。</span><button class="cp" type="button">コピー</button></div>
         </div>
         <div>
           <div class="col-h"><span class="who t">手帳に記載（保護者向け）</span><button class="cp" type="button" data-all>まとめてコピー</button></div>
@@ -541,6 +548,7 @@ P）薬は子どもの手が届かず、見えない場所に保管するよう�
         if (scroll) { var t = all ? scs[0] : document.getElementById('s-' + id); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       }
       btns.forEach(function (b) { b.addEventListener('click', function (e) { e.preventDefault(); show(b.dataset.s, true); }); });
+      document.querySelectorAll('[data-go]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); show(a.dataset.go, true); }); });
       var h = (location.hash || '').slice(1);
       if (h === 'all') show('all'); else if (/^s-/.test(h)) show(h.slice(2), true); else show('nomeru', false, true);
       // 各場面のカードから選び直せるように
