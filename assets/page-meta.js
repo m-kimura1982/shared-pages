@@ -37,10 +37,6 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-19",
     "newUntil": "2026-08-25"
   },
-  "yakureki/乳幼児服薬指導加算.html": {
-    "lastUpdated": "2026-10-06",
-    "newUntil": "2026-10-13"
-  },
   "yakureki/薬歴の書き方_実例解説集.html": {
     "lastUpdated": "2026-09-08",
     "newUntil": "2026-09-14"
@@ -91,6 +87,10 @@ window.__pageMeta = {
   },
   "yakureki/基本記載ルール.html": {
     "lastUpdated": "2026-10-06"
+  },
+  "yakureki/乳幼児服薬指導加算.html": {
+    "lastUpdated": "2026-10-07",
+    "newUntil": "2026-10-13"
   },
   "加算まとめ/分割調剤.html": {
     "lastUpdated": "2026-09-03",
