@@ -1,18 +1,18 @@
 {
   "index.html": {
-    "lastUpdated": "2026-10-04"
+    "lastUpdated": "2026-10-06"
   },
   "加算まとめ.html": {
     "lastUpdated": "2026-09-12"
   },
   "404.html": {
-    "lastUpdated": "2026-08-02"
+    "lastUpdated": "2026-10-06"
   },
   "事務スタッフ向け.html": {
     "lastUpdated": "2026-09-11"
   },
   "updates.html": {
-    "lastUpdated": "2026-10-04"
+    "lastUpdated": "2026-10-06"
   },
   "checklists.html": {
     "lastUpdated": "2026-09-11"
@@ -33,15 +33,12 @@
   "yakureki/個別指導で問われる記載.html": {
     "lastUpdated": "2026-08-06"
   },
-  "yakureki/基本記載ルール.html": {
-    "lastUpdated": "2026-08-20"
-  },
   "yakureki/居宅療養管理指導_薬歴の記載事項.html": {
     "lastUpdated": "2026-08-19",
     "newUntil": "2026-08-25"
   },
   "yakureki/乳幼児服薬指導加算.html": {
-    "lastUpdated": "2026-08-12",
+    "lastUpdated": "2026-10-06",
     "newUntil": "2026-10-13"
   },
   "yakureki/薬歴の書き方_実例解説集.html": {
@@ -73,7 +70,7 @@
     "newUntil": "2026-10-11"
   },
   "yakureki/index.html": {
-    "lastUpdated": "2026-10-04",
+    "lastUpdated": "2026-10-06",
     "newUntil": "2026-07-27"
   },
   "yakureki/ハイリスク薬指導.html": {
@@ -88,6 +85,13 @@
     "lastUpdated": "2026-10-04",
     "newUntil": "2026-10-11"
   },
+  "yakureki/定型文集.html": {
+    "lastUpdated": "2026-10-06",
+    "newUntil": "2026-10-13"
+  },
+  "yakureki/基本記載ルール.html": {
+    "lastUpdated": "2026-10-06"
+  },
   "加算まとめ/分割調剤.html": {
     "lastUpdated": "2026-09-03",
     "newUntil": "2026-09-10"
@@ -98,6 +102,10 @@
   "加算まとめ/施設連携加算.html": {
     "lastUpdated": "2026-09-18",
     "newUntil": "2026-09-25"
+  },
+  "加算まとめ/小児特定加算.html": {
+    "lastUpdated": "2026-10-06",
+    "newUntil": "2026-09-10"
   },
   "加算まとめ/薬剤調製料.html": {
     "lastUpdated": "2026-10-02",
@@ -204,10 +212,6 @@
     "newUntil": "2026-09-09"
   },
   "加算まとめ/無菌製剤処理加算.html": {
-    "lastUpdated": "2026-09-03",
-    "newUntil": "2026-09-10"
-  },
-  "加算まとめ/小児特定加算.html": {
     "lastUpdated": "2026-09-03",
     "newUntil": "2026-09-10"
   },
@@ -389,10 +393,6 @@
   "ナレッジ/基礎的医薬品追加リストR8_4.html": {
     "lastUpdated": "2026-04-19"
   },
-  "ナレッジ/OTC医薬品の区分と販売ルール.html": {
-    "lastUpdated": "2026-09-24",
-    "newUntil": "2026-09-30"
-  },
   "ナレッジ/OTC類似薬_これまでの動き.html": {
     "lastUpdated": "2026-10-02"
   },
@@ -408,6 +408,10 @@
   },
   "ナレッジ/OTC類似薬_処方箋と窓口対応.html": {
     "lastUpdated": "2026-10-01"
+  },
+  "ナレッジ/OTC医薬品の区分と販売ルール.html": {
+    "lastUpdated": "2026-09-24",
+    "newUntil": "2026-09-30"
   },
   "ナレッジ/高額療養費と薬局窓口対応.html": {
     "lastUpdated": "2026-09-23",
@@ -425,9 +429,5 @@
   },
   "事務/事務スタッフ向け_2026改定サマリ.html": {
     "lastUpdated": "2026-09-23"
-  },
-  "yakureki/定型文集.html": {
-    "lastUpdated": "2026-10-06",
-    "newUntil": "2026-10-13"
   }
 }
