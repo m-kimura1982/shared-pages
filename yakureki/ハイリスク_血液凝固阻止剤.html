@@ -46,9 +46,38 @@
           <div class="check"><span>✓</span><span>DOACは、年齢・体重・腎機能から見た用量の妥当性</span></div>
         </div>
         <div class="grp-chips" style="margin-top:14px;">
+          <a href="#common">出血したとき・血圧・休薬のあと</a>
           <a href="#warfarin">ワーファリン</a>
           <a href="#doac">DOAC<small>リクシアナ・エリキュース・イグザレルト・プラザキサ</small></a>
           <a href="#antiplatelet">抗血小板薬</a>
+        </div>
+      </div>
+
+      <!-- ===== 共通 ===== -->
+      <div class="card" id="common">
+        <div class="card-title">どの薬にも共通：出血したとき・血圧・休薬のあと</div>
+        <div class="stack">
+          <div>
+            <div class="sub-title">出血したときの対応</div>
+            <div class="blist">
+              <div class="bullet"><span>・</span><span>けがの出血・鼻血・歯ぐきの出血など少量なら、しっかり押さえて止血する。止まらないときは受診する。</span></div>
+              <div class="bullet"><span>・</span><span>急な腹痛、黒い便、血を吐くなどは、すぐに受診する。</span></div>
+              <div class="bullet"><span>・</span><span>片側の手足のまひやしびれ、ろれつが回らない、言葉が出ない、急な強い頭痛、物が二重に見えるなどは脳出血の可能性があり、<span class="marker">すぐに救急車を呼ぶ</span>。</span></div>
+              <div class="bullet"><span>・</span><span>少量の出血でも回数が増えてきたら、主治医か薬局に相談するよう伝えておく。</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="sub-title">血圧</div>
+            <div class="blist">
+              <div class="bullet"><span>・</span><span>血圧が高いほど頭蓋内出血が起きやすい。降圧目標は年齢によらず診察室血圧130/80mmHg未満、家庭血圧125/75mmHg未満（高血圧管理・治療ガイドライン2025）。血圧手帳があれば値を確認する。</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="sub-title">休薬のあと</div>
+            <div class="blist">
+              <div class="bullet"><span>・</span><span>抜歯・手術・内視鏡で休薬したあと、再開が遅れて脳梗塞を起こす例が多い。処置のあとに医師の指示どおり再開しているかを、次の来局や電話で確かめる。</span></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -80,10 +109,12 @@
           </div>
           <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
           <label class="mk-p"><input type="checkbox" data-on="up down abx dent"><span>出血症状なし。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>〇〇のあと、医師の指示どおり服用を再開していると本人より。</span></label>
           <label class="mk-p"><input type="checkbox"><span>直近のPT-INRは〇〇で、主治医から目標の範囲内と言われていると本人より。</span></label>
           <div class="mk-h">指導</div>
           <label class="mk-p"><input type="checkbox" data-on="i bleed"><span>自己判断で中止すると血栓ができやすくなるため、医師の指示なく中止しないよう指導。</span></label>
           <label class="mk-p"><input type="checkbox" data-on="i up down"><span>出血が止まりにくいときや、身に覚えのないあざが増えたときは主治医に連絡し、黒い便が出たときはすぐに受診するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>鼻血や歯ぐきの出血など少量の出血は、しっかり押さえて止血し、止まらないときは受診するよう説明。</span></label>
           <label class="mk-p"><input type="checkbox" data-on="bleed"><span>次回受診を待たずに主治医へ伝えるよう指導。</span></label>
           <label class="mk-p"><input type="checkbox" data-on="abx"><span>飲み終わるまでは、あざや歯ぐきの出血に注意し、出血が止まりにくいときは主治医に連絡するよう説明。</span></label>
           <label class="mk-p"><input type="checkbox" data-on="dent"><span>休薬するかどうかは歯科医師と主治医の指示に従い、自己判断で中止しないよう指導。歯科医師に服用中であることを伝えるよう説明。</span></label>
@@ -94,6 +125,7 @@
           <label class="mk-p"><input type="checkbox"><span>月経時の出血量が増えることがあるため、量が多いときや長引くときは主治医に相談するよう説明。</span></label>
           <div class="mk-h">重篤な副作用<span class="mk-sub">説明したときに付ける</span></div>
           <label class="mk-p"><input type="checkbox"><span>飲み始めの時期に、皮膚が急に赤くなる・強く痛む・色が変わるなどが出たときはすぐに受診するよう説明。</span><span class="mk-tag">皮膚壊死</span></label>
+          <label class="mk-p"><input type="checkbox"><span>片側の手足のまひやしびれ、ろれつが回らない、急な強い頭痛などが出たときは、すぐに救急車を呼ぶよう説明。</span><span class="mk-tag">頭蓋内出血</span></label>
           <div class="mk-out"></div>
           <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
         </div>
@@ -103,7 +135,7 @@
             <div class="bullet"><span>・</span><span>効果はPT-INRで評価する。目標値は処方目的・年齢・出血リスクで患者ごとに違うので、医師が設定した目標値を本人に確認する。</span></div>
             <div class="bullet"><span>・</span><span>納豆・クロレラ・青汁はビタミンKが多く、効果を大きく弱める。緑黄色野菜は普段どおりの量なら問題になりにくいが、急に大量に食べる・急にやめると効果が変わる。</span></div>
             <div class="bullet"><span>・</span><span>抗菌薬・解熱鎮痛薬などは作用を強め、セイヨウオトギリソウ（セント・ジョーンズ・ワート）を含む健康食品は作用を弱める。併用の開始・中止のたびにPT-INRが変わりうる。</span></div>
-            <div class="bullet"><span>・</span><span>患者向医薬品ガイドの出血の自覚症状：歯ぐきの出血、鼻血、赤や青いあざ、血尿、黒い便、便に血が混じる。強い頭痛・嘔吐・手足のまひは脳出血の可能性があり、すぐに受診が必要。</span></div>
+            <div class="bullet"><span>・</span><span>患者向医薬品ガイドの出血の自覚症状：歯ぐきの出血、鼻血、赤や青いあざ、血尿、黒い便、便に血が混じる。</span></div>
           </div>
         </div></details>
       </div>
@@ -155,6 +187,7 @@
           </div>
           <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
           <label class="mk-p"><input type="checkbox" data-on="down nsaid miss"><span>出血症状なし。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>〇〇のあと、医師の指示どおり服用を再開していると本人より。</span></label>
           <label class="mk-p"><input type="checkbox"><span>年齢〇歳、体重〇kg、CCr 〇mL/分。用量は減量基準に照らして適正。</span></label>
           <div class="mk-h">指導</div>
           <label class="mk-p"><input type="checkbox" data-on="i"><span>自己判断で中止すると脳梗塞などの血栓のリスクが上がるため、中止しないよう指導。</span></label>
@@ -162,6 +195,7 @@
           <label class="mk-p"><input type="checkbox" data-on="i"><span>飲み忘れたときは〇〇するよう説明。</span></label>
           <label class="mk-p"><input type="checkbox" data-on="miss"><span>服用の時刻を〇〇に決めるよう提案し、飲み忘れたときの対応（〇〇）を改めて説明。</span></label>
           <label class="mk-p"><input type="checkbox" data-on="i down"><span>出血が止まりにくいときや、身に覚えのないあざが増えたときは主治医に連絡し、黒い便が出たときはすぐに受診するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>鼻血や歯ぐきの出血など少量の出血は、しっかり押さえて止血し、止まらないときは受診するよう説明。</span></label>
           <label class="mk-p"><input type="checkbox" data-on="nsaid"><span>服用中は胃の痛みに注意し、黒い便が出たときはすぐに受診するよう指導。痛み止めを処方した医師にも、服用中であることを伝えるよう説明。</span></label>
           <label class="mk-p"><input type="checkbox" data-on="i"><span>痛み止めなどの市販薬を使うとき、歯科を受診するときは服用中であることを伝えるよう指導。</span></label>
           <label class="mk-p"><input type="checkbox" data-on="down"><span>下痢や発熱で水分がとれないと腎機能がさらに下がり出血しやすくなるため、体調を崩したときは早めに主治医に連絡するよう説明。</span></label>
@@ -169,6 +203,8 @@
           <label class="mk-p"><input type="checkbox" data-drug="プラザキサ" data-on="i"><span>食道にとどまると潰瘍を起こすことがあるため、コップ1杯程度の水で服用するよう指導。飲み込みにくさ・胸の痛み・強い胸やけが続くときは相談するよう説明。</span><span class="mk-tag">食道潰瘍</span></label>
           <label class="mk-p"><input type="checkbox" data-drug="イグザレルト" data-on="i"><span>咳・血痰・息苦しさ・発熱が出たときは、速やかに主治医に連絡するよう指導。</span><span class="mk-tag">間質性肺疾患</span></label>
           <label class="mk-p"><input type="checkbox"><span>月経時の出血量が増えることがあるため、量が多いときや長引くときは主治医に相談するよう説明。</span></label>
+          <div class="mk-h">重篤な副作用<span class="mk-sub">説明したときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox"><span>片側の手足のまひやしびれ、ろれつが回らない、急な強い頭痛などが出たときは、すぐに救急車を呼ぶよう説明。</span><span class="mk-tag">頭蓋内出血</span></label>
           <div class="mk-out"></div>
           <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
         </div>
@@ -228,12 +264,14 @@
           </div>
           <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
           <label class="mk-p"><input type="checkbox" data-on="end gf"><span>出血症状・胃の症状なし。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>〇〇のあと、医師の指示どおり服用を再開していると本人より。</span></label>
           <label class="mk-p"><input type="checkbox" data-drug="バイアスピリン" data-on="i dapt"><span>アスピリン喘息の既往なし。</span></label>
           <div class="mk-h">指導</div>
           <label class="mk-p"><input type="checkbox" data-on="i"><span>自己判断で中止すると血栓ができやすくなり、再発のリスクが上がるため、中止しないよう指導。</span></label>
           <label class="mk-p"><input type="checkbox" data-on="dapt"><span>ステント内に血栓ができるのを防ぐため、2剤とも自己判断で中止しないよう指導。</span></label>
           <label class="mk-p"><input type="checkbox" data-on="end"><span>残る1剤も再発予防のため続ける必要があり、自己判断で中止しないよう指導。</span></label>
           <label class="mk-p"><input type="checkbox" data-on="i dapt"><span>出血が止まりにくいときや、身に覚えのないあざが増えたときは主治医に連絡し、胃の痛みが続くときや黒い便が出たときは早めに受診するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>鼻血や歯ぐきの出血など少量の出血は、しっかり押さえて止血し、止まらないときは受診するよう説明。</span></label>
           <label class="mk-p"><input type="checkbox" data-on="head"><span>強い場合や続く場合は、自己判断で中止せず主治医に相談するよう指導。</span></label>
           <label class="mk-p"><input type="checkbox"><span>頭痛・動悸は飲み始めに出やすく、続けるうちに軽くなることが多いと説明。</span></label>
           <label class="mk-p"><input type="checkbox" data-on="gf"><span>休薬するかどうかは検査を行う医師と主治医の指示に従い、自己判断で中止しないよう指導。検査の予約時に服用中であることを伝えるよう説明。</span></label>
@@ -245,6 +283,7 @@
           <label class="mk-p"><input type="checkbox" data-drug="プラビックス|エフィエント"><span>発熱、手足の点状のあざ、強いだるさ、食欲がない、意識がぼんやりするなどの症状が出たときはすぐに受診するよう説明。</span><span class="mk-tag">TTP</span></label>
           <label class="mk-p"><input type="checkbox" data-drug="プラビックス|エフィエント"><span>突然の高熱、寒気、のどの痛みが出たときはすぐに受診するよう説明。</span><span class="mk-tag">無顆粒球症</span></label>
           <label class="mk-p"><input type="checkbox" data-drug="プレタール"><span>胸の痛みや強い動悸が出たときは主治医に連絡するよう説明。</span><span class="mk-tag">狭心症</span></label>
+          <label class="mk-p"><input type="checkbox"><span>片側の手足のまひやしびれ、ろれつが回らない、急な強い頭痛などが出たときは、すぐに救急車を呼ぶよう説明。</span><span class="mk-tag">頭蓋内出血</span></label>
           <div class="mk-out"></div>
           <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
         </div>
