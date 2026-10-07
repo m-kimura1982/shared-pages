@@ -74,11 +74,7 @@ window.__pageMeta = {
     "newUntil": "2026-10-11"
   },
   "yakureki/ハイリスク_糖尿病用剤.html": {
-    "lastUpdated": "2026-10-04",
-    "newUntil": "2026-10-11"
-  },
-  "yakureki/ハイリスク_血液凝固阻止剤.html": {
-    "lastUpdated": "2026-10-04",
+    "lastUpdated": "2026-10-07",
     "newUntil": "2026-10-11"
   },
   "yakureki/定型文集.html": {
@@ -91,6 +87,10 @@ window.__pageMeta = {
   "yakureki/乳幼児服薬指導加算.html": {
     "lastUpdated": "2026-10-07",
     "newUntil": "2026-10-13"
+  },
+  "yakureki/ハイリスク_血液凝固阻止剤.html": {
+    "lastUpdated": "2026-10-07",
+    "newUntil": "2026-10-11"
   },
   "加算まとめ/分割調剤.html": {
     "lastUpdated": "2026-09-03",
