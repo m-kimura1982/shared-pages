@@ -565,6 +565,36 @@
       "suggest": "手帳に記載／薬歴に記載",
       "why": "手帳・薬歴は「記載」。本人が繰り返し指摘（2026-10-06 乳幼児服薬指導加算）",
       "level": "ng"
+    },
+    {
+      "id": "iru-hitsuyo",
+      "pattern": "要る|要らな",
+      "suggest": "必要／不要",
+      "why": "口語。資料の文では稚拙に見える（2026-10-07 本人）",
+      "level": "ng",
+      "skipSpeech": true
+    },
+    {
+      "id": "suteru-haiki",
+      "pattern": "捨て(る|ない|て|た|ず)",
+      "suggest": "廃棄",
+      "why": "口語。薬局の在庫・書類は「廃棄」（2026-10-07 本人）。患者への説明の文脈なら残してよい",
+      "level": "check",
+      "skipSpeech": true
+    },
+    {
+      "id": "menkyo-toru",
+      "pattern": "(免許|許可|資格)を取(る|っ|り)",
+      "suggest": "取得する",
+      "why": "口語（2026-10-07 本人）",
+      "level": "ng"
+    },
+    {
+      "id": "todoita",
+      "pattern": "(麻薬|医薬品|薬)が届いた",
+      "suggest": "納品された",
+      "why": "口語（2026-10-07 本人）",
+      "level": "ng"
     }
   ]
 }
