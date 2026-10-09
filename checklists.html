@@ -55,7 +55,8 @@ body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: va
 .group + .group { margin-top: 18px; }
 .group-title { font-size: var(--text-sm); font-weight: 900; color: var(--blue); display: flex; align-items: center; gap: 9px; padding-left: 2px; }
 .group-title::before { content: ""; width: 9px; height: 9px; border-radius: 2px; background: var(--blue); flex-shrink: 0; }
-.group-desc { grid-column: 1 / -1; font-size: var(--text-xs); color: #444444; padding: 0 2px; margin-top: -4px; }
+.tool-list .group-title { font-size: var(--text-md); flex-wrap: wrap; align-items: baseline; column-gap: 14px; row-gap: 2px; }
+.group-desc { font-size: var(--text-xs); font-weight: 500; color: #5e6470; }
 
 @media (max-width: 640px) {
   body { padding: 14px 12px 40px; }
@@ -78,8 +79,7 @@ body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: va
   <div class="tool-list">
 
     <div class="group">
-    <div class="group-title">算定・業務のチェックリスト</div>
-    <p class="group-desc">業務の流れに沿って、その場面で必要な事項を確認できます。</p>
+    <div class="group-title">算定・業務のチェックリスト<span class="group-desc">業務の流れに沿って、その場面で必要な事項を確認できます。</span></div>
 
     <a class="tool-card" href="チェックリスト/リフィル処方箋_実務チェックリスト.html">
       <div class="tool-icon">
@@ -194,8 +194,7 @@ body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: va
     </div>
 
     <div class="group">
-    <div class="group-title">自己点検リスト</div>
-    <p class="group-desc">基準やルールに照らして、店舗の状態や業務上の理解度を点検できます。</p>
+    <div class="group-title">自己点検リスト<span class="group-desc">基準やルールに照らして、店舗の状態や業務上の理解度を点検できます。</span></div>
 
     <a class="tool-card" href="チェックリスト/OTC医薬品の販売ルール_自己点検リスト.html">
       <div class="tool-icon">

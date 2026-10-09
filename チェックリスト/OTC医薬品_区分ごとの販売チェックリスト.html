@@ -88,6 +88,7 @@
       .pick .row > span:last-child { grid-column:1 / -1; border-left:none; border-top:var(--bw) dashed var(--border); }
     }
     @media print {
+      .page-title-wrap { position:relative; }
       /* A4縦2枚。1枚目＝最初の確認・要指導・第１類、2枚目＝第２類・第３類・指定濫用防止医薬品。
          詰めると小さくて読みにくい（2026-09-17 本人）ので、2枚に余裕をもって収まる大きさにしている */
       @page { size:A4 portrait; margin:9mm 11mm; }
@@ -125,6 +126,7 @@
 <div class="page">
 
   <div class="page-title-wrap">
+    <div class="sn-printqr-slot sn-printqr-float"></div>
     <h1>OTC医薬品 区分ごとの販売チェックリスト</h1>
     <p>要指導医薬品・第１類〜第３類医薬品と、指定濫用防止医薬品を販売するときに確認すること</p>
   </div>

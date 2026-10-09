@@ -403,6 +403,10 @@
       .sn-printqr-txt b { display: block; font-weight: 700; }
       .sn-printqr-code { width: 18mm; height: 18mm; flex-shrink: 0; }
       .sn-printqr-code svg { display: block; width: 100%; height: 100%; }
+      /* sn-printqr-float：本文を押し下げず、置いた枠の右上に重ねる（タイトルの右の余白など。枠に position:relative が必要） */
+      .sn-printqr-float { position: absolute; top: 0; right: 0; }
+      .sn-printqr-float .sn-printqr { margin: 0; }
+      .sn-printqr-float .sn-printqr-code { width: 16mm; height: 16mm; }
     }
   `;
 

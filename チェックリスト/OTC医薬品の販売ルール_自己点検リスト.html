@@ -94,6 +94,7 @@
       .howto .row { flex-direction:column; gap:0; }
     }
     @media print {
+      .page-title-wrap { position:relative; }
       @page { size:A4 portrait; margin:9mm 10mm; }
       body { background:#fff; padding:0; font-size:12px; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
       .page { gap:7px; max-width:none; }
@@ -119,6 +120,7 @@
 <div class="page" id="sheet">
 
   <div class="page-title-wrap">
+    <div class="sn-printqr-slot sn-printqr-float"></div>
     <h1>OTC医薬品の販売ルール 自己点検リスト</h1>
     <p>要指導医薬品・一般用医薬品と、指定濫用防止医薬品（2026年5月1日〜）</p>
   </div>
