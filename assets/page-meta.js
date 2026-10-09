@@ -1,6 +1,6 @@
 window.__pageMeta = {
   "index.html": {
-    "lastUpdated": "2026-10-06"
+    "lastUpdated": "2026-10-10"
   },
   "加算まとめ.html": {
     "lastUpdated": "2026-09-12"
@@ -12,13 +12,13 @@ window.__pageMeta = {
     "lastUpdated": "2026-09-11"
   },
   "updates.html": {
-    "lastUpdated": "2026-10-06"
-  },
-  "checklists.html": {
-    "lastUpdated": "2026-09-11"
+    "lastUpdated": "2026-10-10"
   },
   "tools.html": {
     "lastUpdated": "2026-10-03"
+  },
+  "checklists.html": {
+    "lastUpdated": "2026-10-10"
   },
   "knowledge.html": {
     "lastUpdated": "2026-10-01"
@@ -361,6 +361,14 @@ window.__pageMeta = {
   "チェックリスト/調剤時残薬調整加算_実務チェックリスト.html": {
     "lastUpdated": "2026-06-20"
   },
+  "チェックリスト/OTC医薬品_区分ごとの販売チェックリスト.html": {
+    "lastUpdated": "2026-10-10",
+    "newUntil": "2026-10-17"
+  },
+  "チェックリスト/OTC医薬品の販売ルール_自己点検リスト.html": {
+    "lastUpdated": "2026-10-10",
+    "newUntil": "2026-10-17"
+  },
   "ツール/服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html": {
     "lastUpdated": "2026-08-06"
   },
@@ -410,7 +418,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-10-01"
   },
   "ナレッジ/OTC医薬品の区分と販売ルール.html": {
-    "lastUpdated": "2026-09-24",
+    "lastUpdated": "2026-10-10",
     "newUntil": "2026-09-30"
   },
   "ナレッジ/高額療養費と薬局窓口対応.html": {
