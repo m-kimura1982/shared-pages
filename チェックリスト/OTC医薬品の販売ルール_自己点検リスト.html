@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OTC医薬品の販売ルール 自己点検リスト｜調剤報酬・薬歴まとめ</title>
+  <meta name="search-keywords" content="自己点検表,セルフチェック,保健所,濫用,オーバードーズ,要指導医薬品,特定要指導医薬品,第１類医薬品,指定第２類,登録販売者,大容量,複数個,18歳未満,年齢確認,身分証,空箱,陳列区画,７メートル,販売記録,外用剤,トローチ,手順書,副作用等報告,エフェドリン,コデイン,ジヒドロコデイン,ジフェンヒドラミン,デキストロメトルファン,プソイドエフェドリン,ブロモバレリル尿素,メチルエフェドリン,掲示,掲示物,販売制度,別表第一の二" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+    :root {
+      --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+      --pad-card:22px; --gap-card:16px;
+      --blue:#1e5fa8; --ink:#222222;
+      --bg:#f3f4f6; --white:#ffffff;
+      --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+      --border:#d1d5db; --border-dk:#9ca3af;
+      --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px;
+      --txt-2:#444444; --txt-3:#5e6470;
+      --row-done:#f0f6fc;
+    }
+    /* 日本語を文節の切れ目で改行する（対応していないブラウザでは今までどおり） */
+    h1, .card-title, .howto, .ck .q, .ck .a { word-break:auto-phrase; text-wrap:pretty; }
+    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+    /* 横に読む表なので本文幅の例外（大きな表と同じ扱い） */
+    .page { max-width:1080px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+    .page-title-wrap { padding:6px 0; }
+    .page-title-wrap h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+    .page-title-wrap p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+
+    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+    .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:0; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+    .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+    .card-title .src { margin-left:auto; font-size:var(--text-xs); font-weight:700; }
+    .card-title .src a { color:var(--blue); text-decoration:none; border-bottom:1px solid var(--box-blue); }
+    .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+
+    /* 使う場面と使い方 */
+    .howto { display:flex; flex-direction:column; gap:10px; }
+    .howto .row { display:flex; gap:12px; font-size:var(--text-sm); line-height:1.7; }
+    .howto .k { flex-shrink:0; width:5.5em; font-weight:900; color:var(--blue); }
+    .toolbar { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+    .toolbar button { font:inherit; font-size:var(--text-sm); font-weight:700; color:var(--blue); background:var(--white); border:var(--bw-h) solid var(--blue); border-radius:var(--radius-sm); padding:6px 16px; cursor:pointer; }
+    .toolbar button:hover { background:var(--box-blue); }
+    .toolbar button[aria-pressed="true"] { background:var(--blue); color:#fff; }
+
+    /* 点検の表：No. → 点検項目 → ポイント → 確認 を左から右へ読む */
+    .ck-head, .ck { display:grid; grid-template-columns:44px minmax(0,1fr) minmax(0,1fr) 64px; }
+    .ck-head { font-size:var(--text-xs); font-weight:700; color:var(--txt-2); background:#f7f8fa; border-bottom:var(--bw-h) solid var(--border); margin-top:12px; }
+    .ck-head > span { padding:8px 12px 6px; }
+    .ck-head > span:first-child, .ck-head > span:last-child { text-align:center; padding-left:0; padding-right:0; }
+    .ck { border-bottom:var(--bw) solid var(--border); }
+    .ck:last-child { border-bottom:none; }
+    .ck > * { padding:13px 14px; }
+    .ck .no { text-align:center; padding-left:0; padding-right:0; font-size:var(--text-sm); font-weight:700; color:var(--txt-3); font-variant-numeric:tabular-nums; }
+    .ck .q { font-weight:700; line-height:1.7; cursor:pointer; padding-right:18px; }
+    .ck .a { font-size:var(--text-sm); line-height:1.75; color:var(--txt-2); border-left:var(--bw) solid var(--border); }
+    .ck .a p + p { margin-top:4px; }
+    .ck .box { display:flex; justify-content:center; align-items:flex-start; cursor:pointer; border-left:var(--bw) solid var(--border); }
+    .ck .box input { appearance:none; -webkit-appearance:none; width:24px; height:24px; border:2px solid var(--border-dk); border-radius:5px; margin-top:1px; cursor:pointer; position:relative; background:var(--white); }
+    .ck .box input:checked { background:var(--blue); border-color:var(--blue); }
+    .ck .box input:checked::after { content:""; position:absolute; left:7px; top:2px; width:6px; height:12px; border:solid #fff; border-width:0 2.5px 2.5px 0; transform:rotate(45deg); }
+    .ck:has(.box input:checked) { background:var(--row-done); }
+
+    /* ポイントを隠したとき：ポイント欄に「ポイントを見る」ボタンを出す */
+    .a-show { display:none; font:inherit; font-size:var(--text-xs); font-weight:700; color:var(--blue); background:var(--white); border:var(--bw-h) solid var(--blue); border-radius:var(--radius-sm); padding:3px 12px; cursor:pointer; }
+    .a-show:hover { background:var(--box-blue); }
+    .quiz .ck:not(.shown) .a-body { display:none; }
+    .quiz .ck:not(.shown) .a-show { display:inline-block; }
+
+    .rel { font-size:var(--text-sm); }
+    .rel + .rel { margin-top:4px; }
+    .ck .a a { color:var(--blue); font-weight:700; text-decoration:none; border-bottom:1px solid var(--box-blue); }
+    .ref-chip { display:inline-block; font-size:var(--text-xs); font-weight:700; color:var(--txt-2); background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:4px; padding:0 7px; margin-right:7px; line-height:1.6; vertical-align:1px; }
+    .rel a { color:var(--blue); font-weight:700; text-decoration:none; border-bottom:1px solid var(--box-blue); }
+    .rel-card .card-title { margin-bottom:12px; }
+
+    @media (max-width:760px) {
+      .ck-head { display:none; }
+      .ck { grid-template-columns:28px minmax(0,1fr) 44px; grid-template-areas:"no q box" "no a box"; }
+      .ck > * { padding:0; }
+      .ck { padding:12px 0; }
+      .ck .no { grid-area:no; text-align:left; padding-top:1px; }
+      .ck .q { grid-area:q; }
+      .ck .a { grid-area:a; border-left:none; margin-top:6px; padding:8px 11px; background:var(--box-gray); border-radius:var(--radius-sm); }
+      .ck:has(.box input:checked) .a { background:#e6eef7; }
+      .quiz .ck:not(.shown) .a { background:none; padding:0; }
+      .ck .box { grid-area:box; border-left:none; justify-content:flex-end; }
+    }
+    @media (max-width:640px) {
+      body { font-size:14px; padding:14px 12px 40px; line-height:1.75; }
+      :root { --text-xs:11.5px; --text-sm:13.5px; --text-md:14px; --text-lg:16px; --text-xl:18px; --pad-card:14px; --gap-card:11px; }
+      .howto .row { flex-direction:column; gap:0; }
+    }
+    @media print {
+      @page { size:A4 portrait; margin:9mm 10mm; }
+      body { background:#fff; padding:0; font-size:12px; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .page { gap:7px; max-width:none; }
+      .card { border:0.5px solid #bbb; border-radius:4px; padding:7px 9px; break-inside:auto; }
+      .card-title { font-size:15px; padding-bottom:3px; }
+      .card-title .src, .toolbar, .a-show, .rel-card { display:none; }
+      .howto .row { font-size:11px; }
+      .ck-head > span { padding:4px 7px 3px; font-size:10.5px; }
+      .ck { break-inside:avoid; background:none !important; }
+      .ck > * { padding:5px 7px; }
+      .ck .no { font-size:11px; }
+      .ck .q { font-size:12.5px; line-height:1.5; }
+      .ck .a { font-size:11px; line-height:1.5; }
+      .ck .a-body { display:block !important; }
+      .ck .box input { width:16px; height:16px; border-width:1.5px; margin-top:2px; }
+      .ck .box input:checked::after { left:4px; top:1px; width:5px; height:9px; }
+      a { color:inherit; text-decoration:none; border:none; }
+    }
+  </style>
+</head>
+<body>
+  <script src="../assets/site-header.js" defer></script>
+<div class="page" id="sheet">
+
+  <div class="page-title-wrap">
+    <h1>OTC医薬品の販売ルール 自己点検リスト</h1>
+    <p>要指導医薬品・一般用医薬品と、指定濫用防止医薬品（2026年5月1日〜）</p>
+  </div>
+
+  <div class="card">
+    <div class="howto">
+      <div class="row"><span class="k">使い方</span><span>各項目を確認し、満たしていれば右端に✓を付けてください。「ポイントを隠す」を押すとポイント欄が隠れるので、答えを見る前に自分で考えて確かめられます。</span></div>
+      <div class="row"><span class="k">使う場面</span><span>初めてOTC医薬品の販売を担当するとき、店舗の販売体制や陳列を見直すとき、保健所の立入検査の前など。</span></div>
+    </div>
+    <div class="toolbar">
+      <button type="button" id="btn-quiz" aria-pressed="false">ポイントを隠す</button>
+      <button type="button" id="btn-clear">チェックを消す</button>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────── -->
+  <div class="card">
+    <div class="card-title">区分ごとの販売ルール<span class="src"><a href="../ナレッジ/OTC医薬品の区分と販売ルール.html#kubun">解説を読む</a></span></div>
+    <div class="ck-head"><span>No.</span><span>点検項目</span><span>ポイント</span><span>確認</span></div>
+    <div class="ck-list">
+      <div class="ck"><span class="no"></span><label class="q">要指導医薬品と第１類医薬品は、薬剤師が販売している</label><div class="a"><div class="a-body"><p>登録販売者が販売できるのは<span class="marker">第２類・第３類だけ</span>。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">要指導医薬品は、薬剤師が対面等で、書面を用いて情報提供と指導をしてから販売している</label><div class="a"><div class="a-body"><p>「説明はいらない」と言われても<span class="marker">省略できない</span>。説明・指導ができないときは販売しない。「対面等」にはビデオ通話を含む。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">特定要指導医薬品は、薬剤師が対面で販売している</label><div class="a"><div class="a-body"><p>ビデオ通話などでは販売できない。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">要指導医薬品は、使う人以外には販売していない</label><div class="a"><div class="a-body"><p>正当な理由がある場合は除く。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">第１類医薬品は、薬剤師が書面を用いて情報提供してから販売している</label><div class="a"><div class="a-body"><p>「説明はいらない」の申し出で省略できるのは、<span class="marker">適正に使用されると認められる場合に限る</span>。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">要指導医薬品と第１類医薬品は、販売前に年齢と他の薬の使用状況を確認している</label><div class="a"><div class="a-body"><p>どちらも義務。第２類医薬品は努力義務。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">相談を受けたときは、第３類を含むどの区分でも情報提供している</label><div class="a"><div class="a-body"><p>第３類は自分から説明する決まりはないが、<span class="marker">相談を受けたら情報提供する義務がある</span>。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">要指導医薬品と第１類医薬品は、それぞれの陳列区画に陳列している</label><div class="a"><div class="a-body"><p>鍵をかけた設備や、購入者が手を触れられない設備に陳列するなら、陳列区画の中でなくてもよい。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">要指導医薬品・第１類・第２類・第３類を混在させず、区分ごとに陳列している</label><div class="a"><div class="a-body"><p>区分は製品ごとに決まる。外箱の表示で確かめる。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">指定第２類医薬品は、情報提供設備から7m以内に陳列している</label><div class="a"><div class="a-body"><p>鍵をかけた設備に陳列するか、陳列設備から1.2m以内に購入者が入れない措置をとっていれば、7m以内でなくてもよい。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">要指導医薬品と第１類医薬品は、販売の記録を残して2年間保存している</label><div class="a"><div class="a-body"><p>品名・数量・販売の日時・販売した人と説明した人の氏名・<span class="marker">説明を理解したことの確認の結果</span>を記録する。<br>第２類・第３類は努力義務。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────── -->
+  <div class="card">
+    <div class="card-title">指定濫用防止医薬品に該当するか<span class="src"><a href="../ナレッジ/OTC医薬品の区分と販売ルール.html#shitei">解説を読む</a></span></div>
+    <div class="ck-head"><span>No.</span><span>点検項目</span><span>ポイント</span><span>確認</span></div>
+    <div class="ck-list">
+      <div class="ck"><span class="no"></span><label class="q">第１類でも第２類でも、対象成分を含む内服薬なら指定濫用防止医薬品に該当すると説明できる</label><div class="a"><div class="a-body"><p>新しい区分ではない。<span class="marker">もとの区分のルールに加えて守る</span>。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">対象の8成分を挙げられる</label><div class="a"><div class="a-body"><p>エフェドリン、コデイン、ジヒドロコデイン、ジフェンヒドラミン、デキストロメトルファン、プソイドエフェドリン、ブロモバレリル尿素、メチルエフェドリン。</p><p>ジフェンヒドラミンとデキストロメトルファンは<span class="marker">2026年5月から加わった</span>。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">対象は内服薬で、トローチ剤や点鼻剤などの外用剤は対象外と説明できる</label><div class="a"><div class="a-body"><p>口の中や鼻・目などに使う剤形も外用剤。対象は内服薬だけ。</p><p>例）ジフェンヒドラミンを含むかゆみ止めの塗り薬、咳止めのトローチ剤は対象外。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">外箱の「要確認」の表示の見方を説明できる</label><div class="a"><div class="a-body"><p>「要」を丸か四角で囲んだものは<span class="marker">大容量品</span>。表示はバーコードのある面にあり、底面のこともある。</p><p>まだ旧表示の製品もあるので、表示がなくても成分表示で確かめる。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────── -->
+  <div class="card">
+    <div class="card-title">指定濫用防止医薬品の説明と確認<span class="src"><a href="../ナレッジ/OTC医薬品の区分と販売ルール.html#uwanose">解説を読む</a></span></div>
+    <div class="ck-head"><span>No.</span><span>点検項目</span><span>ポイント</span><span>確認</span></div>
+    <div class="ck-list">
+      <div class="ck"><span class="no"></span><label class="q">濫用した場合に健康被害が起きるおそれなどを、書面を用いて個別に説明している</label><div class="a"><div class="a-body"><p><span class="marker">「説明はいらない」と言われても省略できない</span>。説明を理解したか、質問がないかも確認する。</p><p>書面はフリップ・掲示物・外箱の表示でもよい。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">販売前に、年齢と他の薬の使用状況を確認している</label><div class="a"><div class="a-body"><p>第２類・第３類でも確認する。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">販売前に、その製品やほかの指定濫用防止医薬品の購入状況を確認している</label><div class="a"><div class="a-body"><p><span class="marker">他の店で買ったものも含む</span>。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">外見から18歳以上と明らかでないときは、身分証や会員情報などで年齢を確かめている</label><div class="a"><div class="a-body"><p>明らかなら自己申告でよい。18歳以上でも高校生などの場合は、やりとりの中で入念に確認する。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">18歳未満の場合は、氏名も確認している</label><div class="a"><div class="a-body"><p>年齢・他の薬の使用状況・購入状況に加えて確認する。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────── -->
+  <div class="card">
+    <div class="card-title">指定濫用防止医薬品の数量<span class="src"><a href="../ナレッジ/OTC医薬品の区分と販売ルール.html#uwanose">解説を読む</a></span></div>
+    <div class="ck-head"><span>No.</span><span>点検項目</span><span>ポイント</span><span>確認</span></div>
+    <div class="ck-list">
+      <div class="ck"><span class="no"></span><label class="q">店頭の製品が大容量品に該当するかを、用法・用量から判断できる</label><div class="a"><div class="a-body"><p>1包装に、用法・用量で<span class="marker">5日分</span>を超えて入っていれば大容量品。次の成分は<span class="marker">7日分</span>で判断する。</p><p>かぜ薬：ジヒドロコデイン・ジフェンヒドラミン・デキストロメトルファン・プソイドエフェドリン・メチルエフェドリン<br>鼻炎用内服薬：プソイドエフェドリン・メチルエフェドリン<br>解熱鎮痛薬：ブロモバレリル尿素</p><p>例）デキストロメトルファンを含むかぜ薬で「1回2錠、1日3回」なら、42錠を超える箱が大容量品。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">同じ成分を含む別の製品を1個ずつ買う場合も、複数個として扱っている</label><div class="a"><div class="a-body"><p>違う成分の製品を1個ずつなら複数個に当たらない。ただし、組み合わせによっては、理由の確認や、飲み合わせ・似た成分の重複の説明が必要になる。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">18歳未満には、大容量品と複数個を販売していない</label><div class="a"><div class="a-body"><p>18歳未満に販売できるのは<span class="marker">小容量品を1個だけ</span>。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">18歳未満に小容量品を1個販売するときは、対面等で説明している</label><div class="a"><div class="a-body"><p>対面等にはビデオ通話を含む。電話・チャット・書面だけのやりとりは含まない。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">18歳以上に大容量品・複数個を販売するときは、理由を確認し、対面等で説明している</label><div class="a"><div class="a-body"><p>理由の例は、家庭の常備薬、同じ症状の家族が使う、長期の海外赴任や旅行に持っていくなど。一律に販売するのではなく、<span class="marker">理由に見合った数量か</span>を判断する。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────── -->
+  <div class="card">
+    <div class="card-title">指定濫用防止医薬品の陳列と掲示<span class="src"><a href="../ナレッジ/OTC医薬品の区分と販売ルール.html#sonae">解説を読む</a></span></div>
+    <div class="ck-head"><span>No.</span><span>点検項目</span><span>ポイント</span><span>確認</span></div>
+    <div class="ck-list">
+      <div class="ck"><span class="no"></span><label class="q">指定濫用防止医薬品のうち第２類・第３類に当たる製品は、指定濫用防止医薬品陳列区画の中か、情報提供設備から7m以内に陳列している</label><div class="a"><div class="a-body"><p>鍵をかけた設備や購入者が手を触れられない設備に陳列するなら、陳列区画の中でなくてもよい。</p><p>7m以内にするなら、柱や高い棚の裏など見えない場所に置かず、薬剤師又は登録販売者を継続的に配置する。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">売場に空箱や商品カードを置く場合、実物は購入者の手の届かない場所に置いている</label><div class="a"><div class="a-body"><p>法令に合っているかは、<span class="marker">空箱ではなく実物の置き場所</span>で判断する。この方法なら継続的な配置は求められない。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q"><span class="ref-chip">参考</span>どの製品が指定濫用防止医薬品か、従業員が見て分かるようにしている（棚札・シールなど）</label><div class="a"><div class="a-body"><p>当社の店舗が保健所の立入検査で、従業員でも見分けられる目印を付けるように助言を受けた例。<span class="marker">法令の要件ではない</span>。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">医薬品の販売制度に関する掲示物が、指定濫用防止医薬品の欄が入ったものになっている</label><div class="a"><div class="a-body"><p>販売制度に関する掲示事項に<span class="marker">指定濫用防止医薬品の販売に関する事項</span>が加わった。古い掲示のままだと不足になる。様式の定めはなく、内容を満たしていれば店舗で作ったものでもよい。</p><p>当社向けの掲示物は <a href="../ツール/OTC販売の掲示物と様式.html">OTC販売の掲示物と様式</a> で印刷できる。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">登録販売者を保健所に届け出ていない店舗は、掲示物から登録販売者の記載を外している</label><div class="a"><div class="a-body"><p>資格を持つ人が勤めていても、<span class="marker">その店舗の登録販売者として届け出ていなければ</span>、立入検査で掲示を「薬剤師のみ」にするよう指導されることがある。</p><p>登録販売者として販売するには、資格に加えて、その店舗の登録販売者として保健所への届出が必要。</p><p>外す記載は次のとおり。<br>・販売制度の掲示の「対応する専門家」<br>・指定第２類・指定濫用防止医薬品の掲示の相談先<br>・管理及び運営に関する事項の、登録販売者の氏名と名札の区別</p><p><a href="../ツール/OTC販売の掲示物と様式.html">OTC販売の掲示物と様式</a> で「登録販売者として届け出ている人」を「いない」にすると、これらの記載がまとめて外れる。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────── -->
+  <div class="card">
+    <div class="card-title">手順書・販売記録と依存への対応<span class="src"><a href="../ナレッジ/OTC医薬品の区分と販売ルール.html#sonae">解説を読む</a></span></div>
+    <div class="ck-head"><span>No.</span><span>点検項目</span><span>ポイント</span><span>確認</span></div>
+    <div class="ck-list">
+      <div class="ck"><span class="no"></span><label class="q">指定濫用防止医薬品販売等手順書を作成し、手順書に沿って販売している</label><div class="a"><div class="a-body"><p>すでにある情報提供等の業務手順書に含めてよい。記載するのは、販売の方法、説明・確認の方法、判断の流れ、陳列の方法、大容量品・複数個や繰り返し買う人への対応、その他の必要な事項。</p><p>陳列の方法は、指定濫用防止医薬品陳列区画の中か、7m以内に置いて継続的に配置するかの<span class="marker">どちらを選んだか</span>を記載する。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">指定濫用防止医薬品を販売したら記録を残し、次に販売するときに確認できるようにしている</label><div class="a"><div class="a-body"><p>法令上の義務はないが、<span class="marker">記録がないと頻回購入かどうかを判断できない</span>。第１類医薬品に当たる製品は、第１類として記録と2年間の保存が義務。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">繰り返し買う人（頻回購入）と、適正な量を超えて買う人（多量購入）への対応を、何をもとに判断するかまで手順書に具体的に記載している</label><div class="a"><div class="a-body"><p>多量購入は、大容量品・複数個に当たらなくても対象。</p><p>判断のもとにするのは、販売記録・申し送りの帳簿・お薬手帳・会員情報など。<span class="marker">対応する人によってばらつきが出ない</span>ようにする。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">購入者の年齢や数量など、想定される場面ごとに、販売してよいかの判断の流れを決めている</label><div class="a"><div class="a-body"><p>場面ごとに文章で記載してあればよい。流れ図の活用は望ましいとされているが、必須ではない。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">販売できないと判断した場合の対応を、手順書に記載している</label><div class="a"><div class="a-body"><p>例）カスタマーハラスメントを防ぐため、法令の定めで販売できないことを、前もってフリップなどで示しておく。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">依存が疑われる場合は、副作用等報告の対象になることを理解している</label><div class="a"><div class="a-body"><p>「薬物依存」「薬物依存の疑い」と判断したら、その旨を記載して報告する。支援が必要と感じたら、相談窓口の紹介やリーフレットを渡すことを検討する。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+    </div>
+  </div>
+
+  <div class="card rel-card">
+    <div class="card-title">関連ページ</div>
+    <div class="rel"><a href="../ナレッジ/OTC医薬品の区分と販売ルール.html">OTC医薬品の区分と販売ルール</a></div>
+    <div class="rel"><a href="../チェックリスト/OTC医薬品_区分ごとの販売チェックリスト.html">OTC医薬品 区分ごとの販売チェックリスト</a></div>
+    <div class="rel"><a href="../ツール/OTC販売の掲示物と様式.html">OTC販売の掲示物と様式</a></div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var sheet = document.getElementById('sheet');
+  var rows = Array.prototype.slice.call(document.querySelectorAll('.ck'));
+
+  // 通し番号・チェック欄の id・項目文との結び付け・「答えを見る」ボタンを自動で付ける
+  rows.forEach(function (row, i) {
+    var id = 'ck-' + (i + 1);
+    row.querySelector('.no').textContent = i + 1;
+    row.querySelector('.box input').id = id;
+    row.querySelector('.q').setAttribute('for', id);
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'a-show';
+    btn.textContent = 'ポイントを見る';
+    btn.addEventListener('click', function () { row.classList.add('shown'); });
+    row.querySelector('.a').appendChild(btn);
+  });
+
+  var btnQuiz = document.getElementById('btn-quiz');
+  btnQuiz.addEventListener('click', function () {
+    var on = !sheet.classList.contains('quiz');
+    sheet.classList.toggle('quiz', on);
+    rows.forEach(function (r) { r.classList.remove('shown'); });
+    btnQuiz.setAttribute('aria-pressed', on ? 'true' : 'false');
+    btnQuiz.textContent = on ? 'ポイントをすべて表示する' : 'ポイントを隠す';
+  });
+
+  document.getElementById('btn-clear').addEventListener('click', function () {
+    rows.forEach(function (r) { r.querySelector('.box input').checked = false; });
+  });
+})();
+</script>
+<script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

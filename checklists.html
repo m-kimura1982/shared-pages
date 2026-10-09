@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>算定チェックリスト｜調剤報酬・薬歴まとめ</title>
+<title>チェックリスト｜調剤報酬・薬歴まとめ</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/hub.css">
 <style>
@@ -51,6 +51,12 @@ body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: va
 
 .note { font-size: 12px; color: var(--sub); padding: 0 2px; }
 
+.group { display: flex; flex-direction: column; gap: 12px; }
+.group + .group { margin-top: 18px; }
+.group-title { font-size: var(--text-sm); font-weight: 900; color: var(--blue); display: flex; align-items: center; gap: 9px; padding-left: 2px; }
+.group-title::before { content: ""; width: 9px; height: 9px; border-radius: 2px; background: var(--blue); flex-shrink: 0; }
+.group-desc { grid-column: 1 / -1; font-size: var(--text-xs); color: #444444; padding: 0 2px; margin-top: -4px; }
+
 @media (max-width: 640px) {
   body { padding: 14px 12px 40px; }
   .tool-card { padding: 16px; gap: 14px; }
@@ -65,11 +71,15 @@ body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: va
 <div class="page">
 
   <div class="band">
-    <div class="band-panel" data-wm="CHECKLIST"><span class="band-en">CHECKLIST</span><h1>算定チェックリスト</h1></div>
-    <p class="band-desc">印刷して現場で使える、算定もれ防止と業務手順の確認リストをまとめています。</p>
+    <div class="band-panel" data-wm="CHECKLIST"><span class="band-en">CHECKLIST</span><h1>チェックリスト</h1></div>
+    <p class="band-desc">印刷して現場で使える確認リストと、店舗の状態を点検する自己点検リストをまとめています。</p>
   </div>
 
   <div class="tool-list">
+
+    <div class="group">
+    <div class="group-title">算定・業務のチェックリスト</div>
+    <p class="group-desc">業務の流れに沿って、その場面で必要な事項を確認できます。</p>
 
     <a class="tool-card" href="チェックリスト/リフィル処方箋_実務チェックリスト.html">
       <div class="tool-icon">
@@ -169,6 +179,36 @@ body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: va
       </div>
       <span class="tool-arrow">›</span>
     </a>
+
+    <a class="tool-card" href="チェックリスト/OTC医薬品_区分ごとの販売チェックリスト.html">
+      <div class="tool-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 2h6a1 1 0 0 1 1 1v1h1a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1V3a1 1 0 0 1 1-1z"/><path d="M9 13l2 2 4-4"/></svg>
+      </div>
+      <div class="tool-body">
+        <div class="tool-name">OTC医薬品 区分ごとの販売チェックリスト</div>
+        <div class="tool-desc">外箱で区分を確かめ、要指導医薬品〜第３類と指定濫用防止医薬品を販売するときの確認を上から順に（2ページ）。</div>
+      </div>
+      <span class="tool-arrow">›</span>
+    </a>
+
+    </div>
+
+    <div class="group">
+    <div class="group-title">自己点検リスト</div>
+    <p class="group-desc">基準やルールに照らして、店舗の状態や業務上の理解度を点検できます。</p>
+
+    <a class="tool-card" href="チェックリスト/OTC医薬品の販売ルール_自己点検リスト.html">
+      <div class="tool-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 2h6a1 1 0 0 1 1 1v1h1a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1V3a1 1 0 0 1 1-1z"/><path d="M9 13l2 2 4-4"/></svg>
+      </div>
+      <div class="tool-body">
+        <div class="tool-name">OTC医薬品の販売ルール 自己点検リスト</div>
+        <div class="tool-desc">販売体制・陳列・掲示・手順書が基準を満たしているかを点検できます。ポイントを隠して、理解の確認にも使えます。</div>
+      </div>
+      <span class="tool-arrow">›</span>
+    </a>
+
+    </div>
 
   </div>
 

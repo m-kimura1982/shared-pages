@@ -28,7 +28,7 @@
     'updates.html': { category: 'home', title: '更新履歴' },
     'kaitei2026.html': { category: 'kaitei', title: '2026改定資料' },
     '加算まとめ.html': { category: 'kasan', title: '算定項目まとめ' },
-    'checklists.html': { category: 'checklist', title: '算定チェックリスト' },
+    'checklists.html': { category: 'checklist', title: 'チェックリスト' },
     'tools.html': { category: 'tools', title: '実務ツール集' },
     'knowledge.html': { category: 'knowledge', title: '実務ナレッジ集' },
     '事務スタッフ向け.html': { category: 'jimu', title: '事務スタッフ向け' },
@@ -132,6 +132,9 @@
     'チェックリスト/かかりつけ薬剤師訪問加算_実務チェックリスト.html': { category: 'checklist', title: 'かかりつけ薬剤師訪問加算 算定チェックリスト' },
     'チェックリスト/栄養保持を目的とした医薬品_確認チェックリスト.html': { category: 'checklist', title: '栄養保持を目的とした医薬品 確認チェックリスト' },
     'チェックリスト/吸入薬指導加算_実務チェックリスト.html': { category: 'checklist', title: '吸入薬指導加算 算定チェックリスト' },
+    'チェックリスト/OTC医薬品_区分ごとの販売チェックリスト.html': { category: 'checklist', title: 'OTC医薬品 区分ごとの販売チェックリスト' },
+    // 自己点検リスト
+    'チェックリスト/OTC医薬品の販売ルール_自己点検リスト.html': { category: 'checklist', title: 'OTC医薬品の販売ルール 自己点検リスト' },
     'チェックリスト/リフィル処方箋_実務チェックリスト.html': { category: 'checklist', title: 'リフィル処方箋 対応の流れ' },
 
     // 事務スタッフ向け（個別）
@@ -166,7 +169,7 @@
     home: { name: 'ホーム', url: 'index.html' },
     kaitei: { name: '2026改定資料', url: 'kaitei2026.html' },
     kasan: { name: '算定項目まとめ', url: '加算まとめ.html' },
-    checklist: { name: '算定チェックリスト', url: 'checklists.html' },
+    checklist: { name: 'チェックリスト', url: 'checklists.html' },
     tools: { name: '実務ツール集', url: 'tools.html' },
     knowledge: { name: '実務ナレッジ集', url: 'knowledge.html' },
     yakureki: { name: '薬歴', url: 'yakureki/index.html' },
@@ -386,6 +389,20 @@
     }
     @media print {
       .sn-header, .sn-crumb, .sn-siblings, .sn-disclaimer { display: none !important; }
+    }
+
+    /* 印刷したときだけ、1枚目の右上にこのページのQRと印刷日（buildPrintQr） */
+    .sn-printqr { display: none; }
+    @media print {
+      .sn-printqr {
+        display: flex !important; justify-content: flex-end; align-items: center; gap: 2.5mm;
+        margin: 0 0 2mm; break-inside: avoid; break-after: avoid;
+        font-family: "Noto Sans JP", sans-serif; color: #444444; line-height: 1.45; text-align: right;
+      }
+      .sn-printqr-txt { font-size: 8.5pt; }
+      .sn-printqr-txt b { display: block; font-weight: 700; }
+      .sn-printqr-code { width: 18mm; height: 18mm; flex-shrink: 0; }
+      .sn-printqr-code svg { display: block; width: 100%; height: 100%; }
     }
   `;
 
@@ -687,9 +704,53 @@
     document.body.appendChild(p);
   }
 
+  // ── 印刷したときだけ、1枚目の右上にこのページのQRと印刷日を出す ──
+  // 紙で回覧・掲示したあとも、スマホで最新のページを開けるように。
+  // QRは assets/vendor/qrcode.js（MIT）でブラウザの中で作る。外部のサービスは使わない。
+  // ローカルで開いていても公開URLを載せる。トップと <meta name="sn-no-print-qr"> のページは出さない。
+  // 本文の上に1行（約2cm）足すので、1枚に収めてあるチェックリストには自動では出さない。
+  // チェックリストは、置き場所をページ側で決めて <div class="sn-printqr-slot"></div> を書いたときだけ出す
+  // （改定で刷り直すときに、収まりを確かめてから置く）。
+  const PUBLIC_ROOT = 'https://m-kimura1982.github.io/shared-pages/';
+  function buildPrintQr() {
+    if (isHome || document.querySelector('meta[name="sn-no-print-qr"]') || document.querySelector('.sn-printqr')) return;
+    const slot = document.querySelector('.sn-printqr-slot');
+    if (category === 'checklist' && !slot) return;
+    const url = PUBLIC_ROOT + encodeURI(pageKey);
+    const box = document.createElement('div');
+    box.className = 'sn-printqr';
+    box.setAttribute('aria-hidden', 'true');
+    box.innerHTML = '<div class="sn-printqr-txt"><b>最新の内容はQRから</b><span class="sn-printqr-date"></span></div><div class="sn-printqr-code"></div>';
+    // 本文の直前に置く（.page のないページは body の先頭。共通ヘッダーは印刷では消えるので前後は問わない）
+    const anchor = document.querySelector('.page');
+    if (slot) slot.appendChild(box);
+    else if (anchor) anchor.parentNode.insertBefore(box, anchor);
+    else document.body.insertBefore(box, document.body.firstChild);
+
+    const setDate = () => {
+      const d = new Date();
+      box.querySelector('.sn-printqr-date').textContent = d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日 印刷';
+    };
+    setDate();
+    window.addEventListener('beforeprint', setDate);
+
+    const draw = () => {
+      const qr = window.qrcode(0, 'L');
+      qr.addData(url);
+      qr.make();
+      box.querySelector('.sn-printqr-code').innerHTML = qr.createSvgTag({ cellSize: 1, margin: 2, scalable: true });
+    };
+    if (window.qrcode) { draw(); return; }
+    const s = document.createElement('script');
+    s.src = u('assets/vendor/qrcode.js');
+    s.onload = draw;
+    document.head.appendChild(s);
+  }
+
   function buildFoot() {
     buildSiblings();
     buildDisclaimer();
+    buildPrintQr();
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', buildFoot);
