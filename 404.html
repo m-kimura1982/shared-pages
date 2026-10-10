@@ -113,11 +113,9 @@
           target = MOVED[baseName] + location.hash;
         }
 
-        if (target) {
-          location.replace(BASE + target);
-        } else {
-          // 転送先がない場合だけ本文を表示する
-          document.addEventListener('DOMContentLoaded', function () {
+        // 転送先がない場合だけ本文を表示する
+        function showNotFound() {
+          var show = function () {
             var el = document.getElementById('nf');
             if (el) el.style.display = '';
             var p = document.getElementById('nf-path');
@@ -127,7 +125,41 @@
             for (var i = 0; i < links.length; i++) {
               links[i].setAttribute('href', BASE + links[i].getAttribute('data-to'));
             }
-          });
+          };
+          if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', show);
+          else show();
+        }
+
+        // 印刷QRの短いURL（q/○○○○○○）。site-header.js の shortId と同じ計算で
+        // page-meta.json の全ページから探して転送する。ページごとの登録は要らない。
+        var shortMatch = /^q\/([0-9a-z]+)$/.exec(reqPath);
+        if (shortMatch) {
+          // 転送前のこのページをアクセス数に数えない（転送先で数える）
+          window.goatcounter = { no_onload: true };
+          var shortId = function (s) {
+            var h = 0x811c9dc5;
+            for (var i = 0; i < s.length; i++) {
+              h ^= s.charCodeAt(i);
+              h = Math.imul(h, 0x01000193) >>> 0;
+            }
+            return ('000000' + h.toString(36)).slice(-7);
+          };
+          fetch(BASE + 'assets/page-meta.json')
+            .then(function (r) { return r.json(); })
+            .then(function (meta) {
+              for (var key in meta) {
+                if (shortId(key) === shortMatch[1]) {
+                  location.replace(BASE + encodeURI(key));
+                  return;
+                }
+              }
+              showNotFound();
+            })
+            .catch(showNotFound);
+        } else if (target) {
+          location.replace(BASE + target);
+        } else {
+          showNotFound();
         }
       })();
     </script>

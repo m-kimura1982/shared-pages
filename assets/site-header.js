@@ -715,12 +715,25 @@
   // 本文の上に1行（約2cm）足すので、1枚に収めてあるチェックリストには自動では出さない。
   // チェックリストは、置き場所をページ側で決めて <div class="sn-printqr-slot"></div> を書いたときだけ出す
   // （改定で刷り直すときに、収まりを確かめてから置く）。
+  // QRに入れるのは短いURL（q/ + ページのパスから作る7文字）。日本語のファイル名をそのまま入れると
+  // 約270文字になり、16mm角では1マス0.26mmと細かすぎて読み取りにくかったため（2026-10-10）。
+  // q/○○○○○○○ は存在しないURLなので 404.html が受け、同じ計算で page-meta.json から探して転送する。
   const PUBLIC_ROOT = 'https://m-kimura1982.github.io/shared-pages/';
+  function shortId(s) {
+    // FNV-1a（32bit）。404.html の shortId と同じ計算にしておくこと
+    let h = 0x811c9dc5;
+    for (let i = 0; i < s.length; i++) {
+      h ^= s.charCodeAt(i);
+      h = Math.imul(h, 0x01000193) >>> 0;
+    }
+    return ('000000' + h.toString(36)).slice(-7);
+  }
   function buildPrintQr() {
     if (isHome || document.querySelector('meta[name="sn-no-print-qr"]') || document.querySelector('.sn-printqr')) return;
     const slot = document.querySelector('.sn-printqr-slot');
     if (category === 'checklist' && !slot) return;
-    const url = PUBLIC_ROOT + encodeURI(pageKey);
+    // 未登録のページ（draft/ など）は page-meta.json に載らず転送できないので、今までどおり全文のURL
+    const url = PAGES[pageKey] ? PUBLIC_ROOT + 'q/' + shortId(pageKey) : PUBLIC_ROOT + encodeURI(pageKey);
     const box = document.createElement('div');
     box.className = 'sn-printqr';
     box.setAttribute('aria-hidden', 'true');
@@ -739,7 +752,7 @@
     window.addEventListener('beforeprint', setDate);
 
     const draw = () => {
-      const qr = window.qrcode(0, 'L');
+      const qr = window.qrcode(0, 'M'); // M：汚れ・かすれに少し強い（短いURLなのでマスは粗いまま）
       qr.addData(url);
       qr.make();
       box.querySelector('.sn-printqr-code').innerHTML = qr.createSvgTag({ cellSize: 1, margin: 2, scalable: true });
