@@ -59,7 +59,8 @@ async function check(rel) {
   if (!tracked) return { rel, ok: false, why: 'git に入っていない（git add 漏れ。画像なら git add -f が必要）' };
   try {
     const res = await fetch(urlOf(rel) + '?nocache=' + Date.now(), { redirect: 'follow' });
-    if (!res.ok) return { rel, ok: false, why: `公開URLが ${res.status}` };
+    // 新しいファイルは反映まで 404 が返ることがあるので、404 も確かめ直す
+    if (!res.ok) return { rel, ok: false, why: `公開URLが ${res.status}`, retry: res.status === 404 };
     const body = Buffer.from(await res.arrayBuffer());
     // 手元のファイルは改行が CRLF に変わっていることがあるので、push した中身（HEAD のもの）と比べる
     const pushed = execSync(`git cat-file blob "HEAD:${rel}"`, { cwd: ROOT, maxBuffer: 64 * 1024 * 1024 });
