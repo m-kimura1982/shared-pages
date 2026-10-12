@@ -11,6 +11,10 @@
     { "name": "介護保険最新情報", "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00010.html" },
     { "name": "関東信越厚生局 特掲診療料の施設基準等（届出様式・訂正）", "url": "https://kouseikyoku.mhlw.go.jp/kantoshinetsu/shinsei/shido_kansa/shitei_kijun/tokukei_shinryo_r08.html" }
   ],
+  "_復旧待ちの説明": "落ちているページが戻ったかだけを見る。title に downTitle を含む・転送される・開けない間は「まだ」。戻ったら★で知らせる。用が済んだら消す。",
+  "waitFor": [
+    { "name": "茨城県 麻薬の様式（麻薬のページ4枚の作業に必要）", "url": "https://www.pref.ibaraki.jp/yoshiki/hokenfukushi/yakumu/0328n3001.html", "downTitle": "臨時ページ" }
+  ],
   "keywords": [
     "調剤", "薬局", "薬剤師", "薬剤", "医薬品", "OTC", "類似薬", "保険外療養", "選定療養", "長期収載",
     "後発", "薬価", "診療報酬", "中央社会保険医療協議会", "中医協", "介護給付費", "介護報酬", "居宅療養",

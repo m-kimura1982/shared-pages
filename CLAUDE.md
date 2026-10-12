@@ -556,8 +556,7 @@ npx serve . -p 3000
 
 **fallback の `0px` は必ず書く**（site-header.js が読めなかったときに従来のレイアウトへ戻すため）。sticky な要素やアンカーを持つ新規ページを作るときも同じ書き方にする。
 
-**draft/yakureki/ に残っている非公開WIP（トップ・yakureki入口から導線を作らない）。今の一覧は private/部署一覧.html の「作業中の棚」：**
-`循環器_高血圧.html`（投薬時知識シリーズ・公開判断待ち）／`声掛け_降圧剤.html`（解体して素材化予定）／`_stub_template.html`／`_設計メモ_投薬時知識シリーズ.md`。これらは昇格済みページを `../../yakureki/…` で参照する。
+**draft/ の非公開WIP（トップ・yakureki入口から導線を作らない）は private/部署一覧.html の「作業中の棚」、やることは private/タスク.md。** 保留したもの（投薬時知識シリーズ等）は draft/退避/ にある。draft/ のページは昇格済みページを相対パスで参照する。
 
 **非公開化の3層構造（draft/ 配下に引き続き適用）：**
 1. `robots.txt` で `/draft/` を Disallow

@@ -76,6 +76,17 @@ function rows(html, base) {
     }
   }
 
+  // 復旧待ちのページ（落ちているサイトが戻ったか）
+  for (const w of CONF.waitFor || []) {
+    let state;
+    try {
+      const res = await fetch(w.url, { headers: { 'User-Agent': 'Mozilla/5.0' }, redirect: 'manual' });
+      const title = res.status === 200 ? ((await res.text()).match(/<title>([^<]*)/) || [])[1] || '' : '';
+      state = res.status === 200 && !title.includes(w.downTitle) ? 'up' : `まだ（${res.status}${title ? '・' + title.trim() : ''}）`;
+    } catch (e) { state = `まだ（${e.message}）`; }
+    console.log(state === 'up' ? `\n★ 復旧した：${w.name}\n  ${w.url}` : `\n・復旧待ち：${w.name} … ${state}`);
+  }
+
   if (!DRY) fs.writeFileSync(SNAP, JSON.stringify(next, null, 1));
   if (first) console.log(`初回なので今の状態を控えに記録した（${CONF.pages.length}ページ）。次回から新しい行だけを出す。`);
   else console.log(`\n新しい行 ${total} / うち関係あり ${star}${DRY ? '（--dry：控えは更新していない）' : ''}`);
