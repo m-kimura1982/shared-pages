@@ -20,7 +20,7 @@ const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(
 const md = fs.readFileSync(SRC, 'utf8');
 const table = (md.match(/<!-- busho-table -->([\s\S]*?)<!-- \/busho-table -->/) || [])[1] || '';
 const rows = table.trim().split('\n').slice(2).map(l => l.split('|').slice(1, -1).map(c => c.trim()));
-const people = rows.map(([group, name, role, call, when, file]) => ({ group, name, role, call: call.replace(/`/g, ''), when, file }));
+const people = rows.map(([group, name, role, call, when, file, model]) => ({ group, name, role, call: call.replace(/`/g, ''), when, file, model: model || '' }));
 
 // 名簿にないコマンド・エージェント
 const listed = new Set(people.map(p => p.file));
@@ -30,7 +30,7 @@ for (const [dir, ext] of [['.claude/commands', '.md'], ['.claude/agents', '.md']
     const rel = `${dir}/${f}`;
     if (!f.endsWith(ext) || f === '部署.md' || listed.has(rel)) continue;
     // 呼び出し役のコマンド（/通読 → first-reader）は、エージェント側が名簿にあればよい
-    if (['通読.md', '照合.md', '期限点検.md', '厚労省チェック.md', 'タスク.md'].includes(f)) continue;
+    if (['通読.md', '照合.md', '期限点検.md', '厚労省チェック.md', 'タスク.md', '影響調査.md'].includes(f)) continue;
     const desc = (fs.readFileSync(path.join(ROOT, rel), 'utf8').match(/^description:\s*(.+)$/m) || [])[1] || '';
     unlisted.push({ rel, desc });
   }
@@ -94,7 +94,8 @@ const taskHtml = (() => {
   </section>`;
 })();
 
-const flow = (md.match(/\*\*ふだんの流れ\*\*：(.+)/) || [])[1] || '';
+// 表の下の「**見出し**：本文」の行（作業の種類ごとの流れ・モデルの使い分け）
+const flows = [...(md.split('<!-- /busho-table -->')[1] || '').matchAll(/^\*\*(.+?)\*\*：(.+)$/gm)].map(m => ({ label: m[1], text: m[2] }));
 
 // 分類ごとの色（サイトの図解の淡色パレットから）
 const COLORS = {
@@ -111,7 +112,8 @@ const card = p => `
         <dl>
           <dt>呼び方</dt><dd><code>${esc(p.call)}</code></dd>
           <dt>いつ</dt><dd>${esc(p.when)}</dd>
-          <dt>中身</dt><dd><a href="../${encodeURI(p.file)}">${esc(p.file)}</a></dd>
+          <dt>中身</dt><dd><a href="../${encodeURI(p.file)}">${esc(p.file)}</a></dd>${p.model ? `
+          <dt>モデル</dt><dd>${esc(p.model)}</dd>` : ''}
         </dl>
       </div>`;
 
@@ -121,7 +123,7 @@ const html = `<!doctype html>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex,nofollow" />
-<title>部署の一覧</title>
+<title>情報管理室 部署の一覧</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
 <style>
   * { box-sizing:border-box; margin:0; padding:0; }
@@ -132,6 +134,7 @@ const html = `<!doctype html>
   .boss { display:inline-block; background:#fff; border:1px solid #1e5fa8; color:#1e5fa8; font-weight:900; padding:6px 16px; border-radius:8px; }
   .flow { background:#fff; border:0.5px solid #d1d5db; border-radius:10px; padding:12px 16px; margin:14px 0 22px; font-size:14px; }
   .flow b { color:#1e5fa8; }
+  .flow div + div { margin-top:4px; }
   .groups { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px; align-items:start; }
   .group { border-radius:12px; padding:12px; }
   .group h2 { font-size:15px; font-weight:900; margin:0 4px 10px; display:flex; justify-content:space-between; }
@@ -175,10 +178,10 @@ const html = `<!doctype html>
 </head>
 <body>
 <div class="page">
-  <h1>部署の一覧</h1>
-  <p class="lead">調剤報酬・薬歴まとめサイトの作業を、役割ごとに分けた担当の一覧。どれもClaude Codeの中で動く。</p>
+  <h1>情報管理室 <small style="font-size:15px;color:#444;font-weight:700">部署の一覧</small></h1>
+  <p class="lead">調剤報酬・薬歴まとめサイトの作業を、役割ごとに分けた係の一覧。どれもClaude Codeの中で動く。</p>
   <div class="boss">最終判断：木村さん</div>
-  <div class="flow"><b>ふだんの流れ</b>　${esc(flow).replace(/`([^`]+)`/g, '<code>$1</code>')}</div>
+  <div class="flow">${flows.map(x => `<div><b>${esc(x.label)}</b>　${esc(x.text).replace(/`([^`]+)`/g, '<code>$1</code>')}</div>`).join('')}</div>
 ${taskHtml}
 
   <div class="groups">
