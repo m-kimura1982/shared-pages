@@ -59,7 +59,7 @@ const wip = [];
     // 公開フォルダに同じ名前のページがあれば「刷新中」
     const top = rel.split('/')[0];
     const published = PUBLIC_DIRS.includes(top) && fs.existsSync(path.join(ROOT, rel));
-    wip.push({ rel, mtime, note: n.note || '', published, folder: rel.includes('/') ? rel.split('/')[0] : '（直下）' });
+    wip.push({ rel, mtime, note: n.note || '', published, tool: !!n.tool, folder: rel.includes('/') ? rel.split('/')[0] : '（直下）' });
   }
 })('');
 wip.sort((a, b) => b.mtime - a.mtime);
@@ -163,7 +163,7 @@ ${unlisted.length ? `
       <tbody>
 ${wip.map(w => {
   const d = daysAgo(w.mtime);
-  const tags = [w.published ? '<span class="tag renew">刷新中</span>' : '', d >= 30 ? '<span class="tag stale">止まっている</span>' : ''].join('');
+  const tags = [w.published ? '<span class="tag renew">刷新中</span>' : '', d >= 30 && !w.tool ? '<span class="tag stale">止まっている</span>' : ''].join('');
   return `        <tr><td><a href="../draft/${encodeURI(w.rel)}">${esc(w.rel)}</a></td><td class="when">${w.mtime.getMonth() + 1}/${w.mtime.getDate()}<br /><small>${d}日前</small></td><td>${tags}${esc(w.note)}</td></tr>`;
 }).join('\n')}
       </tbody>
