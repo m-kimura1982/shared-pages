@@ -1,0 +1,16 @@
+{
+  "_説明": "厚労省チェック係（tools-internal/mhlw-watch.js）が見るページと、関係ありとみなす語。ページを足すときは pages に1行足す。",
+  "pages": [
+    { "name": "令和8年度診療報酬改定", "url": "https://www.mhlw.go.jp/stf/newpage_67729.html" },
+    { "name": "審議会・研究会等の開催予定", "url": "https://www.mhlw.go.jp/topics/event/open_doors.html" },
+    { "name": "中央社会保険医療協議会 総会", "url": "https://www.mhlw.go.jp/stf/shingi/shingi-chuo_128154.html" },
+    { "name": "社会保障審議会 介護給付費分科会", "url": "https://www.mhlw.go.jp/stf/shingi/shingi-hosho_126698_00022.html" },
+    { "name": "審議会・研究会等の一覧", "url": "https://www.mhlw.go.jp/stf/shingi/indexshingi.html" }
+  ],
+  "keywords": [
+    "調剤", "薬局", "薬剤師", "薬剤", "医薬品", "OTC", "類似薬", "保険外療養", "選定療養", "長期収載",
+    "後発", "薬価", "診療報酬", "中央社会保険医療協議会", "中医協", "介護給付費", "介護報酬", "居宅療養",
+    "医療保険部会", "介護保険部会", "高額療養費", "電子処方箋", "オンライン資格", "マイナ", "リフィル",
+    "疑義解釈", "事務連絡", "在宅", "かかりつけ", "医療DX", "薬事", "セルフメディケーション", "濫用"
+  ]
+}

@@ -4,6 +4,7 @@
 # Claude Code 作業用：設定・ローカルファイルは非公開／共有コマンド(.claude/commands)だけ2台PC間で追跡する
 /.claude/*
 !/.claude/commands/
+!/.claude/agents/
 
 # npm のライブラリ（package.json があれば npm install で復元できるので追跡しない）
 /node_modules/
