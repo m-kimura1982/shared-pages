@@ -111,9 +111,6 @@ window.__pageMeta = {
     "lastUpdated": "2026-10-02",
     "newUntil": "2026-10-09"
   },
-  "加算まとめ/バイオ後続品調剤体制加算.html": {
-    "lastUpdated": "2026-10-12"
-  },
   "加算まとめ/在宅協力薬局.html": {
     "lastUpdated": "2026-09-02",
     "newUntil": "2026-09-01"
@@ -164,6 +161,9 @@ window.__pageMeta = {
   "加算まとめ/在宅患者訪問薬剤管理指導料.html": {
     "lastUpdated": "2026-10-12",
     "newUntil": "2026-08-26"
+  },
+  "加算まとめ/バイオ後続品調剤体制加算.html": {
+    "lastUpdated": "2026-10-12"
   },
   "加算まとめ/夜間・休日・深夜訪問加算.html": {
     "lastUpdated": "2026-08-25",
