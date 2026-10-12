@@ -16,6 +16,7 @@ const ROOT = path.resolve(__dirname, '..');
 const SRC = path.join(ROOT, '.claude/commands/部署.md');
 const OUT = path.join(ROOT, 'private/部署一覧.html');
 
+const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const md = fs.readFileSync(SRC, 'utf8');
 const table = (md.match(/<!-- busho-table -->([\s\S]*?)<!-- \/busho-table -->/) || [])[1] || '';
 const rows = table.trim().split('\n').slice(2).map(l => l.split('|').slice(1, -1).map(c => c.trim()));
@@ -29,7 +30,7 @@ for (const [dir, ext] of [['.claude/commands', '.md'], ['.claude/agents', '.md']
     const rel = `${dir}/${f}`;
     if (!f.endsWith(ext) || f === '部署.md' || listed.has(rel)) continue;
     // 呼び出し役のコマンド（/通読 → first-reader）は、エージェント側が名簿にあればよい
-    if (['通読.md', '照合.md', '期限点検.md', '厚労省チェック.md'].includes(f)) continue;
+    if (['通読.md', '照合.md', '期限点検.md', '厚労省チェック.md', 'タスク.md'].includes(f)) continue;
     const desc = (fs.readFileSync(path.join(ROOT, rel), 'utf8').match(/^description:\s*(.+)$/m) || [])[1] || '';
     unlisted.push({ rel, desc });
   }
@@ -65,13 +66,40 @@ const wip = [];
 wip.sort((a, b) => b.mtime - a.mtime);
 const daysAgo = d => Math.floor((Date.now() - d) / 86400000);
 
+// ── タスク帳（private/タスク.md） ──
+const TASK_FILE = path.join(ROOT, 'private/タスク.md');
+const taskHtml = (() => {
+  if (!fs.existsSync(TASK_FILE)) return '';
+  const lines = fs.readFileSync(TASK_FILE, 'utf8').replace(/<!--[\s\S]*?-->/g, '').split('\n');
+  const inline = s => esc(s).replace(/`([^`]+)`/g, '<code>$1</code>');
+  let out = '', open = false, count = 0;
+  for (const l of lines) {
+    const h = l.match(/^##\s+(.+)/), li = l.match(/^-\s+(.+)/);
+    if (h) {
+      if (open) out += '</ul>';
+      const done = h[1].trim() === '済み';
+      out += `<h3${done ? ' class="done"' : ''}>${esc(h[1])}</h3><ul${done ? ' class="done"' : ''}>`; open = true;
+    } else if (li) {
+      const [body, rel] = li[1].split(/\s*｜\s*関連：/);
+      if (!out.includes('class="done"')) count++;
+      out += `<li>${inline(body)}${rel ? `<span class="rel">${inline(rel)}</span>` : ''}</li>`;
+    }
+  }
+  if (open) out += '</ul>';
+  return `
+  <section class="tasks">
+    <h2>タスク帳 <span>${count}件</span></h2>
+    <p class="shelf-lead">中身は private/タスク.md。Claude に「タスクに足して」「○○は済み」と言えば直す。</p>
+    ${out}
+  </section>`;
+})();
+
 const flow = (md.match(/\*\*ふだんの流れ\*\*：(.+)/) || [])[1] || '';
-const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 // 分類ごとの色（サイトの図解の淡色パレットから）
 const COLORS = {
   執筆: ['#f3e8d0', '#7a5718'], 点検: ['#dfe9f6', '#2a5580'], 公開: ['#e3efe0', '#3d6b2e'],
-  情報収集: ['#e5e0f2', '#4b3f80'], 自動: ['#f2f2f2', '#444444'],
+  情報収集: ['#e5e0f2', '#4b3f80'], 管理: ['#fdebdd', '#9a4414'], 自動: ['#f2f2f2', '#444444'],
 };
 const groups = [...new Set(people.map(p => p.group))];
 const today = new Date().toLocaleDateString('ja-JP');
@@ -121,6 +149,15 @@ const html = `<!doctype html>
   .howto h2 { font-size:15px; margin-bottom:6px; }
   .howto li { margin-left:1.4em; }
   .foot { color:#5e6470; font-size:12px; margin-top:16px; }
+  .tasks { background:#fff; border:1px solid #1e5fa8; border-radius:10px; padding:14px 18px; margin:0 0 22px; }
+  .tasks h2 { font-size:17px; font-weight:900; }
+  .tasks h2 span { font-size:13px; font-weight:700; color:#5e6470; margin-left:8px; }
+  .tasks h3 { font-size:14px; font-weight:900; color:#1e5fa8; margin:12px 0 4px; }
+  .tasks h3.done { color:#5e6470; }
+  .tasks ul { margin-left:1.3em; font-size:14px; }
+  .tasks ul.done { color:#5e6470; font-size:13px; }
+  .tasks li { margin:3px 0; }
+  .tasks .rel { display:block; font-size:12px; color:#5e6470; word-break:break-all; }
   .shelf { background:#fff; border:0.5px solid #d1d5db; border-radius:10px; padding:14px 18px; margin-top:22px; }
   .shelf h2 { font-size:17px; font-weight:900; }
   .shelf h2 span { font-size:13px; font-weight:700; color:#5e6470; margin-left:8px; }
@@ -142,6 +179,7 @@ const html = `<!doctype html>
   <p class="lead">調剤報酬・薬歴まとめサイトの作業を、役割ごとに分けた担当の一覧。どれもClaude Codeの中で動く。</p>
   <div class="boss">最終判断：木村さん</div>
   <div class="flow"><b>ふだんの流れ</b>　${esc(flow).replace(/`([^`]+)`/g, '<code>$1</code>')}</div>
+${taskHtml}
 
   <div class="groups">
 ${groups.map(g => {

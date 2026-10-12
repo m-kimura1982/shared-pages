@@ -24,7 +24,7 @@ process.stdin.on('data', c => input += c).on('end', () => {
   const rel = path.relative(ROOT, path.resolve(file)).replace(/\\/g, '/');
 
   // 下書き・部署のファイルを触ったら、部署一覧ページ（作業中の棚）を黙って作り直す
-  if (/^(draft\/|\.claude\/(commands|agents)\/|private\/作業中メモ\.json)/.test(rel)) {
+  if (/^(draft\/|\.claude\/(commands|agents)\/|private\/作業中メモ\.json|private\/タスク\.md)/.test(rel)) {
     try { execFileSync(process.execPath, [path.join(ROOT, 'tools-internal/build-busho.js')], { cwd: ROOT, timeout: 20000 }); } catch {}
   }
   if (!file.endsWith('.html')) process.exit(0);
