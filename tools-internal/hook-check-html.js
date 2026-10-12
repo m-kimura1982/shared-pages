@@ -20,9 +20,14 @@ let input = '';
 process.stdin.on('data', c => input += c).on('end', () => {
   let file;
   try { file = JSON.parse(input).tool_input.file_path; } catch { process.exit(0); }
-  if (!file || !file.endsWith('.html')) process.exit(0);
-
+  if (!file) process.exit(0);
   const rel = path.relative(ROOT, path.resolve(file)).replace(/\\/g, '/');
+
+  // 下書き・部署のファイルを触ったら、部署一覧ページ（作業中の棚）を黙って作り直す
+  if (/^(draft\/|\.claude\/(commands|agents)\/|private\/作業中メモ\.json)/.test(rel)) {
+    try { execFileSync(process.execPath, [path.join(ROOT, 'tools-internal/build-busho.js')], { cwd: ROOT, timeout: 20000 }); } catch {}
+  }
+  if (!file.endsWith('.html')) process.exit(0);
   if (rel.startsWith('..') || rel.startsWith('private/') || rel.startsWith('tools-internal/')) process.exit(0);
 
   const run = (script) => {

@@ -5,7 +5,11 @@
     { "name": "審議会・研究会等の開催予定", "url": "https://www.mhlw.go.jp/topics/event/open_doors.html" },
     { "name": "中央社会保険医療協議会 総会", "url": "https://www.mhlw.go.jp/stf/shingi/shingi-chuo_128154.html" },
     { "name": "社会保障審議会 介護給付費分科会", "url": "https://www.mhlw.go.jp/stf/shingi/shingi-hosho_126698_00022.html" },
-    { "name": "審議会・研究会等の一覧", "url": "https://www.mhlw.go.jp/stf/shingi/indexshingi.html" }
+    { "name": "審議会・研究会等の一覧", "url": "https://www.mhlw.go.jp/stf/shingi/indexshingi.html" },
+    { "name": "厚労省 新着情報（省全体）", "url": "https://www.mhlw.go.jp/stf/new-info/index.html" },
+    { "name": "令和8年度診療報酬改定（4月以降の改正：薬価・記載要領など）", "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188411_00074.html" },
+    { "name": "介護保険最新情報", "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00010.html" },
+    { "name": "関東信越厚生局 特掲診療料の施設基準等（届出様式・訂正）", "url": "https://kouseikyoku.mhlw.go.jp/kantoshinetsu/shinsei/shido_kansa/shitei_kijun/tokukei_shinryo_r08.html" }
   ],
   "keywords": [
     "調剤", "薬局", "薬剤師", "薬剤", "医薬品", "OTC", "類似薬", "保険外療養", "選定療養", "長期収載",

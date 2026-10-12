@@ -35,6 +35,36 @@ for (const [dir, ext] of [['.claude/commands', '.md'], ['.claude/agents', '.md']
   }
 }
 
+// ── 作業中の棚（draft/ のファイルを新しい順に。一言は private/作業中メモ.json） ──
+const NOTES_FILE = path.join(ROOT, 'private/作業中メモ.json');
+const NOTES = fs.existsSync(NOTES_FILE) ? JSON.parse(fs.readFileSync(NOTES_FILE, 'utf8')).notes : {};
+const noteOf = rel => {
+  // ファイル名で一致 → いちばん長いフォルダ名で一致
+  if (NOTES[rel] !== undefined) return typeof NOTES[rel] === 'string' ? { note: NOTES[rel] } : NOTES[rel];
+  const dirs = Object.keys(NOTES).filter(k => k.endsWith('/') && rel.startsWith(k)).sort((a, b) => b.length - a.length);
+  if (!dirs.length) return {};
+  const v = NOTES[dirs[0]];
+  return typeof v === 'string' ? { note: v } : v;
+};
+const PUBLIC_DIRS = ['yakureki', '加算まとめ', '改定資料', 'チェックリスト', 'ツール', 'ナレッジ', '事務'];
+const wip = [];
+(function walk(dir) {
+  for (const e of fs.readdirSync(path.join(ROOT, 'draft', dir), { withFileTypes: true })) {
+    const rel = dir ? `${dir}/${e.name}` : e.name;
+    if (e.isDirectory()) { walk(rel); continue; }
+    if (!/\.(html|md)$/.test(e.name)) continue;
+    const n = noteOf(rel);
+    if (n.hide) continue;
+    const mtime = fs.statSync(path.join(ROOT, 'draft', rel)).mtime;
+    // 公開フォルダに同じ名前のページがあれば「刷新中」
+    const top = rel.split('/')[0];
+    const published = PUBLIC_DIRS.includes(top) && fs.existsSync(path.join(ROOT, rel));
+    wip.push({ rel, mtime, note: n.note || '', published, folder: rel.includes('/') ? rel.split('/')[0] : '（直下）' });
+  }
+})('');
+wip.sort((a, b) => b.mtime - a.mtime);
+const daysAgo = d => Math.floor((Date.now() - d) / 86400000);
+
 const flow = (md.match(/\*\*ふだんの流れ\*\*：(.+)/) || [])[1] || '';
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
@@ -91,6 +121,19 @@ const html = `<!doctype html>
   .howto h2 { font-size:15px; margin-bottom:6px; }
   .howto li { margin-left:1.4em; }
   .foot { color:#5e6470; font-size:12px; margin-top:16px; }
+  .shelf { background:#fff; border:0.5px solid #d1d5db; border-radius:10px; padding:14px 18px; margin-top:22px; }
+  .shelf h2 { font-size:17px; font-weight:900; }
+  .shelf h2 span { font-size:13px; font-weight:700; color:#5e6470; margin-left:8px; }
+  .shelf-lead { font-size:13px; color:#444; margin:4px 0 10px; }
+  .shelf table { width:100%; border-collapse:collapse; font-size:13.5px; }
+  .shelf th { text-align:left; color:#5e6470; font-weight:700; border-bottom:1px solid #d1d5db; padding:6px 8px; }
+  .shelf td { border-bottom:0.5px solid #e5e7eb; padding:7px 8px; vertical-align:top; word-break:break-all; }
+  .shelf td.when { white-space:nowrap; }
+  .shelf small { color:#5e6470; }
+  .tag { display:inline-block; font-size:12px; font-weight:700; padding:0 7px; border-radius:4px; margin-right:6px; }
+  .tag.renew { background:#dfe9f6; color:#2a5580; }
+  .tag.stale { background:#f2f2f2; color:#444; }
+  
 </style>
 </head>
 <body>
@@ -111,6 +154,21 @@ ${groups.map(g => {
   </div>
 ${unlisted.length ? `
   <div class="warn"><b>名簿にない担当</b>（.claude/ にあるのに部署.md の表に載っていない）<br />${unlisted.map(u => `${esc(u.rel)}　${esc(u.desc)}`).join('<br />')}</div>` : ''}
+
+  <section class="shelf">
+    <h2>作業中の棚 <span>draft/ にあるもの・${wip.length}件・新しい順</span></h2>
+    <p class="shelf-lead">draft/ に置いた下書きを自動で並べている。<b>止まっている</b>＝30日以上さわっていない。<b>刷新中</b>＝同じ名前の公開ページがある（差し替え前）。一言は private/作業中メモ.json に書く。</p>
+    <table>
+      <thead><tr><th>ファイル</th><th>最終更新</th><th>状態・メモ</th></tr></thead>
+      <tbody>
+${wip.map(w => {
+  const d = daysAgo(w.mtime);
+  const tags = [w.published ? '<span class="tag renew">刷新中</span>' : '', d >= 30 ? '<span class="tag stale">止まっている</span>' : ''].join('');
+  return `        <tr><td><a href="../draft/${encodeURI(w.rel)}">${esc(w.rel)}</a></td><td class="when">${w.mtime.getMonth() + 1}/${w.mtime.getDate()}<br /><small>${d}日前</small></td><td>${tags}${esc(w.note)}</td></tr>`;
+}).join('\n')}
+      </tbody>
+    </table>
+  </section>
 
   <div class="howto">
     <h2>部署を足す・変えるとき</h2>
