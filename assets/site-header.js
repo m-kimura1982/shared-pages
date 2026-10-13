@@ -56,22 +56,22 @@
     'ナレッジ/OTC医薬品の区分と販売ルール.html': { category: 'knowledge', title: 'OTC医薬品の区分と販売ルール' },
 
     // 薬歴（2026-07-20公開。サブディレクトリ yakureki/ 配下・パスキーで登録）
-    'yakureki/薬歴の書き方_実例解説集.html': { category: 'yakureki', title: '薬歴の書き方｜実例解説集' },
+    'yakureki/薬歴の書き方_実例解説集.html': { category: 'yakureki', title: '薬歴の実例解説集' },
     'yakureki/index.html': { category: 'yakureki', title: '薬歴マニュアル' },
     'yakureki/基本記載ルール.html': { category: 'yakureki', title: '薬歴の基本記載ルール' },
     'yakureki/個別指導で問われる記載.html': { category: 'yakureki', title: '個別指導で問われる項目と薬歴の残し方' },
     'yakureki/加算別記載一覧.html': { category: 'yakureki', title: '加算別 薬歴記載一覧' },
     'yakureki/居宅療養管理指導_薬歴の記載事項.html': { category: 'yakureki', title: '居宅療養管理指導の薬歴記載事項（原典）' },
     'yakureki/乳幼児服薬指導加算.html': { category: 'yakureki', title: '乳幼児服薬指導加算の薬歴記載' },
-    'yakureki/ハイリスク薬指導.html': { category: 'yakureki', title: 'ハイリスク薬の指導記録' },
-    'yakureki/ハイリスク_薬歴の書き方.html': { category: 'yakureki', title: 'ハイリスク薬の薬歴の書き方' },
-    'yakureki/ハイリスク_血液凝固阻止剤.html': { category: 'yakureki', title: 'ハイリスク薬 血液凝固阻止剤' },
-    'yakureki/ハイリスク_糖尿病用剤.html': { category: 'yakureki', title: 'ハイリスク薬 糖尿病用剤' },
-    'yakureki/ハイリスク_膵臓ホルモン剤.html': { category: 'yakureki', title: 'ハイリスク薬 インスリン製剤' },
-    'yakureki/ハイリスク_抗精神病薬.html': { category: 'yakureki', title: 'ハイリスク薬 抗精神病薬' },
-    'yakureki/ハイリスク_抗うつ薬.html': { category: 'yakureki', title: 'ハイリスク薬 抗うつ薬' },
-    'yakureki/ハイリスク_気分安定薬.html': { category: 'yakureki', title: 'ハイリスク薬 気分安定薬' },
-    'yakureki/ハイリスク_抗てんかん薬.html': { category: 'yakureki', title: 'ハイリスク薬 抗てんかん薬' },
+    'yakureki/ハイリスク薬指導.html': { category: 'yakureki', title: 'ハイリスク薬の薬歴記載方法' },
+    'yakureki/ハイリスク_薬歴の書き方.html': { category: 'yakureki', title: 'ハイリスク薬 薬歴記載の考え方', parent: 'yakureki/ハイリスク薬指導.html' },
+    'yakureki/ハイリスク_血液凝固阻止剤.html': { category: 'yakureki', title: 'ハイリスク薬 血液凝固阻止剤', parent: 'yakureki/ハイリスク薬指導.html' },
+    'yakureki/ハイリスク_糖尿病用剤.html': { category: 'yakureki', title: 'ハイリスク薬 糖尿病用剤', parent: 'yakureki/ハイリスク薬指導.html' },
+    'yakureki/ハイリスク_膵臓ホルモン剤.html': { category: 'yakureki', title: 'ハイリスク薬 インスリン製剤', parent: 'yakureki/ハイリスク薬指導.html' },
+    'yakureki/ハイリスク_抗精神病薬.html': { category: 'yakureki', title: 'ハイリスク薬 抗精神病薬', parent: 'yakureki/ハイリスク薬指導.html' },
+    'yakureki/ハイリスク_抗うつ薬.html': { category: 'yakureki', title: 'ハイリスク薬 抗うつ薬', parent: 'yakureki/ハイリスク薬指導.html' },
+    'yakureki/ハイリスク_気分安定薬.html': { category: 'yakureki', title: 'ハイリスク薬 気分安定薬', parent: 'yakureki/ハイリスク薬指導.html' },
+    'yakureki/ハイリスク_抗てんかん薬.html': { category: 'yakureki', title: 'ハイリスク薬 抗てんかん薬', parent: 'yakureki/ハイリスク薬指導.html' },
     'yakureki/定型文集.html': { category: 'yakureki', title: '定型文集（申し送り・評価と指導）' },
 
     // 加算まとめ（恒久ページ。kaitei2026 のカードからもリンクされるが、所属は加算まとめ）
@@ -172,7 +172,21 @@
     checklist: { name: 'チェックリスト', url: 'checklists.html' },
     tools: { name: '実務ツール集', url: 'tools.html' },
     knowledge: { name: '実務ナレッジ集', url: 'knowledge.html' },
-    yakureki: { name: '薬歴', url: 'yakureki/index.html' },
+    yakureki: {
+      name: '薬歴', url: 'yakureki/index.html',
+      // カテゴリの柱：同じカテゴリの個別ページの上に1列で出す（buildPillars）。
+      // match に書いたパス（前方一致）のページでは、その柱を「いまいる柱」として青くする。
+      // 他のカテゴリも pillars を書けば同じものが出る。
+      pillarsLabel: '薬歴マニュアル',
+      pillars: [
+        { label: '基本記載ルール', url: 'yakureki/基本記載ルール.html' },
+        { label: '実例解説集', url: 'yakureki/薬歴の書き方_実例解説集.html' },
+        { label: '個別指導', url: 'yakureki/個別指導で問われる記載.html' },
+        { label: 'ハイリスク薬', url: 'yakureki/ハイリスク薬指導.html', match: ['yakureki/ハイリスク'] },
+        { label: '加算別の記載事項', url: 'yakureki/加算別記載一覧.html', match: ['yakureki/乳幼児服薬指導加算.html', 'yakureki/居宅療養管理指導_薬歴の記載事項.html'] },
+        { label: '定型文集', url: 'yakureki/定型文集.html' },
+      ],
+    },
     jimu: { name: '事務スタッフ向け', url: '事務スタッフ向け.html' },
   };
 
@@ -285,6 +299,41 @@
     .sn-crumb a:hover { text-decoration: underline; }
     .sn-crumb-sep { color: #777; font-size: 14px; font-weight: 700; }
     .sn-crumb-current { color: #555; font-weight: 400; }
+
+    /* カテゴリの柱（パンくずの下の1列）
+       いまいる柱は淡い青の地に青文字（塗りの青に白文字は使わない）。
+       スマホでは折り返さず横に流す。右端を少し見せて続きがあると分かるようにする。 */
+    .sn-pillars { max-width: 1000px; margin: -8px auto 18px; padding: 0 24px; }
+    .sn-pillars-inner {
+      display: flex; align-items: center; gap: 12px;
+      border-top: 0.5px solid #d1d5db; border-bottom: 0.5px solid #d1d5db;
+      padding: 8px 0;
+    }
+    .sn-pillars-label {
+      flex-shrink: 0; font-size: 12px; font-weight: 700; color: #5e6470;
+      text-decoration: none; letter-spacing: .04em;
+    }
+    .sn-pillars-label:hover { color: #1e5fa8; }
+    .sn-pillars-list { display: flex; flex-wrap: wrap; gap: 6px; }
+    .sn-pillars-list a {
+      font-size: 13.5px; font-weight: 500; color: #333; text-decoration: none;
+      padding: 4px 12px; border-radius: 999px; border: 0.5px solid transparent;
+      white-space: nowrap;
+    }
+    .sn-pillars-list a:hover { background: #f0f4fa; color: #1e5fa8; }
+    .sn-pillars-list a.sn-here { background: #e4eef9; color: #1e5fa8; font-weight: 700; }
+    @media (max-width: 700px) {
+      .sn-pillars { margin: 8px 0 12px; padding: 0 0 0 16px; }
+      .sn-pillars-inner { gap: 8px; padding: 6px 0; }
+      .sn-pillars-label { display: none; }
+      .sn-pillars-list {
+        flex-wrap: nowrap; overflow-x: auto; padding-right: 12px;
+        scrollbar-width: none; -webkit-overflow-scrolling: touch;
+      }
+      .sn-pillars-list::-webkit-scrollbar { display: none; }
+      .sn-pillars-list a { font-size: 13px; padding: 5px 11px; }
+    }
+    @media print { .sn-pillars { display: none; } }
 
     /* 最終更新日（パンくずの続き）
        検索やフォーラムのリンクで個別ページに直接来た人は、いつ時点の内容か分からなかった。
@@ -450,7 +499,14 @@
         <nav class="sn-crumb sn-crumb--page" aria-label="パンくずリスト">
           <a href="${u('index.html')}">ホーム</a>
           <span class="sn-crumb-sep">›</span>
-          <a href="${u(cat.url)}">${cat.name}</a>
+          <a href="${u(cat.url)}">${cat.name}</a>${
+            // 親ページ（PAGES の parent）があれば1段足す：ホーム › 薬歴 › ハイリスク薬 › 抗うつ薬
+            pageInfo.parent && PAGES[pageInfo.parent]
+              ? `
+          <span class="sn-crumb-sep">›</span>
+          <a href="${u(pageInfo.parent)}">${parentLabel(pageInfo.parent)}</a>`
+              : ''
+          }
           <span class="sn-crumb-sep sn-crumb-sep-last">›</span>
           <span class="sn-crumb-current">${pageInfo.title}</span>
           <span class="sn-crumb-updated" id="sn-updated" hidden></span>
@@ -480,8 +536,34 @@
         </div>
       </header>
       ${crumbHtml}
+      ${pillarsHtml()}
     </div>
   `;
+
+  // パンくずの親の表示名。柱にあれば柱の短い名前（「ハイリスク薬」）、なければページ名
+  function parentLabel(file) {
+    const cat = CATEGORIES[category];
+    const p = cat && cat.pillars && cat.pillars.find((x) => x.url === file);
+    return p ? p.label : PAGES[file].title;
+  }
+
+  // ── カテゴリの柱（CATEGORIES の pillars）を個別ページの上に1列で出す ──
+  // 検索などで途中のページに来た人が、同じカテゴリの他の柱へ1クリックで移れるように（2026-10-13）。
+  // カテゴリの入口ページには出さない（入口そのものが柱の一覧なので）。
+  function pillarsHtml() {
+    const cat = category && CATEGORIES[category];
+    if (!cat || !cat.pillars || filename === cat.url) return '';
+    const here = (p) => p.url === filename || (p.match || []).some((m) => filename.startsWith(m));
+    return `
+      <nav class="sn-pillars" aria-label="${cat.pillarsLabel || cat.name}の柱">
+        <div class="sn-pillars-inner">
+          <a class="sn-pillars-label" href="${u(cat.url)}">${cat.pillarsLabel || cat.name}</a>
+          <div class="sn-pillars-list">${cat.pillars
+            .map((p) => `<a href="${u(p.url)}"${here(p) ? ' class="sn-here" aria-current="page"' : ''}>${p.label}</a>`)
+            .join('')}</div>
+        </div>
+      </nav>`;
+  }
 
   // ロゴ画像のパス（サブディレクトリでもサイトルート起点で解決）
   function getLogoPath() {
@@ -562,6 +644,13 @@
   const container = document.createElement('div');
   container.innerHTML = headerHtml.trim();
   document.body.insertBefore(container.firstChild, document.body.firstChild);
+
+  // スマホで柱が横に流れるとき、いまいる柱が見える位置まで送っておく
+  const pillarHere = document.querySelector('.sn-pillars-list a.sn-here');
+  if (pillarHere) {
+    const list = pillarHere.parentNode;
+    if (list.scrollWidth > list.clientWidth) list.scrollLeft = Math.max(0, pillarHere.offsetLeft - list.offsetLeft - 24);
+  }
 
   // ハンバーガー開閉
   const toggle = document.getElementById('sn-toggle');

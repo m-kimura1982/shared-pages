@@ -33,3 +33,10 @@ details, details.fold { break-inside: avoid; }
 
 /* ④ 見出しは次の本文と離さない */
 .card-title, .sub-title { break-after: avoid; }
+
+/* ⑤ 画面で操作するための部品は印刷しない（2026-10-13）
+   ページ内のジャンプ用の札・薬効群の切り替え・記載例の場面ボタンやコピーボタンなど。
+   紙では押せず、本文の前に余白と文字だけが残る。新しく作る操作用の部品には .no-print を付ける。 */
+button, .no-print,
+.grp-chips, .hr-nav, .finder,
+.mk-scenes, .mk-tools, .mk-bar, .mk-fallback { display: none !important; }

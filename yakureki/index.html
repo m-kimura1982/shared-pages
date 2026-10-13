@@ -11,6 +11,19 @@
     />
     <link rel="stylesheet" href="yakureki.css" />
   <link rel="stylesheet" href="../assets/hub.css" />
+  <style>
+    .hub-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:12px; }
+    a.hub-card.hub-main { display:block; }
+    .hub-links { gap:18px; }
+    /* 一覧は黒い文字＋青い「›」。全部を青にすると青だらけになるので、色は記号と、触れたときだけにする */
+    .hub-list a { font-size:14.5px; padding:3px 0; color:var(--ink, #222); }
+    .hub-list a::before { content:"›"; font-size:17px; font-weight:700; line-height:1; color:var(--blue, #1e5fa8); }
+    .hub-list a:hover { color:var(--blue, #1e5fa8); }
+    .hub-group-label { font-size:14.5px; }
+    .hub-desc { font-size:14px; }
+    @media (max-width:640px) { .hub-list a { font-size:14px; } }
+    .src-note { font-size:12px; color:var(--txt-3, #5e6470); }
+  </style>
 </head>
   <body>
   <script src="../assets/site-header.js" defer></script>
@@ -21,82 +34,43 @@
     <div class="page-head">
       <div class="band">
         <div class="band-panel" data-wm="YAKUREKI"><span class="band-en">YAKUREKI</span><h1>薬歴マニュアル</h1></div>
-        <p class="band-desc">日々の薬歴で迷いやすい点を、「基本記載ルール」「個別指導で問われやすい項目」「加算算定時の記載事項」に分けて整理しています。</p>
+        <p class="band-desc">日々の薬歴で迷いやすい点を、基本のルール・ハイリスク薬・加算ごとの記載事項に分けてまとめています。</p>
       </div>
-      <p class="page-desc" style="margin-top:14px">まずは <strong>基本記載ルール</strong> から確認してください。加算名から探すときは「03 加算別」の一覧から直接開けます。</p>
     </div>
 
-    <main>
+    <main class="yk-zoom">
       <!-- ── ① 基本 ── -->
       <section>
         <div class="section-label">01 基本</div>
-        <h2 class="section-title">薬歴記載の基本ルール</h2>
-        <div class="hub-card">
-          <a href="基本記載ルール.html" class="hub-main">
+        <h2 class="section-title">薬歴の書き方の基本</h2>
+        <div class="hub-grid">
+          <a href="基本記載ルール.html" class="hub-card hub-main">
             <span class="hub-title">基本記載ルール</span>
-            <span class="hub-desc">薬歴の記載事項（ア〜オ）ごとに、記載のポイント・記載例・社内ルールを整理。患者の生活状況や継続的な薬学的管理（エ）の書き方もこのページで確認できます。</span>
+            <span class="hub-desc">薬歴の記載事項（ア〜オ）ごとに、記載のポイント・記載例・社内ルールをまとめています。</span>
           </a>
-        </div>
-      </section>
-
-      <!-- ── ② 個別指導対策 ── -->
-      <section>
-        <div class="section-label">02 個別指導対策</div>
-        <h2 class="section-title">個別指導で問われやすい項目</h2>
-        <div class="hub-card">
-          <a href="個別指導で問われる記載.html" class="hub-main">
+          <a href="薬歴の書き方_実例解説集.html" class="hub-card hub-main">
+            <span class="hub-title">薬歴の実例解説集</span>
+            <span class="hub-desc">実際の事例をもとに、何を残すか、集めた情報をどう処方の評価に使うかを解説しています。</span>
+          </a>
+          <a href="個別指導で問われる記載.html" class="hub-card hub-main">
             <span class="hub-title">個別指導で問われる項目と薬歴の残し方</span>
-            <span class="hub-desc">漫然投与・適応外処方・定型文中心の薬歴・アセスメント不足など、個別指導で問われやすいパターンごとに、薬歴へ残すポイントを整理しています。自己点検チェックリスト付き。</span>
+            <span class="hub-desc">漫然投与・定型文中心の薬歴など、問われやすいパターンごとに残すポイントをまとめています。自己点検チェックリスト付き。</span>
           </a>
         </div>
       </section>
 
-      <!-- ── ③ 加算別 ── -->
+      <!-- ── ② ハイリスク薬 ── -->
       <section>
-        <div class="section-label">03 加算別</div>
-        <h2 class="section-title">加算算定時の記載事項</h2>
+        <div class="section-label">02 ハイリスク薬</div>
+        <h2 class="section-title">ハイリスク薬（特定薬剤管理指導加算1）</h2>
         <div class="hub-card">
-          <a href="加算別記載一覧.html" class="hub-main">
-            <span class="hub-title">加算別 薬歴記載一覧</span>
-            <span class="hub-desc">加算・管理料ごとに、薬歴等へ残す内容を別添3をもとに一覧にしています。下の加算名から該当箇所を直接開けます。</span>
+          <a href="ハイリスク薬指導.html" class="hub-main">
+            <span class="hub-title">ハイリスク薬の薬歴記載方法</span>
+            <span class="hub-desc">確認する→指導する→記載する、の流れと、薬剤名から薬効群のページを探せる入口です。</span>
           </a>
           <div class="hub-links">
             <div>
-              <div class="hub-group-label">加算名から探す<span class="qual">太字は専用ページ</span></div>
-              <ul class="hub-list">
-                <li><a href="加算別記載一覧.html#zanyaku">調剤時残薬調整加算</a></li>
-                <li><a href="加算別記載一覧.html#yuugai">薬学的有害事象等防止加算</a></li>
-                <li><a href="加算別記載一覧.html#makan">麻薬管理指導加算</a></li>
-                <li><a href="ハイリスク薬指導.html" class="main-link">ハイリスク薬の指導記録（特定薬剤管理指導加算1）</a></li>
-                <li><a href="加算別記載一覧.html#tokuyaku2">特定薬剤管理指導加算2</a></li>
-                <li><a href="加算別記載一覧.html#tokuyaku3">特定薬剤管理指導加算3</a></li>
-                <li><a href="乳幼児服薬指導加算.html" class="main-link">乳幼児服薬指導加算</a></li>
-                <li><a href="加算別記載一覧.html#shoni">小児特定加算</a></li>
-                <li><a href="加算別記載一覧.html#kyunyu">吸入薬指導加算</a></li>
-                <li><a href="加算別記載一覧.html#fu">かかりつけ薬剤師フォローアップ加算</a></li>
-                <li><a href="加算別記載一覧.html#homon">かかりつけ薬剤師訪問加算</a></li>
-                <li><a href="加算別記載一覧.html#gairaishien">外来服薬支援料1・2／施設連携加算</a></li>
-                <li><a href="加算別記載一覧.html#chousei">服用薬剤調整支援料</a></li>
-                <li><a href="加算別記載一覧.html#chouzaigo">調剤後薬剤管理指導料</a></li>
-                <li><a href="加算別記載一覧.html#taiin">退院時共同指導料</a></li>
-                <li><a href="加算別記載一覧.html#fukuyaku">服薬情報等提供料</a></li>
-                <li><a href="加算別記載一覧.html#keikan">経管投薬支援料</a></li>
-              </ul>
-            </div>
-            <div>
-              <div class="hub-group-label">在宅・介護<span class="qual">2026-08-18 追加</span></div>
-              <ul class="hub-list">
-                <li><a href="加算別記載一覧.html#zaitaku">在宅患者訪問薬剤管理指導料</a></li>
-                <li><a href="加算別記載一覧.html#zaitaku-kinkyu">在宅患者緊急訪問薬剤管理指導料</a></li>
-                <li><a href="加算別記載一覧.html#zaitaku-kyodo">在宅患者緊急時等共同指導料</a></li>
-                <li><a href="加算別記載一覧.html#zaitaku-kasan">在宅の加算</a></li>
-                <li><a href="加算別記載一覧.html#zaitaku-ikou">在宅移行初期管理料</a></li>
-                <li><a href="加算別記載一覧.html#zaitaku-kaigo">居宅療養管理指導費（介護保険）</a></li>
-                <li><a href="居宅療養管理指導_薬歴の記載事項.html" class="main-link">居宅療養管理指導の薬歴記載事項（原典）</a></li>
-              </ul>
-            </div>
-            <div>
-              <div class="hub-group-label">ハイリスク薬 薬効群別の記載例</div>
+              <div class="hub-group-label">薬効群ごとの記載例</div>
               <ul class="hub-list">
                 <li><a href="ハイリスク_血液凝固阻止剤.html">血液凝固阻止剤</a></li>
                 <li><a href="ハイリスク_糖尿病用剤.html">糖尿病用剤</a></li>
@@ -107,6 +81,70 @@
                 <li><a href="ハイリスク_抗てんかん薬.html">抗てんかん薬</a></li>
               </ul>
             </div>
+            <div>
+              <div class="hub-group-label">書き方の考え方</div>
+              <ul class="hub-list">
+                <li><a href="ハイリスク_薬歴の書き方.html">ハイリスク薬 薬歴記載の考え方（算定する場面・処方目的・個別指導）</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── ③ 加算別 ── -->
+      <section>
+        <div class="section-label">03 加算別</div>
+        <h2 class="section-title">加算・管理料ごとの記載事項</h2>
+        <div class="hub-card">
+          <a href="加算別記載一覧.html" class="hub-main">
+            <span class="hub-title">加算別 薬歴記載一覧</span>
+            <span class="hub-desc">加算・管理料ごとに、薬歴等へ残す内容を別添3をもとに一覧にしています。下の名前から該当箇所を直接開けます。</span>
+          </a>
+          <div class="hub-links">
+            <div>
+              <div class="hub-group-label">調剤管理料の加算</div>
+              <ul class="hub-list">
+                <li><a href="加算別記載一覧.html#zanyaku">調剤時残薬調整加算</a></li>
+                <li><a href="加算別記載一覧.html#yuugai">薬学的有害事象等防止加算</a></li>
+              </ul>
+            </div>
+            <div>
+              <div class="hub-group-label">服薬管理指導料の加算</div>
+              <ul class="hub-list">
+                <li><a href="加算別記載一覧.html#makan">麻薬管理指導加算</a></li>
+                <li><a href="ハイリスク薬指導.html">特定薬剤管理指導加算1</a></li>
+                <li><a href="加算別記載一覧.html#tokuyaku2">特定薬剤管理指導加算2</a></li>
+                <li><a href="加算別記載一覧.html#tokuyaku3">特定薬剤管理指導加算3</a></li>
+                <li><a href="乳幼児服薬指導加算.html">乳幼児服薬指導加算</a></li>
+                <li><a href="加算別記載一覧.html#shoni">小児特定加算</a></li>
+                <li><a href="加算別記載一覧.html#kyunyu">吸入薬指導加算</a></li>
+                <li><a href="加算別記載一覧.html#fu">かかりつけ薬剤師フォローアップ加算</a></li>
+                <li><a href="加算別記載一覧.html#homon">かかりつけ薬剤師訪問加算</a></li>
+              </ul>
+            </div>
+            <div>
+              <div class="hub-group-label">その他の薬学管理料</div>
+              <ul class="hub-list">
+                <li><a href="加算別記載一覧.html#gairaishien">外来服薬支援料1・2／施設連携加算</a></li>
+                <li><a href="加算別記載一覧.html#chousei">服用薬剤調整支援料</a></li>
+                <li><a href="加算別記載一覧.html#chouzaigo">調剤後薬剤管理指導料</a></li>
+                <li><a href="加算別記載一覧.html#taiin">退院時共同指導料</a></li>
+                <li><a href="加算別記載一覧.html#fukuyaku">服薬情報等提供料</a></li>
+                <li><a href="加算別記載一覧.html#keikan">経管投薬支援料</a></li>
+              </ul>
+            </div>
+            <div>
+              <div class="hub-group-label">在宅・介護</div>
+              <ul class="hub-list">
+                <li><a href="加算別記載一覧.html#zaitaku">在宅患者訪問薬剤管理指導料</a></li>
+                <li><a href="加算別記載一覧.html#zaitaku-kinkyu">在宅患者緊急訪問薬剤管理指導料</a></li>
+                <li><a href="加算別記載一覧.html#zaitaku-kyodo">在宅患者緊急時等共同指導料</a></li>
+                <li><a href="加算別記載一覧.html#zaitaku-kasan">在宅の加算</a></li>
+                <li><a href="加算別記載一覧.html#zaitaku-ikou">在宅移行初期管理料</a></li>
+                <li><a href="加算別記載一覧.html#zaitaku-kaigo">居宅療養管理指導費（介護保険）</a></li>
+                <li><a href="居宅療養管理指導_薬歴の記載事項.html">居宅療養管理指導（原典）</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -114,11 +152,11 @@
       <!-- ── ④ 文例集 ── -->
       <section>
         <div class="section-label">04 文例集</div>
-        <h2 class="section-title">場面別の記載例</h2>
+        <h2 class="section-title">申し送り・評価と指導の文例</h2>
         <div class="hub-card">
           <a href="定型文集.html" class="hub-main">
             <span class="hub-title">定型文集（申し送り・評価と指導）</span>
-            <span class="hub-desc">処方が変わらず、特に指導することが少ない日の申し送りと評価・指導の文例です。電子薬歴の定型文に登録して使えます。</span>
+            <span class="hub-desc">特に指導することが少ない日の申し送りと評価・指導の文例です。電子薬歴の定型文に登録して使えます。</span>
           </a>
           <div class="hub-links">
             <div>
@@ -132,33 +170,12 @@
         </div>
       </section>
 
-      <!-- ── ⑤ 実例解説 ── -->
-      <section>
-        <div class="section-label">05 実例解説</div>
-        <h2 class="section-title">実際の薬歴で確認する</h2>
-        <div class="hub-card">
-          <a href="薬歴の書き方_実例解説集.html" class="hub-main">
-            <span class="hub-title">薬歴の書き方｜実例解説集</span>
-            <span class="hub-desc">実際の事例をもとに、薬歴に何を残すか、集めた情報をどう処方の評価に使うかを解説しています。ルールを読んだあとの確認に使えます。</span>
-          </a>
-        </div>
-      </section>
-
       <section>
         <div class="warn-box">
-          <div class="warn-box-title">通則（5）：定型文の画一的な使用に注意</div>
+          <div class="warn-box-title">記載例は参考例です</div>
           <p>
-            通知では、「定型文を用いて画一的に記載するのではなく、指導等を行った保険薬剤師が必要事項を判断して記載すること」とされています。本マニュアルの記載例は<strong>参考例</strong>です。実際の薬歴では、患者ごとの状況に応じて必要事項を判断し、内容を書き換えてください。<br />
-            <span style="font-size:12px;color:#5e6470;">出典：令和8年3月5日 保医発0305第6号 別添3 ／ 薬学管理料 通則（5）</span>
-          </p>
-        </div>
-      </section>
-
-      <section>
-        <div class="warn-box">
-          <div class="warn-box-title">本資料の取扱いについて</div>
-          <p>
-            本ページは、社内運用と実務整理を目的とした資料です。実際の算定・記載にあたっては、最新の告示・通知・疑義解釈に加え、個別指導での指摘事例も併せて確認してください。
+            通知では、「定型文を用いて画一的に記載するのではなく、指導等を行った保険薬剤師が必要事項を判断して記載すること」とされています。実際の薬歴では、患者ごとの状況に応じて必要事項を判断し、内容を書き換えてください。算定・記載にあたっては、最新の告示・通知・疑義解釈もあわせて確認してください。<br />
+            <span class="src-note">出典：令和8年3月5日 保医発0305第6号 別添3 ／ 薬学管理料 通則（5）</span>
           </p>
         </div>
       </section>

@@ -42,13 +42,17 @@ a { color:var(--blue); }
 
 /* ページ群のナビ：上段＝入口と記録の考え方、下段＝薬効群。OTC類似薬のナビと同じ形 */
 .hr-nav { display:flex; flex-direction:column; gap:6px; }
-.hr-nav .row { display:flex; flex-wrap:wrap; gap:4px; background:#e6ebf1; border-radius:10px; padding:4px; }
-.hr-nav .i { font-size:var(--text-sm); font-weight:700; text-decoration:none; color:var(--ink); padding:6px 14px; border-radius:7px; line-height:1.5; }
-.hr-nav a.i:hover { background:#f4f7fb; color:var(--blue); }
-.hr-nav .i.cur { background:var(--white); color:var(--blue); box-shadow:0 1px 3px rgba(20,40,70,.18); }
+/* 1段目（記載方法・考え方）は文字のリンク。2026-10-13 に共通ヘッダーの「柱」を足したので、灰色の帯の切り替え風の見た目をやめた（どれも選ばれていない帯が薄く見えていた） */
+.hr-nav .row { display:flex; flex-wrap:wrap; gap:4px 18px; align-items:center; }
+.hr-nav .i { font-size:var(--text-sm); font-weight:700; text-decoration:none; color:var(--blue); padding:2px 0; line-height:1.5; }
+.hr-nav a.i:hover { text-decoration:underline; }
+.hr-nav .row:not(.grp) .i::before { content:"›"; margin-right:6px; }
+.hr-nav .i.cur { color:var(--ink); }
+.hr-nav .row:not(.grp) .i.cur { display:none; }
 .hr-nav .row.grp { background:none; padding:0; gap:6px; }
-.hr-nav .row.grp .i { font-size:var(--text-xs); border:var(--bw) solid var(--border-dk); border-radius:999px; padding:3px 12px; background:var(--white); }
-.hr-nav .row.grp .i.cur { background:var(--box-blue); border-color:#bcd3ee; box-shadow:none; }
+.hr-nav .row.grp .i { color:var(--ink); font-size:var(--text-xs); border:var(--bw) solid var(--border-dk); border-radius:999px; padding:3px 12px; background:var(--white); }
+.hr-nav .row.grp .i.cur { background:var(--box-blue); border-color:#bcd3ee; color:var(--blue); box-shadow:none; }
+.hr-nav .row.grp a.i:hover { text-decoration:none; border-color:var(--blue); color:var(--blue); }
 
 /* このページの要点：1行ずつ本文の該当箇所へ飛べる（手本は OTC医薬品の区分と販売ルール.html） */
 .sum .card-title { margin-bottom:6px; }
@@ -121,8 +125,6 @@ td.k small { display:block; font-weight:500; color:var(--txt-3); font-size:var(-
   .sum a.pt { grid-template-columns:minmax(0,1fr) auto; }
   .sum a.pt .v { grid-column:1 / -1; grid-row:2; }
   .kata { grid-template-columns:1fr; }
-  .hr-nav .row:not(.grp) { display:grid; grid-template-columns:1fr 1fr; }
-  .hr-nav .row:not(.grp) .i { text-align:center; padding:6px 8px; }
   th { white-space:normal; }
 }
 @media print {
