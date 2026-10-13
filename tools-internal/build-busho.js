@@ -30,7 +30,7 @@ for (const [dir, ext] of [['.claude/commands', '.md'], ['.claude/agents', '.md']
     const rel = `${dir}/${f}`;
     if (!f.endsWith(ext) || f === '部署.md' || listed.has(rel)) continue;
     // 呼び出し役のコマンド（/通読 → first-reader）は、エージェント側が名簿にあればよい
-    if (['通読.md', '照合.md', '期限点検.md', '厚労省チェック.md', 'タスク.md', '影響調査.md'].includes(f)) continue;
+    if (['通読.md', '照合.md', '期限点検.md', '厚労省チェック.md', 'タスク.md', '影響調査.md', '添文照合.md'].includes(f)) continue;
     const desc = (fs.readFileSync(path.join(ROOT, rel), 'utf8').match(/^description:\s*(.+)$/m) || [])[1] || '';
     unlisted.push({ rel, desc });
   }
