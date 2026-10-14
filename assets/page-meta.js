@@ -65,7 +65,7 @@ window.__pageMeta = {
     "newUntil": "2026-10-11"
   },
   "yakureki/ハイリスク_血液凝固阻止剤.html": {
-    "lastUpdated": "2026-10-14",
+    "lastUpdated": "2026-10-15",
     "newUntil": "2026-10-11"
   },
   "yakureki/居宅療養管理指導_薬歴の記載事項.html": {
@@ -81,14 +81,17 @@ window.__pageMeta = {
     "newUntil": "2026-10-11"
   },
   "yakureki/ハイリスク_抗てんかん薬.html": {
-    "lastUpdated": "2026-10-04"
-  ,"newUntil":"2026-10-22"},
+    "lastUpdated": "2026-10-15",
+    "newUntil": "2026-10-22"
+  },
   "yakureki/ハイリスク_抗精神病薬.html": {
-    "lastUpdated": "2026-10-04"
-  ,"newUntil":"2026-10-22"},
+    "lastUpdated": "2026-10-15",
+    "newUntil": "2026-10-22"
+  },
   "yakureki/ハイリスク_気分安定薬.html": {
-    "lastUpdated": "2026-10-04"
-  ,"newUntil":"2026-10-22"},
+    "lastUpdated": "2026-10-15",
+    "newUntil": "2026-10-22"
+  },
   "yakureki/ハイリスク_糖尿病用剤.html": {
     "lastUpdated": "2026-10-15",
     "newUntil": "2026-10-11"
