@@ -176,6 +176,8 @@ td.k small { display:block; font-weight:500; color:var(--txt-3); font-size:var(-
 .mk-scenes input:focus-visible + span { outline:2px solid #bcd3ee; }
 .mk-p { display:flex; gap:9px; align-items:flex-start; font-size:var(--text-sm); padding:5px 2px; cursor:pointer; line-height:1.7; }
 .mk-p input { margin-top:5px; width:16px; height:16px; flex-shrink:0; accent-color:var(--blue); }
+/* 選んだ薬に関係しない部品はJSが hidden を付ける。display:flex が hidden を打ち消すので明示する */
+.mk-p[hidden], .mk-h[hidden] { display:none; }
 .mk-out { margin-top:14px; background:#f7f9fc; border:1px solid #bcd3ee; border-radius:var(--radius-sm); padding:12px 14px; font-size:var(--text-sm); line-height:1.85; }
 .mk-bar { display:flex; align-items:center; gap:10px; margin-top:8px; }
 .mk-bar button { font:inherit; font-size:var(--text-sm); font-weight:700; color:#fff; background:var(--blue); border:none; border-radius:6px; padding:6px 18px; cursor:pointer; }
