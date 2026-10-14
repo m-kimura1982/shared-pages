@@ -82,13 +82,13 @@ window.__pageMeta = {
   },
   "yakureki/ハイリスク_抗てんかん薬.html": {
     "lastUpdated": "2026-10-04"
-  },
+  ,"newUntil":"2026-10-22"},
   "yakureki/ハイリスク_抗精神病薬.html": {
     "lastUpdated": "2026-10-04"
-  },
+  ,"newUntil":"2026-10-22"},
   "yakureki/ハイリスク_気分安定薬.html": {
     "lastUpdated": "2026-10-04"
-  },
+  ,"newUntil":"2026-10-22"},
   "yakureki/ハイリスク_糖尿病用剤.html": {
     "lastUpdated": "2026-10-15",
     "newUntil": "2026-10-11"

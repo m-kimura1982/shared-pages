@@ -4,1181 +4,458 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex,nofollow,noarchive" />
-    <title>ハイリスク薬｜気分安定薬｜薬歴マニュアル</title>
-    <meta name="search-keywords" content="双極性障害,躁うつ,リチウム,炭酸リチウム,リーマス,バルプロ酸,デパケン,セレニカ,カルバマゼピン,テグレトール,ラモトリギン,ラミクタール,血中濃度,リチウム中毒,TDM" />
-    <meta property="og:title" content="ハイリスク薬の薬歴記載｜気分安定薬" />
-    <meta property="og:description" content="特定薬剤管理指導加算1の薬歴記載例。気分安定薬（リチウム／バルプロ酸／カルバマゼピン／ラモトリギン）について、薬剤ごとに「何を確認し、どう指導し、薬歴にどう残すか」を整理したページ。血中濃度モニタリング・催奇形性・重篤皮疹を中心に整理。" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://m-kimura1982.github.io/shared-pages/yakureki/ハイリスク_気分安定薬.html" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="yakureki.css" />
+    <title>ハイリスク薬 気分安定薬｜薬歴マニュアル</title>
+    <meta name="search-keywords" content="気分安定薬,双極性障害,躁うつ病,躁状態,リーマス,炭酸リチウム,リチウム中毒,デパケン,デパケンR,セレニカR,バレリン,バルプロ酸,テグレトール,カルバマゼピン,ラミクタール,ラモトリギン,血中濃度,発疹,重い皮膚障害,妊娠,増量" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/fold.css" />
-    <style>
-      /* 薬剤群ブロック */
-      .drug-block {
-        background: var(--white);
-        border: 1px solid var(--border);        border-radius: var(--radius-sm);
-        padding:  18px 20px;
-        margin-bottom:  18px;
-      }
-      .drug-block-head {
-        display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
-        margin-bottom: 10px; padding-bottom: 8px;
-        border-bottom: 1px solid var(--border);
-      }
-      .drug-block-name { font-size: 17px; font-weight: 700; color: var(--ink); }
-      .drug-block-sub  { font-size: 12px; color: var(--sub); }
-
-      /* テンプレ直上の注意（重要語のみ赤） */
-      .tpl-warn {
-        background: var(--warn-bg);
-        border-left: 3px solid var(--warn-border);
-        border-radius: 4px;
-        padding: 10px 14px;
-        margin: 12px 0 8px;
-        font-size: 13px;
-        line-height: 1.7;
-        color: var(--ink);
-      }
-      .tpl-warn-title {
-        font-weight: 700; color: var(--ink);
-        font-size: 13px; margin-bottom: 4px;
-      }
-      .tpl-warn ul { margin: 4px 0 0 20px; padding: 0; }
-      .tpl-warn ul li { margin-bottom: 2px; }
-      .tpl-warn strong { color: var(--ink); font-weight: 700; }
-
-      /* 算定要件の警告（オレンジ系） */
-      .caveat-box {
-        background: #fff7e6;
-        border: 1px solid #f5d4a1;
-        border-left: 3px solid #c2701c;
-        border-radius: 4px;
-        padding: 10px 14px;
-        margin: 12px 0;
-        font-size: 12.5px;
-        line-height: 1.7;
-        color: var(--ink);
-      }
-      .caveat-box-title {
-        font-weight: 700; color: #b45309;
-        font-size: 13px; margin-bottom: 4px;
-      }
-
-      /* 短文テンプレ（基本 / 追記） */
-      .tpl-set { margin-top: 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
-      .tpl-mini {
-        display: flex; align-items: flex-start; gap: 10px;
-        background: var(--white); border: none;
-        border-bottom: 1px solid #edf0f4;
-        padding: 11px 14px; margin: 0;
-        position: relative;
-      }
-      .tpl-mini:last-child { border-bottom: none; }
-      .tpl-mini:nth-child(even) { background: #fafbfd; }
-      .tpl-mini .tpl-tag {
-        flex-shrink: 0; font-size: 11px; font-weight: 700;
-        padding: 3px 10px; border-radius: 100px;
-        letter-spacing: .04em; line-height: 1.6;
-        white-space: nowrap;
-      }
-      .tpl-mini .tpl-tag.base   { background: var(--blue-light); color: var(--blue); }
-      .tpl-mini .tpl-tag.init   { background: var(--blue-light); color: var(--blue); }
-      .tpl-mini .tpl-tag.change { background: #e0f2f1; color: #0a6b63; border: none; }
-      .tpl-mini .tpl-tag.add    { background: #f2f4f8; color: #4b5563; border: 1px solid #d7dce3; }
-      .tpl-mini .tpl-tag.se     { background: #fef3e8; color: #b45309; border: 1px solid #f5d4a1; }
-
-      /* 薬剤ブロック内：この薬で確認すること */
-      .drug-check-box {
-        background: #f7f8fa;
-        border: 1px solid #e1e5ea;        border-radius: 4px;
-        padding: 12px 16px;
-        margin: 8px 0 12px;
-      }
-      .drug-check-box-title {
-        font-weight: 700; color: var(--blue);
-        font-size: 12.5px; letter-spacing: .04em;
-        margin-bottom: 4px;
-      }
-      .drug-check-box ul { margin: 0; padding-left: 20px; }
-      .drug-check-box ul li { font-size: 13px; line-height: 1.7; margin-bottom: 2px; }
-
-      /* 折りたたみ式 指導補足 */
-      /* 詳細・背景知識の折りたたみ：見た目は assets/fold.css */
-      .guide-details { margin: 10px 0 14px; }
-      details.guide-details.fold-in > summary { font-size: 13.5px; }
-      .guide-details-body {
-        padding: 12px 18px 14px; font-size: 13.5px; line-height: 1.75;
-      }
-      .guide-details-body h4 {
-        font-size: 13px; font-weight: 700;
-        margin: 8px 0 4px; color: var(--ink);
-      }
-      .guide-details-body p { margin: 4px 0; }
-      .guide-details-body ul { margin: 4px 0; padding-left: 22px; }
-      .guide-details-body ul li { margin-bottom: 2px; }
-      .guide-details-body .patient-say {
-        background: #fff; border-left: 3px solid #c9def5;
-        padding: 6px 10px; margin-top: 6px;
-        font-size: 12.5px; color: var(--sub);
-      }
-      .link-inline { color: var(--blue); font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--blue-light); }
-      .link-inline:hover { background: var(--blue-light); }
-
-      /* 薬剤名索引 */
-      .drug-index {
-        background: #fafbfc;
-        border: 1px solid #e1e5ea;
-        border-radius: 6px;
-        padding: 12px 16px;
-        margin-bottom: 16px;
-      }
-      .drug-index-title {
-        font-size: 12px; font-weight: 700;
-        color: var(--blue);
-        letter-spacing: .04em;
-        margin-bottom: 8px;
-      }
-      .drug-index-row {
-        display: flex; align-items: baseline; gap: 6px;
-        flex-wrap: wrap; margin-bottom: 4px; font-size: 12.5px;
-      }
-      .drug-index-row .di-group {
-        color: var(--sub); font-weight: 700;
-        min-width: 5.5em; flex-shrink: 0;
-      }
-      .drug-index-row a {
-        background: #fff; border: 1px solid #d7dce3;
-        border-radius: 100px; padding: 3px 11px;
-        color: var(--ink); text-decoration: none;
-        white-space: nowrap;
-      }
-      .drug-index-row a:hover {
-        background: var(--blue); color: #fff; border-color: var(--blue);
-      }
-
-      .tag-legend {
-        display: flex; flex-wrap: wrap; gap: 10px;
-        margin: 8px 0 16px; font-size: 12px; color: var(--sub);
-      }
-      .tag-legend span { display: inline-flex; align-items: center; gap: 4px; }
-      .tag-legend i {
-        display: inline-block; width: 10px; height: 10px; border-radius: 2px;
-      }
-      .tpl-mini .tpl-text {
-        flex: 1; font-size: 13.5px; line-height: 1.7;
-        padding-right: 56px; white-space: pre-wrap;
-      }
-      .tpl-mini .copy-mini {
-        position: absolute; top: 10px; right: 10px;
-        background: #f3f4f6; color: #374151; border: 1px solid #d1d5db;
-        border-radius: 4px; font-size: 11px; font-weight: 700;
-        padding: 4px 10px; cursor: pointer;
-        font-family: "Noto Sans JP", sans-serif;
-      }
-      .tpl-mini .copy-mini:hover { background: #e5e7eb; border-color: #9ca3af; }
-      .tpl-mini .copy-mini.copied { background: var(--good-border); color: #fff; border-color: var(--good-border); }
-
-      /* モバイル：tpl-mini を縦積みにする */
-      @media (max-width: 640px) {
-        .tpl-mini {
-          flex-direction: column;
-          align-items: stretch;
-          gap: 6px;
-          padding-bottom: 36px;
-        }
-        .tpl-mini .tpl-tag {
-          align-self: flex-start;
-          max-width: 100%;
-          white-space: normal;
-        }
-        .tpl-mini .tpl-text { padding-right: 0; }
-        .tpl-mini .copy-mini { top: auto; bottom: 6px; right: 8px; }
-      }
-
-      .warn-box ul { padding-left: 22px; margin-top: 4px; }
-      .warn-box ul li { margin-bottom: 4px; line-height: 1.7; }
-
-      /* SECTION 1 確認事項 - 簡潔dl */
-      .ci-list dt {
-        font-size: 14px; font-weight: 700; color: var(--ink);
-        background: #f2f4f8; padding: 8px 14px; border-radius: 4px;
-        margin-top: 10px;
-      }
-      .ci-list dd {
-        padding: 6px 14px 6px 14px; font-size: 13px; line-height: 1.75;
-      }
-      .ci-list dd .ci-l { display: inline-block; min-width: 4.5em; font-weight: 700; color: var(--blue); }
-
-      /* ===== サイドスティッキー目次（PC 880px+） ===== */
-      [id] { scroll-margin-top:calc(var(--sn-header-h, 0px) + 16px); }
-      .sticky-toc { display: none; }
-
-      /* ===== スマホ用インライン目次（880px未満のみ表示） ===== */
-      .toc-inline { margin: 0 0 18px; }
-      .toc-inline .toc-links { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 14px 14px; }
-      .toc-inline .toc-links a { font-size: 12px; background: var(--blue-light); color: var(--blue); border-radius: 4px; padding: 2px 9px; text-decoration: none; }
-      @media (min-width: 880px) { .toc-inline { display: none; } }
-
-      @media (min-width: 880px) {
-        .layout-outer {
-          max-width: 1240px;
-          margin: 0 auto;
-          padding: 28px 20px 0;
-          display: grid;
-          grid-template-columns: 220px minmax(0, 1fr);
-          gap: 28px;
-          align-items: start;
-        }
-        .layout-outer .page-head { max-width: none; margin: 0 0 16px; padding: 0; }
-        .layout-outer main { max-width: none; margin: 0; padding: 0; }
-
-        .sticky-toc {
-          display: block;
-          position: sticky;
-          top: calc(var(--sn-header-h, 0px) + 20px);
-          background: var(--white);
-          border: 1px solid var(--border);
-          border-radius: var(--radius-sm);
-          padding: 12px 8px 14px;
-          max-height: calc(100vh - var(--sn-header-h, 0px) - 40px);
-          overflow-y: auto;
-          scrollbar-width: thin;
-          scrollbar-color: var(--border) transparent;
-        }
-        .sticky-toc::-webkit-scrollbar { width: 4px; }
-        .sticky-toc::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-
-        .sticky-toc-head {
-          padding: 0 8px 8px;
-          margin-bottom: 6px;
-          border-bottom: 1px solid var(--border);
-        }
-        .sticky-toc-label {
-          display: block;
-          font-size: 11px;
-          font-weight: 700;
-          color: var(--blue);
-          letter-spacing: 0.12em;
-        }
-        .sticky-toc-group {
-          font-size: 10px;
-          font-weight: 700;
-          color: var(--sub);
-          letter-spacing: 0.08em;
-          padding: 10px 10px 4px;
-          margin-top: 4px;
-        }
-        .sticky-toc a {
-          display: block;
-          font-size: 13px;
-          color: var(--ink);
-          text-decoration: none;
-          padding: 5px 10px;
-          border-radius: 4px;
-          line-height: 1.45;
-          border-left: 3px solid transparent;
-          margin-bottom: 1px;
-          transition: background 0.12s, color 0.12s, border-color 0.12s;
-        }
-        .sticky-toc a:hover {
-          background: var(--blue-light);
-          color: var(--blue);
-        }
-        .sticky-toc a.is-active {
-          background: var(--blue-light);
-          color: var(--blue);
-          font-weight: 700;
-          border-left-color: var(--blue);
-        }
-      }
-      @media print {
-        .sticky-toc { display: none !important; }
-        .layout-outer { display: block !important; padding: 0; }
-      }
-
-    </style>
+    <link rel="stylesheet" href="hairisk.css" />
   </head>
   <body>
-  <script src="../assets/site-header.js" defer></script>
+    <script src="../assets/site-header.js" defer></script>
 
+    <div class="page">
 
-    <div class="layout-outer">
-
-    <nav class="sticky-toc" aria-label="目次">
-      <div class="sticky-toc-head">
-        <span class="sticky-toc-label">CONTENTS</span>
+      <div class="page-title">
+        <h1>気分安定薬</h1>
+        <p>てんかんで使うときは<a href="ハイリスク_抗てんかん薬.html">抗てんかん薬のページ</a>。</p>
       </div>
-      <a href="#guide">このページの使い方</a>
-      <div class="sticky-toc-group">▼ まず確認</div>
-      <a href="#lowline">算定時の記載ポイント</a>
-      <a href="#sec-checklist">簡易チェックリスト</a>
-      <a href="#drug-search">薬剤名から探す</a>
-      <div class="sticky-toc-group">▼ 薬剤別</div>
-      <a href="#common-se">共通の副作用説明（皮膚障害）</a>
-      <a href="#lithium">リチウム</a>
-      <a href="#vpa">バルプロ酸</a>
-      <a href="#cbz">カルバマゼピン</a>
-      <a href="#ltg">ラモトリギン</a>
-      <div class="sticky-toc-group">▼ 必要時</div>
-      <a href="#section3">副作用・服薬状況等の変化によるロ</a>
-      <div class="sticky-toc-group">▼ 参考</div>
-      <a href="#section1">共通確認ポイント</a>
-      <a href="#kobetsu">個別指導</a>
-      <div class="sticky-toc-group">▼ 他の薬効群</div>
-      <a href="ハイリスク_抗うつ薬.html">抗うつ薬</a>
-      <a href="ハイリスク_抗精神病薬.html">抗精神病薬</a>
-      <a href="ハイリスク_抗てんかん薬.html">抗てんかん薬</a>
-      <a href="ハイリスク_血液凝固阻止剤.html">血液凝固阻止剤</a>
-      <a href="ハイリスク_糖尿病用剤.html">糖尿病用剤</a>
-      <a href="ハイリスク_膵臓ホルモン剤.html">インスリン製剤</a>
-    </nav>
 
-    <div>
+      <nav class="hr-nav" aria-label="ハイリスク薬のページ">
+        <div class="row">
+          <a class="i" href="ハイリスク薬指導.html">記載方法（入口）</a>
+          <a class="i" href="ハイリスク_薬歴の書き方.html">記載の考え方</a>
+        </div>
+        <div class="row grp">
+          <a class="i" href="ハイリスク_血液凝固阻止剤.html">血液凝固阻止剤</a>
+          <a class="i" href="ハイリスク_糖尿病用剤.html">糖尿病用剤</a>
+          <a class="i" href="ハイリスク_膵臓ホルモン剤.html">インスリン製剤</a>
+          <a class="i" href="ハイリスク_抗精神病薬.html">抗精神病薬</a>
+          <a class="i" href="ハイリスク_抗うつ薬.html">抗うつ薬</a>
+          <span class="i cur" aria-current="page">気分安定薬</span>
+          <a class="i" href="ハイリスク_抗てんかん薬.html">抗てんかん薬</a>
+        </div>
+      </nav>
 
-    <div class="page-head">
-      <span class="page-tag">HIGH-RISK 08-3</span>
-      <h1 class="page-title">気分安定薬</h1>
-      <p class="page-desc">
-        <strong>気分安定薬</strong>（リチウム／バルプロ酸／カルバマゼピン／ラモトリギン）の特定薬剤管理指導加算1の薬歴記載例。新規（イ）・用法用量変更（ロ）に加え、副作用・服薬状況等の変化によるロも扱う。<br />
-        主に<strong>双極性障害・躁状態</strong>での使用を想定（てんかん目的は「抗てんかん薬」ページ／いずれの目的でも加算1の対象）。
-      </p>
+      <div class="card" id="point">
+        <div class="card-title">この薬効群で記載すること</div>
+        <dl class="pt-list">
+          <div><dt>処方目的</dt><dd>新たに処方されたときは、処方目的と医師から受けた説明（バルプロ酸の片頭痛、テグレトールの三叉神経痛は算定対象にならない）</dd></div>
+          <div><dt>リーマス</dt><dd>中毒の初期症状と、起きやすい場面（食事・水分がとれない、発熱・下痢、痛み止め）を本人と家族に伝えたこと</dd></div>
+          <div><dt>ラミクタール</dt><dd>発疹が出たらすぐに受診することを本人と家族に伝えたこと（警告で求められている）</dd></div>
+          <div><dt>血液検査</dt><dd>血中濃度などの血液検査を受けていること</dd></div>
+          <div><dt>運転・中止</dt><dd>運転しないこと、気分が安定しても自己判断で中止しないこと</dd></div>
+        </dl>
+        <div class="grp-chips" style="margin-top:14px;">
+          <a href="#common">運転・<wbr>血液検査・<wbr>妊娠</a>
+          <a href="#lithium">リーマス<small>炭酸リチウム</small></a>
+          <a href="#vpa">バルプロ酸<small>デパケン・<wbr>セレニカR</small></a>
+          <a href="#cbz">テグレトール</a>
+          <a href="#ltg">ラミクタール</a>
+        </div>
+        <p class="note-xs" style="margin-top:14px;">各カードの「背景知識」には、確認や指導の根拠（電子添文など）をまとめている。算定対象になるかどうかは、<a href="#target">ページ下の「この薬効群の算定対象」</a>で確認する。</p>
+      </div>
+
+      <!-- ===== 共通 ===== -->
+      <div class="card" id="common">
+        <div class="card-title">気分安定薬に共通する注意点<span class="qual">運転・血液検査・妊娠</span></div>
+        <div class="stack">
+          <div>
+            <div class="sub-title">運転</div>
+            <div class="blist">
+              <div class="bullet"><span>・</span><span>躁病・双極性障害で使うときは、どの薬も<span class="marker">運転などをさせない</span>と電子添文に記載されている。</span></div>
+              <div class="bullet"><span>・</span><span>バルプロ酸・テグレトール・ラミクタールをてんかんで使うときは書き方が違い、医師が運転の可否を判断する。同じ薬でも処方目的で指導が変わる。</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="sub-title">血液検査</div>
+            <div class="blist">
+              <div class="bullet"><span>・</span><span>リーマス・バルプロ酸・テグレトールは、血中濃度や肝機能・血液の検査をしながら使う。薬局では値の良し悪しを判断するより、検査を受けているか、結果を医師から聞いているかを確認する。</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="sub-title">妊娠</div>
+            <div class="blist">
+              <div class="bullet"><span>・</span><span>リーマス・バルプロ酸は、妊娠する可能性のある女性に使う前に催奇形性を十分に説明するよう電子添文に記載されている。妊娠が分かったときに自己判断で中止すると再発のおそれがあるので、主治医に相談するよう伝える。</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== リチウム ===== -->
+      <div class="card" id="lithium">
+        <div class="card-title">リーマス<span class="qual">炭酸リチウム</span></div>
+        <div class="drugs">リーマス・炭酸リチウム</div>
+
+        <div class="tpl-sec">確認する項目</div>
+        <div class="kakunin">
+          <div class="check"><span>✓</span><span>処方目的と医師から受けた説明</span></div>
+          <div class="check"><span>✓</span><span>血液検査を受けているか</span></div>
+          <div class="check"><span>✓</span><span>食欲がない・吐き気・下痢・手のふるえ・強い眠気など、中毒の初期症状</span></div>
+          <div class="check"><span>✓</span><span><span class="marker">痛み止め（NSAIDs）・利尿薬・降圧薬（ACE阻害薬・ARB）</span>の追加。血中濃度が上がる</span></div>
+          <div class="check"><span>✓</span><span>食事や水分がとれているか、発熱・下痢がないか</span></div>
+        </div>
+
+        <div class="tpl-sec">記載例をつくる</div>
+        <div class="mk" data-drug="リーマス" data-purpose="躁病および躁うつ病の躁状態">
+          <div class="mk-h">場面</div>
+          <div class="mk-scenes">
+            <label><input type="radio" name="l" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
+            <label><input type="radio" name="l" value="up" data-text="{薬}：〇mgから〇mgに増量。増量の理由は〇〇と本人より。"><span><b>ロ</b>増量</span></label>
+            <label><input type="radio" name="l" value="nsaid" data-text="{薬}：〇〇の痛みで他院から〇〇（痛み止め）が処方されたと本人より。リチウムの血中濃度が上がることがあり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>痛み止めが出た</span></label>
+            <label><input type="radio" name="l" value="sick" data-text="{薬}：〇日前から発熱と下痢があり、食事や水分が十分にとれていないと本人より。リチウム中毒が起きやすい状態のため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>発熱・下痢</span></label>
+          </div>
+          <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <label class="mk-p"><input type="checkbox" data-on="up nsaid"><span>吐き気・手のふるえ・強い眠気などの症状なし。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="up"><span>〇月に血液検査を受けたと本人より。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>直近の血中濃度は〇〇。</span></label>
+          <div class="mk-h">指導</div>
+          <label class="mk-p"><input type="checkbox" data-on="i up nsaid sick"><span>食欲がない、吐き気、下痢、手のふるえ、強い眠気、ふらつきなどが出た場合は、中毒の初期症状のことがあるため、すぐに受診するよう本人と家族に説明。</span><span class="mk-tag">リチウム中毒</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>食事・水分がとれないとき、発熱・下痢・多汗時は中毒が起きやすいため主治医に連絡し、痛み止めなど他剤の使用時は事前に相談するよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>血中濃度で用量を調整する薬のため、定期的に血液検査を受けるよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>気分が安定しても再発予防のため、自己判断で中止しないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>めまい・眠気が出ることがあるため、車の運転はしないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="nsaid"><span>痛み止めの処方医に、リーマス服用中であることを伝えるよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="nsaid"><span>痛み止めの併用について処方医に情報提供した。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="sick"><span>水分を十分にとり、食事・水分がとれない状態が続く場合は次回受診を待たずに主治医に連絡するよう指導。</span></label>
+          <div class="mk-h">妊娠する可能性のある女性のとき<span class="mk-sub">該当するときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox"><span>妊娠を希望する場合や妊娠が分かった場合は、自己判断で中止せず主治医に相談するよう指導。</span></label>
+          <div class="mk-h">重篤な副作用<span class="mk-sub">説明したときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox"><span>のどの渇き・多飲・多尿がある場合は主治医に相談するよう指導。</span><span class="mk-tag">腎性尿崩症</span></label>
+          <label class="mk-p"><input type="checkbox"><span>脈が遅い、めまい、気を失うなどが出た場合はすぐに受診するよう指導。</span><span class="mk-tag">洞不全症候群・徐脈</span></label>
+          <label class="mk-p"><input type="checkbox"><span>だるさ、むくみ、寒がりになるなどが続く場合は主治医に相談するよう指導。</span><span class="mk-tag">甲状腺機能低下症</span></label>
+          <div class="mk-out"></div>
+          <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
+        </div>
+
+        <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>効く量と中毒の量が近い。食事や水分が足りないとき、脱水になりやすいとき、痛み止め（NSAIDs）などを併用するときに中毒が起こりうることを本人と家族に十分に説明し、初期症状が出たら受診するよう指導することが電子添文で求められている。</span></div>
+            <div class="bullet"><span>・</span><span>血中濃度は、飲み始めと増量のときは維持量が決まるまで週1回、維持量では2〜3か月に1回が目安（電子添文）。中毒の初期症状や、血中濃度が上がる要因があるときも測る。</span></div>
+            <div class="bullet"><span>・</span><span>禁忌：てんかんなどの脳波異常、重い心臓病、腎障害、衰弱・脱水、発熱・発汗・下痢を伴う病気、食塩制限中。</span></div>
+            <div class="bullet"><span>・</span><span>腎機能・甲状腺機能・血清カルシウムの検査も行う。</span></div>
+          </div>
+        </div></details>
+      </div>
+
+      <!-- ===== バルプロ酸 ===== -->
+      <div class="card" id="vpa">
+        <div class="card-title">バルプロ酸</div>
+        <div class="drugs">デパケン・デパケンR／セレニカR／バレリン（バルプロ酸ナトリウム）</div>
+        <p class="note">てんかんで使うときは<a href="ハイリスク_抗てんかん薬.html#vpa">抗てんかん薬のページの同じ薬</a>を使う（運転の指導が違う）。</p>
+
+        <div class="tpl-sec">確認する項目</div>
+        <div class="kakunin">
+          <div class="check"><span>✓</span><span>処方目的。<span class="marker">片頭痛の予防で処方されているときは算定対象にならない</span></span></div>
+          <div class="check"><span>✓</span><span>肝機能・血液の検査を受けているか（肝障害は飲み始めの6か月に多い）</span></div>
+          <div class="check"><span>✓</span><span>妊娠の可能性</span></div>
+          <div class="check"><span>✓</span><span>カルバペネム系の抗菌薬（併用禁忌）</span></div>
+        </div>
+
+        <div class="tpl-sec">記載例をつくる</div>
+        <div class="mk" data-purpose="躁病および躁うつ病の躁状態の治療">
+          <div class="mk-h">薬剤</div>
+          <div class="mk-scenes mk-drug">
+            <label><input type="radio" name="vd" value="デパケンR" checked><span>デパケンR</span></label>
+            <label><input type="radio" name="vd" value="デパケン"><span>デパケン</span></label>
+            <label><input type="radio" name="vd" value="セレニカR"><span>セレニカR</span></label>
+            <label><input type="radio" name="vd" value="〇〇"><span>その他</span></label>
+          </div>
+          <div class="mk-h">場面</div>
+          <div class="mk-scenes">
+            <label><input type="radio" name="v" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
+            <label><input type="radio" name="v" value="up" data-text="{薬}：〇mgから〇mgに増量。増量の理由は〇〇と本人より。"><span><b>ロ</b>増量</span></label>
+            <label><input type="radio" name="v" value="liv" data-text="{薬}：〇日前からだるさと吐き気が続くと本人より。肝障害や高アンモニア血症の初期症状のことがあり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>だるさ・吐き気が続く</span></label>
+          </div>
+          <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <label class="mk-p"><input type="checkbox" data-on="up"><span>だるさ・吐き気・眠気などの症状なし。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="up"><span>〇月に血液検査を受けたと本人より。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="liv"><span>皮膚や白目の黄色み、ぼーっとするなどの症状は〇〇。</span></label>
+          <div class="mk-h">指導</div>
+          <label class="mk-p"><input type="checkbox" data-on="up"><span>増量に伴う眠気・だるさ・吐き気に注意し、続く場合は主治医に相談するよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>気分が安定しても再発予防のため、自己判断で中止しないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>眠気・注意力の低下が起こることがあるため、運転しないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>肝機能や血中濃度の確認のため、定期的に血液検査を受けるよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>カルバペネム系抗菌薬と併用禁忌のため、他院受診時は服用中であることを伝えるよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="デパケンR|セレニカR"><span>徐放性製剤のため、噛み砕かずに服用するよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="liv"><span>次回受診を待たずに、すぐに受診するよう指導。</span></label>
+          <div class="mk-h">妊娠する可能性のある女性のとき<span class="mk-sub">該当するときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox"><span>妊娠を希望する場合や妊娠が分かった場合は、自己判断で中止せず主治医に相談するよう指導。</span></label>
+          <div class="mk-h">重篤な副作用<span class="mk-sub">説明したときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox"><span>強いだるさ、食欲がない、吐き気、皮膚や白目が黄色くなるなどが出た場合はすぐに受診するよう指導。</span><span class="mk-tag">肝障害</span></label>
+          <label class="mk-p"><input type="checkbox"><span>ぼーっとする、意識がはっきりしない、吐き気が続くなどが出た場合はすぐに受診するよう本人と家族に説明。</span><span class="mk-tag">高アンモニア血症</span></label>
+          <label class="mk-p"><input type="checkbox"><span>激しい腹痛・吐き気が続く場合はすぐに受診するよう指導。</span><span class="mk-tag">急性膵炎</span></label>
+          <label class="mk-p"><input type="checkbox"><span>あざができやすい、鼻血や歯ぐきの出血が止まりにくい場合は主治医に相談するよう指導。</span><span class="mk-tag">血小板減少</span></label>
+          <div class="mk-out"></div>
+          <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
+        </div>
+
+        <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>効能は、てんかん、躁病・躁うつ病の躁状態、片頭痛発作の発症抑制。片頭痛の予防で処方されているときは算定対象にならない。片頭痛の予防目的では妊婦に禁忌。</span></div>
+            <div class="bullet"><span>・</span><span>禁忌：重い肝障害、カルバペネム系抗菌薬（メロペネムなど）を使用中、尿素サイクル異常症。カルバペネム系と併用するとバルプロ酸の血中濃度が下がる。</span></div>
+            <div class="bullet"><span>・</span><span>重い肝障害は飲み始めの6か月以内に多く、その間は定期的に肝機能検査を行うよう電子添文に記載されている。</span></div>
+            <div class="bullet"><span>・</span><span>製剤を切り替えると血中濃度が変わることがある（電子添文）。デパケンとデパケンR、セレニカRの間の変更は記載しておく。</span></div>
+          </div>
+        </div></details>
+      </div>
+
+      <!-- ===== カルバマゼピン ===== -->
+      <div class="card" id="cbz">
+        <div class="card-title">テグレトール<span class="qual">カルバマゼピン</span></div>
+        <div class="drugs">テグレトール（カルバマゼピン）</div>
+        <p class="note">てんかんで使うときは<a href="ハイリスク_抗てんかん薬.html#cbz">抗てんかん薬のページの同じ薬</a>を使う（運転の指導が違う）。</p>
+
+        <div class="tpl-sec">確認する項目</div>
+        <div class="kakunin">
+          <div class="check"><span>✓</span><span>処方目的。<span class="marker">三叉神経痛で処方されているときは算定対象にならない</span></span></div>
+          <div class="check"><span>✓</span><span>発疹・発熱（飲み始めの3か月に多い）</span></div>
+          <div class="check"><span>✓</span><span>眠気・めまい・ふらつき・物が二重に見える（血中濃度が高すぎるサインのことがある）</span></div>
+          <div class="check"><span>✓</span><span>併用薬。併用禁忌が多く、他の薬の効き目を弱めることもある</span></div>
+        </div>
+
+        <div class="tpl-sec">記載例をつくる</div>
+        <div class="mk" data-drug="テグレトール" data-purpose="躁病、躁うつ病の躁状態|統合失調症の興奮状態">
+          <div class="mk-h">場面</div>
+          <div class="mk-scenes">
+            <label><input type="radio" name="c" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
+            <label><input type="radio" name="c" value="up" data-text="{薬}：〇mgから〇mgに増量。増量の理由は〇〇と本人より。"><span><b>ロ</b>増量</span></label>
+            <label><input type="radio" name="c" value="rash" data-text="{薬}：飲み始めて〇週ごろから体に発疹が出たと本人より。重い皮膚障害の初期のことがあり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>発疹が出た</span></label>
+          </div>
+          <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <label class="mk-p"><input type="checkbox" data-on="up"><span>発疹・発熱なし。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="up"><span>眠気・めまい・物が二重に見えるなどの症状なし。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="rash"><span>発熱・目の充血・口の中のただれなし。</span></label>
+          <div class="mk-h">指導</div>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>発疹、特に発熱・目の充血・口の中のただれを伴う場合は、すぐに受診するよう指導。</span><span class="mk-tag">重い皮膚障害</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>眠気・めまい・ふらつき・物が二重に見えるなどは血中濃度が高すぎるサインのことがあるため、症状がある場合は主治医に相談するよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>眠気・注意力の低下が起こることがあるため、運転しないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>併用禁忌・相互作用が多いため、他院受診時は服用中であることを伝えるよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>気分が安定しても、自己判断で中止しないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>グレープフルーツジュースは薬の作用を強めるため、控えるよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="rash"><span>次回受診を待たずに、すぐに受診するよう指導。</span></label>
+          <div class="mk-h">重篤な副作用<span class="mk-sub">説明したときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox"><span>急な発熱、のどの痛み、あざができやすい、出血が止まりにくいなどが出た場合はすぐに受診するよう指導。</span><span class="mk-tag">血液障害</span></label>
+          <label class="mk-p"><input type="checkbox"><span>強いだるさ、皮膚や白目が黄色くなるなどの症状が出た場合はすぐに受診するよう指導。</span><span class="mk-tag">肝機能障害</span></label>
+          <div class="mk-out"></div>
+          <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
+        </div>
+
+        <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>効能は、てんかん、躁病・躁うつ病の躁状態、統合失調症の興奮状態、三叉神経痛。三叉神経痛で処方されているときは算定対象にならない。統合失調症の興奮状態には、抗精神病薬で十分な効果がないときに使う。</span></div>
+            <div class="bullet"><span>・</span><span>併用禁忌が多い：ボリコナゾール、タダラフィル（アドシルカ）、チカグレロル（ブリリンタ）、新型コロナの飲み薬（パキロビッド・ゾコーバ）、多くの抗HIV薬など。また他の薬の代謝を早め、効き目を弱めることがある。</span></div>
+            <div class="bullet"><span>・</span><span>重大な副作用に、中毒性表皮壊死融解症・皮膚粘膜眼症候群・薬剤性過敏症症候群などの重い皮膚障害、再生不良性貧血・無顆粒球症などの血液障害がある。定期的に肝・腎機能・血液検査を行うことが望ましいとされている。</span></div>
+          </div>
+        </div></details>
+      </div>
+
+      <!-- ===== ラモトリギン ===== -->
+      <div class="card" id="ltg">
+        <div class="card-title">ラミクタール<span class="qual">ラモトリギン</span></div>
+        <div class="drugs">ラミクタール（ラモトリギン）</div>
+        <p class="note">てんかんで使うときは<a href="ハイリスク_抗てんかん薬.html#ltg">抗てんかん薬のページの同じ薬</a>を使う（運転の指導が違う）。</p>
+
+        <div class="tpl-sec">確認する項目</div>
+        <div class="kakunin">
+          <div class="check"><span>✓</span><span>処方目的と医師から受けた説明</span></div>
+          <div class="check"><span>✓</span><span><span class="marker">用量が決められた増やし方を超えていないか</span>（バルプロ酸を併用しているかで増やし方が違う）</span></div>
+          <div class="check"><span>✓</span><span>発疹・発熱（飲み始めの8週間に多い）</span></div>
+          <div class="check"><span>✓</span><span>飲み忘れが続いていないか</span></div>
+        </div>
+
+        <div class="tpl-sec">増やし方（双極性障害・成人、電子添文）</div>
+        <div class="tbl-wrap">
+          <table class="dose">
+            <thead><tr><th>時期</th><th>単剤</th><th>バルプロ酸<wbr>を併用</th><th>誘導する薬<wbr>を併用</th></tr></thead>
+            <tbody>
+              <tr><td class="k">1・2週目</td><td>1日25mg</td><td>25mgを<wbr>1日おき</td><td>1日50mg</td></tr>
+              <tr><td class="k">3・4週目</td><td>1日50mg</td><td>1日25mg</td><td>1日100mg</td></tr>
+              <tr><td class="k">5週目</td><td>1日100mg</td><td>1日50mg</td><td>1日200mg</td></tr>
+              <tr><td class="k">6週目<wbr>以降</td><td>1日200mg<wbr>（維持量）</td><td>1日100mg<wbr>（維持量）</td><td>6週目に<wbr>1日300mg、<wbr>7週目以降<wbr>1日300〜400mg<wbr>（維持量）</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note-xs" style="margin-top:6px;">誘導する薬（グルクロン酸抱合を誘導する薬）：テグレトール・アレビアチン・フェノバール・プリミドン・リファンピシン・経口避妊薬など。バルプロ酸も誘導する薬も併用しないとき（リーマス・ジプレキサ・エビリファイなど）は単剤と同じ。影響が分からない薬を併用するときはバルプロ酸を併用するときに従う。</p>
+
+        <div class="tpl-sec">記載例をつくる</div>
+        <div class="mk" data-drug="ラミクタール" data-purpose="双極性障害における気分エピソードの再発・再燃抑制">
+          <div class="mk-h">場面</div>
+          <div class="mk-scenes">
+            <label><input type="radio" name="t" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
+            <label><input type="radio" name="t" value="up" data-text="{薬}：〇mgから〇mgに増量。飲み始めからの決められた増量と本人より。"><span><b>ロ</b>増量</span></label>
+            <label><input type="radio" name="t" value="rash" data-text="{薬}：〇日前から体に発疹が出たと本人より。重い皮膚障害の初期のことがあり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>発疹が出た</span></label>
+          </div>
+          <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>用量は、併用薬に応じた増量の範囲内。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>バルプロ酸（〇〇）を併用中。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="up"><span>発疹・発熱なし。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="rash"><span>発熱・目の充血・口の中のただれなし。</span></label>
+          <div class="mk-h">指導</div>
+          <label class="mk-p"><input type="checkbox" data-on="i up rash"><span>発疹、特に発熱・目の充血・唇や口の中のただれ・のどの痛みを伴う場合は、すぐに受診するよう本人と家族に指導。服用開始8週間以内に多いと説明。</span><span class="mk-tag">重い皮膚障害</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>決められた順序で増量する薬のため、指示された用量を守るよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>数日以上飲み忘れた場合は、自己判断で元の用量から再開せず、主治医に相談するよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>イライラ・気分の高ぶり・衝動的な行動など、いつもと違う変化に気づいたら、すぐに主治医に連絡するよう、本人と家族に指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>眠気・注意力の低下が起こることがあるため、運転しないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>気分が安定しても再発予防のため、自己判断で中止しないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="rash"><span>次回受診を待たずに、すぐに受診するよう指導。</span></label>
+          <div class="mk-h">重篤な副作用<span class="mk-sub">説明したときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox"><span>強いだるさ、皮膚や白目が黄色くなるなどの症状が出た場合はすぐに受診するよう指導。</span><span class="mk-tag">肝機能障害</span></label>
+          <label class="mk-p"><input type="checkbox"><span>発熱、頭痛、吐き気、首の後ろが硬くなるなどが出た場合はすぐに受診するよう指導。</span><span class="mk-tag">無菌性髄膜炎</span></label>
+          <div class="mk-out"></div>
+          <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
+        </div>
+
+        <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>警告に重い皮膚障害がある。決められた量を超えて使うと発疹が増えるため、飲み始めの量と増やす時期を守る。発疹や発熱などが出たときは直ちに受診するよう、本人または家族に指導することが警告で求められている。</span></div>
+            <div class="bullet"><span>・</span><span>重い皮膚障害は、飲み始めの8週間以内とバルプロ酸との併用で多い。</span></div>
+            <div class="bullet"><span>・</span><span>中止したあとに再び飲むときは、理由を問わず維持用量より低い量から増やす。中止から半減期の5倍の期間（併用薬により約3〜15日）を過ぎているときは、初回の量からやり直すことが推奨されている。発疹で中止したときは、原則として再び飲まない。飲み忘れが続いた人が元の量で再開しないよう伝えるのはこのため。</span></div>
+            <div class="bullet"><span>・</span><span>双極性障害では、気分エピソードの再発・再燃を抑えるために使う。急性期の治療での有効性は確立していない。</span></div>
+            <div class="bullet"><span>・</span><span>家族に行動の変化や症状の悪化のリスクを説明し、医師と連絡を取り合うよう指導することも電子添文で求められている。本人や家族には「自殺」という言葉を使わず、「衝動的な行動」「いつもと違う変化」といった表現で伝える。</span></div>
+          </div>
+        </div></details>
+      </div>
+
+      <div class="card" id="target">
+        <div class="card-title">この薬効群の算定対象</div>
+        <div class="stack">
+          <p class="note">精神神経用剤または抗てんかん剤として、躁病・双極性障害やてんかんの治療に使うときが算定対象になる。算定対象になるかは、処方目的がこの薬効群の治療に該当するかで判断する。バルプロ酸の片頭痛の予防、テグレトールの三叉神経痛は算定対象にならない。</p>
+          <p class="note">算定要件は<a href="../加算まとめ/特定薬剤管理指導加算1.html">特定薬剤管理指導加算1のページ</a>。処方目的で算定対象を判断する根拠は、<a href="../加算まとめ/特定薬剤管理指導加算1.html#taisho-gigi">同じページの過去の疑義解釈</a>（平成22年・平成24年）。</p>
+          <div class="src">
+            <div>令和8年3月5日 保医発0305第6号 別添3「調剤報酬点数表に関する事項」特定薬剤管理指導加算1</div>
+            <div><a href="https://www.nichiyaku.or.jp/yakuzaishi/pharmacy-info/other/guideline01" target="_blank" rel="noopener">日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2.1版・令和8年6月）」</a></div>
+            <div>各薬剤の電子添文・患者向医薬品ガイド</div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <main>
-      <div class="tpl-toggle" role="tablist" aria-label="表示切替">
-        <button type="button" data-mode="all" class="active">解説＋テンプレ</button>
-        <button type="button" data-mode="tpl">テンプレのみ</button>
-      </div>
-      <details class="toc-inline fold-in">
-        <summary>目次</summary>
-        <div class="toc-links">
-          <a href="#guide">このページの使い方</a>
-          <a href="#lowline">算定時の記載ポイント</a>
-          <a href="#sec-checklist">簡易チェックリスト</a>
-          <a href="#drug-search">薬剤名から探す</a>
-          <a href="#common-se">共通の副作用説明</a>
-          <a href="#lithium">リチウム</a>
-          <a href="#vpa">バルプロ酸</a>
-          <a href="#cbz">カルバマゼピン</a>
-          <a href="#ltg">ラモトリギン</a>
-          <a href="#section3">副作用・服薬状況等の変化によるロ</a>
-          <a href="#section1">共通確認ポイント</a>
-          <a href="#kobetsu">個別指導</a>
-          <a href="ハイリスク_抗うつ薬.html">→ 抗うつ薬</a>
-          <a href="ハイリスク_抗精神病薬.html">→ 抗精神病薬</a>
-          <a href="ハイリスク_抗てんかん薬.html">→ 抗てんかん薬</a>
-          <a href="ハイリスク_血液凝固阻止剤.html">→ 血液凝固阻止剤</a>
-          <a href="ハイリスク_糖尿病用剤.html">→ 糖尿病用剤</a>
-          <a href="ハイリスク_膵臓ホルモン剤.html">→ インスリン製剤</a>
-        </div>
-      </details>
-
-      <!-- ============================================================
-           § まず見るところ（導線3カード／最低ライン／チェックリスト／薬剤名から探す）
-           ============================================================ -->
-      <!-- § このページの使い方（導線3カード） -->
-      <section id="guide" style="margin-bottom:24px;">
-        <div class="section-label">このページの使い方</div>
-        <div class="guide-cards">
-          <a class="guide-card" href="#lowline"><span class="gc-no">1</span><span class="gc-title">算定前に記載内容を確認する</span><span class="gc-desc">記載のポイントと簡易チェックリストで、算定根拠として不足がないか確認する。</span></a>
-          <a class="guide-card" href="#drug-search"><span class="gc-no">2</span><span class="gc-title">薬剤名から記載例を探す</span><span class="gc-desc">薬剤名を選択し、該当する薬剤の記載例へ移動する。</span></a>
-          <a class="guide-card" href="#section3"><span class="gc-no">3</span><span class="gc-title">副作用・服薬状況等の変化によるロの記載例を見る</span><span class="gc-desc">用法・用量の変更がなくても、副作用・服薬状況等の変化により、特に指導が必要と判断した場合の記載例。理由の要点の書き方も確認できる。</span></a>
-        </div>
-      </section>
-
-      <!-- § 最低ライン -->
-      <section id="lowline" style="margin-bottom:28px;">
-        <div class="section-label">算定時の記録</div>
-        <h2 class="section-title">算定時の記載ポイント</h2>
-        <div class="minline">
-          <p class="minline-lead">
-            特定薬剤管理指導加算1は、服薬管理指導料に対する加算であり、対象薬が処方されていることだけを理由に算定する加算ではない。算定する場合は、通常の服薬指導に加えて、対象薬に関する確認を行い、患者の状態・服薬状況等を踏まえたプラスαの指導を行う必要がある。
-          </p>
-          <p class="minline-lead" style="margin-bottom:6px;">算定する場面は次の3つ。</p>
-          <ul style="margin:0 0 12px; padding-left:20px; font-size:13.5px; line-height:1.75; color:var(--ink);">
-            <li style="margin-bottom:3px;"><strong>イ</strong>　初回処方時</li>
-            <li style="margin-bottom:3px;"><strong>ロ</strong>　用法・用量等の変更時</li>
-            <li><strong>ロ</strong>　副作用・服薬状況等の変化により、薬剤師が必要と認めて指導した場合</li>
-          </ul>
-          <p class="minline-lead" style="margin-bottom:14px;">
-            算定時は、対象薬について確認した内容と行った指導の要点を薬歴に記録する。従来と同一の処方内容でロを算定する場合は、特に指導が必要と判断した理由の要点も記載する。
-          </p>
-          <div class="minline-checks">
-            <div class="minline-check"><span class="mc-no">①</span><b>「薬剤名：〜」の形で書き始める</b><span class="mc-note">どの薬についての指導記録かを明確にする（例：「リーマス：…」）。</span></div>
-            <div class="minline-check"><span class="mc-no">②</span><b>確認した内容を記録する</b><span class="mc-note">症状や受診の経緯（医師から受けた説明を含む）を聞き取って処方内容を確認し、相互作用に注意が必要な併用薬・血中濃度や検査の実施状況・副作用の初期症状・妊娠の希望などを記録する。継続例では気分の安定状況や服薬状況の変化も残す。</span></div>
-            <div class="minline-check"><span class="mc-no">③</span><b>患者の状況に応じた指導内容を残す</b><span class="mc-note">一般的な薬効・用法説明だけでなく、自己中断の回避・血中濃度や検査の重要性・中毒徴候や皮疹等の相談目安・妊娠時の相談など、その患者に必要な指導を具体的に記録する。</span></div>
-            <div class="minline-check"><span class="mc-no">④</span><b>記載内容から場面（新規・変更・変化）が分かるようにする</b><span class="mc-note"><strong>従来と同一処方でロを算定する場合は、副作用・服薬状況・併用薬・生活状況等の変化と、追加指導が必要と判断した理由を記録する</strong>。これがロの算定根拠になる。</span></div>
-          </div>
-          <div class="guard-note"><b>算定根拠として不十分になりやすい例</b>　一般的な薬効・用法説明のみで、確認した内容や患者の状況に応じた指導内容が薬歴から確認できない。</div>
-
-          <h3 class="subsection-title" style="margin-top:18px;">よくある薬歴と修正例（気分安定薬）</h3>
-          <div class="example-pair">
-            <div class="example-box bad">
-              <span class="example-label">✕ 算定根拠として不十分な例（新規）</span>
-              <pre>リーマス：新規。効果と副作用を説明し、継続して服用するよう指導した。</pre>
-            </div>
-            <div class="example-box good">
-              <span class="example-label">○ 修正例（薬剤別テンプレートを参考にした例）</span>
-              <pre>リーマス：新規（処方目的：双極性障害の再発予防）。気分の波を抑え再発を防ぐ薬であること、効き目と副作用が出る量が近く定期的な血中濃度検査が重要であることを説明。発熱・下痢・大量発汗等の脱水時は中毒が起こりやすいため相談するよう指導。食欲低下・吐き気・強い手の震え・ふらつき等の中毒徴候が出た場合は速やかに受診するよう説明。市販の痛み止め（NSAIDs）は自己判断で使わず相談するよう指導。</pre>
-            </div>
-          </div>
-          <div class="example-pair" style="margin-top:10px;">
-            <div class="example-box bad">
-              <span class="example-label">✕ 算定根拠として不十分な例（増量）</span>
-              <pre>リーマス：400mg→600mgへ増量。用量変更を確認。血中濃度・気分の安定状況を確認。新用量での服用方法を再説明。</pre>
-            </div>
-            <div class="example-box good">
-              <span class="example-label">○ 修正例（変更ロ：増量のテンプレートを使った例）</span>
-              <pre>リーマス：400mg→600mgへ増量説明。治療域が狭い薬のため、増量後は中毒の初期症状（食欲低下・吐き気・下痢・強い手の震え・ふらつき・眠気）に特に注意し、みられた場合は速やかに連絡・受診するよう指導。発熱・下痢・大量発汗などの脱水時や、市販の痛み止め（NSAIDs）で血中濃度が上がりやすい旨を再指導。増量後の血中濃度検査を受けるよう説明。</pre>
-            </div>
-          </div>
-          <p style="font-size:12px;color:var(--sub);margin-top:4px;">※ 増量の✕は「確認した」「再説明した」という行為の記録だけで、確認の結果が読めない。確認の結果（血中濃度・症状の有無）はS/Oに、指導の中身は具体的な症状の言葉で残す。</p>
-          <p style="font-size:12px;color:var(--sub);margin-top:4px;">※ ✕は確認した内容や患者ごとのプラスαの指導が読み取れない。○は「<a href="#drug-search" class="link-inline" style="color:var(--blue);">薬剤名から探す</a>」からリチウム初回イの記載例を参考にしたもの。薬効・用法説明だけで終わらず、症状・経緯の聞き取りと処方内容・血中濃度や検査の確認、患者の状況に応じた指導が薬歴から確認できるようにする。</p>
-        </div>
-      </section>
-
-      <!-- § 印刷用チェックリスト -->
-      <section id="sec-checklist" style="margin-bottom:28px;">
-        <div class="section-label">印刷用</div>
-        <h2 class="section-title">算定前セルフチェック<button class="print-btn" type="button">このチェックリストを印刷</button></h2>
-        <div class="checklist-card">
-          <div class="cl-group">
-            <div class="cl-head">確認・記録する項目（基本）</div>
-            <label class="cl-item"><input type="checkbox"><span>対象薬剤が分かるように記載した（<b>「薬剤名：〜」</b>）</span></label>
-            <label class="cl-item"><input type="checkbox"><span>記載内容から<b>新規／変更／変化のどれに当たるか分かる</b>。<b>副作用・服薬状況等の変化によるロは、変化の内容と、追加指導が必要と判断した理由</b>も記載した</span></label>
-            <label class="cl-item"><input type="checkbox"><span><b>用法・用量の変更時</b>は、変更内容と、<b>変更前後の症状・血中濃度の変化</b>を記載した（SOAP運用ではS/Oへの記載でよい）</span></label>
-            <label class="cl-item"><input type="checkbox"><span><b>症状・受診の経緯を聞き取り処方内容を確認</b>した（<b>継続例では気分の安定状況・服薬状況、変更時は変更の経緯</b>も）</span></label>
-            <label class="cl-item"><input type="checkbox"><span>併用薬・市販薬・サプリ（<b>NSAIDs・利尿薬・酵素誘導／阻害薬・カルバペネム</b>等）を確認した</span></label>
-            <label class="cl-item"><input type="checkbox"><span><b>自己判断で中止しないこと</b>（中止により症状の再発・再燃につながる可能性）を説明した</span></label>
-            <label class="cl-item"><input type="checkbox"><span><b>患者の状況に応じた指導内容</b>を記録した</span></label>
-          </div>
-          <div class="cl-group">
-            <div class="cl-head">必要に応じて確認・説明する項目（気分安定薬）</div>
-            <label class="cl-item"><input type="checkbox"><span><b>血中濃度（TDM）・検査の実施状況／推移</b>を確認した（リチウム・バルプロ酸・カルバマゼピン）</span></label>
-            <label class="cl-item"><input type="checkbox"><span>リチウム：<b>中毒徴候</b>・脱水／NSAIDs・利尿薬／塩分摂取の変化を確認・説明した</span></label>
-            <label class="cl-item"><input type="checkbox"><span>カルバマゼピン・ラモトリギン：<b>重篤な皮膚障害（SJS/TEN・DIHS）</b>の徴候と受診目安を説明した</span></label>
-            <label class="cl-item"><input type="checkbox"><span>ラモトリギン：<b>緩徐な漸増の遵守・バルプロ酸併用の有無</b>を確認した</span></label>
-            <label class="cl-item"><input type="checkbox"><span>バルプロ酸：<b>高アンモニア血症・肝障害・血小板減少</b>の徴候を確認・説明した</span></label>
-            <label class="cl-item"><input type="checkbox"><span><b>妊娠可能年齢の女性</b>：妊娠の希望・可能性を確認し、<b>胎児への影響（特にバルプロ酸）</b>について必要な説明を行った</span></label>
-          </div>
-          <div class="guard-note"><b>算定根拠として不十分になりやすい例</b>　一般的な薬効説明のみで、確認した内容や患者の状況に応じた指導内容が薬歴から確認できない。</div>
-        </div>
-      </section>
-
-      <!-- § 薬剤名から探す -->
-      <section id="drug-search" style="margin-bottom:28px;">
-        <div class="section-label">薬剤名から探す</div>
-        <h2 class="section-title">薬剤名から記載例を探す</h2>
-        <p style="font-size:13px;color:var(--sub);margin-bottom:10px;">薬剤名をタップすると、該当する薬剤別テンプレートに移動する。</p>
-        <div class="drug-index">
-          <div class="drug-index-row">
-            <span class="di-group">リチウム</span>
-            <a href="#lithium">リーマス</a><a href="#lithium">炭酸リチウム</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">バルプロ酸</span>
-            <a href="#vpa">デパケン</a><a href="#vpa">デパケンR</a><a href="#vpa">セレニカR</a><a href="#vpa">バレリン</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">カルバマゼピン</span>
-            <a href="#cbz">テグレトール</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">ラモトリギン</span>
-            <a href="#ltg">ラミクタール</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============================================================
-           § 1  共通確認ポイント
-           ============================================================ -->
-      <section id="section1">
-        <div class="section-label">参考</div>
-        <h2 class="section-title">気分安定薬の共通確認ポイント</h2>
-        <p style="font-size:13px;color:var(--sub);margin-bottom:12px;">
-          気分安定薬に共通する確認・指導の考え方を整理している。<br />
-          具体的な確認事項と記載例は、SECTION 2 の薬剤別ブロックを参照。
-        </p>
-
-        <div class="warn-box" style="margin-bottom:12px;">
-          <div class="warn-box-title">血中濃度モニタリング（TDM）の考え方</div>
-          <p style="margin:0;">
-            <strong>リチウム・バルプロ酸・カルバマゼピン</strong>は、効果と副作用のバランスを確認するうえで<strong>定期的な血中濃度測定（TDM）が重要</strong>である（厚労省マニュアルQ4-1）。<br />
-            薬局では、血中濃度の数値そのものを判断するのではなく、<strong>直近の検査実施状況・値の推移・副作用症状の有無・服薬状況や併用薬の変化</strong>を確認し、必要に応じて受診時の相談につなげる。<br />
-            <strong>ラモトリギンは通常TDMを前提としない</strong>が、併用薬（特にバルプロ酸）の有無により副作用リスクが変わるため、<strong>漸増スケジュールの遵守と皮膚症状の確認</strong>が重要である（同Q4-2）。
-          </p>
-        </div>
-
-        <details class="guide-details fold-in">
-          <summary>共通確認ポイント（日薬GL 6項目＋プライバシー配慮）を見る</summary>
-          <div class="guide-details-body">
-            <dl class="ci-list" style="margin:0;">
-              <dt>① 患者に対する処方内容の確認</dt>
-              <dd>薬剤名・用法・用量・服用タイミング等を確認／<strong>処方目的（双極性障害・躁状態／てんかん／三叉神経痛・片頭痛 等）</strong>を確認（同じ薬剤でも適応で用量・注意点が異なる）</dd>
-
-              <dt>② アドヒアランスの確認</dt>
-              <dd>飲み忘れ・残薬の有無、服薬の継続状況／<strong>自己判断で中止していないか</strong>を確認（気分安定薬は症状が安定しても再発・再燃予防のため継続が必要。突然の中止で再発・躁転のリスク）</dd>
-
-              <dt>③ 副作用モニタリング・重篤副作用発生時の対処方法の教育</dt>
-              <dd>副作用は薬剤ごとに大きく異なる（<strong>リチウム中毒／重篤な皮膚障害（カルバマゼピン・ラモトリギン）／高アンモニア血症・肝障害（バルプロ酸）／血液障害・低Na血症（カルバマゼピン）</strong>等）。各薬剤の徴候と、出現時の対処（自己判断で中止せず相談・受診）を指導したか確認</dd>
-
-              <dt>④ 効果の確認</dt>
-              <dd>気分の安定状況／<strong>血中濃度（TDM）</strong>の確認（リチウム・バルプロ酸・カルバマゼピン）。年齢・腎機能・肝機能・併用薬・脱水等で血中濃度が変動する</dd>
-
-              <dt>⑤ 併用薬・食事との相互作用の確認</dt>
-              <dd>リチウム：<strong>NSAIDs・サイアザイド系利尿薬・ACE阻害薬/ARB・脱水・塩分摂取の変化</strong>で血中濃度上昇／カルバマゼピン：<strong>CYP3A4を強力に誘導</strong>し多数の薬剤の効果を減弱（経口避妊薬・DOAC・ワーファリン 等）／バルプロ酸：<strong>カルバペネム併用で血中濃度低下、ラモトリギンの血中濃度を上昇</strong></dd>
-
-              <dt>⑥ 危険作業従事・家族支援の確認</dt>
-              <dd>眠気・ふらつき・複視等が出る場合は自動車運転等の危険作業に注意（添付文書記載に応じて）／高齢者の転倒・転落リスク／<strong>家族支援がある場合は、中毒徴候（リチウム）・皮疹（カルバマゼピン・ラモトリギン）・意識変化（高アンモニア）の観察について共有</strong>／妊娠可能年齢の女性では催奇形性への配慮</dd>
-
-              <dt>⑦ 受付・服薬指導時のプライバシー配慮</dt>
-              <dd>精神疾患の医療情報は特に慎重な取り扱いが必要。<strong>「薬名」「病名」は声に出さず</strong>、処方箋やお薬手帳を指さしながら<strong>代名詞を用いて</strong>確認する（厚労省「薬局における疾患別対応マニュアル」Q4-3）</dd>
-            </dl>
-            <p style="font-size:12px;color:var(--sub);margin-top:8px;">※ 出典：日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2.1版）」精神神経用薬</p>
-            <p style="font-size:12px;color:var(--blue);margin-top:8px;font-weight:700;">→ 各薬剤の具体的な指導内容は SECTION 2 を参照</p>
-          </div>
-        </details>
-
-        <p style="font-size:12px;color:var(--sub);margin-top:8px;">
-          ※ <strong>抗うつ薬・抗精神病薬・抗てんかん薬</strong>は別ページで扱う。<br />
-          ※ <strong>妊娠可能年齢の女性</strong>では、特に<strong>バルプロ酸（最も催奇形性が高い）</strong>に注意。各薬剤で催奇形性のリスクが異なるため、妊娠の希望・可能性は処方目的とあわせて確認する。<br />
-          ※ バルプロ酸・カルバマゼピン・ラモトリギンの<strong>てんかん目的の処方は「抗てんかん薬」ページ（作成予定）</strong>で扱う。
-        </p>
-        <p style="font-size:12px;color:var(--sub);margin-top:6px;">
-          出典：日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2.1版）」精神神経用薬／厚生労働省「薬局における疾患別対応マニュアル（精神疾患・気分障害）」令和6年3月
-        </p>
-      </section>
-
-      <!-- ============================================================
-           § 2  薬剤別テンプレート（初回イ／変更ロ／副作用説明の追記／必要時追記）
-           ============================================================ -->
-      <section id="section2">
-        <div class="section-label">SECTION 2</div>
-        <h2 class="section-title">薬剤別テンプレート</h2>
-        <p style="font-size:13px;color:var(--sub);margin-bottom:8px;">
-          薬歴を作成する際は、<strong>新規処方または変更があった薬剤</strong>を確認し、患者の状況に近い記載例を参考にする。必要に応じて、確認した内容や追加で行った指導を追記する。<br />
-          本ページは、特定薬剤管理指導加算1のうち、<strong>新規処方時のイ、用法・用量変更時のロ、副作用・服薬状況等の変化によるロ</strong>を想定した薬歴記載例である。継続処方時の通常確認を記録するためのテンプレートではない。<br />
-          <span style="font-size:12px;">※ 気分安定薬は<strong>薬剤ごとに副作用プロファイル・モニタリング項目が大きく異なる</strong>ため、リチウム／バルプロ酸／カルバマゼピン／ラモトリギンの4ブロックに分けている。</span><br />
-          <span style="font-size:12px;">※ <strong>重篤な皮膚障害（SJS/TEN・DIHS）</strong>はカルバマゼピン・ラモトリギンで共通して注意が必要なため、「共通の副作用説明の追記」セクションに置いている。</span><br />
-          <span style="font-size:12px;">※ 自己判断で中止しないことは、共通の核として初回イ本体に含めている。血中濃度や検査の重要性（リチウム・バルプロ酸・カルバマゼピン）、漸増スケジュールの遵守と皮膚症状の確認（ラモトリギン）は、薬剤ごとの特性に応じて重視している。</span>
-        </p>
-        <div class="tpl-warn" style="margin:12px 0;">
-          <div class="tpl-warn-title">副作用説明の記載について</div>
-          副作用に関する記載例は、<strong>実際に説明した内容に応じて追記</strong>する。<strong>まれな重篤副作用</strong>（リチウム中毒・SJS/TEN・高アンモニア血症・血液障害等）は、患者へ不安を与えすぎないよう、<strong>症状と相談・受診の目安を中心に説明</strong>する。薬歴上で説明内容を明確に残したい場合は、<strong>「副作用説明の追記」から該当するものを追加</strong>する。
-        </div>
-        <div class="tpl-warn" id="copy-rule" style="margin:12px 0;">
-          <div class="tpl-warn-title">コピーする前に必ず確認（全薬剤共通）</div>
-          下のテンプレは「指導・説明」部分の記載例である。そのままコピペすると要件不足になるので、以下を確認する。
-          <ul>
-            <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（例：「リーマス：血中濃度の確認、脱水・NSAIDsによる中毒リスクと中毒徴候を指導…」）</li>
-            <li><strong>確認した内容（血中濃度・症状・併用薬・聞き取り結果 など）</strong>もテンプレに足す</li>
-            <li>説明・指導していない項目はテンプレから<strong>削除</strong>する</li>
-            <li>重篤な皮膚障害（SJS/TEN・DIHS）を説明した場合は、<strong>「共通の副作用説明の追記（皮膚障害）」</strong>から該当する記載例を追加</li>
-          </ul>
-        </div>
-        <div class="tag-legend">
-          <span><i style="background:var(--blue-light);border:1px solid var(--blue)"></i>初回イ（新規／併用下追加／高齢例 など）</span>
-          <span><i style="background:#e0f2f1;border:1px solid #0a6b63"></i>変更ロ（増量／漸増 など）</span>
-          <span><i style="background:#f2f4f8;border:1px solid #d7dce3"></i>必要時追記</span>
-          <span><i style="background:#fef3e8;border:1px solid #f5d4a1"></i>副作用説明の追記（説明した分だけ追加）</span>
-        </div>
-
-        <!-- 共通の副作用説明の追記（皮膚障害） -->
-        <div class="drug-block" id="common-se">
-          <div class="drug-block-head">
-            <span class="drug-block-name">共通の副作用説明の追記（皮膚障害）</span>
-            <span class="drug-block-sub">カルバマゼピン・ラモトリギンで特に注意</span>
-          </div>
-          <p style="font-size:13px;line-height:1.75;color:var(--ink);margin-bottom:8px;">
-            <strong>重篤な皮膚障害（SJS/TEN・DIHS）</strong>はカルバマゼピン・ラモトリギンで特に注意が必要である。説明した場合は以下のテンプレを各薬剤ブロックの初回イ等の薬歴記録に追記する。
-          </p>
-          <details class="guide-details fold-in">
-            <summary>重篤な皮膚障害の背景知識</summary>
-            <div class="guide-details-body">
-              <h4>皮膚粘膜眼症候群・中毒性表皮壊死症（SJS/TEN）</h4>
-              <p>カルバマゼピン・ラモトリギンは重篤な皮膚障害のリスクが知られている。<strong>発熱を伴う全身性の発疹・口や眼・陰部の粘膜のびらん・水ぶくれ・皮膚の広範な紅斑</strong>等が出た場合は、速やかに受診し服用を継続してよいか相談するよう伝える。<strong>投与開始から数週〜8週以内に多い</strong>ため、開始初期は特に注意。</p>
-
-              <h4>薬剤性過敏症症候群（DIHS）</h4>
-              <p>カルバマゼピンで知られる。<strong>発熱・全身の発疹・リンパ節腫脹・肝機能障害</strong>などが<strong>投与開始2〜6週後</strong>に出現し、原因薬中止後も遷延することがある。皮疹に加え発熱・倦怠感が続く場合は受診を促す。</p>
-
-              <h4>ラモトリギンの皮疹と漸増（重要）</h4>
-              <p>ラモトリギンは<strong>急速な増量・高用量での開始で重篤な皮疹のリスクが高まる</strong>ため、<strong>定められた緩徐な漸増スケジュールの遵守が必須</strong>。<strong>バルプロ酸併用時はラモトリギンの血中濃度が上昇する</strong>ため、さらに低用量・緩徐な漸増となる。漸増中は皮膚の違和感・発疹がないか毎回確認する（厚労省マニュアルQ4-2）。</p>
-
-              <h4>患者説明のスタンス</h4>
-              <p>いずれも頻度としては稀。患者には病名を前面に出さず、症状（発熱を伴う発疹・粘膜のただれ・水ぶくれ）と相談・受診の目安を中心に説明する。薬歴上で病名と症状をセットで残したい場合は下記の追記テンプレを使用。</p>
-            </div>
-          </details>
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">重篤な皮膚障害（SJS/TEN）について、まれではあるが、発熱を伴う全身性の発疹・口や眼・陰部の粘膜のただれ・水ぶくれが出た場合は、自己判断で続けず速やかに受診するよう説明（特に開始から数週〜8週以内）。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">薬剤性過敏症症候群（DIHS、特にカルバマゼピン）について、まれではあるが、発熱・全身の発疹・倦怠感が続く場合は速やかに受診するよう説明。中止後も症状が遷延することがある旨を伝える。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">ラモトリギンの皮疹について、緩徐な漸増スケジュールを必ず守ること、漸増中に皮膚の違和感・発疹・粘膜症状・発熱が出た場合は速やかに連絡・受診するよう説明（特にバルプロ酸併用時はリスクが上がる）。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- リチウム -->
-        <div class="drug-block" id="lithium">
-          <div class="drug-block-head">
-            <span class="drug-block-name">リチウム</span>
-            <span class="drug-block-sub">炭酸リチウム（リーマス 等）</span>
-          </div>
-
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容・用法用量／処方目的（双極性障害の躁・うつ・再発予防）</li>
-              <li><strong>血中濃度（TDM）の推移・直近値</strong>／採血の実施状況（治療域が狭く中毒域に近い）</li>
-              <li><strong>中毒徴候</strong>（食欲低下・悪心・嘔吐・下痢、粗大な手の震え・ふらつき・ろれつが回らない・強い眠気）の有無</li>
-              <li><strong>脱水につながる状況</strong>（発熱・下痢・嘔吐・大量発汗・夏場・食事/水分摂取低下）の有無</li>
-              <li>併用薬（<strong>NSAIDs・サイアザイド系利尿薬・ACE阻害薬/ARB</strong>）／市販の痛み止めの使用／塩分摂取の急な変化</li>
-              <li>多尿・口渇（腎性尿崩症）、体重増加、長期では甲状腺機能低下（倦怠感・むくみ・寒がり）の有無</li>
-              <li>腎機能／妊娠・授乳の希望（催奇形性）</li>
-              <li>効果指標：気分の安定状況・血中濃度・腎機能・甲状腺機能</li>
-            </ul>
-            <p style="font-size:11px;color:var(--sub);margin-top:6px;">※ 日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン(第2.1版)」精神神経用薬 を参考</p>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>指導時の補足</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p>気分の波を抑えて<strong>双極性障害の再発・再燃を防ぐ薬</strong>。抗てんかん薬ではない。長期の維持療法で効果を発揮し、自殺予防効果も報告されている。<strong>治療に有効な量と、副作用（中毒）が出る量が近い</strong>ため、定期的な血液検査（血中濃度）が欠かせない。</p>
-
-              <h4>血中濃度モニタリング（背景知識）</h4>
-              <p>リチウムは治療域が狭く、<strong>維持期はおおむね0.4〜1.0 mEq/L程度を目安</strong>に管理される（目標値は病態・年齢で個別に設定）。<strong>1.5 mEq/Lを超えると中毒症状のリスク</strong>が高まる。<strong>投与初期・増量時は1週間に1回程度、維持期は2〜3か月に1回程度</strong>の血中濃度測定が推奨される（厚労省マニュアルQ4-1）。採血は通常、最終服用から約12時間後（トラフ）で評価する。低用量で安定していても、きっかけ次第で血中濃度が上がり中毒に至ることがあるため、定期確認が重要。</p>
-
-              <h4>リチウム中毒（背景知識）</h4>
-              <p>初期は<strong>消化器症状（食欲低下・悪心・嘔吐・下痢）</strong>や<strong>粗大な手の震え・ふらつき・眠気</strong>として現れ、進行すると<strong>運動失調・ろれつが回らない・意識障害・けいれん</strong>に至り致死的になりうる。<strong>脱水・塩分摂取の減少・腎機能低下・特定の併用薬</strong>が引き金になる。徴候が出たら自己判断で続けず、速やかに受診するよう伝える。</p>
-
-              <h4>血中濃度を上げる要因（背景知識）</h4>
-              <ul>
-                <li><strong>脱水</strong>：発熱・下痢・嘔吐・大量発汗・夏場・水分摂取低下。Sick day時は特に注意</li>
-                <li><strong>NSAIDs</strong>（市販の痛み止め含む）：腎でのリチウム排泄を減らす</li>
-                <li><strong>サイアザイド系利尿薬・ACE阻害薬/ARB</strong>：血中濃度上昇</li>
-                <li><strong>塩分（ナトリウム）摂取の急な減少</strong>：リチウム再吸収が増える。極端な減塩は避ける</li>
-              </ul>
-
-              <h4>長期使用での注意（背景知識）</h4>
-              <p><strong>腎機能</strong>（多尿・口渇＝腎性尿崩症、長期では腎機能低下）、<strong>甲状腺機能低下</strong>（倦怠感・むくみ・寒がり・体重増加）に注意。定期的な血液検査で腎機能・甲状腺機能も確認できるとよい。</p>
-
-              <h4>妊娠・授乳（背景知識）</h4>
-              <p>リチウムは<strong>催奇形性（心奇形・Ebstein奇形）の報告</strong>があり、妊娠中の使用は慎重に判断される。授乳中も注意。妊娠の希望・判明時は自己判断で中止せず（中止により再発・躁転のリスク）、必ず主治医に相談するよう指導。</p>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li>毎日決まった時間に服用、<strong>自己判断で中止しない</strong>（再発・躁転予防）</li>
-                <li><strong>定期的な検査が重要な薬</strong>であることを説明する（検査結果が分かる場合は薬局でも共有してもらう）</li>
-                <li>発熱・下痢・嘔吐・大量の汗で水分が摂れない時は脱水で中毒が起こりやすい、自己判断せず相談</li>
-                <li>市販の痛み止め（NSAIDs）は自己判断で使わず薬剤師に相談</li>
-                <li>水分・塩分を極端に変えない（急な減塩・大量の汗に注意）</li>
-                <li>食欲低下・吐き気・強い手の震え・ふらつき・ろれつが回らない等は中毒のサイン、早めに受診</li>
-              </ul>
-
-              <div class="patient-say">患者への伝え方の例：<br />「気分の波を抑えて、再発を防ぐ大切な薬です。効き目と副作用が出る量が近いので、主治医の指示に沿って定期的な血液検査を受けることが大切です。熱や下痢、たくさん汗をかいて水分が摂れない時は、薬が効きすぎることがあります。吐き気や強い手の震え、ふらつきが出たら早めに連絡してください。市販の痛み止めは自己判断で飲まず、相談してください。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
-              <div class="tpl-text">リチウム新規処方。気分の波を抑え、再発を防ぐ目的で使用する薬であることを説明。血中濃度の確認が重要な薬剤であることを説明し、今後検査結果が分かる場合は薬局でも共有してもらうよう説明。脱水時は血中濃度上昇・中毒リスクがあるため、発熱・下痢・嘔吐・大量発汗時は早めに相談するよう説明。食欲低下・吐き気・強い手の震え・ふらつき・ろれつが回らない等の症状が出た場合は速やかに受診するよう指導。市販の痛み止め（NSAIDs）は自己判断で使用せず相談するよう説明。極端な減塩を避けるよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
-              <div class="tpl-text">高齢者へのリチウム新規処方。腎機能低下・脱水で血中濃度が上がりやすく中毒リスクが高い旨を説明。家族支援の有無を確認し、家族同席時・必要に応じて中毒徴候（食欲低下・嘔吐・強い手の震え・ふらつき・意識のもうろう）の出現を観察してもらうよう依頼。定期的な検査の重要性を説明し、検査結果が分かる場合は共有してもらうよう説明。水分摂取、NSAIDs自己使用回避を指導。自己判断で中止しないよう注意喚起。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：妊娠可能年齢の女性</span>
-              <div class="tpl-text">妊娠可能年齢の女性へのリチウム処方。催奇形性（心奇形）の報告がある薬剤である旨を説明。妊娠の希望・判明時は自己判断で中止せず（中止により再発・躁転のリスク）、必ず主治医に相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">〇mg→〇mgへ増量説明。治療域が狭い薬のため、増量後は中毒の初期症状（食欲低下・吐き気・下痢・強い手の震え・ふらつき・眠気）に特に注意し、みられた場合は速やかに連絡・受診するよう指導。発熱・下痢・大量発汗などの脱水時や、市販の痛み止め（NSAIDs）で血中濃度が上がりやすい旨を再指導。増量後の血中濃度検査を受けるよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">リチウム中毒について、まれではあるが、食欲低下・吐き気・嘔吐・下痢、粗大な手の震え・ふらつき・ろれつが回らない・強い眠気・意識のもうろう等が出た場合は、自己判断で続けず速やかに受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">長期使用での甲状腺機能低下について、倦怠感・むくみ・寒がり・体重増加等が続く場合は主治医に相談するよう説明。定期的な血液検査で甲状腺機能も確認する旨を伝える。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">発熱・下痢・嘔吐・大量発汗等で脱水のおそれあり（Sick day）。脱水でリチウム血中濃度が上がり中毒が起こりやすいため、水分摂取と、脱水が続く場合は服用を続けてよいか医療機関へ相談するよう指導。中毒徴候が出た場合は速やかに受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">NSAIDs・利尿薬・ACE阻害薬/ARBの併用変更あり（〇〇）。リチウム血中濃度上昇・中毒リスクがあるため、中毒徴候に注意するよう指導、血中濃度の再確認を主治医に相談するよう説明。市販の痛み止めも自己判断で使わないよう再指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">多尿・口渇の訴え。腎性尿崩症の可能性があるため、水分摂取と、症状が続く場合は主治医に相談するよう指導。腎機能確認の必要性について主治医へ相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- バルプロ酸 -->
-        <div class="drug-block" id="vpa">
-          <div class="drug-block-head">
-            <span class="drug-block-name">バルプロ酸</span>
-            <span class="drug-block-sub">バルプロ酸ナトリウム（デパケン／デパケンR／セレニカR／バレリン 等）</span>
-          </div>
-
-          <div class="caveat-box">
-            <div class="caveat-box-title">妊娠可能年齢の女性への注意（重要）</div>
-            <p style="margin:0;">バルプロ酸は<strong>抗てんかん薬・気分安定薬の中で催奇形性のリスクが最も高い</strong>とされ、<strong>神経管閉鎖障害（二分脊椎）や児の認知発達への影響</strong>が報告されている。<strong>妊娠の可能性がある方では、他の選択肢も含めて必要性が慎重に判断される薬剤</strong>である。妊娠の希望・可能性を確認し、妊娠の希望・判明時は<strong>自己判断で中止せず必ず主治医に相談</strong>するよう指導する（中止により再発・躁転のリスク）。</p>
-          </div>
-
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容・用法用量（<strong>徐放錠（R錠・セレニカR）は割らない・砕かない</strong>）／処方目的（躁状態／てんかん／片頭痛発作の発症抑制）</li>
-              <li>血中濃度（TDM）の推移・直近値（目安50〜100µg/mL）</li>
-              <li><strong>高アンモニア血症</strong>（傾眠・意識のもうろう・嘔吐・ふらつき）の有無</li>
-              <li><strong>肝障害</strong>（強いだるさ・食欲不振・黄疸・褐色尿、特に投与初期）の有無</li>
-              <li><strong>血小板減少</strong>（あざ・鼻出血・歯ぐき出血が増えていないか）の有無</li>
-              <li>眠気・ふらつき・振戦・体重増加・脱毛の有無</li>
-              <li><strong>妊娠・授乳の希望／妊娠の有無</strong>（催奇形性が高い）</li>
-              <li>併用薬（<strong>カルバペネム系抗菌薬＝血中濃度が大きく低下</strong>／ラモトリギン＝相手の血中濃度を上げる）</li>
-            </ul>
-            <p style="font-size:11px;color:var(--sub);margin-top:6px;">※ 日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン(第2.1版)」精神神経用薬 を参考</p>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>指導時の補足</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p>気分の高ぶり（躁状態）を抑え、<strong>双極性障害の気分を安定させる薬</strong>。抗てんかん薬としても用いられる。リチウムとともに急性躁病の選択肢とされる。<strong>催奇形性が高い</strong>点と、<strong>高アンモニア血症・肝障害・血小板減少</strong>に注意が必要。</p>
-
-              <h4>剤形の注意（背景知識）</h4>
-              <p>徐放性製剤（<strong>デパケンR・セレニカR</strong>）は<strong>割ったり砕いたりせず</strong>そのまま服用する。普通錠・細粒・シロップとは血中濃度推移が異なるため、剤形変更時は注意。</p>
-
-              <h4>催奇形性（背景知識・重要）</h4>
-              <p>バルプロ酸は<strong>抗てんかん薬・気分安定薬の中で催奇形性が最も高い</strong>とされ、神経管閉鎖障害（二分脊椎）・児の認知発達への影響が報告されている。<strong>妊娠可能な女性には他の選択肢を十分検討</strong>したうえで使用される（片頭痛の発症抑制では妊婦は禁忌）。妊娠の希望・判明時は自己判断で中止せず必ず主治医に相談するよう指導。</p>
-
-              <h4>高アンモニア血症（背景知識）</h4>
-              <p>バルプロ酸は<strong>血中アンモニアを上昇</strong>させることがあり、<strong>傾眠・意識のもうろう・嘔吐・ふらつき</strong>として現れる。血中濃度が正常域でも起こりうる。意識の変化が出た場合は速やかに受診するよう伝える。</p>
-
-              <h4>肝障害・血小板減少（背景知識）</h4>
-              <p><strong>肝障害</strong>は特に投与初期に注意（強いだるさ・食欲不振・黄疸・褐色尿）。<strong>血小板減少</strong>により出血傾向（あざ・鼻出血・歯ぐき出血）が出ることがある。定期的な血液検査で肝機能・血小板も確認できるとよい。</p>
-
-              <h4>相互作用（背景知識）</h4>
-              <ul>
-                <li><strong>カルバペネム系抗菌薬</strong>：バルプロ酸の血中濃度を著しく低下させ、てんかん例では発作再発のおそれ（添付文書で併用注意・原則回避）。他院・他科で抗菌薬が出た際は申告を</li>
-                <li><strong>ラモトリギン併用</strong>：ラモトリギンの血中濃度を上げ、皮疹リスクを高める（ラモトリギン側を緩徐に漸増）</li>
-              </ul>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li>毎日決まった時間に服用、<strong>自己判断で中止しない</strong></li>
-                <li>徐放錠（R錠・セレニカR）は<strong>割らない・砕かない</strong>でそのまま服用</li>
-                <li>強いだるさ・黄疸、傾眠・意識のもうろう、あざや出血が増える等は早めに相談・受診</li>
-                <li>定期的な血液検査（血中濃度・肝機能・血小板）を受ける</li>
-                <li>妊娠の希望・判明時は自己判断で中止せず必ず相談</li>
-                <li>他院・他科で抗菌薬が処方された時は服用中であることを伝える</li>
-              </ul>
-
-              <div class="patient-say">患者への伝え方の例：<br />「気分の高ぶりを抑えて安定させる薬です。自己判断でやめないでください。強いだるさや黄疸、ぼんやりする・吐き気、あざや出血が増えるといったことがあれば早めに連絡してください。妊娠の希望や可能性があるときは、必ず相談してください。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。妊娠可能年齢の女性では催奇形性の確認・指導を必ず記載。</p>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
-              <div class="tpl-text">バルプロ酸新規処方（処方目的：躁状態）。気分の高ぶりを抑えて安定させる薬であることを説明、自己判断で中止しないよう指導。徐放錠は割らず砕かずそのまま服用するよう説明。強いだるさ・黄疸・褐色尿（肝障害）、傾眠・意識のもうろう・嘔吐（高アンモニア血症）、あざ・出血の増加（血小板減少）が出た場合は早めに相談・受診するよう指導。血中濃度・肝機能・血小板の定期的な検査が重要な薬であることを説明し、検査結果が分かる場合は共有してもらうよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：妊娠可能年齢の女性</span>
-              <div class="tpl-text">妊娠可能年齢の女性へのバルプロ酸処方。妊娠時のリスクに特に注意が必要な薬剤であることを説明。妊娠希望・妊娠可能性の有無を確認し、妊娠を希望する場合や妊娠が判明した場合は、自己判断で中止せず主治医へ相談するよう指導。中止により症状再燃のリスクがあるため、服薬継続の可否は医師と相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
-              <div class="tpl-text">高齢者へのバルプロ酸新規処方。高アンモニア血症による意識変化・傾眠、ふらつき・転倒のリスクを説明。家族支援の有無を確認し、家族同席時・必要に応じて意識のもうろう・嘔吐・強いだるさ等の出現を観察してもらうよう依頼。定期的な検査が重要な薬であることを説明し、検査結果が分かる場合は共有してもらうよう説明。自己判断で中止しないよう注意喚起。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴い眠気・ふらつき・手の震えが出やすくなるため、転倒と、車の運転等の危険作業に従事しないことを再指導。ぼんやりする・強い眠気・嘔気が続く場合（高アンモニア血症）は早めに相談・受診するよう説明。自己判断で調整せず継続して服用するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">高アンモニア血症について、まれではあるが、傾眠・意識のもうろう・嘔吐・ふらつき等が出た場合は速やかに受診するよう説明（血中濃度が正常域でも起こりうる）。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">肝障害について、まれではあるが、強いだるさ・食欲不振・黄疸・褐色尿等が出た場合は早めに相談・受診するよう説明（特に投与初期）。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">血小板減少について、まれではあるが、あざ・鼻出血・歯ぐき出血が増える等の出血傾向が出た場合は主治医に相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">他院・他科でカルバペネム系抗菌薬の処方あり（〇〇）。バルプロ酸の血中濃度が著しく低下するおそれがあるため、両処方医に併用事実を伝えるよう指導。気分の不安定化（てんかん例では発作）に注意するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">体重増加・脱毛の訴え。バルプロ酸で出やすい副作用である旨を説明、生活習慣にも配慮するよう指導。気になる場合は主治医に相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- カルバマゼピン -->
-        <div class="drug-block" id="cbz">
-          <div class="drug-block-head">
-            <span class="drug-block-name">カルバマゼピン</span>
-            <span class="drug-block-sub">カルバマゼピン（テグレトール 等）</span>
-          </div>
-
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容・用法用量／処方目的（躁状態・躁うつ病の躁状態／統合失調症の興奮／てんかん／三叉神経痛）</li>
-              <li>血中濃度（TDM）の推移・直近値（目安4〜12µg/mL）</li>
-              <li><strong>重篤な皮膚障害（SJS/TEN・DIHS）</strong>の徴候（発熱を伴う発疹・粘膜のただれ・水ぶくれ）の有無（特に開始初期）</li>
-              <li><strong>血液障害</strong>（汎血球減少・無顆粒球症：発熱・のどの痛み・倦怠感・あざ）の有無</li>
-              <li><strong>低Na血症（SIADH）</strong>（倦怠感・食欲低下・吐気・頭痛・意識変化）の有無</li>
-              <li>めまい・ふらつき・眠気・複視（ものが二重に見える）の有無（特に開始初期・血中濃度高値）</li>
-              <li>併用薬（<strong>CYP3A4を強力に誘導</strong>＝経口避妊薬・DOAC・ワーファリン・他の多くの薬剤の効果を減弱）</li>
-              <li>妊娠・授乳の希望（催奇形性）</li>
-            </ul>
-            <p style="font-size:11px;color:var(--sub);margin-top:6px;">※ 日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン(第2.1版)」精神神経用薬 を参考</p>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>指導時の補足</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p>気分の高ぶりや興奮を抑える薬で、双極性障害の躁状態等に用いられる（抗てんかん薬・三叉神経痛の薬としても用いられる）。<strong>重篤な皮膚障害・血液障害・低Na血症</strong>と、<strong>多数の薬物相互作用（強力な代謝酵素誘導）</strong>に注意が必要。</p>
-
-              <h4>重篤な皮膚障害（背景知識）</h4>
-              <p>カルバマゼピンは<strong>SJS/TEN・DIHS</strong>のリスクが知られ、<strong>HLA-B*1502（主に漢族系）など特定の遺伝的素因との関連</strong>も報告されている。<strong>発熱を伴う全身性の発疹・粘膜のただれ・水ぶくれ</strong>等が出た場合は自己判断で続けず速やかに受診するよう伝える（開始から数週〜8週以内に多い）。詳細は<a href="#common-se" class="link-inline">共通の副作用説明（皮膚障害）</a>を参照。</p>
-
-              <h4>血液障害（背景知識）</h4>
-              <p>汎血球減少・無顆粒球症・再生不良性貧血が報告される。<strong>急な発熱・のどの痛み・倦怠感・あざ・出血</strong>等が出た場合は速やかに受診するよう伝える。定期的な血液検査での確認が重要。</p>
-
-              <h4>低Na血症（SIADH）（背景知識）</h4>
-              <p>カルバマゼピンは低Na血症（SIADH）を起こすことがある。<strong>倦怠感・食欲低下・吐気・頭痛・意識変化</strong>等が出た場合は早めの受診を促す。高齢者・利尿薬併用例で特に注意。</p>
-
-              <h4>薬物相互作用（背景知識・重要）</h4>
-              <p>カルバマゼピンは<strong>CYP3A4などの代謝酵素を強力に誘導</strong>し、自分自身の代謝も促進する（自己誘導）。<strong>経口避妊薬・DOAC・ワーファリン・多くの向精神薬・その他多数の薬剤の血中濃度を下げ、効果を弱める</strong>。新たに薬が増減した時は相互作用の確認が必須。経口避妊薬の効果減弱は避妊効果の低下につながるため、特に注意して情報提供する。</p>
-
-              <h4>その他（背景知識）</h4>
-              <p>開始初期や血中濃度が高い時に<strong>めまい・ふらつき・眠気・複視（ものが二重に見える）</strong>が出やすい。自動車運転等の危険作業に注意するよう指導。</p>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li>毎日決まった時間に服用、<strong>自己判断で中止しない</strong></li>
-                <li>発熱を伴う発疹・粘膜のただれ・水ぶくれが出たら自己判断で続けず速やかに受診</li>
-                <li>急な発熱・のどの痛み・倦怠感・あざ・出血があれば早めに受診</li>
-                <li>倦怠感・食欲低下・吐気・頭痛など（低Na血症）が続く場合は相談</li>
-                <li>めまい・ふらつき・ものが二重に見える時は無理をせず、自動車運転等は控える</li>
-                <li>他の薬の効きを弱めることがあるため、市販薬・他院処方・サプリは必ず薬剤師に伝える（特に避妊薬を使っている場合は申告を）</li>
-              </ul>
-
-              <div class="patient-say">患者への伝え方の例：<br />「気分の高ぶりや興奮を抑える薬です。飲み始めの数週間は特に、熱を伴う発疹や口・目のただれが出たら、すぐに受診してください。ほかのお薬の効きを弱めることがあるので、新しく薬を始める時やサプリを使う時は必ず教えてください。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。重篤な皮膚障害を説明した場合は「共通の副作用説明の追記（皮膚障害）」から追加。</p>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
-              <div class="tpl-text">カルバマゼピン新規処方（処方目的：躁状態等）。気分の高ぶりや興奮を抑える目的で使用する薬であることを説明し、自己判断で中止しないよう指導。開始初期は発疹・発熱・口や目の粘膜症状・水ぶくれ等に注意し、症状出現時は速やかに受診するよう説明（特に開始から数週〜8週以内）。眠気・めまい・ふらつき・複視が出ることがあるため、車の運転等に注意するよう指導。他剤との相互作用が多いため、他院処方・市販薬・サプリメントの使用時は必ず相談するよう説明。定期的な検査が重要な薬であることを説明し、検査結果が分かる場合は共有してもらうよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：経口避妊薬を使用中の女性</span>
-              <div class="tpl-text">経口避妊薬使用中の女性へのカルバマゼピン処方。カルバマゼピンは代謝酵素を強力に誘導し、経口避妊薬の避妊効果が低下する可能性がある旨を説明。両処方医に併用事実を伝え、避妊方法について主治医・産婦人科医に相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
-              <div class="tpl-text">高齢者へのカルバマゼピン新規処方。低Na血症・ふらつき・転倒・複視のリスクを説明。家族支援の有無を確認し、家族同席時・必要に応じて発疹・発熱・倦怠感・意識変化等の出現を観察してもらうよう依頼。利尿薬併用時は低Na血症に特に注意。定期的な検査が重要な薬であることを説明し、検査結果が分かる場合は共有してもらうよう説明。自己判断で中止しないよう注意喚起。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴いめまい・ふらつき・眠気・物が二重に見える（複視）が出やすくなるため、みられた場合は早めに相談するよう指導。ふらつきによる転倒と、車の運転等の危険作業に従事しないことを再指導。自己判断で調整せず継続して服用するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">血液障害（汎血球減少・無顆粒球症）について、まれではあるが、急な発熱・のどの痛み・倦怠感・あざ・出血等が出た場合は速やかに受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">低Na血症（SIADH）について、まれではあるが、倦怠感・食欲低下・吐気・頭痛・意識変化等が出た場合は早めに相談・受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">併用薬の追加・中止あり（〇〇）。カルバマゼピンは代謝酵素を強力に誘導し相手薬の効果を弱める（または中止で相手薬の血中濃度が上がる）ため、両処方医に併用事実を伝えるよう指導。効果の変化・副作用の出現に注意するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">めまい・ふらつき・複視の訴え。開始初期や血中濃度高値で出やすい旨を説明、自動車運転等の危険作業に注意するよう指導。症状が強い・続く場合は血中濃度の確認を主治医に相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- ラモトリギン -->
-        <div class="drug-block" id="ltg">
-          <div class="drug-block-head">
-            <span class="drug-block-name">ラモトリギン</span>
-            <span class="drug-block-sub">ラモトリギン（ラミクタール 等）</span>
-          </div>
-
-          <div class="caveat-box">
-            <div class="caveat-box-title">皮疹リスクと緩徐漸増（重要）</div>
-            <p style="margin:0;">ラモトリギンは<strong>重篤な皮膚障害（SJS/TEN）</strong>のリスクがあり、<strong>急速な増量・高用量での開始でリスクが高まる</strong>ため、<strong>定められた緩徐な漸増スケジュールの遵守が必須</strong>である。<strong>バルプロ酸併用時はラモトリギンの血中濃度が上昇する</strong>ため、さらに低用量・緩徐な漸増になる。漸増中は<strong>毎回、皮膚の違和感・発疹の有無を確認</strong>する（厚労省マニュアルQ4-2）。</p>
-          </div>
-
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容・用法用量／処方目的（双極性障害における気分エピソードの再発・再燃抑制／てんかん）</li>
-              <li><strong>漸増スケジュールの遵守</strong>（用量の上がり方が指示通りか）／自己判断での増量がないか</li>
-              <li><strong>皮膚症状</strong>（発疹・皮膚の違和感・かゆみ、発熱を伴う発疹・粘膜症状）の有無 ― 漸増中は毎回確認</li>
-              <li><strong>バルプロ酸の併用</strong>の有無（併用時はラモトリギン血中濃度上昇・皮疹リスク増）</li>
-              <li>飲み忘れの有無（数日以上の中断後は<strong>再開時に改めて漸増が必要な場合</strong>がある）</li>
-              <li>めまい・ふらつき・眠気・頭痛・複視の有無</li>
-              <li>併用薬の変化（カルバマゼピン・フェニトイン等の酵素誘導薬で血中濃度低下、バルプロ酸で上昇）</li>
-            </ul>
-            <p style="font-size:11px;color:var(--sub);margin-top:6px;">※ 日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン(第2.1版)」精神神経用薬 を参考</p>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>指導時の補足</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p>双極性障害の<strong>気分エピソード（特にうつ）の再発・再燃を抑える薬</strong>（抗てんかん薬としても用いられる）。体重増加や鎮静は比較的少ないとされる一方、<strong>重篤な皮膚障害（皮疹）が最重要の注意点</strong>で、<strong>緩徐な漸増</strong>が安全使用の鍵になる。</p>
-
-              <h4>皮疹と緩徐漸増（背景知識・重要）</h4>
-              <p>ラモトリギンは<strong>急速な増量・高用量開始・バルプロ酸併用</strong>で重篤な皮疹（SJS/TEN）のリスクが高まる。そのため<strong>低用量から時間をかけて漸増する</strong>スケジュールが定められており、これを守ることが極めて重要。<strong>維持用量に達するまでは、調剤時に毎回、皮膚の違和感・発疹がないか確認</strong>し、皮膚症状・粘膜症状・発熱があれば速やかに連絡・受診するよう指導する（厚労省マニュアルQ4-2）。詳細は<a href="#common-se" class="link-inline">共通の副作用説明（皮膚障害）</a>を参照。</p>
-
-              <h4>飲み忘れ・中断後の再開（背景知識）</h4>
-              <p>数日以上服用を中断した後に元の用量で再開すると皮疹リスクが上がるため、<strong>中断後は改めて漸増が必要になる場合がある</strong>。飲み忘れが続いた・しばらく服用していない場合は、自己判断で元の量に戻さず主治医に相談するよう伝える。</p>
-
-              <h4>相互作用（背景知識）</h4>
-              <ul>
-                <li><strong>バルプロ酸併用</strong>：ラモトリギンの血中濃度を上げる → さらに低用量・緩徐な漸増が必要、皮疹リスク増</li>
-                <li><strong>カルバマゼピン・フェニトイン等の酵素誘導薬</strong>：ラモトリギンの血中濃度を下げる</li>
-                <li>併用薬の追加・中止でラモトリギンの血中濃度が変動するため、維持期でも併用薬の変化に注意</li>
-              </ul>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li><strong>決められた増やし方（漸増スケジュール）を必ず守る</strong>、自己判断で増やさない</li>
-                <li>飲み始め〜増量中に<strong>発疹・皮膚の違和感・粘膜症状・発熱</strong>が出たら、自己判断で続けず速やかに連絡・受診</li>
-                <li>数日以上飲み忘れた・しばらく飲んでいない場合は、元の量に戻さず相談</li>
-                <li>めまい・ふらつき・ものが二重に見える時は無理をしない</li>
-                <li>他の薬の追加・中止でこの薬の効き方が変わることがあるため、薬の変更は薬剤師に伝える</li>
-              </ul>
-
-              <div class="patient-say">患者への伝え方の例：<br />「気分の波の再発を防ぐ薬です。皮膚の副作用を防ぐため、決められた増やし方を必ず守ってください。飲み始めや増やしている間に、発疹や皮膚の違和感、口の中のただれ、熱が出たら、自己判断で続けずにすぐ連絡してください。数日以上飲み忘れた時は、元の量に戻さず相談してください。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。皮膚障害を説明した場合は「共通の副作用説明の追記（皮膚障害）」から追加。</p>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規（漸増開始）</span>
-              <div class="tpl-text">ラモトリギン新規処方。双極性障害における気分エピソードの再発・再燃を抑える目的で使用する薬であることを説明。重篤な皮膚障害のリスクを下げるため、決められた漸増スケジュールを守り、自己判断で増量しないよう指導。発疹・皮膚の違和感・発熱・口や目の粘膜症状が出た場合は速やかに相談・受診するよう説明。数日以上飲み忘れた場合は、自己判断で元の量から再開せず医師または薬剤師へ相談するよう指導。バルプロ酸併用の有無を確認。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：バルプロ酸併用下</span>
-              <div class="tpl-text">バルプロ酸併用下でのラモトリギン新規処方。バルプロ酸併用によりラモトリギンの血中濃度が上がり皮疹リスクが高まるため、通常よりさらに低用量・緩徐な漸増となる旨を説明。漸増スケジュールの遵守を徹底し、発疹・皮膚の違和感・粘膜症状・発熱が出た場合は速やかに連絡・受診するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：漸増（増量段階）</span>
-              <div class="tpl-text">漸増スケジュールに沿って〇mg→〇mgへ増量説明。増量段階では皮疹のリスクがあるため、発疹・皮膚の違和感・くちびるや口の中のただれ・発熱がみられた場合は自己判断で続けず速やかに連絡・受診するよう指導。決められたスケジュールどおりに増やすことが皮疹を防ぐうえで重要な旨を説明し、自己判断で調整せず継続して服用するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：用量変更（維持期）</span>
-              <div class="tpl-text">維持期の〇mg→〇mgへの変更を説明。併用薬の開始・中止で血中濃度が大きく変わる薬のため（バルプロ酸で上昇・カルバマゼピン等で低下）、他院の処方や市販薬も含め薬の変更があれば伝えるよう指導。皮膚症状・めまい・ふらつきがみられた場合は早めに相談するよう説明。自己判断で中止しないよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">飲み忘れ・数日以上の中断あり。中断後に元の用量で再開すると皮疹リスクが上がるため、自己判断で元の量に戻さず主治医に相談するよう指導（改めて漸増が必要な場合がある）。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">バルプロ酸・カルバマゼピン等の併用変更あり（〇〇）。ラモトリギンの血中濃度が変動し、効果減弱や皮疹リスクの変化につながるため、皮膚症状・効果の変化に注意するよう指導、用量調整について主治医に相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記（皮膚症状あり）</span>
-              <div class="tpl-text">発疹・皮膚の違和感の訴え。重篤な皮膚障害の初期の可能性があるため、自己判断で続けず速やかに受診するよう指導。発熱・粘膜症状（口・目のただれ）を伴う場合は緊急性が高い旨を説明。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-
-        <p style="font-size:12px;color:var(--sub);margin-top:8px;">
-          ※ 「変更のあった薬」を起点に、状況に最も近いバリエーションを1つ選び、必要なら必要時追記から該当するものを足す想定。<br />
-          ※ 併用薬がある場合は薬歴冒頭に併用薬名を明記。<strong>追加された薬がハイリスク薬なら、その追加薬について「新規イ」として扱う</strong>のが基本。既存ハイリスク薬の相互作用・リスクが変化した場合は「必要時追記」で「併用薬変更あり」として記載するか、必要に応じて<strong>「副作用・服薬状況等の変化によるロ」</strong>として個別判断する。<br />
-          ※ バルプロ酸・カルバマゼピン・ラモトリギンの<strong>てんかん目的の処方は「抗てんかん薬」ページ（作成予定）</strong>で扱う。
-        </p>
-      </section>
-
-      <!-- ============================================================
-           § 3  副作用・服薬状況等の変化によるロ — 薬歴記載例
-           ============================================================ -->
-      <section id="section3">
-        <div class="section-label">SECTION 3</div>
-        <h2 class="section-title">副作用・服薬状況等の変化によるロ — 薬歴記載例</h2>
-
-        <div class="warn-box">
-          <div class="warn-box-title">この区分の位置づけと使い方</div>
-          <p style="margin-bottom:8px;">加算1の<strong>ロ</strong>には、次の2つの場面がある。</p>
-          <ul style="margin-bottom:10px;">
-            <li>①<strong>用法・用量の変更</strong>に伴い必要と認めて指導した場合 → <strong>SECTION 2 の変更ロ</strong></li>
-            <li>②<strong>副作用の発現状況・服薬状況等の変化</strong>に基づき必要と認めて指導した場合 → <strong>このセクション</strong></li>
-          </ul>
-          <p style="margin-bottom:8px;">②は、同一処方であっても、患者の体調・服薬状況・生活状況等の変化に薬剤師が気付き、<strong>追加の指導が必要と判断</strong>し、<strong>その理由の要点を薬歴に記載</strong>したときに算定する。</p>
-          <p style="margin-bottom:8px;">記録は<strong>「変化の確認 → 指導の方向性を判断 → 指導」</strong>の流れで簡潔に。</p>
-          <p>以下は記載例。患者の状況に合わせて書き換える。</p>
-        </div>
-
-        <div class="tpl-warn">
-          <div class="tpl-warn-title">コピーする前に必ず確認</div>
-          <ul>
-            <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（書き方例では薬剤名を入れているが、実運用では具体的な製剤名・確認内容に書き換える）</li>
-            <li><strong>変化の具体内容・確認した内容</strong>を患者の状況に合わせて書き換える（「指導が必要と判断」のフレーズは加算根拠として残す）</li>
-            <li>説明・指導していない項目は<strong>削除</strong>する</li>
-          </ul>
-        </div>
-
-        <div class="tpl-set" style="margin-top:14px;">
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">リチウム服用中、発熱・下痢で食事・水分が摂れないとの訴え。脱水によりリチウム血中濃度が上がり中毒のおそれがあるため指導が必要と判断。水分摂取と、症状が続く場合は自己判断で続けず医療機関に相談するよう指導。吐き気・強い手の震え・ふらつき等の中毒徴候が出た場合は速やかに受診するよう説明。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">リチウム服用中、他院でNSAIDs（または利尿薬）の追加処方あり。リチウム血中濃度上昇・中毒リスクが疑われるため指導が必要と判断。両処方医に併用事実を伝えるよう指導、中毒徴候に注意し血中濃度の再確認を主治医に相談するよう説明。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">バルプロ酸服用中、傾眠・ぼんやりする・嘔吐の訴え。高アンモニア血症が疑われるため指導が必要と判断。自己判断で続けず速やかに受診するよう指導、血中アンモニア・肝機能の確認を主治医に相談するよう説明。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">カルバマゼピン（またはラモトリギン）服用中、発熱を伴う発疹・口のただれの訴え。重篤な皮膚障害（SJS/TEN）が疑われるため指導が必要と判断。自己判断で続けず速やかに受診するよう指導。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">カルバマゼピン服用中、倦怠感・食欲低下・頭痛の訴え。低Na血症（SIADH）が疑われるため指導が必要と判断。低Na血症が疑われるため、早めに主治医へ症状を伝え、Na値確認の必要性について相談するよう指導。利尿薬併用例では併用薬の見直しも相談するよう説明。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">ラモトリギン服用中、数日以上の飲み忘れの訴え。中断後に元の用量で再開すると皮疹リスクが上がるため指導が必要と判断。自己判断で元の量に戻さず主治医に相談するよう指導（改めて漸増が必要な場合がある旨を説明）。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">「気分が安定したので自己中断したい」との訴え。自己中断による再発・躁転のリスクの懸念があるため指導が必要と判断。気分安定薬は症状が安定しても再発予防のため継続が必要なことを説明、自己判断で中止せず主治医に相談するよう指導。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">妊娠判明の情報あり。気分安定薬は薬剤ごとに胎児への影響が異なる（特にバルプロ酸は催奇形性が高い）ため指導が必要と判断。自己判断で中止せず（中止により再発・躁転のリスク）、主治医に妊娠を伝えて処方を相談するよう指導。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- § 個別指導での指摘事例（薬効固有の要点＋ハブへ） -->
-      <section id="kobetsu">
-        <div class="section-label">個別指導</div>
-        <h2 class="section-title">個別指導での指摘事例</h2>
-        <div class="drug-check-box">
-          <div class="drug-check-box-title">この薬効群で特に確認されやすいポイント</div>
-          <ul>
-            <li>症状・受診の経緯（処方内容の確認）・気分の安定状況に加え、<strong>血中濃度（TDM）や検査の実施状況・推移</strong>が薬歴から分かるか（リチウム・バルプロ酸・カルバマゼピン）</li>
-            <li><strong>中毒徴候・重篤皮疹・高アンモニア血症等の相談目安</strong>、ラモトリギンの<strong>漸増遵守</strong>を指導・記録したか</li>
-            <li><strong>妊娠の希望・可能性</strong>と胎児への影響（特にバルプロ酸）について必要な確認・説明を行ったか</li>
-            <li>「副作用・服薬状況等の変化によるロ」では、変化の確認・<strong>指導が必要と判断した理由</strong>・指導内容が残っているか</li>
-          </ul>
-        </div>
-        <p style="font-size:12px;color:var(--sub);margin-top:10px;">
-          ※ 個別指導の一般的な考え方・過去の指摘の読み方は <a href="ハイリスク_薬歴の書き方.html#kobetsu" style="color:var(--blue);">ハイリスク薬の薬歴の書き方「個別指導で見られる点」</a> にまとめている。
-        </p>
-      </section>
-
-      <!-- ============================================================
-           § SOURCE（折りたたみ）
-           ============================================================ -->
-      <section>
-        <details class="guide-details fold-in">
-          <summary>本ページの根拠（出典・通知）</summary>
-          <div class="guide-details-body">
-            <div class="source-box">
-              <span class="source-box-label">ガイドライン</span>
-              <div><a href="https://www.nichiyaku.or.jp/yakuzaishi/pharmacy-info/other/guideline01" target="_blank" rel="noopener" style="color:var(--blue);">日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2.1版・令和8年6月）」</a>精神神経用薬（催眠鎮静薬を除く）／抗てんかん薬</div>
-              <div class="source-cite">→ 確認・指導事項の根拠</div>
-            </div>
-            <div class="source-box" style="margin-top:12px;">
-              <span class="source-box-label">マニュアル</span>
-              <div>厚生労働省「薬局における疾患別対応マニュアル（精神疾患・気分障害）」令和6年3月</div>
-              <div class="source-cite">→ 血中濃度モニタリング（Q4-1）・ラモトリギンの皮疹確認（Q4-2）・抗てんかん薬の気分障害目的処方（Q3-3）等</div>
-            </div>
-            <div class="source-box" style="margin-top:12px;">
-              <span class="source-box-label">通知</span>
-              <div>令和8年3月5日 保医発0305第6号 別添3「調剤報酬点数表に関する事項」 特定薬剤管理指導加算1</div>
-              <div class="source-cite">→ 算定要件・薬歴記載要件の原文</div>
-            </div>
-            <p style="font-size:12px;color:var(--sub);margin-top:14px;">※ 用法用量・血中濃度の目安・相互作用は最新の添付文書を確認する。抗うつ薬・抗精神病薬・抗てんかん薬は別ページで扱う。バルプロ酸・カルバマゼピン・ラモトリギンのてんかん目的の処方は「抗てんかん薬」ページ（作成予定）で扱う。</p>
-          </div>
-        </details>
-      </section>
-
-    </main>
-
-    </div><!-- /右カラム -->
-    </div><!-- /.layout-outer -->
-
-    <footer>調剤報酬・薬歴まとめ ／ 薬歴マニュアル ／ ハイリスク薬指導 ／ 気分安定薬</footer>
-
     <script>
-      // チェックリストだけ印刷
-      document.querySelectorAll('.print-btn').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          document.body.classList.add('print-checklist-only');
-          window.print();
-        });
-      });
-      window.addEventListener('afterprint', function () {
-        document.body.classList.remove('print-checklist-only');
-      });
-    </script>
-    <script>
-      document.querySelectorAll('.copy-mini').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const parent = btn.parentElement;
-          const tplText = parent.querySelector('.tpl-text');
-          let text;
-          if (tplText) {
-            text = tplText.innerText;
-          } else {
-            const spans = parent.querySelectorAll('span:not(.dcb-label)');
-            text = Array.from(spans).map(s => s.innerText).join('\n');
+      // 記載例を組み立てる：場面を選ぶと、その場面でよく使う部品に自動でチェックが入る。
+      // チェックは自由に付け外しでき、下の枠に1つの文として組み上がる。
+      // 枠の中の〇〇は入力欄になっていて、打った値はチェックを付け外ししても残る。
+      // 部品の data-drug は「|」区切りで複数の薬剤に出せる。薬剤の「その他」は値が〇〇で、文の中で入力欄になる。
+      // 入力した内容は画面の中だけで使い、保存も送信もしない。
+      document.querySelectorAll('.mk').forEach(function (mk) {
+        var out = mk.querySelector('.mk-out'), hint = mk.querySelector('.mk-bar .hint'), hint0 = hint.textContent;
+        var scenes = [].slice.call(mk.querySelectorAll('.mk-scenes:not(.mk-drug) input'));
+        var drugs = [].slice.call(mk.querySelectorAll('.mk-drug input'));
+        var parts = [].slice.call(mk.querySelectorAll('.mk-p input'));
+        var purposes = (mk.dataset.purpose || '').split('|').filter(Boolean);
+        var vals = {};
+        function drug() { var d = drugs.filter(function (x) { return x.checked; })[0]; return d ? d.value : (mk.dataset.drug || '〇〇'); }
+        function scene() { return scenes.filter(function (x) { return x.checked; })[0]; }
+        function applyDefaults() {
+          var s = scene().value, d = drug();
+          parts.forEach(function (p) {
+            var on = (p.dataset.on || '').split(' ').indexOf(s) >= 0;
+            var okDrug = !p.dataset.drug || p.dataset.drug.split('|').indexOf(d) >= 0;
+            p.checked = on && okDrug;
+            p.closest('.mk-p').hidden = !okDrug;
+          });
+          // 見出しの下に表示する部品がなければ、見出しも隠す
+          [].slice.call(mk.querySelectorAll('.mk-h')).forEach(function (hd) {
+            if (!hd.querySelector('.mk-sub')) return;
+            var el = hd.nextElementSibling, any = false;
+            while (el && el.classList.contains('mk-p')) { if (!el.hidden) any = true; el = el.nextElementSibling; }
+            hd.hidden = !any;
+          });
+        }
+        function segments() {
+          var segs = [{ id: 's:' + scene().value, text: scene().dataset.text }];
+          parts.forEach(function (p, i) { if (p.checked && !p.closest('.mk-p').hidden) segs.push({ id: 'p' + i, text: p.nextElementSibling.textContent }); });
+          var d = drug();
+          segs.forEach(function (g) { g.text = g.text.split('{薬}').join(d); });
+          return segs;
+        }
+        function purposeText() {
+          var v = vals.purpose || '';
+          if (v === '__other') return vals.purposeOther || '';
+          return v;
+        }
+        function plain() {
+          var t = '';
+          segments().forEach(function (g) {
+            var n = 0;
+            g.text.split(/(\{目的\}|〇+)/).forEach(function (tok) {
+              if (tok === '{目的}') t += purposeText() || '〇〇';
+              else if (/^〇+$/.test(tok)) { t += vals[g.id + '#' + (n++)] || tok; }
+              else t += tok;
+            });
+          });
+          return t;
+        }
+        function sizeOf(el) { el.size = Math.max(2, (el.value || '').length * 2 + 1); }
+        function input(key, ph) {
+          var el = document.createElement('input');
+          el.className = 'mk-in'; el.value = vals[key] || ''; el.placeholder = ph; el.setAttribute('aria-label', '入力');
+          sizeOf(el);
+          el.addEventListener('input', function () { vals[key] = el.value; sizeOf(el); });
+          return el;
+        }
+        function purposeSelect() {
+          var wrap = document.createElement('span');
+          var sel = document.createElement('select');
+          sel.className = 'mk-in';
+          [['', '処方目的を選択する']].concat(purposes.map(function (p) { return [p, p]; })).concat([['__other', 'その他（入力する）']])
+            .forEach(function (o) { var op = document.createElement('option'); op.value = o[0]; op.textContent = o[1]; sel.appendChild(op); });
+          sel.value = vals.purpose || '';
+          wrap.appendChild(sel);
+          var other = input('purposeOther', '処方目的');
+          other.hidden = sel.value !== '__other';
+          wrap.appendChild(other);
+          sel.addEventListener('change', function () { vals.purpose = sel.value; other.hidden = sel.value !== '__other'; if (!other.hidden) other.focus(); });
+          return wrap;
+        }
+        function render() {
+          out.innerHTML = ''; var fb = mk.querySelector('.mk-fallback'); if (fb) fb.hidden = true; hint.textContent = hint0; hint.classList.remove('warn');
+          segments().forEach(function (g) {
+            var n = 0;
+            g.text.split(/(\{目的\}|〇+)/).forEach(function (tok) {
+              if (!tok) return;
+              if (tok === '{目的}') out.appendChild(purposeSelect());
+              else if (/^〇+$/.test(tok)) out.appendChild(input(g.id + '#' + (n++), tok));
+              else out.appendChild(document.createTextNode(tok));
+            });
+          });
+        }
+        scenes.concat(drugs).forEach(function (x) { x.addEventListener('change', function () { applyDefaults(); render(); }); });
+        parts.forEach(function (x) { x.addEventListener('change', render); });
+        mk.querySelector('[data-act=clear]').addEventListener('click', function () { parts.forEach(function (p) { p.checked = false; }); render(); });
+        mk.querySelector('[data-act=reset]').addEventListener('click', function () { applyDefaults(); render(); });
+        mk.querySelector('.mk-bar button').addEventListener('click', function () {
+          var b = this, t = plain();
+          var left = (t.match(/〇+/g) || []).length;
+          function ok() {
+            b.textContent = 'コピーしました';
+            hint.textContent = left ? '未入力が' + left + 'か所ある（〇〇のままコピーした）' : hint0;
+            hint.classList.toggle('warn', !!left);
+            setTimeout(function () { b.textContent = 'コピー'; }, 1500);
           }
-          navigator.clipboard.writeText(text).then(() => {
-            btn.classList.add('copied');
-            const orig = btn.textContent;
-            btn.textContent = '済';
-            setTimeout(() => { btn.classList.remove('copied'); btn.textContent = orig; }, 1200);
-          });
+          function ng() {
+            // 枠の中（ハローナビ等）でクリップボードが使えないときは、完成した文を選択した状態で出し、Ctrl+C を促す
+            var ta = mk.querySelector('.mk-fallback');
+            if (!ta) { ta = document.createElement('textarea'); ta.className = 'mk-fallback'; ta.readOnly = true; mk.querySelector('.mk-bar').after(ta); }
+            ta.value = t; ta.hidden = false; ta.focus(); ta.select();
+            hint.textContent = 'コピーできなかった。下の枠の文が選択されているので Ctrl+C でコピーする';
+            hint.classList.add('warn');
+          }
+          function legacy() {
+            var ta = document.createElement('textarea');
+            ta.value = t; ta.setAttribute('readonly', '');
+            ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
+            document.body.appendChild(ta); ta.select();
+            var done = false; try { done = document.execCommand('copy'); } catch (e) {}
+            document.body.removeChild(ta);
+            done ? ok() : ng();
+          }
+          if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(ok, legacy); else legacy();
         });
+        applyDefaults(); render();
       });
     </script>
-    <script>
-      // サイドスティッキーTOC アクティブハイライト
-      (function () {
-        const navLinks = document.querySelectorAll('.sticky-toc a[href^="#"]');
-        const sections = Array.from(navLinks)
-          .map(a => document.querySelector(a.getAttribute('href')))
-          .filter(Boolean);
-        if (!sections.length) return;
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const id = entry.target.id;
-              navLinks.forEach(a => {
-                a.classList.toggle('is-active', a.getAttribute('href') === '#' + id);
-              });
-            }
-          });
-        }, { rootMargin: '-40px 0px -70% 0px', threshold: 0 });
-        sections.forEach(s => observer.observe(s));
-      })();
-    </script>
-    <script src="yakureki.js" defer></script>
-    <script src="../assets/site-fab.js" defer></script>
+    <script src="hairisk-view.js"></script>
     <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   </body>
 </html>

@@ -97,6 +97,8 @@ for (const rel of targets()) {
       if (r.skipFiles && r.skipFiles.includes(rel)) continue;
       // フォルダ単位で見逃す（そのカテゴリ全体では正しい用法になる語 用）
       if (r.skipDirs && r.skipDirs.some(d => rel.startsWith(d))) continue;
+      // この class の行だけに当てる（薬歴の記載例の部品 mk-p など、文体の基準が違う場所 用）
+      if (r.onlyIn && !line.includes(`class="${r.onlyIn}"`)) continue;
       const m = text.match(new RegExp(r.pattern));
       if (!m) continue;
       hits.push({ line: i + 1, word: m[0].trim(), rule: r, text });
