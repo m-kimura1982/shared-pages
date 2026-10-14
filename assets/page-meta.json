@@ -45,7 +45,7 @@
     "lastUpdated": "2026-10-04"
   },
   "yakureki/ハイリスク_抗うつ薬.html": {
-    "lastUpdated": "2026-10-04",
+    "lastUpdated": "2026-10-14",
     "newUntil": "2026-10-21"
   },
   "yakureki/ハイリスク_気分安定薬.html": {
@@ -70,15 +70,15 @@
     "newUntil": "2026-10-13"
   },
   "yakureki/ハイリスク_糖尿病用剤.html": {
-    "lastUpdated": "2026-10-07",
+    "lastUpdated": "2026-10-14",
     "newUntil": "2026-10-11"
   },
   "yakureki/ハイリスク_膵臓ホルモン剤.html": {
-    "lastUpdated": "2026-10-04",
+    "lastUpdated": "2026-10-14",
     "newUntil": "2026-10-11"
   },
   "yakureki/ハイリスク_血液凝固阻止剤.html": {
-    "lastUpdated": "2026-10-07",
+    "lastUpdated": "2026-10-14",
     "newUntil": "2026-10-11"
   },
   "yakureki/居宅療養管理指導_薬歴の記載事項.html": {
@@ -86,7 +86,7 @@
     "newUntil": "2026-08-25"
   },
   "yakureki/ハイリスク_薬歴の書き方.html": {
-    "lastUpdated": "2026-10-04",
+    "lastUpdated": "2026-10-14",
     "newUntil": "2026-10-11"
   },
   "yakureki/ハイリスク薬指導.html": {
@@ -111,6 +111,10 @@
   "加算まとめ/薬剤調製料.html": {
     "lastUpdated": "2026-10-02",
     "newUntil": "2026-10-09"
+  },
+  "加算まとめ/特定薬剤管理指導加算1.html": {
+    "lastUpdated": "2026-10-14",
+    "newUntil": "2026-08-19"
   },
   "加算まとめ/在宅協力薬局.html": {
     "lastUpdated": "2026-09-02",
@@ -151,10 +155,6 @@
   "加算まとめ/在宅移行初期管理料.html": {
     "lastUpdated": "2026-09-03",
     "newUntil": "2026-09-01"
-  },
-  "加算まとめ/特定薬剤管理指導加算1.html": {
-    "lastUpdated": "2026-08-20",
-    "newUntil": "2026-08-19"
   },
   "加算まとめ/かかりつけ薬剤師フォローアップ加算.html": {
     "lastUpdated": "2026-09-02"
@@ -377,7 +377,7 @@
     "lastUpdated": "2026-07-12"
   },
   "ツール/gigi-search.html": {
-    "lastUpdated": "2026-10-02",
+    "lastUpdated": "2026-10-14",
     "newUntil": "2026-07-25"
   },
   "ツール/OTC販売の掲示物と様式.html": {
