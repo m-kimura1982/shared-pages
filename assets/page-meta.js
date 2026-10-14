@@ -1,7 +1,4 @@
 window.__pageMeta = {
-  "index.html": {
-    "lastUpdated": "2026-10-15"
-  },
   "加算まとめ.html": {
     "lastUpdated": "2026-09-12"
   },
@@ -11,8 +8,11 @@ window.__pageMeta = {
   "事務スタッフ向け.html": {
     "lastUpdated": "2026-09-11"
   },
+  "index.html": {
+    "lastUpdated": "2026-10-14"
+  },
   "updates.html": {
-    "lastUpdated": "2026-10-15"
+    "lastUpdated": "2026-10-14"
   },
   "tools.html": {
     "lastUpdated": "2026-10-03"
@@ -42,20 +42,17 @@ window.__pageMeta = {
     "newUntil": "2026-08-25"
   },
   "yakureki/ハイリスク_抗精神病薬.html": {
-    "lastUpdated": "2026-10-15",
-    "newUntil": "2026-10-22"
+    "lastUpdated": "2026-10-04"
   },
   "yakureki/ハイリスク_抗うつ薬.html": {
     "lastUpdated": "2026-10-14",
     "newUntil": "2026-10-21"
   },
   "yakureki/ハイリスク_気分安定薬.html": {
-    "lastUpdated": "2026-10-15",
-    "newUntil": "2026-10-22"
+    "lastUpdated": "2026-10-04"
   },
   "yakureki/ハイリスク_抗てんかん薬.html": {
-    "lastUpdated": "2026-10-15",
-    "newUntil": "2026-10-22"
+    "lastUpdated": "2026-10-04"
   },
   "yakureki/index.html": {
     "lastUpdated": "2026-10-06",
