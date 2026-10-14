@@ -1,4 +1,7 @@
 {
+  "index.html": {
+    "lastUpdated": "2026-10-15"
+  },
   "加算まとめ.html": {
     "lastUpdated": "2026-09-12"
   },
@@ -8,11 +11,8 @@
   "事務スタッフ向け.html": {
     "lastUpdated": "2026-09-11"
   },
-  "index.html": {
-    "lastUpdated": "2026-10-14"
-  },
   "updates.html": {
-    "lastUpdated": "2026-10-14"
+    "lastUpdated": "2026-10-15"
   },
   "tools.html": {
     "lastUpdated": "2026-10-03"
@@ -41,18 +41,9 @@
     "lastUpdated": "2026-08-20",
     "newUntil": "2026-08-25"
   },
-  "yakureki/ハイリスク_抗精神病薬.html": {
-    "lastUpdated": "2026-10-04"
-  },
   "yakureki/ハイリスク_抗うつ薬.html": {
-    "lastUpdated": "2026-10-14",
+    "lastUpdated": "2026-10-15",
     "newUntil": "2026-10-21"
-  },
-  "yakureki/ハイリスク_気分安定薬.html": {
-    "lastUpdated": "2026-10-04"
-  },
-  "yakureki/ハイリスク_抗てんかん薬.html": {
-    "lastUpdated": "2026-10-04"
   },
   "yakureki/index.html": {
     "lastUpdated": "2026-10-06",
@@ -69,12 +60,8 @@
     "lastUpdated": "2026-10-07",
     "newUntil": "2026-10-13"
   },
-  "yakureki/ハイリスク_糖尿病用剤.html": {
-    "lastUpdated": "2026-10-14",
-    "newUntil": "2026-10-11"
-  },
   "yakureki/ハイリスク_膵臓ホルモン剤.html": {
-    "lastUpdated": "2026-10-14",
+    "lastUpdated": "2026-10-15",
     "newUntil": "2026-10-11"
   },
   "yakureki/ハイリスク_血液凝固阻止剤.html": {
@@ -91,6 +78,19 @@
   },
   "yakureki/ハイリスク薬指導.html": {
     "lastUpdated": "2026-10-04",
+    "newUntil": "2026-10-11"
+  },
+  "yakureki/ハイリスク_抗てんかん薬.html": {
+    "lastUpdated": "2026-10-15"
+  },
+  "yakureki/ハイリスク_抗精神病薬.html": {
+    "lastUpdated": "2026-10-15"
+  },
+  "yakureki/ハイリスク_気分安定薬.html": {
+    "lastUpdated": "2026-10-15"
+  },
+  "yakureki/ハイリスク_糖尿病用剤.html": {
+    "lastUpdated": "2026-10-15",
     "newUntil": "2026-10-11"
   },
   "加算まとめ/分割調剤.html": {
