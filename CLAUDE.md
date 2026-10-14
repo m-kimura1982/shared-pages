@@ -523,7 +523,7 @@ git config --global --add safe.directory 'D:/☆shared-pages'
 
 **定期実行（Claude アプリの Scheduled）はPCごとに登録が要る**（USB には入らない）。登録内容の正本は `private/定期実行の登録内容.md`。**このPCで最初に作業するとき、list_scheduled_tasks で登録があるか確かめ、無ければ本人に聞いてからそのファイルのとおり登録する。**
 
-**private/ は git に入らないので、USB が壊れると失われる。** 公開ページは GitHub から戻せるが private/ は戻せないので、時々どこかにコピーを取っておく。
+**private/ は git に入らないので、USB が壊れると失われる。** 公開ページは GitHub から戻せるが private/ は戻せない。draft/ もコミットは指示したときだけなので同じ。そこで平日19時の定期実行の最初に `node tools-internal/backup-private.js` が private/ と draft/ を、そのPCのデスクトップ「サイトデータ予備R8.8.2」へコピーする（上書きと追加のみ。USB で消したものは控えに残る）。
 
 ## ローカルプレビュー
 ```bash
