@@ -8,10 +8,13 @@
   --border:#d1d5db; --border-dk:#9ca3af;
   --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px;
   --txt-2:#444444; --txt-3:#5e6470;
-  /* 図解パレット（CLAUDE.md の淡色パレット） */
-  --fig-hoken-bg:#dfe9f6;  --fig-hoken-tx:#2a5580;
-  --fig-teiritsu-bg:#f2f2f2; --fig-teiritsu-tx:#444444;
-  --fig-tokubetsu-bg:#fdebdd; --fig-tokubetsu-tx:#9a4414; --fig-tokubetsu-line:#d9681e;
+  /* 図解の色（2026-10-14）：意味を持たせる色は淡いオレンジ＝料金がかかる側・特別の料金 だけ。
+     保険・かからない側は白かグレーにする（サイトは青ベースなので、青に意味を持たせると強調の青と区別がつかない）。
+     文字はどの地でも黒。白・グレー・淡いオレンジは明るさがほぼ同じなので、境目は --fig-line の細線で見せる */
+  --fig-gray-bg:#f2f2f2;
+  --fig-tokubetsu-bg:#fdebdd;
+  --fig-tokubetsu-cell:#fdefe3;   /* 表のセル用。#fef5ee だと白と見分けがつかなかった */
+  --fig-line:#9ca3af;
 }
 body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
 .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
@@ -63,9 +66,9 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
 .fq-in { font-weight:900; font-size:var(--text-sm); margin-bottom:4px; }
 .fq-t { font-weight:700; font-size:var(--text-sm); }
 .fq-x { font-size:var(--text-xs); color:var(--txt-3); margin-top:2px; }
-/* 行き着く先は「料金がかかる」なので、表と同じクリーム */
-.fq-goal { background:var(--fig-tokubetsu-bg); border-left:3px solid var(--fig-tokubetsu-line); border-radius:0 var(--radius-sm) var(--radius-sm) 0; padding:11px 15px; font-size:var(--text-sm); }
-.fq-goal b { color:var(--fig-tokubetsu-tx); font-weight:900; }
+/* 行き着く先は「料金がかかる」なので、表と同じ淡いオレンジ */
+.fq-goal { background:var(--fig-tokubetsu-bg); border-radius:var(--radius-sm); padding:11px 15px; font-size:var(--text-sm); }
+.fq-goal b { color:var(--ink); font-weight:900; }
 
 /* 表 */
 .tbl-wrap { overflow-x:auto; }
@@ -91,7 +94,7 @@ th.mark small { display:block; font-weight:500; font-size:var(--text-xs); color:
 .tbl-marks td.mark { vertical-align:middle; font-size:var(--text-lg); font-weight:700; line-height:1; }
 .tbl-marks tr.grp .qual { font-weight:500; color:var(--txt-3); margin-left:9px; }
 /* 表の中の区切り（長期収載品ではない薬／でもある薬）。見出しと分かるよう、左に線を付けて一段大きく。
-   塗りは付けない：この表では淡い青＝料金なし・オレンジ＝料金ありの意味があるので、区切りは白地の小見出しと線だけで表す */
+   塗りは付けない：この表では淡いオレンジ＝料金ありの意味があるので、区切りは白地の小見出しと線だけで表す */
 .tbl-marks tr.grp td { background:var(--white); color:var(--ink); font-weight:900; font-size:var(--text-sm); padding:12px 11px 5px; border-bottom:2px solid var(--border-dk); }
 .kome { font-weight:700; margin-left:3px; }
 /* 処方箋様式の抜粋。原寸を超えて拡大しない（拡大するとぼやけるため） */
@@ -101,11 +104,10 @@ th.mark small { display:block; font-weight:500; font-size:var(--text-xs); color:
 .form-fig img { display:block; max-width:100%; height:auto; margin:0 auto; }
 .form-fig figcaption { font-size:var(--text-xs); color:var(--txt-3); margin-top:6px; line-height:1.7; }
 th.wrap { white-space:normal; }   /* 長い見出しは折り返す。nowrap のままだと表全体が横に伸びる */
-/* 負担がかかる側／かからない側を列で塗り分ける（内訳図と同じ色の使い方） */
-th.c-off { background:var(--fig-hoken-bg); color:var(--fig-hoken-tx); }
-th.c-on  { background:var(--fig-tokubetsu-bg); color:var(--fig-tokubetsu-tx); }
-td.c-off { background:#f2f7fc; }
-td.c-on  { background:#fef5ee; }
+/* 料金がかかる側だけを淡いオレンジにする。かからない側は見出しをほかの列と同じグレー、セルは白 */
+th.c-off { background:var(--box-gray); color:var(--ink); }
+th.c-on  { background:var(--fig-tokubetsu-bg); color:var(--ink); }
+td.c-on  { background:var(--fig-tokubetsu-cell); }
 .tbl-wrap.narrow table { min-width:320px; }
 .tbl-wrap.mid table { min-width:440px; }
 /* 画面からはみ出す表には、横に動かせることを文字で出す（細い影では気づかれない） */
@@ -197,11 +199,11 @@ body.rev-focus tr.rev-latest td:first-child { box-shadow:inset 3px 0 0 var(--blu
   .stack-sp td.k small { display:inline; margin-left:6px; }
   .stack-sp td.c-off, .stack-sp td.c-on { padding:8px 11px; border-radius:var(--radius-sm); margin-top:6px; }
   .stack-sp td.none { display:none; }   /* 縦積みでは「料金がかかる：なし」の箱は要らない（かからない側だけで分かる） */
-  .stack-sp td.c-off { background:#f2f7fc; }
-  .stack-sp td.c-on  { background:#fef5ee; }
+  .stack-sp td.c-off { background:var(--white); border:var(--bw-h) solid var(--border); }
+  .stack-sp td.c-on  { background:var(--fig-tokubetsu-cell); }
   .stack-sp td.c-off::before, .stack-sp td.c-on::before { display:block; font-weight:700; font-size:var(--text-xs); margin-bottom:3px; }
-  .stack-sp td.c-off::before { content:"料金がかからない"; color:var(--fig-hoken-tx); }
-  .stack-sp td.c-on::before  { content:"料金がかかる"; color:var(--fig-tokubetsu-tx); }
+  .stack-sp td.c-off::before { content:"料金がかからない"; color:var(--ink); }
+  .stack-sp td.c-on::before  { content:"料金がかかる"; color:var(--ink); }
   /* 効能・効果の表は「OTCにあるか」が対比の軸なので、見出しの言葉をそのまま出す */
   .stack-sp.kounou td.c-on::before  { content:"料金がかかる（OTCにもある効能・効果）"; }
   .stack-sp.kounou td.c-off::before { content:"かからない（OTCにない効能・効果）"; }
@@ -219,7 +221,7 @@ body.rev-focus tr.rev-latest td:first-child { box-shadow:inset 3px 0 0 var(--blu
 @media print {
   body { background:#fff; padding:0; font-size:11pt; }
   .card { break-inside:avoid; border-color:#999; }
-  th, td.c-off, td.c-on, .box-blue, .box-gray, .fq-goal, rect { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  th, td.c-off, td.c-on, .box-blue, .box-gray, .fq-goal, rect, .shikumi-bar > div, .lane, .seg { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
   .svgbox, .tbl-wrap { overflow:visible; }
   details { border:none; }
   details .body { display:block; }
@@ -249,13 +251,14 @@ a.otc-nav-i:hover { background:#f4f7fb; color:var(--blue); }
 .otc-nav.bottom .otc-nav-i.cur { background:var(--box-blue); border-color:#bcd3ee; color:var(--blue); }
 
 /* しくみの帯：技術料・薬剤費の4分の3（保険）・4分の1（特別の料金） */
-.shikumi-bar { display:flex; border-radius:var(--radius-sm); overflow:hidden; border:var(--bw) solid var(--border-dk); font-size:var(--text-sm); }
+.shikumi-bar { display:flex; border-radius:var(--radius-sm); overflow:hidden; border:var(--bw-h) solid var(--fig-line); font-size:var(--text-sm); color:var(--ink); }
 .shikumi-bar > div { padding:10px 12px; line-height:1.5; }
 .shikumi-bar b { display:block; font-weight:900; }
 .shikumi-bar small { font-size:var(--text-xs); }
-.shikumi-bar .gi  { flex:2.2; background:var(--fig-teiritsu-bg); color:var(--fig-teiritsu-tx); }
-.shikumi-bar .hk  { flex:3;   background:var(--fig-hoken-bg); color:var(--fig-hoken-tx); border-left:var(--bw) solid var(--border-dk); }
-.shikumi-bar .tk  { flex:1.6; background:var(--fig-tokubetsu-bg); color:var(--fig-tokubetsu-tx); border-left:2px solid var(--fig-tokubetsu-line); }
+/* 技術料＝グレー／保険の4分の3＝白／特別の料金＝淡いオレンジ。境目は細線 */
+.shikumi-bar .gi  { flex:2.2; background:var(--fig-gray-bg); }
+.shikumi-bar .hk  { flex:3;   background:var(--white); border-left:var(--bw-h) solid var(--fig-line); }
+.shikumi-bar .tk  { flex:1.6; background:var(--fig-tokubetsu-bg); border-left:var(--bw-h) solid var(--fig-line); }
 .shikumi-cap { display:flex; font-size:var(--text-xs); color:var(--txt-3); margin-top:5px; }
 .shikumi-cap span:first-child { flex:2.2; }
 .shikumi-cap span:last-child { flex:4.6; border-top:1px solid var(--border-dk); padding-top:3px; text-align:center; }
@@ -288,8 +291,7 @@ a.otc-nav-i:hover { background:#f4f7fb; color:var(--blue); }
   .otc-nav > .otc-nav-i.sub { margin-left:0; }
   .otc-nav-i.cur, .otc-nav.bottom .otc-nav-i.cur { background:var(--box-blue); border-color:var(--blue); color:var(--blue); }
   .shikumi-bar { flex-direction:column; }
-  .shikumi-bar .hk, .shikumi-bar .tk { border-left:none; border-top:var(--bw) solid var(--border-dk); }
-  .shikumi-bar .tk { border-top:2px solid var(--fig-tokubetsu-line); }
+  .shikumi-bar .hk, .shikumi-bar .tk { border-left:none; border-top:var(--bw-h) solid var(--fig-line); }
   .shikumi-cap { display:none; }
 }
 @media print {
@@ -297,48 +299,42 @@ a.otc-nav-i:hover { background:#f4f7fb; color:var(--blue); }
 }
 
 /* ===== 特別の料金の計算：計算の道筋・結果の帯（2026-10-01 試作から採用） ===== */
-/* このページでは青＝保険給付（内訳図・計算の道筋・結果の帯）。表の新しい金額や強調の文字に青を使うと
-   保険の金額と読み違えるので、黒の太字にする。青はリンクと見出しの印だけに残す */
+/* このページは金額の表が多いので、新しい金額や強調の文字は青にせず黒の太字にして色を減らす */
 .fee-page td.new { color:var(--ink); font-weight:900; }
 .fee-page .em-change { color:var(--ink); font-weight:900; }
 
-/* 計算の道筋：左＝特別の料金（オレンジ）、右＝保険の分（青）。同じ段を横に揃え、各段の右端に例の数字 */
+/* 計算の道筋：左＝特別の料金（淡いオレンジ）、右＝保険の分（グレー）。同じ段を横に揃え、各段の右端に例の数字 */
 .lanes-fig { margin:0; }
 .lanes-cap { font-size:var(--text-sm); margin-bottom:10px; display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 12px; }
 .lanes-yk { font-size:var(--text-xs); color:var(--txt-3); }
 .lanes { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
 .lane { border-radius:var(--radius-sm); padding:12px 14px 14px; }
-.lane.tk { background:#fef5ee; border-top:4px solid var(--fig-tokubetsu-line); }
-.lane.hk { background:#f2f7fc; border-top:4px solid #5b8cc6; }
+.lane.tk { background:var(--fig-tokubetsu-bg); }
+.lane.hk { background:var(--fig-gray-bg); }
 .lane-h { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; flex-wrap:wrap; gap:6px 10px; margin-bottom:8px; }
-.lane.tk .lane-h { color:var(--fig-tokubetsu-tx); }
-.lane.hk .lane-h { color:var(--fig-hoken-tx); }
 .lane-tag { font-size:var(--text-xs); font-weight:700; background:var(--white); border-radius:4px; padding:1px 8px; }
-.lane.tk .lane-tag { border:1px solid #efc3a2; }
-.lane.hk .lane-tag { border:1px solid #b9d0ea; }
+.lane-tag { border:1px solid var(--border); }
 .ls { list-style:none; counter-reset:ls; }
 .ls li { counter-increment:ls; display:grid; grid-template-columns:22px minmax(0,1fr) auto; grid-template-rows:auto auto; column-gap:9px; align-items:start; padding:9px 0; border-top:1px solid rgba(0,0,0,.08); min-height:62px; }
 .ls li:first-child { border-top:none; }
 .ls li::before { content:counter(ls); grid-row:1 / span 2; width:21px; height:21px; border-radius:5px; font-size:12px; font-weight:900; color:#fff; display:flex; align-items:center; justify-content:center; margin-top:2px; }
-.lane.tk .ls li::before { background:var(--fig-tokubetsu-line); }
-.lane.hk .ls li::before { background:var(--blue); }
+/* 手順の番号。淡いオレンジの地に青の塗りは強すぎたので、白地・黒字・細枠にする（2026-10-14 本人） */
+.ls li::before { background:var(--white); color:var(--ink); border:var(--bw-h) solid var(--fig-line); }
 .ls-t { font-weight:700; font-size:var(--text-sm); grid-column:2; }
 .ls-v { font-size:var(--text-xs); color:var(--txt-2); grid-column:2; line-height:1.6; }
 .ls-n { grid-column:3; grid-row:1 / span 2; align-self:center; font-weight:900; font-size:var(--text-md); white-space:nowrap; text-align:right; }
 .ls-n small { font-size:var(--text-xs); font-weight:700; margin-left:1px; }
 .ls-n.big { font-size:24px; }
-.lane.tk .ls-n.big { color:var(--fig-tokubetsu-tx); }
-.lane.hk .ls-n.big { color:var(--fig-hoken-tx); }
 .ls-n.dim-n { font-size:var(--text-xs); font-weight:500; color:var(--txt-3); }
-/* 結果の帯（内訳図と同じ3色） */
+/* 結果の帯：保険給付＝白／自己負担＝グレー／特別の料金＝淡いオレンジ。帯を細線で囲み、境目も細線 */
 .res { margin-top:14px; display:flex; flex-direction:column; gap:10px; }
 .res-row { display:grid; grid-template-columns:7.5em minmax(0,1fr) 6.5em; align-items:center; gap:10px; }
 .res-lab { font-weight:700; font-size:var(--text-sm); text-align:right; }
-.res-bar { display:flex; height:40px; border-radius:4px; overflow:hidden; }
-.seg { display:flex; align-items:center; justify-content:center; font-size:var(--text-xs); font-weight:700; white-space:nowrap; overflow:hidden; padding:0 4px; min-width:0; }
-.seg.hk { background:var(--fig-hoken-bg); color:var(--fig-hoken-tx); }
-.seg.jf { background:var(--fig-teiritsu-bg); color:var(--fig-teiritsu-tx); border-left:1px solid #fff; }
-.seg.tk { background:var(--fig-tokubetsu-bg); color:var(--fig-tokubetsu-tx); border-left:2px solid var(--fig-tokubetsu-line); }
+.res-bar { display:flex; height:40px; border-radius:4px; overflow:hidden; border:var(--bw-h) solid var(--fig-line); }
+.seg { display:flex; align-items:center; justify-content:center; font-size:var(--text-xs); font-weight:700; white-space:nowrap; overflow:hidden; padding:0 4px; min-width:0; color:var(--ink); }
+.seg.hk { background:var(--white); }
+.seg.jf { background:var(--fig-gray-bg); border-left:var(--bw-h) solid var(--fig-line); }
+.seg.tk { background:var(--fig-tokubetsu-bg); border-left:var(--bw-h) solid var(--fig-line); }
 .seg i { font-style:normal; margin-right:4px; }
 .res-pay { display:flex; align-items:baseline; gap:4px; white-space:nowrap; }
 .res-pay span { font-size:var(--text-xs); color:var(--txt-3); }
