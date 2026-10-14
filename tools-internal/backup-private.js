@@ -1,7 +1,7 @@
 // private/ と draft/ を、このPCのデスクトップの予備フォルダへコピーする。
 // どちらも USB の上にしかない（private/ は git に入らず、draft/ はコミットを指示したときだけ入る）ので、USB が壊れたときの控え。
 // 上書きと追加だけで、USB 側で消したファイルは予備から消さない（間違えて消したときに戻せるように）。
-// 平日19時の定期実行（厚労省チェック）の最初に回す。手で回してもよい。
+// 平日19時の定期実行（厚労省チェック）の手順0で回す（.claude/commands/厚労省チェック.md）。手で回してもよい。
 //
 //   node tools-internal/backup-private.js
 //   node tools-internal/backup-private.js "C:/別の/コピー先"
@@ -12,7 +12,7 @@ const fs = require('fs');
 const { spawnSync } = require('child_process');
 
 const ROOT = path.resolve(__dirname, '..');
-const DEST = process.argv[2] || path.join(os.homedir(), 'Desktop', 'サイトデータ予備R8.8.2');
+const DEST = process.argv[2] || path.join(os.homedir(), 'Desktop', 'サイトの控え（USB）');
 const DIRS = ['private', 'draft'];
 
 fs.mkdirSync(DEST, { recursive: true });
