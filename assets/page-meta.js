@@ -45,7 +45,8 @@ window.__pageMeta = {
     "lastUpdated": "2026-10-04"
   },
   "yakureki/ハイリスク_抗うつ薬.html": {
-    "lastUpdated": "2026-10-04"
+    "lastUpdated": "2026-10-04",
+    "newUntil": "2026-10-21"
   },
   "yakureki/ハイリスク_気分安定薬.html": {
     "lastUpdated": "2026-10-04"

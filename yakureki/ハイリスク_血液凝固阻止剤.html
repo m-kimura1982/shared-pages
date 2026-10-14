@@ -38,24 +38,25 @@
 
       <div class="card" id="point">
         <div class="card-title">この薬効群で記載すること</div>
-        <div class="blist">
-          <div class="check"><span>✓</span><span>新たに処方されたときは、処方目的（何の血栓を防ぐための薬か）と医師から受けた説明</span></div>
-          <div class="check"><span>✓</span><span>出血症状の有無と、出血したときの連絡・受診の目安を伝えたこと</span></div>
-          <div class="check"><span>✓</span><span>自己判断で中止すると血栓のリスクが上がること</span></div>
-          <div class="check"><span>✓</span><span>抜歯・手術・内視鏡の予定と、休薬は医師の指示に従うこと</span></div>
-          <div class="check"><span>✓</span><span>DOACは、年齢・体重・腎機能から見た用量の妥当性</span></div>
-        </div>
+        <dl class="pt-list">
+          <div><dt>処方目的</dt><dd>新たに処方されたときは、処方目的（何の血栓を防ぐための薬か）と医師から受けた説明</dd></div>
+          <div><dt>出血</dt><dd>出血症状の有無と、出血したときの連絡・受診の目安を伝えたこと</dd></div>
+          <div><dt>中止</dt><dd>自己判断で中止すると血栓のリスクが上がること</dd></div>
+          <div><dt>抜歯・手術</dt><dd>抜歯・手術・内視鏡の予定と、休薬は医師の指示に従うこと</dd></div>
+          <div><dt>DOACの用量</dt><dd>年齢・体重・腎機能から見た用量の妥当性</dd></div>
+        </dl>
         <div class="grp-chips" style="margin-top:14px;">
-          <a href="#common">出血したとき・血圧・休薬のあと</a>
+          <a href="#common">出血したとき・<wbr>血圧・<wbr>休薬のあと</a>
           <a href="#warfarin">ワーファリン</a>
-          <a href="#doac">DOAC<small>リクシアナ・エリキュース・イグザレルト・プラザキサ</small></a>
+          <a href="#doac">DOAC<small>リクシアナ・<wbr>エリキュース・<wbr>イグザレルト・<wbr>プラザキサ</small></a>
           <a href="#antiplatelet">抗血小板薬</a>
         </div>
+        <p class="note-xs" style="margin-top:14px;">各カードの「背景知識」には、確認や指導の根拠（電子添文など）をまとめている。算定対象になるかどうかは、<a href="#target">ページ下の「この薬効群の算定対象」</a>で確認する。</p>
       </div>
 
       <!-- ===== 共通 ===== -->
       <div class="card" id="common">
-        <div class="card-title">どの薬にも共通：出血したとき・血圧・休薬のあと</div>
+        <div class="card-title">血液凝固阻止剤に共通する注意点<span class="qual">出血したとき・血圧・休薬のあと</span></div>
         <div class="stack">
           <div>
             <div class="sub-title">出血したときの対応</div>
@@ -101,13 +102,13 @@
           <div class="mk-h">場面</div>
           <div class="mk-scenes">
             <label><input type="radio" name="w" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
-            <label><input type="radio" name="w" value="up" data-text="{薬}：〇mg→〇mgに増量。〇〇のため増量と本人より。"><span><b>ロ</b>増量</span></label>
-            <label><input type="radio" name="w" value="down" data-text="{薬}：〇mg→〇mgに減量。〇〇のため減量と本人より。"><span><b>ロ</b>減量</span></label>
+            <label><input type="radio" name="w" value="up" data-text="{薬}：〇mgから〇mgに増量。増量の理由は〇〇と本人より。"><span><b>ロ</b>増量</span></label>
+            <label><input type="radio" name="w" value="down" data-text="{薬}：〇mgから〇mgに減量。減量の理由は〇〇と本人より。"><span><b>ロ</b>減量</span></label>
             <label><input type="radio" name="w" value="bleed" data-text="{薬}：最近あざができやすく、歯みがきで歯ぐきから出血すると本人より。作用が強く出ている可能性があり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>出血が増えた</span></label>
             <label><input type="radio" name="w" value="abx" data-text="{薬}：他院で抗菌薬（〇〇）〇日分の処方あり。服用中は作用が強まり出血しやすくなるため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>臨時の抗菌薬</span></label>
             <label><input type="radio" name="w" value="dent" data-text="{薬}：〇月〇日に抜歯の予定ありと本人より。自己判断で休薬すると血栓のリスクが上がるため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>抜歯の予定</span></label>
           </div>
-          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
           <label class="mk-p"><input type="checkbox" data-on="up down abx dent"><span>出血症状なし。</span></label>
           <label class="mk-p"><input type="checkbox"><span>〇〇のあと、医師の指示どおり服用を再開していると本人より。</span></label>
           <label class="mk-p"><input type="checkbox"><span>直近のPT-INRは〇〇で、主治医から目標の範囲内と言われていると本人より。</span></label>
@@ -181,11 +182,11 @@
           <div class="mk-h">場面</div>
           <div class="mk-scenes">
             <label><input type="radio" name="d" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
-            <label><input type="radio" name="d" value="down" data-text="{薬}：〇mg→〇mgに減量。腎機能の低下による減量と本人より。"><span><b>ロ</b>減量</span></label>
+            <label><input type="radio" name="d" value="down" data-text="{薬}：〇mgから〇mgに減量。腎機能の低下による減量と本人より。"><span><b>ロ</b>減量</span></label>
             <label><input type="radio" name="d" value="nsaid" data-text="{薬}：整形外科で痛み止め（〇〇）〇日分の処方あり。併用で出血しやすくなり、特に胃からの出血のリスクが上がるため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>他院で痛み止め</span></label>
             <label><input type="radio" name="d" value="miss" data-text="{薬}：残薬から、飲み忘れが週〇回あると判明。効果が切れやすい薬で、飲み忘れが続くと血栓のリスクが上がるため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>飲み忘れが増えた</span></label>
           </div>
-          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
           <label class="mk-p"><input type="checkbox" data-on="down nsaid miss"><span>出血症状なし。</span></label>
           <label class="mk-p"><input type="checkbox"><span>〇〇のあと、医師の指示どおり服用を再開していると本人より。</span></label>
           <label class="mk-p"><input type="checkbox"><span>年齢〇歳、体重〇kg、CCr 〇mL/分。用量は減量基準に照らして適正。</span></label>
@@ -262,7 +263,7 @@
             <label><input type="radio" name="a" value="head" data-text="{薬}：飲み始めてから頭痛と動悸があると本人より。血管を広げる作用による副作用の可能性があり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>頭痛・動悸（プレタール）</span></label>
             <label><input type="radio" name="a" value="gf" data-text="{薬}：〇月〇日に胃カメラの予定ありと本人より。自己判断で休薬すると血栓のリスクが上がるため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>胃カメラの予定</span></label>
           </div>
-          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
           <label class="mk-p"><input type="checkbox" data-on="end gf"><span>出血症状・胃の症状なし。</span></label>
           <label class="mk-p"><input type="checkbox"><span>〇〇のあと、医師の指示どおり服用を再開していると本人より。</span></label>
           <label class="mk-p"><input type="checkbox" data-drug="バイアスピリン" data-on="i dapt"><span>アスピリン喘息の既往なし。</span></label>
@@ -298,10 +299,11 @@
         </div></details>
       </div>
 
-      <div class="card">
-        <div class="card-title">この薬効群の対象</div>
+      <div class="card" id="target">
+        <div class="card-title">この薬効群の算定対象</div>
         <div class="stack">
-          <p class="note">血液凝固阻止剤は内服薬に限って算定の対象になる。ヘパリンカルシウムなどの自己注射は対象にならない。抗血小板薬（バイアスピリン・プラビックスなど）は、厚生労働省の対象薬剤一覧に含まれている。</p>
+          <p class="note">血液凝固阻止剤は内服薬に限って算定の対象になる。ヘパリンカルシウムなどの自己注射は算定対象にならない。抗血小板薬（バイアスピリン・プラビックスなど）は、厚生労働省の対象薬剤一覧に含まれている。</p>
+          <p class="note">算定要件は<a href="../加算まとめ/特定薬剤管理指導加算1.html">特定薬剤管理指導加算1のページ</a>。処方目的で算定対象を判断する根拠は、<a href="../加算まとめ/特定薬剤管理指導加算1.html#taisho-gigi">同じページの過去の疑義解釈</a>（平成22年・平成24年）。</p>
           <div class="src">
             <div>令和8年3月5日 保医発0305第6号 別添3「調剤報酬点数表に関する事項」特定薬剤管理指導加算1</div>
             <div><a href="https://www.nichiyaku.or.jp/yakuzaishi/pharmacy-info/other/guideline01" target="_blank" rel="noopener">日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2.1版・令和8年6月）」</a></div>
@@ -436,6 +438,7 @@
         applyDefaults(); render();
       });
     </script>
+    <script src="hairisk-view.js"></script>
     <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   </body>
 </html>

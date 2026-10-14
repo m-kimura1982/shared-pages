@@ -38,36 +38,37 @@
 
       <div class="card" id="point">
         <div class="card-title">この薬効群で記載すること</div>
-        <div class="blist">
-          <div class="check"><span>✓</span><span>新たに処方されたときは、処方目的と医師から受けた説明（SGLT2阻害薬は糖尿病の治療か）</span></div>
-          <div class="check"><span>✓</span><span>低血糖の症状の有無と、起きたときの対処を伝えたこと（どの薬も電子添文で説明が求められている）</span></div>
-          <div class="check"><span>✓</span><span>発熱・下痢・嘔吐で食事がとれないとき（シックデイ）の対応</span></div>
-          <div class="check"><span>✓</span><span>薬ごとに気をつけること（メトホルミンの造影剤検査、SGLT2阻害薬の脱水、GLP-1の吐き気など）</span></div>
-        </div>
+        <dl class="pt-list">
+          <div><dt>処方目的</dt><dd>新たに処方されたときは、処方目的と医師から受けた説明（SGLT2阻害薬は糖尿病の治療か）</dd></div>
+          <div><dt>低血糖</dt><dd>症状の有無と、起きたときの対処を伝えたこと（どの薬も電子添文で説明が求められている）</dd></div>
+          <div><dt>シックデイ</dt><dd>発熱・下痢・嘔吐で食事がとれないときの対応</dd></div>
+          <div><dt>薬ごとの注意</dt><dd>メトホルミンの造影剤検査、SGLT2阻害薬の脱水、GLP-1の吐き気など</dd></div>
+        </dl>
         <div class="grp-chips" style="margin-top:14px;">
-          <a href="#common">低血糖・シックデイ</a>
+          <a href="#common">低血糖・<wbr>シックデイ</a>
           <a href="#dpp4">DPP-4阻害薬</a>
           <a href="#bg">メトホルミン</a>
           <a href="#sglt2">SGLT2阻害薬</a>
-          <a href="#su">SU薬・グリニド</a>
-          <a href="#glp1">GLP-1受容体作動薬<small>リベルサス・オゼンピック・マンジャロなど</small></a>
+          <a href="#su">SU薬・<wbr>グリニド</a>
+          <a href="#glp1">GLP-1受容体作動薬<small>リベルサス・<wbr>オゼンピック・<wbr>マンジャロなど</small></a>
           <a href="#agi">α-GI</a>
           <a href="#tzd">アクトス</a>
           <a href="#imeglimin">ツイミーグ</a>
           <a href="#combo">配合剤</a>
         </div>
+        <p class="note-xs" style="margin-top:14px;">各カードの「背景知識」には、確認や指導の根拠（電子添文など）をまとめている。算定対象になるかどうかは、<a href="#target">ページ下の「この薬効群の算定対象」</a>で確認する。</p>
       </div>
 
       <!-- ===== 共通：低血糖とシックデイ ===== -->
       <div class="card" id="common">
-        <div class="card-title">どの薬にも共通：低血糖とシックデイ</div>
+        <div class="card-title">糖尿病用剤に共通する注意点<span class="qual">低血糖とシックデイ</span></div>
         <div class="stack">
           <div>
             <div class="sub-title">低血糖</div>
             <div class="blist">
               <div class="bullet"><span>・</span><span>患者向医薬品ガイドの自覚症状：強い空腹感、冷や汗、ふるえ、動悸、顔色が悪くなる、頭痛、めまい。進むと、ぼんやりする・意識がなくなる。</span></div>
               <div class="bullet"><span>・</span><span>人の助けが必要なほどの低血糖（重症低血糖）が一度でも起きたら、すぐに主治医に連絡するよう伝えておく（糖尿病標準診療マニュアル）。</span></div>
-              <div class="bullet"><span>・</span><span>どの薬も、低血糖の症状と対処を患者に説明するよう電子添文に書かれている。起きやすいのはSU薬・グリニド・インスリン。DPP-4阻害薬・メトホルミン・SGLT2阻害薬・GLP-1は単独では起こしにくいが、これらと併用すると起きやすくなる。</span></div>
+              <div class="bullet"><span>・</span><span>どの薬も、低血糖の症状と対処を患者に説明するよう電子添文に記載されている。起きやすいのはSU薬・グリニド・インスリン。DPP-4阻害薬・メトホルミン・SGLT2阻害薬・GLP-1は単独では起こしにくいが、これらと併用すると起きやすくなる。</span></div>
               <div class="bullet"><span>・</span><span>対処はブドウ糖、または砂糖や糖分を含むジュースをとる。<span class="marker">α-GIを併用している人は、砂糖では回復が遅れるのでブドウ糖をとる。</span></span></div>
               <div class="bullet"><span>・</span><span>食事を抜いたとき・遅れたとき、いつもより体を動かしたとき、飲酒したときに起きやすい。車の運転中に起きると危ないので、運転する人には特に伝えておく。</span></div>
               <div class="bullet"><span>・</span><span>症状は人によって違い、高齢者では典型的な症状が出ずに、ふらつき・力が入らない・ぼんやりするなどで現れることがある。その人に出た症状を記載しておくと、次回の確認に使える。</span></div>
@@ -113,9 +114,9 @@
           <div class="mk-scenes">
             <label><input type="radio" name="p" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
             <label><input type="radio" name="p" value="add" data-text="{薬}：新規。〇〇（SU薬）を服用中で、低血糖が起きやすくなる組み合わせのため、指導が必要と判断。"><span><b>イ</b>SU薬に追加</span></label>
-            <label><input type="radio" name="p" value="down" data-text="{薬}：〇mg→〇mgに減量。腎機能の低下による減量と本人より。"><span><b>ロ</b>減量</span></label>
+            <label><input type="radio" name="p" value="down" data-text="{薬}：〇mgから〇mgに減量。腎機能の低下による減量と本人より。"><span><b>ロ</b>減量</span></label>
           </div>
-          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
           <label class="mk-p"><input type="checkbox" data-on="add down"><span>低血糖の症状なし。</span></label>
           <label class="mk-p"><input type="checkbox"><span>SU薬・インスリンの併用なし。</span></label>
           <div class="mk-h">指導</div>
@@ -159,11 +160,11 @@
           <div class="mk-h">場面</div>
           <div class="mk-scenes">
             <label><input type="radio" name="b" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
-            <label><input type="radio" name="b" value="up" data-text="{薬}：〇mg→〇mgに増量。血糖値が下がりきらないため増量と本人より。"><span><b>ロ</b>増量</span></label>
+            <label><input type="radio" name="b" value="up" data-text="{薬}：〇mgから〇mgに増量。血糖値が下がりきらないため増量と本人より。"><span><b>ロ</b>増量</span></label>
             <label><input type="radio" name="b" value="ct" data-text="{薬}：〇月〇日に造影剤を使うCT検査の予定ありと本人より。検査の前後は服用を中止する必要があるため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>造影剤検査の予定</span></label>
             <label><input type="radio" name="b" value="gi" data-text="{薬}：飲み始めてから下痢と吐き気があると本人より。乳酸アシドーシスの初期症状のこともあるため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>下痢・吐き気</span></label>
           </div>
-          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
           <label class="mk-p"><input type="checkbox" data-on="i up"><span>飲酒は〇〇程度と本人より。</span></label>
           <label class="mk-p"><input type="checkbox"><span>直近のeGFRは〇〇。</span></label>
           <div class="mk-h">指導</div>
@@ -216,7 +217,7 @@
             <label><input type="radio" name="s" value="itch" data-text="{薬}：陰部のかゆみがあると本人より。性器の感染症の可能性があり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>陰部のかゆみ</span></label>
             <label><input type="radio" name="s" value="ope" data-text="{薬}：〇月〇日に手術の予定ありと本人より。手術前後は服用しない薬のため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>手術の予定</span></label>
           </div>
-          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
           <label class="mk-p"><input type="checkbox" data-on="ope"><span>排尿時の痛み・陰部のかゆみなし。</span></label>
           <label class="mk-p"><input type="checkbox"><span>利尿薬（〇〇）を服用中。</span></label>
           <div class="mk-h">指導</div>
@@ -271,11 +272,11 @@
           <div class="mk-h">場面</div>
           <div class="mk-scenes">
             <label><input type="radio" name="u" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
-            <label><input type="radio" name="u" value="up" data-text="{薬}：〇mg→〇mgに増量。〇〇のため増量と本人より。"><span><b>ロ</b>増量</span></label>
+            <label><input type="radio" name="u" value="up" data-text="{薬}：〇mgから〇mgに増量。増量の理由は〇〇と本人より。"><span><b>ロ</b>増量</span></label>
             <label><input type="radio" name="u" value="hypo" data-text="{薬}：〇〇ごろに冷や汗とふるえがあり、甘いものをとって治まったと本人より。低血糖の可能性があり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>低血糖があった</span></label>
             <label><input type="radio" name="u" value="meal" data-text="{薬}：最近食欲が落ち、食事の量が以前の半分ほどと本人より。低血糖が起きやすくなるため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>食事の量が減った</span></label>
           </div>
-          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
           <label class="mk-p"><input type="checkbox" data-on="up"><span>低血糖の症状なし。</span></label>
           <label class="mk-p"><input type="checkbox" data-drug="スターシス|グルファスト|シュアポスト" data-on="up"><span>毎食直前に服用していると本人より。</span></label>
           <div class="mk-h">指導</div>
@@ -340,10 +341,10 @@
           <div class="mk-h">場面</div>
           <div class="mk-scenes">
             <label><input type="radio" name="g" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
-            <label><input type="radio" name="g" value="up" data-text="{薬}：〇mg→〇mgに増量。段階的に増やす予定と本人より。"><span><b>ロ</b>増量</span></label>
+            <label><input type="radio" name="g" value="up" data-text="{薬}：〇mgから〇mgに増量。段階的に増やす予定と本人より。"><span><b>ロ</b>増量</span></label>
             <label><input type="radio" name="g" value="nausea" data-text="{薬}：増量後から吐き気があり、食事の量が減っていると本人より。消化器症状の副作用の可能性があり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>吐き気・食欲低下</span></label>
           </div>
-          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
           <label class="mk-p"><input type="checkbox" data-on="up"><span>吐き気・便秘・下痢などの症状なし。</span></label>
           <label class="mk-p"><input type="checkbox" data-drug="オゼンピック|トルリシティ|マンジャロ|ビクトーザ" data-on="up"><span>注射の手技に問題なし。注射する場所を毎回ずらしていると本人より。</span></label>
           <label class="mk-p"><input type="checkbox" data-drug="リベルサス" data-on="up"><span>起床時の空腹時に、少量の水で服用していると本人より。</span></label>
@@ -398,7 +399,7 @@
             <label><input type="radio" name="a" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
             <label><input type="radio" name="a" value="gas" data-text="{薬}：おなかが張っておならが増えたと本人より。副作用の可能性があり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>おなかの張り</span></label>
           </div>
-          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
           <label class="mk-p"><input type="checkbox"><span>〇〇（SU薬・インスリン）を併用中。</span></label>
           <div class="mk-h">指導</div>
           <label class="mk-p"><input type="checkbox" data-on="i"><span>食事の直前に服用するよう指導。食後に飲んでも効果が出にくいと説明。</span></label>
@@ -442,7 +443,7 @@
             <label><input type="radio" name="t" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
             <label><input type="radio" name="t" value="edema" data-text="{薬}：足のむくみがあり、ここ1か月で体重が〇kg増えたと本人より。水分がたまる副作用の可能性があり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>むくみ・体重増加</span></label>
           </div>
-          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
           <label class="mk-p"><input type="checkbox" data-on="i"><span>心不全の既往なし。</span></label>
           <label class="mk-p"><input type="checkbox" data-on="edema"><span>息切れ・息苦しさなし。</span></label>
           <div class="mk-h">指導</div>
@@ -486,7 +487,7 @@
             <label><input type="radio" name="m" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
             <label><input type="radio" name="m" value="bg" data-text="{薬}：新規。メトグルコを服用中で、併用すると吐き気・下痢が出やすくなるため、指導が必要と判断。"><span><b>イ</b>メトホルミンに追加</span></label>
           </div>
-          <div class="mk-h">確認の結果<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
           <label class="mk-p"><input type="checkbox"><span>直近のeGFRは〇〇。用量は腎機能に照らして適正。</span></label>
           <div class="mk-h">指導</div>
           <label class="mk-p"><input type="checkbox" data-on="i bg"><span>吐き気・下痢・便秘が出ることがあり、続くときは主治医に連絡するよう説明。</span></label>
@@ -526,10 +527,11 @@
         </div>
       </div>
 
-      <div class="card">
-        <div class="card-title">この薬効群の対象</div>
+      <div class="card" id="target">
+        <div class="card-title">この薬効群の算定対象</div>
         <div class="stack">
-          <p class="note">飲み薬の糖尿病用剤と、GLP-1受容体作動薬（注射を含む）が対象になる。インスリン製剤は膵臓ホルモン剤として別に扱う。SGLT2阻害薬を心不全・慢性腎臓病の治療で使う場合は対象にならない。</p>
+          <p class="note">飲み薬の糖尿病用剤と、GLP-1受容体作動薬（注射を含む）が算定対象になる。インスリン製剤は膵臓ホルモン剤として別に扱う。SGLT2阻害薬を心不全・慢性腎臓病の治療で使う場合は算定対象にならない。</p>
+          <p class="note">算定要件は<a href="../加算まとめ/特定薬剤管理指導加算1.html">特定薬剤管理指導加算1のページ</a>。処方目的で算定対象を判断する根拠は、<a href="../加算まとめ/特定薬剤管理指導加算1.html#taisho-gigi">同じページの過去の疑義解釈</a>（平成22年・平成24年）。</p>
           <div class="src">
             <div>令和8年3月5日 保医発0305第6号 別添3「調剤報酬点数表に関する事項」特定薬剤管理指導加算1</div>
             <div><a href="https://www.nichiyaku.or.jp/yakuzaishi/pharmacy-info/other/guideline01" target="_blank" rel="noopener">日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2.1版・令和8年6月）」</a></div>
@@ -665,6 +667,7 @@
         applyDefaults(); render();
       });
     </script>
+    <script src="hairisk-view.js"></script>
     <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   </body>
 </html>

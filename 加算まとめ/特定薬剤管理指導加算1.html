@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex,nofollow,noarchive" />
     <title>特定薬剤管理指導加算１｜算定項目まとめ</title>
-    <meta name="search-keywords" content="特管1,ハイリスク薬,特定薬剤,イとロ,新規処方,用法用量変更,抗がん剤,免疫抑制剤,不整脈用剤,抗てんかん薬,血液凝固阻止剤,ジギタリス,テオフィリン" />
+    <meta name="search-keywords" content="特管1,ハイリスク薬,特定薬剤,イとロ,新規処方,用法用量変更,抗がん剤,免疫抑制剤,不整脈用剤,抗てんかん薬,血液凝固阻止剤,ジギタリス,テオフィリン,処方目的,薬効分類,アスピリン,副腎皮質ステロイド,抗不安剤,抗パーキンソン剤,抗HIV薬" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/gigi-list.css" />
     <link rel="stylesheet" href="../assets/source-refs.css" />
@@ -34,6 +34,8 @@
       .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
       .sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin:18px 0 9px; }
       .sub-title:first-child { margin-top:0; }
+      .card-title + .sub-title { margin-top:0; }
+      #taisho-gigi { scroll-margin-top:calc(var(--sn-header-h, 0px) + 16px); }
       .sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
 
       .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
@@ -168,7 +170,7 @@
           <span class="d">抗ＨＩＶ薬</span>
         </div>
         <div style="font-size:var(--text-xs); color:var(--txt-3); margin-top:8px;">
-          対象となる薬剤名を確認する場合は、<a href="https://shinryohoshu.mhlw.go.jp/shinryohoshu/" target="_blank" rel="noopener" style="color:var(--blue); font-weight:700;">診療報酬情報提供サービス</a>のページ下部にある対象薬剤一覧（Excel）を参照する。
+          対象となる薬剤名を確認する場合は、<a href="https://shinryohoshu.mhlw.go.jp/shinryohoshu/" target="_blank" rel="noopener" style="color:var(--blue); font-weight:700;">診療報酬情報提供サービス</a>のページ下部にある対象薬剤一覧（Excel）を参照する。処方目的による扱いや薬効分類の線引きは<a href="#taisho-gigi" style="color:var(--blue); font-weight:700;">過去の疑義解釈</a>を参照。
         </div>
 
         <div class="sub-title">共通要件</div>
@@ -338,8 +340,22 @@
       </details>
 
       <!-- 関連する過去の疑義解釈 -->
-      <div class="card">
+      <div class="card" id="taisho-gigi">
         <div class="card-title">関連する過去の疑義解釈</div>
+        <div class="sub-title">対象になる医薬品の範囲（平成22年・平成24年）</div>
+        <div class="list">
+          <div class="li"><b>平成22年 問4</b>　対象の範囲は、薬剤管理指導料（病院）の「２」の対象と同じ。</div>
+          <div class="li"><b>平成22年 問5</b>　抗悪性腫瘍剤・不整脈用剤・抗てんかん剤は、薬効分類が別の薬でも、悪性腫瘍・不整脈・てんかんに対する効能があり、<span class="marker">その目的で処方された場合は対象</span>になる。</div>
+          <div class="li"><b>平成22年 問6</b>　免疫抑制剤には、245「副腎ホルモン剤」の副腎皮質ステロイド（内服・注射・外用）が入る。ただし副腎皮質ステロイドの外用薬でも、眼科用剤・耳鼻科用剤・気管支拡張剤・皮膚の鎮痛消炎剤など他の分類に属するものは入らない。関節リウマチの薬は対象になる成分と対象外の成分、移植の拒絶反応を抑える薬は対象になる成分が示されている。</div>
+          <div class="li"><b>平成22年 問7</b>　血液凝固阻止剤には、血液凝固阻止目的で長期間服用するアスピリンが入る。イコサペント酸エチル・サルポグレラート・ベラプロスト・リマプロスト、解熱・鎮痛目的のアスピリンは入らない。</div>
+          <div class="li"><b>平成22年 問8</b>　精神神経用剤は 117「精神神経用剤」だけが対象。112「催眠鎮静剤、抗不安剤」と 116「抗パーキンソン剤」は入らない。</div>
+          <div class="li"><b>平成22年 問9</b>　抗ＨＩＶ薬は、625「抗ウイルス剤」のうち、ＨＩＶ感染症・エイズなどの効能をもつもの。</div>
+          <div class="li"><b>平成24年 問1</b>　問5の扱いは変わらない。処方内容から対象か分からないときは、その目的で処方されたかを確認してから算定するか判断する。</div>
+        </div>
+        <div style="font-size:var(--text-xs); color:var(--txt-3); margin-top:8px;">
+          当時の名称は「特定薬剤管理指導加算」（現在の加算１）。平成22年4月30日 疑義解釈資料の送付について（その３）別添４ 問4〜9、平成24年3月30日 同（その１）調剤 問1。
+        </div>
+        <p style="font-size:var(--text-sm); line-height:1.8; margin-top:12px;"><a href="../ツール/gigi-search.html?set=hairisk-taisho" style="color:var(--blue); font-weight:700;">この7問の原文を疑義解釈検索ツールで見る</a></p>
         <p style="font-size:var(--text-sm); line-height:1.8;"><a href="../ツール/gigi-search.html?q=特定薬剤管理指導加算１" style="color:var(--blue); font-weight:700;">疑義解釈検索ツールで「特定薬剤管理指導加算１」の全件を見る</a></p>
       </div>
 

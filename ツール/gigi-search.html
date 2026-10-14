@@ -476,6 +476,8 @@ document.getElementById('keywordInput').addEventListener('keydown', e => {
 function doSearch() {
   const kw = document.getElementById('keywordInput').value.trim();
   if (!kw) return;
+  const setLabel = document.getElementById('setLabel');
+  if (setLabel) setLabel.remove();
 
   addHistory(kw);
   switchTab('search');
@@ -685,6 +687,53 @@ if (window.innerWidth <= 640) {
 // 例：gigi-search.html?q=外来服薬支援　→　「外来服薬支援」で検索した状態で開く
 const _q = new URLSearchParams(location.search).get('q');
 if (_q && _q.trim()) quickSearch(_q.trim());
+
+// URL に ?set=名前 があれば、決めておいた問だけを並べて開く（キーワードでは絞りきれない組み合わせ用）
+// 例：gigi-search.html?set=hairisk-taisho
+// 通し番号 no は厚労省ツールの振り直しでずれるので、改定年度・分類・質問文の書き出しで引く
+const SETS = {
+  'hairisk-taisho': {
+    label: '特定薬剤管理指導加算１の対象範囲（平成22年・平成24年の疑義解釈）',
+    items: [
+      { nendo: '平成22年度診療報酬改定', bunrui: '調剤', q: '特定薬剤管理指導加算の対象となる「特に安全管理が必要な医薬品」の範囲は' },
+      { nendo: '平成22年度診療報酬改定', bunrui: '調剤', q: '「特に安全管理が必要な医薬品」の範囲については' },
+      { nendo: '平成22年度診療報酬改定', bunrui: '調剤', q: '特定薬剤管理指導加算の対象となる「免疫抑制剤」' },
+      { nendo: '平成22年度診療報酬改定', bunrui: '調剤', q: '特定薬剤管理指導加算の対象となる「血液凝固阻止剤」' },
+      { nendo: '平成22年度診療報酬改定', bunrui: '調剤', q: '特定薬剤管理指導加算の対象となる「精神神経用剤」' },
+      { nendo: '平成22年度診療報酬改定', bunrui: '調剤', q: '特定薬剤管理指導加算の対象となる「抗ＨＩＶ薬」' },
+      { nendo: '平成24年度診療報酬改定', bunrui: '調剤', q: '【特定薬剤管理指導加算】\nこれまで薬効分類上「腫瘍用薬」' },
+    ],
+  },
+};
+function openSet(name) {
+  const set = SETS[name];
+  if (!set) return;
+  const found = set.items
+    .map(it => ALL_DATA.find(d => d.nendo === it.nendo && d.bunrui === it.bunrui && d.q.startsWith(it.q)))
+    .filter(Boolean);
+  if (!found.length) return;
+  switchTab('search');
+  document.getElementById('emptyState').classList.remove('show');
+  document.getElementById('resultsHeader').style.display = '';
+  document.getElementById('resultsCount').textContent = found.length;
+  let lab = document.getElementById('setLabel');
+  if (!lab) {
+    lab = document.createElement('p');
+    lab.id = 'setLabel';
+    lab.style.cssText = 'font-size:var(--sm);font-weight:700;color:var(--blue);margin-bottom:8px';
+    const hd = document.getElementById('resultsHeader');
+    hd.parentNode.insertBefore(lab, hd);
+  }
+  lab.textContent = set.label;
+  currentKeywords = [];
+  searchResults = found;
+  expandAll = true;
+  renderPage(1, true);
+  renderPagination();
+  document.querySelectorAll('.arrow-icon').forEach(a => { a.style.transform = 'rotate(180deg)'; });
+}
+const _set = new URLSearchParams(location.search).get('set');
+if (_set) openSet(_set.trim());
 </script>
 <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

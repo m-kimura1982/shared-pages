@@ -4,1665 +4,601 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex,nofollow,noarchive" />
-    <title>ハイリスク薬｜抗うつ薬｜薬歴マニュアル</title>
-    <meta name="search-keywords" content="うつ病,抗うつ薬,SSRI,SNRI,パロキセチン,パキシル,セルトラリン,ジェイゾロフト,エスシタロプラム,レクサプロ,デュロキセチン,サインバルタ,ベンラファキシン,イフェクサー,ミルタザピン,リフレックス,レメロン,トラゾドン,セロトニン症候群,賦活症候群,中止後症状" />
-    <meta property="og:title" content="ハイリスク薬の薬歴記載｜抗うつ薬" />
-    <meta property="og:description" content="特定薬剤管理指導加算1の薬歴記載例。抗うつ薬（SSRI／SNRI／S-RIM／NaSSA・SARI／三環・四環）について、薬効群ごとに「何を確認し、どう指導し、薬歴にどう残すか」を整理したページ。" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://m-kimura1982.github.io/shared-pages/yakureki/ハイリスク_抗うつ薬.html" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="yakureki.css" />
+    <title>ハイリスク薬 抗うつ薬｜薬歴マニュアル</title>
+    <meta name="search-keywords" content="抗うつ薬,うつ病,SSRI,SNRI,NaSSA,SARI,三環系,四環系,ジェイゾロフト,セルトラリン,レクサプロ,エスシタロプラム,パキシル,パロキセチン,ルボックス,デプロメール,フルボキサミン,サインバルタ,デュロキセチン,イフェクサー,ベンラファキシン,トレドミン,ミルナシプラン,トリンテリックス,ボルチオキセチン,リフレックス,レメロン,ミルタザピン,レスリン,デジレル,トラゾドン,トリプタノール,アナフラニール,トフラニール,ノリトレン,アモキサン,ルジオミール,テトラミド,ザズベイ,ズラノロン,セロトニン症候群,中止後症状,賦活症候群" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/fold.css" />
-    <style>
-      /* 薬剤群ブロック */
-      .drug-block {
-        background: var(--white);
-        border: 1px solid var(--border);
-        border-radius: var(--radius-sm);
-        padding:  18px 20px;
-        margin-bottom:  18px;
-      }
-      .drug-block-head {
-        display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
-        margin-bottom: 10px; padding-bottom: 8px;
-        border-bottom: 1px solid var(--border);
-      }
-      .drug-block-name { font-size: 17px; font-weight: 700; color: var(--ink); }
-      .drug-block-name::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 2px; background: var(--blue); margin-right: 9px; vertical-align: middle; }
-      .drug-block-sub  { font-size: 12px; color: var(--sub); }
-
-      /* テンプレ直上の注意（重要語のみ赤） */
-      .tpl-warn {
-        background: var(--warn-bg);
-        border: 1px solid var(--warn-border);
-        border-radius: 4px;
-        padding: 10px 14px;
-        margin: 12px 0 8px;
-        font-size: 13px;
-        line-height: 1.7;
-        color: var(--ink);
-      }
-      .tpl-warn-title {
-        font-weight: 700; color: var(--ink);
-        font-size: 13px; margin-bottom: 4px;
-      }
-      .tpl-warn ul { margin: 4px 0 0 20px; padding: 0; }
-      .tpl-warn ul li { margin-bottom: 2px; }
-      .tpl-warn strong { color: var(--ink); font-weight: 700; }
-
-      /* 算定要件の警告（オレンジ系） */
-      .caveat-box {
-        background: #fff7e6;
-        border: 1px solid #f5d4a1;
-        border-radius: 4px;
-        padding: 10px 14px;
-        margin: 12px 0;
-        font-size: 12.5px;
-        line-height: 1.7;
-        color: var(--ink);
-      }
-      .caveat-box-title {
-        font-weight: 700; color: #b45309;
-        font-size: 13px; margin-bottom: 4px;
-      }
-
-      /* 短文テンプレ（基本 / 追記） */
-      .tpl-set { margin-top: 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
-      .tpl-mini {
-        display: flex; align-items: flex-start; gap: 10px;
-        background: var(--white); border: none;
-        border-bottom: 1px solid #edf0f4;
-        padding: 11px 14px; margin: 0;
-        position: relative;
-      }
-      .tpl-mini:last-child { border-bottom: none; }
-      .tpl-mini:nth-child(even) { background: #fafbfd; }
-      .tpl-mini .tpl-tag, .tpl-builder .tpl-tag {
-        flex-shrink: 0; font-size: 11px; font-weight: 700;
-        padding: 3px 10px; border-radius: 100px;
-        letter-spacing: .04em; line-height: 1.6;
-        white-space: nowrap;
-      }
-      .tpl-mini .tpl-tag.base   { background: var(--blue-light); color: var(--blue); }
-      .tpl-mini .tpl-tag.init, .tpl-builder .tpl-tag.init { background: var(--blue-light); color: var(--blue); }
-      .tpl-mini .tpl-tag.change { background: #e0f2f1; color: #0a6b63; border: none; }
-      .tpl-mini .tpl-tag.add    { background: #f2f4f8; color: #4b5563; border: 1px solid #d7dce3; }
-      .tpl-mini .tpl-tag.se     { background: #fef3e8; color: #b45309; border: 1px solid #f5d4a1; }
-
-      /* 薬剤ブロック内：この薬で確認すること */
-      .drug-check-box {
-        background: #f7f8fa;
-        border: 1px solid #e1e5ea;
-        border-radius: 4px;
-        padding: 12px 16px;
-        margin: 8px 0 12px;
-      }
-      .drug-check-box-title {
-        font-weight: 700; color: var(--blue);
-        font-size: 12.5px; letter-spacing: .04em;
-        margin-bottom: 4px;
-      }
-      .drug-check-box ul { margin: 0; padding-left: 20px; }
-      .drug-check-box ul li { font-size: 13px; line-height: 1.7; margin-bottom: 2px; }
-
-      /* 折りたたみ式 指導補足 */
-      /* 詳細・背景知識の折りたたみ：見た目は assets/fold.css */
-      .guide-details { margin: 10px 0 14px; }
-      details.guide-details.fold-in > summary { font-size: 13.5px; }
-      .guide-details-body {
-        padding: 12px 18px 14px; font-size: 13.5px; line-height: 1.75;
-      }
-      .guide-details-body h4 {
-        font-size: 13px; font-weight: 700;
-        margin: 8px 0 4px; color: var(--ink);
-      }
-      .guide-details-body p { margin: 4px 0; }
-      .guide-details-body ul { margin: 4px 0; padding-left: 22px; }
-      .guide-details-body ul li { margin-bottom: 2px; }
-      .guide-details-body .patient-say {
-        background: #fff; border-left: 3px solid #c9def5;
-        padding: 6px 10px; margin-top: 6px;
-        font-size: 12.5px; color: var(--sub);
-      }
-
-      /* 薬剤名索引 */
-      .drug-index {
-        background: #fafbfc;
-        border: 1px solid #e1e5ea;
-        border-radius: 6px;
-        padding: 12px 16px;
-        margin-bottom: 16px;
-      }
-      .drug-index-title {
-        font-size: 12px; font-weight: 700;
-        color: var(--blue);
-        letter-spacing: .04em;
-        margin-bottom: 8px;
-      }
-      .drug-index-row {
-        display: flex; align-items: baseline; gap: 6px;
-        flex-wrap: wrap; margin-bottom: 4px; font-size: 12.5px;
-      }
-      .drug-index-row .di-group {
-        color: var(--sub); font-weight: 700;
-        min-width: 5.5em; flex-shrink: 0;
-      }
-      .drug-index-row a {
-        background: #fff; border: 1px solid #d7dce3;
-        border-radius: 100px; padding: 3px 11px;
-        color: var(--ink); text-decoration: none;
-        white-space: nowrap;
-      }
-      .drug-index-row a:hover {
-        background: var(--blue); color: #fff; border-color: var(--blue);
-      }
-
-      .tag-legend {
-        display: flex; flex-wrap: wrap; gap: 10px;
-        margin: 8px 0 16px; font-size: 12px; color: var(--sub);
-      }
-      .tag-legend span { display: inline-flex; align-items: center; gap: 4px; }
-      .tag-legend i {
-        display: inline-block; width: 10px; height: 10px; border-radius: 2px;
-      }
-      .tpl-mini .tpl-text, .tpl-builder .tpl-text {
-        flex: 1; font-size: 13.5px; line-height: 1.7;
-        padding-right: 56px; white-space: pre-wrap;
-      }
-      .tpl-mini .copy-mini, .tpl-builder .copy-mini {
-        position: absolute; top: 10px; right: 10px;
-        background: #f3f4f6; color: #374151; border: 1px solid #d1d5db;
-        border-radius: 4px; font-size: 11px; font-weight: 700;
-        padding: 4px 10px; cursor: pointer;
-        font-family: "Noto Sans JP", sans-serif;
-      }
-      .tpl-mini .copy-mini:hover, .tpl-builder .copy-mini:hover { background: #e5e7eb; border-color: #9ca3af; }
-      .tpl-mini .copy-mini.copied, .tpl-builder .copy-mini.copied { background: var(--good-border); color: #fff; border-color: var(--good-border); }
-
-      /* 組み立て式テンプレ（ザズベイ 初回イ）：状況を選ぶと記載例が切り替わる */
-      .tpl-builder { padding: 12px 14px; background: var(--white); }
-      .tpl-builder-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
-      .tpl-builder-hint { font-size: 12px; color: var(--sub); }
-      .tpl-builder .opt-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }
-      .tpl-builder .opt-label { font-size: 12px; font-weight: 700; color: var(--sub); min-width: 8em; flex-shrink: 0; }
-      .tpl-builder .opt-row label {
-        display: inline-flex; align-items: center; gap: 5px;
-        font-size: 12.5px; line-height: 1.6; cursor: pointer;
-        background: var(--white); border: 1px solid #d7dce3; border-radius: 100px; padding: 3px 12px;
-      }
-      .tpl-builder .opt-row input { accent-color: var(--blue); margin: 0; cursor: pointer; }
-      .tpl-builder .opt-row label:has(input:checked) { background: var(--blue-light); border-color: var(--blue); color: var(--blue); font-weight: 700; }
-      .tpl-builder-out { position: relative; margin-top: 10px; background: #fafbfd; border: 1px solid #edf0f4; border-radius: 4px; padding: 11px 14px; }
-
-      /* モバイル：tpl-mini を縦積みにする */
-      @media (max-width: 640px) {
-        .tpl-mini {
-          flex-direction: column;
-          align-items: stretch;
-          gap: 6px;
-          padding-bottom: 36px;
-        }
-        .tpl-mini .tpl-tag {
-          align-self: flex-start;
-          max-width: 100%;
-          white-space: normal;
-        }
-        .tpl-mini .tpl-text { padding-right: 0; }
-        .tpl-mini .copy-mini { top: auto; bottom: 6px; right: 8px; }
-        .tpl-builder .opt-label { min-width: 100%; }
-        .tpl-builder-out { padding-bottom: 40px; }
-        .tpl-builder .tpl-text { padding-right: 0; }
-        .tpl-builder .copy-mini { top: auto; bottom: 6px; right: 8px; }
-      }
-
-      .warn-box ul { padding-left: 22px; margin-top: 4px; }
-      .warn-box ul li { margin-bottom: 4px; line-height: 1.7; }
-
-      /* SECTION 1 確認事項 - 簡潔dl */
-      .ci-list dt {
-        font-size: 14px; font-weight: 700; color: var(--ink);
-        background: #f2f4f8; padding: 8px 14px; border-radius: 4px;
-        margin-top: 10px;
-      }
-      .ci-list dd {
-        padding: 6px 14px 6px 14px; font-size: 13px; line-height: 1.75;
-      }
-      .ci-list dd .ci-l { display: inline-block; min-width: 4.5em; font-weight: 700; color: var(--blue); }
-
-      /* ===== サイドスティッキー目次（PC 880px+） ===== */
-      [id] { scroll-margin-top:calc(var(--sn-header-h, 0px) + 16px); }
-      .sticky-toc { display: none; }
-
-      /* ===== スマホ用インライン目次（880px未満のみ表示） ===== */
-      .toc-inline { margin: 0 0 18px; }
-      .toc-inline .toc-links { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 14px 14px; }
-      .toc-inline .toc-links a { font-size: 12px; background: var(--blue-light); color: var(--blue); border-radius: 4px; padding: 2px 9px; text-decoration: none; }
-      @media (min-width: 880px) { .toc-inline { display: none; } }
-
-      @media (min-width: 880px) {
-        .layout-outer {
-          max-width: 1240px;
-          margin: 0 auto;
-          padding: 28px 20px 0;
-          display: grid;
-          grid-template-columns: 220px minmax(0, 1fr);
-          gap: 28px;
-          align-items: start;
-        }
-        .layout-outer .page-head { max-width: none; margin: 0 0 16px; padding: 0; }
-        .layout-outer main { max-width: none; margin: 0; padding: 0; }
-
-        .sticky-toc {
-          display: block;
-          position: sticky;
-          top: calc(var(--sn-header-h, 0px) + 20px);
-          background: var(--white);
-          border: 1px solid var(--border);
-          border-radius: var(--radius-sm);
-          padding: 12px 8px 14px;
-          max-height: calc(100vh - var(--sn-header-h, 0px) - 40px);
-          overflow-y: auto;
-          scrollbar-width: thin;
-          scrollbar-color: var(--border) transparent;
-        }
-        .sticky-toc::-webkit-scrollbar { width: 4px; }
-        .sticky-toc::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-
-        .sticky-toc-head {
-          padding: 0 8px 8px;
-          margin-bottom: 6px;
-          border-bottom: 1px solid var(--border);
-        }
-        .sticky-toc-label {
-          display: block;
-          font-size: 11px;
-          font-weight: 700;
-          color: var(--blue);
-          letter-spacing: 0.12em;
-        }
-        .sticky-toc-group {
-          font-size: 10px;
-          font-weight: 700;
-          color: var(--sub);
-          letter-spacing: 0.08em;
-          padding: 10px 10px 4px;
-          margin-top: 4px;
-        }
-        .sticky-toc a {
-          display: block;
-          font-size: 13px;
-          color: var(--ink);
-          text-decoration: none;
-          padding: 5px 10px;
-          border-radius: 4px;
-          line-height: 1.45;
-          border-left: 3px solid transparent;
-          margin-bottom: 1px;
-          transition: background 0.12s, color 0.12s, border-color 0.12s;
-        }
-        .sticky-toc a:hover {
-          background: var(--blue-light);
-          color: var(--blue);
-        }
-        .sticky-toc a.is-active {
-          background: var(--blue-light);
-          color: var(--blue);
-          font-weight: 700;
-          border-left-color: var(--blue);
-        }
-      }
-      @media print {
-        .sticky-toc { display: none !important; }
-        .layout-outer { display: block !important; padding: 0; }
-      }
-
-      /* ===== 改修案コンポーネント（乳幼児ページ由来。確定後は yakureki.css へ移設想定） ===== */
-      /* 最低ライン カード */
-      .minline {
-        background: var(--white);
-        border: 1px solid var(--border);
-        border-top: 3px solid var(--blue);
-        border-radius: var(--radius-sm);
-        padding: 16px 20px;
-      }
-      .minline-lead { font-size: 13.5px; color: var(--ink); line-height: 1.8; margin-bottom: 12px; }
-      .minline-checks { display: flex; flex-direction: column; gap: 8px; }
-      .minline-check {
-        border: 1px solid var(--border); border-radius: 6px;
-        padding: 10px 14px; font-size: 13.5px; line-height: 1.65;
-      }
-      .minline-check b { color: var(--ink); }
-      .minline-check .mc-no { color: var(--blue); font-weight: 700; margin-right: 7px; }
-      .minline-check .mc-note { display: block; font-size: 12px; color: var(--sub); margin-top: 3px; }
-
-      /* 算定根拠として不十分になりやすい例（黄guard） */
-      .guard-note {
-        background: var(--warn-bg);
-        border-left: 3px solid var(--warn-border);
-        border-radius: 4px;
-        padding: 9px 13px; margin-top: 12px;
-        font-size: 13px; line-height: 1.7; color: var(--ink);
-      }
-      .guard-note b { color: var(--warn-title); }
-
-      /* 印刷用チェックリスト */
-      .checklist-card {
-        background: var(--white); border: 1px solid var(--border);
-        border-radius: var(--radius-sm); padding: 16px 20px;
-      }
-      .print-btn {
-        font-family: "Noto Sans JP", sans-serif; cursor: pointer;
-        border: 1px solid var(--blue); background: var(--blue); color: #fff;
-        font-size: 12px; font-weight: 700; padding: 5px 14px; border-radius: 100px;
-        vertical-align: middle; margin-left: 14px;
-      }
-      .print-btn:hover { background: var(--blue-mid); }
-      .cl-group + .cl-group { margin-top: 14px; }
-      .cl-head {
-        font-weight: 700; font-size: 13px; color: var(--blue);
-        display: flex; align-items: center; gap: 8px; margin-bottom: 7px;
-      }
-      .cl-head::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--blue); flex-shrink: 0; }
-      .cl-item {
-        display: flex; gap: 11px; align-items: flex-start;
-        padding: 9px 13px; border: 1px solid var(--border); border-radius: 6px;
-        margin-bottom: 6px; font-size: 13.5px; line-height: 1.6; cursor: pointer;
-      }
-      .cl-item input[type=checkbox] {
-        appearance: none; -webkit-appearance: none;
-        width: 18px; height: 18px; border: 2px solid #9ca3af; border-radius: 4px;
-        flex-shrink: 0; margin-top: 1px; cursor: pointer; position: relative;
-      }
-      .cl-item input[type=checkbox]:checked { background: var(--blue); border-color: var(--blue); }
-      .cl-item input[type=checkbox]:checked::after {
-        content: ""; position: absolute; left: 5px; top: 1px;
-        width: 5px; height: 10px; border: solid #fff; border-width: 0 2.5px 2.5px 0;
-        transform: rotate(45deg);
-      }
-      .cl-item input[type=checkbox]:checked + span { color: var(--sub); }
-
-      /* 個別指導の引用 */
-      .kobetsu-quote { border-left: 3px solid #9ca3af; padding: 4px 0 4px 14px; margin-top: 12px; }
-      .kobetsu-quote .kq-k { font-size: 11px; font-weight: 700; color: var(--sub); margin-right: 8px; }
-      .kobetsu-quote .kq-t { font-size: 13.5px; line-height: 1.75; color: var(--ink); }
-      .kobetsu-quote .kq-cite { display: block; font-size: 11px; color: var(--sub); margin-top: 5px; }
-
-      /* デザイン調整：warn-box の縦棒をやめ full border＋淡い背景に（縦棒は見出し・引用・黄注意のみに限定） */
-      .warn-box { border: 1px solid #cbddf2; border-radius: var(--radius-sm); }
-
-      /* まず見るところ：導線3カード */
-      .guide-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-      @media (max-width: 640px) { .guide-cards { grid-template-columns: 1fr; } }
-      .guide-card { display: block; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; text-decoration: none; color: var(--ink); transition: border-color .12s, box-shadow .12s; }
-      .guide-card:hover { border-color: var(--blue); box-shadow: 0 2px 8px rgba(30,95,168,.08); }
-      .guide-card .gc-no { display: block; font-size: 14px; font-weight: 700; color: var(--blue); margin-bottom: 5px; }
-      .guide-card .gc-title { display: block; font-size: 14px; font-weight: 700; color: var(--ink); line-height: 1.4; margin-bottom: 3px; }
-      .guide-card .gc-desc { display: block; font-size: 12px; color: var(--sub); line-height: 1.6; }
-
-      /* ビフォーアフター：✕ラベルは赤を使わず中立グレー（赤ゼロ方針） */
-      .example-box.bad .example-label { color: var(--sub); }
-
-      /* 下部の出典・通知：縦棒をやめ、ラベルは書き方例（tpl-tag.base）と同じ淡い青に統一 */
-      .source-box { border: 1px solid var(--border); }
-      .source-box-label { background: var(--blue-light); color: var(--blue); }
-
-      /* 印刷：このチェックリストだけ印刷 */
-      @media print {
-        .print-btn, .copy-mini, .copy-btn { display: none !important; }
-        .cl-item { break-inside: avoid; }
-        body.print-checklist-only main > section:not(#sec-checklist) { display: none !important; }
-        body.print-checklist-only .page-head,
-        body.print-checklist-only .draft-banner,
-        body.print-checklist-only header,
-        body.print-checklist-only footer { display: none !important; }
-      }
-
-    </style>
+    <link rel="stylesheet" href="hairisk.css" />
   </head>
   <body>
-  <script src="../assets/site-header.js" defer></script>
+    <script src="../assets/site-header.js" defer></script>
 
+    <div class="page">
 
-    <div class="layout-outer">
-
-    <nav class="sticky-toc" aria-label="目次">
-      <div class="sticky-toc-head">
-        <span class="sticky-toc-label">CONTENTS</span>
+      <div class="page-title">
+        <h1>抗うつ薬</h1>
       </div>
-      <a href="#guide">このページの使い方</a>
-      <div class="sticky-toc-group">▼ まず確認</div>
-      <a href="#lowline">算定時の記載ポイント</a>
-      <a href="#sec-checklist">簡易チェックリスト</a>
-      <a href="#drug-search">薬剤名から探す</a>
-      <div class="sticky-toc-group">▼ 薬剤群別</div>
-      <a href="#ssri">SSRI</a>
-      <a href="#snri">SNRI</a>
-      <a href="#srim">S-RIM</a>
-      <a href="#nassa-sari">NaSSA・SARI</a>
-      <a href="#tca">三環系・四環系</a>
-      <a href="#zuranolone">ザズベイ（ズラノロン）</a>
-      <div class="sticky-toc-group">▼ 必要時</div>
-      <a href="#common-se">共通副作用の追記</a>
-      <a href="#section3">副作用・服薬状況等の変化によるロ</a>
-      <div class="sticky-toc-group">▼ 参考</div>
-      <a href="#section1">共通確認ポイント</a>
-      <a href="#kobetsu">個別指導</a>
-    </nav>
 
-    <div>
+      <nav class="hr-nav" aria-label="ハイリスク薬のページ">
+        <div class="row">
+          <a class="i" href="ハイリスク薬指導.html">記載方法（入口）</a>
+          <a class="i" href="ハイリスク_薬歴の書き方.html">記載の考え方</a>
+        </div>
+        <div class="row grp">
+          <a class="i" href="ハイリスク_血液凝固阻止剤.html">血液凝固阻止剤</a>
+          <a class="i" href="ハイリスク_糖尿病用剤.html">糖尿病用剤</a>
+          <a class="i" href="ハイリスク_膵臓ホルモン剤.html">インスリン製剤</a>
+          <a class="i" href="ハイリスク_抗精神病薬.html">抗精神病薬</a>
+          <span class="i cur" aria-current="page">抗うつ薬</span>
+          <a class="i" href="ハイリスク_気分安定薬.html">気分安定薬</a>
+          <a class="i" href="ハイリスク_抗てんかん薬.html">抗てんかん薬</a>
+        </div>
+      </nav>
 
-    <div class="page-head">
-      <span class="page-tag">HIGH-RISK 08-2</span>
-      <h1 class="page-title">抗うつ薬</h1>
-      <p class="page-desc">
-        <strong>抗うつ薬</strong>（SSRI・SNRI・NaSSA等）の特定薬剤管理指導加算1の薬歴記載例。新規（イ）・用法用量変更（ロ）に加え、副作用・服薬状況等の変化によるロも扱う。<br />
-        抗精神病薬・気分安定薬・抗てんかん薬は別ページ。BZD系・睡眠薬（薬効分類112）は対象外。
-      </p>
+      <div class="card" id="point">
+        <div class="card-title">この薬効群で記載すること</div>
+        <dl class="pt-list">
+          <div><dt>処方目的</dt><dd>新たに処方されたときは、処方目的と医師から受けた説明（痛み・夜尿症などの目的では算定対象にならない）</dd></div>
+          <div><dt>家族への説明</dt><dd>飲み始めや増量のときに、気分の変化や普段と異なる行動が現れる可能性を本人と家族に伝えたこと（どの薬も電子添文で求められている）</dd></div>
+          <div><dt>効果と中止</dt><dd>効果が現れるまで時間がかかること、よくなっても自己判断でやめず、やめるときは主治医の指示で少しずつ減らすこと</dd></div>
+          <div><dt>運転</dt><dd>眠気・めまいと運転の注意（薬によって「十分注意」と「運転しない」がある）</dd></div>
+          <div><dt>飲み始めの症状</dt><dd>SSRI・SNRIは吐き気など、NaSSAは眠気や食欲が増えること</dd></div>
+          <div><dt>重い副作用</dt><dd>高熱・汗・ふるえが急に現れたとき（セロトニン症候群・悪性症候群）の受診の目安</dd></div>
+        </dl>
+        <div class="grp-chips" style="margin-top:14px;">
+          <a href="#common">共通する注意点</a>
+          <a href="#ssri">SSRI<small>ジェイゾロフト・<wbr>レクサプロ・<wbr>パキシル・<wbr>ルボックス</small></a>
+          <a href="#snri">SNRI<small>サインバルタ・<wbr>イフェクサー・<wbr>トレドミン</small></a>
+          <a href="#srim">トリンテリックス</a>
+          <a href="#nassa-sari">NaSSA・<wbr>SARI<small>リフレックス・<wbr>レスリン</small></a>
+          <a href="#tca">三環系・<wbr>四環系</a>
+          <a href="#zuranolone">ザズベイ</a>
+        </div>
+        <p class="note-xs" style="margin-top:14px;">各カードの「背景知識」には、確認や指導の根拠（電子添文など）をまとめている。算定対象になるかどうかは、<a href="#target">ページ下の「この薬効群の算定対象」</a>で確認する。</p>
+      </div>
+
+      <!-- ===== 共通 ===== -->
+      <div class="card" id="common">
+        <div class="card-title">抗うつ薬に共通する注意点<span class="qual">飲み始め・増量時の変化／中止するとき／併用薬／運転</span></div>
+        <div class="stack">
+          <div>
+            <div class="sub-title">飲み始め・増量時に出る変化</div>
+            <div class="blist">
+              <div class="bullet"><span>・</span><span>不安・焦り・眠れない・イライラする・気分が高ぶるなどが、飲み始めや増量のときに出ることがある。<span class="marker">行動の変化や症状の悪化が起こりうることを家族にも説明し、医師と連絡を取り合うよう指導すること</span>が、どの抗うつ薬の電子添文でも求められている。24歳以下では、死にたい気持ちが強くなるリスクが高まるという報告がある。</span></div>
+              <div class="bullet"><span>・</span><span>本人や家族に伝えるときは「自殺」という言葉を使わず、「衝動的な行動」「落ち着かない・眠れない・イライラするなど、いつもと違う変化」といった表現で伝え、家族にも見守ってもらう。</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="sub-title">中止するとき</div>
+            <div class="blist">
+              <div class="bullet"><span>・</span><span>急にやめると、めまい・しびれ感・吐き気・頭痛・不安・眠れないなどが現れることがある。多くの抗うつ薬の電子添文は、中止するときは徐々に減らすよう求めている（トレドミン・ザズベイには記載がない）。パキシル・イフェクサーで現れやすいとされる。</span></div>
+              <div class="bullet"><span>・</span><span>あらかじめ説明するときは、中止後に現れる症状を並べるよりも、「時間をかけて減らせば無理なくやめられる」ことを伝えるほうが、不安を強めずに説明できる。</span></div>
+              <div class="bullet"><span>・</span><span>再発を防ぐため、よくなってからも少なくとも6か月は同じ量で続けることが勧められている（高齢者は少なくとも1年）。</span></div>
+              <div class="bullet"><span>・</span><span>よくなったと感じて自己判断でやめてしまう人がいる。</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="sub-title">セロトニン症候群・併用薬</div>
+            <div class="blist">
+              <div class="bullet"><span>・</span><span>脳内のセロトニンの働きが強くなりすぎて起こる。飲み始め・増量のときや、セロトニンに作用する薬が追加されたあとに、不安・興奮・錯乱、汗が多い、発熱、体のふるえ、筋肉がぴくつくなどが急に出現する。日本薬剤師会のガイドラインは、悪性症候群とあわせて、致死的な副作用として説明を求めている。セロトニンに作用する薬が追加されたときは改めて説明する。</span></div>
+              <div class="bullet"><span>・</span><span>パーキンソン病のMAO阻害薬（セレギリン・ラサギリン・サフィナミド）は、レスリン・デジレル・ザズベイ以外の抗うつ薬と併用禁忌（レスリン・デジレルは併用注意）。トラマドール・片頭痛のトリプタン系など、セロトニンに作用する薬の追加に注意する。他院から処方された薬との併用にも注意する。</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="sub-title">抗不安薬の併用</div>
+            <div class="blist">
+              <div class="bullet"><span>・</span><span>効果が現れるまでのつなぎとして、飲み始めにベンゾジアゼピン系の抗不安薬が一緒に処方されることがある（抗不安薬はハイリスク薬の対象外）。通常は1か月ほどで終了するため、続いているときは、医師からどのような説明を受けているか確認する。</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="sub-title">運転</div>
+            <div class="blist">
+              <div class="bullet"><span>・</span><span>SSRI（ルボックスを除く）・SNRI・トリンテリックス：運転などをするときは十分注意させる。</span></div>
+              <div class="bullet"><span>・</span><span>ルボックス・リフレックス・レスリン・三環系・四環系・ザズベイ：<span class="marker">運転などをさせない</span>。</span></div>
+              <div class="bullet"><span>・</span><span>運転の注意の度合いは薬によって電子添文の記載が異なり、上の分類はそれに合わせている。記載例の運転の文も、同じ分類で記載している。</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== SSRI ===== -->
+      <div class="card" id="ssri">
+        <div class="card-title">SSRI<span class="qual">選択的セロトニン再取り込み阻害薬</span></div>
+        <div class="drugs">ジェイゾロフト（セルトラリン）／レクサプロ（エスシタロプラム）／パキシル（パロキセチン）／ルボックス・デプロメール（フルボキサミン）</div>
+
+        <div class="tpl-sec">確認する項目</div>
+        <div class="kakunin">
+          <div class="check"><span>✓</span><span>処方目的と医師から受けた説明（薬ごとに効能が違う）</span></div>
+          <div class="check"><span>✓</span><span>吐き気・下痢・食欲がないなどの症状</span></div>
+          <div class="check"><span>✓</span><span>落ち着かない・眠れない・イライラするなどの変化</span></div>
+          <div class="check"><span>✓</span><span>セロトニンに作用する薬の併用。併用禁忌はルボックスが多く、ジェイゾロフト・レクサプロ・パキシルもピモジドと併用禁忌</span></div>
+          <div class="check"><span>✓</span><span>レクサプロ：心臓の病気・不整脈（QT延長のある人は禁忌）</span></div>
+        </div>
+
+        <div class="tpl-sec">記載例をつくる</div>
+        <div class="mk" data-purpose="うつ病・うつ状態|パニック障害|強迫性障害|社会不安障害|外傷後ストレス障害">
+          <div class="mk-h">薬剤</div>
+          <div class="mk-scenes mk-drug">
+            <label><input type="radio" name="sd" value="ジェイゾロフト" checked><span>ジェイゾロフト</span></label>
+            <label><input type="radio" name="sd" value="レクサプロ"><span>レクサプロ</span></label>
+            <label><input type="radio" name="sd" value="パキシル"><span>パキシル</span></label>
+            <label><input type="radio" name="sd" value="ルボックス"><span>ルボックス</span></label>
+            <label><input type="radio" name="sd" value="デプロメール"><span>デプロメール</span></label>
+            <label><input type="radio" name="sd" value="〇〇"><span>その他</span></label>
+          </div>
+          <div class="mk-h">場面</div>
+          <div class="mk-scenes">
+            <label><input type="radio" name="s" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
+            <label><input type="radio" name="s" value="up" data-text="{薬}：〇mgから〇mgに増量。増量の理由は〇〇と本人より。"><span><b>ロ</b>増量</span></label>
+            <label><input type="radio" name="s" value="dn" data-text="{薬}：〇mgから〇mgに減量。減量の理由は〇〇と本人より。"><span><b>ロ</b>減量</span></label>
+            <label><input type="radio" name="s" value="stop" data-text="{薬}：〇日前から自己判断で服用をやめていたと本人より。急にやめたことで体調を崩すことがあり、再発のおそれもあるため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>自己判断でやめていた</span></label>
+          </div>
+          <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <label class="mk-p"><input type="checkbox" data-on="up dn"><span>吐き気・下痢などの症状なし。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="up"><span>落ち着かない・眠れないなどの変化なし。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="dn stop"><span>めまい・しびれ感・吐き気などの症状なし。</span></label>
+          <div class="mk-h">指導</div>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>効果がはっきりするまで時間がかかることがあり、よくなっても再発を防ぐために続ける薬のため、自己判断で中止しないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="dn stop"><span>やめるときは主治医の指示に従い、少しずつ減らしていくと説明。自己判断で中止や減量をしないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>飲み始めや増量のときに、落ち着かない・眠れない・イライラする・気分が高ぶる・衝動的な行動をとるなど、いつもと違う変化に気づいたら、すぐに主治医に連絡するよう、本人と家族に説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="ジェイゾロフト|レクサプロ|パキシル|〇〇" data-on="i up"><span>眠気・めまいが出ることがあるため、車の運転などは十分注意するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="ルボックス|デプロメール" data-on="i up"><span>眠気や意識がぼんやりすることがあるため、車の運転はしないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>吐き気・下痢・食欲がないなどが出ることがあり、続くときは主治医に相談するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>飲み始めの吐き気などは、続けるうちに軽くなることが多いと説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="ルボックス|デプロメール" data-on="i"><span>噛み砕くと苦みや舌のしびれが出るため、噛まずに十分な水で服用するよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>痛み止めや片頭痛の薬などを他院でもらうときは、服用中であることを伝えるよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="パキシル"><span>妊娠を希望するときや妊娠が分かったときは、自己判断で中止せず主治医に相談するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="stop"><span>再開や今後の飲み方は、次回受診を待たずに主治医に連絡して指示に従うよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>汗が多い、熱が出る、体のふるえ、筋肉がぴくつく、落ち着かないなどが急に出たときは、すぐに受診するよう説明。</span><span class="mk-tag">セロトニン症候群</span></label>
+          <div class="mk-h">重篤な副作用<span class="mk-sub">説明したときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox"><span>だるさ、食欲がない、吐き気、頭痛、ぼーっとするなどが続くときは受診するよう説明。</span><span class="mk-tag">低ナトリウム血症</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="レクサプロ"><span>動悸・めまい・気を失うなどが出たときはすぐに受診するよう説明。</span><span class="mk-tag">QT延長</span></label>
+          <div class="mk-out"></div>
+          <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
+        </div>
+
+        <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>効能は薬ごとに違う。ジェイゾロフト：うつ病・パニック障害・外傷後ストレス障害／レクサプロ：うつ病・社会不安障害／パキシル：うつ病・パニック障害・強迫性障害・社会不安障害・外傷後ストレス障害（パキシルCRはうつ病・うつ状態のみ）／ルボックス・デプロメール：うつ病・強迫性障害・社会不安障害。</span></div>
+            <div class="bullet"><span>・</span><span>パキシルは、18歳未満の大うつ病性障害には適応を慎重に検討するよう警告がある。妊婦には、治療上の有益性が危険性を上回る場合にのみ投与する（禁忌ではない）。</span></div>
+            <div class="bullet"><span>・</span><span>ルボックス・デプロメールは、チザニジン・ラメルテオン・メラトニン・ピモジドと併用禁忌。他院の処方で問題になりやすい。</span></div>
+            <div class="bullet"><span>・</span><span>レクサプロは、QT延長のある人（先天性QT延長症候群など）に禁忌。増量は1週間以上あけ、1日20mgまで。</span></div>
+          </div>
+        </div></details>
+      </div>
+
+      <!-- ===== SNRI ===== -->
+      <div class="card" id="snri">
+        <div class="card-title">SNRI<span class="qual">セロトニン・ノルアドレナリン再取り込み阻害薬</span></div>
+        <div class="drugs">サインバルタ（デュロキセチン）／イフェクサーSR（ベンラファキシン）／トレドミン（ミルナシプラン）</div>
+
+        <div class="tpl-sec">確認する項目</div>
+        <div class="kakunin">
+          <div class="check"><span>✓</span><span>処方目的。<span class="marker">サインバルタを痛みの治療で処方されているときは算定対象にならない</span></span></div>
+          <div class="check"><span>✓</span><span>血圧・脈（上がることがある）</span></div>
+          <div class="check"><span>✓</span><span>尿が出にくい（トレドミンは尿閉のある人に禁忌）</span></div>
+          <div class="check"><span>✓</span><span>吐き気・落ち着かない・眠れないなどの変化</span></div>
+        </div>
+
+        <div class="tpl-sec">記載例をつくる</div>
+        <div class="mk" data-purpose="うつ病・うつ状態|全般不安症">
+          <div class="mk-h">薬剤</div>
+          <div class="mk-scenes mk-drug">
+            <label><input type="radio" name="nd" value="サインバルタ" checked><span>サインバルタ</span></label>
+            <label><input type="radio" name="nd" value="イフェクサーSR"><span>イフェクサーSR</span></label>
+            <label><input type="radio" name="nd" value="トレドミン"><span>トレドミン</span></label>
+            <label><input type="radio" name="nd" value="〇〇"><span>その他</span></label>
+          </div>
+          <div class="mk-h">場面</div>
+          <div class="mk-scenes">
+            <label><input type="radio" name="n" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
+            <label><input type="radio" name="n" value="up" data-text="{薬}：〇mgから〇mgに増量。増量の理由は〇〇と本人より。"><span><b>ロ</b>増量</span></label>
+            <label><input type="radio" name="n" value="dn" data-text="{薬}：〇mgから〇mgに減量。減量の理由は〇〇と本人より。"><span><b>ロ</b>減量</span></label>
+            <label><input type="radio" name="n" value="stop" data-text="{薬}：〇日前から自己判断で服用をやめていたと本人より。急にやめたことで体調を崩すことがあり、再発のおそれもあるため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>自己判断でやめていた</span></label>
+          </div>
+          <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <label class="mk-p"><input type="checkbox" data-on="up"><span>落ち着かない・眠れないなどの変化なし。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="up"><span>尿が出にくいなどの症状なし。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="dn stop"><span>めまい・しびれ感・吐き気などの症状なし。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>家庭で測った血圧は〇〇程度と本人より。</span></label>
+          <div class="mk-h">指導</div>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>効果がはっきりするまで時間がかかることがあり、よくなっても再発を防ぐために続ける薬のため、自己判断で中止しないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="dn stop"><span>やめるときは主治医の指示に従い、少しずつ減らしていくと説明。自己判断で中止や減量をしないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>飲み始めや増量のときに、落ち着かない・眠れない・イライラする・気分が高ぶる・衝動的な行動をとるなど、いつもと違う変化に気づいたら、すぐに主治医に連絡するよう、本人と家族に説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>眠気・めまいが出ることがあるため、車の運転などは十分注意するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>吐き気・食欲がない・便秘などが出ることがあり、続くときは主治医に相談するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="up"><span>血圧が上がったり脈が速くなったりすることがあるため、血圧を測っている人は値の変化に注意し、強い頭痛や動悸があるときは主治医に相談するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="サインバルタ|イフェクサーSR" data-on="i"><span>カプセルを開けたり中身を砕いたりせず、そのまま服用するよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="トレドミン" data-on="i"><span>空腹時に飲むと吐き気が強く出ることがあるため、食後に服用するよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>飲み始めの吐き気などは、続けるうちに軽くなることが多いと説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="stop"><span>再開や今後の飲み方は、次回受診を待たずに主治医に連絡して指示に従うよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>汗が多い、熱が出る、体のふるえ、筋肉がぴくつく、落ち着かないなどが急に出たときは、すぐに受診するよう説明。</span><span class="mk-tag">セロトニン症候群</span></label>
+          <div class="mk-h">重篤な副作用<span class="mk-sub">説明したときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox"><span>尿が出にくい・出ないときは、すぐに受診するよう説明。</span><span class="mk-tag">尿閉</span></label>
+          <label class="mk-p"><input type="checkbox"><span>だるさ、食欲がない、吐き気、頭痛、ぼーっとするなどが続くときは受診するよう説明。</span><span class="mk-tag">低ナトリウム血症</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="サインバルタ"><span>強いだるさ、皮膚や白目が黄色くなるなどの症状が出たときはすぐに受診するよう説明。</span><span class="mk-tag">肝機能障害</span></label>
+          <div class="mk-out"></div>
+          <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
+        </div>
+
+        <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>サインバルタは、糖尿病性神経障害・線維筋痛症・慢性腰痛症・変形性関節症に伴う疼痛にも使う。痛みの治療で処方されているときは算定対象にならない。糖尿病を悪化させることがある。高度の肝機能障害・腎機能障害は禁忌。</span></div>
+            <div class="bullet"><span>・</span><span>イフェクサーSRは2026年3月に全般不安症が効能に加わった。急にやめたときの症状が現れやすい。重度の肝機能障害、重度の腎機能障害（透析を含む）は禁忌。</span></div>
+            <div class="bullet"><span>・</span><span>3剤とも、血圧上昇・高血圧クリーゼがあらわれることがあり、適宜血圧や脈拍を測るよう電子添文に記載されている。</span></div>
+          </div>
+        </div></details>
+      </div>
+
+      <!-- ===== トリンテリックス ===== -->
+      <div class="card" id="srim">
+        <div class="card-title">トリンテリックス<span class="qual">セロトニン再取り込み阻害・セロトニン受容体調節薬</span></div>
+        <div class="drugs">トリンテリックス（ボルチオキセチン）</div>
+
+        <div class="tpl-sec">確認する項目</div>
+        <div class="kakunin">
+          <div class="check"><span>✓</span><span>処方目的と医師から受けた説明</span></div>
+          <div class="check"><span>✓</span><span>吐き気（多い副作用）</span></div>
+          <div class="check"><span>✓</span><span>落ち着かない・眠れないなどの変化</span></div>
+          <div class="check"><span>✓</span><span>セロトニンに作用する薬の併用</span></div>
+        </div>
+
+        <div class="tpl-sec">記載例をつくる</div>
+        <div class="mk" data-drug="トリンテリックス" data-purpose="うつ病・うつ状態">
+          <div class="mk-h">場面</div>
+          <div class="mk-scenes">
+            <label><input type="radio" name="r" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
+            <label><input type="radio" name="r" value="up" data-text="{薬}：〇mgから〇mgに増量。増量の理由は〇〇と本人より。"><span><b>ロ</b>増量</span></label>
+            <label><input type="radio" name="r" value="stop" data-text="{薬}：〇日前から自己判断で服用をやめていたと本人より。再発のおそれがあるため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>自己判断でやめていた</span></label>
+          </div>
+          <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <label class="mk-p"><input type="checkbox" data-on="up"><span>吐き気などの症状なし。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="up"><span>落ち着かない・眠れないなどの変化なし。</span></label>
+          <div class="mk-h">指導</div>
+          <label class="mk-p"><input type="checkbox" data-on="i stop"><span>効果がはっきりするまで時間がかかることがあり、よくなっても再発を防ぐために続ける薬のため、自己判断で中止しないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>飲み始めや増量のときに、落ち着かない・眠れない・イライラする・気分が高ぶる・衝動的な行動をとるなど、いつもと違う変化に気づいたら、すぐに主治医に連絡するよう、本人と家族に説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>眠気・めまいが出ることがあるため、車の運転などは十分注意するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>吐き気が出ることがあり、続くときや食事がとれないときは主治医に相談するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>飲み始めの吐き気は、続けるうちに軽くなることが多いと説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="stop"><span>再開や今後の飲み方は、次回受診を待たずに主治医に連絡して指示に従うよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>汗が多い、熱が出る、体のふるえ、筋肉がぴくつく、落ち着かないなどが急に出たときは、すぐに受診するよう説明。</span><span class="mk-tag">セロトニン症候群</span></label>
+          <div class="mk-h">重篤な副作用<span class="mk-sub">説明したときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox"><span>だるさ、食欲がない、吐き気、頭痛、ぼーっとするなどが続くときは受診するよう説明。</span><span class="mk-tag">低ナトリウム血症</span></label>
+          <div class="mk-out"></div>
+          <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
+        </div>
+
+        <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>通常は1日1回10mg。効果をみて20mgまで増やせる。増量は1週間以上あけて行う（電子添文）。</span></div>
+            <div class="bullet"><span>・</span><span>CYP2D6を阻害する薬（パキシルなど）を飲んでいる人や、遺伝的にCYP2D6の働きが弱いと分かっている人では、10mgを上限とすることが望ましいとされている。</span></div>
+            <div class="bullet"><span>・</span><span>MAO阻害薬（セレギリン・ラサギリン・サフィナミド）とは併用禁忌。</span></div>
+          </div>
+        </div></details>
+      </div>
+
+      <!-- ===== NaSSA・SARI ===== -->
+      <div class="card" id="nassa-sari">
+        <div class="card-title">NaSSA・SARI</div>
+        <div class="drugs">NaSSA：リフレックス・レメロン（ミルタザピン）<br>SARI：レスリン・デジレル（トラゾドン）</div>
+
+        <div class="tpl-sec">確認する項目</div>
+        <div class="kakunin">
+          <div class="check"><span>✓</span><span>処方目的。<span class="marker">うつ病・うつ状態の治療でなく、眠れないときに少量処方されているときは算定対象にならない</span></span></div>
+          <div class="check"><span>✓</span><span>翌朝に残る眠気・ふらつき</span></div>
+          <div class="check"><span>✓</span><span>リフレックス・レメロン：食欲が増える・体重増加</span></div>
+          <div class="check"><span>✓</span><span>レスリン・デジレル：立ちくらみ</span></div>
+        </div>
+
+        <div class="tpl-sec">記載例をつくる</div>
+        <div class="mk" data-purpose="うつ病・うつ状態">
+          <div class="mk-h">薬剤</div>
+          <div class="mk-scenes mk-drug">
+            <label><input type="radio" name="xd" value="リフレックス" checked><span>リフレックス</span></label>
+            <label><input type="radio" name="xd" value="レメロン"><span>レメロン</span></label>
+            <label><input type="radio" name="xd" value="レスリン"><span>レスリン</span></label>
+            <label><input type="radio" name="xd" value="デジレル"><span>デジレル</span></label>
+            <label><input type="radio" name="xd" value="〇〇"><span>その他</span></label>
+          </div>
+          <div class="mk-h">場面</div>
+          <div class="mk-scenes">
+            <label><input type="radio" name="x" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
+            <label><input type="radio" name="x" value="up" data-text="{薬}：〇mgから〇mgに増量。増量の理由は〇〇と本人より。"><span><b>ロ</b>増量</span></label>
+            <label><input type="radio" name="x" value="slp" data-text="{薬}：朝起きても眠気が残り、ふらつくと本人より。転倒や事故のおそれがあり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>翌朝に眠気が残る</span></label>
+            <label><input type="radio" name="x" value="stop" data-text="{薬}：〇日前から自己判断で服用をやめていたと本人より。再発のおそれがあるため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>自己判断でやめていた</span></label>
+            <label><input type="radio" name="x" value="wt" data-text="{薬}：飲み始めてから体重が〇kg増えたと本人より。食欲が増える副作用の可能性があり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>体重が増えた</span></label>
+          </div>
+          <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <label class="mk-p"><input type="checkbox" data-on="up"><span>翌朝に残る眠気・ふらつきなし。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="up"><span>落ち着かない・眠れないなどの変化なし。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="stop"><span>やめたあとの体調の変化は〇〇と本人より。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="wt"><span>食欲の変化は〇〇。体重が増えたことについて、本人は〇〇と話す。</span></label>
+          <div class="mk-h">指導</div>
+          <label class="mk-p"><input type="checkbox" data-on="i stop"><span>効果がはっきりするまで時間がかかることがあり、よくなっても再発を防ぐために続ける薬のため、自己判断で中止しないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>飲み始めや増量のときに、落ち着かない・眠れない・イライラする・気分が高ぶる・衝動的な行動をとるなど、いつもと違う変化に気づいたら、すぐに主治医に連絡するよう、本人と家族に説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up slp"><span>眠気や注意力の低下が起こることがあるため、車の運転はしないよう指導。翌朝に眠気やふらつきが残るときは主治医に相談するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="リフレックス|レメロン" data-on="i"><span>食欲が増えたり、体重が増えたりすることがあるため、気になる変化があれば主治医か薬剤師に相談するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="レスリン|デジレル" data-on="i up"><span>立ちくらみ・ふらつきで転びやすくなるため、立ち上がるときはゆっくり動くよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="slp"><span>夜中にトイレに起きるときは転ばないよう注意するよう説明し、服用の時刻や量について次回の受診で主治医に伝えるよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="wt"><span>自己判断で中止せず、体重の変化を次回の受診で主治医に伝えるよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>体重の変化と本人の受け止め方を処方医に情報提供した。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>お酒は眠気やふらつきを強めるため、控えるよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>汗が多い、熱が出る、体のふるえ、筋肉がぴくつく、落ち着かないなどが急に出たときは、すぐに受診するよう説明。</span><span class="mk-tag">セロトニン症候群</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="stop"><span>再開や今後の飲み方は、次回受診を待たずに主治医に連絡して指示に従うよう指導。</span></label>
+          <div class="mk-h">重篤な副作用<span class="mk-sub">説明したときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox" data-drug="リフレックス|レメロン"><span>急な発熱、のどの痛み、寒気が出たときはすぐに受診するよう説明。</span><span class="mk-tag">無顆粒球症</span></label>
+          <label class="mk-p"><input type="checkbox" data-drug="レスリン|デジレル"><span>痛みを伴う勃起が長く続くときは、すぐに受診するよう説明。</span><span class="mk-tag">持続性勃起</span></label>
+          <label class="mk-p"><input type="checkbox"><span>動悸・めまい・気を失うなどが出たときはすぐに受診するよう説明。</span><span class="mk-tag">QT延長</span></label>
+          <div class="mk-out"></div>
+          <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
+        </div>
+
+        <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>どちらも効能はうつ病・うつ状態だけ。眠気が強いので、眠れないときに少量が処方されることがある。算定対象になるかは、処方目的がうつ病・うつ状態の治療かで判断する。本人が「睡眠の薬」と聞いていることもあるので、医師から受けた説明を最初に聞く。</span></div>
+            <div class="bullet"><span>・</span><span>リフレックス・レメロンは就寝前に服用する。重大な副作用に無顆粒球症がある。</span></div>
+            <div class="bullet"><span>・</span><span>厚労省の疾患別対応マニュアル（気分障害）は、NaSSAで最初に伝えるポイントに強い鎮静と食欲が増えることを挙げている。</span></div>
+            <div class="bullet"><span>・</span><span>体重が増えることは、服薬を続けるかどうかに影響することがある。初回の説明だけで終わらせず、次回以降も体重の変化と、本人が気にしていないかを確認し、必要に応じて処方医に伝える。</span></div>
+            <div class="bullet"><span>・</span><span>レスリン・デジレルは、重大な副作用にQT延長・心室頻拍と持続性勃起がある。</span></div>
+          </div>
+        </div></details>
+      </div>
+
+      <!-- ===== 三環系・四環系 ===== -->
+      <div class="card" id="tca">
+        <div class="card-title">三環系・四環系抗うつ薬</div>
+        <div class="drugs">三環系：トリプタノール（アミトリプチリン）／アナフラニール（クロミプラミン）／トフラニール（イミプラミン）／ノリトレン（ノルトリプチリン）／アモキサン（アモキサピン）<br>四環系：ルジオミール（マプロチリン）／テトラミド（ミアンセリン）</div>
+
+        <div class="tpl-sec">確認する項目</div>
+        <div class="kakunin">
+          <div class="check"><span>✓</span><span>処方目的。<span class="marker">夜尿症・神経の痛み・ナルコレプシーなどの治療で処方されているときは算定対象にならない</span></span></div>
+          <div class="check"><span>✓</span><span>口の渇き・便秘・尿が出にくい</span></div>
+          <div class="check"><span>✓</span><span>立ちくらみ・眠気</span></div>
+          <div class="check"><span>✓</span><span>緑内障・前立腺肥大・心臓の病気（禁忌の薬が多い）</span></div>
+          <div class="check"><span>✓</span><span>薬の管理（一度に多く飲むと命に関わる）</span></div>
+        </div>
+
+        <div class="tpl-sec">記載例をつくる</div>
+        <div class="mk" data-purpose="精神科領域におけるうつ病・うつ状態|うつ病・うつ状態">
+          <div class="mk-h">薬剤</div>
+          <div class="mk-scenes mk-drug">
+            <label><input type="radio" name="td" value="トリプタノール" checked><span>トリプタノール</span></label>
+            <label><input type="radio" name="td" value="アナフラニール"><span>アナフラニール</span></label>
+            <label><input type="radio" name="td" value="トフラニール"><span>トフラニール</span></label>
+            <label><input type="radio" name="td" value="アモキサン"><span>アモキサン</span></label>
+            <label><input type="radio" name="td" value="ルジオミール"><span>ルジオミール</span></label>
+            <label><input type="radio" name="td" value="テトラミド"><span>テトラミド</span></label>
+            <label><input type="radio" name="td" value="〇〇"><span>その他</span></label>
+          </div>
+          <div class="mk-h">場面</div>
+          <div class="mk-scenes">
+            <label><input type="radio" name="t" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
+            <label><input type="radio" name="t" value="up" data-text="{薬}：〇mgから〇mgに増量。増量の理由は〇〇と本人より。"><span><b>ロ</b>増量</span></label>
+            <label><input type="radio" name="t" value="con" data-text="{薬}：便秘が続き、〇日出ていないと本人より。腸の動きが悪くなる副作用の可能性があり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>便秘が続く</span></label>
+            <label><input type="radio" name="t" value="stop" data-text="{薬}：〇日前から自己判断で服用をやめていたと本人より。再発のおそれがあるため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>自己判断でやめていた</span></label>
+          </div>
+          <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>緑内障・前立腺肥大の指摘はないと本人より。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="up"><span>口の渇き・便秘・尿が出にくいなどの症状なし。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="up"><span>日中の眠気・立ちくらみなし。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="con"><span>腹痛・吐き気なし。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="stop"><span>やめたあとの体調の変化は〇〇と本人より。</span></label>
+          <div class="mk-h">指導</div>
+          <label class="mk-p"><input type="checkbox" data-on="i stop"><span>効果がはっきりするまで時間がかかることがあり、よくなっても再発を防ぐために続ける薬のため、自己判断で中止しないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>飲み始めや増量のときに、落ち着かない・眠れない・イライラする・気分が高ぶる・衝動的な行動をとるなど、いつもと違う変化に気づいたら、すぐに主治医に連絡するよう、本人と家族に説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>眠気や注意力の低下が起こることがあるため、車の運転はしないよう指導。立ちくらみ・ふらつきで転びやすくなるため、立ち上がるときはゆっくり動くよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i up"><span>口の渇き・便秘・尿が出にくい・目がかすむなどが続くときは、主治医に相談するよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>決められた量を守るよう指導し、薬の管理を家族に手伝ってもらうよう依頼。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="con"><span>便やおならが出ない、お腹が張る、吐き気があるときはすぐに受診するよう指導。水分をとるよう説明。</span><span class="mk-tag">麻痺性イレウス</span></label>
+          <label class="mk-p"><input type="checkbox"><span>お酒は眠気やふらつきを強めるため、控えるよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i"><span>高熱、汗が多い、体のこわばりやふるえ、ぼーっとするなどが急に出たときは、すぐに受診するよう説明。</span><span class="mk-tag">悪性症候群・セロトニン症候群</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="stop"><span>再開や今後の飲み方は、次回受診を待たずに主治医に連絡して指示に従うよう指導。</span></label>
+          <div class="mk-h">重篤な副作用<span class="mk-sub">説明したときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox"><span>動悸・脈の乱れ・気を失うなどが出たときはすぐに受診するよう説明。</span><span class="mk-tag">QT延長</span></label>
+          <label class="mk-p"><input type="checkbox"><span>けいれんが起きたときはすぐに受診するよう説明。</span><span class="mk-tag">けいれん</span></label>
+          <label class="mk-p"><input type="checkbox"><span>急な発熱、のどの痛み、寒気が出たときはすぐに受診するよう説明。</span><span class="mk-tag">無顆粒球症</span></label>
+          <div class="mk-out"></div>
+          <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
+        </div>
+
+        <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>うつ病以外の効能がある薬：トリプタノール（夜尿症・末梢性神経障害性疼痛）、トフラニール（遺尿症）、アナフラニール（遺尿症・ナルコレプシーに伴う情動脱力発作）。これらの目的で処方されているときは算定対象にならない。</span></div>
+            <div class="bullet"><span>・</span><span>三環系の多くとルジオミールは、閉塞隅角緑内障・心筋梗塞の回復初期・尿閉に禁忌。ルジオミールはてんかんなどのけいれん性疾患にも禁忌。</span></div>
+            <div class="bullet"><span>・</span><span>一度に多く飲むと不整脈やけいれんで命に関わる。電子添文は、自殺傾向のある人への処方日数を最小限にするよう求めている。日本薬剤師会のガイドラインも、過量服薬のおそれがある人の把握と服薬管理を求めている。</span></div>
+          </div>
+        </div></details>
+      </div>
+
+      <!-- ===== ザズベイ ===== -->
+      <div class="card" id="zuranolone">
+        <div class="card-title">ザズベイ<span class="qual">GABA-A受容体の働きを強める薬</span></div>
+        <div class="drugs">ザズベイ（ズラノロン）</div>
+
+        <div class="tpl-sec">確認する項目</div>
+        <div class="kakunin">
+          <div class="check"><span>✓</span><span>処方目的と医師から受けた説明（14日間で飲み終わる薬だと理解しているか）</span></div>
+          <div class="check"><span>✓</span><span>服用期間中の運転・飲酒の予定</span></div>
+          <div class="check"><span>✓</span><span>妊娠の可能性（禁忌）</span></div>
+          <div class="check"><span>✓</span><span>再治療のとき：前回の服用終了から6週間以上あいているか</span></div>
+        </div>
+
+        <div class="tpl-sec">記載例をつくる</div>
+        <div class="mk" data-drug="ザズベイ" data-purpose="うつ病・うつ状態">
+          <div class="mk-h">場面</div>
+          <div class="mk-scenes">
+            <label><input type="radio" name="z" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
+            <label><input type="radio" name="z" value="re" data-text="{薬}：前回の服用終了から〇週間あけての再治療と本人より。前回の服用中に〇〇があったため、指導が必要と判断。"><span><b class="chg">ロ 変化</b>再治療</span></label>
+          </div>
+          <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
+          <label class="mk-p"><input type="checkbox" data-on="i re"><span>服用期間中に車の運転の予定はないと本人より。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>妊娠の可能性なしと本人より。</span></label>
+          <div class="mk-h">指導</div>
+          <label class="mk-p"><input type="checkbox" data-on="i re"><span>1日1回夕食後に14日間服用する薬と説明。自己判断で量を増やしたり、続けて飲み直したりしないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i re"><span>眠気・めまいが出やすいため、服用している間は車の運転をしないよう指導。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i re"><span>お酒は眠気やふらつきを強めるため、服用期間中は飲まないよう説明。</span></label>
+          <label class="mk-p"><input type="checkbox" data-on="i re"><span>落ち着かない・眠れない・イライラする・気分が高ぶる・衝動的な行動をとるなど、いつもと違う変化に気づいたら、すぐに主治医に連絡するよう、本人と家族に説明。</span></label>
+          <label class="mk-p"><input type="checkbox"><span>飲み終わったあとも、気分の変化があれば主治医に相談するよう説明。</span></label>
+          <div class="mk-h">妊娠する可能性のある女性のとき<span class="mk-sub">該当するときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox"><span>服用中と飲み終わってから1週間は避妊が必要と説明。</span></label>
+          <div class="mk-h">重篤な副作用<span class="mk-sub">説明したときに付ける</span></div>
+          <label class="mk-p"><input type="checkbox"><span>頭が混乱する、つじつまの合わないことを言う、今いる場所や時間が分からなくなるなどが出たときは、すぐに受診するよう本人と家族に説明。</span><span class="mk-tag">錯乱状態・せん妄</span></label>
+          <div class="mk-out"></div>
+          <div class="mk-bar"><button type="button">コピー</button><span class="hint">枠の中の空欄に入力すると、そのまま文に入る</span></div>
+        </div>
+
+        <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
+          <div class="blist">
+            <div class="bullet"><span>・</span><span>他の抗うつ薬と違い、毎日続ける薬ではない。30mgを1日1回夕食後に14日間服用する。抑うつ症状の急性期に使い、再燃・再発の予防には使わない。</span></div>
+            <div class="bullet"><span>・</span><span>再び治療するときは、服用終了から6週間以上あける。薬物依存のおそれがあるため、用法・用量を守る（習慣性医薬品）。</span></div>
+            <div class="bullet"><span>・</span><span>妊婦・妊娠している可能性のある女性は禁忌。妊娠する可能性のある女性には、服用中と最終服用後1週間は避妊が必要なことを説明するよう電子添文で求められている。</span></div>
+            <div class="bullet"><span>・</span><span>服用中は運転などをさせない。飲酒は中枢神経抑制作用を強めるため避けさせるのが望ましい。</span></div>
+          </div>
+        </div></details>
+      </div>
+
+      <div class="card" id="target">
+        <div class="card-title">この薬効群の算定対象</div>
+        <div class="stack">
+          <p class="note">精神神経用剤として、うつ病・うつ状態などの治療に使うときが算定対象になる。算定対象になるかは、処方目的がこの薬効群の治療に該当するかで判断する。サインバルタの痛み、三環系の夜尿症・神経の痛み、リフレックス・レスリンを眠れないときに少量使う場合などは算定対象にならない。</p>
+          <p class="note">投薬時に、自己判断で服薬を中断していたことが分かり、続ける必要性を改めて指導したときは、服薬状況の変化によるロの算定根拠になる。中断していた経緯と、行った指導を記載する。</p>
+          <p class="note">算定要件は<a href="../加算まとめ/特定薬剤管理指導加算1.html">特定薬剤管理指導加算1のページ</a>。処方目的で算定対象を判断する根拠は、<a href="../加算まとめ/特定薬剤管理指導加算1.html#taisho-gigi">同じページの過去の疑義解釈</a>（平成22年・平成24年）。</p>
+          <p class="note">エビリファイ・レキサルティをうつ病に追加したときや、ラツーダ・ジプレキサなどを双極性障害のうつ症状に使うときの記載例は<a href="ハイリスク_抗精神病薬.html">抗精神病薬のページ</a>。</p>
+          <div class="src">
+            <div>令和8年3月5日 保医発0305第6号 別添3「調剤報酬点数表に関する事項」特定薬剤管理指導加算1</div>
+            <div><a href="https://www.nichiyaku.or.jp/yakuzaishi/pharmacy-info/other/guideline01" target="_blank" rel="noopener">日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2.1版・令和8年6月）」</a></div>
+            <div>各薬剤の電子添文・患者向医薬品ガイド</div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <main>
-      <div class="tpl-toggle" role="tablist" aria-label="表示切替">
-        <button type="button" data-mode="all" class="active">解説＋テンプレ</button>
-        <button type="button" data-mode="tpl">テンプレのみ</button>
-      </div>
-      <details class="toc-inline fold-in">
-        <summary>目次</summary>
-        <div class="toc-links">
-          <a href="#guide">このページの使い方</a>
-          <a href="#lowline">算定時の記載ポイント</a>
-          <a href="#sec-checklist">簡易チェックリスト</a>
-          <a href="#drug-search">薬剤名から探す</a>
-          <a href="#ssri">SSRI</a>
-          <a href="#snri">SNRI</a>
-          <a href="#srim">S-RIM</a>
-          <a href="#nassa-sari">NaSSA・SARI</a>
-          <a href="#tca">三環系・四環系</a>
-          <a href="#zuranolone">ザズベイ（ズラノロン）</a>
-          <a href="#common-se">共通副作用の追記</a>
-          <a href="#section3">副作用・服薬状況等の変化によるロ</a>
-          <a href="#section1">共通確認ポイント</a>
-          <a href="#kobetsu">個別指導</a>
-        </div>
-      </details>
-
-      <!-- ============================================================
-           § まず見るところ（導線3カード）
-           ============================================================ -->
-      <section id="guide" style="margin-bottom:24px;">
-        <div class="section-label">このページの使い方</div>
-        <div class="guide-cards">
-          <a class="guide-card" href="#lowline"><span class="gc-no">1</span><span class="gc-title">算定前に記載内容を確認する</span><span class="gc-desc">記載のポイントと簡易チェックリストで、算定根拠として不足がないか確認する。</span></a>
-          <a class="guide-card" href="#drug-search"><span class="gc-no">2</span><span class="gc-title">薬剤名から記載例を探す</span><span class="gc-desc">薬剤名を選択し、該当する薬剤群の記載例へ移動する。</span></a>
-          <a class="guide-card" href="#section3"><span class="gc-no">3</span><span class="gc-title">副作用・服薬状況等の変化によるロの記載例を見る</span><span class="gc-desc">用法・用量の変更がなくても、副作用・服薬状況等の変化により、特に指導が必要と判断した場合の記載例。理由の要点の書き方も確認できる。</span></a>
-        </div>
-      </section>
-
-      <!-- ============================================================
-           § 0  最低ライン（乳幼児ページ由来の改修案）
-           ============================================================ -->
-      <section id="lowline" style="margin-bottom:28px;">
-        <div class="section-label">算定時の記録</div>
-        <h2 class="section-title">算定時の記載ポイント</h2>
-        <div class="minline">
-          <p class="minline-lead">
-            特定薬剤管理指導加算1は、服薬管理指導料に対する加算であり、対象薬が処方されていることだけを理由に算定する加算ではない。算定する場合は、通常の服薬指導に加えて、対象薬に関する確認を行い、患者の状態・服薬状況等を踏まえたプラスαの指導を行う必要がある。
-          </p>
-          <p class="minline-lead" style="margin-bottom:6px;">算定する場面は次の3つ。</p>
-          <ul style="margin:0 0 12px; padding-left:20px; font-size:13.5px; line-height:1.75; color:var(--ink);">
-            <li style="margin-bottom:3px;"><strong>イ</strong>　初回処方時</li>
-            <li style="margin-bottom:3px;"><strong>ロ</strong>　用法・用量等の変更時</li>
-            <li><strong>ロ</strong>　副作用・服薬状況等の変化により、薬剤師が必要と認めて指導した場合</li>
-          </ul>
-          <p class="minline-lead" style="margin-bottom:14px;">
-            算定時は、対象薬について確認した内容と行った指導の要点を薬歴に記録する。従来と同一の処方内容でロを算定する場合は、特に指導が必要と判断した理由の要点も記載する。
-          </p>
-          <div class="minline-checks">
-            <div class="minline-check"><span class="mc-no">①</span><b>「薬剤名：〜」の形で書き始める</b><span class="mc-note">どの薬についての指導記録かを明確にする（例：「レクサプロ：…」）。</span></div>
-            <div class="minline-check"><span class="mc-no">②</span><b>確認した内容を記録する（場面で分ける）</b><span class="mc-note">初回処方時は、症状や受診の経緯（医師から受けた説明を含む）を聞き取って処方内容を確認し、相互作用や安全性に関わる併用薬・市販薬・サプリ等、服用開始時に確認した内容を記録する。用法用量変更時は、変更に至った経緯・変更前後の症状・副作用・服薬状況。同一処方でも、副作用・服薬状況・併用薬・生活状況等に変化があれば、その変化の内容を残す。</span></div>
-            <div class="minline-check"><span class="mc-no">③</span><b>患者の状況に応じた指導内容を残す</b><span class="mc-note">一般的な薬効・用法説明だけでなく、効果発現の時期・自己中断の注意・賦活症候群など、その患者に必要な指導を具体的に記録する。</span></div>
-            <div class="minline-check"><span class="mc-no">④</span><b>記載内容から場面（新規・変更・変化）が分かるようにする</b><span class="mc-note"><strong>従来と同一処方でロを算定する場合は、副作用・服薬状況・併用薬・生活状況等の変化と、追加指導が必要と判断した理由を記録する</strong>。これがロの算定根拠になる。</span></div>
-          </div>
-          <div class="guard-note"><b>算定根拠として不十分になりやすい例</b>　一般的な薬効・用法説明のみで、確認した内容や患者の状況に応じた指導内容が薬歴から確認できない。</div>
-
-          <h3 class="subsection-title" style="margin-top:18px;">よくある薬歴と修正例（抗うつ薬）</h3>
-          <div class="example-pair">
-            <div class="example-box bad">
-              <span class="example-label">✕ 算定根拠として不十分な例（新規）</span>
-              <pre>レクサプロ：新規。処方目的確認。併用薬なし。副作用説明済み。</pre>
-            </div>
-            <div class="example-box good">
-              <span class="example-label">○ 修正例（薬剤群テンプレートを参考にした例）</span>
-              <pre>レクサプロ：新規。相互作用に注意が必要な併用薬（セロトニン作動薬の重複なし）を確認。気分・不安症状を整える薬で、効果発現に時間がかかるため自己判断で中止しないよう説明。開始初期の悪心（消化器症状）は多くは1〜2週で軽快する旨を説明。落ち着かなさ・不安・不眠・衝動的な行動など普段と違う変化があれば早めに相談するよう指導。市販薬・サプリ（セントジョーンズワート等）は事前に相談するよう説明。</pre>
-            </div>
-          </div>
-          <div class="example-pair" style="margin-top:10px;">
-            <div class="example-box bad">
-              <span class="example-label">✕ 算定根拠として不十分な例（増量）</span>
-              <pre>レクサプロ：10mg→20mgへ増量。用量変更を確認。変更前後の気分・体調の変化を確認。新用量での服用方法を再説明。増量に伴う副作用について注意喚起。自己判断で中止しないよう注意喚起。</pre>
-            </div>
-            <div class="example-box good">
-              <span class="example-label">○ 修正例（変更ロ：増量のテンプレートを使った例）</span>
-              <pre>レクサプロ：10mg→20mgへ増量説明。増量に伴い出やすい悪心等の消化器症状や眠気について注意喚起。落ち着かなさ・不安・不眠・イライラなど普段と違う変化（賦活症候群）がみられた場合は早めに相談するよう指導。増量後すぐに効果が出るわけではないため、自己判断で調整せず継続して服用するよう説明。</pre>
-            </div>
-          </div>
-          <p style="font-size:12px;color:var(--sub);margin-top:4px;">※ 増量の✕は「確認した」「再説明した」という行為の記録だけで、確認の結果が読めない。確認の結果はSに、指導の中身は具体的な症状の言葉で残す。</p>
-          <p style="font-size:12px;color:var(--sub);margin-top:4px;">※ ✕は確認した内容や患者ごとのプラスαの指導が読み取れない。○は「<a href="#drug-search" class="link-inline" style="color:var(--blue);">薬剤名から探す</a>」からSSRI初回イの記載例を参考にしたもの。薬効・用法説明だけで終わらず、確認した内容と患者の状況に応じた指導が薬歴から読み取れるようにする。</p>
-          <p style="font-size:12px;color:var(--sub);margin-top:4px;">※ <strong>SOAPで運用する場合</strong>、処方目的・病状や、用量変更前後の症状・副作用の変化はS（患者から聴いた情報）に記載されるため、指導記録（P）で重複させなくてよい。○例は、SOAPを使わない薬局でもそのまま使えるよう、確認と指導を1ブロックにまとめた形。</p>
-        </div>
-      </section>
-
-      <!-- ============================================================
-           § 0b 印刷用チェックリスト（乳幼児ページ由来の改修案）
-           ============================================================ -->
-      <section id="sec-checklist" style="margin-bottom:28px;">
-        <div class="section-label">印刷用</div>
-        <h2 class="section-title">算定前セルフチェック<button class="print-btn" type="button">このチェックリストを印刷</button></h2>
-        <div class="checklist-card">
-          <div class="cl-group">
-            <div class="cl-head">確認・記録する項目（基本）</div>
-            <label class="cl-item"><input type="checkbox"><span>対象薬剤が分かるように記載した（<b>「薬剤名：〜」</b>）</span></label>
-            <label class="cl-item"><input type="checkbox"><span>記載内容から<b>新規／変更／変化のどれに当たるか分かる</b>。<b>副作用・服薬状況等の変化によるロは、変化の内容と、追加指導が必要と判断した理由</b>も記載した</span></label>
-            <label class="cl-item"><input type="checkbox"><span><b>用法・用量の変更時</b>は、変更内容と、<b>変更前後の症状・副作用の変化</b>を記載した（SOAP運用ではSへの記載でよい）</span></label>
-            <label class="cl-item"><input type="checkbox"><span><b>処方目的</b>を確認した（必要に応じて<b>症状・服薬状況</b>も）</span></label>
-            <label class="cl-item"><input type="checkbox"><span>相互作用に注意が必要な併用薬・市販薬・サプリ等を確認した</span></label>
-            <label class="cl-item"><input type="checkbox"><span>自己判断で中止しないこと／効果発現に時間がかかることを説明した</span></label>
-            <label class="cl-item"><input type="checkbox"><span><b>患者の状況に応じた指導内容</b>を記録した</span></label>
-          </div>
-          <div class="cl-group">
-            <div class="cl-head">必要に応じて確認・説明する項目（抗うつ薬）</div>
-            <label class="cl-item"><input type="checkbox"><span><b>賦活症候群</b>（不安・焦燥・不眠・イライラ等。特に開始初期／増量後／24歳以下）の初期症状と相談の目安を説明した</span></label>
-            <label class="cl-item"><input type="checkbox"><span><b>中止後症候群</b>について、自己判断で中止しないことを説明した</span></label>
-            <label class="cl-item"><input type="checkbox"><span><b>セロトニン症候群</b>リスク（トリプタン・トラマドール・MAO阻害薬・セントジョーンズワート等の併用）を確認した</span></label>
-            <label class="cl-item"><input type="checkbox"><span>高齢者の<b>SIADH（低Na）・転倒</b>、家族支援を確認した</span></label>
-            <label class="cl-item"><input type="checkbox"><span>性機能障害、妊娠・授乳など、患者背景に応じて必要な内容を確認・説明した</span></label>
-          </div>
-          <div class="guard-note"><b>算定根拠として不十分になりやすい例</b>　一般的な薬効説明のみで、確認した内容や患者の状況に応じた指導内容が薬歴から確認できない。</div>
-        </div>
-      </section>
-
-      <!-- ============================================================
-           § 薬剤名から探す（薬剤名索引を上部へ）
-           ============================================================ -->
-      <section id="drug-search" style="margin-bottom:28px;">
-        <div class="section-label">薬剤名から探す</div>
-        <h2 class="section-title">薬剤名から記載例を探す</h2>
-        <p style="font-size:13px;color:var(--sub);margin-bottom:10px;">薬剤名をタップすると、該当する薬剤群別テンプレートに移動する。</p>
-        <div class="drug-index">
-          <div class="drug-index-row">
-            <span class="di-group">SSRI</span>
-            <a href="#ssri">パキシル</a><a href="#ssri">ジェイゾロフト</a><a href="#ssri">レクサプロ</a><a href="#ssri">ルボックス／デプロメール</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">SNRI</span>
-            <a href="#snri">サインバルタ</a><a href="#snri">イフェクサーSR</a><a href="#snri">トレドミン</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">S-RIM</span>
-            <a href="#srim">トリンテリックス</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">NaSSA・SARI</span>
-            <a href="#nassa-sari">リフレックス／レメロン</a><a href="#nassa-sari">レスリン／デジレル</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">三環・四環</span>
-            <a href="#tca">トリプタノール</a><a href="#tca">ノリトレン</a><a href="#tca">トフラニール</a><a href="#tca">アナフラニール</a><a href="#tca">ルジオミール</a><a href="#tca">テトラミド</a><a href="#tca">アモキサン</a>
-          </div>
-          <div class="drug-index-row">
-            <span class="di-group">神経活性ステロイド</span>
-            <a href="#zuranolone">ザズベイ</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============================================================
-           § 2  薬剤群別テンプレート（初回イ／変更ロ／副作用説明の追記／必要時追記）
-           ============================================================ -->
-      <section id="section2">
-        <div class="section-label">SECTION 2</div>
-        <h2 class="section-title">薬剤群別テンプレート</h2>
-        <p style="font-size:13px;color:var(--sub);margin-bottom:8px;">
-          本ページの記載例は、特定薬剤管理指導加算1のうち、新規処方時のイ、用法・用量変更時のロ、副作用・服薬状況等の変化によるロを想定している。<br />
-          薬歴を作成する際は、新規処方または変更があった薬剤を確認し、患者の状況に近い記載例を参考にする。
-        </p>
-        <div class="tpl-warn" id="copy-rule" style="margin:12px 0;">
-          <div class="tpl-warn-title">テンプレート使用時の注意</div>
-          下の記載例を使用する場合は、<strong>「薬剤名：〜」</strong>の形で薬剤名を明記し、確認した内容を追記する。説明・指導していない項目は削除する。副作用に関する記載例は、実際に説明した内容に応じて必要なものを追記する。確認項目（相互作用に注意が必要な併用薬・禁忌の有無 など）は「〜はないことを確認」と該当なしの形で書いてある。該当するものがあった場合は、その内容と行った指導に書き換える。
-        </div>
-        <div class="tag-legend">
-          <span><i style="background:var(--blue-light);border:1px solid var(--blue)"></i>初回イ（新規／若年例／高齢例 など）</span>
-          <span><i style="background:#e0f2f1;border:1px solid #0a6b63"></i>変更ロ（増量／減量／製剤切替 など）</span>
-          <span><i style="background:#f2f4f8;border:1px solid #d7dce3"></i>必要時追記</span>
-          <span><i style="background:#fef3e8;border:1px solid #f5d4a1"></i>副作用説明の追記（説明した分だけ追加）</span>
-        </div>
-
-        <!-- SSRI -->
-        <div class="drug-block" id="ssri">
-          <div class="drug-block-head">
-            <span class="drug-block-name">SSRI（選択的セロトニン再取り込み阻害薬）</span>
-            <span class="drug-block-sub">パロキセチン（パキシル）／セルトラリン（ジェイゾロフト）／エスシタロプラム（レクサプロ）／フルボキサミン（ルボックス・デプロメール）</span>
-          </div>
-
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
-            <ul>
-              <li><strong>処方目的の確認</strong>（うつ病・うつ状態／パニック障害／強迫性障害／社会不安障害／PTSD 等）— SSRIは複数適応をもつため、薬情等を補助にしながら、患者が医師から受けた説明と相違がないか可能な範囲で確認</li>
-              <li>処方内容・用法用量／服用タイミング</li>
-              <li>服薬の継続状況／<strong>自己判断で中止していないか</strong>（中止後症候群＋再発リスク）</li>
-              <li>消化器症状（悪心・下痢、開始初期に多い）の有無・経過</li>
-              <li><strong>賦活症状</strong>（不安・焦燥・不眠・イライラ・衝動性等）や、普段と違う気分・行動の変化の有無</li>
-              <li>性機能障害（性欲低下・勃起障害・射精遅延・オルガズム障害）の有無（必要時・訴えがあれば）</li>
-              <li>併用薬（MAO阻害薬・トラマドール・トリプタン系・他のセロトニン作動薬・NSAIDs・抗血小板薬／CYP代謝阻害薬）／アルコール</li>
-              <li>妊娠・授乳の希望／妊娠の有無（特にパロキセチン）</li>
-              <li><strong>18歳未満の大うつ病性障害患者</strong>へのパロキセチン投与は適応を慎重に検討</li>
-              <li>高齢者は<strong>SIADH・低Na血症</strong>（倦怠感・食欲低下・吐気・意識障害）・転倒リスク／家族支援の有無</li>
-            </ul>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>詳細・背景知識</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p>脳内のセロトニンの量を増やして<strong>気持ちの落ち込みを和らげる薬</strong>。効果の現れ方には個人差があり効果発現には時間がかかるため、すぐに効果の有無を判断せず自己判断で中止しないこと、開始初期に消化器症状や賦活症候群が出る場合があることを説明。</p>
-
-              <h4>薬剤ごとの特徴と適応症</h4>
-              <p>SSRIは「うつ病・うつ状態」以外にも複数の適応症をもつ薬剤がある。<strong>処方目的を確認することが処方鑑査・服薬指導の出発点</strong>になる。</p>
-              <ul>
-                <li><strong>パキシル</strong>（パロキセチン）：適応は<strong>うつ病・うつ状態／パニック障害／強迫性障害／社会不安障害／PTSD</strong>と幅広い。抗うつ作用は強いが<strong>中止後症候群が出やすい</strong>（漸減目的の5mg錠あり）。<strong>妊婦への投与は催奇形性のリスク（特に心奇形）の報告あり、治療上の有益性が危険性を上回る場合にのみ投与を開始する</strong>。<strong>18歳未満の大うつ病性障害患者への投与は適応を慎重に検討</strong>（自殺念慮・自殺企図リスクのプラセボ比較で増加の報告）。CYP2D6を強く阻害（併用薬注意）。なお<strong>パキシルCR錠の適応はうつ病・うつ状態のみ</strong>で、他の適応症は普通錠のみ</li>
-                <li><strong>ジェイゾロフト</strong>(セルトラリン)：適応は<strong>うつ病・うつ状態／パニック障害／PTSD</strong>。忍容性が比較的良好。半減期がやや長く中止後症候群は出にくいため、将来妊娠の可能性がある女性でも減薬・中止の計画が立てやすい。CYP2D6阻害は中等度</li>
-                <li><strong>レクサプロ</strong>（エスシタロプラム）：適応は<strong>うつ病・うつ状態／社会不安障害</strong>。S体のみ。用法用量がシンプル（1日1回10mg開始・最大20mg）で治療計画が立てやすい。<strong>用量依存性のQT延長</strong>に注意（添付文書で他のQT延長薬との併用注意、20mg超は通常用いない）</li>
-                <li><strong>ルボックス・デプロメール</strong>（フルボキサミン）：適応は<strong>うつ病・うつ状態／強迫性障害／社会不安障害</strong>。小児（8歳以上）の強迫性障害にも適応がある。<strong>CYP1A2・CYP2C19を強く阻害</strong>（テオフィリン・チザニジン・ラメルテオン・メラトニン等とは併用禁忌・併用注意）</li>
-              </ul>
-              <p style="font-size:12px;color:var(--sub);margin-top:4px;">※ 強迫性障害ではうつ病より高用量で使用される場合がある（薬剤ごとに用法用量が異なる）。最新の添付文書を確認すること。</p>
-
-              <h4>処方目的の確認方法（厚労省Q3-8）</h4>
-              <p>SSRIは複数の適応をもつため、可能な範囲で処方目的を確認する。<strong>薬情等を用いて処方目的を説明し、医師から受けた説明と相違がないかを確認する。</strong>病名や症状名を不用意に口頭で出さず、患者の受け止め方や周囲への聞こえ方に配慮する（本ページ⑦のプライバシー配慮を参照）：</p>
-              <ul>
-                <li>まずオープンに尋ねる：「<strong>（医師から）どのような目的で出す薬だと説明されましたか？</strong>」</li>
-                <li>薬情を示しながら：「<strong>こちらの説明内容について、先生からのお話と相違はありませんか</strong>」</li>
-                <li>病名そのものを言わせることが目的ではない。患者が答えにくそうな場合は無理に病名を確認せず、薬情・処方内容・患者の反応を踏まえ、医師の説明と齟齬が生じないよう配慮する</li>
-              </ul>
-
-              <h4>賦活症候群（背景知識）</h4>
-              <p>SSRIの<strong>投与開始初期（多くは2週間以内）や増量後</strong>に、不安・焦燥・不眠・イライラ・衝動性等が出ることがある。<strong>抗うつ薬開始9日以内に自殺関連事象のリスクが高い</strong>との示唆あり。特に24歳以下では自殺念慮・自殺企図のリスクが報告されている。家族にも開始初期の変化に注意してもらうと安心。</p>
-
-              <h4>中止後症候群（背景知識）</h4>
-              <p>1か月以上服用後に急激に中止すると、<strong>2〜3日以内</strong>に頭痛・めまい・知覚異常（「シャンビリ」感）・吐気・倦怠感・不安等が出ることがある。多くは数日で改善するが、症状回避のため減量・中止は数週〜数か月かけて漸減する。<strong>特にパロキセチン</strong>で出やすい。</p>
-
-              <h4>消化器症状（背景知識）</h4>
-              <p>悪心・下痢・食欲低下は<strong>開始初期に出やすく、多くは1〜2週間で軽快</strong>する。食後服用や少量からの開始で軽減できる場合がある。続く場合や強い場合は処方医に相談。</p>
-
-              <h4>性機能障害（背景知識）</h4>
-              <p>SSRIでは性欲低下・勃起障害・射精遅延・オルガズム障害が比較的多い。患者からは自発的に訴えにくいため、聞き取りで拾うことが重要。継続のアドヒアランスにも影響するため、症状があれば処方医に相談するよう促す。</p>
-
-              <h4>SIADH・低Na血症（背景知識）</h4>
-              <p><strong>特に高齢者</strong>でSSRI使用中の低Na血症（SIADH）が報告される。<strong>倦怠感・食欲低下・吐気・頭痛・意識障害</strong>等の症状が出た場合は早めの受診を促す。利尿薬併用例ではよりリスクが上がる。</p>
-
-              <h4>妊娠・授乳（背景知識）</h4>
-              <p><strong>パロキセチン</strong>は妊婦への投与で胎児の心奇形リスクの報告があり、電子添文では治療上の有益性が危険性を上回ると判断される場合にのみ投与を開始するとされている（禁忌ではない）。妊娠後期のSSRI暴露では新生児の<strong>離脱症状・新生児遷延性肺高血圧症（PPHN）</strong>のリスクも指摘される。妊娠希望・判明時は自己中断せず必ず主治医に相談するよう指導。</p>
-
-              <h4>併用薬の相互作用（背景知識）</h4>
-              <ul>
-                <li><strong>MAO阻害薬・リネゾリド・メチレンブルー・トラマドール・トリプタン系</strong>：セロトニン症候群リスク</li>
-                <li><strong>NSAIDs・抗血小板薬・抗凝固薬</strong>：消化管出血リスク上昇（SSRIは血小板凝集を抑制）</li>
-                <li><strong>セントジョーンズワート</strong>：セロトニン症候群リスク／CYP誘導</li>
-                <li>CYP相互作用：パロキセチン＝CYP2D6阻害、フルボキサミン＝CYP1A2・CYP2C19阻害</li>
-              </ul>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li>毎日決まった時間に服用、<strong>自己判断で中止しない</strong>（中止後症候群＋再発予防）</li>
-                <li>効果の現れ方には個人差があり時間がかかるため、すぐに効かないと感じても自己判断で中止しない</li>
-                <li>開始初期は悪心・下痢等の消化器症状が出やすいが多くは1〜2週で軽快、続く場合は相談</li>
-                <li>落ち着かなさ・不安・焦り・不眠・イライラ・衝動的な行動など、普段と違う変化があれば早めに相談</li>
-                <li>市販の風邪薬・痛み止め・サプリ（特にセントジョーンズワート）・他院処方は薬剤師に必ず確認</li>
-                <li>妊娠の希望・判明時は自己判断で中止せず必ず相談</li>
-              </ul>
-
-              <h4>自動車運転について</h4>
-              <p>SSRIは添付文書上「眠気・注意力低下等が現れることがあるので、自動車運転等の危険を伴う作業に従事する際は注意」と記載される。患者の眠気の程度に応じて、危険作業時の注意を指導。</p>
-
-              <div class="patient-say">患者への伝え方の例：<br />「気持ちの落ち込みを和らげるお薬です。効き方には個人差があり、効果を感じるまで時間がかかることもあるので、すぐに効かないと感じても自分の判断でやめないでください。最初の頃は気持ち悪さや下痢が出ることがありますが、たいてい1〜2週間で慣れます。落ち着かない・気分が大きく変わる・寝つきが悪いなど、いつもと違う変化があれば早めに連絡してください。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
-              <div class="tpl-text">SSRI新規処方。相互作用に注意が必要な併用薬・市販薬・サプリ等はないことを確認。脳内のセロトニンを増やして気持ちの落ち込みを和らげる薬であることを説明、効果発現には時間がかかるため、すぐに効果の有無を判断せず自己判断で中止しないことを指導。開始初期に悪心・下痢等が出ることがあるが多くは1〜2週で軽快する旨を説明。開始初期や増量後に落ち着かなさ・不安・焦り・不眠・イライラ・衝動的な行動などがみられることがあるため、普段と違う変化があれば早めに相談するよう指導。市販薬・サプリ（特にセントジョーンズワート）・他院処方は薬剤師に確認するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：若年例（24歳以下）</span>
-              <div class="tpl-text">若年例（24歳以下）へのSSRI新規処方。開始初期や増量後に、落ち着かなさ・不安・焦り・不眠・イライラ・衝動的な行動などがみられることがあるため、普段と違う変化があれば早めに相談するよう本人に説明。家族同席時は、本人の様子にいつもと違う変化があれば早めに医師・薬剤師へ連絡するよう家族にも依頼（若年では特に開始初期の変化に注意が必要なため）。自己判断で中止しないこと、効果発現には時間がかかることも説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
-              <div class="tpl-text">高齢者へのSSRI新規処方。SIADH・低Na血症（倦怠感・食欲低下・吐気・頭痛・意識障害）のリスクが上がる旨、転倒リスクの上昇を説明。家族支援の有無を確認。利尿薬併用時は特にリスクが上がるため、家族同席時・必要に応じて家族にも症状の変化に注意してもらうよう説明。自己判断で中止しないよう注意喚起。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：パロキセチン（妊娠可能年齢の女性）</span>
-              <div class="tpl-text">妊娠可能年齢の女性へのパロキセチン処方。妊婦への投与は胎児の心奇形リスクの報告がある旨を説明。妊娠の希望・判明時は自己判断で中止せず必ず主治医に相談するよう指導（中止後症候群を避けるため）。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：エスシタロプラム</span>
-              <div class="tpl-text">エスシタロプラム新規処方。用量依存性のQT延長に注意が必要な旨、動悸・めまい・失神等があれば早めに相談・受診するよう説明。他のQT延長薬・電解質異常（低K・低Mg）に注意。20mg超は通常用いない旨を念のため確認。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴い出やすい悪心等の消化器症状や眠気について注意喚起。落ち着かなさ・不安・不眠・イライラなど普段と違う変化（賦活症候群）がみられた場合は早めに相談するよう指導。増量後すぐに効果が出るわけではないため、自己判断で調整せず継続して服用するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：エスシタロプラム増量</span>
-              <div class="tpl-text">エスシタロプラム〇mg→〇mgへ増量説明。QT延長は用量依存的にあらわれるため、動悸・めまい・失神がみられた場合は早めに相談・受診するよう説明。QT延長を起こしやすい薬剤の併用がないか確認。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：減量（漸減）</span>
-              <div class="tpl-text">〇mg→〇mgへ減量説明。減量に伴い、めまい・頭痛・しびれ感・吐き気など（中止後症候群）や症状のぶり返しが出ることがあるため、体調の変化があれば自己判断で量を戻したり中止したりせず相談するよう指導。特にパロキセチンで出やすい。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：製剤切替（SSRI間／他系統への切替）</span>
-              <div class="tpl-text">他のSSRI／他系統抗うつ薬（〇〇）から本剤への切替を確認。切替時の中止後症候群・セロトニン症候群（特に他のセロトニン作動薬からの切替時）のリスクを説明、症状出現時は早めに相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">性機能障害（性欲低下・勃起障害・射精遅延等）の訴え。SSRIで比較的多い副作用であり、続く場合や生活に影響する場合は主治医に相談するよう指導。自己判断で中止しないよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">NSAIDs・抗血小板薬・抗凝固薬の併用変更あり（〇〇）。SSRIとの併用で消化管出血リスクが上がるため、胃痛・胸やけ・黒色便等の消化器症状に注意し、症状がある場合は早めに主治医へ相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">他のセロトニン作動薬（トラマドール・トリプタン系等）の併用変更あり（〇〇）。セロトニン症候群のリスクがあるため、不安・焦燥・発汗・頻脈・震え等の症状が出た場合は速やかに相談・受診するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">飲酒習慣あり。アルコールにより眠気・ふらつきが増強されるおそれがあるため、服用中は飲酒を控えるよう指導。禁酒が難しい場合は、飲酒後2〜3時間ほど間隔をあけて服用するよう説明（飲酒について医師の指示がある場合はそちらを優先）。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">飲み忘れ／自己中断の訴え。中止後症候群（頭痛・めまい・知覚異常等）と再発リスクを説明、自己判断で中止・減量せず、減量・中止については次回受診時に主治医へ相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">「効果実感が乏しい」との訴え。効果発現には時間がかかる旨を再説明、すぐに効果の有無を判断せず自己判断で中止せず次回受診時に主治医に相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- SNRI -->
-        <div class="drug-block" id="snri">
-          <div class="drug-block-head">
-            <span class="drug-block-name">SNRI（セロトニン・ノルアドレナリン再取り込み阻害薬）</span>
-            <span class="drug-block-sub">デュロキセチン（サインバルタ）／ベンラファキシン（イフェクサーSR）／ミルナシプラン（トレドミン）</span>
-          </div>
-
-          <div class="caveat-box">
-            <div class="caveat-box-title">算定の前提（重要）</div>
-            <p style="margin:0;">デュロキセチン（サインバルタ）は<strong>糖尿病性神経障害・線維筋痛症・慢性腰痛症・変形性関節症の疼痛</strong>にも適応をもつ。<br />
-            これら<strong>疼痛目的の処方</strong>は、精神神経用薬（抗うつ薬）としての使用ではないため、<strong>特定薬剤管理指導加算1（ハイリスク薬）の対象外</strong>となる。本ブロックのテンプレは<strong>うつ病・うつ状態</strong>を前提とし、算定の可否は処方目的を確認してから判断する。</p>
-          </div>
-
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容・用法用量／服用タイミング</li>
-              <li>服薬の継続状況／<strong>自己判断で中止していないか</strong>（特にベンラファキシンは中止後症候群が出やすい）</li>
-              <li>消化器症状（悪心・口渇・便秘、開始初期に多い）の有無</li>
-              <li><strong>賦活症状</strong>（不安・焦燥・不眠・イライラ等）や、普段と違う気分・行動の変化の有無</li>
-              <li><strong>血圧上昇</strong>（特に高用量のベンラファキシンで報告）の有無</li>
-              <li><strong>排尿障害</strong>（尿閉・排尿困難、特にミルナシプラン）の有無</li>
-              <li>肝機能（特にデュロキセチン、定期的な検査値確認）</li>
-              <li>併用薬（MAO阻害薬・トラマドール・トリプタン系・他のセロトニン作動薬・NSAIDs・抗血小板薬）／アルコール</li>
-              <li>妊娠・授乳の希望／高齢者はSIADH・転倒リスク／家族支援の有無</li>
-            </ul>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>詳細・背景知識</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p>脳内のセロトニンとノルアドレナリンの量を増やして<strong>気持ちの落ち込みを和らげる薬</strong>。効果の現れ方には個人差があり効果発現には時間がかかる。一部はうつ病以外の慢性疼痛（デュロキセチンは糖尿病性神経障害・線維筋痛症・慢性腰痛症等）にも適応がある。</p>
-
-              <h4>薬剤ごとの特徴</h4>
-              <ul>
-                <li><strong>サインバルタ</strong>（デュロキセチン）：糖尿病性神経障害・線維筋痛症・慢性腰痛症・変形性関節症の疼痛にも適応。<strong>肝障害</strong>に注意（高度肝障害は禁忌）</li>
-                <li><strong>イフェクサーSR</strong>（ベンラファキシン）：徐放性カプセル、噛まずに服用。<strong>中止後症候群が特に出やすい</strong>、<strong>高用量で血圧上昇</strong></li>
-                <li><strong>トレドミン</strong>（ミルナシプラン）：1日2〜3回。<strong>排尿障害</strong>（尿閉等）に注意、前立腺肥大・尿閉既往は慎重投与</li>
-              </ul>
-
-              <h4>賦活症候群・中止後症候群（背景知識）</h4>
-              <p>SSRIと同様、開始初期や増量後の賦活症候群、急激な中止での中止後症候群に注意。<strong>ベンラファキシンは半減期が短く中止後症候群が顕著に出やすい</strong>ため、減量・中止は特に慎重に行う。</p>
-
-              <h4>血圧上昇（背景知識）</h4>
-              <p>SNRIはノルアドレナリン作用により<strong>血圧上昇</strong>を起こすことがある。特にベンラファキシンは高用量で顕著。高血圧既往例・コントロール不良例では定期的な血圧確認を推奨。</p>
-
-              <h4>排尿障害（背景知識）</h4>
-              <p>ミルナシプランで<strong>尿閉・排尿困難</strong>が報告される。前立腺肥大症のある高齢男性や、尿閉既往例では特に注意。症状出現時は早めに相談するよう伝える。</p>
-
-              <h4>肝障害（背景知識）</h4>
-              <p>デュロキセチンで肝機能障害の報告がある。<strong>強いだるさ・黄疸・褐色尿</strong>等が出た場合は早めに相談・受診するよう指導。アルコール多飲例・肝機能低下例では特に注意（高度肝障害は禁忌）。</p>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li>毎日決まった時間に服用、<strong>自己判断で中止しない</strong>（特にイフェクサーSRは中止後症候群が出やすい）</li>
-                <li>効果の現れ方には個人差があり時間がかかるため、すぐに効かないと感じても自己判断で中止しない</li>
-                <li>開始初期の悪心・口渇・便秘は多くは1〜2週で軽快、続く場合は相談</li>
-                <li>落ち着かなさ・不安・焦り・不眠・イライラ・衝動的な行動など、普段と違う変化があれば早めに相談</li>
-                <li>血圧が高めの方は定期的な血圧測定を継続</li>
-                <li>イフェクサーSRは<strong>カプセルのまま服用</strong>（噛まない・砕かない・開けない）</li>
-                <li>トレドミン：排尿困難・尿が出にくい感じがあれば早めに相談</li>
-                <li>サインバルタ：強いだるさ・黄疸が出たら早めに相談</li>
-              </ul>
-
-              <h4>自動車運転について</h4>
-              <p>SNRIは添付文書上「眠気・注意力低下等が現れることがあるので、自動車運転等の危険を伴う作業に従事する際は注意」と記載される（薬剤・記載は確認のこと）。患者の眠気の程度に応じて、危険作業時の注意を指導。</p>
-
-              <div class="patient-say">患者への伝え方の例：<br />「気持ちの落ち込みを和らげる薬で、痛みの治療にも使うことがあります。効果を感じるまで時間がかかります。急にやめると頭痛やめまい、しびれのような感じが出ることがあるので、自分の判断で止めずに必ず相談してください。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
-              <div class="tpl-text">SNRI新規処方。相互作用に注意が必要な併用薬・市販薬・サプリ等はないことを確認。脳内のセロトニン・ノルアドレナリンを増やして気持ちの落ち込みを和らげる薬であることを説明、効果発現には時間がかかるため、すぐに効果の有無を判断せず自己判断で中止しないことを指導。開始初期に悪心・口渇・便秘等が出ることがあるが多くは1〜2週で軽快する旨を説明。開始初期や増量後に落ち着かなさ・不安・焦り・不眠・イライラ・衝動的な行動などがみられることがあるため、普段と違う変化があれば早めに相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：ベンラファキシン</span>
-              <div class="tpl-text">ベンラファキシン新規処方。徐放性製剤のため噛まず・砕かず・そのまま服用するよう指導。中止後症候群が特に出やすい薬剤のため、自己判断で中止・減量せず、減量・中止については主治医に相談するよう重ねて説明。高用量での血圧上昇に注意し、必要に応じて家庭血圧の測定を提案。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：デュロキセチン</span>
-              <div class="tpl-text">デュロキセチン新規処方（処方目的：うつ病・うつ状態）。肝機能障害に注意が必要な旨、強いだるさ・黄疸・褐色尿等があれば早めに相談・受診するよう説明。飲酒習慣の有無を確認、飲酒がある場合は肝への負担を避けるため控えるよう指導（多飲例・肝機能低下例は特に注意）。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：ミルナシプラン</span>
-              <div class="tpl-text">ミルナシプラン新規処方。排尿障害（尿閉・排尿困難）に注意が必要な旨を説明。前立腺肥大症の有無を確認、症状出現時は早めに相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：若年例（24歳以下）</span>
-              <div class="tpl-text">若年例（24歳以下）へのSNRI新規処方。開始初期や増量後に、落ち着かなさ・不安・焦り・不眠・イライラ・衝動的な行動などがみられることがあるため、普段と違う変化があれば早めに相談するよう本人に説明。家族同席時は、本人の様子にいつもと違う変化があれば早めに医師・薬剤師へ連絡するよう家族にも依頼（若年では特に開始初期の変化に注意が必要なため）。自己判断で中止しないことも説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
-              <div class="tpl-text">高齢者へのSNRI新規処方。SIADH・低Na血症のリスク、転倒リスクの上昇を説明。家族支援の有無を確認、家族同席時・必要に応じて家族にも症状の変化に注意してもらうよう説明。血圧変動にも注意するよう指導。自己判断で中止しないよう注意喚起。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴い血圧上昇・動悸・尿の出にくさ（ノルアドレナリン作用）が出やすくなる旨を注意喚起し、家庭血圧を測定している場合は増量後の値の変化にも注意するよう説明。落ち着かなさ・不安・不眠など普段と違う変化（賦活症候群）がみられた場合は早めに相談するよう指導。増量後すぐに効果が出るわけではないため、自己判断で調整せず継続して服用するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：減量（漸減）</span>
-              <div class="tpl-text">〇mg→〇mgへ減量説明。特にベンラファキシンは半減期が短く、減量に伴いめまい・頭痛・しびれ感など（中止後症候群）が出やすいため、体調の変化があれば自己判断で量を戻したり中止したりせず相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">血圧上昇傾向あり（特にベンラファキシン高用量）。家庭血圧の測定継続を依頼、上昇が続く場合は主治医に相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">排尿困難の訴え（特にミルナシプラン）。前立腺肥大の有無を再確認、症状が続く場合は主治医に相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">他のセロトニン作動薬（トラマドール・トリプタン系等）の併用変更あり（〇〇）。セロトニン症候群のリスクがあるため、不安・焦燥・発汗・頻脈・震え等の症状が出た場合は速やかに相談・受診するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">飲酒習慣あり。アルコールにより眠気・ふらつきが増強されるおそれがあるため、服用中は飲酒を控えるよう指導。禁酒が難しい場合は、飲酒後2〜3時間ほど間隔をあけて服用するよう説明（飲酒について医師の指示がある場合はそちらを優先）。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">飲み忘れ／自己中断の訴え。特にベンラファキシンは中止後症候群が顕著に出やすい旨を説明、自己判断で中止・減量せず、減量・中止については主治医に相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- S-RIM -->
-        <div class="drug-block" id="srim">
-          <div class="drug-block-head">
-            <span class="drug-block-name">S-RIM（セロトニン再取り込み阻害・セロトニン受容体調節薬）</span>
-            <span class="drug-block-sub">ボルチオキセチン（トリンテリックス）</span>
-          </div>
-
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容・用法用量／服用タイミング</li>
-              <li>服薬の継続状況／<strong>自己判断で中止していないか</strong></li>
-              <li><strong>消化器症状（悪心・嘔吐）</strong>の有無・経過（開始初期に多い）</li>
-              <li><strong>賦活症状</strong>（不安・焦燥・不眠・イライラ等）や、普段と違う気分・行動の変化の有無</li>
-              <li>性機能障害の有無（SSRI/SNRIに比較して少なめとされる）</li>
-              <li>併用薬（MAO阻害薬・トラマドール・トリプタン系・他のセロトニン作動薬・NSAIDs／CYP2D6阻害薬）</li>
-              <li>妊娠・授乳の希望／高齢者はSIADH・転倒リスク／家族支援の有無</li>
-            </ul>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>詳細・背景知識</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p>セロトニン再取り込み阻害に加え、<strong>複数のセロトニン受容体（5-HT1A作動・5-HT3拮抗・5-HT7拮抗等）に多面的に作用</strong>することで気持ちの落ち込みを和らげる薬。SSRI/SNRIに比較して性機能障害が少なめ、認知機能への影響も少ないとされる。新世代の抗うつ薬として処方が増えている。</p>
-
-              <h4>薬剤の特徴</h4>
-              <ul>
-                <li><strong>トリンテリックス</strong>（ボルチオキセチン）：1日1回、食事の有無に関わらず服用可。日本では10mg・20mg。<strong>悪心・嘔吐</strong>が比較的多いが、多くは継続で軽減。CYP2D6で代謝されるため、強力なCYP2D6阻害薬併用時は減量考慮</li>
-              </ul>
-
-              <h4>消化器症状（背景知識）</h4>
-              <p>悪心・嘔吐が<strong>開始初期に出やすい</strong>（多くは1〜2週で軽快）。食後服用や少量からの開始で軽減できる場合がある。強い場合や続く場合は処方医に相談。</p>
-
-              <h4>賦活症候群・中止後症候群（背景知識）</h4>
-              <p>抗うつ薬共通の注意。SSRI/SNRIと同様、開始初期や増量後の賦活症候群、自己中断時の中止後症候群に注意。ただしボルチオキセチンは半減期が比較的長く（約66時間）、中止後症候群はSSRI/SNRIより穏やかとされる。</p>
-
-              <h4>併用薬の相互作用（背景知識）</h4>
-              <ul>
-                <li><strong>MAO阻害薬・リネゾリド・メチレンブルー・トラマドール・トリプタン系</strong>：セロトニン症候群リスク</li>
-                <li><strong>強力なCYP2D6阻害薬</strong>（パロキセチン・キニジン・ブプロピオン等）：ボルチオキセチン血中濃度上昇、減量考慮</li>
-                <li><strong>CYP誘導薬</strong>（リファンピシン・カルバマゼピン・フェニトイン等）：効果減弱の可能性</li>
-                <li><strong>NSAIDs・抗血小板薬・抗凝固薬</strong>：消化管出血リスク上昇（セロトニン系共通）</li>
-              </ul>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li>毎日決まった時間に服用、<strong>自己判断で中止しない</strong></li>
-                <li>効果の現れ方には個人差があり時間がかかるため、すぐに効かないと感じても自己判断で中止しない</li>
-                <li>開始初期は悪心・嘔吐が出やすいが多くは1〜2週で軽快、続く場合は相談</li>
-                <li>落ち着かなさ・不安・焦り・不眠・イライラ・衝動的な行動など、普段と違う変化があれば早めに相談</li>
-                <li>市販薬・サプリ・他院処方は薬剤師に必ず確認</li>
-              </ul>
-
-              <h4>自動車運転について</h4>
-              <p>添付文書上「眠気・めまい等が現れることがあるので、自動車運転等の危険を伴う作業に従事する際は注意」と記載される。患者の症状に応じて指導。</p>
-
-              <div class="patient-say">患者への伝え方の例：<br />「比較的新しい抗うつ薬です。気持ちの落ち込みを和らげる薬で、効果を感じるまで時間がかかります。最初は気持ち悪さや吐き気が出ることがありますが、たいてい1〜2週間で慣れます。自分の判断で止めずに続けてください。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規</span>
-              <div class="tpl-text">ボルチオキセチン（トリンテリックス）新規処方。相互作用に注意が必要な併用薬・市販薬・サプリ等はないことを確認。セロトニンに多面的に作用して気持ちの落ち込みを和らげる薬であることを説明、効果発現には時間がかかるため、すぐに効果の有無を判断せず自己判断で中止しないことを指導。開始初期に悪心・嘔吐が出やすいが多くは1〜2週で軽快する旨を説明、強い場合は相談するよう指導。開始初期や増量後に落ち着かなさ・不安・焦り・不眠・イライラ・衝動的な行動などがみられることがあるため、普段と違う変化があれば早めに相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：若年例（24歳以下）</span>
-              <div class="tpl-text">若年例（24歳以下）へのボルチオキセチン新規処方。開始初期や増量後に、落ち着かなさ・不安・焦り・不眠・イライラ・衝動的な行動などがみられることがあるため、普段と違う変化があれば早めに相談するよう本人に説明。家族同席時は、本人の様子にいつもと違う変化があれば早めに医師・薬剤師へ連絡するよう家族にも依頼（若年では特に開始初期の変化に注意が必要なため）。自己判断で中止しないことも説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
-              <div class="tpl-text">高齢者へのボルチオキセチン新規処方。SIADH・低Na血症のリスク、転倒リスクの上昇を説明。家族支援の有無を確認、家族同席時・必要に応じて家族にも症状の変化に注意してもらうよう説明。自己判断で中止しないよう注意喚起。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">10mg→20mgへ増量説明。悪心は用量依存的に出やすくなるため、増量後の悪心・嘔吐に注意し、続く場合は相談するよう指導。落ち着かなさ・不安・不眠など普段と違う変化（賦活症候群）がみられた場合は早めに相談するよう指導。増量後すぐに効果が出るわけではないため、自己判断で調整せず継続して服用するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">強力なCYP2D6阻害薬（パロキセチン等）の併用変更あり（〇〇）。ボルチオキセチン血中濃度上昇の可能性があるため、副作用の出現に注意するよう指導、必要に応じて用量調整を主治医に相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">飲酒習慣あり。アルコールにより眠気・ふらつきが増強されるおそれがあるため、服用中は飲酒を控えるよう指導。禁酒が難しい場合は、飲酒後2〜3時間ほど間隔をあけて服用するよう説明（飲酒について医師の指示がある場合はそちらを優先）。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">他のセロトニン作動薬（トラマドール・トリプタン系等）の併用変更あり（〇〇）。セロトニン症候群のリスクがあるため、不安・焦燥・発汗・頻脈・震え等の症状が出た場合は速やかに相談・受診するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">飲み忘れ／自己中断の訴え。中止後症候群（頭痛・めまい・知覚異常等）と再発リスクを説明、自己判断で中止・減量せず、減量・中止については主治医に相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- NaSSA・SARI -->
-        <div class="drug-block" id="nassa-sari">
-          <div class="drug-block-head">
-            <span class="drug-block-name">NaSSA・SARI</span>
-            <span class="drug-block-sub">ミルタザピン（リフレックス・レメロン／NaSSA）／トラゾドン（レスリン・デジレル／SARI）</span>
-          </div>
-
-          <div class="caveat-box">
-            <div class="caveat-box-title">算定の前提（重要）</div>
-            <p style="margin:0;">本ブロックのテンプレは <strong>「うつ病・うつ状態」</strong> を適応とする処方を前提に作成している。<br />
-            ミルタザピン・トラゾドンの<strong>添付文書上の適応はうつ病・うつ状態のみ</strong>だが、現場では睡眠補助目的（適応外）でも処方される。<br />
-            患者の聞き取り等で<strong>処方目的が睡眠補助のみ</strong>であることが分かった場合は、適応外処方となり<strong>特定薬剤管理指導加算1の算定対象外</strong>となる。算定の可否は処方目的を確認してから判断する。</p>
-          </div>
-
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
-            <ul>
-              <li><strong>処方目的の確認</strong>（うつ病・うつ状態／睡眠補助）— 算定可否の前提</li>
-              <li>処方内容・用法用量／服用タイミング（就寝前が多い）</li>
-              <li>服薬の継続状況／<strong>自己判断で中止していないか</strong></li>
-              <li><strong>眠気・翌朝の持ち越し</strong>の有無</li>
-              <li>体重増加・食欲増加（特にミルタザピン）の有無</li>
-              <li>起立性低血圧・めまい・口渇の有無</li>
-              <li><strong>持続勃起症</strong>（トラゾドン特有、稀だが緊急性高い）の有無</li>
-              <li>他の中枢抑制薬・抗ヒスタミン薬の併用／アルコール</li>
-              <li>高齢者は転倒リスク・抗コリン負荷／家族支援の有無</li>
-            </ul>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>詳細・背景知識</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p><strong>ミルタザピン（NaSSA）</strong>：α2受容体拮抗によりノルアドレナリン・セロトニン放出を増やし、5-HT2/5-HT3受容体遮断で副作用を軽減した抗うつ薬。<strong>眠気・体重増加・食欲増加</strong>が出やすい。<br />
-              <strong>トラゾドン（SARI）</strong>：5-HT2A拮抗作用と弱いセロトニン再取り込み阻害作用を併せ持つ抗うつ薬。<strong>抗うつ作用は相対的に弱く</strong>、半減期が短く眠気が強いため、現場では睡眠補助目的での処方が多い。</p>
-
-              <h4>処方目的の確認（重要）</h4>
-              <p>適応上は両剤とも<strong>うつ病・うつ状態のみ</strong>。現場では特にトラゾドンは睡眠補助目的、ミルタザピンは低用量（15mg以下）で睡眠補助目的の処方も多い。患者が「うつ病の薬」と認識していない場合があるため、処方目的を聞き取りで確認した上で説明を組み立てる。<strong>睡眠補助目的（適応外）の場合は加算1の対象外</strong>となるため、テンプレを使用しない。</p>
-
-              <h4>眠気・翌朝の持ち越し（背景知識）</h4>
-              <p>両剤とも眠気が強く出やすい。<strong>就寝前服用</strong>が基本だが、翌朝の持ち越し（朝の眠気・ふらつき）が出る場合がある。日中の眠気が強い場合は服用時刻の調整・用量調整を処方医と相談。</p>
-
-              <h4>ミルタザピン特有の注意（背景知識）</h4>
-              <p>α2受容体拮抗とヒスタミンH1拮抗により<strong>強い眠気・体重増加・食欲増加</strong>が出やすい。低用量（7.5〜15mg）では特に眠気が強く出るため、睡眠補助目的の使われ方をすることもあるが、適応はあくまで「うつ病・うつ状態」。30mg以上では抗うつ作用が前面に出る。稀に<strong>無顆粒球症・好中球減少</strong>の報告あり（発熱・咽頭痛等が出た場合は早めの受診）。</p>
-
-              <h4>トラゾドン特有の注意（背景知識）</h4>
-              <p>抗うつ作用は相対的に弱いため、現場では睡眠補助目的での処方が多い。<strong>持続勃起症（プリアピズム）</strong>が稀に報告される（陰茎の異常な持続勃起、4時間以上続く場合は緊急受診が必要）。<strong>QT延長</strong>にも注意。起立性低血圧・めまいも出やすい。</p>
-
-              <h4>賦活症候群・中止後症候群（背景知識）</h4>
-              <p>抗うつ薬としての処方の場合は、SSRI/SNRIと同様、開始初期や増量後の賦活症候群、自己中断時の中止後症候群に注意。ただし患者が「うつ病ではない」と認識している場合は、賦活症候群の説明は不安を煽らない症状ベースでの説明にとどめる。</p>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li>処方目的を確認した上で説明（うつ病・うつ状態として処方されている場合は自己中断しないよう徹底）</li>
-                <li>眠気が強く出ることがあるため、<strong>自動車運転等の危険を伴う作業に従事しないよう説明</strong>（添付文書記載）</li>
-                <li>翌朝の眠気・ふらつきが強い場合は相談</li>
-                <li>ミルタザピン：体重増加・食欲増加に注意、急な発熱・咽頭痛があれば早めに相談</li>
-                <li>トラゾドン：陰茎の異常な持続勃起（4時間以上）があれば緊急受診、動悸・めまい・失神に注意</li>
-                <li>市販薬・サプリ・他院処方は薬剤師に確認</li>
-              </ul>
-
-              <h4>自動車運転について</h4>
-              <p>ミルタザピン・トラゾドンとも添付文書で「自動車の運転等危険を伴う機械の操作に従事させないよう」と記載される（強い眠気が出るため）。<strong>従事しないよう説明</strong>。</p>
-
-              <div class="patient-say">患者への伝え方の例：<br />「気持ちの落ち込みを和らげる薬です（処方目的に応じて適宜調整）。眠気が強く出やすい薬なので、就寝前に服用してください。翌朝に眠気やふらつきが強く残る場合は教えてください。車の運転は控えてください。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
-          <ul style="font-size:12px;margin:0 0 8px;padding-left:1.6em;">
-            <li><strong>処方目的が「うつ病・うつ状態」であることを必ず確認</strong>（睡眠補助目的のみの場合は加算1の対象外、テンプレを使用しない）</li>
-          </ul>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：ミルタザピン新規（うつ病・うつ状態）</span>
-              <div class="tpl-text">ミルタザピン新規処方（処方目的：うつ病・うつ状態）。相互作用に注意が必要な併用薬・市販薬・サプリ等はないことを確認。気持ちの落ち込みを和らげる薬であることを説明、効果発現には時間がかかるため、すぐに効果の有無を判断せず自己判断で中止しないことを指導。眠気が強く出やすい就寝前服用の薬であるため、翌朝の眠気・ふらつきに注意。運転・危険作業の有無を確認、運転する場合は眠気の持ち越しがあるため従事しないよう説明。体重増加・食欲増加が出やすい旨も説明。急な発熱・咽頭痛があれば早めに相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：トラゾドン新規（うつ病・うつ状態）</span>
-              <div class="tpl-text">トラゾドン新規処方（処方目的：うつ病・うつ状態）。相互作用に注意が必要な併用薬・市販薬・サプリ等はないことを確認。気持ちの落ち込みを和らげる薬であることを説明、自己判断で中止しないよう指導。眠気・起立性低血圧・めまいが出やすい旨を説明、立ち上がりはゆっくり段階的に行うよう指導。運転・危険作業の有無を確認、運転する場合は従事しないよう説明。陰茎の異常な持続勃起（4時間以上）があれば緊急受診するよう男性患者に説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
-              <div class="tpl-text">高齢者へのNaSSA／SARI新規処方（処方目的：うつ病・うつ状態）。転倒・誤嚥・抗コリン負荷・起立性低血圧のリスクが上がる旨を説明。家族支援の有無を確認、家族同席時・必要に応じて家族にも眠気の持ち越しや転倒に注意してもらうよう説明。立ち上がりはゆっくり段階的に行うよう指導。運転・危険作業の有無を確認、運転する場合は眠気の持ち越し・転倒リスクから従事しないよう注意喚起。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：ミルタザピン増量</span>
-              <div class="tpl-text">ミルタザピン〇mg→〇mgへ増量説明。眠気は増量で必ずしも強まらない（低用量でむしろ強く出る場合がある）ため、実際の眠気の程度を確認。食欲亢進・体重増加が続く場合は相談するよう説明。増量後すぐに効果が出るわけではないため、自己判断で調整せず継続して服用するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：トラゾドン増量</span>
-              <div class="tpl-text">トラゾドン〇mg→〇mgへ増量説明。増量に伴いめまい・ふらつき・立ちくらみ（起立性低血圧）が出やすくなるため、急に立ち上がらないこと、特に夜間のトイレ時の転倒に注意するよう指導。翌朝に眠気が残る場合は相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">無顆粒球症・好中球減少（特にミルタザピン）について、まれではあるが、急な発熱・寒気・咽頭痛が出た場合は速やかに受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">持続勃起症（プリアピズム、トラゾドン特有）について、まれではあるが、陰茎の異常な勃起が4時間以上続く場合は緊急受診するよう男性患者に説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">翌朝の眠気・ふらつきの訴え。服用時刻の調整・用量調整を主治医に相談するよう指導。運転する場合は眠気の持ち越しがあるため従事しないよう再説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">体重増加の訴え（特にミルタザピン）。食欲増加・体重増加はミルタザピンで出やすい副作用である旨を説明、生活習慣（食事・運動）にも配慮するよう指導。続く場合は処方医に相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">立ちくらみ・めまい（特にトラゾドン、起立性低血圧疑い）の訴え。急に立ち上がらず段階的に動作するよう指導、頻繁な場合や転倒した場合は主治医に相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">他の中枢抑制薬・アルコールの併用変更あり（〇〇）。眠気・ふらつきが増強する可能性がある旨を説明。運転する場合は従事しないよう再指導、飲酒がある場合は控えるよう説明（禁酒が難しい場合は、飲酒後2〜3時間ほど間隔をあけて服用するよう説明）。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- 三環系・四環系 -->
-        <div class="drug-block" id="tca">
-          <div class="drug-block-head">
-            <span class="drug-block-name">三環系・四環系抗うつ薬</span>
-            <span class="drug-block-sub">三環系：トリプタノール（アミトリプチリン）／ノリトレン（ノルトリプチリン）／トフラニール（イミプラミン）／アナフラニール（クロミプラミン） ／四環系：ルジオミール（マプロチリン）／テトラミド（ミアンセリン）／アモキサン（アモキサピン）</span>
-          </div>
-
-          <div class="caveat-box">
-            <div class="caveat-box-title">算定の前提（重要）</div>
-            <p style="margin:0;">三環系・四環系には、アミトリプチリン・ノルトリプチリン等の<strong>末梢神経障害性疼痛などの慢性疼痛</strong>、イミプラミンの<strong>夜尿症</strong>、クロミプラミンの<strong>情動脱力発作（ナルコレプシー）</strong>など、うつ病・うつ状態以外の適応をもつ薬剤がある。<br />
-            これら<strong>うつ病・うつ状態以外を目的とした処方</strong>は、精神神経用薬（抗うつ薬）としての使用ではないため、<strong>特定薬剤管理指導加算1（ハイリスク薬）の対象外</strong>。本ブロックのテンプレは<strong>うつ病・うつ状態</strong>を前提とし、算定の可否は処方目的を確認してから判断する。</p>
-          </div>
-
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容・用法用量／服用タイミング</li>
-              <li><strong>処方目的</strong>（うつ病・うつ状態か、慢性疼痛・夜尿症等か）— 疼痛等の非精神疾患目的は加算1の対象外のため必ず確認</li>
-              <li>服薬の継続状況／<strong>自己判断で中止していないか</strong>（中止後症候群＋再発リスク）</li>
-              <li><strong>抗コリン作用症状</strong>（便秘・口渇・尿閉・霧視・認知機能低下）の有無</li>
-              <li><strong>起立性低血圧</strong>（立ちくらみ・めまい）の有無</li>
-              <li>眠気・体重増加の有無</li>
-              <li><strong>過量服用リスク</strong>の評価（自殺念慮の有無、家族支援、一包化の検討）</li>
-              <li>心疾患既往（QT延長・伝導障害のリスク）／高齢者の転倒・誤嚥リスク</li>
-              <li>併用薬（MAO阻害薬・他のセロトニン作動薬・抗コリン薬重複）／アルコール</li>
-            </ul>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>詳細・背景知識</summary>
-            <div class="guide-details-body">
-              <h4>薬効の説明ポイント</h4>
-              <p>ノルアドレナリンとセロトニンの再取り込みを阻害して<strong>気持ちの落ち込みを和らげる薬</strong>。新世代抗うつ薬（SSRI/SNRI等）より処方頻度は減ったが、慢性疼痛（神経障害性疼痛）にも適応がある薬剤（アミトリプチリン・ノルトリプチリン）がある。<strong>抗コリン作用・心毒性・過量服用での致死性</strong>が新世代薬より強いため、慎重な管理が必要。</p>
-
-              <h4>薬剤ごとの特徴</h4>
-              <ul>
-                <li><strong>三環系</strong>：トリプタノール（アミトリプチリン）／ノリトレン（ノルトリプチリン）／トフラニール（イミプラミン）／アナフラニール（クロミプラミン） — 抗コリン作用が強い／キニジン様作用による心毒性／過量服用で致死的</li>
-                <li>アミトリプチリン・ノルトリプチリンは慢性疼痛（神経障害性疼痛・線維筋痛症）にも適応／アモキサピンは抗精神病作用も併せ持つ</li>
-                <li><strong>四環系</strong>：ルジオミール（マプロチリン）／テトラミド（ミアンセリン）／アモキサン（アモキサピン） — 三環系より抗コリン作用は弱め／マプロチリンは痙攣閾値を低下させる／ミアンセリンは無顆粒球症の報告</li>
-              </ul>
-
-              <h4>抗コリン作用（背景知識）</h4>
-              <p>便秘・口渇・尿閉・霧視・認知機能低下が出やすい。<strong>特に高齢者では認知機能低下・転倒・麻痺性イレウスのリスク</strong>。前立腺肥大・閉塞隅角緑内障では慎重投与または禁忌。抗ヒスタミン薬・過活動膀胱治療薬等の抗コリン薬重複に注意。</p>
-
-              <h4>心毒性・過量服用（背景知識）</h4>
-              <p>三環系はキニジン様作用により<strong>QT延長・心室伝導障害・房室ブロック</strong>を起こす。<strong>過量服用で致死的になりうる</strong>（不整脈・痙攣・昏睡）。自殺念慮のある患者では一包化等で服薬管理を検討。心疾患既往例では特に注意。</p>
-
-              <h4>痙攣閾値の低下（背景知識）</h4>
-              <p>三環系・四環系は痙攣閾値を低下させる。<strong>マプロチリン（ルジオミール）で特に注意</strong>。てんかん既往例・閾値低下が懸念される患者では慎重投与。</p>
-
-              <h4>起立性低血圧（背景知識）</h4>
-              <p>α1受容体遮断作用により起立性低血圧が出やすい。特に高齢者では転倒リスク上昇。立ち上がりはゆっくり段階的に行うよう指導。</p>
-
-              <h4>躁転リスク（背景知識）</h4>
-              <p>三環系・四環系での治療中に躁病エピソードや軽躁病エピソードが誘発されることがある。双極性障害が疑われる例では慎重に。</p>
-
-              <h4>若年者への有効性（背景知識）</h4>
-              <p>三環系・四環系抗うつ薬は<strong>メタ解析でも若年者への有効性が確認されないことが示されている</strong>（厚労省「薬局における疾患別対応マニュアル」Q3-9）。若年例ではSSRI等の新規抗うつ薬が優先的に選択されることが多い。三環系・四環系が若年者へ処方されている場合は、処方目的（うつ病以外の慢性疼痛・夜尿症・情動脱力発作等も含む）を確認する。</p>
-
-              <h4>ミアンセリン（テトラミド）の鎮静目的処方（背景知識）</h4>
-              <p>ミアンセリンは<strong>5-HT2受容体遮断作用が比較的強く、うつ病・うつ状態に伴う睡眠障害を改善させることで抗うつ作用を示す</strong>と考えられており、この作用機序を考慮して投与される場合がある（厚労省「薬局における疾患別対応マニュアル」Q3-10）。<strong>適応はうつ病・うつ状態のみ</strong>のため、処方目的の理解と服薬指導の整合性に配慮する。</p>
-
-              <h4>中止後症候群（背景知識）</h4>
-              <p>三環系・四環系でも中止後症候群が起こる。減量・中止後2〜3日以内に吐気・倦怠感・睡眠障害・不安等が出ることがあるため、減量・中止は自己判断で行わず段階的に進める。</p>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li>毎日決まった時間に服用、<strong>自己判断で中止しない</strong>（中止後症候群＋再発予防）</li>
-                <li>処方目的を確認した上で説明（加算対象はうつ病・うつ状態。慢性疼痛等の目的は対象外）</li>
-                <li>眠気・ふらつきが出るため、<strong>自動車運転等の危険を伴う作業に従事しないよう説明</strong>（添付文書記載）</li>
-                <li>口渇・便秘・尿が出にくいときは早めに相談</li>
-                <li>立ちくらみ・めまいが出る場合は急に立ち上がらず段階的に動作</li>
-                <li>胸の動悸・不整脈感・失神があれば早めに相談・受診</li>
-                <li>過量服用は危険なため、決められた量を守る</li>
-                <li>市販の風邪薬・睡眠改善薬・サプリは薬剤師に確認（抗コリン重複に注意）</li>
-              </ul>
-
-              <h4>自動車運転について</h4>
-              <p>三環系・四環系は添付文書で「自動車の運転等危険を伴う機械の操作に従事させないよう」と記載される（強い眠気・抗コリン作用による集中力低下のため）。<strong>従事しないよう説明</strong>。</p>
-
-              <div class="patient-say">患者への伝え方の例：<br />「気持ちの落ち込みを和らげる薬です（適応に応じて：神経の痛みを和らげる薬）。眠気や、口の渇き、便秘などが出ることがあります。立ち上がる時のふらつきにも注意してください。決められた量を守ってください。車の運転は控えてください。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。</p>
-          <ul style="font-size:12px;margin:0 0 8px;padding-left:1.6em;">
-            <li>処方目的（うつ病・うつ状態か否か）を聞き取りで確認。<strong>慢性疼痛・夜尿症等の非精神疾患目的は加算1の対象外</strong></li>
-          </ul>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：新規（うつ病・うつ状態）</span>
-              <div class="tpl-text">三環系／四環系抗うつ薬新規処方（処方目的：うつ病・うつ状態）。心疾患既往の有無を確認。気持ちの落ち込みを和らげる薬であることを説明、自己判断で中止しないよう指導。眠気・ふらつきが強く出る旨を説明。運転・危険作業の有無を確認、運転する場合は従事しないよう説明。立ち上がりはゆっくり段階的に行うよう指導。口渇・便秘・尿が出にくい・動悸・失神等があれば早めに相談、決められた量を守るよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：高齢例</span>
-              <div class="tpl-text">高齢者への三環系／四環系抗うつ薬新規処方。抗コリン負荷・転倒・誤嚥・起立性低血圧・認知機能低下のリスクが上がる旨を説明。家族支援の有無を確認、家族同席時・必要に応じて家族にも症状の変化に注意してもらうよう説明。立ち上がりはゆっくり段階的に行うよう指導、便秘・尿閉・霧視等があれば早めに相談するよう説明。運転・危険作業の有無を確認、運転する場合は眠気・集中力低下・転倒リスクから従事しないよう注意喚起。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag init">初回イ：服薬管理に配慮が必要な例</span>
-              <div class="tpl-text">服薬管理に配慮が必要な例（希死念慮の訴え・既往等）への三環系／四環系抗うつ薬新規処方。決められた量を必ず守り、超えて服用しないよう指導。服薬管理に不安がある場合は一包化や家族による管理を提案。落ち着かなさ・不安・焦り・衝動的な行動など、普段と違う変化があればすぐに連絡するよう本人・家族に説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">変更ロ：増量</span>
-              <div class="tpl-text">〇mg→〇mgへ増量説明。増量に伴い抗コリン症状（口渇・便秘・排尿困難・かすみ目）や眠気・起立性低血圧が強まりやすい旨を注意喚起し、動悸・脈の乱れ・強いふらつきがみられた場合は早めに相談・受診するよう指導。増量後すぐに効果が出るわけではないため、自己判断で調整せず継続して服用するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">心毒性（QT延長・伝導障害）について、まれではあるが、動悸・脈の乱れ・失神等が出た場合は早めに相談・受診するよう説明（特に心疾患既往例）。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">痙攣（特にマプロチリン）について、まれではあるが、痙攣発作が出た場合は速やかに受診するよう説明。てんかん既往がある場合は事前に主治医に伝える。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">無顆粒球症（特にミアンセリン）について、まれではあるが、急な発熱・寒気・咽頭痛が出た場合は速やかに受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">抗コリン症状（便秘・口渇・尿が出にくい・霧視等）の訴え。続く場合は主治医に相談するよう指導、他の抗コリン薬（過活動膀胱治療薬・抗ヒスタミン薬等）併用時はリスクが上がる旨を説明。腹痛・嘔吐がある場合は麻痺性イレウスの可能性もあるため早めに受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">立ちくらみ・めまい（起立性低血圧疑い）の訴え。急に立ち上がらず段階的に動作するよう指導、頻繁な場合や転倒した場合は主治医に相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">抗コリン薬・中枢抑制薬の併用変更あり（〇〇）。抗コリン作用の重複や眠気の増強に注意するよう指導、症状出現時は早めに相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">飲酒習慣あり。アルコールにより眠気・ふらつきが増強されるおそれがあるため、服用中は飲酒を控えるよう指導。禁酒が難しい場合は、飲酒後2〜3時間ほど間隔をあけて服用するよう説明（飲酒について医師の指示がある場合はそちらを優先）。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- 神経活性ステロイド（GABA-A受容体PAM）：ザズベイ／ズラノロン -->
-        <div class="drug-block" id="zuranolone">
-          <div class="drug-block-head">
-            <span class="drug-block-name">神経活性ステロイド（GABA-A受容体機能賦活）</span>
-            <span class="drug-block-sub">ズラノロン（ザズベイ）※2026年3月発売・新規作用機序／薬効分類 871179</span>
-          </div>
-
-          <div class="tpl-warn">
-            <div class="tpl-warn-title">ザズベイ使用時の記載・指導の注意（他群テンプレを流用しない）</div>
-            本剤は<strong>ズラノロン30mgを1日1回、14日間夕食後に服用する</strong>薬であり、長期継続を前提とした従来の抗うつ薬とは使い方が異なる。そのため<strong>「効果発現には時間がかかる」「症状が安定しても再発予防のため長期に継続」といった他群の記載・指導テンプレートはそのまま流用しない</strong>。<br />
-            記載・指導の主眼は、<strong>服用期間中の運転等危険作業／飲酒の予定確認と該当時の回避・「2週間服用→6週間の休薬期間→症状を考慮して再治療を検討」という使い方・自己判断で増量・中止・再開しないこと</strong>に置く。運転・飲酒は全員に一律「避けるよう指導した」と残すのではなく、<strong>予定の有無を確認し、該当する場合に回避指導した旨を記録する</strong>。併用薬は「併用薬を確認」の一言ではなく、<strong>「相互作用に注意が必要な併用薬等はないことを確認」まで書いて確認の中身を残す</strong>。相互作用のある併用が実際にある場合は、内容と指導を具体的に記載する（下の「必要時追記」を使う）。下の初回イの記載例は、<strong>予定の有無を選ぶと文章が切り替わる組み立て式</strong>にしている。傾眠・めまいの頻度、相互作用、妊婦禁忌などの薬剤側の詳細は、下の「この薬の確認項目」「詳細・背景知識」を参照。
-          </div>
-
-          <div class="drug-check-box">
-            <div class="drug-check-box-title">この薬の確認項目（聞き取り中心）</div>
-            <ul>
-              <li>処方内容・用法用量（<strong>30mg 1日1回 夕食後 14日間</strong>）／服用開始日・残り日数</li>
-              <li>処方目的（薬情等を用いて、医師から受けた説明と相違がないか確認）</li>
-              <li><strong>傾眠・めまい・ふらつき</strong>の有無、日中の眠気の程度</li>
-              <li><strong>服用期間中の自動車運転・危険を伴う作業の予定</strong>（該当する場合は投与中従事しない）</li>
-              <li><strong>服用期間中の飲酒予定</strong>／中枢神経抑制薬（ベンゾジアゼピン系・抗精神病薬・抗ヒスタミン薬等）の併用</li>
-              <li>CYP3A阻害薬・誘導薬の併用（本剤の作用が増強・減弱する）</li>
-              <li><strong>妊娠・妊娠の可能性（禁忌）</strong>／妊娠可能な女性への避妊（投与中〜最終投与後1週間）／授乳の有無</li>
-              <li>過去の本剤治療歴（再治療の場合は<strong>前回終了から6週間以上</strong>あいているか）</li>
-              <li><strong>服用中・終了後</strong>：14日間の服用状況、自己中断・残薬の有無</li>
-            </ul>
-          </div>
-
-          <details class="guide-details fold-in">
-            <summary>詳細・背景知識</summary>
-            <div class="guide-details-body">
-              <h4>薬効・作用機序の説明ポイント</h4>
-              <p>脳内の抑制性神経伝達物質GABAの働きを助ける<strong>神経活性ステロイド</strong>で、GABA-A受容体のポジティブアロステリックモジュレーター（アロプレグナノロン様GABA-A受容体機能賦活剤）。<strong>SSRI/SNRIのようにセロトニン・ノルアドレナリンには作用せず、全く異なる作用機序</strong>をもつ。気持ちの落ち込みを和らげる薬として用いられ、臨床試験では短期間（14日間）の投与で有効性・安全性が評価されている。</p>
-
-              <h4>投与方法の特徴（最重要）</h4>
-              <ul>
-                <li><strong>30mgを1日1回、夕食後に14日間</strong>服用する。毎日長期に継続する薬ではなく、<strong>14日間服用していったん服用終了</strong>となる使い方である。ただし<strong>「14日間で治療が完結する」という意味ではなく</strong>、投与終了後も抑うつ状態の変化・副作用・治療意向などを確認しながら、必要に応じて他の治療法や再治療を検討する。</li>
-                <li>食事（特に脂肪を含む食事）とともに吸収が高まるため<strong>夕食後</strong>に服用する（空腹時は避ける）。</li>
-                <li>再度治療を行う場合は<strong>投与終了から6週間以上あける</strong>。薬物依存のおそれがあるため、自己判断で繰り返し服用せず用法・用量を遵守する。</li>
-              </ul>
-
-              <h4>傾眠・めまいと自動車運転（最重要）</h4>
-              <p><strong>傾眠（約20%）・浮動性めまい（約13%）が高頻度</strong>。投与開始翌日に運転能力の低下が確認されており、添付文書の重要な基本的注意に<strong>「眠気、めまい等があらわれることがあるので、本剤投与中の患者には、自動車の運転等危険を伴う機械の操作に従事させないよう注意すること」</strong>と記載される。SSRI等の「注意して従事」より強い記載のため、<strong>服用期間中は運転・危険作業を行わないよう説明</strong>する。</p>
-
-              <h4>相互作用（背景知識）</h4>
-              <ul>
-                <li><strong>中枢神経抑制剤</strong>（ベンゾジアゼピン系・フェノチアジン系・バルビツール酸誘導体・三環系/四環系抗うつ剤等）：中枢神経抑制作用が増強。眠気・ふらつきに注意。</li>
-                <li><strong>アルコール</strong>：中枢神経抑制作用が増強されるため、飲酒は避けることが望ましい。</li>
-                <li><strong>CYP3A阻害薬</strong>（イトラコナゾール・クラリスロマイシン等）：本剤の作用が増強。<strong>CYP3A誘導薬</strong>（リファンピシン・カルバマゼピン・フェニトイン等）：本剤の作用が減弱。</li>
-              </ul>
-
-              <h4>重大な副作用・賦活症候群（背景知識）</h4>
-              <p>重大な副作用として<strong>錯乱状態・せん妄・失見当識</strong>が報告されている。また抗うつ薬共通の注意として、開始初期に不安・焦燥等の<strong>賦活症候群</strong>がみられることがあり、特に<strong>24歳以下</strong>では自殺関連リスクに留意する。なお本剤はセロトニン作動薬ではないため、<strong>セロトニン症候群を主眼とした「共通の副作用説明の追記」は基本的に当てはまらない</strong>。</p>
-
-              <h4>妊娠・授乳（背景知識）</h4>
-              <p><strong>妊婦・妊娠している可能性のある女性は禁忌</strong>。妊娠の可能性がある場合は処方医への確認が必要。<strong>妊娠する可能性のある女性には、本剤投与中および最終投与後1週間は避妊するよう説明する</strong>（添付文書9.4）。授乳婦は治療上の有益性と母乳栄養の有益性を考慮して授乳の継続・中止を検討する。</p>
-
-              <h4>患者への伝え方</h4>
-              <ul>
-                <li><strong>1日1回 夕食後に14日間服用する薬</strong>であること（14日間でいったん服用終了）を説明</li>
-                <li><strong>眠気・めまいが出やすいため、服用している間は車の運転や危険な作業を行わない</strong>よう説明</li>
-                <li>飲酒は避ける／市販薬・サプリ・他院処方は薬剤師に確認</li>
-                <li>落ち着かなさ・不安・不眠・衝動的な行動など普段と違う変化があれば早めに相談（特に若年）</li>
-                <li>自己判断で量を増やしたり繰り返し服用したりしない（再治療は6週間以上あける）</li>
-              </ul>
-
-              <div class="patient-say">患者への伝え方の例：<br />「気持ちの落ち込みを和らげる新しいタイプのお薬です。1日1回 夕食後に、14日間服用します。眠気やめまいが出やすいので、服用している間は車の運転や危険な作業はしないでください。飲酒も避けてください。普段と違う変化があれば早めに相談してください。」</div>
-            </div>
-          </details>
-
-          <p style="font-size:12px;color:var(--sub);margin:10px 0 6px;">※ コピー前の確認事項（「薬剤名：〜」で開始／確認内容を追記／説明していない項目は削除）は <a href="#copy-rule" style="color:var(--blue);">冒頭の共通注意</a> を参照。本剤は他群と使い方が異なるため、<strong>他の抗うつ薬のテンプレを流用しない</strong>。</p>
-          <p style="font-size:12px;color:var(--sub);margin:0 0 6px;">※ <strong>算定区分の目安</strong>：その患者にザズベイが<strong>初めて処方された場合はイ</strong>。前回から間隔をあけ、従来と同一処方で再治療となる場合は、服薬状況・副作用・病状等の変化を踏まえ、<strong>特に指導が必要と保険薬剤師が認めた場合にロ</strong>として算定できる（毎回機械的に算定するものではない）。その際は<strong>特に指導が必要と判断した理由の要点</strong>を薬歴に記載する。用法・用量変更によるロは、用量固定のため通常想定しにくい。</p>
-
-          <div class="tpl-set tpl-builder" id="zzb-builder">
-            <div class="tpl-builder-head">
-              <span class="tpl-tag init">初回イ：新規（組み立て式）</span>
-              <span class="tpl-builder-hint">当てはまる状況を選ぶと、下の記載例が切り替わる。</span>
-            </div>
-            <div class="tpl-builder-opts">
-              <div class="opt-row"><span class="opt-label">患者</span>
-                <label><input type="radio" name="zzb-pt" value="general" checked>一般</label>
-                <label><input type="radio" name="zzb-pt" value="young">若年（24歳以下）</label>
-                <label><input type="radio" name="zzb-pt" value="elder">高齢</label>
-              </div>
-              <div class="opt-row"><span class="opt-label">運転等危険作業</span>
-                <label><input type="radio" name="zzb-drive" value="no" checked>予定なし</label>
-                <label><input type="radio" name="zzb-drive" value="yes">予定あり</label>
-              </div>
-              <div class="opt-row"><span class="opt-label">飲酒</span>
-                <label><input type="radio" name="zzb-alc" value="no" checked>予定なし</label>
-                <label><input type="radio" name="zzb-alc" value="yes">予定あり</label>
-              </div>
-            </div>
-            <div class="tpl-builder-out">
-              <div class="tpl-text" id="zzb-text">ズラノロン（ザズベイ）新規処方。服用期間中の運転等危険作業・飲酒の予定（いずれも予定なし）、相互作用に注意が必要な併用薬等はないことを確認。2週間（14日間）服用を継続する薬であり、自己判断で増量・中止・再開しないよう説明。2週間の服用終了後は6週間の休薬期間を置き、症状を考慮して再度服用するかを検討することを説明。眠気・ふらつきが出る場合があるため注意するよう説明。普段と違う変化があれば早めに相談するよう説明。</div>
-              <button class="copy-mini">コピー</button>
-            </div>
-          </div>
-
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">中枢神経抑制薬（ベンゾジアゼピン系等）・アルコールの併用あり（〇〇）。眠気・ふらつきが増強する可能性があるため、服用期間中は自動車運転等の危険作業に従事しないよう再指導、飲酒は避けるよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">CYP3A阻害薬／誘導薬の併用あり（〇〇）。本剤の作用が増強（阻害薬）または減弱（誘導薬）する可能性があるため、眠気等の副作用の出現や効果に注意するよう説明、気になる症状があれば相談するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag change">再治療時：ロ（理由を記載）</span>
-              <div class="tpl-text">ズラノロン（ザズベイ）再治療。前回投与終了から6週間以上経過していること、前回服用時の副作用・眠気、服用期間中の運転等危険作業・飲酒の予定、相互作用に注意が必要な併用薬等はないことを確認。再燃・再発により再度14日間服用するため、前回服用時の状況と今回の生活状況を踏まえ、改めて指導が必要と判断。運転・飲酒の予定がある場合は服用期間中避けること、自己判断で増量・中止・繰り返し服用しないことを指導。再度服用する場合も医師の判断が必要であることを説明。普段と違う変化があれば早めに相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag add">必要時追記</span>
-              <div class="tpl-text">妊娠の可能性／授乳に関する確認。妊婦・妊娠している可能性のある女性は禁忌のため、妊娠の可能性がある場合は服用前に処方医へ相談するよう説明。妊娠する可能性のある女性には、本剤投与中および最終投与後1週間は避妊するよう説明。授乳中の場合は授乳の継続・中止について主治医に相談するよう案内。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <!-- 共通の副作用説明の追記（必要時に追記する共通副作用） -->
-        <div class="drug-block" id="common-se">
-          <div class="drug-block-head">
-            <span class="drug-block-name">共通の副作用説明の追記</span>
-            <span class="drug-block-sub">系統を問わず注意が必要な副作用</span>
-          </div>
-          <p style="font-size:13px;line-height:1.75;color:var(--ink);margin-bottom:8px;">
-            <strong>賦活症候群・セロトニン症候群・中止後症候群</strong>など、抗うつ薬で注意したい内容をまとめている。説明した場合は、必要に応じて薬歴に追記する。
-          </p>
-          <details class="guide-details fold-in">
-            <summary>共通副作用の背景知識</summary>
-            <div class="guide-details-body">
-              <h4>賦活症候群（アクティベーション・シンドローム）</h4>
-              <p>抗うつ薬の<strong>投与開始初期（多くは2週間以内）や増量後</strong>に、不安・焦燥・不眠・イライラ・衝動性・パニック発作・アカシジア等が出ることがある。多くは一過性だが、衝動性等から自傷・自殺行為に至るおそれがあるため、症状出現時は速やかに相談するよう伝える。<strong>特に24歳以下の患者では自殺念慮・自殺企図のリスクが報告されている</strong>。</p>
-
-              <h4>セロトニン症候群</h4>
-              <p>セロトニン作動性の薬剤を併用・増量した際に起こりうる。<strong>精神症状（不安・焦燥・興奮）／自律神経症状（発汗・頻脈・高体温・下痢）／神経筋症状（振戦・筋強剛・反射亢進・ミオクローヌス）</strong>の三徴。MAO阻害薬・トラマドール・トリプタン系・リネゾリド・メチレンブルー・セントジョーンズワート等との併用は特に注意。</p>
-
-              <h4>中止後症候群（離脱症状）</h4>
-              <p>1か月以上服用後に急激に中止すると、<strong>2〜3日以内</strong>に頭痛・めまい・知覚異常（「シャンビリ」と表現される電気が走る感覚）・吐気・倦怠感・睡眠障害・不安・アカシジア等が出ることがある。多くは数日で改善するが、症状回避のため<strong>減量・中止は数週〜数か月かけて漸減</strong>する必要がある。特にパロキセチン・ベンラファキシンで出やすい。</p>
-
-              <h4>皮膚粘膜眼症候群・中毒性表皮壊死症（SJS/TEN）</h4>
-              <p>頻度は稀だが、発熱を伴う全身性の皮疹・口や眼の粘膜びらん・水ぶくれ等が出た場合は速やかに受診するよう伝える。</p>
-
-              <h4>患者説明のスタンス</h4>
-              <p>いずれも頻度としては稀。患者には病名を前面に出さず、症状（不安・焦燥が強くなる／発汗・頻脈・震え／頭痛・めまい・しびれ／発熱と全身性の皮疹）と相談・受診の目安を中心に説明する。薬歴上で病名と症状をセットで残したい場合は下記の追記テンプレを使用。</p>
-              <p>自殺リスクの注意喚起は、「自殺」という直接的な言葉に抵抗がある場合、<strong>「衝動的な行動」など間接的な表現</strong>で伝えるとよい（厚労省「薬局における疾患別対応マニュアル」Q4-6）。本ページの患者向けテンプレも、<strong>落ち着かなさ・不安・焦り・不眠・イライラ・衝動的な行動など「普段と違う変化」</strong>での声かけに統一している（「自殺念慮・自殺企図」等の医学用語は背景知識としてのみ記載）。</p>
-            </div>
-          </details>
-          <div class="tpl-set">
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">賦活症候群について、まれではあるが、開始初期（特に2週間以内）や増量後に、落ち着かなさ・不安・焦り・不眠・イライラ・衝動的な行動などがみられることがあるため、普段と違う変化があれば速やかに相談するよう本人に説明。家族同席時は、本人の様子にいつもと違う変化があれば早めに連絡するよう家族にも依頼（特に24歳以下では開始初期の変化に注意）。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">セロトニン症候群について、まれではあるが、不安・焦燥・興奮、発汗・頻脈・高体温、震え・筋のこわばり等が同時に出た場合は速やかに受診するよう説明。MAO阻害薬・トラマドール・トリプタン系等の併用、セントジョーンズワート等のサプリ追加には注意するよう指導。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">中止後症候群について、急激な中止で頭痛・めまい・知覚異常（電気が走る感覚）・吐気・倦怠感・不安等が出ることがあるため、自己判断で中止・減量せず、減量・中止については主治医に相談するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-            <div class="tpl-mini"><span class="tpl-tag se">副作用説明の追記</span>
-              <div class="tpl-text">皮膚粘膜眼症候群・中毒性表皮壊死症（SJS/TEN）について、まれではあるが、発熱を伴う全身性の皮疹・口や眼の粘膜びらん・水ぶくれが出た場合は速やかに受診するよう説明。</div>
-              <button class="copy-mini">コピー</button></div>
-          </div>
-        </div>
-
-        <p style="font-size:12px;color:var(--sub);margin-top:8px;">
-          ※ 「変更のあった薬」を起点に、状況に最も近いバリエーションを1つ選び、必要なら必要時追記から該当するものを足す想定。<br />
-          ※ 併用薬がある場合は薬歴冒頭に併用薬名を明記。<strong>追加された薬がハイリスク薬なら、その追加薬について「新規イ」として扱う</strong>のが基本。既存ハイリスク薬の相互作用・リスクが変化した場合は「必要時追記」で「併用薬変更あり」として記載するか、必要に応じて<strong>「副作用・服薬状況等の変化によるロ」</strong>として個別判断する。<br />
-          ※ ミルタザピン・トラゾドンの<strong>睡眠補助目的（適応外）処方は加算1の算定対象外</strong>。
-        </p>
-      </section>
-
-      <!-- ============================================================
-           § 3  副作用・服薬状況等の変化によるロ — 薬歴記載例
-           ============================================================ -->
-      <section id="section3">
-        <div class="section-label">SECTION 3</div>
-        <h2 class="section-title">副作用・服薬状況等の変化によるロ — 同一処方でも追加指導が必要な場合</h2>
-
-        <div class="warn-box">
-          <div class="warn-box-title">この区分の位置づけと使い方</div>
-          <p style="margin-bottom:8px;">加算1の<strong>ロ</strong>には、次の2つの場面がある。</p>
-          <ul style="margin-bottom:10px;">
-            <li>①<strong>用法・用量の変更</strong>に伴い必要と認めて指導した場合 → <strong>SECTION 2 の変更ロ</strong></li>
-            <li>②<strong>副作用の発現状況・服薬状況等の変化</strong>に基づき必要と認めて指導した場合 → <strong>このセクション</strong></li>
-          </ul>
-          <p style="margin-bottom:8px;">②は、<strong>同一処方でも</strong>、患者の体調・服薬状況・併用薬・生活状況等の変化（確認した／訴えがあった／情報を得た）を踏まえて<strong>追加の指導が必要と判断</strong>し、<strong>その理由の要点を薬歴に記載</strong>したときに算定する。</p>
-          <p style="margin-bottom:8px;"><strong>久しぶりの再開・再治療</strong>なども、前回服薬時の状況・服薬中断後の経過・今回の生活状況等を踏まえ、特に指導が必要と判断した場合はこの枠で整理する。</p>
-          <p style="margin-bottom:8px;">記録は<strong>「変化の確認 → 指導が必要と判断 → 指導」</strong>の流れで簡潔に。理由の要点（なぜ今回特に指導が必要か）を必ず残す。</p>
-          <p>以下は記載例。患者の状況に合わせて書き換える。</p>
-        </div>
-
-        <div class="tpl-warn">
-          <div class="tpl-warn-title">コピーする前に必ず確認</div>
-          <ul>
-            <li>ハイリスク指導記録は <strong>「薬剤名：〜」</strong> の形で記載（書き方例では薬効群名で書いているが、実運用では具体薬剤名で始める）</li>
-            <li><strong>変化の具体内容・確認した内容</strong>を患者の状況に合わせて書き換える（「指導が必要と判断」のフレーズは加算根拠として残す）</li>
-            <li>説明・指導していない項目は<strong>削除</strong>する</li>
-          </ul>
-        </div>
-
-        <div class="tpl-set" style="margin-top:14px;">
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">開始2週間以内に強い不安・焦燥・不眠の訴えあり。賦活症候群が疑われるため指導が必要と判断。自己判断で中止せず主治医に症状を伝えるよう指導、落ち着かなさ・衝動的な行動など普段と違う変化が強まった場合は速やかに連絡するよう説明（家族同席時・必要に応じて家族にも説明）。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">他院でトラマドール・トリプタン系の追加処方あり。SSRI/SNRI服用下のセロトニン症候群リスクが疑われるため指導が必要と判断。不安・焦燥・発汗・頻脈・震え等の症状が出た場合は速やかに相談・受診するよう指導、両処方医に併用事実を伝えるよう説明。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">急な中止後、頭痛・めまい・知覚異常（電気が走る感覚）の訴え。中止後症候群が疑われるため指導が必要と判断。多くは数日で改善するが、自己判断で中止・減量せず、減量・中止については主治医に相談するよう指導、症状が強い場合は受診を相談するよう説明。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">「効果実感が乏しい」「症状が良くなったので自己中断したい」との訴え。効果発現に時間がかかる旨と、症状寛解後も再発予防のため一定期間継続が必要な旨を再説明する必要があると判断。自己判断で中止・減量せず、減量・中止については主治医に相談するよう指導。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">高齢患者で倦怠感・食欲低下・吐気・頭痛の訴え。SSRI/SNRI服用下のSIADH・低Na血症が疑われるため指導が必要と判断。早めに主治医へ症状を伝え、必要に応じて血液検査を相談するよう説明。利尿薬併用例では併用薬の見直しも相談するよう説明。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">他院でNSAIDsの追加処方あり。SSRI/SNRI服用下の消化管出血リスクが上がるため指導が必要と判断。胃痛・胸やけ・黒色便等の消化器症状に注意し、症状がある場合は早めに主治医へ相談するよう説明。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">妊娠判明の情報あり。抗うつ薬服用下では薬剤ごとに胎児への影響が異なるため指導が必要と判断。自己判断で中止せず（中止後症候群と再発リスクのため）、主治医に妊娠を伝えて処方を相談するよう指導。特にパロキセチンでは妊娠中の使用に注意が必要なため、早めに主治医へ相談するよう説明。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-          <div class="tpl-mini">
-            <span class="tpl-tag base">書き方例</span>
-            <div class="tpl-text">便秘・口渇・尿が出にくい等の訴え（三環系・四環系服用下）。抗コリン作用による症状が疑われるため指導が必要と判断。続く場合は主治医に相談するよう指導、腹痛・嘔吐がある場合は麻痺性イレウスの可能性もあるため早めに受診するよう説明。他の抗コリン薬の併用にも注意するよう指導。</div>
-            <button class="copy-mini">コピー</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============================================================
-           § 参考  共通確認ポイント（日薬GL由来・折りたたみ）
-           ============================================================ -->
-      <section id="section1" style="margin-bottom:28px;">
-        <div class="section-label">参考</div>
-        <h2 class="section-title">抗うつ薬の共通確認ポイント（日薬GL）</h2>
-        <details class="guide-details fold-in">
-          <summary>共通確認ポイントを見る</summary>
-          <div class="guide-details-body">
-            <dl class="ci-list" style="margin:0;">
-              <dt>① 患者に対する処方内容の確認</dt>
-              <dd>薬剤名・用法・用量・服用タイミング等を確認</dd>
-
-              <dt>② アドヒアランスの確認</dt>
-              <dd>飲み忘れ・残薬の有無、服薬の継続状況／<strong>自己判断で中止していないか</strong>を確認（突然の中止で中止後症候群が出ること、症状が安定しても再発予防のため継続が必要なことを説明）</dd>
-
-              <dt>③ 副作用モニタリング・重篤副作用発生時の対処方法の教育</dt>
-              <dd>消化器症状（悪心・下痢、開始初期に多い）、眠気・ふらつき、性機能障害、<strong>賦活症候群（不安・焦燥・不眠・イライラ等が開始初期や増量後に出ることがある）</strong>等をモニタリング。賦活症状・気分や行動の変化・希死念慮等のリスクを踏まえ、症状に応じた相談目安を説明したかを確認</dd>
-
-              <dt>④ 効果の確認</dt>
-              <dd>症状の改善状況、<strong>効果の現れ方には個人差があり効果発現には時間がかかる</strong>こと（すぐに効果の有無を判断しない）の理解、再発予防のため寛解後も一定期間（目安として6か月〜1年）継続する旨の説明</dd>
-
-              <dt>⑤ 併用薬・食事との相互作用の確認</dt>
-              <dd>他のセロトニン作動薬（トリプタン系・トラマドール・MAO阻害薬・他の抗うつ薬・リネゾリド・メチレンブルー等）の重複、CYP代謝阻害薬、OTC・サプリメント（セントジョーンズワート等）の併用、アルコール摂取の確認</dd>
-
-              <dt>⑥ 危険作業従事・家族支援の確認</dt>
-              <dd>自動車運転等の危険作業については薬剤ごとの添付文書記載に応じて指導（一律ではない）／高齢者では転倒・転落・SIADH（低Na血症）リスク、家族支援の有無を確認／<strong>特に開始初期や増量後の自殺念慮・賦活症候群について家族にも変化に注意してもらう</strong></dd>
-
-              <dt>⑦ 受付・服薬指導時のプライバシー配慮</dt>
-              <dd>精神疾患の医療情報は特に慎重な取り扱いが必要。<strong>「薬名」「病名」は声に出さず</strong>、処方箋やお薬手帳を指さしながら<strong>代名詞を用いて</strong>確認する（厚労省「薬局における疾患別対応マニュアル」Q4-3）</dd>
-            </dl>
-            <p style="font-size:12px;color:var(--sub);margin-top:8px;">※ <strong>ザズベイ（ズラノロン）は14日間服用していったん服用終了となる薬（急性期治療に用いる）</strong>であり、「効果発現に時間がかかる」「症状が安定しても再発予防のため長期に継続」といった上記②④の説明はそのまま当てはまらない（<a href="#zuranolone" style="color:var(--blue);">ザズベイの項</a>を参照）。</p>
-            <p style="font-size:12px;color:var(--sub);margin-top:8px;">※ 出典：日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2.1版）」精神神経用薬</p>
-            <p style="font-size:12px;color:var(--blue);margin-top:8px;font-weight:700;">→ 具体的な指導内容・記載例は<a href="#section2" style="color:var(--blue);">薬剤群別テンプレート</a>を参照</p>
-          </div>
-        </details>
-      </section>
-
-      <!-- ============================================================
-           § 個別指導での指摘事例
-           ============================================================ -->
-      <section id="kobetsu">
-        <div class="section-label">個別指導</div>
-        <h2 class="section-title">個別指導での指摘事例</h2>
-        <div class="drug-check-box">
-          <div class="drug-check-box-title">この薬効群で特に確認されやすいポイント</div>
-          <ul>
-            <li>記録から<strong>対象薬剤（「薬剤名：〜」）</strong>が分かるか</li>
-            <li>何を確認したか（症状・受診の経緯、併用薬、服薬状況等）が書かれているか</li>
-            <li>確認しただけで終わらず、<strong>患者の状況に応じた指導内容</strong>になっているか</li>
-            <li>賦活症候群・中止後症候群など、必要な副作用の説明を記録したか</li>
-            <li>「副作用・服薬状況等の変化によるロ」では、<strong>変化の確認・指導が必要と判断した理由・指導内容</strong>が残っているか</li>
-          </ul>
-        </div>
-        <p style="font-size:12px;color:var(--sub);margin-top:10px;">
-          ※ 個別指導の一般的な考え方・過去の指摘の読み方は <a href="ハイリスク_薬歴の書き方.html#kobetsu" style="color:var(--blue);">ハイリスク薬の薬歴の書き方「個別指導で見られる点」</a> にまとめている。
-        </p>
-      </section>
-
-      <!-- ============================================================
-           § SOURCE（折りたたみ）
-           ============================================================ -->
-      <section>
-        <details class="guide-details fold-in">
-          <summary>本ページの根拠（出典・通知）</summary>
-          <div class="guide-details-body">
-            <div class="source-box">
-              <span class="source-box-label">ガイドライン</span>
-              <div><a href="https://www.nichiyaku.or.jp/yakuzaishi/pharmacy-info/other/guideline01" target="_blank" rel="noopener" style="color:var(--blue);">日本薬剤師会「薬局におけるハイリスク薬の薬学的管理指導に関する業務ガイドライン（第2.1版・令和8年6月）」</a>精神神経用薬（催眠鎮静薬を除く）</div>
-              <div class="source-cite">→ 確認・指導事項の根拠</div>
-            </div>
-            <div class="source-box" style="margin-top:12px;">
-              <span class="source-box-label">通知</span>
-              <div>令和8年3月5日 保医発0305第6号 別添3「調剤報酬点数表に関する事項」 特定薬剤管理指導加算1</div>
-              <div class="source-cite">→ 算定要件・薬歴記載要件の原文</div>
-            </div>
-            <p style="font-size:12px;color:var(--sub);margin-top:14px;">※ 抗精神病薬・気分安定薬・抗てんかん薬は別ページで扱う。BZD系・睡眠薬・抗ADHD薬は本ページの対象外。ミルタザピン・トラゾドンの睡眠補助目的処方（適応外）、およびデュロキセチン・アミトリプチリン等の<strong>慢性疼痛・神経障害性疼痛等を目的とした処方</strong>（精神神経用薬としての使用ではない）は加算1の算定対象外。</p>
-          </div>
-        </details>
-      </section>
-
-      <!-- 関連ページ（他の薬効群） -->
-      <section style="margin-top:8px;">
-        <div class="section-label">関連ページ</div>
-        <div class="drug-index">
-          <div class="drug-index-row">
-            <span class="di-group">他の薬効群</span>
-            <a href="ハイリスク_血液凝固阻止剤.html">血液凝固阻止剤</a><a href="ハイリスク_糖尿病用剤.html">糖尿病用剤</a><a href="ハイリスク_膵臓ホルモン剤.html">インスリン製剤</a><a href="ハイリスク_抗精神病薬.html">抗精神病薬</a><a href="ハイリスク_気分安定薬.html">気分安定薬</a><a href="ハイリスク_抗てんかん薬.html">抗てんかん薬</a>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    </div><!-- /右カラム -->
-    </div><!-- /.layout-outer -->
-
-    <footer>調剤報酬・薬歴まとめ ／ 薬歴マニュアル ／ ハイリスク薬指導 ／ 抗うつ薬</footer>
-
     <script>
-      // チェックリストだけ印刷
-      document.querySelectorAll('.print-btn').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          document.body.classList.add('print-checklist-only');
-          window.print();
-        });
-      });
-      window.addEventListener('afterprint', function () {
-        document.body.classList.remove('print-checklist-only');
-      });
-    </script>
-    <script>
-      // ザズベイ 初回イ：組み立て式テンプレ（患者区分×運転×飲酒で記載例を切り替え）
-      (function () {
-        var root = document.getElementById('zzb-builder');
-        if (!root) return;
-        var out = document.getElementById('zzb-text');
-        function val(name) { return root.querySelector('input[name="' + name + '"]:checked').value; }
-        function build() {
-          var pt = val('zzb-pt');
-          var drive = val('zzb-drive') === 'yes';
-          var alc = val('zzb-alc') === 'yes';
-          var s = [];
-          s.push(pt === 'young' ? '若年例（24歳以下）へのズラノロン（ザズベイ）新規処方。'
-               : pt === 'elder' ? '高齢者へのズラノロン（ザズベイ）新規処方。'
-               : 'ズラノロン（ザズベイ）新規処方。');
-          var plan = (!drive && !alc) ? 'いずれも予定なし'
-                   : (drive && alc)   ? 'いずれも予定あり'
-                   : drive            ? '運転等の予定あり・飲酒予定なし'
-                                      : '運転等の予定なし・飲酒予定あり';
-          s.push('服用期間中の運転等危険作業・飲酒の予定（' + plan + '）、相互作用に注意が必要な併用薬等はないことを確認。');
-          s.push('2週間（14日間）服用を継続する薬であり、自己判断で増量・中止・再開しないよう説明。2週間の服用終了後は6週間の休薬期間を置き、症状を考慮して再度服用するかを検討することを説明。');
-          if (!drive && !alc) {
-            s.push('眠気・ふらつきが出る場合があるため注意するよう説明。');
-          } else if (drive && alc) {
-            s.push('眠気・めまいがあらわれることがあり、投与開始翌日に運転能力の低下が確認されているため、服用期間中は運転等危険作業を避ける（代替手段を検討する）よう指導。アルコールも眠気・ふらつきを増強するため、服用期間中は飲酒を避けるよう指導。');
-          } else if (drive) {
-            s.push('眠気・めまいがあらわれることがあり、投与開始翌日に運転能力の低下が確認されているため、服用期間中は運転等危険作業を避ける（代替手段を検討する）よう指導。');
-          } else {
-            s.push('眠気・ふらつきが出る場合があるため注意するよう説明。アルコールにより眠気・ふらつきが増強されるおそれがあるため、服用期間中は飲酒を避けるよう指導。');
-          }
-          if (pt === 'elder') {
-            s.push('傾眠・めまいによる転倒リスクの上昇を説明。家族支援の有無を確認、家族同席時・必要に応じて家族にも眠気・ふらつき・転倒に注意してもらうよう説明。');
-          }
-          if (pt === 'young') {
-            s.push('開始初期に落ち着かなさ・不安・焦り・不眠・衝動的な行動などがみられることがあるため、普段と違う変化があれば早めに相談するよう本人に説明。家族同席時は、本人の様子にいつもと違う変化があれば早めに連絡するよう家族にも依頼。');
-          } else {
-            s.push('普段と違う変化があれば早めに相談するよう説明。');
-          }
-          out.textContent = s.join('');
+      // 記載例を組み立てる：場面を選ぶと、その場面でよく使う部品に自動でチェックが入る。
+      // チェックは自由に付け外しでき、下の枠に1つの文として組み上がる。
+      // 枠の中の〇〇は入力欄になっていて、打った値はチェックを付け外ししても残る。
+      // 部品の data-drug は「|」区切りで複数の薬剤に出せる。薬剤の「その他」は値が〇〇で、文の中で入力欄になる。
+      // 入力した内容は画面の中だけで使い、保存も送信もしない。
+      document.querySelectorAll('.mk').forEach(function (mk) {
+        var out = mk.querySelector('.mk-out'), hint = mk.querySelector('.mk-bar .hint'), hint0 = hint.textContent;
+        var scenes = [].slice.call(mk.querySelectorAll('.mk-scenes:not(.mk-drug) input'));
+        var drugs = [].slice.call(mk.querySelectorAll('.mk-drug input'));
+        var parts = [].slice.call(mk.querySelectorAll('.mk-p input'));
+        var purposes = (mk.dataset.purpose || '').split('|').filter(Boolean);
+        var vals = {};
+        function drug() { var d = drugs.filter(function (x) { return x.checked; })[0]; return d ? d.value : (mk.dataset.drug || '〇〇'); }
+        function scene() { return scenes.filter(function (x) { return x.checked; })[0]; }
+        function applyDefaults() {
+          var s = scene().value, d = drug();
+          parts.forEach(function (p) {
+            var on = (p.dataset.on || '').split(' ').indexOf(s) >= 0;
+            var okDrug = !p.dataset.drug || p.dataset.drug.split('|').indexOf(d) >= 0;
+            p.checked = on && okDrug;
+            p.closest('.mk-p').hidden = !okDrug;
+          });
+          // 見出しの下に表示する部品がなければ、見出しも隠す
+          [].slice.call(mk.querySelectorAll('.mk-h')).forEach(function (hd) {
+            if (!hd.querySelector('.mk-sub')) return;
+            var el = hd.nextElementSibling, any = false;
+            while (el && el.classList.contains('mk-p')) { if (!el.hidden) any = true; el = el.nextElementSibling; }
+            hd.hidden = !any;
+          });
         }
-        root.addEventListener('change', build);
-        build();
-      })();
-    </script>
-    <script>
-      document.querySelectorAll('.copy-mini').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const parent = btn.parentElement;
-          const tplText = parent.querySelector('.tpl-text');
-          let text;
-          if (tplText) {
-            text = tplText.innerText;
-          } else {
-            const spans = parent.querySelectorAll('span:not(.dcb-label)');
-            text = Array.from(spans).map(s => s.innerText).join('\n');
-          }
-          navigator.clipboard.writeText(text).then(() => {
-            btn.classList.add('copied');
-            const orig = btn.textContent;
-            btn.textContent = '済';
-            setTimeout(() => { btn.classList.remove('copied'); btn.textContent = orig; }, 1200);
+        function segments() {
+          var segs = [{ id: 's:' + scene().value, text: scene().dataset.text }];
+          parts.forEach(function (p, i) { if (p.checked && !p.closest('.mk-p').hidden) segs.push({ id: 'p' + i, text: p.nextElementSibling.textContent }); });
+          var d = drug();
+          segs.forEach(function (g) { g.text = g.text.split('{薬}').join(d); });
+          return segs;
+        }
+        function purposeText() {
+          var v = vals.purpose || '';
+          if (v === '__other') return vals.purposeOther || '';
+          return v;
+        }
+        function plain() {
+          var t = '';
+          segments().forEach(function (g) {
+            var n = 0;
+            g.text.split(/(\{目的\}|〇+)/).forEach(function (tok) {
+              if (tok === '{目的}') t += purposeText() || '〇〇';
+              else if (/^〇+$/.test(tok)) { t += vals[g.id + '#' + (n++)] || tok; }
+              else t += tok;
+            });
           });
+          return t;
+        }
+        function sizeOf(el) { el.size = Math.max(2, (el.value || '').length * 2 + 1); }
+        function input(key, ph) {
+          var el = document.createElement('input');
+          el.className = 'mk-in'; el.value = vals[key] || ''; el.placeholder = ph; el.setAttribute('aria-label', '入力');
+          sizeOf(el);
+          el.addEventListener('input', function () { vals[key] = el.value; sizeOf(el); });
+          return el;
+        }
+        function purposeSelect() {
+          var wrap = document.createElement('span');
+          var sel = document.createElement('select');
+          sel.className = 'mk-in';
+          [['', '処方目的を選択する']].concat(purposes.map(function (p) { return [p, p]; })).concat([['__other', 'その他（入力する）']])
+            .forEach(function (o) { var op = document.createElement('option'); op.value = o[0]; op.textContent = o[1]; sel.appendChild(op); });
+          sel.value = vals.purpose || '';
+          wrap.appendChild(sel);
+          var other = input('purposeOther', '処方目的');
+          other.hidden = sel.value !== '__other';
+          wrap.appendChild(other);
+          sel.addEventListener('change', function () { vals.purpose = sel.value; other.hidden = sel.value !== '__other'; if (!other.hidden) other.focus(); });
+          return wrap;
+        }
+        function render() {
+          out.innerHTML = ''; var fb = mk.querySelector('.mk-fallback'); if (fb) fb.hidden = true; hint.textContent = hint0; hint.classList.remove('warn');
+          segments().forEach(function (g) {
+            var n = 0;
+            g.text.split(/(\{目的\}|〇+)/).forEach(function (tok) {
+              if (!tok) return;
+              if (tok === '{目的}') out.appendChild(purposeSelect());
+              else if (/^〇+$/.test(tok)) out.appendChild(input(g.id + '#' + (n++), tok));
+              else out.appendChild(document.createTextNode(tok));
+            });
+          });
+        }
+        scenes.concat(drugs).forEach(function (x) { x.addEventListener('change', function () { applyDefaults(); render(); }); });
+        parts.forEach(function (x) { x.addEventListener('change', render); });
+        mk.querySelector('[data-act=clear]').addEventListener('click', function () { parts.forEach(function (p) { p.checked = false; }); render(); });
+        mk.querySelector('[data-act=reset]').addEventListener('click', function () { applyDefaults(); render(); });
+        mk.querySelector('.mk-bar button').addEventListener('click', function () {
+          var b = this, t = plain();
+          var left = (t.match(/〇+/g) || []).length;
+          function ok() {
+            b.textContent = 'コピーしました';
+            hint.textContent = left ? '未入力が' + left + 'か所ある（〇〇のままコピーした）' : hint0;
+            hint.classList.toggle('warn', !!left);
+            setTimeout(function () { b.textContent = 'コピー'; }, 1500);
+          }
+          function ng() {
+            // 枠の中（ハローナビ等）でクリップボードが使えないときは、完成した文を選択した状態で出し、Ctrl+C を促す
+            var ta = mk.querySelector('.mk-fallback');
+            if (!ta) { ta = document.createElement('textarea'); ta.className = 'mk-fallback'; ta.readOnly = true; mk.querySelector('.mk-bar').after(ta); }
+            ta.value = t; ta.hidden = false; ta.focus(); ta.select();
+            hint.textContent = 'コピーできなかった。下の枠の文が選択されているので Ctrl+C でコピーする';
+            hint.classList.add('warn');
+          }
+          function legacy() {
+            var ta = document.createElement('textarea');
+            ta.value = t; ta.setAttribute('readonly', '');
+            ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
+            document.body.appendChild(ta); ta.select();
+            var done = false; try { done = document.execCommand('copy'); } catch (e) {}
+            document.body.removeChild(ta);
+            done ? ok() : ng();
+          }
+          if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(ok, legacy); else legacy();
         });
+        applyDefaults(); render();
       });
     </script>
-    <script>
-      // サイドスティッキーTOC アクティブハイライト
-      (function () {
-        const navLinks = document.querySelectorAll('.sticky-toc a[href^="#"]');
-        const sections = Array.from(navLinks)
-          .map(a => document.querySelector(a.getAttribute('href')))
-          .filter(Boolean);
-        if (!sections.length) return;
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const id = entry.target.id;
-              navLinks.forEach(a => {
-                a.classList.toggle('is-active', a.getAttribute('href') === '#' + id);
-              });
-            }
-          });
-        }, { rootMargin: '-40px 0px -70% 0px', threshold: 0 });
-        sections.forEach(s => observer.observe(s));
-      })();
-    </script>
-    <script src="yakureki.js" defer></script>
-    <script src="../assets/site-fab.js" defer></script>
+    <script src="hairisk-view.js"></script>
     <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   </body>
 </html>
