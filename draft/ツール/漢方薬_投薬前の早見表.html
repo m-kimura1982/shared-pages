@@ -93,7 +93,7 @@
     .flag.warn { background:var(--caution-bg); color:var(--caution-tx); }
 
     /* 場面ごとの伝え方 */
-    /* 場面名を小さなラベルにして、言い換えを同じ行に続ける（見出しは置かない） */
+    /* 場面名を小さなラベルにして、言い換えは次の行に置く（同じ行に続けるとラベルと本文の境目が見えにくかった） */
     .scenes { margin-top:12px; }
     .scene { padding:8px 0; border-bottom:var(--bw-h) solid var(--border); font-size:var(--text-sm); }
     .scene:first-child { padding-top:0; }
@@ -101,7 +101,7 @@
     .scene .sh { display:inline; font-size:var(--text-xs); font-weight:700; color:var(--txt-2); background:var(--box-gray); border-radius:4px; padding:1px 8px; margin-right:6px; -webkit-box-decoration-break:clone; box-decoration-break:clone; }
     .scene.hit .sh { background:var(--white); }
     .scene .off { font-size:var(--text-xs); font-weight:700; color:var(--txt-2); background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:4px; padding:0 7px; margin:0 6px 0 -2px; }
-    .scene .words { display:inline; color:var(--blue); font-weight:700; }
+    .scene .words { display:block; margin-top:3px; color:var(--blue); font-weight:700; }
     .scene .tip { margin-top:1px; font-size:var(--text-sm); color:var(--txt-2); }
 
     /* 構成生薬 */
@@ -114,12 +114,36 @@
     .herbs td.hn small { display:block; font-size:var(--text-xs); font-weight:500; color:var(--txt-3); }
     .herbs td.hg { white-space:nowrap; text-align:right; color:var(--txt-2); width:1%; }
     .herbs tr.key td.hn { color:var(--blue); }
-    .how { margin-top:10px; font-size:var(--text-sm); }
+    .how { font-size:var(--text-sm); }
 
     .cautions { list-style:none; font-size:var(--text-sm); }
     .cautions li { display:flex; gap:6px; }
     .cautions li::before { content:"・"; color:#999; flex-shrink:0; }
-    .kounou { font-size:var(--text-sm); color:var(--txt-2); margin-top:12px; padding-top:10px; border-top:var(--bw-h) solid var(--border); }
+    .kounou { font-size:var(--text-sm); color:var(--txt-2); }
+    /* 開いた品目の中の小見出し。区切りの線を上に引き、本文と見分けやすくする */
+    .fold-body .sub-title { margin:18px 0 8px; padding-top:14px; border-top:var(--bw-h) solid var(--border); }
+    .sub-title .st-note { font-size:var(--text-xs); font-weight:500; color:var(--txt-3); }
+
+    /* 説明の中の処方名（押すと比べる表が開く） */
+    .ref { font:inherit; font-weight:700; color:var(--blue); background:none; border:none; padding:0; cursor:pointer; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px; }
+    .ref::after { content:"⇄"; font-size:0.8em; margin-left:2px; text-decoration:none; display:inline-block; }
+    .cmp { margin:8px 0 4px; background:var(--white); border:var(--bw-h) solid var(--border-dk); border-radius:var(--radius-sm); padding:10px 12px; font-size:var(--text-sm); color:var(--ink); font-weight:400; }
+    .parts + .cmp { margin-top:8px; }
+    .cmp-h { display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+    .cmp-h b { font-weight:900; }
+    .cmp-g { font-size:var(--text-xs); color:var(--txt-2); margin:2px 0 6px; }
+    .cmp-x, .cmp-open { font-family:inherit; font-size:var(--text-xs); font-weight:700; cursor:pointer; border-radius:999px; padding:1px 11px; }
+    .cmp-x { margin-left:auto; color:var(--txt-2); background:var(--box-gray); border:var(--bw) solid var(--border); }
+    .cmp-open { margin-left:auto; color:var(--blue); background:var(--white); border:var(--bw-h) solid var(--blue); }
+    .cmp-t { max-width:560px; }
+    .cmp-t th.hg { text-align:right; white-space:normal; max-width:8em; line-height:1.4; }
+    .cmp-t td { padding-top:4px; padding-bottom:4px; }
+    .cmp-t td.hg.diff { font-weight:900; color:var(--ink); }
+    .cmp-t .none { color:var(--txt-3); }
+    .ctag { font-size:var(--text-xs); font-weight:700; border-radius:4px; padding:0 6px; margin-left:6px; }
+    .ctag.self  { background:#f3e8d0; color:#7a5718; }   /* クリーム */
+    .ctag.other { background:#e5e0f2; color:#4b3f80; }   /* 藤 */
+    .cmp-f { display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:var(--text-xs); color:var(--txt-3); margin-top:6px; }
 
     .table-wrap { overflow-x:auto; }
     .src { font-size:var(--text-xs); color:var(--txt-3); margin-top:8px; }
@@ -164,6 +188,7 @@
     <ul class="cautions">
       <li>生薬の量はツムラ医療用の1日量。他社品は分量が違うことがある。青字の生薬がその処方の柱。</li>
       <li>生薬の役割は添付文書には書かれていないため、漢方の一般的な解釈でまとめた。</li>
+      <li>説明の中の下線付きの処方名（⇄）を押すと、その処方と生薬・分量を並べて比べられる。</li>
       <li>「効能外」の印は、その症状・病名が添付文書の効能・効果に書かれていない使い方。抗がん剤治療中・認知症など病名に触れる場面は、処方の背景を確かめてから話題にする。</li>
       <li>飲み方はどの品目も1日2〜3回・食前または食間。顆粒の1日量は7.5gが多いが、9.0g（小青竜湯・麦門冬湯・人参養栄湯）や15g（大建中湯）のものがある。</li>
       <li>「熱を冷ます」は体温を下げる意味ではなく、のぼせ・ほてり・炎症の熱のこと。「血を補う」は漢方の言い方で、鉄剤のように血液を増やす意味ではない。患者に伝えるときは言い方に気をつける。</li>
@@ -208,14 +233,55 @@ const CATS = [
 ].map(([label, words]) => ({ label, words: words.map(norm) }));
 let cat = -1;
 
+/* 説明の中に出てくる別の処方名を、押すと生薬を見比べられるボタンにする（比べる相手が画面にないと「〜に○○を加えた形」が読めないため）。
+   長い名前から先に探す（「葛根湯加川芎辛夷」の中の「葛根湯」を拾わないように）。1つの文の中では最初の1回だけ */
+const BYNAME = {}; KAMPO.forEach(k => { BYNAME[k.name] = k; });
+const NAMES = Object.keys(BYNAME).sort((a, b) => b.length - a.length);
+function linkNames(html, self){
+  const tags = [], ph = [];
+  let s = html.replace(/<[^>]+>/g, t => `\u0001${tags.push(t) - 1}\u0002`);
+  NAMES.forEach(nm => { if (s.includes(nm)) s = s.split(nm).join(`\u0003${ph.push(nm) - 1}\u0004`); });
+  const seen = new Set();
+  s = s.replace(/\u0003(\d+)\u0004/g, (m, i) => {
+    const nm = ph[i];
+    if (nm === self.name || seen.has(nm)) return nm;
+    seen.add(nm);
+    return `<button type="button" class="ref" data-to="${BYNAME[nm].id}">${nm}</button>`;
+  });
+  return s.replace(/\u0001(\d+)\u0002/g, (m, i) => tags[i]);
+}
+/* 比べる表：両方に入る生薬 → この処方だけ → 相手だけ の順。量が違う行は量を太字にする */
+function compare(self, other){
+  const amt = (k, nm) => { const h = k.herbs.find(h => h[1] === nm); return h ? h[2] : null; };
+  const all = [...self.herbs.map(h => h[1]), ...other.herbs.map(h => h[1]).filter(nm => !amt(self, nm))];
+  const rows = all.map(nm => ({ nm, a: amt(self, nm), b: amt(other, nm) }));
+  const kind = r => r.a == null ? 2 : r.b == null ? 1 : 0;
+  rows.sort((x, y) => kind(x) - kind(y));
+  const g = v => v == null ? '<span class="none">－</span>' : v.toFixed(1) + 'g';
+  const body = rows.map(r => {
+    const k = kind(r), diff = k === 0 && r.a !== r.b;
+    const tag = k === 1 ? '<span class="ctag self">こちらだけ</span>' : k === 2 ? '<span class="ctag other">相手だけ</span>' : '';
+    return `<tr class="c${k}"><td class="hn">${r.nm}${tag}</td><td class="hg${diff ? ' diff' : ''}">${g(r.a)}</td><td class="hg${diff ? ' diff' : ''}">${g(r.b)}</td></tr>`;
+  }).join('');
+  const n = [0, 1, 2].map(k => rows.filter(r => kind(r) === k).length);
+  return `<div class="cmp" data-to="${other.id}">
+    <div class="cmp-h"><span>比べる相手：<b>${other.name}</b>（ツムラ ${other.no}）</span><button type="button" class="cmp-x">閉じる</button></div>
+    <div class="cmp-g">${other.gist}</div>
+    <div class="table-wrap"><table class="herbs cmp-t">
+      <thead><tr><th>生薬</th><th class="hg">${self.name}</th><th class="hg">${other.name}</th></tr></thead>
+      <tbody>${body}</tbody></table></div>
+    <div class="cmp-f">共通 ${n[0]}・こちらだけ ${n[1]}・相手だけ ${n[2]}<button type="button" class="cmp-open" data-to="${other.id}">${other.name}を開く</button></div>
+  </div>`;
+}
+
 function card(k){
   const scenes = k.scenes.map(s =>
     `<div class="scene"><span class="sh">${s.t}</span>${s.off ? '<span class="off">効能外</span>' : ''}<span class="words">${s.w}</span>
-      ${s.tip ? `<div class="tip">${s.tip}</div>` : ''}</div>`).join('');
+      ${s.tip ? `<div class="tip">${linkNames(s.tip, k)}</div>` : ''}</div>`).join('');
   const herbs = k.herbs.map(h =>
     `<tr class="${h[4] ? 'key' : ''}"><td class="hn">${h[1]}<small>${h[0]}</small></td><td>${h[3]}</td><td class="hg">${h[2].toFixed(1)}g</td></tr>`).join('');
   const kz = k.kanzo ? `<span class="flag">甘草 ${k.kanzo.toFixed(1)}g/日</span>` : '<span class="flag">甘草なし</span>';
-  const cautions = k.cautions.map(c => `<li><span>${c}</span></li>`).join('');
+  const cautions = k.cautions.map(c => `<li><span>${linkNames(c, k)}</span></li>`).join('');
   const warn = k.flags.filter(f => f.warn).map(f => `<span class="flag warn">${f.t}</span>`).join('');
   const plain = k.flags.filter(f => !f.warn).map(f => `<span class="flag">${f.t}</span>`).join('');
   return `<details class="fold kp" id="${k.id}">
@@ -229,19 +295,22 @@ function card(k){
     <div class="flags" style="margin-top:0">${kz}${plain}<span class="flag">味：${k.taste}</span>${k.kanzo ? `<button type="button" class="kz-btn" data-id="${k.id}">甘草の合計に足す</button>` : ''}</div>
 
     <div class="scenes">${scenes}</div>
-    ${k.parts ? `<div class="parts"><div class="parts-h">組み合わせて使える一文</div><ul>${k.parts.map(p => `<li><span>${p}</span></li>`).join('')}</ul></div>` : ''}
+    ${k.parts ? `<div class="parts"><div class="parts-h">組み合わせて使える一文</div><ul>${k.parts.map(p => `<li><span>${linkNames(p, k)}</span></li>`).join('')}</ul></div>` : ''}
 
     <div class="sub-title">構成生薬と役割</div>
     <div class="table-wrap"><table class="herbs">
       <thead><tr><th>生薬</th><th>役割</th><th class="hg">1日量</th></tr></thead>
       <tbody>${herbs}</tbody></table></div>
     <p class="maker-note">分量はツムラの製品。クラシエなど他社品は、同じ処方名でも分量や生薬が違うことがある。</p>
-    <p class="how"><span class="lab-s">だから効く</span>${k.how}</p>
+
+    <div class="sub-title">処方の組み立て</div>
+    <p class="how">${linkNames(k.how, k)}</p>
 
     <div class="sub-title">気をつけること</div>
     <ul class="cautions">${cautions}</ul>
 
-    <p class="kounou"><span class="lab-s">効能・効果</span>${k.kounou}</p>
+    <div class="sub-title">効能・効果<span class="st-note">添付文書</span></div>
+    <p class="kounou">${k.kounou}</p>
     <p class="src">添付文書：<a href="https://www.pmda.go.jp/PmdaSearch/iyakuDetail/ResultDataSetPDF/${k.pmda}" target="_blank" rel="noopener">ツムラ${k.name}エキス顆粒（医療用）</a></p>
     </div>
   </details>`;
@@ -279,6 +348,26 @@ function renderKz(){
     <div class="line">アルドステロン症などの禁忌があるのは、1品目で甘草を1日2.5g以上含むもの：${KZHI}。</div>`;
   document.getElementById('kzclear').onclick = () => { kzSel.length = 0; renderKz(); };
 }
+/* 処方名のボタン：押した文のすぐ下に比べる表を開く（同じ品目の中では1つだけ）。「○○を開く」で相手の品目へ移る */
+list.addEventListener('click', e => {
+  const r = e.target.closest('.ref, .cmp-x, .cmp-open'); if (!r) return;
+  const d = r.closest('details.kp');
+  if (r.classList.contains('cmp-x')) { r.closest('.cmp').remove(); return; }
+  if (r.classList.contains('cmp-open')) {
+    const t = document.getElementById(r.dataset.to);
+    if (t.hidden) { q.value = ''; cat = -1; apply(); }
+    t.open = true;
+    return;
+  }
+  const anchor = r.closest('.parts') || r.closest('li, .scene') || r.closest('p');
+  const old = d.querySelector('.cmp');
+  const same = old && old.dataset.to === r.dataset.to && old.parentNode === (anchor.matches('li, .scene') ? anchor : anchor.parentNode);
+  if (old) old.remove();
+  if (same) return;
+  const html = compare(KAMPO.find(k => k.id === d.id), KAMPO.find(k => k.id === r.dataset.to));
+  if (anchor.matches('li, .scene')) anchor.insertAdjacentHTML('beforeend', html);
+  else anchor.insertAdjacentHTML('afterend', html);
+});
 list.addEventListener('click', e => {
   const b = e.target.closest('.kz-btn'); if (!b) return;
   const i = kzSel.indexOf(b.dataset.id);
