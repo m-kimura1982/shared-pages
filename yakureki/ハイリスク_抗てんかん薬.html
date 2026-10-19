@@ -104,7 +104,7 @@
         <div class="kakunin">
           <div class="check"><span>✓</span><span>処方目的。<span class="marker">片頭痛の予防で処方されているときは算定対象にならない</span></span></div>
           <div class="check"><span>✓</span><span>最近の発作の状況</span></div>
-          <div class="check"><span>✓</span><span>肝機能・血中濃度などの検査を受けているか（肝障害は飲み始めの6か月に多い）</span></div>
+          <div class="check"><span>✓</span><span>肝機能・血中濃度などの検査を受けているか（肝障害は服用開始後6か月に多い）</span></div>
           <div class="check"><span>✓</span><span>妊娠の可能性、カルバペネム系の抗菌薬（併用禁忌）</span></div>
         </div>
 
@@ -166,7 +166,7 @@
         <div class="kakunin">
           <div class="check"><span>✓</span><span>処方目的。<span class="marker">三叉神経痛で処方されているときは算定対象にならない</span></span></div>
           <div class="check"><span>✓</span><span>最近の発作の状況</span></div>
-          <div class="check"><span>✓</span><span>発疹・発熱（飲み始めの3か月に多い）</span></div>
+          <div class="check"><span>✓</span><span>発疹・発熱（服用開始後3か月に多い）</span></div>
           <div class="check"><span>✓</span><span>眠気・めまい・ふらつき・物が二重に見える（血中濃度が高すぎるサインのことがある）</span></div>
           <div class="check"><span>✓</span><span>併用薬。併用禁忌が多く、他の薬の効き目を弱めることもある</span></div>
         </div>
@@ -177,7 +177,7 @@
           <div class="mk-scenes">
             <label><input type="radio" name="c" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
             <label><input type="radio" name="c" value="up" data-text="{薬}：〇mgから〇mgに増量。増量の理由は〇〇と本人より。"><span><b>ロ</b>増量</span></label>
-            <label><input type="radio" name="c" value="rash" data-text="{薬}：飲み始めて〇週ごろから体に発疹が出たと本人より。重い皮膚障害の初期のことがあり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>発疹が出た</span></label>
+            <label><input type="radio" name="c" value="rash" data-text="{薬}：服用開始〇週ごろから体に発疹が出たと本人より。重い皮膚障害の初期のことがあり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>発疹が出た</span></label>
           </div>
           <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
           <label class="mk-p"><input type="checkbox" data-on="up"><span>最近の発作は〇〇と本人より。</span></label>
@@ -218,7 +218,7 @@
         <div class="kakunin">
           <div class="check"><span>✓</span><span>処方目的と医師から受けた説明</span></div>
           <div class="check"><span>✓</span><span><span class="marker">用量が決められた増やし方を超えていないか</span>（てんかんでは、バルプロ酸を併用するか、グルクロン酸抱合を誘導する薬を併用するかで増やし方が3通りある）</span></div>
-          <div class="check"><span>✓</span><span>発疹・発熱（飲み始めの8週間に多い）</span></div>
+          <div class="check"><span>✓</span><span>発疹・発熱（服用開始後8週間に多い）</span></div>
           <div class="check"><span>✓</span><span>最近の発作の状況、飲み忘れが続いていないか</span></div>
         </div>
 
@@ -241,7 +241,7 @@
           <div class="mk-h">場面</div>
           <div class="mk-scenes">
             <label><input type="radio" name="t" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
-            <label><input type="radio" name="t" value="up" data-text="{薬}：〇mgから〇mgに増量。飲み始めからの決められた増量と本人より。"><span><b>ロ</b>増量</span></label>
+            <label><input type="radio" name="t" value="up" data-text="{薬}：〇mgから〇mgに増量。服用開始時に決められた増量と本人より。"><span><b>ロ</b>増量</span></label>
             <label><input type="radio" name="t" value="rash" data-text="{薬}：〇日前から体に発疹が出たと本人より。重い皮膚障害の初期のことがあり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>発疹が出た</span></label>
           </div>
           <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
@@ -267,8 +267,8 @@
 
         <details class="fold-in" style="margin-top:16px;"><summary>背景知識</summary><div class="fold-body">
           <div class="blist">
-            <div class="bullet"><span>・</span><span>警告に重い皮膚障害がある。決められた量を超えて使うと発疹が増えるため、飲み始めの量と増やす時期を守る。発疹や発熱などが出たときは直ちに受診するよう、本人または家族に指導することが警告で求められている。</span></div>
-            <div class="bullet"><span>・</span><span>重い皮膚障害は、飲み始めの8週間以内、バルプロ酸との併用、小児で多い。小児では発疹の初期症状が感染症と間違われやすい。</span></div>
+            <div class="bullet"><span>・</span><span>警告に重い皮膚障害がある。決められた量を超えて使うと発疹が増えるため、開始時の量と増量の時期を守る。発疹や発熱などが出たときは直ちに受診するよう、本人または家族に指導することが警告で求められている。</span></div>
+            <div class="bullet"><span>・</span><span>重い皮膚障害は、服用開始後8週間以内、バルプロ酸との併用、小児で多い。小児では発疹の初期症状が感染症と間違われやすい。</span></div>
             <div class="bullet"><span>・</span><span>中止したあとに再び飲むときは、理由を問わず維持用量より低い量から増やす。中止から半減期の5倍の期間（併用薬により約3〜15日）を過ぎているときは、初回の量からやり直すことが推奨されている。発疹で中止したときは、原則として再び飲まない。飲み忘れが続いた人が元の量で再開しないよう伝えるのはこのため。</span></div>
             <div class="bullet"><span>・</span><span>てんかんで中止するときは、発疹などで直ちに中止する場合を除き、少なくとも2週間以上かけて徐々に減らす。</span></div>
             <div class="bullet"><span>・</span><span>家族に行動の変化や症状の悪化のリスクを説明し、医師と連絡を取り合うよう指導することも電子添文で求められている。本人や家族には「自殺」という言葉を使わず、「衝動的な行動」「いつもと違う変化」といった表現で伝える。</span></div>
@@ -303,7 +303,7 @@
           <div class="mk-scenes">
             <label><input type="radio" name="e" value="i" checked data-text="{薬}：新規。処方目的は{目的}。本人が医師から受けた説明と相違なし。"><span><b>イ</b>新規</span></label>
             <label><input type="radio" name="e" value="up" data-text="{薬}：〇mgから〇mgに増量。増量の理由は〇〇と本人より。"><span><b>ロ</b>増量</span></label>
-            <label><input type="radio" name="e" value="irr" data-text="{薬}：飲み始めてから怒りっぽくなったと家族より。気分や行動の変化の副作用の可能性があり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>怒りっぽくなった</span></label>
+            <label><input type="radio" name="e" value="irr" data-text="{薬}：服用開始後、怒りっぽくなったと家族より。気分や行動の変化の副作用の可能性があり、指導が必要と判断。"><span><b class="chg">ロ 変化</b>怒りっぽくなった</span></label>
           </div>
           <div class="mk-h">確認した内容<span class="mk-tools"><button type="button" data-act="clear">すべて外す</button><button type="button" data-act="reset">最初の状態に戻す</button></span></div>
           <label class="mk-p"><input type="checkbox" data-on="up"><span>最近の発作は〇〇と本人より。</span></label>
