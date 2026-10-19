@@ -4,6 +4,7 @@
  *
  * mhlw-watch.json のページを取りに行き、本文の行（会議の回・資料・お知らせ）を前回の控えと比べて、
  * 新しく増えた行だけを出す。関係のある語（keywords）を含む行には ★ を付ける。
+ * リンクの文字が「資料」「開催案内」だけの行は、リンク先の題名を足してから判定する（GENERIC）。
  * Claude を使わずに動くので、何度回しても使用量はかからない。中身を読んで要約するのは
  * /厚労省チェック（または定期実行）で Claude がこの出力を受け取ってから行う。
  *
@@ -25,7 +26,21 @@ const DRY = process.argv.includes('--dry');
 const ALL = process.argv.includes('--all');
 const KW = new RegExp(CONF.keywords.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'));
 
-const clean = s => s.replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+const clean = s => s.replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n)).replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+
+// 審議会のページは各回のリンクの文字が「資料」「開催案内」だけで、回の名前も議題も行に出ない
+// （2026-10-19 に介護給付費分科会の居宅療養管理指導の回を、これで見落とした）。
+// こういうリンクはリンク先の題名を読み、行の文に足してから ★ を判定する。
+const GENERIC = /^(資料|会議資料|開催案内|議事次第|議事録|議事要旨|概要|配布資料)$/;
+async function linkTitle(href) {
+  try {
+    const res = await fetch(href, { headers: { 'User-Agent': 'Mozilla/5.0 (shared-pages mhlw-watch)' } });
+    if (!res.ok) return '';
+    const html = await res.text();
+    const m = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i) || html.match(/<title>([^<]*)/i);
+    return m ? clean(m[1]).slice(0, 100) : '';
+  } catch { return ''; }
+}
 
 /** 本文（#content〜フッター）の行ごとに、行の文とその行のリンクを返す */
 function rows(html, base) {
@@ -66,6 +81,12 @@ function rows(html, base) {
     if (first || !prev[p.url]) continue;
 
     const fresh = rs.filter(r => r.links.some(l => !seen.has(l.href)));
+    for (const r of fresh) {
+      const g = r.links.find(l => !seen.has(l.href) && GENERIC.test(l.label) && /\.html?$/.test(l.href));
+      if (!g) continue;
+      const t = await linkTitle(g.href);
+      if (t) r.text = `${t} ｜ ${r.text}`.slice(0, 200);
+    }
     const shown = fresh.filter(r => ALL || KW.test(r.text));
     total += fresh.length; star += shown.length;
     if (!fresh.length) continue;
