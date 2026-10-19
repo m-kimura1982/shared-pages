@@ -196,7 +196,7 @@
     <ul class="cautions">
       <li>「確かめる」「聞く」は薬剤師が判断して行う確認。禁忌や病名に関わることは、お薬手帳・薬歴・処方内容で先に確かめる。症状が出ているときや重なりが見つかったときは処方医に伝える。</li>
       <li>漢方でも、肝機能障害などの重大な副作用はある。長く服用している人がだるさ・食欲不振を訴えたときは、漢方も原因の候補に入れて処方医に伝える。</li>
-      <li>「続けている人で見ること」は、含む生薬と添付文書の重大な副作用から自動で出している。</li>
+      <li>「長期服用時の確認事項」は、含む生薬と添付文書の重大な副作用から自動で出している。</li>
       <li>生薬の量はツムラ医療用の1日量。他社品は分量が違うことがある。青字の生薬がその処方の柱。</li>
       <li>生薬の役割は添付文書には書かれていないため、漢方の一般的な解釈でまとめた。表には、その処方の中で効かせている働きだけを載せた。生薬名を押すと、その生薬がほかの処方で担う働きも出る。</li>
       <li>説明の中の下線付きの処方名（⇄）を押すと、その処方と生薬・分量を並べて比べられる。</li>
@@ -286,7 +286,7 @@ function compare(self, other){
   </div>`;
 }
 
-/* 続けている人で見ること。含む生薬と、気をつけること（添付文書の重大な副作用）から作る。
+/* 長期服用時の確認事項。含む生薬と、注意事項（添付文書の重大な副作用）から作る。
    聞き取りで分かり、実務で確かめるものだけにする（肝機能は採血で見るもので、漢方で聞き取るのはまれ。2026-10-20 本人）
    品目ごとに手で書くと書き方がばらつくため（2026-10-19 読者係3人の指摘） */
 const WATCH = [
@@ -294,7 +294,7 @@ const WATCH = [
   { by: k => k.herbs.some(h => h[1] === '麻黄'), lab: '麻黄', t: '動悸・眠れない・尿が出にくい' },
   { by: k => k.herbs.some(h => h[1] === '附子末'), lab: '附子', t: 'のぼせ・動悸・舌のしびれ' },
   { by: k => k.herbs.some(h => ['大黄','芒硝','無水芒硝'].includes(h[1])), lab: '大黄・芒硝', t: '下痢・腹痛が続いていないか' },
-  { by: k => k.herbs.some(h => h[1] === '山梔子'), lab: '山梔子', t: '何年も続けている人は、腹痛・下痢・便秘・おなかの張りが続いていないか（多くは5年以上で腸間膜静脈硬化症）' },
+  { by: k => k.herbs.some(h => h[1] === '山梔子'), lab: '山梔子', t: '腹痛・下痢・便秘・おなかの張りが続いていないか（多くは5年以上の服用で腸間膜静脈硬化症）' },
   { by: k => /間質性肺炎/.test(own(k)), lab: '肺', t: 'せき・息切れ・発熱。出たらすぐ連絡してもらう（間質性肺炎）' },
 ];
 /* 判定に使う注意書き。「似た処方の小柴胡湯で…の報告」の文は、その品目自体の副作用ではないので外す（柴陥湯） */
@@ -302,7 +302,7 @@ const own = k => k.cautions.filter(c => !/似た処方|類似処方/.test(c)).jo
 function watch(k){
   const w = WATCH.filter(r => r.by(k));
   if (!w.length) return '';
-  return `<div class="sub-title">続けている人で見ること<span class="st-note">あれば処方医に伝える</span></div>
+  return `<div class="sub-title">長期服用時の確認事項<span class="st-note">症状があれば処方医に連絡</span></div>
     <ul class="watch">${w.map(r => `<li><span class="wl">${r.lab}</span><span>${r.t}</span></li>`).join('')}</ul>`;
 }
 
@@ -341,7 +341,7 @@ function card(k){
     <div class="sub-title">処方の組み立て</div>
     <p class="how">${linkNames(k.how, k)}</p>
 
-    <div class="sub-title">気をつけること</div>
+    <div class="sub-title">注意事項</div>
     <ul class="cautions">${cautions}</ul>
 
     <div class="sub-title">効能・効果<span class="st-note">添付文書</span></div>
@@ -421,7 +421,7 @@ list.addEventListener('click', e => {
 /* 印刷するときは全部開く */
 addEventListener('beforeprint', () => items.forEach(d => d.open = true));
 
-/* 検索用の文字列。HAY＝名前・読み・番号・生薬名・場面・キーワードなど、HAYH＝生薬の役割と「だから効く」、HAYC＝気をつけること
+/* 検索用の文字列。HAY＝名前・読み・番号・生薬名・場面・キーワードなど、HAYH＝生薬の役割と「だから効く」、HAYC＝注意事項
    生薬の役割には「胃腸を守る」のような語がほぼ全品目に出るので、そこだけで当たった品目も後ろに回す
    注意書きの語（副作用の「むくみ」、併用注意の「かぜ薬」など）だけで当たった品目は後ろに回し、そうと分かるようにする */
 const HAY = {}, HAYH = {}, HAYC = {}, NAME = {};
@@ -478,7 +478,7 @@ function apply(){
     el.querySelectorAll('.scene').forEach((d, i) => d.classList.toggle('hit', hitIdx.includes(i)));
     const hb = el.querySelector('.hits');
     hb.hidden = !(ok && (hitIdx.length || weak));
-    hb.textContent = cautionOnly ? '「気をつけること」の中の言葉に当たった'
+    hb.textContent = cautionOnly ? '「注意事項」の中の言葉に当たった'
       : herbOnly ? '生薬の役割の中の言葉に当たった'
       : hitIdx.length ? '当てはまる場面：' + hitIdx.map(i => k.scenes[i].t).join('／') : '';
     hb.classList.toggle('weak', weak);
