@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow,noarchive">
-  <title>基本記載ルール｜薬歴マニュアル</title>
-  <meta name="search-keywords" content="SOAP,ア〜オ,10項目,別添3,通則,患者情報,継続的な薬学的管理,記載例" />
+  <title>薬歴の基本記載ルール｜薬歴マニュアル</title>
+  <meta name="search-keywords" content="SOAP,ア〜オ,11項目,別添3,通則,患者情報,継続的な薬学的管理,記載例,申し送り,残薬,表紙,患者サマリー,疑義照会,生活像,副作用歴,後発医薬品の意向" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/fold.css" />
   <style>
@@ -37,13 +37,15 @@
     .tab:hover:not(.active) { background:var(--box-blue); color:var(--blue); }
     .tab.active { background:var(--blue); color:#fff; border-color:var(--blue); }
 
-    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); scroll-margin-top:calc(var(--sn-header-h, 0px) + 14px); }
+    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); scroll-margin-top:calc(var(--sn-header-h, 0px) + var(--nav-h, 0px) + 22px); }
+    [id^="e-"] { scroll-margin-top:calc(var(--sn-header-h, 0px) + var(--nav-h, 0px) + 22px); }
     .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:13px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
     .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
     .card-title .tag { font-size:var(--text-sm); font-weight:900; color:var(--blue); background:var(--box-blue); padding:1px 10px; border-radius:4px; line-height:1.5; }
     /* 重要度バッジ（最重要／重点のみ表示。通常は付けない） */
     .imp { margin-left:auto; font-size:var(--text-xs); font-weight:700; padding:2px 11px; border-radius:4px; white-space:nowrap; }
-    .imp.top { background:var(--amber-bg); color:var(--amber); }
+    .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+    .imp.top { background:#fdebdd; color:#9a4414; }
     .imp.key { background:var(--box-blue); color:var(--blue); }
 
     .em-change { color:var(--blue); font-weight:900; }
@@ -83,14 +85,14 @@
     .rei .dot { color:var(--txt-3); font-weight:900; }
 
     /* 社内ルール */
-    .box-rule { background:var(--box-gray); border:var(--bw) solid var(--border); border-left:var(--bw-a) solid var(--blue); border-radius:var(--radius-sm); padding:13px 16px; margin-top:13px; }
+    .box-rule { background:var(--white); border:var(--bw) solid var(--border); border-left:var(--bw-a) solid var(--blue); border-radius:var(--radius-sm); padding:13px 16px; margin-top:13px; }
     .box-rule .ttl { font-weight:900; color:var(--blue); margin-bottom:6px; font-size:var(--text-sm); }
-    .box-rule .list .li { color:var(--txt-2); }
+    .box-rule .list .li { color:var(--ink); }
     .box-rule .list .li b { color:var(--ink); }
 
     /* 注意（アンバー） */
-    .guard { display:block; margin-top:11px; padding:9px 12px; background:var(--warn-bg); border-left:var(--bw-a) solid var(--warn-bd); border-radius:4px; font-size:var(--text-xs); line-height:1.65; }
-    .guard b { font-weight:900; color:#5f4b00; }
+    .guard { display:block; margin-top:11px; padding:9px 12px; background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); font-size:var(--text-xs); line-height:1.65; }
+    .guard b { font-weight:900; color:#9a4414; }
 
     .box-note { background:var(--box-gray); border:var(--bw) solid var(--border); border-left:var(--bw-a) solid var(--blue); border-radius:var(--radius-sm); padding:14px 18px; }
     .box-note .ttl { font-weight:900; color:var(--blue); margin-bottom:6px; font-size:var(--text-sm); }
@@ -140,7 +142,7 @@
 
   <div class="page">
     <div class="page-title-wrap">
-      <h1>基本記載ルール</h1>
+      <h1>薬歴の基本記載ルール</h1>
     </div>
 
     <!-- ページ内ナビ -->
@@ -156,7 +158,7 @@
 
     <!-- ── 原文（折りたたみ） ── -->
     <details class="original fold" data-sec="intro">
-      <summary>薬歴10項目の原文を見る</summary>
+      <summary>薬歴11項目の原文を見る</summary>
       <div class="obody">
         <div class="ocite">オンライン資格確認等システムを通じて取得した患者の診療情報、薬剤情報等を含めて、次の事項等を記載する。</div>
         <div class="orig">
@@ -182,7 +184,7 @@
     <!-- ── 前提：テンプレートと表紙 ── -->
     <div class="card" id="zentei" data-sec="intro">
       <div class="card-title"><span class="tag">前提</span>テンプレートと表紙の使い方</div>
-      <div class="lead">薬歴10項目は、電子薬歴のテンプレートを使いながら記載する。投薬時に得た新たな情報は随時、<b>表紙（患者サマリー）に追記</b>し、次回以降の服薬指導に活かす。</div>
+      <div class="lead">薬歴11項目は、電子薬歴のテンプレートを使いながら記載する。投薬時に得た新たな情報は随時、<b>表紙（患者サマリー）に追記</b>し、次回以降の服薬指導に活かす。</div>
       <div class="box-rule">
         <div class="ttl">テンプレートの使い方</div>
         <div class="list">
@@ -194,7 +196,7 @@
         <div class="ttl">表紙・患者サマリーの記載ルール</div>
         <div class="list">
           <div class="li">「調剤上の注意点」や「特記事項」といった補足的な情報を記載する項目以外は、<span class="marker">基本的に空欄を作らない</span>。情報がなければ <b>「なし」「特記事項なし」</b>、確認できないときは <b>「不明」「確認中」</b>など、確認状況が分かる形で残す。確認したら日付を更新する。</div>
-          <div class="li">更新の目安は <span class="marker">併用薬3か月／その他6か月</span>。情報の変化がなくても、<b>「確認した」という意味で更新</b>する。</div>
+          <div class="li">更新の目安は <b>併用薬3か月／その他6か月</b>。情報の変化がなくても、<b>「確認した」という意味で更新</b>する。</div>
           <div class="li">併用薬は、確認した際にその都度更新するのが望ましい。</div>
           <div class="li">投薬や監査に影響する情報（手術歴・PCI後・透析・腎機能低下・抗凝固薬服用中 等）は、<b>表紙の病歴・既往歴</b>に残す。一包化の理由、疑義照会で確認済みの事項、軟膏の混合可否・安定性など調べて確認した内容も表紙に記録し、次回以降の確認を省けるようにする。</div>
           <div class="li"><span class="marker">表紙と薬歴で齟齬を作らない</span>。継続処方の根拠となる病名（例：再発・再燃を繰り返す逆流性食道炎）が薬歴側にしかない状態は避け、表紙の病歴にも記載する。</div>
@@ -206,11 +208,11 @@
     <!-- ── 服薬指導の要点（SOAP等） ── -->
     <div class="card" id="youten" data-sec="intro">
       <div class="card-title"><span class="tag">要点</span>服薬指導の要点（SOAP等）の書き方</div>
-      <div class="lead">薬歴10項目のうち、服薬指導の要点（SOAP等の指導記録欄）を書くときの共通の考え方。受付の都度、新たに聞き取った情報と過去の薬歴を踏まえて服薬指導を行い、その<b>要点</b>を記録する。</div>
+      <div class="lead">薬歴11項目のうち、服薬指導の要点（SOAP等の指導記録欄）を書くときの共通の考え方。受付の都度、新たに聞き取った情報と過去の薬歴を踏まえて服薬指導を行い、その<b>要点</b>を記録する。</div>
       <div class="list">
         <div class="li">薬剤師が重点的に確認する項目は、基本的に<span class="marker">「薬が効いているか」「副作用が出ていないか」「きちんと飲めているか」の3点</span>。そのうえで、疾患背景・生活像・併用薬・検査値を踏まえ、患者ごとに確認事項を追加する。処方薬に応じて症状を具体的に確認すると（例：Ca拮抗薬なら便秘・下肢のむくみ）、変化がない場合も「便秘・浮腫なし」と具体的に記録できる。</div>
-        <div class="li">収集した情報や指導内容を全て書き並べるのではなく、<span class="marker">要点を明確に記録する</span>。指導した医薬品ごとに内容を全て記載することまでは不要。複数の指導料・加算を算定する場合も、項目ごとに内容を全て記載する必要はない。</div>
-        <div class="li">加算を算定する場合は、10項目に加えて<b>その加算の指導記録（プラスα）</b>を残す。加算ごとの記載事項は <a href="加算別記載一覧.html" class="link-inline">加算別 薬歴記載一覧</a> を参照。</div>
+        <div class="li">収集した情報や指導内容を全て書き並べるのではなく、<b>要点を明確に記録する</b>。指導した医薬品ごとに内容を全て記載することまでは不要。複数の指導料・加算を算定する場合も、項目ごとに内容を全て記載する必要はない。</div>
+        <div class="li">加算を算定する場合は、11項目に加えて<b>その加算の指導記録（プラスα）</b>を残す。加算ごとの記載事項は <a href="加算別記載一覧.html" class="link-inline">加算別 薬歴記載一覧</a>、ハイリスク薬は <a href="ハイリスク薬指導.html" class="link-inline">ハイリスク薬の薬歴記載方法</a>、実際の薬歴を見直した例は <a href="薬歴の書き方_実例解説集.html" class="link-inline">薬歴の実例解説集</a> を参照。</div>
       </div>
       <div class="cite-line" style="margin:10px 0 11px;">※ 要点記録の考え方は、厚生労働省「保険調剤の理解のために」（令和8年度）薬剤服用歴の記録より</div>
       <div class="source">
@@ -236,7 +238,7 @@
       <div class="cite-line">出典：別添3 薬学管理料 通則(4) イ</div>
       <div class="lead">処方及び調剤内容等は、レセコンから電子薬歴に自動転記される内容が多い。疑義照会を行った場合は記録が不十分になりやすいため、下記の事項を確認し、漏れがないよう注意する。特に、<span class="marker">処方医名や照会方法の記載漏れ</span>に注意する。</div>
 
-      <div class="sub-title">疑義照会の記載事項<span class="q key">重点</span></div>
+      <div class="sub-title">疑義照会の記載事項</div>
       <div class="musts">
         <span class="m">照会日時（〇月〇日〇時〇分）</span>
         <span class="m">回答者（〇〇病院 〇〇Dr）</span>
@@ -245,8 +247,9 @@
         <span class="m">回答内容</span>
         <span class="m">照会した薬剤師名（フルネーム）</span>
       </div>
+      <div class="cite-line">通知で求められているのは「照会の要点」。漏れを防ぐため、上の6つに分けて残す。</div>
 
-      <div class="sub-title">適応外・倍量処方の記録<span class="q key">重点</span></div>
+      <div class="sub-title">適応外・倍量処方の記録</div>
       <div class="lead">食前適応薬の食後処方・上限量超え・倍量処方（処方日数の上限超えが疑われる処方）などは、疑義照会の記録を薬歴だけでなく <b>表紙（調剤上の注意事項）とレセプト摘要欄</b>にも残す。表紙に残しておけば毎回の疑義照会は不要。<span class="marker">「倍量処方」「制限日数超え」などの法的に問題のある表現は使わない</span>。</div>
       <div class="rei">
         <span class="ttl">表紙・摘要欄の記載例</span>
@@ -254,15 +257,16 @@
         <p><span class="dot">・</span>ブロチゾラム 0.25mg 2錠 〇〇医師照会済み。</p>
         <p><span class="dot">・</span>ゾルピデム 1回2錠 〇〇医師照会済み（医師より調節服用の指示あり）。</p>
       </div>
+      <div class="ref">※ 倍量処方・用法用量の逸脱で個別指導に問われる点と、表紙・薬歴の書き分けの例は <a href="個別指導で問われる記載.html#tekiogai" class="link-inline">個別指導で問われる項目と薬歴の残し方</a> を参照。</div>
     </div>
 
     <!-- ── ウ 患者情報・指導の要点 ── -->
     <div class="card" id="ウ" data-sec="ウ">
-      <div class="card-title"><span class="tag">ウ</span>患者情報・薬学的管理及び指導の要点<span class="imp key">(イ)〜(ト)</span></div>
+      <div class="card-title"><span class="tag">ウ</span>患者情報・薬学的管理及び指導の要点<span class="qual">(イ)〜(ト)</span></div>
       <div class="cite-line">出典：別添3 薬学管理料 通則(4) ウ</div>
 
       <!-- (イ) -->
-      <div class="sub-title">(イ) 体質・生活像・後発意向<span class="q key">重点</span></div>
+      <div class="sub-title">(イ) 体質・生活像・後発意向</div>
 
       <div class="sub-title sub2">アレルギー・副作用歴</div>
       <div class="list">
@@ -305,7 +309,7 @@
       </div>
 
       <!-- (ロ) -->
-      <div class="sub-title">(ロ) 疾患情報<span class="q key">重点</span></div>
+      <div class="sub-title">(ロ) 疾患情報</div>
       <div class="list">
         <div class="li">高血圧・2型糖尿病などの基本疾患を押さえつつ、既往歴・合併症・他科で加療中の疾患をまとめる。</div>
         <div class="li"><b>禁忌薬の多い疾患</b>（前立腺肥大症・緑内障など）は、禁忌薬（抗コリン薬等）の服用可否を含め、治療経過を随時チェックして確認日を更新する。</div>
@@ -327,20 +331,20 @@
       </div>
 
       <!-- (ハ) -->
-      <div class="sub-title">(ハ) 併用薬・相互作用飲食物<span class="q key">重点</span></div>
+      <div class="sub-title">(ハ) 併用薬・相互作用飲食物</div>
       <div class="list">
-        <div class="li">他院処方薬に加え、<b>OTC・サプリ・健康食品</b>まで含めて確認する。</div>
+        <div class="li">他院処方薬に加え、<b>OTC（要指導医薬品を含む）・医薬部外品・サプリ・健康食品</b>まで含めて確認する。</div>
         <div class="li">相互作用が認められる飲食物（グレープフルーツ、納豆、アルコール等）の摂取状況。</div>
         <div class="li">併用薬の記録があるのに、<span class="marker">他科受診が「なし」や空欄のまま</span>になっていないか注意する。病院名が分からないときは「病院名未確認（〇〇科）」等と残し、次回確認する旨を申し送りに書く。</div>
       </div>
       <div class="rei">
         <span class="ttl">記載例</span>
-        <p><span class="dot">・</span>飲酒あり（ほぼ毎日）。やめるのは難しいことを確認。眠剤を服用する日は、飲酒から2〜3時間あけて服用するよう指導（R〇.〇）。飲酒については医師も承知。</p>
+        <p><span class="dot">・</span>飲酒あり（ほぼ毎日）。やめるのは難しいことを確認。できるだけ控えるよう説明したうえで、眠剤を服用する日は飲酒から2〜3時間あけて服用するよう指導（R〇.〇）。飲酒については医師も承知。</p>
       </div>
 
       <!-- (ニ)(ホ) -->
       <div class="sub-title">(ニ) 服薬状況 ＋ (ホ) 残薬状況<span class="q key">セットで見る</span></div>
-      <div class="lead">通知上は別項目だが、実務では <span class="marker">服薬状況と残薬はセットで見る</span>。受診間隔・処方日数と矛盾していないかを確認する。残薬なしでも「残薬なし」と記載し、残薬があれば <b>量・理由・対応・次回確認</b>まで残す。</div>
+      <div class="lead">通知上は別項目だが、実務では <b>服薬状況と残薬はセットで見る</b>。受診間隔・処方日数と矛盾していないかを確認する。残薬なしでも「残薬なし」と記載し、残薬があれば <b>量・理由・対応・次回確認</b>まで残す。</div>
       <div class="rei">
         <span class="ttl">記載例</span>
         <p><span class="dot">・</span>残薬なし。処方日数と受診間隔に大きなずれなし。</p>
@@ -363,7 +367,7 @@
       <div class="ref">※ 残薬調整して調剤日数を変えたときの算定は <a href="../チェックリスト/調剤時残薬調整加算_実務チェックリスト.html" class="link-inline">調剤時残薬調整加算 チェックリスト</a> を参照。</div>
 
       <!-- (ヘ) -->
-      <div class="sub-title">(ヘ) 体調変化・相談事項<span class="q key">重点</span></div>
+      <div class="sub-title">(ヘ) 体調変化・相談事項</div>
       <div class="lead">専用欄に必ず二重入力する趣旨ではない。<span class="marker">SOAPに体調変化・副作用確認・相談内容と対応が具体的に記録されていればよい</span>。ただし、どこにも記録がない状態にはしない。「なし」だけでなく、何の副作用がないのか、どの症状が変わらないのかを具体化する。</div>
       <div class="rei">
         <span class="ttl">記載例</span>
@@ -396,12 +400,13 @@
       <div class="list">
         <div class="li"><b>薬の効果・副作用・服薬状況</b>に着目し、次回確認してほしいことを具体的に書く。</div>
         <div class="li">「経過確認」「SE確認」「残薬確認」では抽象的。<span class="marker">何の薬の・何を・どう確認するか</span>まで落とす。</div>
-        <div class="li">「確認」で終えず、<span class="marker">確認した上で「症状悪化や生活への影響・兆候がないか評価する」</span>まで書くと、モニタリングの視点が伝わる（確認 → 評価の2段で書く）。</div>
-        <div class="li">観察項目は<b>具体名</b>で書く（「副作用」ではなく口渇・ふらつき・眠気など）。評価の着地は<span class="marker">前回からの変化・生活への影響・服薬継続の支障</span>のいずれかに寄せる。</div>
+        <div class="li">「確認」で終えず、<b>確認した上で「症状悪化や生活への影響・兆候がないか評価する」</b>まで書くと、モニタリングの視点が伝わる（確認 → 評価の2段で書く）。</div>
+        <div class="li">観察項目は<b>具体名</b>で書く（「副作用」ではなく口渇・ふらつき・眠気など）。評価の着地は<b>前回からの変化・生活への影響・服薬継続の支障</b>のいずれかに寄せる。</div>
       </div>
 
       <div class="sub-title sub2">3つに分けて考える</div>
-      <div class="lead">留意点は、<span class="marker">①次回に確認すること ②投薬時に活かせる患者情報 ③患者個々のプロブレム</span>に分けて考えると整理しやすい。①は次回の薬剤師への申し送り、②③はその患者に固有の配慮事項・継続課題。②③は表紙にも反映し、どの薬剤師が対応しても分かる形にする。</div>
+      <div class="lead">留意点は、<b>①次回に確認すること ②投薬時に活かせる患者情報 ③患者個々のプロブレム</b>に分けて考えると整理しやすい。①は次回の薬剤師への申し送り、②③はその患者に固有の配慮事項・継続課題。②③は表紙にも反映し、どの薬剤師が対応しても分かる形にする。</div>
+      <div class="ref" style="margin-bottom:8px;">①次回に確認することの記載例：<a href="#e-hanyou" class="link-inline">汎用</a>・<a href="#e-kouka" class="link-inline">薬の効果</a>・<a href="#e-fukusayou" class="link-inline">副作用</a>・<a href="#e-fukuyaku" class="link-inline">服薬状況</a>・<a href="#e-seishin" class="link-inline">精神科系</a>・<a href="#e-nagare" class="link-inline">前回→今回の流れ</a></div>
       <div class="rei">
         <span class="ttl">記載例（②投薬時に活かせる患者情報・③プロブレム）</span>
         <p><span class="dot">・</span>服薬管理は同居の長女。用法変更時は本人と長女の両方に説明する。</p>
@@ -409,7 +414,7 @@
         <p><span class="dot">・</span>認知機能の低下傾向あり。服薬状況を確認し、必要に応じて一包化を検討する。</p>
       </div>
 
-      <div class="sub-title sub2">汎用（処方変化なし・安定期）の申し送り例</div>
+      <div class="sub-title sub2" id="e-hanyou">汎用（処方変化なし・安定期）の申し送り例</div>
       <div class="rei">
         <span class="ttl">記載例</span>
         <p><span class="dot">・</span>前回からの体調・生活面の変化を確認し、服薬継続に影響する問題がないか評価する。</p>
@@ -420,7 +425,7 @@
       </div>
       <div class="ref">※ 疾患を限定しない汎用の申し送り・AP定型文は <a href="定型文集.html#general" class="link-inline">定型文集（汎用）</a> を参照。</div>
 
-      <div class="sub-title sub2">薬の効果（安定期）の申し送り例</div>
+      <div class="sub-title sub2" id="e-kouka">薬の効果（安定期）の申し送り例</div>
       <div class="rei">
         <span class="ttl">記載例</span>
         <p><span class="dot">・</span>【血圧】家庭血圧の推移を確認し、降圧目標を維持できているか評価する。</p>
@@ -430,7 +435,7 @@
       </div>
       <div class="ref">※ 循環器疾患（心不全・心房細動・弁膜症・虚血性心疾患）の申し送り・AP定型文は <a href="定型文集.html#cardio" class="link-inline">定型文集（循環器系）</a> を参照。</div>
 
-      <div class="sub-title sub2">副作用の申し送り例</div>
+      <div class="sub-title sub2" id="e-fukusayou">副作用の申し送り例</div>
       <div class="rei">
         <span class="ttl">記載例</span>
         <p><span class="dot">・</span>〇〇（降圧剤）服用に伴うふらつき等の有無を確認し、過降圧による生活への支障がないか評価する。</p>
@@ -439,7 +444,7 @@
         <p><span class="dot">・</span>〇〇（抗ヒスタミン薬）服用後の口渇・日中の集中力低下を確認し、仕事・家事等への影響がないか評価する。</p>
       </div>
 
-      <div class="sub-title sub2">服薬状況の申し送り例</div>
+      <div class="sub-title sub2" id="e-fukuyaku">服薬状況の申し送り例</div>
       <div class="rei">
         <span class="ttl">記載例</span>
         <p><span class="dot">・</span>【服薬】服薬状況・残薬状況を把握し、飲み忘れ・自己調整・中断につながる要因がないか確認する。</p>
@@ -448,7 +453,7 @@
         <p><span class="dot">・</span>【外用薬】塗布量・塗布部位を確認し、適切に使用できているか評価する。</p>
       </div>
 
-      <div class="sub-title sub2">精神科系の申し送り例（生活への影響まで評価する）</div>
+      <div class="sub-title sub2" id="e-seishin">精神科系の申し送り例（生活への影響まで評価する）</div>
       <div class="rei">
         <span class="ttl">記載例</span>
         <p><span class="dot">・</span>前回からの気分・睡眠等の変化を確認し、症状悪化や副作用による生活への影響がないか評価する。</p>
@@ -457,7 +462,7 @@
       </div>
       <div class="ref">※ メンタル系の申し送り・AP定型文は <a href="定型文集.html#mental" class="link-inline">定型文集（メンタル系）</a> を参照。</div>
 
-      <div class="sub-title sub2">前回申し送り → 今回の流れの例</div>
+      <div class="sub-title sub2" id="e-nagare">前回申し送り → 今回の流れの例</div>
       <div class="rei">
         <span class="ttl">記載例</span>
         <p><span class="dot">・</span>前回、残薬確認予定。朝分の残薬あり。朝食を抜くため飲み忘れやすいと判断し、起床後の服用を提案。次回も朝分の残薬数を確認。</p>
@@ -502,5 +507,11 @@
     })();
   </script>
     <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-  </body>
+  <script>
+  // 固定のタブの高さを --nav-h に入れる（ページ内リンクの飛び先がタブの下に隠れないように）
+  (function(){ var n=document.querySelector(".nav-card"); if(!n) return;
+    function set(){ document.documentElement.style.setProperty("--nav-h", n.offsetHeight + "px"); }
+    set(); window.addEventListener("resize", set); })();
+</script>
+</body>
 </html>

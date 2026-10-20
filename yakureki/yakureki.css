@@ -10,7 +10,7 @@
   --blue-mid: #2d7dd6;
   --blue-light: #e8f0fb;
   --ink: #222222;
-  --sub: #666666;
+  --sub: #5e6470;   /* 旧変数。サイト基準の --txt-3 と同じ値にそろえた（2026-10-21） */
   --border: #d8dde8;
   --white: #ffffff;
   --bg: #f3f4f6;
@@ -523,3 +523,76 @@ body.tpl-only .drug-block { margin-bottom: 14px; }
   .section-title { font-size: 16px; padding-left: 10px; margin-bottom: 12px; }
   .subsection-title { font-size: 14px; margin: 16px 0 8px; }
 }
+
+/* ページ内目次（page-toc.js）と本文の間をあける。main は flex でないので余白が付かない（2026-10-21） */
+.page-toc-wrap { margin-bottom: 18px; }
+/* スマホでは表の1列目の固定幅を外す（説明の列が1行5文字まで潰れていた。2026-10-21） */
+@media (max-width: 640px) { .gtable th[style*="width:13em"], .gtable th[style*="width:14em"], .gtable th[style*="width:15em"], .gtable th[style*="width:16em"] { width: 36% !important; } .gtable th.ref-col { width: 9em !important; } }
+/* 表の「参照先」列（個別指導のページの導入の表） */
+.gtable .ref-col { width: 12em; }
+@media (max-width: 640px) { .gtable .ref-col { width: 9em; } }
+/* 節（SECTION）ごとに白いカードにする（2026-10-21）
+   個別指導・加算別記載一覧・居宅療養管理指導は section を背景なしで並べていて、
+   長いページで節の境目が見えにくかった。<main class="sec-cards"> を付けたページだけに効く */
+.sec-cards > section {
+  background: var(--white); border: 0.5px solid var(--border); border-radius: 10px;
+  padding: 22px 24px; margin-bottom: 16px;
+}
+@media (max-width: 640px) { .sec-cards > section { padding: 14px 14px; margin-bottom: 11px; } }
+@media print { .sec-cards > section { border: 0; padding: 0; } }
+/* 表を含む記載例は枠をやめ、上の罫線だけで区切る（カード＞枠＞表の三重を避ける。2026-10-21） */
+.example-box.ex-flat { background: none; border: 0; border-top: 0.5px solid var(--border); border-radius: 0; padding: 14px 0 0; }
+
+/* ════════════════════════════════════════════════════════════
+   サイト基準の見た目にそろえる（2026-10-21）
+   このCSSを読むのは 入口・加算別記載一覧・個別指導・居宅療養管理指導 の4枚。
+   他の薬歴ページ（基本記載ルール等）は CLAUDE.md の基準の型で書かれていて、
+   行き来すると題名の大きさ・見出しの形・本文の大きさ・幅が変わっていたため、ここで上書きする。
+   ════════════════════════════════════════════════════════════ */
+:root {
+  --border: #d1d5db; --radius: 10px; --radius-sm: 6px;
+  --blue-light: #e4f0f8; --txt-2: #444444; --txt-3: #5e6470;
+  --caution-bg: #f2f2f2; --caution-bd: #d1d5db; --caution-tx: #9a4414;  /* 注意・指摘されやすい点：地はグレー、題名だけ濃いオレンジ（2026-10-21。地を淡いオレンジにすると浮いた） */
+}
+body { font-size: 15px; line-height: 1.8; }
+.page-head { max-width: 900px; margin: 28px auto 16px; padding: 0 16px; }
+.page-tag { display: none; }   /* 英字の札（ADD-ON 等）は他の資料ページにないので出さない */
+.page-title { font-size: 22px; font-weight: 900; letter-spacing: -0.01em; margin-bottom: 4px; }
+.page-desc { font-size: 15px; font-weight: 500; color: var(--txt-2); margin-top: 4px; }
+main { max-width: 900px; padding: 0 16px; }
+@media (min-width: 880px) { main.yk-zoom { max-width: 811px; } }   /* 1.11倍して見かけ上900px */
+
+/* H2：短い青縦棒＋下線（.card-title と同じ型） */
+.section-title {
+  font-size: 18px; font-weight: 900; border-left: 0; padding-left: 0;
+  border-bottom: 1px solid var(--border-dk, #9ca3af); padding-bottom: 8px; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 11px; flex-wrap: wrap; line-height: 1.5;
+}
+.section-title::before { content: ""; width: 4px; height: 1.05em; border-radius: 2px; background: var(--blue); flex-shrink: 0; }
+/* H3：小さな青い四角（.sub-title と同じ型） */
+.subsection-title { font-size: 16px; font-weight: 900; display: flex; align-items: center; gap: 9px; margin: 20px 0 10px; }
+.subsection-title::before { content: ""; width: 9px; height: 9px; border-radius: 2px; background: var(--blue); flex-shrink: 0; }
+.section-label { font-size: 11.5px; color: var(--txt-3); letter-spacing: 0.08em; margin-bottom: 8px; }
+
+/* 注意の箱は1種類にする（以前は淡い青。青は強調の色で紛れていた） */
+.warn-box { background: var(--caution-bg); border: 1px solid var(--caution-bd); }
+.warn-box-title { color: var(--caution-tx); font-weight: 900; }
+
+@media (max-width: 640px) {
+  body { font-size: 14px; line-height: 1.75; }
+  .page-head { margin: 16px auto 12px; padding: 0 12px; }
+  .page-title { font-size: 18px; }
+  main { padding: 0 12px; }
+  .section-title { font-size: 16px; padding-left: 0; }
+  .subsection-title { font-size: 14px; }
+}
+/* 個別指導のページ：Best の行だけ淡い青（見てほしい行だけ塗る）／チェックリストだけ印刷する */
+.gtable tr.best-row td { background: #e4f0f8; }
+.cl-print { margin-left: auto; font: inherit; font-size: 13px; font-weight: 700; color: var(--blue); background: var(--white); border: 1px solid #bcd3ee; border-radius: 5px; padding: 3px 12px; cursor: pointer; }
+.cl-print:hover { background: #e4f0f8; }
+@media print {
+  .cl-print { display: none; }
+  body.print-cl .page-head, body.print-cl .page-toc-wrap, body.print-cl main > section:not(#checklist) { display: none !important; }
+}
+/* 白いカードの中の項目一覧は外枠を外す（白の上に白の箱を重ねない） */
+.sec-cards .ten-items { border: 0; padding: 0; border-top: 0.5px solid var(--border); border-radius: 0; }

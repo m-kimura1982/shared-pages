@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<title>薬歴の実例解説集</title>
+<title>薬歴の実例解説集｜薬歴マニュアル</title>
 <meta name="search-keywords" content="実例,見直し,よくある記載例,波線,通則(5),画一的,再構成,オンライン薬剤情報,転院,ステント,疑義照会,ロスバスタチン,ビソプロロール,クロピドグレル,二次予防,処方監査" />
 <link rel="stylesheet" href="../assets/source-refs.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,8 +35,8 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
 .bullet { display:flex; gap:6px; }
 .bullet > span:first-child { flex-shrink:0; color:#999; }
 
-.box-warn { background:#fff8e1; border:1px solid #e5c200; border-radius:var(--radius-sm); padding:14px 18px; font-size:var(--text-sm); }
-.box-warn .ttl { font-weight:900; margin-bottom:4px; }
+.box-warn { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:14px 18px; font-size:var(--text-sm); }
+.box-warn .ttl { font-weight:900; margin-bottom:4px; color:#9a4414; }
 
 /* ===== 目次 ===== */
 .toc-row { display:flex; align-items:baseline; gap:10px; padding:8px 2px; border-top:var(--bw) solid var(--border); text-decoration:none; color:var(--ink); }
@@ -49,7 +49,7 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
 .toc-empty { font-size:var(--text-sm); color:var(--txt-3); }
 
 /* ===== 実例 ===== */
-.ex { display:flex; flex-direction:column; gap:var(--gap-card); scroll-margin-top:70px; border-top:var(--bw-h) solid var(--border-dk); padding-top:24px; margin-top:8px; }
+.ex { display:flex; flex-direction:column; gap:var(--gap-card); scroll-margin-top:calc(var(--sn-header-h, 0px) + 16px); border-top:var(--bw-h) solid var(--border-dk); padding-top:24px; margin-top:8px; }
 .ex-head { display:flex; align-items:flex-start; gap:12px; }
 .ex-head .ex-head-t { flex:1; min-width:0; }
 .ex-head .kicker { font-size:var(--text-xs); font-weight:700; color:var(--txt-3); letter-spacing:0.06em; }
@@ -59,8 +59,12 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
 /* 1実例だけ印刷するときに末尾へ出す注記（画面では非表示） */
 .print-foot { display:none; }
 
-.card.before { border-left:3px solid var(--border-dk); }
-.card.after  { border-left:3px solid var(--blue); }
+/* よくある記載例＝灰色の帯、見直した記載例＝淡い青の帯（左の太線は注意書きの形と紛れるのでやめた。2026-10-21） */
+.card.before, .card.after { padding-top:0; overflow:hidden; }
+.card.before > .card-head, .card.after > .card-head { margin:0 calc(-1 * var(--pad-card)) 14px; padding:9px var(--pad-card); border-bottom:0; }
+.card.before > .card-head { background:#f2f2f2; }
+.card.after > .card-head { background:#e4f0f8; }
+.card.before > .card-head .ba-badge, .card.after > .card-head .ba-badge { background:none; padding:0; font-size:var(--text-sm); }
 .card-head { display:flex; align-items:center; gap:10px; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; }
 .ba-badge { font-size:var(--text-xs); font-weight:900; padding:2px 12px; border-radius:4px; letter-spacing:0.04em; }
 .ba-badge.b { background:var(--box-gray); color:var(--txt-2); }
@@ -121,6 +125,8 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
 .jd .jd-x { font-size:var(--text-sm); }
 .note { font-size:var(--text-sm); margin-bottom:14px; }
 .note:last-child { margin-bottom:0; }
+.ex-rel { margin-top:14px; padding-top:10px; border-top:var(--bw) solid var(--border); font-size:var(--text-sm); color:var(--txt-2); }
+.ex-rel a { color:var(--blue); font-weight:700; }
 .lead { font-size:var(--text-sm); color:var(--txt-2); }
 .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); }
 .box-blue .ttl { font-weight:900; color:var(--blue); margin-bottom:4px; }
@@ -211,13 +217,13 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
     <div class="ex-head">
       <div class="ex-head-t">
         <div class="kicker"></div>
-        <h2 class="section-title">乳幼児服薬指導加算１</h2>
+        <h2 class="section-title">乳幼児服薬指導加算</h2>
       </div>
     </div>
 
     <div class="rx-box">
       <p><span class="rx-lbl">処方　オセルタミビルDS3％「サワイ」２ｇ　分２　５日分</span></p>
-      <p><span class="rx-lbl">背景</span>※事例は特定されないよう内容を変えています</p>
+      <p style="margin-top:8px; color:var(--txt-3);">※事例は個人が特定されないよう内容を変えています</p>
     </div>
 
     <div class="card before">
@@ -278,6 +284,7 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
         </div>
       </div>
     </div>
+    <p class="ex-rel">場面ごとの記載例と手帳の文例は <a href="乳幼児服薬指導加算.html">乳幼児服薬指導加算の薬歴記載</a> を参照</p>
   </section>
 
   <section class="ex" data-kind="記載の見直し" data-date="2026/07/13">
@@ -321,6 +328,7 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
         </div>
       </div>
     </div>
+    <p class="ex-rel">外来服薬支援料１・２の記載項目と記載例は <a href="加算別記載一覧.html#gairaishien">加算別 薬歴記載一覧</a> を参照</p>
   </section>
 
 
@@ -410,11 +418,11 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
       <p class="note">オンライン薬剤情報には、薬剤の履歴だけでなく処置の記録も載っている。処置の時期が分かると、その後の用量の推移が治療経過に見合っているかを考える材料になる。ステント留置後にビソプロロールが2錠で継続され、ロスバスタチンが途中から20mgへ増量されていたことが、今回の処方を評価する手がかりになった。</p>
 
       <div class="sub-title">処方意図を考えた過程を、薬歴に残す</div>
-      <p class="note">薬歴にステント留置の情報を残しているのは、既往歴としてだけではなく、<span class="marker">その後の薬剤の用量や処方意図を判断する材料になるから</span>である。一般的な用量とは異なる処方では、なぜその用量になっているのかを確認し、どう判断したかをアセスメントとして残す。次に同じ処方を見た薬剤師が、その背景を把握する手がかりにもなる。</p>
+      <p class="note">薬歴にステント留置の情報を残しているのは、既往歴としてだけではなく、<b>その後の薬剤の用量や処方意図を判断する材料になるから</b>である。一般的な用量とは異なる処方では、なぜその用量になっているのかを確認し、どう判断したかをアセスメントとして残す。次に同じ処方を見た薬剤師が、その背景を把握する手がかりにもなる。</p>
 
       <div class="box-blue" style="margin-top:18px;">
         <div class="ttl">薬剤服用歴の記載事項</div>
-        オンライン資格確認等システムを通じて取得した患者の診療情報、薬剤情報等を<b>含めて</b>、次の事項等を記載する。
+        薬歴には、オンライン資格確認等システムを通じて取得した患者の診療情報、薬剤情報等も<b>含めて</b>記載する。記載事項は <a href="基本記載ルール.html">薬歴の基本記載ルール</a> を参照。
       </div>
     </div>
 
@@ -431,7 +439,7 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
         <p>特に20mg投与時においては腎機能に影響があらわれるおそれがある。20mg投与開始後12週までの間は原則、月に1回、それ以降は定期的（半年に1回等）に腎機能検査を行うなど、観察を十分に行うこと。</p>
         <p style="margin-top:8px; color:var(--txt-3); font-size:var(--text-xs);">クレストール錠／OD錠　2026年3月改訂（第7版）</p>
       </div>
-      <p class="note" style="margin-top:12px;">通常の増量は10mgまでで、20mgは「10mgでも不十分」かつ「家族性高コレステロール血症患者<b>など</b>の重症患者」に限られる。<span class="marker">「など」とあるとおり、家族性に限った用量ではない</span>。</p>
+      <p class="note" style="margin-top:12px;">通常の増量は10mgまでで、20mgは「10mgでも不十分」かつ「家族性高コレステロール血症患者<b>など</b>の重症患者」に限られる。<b>「など」とあるとおり、家族性に限った用量ではない</b>。</p>
       <p class="note">つまり家族性でないことを確認しただけでは足りず、<b>20mgがどのような意図で処方されているのか</b>まで考える必要がある。今回は、ステント留置後の冠動脈疾患二次予防を、その背景の一つと考えた。</p>
       <p class="note">20mgは腎機能検査による経過観察が求められる用量でもある。転院初回であれば、腎機能検査が適切に行われているかを、次回以降の確認事項とすることもできる。</p>
 
@@ -449,10 +457,10 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
         </table>
       </div>
       <p class="src-note">動脈硬化性疾患予防ガイドライン2022年版（日本動脈硬化学会）</p>
-      <p class="note" style="margin-top:12px;">今回は不安定狭心症であり、<span class="marker">急性冠症候群として70mg/dL未満の管理目標が設定される対象である</span>。高用量が選ばれている背景を考える材料になる。</p>
+      <p class="note" style="margin-top:12px;">今回は不安定狭心症であり、<b>急性冠症候群として70mg/dL未満の管理目標が設定される対象である</b>。高用量が選ばれている背景を考える材料になる。</p>
       <p class="note">なお海外では、2026年のACC/AHAガイドラインが、二次予防のうちリスクが特に高い患者にLDL-C 55mg/dL未満を示している（前版の70mg/dL未満から引き下げ）。国内の管理目標とは前提が異なるが、こうした値を念頭に置いた処方に出会うこともある。</p>
       <p class="src-note">2026 ACC/AHA Guideline on the Management of Dyslipidemia</p>
-      <p class="note" style="margin-top:12px;">ただし今回は<span class="marker">検査値そのものを確認できていない</span>ため、目標値を達成しているかどうかまでは評価していない。20mgという用量についても、目標値だけを根拠に必要性を判断したわけではない。急性冠症候群（不安定狭心症）でステントを留置し、その後20mgへ増量されている経過から、厳格なLDL-C管理を意図した処方と考えた。</p>
+      <p class="note" style="margin-top:12px;">ただし今回は<b>検査値そのものを確認できていない</b>ため、目標値を達成しているかどうかまでは評価していない。20mgという用量についても、目標値だけを根拠に必要性を判断したわけではない。急性冠症候群（不安定狭心症）でステントを留置し、その後20mgへ増量されている経過から、厳格なLDL-C管理を意図した処方と考えた。</p>
     </div>
   </section>
 

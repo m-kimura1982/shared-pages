@@ -61,7 +61,7 @@
     'yakureki/基本記載ルール.html': { category: 'yakureki', title: '薬歴の基本記載ルール' },
     'yakureki/個別指導で問われる記載.html': { category: 'yakureki', title: '個別指導で問われる項目と薬歴の残し方' },
     'yakureki/加算別記載一覧.html': { category: 'yakureki', title: '加算別 薬歴記載一覧' },
-    'yakureki/居宅療養管理指導_薬歴の記載事項.html': { category: 'yakureki', title: '居宅療養管理指導の薬歴記載事項（原典）' },
+    'yakureki/居宅療養管理指導_薬歴の記載事項.html': { category: 'yakureki', title: '居宅療養管理指導 薬歴記載事項の原文' },
     'yakureki/乳幼児服薬指導加算.html': { category: 'yakureki', title: '乳幼児服薬指導加算の薬歴記載' },
     'yakureki/ハイリスク薬指導.html': { category: 'yakureki', title: 'ハイリスク薬の薬歴記載方法' },
     'yakureki/ハイリスク_薬歴の書き方.html': { category: 'yakureki', title: 'ハイリスク薬 薬歴記載の考え方', parent: 'yakureki/ハイリスク薬指導.html' },
@@ -183,7 +183,7 @@
         { label: '実例解説集', url: 'yakureki/薬歴の書き方_実例解説集.html' },
         { label: '個別指導', url: 'yakureki/個別指導で問われる記載.html' },
         { label: 'ハイリスク薬', url: 'yakureki/ハイリスク薬指導.html', match: ['yakureki/ハイリスク'] },
-        { label: '加算別の記載事項', url: 'yakureki/加算別記載一覧.html', match: ['yakureki/乳幼児服薬指導加算.html', 'yakureki/居宅療養管理指導_薬歴の記載事項.html'] },
+        { label: '加算別記載一覧', url: 'yakureki/加算別記載一覧.html', match: ['yakureki/乳幼児服薬指導加算.html', 'yakureki/居宅療養管理指導_薬歴の記載事項.html'] },
         { label: '定型文集', url: 'yakureki/定型文集.html' },
       ],
     },
@@ -393,6 +393,19 @@
     }
     .sn-sib-grid a::before { content: "›"; color: #1e5fa8; font-weight: 700; flex-shrink: 0; }
     .sn-sib-grid a:hover { color: #1e5fa8; }
+    /* 柱ごとのまとまり（CATEGORIES に pillars があるカテゴリ） */
+    .sn-sib-groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 24px; }
+    .sn-sib-group { padding-top: 8px; border-top: 2px solid #e4eef9; }
+    .sn-sib-group.sn-sib-here { border-top-color: #1e5fa8; }
+    .sn-sib-gtitle { display: block; font-size: 13.5px; font-weight: 700; color: #1e5fa8; text-decoration: none; padding: 2px 0 4px; }
+    .sn-sib-gtitle:hover { text-decoration: underline; }
+    .sn-sib-gitems a {
+      display: flex; align-items: baseline; gap: 6px;
+      padding: 4px 0; font-size: 12.5px; line-height: 1.5; color: #444; text-decoration: none;
+    }
+    .sn-sib-gitems a::before { content: "›"; color: #1e5fa8; font-weight: 700; flex-shrink: 0; }
+    .sn-sib-gitems a:hover { color: #1e5fa8; }
+    .sn-sib-groups + .sn-sib-grid { margin-top: 12px; }
 
     /* 一覧の開閉（スマホだけ閉じる）。
        PC は details を open のままにし、取っ手（summary）を隠すので今までと同じ見た目。
@@ -405,6 +418,7 @@
     @media (max-width: 700px) {
       .sn-siblings { margin-top: 28px; padding: 18px 16px 4px; }
       .sn-sib-grid { grid-template-columns: 1fr; }
+      .sn-sib-groups { grid-template-columns: 1fr; gap: 10px; }
       .sn-sib-hub { margin-left: 0; }
       details.sn-sib-fold { border: 1px solid var(--fold-line, #c9d3df); background: #fff; border-radius: 8px; margin-bottom: 14px; }
       details.sn-sib-fold[open] > .sn-sib-more { display: flex; }
@@ -742,6 +756,52 @@
     );
     if (siblings.length < 2) return;
 
+    // 柱（pillars）があるカテゴリは、柱ごとにまとめて出す（2026-10-20）。
+    // 薬歴は16ページのうち9ページがハイリスクで、平らに並べると他の柱が埋もれていたため。
+    let gridHtml;
+    if (cat.pillars) {
+      const inPillar = (p, file) => file === p.url || (p.match || []).some((m) => file.startsWith(m));
+      const used = new Set();
+      const groups = cat.pillars.map((p) => {
+        const members = Object.keys(PAGES).filter(
+          (file) => PAGES[file].category === category && file !== p.url && file !== cat.url && inPillar(p, file)
+        );
+        members.forEach((m) => used.add(m));
+        used.add(p.url);
+        const here = filename === p.url || members.includes(filename);
+        return (
+          `<div class="sn-sib-group${here ? ' sn-sib-here' : ''}">` +
+          `<a class="sn-sib-gtitle" href="${encodeURI(u(p.url))}">${esc((PAGES[p.url] && PAGES[p.url].title) || p.label)}</a>` +
+          (members.length
+            ? '<div class="sn-sib-gitems">' +
+              // 柱の名前で始まる題名は、その部分を落とす（「ハイリスク薬 抗うつ薬」→「抗うつ薬」）
+              members
+                .map((f) => {
+                  const t = PAGES[f].title;
+                  const short = t.startsWith(p.label + ' ') ? t.slice(p.label.length + 1) : t;
+                  return `<a href="${encodeURI(u(f))}">${esc(short)}</a>`;
+                })
+                .join('') +
+              '</div>'
+            : '') +
+          '</div>'
+        );
+      });
+      const rest = siblings.filter(([file]) => !used.has(file));
+      gridHtml =
+        '<div class="sn-sib-groups">' + groups.join('') + '</div>' +
+        (rest.length
+          ? '<div class="sn-sib-grid">' +
+            rest.map(([file, info]) => `<a href="${encodeURI(u(file))}">${esc(info.title)}</a>`).join('') +
+            '</div>'
+          : '');
+    } else {
+      gridHtml =
+        '<div class="sn-sib-grid">' +
+        siblings.map(([file, info]) => `<a href="${encodeURI(u(file))}">${esc(info.title)}</a>`).join('') +
+        '</div>';
+    }
+
     const nav = document.createElement('nav');
     nav.className = 'sn-siblings';
     nav.setAttribute('aria-label', '同じカテゴリーのページ');
@@ -754,11 +814,8 @@
       '</div>' +
       '<details class="sn-sib-fold fold-in" open>' +
       `<summary class="sn-sib-more">すべて見る（${siblings.length}）</summary>` +
-      '<div class="sn-sib-grid">' +
-      siblings
-        .map(([file, info]) => `<a href="${encodeURI(u(file))}">${esc(info.title)}</a>`)
-        .join('') +
-      '</div></details>';
+      gridHtml +
+      '</details>';
 
     // ページ末尾のフッターがあればその手前に置く（フッターより下に出さない）
     const foot = document.querySelector('body > footer, body > .page-foot');
