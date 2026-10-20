@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive">
+    <title>処方箋・調剤録・薬歴の記載と保存｜調剤報酬・薬歴まとめ</title>
+    <meta name="search-keywords" content="廃棄,廃止,保管,保管期間,何年,紙の調剤録,外部委託,一般名処方,疑義照会,照会の回答,備考欄,調剤済み,調剤済年月日,記名押印,署名,保険調剤録,裏打ち,裏面印字,電子保存,スキャン,保存期間,3年,5年,完結の日,最終記入日,生活保護,公費,自立支援,難病,小児慢性,古い処方箋,改正前,調剤実施回数,個別指導,分割調剤,リフィル,自家製剤,製剤工程,変更調剤,薬剤服用歴" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../assets/fold.css" />
+    <style>
+      *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+      :root {
+        --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+        --pad-card:22px; --gap-card:16px;
+        --blue:#1e5fa8; --ink:#222222;
+        --bg:#f3f4f6; --white:#ffffff;
+        --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+        --border:#d1d5db; --border-dk:#9ca3af;
+        --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px;
+        --txt-2:#444444; --txt-3:#5e6470;
+        /* 根拠の種類（法令／保険のルール）を見分けるラベル。図解の淡色パレットの藤・クリーム */
+        --tag-law-bg:#e5e0f2; --tag-law-tx:#4b3f80;
+        --tag-hoken-bg:#f3e8d0; --tag-hoken-tx:#7a5718;
+        /* 保留の印 */
+        --hold-bg:#f2f2f2; --hold-tx:#444444;
+      }
+      body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+      .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+      [id] { scroll-margin-top:calc(var(--sn-header-h, 0px) + 16px); }
+
+      /* 見出し */
+      .page-title-wrap { padding:6px 0; }
+      .page-title-wrap h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+      .page-title-wrap p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+      .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+      .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+      .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+      .sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin:22px 0 9px; }
+      .sub-title:first-child { margin-top:0; }
+      .sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+
+      /* 強調 */
+      .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+      .em-change { color:var(--blue); font-weight:900; }
+
+      p.txt { font-size:var(--text-sm); line-height:1.8; }
+      p.txt + p.txt { margin-top:8px; }
+      .note { font-size:var(--text-xs); color:var(--txt-3); line-height:1.65; margin-top:8px; }
+      .note a { color:var(--blue); }
+
+      /* このページの要点 */
+      .sum .card-title { margin-bottom:6px; }
+      .sum .rows { display:flex; flex-direction:column; }
+      .sum a.pt { display:grid; grid-template-columns:8.5em minmax(0,1fr) auto; gap:4px 14px; align-items:baseline; padding:11px 6px; border-top:var(--bw) solid var(--border); text-decoration:none; color:var(--ink); font-size:var(--text-sm); line-height:1.75; border-radius:4px; }
+      .sum a.pt:first-child { border-top:none; }
+      .sum a.pt:hover { background:#f5f8fc; }
+      .sum .pt .k { font-weight:900; color:var(--blue); }
+      .sum .pt .go { color:var(--blue); font-size:var(--text-xs); font-weight:700; align-self:center; white-space:nowrap; }
+      .sum .pt .go::after { content:"›"; font-weight:900; margin-left:4px; }
+      .sum a.pt:hover .go { text-decoration:underline; }
+
+      /* 根拠の種類のラベル */
+      .tag { display:inline-block; font-size:var(--text-xs); font-weight:700; padding:0 7px; border-radius:4px; line-height:1.7; white-space:nowrap; vertical-align:1px; }
+      .tag.law { background:var(--tag-law-bg); color:var(--tag-law-tx); }
+      .tag.hoken { background:var(--tag-hoken-bg); color:var(--tag-hoken-tx); }
+      .legend { display:flex; flex-wrap:wrap; gap:6px 16px; font-size:var(--text-xs); color:var(--txt-2); margin:0 0 12px; }
+      .legend span.tag { margin-right:5px; }
+
+      /* 表 */
+      .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+      table { width:100%; border-collapse:collapse; font-size:var(--text-sm); line-height:1.65; }
+      th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 10px; text-align:left; border-bottom:2px solid var(--border-dk); vertical-align:bottom; }
+      td { padding:9px 10px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
+      tr:last-child td { border-bottom:none; }
+      td.rh, th.rh { font-weight:900; white-space:nowrap; }
+      td .sm { display:block; font-size:var(--text-xs); color:var(--txt-3); margin-top:3px; font-weight:400; }
+      td .tag { margin:0 4px 3px 0; }
+      td.no { color:var(--txt-3); }
+      .t3 th:not(.rh), .t3 td:not(.rh) { width:30%; }
+      .scene td.rh { white-space:normal; min-width:8em; }
+      .scene th:not(.rh), .scene td:not(.rh) { width:27%; }
+      .keep td.v { font-weight:900; min-width:5.5em; }
+      .keep td.v .sm { font-weight:400; }
+      .keep th:nth-child(2), .keep td:nth-child(2) { white-space:nowrap; }
+      .keep td.v .em-change { font-weight:900; }
+
+      /* 箇条書き */
+      .list { display:flex; flex-direction:column; gap:6px; margin:6px 0 2px; }
+      .list .li { font-size:var(--text-sm); line-height:1.7; padding-left:18px; text-indent:-18px; }
+      .list .li::before { content:"・"; color:var(--txt-3); font-weight:900; margin-right:6px; }
+      ol.nlist { margin:6px 0 2px 1.6em; font-size:var(--text-sm); line-height:1.7; }
+      ol.nlist li { padding-left:2px; }
+      ol.nlist li.keep4 { font-weight:700; }
+
+      /* ボックス */
+      .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; margin-top:12px; }
+      .box-blue .ttl { display:block; font-weight:900; margin-bottom:5px; color:var(--blue); }
+      .box-gray { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; margin-top:12px; }
+      .box-gray .ttl { display:block; font-weight:900; margin-bottom:5px; }
+      .hold { display:inline-block; font-size:var(--text-xs); font-weight:900; background:var(--hold-bg); color:var(--hold-tx); border:var(--bw-h) solid var(--border-dk); border-radius:4px; padding:0 7px; margin-right:6px; line-height:1.7; }
+
+      /* 関連リンク */
+      .rel { display:flex; flex-direction:column; gap:8px; }
+      .rel a { display:flex; align-items:center; gap:9px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; text-decoration:none; color:var(--ink); font-size:var(--text-sm); font-weight:700; }
+      .rel a::before { content:"›"; color:var(--blue); font-weight:900; }
+      .rel a:hover { background:#fafbfc; border-color:#bcd3ee; }
+      .rel a .sub { font-weight:400; color:var(--txt-3); font-size:var(--text-xs); margin-left:auto; }
+
+      /* 原典 */
+      .src td { font-size:var(--text-xs); }
+      .src td:first-child { font-size:var(--text-sm); font-weight:700; }
+      .src a { color:var(--blue); word-break:break-all; }
+
+      @media (max-width:640px) {
+        body { font-size:14px; padding:14px 12px 40px; line-height:1.75; }
+        :root { --text-xs:11.5px; --text-sm:13.5px; --text-md:14px; --text-lg:16px; --text-xl:18px; --pad-card:14px; --gap-card:11px; }
+        .card { border-radius:8px; }
+        .t3 { min-width:520px; } .scene { min-width:600px; }
+        .keep { min-width:520px; }
+        .rel a .sub { display:none; }
+        .sum a.pt { grid-template-columns:minmax(0,1fr) auto; padding:10px 2px; }
+        .sum .pt .k { grid-column:1; grid-row:1; }
+        .sum .pt .go { grid-column:2; grid-row:1; }
+        .sum .pt .v { grid-column:1 / span 2; grid-row:2; }
+      }
+      @media print {
+        @page { margin:10mm 9mm; size:A4; }
+        body { background:#fff; padding:0; font-size:11px; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        .page { display:block; max-width:none; }
+        .card { border:0.5px solid #ccc; padding:9px 11px; margin-bottom:7px; break-inside:auto; }
+        .card-title, .sub-title { break-after:avoid; }
+        .sum, .box-blue, .box-gray, tr { break-inside:avoid; }
+        .sum .pt .go { display:none; }
+        .page-toc-wrap { display:none; }
+        .t3, .scene { min-width:0; }
+        a { color:inherit; text-decoration:none; }
+      }
+    </style>
+  </head>
+  <body>
+    <script src="../../assets/site-header.js" defer></script>
+    <script src="../../assets/page-toc.js" defer></script>
+    <div class="page">
+
+      <div class="page-title-wrap">
+        <h1>処方箋・調剤録・薬歴の記載と保存</h1>
+        <p>2026年10月時点の内容。2027年5月20日から保存期間と調剤録の記入事項が変わる</p>
+      </div>
+
+      <div class="page-toc-wrap"><div id="page-toc"></div></div>
+
+      <div class="card sum" id="yoten" data-toc="skip">
+        <div class="card-title">このページの要点</div>
+        <div class="rows">
+          <a class="pt" href="#chigai"><span class="k">根拠の違い</span><span class="v">処方箋と調剤録は<b>薬剤師法</b>、薬歴は<b>調剤報酬の通知</b>が記載事項を決めている。保険薬局は、これに療養担当規則と保険の通知が加わり、すべてを満たす。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#gigi"><span class="k">疑義照会</span><span class="v"><span class="marker">処方箋の「備考」欄か「処方」欄に回答の内容を記載する</span>。薬歴には照会の要点を記載する。分割調剤・リフィルの途中は調剤録にも記入する。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#kami"><span class="k">紙の調剤録をやめた</span><span class="v">調剤録は、調剤済みの処方箋や薬歴に必要事項が記載されていれば足りる。照会の回答は処方箋に記載するので、電子の調剤録に入れなくても記録は欠けない。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#hozon"><span class="k">保存期間</span><span class="v">処方箋・調剤録は今は３年。<span class="em-change">2027年5月20日から５年</span>。<b>施行日より前に完結したものは３年のまま</b>。薬歴は３年のまま。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#denshi"><span class="k">電子保存</span><span class="v">処方箋・調剤録とも電子で保存できる。紙の処方箋をスキャンして保存することも、条件を満たせば認められている。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="薬局で保存する書類の保存期間一覧.html"><span class="k">ほかの書類</span><span class="v">麻薬帳簿・仕入れの記録・公費の帳簿などの保存期間は、保存期間一覧にまとめてある。</span><span class="go">開く</span></a>
+        </div>
+      </div>
+
+      <!-- 3つの記録の違い -->
+      <div class="card" id="chigai" data-toc-label="3つの記録の違い">
+        <div class="card-title">3つの記録の違い</div>
+        <div class="legend">
+          <span><span class="tag law">法令</span>薬剤師法・薬機法と、その施行規則</span>
+          <span><span class="tag hoken">保険</span>療養担当規則・調剤報酬の通知</span>
+        </div>
+        <div class="table-wrap">
+          <table class="t3">
+            <thead><tr><th class="rh"></th><th>処方箋</th><th>調剤録</th><th>薬歴</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="rh">何を残すか</td>
+                <td>調剤した事実と、変更・照会の結果を処方箋そのものに記入する</td>
+                <td>誰に・何を・いつ・誰が調剤し、どう指導したか</td>
+                <td>患者ごとの薬学的管理の記録。処方内容に関する照会の要点も入る</td>
+              </tr>
+              <tr>
+                <td class="rh">記載する人</td>
+                <td>調剤した薬剤師</td>
+                <td>調剤した薬剤師</td>
+                <td>保険薬剤師</td>
+              </tr>
+              <tr>
+                <td class="rh">記載事項を<br>決めているもの</td>
+                <td><span class="tag law">法令</span>薬剤師法<br><span class="tag hoken">保険</span>処方箋の記載要領</td>
+                <td><span class="tag law">法令</span>薬剤師法<br><span class="tag hoken">保険</span>保険調剤録の通知<span class="sm">法令の調剤録に保険の項目を加えたものが「保険調剤録」</span></td>
+                <td><span class="tag hoken">保険</span>調剤報酬の通知<br><span class="tag law">法令</span>薬機法（服薬指導の記録）</td>
+              </tr>
+              <tr>
+                <td class="rh">保存する人</td>
+                <td>薬局開設者</td>
+                <td>薬局開設者</td>
+                <td>保険薬局</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="txt" style="margin-top:12px;">保険薬局では、<span class="tag law">法令</span>と<span class="tag hoken">保険</span>の両方を満たす。</p>
+        <p class="txt">「疑義照会は処方箋・調剤録・薬歴の3か所に記載するよう薬剤師法で決まっている」と言われることがあるが、薬剤師法が決めているのは処方箋と調剤録の記載事項で、<b>薬歴の記載事項は調剤報酬の通知</b>が決めている。薬機法も、薬局開設者が薬剤師に服薬指導の内容を記録させるよう求めている。</p>
+        <p class="note">東北厚生局の指導資料は、調剤録を「調剤報酬請求の根拠」と位置づけている。</p>
+      </div>
+
+      <!-- 疑義照会 -->
+      <div class="card" id="gigi" data-toc-label="疑義照会の記録">
+        <div class="card-title">疑義照会をしたら、どこに何を記載するか</div>
+        <div class="box-blue" style="margin:0 0 12px;">
+          <span class="ttl">「調剤済み」とは</span>
+          処方箋の分をすべて調剤し終えると、その処方箋は調剤済みになる。通常の調剤はこれに当たる。<b>分割調剤やリフィル処方箋の途中で処方箋を患者に返却するとき</b>は調剤済みにならない。
+        </div>
+        <div class="table-wrap">
+          <table class="t3">
+            <thead><tr><th class="rh"></th><th>処方箋</th><th>調剤録</th><th>薬歴</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="rh">記載すること</td>
+                <td><b>回答の内容</b><br>「備考」欄か「処方」欄</td>
+                <td><b>処方箋が調剤済みになる場合</b>：記入しなくてよい<br><b>調剤済みにならない場合</b>：回答の内容を記入する</td>
+                <td><b>処方内容に関する照会の要点</b></td>
+              </tr>
+              <tr>
+                <td class="rh">根拠</td>
+                <td><span class="tag law">法令</span>薬剤師法施行規則 第15条<br><span class="tag hoken">保険</span>処方箋の記載要領<span class="sm">記入する欄（「備考」欄か「処方」欄）は記載要領が決めている</span></td>
+                <td><span class="tag law">法令</span>薬剤師法施行規則 第16条<br><span class="tag hoken">保険</span>保険調剤録の通知</td>
+                <td><span class="tag hoken">保険</span>調剤報酬の通知</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="txt" style="margin-top:12px;">処方内容を変えなかった照会でも、回答の内容は記載する。施行規則は「疑わしい点を確かめた場合」と定めており、変更の有無で分けていない。個別指導でも、照会の回答内容が処方箋に記載されていない例が指摘されている。</p>
+        <p class="txt">薬歴の「照会の要点」の書き方は、<a href="../../yakureki/基本記載ルール.html" style="color:var(--blue);font-weight:700;">薬歴の基本記載ルール</a>の項目イにある。</p>
+      </div>
+
+      <!-- 紙の調剤録をやめた -->
+      <div class="card" id="kami" data-toc-label="紙の調剤録をやめた">
+        <div class="card-title">紙の調剤録をやめた店舗では</div>
+        <div class="list">
+          <div class="li">法令の調剤録は、処方箋が調剤済みになった場合、患者の氏名・年齢、調剤日、薬剤師の氏名、指導の要点の<b>4項目だけでよい</b>（施行規則第16条のただし書）。照会の回答は、紙の調剤録の頃から、調剤済みなら調剤録に書かなくてよい項目。</div>
+          <div class="li">照会の回答は処方箋の「備考」欄か「処方」欄に、照会の要点は薬歴に記載する。この2つがあれば、電子の調剤録に照会の回答が入っていなくても、記録が欠けることにはならない。</div>
+          <div class="li">分割調剤・リフィルの途中は処方箋を患者に返却するので、照会の回答は調剤録にも記入する。</div>
+          <div class="li">調剤済みの処方箋や薬歴に必要事項が記載されていれば、それを調剤録の代わりにできるとされている（<a href="#chozairoku" style="color:var(--blue);">保険調剤録</a>も同じ）。</div>
+        </div>
+        <p class="txt" style="margin-top:8px;">調剤録の内容は、服薬指導のときなど必要なときにすぐ確認できるようにしておく。保険調剤録の請求点数・患者負担金額などがどこに残るかは、<a href="#denshi" style="color:var(--blue);">電子で保存する</a>の最後を参照。</p>
+      </div>
+
+      <!-- 書類ごとの記載事項 -->
+      <div class="card" id="shorui" data-toc-label="書類ごとの記載事項">
+        <div class="card-title">書類ごとの記載事項</div>
+
+        <div class="sub-title" id="shohosen">処方箋に記入すること</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th class="rh">記入する場所</th><th>記入すること</th></tr></thead>
+            <tbody>
+              <tr><td class="rh">所定の欄</td><td>調剤済年月日<span class="sm">調剤済みにならなかった場合は、調剤年月日と調剤量</span></td></tr>
+              <tr><td class="rh">所定の欄</td><td>保険薬局の所在地と名称</td></tr>
+              <tr><td class="rh">所定の欄</td><td>保険薬剤師の署名、又は記名と押印<span class="sm">調剤した薬剤師本人が行う</span></td></tr>
+              <tr><td class="rh">「備考」欄か<br>「処方」欄</td><td>医師の同意を得て処方箋の医薬品を変更して調剤した場合は、<b>その変更内容</b></td></tr>
+              <tr><td class="rh">「備考」欄か<br>「処方」欄</td><td>医師に照会した場合は、<b>その回答の内容</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">記名押印を事務員が代わりに行っている例、調剤済年月日・薬局の所在地や名称が記入されていない例は、個別指導で指摘されている。</p>
+
+        <div class="sub-title" id="chozairoku">調剤録に記入すること</div>
+        <p class="txt">法令（施行規則第16条）で決まっている記入事項は次の10項目。処方箋がその調剤で調剤済みになった場合は、<span class="marker">「調剤済みでも必要」と付けた4項目だけでよい</span>。</p>
+        <ol class="nlist">
+          <li class="keep4">患者の氏名と年齢　【調剤済みでも必要】</li>
+          <li>薬名と分量</li>
+          <li class="keep4">調剤と、情報提供・指導を行った年月日　【調剤済みでも必要】</li>
+          <li>調剤量</li>
+          <li class="keep4">調剤と、情報提供・指導を行った薬剤師の氏名　【調剤済みでも必要】</li>
+          <li class="keep4">情報提供・指導の内容の要点　【調剤済みでも必要】</li>
+          <li>処方箋の発行年月日</li>
+          <li>処方箋を交付した医師の氏名</li>
+          <li>その医師の住所、又は勤務する医療機関の名称と所在地</li>
+          <li>医師の同意を得て変更した場合はその変更内容、照会した場合はその回答の内容</li>
+        </ol>
+        <p class="note">2027年5月20日からは、調剤業務の一部を外部に委託した場合の項目（委託した業務の内容と、委託した旨）が加わる。処方箋の記入事項にも同じ項目が加わる。</p>
+
+        <p class="txt" style="margin-top:14px;">保険薬局で作る<b>保険調剤録</b>には、上の事項に加えて次の3つを記入する。</p>
+        <div class="list">
+          <div class="li">患者の被保険者証の記号番号、保険者名、生年月日、被保険者か被扶養者かの別</div>
+          <div class="li">その薬局で調剤した薬剤について、処方箋に記載された用量、すでに調剤した量、使用期間</div>
+          <div class="li">その薬局で調剤した薬剤と調剤について、請求項目、請求点数、患者負担金額</div>
+        </div>
+        <div class="box-blue">
+          <span class="ttl">保険調剤録は、処方箋か薬歴で代えられる</span>
+          調剤済みになった処方箋、又は薬歴に、保険調剤録と同じ事項を記載したものは、保険調剤録の代わりにできる。処方箋の裏に調剤録の事項を印字して調剤録とする運用は、これに当たる。
+        </div>
+        <p class="note">個別指導では、調剤年月日・処方箋の発行年月日の誤り、請求項目・請求点数・患者負担金額の区分が分かりにくい例が指摘されている。</p>
+
+        <div class="sub-title" id="yakureki">薬歴に記載すること</div>
+        <p class="txt">記載事項は調剤報酬の通知が決めている。処方・調剤内容の項目に「処方内容に関する照会の要点」が入っている。項目ごとの書き方は薬歴マニュアルにまとめてある。</p>
+        <div class="rel" style="margin-top:10px;">
+          <a href="../../yakureki/基本記載ルール.html">薬歴の基本記載ルール<span class="sub">記載事項ア〜オ</span></a>
+          <a href="../../yakureki/個別指導で問われる記載.html">個別指導で問われる記載<span class="sub">薬歴で指摘されやすい点</span></a>
+        </div>
+      </div>
+
+      <!-- 場面ごと -->
+      <div class="card" id="bamen" data-toc-label="場面ごとの記録">
+        <div class="card-title">場面ごとに、どこに何を記載するか</div>
+        <p class="txt" style="margin-bottom:10px;">通常の調剤で記載する事項に<b>追加するもの</b>だけを挙げる。「調剤録等」は通知の言い方のまま載せた。</p>
+        <div class="table-wrap">
+          <table class="scene">
+            <thead><tr><th class="rh">場面</th><th>処方箋</th><th>調剤録・薬歴</th><th>ほかにすること</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="rh">疑義照会をした</td>
+                <td>回答の内容<span class="sm">「備考」欄か「処方」欄</span></td>
+                <td>薬歴に照会の要点<span class="sm">調剤済みにならない場合は、調剤録にも回答の内容</span></td>
+                <td class="no">—</td>
+              </tr>
+              <tr>
+                <td class="rh">医師の同意を得て医薬品を変更した</td>
+                <td>変更内容<span class="sm">「備考」欄か「処方」欄</span></td>
+                <td>調剤済みにならない場合は、調剤録に変更内容</td>
+                <td class="no">—</td>
+              </tr>
+              <tr>
+                <td class="rh">分割調剤をして、当薬局では調剤済みにならない<span class="sm">下の3種類に共通</span></td>
+                <td>調剤量・調剤年月日など薬剤師法で決まっている事項と、<b>分割の理由</b>など</td>
+                <td>調剤録等を作る</td>
+                <td>処方箋を患者に返却する</td>
+              </tr>
+              <tr>
+                <td class="rh">長期保存が難しい等の理由で分割した</td>
+                <td>共通の行のとおり</td>
+                <td>調剤録等に<b>分割の理由</b>など</td>
+                <td>受付時に処方箋を発行した医療機関に照会する</td>
+              </tr>
+              <tr>
+                <td class="rh">後発品を試すために分割した</td>
+                <td>共通の行のとおり</td>
+                <td>調剤録等に<b>分割の理由</b>など<span class="sm">2回目に先発品へ戻した場合は、戻した理由など</span></td>
+                <td>処方箋を発行した医療機関に連絡する<span class="sm">2回目に先発品へ戻した場合も連絡する</span></td>
+              </tr>
+              <tr>
+                <td class="rh">医師の分割指示がある処方箋で調剤した</td>
+                <td>別紙の「受付保険薬局情報」欄に、薬局の所在地・名称、保険薬剤師の氏名、調剤年月日</td>
+                <td class="no">—</td>
+                <td class="no">—</td>
+              </tr>
+              <tr>
+                <td class="rh">リフィル処方箋で、当薬局では調剤済みにならない</td>
+                <td>「調剤実施回数」欄のチェック欄に「✓」か「×」、調剤日と次回調剤予定日を記入。薬局名と薬剤師の氏名を余白か裏面に</td>
+                <td>調剤録等を作る</td>
+                <td>処方箋を患者に返却する。<b>記入した処方箋の写しを調剤録と一緒に保管</b>する。最後の回が終わったら調剤済処方箋として保管</td>
+              </tr>
+              <tr>
+                <td class="rh">自家製剤をした</td>
+                <td class="no">—</td>
+                <td>調剤録等に<b>製剤工程</b><span class="sm">賦形剤の名称・分量なども</span></td>
+                <td class="no">—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-gray">
+          <span class="ttl">後発品への変更調剤</span>
+          <div class="list">
+            <div class="li">後発品に変更して調剤した場合や一般名処方で調剤した場合は、調剤した医薬品の銘柄（含量規格や剤形を変えた場合はそれも）を、処方箋を発行した医療機関に提供する。医療機関とのあいだで要否・方法・頻度を取り決めている場合は、その方法でよい。</div>
+            <div class="li">薬局が処方箋に記入する事項（処方箋の記載要領）に、後発品への変更調剤だけの項目はない。後発品への変更調剤の取扱いを定めた通知も、処方箋への記入ではなく医療機関への情報提供を求めている。</div>
+            <div class="li"><span class="hold">保留</span>「変更不可」の欄が空いている処方箋で後発品に変更することが、法令の「医師の同意を得て変更した場合」に当たるか（当たれば変更内容を処方箋に記入する）を示した資料は見つかっていない。</div>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- 保存 -->
+      <div class="card" id="hozon" data-toc-label="保存期間">
+        <div class="card-title">保存期間</div>
+        <div class="table-wrap">
+          <table class="keep">
+            <thead><tr><th class="rh">記録</th><th>今</th><th>2027年5月20日から</th><th>数え始める日</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="rh">処方箋<span class="sm"><span class="tag law">法令</span>薬剤師法</span></td>
+                <td class="v">３年</td>
+                <td class="v"><span class="em-change">５年</span><span class="sm">施行日より前に調剤済みになったものは３年のまま</span></td>
+                <td>調剤済みとなった日</td>
+              </tr>
+              <tr>
+                <td class="rh">調剤録<span class="sm"><span class="tag law">法令</span>薬剤師法</span></td>
+                <td class="v">３年</td>
+                <td class="v"><span class="em-change">５年</span><span class="sm">施行日より前に最後の記入をしたものは３年のまま</span></td>
+                <td>最終の記入の日</td>
+              </tr>
+              <tr>
+                <td class="rh">処方箋・調剤録<span class="sm"><span class="tag hoken">保険</span>療養担当規則</span></td>
+                <td class="v">３年</td>
+                <td class="v"><span class="em-change">５年</span><span class="sm">施行日より前に完結したものは３年のまま</span></td>
+                <td>完結の日</td>
+              </tr>
+              <tr>
+                <td class="rh">服薬指導の記録<span class="sm"><span class="tag law">法令</span>薬機法</span></td>
+                <td class="v">３年</td>
+                <td class="v"><span class="em-change">５年</span><span class="sm">施行日より前に最後の記載をしたものは３年のまま</span></td>
+                <td>記載の日<span class="sm">2027年5月20日からは「最終の記載の日」</span></td>
+              </tr>
+              <tr>
+                <td class="rh">薬歴<span class="sm"><span class="tag hoken">保険</span>調剤報酬の通知</span></td>
+                <td class="v">３年</td>
+                <td class="v">３年<span class="sm">今回の改正の対象になっていない</span></td>
+                <td>最終記入日</td>
+              </tr>
+              <tr>
+                <td class="rh">公費の帳簿と書類<span class="sm">生活保護・自立支援医療・難病・小児慢性</span></td>
+                <td class="v">５年</td>
+                <td class="v">５年</td>
+                <td>完結の日</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="txt" style="margin-top:12px;">2027年5月20日は、2025年の薬機法等の改正のうち、この部分が施行される日。薬剤師法の５年は法律で、療養担当規則と服薬指導の記録の５年は2026年9月30日公布の省令で決まった。<b>どれも、施行日より前のものは３年のまま</b>。</p>
+        <p class="note">数え始める日は、法令ごとの言い方のまま載せた。同じ書類で数え始める日が違うときは、遅いほうの日から、長いほうの期間保存する。</p>
+        <p class="note"><span class="hold">保留</span>公費の「帳簿と書類」に処方箋・調剤録が入るかをはっきり書いた国の資料は確認できていない。分かるまで、公費の患者の処方箋・調剤録も５年は廃棄しない。</p>
+
+        <div class="box-blue">
+          <span class="ttl">今ある処方箋・調剤録を廃棄してよいか</span>
+          <div class="list">
+            <div class="li">完結から３年を過ぎたものは、今のルールどおり廃棄できる（公費の患者の分は５年）。</div>
+            <div class="li"><span class="marker">2027年5月20日より前に完結したものは、施行後も３年で廃棄できる</span>。例）2024年6月1日に完結した処方箋は、2027年6月1日以降に廃棄できる。</div>
+            <div class="li">2027年5月20日以降に完結したものから、５年保存になる。</div>
+          </div>
+        </div>
+        <p class="note">2027年5月20日以降も、薬歴の保存期間は３年のまま。薬機法の服薬指導の記録も、薬歴等に必要事項が記載されていれば規定を満たすとされている。<span class="hold">保留</span>服薬指導の記録が５年になったとき、それを兼ねている薬歴も５年残すのかを示した資料はまだない。</p>
+      </div>
+
+      <!-- 電子保存 -->
+      <div class="card" id="denshi" data-toc-label="電子で保存する">
+        <div class="card-title">電子で保存する</div>
+        <p class="txt">処方箋と調剤録は、紙の代わりに電子で保存できる。電子で作った記録をそのまま保存する方法と、紙をスキャナで読み取って保存する方法のどちらでもよい。</p>
+        <p class="txt">電子で保存する場合は、次の3つを満たす必要がある。</p>
+        <div class="list">
+          <div class="li">必要なときにすぐ画面に表示でき、書面に印刷できる</div>
+          <div class="li">保存期間中に書き換えや消去があったかどうかとその内容を確かめられ、誰が作った記録かが分かる</div>
+          <div class="li">保存期間中、元に戻せる状態で保存されている</div>
+        </div>
+        <p class="txt" style="margin-top:8px;">紙で受け取った処方箋を薬局でスキャンして電子で保存することも、この3つの条件のもとで認められている。電子で保存する場合は、施設の管理者が<b>運用管理規程</b>を定め、そのとおりに運用する。スキャナの性能など技術的な条件は「医療情報システムの安全管理に関するガイドライン」にある。自店のシステムが満たしているかは、メーカーに確認する。</p>
+        <p class="txt" style="margin-top:8px;">条件を満たしてスキャンした電子の記録は、紙の保存に代えることができ、紙で保存したものとみなされる。<b>スキャンした後の紙を残しておく決まりはない</b>。</p>
+        <p class="txt" style="margin-top:8px;"><span class="marker">電子で保存できることと、記載事項を満たしていることは別の話</span>。紙の調剤録をやめる前に、今まで紙に印字されていた事項が、電子の記録・処方箋・薬歴のどこに残るかを確かめる。</p>
+      </div>
+
+      <!-- 関連ページ -->
+      <div class="card" id="kanren" data-toc="skip">
+        <div class="card-title">関連ページ</div>
+        <div class="rel">
+          <a href="薬局で保存する書類の保存期間一覧.html">薬局で保存する書類の保存期間一覧<span class="sub">麻薬・仕入れ・公費の帳簿など</span></a>
+          <a href="../../加算まとめ/分割調剤.html">分割調剤<span class="sub">3種類の分割と算定</span></a>
+          <a href="../../ナレッジ/リフィル処方箋.html">リフィル処方箋<span class="sub">受付から返却まで</span></a>
+          <a href="../../ナレッジ/変更調剤について.html">変更調剤について</a>
+          <a href="../../加算まとめ/自家製剤加算・計量混合調剤加算.html">自家製剤加算・計量混合調剤加算</a>
+        </div>
+      </div>
+
+      <!-- 原典 -->
+      <div class="card" id="genten" data-toc-label="原典">
+        <div class="card-title">原典<span class="qual">法令・通知・指導資料</span></div>
+        <div class="table-wrap">
+          <table class="src">
+            <thead><tr><th>資料</th><th>このページで使ったところ</th></tr></thead>
+            <tbody>
+              <tr><td>薬剤師法<br><a href="https://laws.e-gov.go.jp/law/335AC0000000146" target="_blank" rel="noopener">e-Gov法令検索</a></td><td>第23条（変更調剤の同意）、第24条（疑義照会）、第26条（処方箋への記入）、第27条（処方箋の保存）、第28条（調剤録）</td></tr>
+              <tr><td>医薬品、医療機器等の品質、有効性及び安全性の確保等に関する法律等の一部を改正する法律（令和7年法律第37号）<span class="sm" style="font-weight:400;">改正後の薬剤師法は、上の薬剤師法のページで施行日を選ぶと読める</span></td><td>薬剤師法第27条・第28条の５年への改正、附則第10条（施行日より前の処方箋・調剤録は従前の例による）</td></tr>
+              <tr><td>薬剤師法施行規則<br><a href="https://laws.e-gov.go.jp/law/336M50000100005" target="_blank" rel="noopener">e-Gov法令検索</a></td><td>第15条（処方箋の記入事項）、第16条（調剤録の記入事項と、調剤済みの場合のただし書）。令和8年厚生労働省令第110号による2027年5月20日からの追加</td></tr>
+              <tr><td>保険薬局及び保険薬剤師療養担当規則<br><a href="https://laws.e-gov.go.jp/law/332M50000100016" target="_blank" rel="noopener">e-Gov法令検索</a></td><td>第5条（調剤録の整備）、第6条（処方箋・調剤録の保存）、第10条（調剤録の記載）</td></tr>
+              <tr><td>医薬品医療機器等法・同施行規則<br><a href="https://laws.e-gov.go.jp/law/336M50000100001" target="_blank" rel="noopener">e-Gov法令検索</a></td><td>法第9条の4第6項・規則第15条の14の3（服薬指導の記録と保存）</td></tr>
+              <tr><td>保険薬局の分割調剤及び調剤録の取扱いについて（保医発1110第1号 令和2年11月10日）<br><a href="https://www.ajha.or.jp/topics/admininfo/pdf/2020/201111_3.pdf" target="_blank" rel="noopener">PDF</a>（全日本病院協会の掲載）</td><td>保険調剤録の記入事項、処方箋・薬歴で代えられること</td></tr>
+              <tr><td>医薬品、医療機器等の品質、有効性及び安全性の確保等に関する法律等の一部を改正する法律の一部の施行に当たっての留意事項について（薬局・薬剤師関係）（薬生総発0831第6号 令和2年8月31日）<br><a href="https://www.pref.tokushima.lg.jp/file/attachment/574432.pdf" target="_blank" rel="noopener">PDF</a>（徳島県の掲載）</td><td>調剤録と服薬指導の記録は、調剤済みの処方箋や薬歴等に必要事項が記載されていれば規定を満たすこと、すぐ確認できるようにしておくこと</td></tr>
+              <tr><td>診療報酬請求書等の記載要領等について（昭和51年保険発第82号、令和8年改正）</td><td>処方箋の記載上の注意事項「10 その他」(1)〜(7)。薬剤師が処方箋に記載する事項（変更内容・照会の回答を「備考」欄か「処方」欄に記入すること、分割指示の処方箋・リフィル処方箋の記入を含む）</td></tr>
+              <tr><td>処方せんに記載された医薬品の後発医薬品への変更について（保医発0305第12号 平成24年3月5日）<br><a href="https://www.mhlw.go.jp/bunya/iryouhoken/iryouhoken15/dl/tuuchi1-4.pdf" target="_blank" rel="noopener">PDF</a></td><td>後発品への変更調剤・一般名処方での調剤の情報提供と、取り決めた方法でよいこと</td></tr>
+              <tr><td>別添3 調剤報酬点数表に関する事項（保医発0305第6号 令和8年3月5日）<br><a href="../../改定資料/別添3_調剤報酬点数表に関する事項2026.html">サイト内の正本</a></td><td>通則（分割調剤・リフィル）、調剤基本料の分割調剤、自家製剤加算、薬学管理料の通則（薬歴の記載事項・保存）</td></tr>
+              <tr><td>令和8年厚生労働省令第142号（令和8年9月30日公布、2027年5月20日施行）<span class="sm" style="font-weight:400;">改正後の文面は、療養担当規則・薬機法施行規則のe-Govのページで施行日を選ぶと読める</span></td><td>療養担当規則第6条の５年、薬機法施行規則第15条の14の3の５年、附則（施行日より前のものは従前の例による）</td></tr>
+              <tr><td>中医協 総-4・総-5-1・総-5-2（令和8年9月9日）「薬機法等改正に伴う保険薬局及び保険薬剤師療養担当規則等の所要の見直しについて」<br><a href="https://www.mhlw.go.jp/content/10808000/001747617.pdf" target="_blank" rel="noopener">改定案</a>・<a href="https://www.mhlw.go.jp/content/10808000/001747618.pdf" target="_blank" rel="noopener">補足資料</a>・<a href="https://www.mhlw.go.jp/content/10808000/001747687.pdf" target="_blank" rel="noopener">新旧対照</a></td><td>上の省令の改正の経緯（中医協への諮問と改正の案）</td></tr>
+              <tr><td>指定医療機関医療担当規程（昭和25年厚生省告示第222号）<br><a href="https://www.city.fukuoka.lg.jp/fukushi/hogo/netdetetsuduki/seikatuhogohou-iryou-kaigo/003_2.html" target="_blank" rel="noopener">福岡市の掲載</a></td><td>第9条（診療・診療報酬の請求に関する帳簿と書類の５年保存）。自立支援医療・難病・小児慢性の療養担当規程は<a href="薬局で保存する書類の保存期間一覧.html#genten">保存期間一覧の原典</a>に挙げた</td></tr>
+              <tr><td>民間事業者等が行う書面の保存等における情報通信の技術の利用に関する法律（平成16年法律第149号）<br><a href="https://laws.e-gov.go.jp/law/416AC0000000149" target="_blank" rel="noopener">e-Gov法令検索</a></td><td>第3条（書面の保存に代えて電磁的記録で保存できること、書面で保存したものとみなすこと）</td></tr>
+              <tr><td>厚生労働省の所管する法令の規定に基づく民間事業者等が行う書面の保存等における情報通信の技術の利用に関する省令<br><a href="https://laws.e-gov.go.jp/law/417M60000100044" target="_blank" rel="noopener">e-Gov法令検索</a></td><td>第4条（電子保存の方法と3つの条件）、別表第一（薬剤師法の処方箋・調剤録、療養担当規則の保存）</td></tr>
+              <tr><td>疑義解釈（平成18年3月31日・平成24年3月30日）<br><a href="../../ツール/gigi-search.html">疑義解釈検索</a></td><td>後発品への変更調剤の情報提供、取り決めた方法でよいこと</td></tr>
+              <tr><td>民間事業者等が行う書面の保存等における情報通信の技術の利用に関する法律等の施行等について（医政発第0331009号ほか 平成17年3月31日、平成28年3月31日改正）<br><a href="https://www.mhlw.go.jp/content/11121000/000549893.pdf" target="_blank" rel="noopener">PDF</a></td><td>電子保存の3条件、紙の処方箋をスキャンして保存できること、運用管理規程、安全管理ガイドライン</td></tr>
+              <tr><td>東北厚生局「保険調剤の理解のために（令和８年度）」<br><a href="https://kouseikyoku.mhlw.go.jp/tohoku/08.touhoku.yakkyoku.pdf" target="_blank" rel="noopener">PDF</a></td><td>処方箋への記入の書き方、分割指示の処方箋の記入、調剤録は調剤報酬請求の根拠、保険調剤録の記入事項の引き方</td></tr>
+              <tr><td>東海北陸厚生局「令和６年度に実施した個別指導において保険薬局に改善を求めた主な指摘事項」<br><a href="https://kouseikyoku.mhlw.go.jp/tokaihokuriku/000424611.pdf" target="_blank" rel="noopener">PDF</a></td><td>調剤済処方箋・調剤録の指摘</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>

@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive">
+    <title>薬局で保存する書類の保存期間一覧｜調剤報酬・薬歴まとめ</title>
+    <meta name="search-keywords" content="処方箋,調剤録,薬歴,服薬指導の記録,5年,2027年,古い処方箋,改正前,いつから,保存年限,保管年数,保管期間,何年,処分,シュレッダー,廃棄,破棄,捨ててよい,麻薬帳簿,譲渡証,譲受証,譲渡確認書,譲受確認書,許可書,廃棄届,事故届,向精神薬,覚醒剤原料,覚せい剤原料,毒薬,劇薬,譲受書,納品書,仕入れ記録,販売記録,第1類医薬品,要指導医薬品,特定生物由来製品,20年,管理帳簿,試験検査,生活保護,自立支援,精神通院,難病,小児慢性,労災,居宅療養管理指導,分譲,高度管理医療機器,毒物劇物" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../assets/fold.css" />
+    <style>
+      *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+      :root {
+        --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+        --pad-card:22px; --gap-card:16px;
+        --blue:#1e5fa8; --ink:#222222;
+        --bg:#f3f4f6; --white:#ffffff;
+        --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+        --border:#d1d5db; --border-dk:#9ca3af;
+        --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px;
+        --txt-2:#444444; --txt-3:#5e6470;
+        /* 根拠の種類のラベル。図解の淡色パレットの藤・クリーム・薄緑 */
+        --tag-law-bg:#e5e0f2; --tag-law-tx:#4b3f80;
+        --tag-hoken-bg:#f3e8d0; --tag-hoken-tx:#7a5718;
+        --tag-tsuchi-bg:#e3efe0; --tag-tsuchi-tx:#3d6b2e;
+        /* 保留の印 */
+        --hold-bg:#f2f2f2; --hold-tx:#444444;
+      }
+      body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+      .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+      [id] { scroll-margin-top:calc(var(--sn-header-h, 0px) + 16px); }
+
+      /* 見出し */
+      .page-title-wrap { padding:6px 0; }
+      .page-title-wrap h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+      .page-title-wrap p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+      .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+      .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+      .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+      .sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin:22px 0 9px; }
+      .sub-title:first-child { margin-top:0; }
+      .sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+
+      /* 強調 */
+      .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+      .em-change { color:var(--blue); font-weight:900; }
+
+      p.txt { font-size:var(--text-sm); line-height:1.8; }
+      p.txt + p.txt { margin-top:8px; }
+      .note { font-size:var(--text-xs); color:var(--txt-3); line-height:1.65; margin-top:8px; }
+      .note a { color:var(--blue); }
+
+      /* このページの要点 */
+      .sum .card-title { margin-bottom:6px; }
+      .sum .rows { display:flex; flex-direction:column; }
+      .sum a.pt { display:grid; grid-template-columns:8.5em minmax(0,1fr) auto; gap:4px 14px; align-items:baseline; padding:11px 6px; border-top:var(--bw) solid var(--border); text-decoration:none; color:var(--ink); font-size:var(--text-sm); line-height:1.75; border-radius:4px; }
+      .sum a.pt:first-child { border-top:none; }
+      .sum a.pt:hover { background:#f5f8fc; }
+      .sum .pt .k { font-weight:900; color:var(--blue); }
+      .sum .pt .go { color:var(--blue); font-size:var(--text-xs); font-weight:700; align-self:center; white-space:nowrap; }
+      .sum .pt .go::after { content:"›"; font-weight:900; margin-left:4px; }
+      .sum a.pt:hover .go { text-decoration:underline; }
+
+      /* 根拠の種類のラベル */
+      .tag { display:inline-block; font-size:var(--text-xs); font-weight:700; padding:0 7px; border-radius:4px; line-height:1.7; white-space:nowrap; vertical-align:1px; }
+      .tag.law { background:var(--tag-law-bg); color:var(--tag-law-tx); }
+      .tag.hoken { background:var(--tag-hoken-bg); color:var(--tag-hoken-tx); }
+      .tag.tsuchi { background:var(--tag-tsuchi-bg); color:var(--tag-tsuchi-tx); }
+      .legend { display:flex; flex-wrap:wrap; gap:6px 16px; font-size:var(--text-xs); color:var(--txt-2); margin:10px 0 0; }
+      .legend span.tag { margin-right:5px; }
+
+      /* 表 */
+      .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+      table { width:100%; border-collapse:collapse; font-size:var(--text-sm); line-height:1.65; }
+      th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 10px; text-align:left; border-bottom:2px solid var(--border-dk); vertical-align:bottom; }
+      td { padding:9px 10px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
+      tr:last-child td { border-bottom:none; }
+      td .sm { display:block; font-size:var(--text-xs); color:var(--txt-3); margin-top:3px; font-weight:400; }
+      td.no { color:var(--txt-3); }
+      .keep th:nth-child(1), .keep td:nth-child(1) { width:42%; }
+      .keep td:nth-child(1) { font-weight:700; }
+      .keep td:nth-child(1) .sm { font-weight:400; }
+      .keep th:nth-child(2), .keep td:nth-child(2) { width:13%; }
+      .keep td.v { font-weight:900; white-space:nowrap; }
+      .keep td.v .sm { white-space:normal; }
+      .keep th:nth-child(3), .keep td:nth-child(3) { width:20%; }
+      .keep td .tag { margin:0 4px 3px 0; }
+      .kaisei td.v { font-weight:900; white-space:nowrap; }
+      .kaisei td.v .sm { white-space:normal; min-width:9em; }
+
+      /* 箇条書き */
+      .list { display:flex; flex-direction:column; gap:6px; margin:6px 0 2px; }
+      .list .li { font-size:var(--text-sm); line-height:1.7; padding-left:18px; text-indent:-18px; }
+      .list .li::before { content:"・"; color:var(--txt-3); font-weight:900; margin-right:6px; }
+
+      /* ボックス */
+      .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; margin-top:12px; }
+      .box-blue .ttl { display:block; font-weight:900; margin-bottom:5px; color:var(--blue); }
+      .box-gray { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; margin-top:12px; }
+      .box-gray .ttl { display:block; font-weight:900; margin-bottom:5px; }
+      .hold { display:inline-block; font-size:var(--text-xs); font-weight:900; background:var(--hold-bg); color:var(--hold-tx); border:var(--bw-h) solid var(--border-dk); border-radius:4px; padding:0 7px; margin-right:6px; line-height:1.7; white-space:nowrap; }
+
+      /* 保留の一覧 */
+      .holds td:first-child { font-weight:700; width:34%; }
+      .holds a { color:var(--blue); }
+
+      /* 関連リンク */
+      .rel { display:flex; flex-direction:column; gap:8px; }
+      .rel a { display:flex; align-items:center; gap:9px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; text-decoration:none; color:var(--ink); font-size:var(--text-sm); font-weight:700; }
+      .rel a::before { content:"›"; color:var(--blue); font-weight:900; }
+      .rel a:hover { background:#fafbfc; border-color:#bcd3ee; }
+      .rel a .sub { font-weight:400; color:var(--txt-3); font-size:var(--text-xs); margin-left:auto; }
+
+      /* 原典 */
+      .src td { font-size:var(--text-xs); }
+      .src td:first-child { font-size:var(--text-sm); font-weight:700; width:44%; }
+      .src a { color:var(--blue); word-break:break-all; }
+
+      @media (max-width:640px) {
+        body { font-size:14px; padding:14px 12px 40px; line-height:1.75; }
+        :root { --text-xs:11.5px; --text-sm:13.5px; --text-md:14px; --text-lg:16px; --text-xl:18px; --pad-card:14px; --gap-card:11px; }
+        .card { border-radius:8px; }
+        .keep { min-width:560px; }
+        .kaisei { min-width:480px; }
+        .holds { min-width:480px; }
+        .rel a .sub { display:none; }
+        .sum a.pt { grid-template-columns:minmax(0,1fr) auto; padding:10px 2px; }
+        .sum .pt .k { grid-column:1; grid-row:1; }
+        .sum .pt .go { grid-column:2; grid-row:1; }
+        .sum .pt .v { grid-column:1 / span 2; grid-row:2; }
+      }
+      @media print {
+        @page { margin:10mm 9mm; size:A4; }
+        body { background:#fff; padding:0; font-size:11px; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        .page { display:block; max-width:none; }
+        .card { border:0.5px solid #ccc; padding:9px 11px; margin-bottom:7px; break-inside:auto; }
+        .card-title, .sub-title { break-after:avoid; }
+        .sum, .box-blue, .box-gray, tr { break-inside:avoid; }
+        .sum .pt .go { display:none; }
+        .page-toc-wrap { display:none; }
+        .keep, .kaisei, .holds { min-width:0; }
+        a { color:inherit; text-decoration:none; }
+      }
+    </style>
+  </head>
+  <body>
+    <script src="../../assets/site-header.js" defer></script>
+    <script src="../../assets/page-toc.js" defer></script>
+    <div class="page">
+
+      <div class="page-title-wrap">
+        <h1>薬局で保存する書類の保存期間一覧</h1>
+        <p>2026年10月時点の内容。2027年5月20日から、処方箋・調剤録と服薬指導の記録は５年になる。施行日より前のものは３年のまま</p>
+      </div>
+
+      <div class="page-toc-wrap"><div id="page-toc"></div></div>
+
+      <div class="card sum" id="yoten" data-toc="skip">
+        <div class="card-title">このページの要点</div>
+        <div class="rows">
+          <a class="pt" href="#shohosen"><span class="k">処方箋・調剤録</span><span class="v">今は<b>３年</b>。<span class="em-change">2027年5月20日から５年</span>。<b>施行日より前に完結したものは３年のまま</b>。薬歴は３年のまま。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#mayaku"><span class="k">麻薬・向精神薬</span><span class="v">帳簿・譲渡証・向精神薬の記録は<b>２年</b>。小売業者間譲渡の<b>許可書だけ、許可を受けた日から５年</b>。廃棄届・事故届の写しなどは保留。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#iyakuhin"><span class="k">仕入れ・販売</span><span class="v">医薬品の仕入れと、薬局・卸などへの販売の記録は<b>３年</b>。第1類医薬品などを一般の人に販売した記録は<b>２年</b>。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#kanri"><span class="k">薬局の管理</span><span class="v">管理の帳簿は<b>３年</b>。<span class="marker">特定生物由来製品の記録だけ、使用した日から20年</span>。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#kouhi"><span class="k">公費の帳簿</span><span class="v">生活保護・自立支援医療・難病・小児慢性の帳簿と書類は、完結の日から<b>５年</b>。公費の患者の処方箋・調剤録も、分かるまで５年は廃棄しない。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#horyu"><span class="k">保留</span><span class="v">期間を確かめきれていない書類は「保留」と付けた。分かるまで廃棄しない。</span><span class="go">詳しく</span></a>
+        </div>
+      </div>
+
+      <!-- 読み方 -->
+      <div class="card" id="yomikata" data-toc-label="表の読み方">
+        <div class="card-title">表の読み方</div>
+        <div class="list">
+          <div class="li">保存期間は「数え始める日」から数える。帳簿は使い終わった日ではなく、<b>最後に記載した日</b>から数えるものが多い。</div>
+          <div class="li">数え始める日は、原文の言い方のまま載せた。「記載なし」は、原文に数え始める日が書いていないもの。</div>
+          <div class="li">同じ書類に複数の決まりがかかるときは、<b>遅いほうの日から、いちばん長い期間</b>保存する。例）生活保護の患者の帳簿は、保険の決まりと生活保護の決まりの両方がかかる。</div>
+          <div class="li">「期間の定めなし」は、法令に年数が書いていない書類。</div>
+          <div class="li">「保留」は、このページで期間を確かめきれていない書類。分かるまで廃棄しない。</div>
+          <div class="li">保存期間を過ぎた書類は廃棄できる。ただし、会計・税務・労務の決まり（領収書の控え、出勤簿など）はこの表に載せていないので、そちらがかかる書類は別に確かめる。</div>
+        </div>
+        <div class="legend">
+          <span><span class="tag law">法令</span>法律・政令・省令</span>
+          <span><span class="tag hoken">保険・公費</span>療養担当規則・公費の療養担当規程・介護の基準・調剤報酬の通知</span>
+          <span><span class="tag tsuchi">通知</span>国の通知・事務連絡</span>
+        </div>
+      </div>
+
+      <!-- 処方箋・調剤録・薬歴 -->
+      <div class="card" id="shohosen" data-toc-label="処方箋・調剤録・薬歴">
+        <div class="card-title">処方箋・調剤録・薬歴</div>
+        <p class="txt">記載事項・電子保存・今ある処方箋を廃棄してよいかは、<a href="処方箋・調剤録・薬歴の記載と保存.html" style="color:var(--blue);font-weight:700;">処方箋・調剤録・薬歴の記載と保存</a>にまとめてある。ここでは期間だけを挙げる。</p>
+        <div class="table-wrap" style="margin-top:10px;">
+          <table class="kaisei">
+            <thead><tr><th>記録</th><th>今</th><th>2027年5月20日から</th><th>数え始める日</th></tr></thead>
+            <tbody>
+              <tr><td>処方箋<span class="sm"><span class="tag law">法令</span>薬剤師法</span></td><td class="v">３年</td><td class="v"><span class="em-change">５年</span><span class="sm" style="font-weight:400;">施行日より前に調剤済みになったものは３年のまま</span></td><td>調剤済みとなった日</td></tr>
+              <tr><td>調剤録<span class="sm"><span class="tag law">法令</span>薬剤師法</span></td><td class="v">３年</td><td class="v"><span class="em-change">５年</span><span class="sm" style="font-weight:400;">施行日より前に最後の記入をしたものは３年のまま</span></td><td>最終の記入の日</td></tr>
+              <tr><td>処方箋・調剤録<span class="sm"><span class="tag hoken">保険・公費</span>療養担当規則</span></td><td class="v">３年</td><td class="v"><span class="em-change">５年</span><span class="sm" style="font-weight:400;">施行日より前に完結したものは３年のまま</span></td><td>完結の日</td></tr>
+              <tr><td>服薬指導の記録<span class="sm"><span class="tag law">法令</span>薬機法施行規則</span></td><td class="v">３年</td><td class="v"><span class="em-change">５年</span><span class="sm" style="font-weight:400;">施行日より前に最後の記載をしたものは３年のまま</span></td><td>記載の日<span class="sm">2027年5月20日からは「最終の記載の日」</span></td></tr>
+              <tr><td>薬歴<span class="sm"><span class="tag hoken">保険・公費</span>調剤報酬の通知</span></td><td class="v">３年</td><td class="v">３年<span class="sm" style="font-weight:400;">今回の改正の対象になっていない</span></td><td>最終記入日</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">保険薬局の処方箋・調剤録には、薬剤師法と療養担当規則の両方がかかるので、長いほうに合わせる。麻薬処方箋も一般の処方箋と同じ期間。</p>
+        <p class="note">2027年5月20日より前に完結した処方箋・調剤録は、施行後も３年で廃棄できる。例）2024年6月1日に完結した処方箋は、2027年6月1日以降に廃棄できる。</p>
+        <p class="note"><span class="hold">保留</span>2027年5月20日以降も薬歴は３年のまま。服薬指導の記録が５年になったとき、それを兼ねている薬歴も５年残すのかを示した資料はまだない。</p>
+      </div>
+
+      <!-- 麻薬 -->
+      <div class="card" id="mayaku" data-toc-label="麻薬">
+        <div class="card-title">麻薬</div>
+        <div class="table-wrap">
+          <table class="keep">
+            <thead><tr><th>書類</th><th>保存期間</th><th>数え始める日</th><th>根拠</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>麻薬帳簿<span class="sm">使い終わった帳簿も同じ。業務を廃止して帳簿を閉じた後も保存する</span></td>
+                <td class="v">２年</td>
+                <td>最終の記載の日</td>
+                <td><span class="tag law">法令</span>麻薬及び向精神薬取締法</td>
+              </tr>
+              <tr>
+                <td>麻薬譲渡証<span class="sm">卸から麻薬と一緒に受け取るもの。卸に渡す譲受証は卸が保存する</span></td>
+                <td class="v">２年</td>
+                <td>交付を受けた日</td>
+                <td><span class="tag law">法令</span>麻薬及び向精神薬取締法</td>
+              </tr>
+              <tr>
+                <td>小売業者間譲渡の麻薬譲渡確認書・麻薬譲受確認書<span class="sm">相手の薬局から受け取ったもの。在庫不足で急な処方箋に応じるための譲渡では、受け取った麻薬処方箋の写しも</span></td>
+                <td class="v">２年</td>
+                <td>交付を受けた日</td>
+                <td><span class="tag tsuchi">通知</span>小売業者間譲渡の質疑応答（国の事務連絡）<span class="sm">許可に付ける条件として</span></td>
+              </tr>
+              <tr>
+                <td>麻薬小売業者間譲渡許可書<span class="sm">有効期間が過ぎて効力がなくなった許可書も同じ</span></td>
+                <td class="v">５年</td>
+                <td>許可を受けた日</td>
+                <td><span class="tag tsuchi">通知</span>小売業者間譲渡の質疑応答（国の事務連絡）</td>
+              </tr>
+              <tr>
+                <td>麻薬廃棄届・調剤済麻薬廃棄届・麻薬事故届の写し<span class="sm">年間届の控え、業務を廃止した薬局から譲り受けたときの麻薬譲渡届の写しも同じ扱い</span></td>
+                <td class="v"><span class="hold">保留</span></td>
+                <td class="no">—</td>
+                <td>都道府県の手引き<span class="sm">期間の記載なし</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note"><span class="hold">保留</span>廃棄届・事故届などの写しは、東京都・大阪府の手引きとも「保管する」とだけあり、期間は書いていない。</p>
+        <div class="rel" style="margin-top:12px;">
+          <a href="薬局の麻薬管理.html">薬局の麻薬管理<span class="sub">仕入れ・保管・廃棄・事故</span></a>
+          <a href="薬局間の麻薬の譲渡.html">薬局間の麻薬の譲渡<span class="sub">許可・確認書</span></a>
+        </div>
+      </div>
+
+      <!-- 向精神薬・覚醒剤原料 -->
+      <div class="card" id="kouseishin" data-toc-label="向精神薬・覚醒剤原料">
+        <div class="card-title">向精神薬・覚醒剤原料</div>
+        <div class="table-wrap">
+          <table class="keep">
+            <thead><tr><th>書類</th><th>保存期間</th><th>数え始める日</th><th>根拠</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>向精神薬の記録<span class="sm">第一種・第二種の譲受・譲渡・廃棄の品名・数量・年月日と相手方</span></td>
+                <td class="v">２年</td>
+                <td>記録の日</td>
+                <td><span class="tag law">法令</span>麻薬及び向精神薬取締法</td>
+              </tr>
+              <tr>
+                <td>覚醒剤原料の帳簿<span class="sm">譲受・譲渡・廃棄などの品名・数量・年月日</span></td>
+                <td class="v">２年</td>
+                <td>最終の記入をした日</td>
+                <td><span class="tag law">法令</span>覚醒剤取締法</td>
+              </tr>
+              <tr>
+                <td>覚醒剤原料の譲渡証<span class="sm">卸から受け取ったもの</span></td>
+                <td class="v">２年</td>
+                <td>譲り受けた日</td>
+                <td><span class="tag law">法令</span>覚醒剤取締法</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">向精神薬の記録は、第三種向精神薬、処方箋により患者に交付した分、患者や遺族から譲り受けた分とその廃棄は記録しなくてよい。</p>
+      </div>
+
+      <!-- 医薬品の仕入れ・販売 -->
+      <div class="card" id="iyakuhin" data-toc-label="医薬品の仕入れ・販売">
+        <div class="card-title">医薬品の仕入れ・販売</div>
+        <div class="table-wrap">
+          <table class="keep">
+            <thead><tr><th>書類</th><th>保存期間</th><th>数え始める日</th><th>根拠</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>医薬品の購入・譲受の記録と、薬局・医療機関・卸などへの販売・授与の記録<span class="sm">品名・数量・年月日・相手方など。医療用医薬品はロット番号と使用の期限も</span></td>
+                <td class="v">３年</td>
+                <td>記載の日</td>
+                <td><span class="tag law">法令</span>薬機法施行規則</td>
+              </tr>
+              <tr>
+                <td>他の薬局に医薬品を分譲したときの伝票・譲渡書・別紙様式４－１<span class="sm">地域支援・医薬品供給対応体制加算で求められるもの。他の薬局への分譲は、上の行の「薬局への販売・授与の記録」（３年）にも当たる。伝票をその記録として使っているなら３年保存する</span></td>
+                <td class="v">２年</td>
+                <td>分譲した日</td>
+                <td><span class="tag hoken">保険・公費</span>調剤報酬の通知</td>
+              </tr>
+              <tr>
+                <td>入手困難な医薬品の在庫がある薬局を案内された患者から受け取った別紙様式４－２<span class="sm">地域支援・医薬品供給対応体制加算で求められるもの</span></td>
+                <td class="v">２年</td>
+                <td class="no">記載なし</td>
+                <td><span class="tag hoken">保険・公費</span>調剤報酬の通知</td>
+              </tr>
+              <tr>
+                <td>薬局医薬品・要指導医薬品・第1類医薬品を一般の人に販売・授与した記録<span class="sm">品名・数量・日時・薬剤師の氏名・理解したことの確認の結果</span></td>
+                <td class="v">２年</td>
+                <td>記載の日</td>
+                <td><span class="tag law">法令</span>薬機法施行規則</td>
+              </tr>
+              <tr>
+                <td>第2類・第3類医薬品を販売・授与した記録</td>
+                <td class="v no" style="white-space:normal;">期間の定めなし</td>
+                <td class="no">—</td>
+                <td><span class="tag law">法令</span>薬機法施行規則<span class="sm">記録と保存は努力義務</span></td>
+              </tr>
+              <tr>
+                <td>毒薬・劇薬を譲り渡すときに譲受人から受け取る文書<span class="sm">品名・数量・使用の目的・譲受人の氏名など。薬剤師等に身分の公的な証明書の提示を受けて販売・授与するときと、常時取引のある薬剤師等に販売・授与するときは不要</span></td>
+                <td class="v">２年</td>
+                <td>譲渡の日</td>
+                <td><span class="tag law">法令</span>薬機法</td>
+              </tr>
+              <tr>
+                <td>処方箋医薬品を、処方箋の交付を受けた人に販売・授与したときの帳簿</td>
+                <td class="v">２年</td>
+                <td>最終の記載の日</td>
+                <td><span class="tag law">法令</span>薬機法</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note"><span class="hold">保留</span>処方箋医薬品の帳簿：処方箋による調剤のとき、処方箋・調剤録とは別にこの帳簿が必要かは確認できていない。</p>
+      </div>
+
+      <!-- 薬局の管理 -->
+      <div class="card" id="kanri" data-toc-label="薬局の管理">
+        <div class="card-title">薬局の管理</div>
+        <div class="table-wrap">
+          <table class="keep">
+            <thead><tr><th>書類</th><th>保存期間</th><th>数え始める日</th><th>根拠</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>特定生物由来製品の使用の対象者の記録<span class="sm">薬局の管理者が保存する</span></td>
+                <td class="v">20年</td>
+                <td>使用した日</td>
+                <td><span class="tag law">法令</span>薬機法施行規則</td>
+              </tr>
+              <tr>
+                <td>薬局の管理に関する帳簿<span class="sm">試験検査、不良品の処理など、管理薬剤師が記載するもの</span></td>
+                <td class="v">３年</td>
+                <td>最終の記載の日</td>
+                <td><span class="tag law">法令</span>薬機法施行規則</td>
+              </tr>
+              <tr>
+                <td>管理薬剤師が薬局開設者に述べた意見を書いた書面の写し<span class="sm">管理薬剤師が保存する</span></td>
+                <td class="v">３年</td>
+                <td class="no">記載なし</td>
+                <td><span class="tag law">法令</span>薬機法施行規則</td>
+              </tr>
+              <tr>
+                <td>法令遵守のために講じた措置の記録<span class="sm">管理薬剤師の意見を受けて講じた措置、法令遵守体制の措置</span></td>
+                <td class="v no" style="white-space:normal;">期間の定めなし</td>
+                <td class="no">—</td>
+                <td><span class="tag law">法令</span>薬機法<span class="sm">「適切に保存」とだけある</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">特定生物由来製品のうち、厚生労働大臣が指定するものは、指定された期間保存する。<span class="hold">保留</span>指定された製品と期間があるかは確認できていない。</p>
+      </div>
+
+      <!-- 保険・公費・介護 -->
+      <div class="card" id="kouhi" data-toc-label="保険・公費・介護">
+        <div class="card-title">保険・公費・介護</div>
+        <div class="table-wrap">
+          <table class="keep">
+            <thead><tr><th>書類</th><th>保存期間</th><th>数え始める日</th><th>根拠</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>生活保護：診療と診療報酬の請求に関する帳簿・書類</td>
+                <td class="v">５年</td>
+                <td>完結の日</td>
+                <td><span class="tag hoken">保険・公費</span>指定医療機関医療担当規程</td>
+              </tr>
+              <tr>
+                <td>自立支援医療（精神通院・育成医療・更生医療）：診療と診療報酬の請求に関する帳簿など</td>
+                <td class="v">５年</td>
+                <td>完結の日</td>
+                <td><span class="tag hoken">保険・公費</span>指定自立支援医療機関療養担当規程</td>
+              </tr>
+              <tr>
+                <td>難病：診療と診療報酬の請求に関する帳簿など</td>
+                <td class="v">５年</td>
+                <td>完結の日</td>
+                <td><span class="tag hoken">保険・公費</span>指定医療機関療養担当規程</td>
+              </tr>
+              <tr>
+                <td>小児慢性特定疾病：診療と診療報酬の請求に関する帳簿など</td>
+                <td class="v">５年</td>
+                <td>完結の日</td>
+                <td><span class="tag hoken">保険・公費</span>指定小児慢性特定疾病医療機関療養担当規程</td>
+              </tr>
+              <tr>
+                <td>労災：療養の給付に関する処方箋<span class="sm">労働保険番号又は年金証書番号と、事業場の名称を記入して保存する。<b>2027年5月20日からは、薬剤師法の５年のほうが長いので５年</b></span></td>
+                <td class="v">３年</td>
+                <td>完結の日</td>
+                <td><span class="tag hoken">保険・公費</span>労災保険指定薬局療養担当契約事項</td>
+              </tr>
+              <tr>
+                <td>居宅療養管理指導の記録<span class="sm">提供した具体的なサービスの内容、苦情・事故の記録など。介護予防も同じ。年数は条例で決まり、国の基準は２年</span></td>
+                <td class="v"><span class="hold">保留</span></td>
+                <td>完結の日</td>
+                <td><span class="tag hoken">保険・公費</span>介護保険の運営基準</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">保険薬局は、別段の申出をした場合などを除き、介護保険の居宅療養管理指導の事業者とみなされる。</p>
+        <p class="note"><span class="hold">保留</span>公費の「帳簿・書類」に処方箋・調剤録が入るかをはっきり書いた国の資料は確認できていない。分かるまで、公費の患者の処方箋・調剤録も５年は廃棄しない。</p>
+        <p class="note"><span class="hold">保留</span>居宅療養管理指導の記録：保存期間は都道府県（指定都市・中核市は市）の条例で決まる。国の基準の２年は条例を作るときのもとになる基準。店舗の所在地の条例（都道府県・市の例規集）の年数は確認できていない。</p>
+      </div>
+
+      <!-- 許可・登録がある薬局だけ -->
+      <div class="card" id="kyoka" data-toc-label="許可・登録がある薬局だけ">
+        <div class="card-title">許可・登録がある薬局だけ</div>
+        <div class="table-wrap">
+          <table class="keep">
+            <thead><tr><th>書類</th><th>保存期間</th><th>数え始める日</th><th>根拠</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>高度管理医療機器等販売業：営業所の管理に関する帳簿</td>
+                <td class="v">６年</td>
+                <td>最終の記載の日</td>
+                <td><span class="tag law">法令</span>薬機法施行規則</td>
+              </tr>
+              <tr>
+                <td>高度管理医療機器等販売業：購入・譲受、販売・授与・貸与の記録<span class="sm">特定保守管理医療機器は15年</span></td>
+                <td class="v">３年</td>
+                <td>記載の日</td>
+                <td><span class="tag law">法令</span>薬機法施行規則</td>
+              </tr>
+              <tr>
+                <td>毒物劇物販売業：毒物・劇物を販売・授与したときの書面</td>
+                <td class="v">５年</td>
+                <td>販売・授与の日</td>
+                <td><span class="tag law">法令</span>毒物及び劇物取締法</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">許可・登録があるかは、薬局に掲げてある許可証・登録票で確かめる。</p>
+        <p class="note"><span class="hold">保留</span>管理医療機器・一般医療機器の販売業者にも、営業所の管理に関する帳簿（６年）の決まりがかかる。高度管理医療機器等販売業の許可がない薬局がこの販売業者に当たるかは確認できていない。</p>
+      </div>
+
+      <!-- 保留の一覧 -->
+      <div class="card" id="horyu" data-toc-label="保留の一覧">
+        <div class="card-title">保留の一覧<span class="qual">分かるまで廃棄しない</span></div>
+        <div class="table-wrap">
+          <table class="holds">
+            <thead><tr><th>書類</th><th>確認できていないこと</th></tr></thead>
+            <tbody>
+              <tr><td><a href="#shohosen">服薬指導の記録を兼ねる薬歴</a></td><td>服薬指導の記録が５年になったとき、薬歴も５年残すか</td></tr>
+              <tr><td><a href="#kouhi">公費の患者の処方箋・調剤録</a></td><td>公費の「帳簿・書類」に入るか。分かるまで５年は廃棄しない</td></tr>
+              <tr><td><a href="#mayaku">麻薬の廃棄届・事故届の写し、年間届の控えなど</a></td><td>手引きは「保管する」とだけあり、期間が書いていない</td></tr>
+              <tr><td><a href="#iyakuhin">処方箋医薬品の帳簿</a></td><td>調剤のとき、処方箋・調剤録とは別に必要か</td></tr>
+              <tr><td><a href="#kanri">特定生物由来製品の記録</a></td><td>厚生労働大臣が別の期間を指定した製品があるか</td></tr>
+              <tr><td><a href="#kouhi">居宅療養管理指導の記録</a></td><td>店舗の所在地の条例の年数</td></tr>
+              <tr><td><a href="#kyoka">管理医療機器・一般医療機器だけを販売する薬局の帳簿</a></td><td>薬局が管理医療機器などの販売業者に当たり、帳簿６年の決まりがかかるか</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 関連ページ -->
+      <div class="card" id="kanren" data-toc="skip">
+        <div class="card-title">関連ページ</div>
+        <div class="rel">
+          <a href="処方箋・調剤録・薬歴の記載と保存.html">処方箋・調剤録・薬歴の記載と保存<span class="sub">記載事項・電子保存・廃棄の判断</span></a>
+          <a href="麻薬帳簿の書き方.html">麻薬帳簿の書き方</a>
+          <a href="麻薬の年間届の書き方.html">麻薬の年間届の書き方</a>
+        </div>
+      </div>
+
+      <!-- 原典 -->
+      <div class="card" id="genten" data-toc-label="原典">
+        <div class="card-title">原典<span class="qual">法令・告示・通知</span></div>
+        <div class="table-wrap">
+          <table class="src">
+            <thead><tr><th>資料</th><th>このページで使ったところ</th></tr></thead>
+            <tbody>
+              <tr><td>薬剤師法<br><a href="https://laws.e-gov.go.jp/law/335AC0000000146" target="_blank" rel="noopener">e-Gov法令検索</a></td><td>第27条（処方箋の保存）、第28条第3項（調剤録の保存）</td></tr>
+              <tr><td>医薬品、医療機器等の品質、有効性及び安全性の確保等に関する法律等の一部を改正する法律（令和7年法律第37号）<span class="sm" style="font-weight:400;">改正後の薬剤師法は、上の薬剤師法のページで施行日を選ぶと読める</span></td><td>薬剤師法第27条・第28条の５年への改正、附則第10条（施行日より前の処方箋・調剤録は従前の例による）</td></tr>
+              <tr><td>保険薬局及び保険薬剤師療養担当規則<br><a href="https://laws.e-gov.go.jp/law/332M50000100016" target="_blank" rel="noopener">e-Gov法令検索</a></td><td>第6条（処方箋・調剤録の保存）</td></tr>
+              <tr><td>麻薬及び向精神薬取締法<br><a href="https://laws.e-gov.go.jp/law/328AC0000000014" target="_blank" rel="noopener">e-Gov法令検索</a></td><td>第32条第3項（譲渡証）、第38条第2項（麻薬小売業者の帳簿）、第50条の23第2項・第4項（向精神薬の記録）</td></tr>
+              <tr><td>麻薬及び向精神薬取締法施行規則<br><a href="https://laws.e-gov.go.jp/law/328M50000100014" target="_blank" rel="noopener">e-Gov法令検索</a></td><td>第9条の2（小売業者間譲渡許可書。保存期間の定めはない）、第42条（向精神薬の記録の対象外）</td></tr>
+              <tr><td>麻薬小売業者間譲渡許可に係る質疑応答について（令和3年9月13日 事務連絡）<br><a href="https://www.pref.kyoto.jp/yakumu/documents/qa.pdf" target="_blank" rel="noopener">PDF</a>（京都府の掲載）</td><td>問20（確認書・処方箋の写しの２年保存の条件）、問24・問38（許可書の５年保存）</td></tr>
+              <tr><td>麻薬及び向精神薬取締法施行規則の一部を改正する省令の制定について（薬生発0705第2号 令和3年7月5日）</td><td>許可書の５年保存（質疑応答の問24・問38が参照する局長通知）</td></tr>
+              <tr><td>東京都「麻薬取扱いの手引（薬局用）」令和8年3月／大阪府「麻薬小売業者の手引き」</td><td>帳簿の閉鎖後の保存、廃棄届・事故届の写しと年間届の控えの保管（期間の記載なし）</td></tr>
+              <tr><td>覚醒剤取締法<br><a href="https://laws.e-gov.go.jp/law/326AC0100000252" target="_blank" rel="noopener">e-Gov法令検索</a></td><td>第30条の9（譲渡・譲受の制限）、第30条の10第3項（譲渡証）、第30条の17第3項・第4項（薬局の帳簿）</td></tr>
+              <tr><td>医薬品、医療機器等の品質、有効性及び安全性の確保等に関する法律<br><a href="https://laws.e-gov.go.jp/law/335AC0000000145" target="_blank" rel="noopener">e-Gov法令検索</a></td><td>第9条第2項・第9条の2第2項（法令遵守の措置の記録）、第9条の4第6項（服薬指導の記録）、第46条（毒薬・劇薬の譲渡の文書）、第49条（処方箋医薬品の帳簿）、第68条の22第3項・第4項（特定生物由来製品の記録）</td></tr>
+              <tr><td>同 施行規則<br><a href="https://laws.e-gov.go.jp/law/336M50000100001" target="_blank" rel="noopener">e-Gov法令検索</a></td><td>第11条第2項（管理者の意見の書面の写し）、第13条（薬局の管理に関する帳簿）、第14条第1項・第4項（購入・販売の記録の３年）、第14条第3項・第4項（薬局医薬品・要指導医薬品・第1類医薬品の販売記録の２年）、第14条第5項（第2類・第3類の販売記録は努力義務）、第15条の14の3（服薬指導の記録）、第164条・第173条・第178条（医療機器の販売業）、第209条（処方箋医薬品の帳簿の記載事項）、第240条第2項・第3項（特定生物由来製品）</td></tr>
+              <tr><td>毒物及び劇物取締法<br><a href="https://laws.e-gov.go.jp/law/325AC0000000303" target="_blank" rel="noopener">e-Gov法令検索</a></td><td>第14条第4項</td></tr>
+              <tr><td>別添3 調剤報酬点数表に関する事項（保医発0305第6号 令和8年3月5日）<br><a href="../../改定資料/別添3_調剤報酬点数表に関する事項2026.html">サイト内の正本</a></td><td>地域支援・医薬品供給対応体制加算（分譲の伝票と別紙様式４－２の２年保存）、薬学管理料の通則（薬歴の保存）</td></tr>
+              <tr><td>指定医療機関医療担当規程（昭和25年厚生省告示第222号）<br><a href="https://www.mhlw.go.jp/web/t_doc?dataId=82053000&dataType=0&pageNo=1" target="_blank" rel="noopener">厚生労働省法令等データベース</a></td><td>第9条</td></tr>
+              <tr><td>指定自立支援医療機関（精神通院医療）療養担当規程（平成18年厚生労働省告示第66号）<br><a href="https://www.mhlw.go.jp/web/t_doc?dataId=83aa7805&dataType=0&pageNo=1" target="_blank" rel="noopener">厚生労働省法令等データベース</a></td><td>第6条</td></tr>
+              <tr><td>指定自立支援医療機関（育成医療・更生医療）療養担当規程（平成18年厚生労働省告示第65号）<br><a href="https://www.mhlw.go.jp/web/t_doc?dataId=83aa7804&dataType=0&pageNo=1" target="_blank" rel="noopener">厚生労働省法令等データベース</a></td><td>第8条</td></tr>
+              <tr><td>指定医療機関療養担当規程（平成26年厚生労働省告示第437号）<br><a href="https://www.mhlw.go.jp/web/t_doc?dataId=80ab4360&dataType=0&pageNo=1" target="_blank" rel="noopener">厚生労働省法令等データベース</a></td><td>第6条（難病）</td></tr>
+              <tr><td>指定小児慢性特定疾病医療機関療養担当規程（平成26年厚生労働省告示第466号）<br><a href="https://www.mhlw.go.jp/web/t_doc?dataId=82ab4411&dataType=0&pageNo=1" target="_blank" rel="noopener">厚生労働省法令等データベース</a></td><td>第8条</td></tr>
+              <tr><td>長崎労働局「労災保険指定薬局の手引」令和7年7月改訂版<br><a href="https://jsite.mhlw.go.jp/nagasaki-roudoukyoku/content/contents/rousai-tebiki-d-25073002.pdf" target="_blank" rel="noopener">PDF</a></td><td>労災保険指定薬局療養担当契約事項 8（処方箋の保存）</td></tr>
+              <tr><td>指定居宅サービス等の事業の人員、設備及び運営に関する基準<br><a href="https://laws.e-gov.go.jp/law/411M50000100037" target="_blank" rel="noopener">e-Gov法令検索</a></td><td>第1条（条例で定める基準）、第90条の2第2項（居宅療養管理指導の記録）。介護予防は平成18年厚生労働省令第35号 第92条第2項</td></tr>
+              <tr><td>介護保険法<br><a href="https://laws.e-gov.go.jp/law/409AC0000000123" target="_blank" rel="noopener">e-Gov法令検索</a></td><td>第71条第1項（保険薬局を居宅療養管理指導の事業者とみなす。別段の申出をした場合などを除く）</td></tr>
+              <tr><td>令和8年厚生労働省令第142号（令和8年9月30日公布、2027年5月20日施行）<span class="sm" style="font-weight:400;">改正後の文面は、療養担当規則・薬機法施行規則のe-Govのページで施行日を選ぶと読める</span></td><td>療養担当規則第6条の５年、薬機法施行規則第15条の14の3の５年、附則（施行日より前のものは従前の例による）</td></tr>
+              <tr><td>中医協 総-5-1・総-5-2（令和8年9月9日）<br><a href="https://www.mhlw.go.jp/content/10808000/001747617.pdf" target="_blank" rel="noopener">改定案</a>・<a href="https://www.mhlw.go.jp/content/10808000/001747618.pdf" target="_blank" rel="noopener">補足資料</a></td><td>上の省令の改正の経緯（中医協への諮問と改正の案）</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>
