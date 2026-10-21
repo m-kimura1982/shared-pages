@@ -298,14 +298,34 @@
       <div class="dq-yes">はい</div>
       <div class="dq">
         <div class="dq-main">
-          <div class="flow-head"><span class="step-num">3</span>その算定の原因になった問題（残薬等）が、まだ残っている</div>
-          <div class="flow-body">フォローアップ業務によって<span class="marker">すでに解消されていれば対象外</span>。判断のしかたは次の「問題が残っているかの見方」。</div>
+          <div class="flow-head"><span class="step-num">3</span>その問題を、前回のフォローアップで解消していない</div>
+          <div class="flow-body">その問題＝上の点数を算定したときの問題（残薬等）。初めてのフォローアップなら「はい」。一度フォローアップして解消したら、同じ算定をもとにした次のフォローアップは<span class="marker">対象外</span>。</div>
         </div>
         <div class="dq-no"><span class="x">×</span>いいえ → 対象外</div>
       </div>
       <div class="dq-yes">はい</div>
       <div class="dq-ok">対象（次に対象処方箋を受け付けたときに、3月に1回 50点）</div>
     </div>
+    <details class="fold-in" style="margin-top:12px;">
+      <summary>繰り返しフォローアップするとき</summary>
+      <div class="fold-body">
+        <p class="lead">3月に1回まで算定できるので、直近6月以内の同じ算定をもとに、フォローアップを2回以上行うことがある。</p>
+        <div class="judge">
+          <div class="judge-row"><span>前回のフォローアップのあとも問題が続いていて、引き続き確認・指導が必要（解消しない理由・背景を検証して改善策を講じる。下の「算定上の注意」）</span><span class="arrow">→</span><span class="em-blue">対象</span></div>
+          <div class="judge-row"><span>前回のフォローアップで問題が解消した</span><span class="arrow">→</span><strong>対象外</strong></div>
+        </div>
+        <p class="lead" style="margin-top:14px;">何が「問題」かは、算定した点数ごとに違う。</p>
+        <div class="table-wrap" style="margin-top:10px;"><table class="fu-tbl">
+          <thead><tr><th>算定した点数</th><th>算定したときの問題</th><th>前回のフォローアップで解消した例（→ 対象外）</th></tr></thead>
+          <tbody>
+            <tr><td><strong>外来服薬支援料１</strong></td><td data-label="算定したときの問題">自分で薬を管理するのが難しい</td><td data-label="前回のフォローアップで解消した例（→ 対象外）">一包化・服薬カレンダーの使い方を確認し、自分で管理できるようになった</td></tr>
+            <tr><td><strong>服用薬剤調整支援料１・２</strong></td><td data-label="算定したときの問題">多剤服用に伴う問題（ポリファーマシー）</td><td data-label="前回のフォローアップで解消した例（→ 対象外）">減薬後の状態が安定していることを確認し、調整の必要がなくなった</td></tr>
+            <tr><td><strong>調剤時残薬調整加算</strong></td><td data-label="算定したときの問題">飲み忘れ・飲み残しによる残薬</td><td data-label="前回のフォローアップで解消した例（→ 対象外）">飲み忘れの対処法を指導し、残薬が出なくなった</td></tr>
+            <tr><td><strong>薬学的有害事象等防止加算</strong></td><td data-label="算定したときの問題">副作用・相互作用・重複投薬など</td><td data-label="前回のフォローアップで解消した例（→ 対象外）">症状がよくなったことを確認し、経過を見る必要もなくなった</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </details>
     <div class="sub-block">
       <div class="h3">3つとも「はい」でも算定できない薬局・場合</div>
       <div class="bullet"><span>・</span><span>特別調剤基本料Ｂを算定している薬局</span></div>
@@ -314,33 +334,6 @@
     <div class="sub-block">
       <div class="h3">実施のきっかけ</div>
       <p>患者・家族等の求め、または<strong>かかりつけ薬剤師が必要と認めた場合</strong>のどちらでもよい。</p>
-    </div>
-  </div>
-
-  <!-- ② 問題が残っているかの見方 -->
-  <div class="card avoid-break">
-    <div class="card-title">問題が残っているかの見方</div>
-    <p class="lead">当社では、問題が残っているかを次のように判断する。</p>
-    <div class="judge">
-      <div class="judge-row"><span>今回のフォローアップを<strong>始める時点</strong>で、問題がまだ残っていて、引き続き確認・指導が必要</span><span class="arrow">→</span><span class="em-blue">対象</span></div>
-      <div class="judge-row"><span>始める時点で、問題はすでに解消している</span><span class="arrow">→</span><strong>対象外</strong></div>
-      <div class="judge-note">解消したきっかけは問わない。算定したときの指導、別の機会の指導、前回のフォローアップのどれで解消していても対象外。</div>
-    </div>
-    <p class="lead" style="margin-top:14px;">何が「問題」になるかは、直近6月以内に算定した点数ごとに違う。「確認すること」は例で、これに限らない。</p>
-    <div class="table-wrap" style="margin-top:10px;"><table class="fu-tbl">
-      <thead><tr><th>算定した点数</th><th>算定の原因になった問題</th><th>フォローアップで確認すること（例）</th><th>対象外になる例</th></tr></thead>
-      <tbody>
-        <tr><td><strong>外来服薬支援料１</strong></td><td data-label="算定の原因になった問題">自分で薬を管理するのが難しい</td><td data-label="フォローアップで確認すること（例）">一包化や服薬カレンダーなどで決められたとおりに飲めているか、飲み間違いや飲み忘れがないか、今の管理方法を続けられそうか</td><td data-label="対象外になる例">一包化・服薬カレンダーで、自分で管理できるようになった</td></tr>
-        <tr><td><strong>服用薬剤調整支援料１・２</strong></td><td data-label="算定の原因になった問題">多剤服用に伴う問題（ポリファーマシー）</td><td data-label="フォローアップで確認すること（例）">減薬後に体調の変化や症状の再発がないか、さらに見直せる薬がないか</td><td data-label="対象外になる例">減薬後の状態が安定し、調整の必要がなくなった</td></tr>
-        <tr><td><strong>調剤時残薬調整加算</strong></td><td data-label="算定の原因になった問題">飲み忘れ・飲み残しによる残薬</td><td data-label="フォローアップで確認すること（例）">飲み忘れが続いていないか、残薬がまた出ていないか、服用時点や飲み方の見直しが必要でないか</td><td data-label="対象外になる例">飲み忘れの対処法を指導し、残薬が出なくなった</td></tr>
-        <tr><td><strong>薬学的有害事象等防止加算</strong></td><td data-label="算定の原因になった問題">副作用・相互作用・重複投薬など</td><td data-label="フォローアップで確認すること（例）">問題になった副作用の症状がよくなっているか、新たな症状が出ていないか、変更後の薬を問題なく使えているか</td><td data-label="対象外になる例">症状がよくなり、重複投薬・相互作用の問題もなくなって、経過を見る必要もない</td></tr>
-      </tbody>
-    </table></div>
-    <div class="sub-block">
-      <div class="h3">同じ算定の実績で、2回目のフォローアップをするとき</div>
-      <p style="margin-bottom:4px;">3月に1回まで算定できるので、直近6月以内の同じ算定をもとに2回フォローアップすることがある。例）調剤時残薬調整加算をもとにしたとき</p>
-      <div class="bullet"><span>・</span><span>1回目のあとも残薬の問題が続いている → 2回目も<span class="em-blue">対象</span>。ただし、解消しない理由・背景を検証して改善策を講じる（下の「算定上の注意」）</span></div>
-      <div class="bullet"><span>・</span><span>1回目で残薬の問題が解消した → 2回目は<strong>対象外</strong></span></div>
     </div>
   </div>
 
