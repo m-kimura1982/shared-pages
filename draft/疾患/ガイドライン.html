@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>ガイドラインの一覧</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../assets/fold.css" />
+    <link rel="stylesheet" href="shikkan.css" />
+  </head>
+  <body>
+    <script src="../../assets/site-header.js" defer></script>
+
+    <div class="page">
+      <div class="sibs"><a class="home" href="index.html">疾患の勉強メモ</a><span class="sep">›</span><span class="lab">ガイドライン</span></div>
+
+      <div class="page-title">
+        <h1>ガイドラインの一覧</h1>
+        <p>勉強メモで当たる診療ガイドラインの原本へのリンク集。無料で全文を読めるものだけを載せる</p>
+      </div>
+
+      <div class="card gl-card">
+        <div class="gl-tabs" id="gl-tabs" role="tablist" aria-label="診療科"></div>
+        <div class="gl-search">
+          <input type="search" id="gl-q" placeholder="病名・薬の名前で絞り込む" aria-label="ガイドラインを絞り込む" />
+          <span class="gl-hit" id="gl-hit" aria-live="polite"></span>
+        </div>
+        <p class="gl-hint"><span class="gl-fu">部分更新</span>はフォーカスアップデート版。<b>変わったところだけを記載している</b>ので、「土台」に書いたガイドラインと合わせて読む。題名の右の「PDF」「Minds」は開いたときの形（Mindsはブラウザでそのまま読める）。</p>
+        <div class="gl-jump" id="gl-jump"></div>
+        <div id="gl-list"></div>
+      </div>
+
+      <div class="card" id="find">
+        <div class="card-title">ここにないときに探す場所</div>
+        <div class="gl-src">
+          <a href="https://minds.jcqhc.or.jp/" target="_blank" rel="noopener"><span class="t">Minds ガイドラインライブラリ（日本医療機能評価機構）</span><span class="d">学会をまたいで探せる。題名の頭に「（旧版）」と付いているものは新しい版がある。「本文公開中」でも一部の章だけのことがあるので、ページの注記を見る</span></a>
+          <a href="https://www.j-circ.or.jp/guideline/guideline-series/" target="_blank" rel="noopener"><span class="t">日本循環器学会 循環器病ガイドラインシリーズ</span><span class="d">循環器はすべてここ。全文無料。この一覧のリンクが開かなくなったら、ここで題名を探し直す</span></a>
+          <a href="https://www.pmda.go.jp/PmdaSearch/iyakuSearch/" target="_blank" rel="noopener"><span class="t">PMDA 医療用医薬品 添付文書等検索</span><span class="d">用量・禁忌・相互作用はガイドラインではなく電子添文が正</span></a>
+        </div>
+      </div>
+
+      <div class="card" id="out">
+        <div class="card-title">載せていないもの<span class="qual">最新版が書籍・会員限定のみ</span></div>
+        <div class="table-wrap">
+          <table class="gl-out">
+            <thead><tr><th>ガイドライン</th><th>扱い</th></tr></thead>
+            <tbody>
+              <tr><td>高血圧管理・治療ガイドライン2025（日本高血圧学会）</td><td>書籍のみ。2019年版は新しい版があるので載せない</td></tr>
+              <tr><td>喘息予防・管理ガイドライン2024（日本アレルギー学会）</td><td>書籍のみ</td></tr>
+              <tr><td>消化性潰瘍診療ガイドライン2026・MASLD診療ガイドライン2026（日本消化器病学会）</td><td>会員限定。MASLDは Annual Review版だけ無料</td></tr>
+              <tr><td>高齢者の安全な薬物療法ガイドライン2025（日本老年医学会）</td><td>書籍のみ。全文無料の2015年版を一覧に残す（下の注）</td></tr>
+              <tr><td>認知症疾患診療ガイドライン2026（日本神経学会）</td><td>書籍のみ。Mindsで全文を読める2017年版を一覧に残す（下の注）</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note" style="margin-top:10px">最新版が無料で読めないときだけ、無料の前の版を一覧に残し、題名の下に「旧版」と書く。旧版で書いたことは、最新版で変わっていないかを別に確かめる。</p>
+      </div>
+
+      <details class="fold" data-toc="skip">
+        <summary>この一覧に足すときの決めごと</summary>
+        <div class="fold-body">
+          <div class="bullet"><span>・</span><span>このページの下のほうにある <code>GL</code> の一覧に<b>1行足すだけ</b>。タブ・件数・絞り込み・疾患へ飛ぶチップは自動で付く。新しい診療科を書けばタブが増える</span></div>
+          <div class="bullet"><span>・</span><span><b>PDFはこのフォルダに入れない。</b>このリポジトリは公開なので、置くと再配布になる。手元で読みたいPDFは private/ かリポジトリの外へ</span></div>
+          <div class="bullet"><span>・</span><span>題名は<b>発行元（またはMinds）の表記どおり</b>。発行日は発行元かMindsの記載で確かめたものだけ書き、確かめていないものは書かない</span></div>
+          <div class="bullet"><span>・</span><span>部分更新（フォーカスアップデート）を足したら、<b>土台のガイドラインをすぐ上の行に置き</b>、<code>base</code> にその行の <code>id</code> を書く</span></div>
+          <div class="bullet"><span>・</span><span>Mindsで「本文公開中」でも、一部の章だけのものは載せない（関節リウマチ診療ガイドライン2024は第1〜3章と第4章の一部だけなので外した）</span></div>
+          <div class="bullet"><span>・</span><span>版が上がったら古い版の行は消し、勉強メモの「参考にした資料」も直す</span></div>
+          <div class="bullet"><span>・</span><span>2つの科にまたがるものは <code>ka:['糖尿病・代謝','腎臓']</code> のように並べると両方のタブに出る（1行のまま）</span></div>
+          <div class="bullet"><span>・</span><span>リンク切れは <code>node tools-internal/check-external-links.js draft/疾患</code> でまとめて確かめる（月1回の期限点検のついでに）。最後に全件確かめた日：2026年10月21日</span></div>
+        </div>
+      </details>
+    </div>
+
+    <script>
+      /* ─────────────────────────────────────────────────────────────
+         ガイドラインの一覧（ここに1行足すだけでよい）
+           ka    … 診療科（タブになる。配列で複数可）  dz … 疾患（タブの中の見出し）
+           title … 発行元の表記どおり                  url … 開く先
+           fmt   … 'PDF'（1冊のPDF）／'章ごとPDF'（発行元の目次ページ）／'Minds'（Mindsの本文）
+           fu    … 部分更新（フォーカスアップデート）なら true
+           base  … 部分更新の土台。一覧にある行なら その id、ないなら ['題名','URL']
+           id    … base から指されるときだけ付ける
+           org   … 作成した学会（合同なら全部）       date … 発行日（確かめたものだけ）
+           errata… 正誤表のURL                         more … そのほかのリンク [['名前','URL']]
+           note  … 読むときに役立つ一言（何章に何がある・旧版 など）
+           used  … 使っている勉強メモ [['ファイル','表示名']]
+           plan  … 使う予定（自分用の作業メモ。絞り込みには使わない）
+           kw    … 絞り込み用：題名にない病名・薬の名前・略語・読み
+         ───────────────────────────────────────────────────────────── */
+      var J = 'https://www.j-circ.or.jp/cms/wp-content/uploads/';
+      var M = 'https://minds.jcqhc.or.jp/summary/';
+      var G = 'https://www.jsge.or.jp/committees/guideline/guideline/pdf/';
+      var D = 'https://www.dermatol.or.jp/';
+      var GL = [
+        /* ══ 循環器 ══ */
+        // 心房細動
+        { ka:'循環器', dz:'心房細動', id:'jcs2020-ono', title:'2020年改訂版 不整脈薬物治療ガイドライン', fmt:'PDF',
+          url:J+'2020/01/JCS2020_Ono.pdf', errata:J+'2020/01/JCS2020_Ono_errata.pdf',
+          org:'日本循環器学会／日本不整脈心電学会', date:'2020年3月13日発行／2023年10月13日更新',
+          used:[['心房細動.html','心房細動 総論'],['心房細動_抗凝固薬の用量.html','用量を決める'],['心房細動_抗凝固薬の注意点.html','渡すときに見ること']],
+          kw:'ふせいみゃく 抗凝固 DOAC ワルファリン AF 抗不整脈薬' },
+        { ka:'循環器', dz:'心房細動', fu:true, base:'jcs2020-ono', title:'2024年JCS/JHRS ガイドライン フォーカスアップデート版 不整脈治療', fmt:'PDF',
+          url:J+'2024/03/JCS2024_Iwasaki.pdf', errata:J+'2024/03/JCS2024_Iwasaki_errata.pdf',
+          org:'日本循環器学会／日本不整脈心電学会', date:'2024年3月8日発行／2024年9月25日更新', note:'抗凝固療法は第3章',
+          used:[['心房細動.html','心房細動 総論'],['心房細動_抗凝固薬の用量.html','用量を決める'],['心房細動_抗凝固薬の注意点.html','渡すときに見ること']],
+          kw:'ふせいみゃく 抗凝固 DOAC アブレーション' },
+        { ka:'循環器', dz:'心房細動', title:'2022年改訂版 不整脈の診断とリスク評価に関するガイドライン', fmt:'PDF',
+          url:J+'2022/03/JCS2022_Takase.pdf', errata:J+'2022/03/JCS2022_Takase_errata.pdf',
+          org:'日本循環器学会／日本不整脈心電学会', note:'診断の側（心電図・リスク評価）',
+          used:[['心房細動.html','心房細動 総論']],
+          kw:'ふせいみゃく しんだん 心電図 ホルター' },
+
+        // 心不全
+        { ka:'循環器', dz:'心不全', title:'2025年改訂版 心不全診療ガイドライン', fmt:'PDF',
+          url:J+'2025/03/JCS2025_Kato.pdf', errata:J+'2025/03/JCS2025_Kato_errata.pdf',
+          org:'日本循環器学会／日本心不全学会', date:'2025年3月28日発行／2025年12月19日更新', note:'薬物療法は第6章、セルフケアは第7章',
+          used:[['心不全.html','心不全 総論'],['心不全_薬物療法.html','薬物療法'],['心不全_うっ血と利尿薬.html','うっ血と利尿薬'],['心不全_渡すときに見ること.html','渡すときに見ること'],['弁膜症.html','弁膜症 総論']],
+          kw:'しんふぜん HFrEF HFpEF ARNI SGLT2 利尿薬 4本柱 サクビトリル' },
+        { ka:'循環器', dz:'心不全', title:'2020年版 心アミロイドーシス診療ガイドライン', fmt:'PDF',
+          url:J+'2020/02/JCS2020_Kitaoka.pdf', errata:J+'2020/02/JCS2020_Kitaoka_errata.pdf',
+          org:'日本循環器学会', plan:'心不全の続きのページで使う',
+          kw:'アミロイドーシス ATTR タファミジス 高齢' },
+        { ka:'循環器', dz:'心不全', title:'2021年改訂版 循環器疾患における緩和ケアについての提言', fmt:'PDF',
+          url:J+'2021/03/JCS2021_Anzai.pdf',
+          org:'日本循環器学会／日本心不全学会', plan:'心不全の続きのページで使う',
+          kw:'かんわ ACP 終末期' },
+
+        // 冠動脈疾患（2018年の3冊が土台。2022・2020の部分更新はそのすぐ下）
+        { ka:'循環器', dz:'冠動脈疾患', id:'jcs2018-acs', title:'急性冠症候群ガイドライン（2018年改訂版）', fmt:'PDF',
+          url:J+'2018/11/JCS2018_kimura.pdf', errata:J+'2018/11/JCS2018_kimura_errata.pdf',
+          org:'日本循環器学会', used:[['冠動脈疾患.html','冠動脈疾患 総論']],
+          kw:'ACS 心筋梗塞 不安定狭心症' },
+        { ka:'循環器', dz:'冠動脈疾患', id:'jcs2018-ccs', title:'慢性冠動脈疾患診断ガイドライン（2018年改訂版）', fmt:'PDF',
+          url:J+'2018/10/JCS2018_yamagishi_tamaki.pdf',
+          org:'日本循環器学会', used:[['冠動脈疾患.html','冠動脈疾患 総論']],
+          kw:'狭心症 負荷試験 しんだん' },
+        { ka:'循環器', dz:'冠動脈疾患', id:'jcs2018-revasc', title:'安定冠動脈疾患の血行再建ガイドライン（2018年改訂版）', fmt:'PDF',
+          url:J+'2018/09/JCS2018_nakamura_yaku.pdf', errata:J+'2020/02/JCS2018_nakamura_yaku_errata.pdf',
+          org:'日本循環器学会／日本心臓血管外科学会', used:[['冠動脈疾患.html','冠動脈疾患 総論']],
+          kw:'けっこうさいけん PCI CABG バイパス' },
+        { ka:'循環器', dz:'冠動脈疾患', fu:true, base:['jcs2018-acs','jcs2018-ccs','jcs2018-revasc'], title:'2022年JCSガイドライン フォーカスアップデート版 安定冠動脈疾患の診断と治療', fmt:'PDF',
+          url:J+'2022/03/JCS2022_Nakano.pdf', errata:J+'2022/03/JCS2022_Nakano_errata.pdf',
+          org:'日本循環器学会', date:'2022年3月11日発行／2026年6月25日更新',
+          used:[['冠動脈疾患.html','冠動脈疾患 総論'],['冠動脈疾患_抗血栓療法.html','抗血栓療法']],
+          kw:'あんてい 狭心症 慢性冠動脈疾患 CCS' },
+        { ka:'循環器', dz:'冠動脈疾患', fu:true, base:['jcs2018-acs','jcs2018-ccs','jcs2018-revasc'], title:'2020年 JCSガイドライン フォーカスアップデート版 冠動脈疾患患者における抗血栓療法', fmt:'PDF',
+          url:J+'2020/04/JCS2020_Kimura_Nakamura.pdf', errata:J+'2020/04/JCS2020_Kimura_Nakamura_errata.pdf',
+          org:'日本循環器学会',
+          used:[['冠動脈疾患.html','冠動脈疾患 総論'],['冠動脈疾患_抗血栓療法.html','抗血栓療法']],
+          kw:'こうけっせん DAPT 抗血小板 PCI ステント クロピドグレル プラスグレル 3剤併用' },
+        { ka:'循環器', dz:'冠動脈疾患', fu:true, base:['冠攣縮性狭心症の診断と治療に関するガイドライン（2013年改訂版）', J+'2013/10/JCS2013_ogawah_h.pdf'],
+          title:'2023年JCS/CVIT/JCC ガイドライン フォーカスアップデート版 冠攣縮性狭心症と冠微小循環障害の診断と治療', fmt:'PDF',
+          url:J+'2023/03/JCS2023_hokimoto.pdf',
+          org:'日本循環器学会／日本心血管インターベンション治療学会／日本心臓病学会',
+          plan:'冠動脈疾患の総論に冠攣縮のカードを足すときに使う',
+          kw:'かんれんしゅく 微小循環 早朝 喫煙 カルシウム拮抗薬' },
+        { ka:'循環器', dz:'冠動脈疾患', title:'2023年改訂版 冠動脈疾患の一次予防に関する診療ガイドライン', fmt:'PDF',
+          url:J+'2023/03/JCS2023_fujiyoshi.pdf', errata:J+'2023/03/JCS2023_fujiyoshi_eratta.pdf',
+          org:'日本循環器学会', plan:'スタチンの部品カードで使う',
+          kw:'いちじよぼう 脂質 スタチン 高血圧 糖尿病 喫煙' },
+
+        // 弁膜症
+        { ka:'循環器', dz:'弁膜症', title:'2020年改訂版 弁膜症治療のガイドライン', fmt:'PDF',
+          url:J+'2020/04/JCS2020_Izumi_Eishi.pdf', errata:J+'2020/04/JCS2020_Izumi_Eishi_errata.pdf',
+          org:'日本循環器学会／日本胸部外科学会／日本血管外科学会／日本心臓血管外科学会',
+          used:[['弁膜症.html','弁膜症 総論'],['弁膜症_感染性心内膜炎の予防.html','感染性心内膜炎の予防']],
+          kw:'べんまくしょう 人工弁 機械弁 生体弁 ワルファリン INR TAVI' },
+        { ka:'循環器', dz:'弁膜症', title:'2026年改訂版 感染性心内膜炎診療ガイドライン', fmt:'PDF',
+          url:J+'2026/03/JCS2026_Izumi.pdf', errata:J+'2026/03/JCS2026_Izumi_errata.pdf',
+          org:'日本循環器学会', date:'2026年3月発行', note:'予防は第7章',
+          used:[['弁膜症.html','弁膜症 総論'],['弁膜症_感染性心内膜炎の予防.html','感染性心内膜炎の予防']],
+          kw:'かんせんせいしんないまくえん IE 予防 抜歯 歯科 アモキシシリン' },
+
+        // 静脈血栓・肺循環
+        { ka:'循環器', dz:'静脈血栓・肺循環', title:'2025年改訂版 肺血栓塞栓症・深部静脈血栓症および肺高血圧症に関するガイドライン', fmt:'PDF',
+          url:J+'2025/03/JCS2025_Tamura.pdf', errata:J+'2025/03/JCS2025_Tamura_errata.pdf',
+          more:[['患者向け冊子',J+'2026/05/JCS2025_Tamura_Lay-Summary.pdf']],
+          org:'日本循環器学会／日本肺高血圧・肺循環学会', note:'DOACの心房細動以外の適応（静脈血栓塞栓症）',
+          kw:'はいけっせんそくせん DVT PE VTE 肺高血圧 DOAC エコノミークラス' },
+
+        // 薬の使い方
+        { ka:'循環器', dz:'薬の使い方（周術期・TDM）', title:'2022年改訂版 非心臓手術における合併心疾患の評価と管理に関するガイドライン', fmt:'PDF',
+          url:J+'2022/03/JCS2022_hiraoka.pdf', errata:J+'2022/03/JCS2022_hiraoka_eratta.pdf',
+          org:'日本循環器学会', note:'手術前の抗血栓薬の休薬', plan:'横串ページ「抗血栓薬の休薬」で使う',
+          kw:'ひしんぞうしゅじゅつ 周術期 休薬 手術前 抗血栓薬' },
+        { ka:'循環器', dz:'薬の使い方（周術期・TDM）', title:'循環器薬の薬物血中濃度モニタリングに関するガイドライン', fmt:'PDF',
+          url:J+'2020/02/JCS2015_aonuma_h.pdf', more:[['ダイジェスト版',J+'2020/02/JCS2015_aonuma_d.pdf']],
+          org:'日本循環器学会／日本TDM学会', date:'2015年度版', plan:'横串ページ「検査値の読み方」で使う',
+          kw:'けっちゅうのうど TDM ジゴキシン 抗不整脈薬 モニタリング' },
+
+        /* ══ 糖尿病・代謝 ══ */
+        { ka:'糖尿病・代謝', dz:'糖尿病', title:'糖尿病診療ガイドライン2024', fmt:'Minds', url:M+'c00864/',
+          org:'日本糖尿病学会', date:'2024年5月30日発行',
+          kw:'とうにょうびょう 2型 1型 SGLT2 GLP-1 DPP-4 メトホルミン インスリン HbA1c 低血糖' },
+        { ka:'糖尿病・代謝', dz:'糖尿病', title:'高齢者糖尿病診療ガイドライン2023', fmt:'Minds', url:M+'c00783/',
+          org:'日本老年医学会／日本糖尿病学会', date:'2023年5月25日発行', note:'高齢者の血糖コントロール目標',
+          kw:'こうれいしゃ とうにょうびょう 低血糖 フレイル 認知症 HbA1c' },
+        { ka:'糖尿病・代謝', dz:'脂質異常症', title:'動脈硬化性疾患予防ガイドライン 2022年版', fmt:'章ごとPDF',
+          url:'https://www.j-athero.org/jp/jas_gl2022/',
+          org:'日本動脈硬化学会', date:'2022年7月発行', note:'正誤表は目次ページにある',
+          kw:'ししついじょうしょう 高脂血症 LDL コレステロール 中性脂肪 スタチン エゼチミブ 家族性高コレステロール血症 FH' },
+        { ka:'糖尿病・代謝', dz:'高尿酸血症・痛風', title:'高尿酸血症・痛風の治療ガイドライン 第3版', fmt:'Minds', url:M+'c00476/',
+          org:'日本痛風・核酸代謝学会（現：日本痛風・尿酸核酸学会）', date:'2018年12月28日発行',
+          kw:'こうにょうさんけっしょう つうふう 尿酸 フェブキソスタット アロプリノール コルヒチン' },
+
+        /* ══ 腎臓 ══ */
+        { ka:'腎臓', dz:'慢性腎臓病', title:'エビデンスに基づくCKD診療ガイドライン2023', fmt:'Minds', url:M+'c00779/',
+          org:'日本腎臓学会', date:'2023年6月20日発行',
+          kw:'まんせいじんぞうびょう CKD 腎機能 eGFR 蛋白尿 RAS SGLT2 腎性貧血' },
+
+        /* ══ 消化器 ══ */
+        { ka:'消化器', dz:'食道・胃', title:'胃食道逆流症（GERD）診療ガイドライン2021（改訂第3版）', fmt:'PDF', url:G+'gerd2021r_.pdf',
+          org:'日本消化器病学会', date:'2021年4月27日公開',
+          kw:'いしょくどうぎゃくりゅう GERD 逆流性食道炎 胸やけ PPI P-CAB ボノプラザン' },
+        { ka:'消化器', dz:'食道・胃', title:'機能性ディスペプシア（FD）診療ガイドライン2021（改訂第2版）', fmt:'PDF', url:G+'fd2021r_.pdf',
+          org:'日本消化器病学会', date:'2021年4月27日公開',
+          kw:'きのうせい FD 胃もたれ アコチアミド 六君子湯' },
+        { ka:'消化器', dz:'腸', title:'過敏性腸症候群（IBS）診療ガイドライン2020（改訂第2版）', fmt:'PDF', url:G+'IBSGL2020_.pdf',
+          org:'日本消化器病学会', date:'2020年7月15日公開',
+          kw:'かびんせいちょうしょうこうぐん IBS 下痢型 便秘型 ラモセトロン リナクロチド ポリカルボフィル' },
+        { ka:'消化器', dz:'腸', title:'便通異常症診療ガイドライン2023―慢性便秘症', fmt:'Minds', url:M+'c00812/',
+          org:'日本消化管学会', date:'2023年7月13日発行',
+          kw:'べんぴ 便秘薬 酸化マグネシウム センノシド ルビプロストン リナクロチド エロビキシバット ラクツロース' },
+        { ka:'消化器', dz:'腸', title:'便通異常症診療ガイドライン2023―慢性下痢症', fmt:'Minds', url:M+'c00811/',
+          org:'日本消化管学会', date:'2023年7月13日発行',
+          kw:'げり 止瀉薬 ロペラミド' },
+        { ka:'消化器', dz:'腸', title:'炎症性腸疾患（IBD）診療ガイドライン2020（改訂第2版）', fmt:'PDF', url:G+'ibd2020_.pdf',
+          org:'日本消化器病学会', date:'2020年12月4日公開',
+          kw:'えんしょうせいちょうしっかん IBD 潰瘍性大腸炎 クローン病 メサラジン 5-ASA' },
+        { ka:'消化器', dz:'肝臓', title:'肝硬変診療ガイドライン2020（改訂第3版）', fmt:'PDF', url:G+'kankouhen2020_re.pdf',
+          more:[['Annual Review版',G+'AR_kankouhen202404.pdf']],
+          org:'日本消化器病学会／日本肝臓学会', date:'2020年12月22日公開',
+          kw:'かんこうへん 肝性脳症 腹水 リファキシミン 分岐鎖アミノ酸 BCAA' },
+
+        /* ══ 呼吸器 ══ */
+        { ka:'呼吸器', dz:'COPD', title:'COPD（慢性閉塞性肺疾患）診断と治療のためのガイドライン2022［第6版］', fmt:'Minds', url:M+'c00722/',
+          org:'日本呼吸器学会', date:'2022年6月20日発行',
+          kw:'まんせいへいそくせいはいしっかん COPD 吸入 LAMA LABA ICS テリルジー 禁煙' },
+
+        /* ══ 神経・精神 ══ */
+        { ka:'神経・精神', dz:'頭痛', title:'頭痛の診療ガイドライン2021', fmt:'Minds', url:M+'c00689/',
+          org:'日本神経学会／日本頭痛学会／日本神経治療学会', date:'2021年10月15日発行',
+          kw:'ずつう 片頭痛 トリプタン 薬剤の使用過多による頭痛 MOH CGRP ロメリジン' },
+        { ka:'神経・精神', dz:'パーキンソン病', title:'パーキンソン病診療ガイドライン2018', fmt:'章ごとPDF',
+          url:'https://www.neurology-jp.org/guidelinem/parkinson_2018.html',
+          org:'日本神経学会', date:'2018年5月15日発行', note:'薬ごとの章（L-ドパ・ドパミンアゴニスト・MAOB阻害薬など）がある',
+          kw:'ぱーきんそん L-ドパ レボドパ ドパミンアゴニスト MAOB COMT ウェアリングオフ ジスキネジア' },
+        { ka:'神経・精神', dz:'てんかん', title:'てんかん診療ガイドライン2018', fmt:'章ごとPDF',
+          url:'https://www.neurology-jp.org/guidelinem/tenkan_2018.html',
+          more:[['追補版2022','https://www.neurology-jp.org/guidelinem/tenkan_tuiho_2018_ver2022.html']],
+          org:'日本神経学会', date:'2018年3月15日発行', note:'成人の薬物療法は第3章、薬物濃度モニターは第12章、女性は第13章',
+          kw:'てんかん 抗てんかん薬 抗発作薬 レベチラセタム ラモトリギン バルプロ酸 カルバマゼピン 妊娠' },
+        { ka:'神経・精神', dz:'認知症', title:'認知症疾患診療ガイドライン2017', fmt:'Minds', url:M+'c00408/',
+          org:'日本神経学会', date:'2017年8月1日発行', note:'旧版。最新の2026年版は書籍のみ',
+          kw:'にんちしょう アルツハイマー ドネペジル メマンチン ガランタミン リバスチグミン BPSD' },
+        { ka:'神経・精神', dz:'うつ病・双極症', title:'うつ病診療ガイドライン2025', fmt:'PDF',
+          url:'https://www.secretariat.ne.jp/jsmd/iinkai/katsudou/data/guideline2025.pdf',
+          org:'日本うつ病学会',
+          kw:'うつびょう 抗うつ薬 SSRI SNRI ミルタザピン ボルチオキセチン' },
+        { ka:'神経・精神', dz:'うつ病・双極症', title:'日本うつ病学会診療ガイドライン 双極性障害（双極症）2023', fmt:'PDF',
+          url:'https://www.secretariat.ne.jp/jsmd/iinkai/katsudou/data/guideline_sokyoku2023.pdf',
+          org:'日本うつ病学会', date:'2023年7月1日発行',
+          kw:'そうきょくせいしょうがい 双極症 躁うつ病 炭酸リチウム リチウム ラモトリギン 気分安定薬' },
+        { ka:'神経・精神', dz:'統合失調症', title:'統合失調症薬物治療ガイドライン2022', fmt:'Minds', url:M+'c00713/',
+          org:'日本神経精神薬理学会／日本臨床精神神経薬理学会', date:'2022年5月20日発行',
+          kw:'とうごうしっちょうしょう 抗精神病薬 クロザピン 持効性注射剤 LAI' },
+        { ka:'神経・精神', dz:'不眠', title:'睡眠薬の適正な使用と休薬のための診療ガイドライン', fmt:'PDF',
+          url:'https://jssr.jp/files/guideline/suiminyaku-guideline.pdf',
+          org:'厚生労働科学研究班／日本睡眠学会ワーキンググループ', date:'2014年7月22日更新',
+          kw:'ふみん 睡眠薬 ベンゾジアゼピン 減薬 休薬 中止 オレキシン スボレキサント レンボレキサント' },
+
+        /* ══ 骨・関節 ══ */
+        { ka:'骨・関節', dz:'骨粗鬆症', title:'骨粗鬆症の予防と治療ガイドライン2025年版', fmt:'Minds', url:M+'c00891/',
+          org:'日本骨粗鬆症学会／日本骨代謝学会／骨粗鬆症財団', date:'2025年9月8日発行',
+          kw:'こつそしょうしょう ビスホスホネート デノスマブ テリパラチド ロモソズマブ 活性型ビタミンD SERM 顎骨壊死' },
+        { ka:'骨・関節', dz:'骨粗鬆症', title:'グルココルチコイド誘発性骨粗鬆症の管理と治療のガイドライン2023', fmt:'Minds', url:M+'c00798/',
+          org:'日本骨代謝学会', date:'2023年8月1日発行',
+          kw:'ステロイド性骨粗鬆症 GIO プレドニゾロン ビスホスホネート' },
+
+        /* ══ 泌尿器 ══ */
+        { ka:'泌尿器', dz:'排尿障害', title:'過活動膀胱診療ガイドライン 第3版', fmt:'Minds', url:M+'c00740/',
+          org:'日本排尿機能学会／日本泌尿器科学会', date:'2022年9月1日発行',
+          kw:'かかつどうぼうこう OAB 頻尿 尿失禁 抗コリン薬 ミラベグロン ビベグロン' },
+        { ka:'泌尿器', dz:'排尿障害', title:'男性下部尿路症状・前立腺肥大症診療ガイドライン', fmt:'Minds', url:M+'c00394/',
+          org:'日本泌尿器科学会', date:'2017年4月20日発行',
+          kw:'ぜんりつせんひだいしょう BPH タムスロシン シロドシン ナフトピジル デュタステリド タダラフィル' },
+
+        /* ══ 皮膚 ══ */
+        { ka:'皮膚', dz:'皮膚', title:'アトピー性皮膚炎診療ガイドライン2024年版', fmt:'PDF',
+          url:D+'uploads/uploads/files/guideline/ADGL2024.pdf',
+          org:'日本皮膚科学会／日本アレルギー学会',
+          kw:'あとぴー ステロイド外用薬 タクロリムス デルゴシチニブ ジファミラスト 保湿 プロアクティブ療法 デュピルマブ JAK' },
+        { ka:'皮膚', dz:'皮膚', title:'蕁麻疹診療ガイドライン2026（第4版）', fmt:'PDF',
+          url:D+'dermatol/wp-content/uploads/2013/08/jinmashin2026ver2.pdf',
+          more:[['簡略版',D+'dermatol/wp-content/uploads/2013/08/jinmashin2026kanryaku.pdf']],
+          org:'日本皮膚科学会',
+          kw:'じんましん 抗ヒスタミン薬 ビラスチン フェキソフェナジン オマリズマブ' },
+        { ka:'皮膚', dz:'皮膚', title:'帯状疱疹診療ガイドライン2025', fmt:'PDF',
+          url:D+'uploads/uploads/files/guideline/Taijouhoushin2025.pdf',
+          org:'日本皮膚科学会',
+          kw:'たいじょうほうしん アメナメビル バラシクロビル ファムシクロビル 帯状疱疹後神経痛 PHN ワクチン' },
+
+        /* ══ 感染症 ══ */
+        { ka:'感染症', dz:'抗菌薬', title:'抗微生物薬適正使用の手引き 第四版 医科・外来編', fmt:'PDF',
+          url:'https://www.mhlw.go.jp/content/10900000/001630903.pdf',
+          org:'厚生労働省', note:'2026年1月に第四版。入院編・歯科編は別冊',
+          kw:'こうきんやく 抗菌薬 風邪 かぜ 急性気道感染症 急性下痢症 AMR 薬剤耐性' },
+
+        /* ══ 高齢者・薬全般 ══ */
+        { ka:'高齢者・薬全般', dz:'高齢者', title:'高齢者の安全な薬物療法ガイドライン2015', fmt:'PDF',
+          url:'https://www.jpn-geriat-soc.or.jp/publications/other/pdf/20170808_01.pdf',
+          org:'日本老年医学会', note:'旧版。最新の2025年版は書籍のみ。「特に慎重な投与を要する薬物のリスト」はこの版',
+          kw:'こうれいしゃ ポリファーマシー 多剤併用 STOPP-J 慎重投与 減薬' }
+      ];
+
+      (function () {
+        var tabsEl = document.getElementById('gl-tabs'), listEl = document.getElementById('gl-list'),
+            jumpEl = document.getElementById('gl-jump'), q = document.getElementById('gl-q'), hit = document.getElementById('gl-hit');
+        var ALL = 'すべて';
+        function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
+        function norm(s) { return String(s).toLowerCase().replace(/[ァ-ン]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0x60); }); }
+        function ext(href, label) { return '<a href="' + esc(href) + '" target="_blank" rel="noopener">' + esc(label) + '</a>'; }
+        var byId = {};
+
+        var kas = [];
+        GL.forEach(function (g, i) {
+          g._ka = [].concat(g.ka);
+          g._ka.forEach(function (k) { if (kas.indexOf(k) < 0) kas.push(k); });
+          g._anchor = 'gl-' + (g.id || i);
+          if (g.id) byId[g.id] = g;
+          // 絞り込みの対象：題名・診療科・疾患・発行元・一言・読み（土台の題名と自分用メモは入れない）
+          g._t = norm([g._ka.join(' '), g.dz, g.title, g.org, g.note, g.kw].join(' '));
+        });
+        var tabs = kas.length > 1 ? [ALL].concat(kas) : kas;
+        var cur = tabs[0];
+        try { var saved = localStorage.getItem('gl-tab'); if (saved && tabs.indexOf(saved) >= 0) cur = saved; } catch (e) {}
+
+        function words() { return norm(q.value.trim()).split(/\s+/).filter(Boolean); }
+        function match(g, w) { return w.every(function (x) { return g._t.indexOf(x) >= 0; }); }
+        function inTab(g, k) { return k === ALL || g._ka.indexOf(k) >= 0; }
+
+        function row(g) {
+          var h = '<div class="gl-row" id="' + g._anchor + '">';
+          h += '<div class="gl-main"><a class="gl-title" href="' + esc(g.url) + '" target="_blank" rel="noopener">' + esc(g.title) + '</a>';
+          if (g.fu) h += '<span class="gl-fu" title="フォーカスアップデート版。変わったところだけを記載している">部分更新</span>';
+          h += '</div>';
+          var side = ['<span class="gl-fmt">' + esc(g.fmt) + '</span>'];
+          if (g.errata) side.push(ext(g.errata, '正誤表'));
+          (g.more || []).forEach(function (m) { side.push(ext(m[1], m[0])); });
+          h += '<div class="gl-side">' + side.join('') + '</div>';
+
+          var sub = '';
+          var meta = [g.org, g.date, g.note].filter(Boolean).join(' ・ ');
+          if (meta) sub += '<div class="gl-meta">' + esc(meta) + '</div>';
+          var line = [];
+          if (g.base) {
+            var b;
+            if (typeof g.base === 'string' || (Array.isArray(g.base) && byId[g.base[0]])) {
+              b = [].concat(g.base).map(function (id) { var t = byId[id]; return t ? '<a href="#' + t._anchor + '">' + esc(t.title) + '</a>' : ''; }).join('');
+            } else {
+              b = ext(g.base[1], g.base[0]);
+            }
+            line.push('<span class="gl-to"><span class="lab">土台</span>' + b + '</span>');
+          }
+          if (g.used && g.used.length) {
+            line.push('<span class="gl-to"><span class="lab">勉強メモ</span>' + g.used.map(function (u) {
+              return '<a href="' + encodeURI(u[0]) + '">' + esc(u[1]) + '</a>';
+            }).join('') + '</span>');
+          }
+          if (g.plan) line.push('<span class="gl-plan"><span class="lab">予定</span>' + esc(g.plan) + '</span>');
+          if (line.length) sub += '<div class="gl-line">' + line.join('') + '</div>';
+          if (sub) h += '<div class="gl-sub">' + sub + '</div>';
+          return h + '</div>';
+        }
+
+        function group(rows, withKa) {
+          var out = '', kaList = withKa ? kas : [null];
+          kaList.forEach(function (k) {
+            var rk = k ? rows.filter(function (g) { return g._ka.indexOf(k) >= 0; }) : rows;
+            if (!rk.length) return;
+            if (k) out += '<div class="gl-ka">' + esc(k) + '</div>';
+            var dzs = [];
+            rk.forEach(function (g) { if (dzs.indexOf(g.dz) < 0) dzs.push(g.dz); });
+            dzs.forEach(function (d) {
+              var did = 'dz-' + (k ? kas.indexOf(k) + '-' : '') + d;
+              out += '<div class="gl-dz" id="' + esc(did) + '"><div class="gl-dz-name">' + esc(d) + '</div>' +
+                rk.filter(function (g) { return g.dz === d; }).map(row).join('') + '</div>';
+            });
+          });
+          return out;
+        }
+
+        function draw() {
+          var w = words(), searching = w.length > 0;
+          // 検索中は全科から探す。タブは各科の当たり件数を出す
+          var shown = searching ? GL.filter(function (g) { return match(g, w); })
+                                : GL.filter(function (g) { return inTab(g, cur); });
+          tabsEl.innerHTML = tabs.length > 1 ? tabs.map(function (k) {
+            var n = GL.filter(function (g) { return inTab(g, k) && (!searching || match(g, w)); }).length;
+            var on = !searching && k === cur;
+            return '<button type="button" role="tab" aria-selected="' + on + '" data-ka="' + esc(k) + '">' + esc(k) + '<span class="n">' + n + '</span></button>';
+          }).join('') : '';
+
+          var withKa = searching ? kas.length > 1 : cur === ALL;
+          listEl.innerHTML = shown.length ? group(shown, withKa)
+            : '<p class="gl-empty">当てはまるガイドラインがありません。下の「ここにないときに探す場所」から当たる。</p>';
+
+          // 疾患へ飛ぶチップ：1つの科を見ていて、疾患が4つ以上あるとき
+          var dzs = [];
+          if (!searching && cur !== ALL) shown.forEach(function (g) { if (dzs.indexOf(g.dz) < 0) dzs.push(g.dz); });
+          jumpEl.innerHTML = dzs.length >= 4 ? dzs.map(function (d) { return '<a href="#' + esc('dz-' + d) + '">' + esc(d) + '</a>'; }).join('') : '';
+
+          hit.textContent = searching ? shown.length + '件' : '';
+        }
+
+        tabsEl.addEventListener('click', function (e) {
+          var b = e.target.closest('button[data-ka]'); if (!b) return;
+          cur = b.getAttribute('data-ka');
+          q.value = '';
+          try { localStorage.setItem('gl-tab', cur); } catch (e2) {}
+          draw();
+        });
+        q.addEventListener('input', draw);
+        draw();
+        // 土台へのリンク：別の科のタブを見ているときでも飛べるようにする
+        listEl.addEventListener('click', function (e) {
+          var a = e.target.closest('a[href^="#gl-"]'); if (!a || document.getElementById(a.getAttribute('href').slice(1))) return;
+          cur = ALL; draw();
+        });
+      })();
+    </script>
+  </body>
+</html>
