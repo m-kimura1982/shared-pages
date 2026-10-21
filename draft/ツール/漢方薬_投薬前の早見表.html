@@ -50,13 +50,10 @@
     .chip { font-family:inherit; font-size:var(--text-xs); font-weight:700; padding:3px 11px; background:var(--white); color:var(--txt-2); border:var(--bw-h) solid var(--border); border-radius:999px; cursor:pointer; text-decoration:none; }
     .chip.on { background:var(--box-blue); color:var(--blue); border-color:var(--blue); }
     .row-note { font-weight:500; margin-left:4px; }
-    /* 組み合わせて使う一文（場面の言い換えの下。短い文を並べ、読み手が選んでつなげる） */
-    .parts { margin-top:4px; background:var(--box-blue); border-radius:var(--radius-sm); padding:10px 14px; }
-    .parts-h { font-size:var(--text-xs); font-weight:700; color:var(--blue); margin-bottom:4px; }
-    .parts-note { display:block; font-weight:500; color:var(--txt-2); }
-    .parts ul { list-style:none; font-size:var(--text-sm); }
-    .parts li { display:flex; gap:6px; }
-    .parts li::before { content:"・"; color:#999; flex-shrink:0; }
+    /* 用いる人（効能・効果の前段）。体質の話なので患者本人には言わない */
+    .hito { margin-top:4px; background:var(--box-gray); border-radius:var(--radius-sm); padding:9px 13px; font-size:var(--text-sm); }
+    .hito-l { display:block; font-size:var(--text-xs); font-weight:700; color:var(--txt-2); }
+    .hito-n { margin-top:3px; font-size:var(--text-xs); color:var(--txt-3); }
     .hit-count { font-size:var(--text-xs); color:var(--txt-3); margin-top:6px; }
 
     /* 1品目＝帯（名前と一言）を押すと開く。品目が増えても一覧が縦に伸びすぎないように */
@@ -125,6 +122,7 @@
     .cautions li { display:flex; gap:6px; }
     .cautions li::before { content:"・"; color:#999; flex-shrink:0; }
     .kounou { font-size:var(--text-sm); color:var(--txt-2); }
+    .watch-lead { font-size:var(--text-sm); color:var(--txt-2); margin-bottom:4px; }
     .watch { list-style:none; font-size:var(--text-sm); }
     .watch li { display:flex; gap:10px; padding:3px 0; }
     .watch .wl { flex-shrink:0; min-width:4.5em; font-size:var(--text-xs); font-weight:700; color:var(--txt-2); padding-top:2px; }
@@ -136,7 +134,6 @@
     .ref { font:inherit; font-weight:700; color:var(--blue); background:none; border:none; padding:0; cursor:pointer; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px; }
     .ref::after { content:"⇄"; font-size:0.8em; margin-left:2px; text-decoration:none; display:inline-block; }
     .cmp { margin:8px 0 4px; background:var(--white); border:var(--bw-h) solid var(--border-dk); border-radius:var(--radius-sm); padding:10px 12px; font-size:var(--text-sm); color:var(--ink); font-weight:400; }
-    .parts + .cmp { margin-top:8px; }
     .cmp-h { display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
     .cmp-h b { font-weight:900; }
     .cmp-g { font-size:var(--text-xs); color:var(--txt-2); margin:2px 0 6px; }
@@ -302,7 +299,8 @@ const own = k => k.cautions.filter(c => !/似た処方|類似処方/.test(c)).jo
 function watch(k){
   const w = WATCH.filter(r => r.by(k));
   if (!w.length) return '';
-  return `<div class="sub-title">長期服用時の確認事項<span class="st-note">症状があれば処方医に連絡</span></div>
+  return `<div class="sub-title">長期服用時の確認事項</div>
+    <p class="watch-lead">聞き取りで確認し、該当する症状の訴えがあれば処方医に伝える。</p>
     <ul class="watch">${w.map(r => `<li><span class="wl">${r.lab}</span><span>${r.t}</span></li>`).join('')}</ul>`;
 }
 
@@ -326,13 +324,13 @@ function card(k){
     <div class="fold-body">
     <div class="flags" style="margin-top:0">${kz}${plain}<span class="flag">味：${k.taste}</span>${k.kanzo ? `<button type="button" class="kz-btn" data-id="${k.id}">甘草の合計に足す</button>` : ''}</div>
 
-    ${k.parts ? `<div class="parts"><div class="parts-h">組み合わせて使える一文<span class="parts-note">どの場面でも使える説明。下の場面ごとの言葉に足して使う</span></div><ul>${k.parts.map(p => `<li><span>${linkNames(p, k)}</span></li>`).join('')}</ul></div>` : ''}
+    ${k.hito ? `<div class="hito"><span class="hito-l">用いる人</span>${k.hito}<div class="hito-n">処方を選んだ理由をつかむための目安。体力や体質の話は本人にはしない</div></div>` : ''}
     <div class="sub-title">場面ごとの伝え方</div>
     <div class="scenes">${scenes}</div>
 
     ${watch(k)}
 
-    <div class="sub-title">構成生薬と役割<span class="st-note">生薬名を押すと、ほかの働きも出る</span></div>
+    <div class="sub-title">構成生薬と役割<span class="st-note">生薬名を押すと、その生薬のほかの働きを表示</span></div>
     <div class="table-wrap"><table class="herbs">
       <thead><tr><th>生薬</th><th>この処方での役割</th><th class="hg">1日量</th></tr></thead>
       <tbody>${herbs}</tbody></table></div>
@@ -394,7 +392,7 @@ list.addEventListener('click', e => {
     t.open = true;
     return;
   }
-  const anchor = r.closest('.parts') || r.closest('li, .scene') || r.closest('p');
+  const anchor = r.closest('li, .scene') || r.closest('p');
   const old = d.querySelector('.cmp');
   const same = old && old.dataset.to === r.dataset.to && old.parentNode === (anchor.matches('li, .scene') ? anchor : anchor.parentNode);
   if (old) old.remove();
@@ -430,7 +428,7 @@ KAMPO.forEach(k => {
   HAY[k.id] = norm(strip([k.name, k.yomi, 'ツムラ' + k.no, k.gist, k.kounou, k.kw, k.taste,
     k.herbs.map(h => h[1]).join(' '),  /* カタカナ名は外す（「せき」がカッセキに当たるため） */
     k.scenes.map(s => [s.t, s.w, s.tip || '', s.ka, s.k].join(' ')).join(' '),
-    k.flags.map(f => f.t).join(' '), (k.parts || []).join(' ')].join(' ')));
+    k.flags.map(f => f.t).join(' '), k.hito || ''].join(' ')));
   HAYH[k.id] = norm(strip([k.how, k.herbs.map(h => h[3]).join(' ')].join(' ')));
   HAYC[k.id] = norm(strip(k.cautions.join(' ')));
 });
