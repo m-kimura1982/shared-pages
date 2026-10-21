@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>かかりつけ薬剤師フォローアップ加算</title>
-  <meta name="search-keywords" content="かかりつけ,電話,フォローアップ,双方向,服薬状況確認,直近6月,解消,残薬調整加算,有害事象等防止加算,外来服薬支援料,服用薬剤調整支援料,ポリファーマシー,減薬,不在" />
+  <meta name="search-keywords" content="かかりつけ,電話,フォローアップ,双方向,服薬状況確認,直近6月,解消,残薬調整加算,有害事象等防止加算,外来服薬支援料,服用薬剤調整支援料,ポリファーマシー,減薬,不在,一斉メール,アプリ,情報通信機器,他院の処方箋" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/gigi-list.css" />
   <link rel="stylesheet" href="../assets/source-refs.css" />
@@ -167,6 +167,56 @@
     }
   .bullet { display:flex; gap:6px; }
   .bullet > span:first-child { flex-shrink:0; color:#999; }
+  .table-wrap { overflow-x:auto; }
+  /* 算定できる患者：はい／いいえの判定フロー */
+  .dflow { display:flex; flex-direction:column; }
+  .dq { display:grid; grid-template-columns:1fr 9.5em; gap:12px; align-items:center; background:var(--box-gray); border-radius:var(--radius-sm); padding:12px 16px; }
+  .dq-no { font-size:var(--text-sm); font-weight:700; color:var(--txt-2); background:var(--white); border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:6px 10px; text-align:center; white-space:nowrap; }
+  .dq-no .x { font-weight:900; margin-right:4px; }
+  .dq-yes { align-self:flex-start; margin-left:28px; padding:4px 0 4px 18px; border-left:2px solid var(--blue); font-size:var(--text-xs); font-weight:700; color:var(--blue); position:relative; }
+  .dq-yes::after { content:""; position:absolute; left:-7px; bottom:-2px; width:8px; height:8px; border-right:2px solid var(--blue); border-bottom:2px solid var(--blue); transform:rotate(45deg); }
+  .dq-ok { margin-top:4px; background:var(--box-blue); color:var(--blue); font-weight:900; border-radius:var(--radius-sm); padding:10px 16px; font-size:var(--text-sm); }
+  .judge-note { font-size:var(--text-sm); color:var(--txt-2); border-top:var(--bw) solid var(--border); padding-top:8px; }
+  /* 実施できる期間の図 */
+  .tl { background:var(--box-gray); border-radius:var(--radius-sm); padding:18px 18px 14px; margin-bottom:14px; }
+  .tl-row { display:grid; grid-template-columns:90px 1fr 90px; font-size:var(--text-xs); font-weight:700; text-align:center; }
+  .tl-ends { margin-bottom:6px; }
+  .tl-foot { margin-top:6px; color:var(--txt-3); line-height:1.45; }
+  .tl-mid { display:flex; justify-content:space-between; padding:0 2px; color:var(--blue); }
+  .tl-bar { position:relative; height:70px; }
+  .tl-line { position:absolute; left:30px; right:30px; top:46px; height:1.5px; background:#b4bac2; }
+  .tl-band { position:absolute; left:90px; right:90px; top:46px; transform:translateY(-50%); background:var(--tl-bg); color:#2a5580; font-weight:900; font-size:var(--text-sm); text-align:center; padding:7px 0; line-height:1.2; border-radius:4px; }
+  .tl-x { position:absolute; top:46px; background:var(--box-gray); padding:0 6px; color:#666; font-size:24px; font-weight:900; line-height:1; }
+  .tl-x-l { left:45px; transform:translate(-50%, -50%); }
+  .tl-x-r { right:45px; transform:translate(50%, -50%); }
+  .tl-other { position:absolute; right:calc(90px + 14%); top:0; bottom:8px; border-left:2px dashed #4b3f80; }
+  .tl-other-chip { position:absolute; top:0; left:50%; transform:translateX(-50%); background:#e5e0f2; color:#4b3f80; font-size:var(--text-xs); font-weight:700; padding:1px 8px; border-radius:4px; white-space:nowrap; }
+  /* 実施方法の対比 */
+  .how { border-radius:var(--radius-sm); padding:12px 14px; font-size:var(--text-sm); display:flex; flex-direction:column; gap:4px; }
+  .how-ttl { font-weight:900; margin-bottom:2px; }
+  .how-mark { font-weight:900; margin-right:6px; }
+  .how-ok { background:#e3efe0; }
+  .how-ok .how-ttl { color:#3d6b2e; }
+  .how-ng { background:var(--box-gray); border:var(--bw) solid var(--border); }
+  .how-ng .how-ttl { color:var(--txt-2); }
+  .how .bullet > span:first-child { color:var(--txt-3); }
+  /* 不在のときの表 */
+  .cmp-tbl { width:100%; border-collapse:collapse; font-size:var(--text-sm); background:var(--white); }
+  .cmp-tbl th, .cmp-tbl td { border:var(--bw-h) solid var(--border); padding:8px 10px; text-align:left; vertical-align:middle; }
+  .cmp-tbl th { background:var(--box-gray); font-weight:900; }
+  .cmp-tbl th.col-main { background:var(--box-blue); color:var(--blue); }
+  .cmp-tbl th:not(:first-child), .cmp-tbl td.c { text-align:center; }
+  @media (max-width:640px) {
+    .dq { grid-template-columns:1fr; gap:8px; }
+    .dq-no { justify-self:start; }
+    .cmp-tbl { min-width:0; }
+    .tl { padding:14px 10px 12px; }
+    .tl-row { grid-template-columns:64px 1fr 64px; }
+    .tl-line { left:20px; right:20px; }
+    .tl-band { left:64px; right:64px; }
+    .tl-x-l { left:32px; } .tl-x-r { right:32px; }
+    .tl-other { right:calc(64px + 5%); }
+  }
   .fu-tbl { width:100%; border-collapse:collapse; font-size:var(--text-sm); background:var(--white); }
   .fu-tbl th, .fu-tbl td { border:var(--bw-h) solid var(--border); padding:7px 10px; text-align:left; vertical-align:top; line-height:1.6; }
   .fu-tbl th { background:var(--box-gray); font-weight:900; font-size:var(--text-xs); }
@@ -191,7 +241,6 @@
   <div class="page-title">
     <div>
       <h1>かかりつけ薬剤師フォローアップ加算</h1>
-      <p>次回来局までの間に電話等で服薬状況・残薬状況を継続的に確認した場合の評価</p>
     </div>
     <div class="pts-badge">
       <span class="pts-label">3月に1回に限り</span>
@@ -221,30 +270,42 @@
   <!-- ① 算定できる患者 -->
   <div class="card avoid-break">
     <div class="card-title">算定できる患者</div>
-    <p class="lead" style="margin-bottom:12px;">次の①〜③の<span class="marker">すべてに当てはまる</span>患者が対象。</p>
-    <div class="flow">
-      <div class="flow-step">
-        <div class="flow-head"><span class="step-num">1</span>かかりつけの患者である</div>
-        <div class="flow-body">フォローアップのきっかけになった調剤（下の「起点となる調剤日」）で、服薬管理指導料「１のイ」または「２のイ」を算定している。</div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-head"><span class="step-num">2</span>直近6月以内に、次のいずれかを算定している</div>
-        <div class="flow-body">
-          <div class="bullet"><span>・</span><span><a href="外来服薬支援料1.html">外来服薬支援料１</a></span></div>
-          <div class="bullet"><span>・</span><span><a href="服用薬剤調整支援料１.html">服用薬剤調整支援料１</a>または<a href="服用薬剤調整支援料２_2026改定.html">２</a></span></div>
-          <div class="bullet"><span>・</span><span>調剤管理料の<a href="調剤時残薬調整加算.html">調剤時残薬調整加算</a></span></div>
-          <div class="bullet"><span>・</span><span>調剤管理料の<a href="薬学的有害事象等防止加算.html">薬学的有害事象等防止加算</a></span></div>
-          <div class="note" style="margin-top:4px;"><strong>「直近6月」の数え方（当社の整理）：</strong>日付ではなく暦月で、算定する月を含めた6か月で数える。例）10月に算定するなら5月〜10月の算定を見る。含めないと、起点の調剤で算定した月にそのまま算定できなくなるため。調剤のこの加算について直接示した資料はないが、月の数え方は通則（月の初日から末日までを1か月）と、他の点数の疑義解釈（「1月以内」は同一月内でよい、など）に合わせた。</div>
-          <div class="note" style="margin-top:4px;">廃止された重複投薬・相互作用等防止加算の算定も、調剤時残薬調整加算・薬学的有害事象等防止加算の算定とみなしてよい（疑義解釈その７ 問６）。</div>
+    <p class="lead" style="margin-bottom:12px;">上から順に確かめ、<span class="marker">3つとも「はい」</span>なら対象。</p>
+    <div class="dflow">
+      <div class="dq">
+        <div class="dq-main">
+          <div class="flow-head"><span class="step-num">1</span>起点となる調剤で、服薬管理指導料「１のイ」または「２のイ」を算定している</div>
+          <div class="flow-body">起点となる調剤：フォローアップのきっかけになった調剤</div>
         </div>
+        <div class="dq-no"><span class="x">×</span>いいえ → 対象外</div>
       </div>
-      <div class="flow-step">
-        <div class="flow-head"><span class="step-num">3</span>その算定の原因になった問題が、まだ残っている</div>
-        <div class="flow-body">その算定の原因になった問題（残薬等）が、フォローアップ業務によって<span class="marker">すでに解消されている場合は対象外</span>。直近6月以内に算定していても算定できない（疑義解釈その10 問４）。判断のしかたは次の「問題が残っているかの見方」。</div>
+      <div class="dq-yes">はい</div>
+      <div class="dq">
+        <div class="dq-main">
+          <div class="flow-head"><span class="step-num">2</span>直近6月以内に、次のいずれかを算定している</div>
+          <div class="flow-body">
+            <div class="bullet"><span>・</span><span><a href="外来服薬支援料1.html">外来服薬支援料１</a></span></div>
+            <div class="bullet"><span>・</span><span><a href="服用薬剤調整支援料１.html">服用薬剤調整支援料１</a>または<a href="服用薬剤調整支援料２_2026改定.html">２</a></span></div>
+            <div class="bullet"><span>・</span><span>調剤管理料の<a href="調剤時残薬調整加算.html">調剤時残薬調整加算</a></span></div>
+            <div class="bullet"><span>・</span><span>調剤管理料の<a href="薬学的有害事象等防止加算.html">薬学的有害事象等防止加算</a></span></div>
+            <div class="note" style="margin-top:4px;">廃止された重複投薬・相互作用等防止加算の算定も、調剤時残薬調整加算・薬学的有害事象等防止加算の算定とみなしてよい。</div>
+          </div>
+        </div>
+        <div class="dq-no"><span class="x">×</span>いいえ → 対象外</div>
       </div>
+      <div class="dq-yes">はい</div>
+      <div class="dq">
+        <div class="dq-main">
+          <div class="flow-head"><span class="step-num">3</span>その算定の原因になった問題（残薬等）が、まだ残っている</div>
+          <div class="flow-body">フォローアップ業務によって<span class="marker">すでに解消されていれば対象外</span>。判断のしかたは次の「問題が残っているかの見方」。</div>
+        </div>
+        <div class="dq-no"><span class="x">×</span>いいえ → 対象外</div>
+      </div>
+      <div class="dq-yes">はい</div>
+      <div class="dq-ok">対象（次に対象処方箋を受け付けたときに、3月に1回 50点）</div>
     </div>
     <div class="sub-block">
-      <div class="h3">算定できない薬局・場合</div>
+      <div class="h3">3つとも「はい」でも算定できない薬局・場合</div>
       <div class="bullet"><span>・</span><span>特別調剤基本料Ｂを算定している薬局</span></div>
       <div class="bullet"><span>・</span><span>複数の保険薬局で服薬管理指導料「１のイ」「２のイ」を算定している患者（どの薬局も算定できない）</span></div>
     </div>
@@ -257,25 +318,26 @@
   <!-- ② 問題が残っているかの見方 -->
   <div class="card avoid-break">
     <div class="card-title">問題が残っているかの見方<span class="badge badge-gray">当社の整理</span></div>
-    <p class="lead">通知・疑義解釈が決めているのは「フォローアップ業務によって問題が解消されていれば対象外」まで。当社では、次のように判断する。</p>
+    <p class="lead">当社では、問題が残っているかを次のように判断する。</p>
     <div class="judge">
-      <div class="judge-row"><span>今回のフォローアップを<strong>始める時点</strong>で、③の問題がまだ残っていて、引き続き確認・指導が必要</span><span class="arrow">→</span><span class="em-blue">対象</span></div>
-      <div class="judge-row"><span>それまでに解消している（算定したときの指導・別の機会の指導・前回のフォローアップの、どれで解消した場合も）</span><span class="arrow">→</span><strong>対象外</strong></div>
+      <div class="judge-row"><span>今回のフォローアップを<strong>始める時点</strong>で、問題がまだ残っていて、引き続き確認・指導が必要</span><span class="arrow">→</span><span class="em-blue">対象</span></div>
+      <div class="judge-row"><span>始める時点で、問題はすでに解消している</span><span class="arrow">→</span><strong>対象外</strong></div>
+      <div class="judge-note">解消したきっかけは問わない。算定したときの指導、別の機会の指導、前回のフォローアップのどれで解消していても対象外。</div>
     </div>
-    <p class="lead" style="margin-top:14px;">何が「問題」になるかは、算定した点数ごとに違う。表の「確認すること」はその問題に関わる確認の例で、フォローアップの中身はこれに限らない（服薬状況・残薬状況等の確認と必要な指導）。</p>
+    <p class="lead" style="margin-top:14px;">何が「問題」になるかは、直近6月以内に算定した点数ごとに違う。「確認すること」は例で、これに限らない。</p>
     <div class="table-wrap" style="margin-top:10px;"><table class="fu-tbl">
-      <thead><tr><th>②の点数</th><th>算定の原因になった問題</th><th>フォローアップで確認すること（例）</th><th>それまでに解消していた → 対象外（例）</th></tr></thead>
+      <thead><tr><th>算定した点数</th><th>算定の原因になった問題</th><th>フォローアップで確認すること（例）</th><th>対象外になる例</th></tr></thead>
       <tbody>
-        <tr><td><strong>調剤時残薬調整加算</strong></td><td data-label="算定の原因になった問題">飲み忘れ・飲み残しによる残薬</td><td data-label="フォローアップで確認すること（例）">飲み忘れが続いていないか、残薬がまた出ていないか、服用時点や飲み方の見直しが必要でないか</td><td data-label="それまでに解消していた → 対象外（例）">飲み忘れの対処法を指導し、残薬が出なくなった</td></tr>
-        <tr><td><strong>薬学的有害事象等防止加算</strong></td><td data-label="算定の原因になった問題">副作用・相互作用・重複投薬など</td><td data-label="フォローアップで確認すること（例）">問題になった副作用の症状がよくなっているか、新たな症状が出ていないか、変更後の薬を問題なく使えているか</td><td data-label="それまでに解消していた → 対象外（例）">症状がよくなり、重複投薬・相互作用の問題もなくなって、経過を見る必要もない</td></tr>
-        <tr><td><strong>外来服薬支援料１</strong></td><td data-label="算定の原因になった問題">自分で薬を管理するのが難しい</td><td data-label="フォローアップで確認すること（例）">一包化や服薬カレンダーなどで決められたとおりに飲めているか、飲み間違いや飲み忘れがないか、今の管理方法を続けられそうか</td><td data-label="それまでに解消していた → 対象外（例）">一包化・服薬カレンダーで、自分で管理できるようになった</td></tr>
-        <tr><td><strong>服用薬剤調整支援料１・２</strong></td><td data-label="算定の原因になった問題">多剤服用に伴う問題（ポリファーマシー）</td><td data-label="フォローアップで確認すること（例）">減薬後に体調の変化や症状の再発がないか、さらに見直せる薬がないか</td><td data-label="それまでに解消していた → 対象外（例）">減薬後の状態が安定し、調整の必要がなくなった</td></tr>
+        <tr><td><strong>外来服薬支援料１</strong></td><td data-label="算定の原因になった問題">自分で薬を管理するのが難しい</td><td data-label="フォローアップで確認すること（例）">一包化や服薬カレンダーなどで決められたとおりに飲めているか、飲み間違いや飲み忘れがないか、今の管理方法を続けられそうか</td><td data-label="対象外になる例">一包化・服薬カレンダーで、自分で管理できるようになった</td></tr>
+        <tr><td><strong>服用薬剤調整支援料１・２</strong></td><td data-label="算定の原因になった問題">多剤服用に伴う問題（ポリファーマシー）</td><td data-label="フォローアップで確認すること（例）">減薬後に体調の変化や症状の再発がないか、さらに見直せる薬がないか</td><td data-label="対象外になる例">減薬後の状態が安定し、調整の必要がなくなった</td></tr>
+        <tr><td><strong>調剤時残薬調整加算</strong></td><td data-label="算定の原因になった問題">飲み忘れ・飲み残しによる残薬</td><td data-label="フォローアップで確認すること（例）">飲み忘れが続いていないか、残薬がまた出ていないか、服用時点や飲み方の見直しが必要でないか</td><td data-label="対象外になる例">飲み忘れの対処法を指導し、残薬が出なくなった</td></tr>
+        <tr><td><strong>薬学的有害事象等防止加算</strong></td><td data-label="算定の原因になった問題">副作用・相互作用・重複投薬など</td><td data-label="フォローアップで確認すること（例）">問題になった副作用の症状がよくなっているか、新たな症状が出ていないか、変更後の薬を問題なく使えているか</td><td data-label="対象外になる例">症状がよくなり、重複投薬・相互作用の問題もなくなって、経過を見る必要もない</td></tr>
       </tbody>
     </table></div>
     <div class="sub-block">
       <div class="h3">同じ算定の実績で、2回目のフォローアップをするとき</div>
-      <p class="note" style="margin-bottom:4px;">3月に1回まで算定できるので、直近6月以内の同じ算定をもとに2回フォローアップすることがある。</p>
-      <div class="bullet"><span>・</span><span>1回目のあとも残薬の問題が続いている → 2回目も<span class="em-blue">対象</span></span></div>
+      <p style="margin-bottom:4px;">3月に1回まで算定できるので、直近6月以内の同じ算定をもとに2回フォローアップすることがある。例）調剤時残薬調整加算をもとにしたとき</p>
+      <div class="bullet"><span>・</span><span>1回目のあとも残薬の問題が続いている → 2回目も<span class="em-blue">対象</span>。ただし、解消しない理由・背景を検証して改善策を講じる（下の「算定上の注意」）</span></div>
       <div class="bullet"><span>・</span><span>1回目で残薬の問題が解消した → 2回目は<strong>対象外</strong></span></div>
     </div>
   </div>
@@ -286,35 +348,46 @@
     <p class="lead" style="margin-bottom:14px;">フォローアップのきっかけになった医療機関の処方箋を<span class="em-blue">対象処方箋</span>という。算定の対象になるのは、<strong>起点となる調剤日の翌日</strong>から<strong>次に対象処方箋を持参した日の前日</strong>までに実施したフォローアップ。</p>
 
     <!-- タイムライン図 -->
-    <div style="background:var(--box-gray); border-radius:var(--radius-sm); padding:20px 18px; margin-bottom:14px;">
-      <div style="display:grid; grid-template-columns:90px 1fr 90px; gap:8px; font-size:var(--text-xs); font-weight:700; text-align:center; margin-bottom:8px;">
+    <div class="tl">
+      <div class="tl-row tl-ends">
         <div>起点となる<br>調剤日</div>
         <div></div>
         <div>対象処方箋<br>の持参日</div>
       </div>
-      <div style="position:relative; height:42px;">
-        <div style="position:absolute; left:30px; right:30px; top:50%; height:1.5px; background:#b4bac2; transform:translateY(-50%);"></div>
-        <div style="position:absolute; left:90px; right:90px; top:50%; transform:translateY(-50%); background:var(--tl-bg); color:#2a5580; font-weight:900; font-size:var(--text-sm); text-align:center; padding:7px 0; line-height:1.2; border-radius:4px;">実施できる期間</div>
-        <div style="position:absolute; left:45px; top:50%; transform:translate(-50%, -50%); background:var(--box-gray); padding:0 6px; color:#666; font-size:24px; font-weight:900; line-height:1;">✕</div>
-        <div style="position:absolute; right:45px; top:50%; transform:translate(50%, -50%); background:var(--box-gray); padding:0 6px; color:#666; font-size:24px; font-weight:900; line-height:1;">✕</div>
+      <div class="tl-bar">
+        <div class="tl-line"></div>
+        <div class="tl-band">実施できる期間</div>
+        <div class="tl-x tl-x-l">✕</div>
+        <div class="tl-x tl-x-r">✕</div>
+        <div class="tl-other"><span class="tl-other-chip">他院の処方箋</span></div>
       </div>
-      <div style="display:grid; grid-template-columns:90px 1fr 90px; gap:0; font-size:var(--text-xs); font-weight:700; color:var(--blue); margin-top:8px;">
-        <div></div>
-        <div style="display:flex; justify-content:space-between; padding:0 2px;"><span>翌日</span><span>前日</span></div>
-        <div></div>
+      <div class="tl-row tl-foot">
+        <div>当日は<br>含まない</div>
+        <div class="tl-mid"><span>翌日から</span><span>前日まで</span></div>
+        <div>当日は<br>含まない</div>
       </div>
     </div>
 
-    <div class="bullet" style="font-size:var(--text-sm);"><span>・</span><span>算定するのは<strong>対象処方箋を受け付けたとき</strong>。別の医療機関の処方箋では算定できないが、間に挟まっても<strong>次の対象処方箋での算定には影響しない</strong>。</span></div>
-    <div class="bullet" style="font-size:var(--text-sm);"><span>・</span><span>前回調剤の直後ではなく、<strong>受診間隔（調剤間隔）等を考えて、薬学的に適切な時期</strong>に実施する。</span></div>
+    <div class="bullet" style="font-size:var(--text-sm);"><span>・</span><span>算定するのは<strong>対象処方箋を受け付けたとき</strong>。別の医療機関の処方箋（図の「他院の処方箋」）を持参しても「次に持参した日」には当たらない。その日は算定せず、<strong>実施できる期間も続く</strong>。</span></div>
+    <div class="bullet" style="font-size:var(--text-sm);"><span>・</span><span><strong>受診間隔（調剤間隔）等を考えて、薬学的に適切な時</strong>に実施する。</span></div>
   </div>
 
   <!-- ④ 実施方法 -->
   <div class="card avoid-break">
     <div class="card-title">実施方法の要件<span class="badge badge-blue">双方向性が必須</span></div>
-    <p class="lead" style="margin-bottom:10px;">患者の状況に応じて、<span class="em-blue">双方向のやりとり</span>で確認・指導する。電話のほか、情報通信機器を使った方法でもよい。次のような一方通行の対応は算定の対象にならない。</p>
-    <div class="bullet" style="font-size:var(--text-sm);"><span>・</span><span>一律の内容の<strong>電子メールを一斉送信</strong>するだけ（画一的な通知だけ）</span></div>
-    <div class="bullet" style="font-size:var(--text-sm);"><span>・</span><span>アプリで患者が<strong>定型的な設問にチェック・入力するだけ</strong>で終わり、個別の確認・助言がない</span></div>
+    <p class="lead" style="margin-bottom:12px;">患者の状況に応じて、<span class="em-blue">双方向のやりとり</span>で確認・指導する。</p>
+    <div class="grid-2">
+      <div class="how how-ok">
+        <div class="how-ttl"><span class="how-mark">✓</span>算定の対象になる</div>
+        <div class="bullet"><span>・</span><span>電話で服薬状況・残薬状況等を確認し、必要な指導を行う</span></div>
+        <div class="bullet"><span>・</span><span>情報通信機器を使った方法でも、患者の状態を踏まえて個別に確認・助言する</span></div>
+      </div>
+      <div class="how how-ng">
+        <div class="how-ttl"><span class="how-mark">×</span>算定の対象にならない</div>
+        <div class="bullet"><span>・</span><span>一律の内容の電子メールの一斉送信など、画一的な通知だけ</span></div>
+        <div class="bullet"><span>・</span><span>アプリで患者が定型的な設問にチェック・入力するだけで終わり、個別の確認・助言がない</span></div>
+      </div>
+    </div>
   </div>
 
   <!-- ⑤ 算定上の注意点 -->
@@ -322,14 +395,29 @@
     <div class="card-title">算定上の注意</div>
     <div class="dl">
       <div class="dt">事前の説明と了解</div>
-      <div class="dd">あらかじめ患者または家族等に、①実施する聞き取り・指導等の内容、②発生する患者自己負担額を説明し、了解を得る。</div>
+      <div class="dd">あらかじめ患者または家族等に、電話等で行う聞き取り・指導の内容と、この加算で発生する患者の自己負担額を説明し、了解を得る。</div>
       <div class="dt">体調変化等の情報提供</div>
       <div class="dd">医療機関へ伝えるべき体調の変化等が分かったら、速やかに医療機関へ情報提供し、必要に応じて受診を勧める。</div>
-      <div class="dt">みだりに繰り返さない</div>
-      <div class="dd">フォローアップをしても残薬等の問題が解消しないときは、繰り返すのではなく、解消しない理由・背景を検証して改善策を講じる。</div>
+      <div class="dt">問題が解消しないとき</div>
+      <div class="dd">フォローアップをしても残薬等の問題が解消しないときは、同じフォローアップをただ繰り返さず、解消しない理由・背景を検証して改善策を講じる。</div>
       <div class="dt">薬歴への記載</div>
       <div class="dd">電話等でフォローアップした旨・日時・聞き取りや指導等の内容を記載する。問題が解消しないときは、<span class="em-blue">検証の内容と改善策も記載</span>する。薬歴に残す内容は <a href="../yakureki/加算別記載一覧.html#fu">加算別 薬歴記載一覧</a>、加算の有無にかかわらず必要な事項は <a href="../yakureki/基本記載ルール.html">基本記載ルール</a> を参照。</div>
     </div>
+  </div>
+
+  <!-- かかりつけ薬剤師が不在だったとき -->
+  <div class="card avoid-break">
+    <div class="card-title">かかりつけ薬剤師が不在だったとき</div>
+    <p class="lead">次に処方箋を受け付けたとき、かかりつけ薬剤師が不在でもフォローアップ加算は算定できる。起点となる調剤で「１のイ」「２のイ」を算定していれば、そのとき応対する薬剤師は問わない。応対した薬剤師で分けると次のとおり。</p>
+    <div class="table-wrap" style="margin-top:12px;"><table class="cmp-tbl">
+      <thead><tr><th>次回来局時の応対者</th><th class="col-main">かかりつけ本人</th><th>別の薬剤師（不在）</th></tr></thead>
+      <tbody>
+        <tr><td><strong>服薬管理指導料</strong></td><td class="c">１のイ／２のイ</td><td class="c">１のロ／２のロ</td></tr>
+        <tr><td><strong>薬歴へのかかりつけ薬剤師氏名の記載</strong></td><td class="c">通常どおり ※</td><td class="c"><span class="em-blue">必要</span></td></tr>
+      </tbody>
+    </table></div>
+    <p class="note" style="margin-top:6px;">※ 疑義解釈が氏名の記載を求めているのは、１のロ／２のロと併せて算定するときだけ。かかりつけ本人が応対すれば、通常の薬歴に記載する薬剤師氏名がかかりつけ薬剤師の氏名になる。</p>
+    <p style="margin-top:12px; font-size:var(--text-sm); color:var(--txt-2);"><strong>実務メモ：</strong>薬歴サマリー（表紙）にかかりつけ薬剤師の記載があっても、１のロ／２のロと併せて算定するときは、その日の記録にかかりつけ薬剤師の氏名を記載する。</p>
   </div>
 
   <!-- レセプト摘要欄記載事項 -->
@@ -346,7 +434,7 @@
 
   <!-- ⑥ 併算定不可 -->
   <div class="card avoid-break">
-    <div class="card-title">併算定不可<span class="badge badge-gray">同月算定不可</span></div>
+    <div class="card-title">併算定不可</div>
     <p class="lead" style="margin-bottom:8px;">次を算定している患者には、<strong>同じ月に算定できない</strong>。</p>
     <div class="bullet" style="font-size:var(--text-sm);"><span>・</span><span>調剤後薬剤管理指導料</span></div>
     <div class="bullet" style="font-size:var(--text-sm);"><span>・</span><span>在宅患者訪問薬剤管理指導料</span></div>
@@ -399,48 +487,6 @@
       <div class="gi-more">疑義解釈まとめで原文を見る<span class="chev">›</span></div>
     </a>
     <!-- /gigi-list -->
-  </div>
-
-  <!-- 補足解説・当社Q&A -->
-  <div class="card avoid-break">
-    <div class="card-title">かかりつけ薬剤師が不在だった場合の整理</div>
-
-    <div class="lead">
-      次に処方箋を受け付けたとき、かかりつけ薬剤師が不在でもフォローアップ加算は算定できる（疑義解釈その２ 問21）。応対した薬剤師で分けると次のとおり。
-    </div>
-
-    <div style="margin-top:12px;">
-      <div style="font-size:var(--text-sm); margin-bottom:8px;"><span style="font-weight:900;">前提：</span>条件①を満たしていれば、<strong>次回来局時の応対者は問わない。</strong></div>
-      <div class="table-wrap">
-        <table style="width:100%; border-collapse:collapse; font-size:var(--text-sm); background:var(--white); border:var(--bw-h) solid var(--border);">
-          <thead>
-            <tr>
-              <th style="padding:8px 10px; background:var(--box-gray); border:var(--bw-h) solid var(--border); text-align:left; font-weight:900;">次回来局時の応対者</th>
-              <th style="padding:8px 10px; background:var(--box-blue); border:var(--bw-h) solid var(--border); text-align:center; font-weight:900; color:var(--blue);">かかりつけ本人</th>
-              <th style="padding:8px 10px; background:var(--box-gray); border:var(--bw-h) solid var(--border); text-align:center; font-weight:900;">別の薬剤師（不在）</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="padding:8px 10px; border:var(--bw-h) solid var(--border); font-weight:700;">服薬管理指導料</td>
-              <td style="padding:8px 10px; border:var(--bw-h) solid var(--border); text-align:center;">１のイ／２のイ</td>
-              <td style="padding:8px 10px; border:var(--bw-h) solid var(--border); text-align:center;">１のロ／２のロ</td>
-            </tr>
-            <tr>
-              <td style="padding:8px 10px; border:var(--bw-h) solid var(--border); font-weight:700;">薬歴への<br>かかりつけ薬剤師氏名記載</td>
-              <td style="padding:8px 10px; border:var(--bw-h) solid var(--border); text-align:center; color:var(--txt-3);">疑義解釈は言及なし ※</td>
-              <td style="padding:8px 10px; border:var(--bw-h) solid var(--border); text-align:center;"><span class="em-blue">必要</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div style="font-size:var(--text-xs); color:var(--txt-3); margin-top:6px;">※ 問21が氏名の記載を求めているのは１のロ／２のロと併せて算定する場合だけ。かかりつけ本人が応対する場合は、通常の薬歴に記載する薬剤師氏名がかかりつけ薬剤師の氏名になる。</div>
-    </div>
-
-    <div class="note" style="margin-top:12px; color:var(--txt-2);">
-      <strong>実務メモ：</strong>かかりつけ薬剤師は薬歴サマリー（表紙）にも記載されているが、疑義解釈で求められているので、<strong>１のロ／２のロと併せて算定するときは本文にもかかりつけ薬剤師の氏名を記載する</strong>。
-    </div>
-
   </div>
 
   <!-- 現場から受けた質問（ナレッジ/調剤報酬QA.html の当該カテゴリと対応） -->
