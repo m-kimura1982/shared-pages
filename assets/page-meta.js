@@ -161,9 +161,6 @@ window.__pageMeta = {
     "lastUpdated": "2026-09-03",
     "newUntil": "2026-09-01"
   },
-  "加算まとめ/かかりつけ薬剤師フォローアップ加算.html": {
-    "lastUpdated": "2026-10-21"
-  },
   "加算まとめ/在宅患者訪問薬剤管理指導料.html": {
     "lastUpdated": "2026-10-12",
     "newUntil": "2026-08-26"
@@ -216,6 +213,9 @@ window.__pageMeta = {
   "加算まとめ/無菌製剤処理加算.html": {
     "lastUpdated": "2026-09-03",
     "newUntil": "2026-09-10"
+  },
+  "加算まとめ/かかりつけ薬剤師フォローアップ加算.html": {
+    "lastUpdated": "2026-10-21"
   },
   "加算まとめ/在宅患者緊急訪問薬剤管理指導料.html": {
     "lastUpdated": "2026-09-03",
