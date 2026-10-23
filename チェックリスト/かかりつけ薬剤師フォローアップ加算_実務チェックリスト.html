@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>かかりつけ薬剤師フォローアップ加算 算定チェックリスト｜2026年調剤報酬改定</title>
-  <meta name="search-keywords" content="電話,ビデオ通話,双方向,一斉送信,アプリ,飲み忘れ,自己中断,受診勧奨,OTC,サプリメント,嚥下,対象処方箋,起点となる調剤日,3月に1回,50点,1のイ,2のイ,フォローアップ年月日,ふぉろーあっぷ" />
+  <meta name="search-keywords" content="電話,ビデオ通話,双方向,一斉送信,アプリ,飲み忘れ,自己中断,受診勧奨,OTC,サプリメント,嚥下,対象処方箋,起点となる調剤日,3月に1回,50点,1のイ,2のイ,フォローアップ年月日,ふぉろーあっぷ,電話フォロー,次回来局,疑義照会,自己負担" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
@@ -35,7 +35,7 @@
     .premise .t { font-size:var(--text-sm); line-height:1.7; }
     .em-change { color:var(--blue); font-weight:900; }
     .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
-    .flow { display:flex; flex-direction:column; gap:0; }
+    .flow { display:flex; flex-direction:column; gap:8px; }
     .check { display:flex; gap:12px; align-items:flex-start; padding:13px 15px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); background:var(--white); cursor:pointer; }
     .check:hover { background:#fafbfc; }
     .check > input[type=checkbox] { appearance:none; -webkit-appearance:none; width:22px; height:22px; border:2px solid var(--border-dk); border-radius:5px; flex-shrink:0; margin-top:1px; cursor:pointer; position:relative; }
@@ -76,20 +76,24 @@
       .pick .out { align-self:flex-start; }
     }
     @media print {
-      @page { size:A4 portrait; margin:7mm; }
-      body { background:#fff; padding:0; font-size:10.5px; line-height:1.45; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-      .page { gap:6px; max-width:none; }
-      .card { border:0.5px solid #ccc; border-radius:6px; padding:8px 11px; break-inside:avoid; }
-      .card-title { font-size:13px; margin-bottom:7px; padding-bottom:5px; }
-      .card-when { font-size:10px; margin-bottom:8px; }
-      .premise { padding:7px 11px; margin-bottom:6px; }
-      .check { padding:5px 9px; }
-      .check-main { font-size:10.5px; line-height:1.4; }
-      .check-note, .guard, .arrow, .pick .row, .subchecks .sc { font-size:9.5px; }
-      .check-note { margin-top:3px; line-height:1.35; }
-      .guard { padding:6px 9px; margin-top:5px; }
-      .arrow { padding:2px 0 2px 14px; }
-      .rei { padding:7px 9px; margin-top:5px; font-size:9.5px; line-height:1.4; }
+      @page { size:A4 portrait; margin:9mm; }
+      body { background:#fff; padding:0; font-size:12.5px; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .page { gap:7px; max-width:none; }
+      .page-title-wrap h1 { font-size:17px; }
+      .page-title-wrap p { font-size:11px; }
+      .card { border:0.5px solid #ccc; border-radius:6px; padding:9px 12px; break-inside:avoid; }
+      .card-title { font-size:15px; margin-bottom:6px; padding-bottom:5px; }
+      .card-when { font-size:11px; margin-bottom:7px; }
+      .check { padding:6px 10px; gap:9px; }
+      .check > input[type=checkbox] { width:16px; height:16px; }
+      .check-main { font-size:12.5px; line-height:1.45; }
+      .check-main .n { width:18px; height:18px; font-size:11px; }
+      .check-note, .guard, .rei, .subchecks .sc { font-size:11px; }
+      .check-note { margin-top:3px; line-height:1.45; }
+      .guard { padding:5px 9px; margin-top:4px; line-height:1.45; }
+      .rei { padding:6px 9px; margin-top:4px; line-height:1.45; }
+      .flow { gap:5px; }
+      .card-3 { break-before:page; }
       .page-foot { display:none; }
       a { color:inherit; text-decoration:none; }
     }
@@ -110,32 +114,56 @@
     <div class="correction-wrap"><table>
       <thead><tr><th>以前の記載</th><th>正しい内容</th></tr></thead>
       <tbody>
-        <tr><td>（チェック3）フォローアップで残薬等の問題が解消された場合は、この条件がなくても算定可</td><td>直近6月以内の算定は必要。そのうえで、算定の原因になった問題（残薬等）がフォローアップ業務によってすでに解消されている場合は対象外（疑義解釈その10 問４）</td></tr>
+        <tr><td>（対象の患者か）フォローアップで残薬等の問題が解消された場合は、この条件がなくても算定可</td><td>直近6月以内の算定は必要。そのうえで、算定の原因になった問題（残薬等）がフォローアップ業務によってすでに解消されている場合は対象外（疑義解釈その10 問４）</td></tr>
       </tbody>
     </table></div>
   </div>
   <script src="../assets/correction.js" defer></script>
 
-  <!-- 算定の流れ -->
+  <!-- 投薬時 -->
   <div class="card">
-    <div class="card-title">算定の流れ<span class="qual">3月に1回</span></div>
-
-    <div class="premise">
-      <div class="k">算定の前提</div>
-      <div class="t">対象は <strong>服薬管理指導料「1のイ」または「2のイ」</strong>を算定した<strong>かかりつけ患者</strong>。算定のタイミングは、フォローアップのきっかけとなった医療機関の処方箋（＝<strong>対象処方箋</strong>）を<strong class="marker">次回受け付けたとき</strong>。<strong>フォローアップ実施の時点では算定しない。</strong></div>
-    </div>
-
+    <div class="card-title">投薬時：フォローが必要と思ったら</div>
+    <div class="card-when"><b>いつ</b>フォローアップを約束する前に確かめる</div>
     <div class="flow">
-
-      <!-- 1 双方向 -->
       <label class="check">
         <input type="checkbox">
         <span class="check-body">
-          <span class="check-main"><span class="n">1</span><strong class="marker">双方向のやりとり</strong>で服薬・残薬状況を確認・指導したか</span>
-          <span class="check-note">電話・情報通信機器（ビデオ通話等）で、患者の状況に応じて確認。きっかけは患者等の求め、または薬剤師が必要と認めた場合。</span>
-          <span class="guard"><b>一斉送信メール・アプリの定型チェックのみは不可</b>（双方向性が必須）。</span>
+          <span class="check-main"><span class="n">1</span><strong class="marker">対象の患者</strong>か</span>
+          <span class="check-note"><strong>服薬管理指導料「1のイ」または「2のイ」</strong>（かかりつけ）を算定している。</span>
+          <span class="check-note">直近6月以内に、外来服薬支援料1／服用薬剤調整支援料1・2／調剤時残薬調整加算／薬学的有害事象等防止加算 のいずれかを算定している（どの医療機関の処方箋で算定したものでもよい）。</span>
+          <span class="guard">フォローアップの内容は、上の点数を算定した理由に限らない（服薬状況・残薬状況等の確認と必要な指導）。</span>
+        </span>
+      </label>
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main"><span class="n">2</span>内容と自己負担を<strong class="marker">説明し、了解を得た</strong>か</span>
+          <span class="check-note">電話等で行う聞き取り・指導の内容と、この加算で発生する患者の自己負担額を、あらかじめ患者または家族等に説明する。</span>
+        </span>
+      </label>
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main"><span class="n">3</span>きっかけの<strong class="marker">医療機関</strong>（対象処方箋）を薬歴に残したか</span>
+          <span class="check-note">算定するのは、フォローアップのきっかけになった医療機関の処方箋を次に受け付けたとき。どの医療機関の処方箋かを、その日の薬歴に残しておく。</span>
+        </span>
+      </label>
+    </div>
+  </div>
+
+  <!-- フォローアップしたとき -->
+  <div class="card">
+    <div class="card-title">フォローアップしたとき</div>
+    <div class="card-when"><b>いつ</b>電話等で確認・指導した日</div>
+    <div class="flow">
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main"><span class="n">4</span><strong class="marker">双方向のやりとり</strong>で、個別に確認・指導したか</span>
+          <span class="check-note">電話等（電話・ビデオ通話など）で、患者の状況に応じて確認する。</span>
+          <span class="guard"><b>一斉送信メール・アプリの定型チェックだけは不可</b>（双方向性が必須）。</span>
           <span class="rei">
-            <span class="ttl">電話等で確認する内容（例）</span>
+            <span class="ttl">確認する内容（例）</span>
             <p><span class="dot">・</span>服薬状況（飲み忘れ・自己中断の有無、飲みにくさ）</p>
             <p><span class="dot">・</span>残薬の状況と、その原因（余り・自己調整 等）</p>
             <p><span class="dot">・</span>副作用・体調変化の有無 → 必要に応じ受診勧奨・医療機関へ情報提供</p>
@@ -144,43 +172,55 @@
           </span>
         </span>
       </label>
-      <div class="arrow">実施した時期は</div>
-
-      <!-- 2 時期 -->
       <label class="check">
         <input type="checkbox">
         <span class="check-body">
-          <span class="check-main"><span class="n">2</span>実施した<strong class="marker">時期</strong>は適切か</span>
-          <span class="check-note">算定対象は、<strong class="marker">起点となる調剤日の翌日〜対象処方箋持参日の前日</strong>に実施したフォローアップ。受診間隔（調剤間隔）を考慮し、薬学的に適切と考えられる時期に行う。</span>
+          <span class="check-main"><span class="n">5</span><strong class="marker">期間内</strong>に実施したか</span>
+          <span class="check-note">起点となる調剤日（フォローアップを約束した調剤の日）の<strong>翌日</strong>から、次に対象処方箋を持参する日の<strong>前日</strong>まで。受診間隔（調剤間隔）を考えて、薬学的に適切な時に実施する。</span>
         </span>
       </label>
-      <div class="arrow">直近6月の算定を確認</div>
-
-      <!-- 3 直近6月の対象算定 -->
       <label class="check">
         <input type="checkbox">
         <span class="check-body">
-          <span class="check-main"><span class="n">3</span>直近6月以内に<strong class="marker">対象の算定</strong>があるか</span>
-          <span class="check-note">外来服薬支援料1／服用薬剤調整支援料1・2／調剤時残薬調整加算／薬学的有害事象等防止加算 のいずれか。</span>
-          <span class="guard">※上の算定のときの問題（残薬等）を一度フォローアップして解消したら、その問題をもう一度フォローアップしても<b>対象外</b>。</span>
+          <span class="check-main"><span class="n">6</span>その日のうちに<strong class="marker">薬歴に記載</strong>したか</span>
+          <span class="check-note"><strong>フォローアップした旨・日時・聞き取りや指導等の内容</strong>を記載する。</span>
+          <span class="guard">問題が解消しないときは、同じフォローアップをただ繰り返さず、理由・背景を検証して改善策を講じる（検証の内容と改善策も薬歴に記載）。</span>
         </span>
       </label>
-      <div class="arrow">どの処方箋で算定するか</div>
+    </div>
+  </div>
 
-      <!-- 4 対象処方箋 -->
+  <!-- 次の受付 -->
+  <div class="card card-3">
+    <div class="card-title">次に対象処方箋を受け付けたとき</div>
+    <div class="card-when"><b>いつ</b>ここで算定する（フォローアップした日には算定しない）</div>
+    <div class="flow">
       <label class="check">
         <input type="checkbox">
         <span class="check-body">
-          <span class="check-main"><span class="n">4</span>対象処方箋を次回受付し、<strong class="marker">算定・薬歴記録</strong>したか</span>
-          <span class="check-note">フォローアップのきっかけとなった<strong>医療機関の処方箋でのみ</strong>算定（別の医療機関の処方箋では不可。間に別院を挟んでも次の対象処方箋で算定可）。薬歴に <strong>① フォローアップした旨　② 日時　③ 聞き取り・指導等の内容</strong> を記載。</span>
-          <span class="guard">かかりつけ不在で、次回を<b>服薬管理指導料1のロ／2のロ</b>と併算定する場合は、上記に加え<b>かかりつけ薬剤師の氏名</b>も薬歴に記載。</span>
+          <span class="check-main"><span class="n">7</span><strong class="marker">きっかけの医療機関</strong>の処方箋か</span>
+          <span class="check-note">別の医療機関の処方箋では算定しない。間に別の医療機関の処方箋を挟んでも、実施できる期間は続き、次の対象処方箋で算定できる。</span>
+        </span>
+      </label>
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main"><span class="n">8</span><strong class="marker">解消済みの問題の繰り返し</strong>ではないか</span>
+          <span class="check-note">一度フォローアップで解消した問題を、もう一度フォローアップした場合は対象外。</span>
+          <span class="guard">疑義照会など、<b>フォローアップ以外で解消していた場合は対象外にならない</b>。</span>
+        </span>
+      </label>
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main"><span class="n">9</span><strong class="marker">摘要欄</strong>に記載したか</span>
           <span class="rei">
             <span class="ttl">レセプト摘要欄</span>
             <p><span class="dot">・</span>フォローアップ年月日（かかりつけ薬剤師フォローアップ加算）</p>
           </span>
+          <span class="guard">次回、かかりつけ薬剤師以外が対応して<b>服薬管理指導料1のロ・2のロ</b>になる場合も算定できる。このときは<b>かかりつけ薬剤師の氏名</b>も薬歴に記載する。</span>
         </span>
       </label>
-
     </div>
   </div>
 
@@ -189,11 +229,10 @@
     <div class="card-title">注意点・併算定</div>
     <span class="rei" style="margin-top:0;">
       <span class="ttl">実務上の注意</span>
-      <p><span class="dot">・</span>問題が解消しないときは<strong>みだりに繰り返さず</strong>、理由・背景を検証して改善策を講じる（検証・改善策も薬歴に記載）。</p>
       <p><span class="dot">・</span>医療機関へ伝えるべき<strong>体調変化を把握したら速やかに情報提供</strong>し、必要に応じて受診勧奨。</p>
       <p><span class="dot">・</span><strong>併算定不可（同月）</strong>：調剤後薬剤管理指導料／在宅患者訪問薬剤管理指導料／居宅療養管理指導費（薬剤師）／介護予防居宅療養管理指導費（薬剤師）。複数薬局でかかりつけ算定はいずれの薬局も不可。特別調剤基本料Bは不可。</p>
     </span>
-    <span class="guard"><b>＋α：服薬情報等提供料は併算定可</b>。本加算の算定できない患者に服薬情報等提供料は入っていないため、情報提供が必要で行った場合は、それぞれ要件を満たせば両方算定できる（訪問加算は医療機関への情報提供が要件なので、服薬情報等提供料を算定している患者には算定できない）。</span>
+    <span class="guard"><b>＋α：服薬情報等提供料は併算定できる</b>（上の併算定不可に入っていない）。訪問加算は、服薬情報等提供料を算定している患者には算定できないので、扱いが違う。</span>
   </div>
 
   <div class="page-foot">詳しい解説は <a href="../加算まとめ/かかりつけ薬剤師フォローアップ加算.html" class="link-inline">フォローアップ加算</a> ／ <a href="../加算まとめ/かかりつけ薬剤師訪問加算.html" class="link-inline">訪問加算</a>（解説ページ）を参照。</div>
