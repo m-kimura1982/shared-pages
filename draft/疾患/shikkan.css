@@ -65,8 +65,31 @@ td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-a
 tr:last-child td { border-bottom:none; }
 td.num, th.num { text-align:center; white-space:nowrap; }
 td.nw, th.nw { white-space:nowrap; }
-/* 横に広い表は最小幅を持たせ、スマホでは表の中だけ横スクロールさせる */
+/* 表の幅の決め方（index.html の決めごと「表」）
+   ・2〜3列の表は何も付けない（スマホでも折り返して収まる）
+   ・4列以上で、行どうしを見比べる表（用量の表など）は .wide。スマホでは表の中だけ横スクロール
+   ・4列以上で、1行ずつ読む表は .stack。スマホでは1行を1つの塊に積み、列の見出しを各セルの頭に出す
+     （列の見出しは shikkan-nav.js が th から写すので、td に何も書かなくてよい） */
 table.wide { min-width:720px; }
+@media (max-width:640px) {
+  table.stack thead { display:none; }
+  table.stack, table.stack tbody, table.stack tr, table.stack td { display:block; width:100%; }
+  table.stack tr { border-bottom:var(--bw-h) solid var(--border); padding:8px 0; }
+  table.stack tr:last-child { border-bottom:none; }
+  table.stack td { border:none; padding:2px 0; white-space:normal; }
+  table.stack td:first-child { font-weight:900; font-size:var(--text-md); padding-bottom:4px; }
+  table.stack td[data-label]:not(:first-child)::before { content:attr(data-label); display:block; font-size:var(--text-xs); font-weight:700; color:var(--txt-3); }
+}
+
+/* 読み筋：ガイドラインに直接は書いていない、自分の読み方・窓口での使い方。
+   点線の枠に入れるほどの私見ではなく、実務の型として本文に置くもの。列の見出し・小見出し・囲みの題に付ける */
+.own { display:inline-block; font-size:var(--text-xs); font-weight:900; padding:0 7px; border-radius:4px; background:var(--pal-fuji-bg); color:var(--pal-fuji-tx); line-height:1.7; vertical-align:1px; white-space:nowrap; letter-spacing:0; }
+.sub-title .own, .card-title .own { margin-left:2px; }
+
+/* このページで覚えること：各行の末尾に、詳しく書いたカードへのリンク */
+.keys .go { font-size:var(--text-sm); font-weight:700; color:var(--blue); white-space:nowrap; margin-left:4px; text-decoration:none; }
+.keys .go:hover { text-decoration:underline; }
+[id] { scroll-margin-top:calc(var(--sn-header-h, 0px) + 16px); }
 /* 禁忌・不可は色で注意を出さない。中立グレーで沈める */
 td.ng { color:var(--txt-3); font-weight:700; }
 td.apix { background:#fafbfc; }

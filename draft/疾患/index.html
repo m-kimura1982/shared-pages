@@ -11,6 +11,7 @@
   </head>
   <body>
     <script src="../../assets/site-header.js" defer></script>
+    <script src="shikkan-nav.js" defer></script>
 
     <div class="page">
       <div class="page-title">
@@ -18,68 +19,8 @@
         <p>薬剤師が投薬でつまずくところから逆算した、自分用の勉強場所</p>
       </div>
 
-      <!-- 疾患ごとの枠。先頭の行が総論、その下が子ページ -->
-      <div class="dz-grid">
-        <section class="dz">
-          <div class="dz-name">心房細動</div>
-          <a class="dz-row" href="心房細動.html">
-            <span class="t">総論</span>
-            <span class="d">病型、抗凝固するかどうか（CHADS<sub>2</sub>）、レートとリズム</span>
-          </a>
-          <a class="dz-row" href="心房細動_抗凝固薬の用量.html">
-            <span class="t">抗凝固薬の用量を決める</span>
-            <span class="d">CCrの分岐点、4剤の減量基準、INRの目標、高齢・高出血リスク</span>
-          </a>
-          <a class="dz-row" href="心房細動_抗凝固薬の注意点.html">
-            <span class="t">抗凝固薬を渡すときに見ること</span>
-            <span class="d">併用禁忌、飲み忘れ・一包化、出血リスク、採血の間隔、中和薬</span>
-          </a>
-        </section>
-
-        <section class="dz">
-          <div class="dz-name">心不全</div>
-          <a class="dz-row" href="心不全.html">
-            <span class="t">総論</span>
-            <span class="d">ステージとLVEF、治療の全体像、処方を疾患の切り口で読む</span>
-          </a>
-          <a class="dz-row" href="心不全_薬物療法.html">
-            <span class="t">薬物療法</span>
-            <span class="d">4本柱の用量と増やし方、上乗せの薬、使わない薬、HFpEF、腎機能</span>
-          </a>
-          <a class="dz-row" href="心不全_うっ血と利尿薬.html">
-            <span class="t">うっ血と利尿薬</span>
-            <span class="d">体重の見方、利尿薬の使い分け、電解質、水分と塩分、退院直後</span>
-          </a>
-          <a class="dz-row" href="心不全_渡すときに見ること.html">
-            <span class="t">渡すときに見ること</span>
-            <span class="d">増悪のサイン、見るところが変わる薬、併存症、生活で言えること</span>
-          </a>
-        </section>
-
-        <section class="dz">
-          <div class="dz-name">冠動脈疾患</div>
-          <a class="dz-row" href="冠動脈疾患.html">
-            <span class="t">総論</span>
-            <span class="d">狭心症とACS、症状の薬と予防の薬、胸痛のない心筋梗塞、ニトロ</span>
-          </a>
-          <a class="dz-row" href="冠動脈疾患_抗血栓療法.html">
-            <span class="t">抗血栓療法</span>
-            <span class="d">DAPTの期間、単剤への移行、心房細動を合併したとき、休薬</span>
-          </a>
-        </section>
-
-        <section class="dz">
-          <div class="dz-name">弁膜症</div>
-          <a class="dz-row" href="弁膜症.html">
-            <span class="t">総論</span>
-            <span class="d">狭窄と逆流、薬の役目、人工弁の抗血栓療法、抜歯とワルファリン</span>
-          </a>
-          <a class="dz-row" href="弁膜症_感染性心内膜炎の予防.html">
-            <span class="t">感染性心内膜炎の予防</span>
-            <span class="d">対象と処置、アモキシシリン2g単回、経口セフェム、発熱したとき</span>
-          </a>
-        </section>
-      </div>
+      <!-- 疾患ごとの枠。中身は shikkan-nav.js の PAGES から作る（説明文の正本はそちら） -->
+      <div class="dz-grid" id="dz-grid"></div>
 
       <div class="gl-src card" style="padding:8px">
         <a href="ガイドライン.html"><span class="t">ガイドラインの一覧</span><span class="d">各ページで使っているガイドラインのPDF・正誤表へのリンク。診療科のタブと絞り込み付き</span></a>
@@ -88,12 +29,16 @@
       <div class="card">
         <div class="card-title">これから作る<span class="qual">思いついた順に足す</span></div>
         <div class="todo">
+          <div class="t">循環器の7枚を新しい決めごとに合わせる</div>
+          <div class="d">心房細動3枚・冠動脈疾患2枚・弁膜症2枚。心不全の4枚で済ませた直し（同じ話を1か所に、表のスマホ対応、読み筋の印、扱いの注意の囲みを外す、先頭の切り替えバーを空にする）を当てる</div>
+        </div>
+        <div class="todo">
           <div class="t">心不全の続き</div>
           <div class="d">急性増悪で入院したあとの流れ／心アミロイドーシス（高齢者の心不全で見落とされやすい）／緩和ケアとACP。<b>薬歴の記載例は循環器の定型文集を書き直す形で</b></div>
         </div>
         <div class="todo">
           <div class="t">横串ページ</div>
-          <div class="d">腎機能で用量が変わる薬／抗血栓薬の休薬／相互作用の勘所（CYP・P糖蛋白）／疾患で顔が変わる薬／検査値の読み方／高齢者で注意する薬</div>
+          <div class="d">腎機能で用量が変わる薬／抗血栓薬の休薬／相互作用の勘所（CYP・P糖蛋白）／疾患で顔が変わる薬／検査値の読み方／高齢者で注意する薬。<b>「疾患で顔が変わる薬」と「腎機能で用量が変わる薬」は、材料がそろった</b>（心不全と糖尿病の両方に出るSGLT2阻害薬、eGFRで変わる糖尿病の薬）ので、次の候補</div>
         </div>
       </div>
 
@@ -102,30 +47,45 @@
         <div class="fold-body">
           <div class="bullet"><span>・</span><span>公開サイトからの導線は作らない。ここが唯一の入口</span></div>
           <div class="bullet"><span>・</span><span><b>正確さが先。</b>そのうえで「何を覚えるか」を上に載せる。順序を逆にしない ── 誤って覚えると公開ページの誤記より直しにくい</span></div>
-          <div class="bullet"><span>・</span><span>各ページは5層で書く ── <b>①なぜ治療するのか ②分類 ③治療の全体像 ④薬物療法の各論 ⑤投薬時に効く話</b></span></div>
-          <div class="bullet"><span>・</span><span>先頭に<b>「このページで覚えること」</b>を3〜6行。まとめではなくページの地図</span></div>
-          <div class="bullet"><span>・</span><span>⑤は必ず独立したカードにする。ここが投薬力に直結し、あとから足し続ける場所</span></div>
           <div class="bullet"><span>・</span><span>ガイドラインの情報を並べるだけにしない。<b>薬局でどう使うかまで落とす</b></span></div>
-          <div class="bullet"><span>・</span><span>表は<b>「軸」が1本に決まるときだけ</b>作る。CCr→薬剤選択のように縦軸が決まるなら効くが、軸が2つ3つと増えるものを表にすると読めなくなる</span></div>
           <div class="bullet"><span>・</span><span><b>専門用語は消さない。</b>日本語で意味を先に置いてから用語を出す（「血流のよどみ」→ Virchowの3徴、の順）</span></div>
           <div class="bullet"><span>・</span><span>言葉は多少くだけてよい。<b>自然な日本語かより、頭に残る日本語か</b>を基準にする。ただし薬剤名・スコア名などの用語は崩さない</span></div>
           <div class="bullet"><span>・</span><span>ガイドラインは<b>本文も図表も転載しない</b>。自分の言葉と自作の表で書く</span></div>
-          <div class="bullet"><span>・</span><span>1枚が長くなったら割る。薬物療法が膨らんだら子ページへ逃がす</span></div>
-          <div class="bullet"><span>・</span><span>判断に効く補足は<b>小さい薄グレー（.sm）に置かない</b>。本文の補足は .note、.sm は表の中の添え書きだけ</span></div>
 
-          <div class="sub-title">枠の外は事実、枠の中は自分の頭</div>
-          <p class="note">本文（枠の外）はガイドラインと電子添文から取った事実だけを書く。それ以外は点線の枠に入れ、見出しで種類が分かるようにする。</p>
+          <div class="sub-title">疾患ごとの組み立て</div>
+          <div class="bullet"><span>・</span><span>1つの疾患を<b>5層で書く ── ①なぜ治療するのか ②分類 ③治療の全体像 ④薬物療法の各論 ⑤投薬時に効く話</b>。5層は疾患全体の型で、1枚ごとの型ではない</span></div>
+          <div class="bullet"><span>・</span><span>総論に①〜③と「処方を疾患の切り口で読む」。④が膨らんだら子ページへ逃がす</span></div>
+          <div class="bullet"><span>・</span><span><b>⑤は疾患ごとに1枚の独立したページ（「渡すときに見ること」）</b>にする。投薬力に直結し、あとから足し続ける場所。総論に⑤の縮小版を置かない</span></div>
+          <div class="bullet"><span>・</span><span>ページの間の行き来は<b>先頭の切り替えバーと末尾の「続けて読む」だけ</b>（shikkan-nav.js が作る）。本文の途中に「次のページ →」のカードを置かない</span></div>
+          <div class="bullet"><span>・</span><span>ページの説明文は<b>shikkan-nav.js の PAGES の desc 1か所だけ</b>に書く。入口の一覧もそこから作る。題名の下の一行は、範囲や対象外を書くときだけ置く</span></div>
+
+          <div class="sub-title">同じ話は1か所に書く</div>
+          <div class="bullet"><span>・</span><span>話ごとに<b>書く場所を1つ決め、ほかのページは1行とリンクだけ</b>にする。同じ数字を何か所にも書くと、直したときに食い違う（心不全で「3日で2kg」が7か所に散っていた）</span></div>
+          <div class="bullet"><span>・</span><span>置き場の目安 ── <b>なぜ・処方の読み方＝総論／用量・使い分け・使えない薬の理由＝薬物療法の子ページ／患者に渡す数字・受診の目安・生活・処方監査で引っかける薬＝渡すときに見ること</b></span></div>
+          <div class="bullet"><span>・</span><span>「このページで覚えること」は<b>3〜5行の復習用の要約</b>。各行の末尾に、詳しく書いたカードへのリンク（→）を付ける。目次には出さない（<code>data-toc="skip"</code>）</span></div>
+
+          <div class="sub-title">表</div>
+          <div class="bullet"><span>・</span><span>表は<b>「軸」が1本に決まるときだけ</b>作る。CCr→薬剤選択のように縦軸が決まるなら効くが、軸が2つ3つと増えるものを表にすると読めなくなる</span></div>
+          <div class="bullet"><span>・</span><span><b>2〜3列の表には何も付けない</b>（スマホでも収まる）。4列以上は、行どうしを見比べる表（用量など）なら <code>wide</code>（スマホでは表の中だけ横スクロール）、1行ずつ読む表なら <code>stack</code>（スマホでは1行を1つの塊に積む）</span></div>
+          <div class="bullet"><span>・</span><span>いちばん使う列は左に寄せる。右端に置くとスマホで見えない</span></div>
+          <div class="bullet"><span>・</span><span>判断に効く補足は<b>小さい薄グレー（.sm）に置かない</b>。重症・腎機能で変わる用量なども本文と同じ大きさで書く。.sm は表の中の添え書き（読み・別名）だけ</span></div>
+          <div class="bullet"><span>・</span><span>推奨クラスは、全行が同じなら列にせず見出しに一言で書く。列にするときは凡例を付ける</span></div>
+
+          <div class="sub-title">事実・読み筋・自分メモを分ける</div>
+          <p class="note">本文はガイドラインと電子添文から取った事実を書く。自分の判断は、種類が見て分かるように次の2つに分ける。</p>
           <div class="table-wrap" style="margin-top:9px">
             <table>
-              <thead><tr><th class="nw">見出し</th><th>中身</th></tr></thead>
+              <thead><tr><th class="nw">置き方</th><th>中身</th></tr></thead>
               <tbody>
-                <tr><td class="nw">自分メモ</td><td>自分の理解・他とのつなげ方</td></tr>
-                <tr><td class="nw">覚え方</td><td>学習上の整理（「3本の線」など）</td></tr>
-                <tr><td class="nw">要確認</td><td>まだ裏を取っていないこと</td></tr>
-                <tr><td class="nw">宿題</td><td>別ページに切り出す予定のもの</td></tr>
+                <tr><td class="nw"><span class="own">読み筋</span></td><td>ガイドラインに直接は書いていない、処方の読み方・窓口での使い方。実務の型として本文に置き、<b>列の見出し・小見出し・囲みの題にこの印を付ける</b></td></tr>
+                <tr><td class="nw">点線の枠「自分メモ」</td><td>自分の理解・ほかとのつなげ方・気づいたこと</td></tr>
+                <tr><td class="nw">点線の枠「要確認」</td><td>まだ裏を取っていないこと</td></tr>
+                <tr><td class="nw">点線の枠「宿題」</td><td>別ページに切り出す予定のもの</td></tr>
               </tbody>
             </table>
           </div>
+          <div class="bullet" style="margin-top:9px"><span>・</span><span>裏を取った事実は<b>枠の中に隠さず本文に出す</b>。枠に残すのは「何に気づいたか」だけ</span></div>
+          <div class="bullet"><span>・</span><span>各ページの「参考にした資料」には、<b>土台にした章・入手先・用量の確かめ先</b>を書く。転載しない・添付文書が正という注意は、この決めごとにあるので各ページで繰り返さない</span></div>
         </div>
       </details>
 
@@ -133,7 +93,7 @@
         <summary>資料の当て方</summary>
         <div class="fold-body">
           <div class="bullet"><span>・</span><span><b>学会ガイドライン</b>を最初に当てる。PDFは手元に置くだけで、このリポジトリには入れない（再配布になるうえ容量を食う）</span></div>
-          <div class="bullet"><span>・</span><span><b>用量・禁忌・相互作用は添付文書とインタビューフォームが正</b>。ガイドラインの記述と食い違うときは添付文書を採る</span></div>
+          <div class="bullet"><span>・</span><span><b>用量・禁忌・相互作用は添付文書とインタビューフォームが正</b>。ガイドラインの記述と食い違うときは添付文書を採る。各ページの用量はガイドラインの目安なので、実務で使う前に添付文書で確かめる</span></div>
           <div class="bullet"><span>・</span><span><b>版と発行年は必ず自分で確認してから書く</b>。フォーカスアップデート版は土台になる本体のガイドラインとセットで見ないと全体が分からない</span></div>
           <div class="bullet"><span>・</span><span>有料でしか読めないものは追わない。無料で読める一次資料だけで十分に足りる</span></div>
           <div class="ref-links" style="margin-top:12px">
