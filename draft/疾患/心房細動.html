@@ -16,46 +16,26 @@
     <div class="page">
       <div class="page-title">
         <h1>心房細動</h1>
-        <p>病型、抗凝固するかどうか、レートとリズム、窓口で使う話</p>
       </div>
 
       <div class="card" data-toc="skip">
-        <div class="sibs">
-          <a class="home" href="index.html">疾患の勉強メモ</a><span class="sep">›</span>
-          <span class="lab">心房細動</span>
-          <span class="on">総論</span>
-          <a href="心房細動_抗凝固薬の用量.html">用量を決める</a>
-          <a href="心房細動_抗凝固薬の注意点.html">渡すときに見ること</a>
-        </div>
+        <div class="sibs"></div>
       </div>
 
       <div class="page-toc-wrap"><div id="page-toc"></div></div>
 
-      <div class="card" data-toc-label="覚えること">
+      <div class="card" data-toc="skip">
         <div class="card-title">このページで覚えること</div>
         <div class="keys">
-          <div><span class="ck">✓</span><span class="tx">抗凝固するかどうかは <b>CHADS<sub>2</sub>スコア1点以上</b>で決まる。症状の有無は関係ない</span></div>
-          <div><span class="ck">✓</span><span class="tx">弁膜症性（<b>僧帽弁狭窄症・機械弁</b>）だけワルファリン一択</span></div>
-          <div><span class="ck">✓</span><span class="tx"><b>持続性・永続性</b>は発作性より脳梗塞リスクが高い</span></div>
-          <div><span class="ck">✓</span><span class="tx">レートの第1選択は<b>β遮断薬</b>。ジギタリスは血中濃度を測っていれば可</span></div>
-          <div><span class="ck">✓</span><span class="tx"><b>過度の持久運動</b>はむしろ心房細動を誘発する</span></div>
+          <div><span class="ck">✓</span><span class="tx">抗凝固するかどうかは <b>CHADS<sub>2</sub>スコア1点以上</b>で決まる。症状の有無は関係ない<a class="go" href="#c-judge">→</a></span></div>
+          <div><span class="ck">✓</span><span class="tx">弁膜症性（<b>僧帽弁狭窄症・機械弁</b>）だけワルファリン一択<a class="go" href="#c-type">→</a></span></div>
+          <div><span class="ck">✓</span><span class="tx"><b>持続性・永続性</b>は発作性より脳梗塞リスクが高い<a class="go" href="#c-type">→</a></span></div>
+          <div><span class="ck">✓</span><span class="tx">レートの第1選択は<b>β遮断薬</b>。ジギタリスは血中濃度を測っていれば可<a class="go" href="#c-rate">→</a></span></div>
+          <div><span class="ck">✓</span><span class="tx"><b>過度の持久運動</b>はむしろ心房細動を誘発する<a class="go" href="#c-life">→</a></span></div>
         </div>
       </div>
 
-      <div class="card" data-toc="skip">
-        <div class="next-page" style="display:flex; gap:12px; flex-wrap:wrap">
-          <a href="心房細動_抗凝固薬の用量.html" style="flex:1 1 260px">
-            <div class="t">用量を決める →</div>
-            <div class="d">腎機能の換算、CCrで見る4剤の分岐点、減量基準、ワルファリンとINR、高齢・高出血リスク</div>
-          </a>
-          <a href="心房細動_抗凝固薬の注意点.html" style="flex:1 1 260px">
-            <div class="t">渡すときに見ること →</div>
-            <div class="d">併用禁忌、製剤と服薬のしかた、出血リスク、定期採血、中和薬、窓口のチェック</div>
-          </a>
-        </div>
-      </div>
 
-      <!-- ── 1. なぜ治療するのか ── -->
       <div class="card">
         <div class="card-title">なぜ抗凝固するのか<span class="qual">病態は薬の理屈が分かる最小限だけ</span></div>
 
@@ -80,7 +60,7 @@
       </div>
 
       <!-- ── 2. 病型 ── -->
-      <div class="card">
+      <div class="card" id="c-type">
         <div class="card-title">病型の分類<span class="qual">治療方針に効くところだけ</span></div>
 
         <div class="table-wrap">
@@ -104,7 +84,7 @@
         <div class="box-gray" style="margin-top:14px">
           <div class="sub-title" style="margin-top:0">弁膜症性かどうかが最初の分岐</div>
           <b>僧帽弁狭窄症</b>と<b>機械弁</b>だけが「弁膜症性心房細動」で、この2つは<span class="em-change">DOACが使えずワルファリン一択</span>。それ以外はすべて非弁膜症性として扱う。<br />
-          <span style="font-size:var(--text-sm); color:var(--txt-2)">生体弁は非弁膜症性に含めるが、置換後3か月間はワルファリンで管理し、それ以降にDOACへ切り替えられる。「なぜこの人はワルファリンなのか」を考えるとき、まずここを見る。</span>
+          <span class="note">生体弁は非弁膜症性に含める（置換後3か月間のワルファリンは<a href="弁膜症.html#c-prosth">弁膜症｜人工弁の抗血栓療法</a>）。<span class="own">読み筋</span> 「なぜこの人はワルファリンなのか」を考えるとき、まずここを見る。</span>
         </div>
       </div>
 
@@ -144,14 +124,11 @@
           </div>
         </div>
 
-        <div class="memo" style="margin-top:16px">
-          <div class="ttl">自分メモ</div>
-          この順番が大事で、<b>抗凝固（第3段階）は症状の有無と関係なく決まる</b>。「動悸がないから軽い」「アブレーションしたから」で抗凝固の要否は決まらない。窓口で症状の話と抗凝固の話を混ぜないこと。
-        </div>
+        <p class="note" style="margin-top:14px"><span class="own">読み筋</span> この順番が大事で、<b>抗凝固（第3段階）は症状の有無と関係なく決まる</b>。「動悸がないから軽い」「アブレーションしたから」で抗凝固の要否は決まらない。窓口で症状の話と抗凝固の話を混ぜないこと。</p>
       </div>
 
       <!-- ── 4. 抗凝固するかどうか ── -->
-      <div class="card">
+      <div class="card" id="c-judge">
         <div class="card-title">抗凝固するかどうかの判断<span class="qual">CHADS<sub>2</sub>スコアで決まる</span></div>
 
         <div class="flow">
@@ -159,13 +136,13 @@
           <div class="flow-branch">
             <div class="pal-cream">
               <div class="t">僧帽弁狭窄症・機械弁</div>
-              <b>ワルファリン</b>（INR 2.0〜3.0）<br />
-              <span style="font-size:var(--text-xs)">DOACは適応なし</span>
+              <b>ワルファリン</b>（INRの目標は<a href="心房細動_抗凝固薬の用量.html#c-warf">用量を決める</a>）<br />
+              DOACは適応なし
             </div>
             <div class="pal-blue">
               <div class="t">それ以外＝非弁膜症性</div>
               生体弁もここに含む<br />
-              <span style="font-size:var(--text-xs)">↓ CHADS<sub>2</sub>スコアで判断</span>
+              ↓ CHADS<sub>2</sub>スコアで判断
             </div>
           </div>
         </div>
@@ -211,10 +188,7 @@
           </table>
         </div>
 
-        <div class="memo" style="margin-top:16px">
-          <div class="ttl">自分メモ</div>
-          CHADS<sub>2</sub>は<b>5項目・最高6点</b>で、2点になるのは「脳梗塞・TIAの既往」だけ。窓口で処方箋と病名から暗算できる程度の軽さなので、覚えておくと「なぜこの人に抗凝固薬が出ているのか」が読める。0点なのに出ているときは、その他のリスク側に理由があるはず。
-        </div>
+        <p class="note" style="margin-top:14px">CHADS<sub>2</sub>は<b>5項目・最高6点</b>で、2点になるのは「脳梗塞・TIAの既往」だけ。<span class="own">読み筋</span> 処方箋と病名から暗算できる程度の軽さなので、「なぜこの人に抗凝固薬が処方されているのか」が読める。0点なのに出ているときは、その他のリスク側に理由があるはず。</p>
       </div>
 
       <!-- ── 5. リスクの中身 ── -->
@@ -225,6 +199,7 @@
 
         <p class="note" style="margin:12px 0">日本人データから作られた <b>HELT-E<sub>2</sub>S<sub>2</sub>スコア</b> が新しく推奨に入った。ただし<span class="marker">抗凝固を始める基準は従来どおりCHADS<sub>2</sub>スコア1点以上のまま</span>で、上のフローチャートは変更されていない。</p>
 
+        <p class="note" style="margin-bottom:9px">推奨クラス：I＝推奨、IIa＝考慮、IIb＝考慮してもよい。</p>
         <div class="table-wrap">
           <table>
             <thead><tr><th>スコア</th><th class="num">推奨</th><th>位置づけ</th></tr></thead>
@@ -260,7 +235,7 @@
         <div class="sub-title">同じ「1点」でも中身が違う</div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>因子</th><th>実質的にリスクが高いのはどういう人か</th></tr></thead>
+            <thead><tr><th>因子</th><th>実質的にリスクが高いのは<br />どういう人か</th></tr></thead>
             <tbody>
               <tr><td class="nw">高血圧</td><td>経過中の血圧管理が悪い人。<span class="em-change">収縮期136mmHg以下・拡張期80mmHg未満に保てていれば実質リスクは低い可能性</span>がある。管理不良は脳出血の危険因子でもあるので、抗凝固を始める前に血圧を整えるのが先</td></tr>
               <tr><td class="nw">糖尿病</td><td>罹病10年以上／HbA1c 8%以上／インスリン治療中。逆に発症間もない・コントロール良好ならリスクは非糖尿病と変わらない</td></tr>
@@ -276,7 +251,7 @@
       </div>
 
       <!-- ── 6. レート／リズム ── -->
-      <div class="card">
+      <div class="card" id="c-rate">
         <div class="card-title">心拍数を抑えるか、洞調律に戻すか</div>
 
         <div class="split">
@@ -307,15 +282,17 @@
         </div>
         <p class="note" style="margin-top:12px">第1選択はβ遮断薬のまま。条件は「<b>血中濃度を定期的に管理していれば</b>」なので、ジゴキシンの血中濃度を採血しているかを薬局で確かめる。低カリウム血症で中毒が出やすくなる点、腎機能低下で蓄積する点も従来どおり。</p>
 
+        <div class="sub-title">非ジヒドロピリジン系Ca拮抗薬は低心機能で使えない</div>
+        <p class="note">ベラパミル・ジルチアゼムは<b>低心機能では使用不可</b>。心不全を合併した心房細動でベラパミルが出ていたら引っかける（理由は<a href="心不全_薬物療法.html">心不全｜薬物療法</a>の「HFrEFで使ってはいけない薬」）。同じ薬がP糖蛋白阻害薬としてDOACの減量条件にも絡む（<a href="心房細動_抗凝固薬の用量.html#c-dose">用量を決める</a>）。</p>
+
         <div class="memo" style="margin-top:16px">
-          <div class="ttl">自分メモ</div>
-          非ジヒドロピリジン系Ca拮抗薬（ベラパミル・ジルチアゼム）は<b>低心機能では使用不可</b>。心不全合併の心房細動でベラパミルが出ていたら引っかける。同時にベラパミルはP糖蛋白阻害薬なのでDOACの減量条件にも絡む。1剤で2か所に効いてくるので覚えておく（心不全側は<a href="心不全_薬物療法.html">心不全｜薬物療法</a>の「HFrEFで使ってはいけない薬」）。<br />
-          <b>宿題：</b>抗不整脈薬の使い分け（基礎心疾患の有無で分かれる／Vaughan Williams分類）を別カードにまとめる。2020年版の第5章に載っている。
+          <div class="ttl">宿題</div>
+          抗不整脈薬の使い分け（基礎心疾患の有無で分かれる／Vaughan Williams分類）を別カードにまとめる。2020年版の第5章に載っている。
         </div>
       </div>
 
       <!-- ── 7. 生活習慣 ── -->
-      <div class="card">
+      <div class="card" id="c-life">
         <div class="card-title">生活習慣で言えること</div>
         <div class="table-wrap">
           <table>
@@ -332,31 +309,15 @@
 
       <!-- ── 8. 投薬時 ── -->
       <div class="card">
-        <div class="card-title">投薬時に効く話<span class="qual">窓口で使う形にしておく</span></div>
-
-        <div class="sub-title">初回に押さえること</div>
-        <div class="bullet"><span>・</span><span><b>何のために飲む薬か</b>。「血液をさらさらに」で終わらせず「心臓にできた血のかたまりが脳に飛ぶのを防ぐ」まで言う。症状がないので目的が伝わらないと続かない</span></div>
-        <div class="bullet"><span>・</span><span><b>自己中断が一番危ない</b>。効果は飲んでいる間だけ。半減期が短いので数回抜くと切れる</span></div>
-        <div class="bullet"><span>・</span><span><b>抜歯・内視鏡・手術の前に必ず申告する</b>。「休薬するかは処置内容と出血リスクで決まるので、自己判断で止めない」までセットで</span></div>
-        <div class="bullet"><span>・</span><span><b>市販薬の注意</b>。解熱鎮痛薬のNSAIDsは出血リスクを上げる。買う前に相談を</span></div>
-        <div class="bullet"><span>・</span><span><b>受診すべき出血の目安</b>。歯ぐきや鼻血が止まらない、黒い便、赤い尿、いつもと違う頭痛やふらつき、ぶつけていないのに大きな青あざ</span></div>
-
-        <div class="sub-title">動悸で来た人に聞くこと</div>
+        <div class="card-title">動悸で来た人に聞くこと <span class="own">読み筋</span></div>
         <div class="bullet"><span>・</span><span>いつから、どのくらい続くか（<b>発作性か持続性かの手がかり</b>）</span></div>
         <div class="bullet"><span>・</span><span>脈が飛ぶだけか、ふらつき・息切れ・胸の重さを伴うか</span></div>
         <div class="bullet"><span>・</span><span>お酒・カフェイン・睡眠不足との関係（増悪因子は第2段階の管理対象）</span></div>
         <div class="bullet"><span>・</span><span>いびき・日中の眠気（睡眠時無呼吸は再発と強く関係する）</span></div>
-
-        <div class="memo" style="margin-top:16px">
-          <div class="ttl">自分メモ・宿題</div>
-          <ul>
-            <li>抜歯・内視鏡の休薬の考え方は横串ページ「抗血栓薬の休薬」を作ってそちらへ。</li>
-            <li>アブレーション後に抗凝固をやめられるのかどうか、聞かれたときの答え方を整理する。</li>
-          </ul>
-        </div>
+        <p class="note" style="margin-top:12px">抗凝固薬を渡すときの話（目的の伝え方・自己中断・抜歯・市販薬・出血の目安）は<a href="心房細動_抗凝固薬の注意点.html#c-talk">渡すときに見ること</a>。</p>
       </div>
 
-      <!-- ── 出典 ── -->
+
       <div class="card">
         <div class="card-title">参考にした資料</div>
         <div class="ref-links">
@@ -365,10 +326,7 @@
           <div class="row"><span class="lab">診断：</span><span>2022年改訂版 不整脈の診断とリスク評価に関するガイドライン</span></div>
           <div class="row"><span class="lab">入手先：</span><a href="ガイドライン.html">ガイドラインの一覧</a>（PDFへのリンク・正誤表）</div>
         </div>
-        <div class="memo" style="margin-top:14px">
-          <div class="ttl">扱いの注意</div>
-          ガイドラインは無断転載が禁じられている。<b>本文・図表をそのまま貼らず、必ず自分の言葉と自作の表で書く</b>。原文が要るときは上のリンクから当たる。
-        </div>
+
       </div>
     </div>
   </body>
