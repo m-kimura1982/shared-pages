@@ -111,9 +111,14 @@
     .herbs td.hn { white-space:nowrap; font-weight:700; width:1%; }
     .herbs td.hn small { display:block; font-size:var(--text-xs); font-weight:500; color:var(--txt-3); }
     .herbs td.hg { white-space:nowrap; text-align:right; color:var(--txt-2); width:1%; }
-    .herbs tr.key td.hn { color:var(--blue); }
-    /* 生薬名を押すと、その生薬のおもな働きを表の下に出す */
-    .hbtn { font:inherit; font-weight:700; color:inherit; background:none; border:none; padding:0; cursor:pointer; text-align:left; text-decoration:underline dotted; text-decoration-thickness:1px; text-underline-offset:3px; }
+    /* 中心になる生薬／そのほか の見出しの行 */
+    .herbs tr.grp td { font-size:var(--text-sm); font-weight:700; color:var(--ink); padding:14px 8px 4px; border-bottom:var(--bw-h) solid var(--border-dk); }
+    .herbs tbody tr.grp:first-child td { padding-top:6px; }
+    /* 生薬名を押すと、その生薬のほかの働きを行の下に出す。このページの「押せるもの」（甘草の合計に足す 等）と同じ白地＋青枠にする。
+       読み仮名を押しても開くように、名前の欄全体を押せるようにしている */
+    .herbs td.hn:has(.hbtn) { cursor:pointer; }
+    .hbtn { font:inherit; font-weight:700; color:var(--blue); background:var(--white); border:var(--bw-h) solid var(--blue); border-radius:var(--radius-sm); padding:3px 10px; cursor:pointer; text-align:left; }
+    .hbtn.on { background:var(--box-blue); }
     .herbs tr.hall td { background:var(--box-gray); font-size:var(--text-xs); color:var(--txt-2); padding:6px 10px 7px; }
     .herbs tr.hall b { color:var(--ink); }
     .how { font-size:var(--text-sm); }
@@ -128,7 +133,10 @@
     .watch .wl { flex-shrink:0; min-width:4.5em; font-size:var(--text-xs); font-weight:700; color:var(--txt-2); padding-top:2px; }
     /* 開いた品目の中の小見出し。区切りの線を上に引き、本文と見分けやすくする */
     .fold-body .sub-title { margin:18px 0 8px; padding-top:14px; border-top:var(--bw-h) solid var(--border); }
+    /* 補足は入りきらなければ次の行へ回す（見出しの文字が1字ずつ折り返されないように） */
+    .sub-title { flex-wrap:wrap; row-gap:0; }
     .sub-title .st-note { font-size:var(--text-xs); font-weight:500; color:var(--txt-3); }
+    @media (max-width:640px) { .sub-title .st-note { flex-basis:100%; padding-left:18px; } }
 
     /* 説明の中の処方名（押すと比べる表が開く） */
     .ref { font:inherit; font-weight:700; color:var(--blue); background:none; border:none; padding:0; cursor:pointer; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px; }
@@ -194,7 +202,7 @@
       <li>「確かめる」「聞く」は薬剤師が判断して行う確認。禁忌や病名に関わることは、お薬手帳・薬歴・処方内容で先に確かめる。症状が出ているときや重なりが見つかったときは処方医に伝える。</li>
       <li>漢方でも、肝機能障害などの重大な副作用はある。長く服用している人がだるさ・食欲不振を訴えたときは、漢方も原因の候補に入れて処方医に伝える。</li>
       <li>「長期服用時の確認事項」は、含む生薬と添付文書の重大な副作用から自動で出している。</li>
-      <li>生薬の量はツムラ医療用の1日量。他社品は分量が違うことがある。青字の生薬がその処方の柱。</li>
+      <li>生薬の量はツムラ医療用の1日量。他社品は分量が違うことがある。</li>
       <li>生薬の役割は添付文書には書かれていないため、漢方の一般的な解釈でまとめた。表には、その処方の中で効かせている働きだけを載せた。生薬名を押すと、その生薬がほかの処方で担う働きも出る。</li>
       <li>説明の中の下線付きの処方名（⇄）を押すと、その処方と生薬・分量を並べて比べられる。</li>
       <li>「効能外」の印は、その症状・病名が添付文書の効能・効果に書かれていない使い方。抗がん剤治療中・認知症など病名に触れる場面は、お薬手帳・薬歴や本人・家族の話で処方の背景が分かってから話題にする。こちらから病名をたずねない。</li>
@@ -219,11 +227,20 @@ const KAMPO = window.KAMPO;
 const kana = s => s.replace(/[ァ-ヶ]/g, c => String.fromCharCode(c.charCodeAt(0) - 0x60));
 const norm = s => kana((s || '').toLowerCase().normalize('NFKC'));
 /* 入力の表記ゆれ（本文の表記に寄せる）。「54番」「TJ-54」は番号として扱う */
-const VARIANTS = [[/牡蠣/g,'牡蛎'],[/龍/g,'竜'],[/逍遥/g,'逍遙'],[/防己/g,'防已'],[/付子/g,'附子'],[/子供|こども/g,'子ども'],[/生理/g,'月経']];
+const VARIANTS = [[/牡蠣/g,'牡蛎'],[/龍/g,'竜'],[/逍遥/g,'逍遙'],[/防己/g,'防已'],[/付子/g,'附子'],[/子供|こども/g,'子ども'],[/生理/g,'月経'],[/耳なり/g,'耳鳴り']];
+/* 「耳の症状で使う漢方」「せきに効く薬」のような文で探されたら、症状の言葉だけを残す
+   （文のまま探すと、本文に同じ並びがないので0件になる）。「芍薬」を壊さないよう、薬は「の薬」「くすり」のときだけ外す */
+const cleanTerm = t => {
+  let s = t.replace(/漢方薬?|症状/g, '').replace(/の薬$|のくすり$|くすり$/, '');
+  s = s.replace(/(?:に|で|へ)?(?:使う|使える|つかう|効く|きく|よい|いい)(?:薬|くすり|もの)?$/, '');
+  if (s.length >= 2) s = s.replace(/[のにでがはをへ]$/, '');
+  if (s.length >= 3) s = s.replace(/(?:時|とき)$/, '');  /* 眠れない時の漢方 → 眠れない */
+  return s;
+};
 const normTerm = t => {
   const m = t.match(/^(?:tj-?|つむら)?(\d+)番?$/);
   if (m) return m[1];
-  return VARIANTS.reduce((s, [a, b]) => s.replace(a, norm(b)), t);
+  return VARIANTS.reduce((s, [a, b]) => s.replace(a, norm(b)), cleanTerm(t));
 };
 const strip = s => s.replace(/<[^>]+>/g, '');
 const MAKERS = ['くらしえ','kracie','こたろー'].map(norm);
@@ -308,8 +325,11 @@ function card(k){
   const scenes = k.scenes.map(s =>
     `<div class="scene"><span class="sh">${s.t}</span>${s.off ? '<span class="off">効能外</span>' : ''}<span class="words">${s.w}</span>
       ${s.tip ? `<div class="tip">${linkNames(s.tip, k)}</div>` : ''}</div>`).join('');
-  const herbs = k.herbs.map(h =>
-    `<tr class="${h[4] ? 'key' : ''}"><td class="hn"><button type="button" class="hbtn" data-h="${h[1]}">${h[1]}</button><small>${h[0]}</small></td><td>${h[3]}</td><td class="hg">${h[2].toFixed(1)}g</td></tr>`).join('');
+  /* 中心になる生薬を上にまとめ、見出しの行で「そのほか」と分ける（色の凡例を読まなくても分かるように） */
+  const row = h => `<tr><td class="hn"><button type="button" class="hbtn" data-h="${h[1]}">${h[1]}</button><small>${h[0]}</small></td><td>${h[3]}</td><td class="hg">${h[2].toFixed(1)}g</td></tr>`;
+  const keyH = k.herbs.filter(h => h[4]), restH = k.herbs.filter(h => !h[4]);
+  const herbs = `<tr class="grp"><td colspan="3">中心になる生薬</td></tr>${keyH.map(row).join('')}`
+    + (restH.length ? `<tr class="grp"><td colspan="3">そのほか</td></tr>${restH.map(row).join('')}` : '');
   const kz = k.kanzo ? `<span class="flag">甘草 ${k.kanzo.toFixed(1)}g/日</span>` : '<span class="flag">甘草なし</span>';
   const cautions = k.cautions.map(c => `<li><span>${linkNames(c, k)}</span></li>`).join('');
   const warn = k.flags.filter(f => f.warn).map(f => `<span class="flag warn">${f.t}</span>`).join('');
@@ -407,14 +427,18 @@ list.addEventListener('click', e => {
   if (i >= 0) kzSel.splice(i, 1); else kzSel.push(b.dataset.id);
   renderKz();
 });
-/* 生薬名：その生薬のおもな働きを、行のすぐ下に開く（もう一度押すと閉じる） */
+/* 生薬名：その生薬のほかの働きを、行のすぐ下に開く（もう一度押すと閉じる）。
+   この処方での役割にすでに書いた働きは外す（同じ文が先に来ると、知りたい「ほかの働き」が読み流されるため） */
 list.addEventListener('click', e => {
-  const b = e.target.closest('.hbtn'); if (!b) return;
+  const cell = e.target.closest('td.hn'); const b = cell && cell.querySelector('.hbtn'); if (!b) return;
   const tr = b.closest('tr'), nx = tr.nextElementSibling;
-  if (nx && nx.classList.contains('hall')) { nx.remove(); return; }
+  if (nx && nx.classList.contains('hall')) { nx.remove(); b.classList.remove('on'); return; }
   const roles = (window.KAMPO_HERBS || {})[b.dataset.h];
   if (!roles) return;
-  tr.insertAdjacentHTML('afterend', `<tr class="hall"><td colspan="3"><b>${b.dataset.h}</b>のおもな働き：${roles.join('／')}</td></tr>`);
+  const here = tr.children[1].textContent;
+  const others = roles.filter(r => !here.includes(r));
+  b.classList.add('on');
+  tr.insertAdjacentHTML('afterend', `<tr class="hall"><td colspan="3"><b>${b.dataset.h}</b>のほかの働き：${others.length ? others.join('／') : 'おもにこの処方と同じ働きで使われる'}</td></tr>`);
 });
 /* 印刷するときは全部開く */
 addEventListener('beforeprint', () => items.forEach(d => d.open = true));
@@ -422,13 +446,16 @@ addEventListener('beforeprint', () => items.forEach(d => d.open = true));
 /* 検索用の文字列。HAY＝名前・読み・番号・生薬名・場面・キーワードなど、HAYH＝生薬の役割と「だから効く」、HAYC＝注意事項
    生薬の役割には「胃腸を守る」のような語がほぼ全品目に出るので、そこだけで当たった品目も後ろに回す
    注意書きの語（副作用の「むくみ」、併用注意の「かぜ薬」など）だけで当たった品目は後ろに回し、そうと分かるようにする */
-const HAY = {}, HAYH = {}, HAYC = {}, NAME = {};
+const HAY = {}, HAYH = {}, HAYC = {}, HAYKA = {}, NAME = {};
+const isKa = t => /科$/.test(t);
 KAMPO.forEach(k => {
   NAME[k.id] = norm(k.name + ' ' + k.yomi);
   HAY[k.id] = norm(strip([k.name, k.yomi, 'ツムラ' + k.no, k.gist, k.kounou, k.kw, k.taste,
     k.herbs.map(h => h[1]).join(' '),  /* カタカナ名は外す（「せき」がカッセキに当たるため） */
-    k.scenes.map(s => [s.t, s.w, s.tip || '', s.ka, s.k].join(' ')).join(' '),
+    k.scenes.map(s => [s.t, s.w, s.tip || '', s.k].join(' ')).join(' '),
     k.flags.map(f => f.t).join(' '), k.hito || ''].join(' ')));
+  /* 診療科は「○○科」と入れたときだけ探す（「耳」「鼻」「皮膚」が耳鼻科・皮膚科に当たり、症状と関係ない品目まで出るため） */
+  HAYKA[k.id] = norm(k.scenes.map(s => s.ka).join(' '));
   HAYH[k.id] = norm(strip([k.how, k.herbs.map(h => h[3]).join(' ')].join(' ')));
   HAYC[k.id] = norm(strip(k.cautions.join(' ')));
 });
@@ -441,11 +468,16 @@ chipsEl.innerHTML = CATS.map((c, i) => `<button type="button" class="chip" data-
 
 /* 場面ごとの検索用文字列 */
 const SHAY = {};
-KAMPO.forEach(k => { SHAY[k.id] = k.scenes.map(s => norm(strip([s.t, s.w, s.tip || '', s.ka, s.k].join(' ')))); });
+const SHAYKA = {};
+KAMPO.forEach(k => {
+  SHAY[k.id] = k.scenes.map(s => norm(strip([s.t, s.w, s.tip || '', s.k].join(' '))));
+  SHAYKA[k.id] = k.scenes.map(s => norm(s.ka));
+});
 /* 番号だけの検索は番号に完全一致させる（「1」で 17 や 100 が出ないように） */
 /* 0＝当たらない、1＝注意書き、1.5＝生薬の説明、2＝本文で当たる */
 function match(k, term){
   if (/^\d+$/.test(term)) return k.no === Number(term) ? 2 : 0;
+  if (isKa(term) && HAYKA[k.id].includes(term)) return 2;
   return HAY[k.id].includes(term) ? 2 : HAYH[k.id].includes(term) ? 1.5 : HAYC[k.id].includes(term) ? 1 : 0;
 }
 function apply(){
@@ -471,7 +503,7 @@ function apply(){
     if (ok && weak) weakN++;
     /* 品目名・番号以外の語で当たった場面を帯に出し、中でも色を付ける */
     const sceneTerms = terms.filter(t => !/^\d+$/.test(t) && !norm(k.name + k.yomi).includes(t)).concat(cat < 0 ? [] : CATS[cat].words);
-    const hitIdx = sceneTerms.length ? SHAY[k.id].map((h, i) => sceneTerms.some(t => h.includes(t)) ? i : -1).filter(i => i >= 0) : [];
+    const hitIdx = sceneTerms.length ? SHAY[k.id].map((h, i) => sceneTerms.some(t => (isKa(t) ? SHAYKA[k.id][i] : h).includes(t)) ? i : -1).filter(i => i >= 0) : [];
     const el = document.getElementById(k.id);
     el.querySelectorAll('.scene').forEach((d, i) => d.classList.toggle('hit', hitIdx.includes(i)));
     const hb = el.querySelector('.hits');
