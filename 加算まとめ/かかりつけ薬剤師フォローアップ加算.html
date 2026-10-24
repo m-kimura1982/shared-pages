@@ -168,6 +168,7 @@
   .bullet { display:flex; gap:6px; }
   .bullet > span:first-child { flex-shrink:0; color:#999; }
   .table-wrap { overflow-x:auto; }
+  .nowrap { white-space:nowrap; }
   /* 算定できる患者：はい／いいえの判定フロー */
   .dflow { display:flex; flex-direction:column; }
   .dq { display:grid; grid-template-columns:1fr 9.5em; gap:12px; align-items:start; background:var(--box-gray); border-radius:var(--radius-sm); padding:12px 16px; }
@@ -300,7 +301,7 @@
       <div class="dq">
         <div class="dq-main">
           <div class="flow-head"><span class="step-num">3</span>フォローアップが必要と判断した（患者・家族等の求め、またはかかりつけ薬剤師が必要と認めた）</div>
-          <div class="flow-body">フォローアップの内容は服薬状況・残薬状況等の確認と必要な指導で、上の点数を算定した理由に限らない。<br>ただし、一度フォローアップで解消した問題を、もう一度フォローアップする場合は<span class="marker">対象外</span>。</div>
+          <div class="flow-body">フォローアップの内容は服薬状況・残薬状況等の確認と必要な指導で、上の点数を算定した理由に限らない。<br>ただし、一度フォローアップで解消した問題を、もう一度フォローアップする場合は<span class="nowrap"><span class="marker">対象外</span>。</span></div>
         </div>
         <div class="dq-no"><span class="x">×</span>いいえ → 対象外</div>
       </div>
