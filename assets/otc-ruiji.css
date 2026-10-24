@@ -328,7 +328,7 @@ a.otc-nav-i:hover { background:#f4f7fb; color:var(--blue); }
 .ls-n.dim-n { font-size:var(--text-xs); font-weight:500; color:var(--txt-3); }
 /* 結果の帯：保険給付＝白／自己負担＝グレー／特別の料金＝淡いオレンジ。帯を細線で囲み、境目も細線 */
 .res { margin-top:14px; display:flex; flex-direction:column; gap:10px; }
-.res-row { display:grid; grid-template-columns:7.5em minmax(0,1fr) 6.5em; align-items:center; gap:10px; }
+.res-row { display:grid; grid-template-columns:7.5em minmax(0,1fr) 8.5em; align-items:center; gap:10px; }
 .res-lab { font-weight:700; font-size:var(--text-sm); text-align:right; }
 .res-bar { display:flex; height:40px; border-radius:4px; overflow:hidden; border:var(--bw-h) solid var(--fig-line); }
 .seg { display:flex; align-items:center; justify-content:center; font-size:var(--text-xs); font-weight:700; white-space:nowrap; overflow:hidden; padding:0 4px; min-width:0; color:var(--ink); }
@@ -362,6 +362,29 @@ a.otc-nav-i:hover { background:#f4f7fb; color:var(--blue); }
 /* 料金がかからない人・場面の表の中の区切り（薬局でも分かるもの／処方医の判断で決まるもの） */
 .stack-sp tr.sep td { background:var(--white); font-weight:900; font-size:var(--text-sm); padding:14px 11px 5px; border-bottom:2px solid var(--border-dk); }
 @media (max-width:640px) { .stack-sp tr.sep { padding:0; border-bottom:none; } .stack-sp tr.sep td { display:block; padding:6px 10px; margin-top:10px; } }
+
+/* 本文の「特別の料金」を、図の帯と同じ淡いオレンジで示す（このページ群で意味を持たせる色はこれだけ） */
+.key-tk { background:var(--fig-tokubetsu-bg); padding:1px 5px; border-radius:3px; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+
+/* 事務連絡の記号A〜E：帯（D・C・A）の上下に、BとEの範囲を括弧で示す。帯の色と幅は計算例の見直し後の帯と同じ */
+.abc-fig { margin:0; max-width:620px; }
+.abc-grid { display:grid; grid-template-columns:minmax(4.5em,98fr) minmax(5em,42fr) minmax(6em,60fr); }
+.abc-cell, .abc-br { word-break:keep-all; overflow-wrap:anywhere; }
+.abc-cell { display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:8px 4px; font-size:var(--text-xs); font-weight:700; line-height:1.35; color:var(--ink); border:var(--bw-h) solid var(--fig-line); min-width:0; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.abc-cell + .abc-cell { border-left:none; }
+.abc-cell.hk { background:var(--white); border-radius:4px 0 0 4px; }
+.abc-cell.jf { background:var(--fig-gray-bg); }
+.abc-cell.tk { background:var(--fig-tokubetsu-bg); border-radius:0 4px 4px 0; }
+.abc-cell b, .abc-br b { font-size:var(--text-md); font-weight:900; }
+.abc-cell small { font-size:var(--text-xs); font-weight:500; }
+.abc-br { position:relative; text-align:center; font-size:var(--text-xs); font-weight:700; line-height:1.35; }
+.abc-br.top { grid-row:1; padding-bottom:13px; }
+.abc-br.bottom { padding-top:13px; }
+.abc-br.top::after, .abc-br.bottom::before { content:""; position:absolute; left:3px; right:3px; height:8px; border:1.5px solid var(--txt-2); }
+.abc-br.top::after { bottom:3px; border-bottom:none; }
+.abc-br.bottom::before { top:3px; border-top:none; }
+.abc-grid .abc-cell { grid-row:2; }
+.abc-br.bottom { grid-row:3; }
 
 /* 成分と先発品の一覧：1成分1行。先発品は少し小さいグレーで横に並べる（かっこを続けるとちらつくため） */
 .ib-list .ib { display:flex; flex-wrap:wrap; align-items:baseline; gap:0 12px; padding:1px 0; }

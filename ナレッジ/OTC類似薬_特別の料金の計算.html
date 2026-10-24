@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex,nofollow,noarchive" />
     <title>OTC類似薬：特別の料金の計算｜実務ナレッジ集</title>
-    <meta name="search-keywords" content="OTC類似薬,一部保険外療養,特別の料金,4分の1,投薬全量,10円,四捨五入,端数,保険外併用療養費の算出に用いる価格,自己負担,1割,2割,3割,消費税,非課税,税制改正要望,長期収載品,選定療養,計算方法" />
+    <meta name="search-keywords" content="OTC類似薬,一部保険外療養,特別の料金,4分の1,投薬全量,10円,四捨五入,端数,保険外併用療養費の算出に用いる価格,自己負担,1割,2割,3割,消費税,非課税,税制改正要望,長期収載品,選定療養,計算方法,窓口で払う額,ロキソニン,マグミット,アレグラ,ヒルドイド" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/fold.css" />
     <link rel="stylesheet" href="../assets/otc-ruiji.css" />
@@ -35,9 +35,9 @@
       <div class="card" id="c-kingaku" data-rev="2026-09-30" data-toc-label="金額の出し方">
         <div class="card-title">金額の出し方<span class="rev-chip">9/30</span></div>
         <div class="stack">
-          <div>薬剤費を<b>「特別の料金」と「保険対象分」の2つに分けて</b>計算し、最後に合算する。<span class="marker">特別の料金だけは点数にしない</span>。どちらの単価も、<a href="OTC類似薬_対象の薬と料金がかからない場合.html#c-seibun">対象医薬品リスト</a>に品目ごとに記載されている。</div>
+          <div>薬剤費を<b>「特別の料金」と「保険対象分」の2つに分けて</b>計算する。<span class="marker">特別の料金だけは点数にしない</span>。保険対象分は、今までの薬剤料と同じく点数にする。どちらの単価も、<a href="OTC類似薬_対象の薬と料金がかからない場合.html#c-seibun">対象医薬品リスト</a>に品目ごとに記載されている。</div>
 
-          <!-- 計算の道筋：左右の列を同じ段の高さで揃え、各段の右に例の数字を置く -->
+          <!-- 計算の道筋：左右の列を同じ段の高さで揃え、各段の右に例の数字を置く。細則は下の折りたたみ「計算の細かい決まり」へ -->
           <figure class="lanes-fig">
             <figcaption class="lanes-cap">例）<b>ロキソニン錠60mg</b>　1回1錠・1日3回・7日分　3割負担<span class="lanes-yk">薬価 10.80円</span></figcaption>
             <div class="lanes">
@@ -47,16 +47,16 @@
                   <li><span class="ls-t">単価を確認する</span><span class="ls-v">リストの「対象医薬品の価格の4分の1」</span><span class="ls-n">2.70<small>円</small></span></li>
                   <li><span class="ls-t">投薬全量を掛ける</span><span class="ls-v">1回量 × 回数 × 日数</span><span class="ls-n">× 21錠 ＝ 56.7<small>円</small></span></li>
                   <li><span class="ls-t">処方箋ごとに合算する</span><span class="ls-v">対象の薬が2つ以上あるとき</span><span class="ls-n dim-n">この例は1品目</span></li>
-                  <li><span class="ls-t">10円単位に丸める</span><span class="ls-v">5円未満は切り捨て、5円以上は切り上げ。合計が10円未満なら10円</span><span class="ls-n big">60<small>円</small></span></li>
+                  <li><span class="ls-t">10円単位に丸める</span><span class="ls-v">1の位を四捨五入</span><span class="ls-n big">60<small>円</small></span></li>
                 </ol>
               </div>
               <div class="lane hk">
                 <div class="lane-h">保険対象分<span class="lane-tag">薬剤料と同じく点数にする</span></div>
                 <ol class="ls">
                   <li><span class="ls-t">単価を確認する</span><span class="ls-v">リストの「保険外併用療養費の算出に用いる価格」</span><span class="ls-n">8.10<small>円</small></span></li>
-                  <li><span class="ls-t">1日量を掛ける</span><span class="ls-v">外用薬・頓服は1調剤の全量</span><span class="ls-n">× 3錠 ＝ 24.3<small>円</small></span></li>
-                  <li><span class="ls-t">点数にして日数を掛ける</span><span class="ls-v">10円で割り五捨五超入。15円以下は1点</span><span class="ls-n">2点 × 7日 ＝ 14<small>点</small></span></li>
-                  <li><span class="ls-t">円に戻して負担割合を掛ける</span><span class="ls-v">点数 × 10円 × 3割</span><span class="ls-n big">42<small>円</small></span></li>
+                  <li><span class="ls-t">1日量を掛ける</span><span class="ls-v">1回量 × 回数</span><span class="ls-n">× 3錠 ＝ 24.3<small>円</small></span></li>
+                  <li><span class="ls-t">点数にして日数を掛ける</span><span class="ls-v">今までの薬剤料と同じ</span><span class="ls-n">2点 × 7日 ＝ 14<small>点</small></span></li>
+                  <li><span class="ls-t">円に戻して負担割合を掛ける</span><span class="ls-v">点数 × 10円 × 3割</span><span class="ls-n">42<small>円</small></span></li>
                 </ol>
               </div>
             </div>
@@ -68,7 +68,7 @@
                   <div class="seg hk" style="flex-grow:147"><i>保険給付</i>147円</div>
                   <div class="seg jf" style="flex-grow:63"><i>自己負担</i>63円</div>
                 </div>
-                <div class="res-pay"><span>窓口</span><b>63</b><small>円</small></div>
+                <div class="res-pay"><span>薬剤費分</span><b>63</b><small>円</small></div>
               </div>
               <div class="res-row">
                 <div class="res-lab">見直し後</div>
@@ -77,27 +77,18 @@
                   <div class="seg jf" style="flex-grow:42"><i>自己負担</i>42円</div>
                   <div class="seg tk" style="flex-grow:60"><i>特別の料金</i>60円</div>
                 </div>
-                <div class="res-pay now"><span>窓口</span><b>102</b><small>円</small></div>
+                <div class="res-pay now"><span>薬剤費分</span><b>102</b><small>円</small></div>
               </div>
             </div>
           </figure>
-          <div class="note-xs">技術料と消費税は含めていない。窓口の一部負担金は、技術料と合わせてから10円単位にする（今までどおり）。</div>
 
-          <div>
-            <div class="sub-title">よくある処方の負担額<span class="qual">3割負担・薬剤費だけ・特別の料金がかかる場合</span></div>
-            <div class="tbl-wrap mid">
-              <table>
-                <thead><tr><th>処方</th><th class="num">見直し前</th><th class="num">見直し後</th><th class="num">増える額</th></tr></thead>
-                <tbody>
-                  <tr><td class="k">ロキソニン錠60mg<small>1日3錠・7日分</small></td><td class="old num">63円</td><td class="new num">102円</td><td class="num">+39円</td></tr>
-                  <tr><td class="k">マグミット錠330mg<small>1日3錠・30日分</small></td><td class="old num">180円</td><td class="new num">230円</td><td class="num">+50円</td></tr>
-                  <tr><td class="k">アレグラ錠60mg<small>1日2錠・30日分</small></td><td class="old num">360円</td><td class="new num">580円</td><td class="num">+220円</td></tr>
-                  <tr><td class="k">ロキソニンテープ100mg<small>28枚</small></td><td class="old num">153円</td><td class="new num">244円</td><td class="num">+91円</td></tr>
-                  <tr><td class="k">ヒルドイドソフト軟膏0.3%<small>100g</small></td><td class="old num">531円</td><td class="new num">839円</td><td class="num">+308円</td></tr>
-                </tbody>
-              </table>
+          <div class="box-gray">
+            <div class="sub-title">窓口で払う額</div>
+            <div class="blist">
+              <div class="bullet"><span>・</span><span><b class="key-tk">特別の料金</b>…単独で10円単位に丸める（上の例の60円）。</span></div>
+              <div class="bullet"><span>・</span><span><b>保険分の自己負担</b>…今までどおり、技術料の自己負担と合わせてから10円単位にする。<br />例）技術料の自己負担が54円なら、42円＋54円＝96円 → 100円。窓口では 100円＋特別の料金60円＝<b>160円</b>。</span></div>
             </div>
-            <div class="note-xs" style="margin-top:6px">厚生労働省の対象医薬品リストの単価（2027年3月施行時点）で計算した額。技術料と合わせる前の額なので1円単位のまま。</div>
+            <div class="note-xs" style="margin-top:6px">実際の窓口の額は、処方の内容や技術料によって変わる。</div>
           </div>
 
           <div class="box-gray">
@@ -115,10 +106,58 @@
           </div>
 
           <details class="fold-in">
+            <summary>計算の細かい決まり</summary>
+            <div class="body">
+              <div class="stack">
+                <div>
+                  <div class="sub-title">端数の扱い</div>
+                  <div class="blist">
+                    <div class="bullet"><span>・</span><span><b>特別の料金</b>…5円未満は切り捨て、5円以上は切り上げ。合計が10円未満なら10円。</span></div>
+                    <div class="bullet"><span>・</span><span><b>保険対象分の点数</b>…今までの薬剤料と同じ（10円で割り五捨五超入、15円以下は1点。外用薬・頓服は1調剤の全量で計算）。</span></div>
+                    <div class="bullet"><span>・</span><span><b>リストの単価</b>…4分の1は小数第3位を四捨五入（規格単位が10mLなど「1」でない品目は小数第2位）。「保険外併用療養費の算出に用いる価格」は、薬価から4分の1を引いた額。薬価改定などで単価が更新されたときは、料金を求める時点で有効な単価を使う。</span></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="sub-title">保険対象分は、同じ剤のほかの薬と合わせて点数にする</div>
+                  <div>点数は今までの薬剤料と同じく、所定単位（内服薬は1剤1日分、外用薬は1調剤）ごとに出す。</div>
+                  <div class="blist" style="margin-top:6px">
+                    <div class="bullet"><span>・</span><span>同じ剤に対象の薬が2つ以上あるとき…それぞれの「保険外併用療養費の算出に用いる価格」を合算してから点数にする。</span></div>
+                    <div class="bullet"><span>・</span><span>同じ剤に対象外の薬もあるとき…対象の薬の「保険外併用療養費の算出に用いる価格」と、対象外の薬の薬価を合算してから点数にする。</span></div>
+                    <div class="bullet"><span>・</span><span>対象の薬を含む剤が2つ以上あるとき…剤ごとに点数にしてから合算する。</span></div>
+                  </div>
+                  <div class="note-xs" style="margin-top:6px">上のロキソニン錠の例は、ロキソニン錠だけの剤として計算している。同じ剤に選定療養の対象の長期収載品も入っているときに、その薬をどの単価で合算するかは、事務連絡に明記がない。</div>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="fold-in">
+            <summary>事務連絡の記号A〜Eの見方（事務連絡を読むとき）</summary>
+            <div class="body">
+              <div>事務連絡では、金額をA〜Eの記号で表している。上のロキソニン錠の例（見直し後）に当てはめると次のとおり。</div>
+              <figure class="abc-fig" style="margin-top:10px" role="img" aria-label="薬剤費を、保険給付D 98円、自己負担C 42円、特別の料金A 60円に分けた帯。DとCを合わせたものがB 保険対象分140円、CとAを合わせたものがE 患者が払う薬剤費102円">
+                <div class="abc-grid">
+                  <div class="abc-br top" style="grid-column:1 / 3"><b>B</b> 保険対象分（10割）140円</div>
+                  <div class="abc-cell hk"><b>D</b>保険給付<small>98円</small></div>
+                  <div class="abc-cell jf"><b>C</b>自己負担<small>42円</small></div>
+                  <div class="abc-cell tk"><b>A</b>特別の料金<small>60円</small></div>
+                  <div class="abc-br bottom" style="grid-column:2 / 4"><b>E</b> 患者が払う薬剤費 102円</div>
+                </div>
+              </figure>
+              <div class="blist" style="margin-top:10px">
+                <div class="bullet"><span>・</span><span><b>B「一部保険外療養を除く保険対象となる費用」</b>…Aを除いた、保険で扱う部分。図のとおり、患者の自己負担Cも含む。</span></div>
+                <div class="bullet"><span>・</span><span><b>「保険外併用療養費の算出に用いる価格」</b>…Bを出すための単価（薬価から4分の1を引いた額）。</span></div>
+                <div class="bullet"><span>・</span><span><b>D「保険外併用療養費」</b>…名前に「保険外」とあるが、保険から支払われる分（上の帯の「保険給付」）。</span></div>
+              </div>
+              <div class="note-xs" style="margin-top:6px">長期収載品の選定療養の事務連絡も同じ記号を使うが、そちらのAは消費税込み。</div>
+            </div>
+          </details>
+
+          <details class="fold-in">
             <summary>厚生労働省の事務連絡の計算例</summary>
             <div class="body">
               <div class="stack">
-      <div class="box-gray">
+                <div class="box-gray">
                   <div class="sub-title">例1）内服薬を1日2錠・30日分<span class="qual">厚生労働省の事務連絡の例</span></div>
                   <div class="tbl-wrap mid">
                     <table>
@@ -130,8 +169,6 @@
                       </tbody>
                     </table>
                   </div>
-                  <div class="note-xs" style="margin-top:6px">4分の1は小数第3位を四捨五入（16.50÷4＝4.125→4.13）。残りは薬価から引いた額（16.50−4.13＝12.37）。</div>
-            
                   <div class="tbl-wrap mid keisan" style="margin-top:14px">
                     <table>
                       <thead><tr><th></th><th>計算</th><th class="num">金額</th></tr></thead>
@@ -144,7 +181,7 @@
                     </table>
                   </div>
                 </div>
-      <div class="box-gray" data-rev="2026-09-30">
+                <div class="box-gray" data-rev="2026-09-30">
                   <div class="sub-title">例2）外用薬のクリーム25gを2本<span class="qual">厚生労働省の事務連絡の例</span><span class="rev-chip">9/30</span></div>
                   <div class="tbl-wrap mid">
                     <table>
@@ -167,7 +204,7 @@
                       </tbody>
                     </table>
                   </div>
-                  <div class="note-xs" style="margin-top:8px">保険分の自己負担の135円が140円になっているのは、窓口で払う一部負担金を10円単位にする、これまでと同じ決まりによるもの。どちらの例も、技術料と消費税は含めていない。</div>
+                  <div class="note-xs" style="margin-top:8px">135円→140円は原資料の表示どおり。どちらの例も技術料は含めていない。</div>
                 </div>
               </div>
             </div>
@@ -177,12 +214,12 @@
 
       <div class="card" id="c-futan">
         <div class="card-title">患者の負担はどう変わるか</div>
-      
+
         <div class="stack">
           <div>特別の料金がかかるのは<span class="marker">薬剤費だけ</span>で、技術料（調剤基本料・薬学管理料など）は今までどおり保険給付。</div>
-      
+
           <div>
-            <div class="sub-title">厚生労働省が示した試算<span class="qual">3割負担・薬剤料のみ</span></div>
+            <div class="sub-title">厚生労働省の試算<span class="qual">OTC医薬品を買った場合との比較・3割負担・薬剤料のみ</span></div>
             <div class="tbl-wrap">
               <table>
                 <thead>
@@ -196,17 +233,34 @@
                 </tbody>
               </table>
             </div>
-            <div class="note-xs" style="margin-top:8px">医療用医薬品は例示した医薬品のうち最もシェアの高いものの額。OTC医薬品は代替可能なもののうち確認できた範囲でのネット上の最安値で、日数をそろえた比較ではない。別に初診料や調剤基本料等の技術料がかかる。</div>
+            <div class="note-xs" style="margin-top:8px">医療用医薬品は例示した医薬品のうち最もシェアの高いものの額。OTC医薬品は代替可能なもののうち確認できた範囲でのネット上の最安値で、日数をそろえた比較ではない。</div>
+          </div>
+
+          <div>
+            <div class="sub-title">よくある処方の金額比較<span class="qual">当サイトで計算・上のロキソニン錠の例と同じ計算・3割負担・薬剤費のみ</span></div>
+            <div class="tbl-wrap mid">
+              <table>
+                <thead><tr><th>処方</th><th class="num">見直し前</th><th class="num">見直し後</th><th class="num">増える額</th></tr></thead>
+                <tbody>
+                  <tr><td class="k">ロキソニン錠60mg<small>1日3錠・7日分</small></td><td class="old num">63円</td><td class="new num">102円</td><td class="num">+39円</td></tr>
+                  <tr><td class="k">マグミット錠330mg<small>1日3錠・30日分</small></td><td class="old num">180円</td><td class="new num">230円</td><td class="num">+50円</td></tr>
+                  <tr><td class="k">アレグラ錠60mg<small>1日2錠・30日分</small></td><td class="old num">360円</td><td class="new num">580円</td><td class="num">+220円</td></tr>
+                  <tr><td class="k">ロキソニンテープ100mg<small>28枚</small></td><td class="old num">153円</td><td class="new num">244円</td><td class="num">+91円</td></tr>
+                  <tr><td class="k">ヒルドイドソフト軟膏0.3%<small>100g</small></td><td class="old num">531円</td><td class="new num">839円</td><td class="num">+308円</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="note-xs" style="margin-top:6px">厚生労働省の対象医薬品リストの単価（2027年3月施行時点）で、特別の料金がかかる場合を当サイトが計算した目安。上の厚生労働省の試算とは薬も日数も違う。</div>
           </div>
 
           <div>
             <div class="sub-title">負担割合による違い</div>
-            <div>保険給付の対象として残る4分の3に1〜3割の自己負担がかかり、残りの4分の1は全額を払うので、見直し後の薬剤費の自己負担はおおよそ次の割合になる。</div>
-      
+            <div>保険給付の対象として残る4分の3に1〜3割の自己負担がかかり、残りの4分の1は全額が自己負担になるので、見直し後の薬剤費の自己負担はおおよそ次の割合になる。</div>
+
             <div class="box-blue" style="text-align:center;font-weight:700;margin-top:14px">
               薬剤費 ×（ 負担割合 × 0.75 ＋ 0.25 ）
             </div>
-      
+
             <div class="tbl-wrap mid" style="margin-top:14px">
               <table>
                 <thead>
@@ -219,29 +273,26 @@
                 </tbody>
               </table>
             </div>
-      
-            <div style="margin-top:14px">特別の料金は負担割合に関係なく同じ額なので、<span class="em-change">もともとの負担が軽い人ほど、増え方が大きい</span>。</div>
-      
-            <div class="box-gray" style="margin-top:14px" id="rev-zei">
-              <div>この倍率は薬剤費に対する概算。実際は<a href="#c-kingaku">上の計算</a>のとおり、特別の料金の側で10円単位に丸め、保険の側で点数に換算するので、窓口の金額は前後する。上の割合も厚生労働省の試算も、消費税は含めていない。</div>
-              <div style="margin-top:9px">消費税がかかるかどうかは<b>決まっていない</b>。政府内で検討中で、<span data-rev="2026-09-30"><b>年末をめどに示される</b><span class="rev-chip">9/30</span></span>。選定療養では上乗せされているが、一部保険外療養については非課税を求める税制改正要望が出ている。</div>
-            </div>
+
+            <div style="margin-top:14px">特別の料金は負担割合に関係なく同じ額なので、<span class="em-change">負担割合の小さい人ほど、増え方が大きい</span>。</div>
+          </div>
+
+          <div class="box-gray" id="rev-zei">
+            <div>2つの試算と負担割合の表は、どれも技術料を含まない薬剤費だけの額。倍率は概算で、実際の金額は端数の扱いで前後する。</div>
+            <div style="margin-top:9px">OTC類似薬の特別の料金に消費税がかかるかどうかは<b>決まっていない</b>。政府内で検討中で、<span data-rev="2026-09-30"><b>年末をめどに示される</b><span class="rev-chip">9/30</span></span>。選定療養では上乗せされているが、一部保険外療養については非課税を求める税制改正要望が出ている。</div>
           </div>
         </div>
       </div>
 
-      
-
       <div class="card" id="c-sentei-keisan" data-toc-label="選定療養の計算">
         <div class="card-title">長期収載品の選定療養の計算<span class="qual">2027年3月から</span><span class="rev-chip">9/9</span></div>
         <div class="stack">
-          <div data-rev="2026-09-30"><div class="sub-title">同じ処方箋に両方あるとき<span class="rev-chip">9/30</span></div>一部保険外療養の薬と選定療養の長期収載品が両方あるときは、<b>2つの特別の料金をそれぞれ計算して丸める</b>。選定療養の料金には消費税がかかるため。</div>
-          <div class="sub-title" style="margin-bottom:0">選定療養の計算方法も変わる</div>
           <div data-rev="2026-09-09">
-            
-            <div>一部保険外療養の施行に合わせて、長期収載品の特別の料金も<span class="marker">点数に換算せず、差額の2分の1に投薬全量を掛けて計算する</span>。<span class="em-change">料金の割合（2分の1）や対象品目は変わらない</span>。</div>
-            <div data-rev="2026-09-30" style="margin-top:10px">丸め方は<a href="#c-kingaku">一部保険外療養</a>と同じで、そのあとに<span class="marker">消費税を加える</span><span class="rev-chip">9/30</span>。計算方法が変わるので、同じ処方でも金額が動く。<br /><span class="note-xs">例）差額の2分の1が25.35円の錠剤を1日2錠・30日分：25.35円×60錠＝1,521円→1,520円、×1.1＝1,672円。</span></div>
+            <div class="sub-title">選定療養の計算方法の変更</div>
+            <div>一部保険外療養の施行に合わせて、長期収載品の特別の料金も<span class="marker">点数に換算せず、差額の2分の1に投薬全量を掛けて計算する</span>。<span class="em-change">料金の割合（2分の1）はそのままで、計算方法だけが変わる</span>。</div>
+            <div data-rev="2026-09-30" style="margin-top:10px">丸め方は<a href="#c-kingaku">一部保険外療養</a>と同じで、そのあとに<span class="marker">消費税を加える</span><span class="rev-chip">9/30</span>。そのため、同じ処方でも金額が変わることがある。<br /><span class="note-xs">例）差額の2分の1が25.35円の錠剤を1日2錠・30日分：25.35円×60錠＝1,521円→1,520円、×1.1＝1,672円。</span></div>
           </div>
+          <div data-rev="2026-09-30"><div class="sub-title">同じ処方箋に両方あるとき<span class="rev-chip">9/30</span></div>一部保険外療養の薬と選定療養の長期収載品が両方あるときは、<b>2つの特別の料金をそれぞれ計算して丸める</b>。選定療養の料金には消費税がかかるため。</div>
           <div class="note">2026年改定の変更点と、2027年3月からの新旧の計算方法は<a href="../改定資料/選定療養_概要2026.html">選定療養の改定ポイント</a>、窓口での手順は<a href="../チェックリスト/選定療養_実務チェックリスト.html">選定療養 算定チェックリスト</a>、金額の計算は<a href="../ツール/選定療養費計算ツール.html">選定療養 計算ツール</a>（2027年3月からの計算方法にも対応）を参照。</div>
         </div>
       </div>
