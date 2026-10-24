@@ -83,6 +83,9 @@
     /* 1品目のカード */
     .kp-sum .no { font-size:var(--text-sm); font-weight:700; color:var(--blue); background:var(--box-blue); border-radius:4px; padding:0 8px; }
     .kp-sum .yomi { font-size:var(--text-sm); font-weight:500; color:var(--txt-3); }
+    /* 1包の量（ピッキング・入力の確認用）。2.5g以外は注意の印と同じクリームにする */
+    .kp-sum .pkg { font-size:var(--text-sm); font-weight:700; color:var(--txt-2); }
+    .kp-sum .pkg.odd { font-size:var(--text-xs); background:var(--caution-bg); color:var(--caution-tx); border-radius:4px; padding:0 8px; }
     .gist { font-weight:700; }
     .lab-s { font-size:var(--text-xs); font-weight:700; color:var(--txt-3); margin-right:6px; }
 
@@ -206,7 +209,8 @@
       <li>生薬の役割は添付文書には書かれていないため、漢方の一般的な解釈でまとめた。表には、その処方の中で効かせている働きだけを載せた。生薬名を押すと、その生薬がほかの処方で担う働きも出る。</li>
       <li>説明の中の下線付きの処方名（⇄）を押すと、その処方と生薬・分量を並べて比べられる。</li>
       <li>「効能外」の印は、その症状・病名が添付文書の効能・効果に書かれていない使い方。抗がん剤治療中・認知症など病名に触れる場面は、お薬手帳・薬歴や本人・家族の話で処方の背景が分かってから話題にする。こちらから病名をたずねない。</li>
-      <li>服用方法はどの品目も1日2〜3回・食前または食間。顆粒の1日量は7.5gが多いが、9.0g（小青竜湯・麦門冬湯・人参養栄湯）や15g（大建中湯）のものがある。</li>
+      <li>服用方法はどの品目も1日2〜3回・食前または食間。顆粒の1日量は7.5gが多いが、9.0g・10.5g・15g・18gのものがある（品目名の下のクリームの印で分かる）。</li>
+      <li>「1包」はツムラの分包1包の量（添付文書「包装」）。多くは2.5gで、それ以外の品目はクリームの印で示した。他社品は1包の量が違う。</li>
       <li>「熱を冷ます」は体温を下げる意味ではなく、のぼせ・ほてり・炎症の熱のこと。「血を補う」は漢方の言い方で、鉄剤のように血液を増やす意味ではない。患者に伝えるときは言い方に気をつける。</li>
       <li>伝わりやすい言葉は、言い換えに迷ったときの手がかり。患者さんの訴えと処方医の意図に合わせて選ぶ。</li>
       <li>甘草を含む漢方を2つ以上服用している人は、甘草の量を足して見る（添付文書「含有生薬の重複に注意」）。アルドステロン症・ミオパチー・低カリウム血症の禁忌は、1品目で甘草を1日2.5g以上含む製剤に付く（昭和53年の厚生省通知の基準。この表の128品目もそのとおり）。併用したときの合計量の公的な目安はない。</li>
@@ -336,7 +340,7 @@ function card(k){
   const plain = k.flags.filter(f => !f.warn).map(f => `<span class="flag">${f.t}</span>`).join('');
   return `<details class="fold kp" id="${k.id}">
     <summary><div class="kp-sum">
-      <div class="nm"><span class="no">ツムラ ${k.no}</span>${k.name}<span class="yomi">${k.yomi}</span></div>
+      <div class="nm"><span class="no">ツムラ ${k.no}</span>${k.name}<span class="pkg${k.pkg !== 2.5 ? ' odd' : ''}">1包 ${k.pkg.toFixed(1)}g</span><span class="yomi">${k.yomi}</span></div>
       <div class="sgist">${k.gist}</div>
       ${warn ? `<div class="flags">${warn}</div>` : ''}
       <div class="hits" hidden></div>
