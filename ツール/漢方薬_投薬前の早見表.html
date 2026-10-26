@@ -202,7 +202,6 @@
   <div class="card" data-toc="skip">
     <div class="card-title">補足</div>
     <ul class="cautions">
-      <li>「確かめる」「聞く」は薬剤師が判断して行う確認。禁忌や病名に関わることは、お薬手帳・薬歴・処方内容で先に確かめる。症状が出ているときや重なりが見つかったときは処方医に伝える。</li>
       <li>漢方でも、肝機能障害などの重大な副作用はある。長く服用している人がだるさ・食欲不振を訴えたときは、漢方も原因の候補に入れて処方医に伝える。</li>
     </ul>
     <p class="src">出典：各製剤の添付文書（PMDA 医療用医薬品情報、2026年10月12日・14日取得）</p>
@@ -355,7 +354,7 @@ function card(k){
     ${k.hito ? `<div class="hito"><span class="hito-l">使用目標</span>${k.hito}</div>` : ''}
     <div class="sub-title">場面ごとの伝え方<span class="st-note">青字は言い換えに迷ったときの手がかり。訴えと処方医の意図に合わせて選ぶ</span></div>
     <div class="scenes">${scenes}</div>
-    ${k.scenes.some(s => s.off) ? '<p class="maker-note">「効能外」は、その症状・病名が添付文書の効能・効果にない使い方。抗がん剤治療中・認知症など病名に触れる場面は、お薬手帳・薬歴や本人・家族の話で処方の背景が分かってから話題にする。こちらから病名をたずねない。</p>' : ''}
+    ${k.scenes.some(s => s.off) ? '<p class="maker-note">「効能外」は、その症状・病名が添付文書の効能・効果にない使い方。</p>' : ''}
 
     ${watch(k)}
 
