@@ -1,6 +1,9 @@
 {
   "index.html": {
-    "lastUpdated": "2026-10-24"
+    "lastUpdated": "2026-10-27"
+  },
+  "tools.html": {
+    "lastUpdated": "2026-10-27"
   },
   "404.html": {
     "lastUpdated": "2026-10-06"
@@ -12,10 +15,7 @@
     "lastUpdated": "2026-09-12"
   },
   "updates.html": {
-    "lastUpdated": "2026-10-24"
-  },
-  "tools.html": {
-    "lastUpdated": "2026-10-03"
+    "lastUpdated": "2026-10-27"
   },
   "checklists.html": {
     "lastUpdated": "2026-10-10"
@@ -392,6 +392,10 @@
   "ツール/選定療養費計算ツール.html": {
     "lastUpdated": "2026-10-14",
     "newUntil": "2026-10-10"
+  },
+  "ツール/漢方薬_投薬前の早見表.html": {
+    "lastUpdated": "2026-10-27",
+    "newUntil": "2026-11-03"
   },
   "ナレッジ/変更調剤について.html": {
     "lastUpdated": "2026-04-18"
