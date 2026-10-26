@@ -40,6 +40,7 @@
     'ツール/服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html': { category: 'tools', title: '別表１（１）併算定可否チェック' },
     'ツール/選定療養費計算ツール.html': { category: 'tools', title: '選定療養費 計算ツール' },
     'ツール/OTC販売の掲示物と様式.html': { category: 'tools', title: 'OTC販売の掲示物と様式' },
+    'ツール/漢方薬_投薬前の早見表.html': { category: 'tools', title: '漢方薬 投薬前の早見表' },
 
     // 実務ナレッジ
     'ナレッジ/変更調剤について.html': { category: 'knowledge', title: '変更調剤について' },

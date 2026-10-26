@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex,nofollow,noarchive">
-  <title>漢方薬 投薬前の早見表（試作）</title>
+  <title>漢方薬 投薬前の早見表</title>
   <meta name="search-keywords" content="漢方,ツムラ,服薬指導,説明,言い換え,構成生薬,甘草,偽アルドステロン症,抑肝散,葛根湯,芍薬甘草湯,六君子湯,大建中湯,加味逍遙散,補中益気湯,麻子仁丸,五苓散,葛根湯加川芎辛夷,八味地黄丸,柴胡加竜骨牡蛎湯,半夏瀉心湯,半夏厚朴湯,小青竜湯,防已黄耆湯,当帰芍薬散,桂枝茯苓丸,麻黄湯,麦門冬湯,呉茱萸湯,釣藤散,十全大補湯,桂枝加芍薬湯,防風通聖散,酸棗仁湯,牛車腎気丸,人参養栄湯,加味帰脾湯,附子,大黄,麻黄" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/fold.css" />
+  <link rel="stylesheet" href="../assets/fold.css" />
   <style>
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
     :root {
@@ -27,7 +26,6 @@
     [hidden] { display:none !important; }
     [id] { scroll-margin-top:calc(var(--sn-header-h, 0px) + 70px); }
 
-    .draft-tag { align-self:flex-start; font-size:var(--text-xs); font-weight:700; color:var(--txt-2); background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:5px; padding:2px 10px; }
     .page-title h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
     .page-title p  { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
 
@@ -50,7 +48,7 @@
     .chip { font-family:inherit; font-size:var(--text-xs); font-weight:700; padding:3px 11px; background:var(--white); color:var(--txt-2); border:var(--bw-h) solid var(--border); border-radius:999px; cursor:pointer; text-decoration:none; }
     .chip.on { background:var(--box-blue); color:var(--blue); border-color:var(--blue); }
     .row-note { font-weight:500; margin-left:4px; }
-    /* 用いる人（効能・効果の前段）。体質の話なので患者本人には言わない */
+    /* 使用目標（効能・効果の前段）。体質の話なので患者本人には言わない */
     .hito { margin-top:4px; background:var(--box-gray); border-radius:var(--radius-sm); padding:9px 13px; font-size:var(--text-sm); }
     .hito-l { display:block; font-size:var(--text-xs); font-weight:700; color:var(--txt-2); }
     .hito-n { margin-top:3px; font-size:var(--text-xs); color:var(--txt-3); }
@@ -74,7 +72,8 @@
     .kz-bar .sum { font-weight:900; color:var(--blue); }
     .kz-bar .parts { color:var(--txt-2); }
     .kz-bar .line { font-size:var(--text-xs); color:var(--txt-3); margin-top:2px; }
-    .kz-bar button { font-family:inherit; font-size:var(--text-xs); font-weight:700; color:var(--txt-2); background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:4px; padding:1px 8px; cursor:pointer; margin-left:6px; }
+    /* 押せるものは、このページの「甘草の合計に足す」と同じ白地＋青枠にする（灰色だと押せると気づかれない） */
+    .kz-bar button { font-family:inherit; font-size:var(--text-xs); font-weight:700; color:var(--blue); background:var(--white); border:var(--bw-h) solid var(--blue); border-radius:999px; padding:1px 10px; cursor:pointer; margin-left:6px; }
     .kp-sum .flags { margin-top:2px; }
     .scene.hit { background:var(--box-blue); margin:0 -10px; padding-left:10px; padding-right:10px; border-radius:var(--radius-sm); }
     /* 検索で当たった所：文は普通の太さにし、当たった語だけ黒の太字にする（場面・効能・効果どれも同じ見せ方） */
@@ -179,21 +178,20 @@
   </style>
 </head>
 <body>
-<script src="../../assets/site-header.js" defer></script>
+<script src="../assets/site-header.js" defer></script>
 <div class="page">
 
-  <span class="draft-tag">試作（ツムラ128品目）</span>
   <div class="page-title">
     <h1>漢方薬 投薬前の早見表</h1>
   </div>
 
   <div class="search-wrap">
-    <input id="q" class="search-input" type="search" placeholder="例）抑肝散　54　抑肝散 メンタル　精神科" autocomplete="off" />
+    <input id="q" class="search-input" type="search" placeholder="例）抑肝散　54　不眠　精神科" autocomplete="off" />
     <div class="notice" id="maker" hidden>クラシエなど他社品は、番号も分量もツムラと違う。処方名で探し、分量は製品の添付文書で確かめる。</div>
     <div class="kz-bar" id="kzbar" hidden></div>
   </div>
   <div class="finder">
-    <div class="row-lab">症状の括りで探す<span class="row-note">（ボタンにない症状は検索欄に入れる）</span></div>
+    <div class="row-lab">症状から探す<span class="row-note">（ボタンにない症状は検索欄に入力）</span></div>
     <div class="chips" id="chips"></div>
     <div class="hit-count" id="hit"></div>
   </div>
@@ -206,16 +204,6 @@
     <ul class="cautions">
       <li>「確かめる」「聞く」は薬剤師が判断して行う確認。禁忌や病名に関わることは、お薬手帳・薬歴・処方内容で先に確かめる。症状が出ているときや重なりが見つかったときは処方医に伝える。</li>
       <li>漢方でも、肝機能障害などの重大な副作用はある。長く服用している人がだるさ・食欲不振を訴えたときは、漢方も原因の候補に入れて処方医に伝える。</li>
-      <li>「長期服用時の確認事項」は、含む生薬と添付文書の重大な副作用から自動で出している。</li>
-      <li>生薬の量はツムラ医療用の1日量。他社品は分量が違うことがある。</li>
-      <li>生薬の役割は添付文書には書かれていないため、漢方の一般的な解釈でまとめた。表には、その処方の中で効かせている働きだけを載せた。生薬名を押すと、その生薬がほかの処方で担う働きも出る。</li>
-      <li>説明の中の下線付きの処方名（⇄）を押すと、その処方と生薬・分量を並べて比べられる。</li>
-      <li>「効能外」の印は、その症状・病名が添付文書の効能・効果に書かれていない使い方。抗がん剤治療中・認知症など病名に触れる場面は、お薬手帳・薬歴や本人・家族の話で処方の背景が分かってから話題にする。こちらから病名をたずねない。</li>
-      <li>服用方法はどの品目も1日2〜3回・食前または食間。顆粒の1日量は7.5gが多いが、9.0g・10.5g・15g・18gのものがある（品目名の下のクリームの印で分かる）。</li>
-      <li>「1包」はツムラの分包1包の量（添付文書「包装」）。多くは2.5gで、それ以外の品目はクリームの印で示した。他社品は1包の量が違う。</li>
-      <li>「熱を冷ます」は体温を下げる意味ではなく、のぼせ・ほてり・炎症の熱のこと。「血を補う」は漢方の言い方で、鉄剤のように血液を増やす意味ではない。患者に伝えるときは言い方に気をつける。</li>
-      <li>伝わりやすい言葉は、言い換えに迷ったときの手がかり。患者さんの訴えと処方医の意図に合わせて選ぶ。</li>
-      <li>甘草を含む漢方を2つ以上服用している人は、甘草の量を足して見る（添付文書「含有生薬の重複に注意」）。アルドステロン症・ミオパチー・低カリウム血症の禁忌は、1品目で甘草を1日2.5g以上含む製剤に付く（昭和53年の厚生省通知の基準。この表の128品目もそのとおり）。併用したときの合計量の公的な目安はない。</li>
     </ul>
     <p class="src">出典：各製剤の添付文書（PMDA 医療用医薬品情報、2026年10月12日・14日取得）</p>
   </div>
@@ -327,6 +315,20 @@ function watch(k){
     <ul class="watch">${w.map(r => `<li><span class="wl">${r.lab}</span><span>${r.t}</span></li>`).join('')}</ul>`;
 }
 
+/* 誤解されやすい漢方の言い方。その品目の生薬の役割に出てくるときだけ、表のすぐ下に注を出す */
+const TERMS = [
+  [/熱を冷ま/, '「熱を冷ます」は体温を下げる意味ではなく、のぼせ・ほてり・炎症の熱のこと。'],
+  [/血を補/, '「血を補う」は漢方の言い方で、鉄剤のように血液を増やす意味ではない。'],
+];
+function termNote(k){
+  const roles = k.how + k.herbs.map(h => h[3]).join('');
+  const ns = TERMS.filter(([re]) => re.test(roles)).map(([, t]) => t);
+  return ns.length ? `<p class="maker-note">${ns.join('')}患者に伝えるときは言い方に気をつける。</p>` : '';
+}
+
+/* 顆粒の1日量の印には1日の包数を添える（大建中湯は1包2.5gで1日15g＝6包。量だけだと1包の量と合わないように見えるため） */
+const flagText = (k, f) => { const m = f.t.match(/1日量([\d.]+)g/); return m ? `${f.t}（${Math.round(parseFloat(m[1]) / k.pkg)}包）` : f.t; };
+
 function card(k){
   const scenes = k.scenes.map(s =>
     `<div class="scene"><span class="sh">${s.t}</span>${s.off ? '<span class="off">効能外</span>' : ''}<span class="words">${s.w}</span>
@@ -338,8 +340,8 @@ function card(k){
     + (restH.length ? `<tr class="grp"><td colspan="3">そのほか</td></tr>${restH.map(row).join('')}` : '');
   const kz = k.kanzo ? `<span class="flag">甘草 ${k.kanzo.toFixed(1)}g/日</span>` : '<span class="flag">甘草なし</span>';
   const cautions = k.cautions.map(c => `<li><span>${linkNames(c, k)}</span></li>`).join('');
-  const warn = k.flags.filter(f => f.warn).map(f => `<span class="flag warn">${f.t}</span>`).join('');
-  const plain = k.flags.filter(f => !f.warn).map(f => `<span class="flag">${f.t}</span>`).join('');
+  const warn = k.flags.filter(f => f.warn).map(f => `<span class="flag warn">${flagText(k, f)}</span>`).join('');
+  const plain = k.flags.filter(f => !f.warn).map(f => `<span class="flag">${flagText(k, f)}</span>`).join('');
   return `<details class="fold kp" id="${k.id}">
     <summary><div class="kp-sum">
       <div class="nm"><span class="no">ツムラ ${k.no}</span>${k.name}<span class="pkg${k.pkg !== 2.5 ? ' odd' : ''}">1包 ${k.pkg.toFixed(1)}g</span><span class="yomi">${k.yomi}</span></div>
@@ -350,17 +352,19 @@ function card(k){
     <div class="fold-body">
     <div class="flags" style="margin-top:0">${kz}${plain}<span class="flag">味：${k.taste}</span>${k.kanzo ? `<button type="button" class="kz-btn" data-id="${k.id}">甘草の合計に足す</button>` : ''}</div>
 
-    ${k.hito ? `<div class="hito"><span class="hito-l">用いる人</span>${k.hito}<div class="hito-n">処方を選んだ理由をつかむための目安。体力や体質の話は本人にはしない</div></div>` : ''}
-    <div class="sub-title">場面ごとの伝え方</div>
+    ${k.hito ? `<div class="hito"><span class="hito-l">使用目標</span>${k.hito}</div>` : ''}
+    <div class="sub-title">場面ごとの伝え方<span class="st-note">青字は言い換えに迷ったときの手がかり。訴えと処方医の意図に合わせて選ぶ</span></div>
     <div class="scenes">${scenes}</div>
+    ${k.scenes.some(s => s.off) ? '<p class="maker-note">「効能外」は、その症状・病名が添付文書の効能・効果にない使い方。抗がん剤治療中・認知症など病名に触れる場面は、お薬手帳・薬歴や本人・家族の話で処方の背景が分かってから話題にする。こちらから病名をたずねない。</p>' : ''}
 
     ${watch(k)}
 
-    <div class="sub-title">構成生薬と役割<span class="st-note">生薬名を押すと、その生薬のほかの働きを表示</span></div>
+    <div class="sub-title">構成生薬と役割<span class="st-note">生薬名を押すと、その生薬のおもな働きを表示</span></div>
     <div class="table-wrap"><table class="herbs">
-      <thead><tr><th>生薬</th><th>この処方での役割</th><th class="hg">1日量</th></tr></thead>
+      <thead><tr><th>生薬</th><th>この処方での役割</th><th class="hg">生薬量</th></tr></thead>
       <tbody>${herbs}</tbody></table></div>
-    <p class="maker-note">分量はツムラの製品。クラシエなど他社品は、同じ処方名でも分量や生薬が違うことがある。</p>
+    <p class="maker-note">分量はツムラの製品。クラシエなど他社品は、同じ処方名でも分量や生薬が違うことがある。役割は添付文書に書かれていないため、漢方の一般的な解釈で、この処方の中で効かせている働きだけを載せた。</p>
+    ${termNote(k)}
 
     <div class="sub-title">処方の組み立て</div>
     <p class="how">${linkNames(k.how, k)}</p>
@@ -389,6 +393,8 @@ items.forEach(d => d.addEventListener('toggle', () => {
 }));
 /* 甘草の合計：品目のボタンで足し引きし、検索欄の下に合計を出す */
 const kzSel = [];
+/* 合計の欄は画面上部に貼り付くので、ふだんは合計と内訳の1行だけにする。注意の2行は「注意」を押したときだけ出す（スマホで画面を占めるため） */
+let kzMore = false;
 const KZHI = KAMPO.filter(k => k.kanzo >= 2.5).map(k => k.name).join('・');
 const kzBar = document.getElementById('kzbar');
 function renderKz(){
@@ -402,10 +408,11 @@ function renderKz(){
   const ks = kzSel.map(id => KAMPO.find(k => k.id === id));
   const sum = ks.reduce((a, k) => a + k.kanzo, 0);
   kzBar.innerHTML = `甘草の合計 <span class="sum">${sum.toFixed(1)}g/日</span>
-    <span class="parts">（${ks.map(k => k.name + ' ' + k.kanzo.toFixed(1)).join('＋')}）</span><button type="button" id="kzclear">クリア</button>
-    <div class="line">合計量の公的な目安はないが、甘草が重なるほど、むくみ・血圧上昇・手足のだるさ（偽アルドステロン症）が出やすくなる。ほかに甘草やグリチルリチンを含む薬（市販薬も）がないかも確認する。</div>
-    <div class="line">アルドステロン症などの禁忌があるのは、1品目で甘草を1日2.5g以上含むもの：${KZHI}。</div>`;
+    <span class="parts">（${ks.map(k => k.name + ' ' + k.kanzo.toFixed(1)).join('＋')}）</span><button type="button" id="kzclear">すべて外す</button><button type="button" id="kzmore">${kzMore ? '注意を閉じる' : '注意を開く'}</button>
+    <div class="line"${kzMore ? '' : ' hidden'}>合計量の公的な目安はない（添付文書は「含有生薬の重複に注意」とするだけ）が、甘草が重なるほど、むくみ・血圧上昇・手足のだるさ（偽アルドステロン症）が出やすくなる。ほかに甘草やグリチルリチンを含む薬（市販薬も）がないかも確認する。</div>
+    <div class="line"${kzMore ? '' : ' hidden'}>アルドステロン症などの禁忌があるのは、1品目で甘草を1日2.5g以上含むもの（昭和53年の厚生省通知の基準）：${KZHI}。</div>`;
   document.getElementById('kzclear').onclick = () => { kzSel.length = 0; renderKz(); };
+  document.getElementById('kzmore').onclick = () => { kzMore = !kzMore; renderKz(); };
 }
 /* 処方名のボタン：押した文のすぐ下に比べる表を開く（同じ品目の中では1つだけ）。「○○を開く」で相手の品目へ移る */
 list.addEventListener('click', e => {
@@ -433,8 +440,8 @@ list.addEventListener('click', e => {
   if (i >= 0) kzSel.splice(i, 1); else kzSel.push(b.dataset.id);
   renderKz();
 });
-/* 生薬名：その生薬のほかの働きを、行のすぐ下に開く（もう一度押すと閉じる）。
-   この処方での役割にすでに書いた働きは外す（同じ文が先に来ると、知りたい「ほかの働き」が読み流されるため） */
+/* 生薬名：その生薬のおもな働きを、行のすぐ下に開く（もう一度押すと閉じる）。
+   この処方での役割にすでに書いた働きは外す（同じ文が先に来ると、ほかの働きが読み流されるため） */
 list.addEventListener('click', e => {
   const cell = e.target.closest('td.hn'); const b = cell && cell.querySelector('.hbtn'); if (!b) return;
   const tr = b.closest('tr'), nx = tr.nextElementSibling;
@@ -444,7 +451,7 @@ list.addEventListener('click', e => {
   const here = tr.children[1].textContent;
   const others = roles.filter(r => !here.includes(r));
   b.classList.add('on');
-  tr.insertAdjacentHTML('afterend', `<tr class="hall"><td colspan="3"><b>${b.dataset.h}</b>のほかの働き：${others.length ? others.join('／') : 'おもにこの処方と同じ働きで使われる'}</td></tr>`);
+  tr.insertAdjacentHTML('afterend', `<tr class="hall"><td colspan="3"><b>${b.dataset.h}</b>のおもな働き：${others.length ? others.join('／') : 'この処方での役割と同じ'}</td></tr>`);
 });
 /* 印刷するときは全部開く */
 addEventListener('beforeprint', () => items.forEach(d => d.open = true));
@@ -574,7 +581,7 @@ function apply(){
       : herbOnly ? snipLine('生薬の役割', [k.how, ...k.herbs.map(h => h[1] + '：' + h[3])].join(' '), qTerms) || '生薬の役割の中の言葉に当たった'
       : hitIdx.length ? '当てはまる場面：' + markAll(hitIdx.map(i => k.scenes[i].t).join('／'), sceneTerms)
       : inGist ? ''
-      : snipLine('効能・効果', k.kounou, qTerms) || snipLine('用いる人', k.hito, qTerms) || snipLine('生薬', k.herbs.map(h => h[1]).join('・'), qTerms)
+      : snipLine('効能・効果', k.kounou, qTerms) || snipLine('使用目標', k.hito, qTerms) || snipLine('生薬', k.herbs.map(h => h[1]).join('・'), qTerms)
         || snipLine('処方の組み立て', k.how, qTerms) || snipLine('注意事項', k.cautions.join(' '), qTerms)
         /* 画面に出ない検索用の語（kw）だけで当たったときは、当たった語をそのまま見せる */
         || kwLine(k, qTerms);
@@ -600,5 +607,6 @@ chipsEl.addEventListener('click', e => {
 });
 apply();
 </script>
+<script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
