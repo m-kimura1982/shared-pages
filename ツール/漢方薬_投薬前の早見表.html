@@ -130,6 +130,10 @@
     .cautions { list-style:none; font-size:var(--text-sm); }
     .cautions li { display:flex; gap:6px; }
     .cautions li::before { content:"・"; color:#999; flex-shrink:0; }
+    /* 注意事項の中で処方名を押したときの比べる表は、文の横ではなく下の行に出す（li が横並びのため） */
+    .cautions li { flex-wrap:wrap; }
+    .cautions li > span { flex:1 1 0; min-width:0; }
+    .cautions li > .cmp { flex:0 0 calc(100% - 1em - 6px); margin-left:calc(1em + 6px); }
     .kounou { font-size:var(--text-sm); color:var(--txt-2); }
     .watch-lead { font-size:var(--text-sm); color:var(--txt-2); margin-bottom:4px; }
     .watch { list-style:none; font-size:var(--text-sm); }
