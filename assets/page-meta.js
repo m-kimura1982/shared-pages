@@ -138,10 +138,10 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-25"
   },
   "加算まとめ/訪問薬剤管理医師同時指導料.html": {
-    "lastUpdated": "2026-08-31"
+    "lastUpdated": "2026-10-27"
   },
   "加算まとめ/複数名薬剤管理指導訪問料.html": {
-    "lastUpdated": "2026-08-31"
+    "lastUpdated": "2026-10-27"
   },
   "加算まとめ/服薬管理指導料3・4_施設訪問・オンライン.html": {
     "lastUpdated": "2026-08-31"
@@ -176,7 +176,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-09-02"
   },
   "加算まとめ/退院時共同指導料.html": {
-    "lastUpdated": "2026-08-26",
+    "lastUpdated": "2026-10-27",
     "newUntil": "2026-09-02"
   },
   "加算まとめ/外来服薬支援料1.html": {
