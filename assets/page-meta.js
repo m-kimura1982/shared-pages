@@ -107,7 +107,7 @@ window.__pageMeta = {
     "newUntil": "2026-09-25"
   },
   "加算まとめ/小児特定加算.html": {
-    "lastUpdated": "2026-10-06",
+    "lastUpdated": "2026-10-27",
     "newUntil": "2026-09-10"
   },
   "加算まとめ/特定薬剤管理指導加算1.html": {
@@ -192,7 +192,7 @@ window.__pageMeta = {
     "newUntil": "2026-08-02"
   },
   "加算まとめ/在宅患者医療用麻薬持続注射療法加算.html": {
-    "lastUpdated": "2026-09-03",
+    "lastUpdated": "2026-10-27",
     "newUntil": "2026-09-09"
   },
   "加算まとめ/居宅療養管理指導費.html": {
@@ -203,7 +203,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-08-31"
   },
   "加算まとめ/在宅中心静脈栄養法加算.html": {
-    "lastUpdated": "2026-09-03",
+    "lastUpdated": "2026-10-27",
     "newUntil": "2026-09-09"
   },
   "加算まとめ/無菌製剤処理加算.html": {
