@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>調剤後薬剤管理指導料｜算定項目まとめ</title>
-    <meta name="search-keywords" content="糖尿病,慢性心不全,電話,フォローアップ,情報提供,地域支援" />
+    <meta name="search-keywords" content="糖尿病,慢性心不全,電話,フォローアップ,情報提供,地域支援,循環器,再入院,受診勧奨,アドヒアランス,糖尿病用剤" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/gigi-list.css" />
     <link rel="stylesheet" href="../assets/source-refs.css" />
@@ -145,7 +145,7 @@
       </div>
 
       <div class="lead-note">
-        糖尿病（１）と慢性心不全（２）の患者が対象。<span class="marker">地域支援・医薬品供給対応体制加算２〜５のいずれかを届け出ている薬局に限られる</span>。
+        糖尿病（１）と慢性心不全（２）の患者が対象。<span class="marker"><a href="地域支援医薬品供給対応体制加算.html">地域支援・医薬品供給対応体制加算</a>２〜５のいずれかを届け出ている薬局に限られる</span>。
       </div>
 
       <!-- 対象患者 -->
@@ -209,7 +209,7 @@
           <div class="step">
             <div class="n">4</div>
             <div class="c">
-              <span class="when">後日（調剤日・次回の処方箋受付日を除く）</span>
+              <span class="when">後日</span>
               <div class="act">電話等でフォローアップを実施する</div>
               <div class="det">使用状況と、服薬中の体調の変化（副作用が疑われる症状など）の有無等を確認し、必要な指導を続ける</div>
             </div>
@@ -235,9 +235,28 @@
           <span class="ttl">実務メモ<span style="font-weight:500; color:var(--txt-3); font-size:var(--text-xs); margin-left:6px;">ステップ3</span></span>
           イの「患者・家族等の求め」は、<span class="marker">実際には薬剤師からの提案が起点になることが多い</span>。投薬時にフォローアップが必要と判断したら患者等に説明し、同意を得たうえで処方医に連絡する。
         </div>
-        <div class="box-blue" style="margin-top:13px;">
-          <span class="ttl">投薬時に、電話する日を決めておく<span style="font-weight:500; color:var(--txt-3); font-size:var(--text-xs); margin-left:6px;">ステップ3</span></span>
-          別添３(6)は「計画的な電話等による確認を原則とする」としたうえで、あらかじめ患者等から電話等で確認することの了承を得るよう求めている。<span class="marker">投薬時に「〇日にお電話します」など、確認する日を決めておく</span>と、計画的に実施しやすい。なお別添３(5)は、一律の内容を一斉送信するだけでは継続的な服薬指導を行ったことにならないとしている。
+
+        <div class="sub-title">電話等で確認する日<span class="qual" style="font-size:var(--text-xs); color:var(--txt-3); font-weight:500;">ステップ4</span></div>
+        <p style="font-size:var(--text-sm); line-height:1.8; margin-bottom:10px;">
+          <b>調剤と同日</b>、及び<b>その次に処方箋を受け付ける日</b>に電話等で確認した場合は算定できない。<span class="marker">フォローアップはその間に行う</span>。
+        </p>
+        <div class="when-diagram">
+          <div class="wd-track">
+            <div class="wd-stop">調剤日</div>
+            <div class="wd-gap">← この間 →</div>
+            <div class="wd-stop">次に処方箋を<br />受け付ける日</div>
+          </div>
+          <div class="wd-bars">
+            <div class="wd-bar wd-x"><span class="wd-mk">×</span>算定できない</div>
+            <div class="wd-bar wd-o"><span class="wd-mk">○</span>電話等で確認する</div>
+            <div class="wd-bar wd-x"><span class="wd-mk">×</span>算定できない</div>
+          </div>
+          <p class="wd-note">※ 判定するのは<b>電話等で確認した日</b>。医療機関へ情報提供した日ではない。</p>
+        </div>
+        <p style="font-size:var(--text-sm); line-height:1.8; margin-top:11px;">通知は「計画的な電話等による確認を原則とする」としたうえで、あらかじめ患者等から電話等で確認することの了承を得るよう求めている。<span class="marker">投薬時に「〇日にお電話します」など、確認する日を決めておく</span>と、計画的に実施しやすい。一律の内容を一斉送信するだけでは、継続的な服薬指導を行ったことにならない。</p>
+        <div class="box-gray" style="margin-top:11px;">
+          <span class="ttl">次の受付日でも算定できる場合</span>
+          受診勧奨により受診した処方箋を持参した場合と、きっかけとなった処方箋を発行した医療機関以外の処方箋を持参した場合は算定できる。
         </div>
       </div>
 
@@ -255,31 +274,7 @@
 
       <!-- 算定上の注意 -->
       <div class="card">
-        <div class="card-title">算定上の注意</div>
-
-        <div class="sub-title">電話等で確認する日</div>
-        <p style="font-size:var(--text-sm); line-height:1.8; margin-bottom:10px;">
-          <b>調剤と同日</b>、及び<b>その次に処方箋を受け付ける日</b>に電話等で確認した場合は算定できない。<span class="marker">フォローアップはその間に行う</span>。
-        </p>
-        <div class="when-diagram">
-          <div class="wd-track">
-            <div class="wd-stop">調剤日</div>
-            <div class="wd-gap">← この間 →</div>
-            <div class="wd-stop">次に処方箋を<br />受け付ける日</div>
-          </div>
-          <div class="wd-bars">
-            <div class="wd-bar wd-x"><span class="wd-mk">×</span>算定できない</div>
-            <div class="wd-bar wd-o"><span class="wd-mk">○</span>電話等で確認する</div>
-            <div class="wd-bar wd-x"><span class="wd-mk">×</span>算定できない</div>
-          </div>
-          <p class="wd-note">※ 判定するのは<b>電話等で確認した日</b>。医療機関へ情報提供した日ではない。</p>
-        </div>
-        <div class="box-gray" style="margin:11px 0 14px;">
-          <span class="ttl">次の受付日でも算定できる場合</span>
-          受診勧奨により受診した処方箋を持参した場合と、きっかけとなった処方箋を発行した医療機関以外の処方箋を持参した場合は算定できる。
-        </div>
-
-        <div class="sub-title">算定できない場合</div>
+        <div class="card-title">算定できない場合</div>
         <div class="list">
           <div class="li">この算定時に行う医療機関への文書での情報提供について、<span class="marker">服薬情報等提供料は算定できない</span></div>
           <div class="li">特別調剤基本料Ａの薬局が、不動産取引等の特別な関係を有する医療機関へ情報提供した場合は算定できない</div>
