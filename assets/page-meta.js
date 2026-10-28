@@ -5,14 +5,14 @@ window.__pageMeta = {
   "tools.html": {
     "lastUpdated": "2026-10-27"
   },
-  "404.html": {
-    "lastUpdated": "2026-10-06"
-  },
   "事務スタッフ向け.html": {
     "lastUpdated": "2026-09-11"
   },
   "加算まとめ.html": {
-    "lastUpdated": "2026-09-12"
+    "lastUpdated": "2026-10-29"
+  },
+  "404.html": {
+    "lastUpdated": "2026-10-29"
   },
   "updates.html": {
     "lastUpdated": "2026-10-28"
@@ -28,7 +28,7 @@ window.__pageMeta = {
     "newUntil": "2026-08-13"
   },
   "kaitei2026.html": {
-    "lastUpdated": "2026-10-28"
+    "lastUpdated": "2026-10-29"
   },
   "yakureki/ハイリスク_抗うつ薬.html": {
     "lastUpdated": "2026-10-15",
@@ -78,10 +78,6 @@ window.__pageMeta = {
     "lastUpdated": "2026-10-21",
     "newUntil": "2026-10-28"
   },
-  "yakureki/加算別記載一覧.html": {
-    "lastUpdated": "2026-10-21",
-    "newUntil": "2026-10-28"
-  },
   "yakureki/定型文集.html": {
     "lastUpdated": "2026-10-21",
     "newUntil": "2026-10-28"
@@ -96,6 +92,10 @@ window.__pageMeta = {
   },
   "yakureki/薬歴の書き方_実例解説集.html": {
     "lastUpdated": "2026-10-21",
+    "newUntil": "2026-10-28"
+  },
+  "yakureki/加算別記載一覧.html": {
+    "lastUpdated": "2026-10-29",
     "newUntil": "2026-10-28"
   },
   "加算まとめ/分割調剤.html": {
@@ -138,17 +138,15 @@ window.__pageMeta = {
   "加算まとめ/電子的調剤情報連携体制整備加算_2026改定.html": {
     "lastUpdated": "2026-10-29"
   },
-  "加算まとめ/在宅患者訪問薬剤管理指導料_算定間隔2026.html": {
-    "lastUpdated": "2026-08-25"
-  },
   "加算まとめ/訪問薬剤管理医師同時指導料.html": {
     "lastUpdated": "2026-10-27"
   },
   "加算まとめ/複数名薬剤管理指導訪問料.html": {
     "lastUpdated": "2026-10-27"
   },
-  "加算まとめ/服薬管理指導料3・4_施設訪問・オンライン.html": {
-    "lastUpdated": "2026-10-28"
+  "加算まとめ/麻薬管理指導加算.html": {
+    "lastUpdated": "2026-10-29",
+    "newUntil": "2026-08-19"
   },
   "加算まとめ/在宅患者緊急時等共同指導料.html": {
     "lastUpdated": "2026-10-27",
@@ -166,7 +164,7 @@ window.__pageMeta = {
     "newUntil": "2026-09-01"
   },
   "加算まとめ/在宅患者訪問薬剤管理指導料.html": {
-    "lastUpdated": "2026-10-12",
+    "lastUpdated": "2026-10-29",
     "newUntil": "2026-08-26"
   },
   "加算まとめ/バイオ後続品調剤体制加算.html": {
@@ -200,7 +198,7 @@ window.__pageMeta = {
     "newUntil": "2026-09-09"
   },
   "加算まとめ/居宅療養管理指導費.html": {
-    "lastUpdated": "2026-10-21",
+    "lastUpdated": "2026-10-29",
     "newUntil": "2026-08-26"
   },
   "加算まとめ/吸入薬指導加算2026.html": {
@@ -229,10 +227,6 @@ window.__pageMeta = {
     "lastUpdated": "2026-10-28",
     "newUntil": "2026-08-04"
   },
-  "加算まとめ/麻薬管理指導加算.html": {
-    "lastUpdated": "2026-10-28",
-    "newUntil": "2026-08-19"
-  },
   "加算まとめ/手帳の活用実績が少ない保険薬局.html": {
     "lastUpdated": "2026-10-29",
     "newUntil": "2026-09-10"
@@ -255,6 +249,9 @@ window.__pageMeta = {
   "加算まとめ/調剤後薬剤管理指導料.html": {
     "lastUpdated": "2026-10-29",
     "newUntil": "2026-08-27"
+  },
+  "加算まとめ/服薬管理指導料3・4_施設訪問・オンライン.html": {
+    "lastUpdated": "2026-10-29"
   },
   "加算まとめ/薬学的有害事象等防止加算.html": {
     "lastUpdated": "2026-10-22"
@@ -291,9 +288,6 @@ window.__pageMeta = {
   "改定資料/調剤物価対応料.html": {
     "lastUpdated": "2026-08-31"
   },
-  "改定資料/調剤報酬体系図_2026改定.html": {
-    "lastUpdated": "2026-08-06"
-  },
   "改定資料/別表Ⅴ_調剤行為名称等の略号一覧2026改定.html": {
     "lastUpdated": "2026-06-20"
   },
@@ -303,9 +297,6 @@ window.__pageMeta = {
   "改定資料/選定療養_概要2026.html": {
     "lastUpdated": "2026-10-24",
     "newUntil": "2026-09-16"
-  },
-  "改定資料/調剤報酬改定2026_ダイジェスト.html": {
-    "lastUpdated": "2026-10-21"
   },
   "改定資料/【簡易版】かかりつけ薬剤師に関わる管理料・加算一覧.html": {
     "lastUpdated": "2026-10-22"
@@ -329,8 +320,14 @@ window.__pageMeta = {
     "lastUpdated": "2026-10-28",
     "newUntil": "2026-11-04"
   },
+  "改定資料/調剤報酬体系図_2026改定.html": {
+    "lastUpdated": "2026-10-29"
+  },
+  "改定資料/調剤報酬改定2026_ダイジェスト.html": {
+    "lastUpdated": "2026-10-29"
+  },
   "改定資料/調剤報酬点数早見表2026.html": {
-    "lastUpdated": "2026-10-28"
+    "lastUpdated": "2026-10-29"
   },
   "チェックリスト/選定療養_実務チェックリスト.html": {
     "lastUpdated": "2026-06-06",
