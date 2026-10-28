@@ -103,7 +103,7 @@ window.__pageMeta = {
     "newUntil": "2026-09-10"
   },
   "加算まとめ/服薬情報等提供料.html": {
-    "lastUpdated": "2026-10-28",
+    "lastUpdated": "2026-10-29",
     "newUntil": "2026-08-02"
   },
   "加算まとめ/小児特定加算.html": {
@@ -243,7 +243,7 @@ window.__pageMeta = {
     "newUntil": "2026-10-09"
   },
   "加算まとめ/外来服薬支援料1_算定事例.html": {
-    "lastUpdated": "2026-10-28",
+    "lastUpdated": "2026-10-29",
     "newUntil": "2026-07-31"
   },
   "加算まとめ/調剤後薬剤管理指導料.html": {
@@ -254,7 +254,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-10-29"
   },
   "加算まとめ/薬学的有害事象等防止加算.html": {
-    "lastUpdated": "2026-10-22"
+    "lastUpdated": "2026-10-29"
   },
   "加算まとめ/在宅薬学総合体制加算2026.html": {
     "lastUpdated": "2026-10-28"
