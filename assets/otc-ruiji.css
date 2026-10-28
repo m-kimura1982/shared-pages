@@ -12,8 +12,8 @@
      保険・かからない側は白かグレーにする（サイトは青ベースなので、青に意味を持たせると強調の青と区別がつかない）。
      文字はどの地でも黒。白・グレー・淡いオレンジは明るさがほぼ同じなので、境目は --fig-line の細線で見せる */
   --fig-gray-bg:#f2f2f2;
-  --fig-tokubetsu-bg:#fdebdd;
-  --fig-tokubetsu-cell:#fdefe3;   /* 表のセル用。#fef5ee だと白と見分けがつかなかった */
+  --fig-tokubetsu-bg:#fce8e2;     /* 2026-10-28 #fdebdd から赤寄りに（黄みがあると灰色の隣で肌色に寄る。社内会議のスライドとそろえた） */
+  --fig-tokubetsu-cell:#fdeeea;   /* 表のセル用。白との差は以前の #fdefe3 と同じ。#fef5ee だと白と見分けがつかなかった */
   --fig-line:#9ca3af;
 }
 body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
