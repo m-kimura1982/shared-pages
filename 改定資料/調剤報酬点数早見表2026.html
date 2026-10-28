@@ -110,26 +110,28 @@
         white-space: nowrap;
         line-height: 1.4;
       }
-      .cb.up {
-        background: #e8f0fb;
-        color: var(--blue);
-      } /* 青：増点 */
+      /* 2026-10-28 図解の淡色パレットにそろえた。新設と増点が同じ青だったので分ける（1つの色に1つの意味）。
+         色は3色（青・クリーム・藤）＋グレーまで。どのバッジにも文字があるので色だけで読ませない */
       .cb.new {
-        background: #e8f0fb;
-        color: var(--blue);
-      } /* 青：新設（新規＝青。赤は使わない 2026-09-11） */
+        background: #dfe9f6;
+        color: #2a5580;
+      } /* 青：新設 */
+      .cb.up {
+        background: #f3e8d0;
+        color: #7a5718;
+      } /* クリーム：増点 */
       .cb.dn {
-        background: #f3e8ff;
-        color: #6b21a8;
-      } /* 紫：減点 */
+        background: #e5e0f2;
+        color: #4b3f80;
+      } /* 藤：減点 */
       .cb.rfm {
-        background: #e6f4ea;
-        color: #0d652d;
-      } /* 緑：改編 */
+        background: #f2f2f2;
+        color: #444444;
+      } /* グレー：改編 */
       .cb.abol {
         background: transparent;
         border-color: #9ca3af;
-        color: #6b7280;
+        color: #444444;
       } /* 灰枠：廃止 */
 
       .tab-bar {
@@ -159,18 +161,14 @@
       }
 
       /* 変更バッジタブ：本文バッジと同配色・枠線なし */
-      #chg-tab-bar .tab[data-chg="new"]        { background: #e8f0fb; color: var(--blue);   border-color: transparent; }
-      #chg-tab-bar .tab[data-chg="up"]         { background: #e8f0fb; color: var(--blue);  border-color: transparent; }
-      #chg-tab-bar .tab[data-chg="dn"]         { background: #f3e8ff; color: #6b21a8;      border-color: transparent; }
-      #chg-tab-bar .tab[data-chg="rfm"]        { background: #e6f4ea; color: #0d652d;      border-color: transparent; }
-      #chg-tab-bar .tab[data-chg="abol"]       { background: transparent; border-color: #9ca3af; color: #6b7280; }
+      #chg-tab-bar .tab[data-chg="new"]        { background: #dfe9f6; color: #2a5580; border-color: transparent; }
+      #chg-tab-bar .tab[data-chg="up"]         { background: #f3e8d0; color: #7a5718; border-color: transparent; }
+      #chg-tab-bar .tab[data-chg="dn"]         { background: #e5e0f2; color: #4b3f80; border-color: transparent; }
+      #chg-tab-bar .tab[data-chg="rfm"]        { background: #f2f2f2; color: #444444; border-color: transparent; }
+      #chg-tab-bar .tab[data-chg="abol"]       { background: transparent; border-color: #9ca3af; color: #444444; }
 
-      /* アクティブ時：やや濃く */
-      #chg-tab-bar .tab[data-chg="new"].active  { background: #cfe0f3; color: var(--blue); }
-      #chg-tab-bar .tab[data-chg="up"].active   { background: #c2d6f5; color: var(--blue); }
-      #chg-tab-bar .tab[data-chg="dn"].active   { background: #ddb6f7; color: #6b21a8; }
-      #chg-tab-bar .tab[data-chg="rfm"].active  { background: #b7e1c0; color: #0d652d; }
-      #chg-tab-bar .tab[data-chg="abol"].active { background: #e5e7eb; border-color: #9ca3af; color: #6b7280; }
+      /* 選んでいるとき：地の色は変えず、文字と同じ色の枠で示す（濃い地にすると文字が読みにくくなるため） */
+      #chg-tab-bar .tab:not([data-chg="all"]).active { border-color: currentColor; }
       .tbl-wrap {
         overflow-x: auto;
       }
@@ -311,10 +309,10 @@
           padding: 5px 10px;
         }
         table {
-          font-size: 11px;
+          font-size: 12px;
         }
         tbody tr.sh td {
-          font-size: 7px;
+          font-size: 11.5px;
         }
         thead th,
         tbody td {
@@ -354,8 +352,8 @@
           <div class="legend-item">
             <span class="cb abol">廃止</span>廃止・統合
           </div>
-          <div class="legend-item" style="color: #777">（空欄）変更なし</div>
-          <div class="legend-item" style="margin-left: auto; color: #777">
+          <div class="legend-item" style="color: #5e6470">（空欄）変更なし</div>
+          <div class="legend-item" style="margin-left: auto; color: #5e6470">
             旧＝2024年、新＝2026年6月〜
           </div>
         </div>
