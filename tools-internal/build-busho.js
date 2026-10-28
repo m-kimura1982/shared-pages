@@ -180,7 +180,7 @@ const html = `<!doctype html>
 <div class="page">
   <h1>情報管理室 <small style="font-size:15px;color:#444;font-weight:700">部署の一覧</small></h1>
   <p class="lead">調剤報酬・薬歴まとめサイトの作業を、役割ごとに分けた係の一覧。どれもClaude Codeの中で動く。</p>
-  <div class="boss">最終判断：木村さん</div>
+  <div class="boss">最終判断：本人</div>
   <div class="flow">${flows.map(x => `<div><b>${esc(x.label)}</b>　${esc(x.text).replace(/`([^`]+)`/g, '<code>$1</code>')}</div>`).join('')}</div>
 ${taskHtml}
 
