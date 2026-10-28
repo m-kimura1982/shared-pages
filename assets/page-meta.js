@@ -115,7 +115,7 @@ window.__pageMeta = {
     "newUntil": "2026-07-31"
   },
   "加算まとめ/特定薬剤管理指導加算1.html": {
-    "lastUpdated": "2026-10-14",
+    "lastUpdated": "2026-10-28",
     "newUntil": "2026-08-19"
   },
   "加算まとめ/在宅協力薬局.html": {
@@ -266,7 +266,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-10-28"
   },
   "加算まとめ/特定薬剤管理指導加算2.html": {
-    "lastUpdated": "2026-08-20",
+    "lastUpdated": "2026-10-28",
     "newUntil": "2026-08-18"
   },
   "改定資料/別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html": {
