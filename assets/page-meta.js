@@ -126,7 +126,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-10-21"
   },
   "加算まとめ/調剤基本料_2026改定.html": {
-    "lastUpdated": "2026-10-28"
+    "lastUpdated": "2026-10-29"
   },
   "加算まとめ/退院時共同指導料.html": {
     "lastUpdated": "2026-10-28",
@@ -236,7 +236,7 @@ window.__pageMeta = {
     "newUntil": "2026-09-10"
   },
   "加算まとめ/調剤管理料_2026改定.html": {
-    "lastUpdated": "2026-09-02"
+    "lastUpdated": "2026-10-29"
   },
   "加算まとめ/自家製剤加算・計量混合調剤加算.html": {
     "lastUpdated": "2026-10-02",
@@ -257,7 +257,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-10-29"
   },
   "加算まとめ/在宅薬学総合体制加算2026.html": {
-    "lastUpdated": "2026-10-28"
+    "lastUpdated": "2026-10-29"
   },
   "加算まとめ/調剤時残薬調整加算.html": {
     "lastUpdated": "2026-10-28"
@@ -280,7 +280,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-10-21"
   },
   "改定資料/調剤基本料フローチャート.html": {
-    "lastUpdated": "2026-03-26"
+    "lastUpdated": "2026-10-29"
   },
   "改定資料/服用薬剤調整支援料２_資格取得ステップ.html": {
     "lastUpdated": "2026-03-23"
