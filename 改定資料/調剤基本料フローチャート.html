@@ -396,12 +396,13 @@ strong { font-weight: 900; }
               <span style="font-weight:900;">①</span><span>保険医療機関と<strong>不動産取引等の特別な関係あり</strong> ＆ 処方箋集中率 <span class="em-num">＞ 50%</span></span>
               <span style="font-weight:900;">②</span><span>同一敷地内に<strong>オンライン診療受診施設を設置</strong>している（へき地を除く）</span>
             </div>
+            <div style="margin-top:6px; font-size:var(--text-xs); color:var(--txt-3);">※①は、令和８年３月４日以前から同じ建物に診療所があり、新たに特別な関係を持っていない場合を除く。</div>
           </div>
           <div class="arrow-down blue"><div class="arrow-down-line"></div><div class="arrow-down-head"></div></div>
           <div class="result-badge red-accent">
             <div>
               <div class="result-name">特別調剤基本料Ａ</div>
-              <div class="result-sub gray">加算は各点数の100分の10</div>
+              <div class="result-sub gray">一部の加算（地域支援・医薬品供給対応体制加算、バイオ後続品調剤体制加算、在宅薬学総合体制加算）は100分の10</div>
             </div>
             <div class="result-pts">5<span class="u">点</span></div>
           </div>
@@ -424,7 +425,7 @@ strong { font-weight: 900; }
           <div class="arm-label arm-label-yes">はい（40万回超）</div>
           <div class="cond-box" style="margin-bottom:10px;">
             <div class="cond-title">さらに以下のどちらかに該当するか？</div>
-            不動産賃貸借関係あり　または　集中率 <span class="em-num">＞ 85%</span>
+            不動産取引等の特別な関係あり　または　集中率 <span class="em-num">＞ 85%</span>
           </div>
           <div class="arrow-down blue"><div class="arrow-down-line"></div><div class="arrow-down-head"></div></div>
           <div class="result-badge" style="margin-bottom:10px;">
@@ -439,7 +440,7 @@ strong { font-weight: 900; }
           <div class="result-badge">
             <div>
               <div class="result-name">調剤基本料３ハ</div>
-              <div class="result-sub red">集中率 ≤ 85% かつ 不動産関係なし</div>
+              <div class="result-sub red">集中率 ≤ 85% かつ 不動産関係なし。ただし STEP 4 の①〜④のどれかに当たれば調剤基本料２</div>
             </div>
             <div class="result-pts">37<span class="u">点</span></div>
           </div>
@@ -471,7 +472,7 @@ strong { font-weight: 900; }
           <div class="arm-label arm-label-yes">はい（3.5万〜40万回）</div>
           <div class="cond-box" style="margin-bottom:10px;">
             <div class="cond-title">さらに以下のどちらかに該当するか？</div>
-            不動産賃貸借関係あり　または　集中率 <span class="em-num">＞ 85%</span>
+            不動産取引等の特別な関係あり　または　集中率 <span class="em-num">＞ 85%</span>
           </div>
           <div class="arrow-down blue"><div class="arrow-down-line"></div><div class="arrow-down-head"></div></div>
           <div class="result-badge" style="margin-bottom:10px;">
@@ -518,7 +519,7 @@ strong { font-weight: 900; }
               </ul>
             </div>
           </li>
-          <li>④ 特定の保険医療機関からの処方箋受付 <span class="em-num">＞ 月4,000回</span>（医療モール合算含む）</li>
+          <li>④ 特定の保険医療機関からの処方箋受付 <span class="em-num">＞ 月4,000回</span>（医療モールは合算。同一グループの他店の受付を合算する場合もある）</li>
         </ul>
       </div>
 
@@ -537,7 +538,7 @@ strong { font-weight: 900; }
           <div class="result-badge">
             <div>
               <div class="result-name">調剤基本料１</div>
-              <div class="result-sub gray">※医療資源の少ない地域に所在する薬局は他の基準に関わらずここ</div>
+              <div class="result-sub gray">※医療資源の少ない地域の条件を満たして届け出た薬局は、ほかの基準にかかわらず最初からここ</div>
             </div>
             <div class="result-pts">47<span class="u">点</span></div>
           </div>
@@ -573,11 +574,11 @@ strong { font-weight: 900; }
         </div>
         <div class="supp-rule" style="margin-bottom:0;">
           <div class="supp-rule-title">● 除外される処方箋</div>
-          <div class="supp-rule-body">以下は特定医療機関の受付回数・全体の受付回数の<strong>いずれからも除外</strong>して計算する。
+          <div class="supp-rule-body">集中率を計算するとき、次の処方箋は特定医療機関の受付回数・全体の受付回数の<strong>いずれからも除外</strong>する。調剤基本料２などの受付回数の基準には数える。
             <ul>
               <li>情報通信機器を用いた服薬指導を受けた患者の処方箋</li>
               <li>同一グループ薬局の勤務者（常勤・非常勤含む全職員）およびその家族（同居または生計を一にする者）の処方箋</li>
-              <li>介護老人福祉施設・介護老人保健施設・介護医療院・サービス付き高齢者向け住宅・有料老人ホーム等の入居者の処方箋（単一建物居住者が１人の場合を除く）</li>
+              <li>介護老人福祉施設・介護老人保健施設・介護医療院・サービス付き高齢者向け住宅・有料老人ホーム等の入居者の処方箋（単一建物診療患者・単一建物居住者が１人の場合を除く）</li>
             </ul>
           </div>
         </div>

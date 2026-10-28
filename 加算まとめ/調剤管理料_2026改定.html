@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>調剤管理料｜2026年調剤報酬改定</title>
-  <meta name="search-keywords" content="重複投薬,相互作用,調剤日数,内服薬,お薬手帳,薬剤服用歴,60点" />
+  <title>調剤管理料｜算定項目まとめ</title>
+  <meta name="search-keywords" content="重複投薬,相互作用,調剤日数,内服薬,お薬手帳,薬剤服用歴,60点,長期処方,28日,残薬調整,減数調剤,調剤管理加算,内服薬以外" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/gigi-list.css" />
   <link rel="stylesheet" href="../assets/source-refs.css" />
@@ -107,16 +107,12 @@
   <div class="page-title-wrap">
     <div class="page-title-left">
       <h1>調剤管理料</h1>
-      <p>令和８年６月１日施行｜2026年調剤報酬改定</p>
     </div>
   </div>
 
   <!-- Card 1: 点数の変更 -->
   <div class="card avoid-break">
-    <div class="card-title">
-      点数の変更
-      <span class="badge badge-blue">変更</span>
-    </div>
+    <div class="card-title">点数・区分</div>
 
     <!-- スマホでは1列に落とす（2列のままだと「イ 長期処方（28日分以上）」が3行に折り返し、
          点数が文字の途中に割り込んで「28日分以　60点　上）」と読めてしまう） -->
@@ -131,6 +127,34 @@
       </div>
     </div>
 
+    <p style="font-size:var(--text-sm); line-height:1.8; margin-top:-6px;">内服薬以外（調剤管理料２）は<strong>10点</strong>。</p>
+    <p style="font-size:var(--text-sm); line-height:1.8; margin-top:6px;"><a href="調剤基本料_2026改定.html">特別調剤基本料Ｂ</a>を算定している保険薬局は、<span class="marker">調剤管理料を算定できない</span>。</p>
+  </div>
+
+  <!-- Card 4: 算定の注意点 -->
+  <div class="card avoid-break">
+    <div class="card-title">算定の注意点</div>
+    <div class="li"><span>・</span><span>服用時点が同一の内服薬は投与日数にかかわらず<strong>１剤</strong>として算定。<strong>４剤以上の部分は算定不可</strong>（上限３剤）。</span></div>
+    <div class="li"><span>・</span><span>調剤管理料１を算定した場合、調剤管理料２は算定不可。</span></div>
+    <div class="li"><span>・</span><span>隔日投与等で服用しない日がある場合は<strong>実際の投与日数</strong>により算定（長期処方か否かの判定も同様）。</span></div>
+    <div class="li"><span>・</span><span>分割調剤（保存困難・後発品試用の場合）は、通算日数に対応する点数から前回までの算定点数を差し引いた点数で算定。</span></div>
+    <div class="li"><span>・</span><span><strong>長期処方（28日分以上）を残薬調整で27日分以下に減らした場合も、調剤管理料は「１のイ（長期処方）」で算定</strong>（元の処方が28日分以上なら長期区分のまま）。</span></div>
+
+    <div class="box-gray" style="margin-top:12px; border-left:4px solid var(--blue);">
+      <div style="font-size:var(--text-xs); font-weight:900; color:var(--blue); margin-bottom:6px;">レセプト摘要欄（令和8年6月追加）</div>
+      <div style="font-size:var(--text-xs); color:#555; margin-bottom:8px;">長期処方（28日分以上）を減数調剤し、実際に調剤する内服薬が1〜27日分となっても「１のイ（60点）」で算定する場合は、摘要欄に下記を記載する。</div>
+      <div class="li"><span>・</span><span>減数調剤を実施した年月日（調剤管理料１のイ）</span></div>
+      <div class="li"><span>・</span><span>減数調剤を実施した薬剤名（調剤管理料１のイ）</span></div>
+      <div class="li"><span>・</span><span>調整前の日数（調剤管理料１のイ）</span></div>
+    </div>
+
+  </div>
+
+
+  <!-- 2026年改定で変わったこと -->
+  <details class="fold">
+    <summary>2026年改定で変わったこと</summary>
+    <div class="fold-body">
     <div style="font-size:var(--text-xs); font-weight:700; color:#5e6470; margin-bottom:6px;">日数区分別の変化（内服薬１）</div>
     <div class="table-wrap">
       <table class="compare-table" style="width:100%;">
@@ -184,7 +208,6 @@
     </div>
 
     <p class="note">※ 28日分は改定前「ハ 15日分以上28日分以下（50点）」→ 改定後「長期処方（28日分以上・60点）」に区分が変わる。</p>
-  </div>
 
   <!-- Card 2: 変更のポイント -->
   <div class="card avoid-break">
@@ -212,11 +235,11 @@
         <div style="font-size:var(--text-sm); display:flex; flex-direction:column; gap:4px;">
           <div style="display:flex; gap:8px; align-items:baseline;">
             <span style="flex-shrink:0; color:#5e6470;">残薬調整以外（40点）→</span>
-            <span><strong>薬学的有害事象等防止加算</strong>（新設）に引き継ぎ。在宅患者・かかりつけ薬剤師等の区分を追加し点数・要件を見直し。</span>
+            <span><strong><a href="薬学的有害事象等防止加算.html">薬学的有害事象等防止加算</a></strong>（新設）に引き継ぎ。在宅患者・かかりつけ薬剤師等の区分を追加し点数・要件を見直し。</span>
           </div>
           <div style="display:flex; gap:8px; align-items:baseline;">
             <span style="flex-shrink:0; color:#5e6470;">残薬調整（20点）　　→</span>
-            <span><strong>調剤時残薬調整加算</strong>（新設）に引き継ぎ。在宅患者・かかりつけ薬剤師等の区分を追加し点数・要件を見直し。</span>
+            <span><strong><a href="調剤時残薬調整加算.html">調剤時残薬調整加算</a></strong>（新設）に引き継ぎ。こちらも区分を追加し点数・要件を見直し。</span>
           </div>
         </div>
       </div>
@@ -226,27 +249,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Card 4: 算定の注意点 -->
-  <div class="card avoid-break">
-    <div class="card-title">算定の注意点</div>
-    <div class="li"><span>・</span><span>服用時点が同一の内服薬は投与日数にかかわらず<strong>１剤</strong>として算定。<strong>４剤以上の部分は算定不可</strong>（上限３剤）。</span></div>
-    <div class="li"><span>・</span><span>調剤管理料１を算定した場合、調剤管理料２は算定不可。</span></div>
-    <div class="li"><span>・</span><span>隔日投与等で服用しない日がある場合は<strong>実際の投与日数</strong>により算定（長期処方か否かの判定も同様）。</span></div>
-    <div class="li"><span>・</span><span>分割調剤（保存困難・後発品試用の場合）は、通算日数に対応する点数から前回までの算定点数を差し引いた点数で算定。</span></div>
-    <div class="li"><span>・</span><span><strong>長期処方（28日分以上）を残薬調整で27日分以下に減らした場合も、調剤管理料は「１のイ（長期処方）」で算定</strong>（元の処方が28日分以上なら長期区分のまま）。<span style="font-size:var(--text-xs); color:#666;"></span></span></div>
-
-    <div class="box-gray" style="margin-top:12px; border-left:4px solid var(--blue);">
-      <div style="font-size:var(--text-xs); font-weight:900; color:var(--blue); margin-bottom:6px;">レセプト摘要欄（令和8年6月追加）</div>
-      <div style="font-size:var(--text-xs); color:#555; margin-bottom:8px;">長期処方（28日分以上）を減数調剤し、実際に調剤する内服薬が1〜27日分となっても「１のイ（60点）」で算定する場合は、摘要欄に下記を記載する。</div>
-      <div class="li"><span>・</span><span>減数調剤を実施した年月日（調剤管理料１のイ）</span></div>
-      <div class="li"><span>・</span><span>減数調剤を実施した薬剤名（調剤管理料１のイ）</span></div>
-      <div class="li"><span>・</span><span>調整前の日数（調剤管理料１のイ）</span></div>
-    </div>
-
-    <div class="li" style="font-size:var(--text-xs); color:#5e6470; margin-top:12px;"><span>・</span><span>特別調剤基本料Ｂを算定している保険薬局は調剤管理料を算定できない。</span></div>
-  </div>
-
 
   <!-- Card 5: 改定影響シミュレーション -->
   <div class="card avoid-break" id="sim-card">
@@ -287,6 +289,8 @@
       <button onclick="resetSim()" style="font-size:var(--text-sm); color:var(--white); background:var(--blue); border:none; border-radius:var(--radius-sm); padding:7px 20px; cursor:pointer; font-family:inherit; font-weight:700; letter-spacing:0.03em; transition:opacity 0.15s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">リセット</button>
     </div>
   </div>
+    </div>
+  </details>
 
   <!-- 原文（自動生成：node assets/build-genbun.js。マーカーの間は上書きされる） -->
   <!-- genbun betten3="kub-10-2-1" hyo3="ku10-2" note="1,2" -->

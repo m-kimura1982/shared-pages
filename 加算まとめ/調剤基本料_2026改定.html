@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>調剤基本料 2026改定のまとめ</title>
-    <meta name="search-keywords" content="集中率,処方箋受付回数,同一グループ,特別調剤基本料,調剤基本料1,調剤基本料2,調剤基本料3,敷地内薬局,妥結率" />
+    <title>調剤基本料｜算定項目まとめ</title>
+    <meta name="search-keywords" content="集中率,処方箋受付回数,同一グループ,特別調剤基本料,調剤基本料1,調剤基本料2,調剤基本料3,敷地内薬局,妥結率,医療モール,1,800回,600回,40万回,3万5千回,経過措置,政令指定都市,特別区,様式84,高齢者施設,都市部" />
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
       rel="stylesheet"
@@ -363,6 +363,16 @@
 }
     </style>
   <style>
+/* 区分の早見：条件は左寄せ。スマホでは区分・点数の下に条件を回す */
+.quick-tbl td:nth-child(3), .quick-tbl th:nth-child(3) { text-align:left; font-weight:500; }
+@media (max-width:640px) {
+  .quick-tbl { min-width:0; font-size:var(--text-sm); }
+  .quick-tbl thead { display:none; }
+  .quick-tbl tr { display:grid; grid-template-columns:1fr auto; border-bottom:var(--bw-h) solid var(--border); padding:8px 0; }
+  .quick-tbl td { border:0; padding:2px 4px; text-align:left; }
+  .quick-tbl td:nth-child(2) { text-align:right; font-weight:900; }
+  .quick-tbl td:nth-child(3) { grid-column:1 / -1; }
+}
 /* 見出しの型をサイトの基準に揃える（2026-09-11）：ページの題名は飾りなし、段落の見出し（.card-title）に青い縦棒。
    既存の見出しCSSは書き方がページごとに違うので、ここで上書きする */
 .page-title, .page-title-left { border-left:0; padding-left:0; }
@@ -378,8 +388,7 @@
 
       <!-- タイトル -->
       <div class="page-title">
-        <h1>調剤基本料　2026改定のまとめ</h1>
-        <p>保険薬局の面分業推進・算定基準の見直し</p>
+        <h1>調剤基本料</h1>
       </div>
 
       <div class="correction" data-until="2026-11-20" hidden>
@@ -394,63 +403,24 @@
       </div>
       <script src="../assets/correction.js" defer></script>
 
-      <!-- ① 点数の変更 -->
+      <!-- 区分の早見 -->
       <div class="card avoid-break">
-        <div class="card-title">
-          点数の変更
-          <span class="badge badge-blue">引き上げ</span>
-        </div>
+        <div class="card-title">区分の早見</div>
         <div class="tbl-wrap">
-<table style="font-size:var(--text-sm);">
-            <thead>
-              <tr>
-                <th style="text-align:left;">区分</th>
-                <th>改定前</th>
-                <th>改定後</th>
-                <th>増減</th>
-              </tr>
-            </thead>
+          <table class="quick-tbl">
+            <thead><tr><th style="white-space:nowrap;">区分</th><th style="white-space:nowrap;">点数</th><th>該当する薬局</th></tr></thead>
             <tbody>
-              <tr class="row-highlight">
-                <td style="text-align:left; font-weight:900;">調剤基本料１</td>
-                <td>45点</td>
-                <td style="font-weight:900;">47点</td>
-                <td class="em-change">＋２点</td>
-              </tr>
-              <tr class="row-general">
-                <td style="text-align:left; font-weight:900;">調剤基本料２</td>
-                <td>29点</td>
-                <td style="font-weight:900;">30点</td>
-                <td class="em-change">＋１点</td>
-              </tr>
-              <tr class="row-general">
-                <td style="text-align:left; font-weight:900;">調剤基本料３ イ</td>
-                <td>24点</td>
-                <td style="font-weight:900;">25点</td>
-                <td class="em-change">＋１点</td>
-              </tr>
-              <tr class="row-general">
-                <td style="text-align:left; font-weight:900;">調剤基本料３ ロ</td>
-                <td>19点</td>
-                <td style="font-weight:900;">20点</td>
-                <td class="em-change">＋１点</td>
-              </tr>
-              <tr class="row-highlight">
-                <td style="text-align:left; font-weight:900;">調剤基本料３ ハ</td>
-                <td>35点</td>
-                <td style="font-weight:900;">37点</td>
-                <td class="em-change">＋２点</td>
-              </tr>
-              <tr class="row-general" style="font-size:var(--text-xs);">
-                <td style="text-align:left;">特別調剤基本料Ａ・Ｂ</td>
-                <td colspan="3">変更なし</td>
-              </tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">特別調剤基本料Ｂ</td><td style="white-space:nowrap;">3点</td><td>調剤基本料の届出をしていない薬局</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">特別調剤基本料Ａ</td><td style="white-space:nowrap;">5点</td><td>保険医療機関と不動産取引等の特別な関係があり、処方箋集中率が50%超（いわゆる敷地内薬局）。または同じ敷地内にオンライン診療の受診施設を設けている（へき地の薬局や、改定前から同じ建物にある診療所などの例外あり）</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">調剤基本料３イ</td><td style="white-space:nowrap;">25点</td><td>同一グループの受付回数の合計が月３万５千回超〜40万回以下で、集中率85%超、または特定の保険医療機関と不動産取引等の特別な関係がある</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">調剤基本料３ロ</td><td style="white-space:nowrap;">20点</td><td>同一グループの受付回数の合計が月40万回超で、集中率85%超、または特定の保険医療機関と不動産取引等の特別な関係がある</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">調剤基本料２</td><td style="white-space:nowrap;">30点</td><td>次のどれか（３イ・３ロ・特別Ａに当たるものを除く）<br />・受付月4,000回超で、上位３の医療機関の集中率の合計が70%超<br />・受付月1,800回超で、集中率85%超<br />・都市部で受付月600回超、集中率85%超（下の「都市部の保険薬局の基準」）<br />・特定の医療機関からの受付が月4,000回超（医療モールは合算。同一グループの他店の受付を合算する場合もある）</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">調剤基本料３ハ</td><td style="white-space:nowrap;">37点</td><td>同一グループの受付回数の合計が月40万回超で、集中率85%以下（調剤基本料２に当たるものを除く）</td></tr>
+              <tr><td style="white-space:nowrap; font-weight:900;">調剤基本料１</td><td style="white-space:nowrap;">47点</td><td>上のどれにも当たらない薬局</td></tr>
             </tbody>
           </table>
         </div>
-        <div class="box-gray" style="margin-top:12px; font-size:var(--text-sm);">
-          今回の引き上げは２つの要因による合算。①令和６年度以降の経営環境の悪化を踏まえた<span class="em-blue">緊急対応として特別調剤基本料を除く全区分を＋１点</span>。②<span class="em-blue">面分業を推進する観点</span>から調剤基本料１・３ハをさらに＋１点。結果として基本料１・３ハは計＋２点、基本料２・３イ・３ロは＋１点。
-        </div>
+        <p style="font-size:var(--text-sm); line-height:1.8; margin-top:10px;">上から順に当てはめる。ただし、医療資源の少ない地域の条件を満たして届け出た薬局は、ほかの条件にかかわらず調剤基本料１。判定の流れは <a href="../改定資料/調剤基本料フローチャート.html">調剤基本料 判定フローチャート</a> を参照。</p>
       </div>
 
       <!-- ② 調剤基本料２の算定基準見直し -->
@@ -555,7 +525,7 @@
           <span class="badge badge-blue">チェーン薬局</span>
         </div>
         <div style="margin-bottom:14px;">
-          同一グループの受付回数が<span class="em-blue">「月3万5千回以上〜4万回以下」</span>の薬局について、調剤基本料３ イの適用対象（集中率の条件）が変更された。
+          同一グループの受付回数が<span class="em-blue">「月3万5千回超〜4万回以下」</span>の薬局について、調剤基本料３ イの適用対象（集中率の条件）が変更された。
         </div>
         <div class="tbl-wrap">
 <table>
@@ -569,8 +539,8 @@
             <tbody>
               <tr class="row-general">
                 <td style="text-align:left; font-weight:900;">対象グループ規模</td>
-                <td style="font-weight:900;">月3万5千回〜4万回以下</td>
-                <td style="font-weight:900;">月3万5千回〜4万回以下（同じ）</td>
+                <td style="font-weight:900;">月3万5千回超〜4万回以下</td>
+                <td style="font-weight:900;">月3万5千回超〜4万回以下（同じ）</td>
               </tr>
               <tr class="row-highlight">
                 <td style="text-align:left; font-weight:900;">調剤基本料３ イ<br>適用となる集中率</td>
@@ -579,11 +549,6 @@
               </tr>
             </tbody>
           </table>
-        </div>
-        <div class="box-gray" style="margin-top:14px; font-size:var(--text-sm);">
-          <div style="font-weight:900; margin-bottom:6px;">施設基準より抜粋（調剤基本料３ イ 該当条件）</div>
-          同一グループの受付回数が月3万5千回を超え4万回以下の薬局について、従来は処方箋集中率<span class="em-change">95%超</span>が対象だったが、改定により<span class="em-change">85%超（95%以下を含む）</span>まで適用範囲が拡大された。<br>
-          なお、同一グループの店舗数が300以上である場合は除く。
         </div>
       </div>
 
@@ -603,9 +568,8 @@
           <div class="box-gray">
             <div style="font-weight:900; margin-bottom:8px;">改定前（現行）</div>
             <ul class="bullet-list" style="font-size:var(--text-sm);">
-              <li><div>同一グループの受付回数が月40万回超</div></li>
+              <li><div>同一グループの受付回数が月40万回超、<span style="font-weight:900;">または同一グループの店舗数が300以上</span></div></li>
               <li><div>処方箋集中率が85%超（ロ）、または85%以下（ハ）</div></li>
-              <li><div><span style="font-weight:900;">かつ同一グループの店舗数が300以上</span></div></li>
             </ul>
           </div>
           <div class="box-gray">
@@ -640,7 +604,7 @@
               </div>
               <div class="box-gray" style="font-size:var(--text-sm);">
                 同一の敷地又は建物にある複数の保険医療機関は、全保険医療機関の受付回数を<span class="em-change">合算して「一の保険医療機関」</span>とみなして集中率を算出する。上位３機関の集中率合計（条件①）の計算でも同様。<br>
-                <span style="display:block; margin-top:8px; font-size:var(--text-xs); font-weight:700;">※同一ビルの別フロアの医療機関も対象となる。施設基準の届出書類（様式84 ６）に明記。いわゆる「医療モール」に限らない点に注意。</span>
+                <span style="display:block; margin-top:8px; font-size:var(--text-xs); font-weight:700;">※一つの建物内・一つの敷地内にある医療機関は、まとめて１つの医療機関として数える。</span>
               </div>
             </div>
           </div>
@@ -648,15 +612,14 @@
             <div>
               <div style="font-size:var(--text-sm); font-weight:900; margin-bottom:6px;">除外される処方箋</div>
               <div class="box-gray" style="font-size:var(--text-sm);">
-                以下は特定医療機関の受付回数・全体の受付回数の<span style="font-weight:900;">いずれからも除外</span>して計算する。
+                集中率を計算するとき、次の処方箋は、特定医療機関の受付回数・全体の受付回数の<span style="font-weight:900;">いずれからも除外</span>する。調剤基本料２などの受付回数の基準（月1,800回など）には数える。
                 <ul class="bullet-list" style="margin-top:8px; font-size:var(--text-sm);">
                   <li><div>情報通信機器を用いた服薬指導を受けた患者の処方箋</div></li>
                   <li><div>同一グループ薬局の勤務者（常勤・非常勤含む全職員）およびその家族の処方箋</div></li>
                   <li>
                     <div>
-                      <span class="em-change">介護老人福祉施設・介護老人保健施設・介護医療院・サービス付き高齢者向け住宅・有料老人ホーム等の入居者の処方箋</span>（単一建物居住者が１人の場合を除く）
+                      <span class="em-change">介護老人福祉施設・介護老人保健施設・介護医療院・サービス付き高齢者向け住宅・有料老人ホーム等の入居者の処方箋</span>（単一建物診療患者・単一建物居住者が１人の場合を除く）
                       <span class="badge badge-blue" style="font-size:var(--text-xs); margin-left:6px;">新設</span>
-                      <div style="font-size:var(--text-xs); margin-top:4px; font-weight:700;">※受付回数には算入するが、集中率の計算からは除外する</div>
                     </div>
                   </li>
                 </ul>
@@ -670,10 +633,10 @@
       <div class="card avoid-break">
         <div class="card-title">主な減算　一覧</div>
         <ul class="bullet-list" style="font-size:var(--text-sm);">
-          <li><div><span style="font-weight:900;">後発医薬品未使用減算</span>　－５点（受付月600回超の薬局）</div></li>
+          <li><div><span style="font-weight:900;">後発医薬品減算</span>　－５点（後発医薬品の調剤数量割合が５割以下、またはその割合を直近１年間に報告していない。受付月600回以下の薬局は除く）</div></li>
           <li><div><span style="font-weight:900;">門前薬局等立地依存減算</span>　－15点</div></li>
           <li><div><span style="font-weight:900;">妥結率50%以下・未報告</span>　所定点数の50%に減算</div></li>
-          <li><div><span style="font-weight:900;">かかりつけ機能の基本業務未実施</span>　所定点数の50%に減算（年10回未満の場合）</div></li>
+          <li><div><span style="font-weight:900;">かかりつけ機能の基本業務未実施</span>　所定点数の50%に減算（年10回未満。受付月600回以下の薬局は除く。特別調剤基本料Ａ・Ｂを算定する薬局は年100回未満）</div></li>
         </ul>
         <div class="box-gray" style="margin-top:12px; font-size:var(--text-sm);">
           <span style="font-weight:900;">最低点数保障：</span>注３・注４と加算・減算を合算した点数が<span class="em-blue">３点を下回る場合は３点を算定</span>
@@ -681,6 +644,71 @@
       </div>
 
 
+
+  <!-- 2026年改定で変わったこと -->
+  <details class="fold">
+    <summary>2026年改定で変わったこと（点数）</summary>
+    <div class="fold-body">
+      <!-- ① 点数の変更 -->
+      <div class="card-in">
+        <div class="card-title">
+          点数の変更
+          <span class="badge badge-blue">引き上げ</span>
+        </div>
+        <div class="tbl-wrap">
+<table style="font-size:var(--text-sm);">
+            <thead>
+              <tr>
+                <th style="text-align:left;">区分</th>
+                <th>改定前</th>
+                <th>改定後</th>
+                <th>増減</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="row-highlight">
+                <td style="text-align:left; font-weight:900;">調剤基本料１</td>
+                <td>45点</td>
+                <td style="font-weight:900;">47点</td>
+                <td class="em-change">＋２点</td>
+              </tr>
+              <tr class="row-general">
+                <td style="text-align:left; font-weight:900;">調剤基本料２</td>
+                <td>29点</td>
+                <td style="font-weight:900;">30点</td>
+                <td class="em-change">＋１点</td>
+              </tr>
+              <tr class="row-general">
+                <td style="text-align:left; font-weight:900;">調剤基本料３ イ</td>
+                <td>24点</td>
+                <td style="font-weight:900;">25点</td>
+                <td class="em-change">＋１点</td>
+              </tr>
+              <tr class="row-general">
+                <td style="text-align:left; font-weight:900;">調剤基本料３ ロ</td>
+                <td>19点</td>
+                <td style="font-weight:900;">20点</td>
+                <td class="em-change">＋１点</td>
+              </tr>
+              <tr class="row-highlight">
+                <td style="text-align:left; font-weight:900;">調剤基本料３ ハ</td>
+                <td>35点</td>
+                <td style="font-weight:900;">37点</td>
+                <td class="em-change">＋２点</td>
+              </tr>
+              <tr class="row-general" style="font-size:var(--text-xs);">
+                <td style="text-align:left;">特別調剤基本料Ａ・Ｂ</td>
+                <td colspan="3">変更なし</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-gray" style="margin-top:12px; font-size:var(--text-sm);">
+          今回の引き上げは２つの要因による合算。①令和６年度以降の経営環境の悪化を踏まえた<span class="em-blue">緊急対応として特別調剤基本料を除く全区分を＋１点</span>。②<span class="em-blue">面分業を推進する観点</span>から調剤基本料１・３ハをさらに＋１点。結果として基本料１・３ハは計＋２点、基本料２・３イ・３ロは＋１点。
+        </div>
+      </div>
+    </div>
+  </details>
 
   <!-- 原文（自動生成：node assets/build-genbun.js。マーカーの間は上書きされる） -->
   <!-- genbun betten3="kub-00-1,kub-00-2" hyo3="ku00" note="1,2,3,4,16" kijun="sec-88" -->
