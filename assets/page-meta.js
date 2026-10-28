@@ -204,7 +204,7 @@ window.__pageMeta = {
     "newUntil": "2026-08-26"
   },
   "加算まとめ/吸入薬指導加算2026.html": {
-    "lastUpdated": "2026-08-31"
+    "lastUpdated": "2026-10-29"
   },
   "加算まとめ/在宅中心静脈栄養法加算.html": {
     "lastUpdated": "2026-10-27",
@@ -222,7 +222,7 @@ window.__pageMeta = {
     "newUntil": "2026-09-01"
   },
   "加算まとめ/施設連携加算.html": {
-    "lastUpdated": "2026-10-28",
+    "lastUpdated": "2026-10-29",
     "newUntil": "2026-09-25"
   },
   "加算まとめ/特定薬剤管理指導加算3.html": {
@@ -253,7 +253,7 @@ window.__pageMeta = {
     "newUntil": "2026-07-31"
   },
   "加算まとめ/調剤後薬剤管理指導料.html": {
-    "lastUpdated": "2026-10-28",
+    "lastUpdated": "2026-10-29",
     "newUntil": "2026-08-27"
   },
   "加算まとめ/薬学的有害事象等防止加算.html": {
