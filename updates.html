@@ -14,9 +14,8 @@
 :root {
   --blue: #1e5fa8;
   --blue-mid: #2d7dd6;
-  --blue-light: #e8f0fb;
   --ink: #222222;
-  --sub: #666666;
+  --txt-3: #5e6470;
   --border: #d8dde8;
   --white: #ffffff;
   --bg: #f3f4f6;
@@ -57,6 +56,8 @@ main > .band { margin-bottom: 28px; }
 .u-chip { justify-self: start; font-size: 12px; font-weight: 700; padding: 1px 9px; border-radius: 4px; background: #f2f2f2; color: #444444; white-space: nowrap; }
 .update-name { font-size: 15px; font-weight: 700; color: var(--ink); text-decoration: none; line-height: 1.6; }
 .update-name:hover { color: var(--blue); text-decoration: underline; }
+.update-names { min-width: 0; }
+.badge-upd { display: inline-block; font-size: 11.5px; font-weight: 700; color: var(--blue); background: #e4eef9; padding: 0 7px; border-radius: 4px; margin-left: 6px; vertical-align: 1px; }
 .badge-new { display: inline-block; font-size: 11.5px; font-weight: 700; color: var(--blue); background: #e4eef9; padding: 0 7px; border-radius: 4px; margin-left: 8px; vertical-align: 1px; }
 .update-desc {
   font-size: 13px; color: #444444;
@@ -72,7 +73,7 @@ footer {
   border-top: 1px solid var(--border);
   padding: 28px 24px;
   text-align: center;
-  font-size: 11px; color: var(--sub); line-height: 1.8;
+  font-size: 11px; color: var(--txt-3); line-height: 1.8;
 }
 
 /* ── Mobile ── */
@@ -81,7 +82,8 @@ footer {
   .updates-list li { padding: 13px 16px; }
   .update-line1 { grid-template-columns: auto 1fr; gap: 4px 10px; }
   .update-date { text-align: left; }
-  .update-name { grid-column: 1 / -1; font-size: 14px; }
+  .update-names { grid-column: 1 / -1; }
+  .update-name { font-size: 14px; }
   .update-desc { margin-left: 0; margin-top: 4px; }
 }
 </style>
@@ -716,7 +718,7 @@ footer {
           <div class="update-line1">
             <span class="update-date">6/20</span>
             <a class="update-name" href="改定資料/別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html">別表Ⅰ・Ⅴほか 2026改定の摘要欄・略号を整備</a>
-            <span style="display:inline-block;font-size:10px;font-weight:700;color:#fff;background:var(--blue);padding:1px 7px;border-radius:4px;margin-left:6px;vertical-align:middle;">更新</span>
+            <span class="badge-upd">更新</span>
           </div>
           <p class="update-desc">別表Ⅴの略号を細分化し、別表Ⅰに減数調剤と近視進行抑制薬の摘要欄記載事項を追加しました。</p>
         </li>
@@ -724,7 +726,7 @@ footer {
           <div class="update-line1">
             <span class="update-date">6/19</span>
             <a class="update-name" href="ツール/服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html">服薬管理指導料等・他の薬学管理料 算定可否表（別表１）</a>
-            <span style="display:inline-block;font-size:10px;font-weight:700;color:#fff;background:var(--blue);padding:1px 7px;border-radius:4px;margin-left:6px;vertical-align:middle;">更新</span>
+            <span class="badge-upd">更新</span>
           </div>
           <p class="update-desc">訪問薬剤管理医師同時指導料の併算定可否を11項目修正し、指導料を選ぶと可否だけを一覧できるようにしました。</p>
         </li>
@@ -746,7 +748,7 @@ footer {
           <div class="update-line1">
             <span class="update-date">6/13</span>
             <a class="update-name" href="加算まとめ/吸入薬指導加算2026.html">吸入薬指導加算の見直し（解説ページ）</a>
-            <span style="display:inline-block;font-size:10px;font-weight:700;color:#fff;background:var(--blue);padding:1px 7px;border-radius:4px;margin-left:6px;vertical-align:middle;">更新</span>
+            <span class="badge-upd">更新</span>
           </div>
           <p class="update-desc">薬歴への記載カードを新設し、配色と見出しの階層を最新のルールに合わせました。</p>
         </li>
@@ -782,7 +784,7 @@ footer {
           <div class="update-line1">
             <span class="update-date">6/4</span>
             <a class="update-name" href="改定資料/栄養保持を目的とした医薬品の保険給付の適正化.html">栄養保持を目的とした医薬品の保険給付の適正化</a>
-            <span style="display:inline-block;font-size:10px;font-weight:700;color:#fff;background:var(--blue);padding:1px 7px;border-radius:4px;margin-left:6px;vertical-align:middle;">更新</span>
+            <span class="badge-upd">更新</span>
           </div>
           <p class="update-desc">処方箋に記載がある場合とない場合の2パターンに整理し、摘要欄への入力が必須である点を明示しました。</p>
         </li>
@@ -797,7 +799,7 @@ footer {
           <div class="update-line1">
             <span class="update-date">6/2</span>
             <a class="update-name" href="ツール/服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html">別表１（１）併算定可否チェック</a>
-            <span style="display:inline-block;font-size:10px;font-weight:700;color:#fff;background:var(--blue);padding:1px 7px;border-radius:4px;margin-left:6px;vertical-align:middle;">更新</span>
+            <span class="badge-upd">更新</span>
           </div>
           <p class="update-desc">令和８年５月29日版と全項目を照合し、○のマスに色を付けて見分けやすくしました。</p>
         </li>
@@ -805,7 +807,7 @@ footer {
           <div class="update-line1">
             <span class="update-date">6/1</span>
             <a class="update-name" href="加算まとめ/バイオ後続品調剤体制加算.html">バイオ後続品調剤体制加算</a>
-            <span style="display:inline-block;font-size:10px;font-weight:700;color:#fff;background:var(--blue);padding:1px 7px;border-radius:4px;margin-left:6px;vertical-align:middle;">更新</span>
+            <span class="badge-upd">更新</span>
           </div>
           <p class="update-desc">体制加算はインスリンが対象外でも、特定薬剤管理指導加算３ロは対象になる点を明示しました。</p>
         </li>
@@ -813,7 +815,7 @@ footer {
           <div class="update-line1">
             <span class="update-date">5/31</span>
             <a class="update-name" href="改定資料/調剤報酬改定2026_ダイジェスト.html">調剤報酬改定2026ダイジェスト</a>・<a class="update-name" href="改定資料/選定療養_概要2026.html">選定療養の改定ポイント</a>
-            <span style="display:inline-block;font-size:10px;font-weight:700;color:#fff;background:var(--blue);padding:1px 7px;border-radius:4px;margin-left:6px;vertical-align:middle;">更新</span>
+            <span class="badge-upd">更新</span>
           </div>
           <p class="update-desc">時間外の選定療養について、徴収額の目安と掲示・報告の要件を追記しました。</p>
         </li>
@@ -821,7 +823,7 @@ footer {
           <div class="update-line1">
             <span class="update-date">5/31</span>
             <a class="update-name" href="加算まとめ/地域支援医薬品供給対応体制加算.html">地域支援・医薬品供給対応体制加算</a>
-            <span style="display:inline-block;font-size:10px;font-weight:700;color:#fff;background:var(--blue);padding:1px 7px;border-radius:4px;margin-left:6px;vertical-align:middle;">更新</span>
+            <span class="badge-upd">更新</span>
           </div>
           <p class="update-desc">セルフメディケーション関連機器に心電計が加わり、8機器になりました。</p>
         </li>
@@ -851,7 +853,7 @@ footer {
           <div class="update-line1">
             <span class="update-date">5/28</span>
             <a class="update-name" href="事務/入力画面で解説_2026改定後の入力方法.html">入力画面で解説｜2026改定後の入力方法（Pharnes）</a>
-            <span style="display:inline-block;font-size:10px;font-weight:700;color:#fff;background:var(--blue);padding:1px 7px;border-radius:4px;margin-left:6px;vertical-align:middle;">更新</span>
+            <span class="badge-upd">更新</span>
           </div>
           <p class="update-desc">全項目の画像を実画面に差し替えて正式公開しました。</p>
         </li>
@@ -866,7 +868,7 @@ footer {
           <div class="update-line1">
             <span class="update-date">5/26</span>
             <a class="update-name" href="加算まとめ/調剤時残薬調整加算.html">調剤時残薬調整加算</a>
-            <span style="display:inline-block;font-size:10px;font-weight:700;color:#fff;background:var(--blue);padding:1px 7px;border-radius:4px;margin-left:6px;vertical-align:middle;">更新</span>
+            <span class="badge-upd">更新</span>
           </div>
           <p class="update-desc">摘要欄に、日数をどう調整したかの具体的な内容も併記することを勧める旨を追記しました。</p>
         </li>
@@ -1114,7 +1116,12 @@ document.addEventListener("DOMContentLoaded", function () {
       chip.style.color = CHIPS[dir][2];
       return true;
     });
-    row.insertBefore(chip, a);
+    // 題名側（2本目以降のリンク・「・」・ラベルも含む）を1つにまとめ、表の3列目に収める
+    var wrap = document.createElement("span");
+    wrap.className = "update-names";
+    row.insertBefore(wrap, a);
+    while (wrap.nextSibling) wrap.appendChild(wrap.nextSibling);
+    row.insertBefore(chip, wrap);
     var e = meta[key];
     if (!seen[key] && e && e.newUntil && today <= new Date(e.newUntil + "T23:59:59")) {
       var n = document.createElement("span");
