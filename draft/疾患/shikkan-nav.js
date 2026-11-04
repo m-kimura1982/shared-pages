@@ -45,7 +45,7 @@
         { file: '糖尿病_薬物療法.html', why: '糖尿病を合併しているとき（選び方・心不全で避ける薬）' } ] },
 
     { file: '冠動脈疾患.html', dz: '冠動脈疾患', label: '総論',
-      desc: '狭心症とACS、症状の薬と予防の薬、胸痛のない心筋梗塞、ニトロ',
+      desc: '狭心症とACS、症状の薬と予防の薬、胸痛のない心筋梗塞',
       related: [
         { file: '心不全_薬物療法.html', why: '心筋梗塞のあと心不全になったとき' },
         { file: '心房細動.html', why: '心房細動を合併しているとき' } ] },
@@ -55,6 +55,11 @@
         { file: '心房細動_抗凝固薬の用量.html', why: 'DOACの用量' },
         { file: '心房細動_抗凝固薬の注意点.html', why: 'DOACの併用禁忌・飲み忘れ' },
         { file: '弁膜症.html', why: '機械弁のワルファリン' } ] },
+    { file: '冠動脈疾患_渡すときに見ること.html', dz: '冠動脈疾患', label: '渡すときに見ること',
+      desc: 'ニトロの使い方とED治療薬、毎回聞くこと、DAPT中に言うこと、処方が減ったときの読み方',
+      related: [
+        { file: '心房細動_抗凝固薬の注意点.html', why: '受診すべき出血の目安・DOACも飲んでいるとき' },
+        { file: '心不全_渡すときに見ること.html', why: '心筋梗塞のあと心不全になったとき' } ] },
 
     { file: '弁膜症.html', dz: '弁膜症', label: '総論',
       desc: '狭窄と逆流、薬の役目、人工弁の抗血栓療法、抜歯とワルファリン',
@@ -65,6 +70,11 @@
     { file: '弁膜症_感染性心内膜炎の予防.html', dz: '弁膜症', label: '感染性心内膜炎の予防',
       desc: '対象と処置、アモキシシリン2g単回、経口セフェム、発熱したとき',
       related: [] },
+    { file: '弁膜症_渡すときに見ること.html', dz: '弁膜症', label: '渡すときに見ること',
+      desc: '息切れ・失神・むくみの変化、ワルファリンと食べ物、歯科の受診予定',
+      related: [
+        { file: '心不全_うっ血と利尿薬.html', why: 'むくみ・体重の聞き方' },
+        { file: '心房細動_抗凝固薬の注意点.html', why: 'ワルファリンの併用薬・出血の目安' } ] },
 
     { file: '糖尿病.html', dz: '糖尿病', label: '総論',
       desc: '合併症とレガシー効果、インスリン依存状態、HbA1cの目標と高齢者の下限、処方を3つに分けて読む',
@@ -92,7 +102,7 @@
     var tables = document.querySelectorAll('table.stack');
     for (var t = 0; t < tables.length; t++) {
       var ths = tables[t].querySelectorAll('thead th'), names = [];
-      for (var i = 0; i < ths.length; i++) names.push(ths[i].textContent.replace(/s+/g, ''));
+      for (var i = 0; i < ths.length; i++) names.push(ths[i].textContent.replace(/\s+/g, ''));
       var rows = tables[t].querySelectorAll('tbody tr');
       for (var r = 0; r < rows.length; r++) {
         var col = 0, tds = rows[r].children;

@@ -60,11 +60,13 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
 /* ── 表 ── */
 .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
 table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
-th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); white-space:nowrap; }
+th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 12px; text-align:left; border-bottom:2px solid var(--border-dk); }
 td { padding:8px 12px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
 tr:last-child td { border-bottom:none; }
 td.num, th.num { text-align:center; white-space:nowrap; }
 td.nw, th.nw { white-space:nowrap; }
+/* 見出しセルはPCでは折り返さない。スマホ（640px以下）では折り返して、2〜3列の表が横に流れないようにする */
+@media (min-width:641px) { th { white-space:nowrap; } }
 /* 表の幅の決め方（index.html の決めごと「表」）
    ・2〜3列の表は何も付けない（スマホでも折り返して収まる）
    ・4列以上で、行どうしを見比べる表（用量の表など）は .wide。スマホでは表の中だけ横スクロール
