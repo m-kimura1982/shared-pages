@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>慢性腎臓病の患者に渡すときに見ること｜疾患の勉強メモ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="shikkan.css" />
+  </head>
+  <body>
+    <script src="../../assets/site-header.js" defer></script>
+    <script src="../../assets/page-toc.js" defer></script>
+    <script src="shikkan-nav.js" defer></script>
+
+    <div class="page">
+      <div class="page-title">
+        <h1>慢性腎臓病の患者に渡すときに見ること</h1>
+      </div>
+
+      <div class="card" data-toc="skip">
+        <div class="sibs"></div>
+      </div>
+
+      <div class="page-toc-wrap"><div id="page-toc"></div></div>
+
+      <div class="card" data-toc="skip">
+        <div class="card-title">このページで覚えること</div>
+        <div class="keys">
+          <div><span class="ck">✓</span><span class="tx">薬の量は<b>添付文書がどの腎機能の値で決めているか</b>に合わせて、患者の値を出す。eGFR（mL/分/1.73m²）をそのままCCrの表に当てない<a class="go" href="#c-egfr">→</a></span></div>
+          <div><span class="ck">✓</span><span class="tx"><b>やせた高齢者はeGFRが高めに出る</b>。DOACの市販直後の重い出血は、この取り違えで禁忌の人に出ていた例が多かった<a class="go" href="#c-egfr">→</a></span></div>
+          <div><span class="ck">✓</span><span class="tx">体調を崩した日は<b>NSAIDs・メトホルミン・SGLT2阻害薬（糖尿病・CKD目的）を休む</b>。<b>RA系阻害薬・利尿薬は医療機関で判断</b>。まず受診が原則<a class="go" href="#c-sick">→</a></span></div>
+          <div><span class="ck">✓</span><span class="tx"><b>利尿薬＋RA系阻害薬＋NSAIDs</b>の3つが重なると急性腎障害が起きやすい。市販の鎮痛薬で3つ目が加わる<a class="go" href="#c-pain">→</a></span></div>
+          <div><span class="ck">✓</span><span class="tx">帯状疱疹のバラシクロビル・ファムシクロビルは<b>腎機能で減量</b>。減量しても副作用は出るので、服用開始後の様子を確かめる<a class="go" href="#c-herpes">→</a></span></div>
+        </div>
+      </div>
+
+      <!-- ── 1. 薬の量に使う腎機能 ── -->
+      <div class="card" id="c-egfr">
+        <div class="card-title">薬の量に使う腎機能<span class="qual">どの値を、どの表に当てるか</span></div>
+
+        <p style="margin-bottom:12px">ガイドラインの原則は、<span class="marker">添付文書の腎機能別の量が、治験でどの評価法を使って決められたかに合わせる</span>こと。手元にある数字は主に2つで、単位が違う。</p>
+        <div class="split">
+          <div class="pal-blue">
+            <div class="t">eGFR（mL/分/1.73m²）</div>
+            検査結果に出てくる値。<b>体の大きさを標準（体表面積1.73m²）にそろえた値</b>なので、小柄な人では実際の腎機能より大きくなる
+          </div>
+          <div class="pal-cream">
+            <div class="t">推算CCr（mL/分）</div>
+            Cockcroft-Gault式で、年齢・<b>体重</b>・Crから出す。体重が入るので<b>その人の大きさのままの値</b>。加齢と体格の影響を受けやすい
+          </div>
+        </div>
+
+        <div class="sub-title">添付文書の表記ごとの当て方</div>
+        <div class="table-wrap">
+          <table class="stack">
+            <thead><tr><th>添付文書の表記</th><th>患者の値の出し方</th><th>薬の例（ガイドライン）</th></tr></thead>
+            <tbody>
+              <tr><td><b>eGFR</b>（mL/分/1.73m²）</td><td>患者のeGFRをそのまま当てる。体格が標準から離れていれば補正を考える</td><td>バリシチニブ、オマリグリプチンなど</td></tr>
+              <tr><td><b>CCr</b>（mL/分）<br />酵素法が広まる前の薬</td><td>昔のCr測定法（Jaffe法）で出したCCrは、<b>体表面積の補正を外したeGFR</b>とほぼ同じ。<b>eGFR×体表面積÷1.73</b>を当てる</td><td>ファモチジン、ガンシクロビル、バルガンシクロビルなど</td></tr>
+              <tr><td><b>CCr</b>（mL/分）<br />酵素法が広まってからの薬</td><td><b>Cockcroft-Gault式の推算CCr</b>をそのまま当てる</td><td>ミロガバリン、ダビガトランなど</td></tr>
+              <tr><td>CCrだが、どちらの時代か分からない</td><td><b>eGFRと推算CCrの両方で見て</b>判断する</td><td>─</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note" style="margin-top:8px">アシクロビルのように実測の値で試験した薬は、添付文書が体表面積で補正したCCr（mL/分/1.73m²）で書かれていて、この場合は患者のeGFRをそのまま当てる。</p>
+
+        <div class="box-gray" style="margin-top:14px">
+          <div class="sub-title" style="margin-top:0">ダビガトランの市販直後の例</div>
+          市販直後調査で重い出血が出た人には腎障害のある人が多く、<b>22例は禁忌の高度腎障害</b>だった。そのうち15例は、<b>推算CCrでは30 mL/分未満で禁忌</b>になるのに、高齢で小柄な人が多く、<b>eGFR（mL/分/1.73m²）では30以上で禁忌にならない値</b>だった。<span class="em-change">CCrで決めた表に、補正したeGFRをそのまま当てた</span>ことなどが原因と考えられている。
+        </div>
+
+        <div class="sub-title">体格が標準から外れている人</div>
+        <div class="bullet"><span>・</span><span><b>やせた高齢者・筋肉の少ない人（サルコペニア）</b> ── Crが低く出るので、eGFRcrも推算CCrも高めに出る。シスタチンCのeGFRなど、筋肉量の影響が小さい値を考える</span></div>
+        <div class="bullet"><span>・</span><span><b>肥満の人</b> ── 実体重で推算CCrを出すと大きく出すぎる</span></div>
+        <div class="bullet"><span>・</span><span>腎機能別の量は<b>目安</b>で、極端な過量・過少にならないことが大事。<b>ハイリスク薬や特殊な体格では、より慎重に</b></span></div>
+
+        <div class="box-blue" style="margin-top:14px">
+          <div class="sub-title" style="margin-top:0">窓口でやること <span class="own">読み筋</span></div>
+          ①<b>最近の検査値（Cr・eGFR）と体重</b>を聞くか、検査値の記載がある処方箋で確かめる。②その薬の添付文書が<b>eGFRかCCrか</b>を見る。③CCrなら<b>体重を入れて推算CCrを出す</b>。この3つで、上の表のどの行かが決まる。DOACの具体的な数字は<a href="心房細動_抗凝固薬の用量.html">心房細動｜抗凝固薬の用量を決める</a>。
+        </div>
+      </div>
+
+      <!-- ── 2. シックデイ ── -->
+      <div class="card" id="c-sick">
+        <div class="card-title">体調を崩した日（シックデイ）</div>
+
+        <p style="margin-bottom:12px">CKDの人や高齢者は、脱水で腎臓の血流が落ちて<b>急性腎障害（AKI）を起こしやすい</b>。腎臓から出る薬はたまり、腎臓を傷める薬はさらに効いてくる。ガイドラインは<span class="marker">著しい体調不良なら、速やかに受診して薬の減量・休薬を含めた治療を受ける</span>ことを原則にしている。CKDのシックデイの定義やルールは、まだ確立していない。</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th class="nw">薬</th><th>脱水のときの扱い（ガイドライン）</th></tr></thead>
+            <tbody>
+              <tr><td class="nw"><b>NSAIDs</b></td><td><b>休薬</b>。急性腎障害が起きやすくなる。アセトアミノフェンなどで代わりがきくことが多い</td></tr>
+              <tr><td class="nw"><b>メトホルミン</b></td><td><b>休薬</b>。乳酸アシドーシスが起きやすくなり、起きると命に関わることが少なくない</td></tr>
+              <tr><td class="nw"><b>SGLT2阻害薬</b><br /><span class="sm">糖尿病・CKD目的</span></td><td><b>休薬</b>。ケトアシドーシスが起きやすくなり、脱水も進める</td></tr>
+              <tr><td class="nw">SGLT2阻害薬<br /><span class="sm">心不全目的</span></td><td>休薬で心不全が悪くなりうるので、<b>医療機関が病態に応じて判断</b></td></tr>
+              <tr><td class="nw">RA系阻害薬・利尿薬</td><td>急性腎障害は起きやすくなるが、休薬で心不全や心血管の病気が悪くなりうる。<b>医療機関で慎重に判断</b></td></tr>
+              <tr><td class="nw">活性型ビタミンD</td><td>著しい食欲不振や脱水では、高カルシウム血症と急性腎障害を防ぐために<b>一時休薬を考えてもよい</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note" style="margin-top:8px">「シックデイ」の目安として、英国では<b>嘔吐・下痢（軽くても）、発熱・大量の汗・震え</b>を挙げている。SGLT2阻害薬では、発熱・下痢・嘔吐や、食欲がなく十分に食べられないときを指す。</p>
+
+        <div class="box-gray" style="margin-top:14px">
+          <div class="sub-title" style="margin-top:0">自分で止めてもらうなら、正しくできる形で</div>
+          あらかじめ教えたシックデイのルールを、<b>患者が正しく実践できなかった例</b>が報告されている。ガイドラインは「まず受診」を基本にしつつ、<b>休日などで受診できないときに自己判断で止めてもらうなら、正しく実践できる十分な対策をとる</b>としている。<span class="em-change">「調子が悪いときは薬をやめて」と一括りで言わない</span>。止める薬と止めない薬を、名前で分けて渡す。
+        </div>
+
+        <div class="sub-title">造影剤を使う検査</div>
+        <p>ヨード造影剤のCTなどでは、造影剤による腎障害のおそれがあるので、<b>ビグアナイド薬は休薬し、NSAIDsは使わない</b>。CKDの人で予定があれば、休薬の仕方を具体的に伝える。</p>
+
+        <div class="memo" style="margin-top:16px">
+          <div class="ttl">自分メモ</div>
+          糖尿病の側のシックデイ（<a href="糖尿病_渡すときに見ること.html#c-sick">糖尿病｜シックデイ</a>）と重なるのは、メトホルミンとSGLT2阻害薬。CKDの側から足されるのは<b>NSAIDs・RA系阻害薬・利尿薬・活性型ビタミンD</b>。両方ある人には、両方の表を合わせて渡す。
+        </div>
+      </div>
+
+      <!-- ── 3. 鎮痛薬 ── -->
+      <div class="card" id="c-pain">
+        <div class="card-title">痛み止め<span class="qual">市販薬で3つ目が加わる</span></div>
+
+        <div class="box-blue" style="margin-bottom:14px">
+          <div class="sub-title" style="margin-top:0">利尿薬＋RA系阻害薬＋NSAIDs</div>
+          3つが重なると、腎臓の血流が落ちて<b>急性腎障害が特に起きやすい</b>（triple whammy＝3段攻撃と呼ばれる）。「高齢者の医薬品適正使用の指針」でも、この併用はなるべく避けるべきとされている。<span class="em-change">降圧薬で2つがそろっている人は多く、3つ目は市販の鎮痛薬や整形外科の処方で加わる</span>。
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th class="nw">鎮痛薬</th><th>CKDでの扱い（ガイドライン）</th></tr></thead>
+            <tbody>
+              <tr><td class="nw">NSAIDs</td><td>併用薬に注意し、<b>常用しない</b>。COX-2選択的阻害薬（セレコキシブ）でも、腎臓への安全性の明確な根拠はない</td></tr>
+              <tr><td class="nw">アセトアミノフェン</td><td>シックデイの代わりの薬になる。ただし長く続けたときの安全性の明確な根拠はない</td></tr>
+              <tr><td class="nw">ガバペンチノイド<br /><span class="sm">プレガバリン・ミロガバリン</span></td><td><b>少量から始め、副作用に注意</b>。腎臓から出る薬で、腎機能で量が決まっている</td></tr>
+              <tr><td class="nw">オピオイド</td><td>高い専門性が必要。使うなら少量から、副作用に注意</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note" style="margin-top:8px">どの鎮痛薬でも、量と回数と期間を最小限にするのが基本。</p>
+
+        <div class="memo" style="margin-top:16px">
+          <div class="ttl">自分メモ</div>
+          ガバペンチノイドは、腎機能が落ちた高齢者で<b>ふらつき・眠気・転倒</b>が出やすい薬。整形外科・ペインクリニックから出たら、腎機能と量を必ず突き合わせる。
+        </div>
+      </div>
+
+      <!-- ── 4. 抗ヘルペス薬 ── -->
+      <div class="card" id="c-herpes">
+        <div class="card-title">帯状疱疹・ヘルペスの薬</div>
+
+        <p><b>アシクロビル・バラシクロビル・ファムシクロビル</b>は腎臓から出る薬で、CKDでは排泄が遅れて血中濃度が上がるので、<span class="marker">腎機能に合わせて減量</span>する。<b>減量しても一定の頻度で副作用が出る</b>ので、始めたあとは注意深く様子を見る。</p>
+        <p style="margin-top:10px"><b>アメナメビル</b>は肝臓で代謝される薬で、腎機能での量の調整は不要。ただしCYP3Aで代謝され、<b>CYP3Aを誘導もする</b>ので、併用する薬の効きが弱まることがある。リファンピシンは併用禁忌。</p>
+
+        <div class="box-gray" style="margin-top:14px">
+          <div class="sub-title" style="margin-top:0">急に出る処方なので、腎機能の情報がないことが多い <span class="own">読み筋</span></div>
+          帯状疱疹は皮膚科・内科から急に出て、<b>いつもの薬局で腎機能を把握していない</b>ことが多い。高齢者に通常量のバラシクロビルが出ていたら、<b>最近の腎機能の検査値を聞く</b>。分からなければ処方医に確かめる。
+        </div>
+
+        <div class="sub-title">副作用として見るもの</div>
+        <p>添付文書には、<b>減量が適切でなく過量になった腎障害の人に、精神神経症状や腎機能障害が出た</b>例が載っている。精神神経症状は、<span class="marker">意識障害・せん妄・幻覚・錯乱・痙攣</span>など。3剤とも、意識障害があらわれることがあるので<b>自動車の運転などに注意するよう説明する</b>ことになっていて、バラシクロビルとアシクロビルは、腎機能障害のある人ではとくに出やすいので状態によっては従事させないよう注意、と続く。</p>
+        <p class="note" style="margin-top:8px">腎機能別の用量表の単位は、バラシクロビル・ファムシクロビルがCCr（mL/分）、アシクロビルがCCr（mL/分/1.73m²）。</p>
+      </div>
+
+      <!-- ── 5. 毎回聞くこと ── -->
+      <div class="card" id="c-ask">
+        <div class="card-title">毎回聞くこと <span class="own">読み筋</span></div>
+        <div class="bullet"><span>・</span><span><b>最近の腎機能の値と体重。</b>前回から下がっていないか。体重が減っていれば推算CCrも下がる</span></div>
+        <div class="bullet"><span>・</span><span><b>体調を崩していないか。</b>嘔吐・下痢・発熱・食欲不振。夏場の脱水も</span></div>
+        <div class="bullet"><span>・</span><span><b>市販薬・サプリメント。</b>とくに鎮痛薬。腰痛・膝の痛みで買っていることが多い</span></div>
+        <div class="bullet"><span>・</span><span><b>ほかの医療機関の処方。</b>抗ヘルペス薬・ガバペンチノイド・抗菌薬など、腎機能で量が変わる薬が急に入ってくる</span></div>
+        <div class="bullet"><span>・</span><span><b>むくみ・息切れ。</b>体液がたまっていないか。炭酸水素ナトリウムを服用している人は、ナトリウムでむくみが悪くなりうる</span></div>
+        <div class="bullet"><span>・</span><span><b>造影検査・手術の予定。</b>メトホルミン・SGLT2阻害薬の休薬が必要になる</span></div>
+        <p class="note" style="margin-top:10px">カリウム・リンの食事は、管理栄養士の指導内容に合わせる。「野菜と果物は全部控える」と自己流で制限していないかを聞く（<a href="慢性腎臓病.html#c-read">総論｜CKDでは通らない読み替え</a>）。</p>
+
+        <div class="memo" style="margin-top:16px">
+          <div class="ttl">宿題</div>
+          <ul>
+            <li>「腎機能で用量が変わる薬」の横串ページで、この最初のカードの当て方を使って、薬局でよく出る薬（H2ブロッカー・抗菌薬・抗ヘルペス薬・ガバペンチノイド・DOAC・糖尿病の薬）を一覧にする。</li>
+            <li>サプリメント・健康食品で腎臓に関わるもの（カリウムを多く含むもの、腎障害の報告があるもの）を調べる。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ── 出典 ── -->
+      <div class="card">
+        <div class="card-title">参考にした資料</div>
+        <div class="ref-links">
+          <div class="row"><span class="lab">土台：</span><span>エビデンスに基づくCKD診療ガイドライン2023（日本腎臓学会）第11章 薬物治療（11-6 腎機能推算式、11-7 抗ウイルス薬、11-8 鎮痛薬、11-9 シックデイ）</span></div>
+          <div class="row"><span class="lab">入手先：</span><a href="ガイドライン.html">ガイドラインの一覧</a></div>
+          <div class="row"><span class="lab">用量・禁忌：</span><a href="https://www.pmda.go.jp/PmdaSearch/iyakuSearch/" target="_blank" rel="noopener">PMDA 医療用医薬品 添付文書等検索</a></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

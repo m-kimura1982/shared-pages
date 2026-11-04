@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>慢性腎臓病（CKD）｜疾患の勉強メモ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="shikkan.css" />
+    <style>
+      /* CKD重症度分類（ヒートマップ）。リスクの順序がある表なので、濃淡で段階を示す。色だけに頼らず各マスに段階の名前を書く */
+      table.heat td.h { text-align:center; font-weight:700; white-space:nowrap; }
+      table.heat th + th { min-width:3.5em; }
+      table.heat .h1 { background:#e3efe0; color:#3d6b2e; }
+      table.heat .h2 { background:#f3e8d0; color:#7a5718; }
+      table.heat .h3 { background:#f6d6bf; color:#7a3a10; }
+      table.heat .h4 { background:#ecbcb2; color:#6b2118; }
+    </style>
+  </head>
+  <body>
+    <script src="../../assets/site-header.js" defer></script>
+    <script src="../../assets/page-toc.js" defer></script>
+    <script src="shikkan-nav.js" defer></script>
+
+    <div class="page">
+      <div class="page-title">
+        <h1>慢性腎臓病（CKD）</h1>
+        <p>透析の前の段階（保存期）の成人が中心。透析・腎移植・小児・腎炎の各論は扱わない</p>
+      </div>
+
+      <div class="card" data-toc="skip">
+        <div class="sibs"></div>
+      </div>
+
+      <div class="page-toc-wrap"><div id="page-toc"></div></div>
+
+      <div class="card" data-toc="skip">
+        <div class="card-title">このページで覚えること</div>
+        <div class="keys">
+          <div><span class="ck">✓</span><span class="tx">治療の目的は<b>透析を遠ざけることと、心血管の病気を防ぐこと</b>の2つ。蛋白尿はその両方の強い危険因子<a class="go" href="#c-why">→</a></span></div>
+          <div><span class="ck">✓</span><span class="tx">重症度は<b>eGFR（G区分）と蛋白尿（A区分）の掛け算</b>で読む。eGFRが同じでも、蛋白尿があれば一段危ない<a class="go" href="#c-class">→</a></span></div>
+          <div><span class="ck">✓</span><span class="tx">腎臓を守る薬は<b>RA系阻害薬・SGLT2阻害薬・MRA</b>。どれも服用開始時にeGFRが少し下がるのは想定内で、<b>3か月以内に30%以上</b>下がったら専門医へ<a class="go" href="#c-whole">→</a></span></div>
+          <div><span class="ck">✓</span><span class="tx">処方は<b>①腎臓を守る薬 ②合併症を補う薬 ③ほかの病気の薬</b>に分けて読む。薬局の本題は③の量と、体調を崩した日の扱い<a class="go" href="#c-read">→</a></span></div>
+          <div><span class="ck">✓</span><span class="tx">「水をたくさん飲む」「野菜と果物は全部控える」「G4になったらARBはやめる」は、どれもガイドラインの考え方と合わない<a class="go" href="#c-read">→</a></span></div>
+        </div>
+      </div>
+
+      <!-- ── 1. なぜ治療するのか ── -->
+      <div class="card" id="c-why">
+        <div class="card-title">なぜ治療するのか<span class="qual">出口は2つある</span></div>
+
+        <p>CKDは、腎臓が傷んでいる状態、または腎臓の働き（GFR）が落ちた状態が<b>3か月を超えて続く</b>ものをまとめた呼び名。原因の病気は問わない。日本の保存期のCKDは、2015年の推計で<b>約1,480万人</b>。高齢化で増えている。</p>
+
+        <div class="split" style="margin-top:14px">
+          <div class="pal-blue">
+            <div class="t">腎臓の側の出口</div>
+            <b>末期腎不全 ── 透析・腎移植</b>。腎臓の働きは一度落ちると戻りにくいので、落ちる速さを遅くすることが治療になる
+          </div>
+          <div class="pal-cream">
+            <div class="t">血管の側の出口</div>
+            <b>心筋梗塞・脳卒中・心不全</b>。CKDは心血管の病気の危険因子で、腎臓が悪い人ほど心臓・血管の病気が増える
+          </div>
+        </div>
+
+        <p style="margin-top:12px">ガイドラインは、<span class="marker">蛋白尿・アルブミン尿を、末期腎不全・心血管死・全死亡の強い危険因子</span>としている。蛋白尿を減らすこと自体が、両方の出口を遠ざける治療になる。</p>
+
+        <div class="box-blue" style="margin-top:14px">
+          <div class="sub-title" style="margin-top:0">薬局にとっては、もう1つの面がある <span class="own">読み筋</span></div>
+          CKDの人は、<b>薬で腎臓をさらに傷めやすく（薬剤性の急性腎障害＝AKI）、腎臓から排泄される薬がたまりやすい</b>。体調を崩して脱水になった日は、この2つが一度に来る。CKDは「腎臓の薬を服用している人」より<span class="em-change">「ほかの薬の量と組み合わせに気をつける人」</span>として処方を見る場面のほうが多い。
+        </div>
+
+        <div class="memo" style="margin-top:16px">
+          <div class="ttl">自分メモ</div>
+          「腎臓病なのに心臓の話？」と思われがちだが、出口が2つあると思えば、CKDの人にスタチンや降圧薬が厚く出ている理由がつながる。腎臓のためだけの処方ではない。
+        </div>
+      </div>
+
+      <!-- ── 2. 分類 ── -->
+      <div class="card" id="c-class">
+        <div class="card-title">分類<span class="qual">eGFRと蛋白尿の掛け算</span></div>
+
+        <div class="sub-title">CKDと言う条件</div>
+        <p style="margin-bottom:8px">次のどちらか、または両方が<b>3か月を超えて続く</b>とCKDと診断する。</p>
+        <div class="bullet"><span>①</span><span><b>腎臓が傷んでいることが分かる</b> ── 尿の異常、画像、血液検査、病理。とくに<b>蛋白尿 0.15 g/gCr以上（アルブミン尿なら30 mg/gCr以上）</b>が重要</span></div>
+        <div class="bullet"><span>②</span><span><b>GFRが60 mL/分/1.73m²未満</b></span></div>
+        <p class="note" style="margin-top:8px">「3か月」があるので、1回の採血でeGFRが低かっただけではCKDとは言わない。脱水や薬で一時的に下がること（AKI）と分けるため。</p>
+
+        <div class="sub-title">重症度は3つの組み合わせ（CGA分類）</div>
+        <p style="margin-bottom:12px"><b>原因（C）・GFR（G）・蛋白尿（A）</b>を並べて書く。例）糖尿病性腎臓病 G3aA2。リスクは<span class="marker">GとAの両方で決まり、右下ほど高い</span>。</p>
+
+        <div class="table-wrap">
+          <table class="heat">
+            <thead>
+              <tr><th>GFR区分<br /><span class="sm">mL/分/1.73m²</span></th><th style="text-align:center">A1<br /><span class="sm">正常</span></th><th style="text-align:center">A2<br /><span class="sm">微量アルブミン尿・軽度蛋白尿</span></th><th style="text-align:center">A3<br /><span class="sm">顕性アルブミン尿・高度蛋白尿</span></th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="nw">G1<br />≧90</td><td class="h h1">緑</td><td class="h h2">黄</td><td class="h h3">橙</td></tr>
+              <tr><td class="nw">G2<br />60〜89</td><td class="h h1">緑</td><td class="h h2">黄</td><td class="h h3">橙</td></tr>
+              <tr><td class="nw">G3a<br />45〜59</td><td class="h h2">黄</td><td class="h h3">橙</td><td class="h h4">赤</td></tr>
+              <tr><td class="nw">G3b<br />30〜44</td><td class="h h3">橙</td><td class="h h4">赤</td><td class="h h4">赤</td></tr>
+              <tr><td class="nw">G4<br />15〜29</td><td class="h h4">赤</td><td class="h h4">赤</td><td class="h h4">赤</td></tr>
+              <tr><td class="nw">G5<br />＜15</td><td class="h h4">赤</td><td class="h h4">赤</td><td class="h h4">赤</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note" style="margin-top:8px">緑を基準に、黄→橙→赤の順で死亡・末期腎不全・心血管死のリスクが上がる。A区分の数字は、糖尿病では尿アルブミン/Cr比（A1 30未満・A2 30〜299・A3 300以上 mg/gCr）、それ以外は尿蛋白/Cr比（A1 0.15未満・A2 0.15〜0.49・A3 0.50以上 g/gCr）。2023年版でG5の呼び名は「末期腎不全」から「高度低下〜末期腎不全」に変わった（G5でもすぐ透析とは限らないため）。</p>
+
+        <div class="box-gray" style="margin-top:14px">
+          <div class="sub-title" style="margin-top:0">eGFRが同じでも、蛋白尿で話が変わる <span class="own">読み筋</span></div>
+          G3a（eGFR 45〜59）は、蛋白尿がなければ黄、顕性なら赤。<b>eGFRだけ聞いて「まだ大丈夫」と言えない</b>のはこのため。とくに<b>糖尿病の人は、尿アルブミンを測っているかどうか</b>で見えるものが違う（糖尿病での尿アルブミン定量は、保険では3か月に1回）。
+        </div>
+
+        <div class="sub-title">原因の病気</div>
+        <p>代表は<b>糖尿病性腎臓病（DKD）、高血圧による腎硬化症、慢性糸球体腎炎（IgA腎症など）、多発性嚢胞腎</b>。原因で治療と予後が変わるので、ガイドラインは原因を探して重症度に並べて書くことを求めている。高齢者では、<b>腎機能の低下が加齢だけによるものか、腎臓の病気によるものか</b>が問題になる。</p>
+
+        <div class="sub-title">腎機能の測り方</div>
+        <p style="margin-bottom:8px">ふだんは<b>血清Cr・年齢・性別から出す日本人のeGFR（eGFRcr）</b>を使う。Crは筋肉から出るので、<b>筋肉が少ない人（やせた高齢者・寝たきり）ではeGFRcrが実際より高く出る</b>。そういう人には、筋肉量に左右されないシスタチンCのeGFR（eGFRcys）を使う。</p>
+        <p class="note">薬の量を決めるときにどの値を使うかは別の話で、<a href="慢性腎臓病_渡すときに見ること.html#c-egfr">渡すときに見ること｜薬の量に使う腎機能</a>にまとめた。</p>
+
+        <div class="sub-title">進み方の見方</div>
+        <div class="bullet"><span>・</span><span><b>1年あたり−5 mL/分/1.73m²より速く下がる</b>のは急速な進行（rapid progression）とされる</span></div>
+        <div class="bullet"><span>・</span><span>1〜3年で<b>eGFRが30〜40%下がる</b>こと、血清Crが2倍になることは、末期腎不全の前ぶれになる</span></div>
+        <div class="bullet"><span>・</span><span><span class="marker">3か月以内に30%以上</span>下がったら、速やかに腎臓専門医へ紹介する</span></div>
+
+        <div class="sub-title">腎臓専門医へ紹介する目安</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th class="nw">G区分</th><th>紹介する目安</th></tr></thead>
+            <tbody>
+              <tr><td class="nw">G1・G2</td><td>血尿があればA2・A3、血尿がなければA3</td></tr>
+              <tr><td class="nw">G3a</td><td>40歳以上はA2・A3。40歳未満は蛋白尿にかかわらず</td></tr>
+              <tr><td class="nw">G3b〜G5</td><td><b>蛋白尿にかかわらず</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note" style="margin-top:8px">どの区分でも、3か月以内に30%以上の悪化があれば速やかに紹介。健診では、尿蛋白1＋以上、（±）が2年続く、eGFR 45未満（40歳未満は60未満）が受診を勧める基準。</p>
+
+        <div class="memo" style="margin-top:16px">
+          <div class="ttl">自分メモ</div>
+          健診結果を持ってきて「腎臓の数字が引っかかった」と相談されたら、上の健診の基準がそのまま使える。<b>尿蛋白（±）が2年続いているだけでも受診の対象</b>なのは意外と知られていない。
+        </div>
+      </div>
+
+      <!-- ── 3. 治療の全体像 ── -->
+      <div class="card" id="c-whole">
+        <div class="card-title">治療の全体像<span class="qual">生活・血圧・腎臓を守る薬・合併症</span></div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <div class="t">生活の土台</div>
+              <div class="d"><b>禁煙、食塩6 g/日未満、肥満なら減量、できる範囲の運動</b>。たんぱく質を減らす食事は、<b>腎臓専門医と管理栄養士がついた管理のもとで、エネルギーを保ったうえで</b>行う。<b>水を意図的に多く飲むことは勧めない</b>（腎臓を守る効果が見られなかった）。インフルエンザ・肺炎球菌・B型肝炎のワクチンは強く勧められている。</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <div class="t">血圧を下げる</div>
+              <div class="d">目標は<b>糖尿病と蛋白尿の有無</b>で決まる（下の表）。<b>蛋白尿があれば、ACE阻害薬かARBが第1選択</b>。蛋白尿がなければ、ACE阻害薬・ARB・Ca拮抗薬・サイアザイド系利尿薬から患者に合わせて選ぶ。</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <div class="t">腎臓を守る薬を重ねる</div>
+              <div class="d"><b>SGLT2阻害薬</b>は、糖尿病性腎臓病で強く勧められ、糖尿病がなくても蛋白尿があれば勧められる。糖尿病性腎臓病では<b>MRA</b>も提案されている。詳しくは<a href="慢性腎臓病_薬物療法.html">薬物療法</a>。</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <div class="t">合併症を補う</div>
+              <div class="d">腎機能が落ちてくると、<b>カリウム・貧血・リンとカルシウム・酸（アシドーシス）・尿酸・脂質</b>の管理が加わる。処方が増えていくのはこの段。</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-body">
+              <div class="t">腎代替療法の準備</div>
+              <div class="d">透析（血液・腹膜）か腎移植かを選んで準備する時間が必要なので、早めに専門医が説明を始める。このページでは扱わない。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-title">血圧の目標（診察室血圧）</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>どういう人か</th><th class="nw">目標</th></tr></thead>
+            <tbody>
+              <tr><td>糖尿病がある</td><td class="nw"><b>130/80未満</b></td></tr>
+              <tr><td>糖尿病がない・蛋白尿あり（A2・A3）</td><td class="nw"><b>130/80未満</b></td></tr>
+              <tr><td>糖尿病がない・蛋白尿なし（A1）</td><td class="nw">140/90未満</td></tr>
+              <tr><td>75歳以上</td><td>150/90未満。副作用がなく耐えられれば140/90未満</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note" style="margin-top:8px">G1・G2では推奨、G3〜G5では提案と、腎機能が落ちるほど推奨の強さが弱まる。どの場合も、下げすぎによる低血圧・めまいに注意する。</p>
+
+        <div class="box-blue" style="margin-top:14px">
+          <div class="sub-title" style="margin-top:0">服用開始時にeGFRが下がるのは想定内</div>
+          RA系阻害薬とSGLT2阻害薬は、<b>腎臓の中の圧を下げて守る</b>薬なので、服用開始時にeGFRが少し下がるのが普通。<span class="em-change">3か月以内に30%以上下がるときは腎臓専門医に紹介</span>する、が線引き。「数字が下がった＝腎臓に悪い薬」ではない。
+        </div>
+
+        <div class="memo" style="margin-top:16px">
+          <div class="ttl">自分メモ</div>
+          「腎臓に良いから水をたくさん」は、患者が自分でやっていることが多い。ガイドラインは<b>意図的に増やさない</b>ことを提案していて、心不全を合併していればむしろ逆効果になる（<a href="心不全_うっ血と利尿薬.html">うっ血と利尿薬</a>）。
+        </div>
+      </div>
+
+      <!-- ── 4. 処方を疾患の切り口で読む ── -->
+      <div class="card" id="c-read">
+        <div class="card-title">処方を疾患の切り口で読む<span class="qual">このページの本題</span></div>
+
+        <div class="lead-note">
+          CKDの人の処方は長くなりやすい。<b>①腎臓を守る薬 ②合併症を補う薬 ③ほかの病気の薬</b>の3つに分けると、<span class="em-change">何が治療で、何が量の確認の対象か</span>が見える。
+        </div>
+
+        <div class="sub-title">まず3つに分ける</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th class="nw">分け方</th><th>主な薬</th></tr></thead>
+            <tbody>
+              <tr><td class="nw">①腎臓を守る</td><td>ACE阻害薬・ARB、SGLT2阻害薬、MRA（フィネレノンなど）</td></tr>
+              <tr><td class="nw">②合併症を補う</td><td>降圧薬の上乗せ（Ca拮抗薬・利尿薬）、カリウム吸着薬、炭酸水素ナトリウム、リン吸着薬、活性型ビタミンD、腎性貧血の薬（ESA・HIF-PH阻害薬・鉄剤）、尿酸を下げる薬、スタチン、球形吸着炭</td></tr>
+              <tr><td class="nw">③ほかの病気の薬</td><td>腎臓から出る薬（量を確認）、腎臓を傷めうる薬（NSAIDsなど）。<b>薬局の本題はここ</b>（<a href="慢性腎臓病_渡すときに見ること.html">渡すときに見ること</a>）</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sub-title">逆から読む ── 処方で段階が見える <span class="own">読み筋</span></div>
+        <div class="bullet"><span>・</span><span><b>ARBかACE阻害薬＋SGLT2阻害薬</b> ── 蛋白尿のあるCKDの、いまの基本の形</span></div>
+        <div class="bullet"><span>・</span><span><b>ダパグリフロジン10mgやエンパグリフロジン10mgが、ほかに糖尿病の薬なしで出ている</b> ── 糖尿病ではなく、CKDか心不全が理由の可能性（<a href="糖尿病.html#c-read">糖尿病｜同じ薬でも糖尿病以外の顔がある</a>）</span></div>
+        <div class="bullet"><span>・</span><span><b>カリウム吸着薬</b>（ポリスチレンスルホン酸カルシウム、ジルコニウムシクロケイ酸ナトリウムなど） ── 高カリウム血症。RA系阻害薬を続けるために出ていることもある</span></div>
+        <div class="bullet"><span>・</span><span><b>炭酸水素ナトリウム</b> ── 代謝性アシドーシスの補正。多くはG3以降</span></div>
+        <div class="bullet"><span>・</span><span><b>リン吸着薬・活性型ビタミンD</b> ── リンとカルシウム・骨の管理（CKD-MBD）が始まっている</span></div>
+        <div class="bullet"><span>・</span><span><b>HIF-PH阻害薬（〜デュスタット）や、注射のESA</b> ── 腎性貧血。腎臓が造血ホルモン（エリスロポエチン）を作れなくなっている段階</span></div>
+        <div class="bullet"><span>・</span><span><b>球形吸着炭</b> ── 腎機能の低下を遅らせる目的。ほかの薬と同時に飲まない薬なので、飲む時間を確かめる</span></div>
+        <p class="note" style="margin-top:8px">②の薬が増えるほど、腎機能が落ちた段階にいる。<b>②が並んでいる人の③は、量の確認を一段厳しくする</b>。</p>
+
+        <div class="sub-title">CKDでは通らない読み替え</div>
+        <p style="margin-bottom:10px">ふだんの感覚や、患者の思い込みと逆になるところ。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>つい思うこと</th><th>CKDでは</th></tr></thead>
+            <tbody>
+              <tr><td class="ng">腎臓のために水をたくさん飲む</td><td>意図的に増やしても、腎臓を守る効果も生命予後の改善も見られなかった。<b>増やさない</b>ことを提案している</td></tr>
+              <tr><td class="ng">ARB・SGLT2阻害薬を始めてeGFRが下がった。腎臓に悪い</td><td>服用開始時の低下は通常のこと。<b>3か月以内に30%以上</b>なら専門医へ</td></tr>
+              <tr><td class="ng">G4・G5になったらARBはやめる</td><td>中止で生命予後が悪くなる可能性があり、<b>一律には中止しない</b>ことを提案している。少量から使い、腎機能の悪化や高カリウムが出たら減量・中止</td></tr>
+              <tr><td class="ng">野菜と果物はカリウムが多いから全部控える</td><td>制限を支持する報告はなく、野菜・果物の多い食事は死亡の少なさと関連している。<b>高カリウムの人は管理栄養士と原因を探す</b>。代謝性アシドーシスがあれば、野菜・果物を増やす食事療法が提案されている</td></tr>
+              <tr><td class="ng">Crが正常だから腎機能は大丈夫</td><td><b>やせた高齢者はCrが低く出て、eGFRが高めに出る</b>。体格を見て判断する</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="memo" style="margin-top:16px">
+          <div class="ttl">自分メモ</div>
+          ①②③の分け方は、糖尿病の「インスリンを出させるかどうかで3つに分ける」と同じ発想。CKDでは③が圧倒的に多く、<b>腎臓内科以外の処方で腎機能の確認が要る</b>のが薬局の出番になる。
+        </div>
+        <div class="memo" style="margin-top:10px">
+          <div class="ttl">宿題</div>
+          横串ページ「腎機能で用量が変わる薬」は、このCKDのページの<a href="慢性腎臓病_渡すときに見ること.html#c-egfr">薬の量に使う腎機能</a>を出発点にして作る。
+        </div>
+      </div>
+
+      <!-- ── 出典 ── -->
+      <div class="card">
+        <div class="card-title">参考にした資料</div>
+        <div class="ref-links">
+          <div class="row"><span class="lab">土台：</span><span>エビデンスに基づくCKD診療ガイドライン2023（日本腎臓学会）第1章 診断、第2章 高血圧・CVD、第6章 生活習慣、第8章 栄養、第11章 薬物治療、第13章 高齢者CKD</span></div>
+          <div class="row"><span class="lab">入手先：</span><a href="ガイドライン.html">ガイドラインの一覧</a>（全文PDFは日本腎臓学会のサイト）</div>
+          <div class="row"><span class="lab">効能・用量：</span><a href="https://www.pmda.go.jp/PmdaSearch/iyakuSearch/" target="_blank" rel="noopener">PMDA 医療用医薬品 添付文書等検索</a></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
