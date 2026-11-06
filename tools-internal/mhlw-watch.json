@@ -11,6 +11,10 @@
     { "name": "介護保険最新情報", "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/index_00010.html" },
     { "name": "関東信越厚生局 特掲診療料の施設基準等（届出様式・訂正）", "url": "https://kouseikyoku.mhlw.go.jp/kantoshinetsu/shinsei/shido_kansa/shitei_kijun/tokukei_shinryo_r08.html" }
   ],
+  "_中身の控えの説明": "更新日だけ変わって新しい題名が出ないページは、本文の行とリンク先のファイルまで控えて前回と比べる（控えは private/厚労省チェック/本文控え/）。keepExt の拡張子のファイルは丸ごと保存し、中身が変わったら古い版を残す。PDFは大きいので大きさだけ比べる。",
+  "contentWatch": [
+    { "name": "OTC類似薬の一部保険外療養", "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/juuyou/otc.html", "keepExt": ["xlsx"] }
+  ],
   "_復旧待ちの説明": "落ちているページが戻ったかだけを見る。title に downTitle を含む・転送される・開けない間は「まだ」。戻ったら★で知らせる。用が済んだら消す。",
   "waitFor": [],
   "keywords": [
