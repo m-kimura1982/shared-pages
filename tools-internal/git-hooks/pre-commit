@@ -1,0 +1,4 @@
+#!/bin/sh
+# 公開前の検問（このリポジトリは public）。中身は tools-internal/check-commit-safety.js
+# 有効にする：git config core.hooksPath tools-internal/git-hooks
+exec node "$(git rev-parse --show-toplevel)/tools-internal/check-commit-safety.js"
