@@ -2069,6 +2069,8 @@
         // #s2q10 等で該当Qを開く／#kai-10 で発出回フィルタ
         function openFromHash() {
           const h = location.hash.replace('#', '');
+          // #kai-latest はいちばん新しい回（トップの「最新の疑義解釈」から来る。回が増えてもリンクを直さなくてよい）
+          if (h === 'kai-latest') { applyFilter(kaiList[kaiList.length - 1]); return; }
           if (h.indexOf('kai-') === 0) { applyFilter(h.slice(4)); return; }
           if (!h) { applyFilter('all'); return; }
           let target = null;

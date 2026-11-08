@@ -284,6 +284,12 @@
         header h1 { font-size: 16px; }
         .header-logo { position: static; height: 22px; opacity: 0.8; }
       }
+      /* 最新の疑義解釈（assets/build-gigi-list.js が中身を作る） */
+      .gigi-latest { display:flex; align-items:baseline; gap:6px 12px; flex-wrap:wrap; background:#e4f0f8; border-radius:6px; padding:11px 16px; margin:0 0 1.25rem; color:#222; text-decoration:none; font-size:14px; line-height:1.6; }
+      .gigi-latest .gl-lab { font-weight:900; color:#1e5fa8; white-space:nowrap; }
+      .gigi-latest .gl-body { flex:1 1 16em; }
+      .gigi-latest .gl-go { color:#1e5fa8; font-weight:700; white-space:nowrap; margin-left:auto; }
+      .gigi-latest:hover .gl-go { text-decoration:underline; }
     </style>
   <link rel="stylesheet" href="assets/hub.css" />
 </head>
@@ -363,6 +369,14 @@
         </a>
       </div>
 
+      <!-- gigi-latest -->
+      <a class="gigi-latest" href="改定資料/疑義解釈まとめ2026.html#kai-14">
+        <span class="gl-lab">最新の疑義解釈</span>
+        <span class="gl-body">その14（令和８年10月28日）かかりつけ薬剤師の地域活動（学校薬剤師の届出書類）・特定薬剤管理指導加算３（バイオ後続品）</span>
+        <span class="gl-go">この回だけ見る ›</span>
+      </a>
+      <!-- /gigi-latest -->
+
       <!-- 検索窓 -->
       <div class="search-box">
         <div class="search-inner">
@@ -383,7 +397,7 @@
       <div class="card-list" style="margin-top:0">
         <a class="card" href="ツール/gigi-search.html">
           <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-          <span class="card-title">疑義解釈 検索ツール　<small style="font-weight:400;color:#5e6470;">H18〜R8年度 全7,571件</small></span>
+          <span class="card-title">疑義解釈 検索ツール　<small style="font-weight:400;color:#5e6470;">H18〜R8年度 約7,600件</small></span>
           <span class="card-arrow">›</span>
         </a>
         <a class="card" href="ツール/服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html">

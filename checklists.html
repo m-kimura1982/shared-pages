@@ -9,7 +9,7 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 :root {
-  --blue: #1e5fa8; --blue-light: #e8f0fb; --ink: #222222; --sub: #666666;
+  --blue: #1e5fa8; --box-blue: #e4f0f8; --ink: #222222; --txt-3: #5e6470;
   --border: #d8dde8; --white: #ffffff; --bg: #f3f4f6;
   --radius: 10px; --radius-sm: 6px;
   --text-xs: 13px; --text-sm: 15px; --text-md: 16px; --text-lg: 18px; --text-xl: 22px;
@@ -39,17 +39,17 @@ body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: va
 }
 .tool-icon {
   width: 48px; height: 48px; flex-shrink: 0;
-  background: var(--blue-light);
+  background: var(--box-blue);
   border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
 }
 .tool-icon svg { width: 24px; height: 24px; stroke: var(--blue); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .tool-body { flex: 1; }
 .tool-name { font-size: var(--text-lg); font-weight: 700; margin-bottom: 4px; }
-.tool-desc { font-size: var(--text-xs); color: var(--sub); }
-.tool-arrow { font-size: 20px; color: var(--sub); flex-shrink: 0; }
+.tool-desc { font-size: var(--text-xs); color: var(--txt-3); }
+.tool-arrow { font-size: 20px; color: var(--txt-3); flex-shrink: 0; }
 
-.note { font-size: 12px; color: var(--sub); padding: 0 2px; }
+.note { font-size: 12px; color: var(--txt-3); padding: 0 2px; }
 
 .group { display: flex; flex-direction: column; gap: 12px; }
 .group + .group { margin-top: 18px; }

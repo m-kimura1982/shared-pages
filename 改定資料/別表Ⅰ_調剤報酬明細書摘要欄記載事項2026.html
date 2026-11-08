@@ -161,7 +161,7 @@ table.main-tbl tbody > tr:first-child td { border-top: 1px solid var(--border); 
 
 <div class="title-wrap">
   <h1>別表Ⅰ　調剤報酬明細書の「摘要」欄への記載事項等一覧</h1>
-  <p>令和8年6月1日適用　｜　全46項目</p>
+  <p>令和8年6月1日適用　｜　全<span id="item-total">47</span>項目</p>
 </div>
 
 <div class="toggle-bar">
@@ -494,6 +494,9 @@ table.main-tbl tbody > tr:first-child td { border-top: 1px solid var(--border); 
       const noCell = tr.querySelector('td.c-no');
       if (noCell) { tr.classList.add('item-start'); noCell.textContent = ++itemNo; }
     });
+    // 見出しの項目数も同じ数え方で出す（手書きの数がずれないように）
+    const total = document.getElementById('item-total');
+    if (total) total.textContent = itemNo;
   }
 
   const body = document.body;

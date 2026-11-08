@@ -9,7 +9,7 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 :root {
-  --blue: #1e5fa8; --blue-light: #e8f0fb; --ink: #222222; --sub: #666666;
+  --blue: #1e5fa8; --box-blue: #e4f0f8; --ink: #222222; --txt-3: #5e6470;
   --border: #d8dde8; --white: #ffffff; --bg: #f3f4f6;
   --radius: 10px; --radius-sm: 6px;
   --text-xs: 13px; --text-sm: 15px; --text-md: 16px; --text-lg: 18px; --text-xl: 22px;
@@ -39,17 +39,17 @@ body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: va
 }
 .tool-icon {
   width: 48px; height: 48px; flex-shrink: 0;
-  background: var(--blue-light);
+  background: var(--box-blue);
   border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
 }
 .tool-icon svg { width: 24px; height: 24px; stroke: var(--blue); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .tool-body { flex: 1; }
 .tool-name { font-size: var(--text-lg); font-weight: 700; margin-bottom: 4px; }
-.tool-desc { font-size: var(--text-xs); color: var(--sub); }
-.tool-arrow { font-size: 20px; color: var(--sub); flex-shrink: 0; }
+.tool-desc { font-size: var(--text-xs); color: var(--txt-3); }
+.tool-arrow { font-size: 20px; color: var(--txt-3); flex-shrink: 0; }
 
-.note { font-size: 12px; color: var(--sub); padding: 0 2px; }
+.note { font-size: 12px; color: var(--txt-3); padding: 0 2px; }
 
 @media (max-width: 640px) {
   body { padding: 14px 12px 40px; }
@@ -99,6 +99,7 @@ body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: va
       </div>
       <div class="tool-body">
         <div class="tool-name">入力画面で解説｜2026改定後の入力方法（Pharnes）</div>
+        <div class="tool-desc">新設・変更された加算・管理料を、レセコンの画面のどこで入力するか画像つきで確認できます</div>
       </div>
       <span class="tool-arrow">›</span>
     </a>
@@ -109,7 +110,40 @@ body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: va
       </div>
       <div class="tool-body">
         <div class="tool-name">別表Ⅰ　調剤報酬明細書の「摘要」欄への記載事項等一覧</div>
-        <div class="tool-desc">令和8年6月1日適用　｜　全44項目</div>
+        <div class="tool-desc">令和8年6月1日適用　｜　全47項目</div>
+      </div>
+      <span class="tool-arrow">›</span>
+    </a>
+
+    <a class="tool-card" href="改定資料/選定療養_概要2026.html">
+      <div class="tool-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
+      </div>
+      <div class="tool-body">
+        <div class="tool-name">選定療養の改定ポイント</div>
+        <div class="tool-desc">長期収載品（先発品）を希望されたときの特別の料金が、2026年6月からどう変わったかをまとめています</div>
+      </div>
+      <span class="tool-arrow">›</span>
+    </a>
+
+    <a class="tool-card" href="ツール/選定療養費計算ツール.html">
+      <div class="tool-icon">
+        <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="8" y2="11.01"/><line x1="12" y1="11" x2="12" y2="11.01"/><line x1="16" y1="11" x2="16" y2="11.01"/><line x1="8" y1="15" x2="8" y2="15.01"/><line x1="12" y1="15" x2="12" y2="15.01"/><line x1="16" y1="15" x2="16" y2="18"/></svg>
+      </div>
+      <div class="tool-body">
+        <div class="tool-name">選定療養 計算ツール</div>
+        <div class="tool-desc">長期収載品の特別の料金と窓口負担を、複数品目まとめて計算できます</div>
+      </div>
+      <span class="tool-arrow">›</span>
+    </a>
+
+    <a class="tool-card" href="チェックリスト/選定療養_実務チェックリスト.html">
+      <div class="tool-icon">
+        <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </div>
+      <div class="tool-body">
+        <div class="tool-name">選定療養 算定チェックリスト</div>
+        <div class="tool-desc">特別の料金の説明と特定薬剤管理指導加算３（ロ）の算定、選定療養にしないときの摘要欄を確認できます</div>
       </div>
       <span class="tool-arrow">›</span>
     </a>

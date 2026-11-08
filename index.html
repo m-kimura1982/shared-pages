@@ -66,6 +66,13 @@
       /* 最近見たページ：直近3件だけ「探す」の中に文字で出す。
          10件のチップを棚の前に並べるとヒーローと棚の間に大きな塊ができる。
          全件は共通ヘッダーの検索（空のまま開くと履歴10件）で見られる */
+      /* よく使う資料への近道を5つ。押すとそのページへ（2026-11-08。読者係の通読で「用事から入れない」が一番の困りごとだったため）
+         淡い青地に青文字（塗りの青に白文字は使わない）。入れ替えるときは下の .task-list の a を直すだけ */
+      .tasks { margin-top:2px; }
+      .task-label { display:block; font-size:13px; font-weight:700; color:var(--ink-2); margin-bottom:6px; }
+      .task-list { display:flex; flex-wrap:wrap; gap:6px 8px; }
+      .task-list a { font-size:13.5px; font-weight:700; color:var(--main); background:#e4f0f8; border-radius:100px; padding:5px 13px; line-height:1.5; }
+      .task-list a:hover { background:#d5e6f5; }
       .rv { margin-top:4px; padding-top:12px; border-top:1px solid var(--line); }
       .rv-label { font-size:13px; font-weight:700; color:var(--ink-2); }
       .rv-list { list-style:none; margin-top:2px; }
@@ -203,14 +210,28 @@
         .band-panel::after { font-size:84px; top:-18px; }
         .band-ja { font-size:21px; }
         .band-desc { font-size:14px; padding:0 2px; }
-        .shelf, .shelf.two { grid-template-columns:1fr; gap:12px; }
-        .s-card { padding:16px 16px 12px; }
-        .s-name { font-size:16.5px; }
-        .s-desc { font-size:14px; }
+        /* スマホでは棚を2列のタイル（アイコン・題名・件数）にする。説明文は開いた先の各ページの冒頭にある。
+           1列のカードだと調剤報酬の棚だけで約1.7画面あり、トップが5画面になっていた（2026-11-08） */
+        .shelf, .shelf.two { grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px; }
+        .s-card { padding:13px 12px 11px; gap:6px; }
+        .s-card:hover { transform:none; }
+        .s-head { flex-direction:column; align-items:flex-start; gap:8px; }
+        .s-desc { display:none; }
+        .s-foot { margin-top:auto; padding-top:0; border-top:0; }
+        .s-foot .cta { display:none; }
+        .s-name { font-size:15px; line-height:1.45; }
         .pickup { margin-top:10px; padding:26px 0 30px; }
-        .pu-list { grid-template-columns:1fr; gap:12px; }
-        .pu-card { padding:13px 16px 10px; }
-        .pu-name { font-size:16px; }
+        /* スマホでは注目情報をカード3枚ではなく1枚の白い面に3行で並べる（トップが5画面あり、ここが1画面近くを取っていた） */
+        .pu-list { grid-template-columns:1fr; gap:0; background:var(--surface); border:var(--bw) solid var(--border); border-radius:var(--radius); overflow:hidden; }
+        .pu-card { border:0; border-radius:0; padding:11px 36px 11px 14px; gap:1px; position:relative; }
+        .pu-card + .pu-card { border-top:1px solid var(--line); }
+        .pu-card:hover { transform:none; box-shadow:none; }
+        .pu-card::after { content:"›"; position:absolute; right:14px; top:50%; transform:translateY(-50%); font-size:20px; color:var(--main); }
+        .pu-no { font-size:13px; }
+        .pu-name { font-size:15.5px; }
+        .pu-why { font-size:13px; }
+        .pu-foot { display:none; }
+        .pickup { padding:22px 0 24px; }
         .sec-ja { font-size:20px; }
         .u-row { grid-template-columns:auto 1fr; gap:4px 10px; padding:12px 16px; }
         .u-date { text-align:left; }
@@ -247,6 +268,17 @@
             <input type="search" name="q" placeholder="キーワードで検索" aria-label="キーワード" autocomplete="off" />
             <button type="submit">検索</button>
           </form>
+          <!-- よく使う資料への近道（入れ替えるときはここを直す） -->
+          <div class="tasks">
+            <span class="task-label">よく使う資料</span>
+            <div class="task-list">
+              <a href="改定資料/別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html">摘要欄の記載事項</a>
+              <a href="改定資料/疑義解釈まとめ2026.html#kai-latest">最新の疑義解釈</a>
+              <a href="ツール/選定療養費計算ツール.html">長期収載品の特別の料金の計算</a>
+              <a href="改定資料/調剤報酬点数早見表2026.html">点数と届出の早見表</a>
+              <a href="yakureki/ハイリスク薬指導.html">ハイリスク薬の薬歴</a>
+            </div>
+          </div>
           <a class="cta" href="ページ一覧.html">カテゴリー別の一覧から探す<span class="arrow"></span></a>
           <!-- 最近見たページ（履歴がある人にだけ出す。site-recents.js の履歴から直近3件） -->
           <div class="rv" id="rv" hidden>
@@ -310,12 +342,12 @@
           </a>
           <a class="s-card" href="knowledge.html" data-count-from="knowledge.html" data-count-selector=".tool-card" data-count-suffix="資料収録">
             <div class="s-head"><div class="s-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></svg></div><div class="s-name">実務ナレッジ集</div></div>
-            <p class="s-desc">日々の業務で役立つ実務知識・Q&amp;Aをまとめています。</p>
+            <p class="s-desc">社内Q&amp;A・リフィル処方箋・OTC類似薬・高額療養費・OTC医薬品の販売ルールなど、改定に関係なく使う実務の知識をまとめています。</p>
             <div class="s-foot"><span class="s-count"></span><span class="cta">ナレッジ一覧を見る<span class="arrow"></span></span></div>
           </a>
           <a class="s-card" href="事務スタッフ向け.html" data-count-from="事務スタッフ向け.html" data-count-selector=".tool-card" data-count-suffix="資料収録">
             <div class="s-head"><div class="s-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="s-name">事務スタッフ向け</div></div>
-            <p class="s-desc">改定ポイント・レセコンの入力方法（Pharnes）・摘要欄の記載事項・高額療養費の窓口対応など、事務スタッフ向け資料をまとめています。</p>
+            <p class="s-desc">改定ポイント・レセコンの入力方法（Pharnes）・摘要欄の記載事項・選定療養・高額療養費の窓口対応など、事務スタッフ向け資料をまとめています。</p>
             <div class="s-foot"><span class="s-count"></span><span class="cta">資料一覧を見る<span class="arrow"></span></span></div>
           </a>
         </div>
@@ -347,11 +379,11 @@
       <div class="wrap">
         <div class="sec-head"><p class="sec-en">UPDATES</p><h2 class="sec-ja">更新情報</h2></div>
         <div class="updates">
+          <a class="u-row" href="事務スタッフ向け.html"><span class="u-date">11/8</span><span class="u-title">事務スタッフ向けの資料に、選定療養の改定ポイントと計算ツールなどを加えました。</span></a>
           <a class="u-row" href="改定資料/疑義解釈まとめ2026.html"><span class="u-date">10/28</span><span class="u-title">疑義解釈 その14 を追加しました（学校薬剤師の届出書類、バイオ後続品の説明と特定薬剤管理指導加算３ロ）。</span></a>
           <a class="u-row" href="ツール/漢方薬_投薬前の早見表.html"><span class="u-date">10/27</span><span class="u-title">漢方薬の投薬前に、場面ごとの伝え方と構成生薬を確かめられる早見表を公開しました。</span></a>
           <a class="u-row" href="ナレッジ/OTC類似薬_特別の料金の計算.html"><span class="u-date">10/24</span><span class="u-title">OTC類似薬の特別の料金について、計算方法を理解しやすいよう内容を見直しました。</span></a>
           <a class="u-row" href="加算まとめ/かかりつけ薬剤師フォローアップ加算.html"><span class="u-date">10/21</span><span class="u-title">【訂正のお知らせ】フォローアップ加算は、直近6月以内の算定の原因になった残薬等の問題がフォローアップで解消している場合は対象外です。以前の記載に誤りがありました。</span></a>
-          <a class="u-row" href="加算まとめ/調剤基本料_2026改定.html"><span class="u-date">10/21</span><span class="u-title">【訂正のお知らせ】調剤基本料２の都市部の基準の経過措置を、正しい内容（5月31日までに月1,800枚以下で届け出て、その後も1,800枚以下が続く薬局は対象外）に直しました。以前の記載に誤りがありました。</span></a>
           <div class="u-all"><a class="cta" href="updates.html">すべての更新履歴を見る<span class="arrow"></span></a></div>
         </div>
       </div>

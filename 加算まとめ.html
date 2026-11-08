@@ -9,7 +9,7 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 :root {
-  --blue: #1e5fa8; --blue-light: #e8f0fb; --ink: #222222; --sub: #666666;
+  --blue: #1e5fa8; --box-blue: #e4f0f8; --ink: #222222; --txt-3: #5e6470;
   --border: #d8dde8; --white: #ffffff; --bg: #f3f4f6;
   --radius: 10px; --radius-sm: 6px;
   --text-xs: 13px; --text-sm: 15px; --text-md: 16px; --text-lg: 18px; --text-xl: 22px;
@@ -22,7 +22,7 @@ body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: va
 .search-wrap input:focus { border-color: var(--blue); }
 
 .cat-nav { display: flex; flex-wrap: wrap; gap: 7px; }
-.cat-nav a { font-size: 12.5px; font-weight: 700; color: var(--blue); background: var(--blue-light); border-radius: 100px; padding: 5px 13px; text-decoration: none; }
+.cat-nav a { font-size: 12.5px; font-weight: 700; color: var(--blue); background: var(--box-blue); border-radius: 100px; padding: 5px 13px; text-decoration: none; }
 .cat-nav a:hover { background: #dbe8fa; }
 
 .cat-block { scroll-margin-top: 14px; }
@@ -47,10 +47,10 @@ body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: va
   transform: translateY(-2px);
 }
 .tool-name { font-size: 15px; font-weight: 700; line-height: 1.45; }
-.tool-meta { font-size: 12px; color: var(--sub); margin-top: 3px; line-height: 1.5; }
+.tool-meta { font-size: 12px; color: var(--txt-3); margin-top: 3px; line-height: 1.5; }
 
-#kasan-empty { display: none; font-size: 14px; color: var(--sub); padding: 14px 2px; }
-.note { font-size: 12px; color: var(--sub); padding: 6px 2px 0; line-height: 1.7; }
+#kasan-empty { display: none; font-size: 14px; color: var(--txt-3); padding: 14px 2px; }
+.note { font-size: 12px; color: var(--txt-3); padding: 6px 2px 0; line-height: 1.7; }
 
 @media (max-width: 640px) {
   body { padding: 14px 12px 40px; }
@@ -249,6 +249,7 @@ body { font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: va
 
     <div class="cat-block" id="cat-zaitaku">
       <div class="cat">薬学管理料（在宅）</div>
+      <p class="note" style="padding:0 2px 10px;">施設に訪問するときは、外来の分類にある <a href="加算まとめ/施設連携加算.html">施設連携加算</a>・<a href="加算まとめ/服薬管理指導料3・4_施設訪問・オンライン.html">服薬管理指導料3・4</a> も見る。</p>
       <div class="grid">
         <a class="tool-card" data-yomi="きょたくりょうようかんりしどうひ" href="加算まとめ/居宅療養管理指導費.html" data-keywords="居宅療養管理指導費 介護保険 要介護 要支援 介護予防居宅療養管理指導費 単一建物居住者 ケアマネジャー 介護支援専門員 きょたく りょうよう かんり しどうひ かいごほけん かいごよぼう">
           <div class="tool-name">居宅療養管理指導費（薬局の薬剤師）</div>

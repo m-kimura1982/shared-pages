@@ -211,6 +211,34 @@ function main() {
     changed++;
   }
 
+  // 改定資料一覧の「最新の疑義解釈」の1行（<!-- gigi-latest --> 〜 <!-- /gigi-latest -->）
+  // 疑義解釈まとめの「発出一覧」の最後の行（その○・日付・中身）から作る。新しい回を追記すれば自動で入れ替わる
+  {
+    const latest = [...readSrc(SRC).matchAll(/<tr><td>その(\d+)<\/td><td>([^<]+)<\/td><td>([^<]+)<\/td><\/tr>/g)]
+      .map((m) => ({ no: +m[1], date: m[2], topic: m[3] }))
+      .sort((a, b) => b.no - a.no)[0];
+    const hubFile = path.join(ROOT, 'kaitei2026.html');
+    const hub = fs.readFileSync(hubFile, 'utf8');
+    const reL = /([ \t]*)<!-- gigi-latest -->[\s\S]*?<!-- \/gigi-latest -->/;
+    if (latest && reL.test(hub)) {
+      const EOL = /\r\n/.test(hub) ? '\r\n' : '\n';
+      const next = hub.replace(reL, (full, ind) => [
+        `${ind}<!-- gigi-latest -->`,
+        `${ind}<a class="gigi-latest" href="${SRC_REL}#kai-${latest.no}">`,
+        `${ind}  <span class="gl-lab">最新の疑義解釈</span>`,
+        `${ind}  <span class="gl-body">その${latest.no}（${latest.date}）${latest.topic}</span>`,
+        `${ind}  <span class="gl-go">この回だけ見る ›</span>`,
+        `${ind}</a>`,
+        `${ind}<!-- /gigi-latest -->`,
+      ].join(EOL));
+      if (next !== hub) {
+        if (WRITE) fs.writeFileSync(hubFile, next, 'utf8');
+        console.log(`  ${WRITE ? '✓' : '△'} kaitei2026.html … 最新の疑義解釈をその${latest.no}に${WRITE ? '更新' : 'する差分あり'}`);
+        changed++;
+      } else ok++;
+    }
+  }
+
   console.log(`\n更新 ${changed} / 変更なし ${ok}`);
   const unused = Object.keys(sections).filter((s) => !used.has(s));
   if (unused.length) {
