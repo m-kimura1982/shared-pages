@@ -75,6 +75,20 @@ const ALLOW = [
   /@example\.(com|jp)/i,
 ];
 
+// 人名らしき「○○さん／先生／くん／ちゃん／氏」。名前そのものは載せない方針なので、敬称の付いた形を止める。
+// 前の語が一般語（患者さん・主治医の先生・赤ちゃん 等）なら通す。「氏名」「様式」は対象外。
+const NAME_RE = /([一-龥々ァ-ヶー]{1,4})(さん|先生|くん|ちゃん|氏(?!名))/g;
+const NAME_OK = /^(患者|皆|お子|子供|子ども|家族|利用者|購入者|薬剤師|医師|主治医|担当医|処方医|歯科医|看護師|事務|店長|本人|相手|ご家族|ご本人|お客|お母|お父|奥|旦那|娘|息子|孫|先方|保護者|介護者|ケアマネ|ヘルパー|スタッフ|新人|先輩|後輩|上司|部下|赤|お兄|お姉|お医者|お嬢|坊|子|母|父|兄|姉|弟|妹|夫|妻|方|各|同|当|貴|他)$/;
+function nameLike(text) {
+  const hits = [];
+  for (const m of text.matchAll(NAME_RE)) {
+    const w = m[1];
+    if ([w, w.slice(-3), w.slice(-2), w.slice(-1)].some(x => NAME_OK.test(x))) continue;
+    hits.push(w[0] + '＊'.repeat(w.length - 1) + m[2]);
+  }
+  return hits;
+}
+
 function loadNgWords() {
   const f = path.join(ROOT, 'private', '公開NG語.txt');
   if (!fs.existsSync(f)) return [];
@@ -109,6 +123,10 @@ for (const raw of diff.split('\n')) {
   for (const [re, why] of PATTERNS) {
     const m = scan.match(re);
     if (m) problems.push(`${file}:${n}\n    → ${why}（${mask(m[0])}）`);
+  }
+  // 人名らしき形（CLAUDE.md・コマンド・内部スクリプトの説明文は対象外。公開ページと draft だけ見る）
+  if (/\.(html|js|json)$/.test(file) && !file.startsWith('tools-internal/')) {
+    for (const h of nameLike(text)) problems.push(`${file}:${n}\n    → 人名らしき語（${h}）。名前は載せない`);
   }
   ngWords.forEach((w, i) => {
     // 語そのものは出さない（個人名をログに残さない）。何番目の語かだけ示す

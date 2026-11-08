@@ -482,6 +482,7 @@ node assets/build-gigi-list.js --check  # 差分の確認のみ
 
 **公開前の検問（2026-11-08）。** このリポジトリは public なので、コミットの直前に `tools-internal/check-commit-safety.js` が走り、private/・.claude の設定・docx・厚労省原本PDF・鍵やトークン・電話番号・メールアドレス・`private/公開NG語.txt` に書いた語が入っていれば止める（git の pre-commit。`git config core.hooksPath tools-internal/git-hooks` で有効。.git/config にあるので USB ごと動く。**別の場所に clone し直したときはこの1行を打ち直す**）。
 - 止まったら直すか、ステージから外す。誤検出なら**本人が**確かめて `--no-verify` を付けて通す。Claude は付けない（PreToolUse フックが、git commit/push に付いた --no-verify と private/ の `git add -f` を止める）。
+- **人の名前は載せない**（2026-11-08 本人）。公開ページと draft の HTML/JS/JSON で「○○さん／先生／くん／ちゃん／氏（氏名は除く）」の形を止める。患者さん・主治医の先生・赤ちゃん等の一般語は通す。敬称のない名前は拾えないので、気になる名前は公開NG語.txt に足す。
 - 出力には見つけた文字列を伏せて出す（公開NG語は何番目の語かだけ）。個人名などを足すときは `private/公開NG語.txt` に1行ずつ書く。
 - 例示の電話番号（03-1234-5678）・noreply・go.jp のアドレスは通す。誤検出が続く語は スクリプトの ALLOW に足す。
 
