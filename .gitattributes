@@ -1,0 +1,2 @@
+# git のフック（公開前の検問）は sh で動くので、どのPCに取り込んでも改行を LF のままにする
+tools-internal/git-hooks/* text eol=lf
