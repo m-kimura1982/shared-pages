@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>腎機能で用量が変わる薬｜疾患の勉強メモ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="shikkan.css" />
+  </head>
+  <body>
+    <script src="../../assets/site-header.js" defer></script>
+    <script src="../../assets/page-toc.js" defer></script>
+    <script src="shikkan-nav.js" defer></script>
+
+    <div class="page">
+      <div class="page-title">
+        <h1>腎機能で用量が変わる薬</h1>
+        <p>このメモの疾患ページに出てくる薬と、他院から急に処方されやすい薬（H2ブロッカー・抗ヘルペス薬・ガバペンチノイド）。抗菌薬はまだ入れていない</p>
+      </div>
+
+      <div class="card" data-toc="skip">
+        <div class="sibs"></div>
+      </div>
+
+      <div class="page-toc-wrap"><div id="page-toc"></div></div>
+
+      <div class="card" data-toc="skip">
+        <div class="card-title">このページで覚えること</div>
+        <div class="keys">
+          <div><span class="ck">✓</span><span class="tx">最初に<b>添付文書の表がeGFRかCCrか</b>を確認する。糖尿病の薬はeGFR、DOAC・抗ヘルペス薬・ガバペンチノイドはCCr<a class="go" href="#c-which">→</a></span></div>
+          <div><span class="ck">✓</span><span class="tx">CCrの薬は<b>体重がないと計算できない</b>。小柄な高齢者ではeGFRのほうが高く出る<a class="go" href="#c-which">→</a></span></div>
+          <div><span class="ck">✓</span><span class="tx">よく出る線は<b>60・50・30</b>。30を下回ると禁忌になる薬が多い（ダビガトラン・メトホルミン）<a class="go" href="#c-list">→</a></span></div>
+          <div><span class="ck">✓</span><span class="tx">他院から急に処方される<b>ファモチジン・バラシクロビル・プレガバリン</b>は、腎機能が分からないまま通常量のことがある。高齢者なら検査値を確認する<a class="go" href="#c-new">→</a></span></div>
+        </div>
+      </div>
+
+      <!-- ── 1. どの値を当てるか ── -->
+      <div class="card" id="c-which">
+        <div class="card-title">どの値を当てるか</div>
+
+        <p>添付文書の腎機能別の表が<b>eGFR（mL/分/1.73m²）とCCr（mL/分）のどちらで記載されているか</b>で、患者のどの値を当てるかが変わる。<span class="marker">eGFRの値をCCrの表にそのまま当てない</span>。体表面積で標準にそろえた値なので、小柄な人では実際の腎機能より高くなり、減量や禁忌を見落とす。</p>
+        <div class="bullet" style="margin-top:9px"><span>・</span><span><b>表がeGFR</b> ── 患者のeGFRをそのまま当てる（このページでは糖尿病の薬、フィネレノン、SGLT2阻害薬のCKD・心不全の扱い）</span></div>
+        <div class="bullet"><span>・</span><span><b>表がCCr</b> ── 血清Crの測定法が酵素法に替わってから用量が決められた薬（ダビガトラン・ミロガバリンなど）は、年齢・<b>体重</b>・血清CrからCockcroft-Gault式で推算CCrを出す。それより前の薬（ファモチジンなど）は<b>eGFR×体表面積÷1.73</b>を当てる。どちらか分からなければ両方で見る</span></div>
+        <p class="note" style="margin-top:8px">当て方の詳しい整理と、ダビガトランで取り違えが重い出血につながった例は<a href="慢性腎臓病_渡すときに見ること.html#c-egfr">慢性腎臓病｜薬の量に使う腎機能</a>。Cockcroft-Gault式は<a href="心房細動_抗凝固薬の用量.html#c-crcl">心房細動｜腎機能をどう見るか</a>。</p>
+      </div>
+
+      <!-- ── 2. 一覧 ── -->
+      <div class="card" id="c-list">
+        <div class="card-title">薬ごとの線<span class="qual">用量の数字は各ページにある</span></div>
+
+        <p class="note" style="margin-bottom:12px">この表は「どの値で、どこに線があるか」だけを並べたもの。用量の数字は、リンク先のページか添付文書で確かめる。</p>
+
+        <div class="sub-title">抗凝固薬（心房細動の効能）</div>
+        <div class="table-wrap">
+          <table class="stack">
+            <thead><tr><th class="nw">薬</th><th class="nw">表の値</th><th>線と扱い</th></tr></thead>
+            <tbody>
+              <tr><td class="nw">ダビガトラン</td><td class="nw">CCr</td><td><b>30〜50</b>で110mgを考慮、<b>30未満</b>で禁忌</td></tr>
+              <tr><td class="nw">リバーロキサバン</td><td class="nw">CCr</td><td><b>50未満</b>で10mg、15〜29は適否を慎重に検討、<b>15未満</b>で禁忌</td></tr>
+              <tr><td class="nw">エドキサバン</td><td class="nw">CCr</td><td><b>30〜50</b>で30mg、15〜30は有効性・安全性が未確立、<b>15未満</b>で禁忌</td></tr>
+              <tr><td class="nw">アピキサバン</td><td class="nw">血清Cr</td><td>減量はCCrではなく<b>血清Cr 1.5以上・80歳以上・体重60kg以下の2つ以上</b>で決まる。CCr 15未満で禁忌</td></tr>
+              <tr><td class="nw">ワルファリン</td><td class="nw">─</td><td>腎機能で量は変えない。添付文書は<b>重篤な腎障害で禁忌</b>。維持透析を原則禁忌とするのはガイドライン</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note" style="margin-top:8px">詳しくは<a href="心房細動_抗凝固薬の用量.html#c-line">心房細動｜CCrで見る4剤の分岐点</a>。</p>
+
+        <div class="sub-title" style="margin-top:18px">糖尿病の薬</div>
+        <div class="table-wrap">
+          <table class="stack">
+            <thead><tr><th class="nw">薬</th><th class="nw">表の値</th><th>線と扱い</th></tr></thead>
+            <tbody>
+              <tr><td class="nw">メトホルミン</td><td class="nw">eGFR</td><td><b>60未満</b>から1日の最高量が下がり、<b>30未満</b>で禁忌</td></tr>
+              <tr><td class="nw">イメグリミン</td><td class="nw">eGFR</td><td><b>45未満</b>で1回量を減らし、<b>15未満</b>で1日1回。<b>10未満</b>（透析を含む）は推奨されない</td></tr>
+              <tr><td class="nw">DPP-4阻害薬</td><td class="nw">薬ごと</td><td><b>リナグリプチン・テネリグリプチンは変えない。</b>ほかは腎機能に合わせて減らす</td></tr>
+              <tr><td class="nw">SU薬</td><td class="nw">─</td><td>腎機能が落ちるほど低血糖が重く長引く。重い腎機能障害で禁忌</td></tr>
+              <tr><td class="nw">ナテグリニド</td><td class="nw">─</td><td>透析が必要なほど重い腎機能障害で禁忌</td></tr>
+              <tr><td class="nw">ピオグリタゾン</td><td class="nw">─</td><td>重い腎機能障害で禁忌</td></tr>
+              <tr><td class="nw">SGLT2阻害薬<br /><span class="sm">血糖を下げる目的</span></td><td class="nw">eGFR</td><td>重度の腎機能障害・透析では血糖を下げる効果が期待できないため、<b>血糖を下げる目的では投与しない</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note" style="margin-top:8px">詳しくは<a href="糖尿病_薬物療法.html#c-renal">糖尿病｜腎機能が落ちてきたとき</a>。</p>
+
+        <div class="sub-title" style="margin-top:18px">心臓・腎臓を守る目的の薬</div>
+        <div class="table-wrap">
+          <table class="stack">
+            <thead><tr><th class="nw">薬</th><th class="nw">表の値</th><th>線と扱い</th></tr></thead>
+            <tbody>
+              <tr><td class="nw">SGLT2阻害薬<br /><span class="sm">CKD・心不全の目的</span></td><td class="nw">eGFR</td><td>CKDの効能で慎重に判断するのは<b>ダパグリフロジン25未満・エンパグリフロジン20未満</b>。末期腎不全・透析はCKDの効能の対象外。心不全では、添付文書はエンパグリフロジン20未満、ダパグリフロジンは重度の腎機能障害で投与の必要性を慎重に判断（25未満は試験なし）。ガイドラインは<b>20以上</b>なら条件付きで開始してよいとしている</td></tr>
+              <tr><td class="nw">フィネレノン</td><td class="nw">eGFR</td><td><b>CKD（2型糖尿病合併）の効能</b>：60以上で20mg、60未満で10mgから開始。25未満は適否を慎重に判断。<br /><b>慢性心不全の効能</b>：<b>開始時25未満は禁忌</b>。60以上は20mg、25以上60未満は10mgから開始し、増量先が違う（40mg・20mg）。<br />どちらも量の判断はカリウムが軸</td></tr>
+              <tr><td class="nw">エプレレノン</td><td class="nw">CCr</td><td><b>30未満</b>はどの効能でも禁忌。高血圧の効能では<b>50未満</b>も禁忌</td></tr>
+              <tr><td class="nw">ビソプロロール</td><td class="nw">─</td><td>重篤な腎機能障害では排泄が遅れ、作用が強く出るおそれがある（添付文書に減量の数字はない）</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note" style="margin-top:8px">詳しくは<a href="慢性腎臓病_薬物療法.html#c-sglt2">慢性腎臓病｜SGLT2阻害薬</a>・<a href="慢性腎臓病_薬物療法.html#c-mra">MRA</a>、<a href="心不全_薬物療法.html#c-renal">心不全｜腎機能が落ちてきたとき</a>。</p>
+
+        <div class="memo" style="margin-top:16px">
+          <div class="ttl">自分メモ</div>
+          並べてみると、<b>30を下回ると禁忌になる薬</b>（ダビガトラン・メトホルミン・エプレレノン）と、<b>15を下回るまで使える薬</b>（ほかのDOAC）に分かれる。CKDのG4（eGFR 15〜29）に入った人の処方は、この2群を分けて見ると早い。
+        </div>
+      </div>
+
+      <!-- ── 3. 急に処方される薬 ── -->
+      <div class="card" id="c-new">
+        <div class="card-title">他院から急に処方される薬<span class="qual">用量の正本はこのページ</span></div>
+
+        <div class="box-gray" style="margin-bottom:14px">
+          <div class="sub-title" style="margin-top:0">腎機能の情報がないまま来る <span class="own">読み筋</span></div>
+          胃薬・帯状疱疹・しびれや痛みの薬は、ふだん通っていない診療科から急に処方されることが多い。処方医が患者の腎機能を把握していないこともある。<span class="marker">高齢者に通常量が処方されていたら、最近の検査値と体重を確認する</span>。分からなければ処方医に確かめる。
+        </div>
+
+        <div class="sub-title">ファモチジン（ガスター）</div>
+        <p class="note" style="margin-bottom:8px">表はCCr（mL/分）。1回20mg 1日2回を基準とした場合。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th class="nw">CCr</th><th>投与法（どちらか）</th></tr></thead>
+            <tbody>
+              <tr><td class="nw">60以上</td><td>1回20mg 1日2回</td></tr>
+              <tr><td class="nw">30を超え60未満</td><td><b>1回20mg 1日1回</b>、または1回10mg 1日2回</td></tr>
+              <tr><td class="nw">30以下</td><td><b>1回20mg 2〜3日に1回</b>、または1回10mg 1日1回</td></tr>
+              <tr><td class="nw">透析</td><td>1回20mg 透析後に1回、または1回10mg 1日1回</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sub-title" style="margin-top:18px">帯状疱疹のバラシクロビル・ファムシクロビル</div>
+        <p class="note" style="margin-bottom:8px">表はCCr（mL/分）。<b>線の位置が2剤で違う</b>（バラシクロビルは50・30・10、ファムシクロビルは60・40・20）。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th class="nw">CCr</th><th>バラシクロビル（バルトレックス）</th></tr></thead>
+            <tbody>
+              <tr><td class="nw">50以上</td><td>1000mgを8時間ごと（通常量）</td></tr>
+              <tr><td class="nw">30〜49</td><td><b>1000mgを12時間ごと</b></td></tr>
+              <tr><td class="nw">10〜29</td><td><b>1000mgを24時間ごと</b></td></tr>
+              <tr><td class="nw">10未満</td><td><b>500mgを24時間ごと</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-wrap" style="margin-top:10px">
+          <table>
+            <thead><tr><th class="nw">CCr</th><th>ファムシクロビル（ファムビル）</th></tr></thead>
+            <tbody>
+              <tr><td class="nw">60以上</td><td>1回500mg 1日3回（通常量）</td></tr>
+              <tr><td class="nw">40〜59</td><td><b>1回500mg 1日2回</b></td></tr>
+              <tr><td class="nw">20〜39</td><td><b>1回500mg 1日1回</b></td></tr>
+              <tr><td class="nw">20未満</td><td><b>1回250mg 1日1回</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note" style="margin-top:8px">透析の扱いも違う。バラシクロビルは10未満の目安よりさらに減量（250mgを24時間ごと等）を考慮し、透析日は透析後に服用する。ファムシクロビルは250mgを透析直後に服用し、次の透析前に追加しない。バラシクロビルでは、減量が不十分で過量になった腎障害の人に精神神経症状・腎機能障害が出た例が報告されている。量が合っているかを確かめ、服用開始後の様子も確認する（<a href="慢性腎臓病_渡すときに見ること.html#c-herpes">慢性腎臓病｜帯状疱疹・ヘルペスの薬</a>）。</p>
+
+        <div class="sub-title" style="margin-top:18px">ガバペンチノイド（神経障害性疼痛）</div>
+        <p class="note" style="margin-bottom:8px">表はCCr（mL/分）。どちらも低用量から始め、忍容性を確認してから増やす。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th class="nw">CCr</th><th>プレガバリン（リリカ）の1日量</th></tr></thead>
+            <tbody>
+              <tr><td class="nw">60以上</td><td>150〜600mg（通常量）</td></tr>
+              <tr><td class="nw">30以上60未満</td><td><b>75〜300mg</b></td></tr>
+              <tr><td class="nw">15以上30未満</td><td><b>25〜150mg</b></td></tr>
+              <tr><td class="nw">15未満</td><td><b>25〜75mg</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-wrap" style="margin-top:10px">
+          <table>
+            <thead><tr><th class="nw">CCr</th><th>ミロガバリン（タリージェ）の開始量 → 推奨量</th></tr></thead>
+            <tbody>
+              <tr><td class="nw">60以上</td><td>1回5mg 1日2回 → 1回15mg 1日2回（通常量）</td></tr>
+              <tr><td class="nw">30以上60未満</td><td><b>1回2.5mg 1日2回 → 1回7.5mg 1日2回</b></td></tr>
+              <tr><td class="nw">30未満（透析を含む）</td><td><b>1回2.5mg 1日1回 → 1回7.5mg 1日1回</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note" style="margin-top:8px">プレガバリンは透析後に追加の服用がある（量は添付文書の表）。腎機能別の量はシミュレーションに基づくもので、患者ごとに観察しながら調節するとされている。どちらも腎機能が落ちた高齢者では<b>ふらつき・眠気・転倒</b>が出やすい。</p>
+
+        <div class="memo" style="margin-top:16px">
+          <div class="ttl">要確認</div>
+          <ul>
+            <li>プレガバリン・バラシクロビル・ファムシクロビルの表のCCrが、Cockcroft-Gault式の推算CCrで当てるべきものか、eGFR×体表面積÷1.73で当てるべきものか。CKD診療ガイドラインの例示にはない。分からないうちは両方で見る。</li>
+            <li>アシクロビル（表はmL/分/1.73m²）の用量表。</li>
+            <li>抗菌薬（レボフロキサシン・セフェム系など）。薬局でよく出るものから足す。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ── 出典 ── -->
+      <div class="card">
+        <div class="card-title">参考にした資料</div>
+        <div class="ref-links">
+          <div class="row"><span class="lab">土台：</span><span>このメモの各疾患ページ（抗凝固薬・糖尿病・心不全・慢性腎臓病）。数字の根拠はそれぞれのページの出典</span></div>
+          <div class="row"><span class="lab">用量：</span><span>各薬剤の電子添文</span></div>
+        </div>
+        <div class="table-wrap" style="margin-top:11px">
+          <table>
+            <thead><tr><th>薬剤</th><th>確認した版</th></tr></thead>
+            <tbody>
+              <tr><td>ガスター錠（ファモチジン）</td><td>2026年9月改訂 第3版</td></tr>
+              <tr><td>バルトレックス錠（バラシクロビル）</td><td>2026年2月改訂 第3版</td></tr>
+              <tr><td>ファムビル錠（ファムシクロビル）</td><td>2026年4月改訂 第5版</td></tr>
+              <tr><td>リリカ（プレガバリン）</td><td>2026年10月改訂 第9版</td></tr>
+              <tr><td>タリージェ錠（ミロガバリン）</td><td>2026年10月改訂 第10版</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="ref-links" style="margin-top:11px">
+          <div class="row"><span class="lab">入手先：</span><a href="https://www.pmda.go.jp/PmdaSearch/iyakuSearch/" target="_blank" rel="noopener">PMDA 医療用医薬品 添付文書等検索</a></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
