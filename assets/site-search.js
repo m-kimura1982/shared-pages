@@ -2,8 +2,9 @@
  * サイト内検索（軽量クライアントサイド）
  *
  * site-header.js が window.SITE_PAGES / window.SITE_CATEGORIES を公開した上で
- * このファイルを読み込む。タイトル・ファイル名・カテゴリ名を対象にした
- * 部分一致検索 + コマンドパレット風のオーバーレイUI。
+ * このファイルを読み込む。コマンドパレット風のオーバーレイUI。
+ * 探し方（題名 > 見出し・キーワード > 本文、複数の語はすべて含む）は search-core.js にあり、
+ * ページ一覧.html と共通。
  *
  * 起動：ヘッダーの検索ボタン / 「/」キー / Ctrl(Cmd)+K
  */
@@ -28,24 +29,26 @@
         };
       });
 
-    // ページ内の見出し（build-search-index.js が生成）。ページ名にない言葉でも探せるようにする。
-    // search-index.js の到着が遅れることがあるので、検索のたびに読み直して一度だけ組み立てる。
+    // ページ内の見出し（search-index.js）と本文（search-body.js）。どちらも build-search-index.js が作る。
+    // 届くのが遅れることがあるので、検索のたびに確かめて、届いた分から使う。
     let termsReady = false;
-    function hydrateTerms() {
+    let bodyReady = false;
+    function hydrate() {
       const src = window.__searchIndex;
-      if (termsReady || !src) return;
-      for (const item of index) {
-        const terms = src[item.file] || [];
-        item.terms = terms;
-        item.termsLower = terms.map((t) => t.toLowerCase());
-        item.haystack = item.baseHay + ' ' + terms.join(' ').toLowerCase();
+      if (!termsReady && src) {
+        for (const item of index) item.terms = src[item.file] || [];
+        termsReady = true;
       }
-      termsReady = true;
+      const body = window.__searchBody;
+      if (!bodyReady && body) {
+        for (const item of index) item.body = body[item.file] || '';
+        bodyReady = true;
+      }
     }
     for (const item of index) {
       item.terms = [];
-      item.termsLower = [];
-      item.haystack = item.baseHay;
+      item.body = '';
+      item.extra = item.file + ' ' + item.categoryName;
     }
 
     // ── CSS ──
@@ -134,6 +137,12 @@
         color: #5e6470; font-weight: 500; margin-left: 8px;
       }
       .ss-item-hit mark { background: #fff59d; color: inherit; }
+      /* 本文だけに当たったときの抜き書き */
+      .ss-item-snip {
+        font-size: 12px; color: #5e6470; font-weight: 500; line-height: 1.6; margin-top: 3px;
+        overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+      }
+      .ss-item-snip mark { background: #fff59d; color: inherit; }
       .ss-empty-link {
         display: block; margin-top: 14px;
         color: #1e5fa8; font-weight: 700; text-decoration: none;
@@ -250,20 +259,26 @@
     let active = -1;
     let currentResults = [];
 
-    // 見出しの索引は初回に検索を開いたときだけ読む（全ページ表示で読ませない）
+    // 探し方の本体・見出しの索引・本文の索引は、初回に検索を開いたときだけ読む（全ページ表示で読ませない）
     let indexRequested = false;
-    function loadHeadingIndex() {
-      if (indexRequested || window.__searchIndex) return;
+    function loadIndexes() {
+      if (indexRequested) return;
       indexRequested = true;
-      const s = document.createElement('script');
-      s.src = (window.SITE_ROOT || '') + 'assets/search-index.js';
-      // 届いたら、開いたままの検索結果を組み直す
-      s.onload = () => { if (overlay.classList.contains('ss-open')) render(input.value); };
-      document.head.appendChild(s);
+      const need = [];
+      if (!window.SITE_SEARCH_CORE) need.push('assets/search-core.js');
+      if (!window.__searchIndex) need.push('assets/search-index.js');
+      if (!window.__searchBody) need.push('assets/search-body.js');
+      need.forEach((src) => {
+        const s = document.createElement('script');
+        s.src = (window.SITE_ROOT || '') + src;
+        // 届いたら、開いたままの検索結果を組み直す
+        s.onload = () => { if (overlay.classList.contains('ss-open')) render(input.value); };
+        document.head.appendChild(s);
+      });
     }
 
     function open() {
-      loadHeadingIndex();
+      loadIndexes();
       overlay.classList.add('ss-open');
       overlay.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
@@ -299,31 +314,14 @@
         }
         return index.slice(0, 12);
       }
-      hydrateTerms();
-      const tokens = q.split(/\s+/).filter(Boolean);
+      const core = window.SITE_SEARCH_CORE;
+      if (!core) return [];                         // 探し方の本体がまだ届いていない（届いたら組み直す）
+      hydrate();
+      const ws = core.words(q);
       return index
         .map((item) => {
-          let score = 0;
-          let hitTerm = '';
-          for (const t of tokens) {
-            const titleIdx = item.titleLower.indexOf(t);
-            const hayIdx = item.haystack.indexOf(t);
-            if (hayIdx === -1) return null;
-            if (titleIdx === 0) score += 100;       // タイトル先頭一致
-            else if (titleIdx > 0) score += 50;     // タイトル中に含む
-            else {
-              // ページ名にはないが、ページ内の見出しに含まれる
-              const ti = item.termsLower.findIndex((x) => x.indexOf(t) !== -1);
-              if (ti !== -1) {
-                score += 25;
-                if (!hitTerm) hitTerm = item.terms[ti];
-              } else {
-                score += 10;                        // ファイル名 or カテゴリのみ
-              }
-            }
-            score -= hayIdx * 0.1;                  // 早い位置ほど高評価
-          }
-          return { item: Object.assign({}, item, { hitTerm }), score };
+          const m = core.match(item, ws);
+          return m && { item: Object.assign({}, item, { hitTerm: m.hitTerm, snippet: m.snippet, found: m }), score: m.score };
         })
         .filter(Boolean)
         .sort((a, b) => b.score - a.score)
@@ -332,20 +330,26 @@
     }
 
     function highlight(text, q) {
-      const safe = escapeHtml(text);
-      if (!q.trim()) return safe;
-      const tokens = q.toLowerCase().trim().split(/\s+/).filter(Boolean);
-      let result = safe;
-      for (const t of tokens) {
-        const re = new RegExp(`(${escapeRegex(escapeHtml(t))})`, 'gi');
-        result = result.replace(re, '<mark>$1</mark>');
-      }
-      return result;
+      const core = window.SITE_SEARCH_CORE;
+      if (!core || !q.trim()) return escapeHtml(text);
+      return core.mark(text, core.words(q), '<mark>', '</mark>');
+    }
+
+    // 題名以外で当たったページは、開いた先でその語の場所まで進む
+    function hrefOf(r, q) {
+      const base = (window.SITE_ROOT || '') + r.file;
+      const core = window.SITE_SEARCH_CORE;
+      if (!core || !r.found || (!r.hitTerm && !r.snippet)) return base;
+      return base + core.fragment(r.snippet ? core.words(q) : [core.norm(r.hitTerm)]);
     }
 
     function render(q) {
       currentResults = search(q);
       active = currentResults.length > 0 ? 0 : -1;
+      if (currentResults.length === 0 && q.trim() && !window.SITE_SEARCH_CORE) {
+        results.innerHTML = '<div class="ss-empty">検索の準備をしています…</div>';
+        return;
+      }
       if (currentResults.length === 0) {
         results.innerHTML =
           '<div class="ss-empty">該当する資料が見つかりませんでした' +
@@ -367,11 +371,13 @@
         currentResults
           .map(
             (r, i) => `
-        <a class="ss-item${i === active ? ' ss-active' : ''}" href="${escapeHtml((window.SITE_ROOT || '') + r.file)}" data-idx="${i}">
+        <a class="ss-item${i === active ? ' ss-active' : ''}" href="${escapeHtml(hrefOf(r, q))}" data-idx="${i}">
           <div class="ss-item-title">${highlight(r.title, q)}</div>
           <div class="ss-item-meta">${escapeHtml(r.categoryName)}${
             r.hitTerm ? ` <span class="ss-item-hit">ページ内：${highlight(r.hitTerm, q)}</span>` : ''
-          }</div>
+          }</div>${
+            r.snippet ? `<div class="ss-item-snip">${highlight(r.snippet, q)}</div>` : ''
+          }
         </a>`
           )
           .join('');
@@ -397,7 +403,7 @@
       } else if (e.key === 'Enter') {
         e.preventDefault();
         if (active >= 0 && currentResults[active]) {
-          location.href = (window.SITE_ROOT || '') + currentResults[active].file;
+          location.href = hrefOf(currentResults[active], input.value);
         }
       } else if (e.key === 'Escape') {
         close();

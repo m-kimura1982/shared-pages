@@ -77,6 +77,7 @@ details.grp.fold-in > summary::after { margin-left:14px; }
 .row .dt { font-size:var(--text-xs); color:var(--txt-3); white-space:nowrap; font-variant-numeric:tabular-nums; }
 .row .in { display:block; font-size:var(--text-xs); color:var(--txt-3); margin-top:3px; line-height:1.5; }
 .row .in::before { content:"ページ内："; }
+.row .in.body::before { content:"本文："; }
 .row .in .hit { background:#fff59d; }
 .row.is-hub .nm::after { content:"まとめ"; font-size:11px; font-weight:700; color:var(--txt-3); border:var(--bw-h) solid var(--border); border-radius:4px; padding:0 6px; margin-left:8px; vertical-align:1px; }
 .row[hidden] { display:none; }
@@ -113,6 +114,7 @@ details.grp.fold-in > summary::after { margin-left:14px; }
   <script src="assets/page-meta.js" defer></script>
   <!-- 見出しの索引。site-header.js も読み込むが、そちらは非同期なので順番を保証するためここでも読む -->
   <script src="assets/search-index.js" defer></script>
+  <script src="assets/search-core.js" defer></script>
 <div class="page">
 
   <div class="band">
@@ -148,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var SEP = String.fromCharCode(10); // 見出しを data-k に詰めるときの区切り
 
   // 表示順。home（トップ・更新履歴・この一覧）はここには出さない
-  var ORDER = ['kasan', 'checklist', 'kaitei', 'tools', 'knowledge', 'yakureki', 'jimu'];
+  var ORDER = ['kasan', 'checklist', 'tools', 'knowledge', 'yakureki', 'jimu', 'kaitei'];
   var CHIPS = ['残薬', 'リフィル', '在宅', '選定療養', '高額療養費', '摘要欄', 'ハイリスク', '届出'];
 
   var buckets = {};
@@ -223,33 +225,67 @@ document.addEventListener('DOMContentLoaded', function () {
   var rows = Array.prototype.slice.call(document.querySelectorAll('.row'));
   var grps = Array.prototype.slice.call(document.querySelectorAll('.grp'));
 
+  // 探し方は assets/search-core.js（共通ヘッダーの検索と同じ）。本文の索引は大きいので後から読む
+  var CORE = window.SITE_SEARCH_CORE;
+  var BODY = window.__searchBody || null;
+  var pageOf = {};   // 行ごとの { title, terms, body, extra }
+  rows.forEach(function (r, i) {
+    r._i = i;        // 元の並び（検索をやめたら戻す）
+    var path = decodeURI(r.getAttribute('href'));
+    pageOf[i] = {
+      path: path,
+      title: r.getAttribute('data-t'),
+      terms: (r.getAttribute('data-k') || '').split(SEP).filter(Boolean),
+      body: '',
+      extra: ''
+    };
+  });
+  if (!BODY) {
+    var bs = document.createElement('script');
+    bs.src = 'assets/search-body.js';
+    bs.onload = function () { BODY = window.__searchBody || {}; fillBody(); if (q.value.trim()) apply(); };
+    document.head.appendChild(bs);
+  } else { fillBody(); }
+  function fillBody() {
+    rows.forEach(function (r) { pageOf[r._i].body = BODY[pageOf[r._i].path] || ''; });
+  }
+
   function apply() {
-    var kw = q.value.trim().toLowerCase();
+    var words = CORE.words(q.value);
+    var kw = words.length > 0;
     var shown = 0;
 
     rows.forEach(function (r) {
-      var t = r.getAttribute('data-t');
-      var terms = (r.getAttribute('data-k') || '').split(SEP).filter(Boolean);
-      var inTitle = kw && t.toLowerCase().indexOf(kw) !== -1;
-      var inTerm = '';
-      if (kw && !inTitle) {
-        for (var i = 0; i < terms.length; i++) {
-          if (terms[i].toLowerCase().indexOf(kw) !== -1) { inTerm = terms[i]; break; }
-        }
-      }
-      var hit = !kw || inTitle || !!inTerm;
+      var page = pageOf[r._i];
+      var m = kw ? CORE.match(page, words) : null;
+      var hit = !kw || !!m;
       r.hidden = !hit;
+      r._score = m ? m.score : 0;
       if (hit) shown++;
 
-      r.querySelector('.nm').innerHTML = inTitle ? mark(t, kw) : esc(t);
+      r.querySelector('.nm').innerHTML = kw ? CORE.mark(page.title, words, '<span class="hit">', '</span>') : esc(page.title);
       var old = r.querySelector('.in');
       if (old) old.remove();
-      if (inTerm) {
+      // 開いた先で、当たった語の場所まで進む（題名で当たったときは先頭のまま）
+      var href = encodeURI(page.path);
+      if (m && (m.hitTerms.length || m.snippet)) {
         var s = document.createElement('span');
-        s.className = 'in';
-        s.innerHTML = mark(inTerm, kw);
+        s.className = 'in' + (m.snippet && !m.hitTerms.length ? ' body' : '');
+        var parts = m.hitTerms.slice(0, 2);
+        if (m.snippet) parts.push(m.snippet);
+        s.innerHTML = parts.map(function (x) { return CORE.mark(x, words, '<span class="hit">', '</span>'); }).join('／');
         r.appendChild(s);
+        href += CORE.fragment(m.snippet ? words : [CORE.norm(m.hitTerms[0])]);
       }
+      r.setAttribute('href', href);
+    });
+
+    // 検索中は、分類の中でよく当たった順に並べる。やめたら元の並びへ戻す
+    grps.forEach(function (g) {
+      var box = g.querySelector('.rows');
+      var list = Array.prototype.slice.call(box.querySelectorAll('.row'));
+      list.sort(function (a, b) { return kw ? (b._score - a._score) || (a._i - b._i) : a._i - b._i; });
+      list.forEach(function (r) { box.appendChild(r); });
     });
 
     grps.forEach(function (g) {
@@ -257,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function () {
       g.hidden = n === 0;
       g.querySelector('.cnt').textContent = n;
       // 絞り込み中は自動で開き、空にしたら畳む
-      g.open = !!kw && n > 0;
+      g.open = kw && n > 0;
     });
 
     var openable = grps.filter(function (g) { return !g.hidden; }).length;
@@ -268,12 +304,6 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       hint.innerHTML = '該当するページはありませんでした。ページ名だけでなく、ページ内の言葉も検索対象です。';
     }
-  }
-
-  function mark(text, kw) {
-    var i = text.toLowerCase().indexOf(kw);
-    if (i === -1) return esc(text);
-    return esc(text.slice(0, i)) + '<span class="hit">' + esc(text.slice(i, i + kw.length)) + '</span>' + esc(text.slice(i + kw.length));
   }
 
   function esc(s) {

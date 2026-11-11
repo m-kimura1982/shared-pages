@@ -97,12 +97,65 @@ function pickByClass(html, cls) {
   return out;
 }
 
+/**
+ * 本文の索引（assets/search-body.js）に入れる文章を取り出す。
+ *
+ * 見出しと検索キーワードだけでは、表の中の略称（薬A）や数字（63枚）、本文にしかない言葉が引けない。
+ * そこで本文も索引に入れ、検索では 題名 > 見出し・キーワード > 本文 の順に並べる。
+ *
+ * 入れないもの：
+ *   - 自動生成の原文・疑義解釈・社内Q&Aの写し（genbun / gigi-list / qa-list のマーカーの間）。
+ *     正本のページに同じ文があり、入れると同じ1文で何ページも並ぶ。
+ *   - script / style / コメント。
+ * 段落・表のセル・箇条書きの切れ目は改行にする（抜き書きが隣のセルの語とつながらないように）。
+ * 全角英数と半角英数のどちらで打っても当たるよう、NFKC でそろえておく。
+ */
+function toBody(html) {
+  return html
+    .replace(/<!--\s*genbun\b[\s\S]*?<!--\s*\/genbun\s*-->/gi, ' ')
+    .replace(/<!--\s*gigi-list:[\s\S]*?<!--\s*\/gigi-list\s*-->/gi, ' ')
+    .replace(/<!--\s*qa-list:[\s\S]*?<!--\s*\/qa-list\s*-->/gi, ' ')
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<!--[\s\S]*?-->/g, ' ')
+    .replace(/<(br|\/p|\/div|\/li|\/tr|\/td|\/th|\/h[1-6]|\/summary|\/dt|\/dd|\/section|\/details|\/option)\b[^>]*>/gi, '\n')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .normalize('NFKC')
+    .replace(/[ \t\r\u3000]+/g, ' ')
+    .replace(/ ?\n[ \n]*/g, '\n')
+    .trim();
+}
+
 const index = {};
+const body = {};
 let totalTerms = 0;
 let skippedTerms = 0;
 
+// git に入っていないページ（公開フォルダに置いた確認待ちの下書き）は索引に入れない。
+// 本文の索引は公開されるので、入れると未公開のページの文章が先に外へ出てしまう。
+let tracked = null;
+try {
+  tracked = new Set(
+    require('child_process')
+      .execSync('git -c core.quotepath=false ls-files -z', { cwd: ROOT, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 })
+      .split('\0')
+  );
+} catch (e) {
+  console.warn('git が使えないので、フォルダにある全ページを索引に入れます');
+}
+
 for (const f of files) {
   if (SKIP.has(f)) continue;
+  if (tracked && !tracked.has(f)) {
+    console.log(`  （索引に入れない：git に入っていない） ${f}`);
+    continue;
+  }
   const abs = path.join(ROOT, f.replace(/\//g, path.sep));
   let full;
   try {
@@ -149,6 +202,9 @@ for (const f of files) {
     if (terms.length >= MAX_TERMS) break;
   }
 
+  const bodyText = toBody(html);
+  if (bodyText.length > 20) body[f] = bodyText;
+
   if (terms.length) {
     index[f] = terms;
     totalTerms += terms.length;
@@ -158,8 +214,14 @@ for (const f of files) {
 const jsPath = path.join(__dirname, 'search-index.js');
 fs.writeFileSync(jsPath, `window.__searchIndex = ${JSON.stringify(index)};\n`, 'utf8');
 
+// 本文の索引。大きいので、検索を初めて使ったときにだけ読み込む（site-search.js・ページ一覧.html）
+const bodyPath = path.join(__dirname, 'search-body.js');
+fs.writeFileSync(bodyPath, `window.__searchBody = ${JSON.stringify(body)};\n`, 'utf8');
+const bodyKb = (fs.statSync(bodyPath).size / 1024).toFixed(0);
+
 const kb = (fs.statSync(jsPath).size / 1024).toFixed(1);
 console.log(
   `✓ ${Object.keys(index).length} ページ・${totalTerms} 語を索引化（${kb} KB）\n` +
-    `  定型見出し ${skippedTerms} 語は索引から除外\n  ${jsPath}`
+    `  定型見出し ${skippedTerms} 語は索引から除外\n  ${jsPath}\n` +
+    `✓ 本文 ${Object.keys(body).length} ページ（${bodyKb} KB）\n  ${bodyPath}`
 );

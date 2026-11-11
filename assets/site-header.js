@@ -477,12 +477,13 @@
   // 事務スタッフ向け（jimu）はナビに出さない（項目過多回避。トップカード・検索・パンくずで到達できる）
   const navItems = [
     { cat: 'home', label: 'ホーム' },
-    { cat: 'kaitei', label: '改定資料' },
     { cat: 'kasan', label: '算定項目まとめ' },
     { cat: 'checklist', label: 'チェックリスト' },
     { cat: 'tools', label: 'ツール' },
     { cat: 'knowledge', label: 'ナレッジ' },
     { cat: 'yakureki', label: '薬歴' },
+    // 改定資料は見る人が減ったので最後に置く（2026-11-12）。原文・疑義解釈もこの中にある
+    { cat: 'kaitei', label: '原文・改定資料' },
   ];
 
   const navHtml = navItems
@@ -714,7 +715,7 @@
 
   // ── サイト内検索スクリプトを自動ロード ──
   // 見出しの索引（assets/search-index.js・約38KB）はここでは読まない。
-  // 検索を初めて開いたときに site-search.js が読む（大半のページ表示では使わないため）。
+  // 検索を初めて開いたときに site-search.js が、探し方の本体（search-core.js）・本文の索引（search-body.js）と一緒に読む（大半のページ表示では使わないため）。
   if (!document.querySelector('script[data-site-search]')) {
     const s = document.createElement('script');
     s.src = u('assets/site-search.js');
