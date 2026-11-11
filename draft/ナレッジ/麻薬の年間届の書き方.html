@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive">
+    <title>麻薬の年間届の書き方｜調剤報酬・薬歴まとめ</title>
+    <meta name="search-keywords" content="年間届,東京都,埼玉県,茨城県,古河,麻薬小売業者の届,11月30日,9月30日,10月1日,所有数量,譲受,譲渡,第10号様式,様式16,期始在庫数量,期末在庫数量,受入数量,払出数量,使用期限切れ,所有なし,検算,かっこ書き,訂正願,倍散,予製,コデイン,返却,廃棄,事故" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../assets/fold.css" />
+    <style>
+      *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+      :root {
+        --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+        --pad-card:22px; --gap-card:16px;
+        --blue:#1e5fa8; --ink:#222222;
+        --bg:#f3f4f6; --white:#ffffff;
+        --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+        --border:#d1d5db; --border-dk:#9ca3af;
+        --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px;
+        --txt-2:#444444; --txt-3:#5e6470;
+        /* 帳簿例の「患者から返却された数量」（残高に足さない）を示す色。図解の淡色パレットのクリーム */
+        --ret-bg:#f3e8d0; --ret-tx:#7a5718;
+      }
+      body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+      .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+      [id] { scroll-margin-top:calc(var(--sn-header-h, 0px) + 16px); }
+
+      /* 見出し */
+      .page-title-wrap { padding:6px 0; }
+      .page-title-wrap h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+      .page-title-wrap p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+      .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+      .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+      .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+      .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+      .sub-title { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:9px; margin:22px 0 9px; }
+      .sub-title:first-child, .card-title + .sub-title { margin-top:0; }
+      .sub-title::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+
+      /* 強調 */
+      .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+      .em-change { color:var(--blue); font-weight:900; }
+
+      p.txt { font-size:var(--text-sm); line-height:1.8; }
+      p.txt + p.txt { margin-top:8px; }
+      .note { font-size:var(--text-xs); color:var(--txt-3); line-height:1.65; margin-top:8px; }
+      .note a { color:var(--blue); }
+      a { color:var(--blue); }
+
+      /* 下書きメモ（公開前に消す） */
+      .draft-memo { background:#fff8e1; border:1px solid #e5c200; border-radius:var(--radius-sm); padding:14px 18px; font-size:var(--text-sm); line-height:1.7; }
+      .draft-memo .ttl { font-weight:900; margin-bottom:4px; }
+      .draft-memo ul { margin-left:1.3em; }
+
+      /* このページの要点 */
+      .sum .card-title { margin-bottom:6px; }
+      .sum .rows { display:flex; flex-direction:column; }
+      .sum a.pt { display:grid; grid-template-columns:11em minmax(0,1fr) auto; gap:4px 14px; align-items:baseline; padding:11px 6px; border-top:var(--bw) solid var(--border); text-decoration:none; color:var(--ink); font-size:var(--text-sm); line-height:1.75; border-radius:4px; }
+      .sum a.pt:first-child { border-top:none; }
+      .sum a.pt:hover { background:#f5f8fc; }
+      .sum .pt .k { font-weight:900; color:var(--blue); }
+      .sum .pt .go { color:var(--blue); font-size:var(--text-xs); font-weight:700; align-self:center; white-space:nowrap; }
+      .sum .pt .go::after { content:"›"; font-weight:900; margin-left:4px; }
+
+      .box-gray { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; margin-top:12px; }
+      .box-gray .ttl, .box-blue .ttl { display:block; font-weight:900; margin-bottom:5px; font-size:var(--text-sm); color:var(--blue); }
+      .box-blue { background:var(--box-blue); border-radius:var(--radius-sm); padding:13px 16px; font-size:var(--text-sm); line-height:1.75; margin-top:12px; }
+
+      /* 表 */
+      .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+      table { width:100%; border-collapse:collapse; font-size:var(--text-sm); line-height:1.65; }
+      th { background:var(--box-gray); color:var(--ink); font-weight:900; padding:8px 10px; text-align:left; border-bottom:2px solid var(--border-dk); vertical-align:bottom; }
+      td { padding:9px 10px; border-bottom:var(--bw-h) solid var(--border); vertical-align:top; }
+      tr:last-child td { border-bottom:none; }
+      td.rh, th.rh { font-weight:900; }
+      td .law { display:block; font-size:var(--text-xs); color:var(--txt-3); margin-top:3px; font-weight:400; }
+      tr.grp td { background:#fafbfc; font-weight:900; color:var(--blue); font-size:var(--text-xs); padding:6px 10px; letter-spacing:0.02em; }
+      .docs td:nth-child(3), .docs td:nth-child(4) { white-space:nowrap; }
+      .cmp2 th:not(.rh), .cmp2 td:not(.rh) { width:40%; }
+
+      /* 帳簿の記入例 */
+      .ledger-name { font-size:var(--text-sm); font-weight:900; margin:14px 0 6px; display:flex; flex-wrap:wrap; gap:4px 14px; align-items:baseline; }
+      .ledger-name .u { font-weight:500; color:var(--txt-3); font-size:var(--text-xs); }
+      table.ledger { font-size:var(--text-sm); border:var(--bw-h) solid var(--border-dk); }
+      table.ledger th { background:var(--box-gray); border-bottom:var(--bw-h) solid var(--border-dk); padding:6px 9px; text-align:center; }
+      table.ledger td { border-right:var(--bw) solid var(--border); padding:6px 9px; }
+      table.ledger td.n { text-align:right; white-space:nowrap; width:4.6em; font-variant-numeric:tabular-nums; }
+      table.ledger td.d { white-space:nowrap; width:6.2em; font-variant-numeric:tabular-nums; }
+      table.ledger.nk td.n { width:auto; }
+      table.ledger.nk th { vertical-align:middle; white-space:nowrap; }
+      table.ledger.nk td:first-child { min-width:16em; }
+      table.ledger.nk td:nth-child(2) { white-space:nowrap; }
+      /* 埼玉県の様式（列が多いので小さめの文字・見出しは折り返す） */
+      table.ledger.sai { font-size:var(--text-xs); }
+      table.ledger.sai th { white-space:normal; font-size:var(--text-xs); padding:5px 6px; line-height:1.4; min-width:3.6em; }
+      table.ledger.sai td { padding:6px 6px; }
+      table.ledger.sai td:first-child { min-width:11em; }
+      table.ledger.sai td:last-child { min-width:12em; }
+      table.ledger tr.ret td { background:var(--ret-bg); }
+      table.ledger tr.ret td.n.in { color:var(--ret-tx); font-weight:900; }
+      .lg-note { font-size:var(--text-xs); color:var(--txt-3); line-height:1.6; margin-top:6px; }
+      .lg-note b { color:var(--ink); }
+      .lg-tag { display:inline-block; font-size:var(--text-xs); font-weight:700; padding:0 7px; border-radius:4px; background:var(--ret-bg); color:var(--ret-tx); margin-right:4px; }
+
+      /* 箇条書き */
+      .list { display:flex; flex-direction:column; gap:6px; margin:6px 0 2px; }
+      .list .li { font-size:var(--text-sm); line-height:1.7; padding-left:18px; text-indent:-18px; }
+      .list .li::before { content:"・"; color:var(--txt-3); font-weight:900; margin-right:6px; }
+      .list .li.ng::before { content:"×"; }
+      .check { display:flex; flex-direction:column; gap:6px; margin:6px 0 2px; }
+      .check .li { font-size:var(--text-sm); line-height:1.7; padding-left:22px; text-indent:-22px; }
+      .check .li::before { content:"✓"; color:var(--blue); font-weight:900; margin-right:8px; }
+
+      /* 手順（番号の四角） */
+      .steps { display:flex; flex-direction:column; gap:10px; margin-top:6px; }
+      .step { display:grid; grid-template-columns:26px minmax(0,1fr); gap:12px; align-items:start; font-size:var(--text-sm); line-height:1.7; }
+      .step .no { width:26px; height:26px; border-radius:7px; background:var(--blue); color:#fff; font-weight:900; font-size:13px; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+      .step b.h { display:block; }
+
+      /* 90日の数え方 */
+      .day90 { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:10px; margin-top:8px; }
+      .day90 .c { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:10px 12px; font-size:var(--text-sm); line-height:1.65; }
+      .day90 .c .k { display:block; font-size:var(--text-xs); font-weight:900; color:var(--txt-3); margin-bottom:2px; }
+
+      /* 関連・原典 */
+      .src td { font-size:var(--text-xs); }
+      .src td:first-child { font-size:var(--text-sm); font-weight:700; }
+      .src a { word-break:break-all; }
+
+      @media (max-width:640px) {
+        body { font-size:14px; padding:14px 12px 40px; line-height:1.75; }
+        :root { --text-xs:11.5px; --text-sm:13.5px; --text-md:14px; --text-lg:16px; --text-xl:18px; --pad-card:14px; --gap-card:11px; }
+        .card { border-radius:8px; }
+        .sum a.pt { grid-template-columns:minmax(0,1fr) auto; padding:10px 2px; }
+        .sum .pt .k { grid-column:1; grid-row:1; }
+        .sum .pt .go { grid-column:2; grid-row:1; }
+        .sum .pt .v { grid-column:1 / span 2; grid-row:2; }
+        .docs { min-width:620px; }
+        .cmp2, .pref { min-width:560px; }
+        table.ledger { min-width:520px; }
+        table.ledger.nk { min-width:760px; }
+        table.ledger.sai { min-width:900px; }
+        .day90 { grid-template-columns:1fr; }
+      }
+      @media print {
+        @page { margin:10mm 9mm; size:A4; }
+        /* 文字は小さくしない（チェックリストの印刷の基準：本文12.5px／補足11px／カード見出し15px） */
+        :root { --text-xs:11px; --text-sm:12.5px; --text-md:13px; --text-lg:15px; --text-xl:19px; }
+        body { background:#fff; padding:0; font-size:12.5px; line-height:1.6; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        .page { display:block; max-width:none; }
+        .card { border:0.5px solid #ccc; padding:9px 11px; margin-bottom:7px; break-inside:auto; }
+        .card-title, .sub-title, .ledger-name { break-after:avoid; }
+        .sum, .box-gray, .box-blue, table.ledger, tr { break-inside:avoid; }
+        table.ledger.sai { min-width:0; }
+        .check, .list { gap:3px; }
+        .check .li, .list .li, p.txt { line-height:1.55; }
+        .sub-title { margin-top:14px; }
+        .pref th, .pref td { padding-top:5px; padding-bottom:5px; }
+        table.ledger.sai td:first-child { min-width:9em; }
+        table.ledger.sai td:last-child { min-width:10em; }
+        /* 原典と「麻薬管理のページ」はリンクが紙では使えないので出さない（QRから画面で見る） */
+        .sum .pt .go, .page-toc-wrap, .draft-memo, #genten, #kanren { display:none; }
+        a { color:inherit; text-decoration:none; }
+      }
+
+      /* 帳簿の場面ごとの例 */
+      table.ledger tr.prev td { color:var(--txt-3); }
+      .kv { display:grid; grid-template-columns:5.5em minmax(0,1fr); gap:4px 12px; font-size:var(--text-sm); line-height:1.7; background:var(--box-gray); border-radius:var(--radius-sm); padding:10px 14px; }
+      .kv .k { font-weight:900; color:var(--txt-2); }
+      .kv + .ledger-name { margin-top:14px; }
+      /* 麻薬管理のページ */
+      .rel { display:flex; flex-direction:column; }
+      .rel a { padding:9px 4px; border-top:var(--bw) solid var(--border); font-size:var(--text-sm); font-weight:700; text-decoration:none; }
+      .rel a:first-child { border-top:none; }
+      .rel a .d { display:block; font-weight:400; color:var(--txt-3); font-size:var(--text-xs); }
+      .rel a.cur { color:var(--ink); pointer-events:none; }
+      .rel a.cur::after { content:"（このページ）"; font-weight:400; color:var(--txt-3); font-size:var(--text-xs); }
+    </style>
+  </head>
+  <body>
+    <script src="../../assets/site-header.js" defer></script>
+    <script src="../../assets/page-toc.js" defer></script>
+    <div class="page">
+
+      <div class="page-title-wrap">
+        <h1>麻薬の年間届の書き方</h1>
+        <p>麻薬小売業者の届（毎年11月30日まで）</p>
+      </div>
+
+      <div class="draft-memo">
+        <div class="ttl">下書きメモ（公開前に消す）</div>
+        <ul>
+          <li>10/27 構成を見直した（方針：共通のルールを示し、細かいところは都県・保健所のやり方に従う）。記入例は国のマニュアルの型1つにし、都県で違うところは早見表に。埼玉県の表は畳み、茨城県の記入例カードは早見表に収めた。コデイン散の「秤量誤差・帳簿訂正」は、コデインは払出を帳簿に書かず逆算するので出てこない（照合係の指摘）→ 払出196.0に直し、秤量誤差の例は削った。埼玉県の「さいたま市など4市も県の保健所に出す」は根拠が見つからないので削った。</li>
+          <li>10/9 東京都（様式16）と埼玉県（第10号様式）で欄の作りが違うと分かり、記入例を都県別にした。</li>
+          <li>10/26 県のサイトが戻ったので茨城県の様式（麻薬年間届）を確認。受入・払出の2欄で、廃棄・事故は払出に含めて備考に数量（様式の注＊６）。東京型でも埼玉型でもないので記入例を足した（10/27 早見表に収めた）。様式ページに「古河保健所など5か所は報告方法が異なる。保健所からの通知を確認」とある。古河保健所の通知の中身はWebに出ておらず、年度ごとに変わっても確かめようがないので「保健所から届いた通知に従う」とだけ書くことに決定（10/26 本人）。薬局間の分のかっこ書きは様式に書かれていないので、国の質疑応答（問65）に合わせた。</li>
+          <li>薬局の麻薬管理.html から年間届のカードを切り出した（10/7）。締め切り（11/30）前の10月中の公開を想定。</li>
+          <li>10/26 茨城県の提出先・部数を様式ページ（0328n0740.html、2026-08-26更新）で確認：業務所を管轄する保健所に2部・郵送可（簡易書留）・電子申請可。</li>
+          <li>10/9 埼玉県の秤量誤差：作成要領（nenkantodokesakusei.pdf）に明文はない。様式の記入例でケタラールの「施用に伴う消耗0.7mL」を払出の「その他」に分けているので、それに合わせて「その他」0.5gにした。気になるなら公開前に県薬務課か保健所に確認。→10/27 秤量誤差の例ごと削除。</li>
+        </ul>
+      </div>
+
+      <div class="page-toc-wrap"><div id="page-toc"></div></div>
+
+      <div class="card" id="gaiyo">
+        <div class="card-title">届け出る数量</div>
+        <p class="txt">毎年<b>11月30日まで</b>に、品名ごとに次の4つの数量を届け出る。麻薬を持っていなかった年も届ける。令和8年の届なら、令和7年10月1日〜令和8年9月30日の1年間が対象になる。</p>
+        <div class="list">
+          <div class="li">前年10月1日の所有数量</div>
+          <div class="li">前年10月1日〜その年の9月30日に<b>譲り受けた</b>数量</div>
+          <div class="li">同じ期間に<b>譲り渡した</b>数量（処方箋で交付した分を含む）</div>
+          <div class="li">その年の9月30日の所有数量</div>
+        </div>
+        <div class="box-blue">
+          <span class="ttl">様式は都県ごとに違う</span>
+          届け出る中身は全国共通だが、欄の分け方や廃棄・事故の書き方は都県の様式で違う。<span class="marker">細かい書き方は、薬局のある都県の様式と、保健所から届く通知に従う</span>。このページでは国のマニュアルの型で記入例を1つ示し、都県で違うところは<a href="#chigai">早見表</a>にまとめた。
+        </div>
+      </div>
+
+      <div class="card" id="kyotsu" data-toc-label="どの都県でも共通">
+        <div class="card-title">どの都県でも共通の注意</div>
+        <div class="check">
+          <div class="li"><b>前年10月1日の数量</b>は、去年の届の9月30日の数量と同じになる。</div>
+          <div class="li"><span class="marker">薬局間で譲り受けた・譲り渡した分も、受入・払出の数量に含める</span>。イ（在庫不足の補充）・ロ（90日たった在庫）の区別を記載する欄はない（帳簿の備考には必要）。</div>
+          <div class="li"><span class="marker">患者から返却された麻薬は受入に入れない</span>（在庫に戻していないため）。調剤済麻薬廃棄届（患者から返却された麻薬を廃棄したあとの届）で廃棄した分も、どの欄にも記載しない。</div>
+          <div class="li"><b>期限切れでも、麻薬廃棄届を提出して廃棄するまでは在庫</b>。9月30日の所有数量に入れる。備考に「使用期限切れ」と記載しておくと分かりやすい。廃棄したら、廃棄した日が入る期間（10月1日〜翌年9月30日）の届に、麻薬廃棄届（廃棄する前の届）による廃棄として記載する。</div>
+          <div class="li"><b>検算する</b>。前年10月1日＋受入−払出が9月30日の数量と合うかを確かめる。合わなければ、払出に含めていない廃棄・事故・帳簿訂正の数量で説明できるかを確認する（どれを払出に含めるかは都県の様式による）。</div>
+          <div class="li">9月30日の数量は、帳簿（補助簿を含む）の数と<b>現品</b>が合っていることも確かめる。</div>
+          <div class="li">コデイン類は帳簿に払い出しを記載していないので、9月30日に数えた（量った）残量から逆算して払い出しの数量を算出する。</div>
+        </div>
+        <div class="sub-title">書き方の決まり</div>
+        <div class="check">
+          <div class="li">品名は略さず、帳簿や包装の表記に合わせる。同じ成分でも規格・剤形が違えば別の行にする。予製した倍散も別の行にする。</div>
+          <div class="li">単位は、錠（T）・カプセル（Cap）・包・個（坐剤）・枚（貼付剤）・g・mL など。<b>備考に記載する数量も同じ単位にする</b>（単位が「枚」なのに備考は「10包」、などにしない）。</div>
+          <div class="li">秤量誤差などで帳簿を訂正した分は、備考に理由と数量を記載する。どの欄に含めるかが様式になければ、保健所に確認する。</div>
+          <div class="li">写しを控えとして保管する。提出したあとに誤りに気づいたら、提出先の保健所に連絡する。</div>
+        </div>
+      </div>
+
+      <div class="card" id="kinyurei" data-toc-label="記入例">
+        <div class="card-title">記入例<span class="qual">国のマニュアルの型</span></div>
+        <div class="table-wrap">
+          <table class="ledger nk">
+            <thead>
+              <tr><th rowspan="2">品名</th><th rowspan="2">単位</th><th rowspan="2">R7.10.1<br>所有数量</th><th colspan="2">R7.10.1〜R8.9.30</th><th rowspan="2">R8.9.30<br>所有数量</th><th rowspan="2">備考</th></tr>
+              <tr><th>譲受</th><th>譲渡</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>オキシコドン徐放錠5mg「〇〇」</td><td>錠</td><td class="n">120</td><td class="n">400</td><td class="n">384</td><td class="n">135</td><td>1錠 所在不明（R8.3.2 事故届）</td></tr>
+              <tr><td>オキシコドン徐放錠10mg「〇〇」</td><td>錠</td><td class="n">40</td><td class="n">100<br>(20)</td><td class="n">80<br>(10)</td><td class="n">60</td><td></td></tr>
+              <tr><td>フェンタニル1日用テープ1mg「〇〇」</td><td>枚</td><td class="n">14</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>14枚 廃棄（R8.6.10 麻薬廃棄届）</td></tr>
+              <tr><td>フェンタニル3日用テープ2.1mg「〇〇」</td><td>枚</td><td class="n">5</td><td class="n">0</td><td class="n">0</td><td class="n">5</td><td>5枚 使用期限切れ（R8.4）</td></tr>
+              <tr><td>コデインリン酸塩水和物（原末）</td><td>g</td><td class="n">5.0</td><td class="n">25.0</td><td class="n">※20.0</td><td class="n">10.0</td><td>※10％散に予製</td></tr>
+              <tr><td>コデインリン酸塩散10％</td><td>g</td><td class="n">12.0</td><td class="n">※200.0</td><td class="n">196.0</td><td class="n">16.0</td><td>※原末から予製</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="lg-note">10mgのかっこ書きは、譲受100錠のうち20錠、譲渡80錠のうち10錠が薬局間の分という意味。コデイン散10％の譲渡196.0gは、9月30日に量った16.0gから逆算した数（12.0＋200.0−16.0）。</p>
+        <div class="sub-title" style="margin-top:18px;">記入例の読み方</div>
+        <div class="check">
+          <div class="li"><b>譲受</b>は、卸からの購入と薬局間で譲り受けた分。<b>譲渡</b>は、処方箋で交付した分と薬局間で譲り渡した分。</div>
+          <div class="li"><span class="marker">薬局間で譲受・譲渡した分は、合計に含めたうえで<b>かっこ書き</b>で添える</span>。かっこには薬局間の分の合計だけを記載する（国のマニュアル・質疑応答）。</div>
+          <div class="li"><b>廃棄（麻薬廃棄届）・事故は譲渡に入れず、備考に記載する</b>。この扱いは都県の様式で違う（<a href="#chigai">早見表</a>）。</div>
+          <div class="li">予製した倍散は、原末の「譲渡」に予製に使った量、倍散の「譲受」に作った量を入れ、※などで予製だと分かるようにする。</div>
+        </div>
+        <div class="box-blue">
+          <span class="ttl">例）薬局間の譲渡があった品目（オキシコドン徐放錠10mg）</span>
+          <div class="table-wrap">
+            <table class="ledger" style="background:#fff;">
+              <thead><tr><th>1年間の帳簿</th><th>数量</th><th>年間届の欄</th></tr></thead>
+              <tbody>
+                <tr><td>卸から購入</td><td class="n">80</td><td rowspan="2">譲受 <b>100(20)</b></td></tr>
+                <tr><td>他の薬局から譲受（イ・ロとも）</td><td class="n">20</td></tr>
+                <tr><td>処方箋で交付</td><td class="n">70</td><td rowspan="2">譲渡 <b>80(10)</b></td></tr>
+                <tr><td>他の薬局へ譲渡（イ・ロとも）</td><td class="n">10</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin-top:8px;">帳簿の備考に「〇〇薬局から譲受」「〇〇薬局へ譲渡」と記載した行を、10月1日から9月30日までの1年分拾って合計する。</p>
+        </div>
+      </div>
+
+      <div class="card" id="chigai" data-toc-label="都県で違うところ">
+        <div class="card-title">都県の様式で違うところ</div>
+        <div class="table-wrap">
+          <table class="pref">
+            <thead><tr><th class="rh" style="width:7.5em;"></th><th>東京都</th><th>埼玉県</th><th>茨城県</th></tr></thead>
+            <tbody>
+              <tr><td class="rh">様式</td><td>麻薬小売業者の届（様式16）。譲受・譲渡の2欄</td><td>年間届（第10号様式）。受入3欄・払出4欄に分ける</td><td>麻薬年間届。受入・払出の2欄</td></tr>
+              <tr><td class="rh">廃棄・事故の分</td><td>譲渡に入れず、<b>備考だけ</b>に記載する</td><td>払出の<b>専用の欄</b>（麻薬廃棄届による廃棄・事故届出）に記載し、備考に届出の区分と日付</td><td><b>払出に含め</b>、備考にその数量を記載する</td></tr>
+              <tr><td class="rh">薬局間の分</td><td>かっこ書きで添える</td><td>受入・払出の「その他」の欄に記載し、備考に相手の薬局名と日付</td><td>様式に指定はない。国の質疑応答に合わせてかっこ書きで添える</td></tr>
+              <tr><td class="rh">所有なしの年</td><td>「所有なし」と記載する</td><td>表に斜線を引き「なし」と記載する</td><td>様式に指定はない</td></tr>
+              <tr><td class="rh">提出先・部数</td><td>管轄の保健所に1通（10月1日から受け付け）</td><td>管轄の県の保健所（生活衛生・薬事担当）。紙なら1部</td><td>管轄の保健所に2部。郵送（簡易書留）もできる</td></tr>
+              <tr><td class="rh">電子申請</td><td>手引きに記載はない</td><td>埼玉県電子申請・届出サービスでできる</td><td>いばらき電子申請・届出サービスでできる</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-gray">
+          <span class="ttl">茨城県の古河保健所など5か所</span>
+          中央・日立・竜ケ崎・筑西・古河の5つの保健所は、県の様式ページとは別の報告方法を取っている。<span class="marker">保健所から届いた通知に従う</span>。手元に見当たらなければ、管轄の保健所（古河市なら古河保健所）に問い合わせる。
+        </div>
+        <details class="fold-in" style="margin-top:14px;">
+          <summary>埼玉県の様式での記入例</summary>
+          <div class="fold-body">
+            <div class="table-wrap">
+              <table class="ledger nk sai">
+                <thead>
+                  <tr><th rowspan="2">品名</th><th rowspan="2">単位</th><th rowspan="2">期始<br>在庫数量</th><th colspan="3">受入数量</th><th colspan="4">払出数量</th><th rowspan="2">期末<br>在庫数量</th><th rowspan="2">備考</th></tr>
+                  <tr><th>卸売業者から譲受</th><th>患者から返却（再利用分）</th><th>その他</th><th>調剤、施用、使用</th><th>麻薬廃棄届による廃棄</th><th>事故届出</th><th>その他</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>オキシコドン徐放錠5mg「〇〇」</td><td>T</td><td class="n">120</td><td class="n">400</td><td></td><td></td><td class="n">384</td><td></td><td class="n">1</td><td></td><td class="n">135</td><td>R8.3.2 事故届 1T</td></tr>
+                  <tr><td>オキシコドン徐放錠10mg「〇〇」</td><td>T</td><td class="n">40</td><td class="n">80</td><td></td><td class="n">20</td><td class="n">70</td><td></td><td></td><td class="n">10</td><td class="n">60</td><td>R8.5.12 〇〇薬局から麻薬小売業者間譲渡 20T<br>R8.8.3 △△薬局へ麻薬小売業者間譲渡 10T</td></tr>
+                  <tr><td>フェンタニル1日用テープ1mg「〇〇」</td><td>枚</td><td class="n">14</td><td></td><td></td><td></td><td></td><td class="n">14</td><td></td><td></td><td class="n">0</td><td>R8.6.10 廃棄届 14枚</td></tr>
+                  <tr><td>フェンタニル3日用テープ2.1mg「〇〇」</td><td>枚</td><td class="n">5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="n">5</td><td>5枚 使用期限切れ（R8.4）</td></tr>
+                  <tr><td>コデインリン酸塩水和物（原末）</td><td>g</td><td class="n">5.0</td><td class="n">25.0</td><td></td><td></td><td class="n">20.0</td><td></td><td></td><td></td><td class="n">10.0</td><td>10％散の予製に20.0g</td></tr>
+                  <tr><td>コデインリン酸塩散10％（予製）</td><td>g</td><td class="n">12.0</td><td></td><td></td><td class="n">200.0</td><td class="n">196.0</td><td></td><td></td><td></td><td class="n">16.0</td><td>原末から予製</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="lg-note">上の記入例と同じ1年間を埼玉県の様式で記入したもの。「患者から返却（再利用分）」は病院などが使う欄で、薬局は空けておく。予製に使った原末は払出の「調剤、施用、使用」、作った倍散は受入の「その他」に記載する（作成要領）。押印は不要、手書きなら消せるボールペンは使わない。</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="card" id="kanren" data-toc-label="麻薬管理のページ">
+        <div class="card-title">麻薬管理のページ</div>
+        <div class="rel">
+          <a href="薬局の麻薬管理.html">薬局の麻薬管理<span class="d">仕入れ・保管・処方箋・慢性疼痛・廃棄・事故・免許</span></a>
+          <a href="麻薬帳簿の書き方.html">麻薬帳簿の書き方<span class="d">場面ごとの記入例</span></a>
+          <a href="麻薬の年間届の書き方.html" class="cur">麻薬の年間届の書き方<span class="d">毎年11月30日まで</span></a>
+          <a href="薬局間の麻薬の譲渡.html">薬局間の麻薬の譲渡<span class="d">麻薬小売業者間譲渡許可</span></a>
+        </div>
+      </div>
+
+      <div class="card" id="genten" data-toc-label="原典">
+        <div class="card-title">原典<span class="qual">通知・手引き・様式</span></div>
+        <div class="table-wrap">
+          <table class="src">
+            <thead><tr><th>資料</th><th>このページで使ったところ</th></tr></thead>
+            <tbody>
+              <tr><td>薬局における麻薬管理マニュアル（厚生労働省 平成23年4月）<br><a href="https://www.mhlw.go.jp/bunya/iyakuhin/yakubuturanyou/dl/mayaku_kanri_02.pdf" target="_blank" rel="noopener">PDF</a></td><td>年間届の記載事項、薬局間で譲受・譲渡した数量のかっこ書き（内数）、廃棄・事故は備考、調剤済麻薬廃棄届の分は記載不要</td></tr>
+              <tr><td>麻薬取扱いの手引（薬局用）（東京都 令和8年3月改訂）<br><a href="https://www.hokeniryo.metro.tokyo.lg.jp/documents/d/hokeniryo/r8-3_mayakutoriatukaitebbikiyakkyoku-pdf" target="_blank" rel="noopener">PDF</a></td><td>記載内容と記載上の注意（「所有なし」、提出部数1通）、提出期限・提出先、コデイン類は処方箋による払出を帳簿に書かない</td></tr>
+              <tr><td>麻薬小売業者の手引き（大阪府）<br><a href="https://www.pref.osaka.lg.jp/documents/4073/r612-mayaku-kourigyou.pdf" target="_blank" rel="noopener">PDF</a></td><td>薬局間の譲渡・譲受を年間届に含め、内数をかっこ書き</td></tr>
+              <tr><td>麻薬小売業者間譲渡許可に係る質疑応答について（事務連絡 令和3年9月13日）<br><a href="https://www.pref.kyoto.jp/yakumu/documents/qa.pdf" target="_blank" rel="noopener">PDF（京都府のページに掲載）</a></td><td>薬局間の譲渡・譲受も年間届に含め、品名ごとの合計を内数としてかっこ書き（問65）</td></tr>
+              <tr><td>埼玉県「埼玉県で麻薬小売業者・管理者・施用者免許をお持ちの方へ（年間届・継続申請のご案内）」<br><a href="https://www.pref.saitama.lg.jp/a0707/mayaku-nennkann.html" target="_blank" rel="noopener">埼玉県</a></td><td>埼玉県の提出先（県の保健所・電子申請）</td></tr>
+              <tr><td>埼玉県「麻薬年間届作成要領」・年間届（第10号様式）<br><a href="https://www.pref.saitama.lg.jp/documents/284669/nenkantodokesakusei.pdf" target="_blank" rel="noopener">PDF</a></td><td>埼玉県の様式の欄の分け方（受入3欄・払出4欄）、薬局間の譲渡は「その他」、廃棄届・事故届の欄、予製、単位、押印不要、消せるボールペン不可、提出部数</td></tr>
+              <tr><td>茨城県「麻薬及び向精神薬取締法第47,48,49条の規定に基づく届出」・麻薬年間届<br><a href="https://www.pref.ibaraki.jp/yoshiki/hokenfukushi/yakumu/0328n0740.html" target="_blank" rel="noopener">茨城県</a></td><td>茨城県の提出先・2部・郵送・電子申請、報告方法が異なる5保健所、様式の欄の分け方（廃棄・事故は払出に含めて備考に数量）</td></tr>
+              <tr><td>茨城県「郵送での手続きをご希望の方へ」<br><a href="https://www.pref.ibaraki.jp/yoshiki/hokenfukushi/yakumu/documents/yuusou.pdf" target="_blank" rel="noopener">PDF</a></td><td>郵送は保健所の衛生課あてに簡易書留</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>
