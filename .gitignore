@@ -5,6 +5,7 @@
 /.claude/*
 !/.claude/commands/
 !/.claude/agents/
+!/.claude/手引き/
 
 # npm のライブラリ（package.json があれば npm install で復元できるので追跡しない）
 /node_modules/

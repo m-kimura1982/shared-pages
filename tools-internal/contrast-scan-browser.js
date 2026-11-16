@@ -23,11 +23,11 @@
  * 全ページを続けて読ませると npx serve が EMFILE（ファイルの開きすぎ）で落ちることが
  * ある。落ちたら preview_start で立て直して続きから測ればよい（サイト側の問題ではない）。
  *
- * 矢印・「・」などの記号は薄くてよい（CLAUDE.md）。結果を見るときは記号を除いて、
+ * 矢印・「・」などの記号は薄くてよい（.claude/手引き/デザインルール.md）。結果を見るときは記号を除いて、
  * 「読ませる文字」だけを拾うこと。
  *
  * 判定は assets/check-contrast.js と同じ 4.5:1（24px以上、または18.66px以上の
- * 太字は 3:1）。CLAUDE.md「デザインルール → 配色と役割」を参照。
+ * 太字は 3:1）。.claude/手引き/デザインルール.md「配色と役割」を参照。
  */
 window.__contrastInit = async function () {
   const meta = await fetch('/assets/page-meta.json').then((r) => r.json());

@@ -31,7 +31,20 @@ if (process.argv.includes('--claude-hook')) {
   let input = '';
   process.stdin.on('data', c => input += c).on('end', () => {
     let cmd = '';
-    try { cmd = JSON.parse(input).tool_input.command || ''; } catch { process.exit(0); }
+    // 入力が読めないときは通さない（壊れたときに素通しにしない。2026-11-17）
+    try { cmd = JSON.parse(input).tool_input.command || ''; } catch {
+      process.stderr.write('【公開前の検問】フックの入力が読めなかったので止めた。tools-internal/check-commit-safety.js を確かめる。\n');
+      process.exit(2);
+    }
+    // 検問そのものを外す操作（core.hooksPath の付け替え・解除）を止める。値を見るだけ・正しい場所への設定は通す
+    const hp = cmd.match(/\bgit\b[^|;&\n]*?(?:-c\s+core\.hookspath\s*=\s*(\S*)|config\b[^|;&\n]*?(--unset(?:-all)?\s+core\.hookspath|core\.hookspath\s+(\S+)))/i);
+    if (hp) {
+      const val = (hp[1] !== undefined ? hp[1] : hp[3] || '').replace(/^["']|["']$/g, '');
+      if (val !== 'tools-internal/git-hooks') {
+        process.stderr.write('【公開前の検問】core.hooksPath を外す・付け替える操作は Claude からは行わない（コミット前の検問が効かなくなる）。必要なら本人が行う。\n');
+        process.exit(2);
+      }
+    }
     // git commit / push 等の引数として付いたときだけ止める（メモの本文に語が出るだけなら通す）
     if (/\bgit\s+(-c\s+\S+\s+)*(commit|push|merge|rebase|am|cherry-pick)\b[^|;&\n]*(--no-verify\b|\s-n\b)/.test(cmd)) {
       process.stderr.write('【公開前の検問】--no-verify は使わない。検問で止まったなら中身を直すか、本人に確かめてもらう（本人が自分で --no-verify を付けて通す）。\n');
