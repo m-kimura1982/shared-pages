@@ -74,7 +74,13 @@ process.stdin.on('data', c => input += c).on('end', () => {
   const text = [ti.content, ti.new_string, ...(Array.isArray(ti.edits) ? ti.edits.map(e => e.new_string) : [])]
     .filter(s => typeof s === 'string').join('\n');
 
-  const need = RULES.filter(r => r.when(rel, text, isWrite));
+  // 見た目の判定は「新しく足した分」だけで行う（元からある class をそのまま含む言葉の直しを止めない）
+  const oldText = [ti.old_string, ...(Array.isArray(ti.edits) ? ti.edits.map(e => e.old_string) : [])]
+    .filter(s => typeof s === 'string').join('\n');
+  const tokens = s => s.match(/<style|style="[^"]*"|class="[^"]*"|#[0-9a-fA-F]{3,8}\b|[\w-]*color\s*:[^;"]*|background[^;"]*|<details|<table|@media[^{]*|var\(--[\w-]+\)/g) || [];
+  const had = new Set(tokens(oldText));
+  const added = tokens(text).filter(t => !had.has(t)).join('\n');
+  const need = RULES.filter(r => r.file === 'デザインルール.md' ? r.when(rel, added, isWrite) : r.when(rel, text, isWrite));
   if (!need.length) process.exit(0);
 
   const seen = readInSession(j.transcript_path, j.session_id);
