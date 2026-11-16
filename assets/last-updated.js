@@ -35,7 +35,7 @@
     /* 7日以内はもう一段濃くする */
     .lu-text.lu-mid { color: #444444; font-weight: 500; }
     /* 塗りの青に小さな白文字は読みにくいので、淡い青地に青文字（2026-09-11） */
-    .lu-pill .lu-pill-badge {
+    .lu-pill .lu-pill-badge, .lu-text .lu-pill-badge {
       display: inline-block;
       font-size: 11px;
       font-weight: 700;
@@ -52,7 +52,7 @@
     }
     @media (max-width: 700px) {
       .lu-text { font-size: 11.5px; }
-      .lu-pill .lu-pill-badge { font-size: 10.5px; }
+      .lu-pill .lu-pill-badge, .lu-text .lu-pill-badge { font-size: 10.5px; }
       .lu-pill .lu-pill-when { font-size: 11px; }
     }
   `;
@@ -86,6 +86,21 @@
     const updated = new Date(entry.lastUpdated + 'T00:00:00');
     if (isNaN(updated.getTime())) return;
     const diffDays = Math.floor((today - updated) / (1000 * 60 * 60 * 24));
+
+    // チェックリストは「○年○月○日版」を必ず出す（古くても出す）。印刷した紙の右下の版と見比べるため（2026-11-17）
+    if (filename.indexOf('チェックリスト/') === 0) {
+      const ver = document.createElement('span');
+      ver.className = 'lu-text';
+      ver.textContent = `${updated.getFullYear()}年${updated.getMonth() + 1}月${updated.getDate()}日版`;
+      if (entry.newUntil && today <= new Date(entry.newUntil + 'T23:59:59')) {
+        const pill = document.createElement('span');
+        pill.className = 'lu-pill-badge';
+        pill.textContent = 'NEW';
+        ver.insertBefore(pill, ver.firstChild);
+      }
+      placeLine(card, ver);
+      return;
+    }
 
     // 91日以上前は表示しない
     if (diffDays > 90) return;

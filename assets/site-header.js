@@ -686,6 +686,16 @@
 
     const d = new Date(entry.lastUpdated + 'T00:00:00');
     if (isNaN(d.getTime())) return;
+    // チェックリストは、印刷した紙の右下の余白に「○年○月○日版」を出す（2026-11-17）。
+    // 店舗の紙が今の版かどうかを、ハブの一覧の日付と見比べて確かめられるように。
+    // 余白に出すので本文は1行も押し下げない（1枚に収めたものが2枚にならない）。古い日付でも出す。
+    if (category === 'checklist' && !document.getElementById('sn-print-ver')) {
+      const ver = `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日版`;
+      const st = document.createElement('style');
+      st.id = 'sn-print-ver';
+      st.textContent = `@media print { @page { @bottom-right { content: "${ver}"; font-family: "Noto Sans JP", sans-serif; font-size: 7pt; color: #444444; } } }`;
+      document.head.appendChild(st);
+    }
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     if (Math.floor((today - d) / 86400000) > 90) return;
