@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>栄養保持を目的とした医薬品の保険給付の適正化｜2026年調剤報酬改定</title>
+<title>栄養保持を目的とした医薬品の保険給付の適正化</title>
 <meta name="search-keywords" content="経腸栄養剤,栄養剤,イノラス,エネーボ,エンシュア,ツインラインNF,ラコールNF,備考欄,手術後,経管,処方箋記載により確認,疑義照会により確認,保険対象外,えいようほじ,けいちょうえいようざい" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/source-refs.css" />
@@ -53,10 +53,6 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
 
 /* 折りたたみ */
 .fold { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); }
-.fold > summary { list-style:none; cursor:pointer; padding:14px var(--pad-card); font-weight:700; font-size:var(--text-sm); color:var(--txt-2); display:flex; align-items:center; gap:8px; }
-.fold > summary::-webkit-details-marker { display:none; }
-.fold > summary::before { content:"▶"; font-size:10px; color:var(--txt-3); transition:transform .15s; }
-.fold[open] > summary::before { transform:rotate(90deg); }
 .fold .fold-body { padding:0 var(--pad-card) var(--pad-card); display:flex; flex-direction:column; gap:14px; }
 
 .bullet { display:flex; gap:6px; }
@@ -116,7 +112,6 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
   <!-- タイトル -->
   <div class="page-title">
     <h1>栄養保持を目的とした医薬品の保険給付の適正化</h1>
-    <p>2026年調剤報酬改定</p>
   </div>
 
   <!-- 概要 -->
@@ -125,7 +120,7 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
     <div style="display:flex; flex-direction:column; gap:8px; font-size:var(--text-sm);">
       <div class="bullet"><span>・</span><span>一部の経腸栄養剤について、<span class="marker">保険給付の対象となる患者が限定</span>された。</span></div>
       <div class="bullet"><span>・</span><span>対象薬を保険給付するには、患者が要件に該当することを<strong>「処方箋の記載」または「疑義照会」で確認</strong>する必要がある。</span></div>
-      <div class="bullet"><span>・</span><span>確認した場合は、どちらの確認方法でも、<span class="marker">レセプト摘要欄にコメントの入力が必須</span>（2026年改定で新設）。</span></div>
+      <div class="bullet"><span>・</span><span>確認した場合は、どちらの確認方法でも、<span class="marker">レセプト摘要欄にコメントの入力が必須</span>。</span></div>
       <div class="bullet"><span>・</span><span>要件に該当しない・確認できない場合、その薬剤は<span class="marker">保険対象外</span>となる。</span></div>
     </div>
   </div>
@@ -175,19 +170,19 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
       </div>
     </div>
 
-    <p class="ref" style="margin-top:14px;">
-      ※ 処方箋の備考欄に①〜③のいずれかが記載される（出典：別紙２第５「処方箋の記載上の注意事項」８「備考」欄について(12)）。
-    </p>
   </div>
 
   <!-- レセプト摘要欄記載事項 -->
   <div class="card">
     <div class="card-title">レセプト摘要欄記載事項（調剤）</div>
-    <p class="ref" style="margin-bottom:14px;">
-      ※ <a href="別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html" style="color:var(--blue); text-decoration:underline;">別表Ⅰ</a>準拠（項目41）。処方箋記載または疑義照会のいずれかで投与の必要性を確認した旨を記載する。
-    </p>
-
-    <p style="font-size:var(--text-sm); line-height:1.85;">栄養保持を目的とした医薬品が処方されている処方箋に基づき調剤を行った場合は、<strong>手術後の患者に投与した旨</strong>又は<strong>経管により栄養補給を行っている患者に投与した旨</strong>、処方医が投与が必要と判断した理由について<strong>処方箋の記載により確認した</strong>旨又は<strong>疑義照会により確認した</strong>旨を記載すること。</p>
+    <p style="font-size:var(--text-sm); margin-bottom:8px;">確認した方法に合わせて、次のどちらかを入力する。</p>
+    <div class="box-gray" style="font-size:var(--text-sm); margin-bottom:14px;">
+      <div>・<strong>処方箋記載により確認</strong>（栄養保持を目的とした医薬品が処方されている処方箋に基づき調剤を行った場合）</div>
+      <div>・<strong>疑義照会により確認</strong>（栄養保持を目的とした医薬品が処方されている処方箋に基づき調剤を行った場合）</div>
+    </div>
+    <details class="fold-in"><summary>原文を見る</summary><div class="fold-body">
+    <p style="font-size:var(--text-sm); line-height:1.85;">栄養保持を目的とした医薬品が処方されている処方箋に基づき調剤を行った場合は、<strong>手術後の患者に栄養保持を目的とした医薬品を投与した旨</strong>又は<strong>経管により栄養補給を行っている患者に栄養保持を目的とした医薬品を投与した旨</strong>、処方医が当該栄養保持を目的とした医薬品の投与が必要であると判断した理由について<strong>処方箋の記載により確認した</strong>患者はその旨又は<strong>疑義照会により確認した</strong>旨を記載すること。</p>
+    </div></details>
   </div>
 
   <!-- 参考：医科側（折りたたみ） -->
@@ -228,6 +223,13 @@ body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--
     </div>
   </details>
 
+</div>
+
+<div class="ref-links">
+  <div class="row">
+    <span class="lab">原文参照：</span>
+    <a href="別表Ⅰ_調剤報酬明細書摘要欄記載事項2026.html">別表Ⅰ › 摘要欄記載事項</a>
+  </div>
 </div>
 
 <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
