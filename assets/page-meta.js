@@ -391,7 +391,7 @@ window.__pageMeta = {
     "newUntil": "2026-10-10"
   },
   "ツール/漢方薬_投薬前の早見表.html": {
-    "lastUpdated": "2026-10-27",
+    "lastUpdated": "2026-11-19",
     "newUntil": "2026-11-03"
   },
   "ナレッジ/調剤報酬QA.html": {
