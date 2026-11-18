@@ -412,7 +412,7 @@ function renderKz(){
   const sum = ks.reduce((a, k) => a + k.kanzo, 0);
   kzBar.innerHTML = `甘草の合計 <span class="sum">${sum.toFixed(1)}g/日</span>
     <span class="parts">（${ks.map(k => k.name + ' ' + k.kanzo.toFixed(1)).join('＋')}）</span><button type="button" id="kzclear">すべて外す</button><button type="button" id="kzmore">${kzMore ? '注意を閉じる' : '注意を開く'}</button>
-    <div class="line"${kzMore ? '' : ' hidden'}>合計量の公的な目安はない（添付文書は「含有生薬の重複に注意」とするだけ）が、甘草が重なるほど、むくみ・血圧上昇・手足のだるさ（偽アルドステロン症）が出やすくなる。ほかに甘草やグリチルリチンを含む薬（市販薬も）がないかも確認する。</div>
+    <div class="line"${kzMore ? '' : ' hidden'}>合計量の公的な目安はない（添付文書にあるのは「含有生薬の重複に注意」と、甘草を含む製剤の併用注意）が、甘草が重なるほど、むくみ・血圧上昇・手足のだるさ（偽アルドステロン症）が出やすくなる。ほかに甘草やグリチルリチンを含む薬（市販薬も）がないかも確認する。</div>
     <div class="line"${kzMore ? '' : ' hidden'}>アルドステロン症などの禁忌があるのは、1品目で甘草を1日2.5g以上含むもの（昭和53年の厚生省通知の基準）：${KZHI}。</div>`;
   document.getElementById('kzclear').onclick = () => { kzSel.length = 0; renderKz(); };
   document.getElementById('kzmore').onclick = () => { kzMore = !kzMore; renderKz(); };
