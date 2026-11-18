@@ -320,14 +320,14 @@ window.__pageMeta = {
     "lastUpdated": "2026-10-29"
   },
   "改定資料/在宅薬学総合体制加算2イ_特例摘要欄ガイド.html": {
-    "lastUpdated": "2026-10-28"
-  },
-  "改定資料/栄養保持を目的とした医薬品の保険給付の適正化.html": {
-    "lastUpdated": "2026-10-27"
+    "lastUpdated": "2026-11-19"
   },
   "改定資料/疑義解釈まとめ2026.html": {
     "lastUpdated": "2026-11-08",
     "newUntil": "2026-11-04"
+  },
+  "改定資料/栄養保持を目的とした医薬品の保険給付の適正化.html": {
+    "lastUpdated": "2026-11-19"
   },
   "チェックリスト/選定療養_実務チェックリスト.html": {
     "lastUpdated": "2026-06-06",
@@ -409,7 +409,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-04-19"
   },
   "ナレッジ/変更調剤について.html": {
-    "lastUpdated": "2026-04-18"
+    "lastUpdated": "2026-11-19"
   },
   "ナレッジ/OTC医薬品の区分と販売ルール.html": {
     "lastUpdated": "2026-10-27",
