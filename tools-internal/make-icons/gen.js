@@ -17,15 +17,16 @@ const adv = (s, size) => font.getAdvanceWidth(s, size);
 const p = (s, x, y, size, fill) =>
   `<path fill="${fill}" d="${font.getPath(s, x, y, size).toPathData(2)}"/>`;
 
-// タブ用：淡い青の角丸に紺の「調」＋黄マーカー
+// タブ用：淡い青の角丸＋青い枠に、紺の「調」＋黄マーカー
+// 枠は 2026-11-22 に追加（淡い青だけでは白いタブに溶けて輪郭が見えなかった）
 function tabSvg() {
-  const size = 38;
+  const size = 34;
   const g = font.getPath('調', 0, 0, size).getBoundingBox();
   const x = 32 - (g.x1 + g.x2) / 2;
   const y = 32 - (g.y1 + g.y2) / 2 + 1;
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">` +
-    `<rect width="64" height="64" rx="12" fill="${T}"/>` +
-    `<rect x="10" y="${(y - 14).toFixed(2)}" width="44" height="15" fill="${Y}"/>` +
+    `<rect x="2" y="2" width="60" height="60" rx="10" fill="${T}" stroke="${B}" stroke-width="4"/>` +
+    `<rect x="12" y="${(y - 13).toFixed(2)}" width="40" height="14" fill="${Y}"/>` +
     p('調', x, y, size, K) + `</svg>`;
 }
 

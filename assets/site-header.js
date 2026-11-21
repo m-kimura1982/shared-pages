@@ -589,7 +589,7 @@
   // 種類ごとに、ページ側に指定がなければ足す。
   // ICON_V はアイコンを描き直したときに上げる（スマホが古い絵を覚えたままになるのを防ぐ）。
   // index.html・updates.html・404.html は head に直接書いているので、上げたらそちらの ?v= も揃える。
-  const ICON_V = '2';
+  const ICON_V = '3';
   const iconHref = (f) => u('assets/icons/' + f) + '?v=' + ICON_V;
   const addLink = (attrs) => {
     const link = document.createElement('link');
