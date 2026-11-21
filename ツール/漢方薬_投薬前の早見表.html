@@ -165,6 +165,12 @@
     .ctag.self  { background:#f3e8d0; color:#7a5718; }   /* クリーム */
     .ctag.other { background:#e5e0f2; color:#4b3f80; }   /* 藤 */
     .cmp-f { display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:var(--text-xs); color:var(--txt-3); margin-top:6px; }
+    .cmp-g .flag { margin-left:6px; }
+    /* ほかの処方と比べる（構成生薬の表の下で、どの品目とも比べられる） */
+    .pick { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:10px; font-size:var(--text-sm); font-weight:700; color:var(--txt-2); }
+    .pick select { font-family:inherit; font-size:var(--text-sm); color:var(--blue); font-weight:700; background:var(--white); border:var(--bw-h) solid var(--blue); border-radius:var(--radius-sm); padding:4px 8px; max-width:100%; cursor:pointer; }
+    /* 最近開いた品目（検索し直しても前の品目へすぐ戻れるように） */
+    .recent .chip { color:var(--blue); border-color:var(--blue); }
 
     .table-wrap { overflow-x:auto; }
     .src { font-size:var(--text-xs); color:var(--txt-3); margin-top:8px; }
@@ -176,7 +182,7 @@
       .herbs td, .herbs th { padding-left:4px; padding-right:4px; }
     }
     @media print {
-      .search-wrap, .finder { display:none; }
+      .search-wrap, .finder, .pick { display:none; }
       .card { break-inside:avoid; }
     }
   </style>
@@ -197,6 +203,10 @@
   <div class="finder">
     <div class="row-lab">症状から探す<span class="row-note">（ボタンにない症状は検索欄に入力）</span></div>
     <div class="chips" id="chips"></div>
+    <div class="recent" id="recentWrap" hidden>
+      <div class="row-lab">最近開いた品目<span class="row-note">（押すとその品目へ戻る）</span></div>
+      <div class="chips" id="recent"></div>
+    </div>
     <div class="hit-count" id="hit"></div>
   </div>
 
@@ -289,7 +299,7 @@ function compare(self, other){
   const n = [0, 1, 2].map(k => rows.filter(r => kind(r) === k).length);
   return `<div class="cmp" data-to="${other.id}">
     <div class="cmp-h"><span>比べる相手：<b>${other.name}</b>（ツムラ ${other.no}）</span><button type="button" class="cmp-x">閉じる</button></div>
-    <div class="cmp-g">${other.gist}</div>
+    <div class="cmp-g">${other.gist}${other.flags.filter(f => f.warn).map(f => `<span class="flag warn">${flagText(other, f)}</span>`).join('')}</div>
     <div class="table-wrap"><table class="herbs cmp-t">
       <thead><tr><th>生薬</th><th class="hg">${self.name}</th><th class="hg">${other.name}</th></tr></thead>
       <tbody>${body}</tbody></table></div>
@@ -366,6 +376,7 @@ function card(k){
     <div class="table-wrap"><table class="herbs">
       <thead><tr><th>生薬</th><th>この処方での役割</th><th class="hg">生薬量</th></tr></thead>
       <tbody>${herbs}</tbody></table></div>
+    <div class="pick"><label for="pk-${k.id}">ほかの処方と比べる</label><select id="pk-${k.id}" class="pk-sel" data-id="${k.id}"></select></div>
     <p class="maker-note">分量はツムラの製品。クラシエなど他社品は、同じ処方名でも分量や生薬が違うことがある。役割は添付文書に書かれていないため、漢方の一般的な解釈で、この処方の中で効かせている働きだけを載せた。</p>
     ${termNote(k)}
 
@@ -393,7 +404,54 @@ items.forEach(d => d.addEventListener('toggle', () => {
   const top = d.getBoundingClientRect().top;
   const head = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sn-header-h')) || 0) + 64;
   if (top < head || top > innerHeight * 0.6) scrollTo({ top: scrollY + top - head, behavior: 'smooth' });
+  addRecent(d.id);
+  fillPick(d);
 }));
+
+/* 最近開いた品目。検索し直すと前に見ていた品目が一覧から消えるので、検索欄の下から戻れるようにする。
+   次に開いたときも残す（この端末のブラウザだけ。消えても困らない情報なので localStorage） */
+const RKEY = 'kampo-recent-v1', RMAX = 6;
+let recent = [];
+try { const v = JSON.parse(localStorage.getItem(RKEY) || '[]'); if (Array.isArray(v)) recent = v.filter(id => KAMPO.some(k => k.id === id)); } catch (e) {}
+const recentEl = document.getElementById('recent'), recentWrap = document.getElementById('recentWrap');
+function renderRecent(){
+  recentWrap.hidden = !recent.length;
+  const openId = (items.find(d => d.open) || {}).id;
+  recentEl.innerHTML = recent.map(id => { const k = KAMPO.find(k => k.id === id);
+    return `<button type="button" class="chip${id === openId ? ' on' : ''}" data-id="${id}">${k.name}</button>`; }).join('');
+}
+function addRecent(id){
+  recent = [id, ...recent.filter(x => x !== id)].slice(0, RMAX);
+  try { localStorage.setItem(RKEY, JSON.stringify(recent)); } catch (e) {}
+  renderRecent();
+}
+/* 品目を開く。検索で隠れているときは検索を解除してから開く */
+function openItem(id){
+  const t = document.getElementById(id);
+  if (t.hidden) { q.value = ''; cat = -1; apply(); }
+  if (t.open) t.scrollIntoView({ behavior: 'smooth' }); else t.open = true;
+}
+recentEl.addEventListener('click', e => { const b = e.target.closest('.chip'); if (b) openItem(b.dataset.id); });
+items.forEach(d => d.addEventListener('toggle', () => { if (!d.open) renderRecent(); }));
+
+/* ほかの処方と比べる：開いたときに選択肢を作る（全品目×全品目を最初に作ると重いため）。最近開いた品目を先頭に出す */
+function fillPick(d){
+  const sel = d.querySelector('.pk-sel'); if (!sel) return;
+  const keep = sel.value;
+  const opt = k => `<option value="${k.id}">ツムラ ${k.no}　${k.name}</option>`;
+  const rec = recent.filter(id => id !== d.id).map(id => KAMPO.find(k => k.id === id));
+  sel.innerHTML = '<option value="">品目を選ぶ</option>'
+    + (rec.length ? `<optgroup label="最近開いた品目">${rec.map(opt).join('')}</optgroup>` : '')
+    + `<optgroup label="すべて（ツムラ番号順）">${KAMPO.filter(k => k.id !== d.id).map(opt).join('')}</optgroup>`;
+  sel.value = keep;
+}
+list.addEventListener('change', e => {
+  const sel = e.target.closest('.pk-sel'); if (!sel) return;
+  const d = sel.closest('details.kp');
+  const old = d.querySelector('.cmp'); if (old) old.remove();
+  if (!sel.value) return;
+  sel.closest('.pick').insertAdjacentHTML('afterend', compare(KAMPO.find(k => k.id === d.id), KAMPO.find(k => k.id === sel.value)));
+});
 /* 甘草の合計：品目のボタンで足し引きし、検索欄の下に合計を出す */
 const kzSel = [];
 /* 合計の欄は画面上部に貼り付くので、ふだんは合計と内訳の1行だけにする。注意の2行は「注意」を押したときだけ出す（スマホで画面を占めるため） */
@@ -421,14 +479,11 @@ function renderKz(){
 list.addEventListener('click', e => {
   const r = e.target.closest('.ref, .cmp-x, .cmp-open'); if (!r) return;
   const d = r.closest('details.kp');
-  if (r.classList.contains('cmp-x')) { r.closest('.cmp').remove(); return; }
-  if (r.classList.contains('cmp-open')) {
-    const t = document.getElementById(r.dataset.to);
-    if (t.hidden) { q.value = ''; cat = -1; apply(); }
-    t.open = true;
-    return;
-  }
+  const resetPick = () => { const s = d.querySelector('.pk-sel'); if (s) s.value = ''; };
+  if (r.classList.contains('cmp-x')) { r.closest('.cmp').remove(); resetPick(); return; }
+  if (r.classList.contains('cmp-open')) { openItem(r.dataset.to); return; }
   const anchor = r.closest('li, .scene') || r.closest('p');
+  resetPick();
   const old = d.querySelector('.cmp');
   const same = old && old.dataset.to === r.dataset.to && old.parentNode === (anchor.matches('li, .scene') ? anchor : anchor.parentNode);
   if (old) old.remove();
@@ -609,6 +664,7 @@ chipsEl.addEventListener('click', e => {
   apply();
 });
 apply();
+renderRecent();
 </script>
 <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
