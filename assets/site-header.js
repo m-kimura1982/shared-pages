@@ -585,19 +585,27 @@
     return u('assets/icons/会社ロゴ.png');
   }
 
-  // ── favicon 自動注入（既に <link rel="icon"> がある場合はスキップ） ──
+  // ── favicon・ホーム画面用アイコン・マニフェストの自動注入 ──
+  // 種類ごとに、ページ側に指定がなければ足す。
+  // ICON_V はアイコンを描き直したときに上げる（スマホが古い絵を覚えたままになるのを防ぐ）。
+  // index.html・updates.html・404.html は head に直接書いているので、上げたらそちらの ?v= も揃える。
+  const ICON_V = '2';
+  const iconHref = (f) => u('assets/icons/' + f) + '?v=' + ICON_V;
+  const addLink = (attrs) => {
+    const link = document.createElement('link');
+    Object.entries(attrs).forEach(([k, v]) => link.setAttribute(k, v));
+    document.head.appendChild(link);
+  };
   if (!document.querySelector('link[rel="icon"]')) {
-    const favicons = [
-      { rel: 'icon', href: u('assets/icons/favicon.ico'), sizes: 'any' },
-      { rel: 'icon', type: 'image/svg+xml', href: u('assets/icons/favicon.svg') },
-      { rel: 'icon', type: 'image/png', sizes: '32x32', href: u('assets/icons/favicon.png') },
-      { rel: 'apple-touch-icon', href: u('assets/icons/apple-touch-icon.png') },
-    ];
-    favicons.forEach((f) => {
-      const link = document.createElement('link');
-      Object.entries(f).forEach(([k, v]) => link.setAttribute(k, v));
-      document.head.appendChild(link);
-    });
+    addLink({ rel: 'icon', href: iconHref('favicon.ico'), sizes: '32x32' });
+    addLink({ rel: 'icon', type: 'image/svg+xml', href: iconHref('favicon.svg') });
+    addLink({ rel: 'icon', type: 'image/png', sizes: '32x32', href: iconHref('favicon.png') });
+  }
+  if (!document.querySelector('link[rel="apple-touch-icon"]')) {
+    addLink({ rel: 'apple-touch-icon', sizes: '180x180', href: iconHref('apple-touch-icon.png') });
+  }
+  if (!document.querySelector('link[rel="manifest"]')) {
+    addLink({ rel: 'manifest', href: iconHref('site.webmanifest') });
   }
 
   // ── 共通・印刷レイアウト（assets/print.css）を全ページへ注入 ──
