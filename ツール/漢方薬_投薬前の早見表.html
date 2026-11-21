@@ -167,8 +167,19 @@
     .cmp-f { display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:var(--text-xs); color:var(--txt-3); margin-top:6px; }
     .cmp-g .flag { margin-left:6px; }
     /* ほかの処方と比べる（構成生薬の表の下で、どの品目とも比べられる） */
-    .pick { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:10px; font-size:var(--text-sm); font-weight:700; color:var(--txt-2); }
-    .pick select { font-family:inherit; font-size:var(--text-sm); color:var(--blue); font-weight:700; background:var(--white); border:var(--bw-h) solid var(--blue); border-radius:var(--radius-sm); padding:4px 8px; max-width:100%; cursor:pointer; }
+    /* 開いてすぐ目に入るよう、品目の頭（印の行の下）に置く */
+    .pick { display:flex; align-items:center; gap:4px 10px; flex-wrap:wrap; margin-top:10px; background:var(--box-blue); border-radius:var(--radius-sm); padding:8px 12px; }
+    .pick label { font-size:var(--text-sm); font-weight:700; color:var(--blue); }
+    .pk-in { flex:1 1 14em; min-width:0; font-family:inherit; font-size:var(--text-md); padding:5px 10px; border:var(--bw-h) solid var(--blue); border-radius:var(--radius-sm); background:var(--white); }
+    .pk-in::placeholder { color:#6b7280; }
+    .pk-in:focus { outline:2px solid var(--blue); outline-offset:0; }
+    .pk-list { flex-basis:100%; display:flex; flex-direction:column; background:var(--white); border:var(--bw-h) solid var(--border-dk); border-radius:var(--radius-sm); overflow:hidden; }
+    .pk-list .pk-h { font-size:var(--text-xs); font-weight:700; color:var(--txt-3); padding:4px 10px 2px; }
+    .pk-opt { font-family:inherit; font-size:var(--text-sm); text-align:left; background:var(--white); color:var(--ink); border:none; border-top:var(--bw) solid var(--border); padding:7px 10px; cursor:pointer; }
+    .pk-opt:first-of-type { border-top:none; }
+    .pk-opt:hover, .pk-opt.cur { background:var(--box-blue); }
+    .pk-opt .no { font-size:var(--text-xs); font-weight:700; color:var(--blue); margin-right:8px; }
+    .pk-none { font-size:var(--text-sm); color:var(--txt-2); padding:7px 10px; }
     /* 最近開いた品目（検索し直しても前の品目へすぐ戻れるように） */
     .recent .chip { color:var(--blue); border-color:var(--blue); }
 
@@ -364,6 +375,7 @@ function card(k){
     </div></summary>
     <div class="fold-body">
     <div class="flags" style="margin-top:0">${kz}${plain}<span class="flag">味：${k.taste}</span>${k.kanzo ? `<button type="button" class="kz-btn" data-id="${k.id}">甘草の合計に足す</button>` : ''}</div>
+    <div class="pick"><label for="pk-${k.id}">⇄ ほかの処方と比べる</label><input id="pk-${k.id}" class="pk-in" type="search" placeholder="名前か番号（例：抑肝散、54）" autocomplete="off" /><div class="pk-list" hidden></div></div>
 
     ${k.hito ? `<div class="hito"><span class="hito-l">使用目標</span>${k.hito}</div>` : ''}
     <div class="sub-title">場面ごとの伝え方<span class="st-note">青字は言い換えに迷ったときの手がかり。訴えと処方医の意図に合わせて選ぶ</span></div>
@@ -376,7 +388,6 @@ function card(k){
     <div class="table-wrap"><table class="herbs">
       <thead><tr><th>生薬</th><th>この処方での役割</th><th class="hg">生薬量</th></tr></thead>
       <tbody>${herbs}</tbody></table></div>
-    <div class="pick"><label for="pk-${k.id}">ほかの処方と比べる</label><select id="pk-${k.id}" class="pk-sel" data-id="${k.id}"></select></div>
     <p class="maker-note">分量はツムラの製品。クラシエなど他社品は、同じ処方名でも分量や生薬が違うことがある。役割は添付文書に書かれていないため、漢方の一般的な解釈で、この処方の中で効かせている働きだけを載せた。</p>
     ${termNote(k)}
 
@@ -405,7 +416,6 @@ items.forEach(d => d.addEventListener('toggle', () => {
   const head = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sn-header-h')) || 0) + 64;
   if (top < head || top > innerHeight * 0.6) scrollTo({ top: scrollY + top - head, behavior: 'smooth' });
   addRecent(d.id);
-  fillPick(d);
 }));
 
 /* 最近開いた品目。検索し直すと前に見ていた品目が一覧から消えるので、検索欄の下から戻れるようにする。
@@ -434,23 +444,59 @@ function openItem(id){
 recentEl.addEventListener('click', e => { const b = e.target.closest('.chip'); if (b) openItem(b.dataset.id); });
 items.forEach(d => d.addEventListener('toggle', () => { if (!d.open) renderRecent(); }));
 
-/* ほかの処方と比べる：開いたときに選択肢を作る（全品目×全品目を最初に作ると重いため）。最近開いた品目を先頭に出す */
-function fillPick(d){
-  const sel = d.querySelector('.pk-sel'); if (!sel) return;
-  const keep = sel.value;
-  const opt = k => `<option value="${k.id}">ツムラ ${k.no}　${k.name}</option>`;
-  const rec = recent.filter(id => id !== d.id).map(id => KAMPO.find(k => k.id === id));
-  sel.innerHTML = '<option value="">品目を選ぶ</option>'
-    + (rec.length ? `<optgroup label="最近開いた品目">${rec.map(opt).join('')}</optgroup>` : '')
-    + `<optgroup label="すべて（ツムラ番号順）">${KAMPO.filter(k => k.id !== d.id).map(opt).join('')}</optgroup>`;
-  sel.value = keep;
+/* ほかの処方と比べる：名前・読み・ツムラ番号を入れると候補を絞る（128品目のドロップダウンは長くて探せないため）。
+   空のときは最近開いた品目を出す。番号は一致するものを先に、そのあと番号の頭が合うもの（「5」→5・50番台…） */
+const PKMAX = 8;
+function pickCands(d, v){
+  const others = KAMPO.filter(k => k.id !== d.id);
+  const t = normTerm(norm(v.trim()));
+  if (!t) return { head: '最近開いた品目', ks: recent.filter(id => id !== d.id).map(id => KAMPO.find(k => k.id === id)) };
+  let ks;
+  if (/^\d+$/.test(t)) ks = [...others.filter(k => String(k.no) === t), ...others.filter(k => String(k.no) !== t && String(k.no).startsWith(t))];
+  else ks = [...others.filter(k => NAME[k.id].startsWith(t)), ...others.filter(k => !NAME[k.id].startsWith(t) && NAME[k.id].includes(t))];
+  return { head: '', ks };
 }
-list.addEventListener('change', e => {
-  const sel = e.target.closest('.pk-sel'); if (!sel) return;
-  const d = sel.closest('details.kp');
+function renderPick(inp){
+  const d = inp.closest('details.kp'), box = inp.parentNode.querySelector('.pk-list');
+  const { head, ks } = pickCands(d, inp.value);
+  if (!inp.value.trim() && !ks.length) { box.hidden = true; return; }
+  box.innerHTML = (head ? `<div class="pk-h">${head}</div>` : '')
+    + (ks.length ? ks.slice(0, PKMAX).map((k, i) => `<button type="button" class="pk-opt${i ? '' : ' cur'}" data-to="${k.id}"><span class="no">ツムラ ${k.no}</span>${k.name}</button>`).join('')
+      + (ks.length > PKMAX ? `<div class="pk-none">ほかに${ks.length - PKMAX}品目。もう少し入れると絞れる</div>` : '')
+      : '<div class="pk-none">当てはまる品目がない</div>');
+  box.hidden = false;
+}
+function choosePick(inp, id){
+  const d = inp.closest('details.kp'), pick = inp.closest('.pick'), other = KAMPO.find(k => k.id === id);
   const old = d.querySelector('.cmp'); if (old) old.remove();
-  if (!sel.value) return;
-  sel.closest('.pick').insertAdjacentHTML('afterend', compare(KAMPO.find(k => k.id === d.id), KAMPO.find(k => k.id === sel.value)));
+  pick.insertAdjacentHTML('afterend', compare(KAMPO.find(k => k.id === d.id), other));
+  inp.value = other.name;
+  pick.querySelector('.pk-list').hidden = true;
+  inp.blur();
+}
+list.addEventListener('input', e => { if (e.target.classList.contains('pk-in')) renderPick(e.target); });
+list.addEventListener('focusin', e => { if (e.target.classList.contains('pk-in')) { e.target.select(); renderPick(e.target); } });
+list.addEventListener('keydown', e => {
+  const inp = e.target; if (!inp.classList.contains('pk-in')) return;
+  const box = inp.parentNode.querySelector('.pk-list'), opts = [...box.querySelectorAll('.pk-opt')];
+  const i = opts.findIndex(o => o.classList.contains('cur'));
+  if (e.key === 'Enter') { e.preventDefault(); if (!box.hidden && opts[i]) choosePick(inp, opts[i].dataset.to); }
+  else if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && opts.length) {
+    e.preventDefault();
+    const n = (i + (e.key === 'ArrowDown' ? 1 : -1) + opts.length) % opts.length;
+    opts.forEach((o, j) => o.classList.toggle('cur', j === n));
+  } else if (e.key === 'Escape') box.hidden = true;
+});
+/* 候補を押す（mousedown で選ぶ。click だと先に入力欄のフォーカスが外れて候補が消えるため） */
+list.addEventListener('mousedown', e => {
+  const o = e.target.closest('.pk-opt'); if (!o) return;
+  e.preventDefault();
+  choosePick(o.closest('.pick').querySelector('.pk-in'), o.dataset.to);
+});
+list.addEventListener('focusout', e => {
+  if (!e.target.classList.contains('pk-in')) return;
+  const box = e.target.parentNode.querySelector('.pk-list');
+  setTimeout(() => { if (document.activeElement !== e.target) box.hidden = true; }, 150);
 });
 /* 甘草の合計：品目のボタンで足し引きし、検索欄の下に合計を出す */
 const kzSel = [];
@@ -479,7 +525,7 @@ function renderKz(){
 list.addEventListener('click', e => {
   const r = e.target.closest('.ref, .cmp-x, .cmp-open'); if (!r) return;
   const d = r.closest('details.kp');
-  const resetPick = () => { const s = d.querySelector('.pk-sel'); if (s) s.value = ''; };
+  const resetPick = () => { const s = d.querySelector('.pk-in'); if (s) s.value = ''; };
   if (r.classList.contains('cmp-x')) { r.closest('.cmp').remove(); resetPick(); return; }
   if (r.classList.contains('cmp-open')) { openItem(r.dataset.to); return; }
   const anchor = r.closest('li, .scene') || r.closest('p');
