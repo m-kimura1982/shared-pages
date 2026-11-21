@@ -3,17 +3,17 @@ window.__pageMeta = {
     "lastUpdated": "2026-11-12",
     "newUntil": "2026-08-13"
   },
-  "index.html": {
+  "updates.html": {
     "lastUpdated": "2026-11-21"
   },
   "事務スタッフ向け.html": {
     "lastUpdated": "2026-11-08"
   },
-  "updates.html": {
-    "lastUpdated": "2026-11-21"
-  },
   "404.html": {
     "lastUpdated": "2026-10-29"
+  },
+  "index.html": {
+    "lastUpdated": "2026-11-21"
   },
   "tools.html": {
     "lastUpdated": "2026-11-08"
