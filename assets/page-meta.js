@@ -3,16 +3,16 @@ window.__pageMeta = {
     "lastUpdated": "2026-11-12",
     "newUntil": "2026-08-13"
   },
-  "updates.html": {
-    "lastUpdated": "2026-11-21"
+  "404.html": {
+    "lastUpdated": "2026-10-29"
   },
   "事務スタッフ向け.html": {
     "lastUpdated": "2026-11-08"
   },
-  "404.html": {
-    "lastUpdated": "2026-10-29"
-  },
   "index.html": {
+    "lastUpdated": "2026-11-21"
+  },
+  "updates.html": {
     "lastUpdated": "2026-11-21"
   },
   "tools.html": {
@@ -391,7 +391,7 @@ window.__pageMeta = {
     "newUntil": "2026-10-10"
   },
   "ツール/漢方薬_投薬前の早見表.html": {
-    "lastUpdated": "2026-11-21",
+    "lastUpdated": "2026-11-22",
     "newUntil": "2026-11-03"
   },
   "ナレッジ/調剤報酬QA.html": {
