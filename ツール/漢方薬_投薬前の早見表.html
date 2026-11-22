@@ -376,7 +376,7 @@ function card(k){
     </div></summary>
     <div class="fold-body">
     <div class="flags" style="margin-top:0">${kz}${plain}<span class="flag">味：${k.taste}</span>${k.kanzo ? `<button type="button" class="kz-btn" data-id="${k.id}">甘草の合計に足す</button>` : ''}</div>
-    <div class="pick"><label for="pk-${k.id}">⇄ ほかの処方と比べる</label><input id="pk-${k.id}" class="pk-in" type="search" placeholder="名前か番号（例：抑肝散、54）" autocomplete="off" /><div class="pk-list" hidden></div></div>
+    <div class="pick"><label for="pk-${k.id}">⇄ 構成生薬を比べる</label><input id="pk-${k.id}" class="pk-in" type="search" placeholder="漢方の名前か番号（例：抑肝散、54）" autocomplete="off" /><div class="pk-list" hidden></div></div>
 
     ${k.hito ? `<div class="hito"><span class="hito-l">使用目標</span>${k.hito}</div>` : ''}
     <div class="sub-title">場面ごとの伝え方<span class="st-note">青字は言い換えに迷ったときの手がかり。訴えと処方医の意図に合わせて選ぶ</span></div>
