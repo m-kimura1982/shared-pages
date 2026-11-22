@@ -10,10 +10,10 @@ window.__pageMeta = {
     "lastUpdated": "2026-11-08"
   },
   "index.html": {
-    "lastUpdated": "2026-11-22"
+    "lastUpdated": "2026-11-23"
   },
   "updates.html": {
-    "lastUpdated": "2026-11-22"
+    "lastUpdated": "2026-11-23"
   },
   "tools.html": {
     "lastUpdated": "2026-11-08"
@@ -22,10 +22,10 @@ window.__pageMeta = {
     "lastUpdated": "2026-11-08"
   },
   "checklists.html": {
-    "lastUpdated": "2026-11-08"
+    "lastUpdated": "2026-11-23"
   },
   "knowledge.html": {
-    "lastUpdated": "2026-11-08"
+    "lastUpdated": "2026-11-23"
   },
   "kaitei2026.html": {
     "lastUpdated": "2026-11-22"
@@ -374,6 +374,14 @@ window.__pageMeta = {
     "lastUpdated": "2026-10-27",
     "newUntil": "2026-06-17"
   },
+  "チェックリスト/薬局間の麻薬の譲渡_実務チェックリスト.html": {
+    "lastUpdated": "2026-11-23",
+    "newUntil": "2026-11-30"
+  },
+  "チェックリスト/麻薬の取扱い_自己点検リスト.html": {
+    "lastUpdated": "2026-11-23",
+    "newUntil": "2026-11-30"
+  },
   "ツール/服薬管理指導料等を算定する場合における他の薬学管理料の算定の可否.html": {
     "lastUpdated": "2026-08-06"
   },
@@ -417,6 +425,10 @@ window.__pageMeta = {
     "lastUpdated": "2026-10-27",
     "newUntil": "2026-09-30"
   },
+  "ナレッジ/薬局の麻薬管理.html": {
+    "lastUpdated": "2026-11-23",
+    "newUntil": "2026-11-30"
+  },
   "ナレッジ/OTC類似薬の一部保険外療養.html": {
     "lastUpdated": "2026-11-22",
     "newUntil": "2026-10-08"
@@ -428,11 +440,23 @@ window.__pageMeta = {
   "ナレッジ/OTC類似薬_処方箋と窓口対応.html": {
     "lastUpdated": "2026-11-22"
   },
+  "ナレッジ/麻薬帳簿の書き方.html": {
+    "lastUpdated": "2026-11-23",
+    "newUntil": "2026-11-30"
+  },
+  "ナレッジ/麻薬の年間届の書き方.html": {
+    "lastUpdated": "2026-11-23",
+    "newUntil": "2026-11-30"
+  },
   "ナレッジ/OTC類似薬_特別の料金の計算.html": {
     "lastUpdated": "2026-11-22"
   },
   "ナレッジ/OTC類似薬_対象の薬と料金がかからない場合.html": {
     "lastUpdated": "2026-11-22"
+  },
+  "ナレッジ/薬局間の麻薬の譲渡.html": {
+    "lastUpdated": "2026-11-23",
+    "newUntil": "2026-11-30"
   },
   "ナレッジ/高額療養費と薬局窓口対応.html": {
     "lastUpdated": "2026-09-23",
@@ -446,23 +470,5 @@ window.__pageMeta = {
   },
   "事務/入力画面で解説_2026改定後の入力方法.html": {
     "lastUpdated": "2026-10-22"
-  },
-  "ナレッジ/薬局の麻薬管理.html": {
-    "newUntil": "2026-11-30"
-  },
-  "ナレッジ/麻薬帳簿の書き方.html": {
-    "newUntil": "2026-11-30"
-  },
-  "ナレッジ/麻薬の年間届の書き方.html": {
-    "newUntil": "2026-11-30"
-  },
-  "ナレッジ/薬局間の麻薬の譲渡.html": {
-    "newUntil": "2026-11-30"
-  },
-  "チェックリスト/薬局間の麻薬の譲渡_実務チェックリスト.html": {
-    "newUntil": "2026-11-30"
-  },
-  "チェックリスト/麻薬の取扱い_自己点検リスト.html": {
-    "newUntil": "2026-11-30"
   }
 };
