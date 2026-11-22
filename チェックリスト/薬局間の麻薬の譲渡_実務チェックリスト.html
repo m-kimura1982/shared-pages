@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>薬局間の麻薬の譲渡 実務チェックリスト｜調剤報酬・薬歴まとめ</title>
+  <meta name="search-keywords" content="小売業者間譲渡,薬局間譲渡,麻薬小売業者間譲渡許可,譲受確認書,譲渡確認書,在庫不足,90日,最終受払日,製品番号,規則第9条の2,イ,ロ,貸し借り,融通,不足分,補助簿,麻薬帳簿,備考,不動在庫,不動麻薬,移動,再譲渡,起算日,分割" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+    :root {
+      --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+      --pad-card:22px; --gap-card:16px;
+      --blue:#1e5fa8; --ink:#222222;
+      --bg:#f3f4f6; --white:#ffffff;
+      --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+      --border:#d1d5db; --border-dk:#9ca3af;
+      --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px;
+      --txt-2:#444444; --txt-3:#5e6470;
+      /* どちらの薬局の項目かを示す色（図解の淡色パレット）。譲り受ける側＝クリーム／譲り渡す側＝藤 */
+      --uke-bg:#f3e8d0; --uke-tx:#7a5718;
+      --wata-bg:#e5e0f2; --wata-tx:#4b3f80;
+    }
+    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+    .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+    [id] { scroll-margin-top:calc(var(--sn-header-h, 0px) + 16px); }
+
+    .page-title-wrap { padding:6px 0; }
+    .page-title-wrap h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+    .page-title-wrap p  { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+
+    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+    .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:14px; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+    .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+    .card-title .qual { font-size:var(--text-sm); font-weight:700; color:var(--txt-3); }
+    .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+    a { color:var(--blue); }
+
+    /* 場面から見るカードを選ぶ表 */
+    .route { border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; margin-top:14px; }
+    .route .row { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); border-top:var(--bw-h) solid var(--border); }
+    .route .row:first-child { border-top:none; }
+    .route .row > * { padding:9px 13px; font-size:var(--text-sm); line-height:1.6; }
+    .route .row.hd > * { background:var(--box-gray); font-size:var(--text-xs); font-weight:700; color:var(--txt-2); padding-top:6px; padding-bottom:6px; }
+    .route .k { font-weight:700; }
+    .route .v { border-left:var(--bw-h) solid var(--border); font-weight:900; }
+    .route .v a { font-weight:900; text-decoration:none; border-bottom:1px solid var(--box-blue); }
+    .route .v.no::before { content:"×"; color:var(--txt-3); margin-right:6px; }
+    .route .v .plus { display:block; font-size:var(--text-xs); font-weight:400; color:var(--txt-2); margin-top:2px; }
+
+    /* 段階（番号は順序があるので四角） */
+    .phase + .phase { margin-top:18px; }
+    .ph-h { font-weight:900; font-size:var(--text-md); display:flex; align-items:center; gap:10px; margin-bottom:9px; }
+    .ph-h .no { width:26px; height:26px; border-radius:7px; background:var(--blue); color:#fff; font-weight:900; font-size:13px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .two { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:12px; align-items:start; }
+    .side { display:flex; flex-direction:column; gap:7px; }
+    .side-h { font-size:var(--text-xs); font-weight:900; padding:3px 11px; border-radius:4px; }
+    .side.uke  .side-h { background:var(--uke-bg);  color:var(--uke-tx); }
+    .side.wata .side-h { background:var(--wata-bg); color:var(--wata-tx); }
+    .side.both .side-h { background:var(--box-gray); color:var(--txt-2); }
+
+    /* チェック項目 */
+    .check { display:flex; gap:11px; align-items:flex-start; padding:10px 13px; border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); background:var(--white); cursor:pointer; }
+    .check:hover { background:#fafbfc; }
+    .check > input[type=checkbox] { appearance:none; -webkit-appearance:none; width:21px; height:21px; border:2px solid var(--border-dk); border-radius:5px; flex-shrink:0; margin-top:3px; cursor:pointer; position:relative; background:var(--white); }
+    .check > input[type=checkbox]:checked { background:var(--blue); border-color:var(--blue); }
+    .check > input[type=checkbox]:checked::after { content:""; position:absolute; left:5.5px; top:1.5px; width:6px; height:11px; border:solid #fff; border-width:0 2.5px 2.5px 0; transform:rotate(45deg); }
+    .check-body { flex:1; min-width:0; }
+    .check-main { display:block; font-size:var(--text-sm); font-weight:700; line-height:1.65; }
+    .check-note { display:block; font-size:var(--text-xs); color:var(--txt-2); margin-top:3px; line-height:1.65; }
+    .check-note .x::before { content:"×"; color:var(--txt-3); font-weight:900; margin-right:4px; }
+    .check:has(> input:checked) { background:#f0f6fc; border-color:#bcd6ec; }
+
+    /* 書類と麻薬の引き換え */
+    .swap { display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:10px; align-items:center; margin-top:7px; }
+    .swap .sw { border-radius:var(--radius-sm); padding:9px 13px; font-size:var(--text-sm); font-weight:700; line-height:1.6; }
+    .swap .sw .who { display:block; font-size:var(--text-xs); font-weight:900; }
+    .swap .sw.uke  { background:var(--uke-bg); }
+    .swap .sw.uke  .who { color:var(--uke-tx); }
+    .swap .sw.wata { background:var(--wata-bg); }
+    .swap .sw.wata .who { color:var(--wata-tx); }
+    .swap .ar { font-size:20px; font-weight:900; color:var(--txt-3); line-height:1; }
+    .swap-note { font-size:var(--text-xs); color:var(--txt-2); line-height:1.65; margin-top:6px; }
+
+    /* 帳簿の備考の例 */
+    .biko { background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:var(--radius-sm); padding:10px 14px; font-size:var(--text-sm); line-height:1.7; margin-top:9px; }
+    .biko .ttl { display:block; font-size:var(--text-xs); font-weight:900; color:var(--txt-2); margin-bottom:2px; }
+
+    /* できないこと */
+    .ng-list { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:6px 22px; }
+    .ng-list .li { font-size:var(--text-sm); line-height:1.65; padding-left:20px; text-indent:-20px; }
+    .ng-list .li::before { content:"×"; color:var(--txt-3); font-weight:900; margin-right:8px; }
+
+    .page-foot { font-size:var(--text-sm); color:var(--txt-2); padding-top:2px; }
+    .page-foot a { font-weight:700; text-decoration:none; border-bottom:1px solid var(--box-blue); }
+
+    @media (max-width:640px) {
+      body { font-size:14px; padding:14px 12px 40px; line-height:1.75; }
+      :root { --text-xs:11.5px; --text-sm:13.5px; --text-md:14px; --text-lg:16px; --text-xl:18px; --pad-card:14px; --gap-card:11px; }
+      .card { border-radius:8px; }
+      .route .row { grid-template-columns:1fr; }
+      .route .v { border-left:none; padding-top:0; }
+      .route .row.hd { display:none; }
+      .two { grid-template-columns:1fr; gap:14px; }
+      .swap { grid-template-columns:1fr; gap:4px; }
+      .swap .ar { text-align:center; transform:rotate(90deg); }
+      .ng-list { grid-template-columns:1fr; }
+      .check { padding:10px 11px; gap:10px; }
+    }
+    @media print {
+      .page-title-wrap { position:relative; }
+      /* A4縦2枚。1枚目＝最初に確かめること・イ、2枚目＝ロ・できないこと。
+         文字は小さくしない（チェック項目12.5px／補足11px／カード見出し15px） */
+      @page { size:A4 portrait; margin:8mm 11mm; }
+      body { background:#fff; padding:0; font-size:12px; line-height:1.55; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .page { gap:7px; max-width:none; }
+      .page-title-wrap { padding:0 0 2px; }
+      .page-title-wrap h1 { font-size:19px; }
+      .page-title-wrap p { font-size:11.5px; margin-top:2px; }
+      .card { border:0.5px solid #bbb; border-radius:6px; padding:8px 13px; break-inside:avoid; }
+      #ro { break-before:page; }
+      .card-title { font-size:15px; margin-bottom:6px; padding-bottom:4px; }
+      .card-title .qual { font-size:11.5px; }
+      .route { margin-top:8px; }
+      .route .row.hd { display:none; }
+      .route .row > * { padding:4px 10px; font-size:11.5px; line-height:1.45; }
+      .route .v .plus { font-size:10.5px; }
+      .phase + .phase { margin-top:8px; }
+      .ph-h { font-size:13px; margin-bottom:4px; gap:8px; }
+      .ph-h .no { width:19px; height:19px; border-radius:5px; font-size:11px; }
+      .two { gap:9px; }
+      .side { gap:3px; }
+      .side-h { font-size:11px; padding:1px 9px; }
+      .check { padding:4px 10px; gap:9px; break-inside:avoid; }
+      .check > input[type=checkbox] { width:15px; height:15px; border-width:1.5px; margin-top:2px; }
+      .check-main { font-size:12.5px; line-height:1.45; }
+      .check-note { font-size:11px; line-height:1.45; margin-top:1px; }
+      .swap { margin-top:4px; gap:8px; }
+      .swap .sw { padding:5px 10px; font-size:12px; line-height:1.45; }
+      .swap .sw .who { font-size:10.5px; }
+      .swap .ar { font-size:15px; }
+      .swap-note { font-size:11px; line-height:1.45; margin-top:3px; }
+      .biko { padding:5px 10px; font-size:11.5px; line-height:1.45; margin-top:5px; }
+      .biko .ttl { font-size:10.5px; }
+      .ng-list { gap:2px 18px; }
+      .ng-list .li { font-size:11.5px; line-height:1.5; }
+      .page-foot { display:none; }
+      a { color:inherit; text-decoration:none; border:none; }
+    }
+  </style>
+</head>
+<body>
+  <script src="../assets/site-header.js" defer></script>
+<div class="page">
+
+  <div class="page-title-wrap">
+    <div class="sn-printqr-slot sn-printqr-float"></div>
+    <h1>薬局間の麻薬の譲渡 実務チェックリスト</h1>
+      </div>
+
+  <!-- 最初に確かめること -->
+  <div class="card" id="first">
+    <div class="card-title">最初に確かめること<span class="qual">双方の薬局で</span></div>
+    <div class="two">
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main">麻薬小売業者間譲渡許可書に<span class="marker">相手の薬局が載っている</span>か</span>
+        </span>
+      </label>
+      <label class="check">
+        <input type="checkbox">
+        <span class="check-body">
+          <span class="check-main">許可書の有効期間内か。双方の麻薬小売業者免許は有効か</span>
+        </span>
+      </label>
+    </div>
+    <div class="route">
+      <div class="row hd"><span>場面</span><span>確認する項目</span></div>
+      <div class="row"><span class="k">麻薬処方箋を受けた薬局の在庫が足りず、調剤できない</span><span class="v"><a href="#i">イ　在庫不足の補充</a></span></div>
+      <div class="row"><span class="k">卸から購入して90日動いていない在庫を、使う薬局に移す</span><span class="v"><a href="#ro">ロ　90日たった在庫</a></span></div>
+      <div class="row"><span class="k">どちらでもない</span><span class="v no">譲渡できない<span class="plus">一時的に借りる・期限切れを集める など</span></span></div>
+    </div>
+  </div>
+
+  <!-- イ -->
+  <div class="card" id="i">
+    <div class="card-title">イ　在庫不足の補充<span class="qual">麻薬処方箋を受けたが在庫が足りない</span></div>
+
+    <div class="phase">
+      <div class="ph-h"><span class="no">1</span>渡す前</div>
+      <div class="two">
+        <div class="side uke">
+          <div class="side-h">譲り受ける側</div>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main">麻薬処方箋を受け付けたか</span>
+            <span class="check-note">FAXなどで受け取った処方箋でもよい。処方箋を受ける前に譲り受けることはできない。</span>
+          </span></label>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main">頼む数量は<span class="marker">不足分だけ</span>か</span>
+          </span></label>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main">譲受確認書を作成し、麻薬処方箋の写しをとったか</span>
+            <span class="check-note">確認書の備考に「規則第9条の2第1項第1号のイ」と製品番号。使用期限も記載するとよい。</span>
+          </span></label>
+        </div>
+        <div class="side wata">
+          <div class="side-h">譲り渡す側</div>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main">渡す数量は<span class="marker">不足分だけ</span>か</span>
+            <span class="check-note">多めに渡すのは違反になる。</span>
+          </span></label>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main">調製していない麻薬を渡すか</span>
+            <span class="check-note">調剤は処方箋を受けた側が行う。<span class="x"></span>倍散を作って渡す・別の患者用の予製品を渡す（原末を渡すのはよい）。散剤は必要な量を量る。</span>
+          </span></label>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main">譲渡確認書を作成したか</span>
+            <span class="check-note">備考に「規則第9条の2第1項第1号のイ」と製品番号。使用期限も記載するとよい。</span>
+          </span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="ph-h"><span class="no">2</span>受け渡し</div>
+      <div class="side both">
+        <div class="side-h">双方</div>
+        <label class="check"><input type="checkbox"><span class="check-body">
+          <span class="check-main">薬剤師か、薬局の職員が運んでいるか</span>
+          <span class="check-note">薬剤師が望ましい。やむを得ないときは、管理薬剤師の管理のもとで働く職員でもよい。<span class="x"></span>配送業者・卸に頼む。</span>
+        </span></label>
+        <label class="check"><input type="checkbox"><span class="check-body">
+          <span class="check-main">双方が立ち会い、<span class="marker">品名・数量・破損の有無</span>を一緒に確かめたか</span>
+          <span class="check-note">渡したあとは返品できない。渡すまでに見つかった破損は譲り渡す側、渡したあとは譲り受ける側が事故届を提出する。</span>
+        </span></label>
+        <label class="check"><input type="checkbox"><span class="check-body">
+          <span class="check-main">書類と引き換えに受け渡したか</span>
+          <span class="swap">
+            <span class="sw uke"><span class="who">譲り受ける側が渡す</span>譲受確認書・麻薬処方箋の写し</span>
+            <span class="ar">⇄</span>
+            <span class="sw wata"><span class="who">譲り渡す側が渡す</span>麻薬・譲渡確認書</span>
+          </span>
+        </span></label>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="ph-h"><span class="no">3</span>渡したあと</div>
+      <div class="two">
+        <div class="side uke">
+          <div class="side-h">譲り受ける側</div>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main">帳簿の<b>受入</b>欄に記載したか</span>
+          </span></label>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main">譲渡確認書を保存したか（2年間）</span>
+          </span></label>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main">次に備えて、不足していた品目の在庫を確保したか</span>
+            <span class="check-note">卸から購入するなど。患者が来なかったときは、帳簿の備考にその旨を記載して自分の在庫にする（卸から購入した麻薬と区別して保管）。</span>
+          </span></label>
+        </div>
+        <div class="side wata">
+          <div class="side-h">譲り渡す側</div>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main">帳簿の<b>払出</b>欄に記載したか</span>
+          </span></label>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main">譲受確認書と麻薬処方箋の写しを保存したか（2年間）</span>
+          </span></label>
+        </div>
+      </div>
+      <div class="biko"><span class="ttl">帳簿の備考（双方）</span>相手の薬局名、イかロか、製品番号。使用期限も記載することが望ましい。<br>例）□□薬局へ譲渡／〇〇薬局から譲受：規則第9条の2第1項第1号のイ　製品番号 B5678　使用期限 2028.3.31</div>
+    </div>
+  </div>
+
+  <!-- ロ -->
+  <div class="card" id="ro">
+    <div class="card-title">ロ　90日たった在庫<span class="qual">動いていない在庫を、使える薬局に譲る</span></div>
+
+    <div class="phase">
+      <div class="ph-h"><span class="no">1</span>渡す前</div>
+      <div class="two">
+        <div class="side uke">
+          <div class="side-h">譲り受ける側</div>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main">90日たっていることを確かめたか</span>
+            <span class="check-note">譲渡確認書の最終受払日などで確かめる。</span>
+          </span></label>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main">譲受確認書を作成したか</span>
+            <span class="check-note">備考に「規則第9条の2第1項第1号のロ」と製品番号。使用期限も記載するとよい。麻薬処方箋の写しは不要。</span>
+          </span></label>
+        </div>
+        <div class="side wata">
+          <div class="side-h">譲り渡す側</div>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main"><span class="marker">卸から購入した</span>麻薬か</span>
+            <span class="check-note">薬局間で譲り受けた麻薬は、ロで再譲渡できない。</span>
+          </span></label>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main">同じ品名（販売名・規格）の在庫が、<span class="marker">すべて90日を過ぎている</span>か</span>
+            <span class="check-note">起算日は卸からの納品日（譲渡証の日付ではない）か、最後に交付・譲渡した日。起算日を1日目として91日目から譲れる（例：4月1日が起算日 → 6月30日から）。90日たっていないロットが1つでもあれば不可。</span>
+          </span></label>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main">使用期限が切れていないか</span>
+          </span></label>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main">譲る相手は1か所か</span>
+            <span class="check-note">同じ日でも2つの薬局に分けて譲れない。同じ相手に、イとロを同時に譲ることもできない。</span>
+          </span></label>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main">譲渡確認書を作成したか</span>
+            <span class="check-note">備考に「規則第9条の2第1項第1号のロ」と製品番号。<b>最終受払日</b>を記載するか、帳簿の写しを添付するのが望ましい。使用期限も記載するとよい。</span>
+          </span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="ph-h"><span class="no">2</span>受け渡し</div>
+      <div class="side both">
+        <div class="side-h">双方</div>
+        <label class="check"><input type="checkbox"><span class="check-body">
+          <span class="check-main">薬剤師か、薬局の職員が運んでいるか</span>
+          <span class="check-note">薬剤師が望ましい。やむを得ないときは、管理薬剤師の管理のもとで働く職員でもよい。<span class="x"></span>配送業者・卸に頼む。</span>
+        </span></label>
+        <label class="check"><input type="checkbox"><span class="check-body">
+          <span class="check-main">双方が立ち会い、<span class="marker">品名・数量・破損の有無</span>を一緒に確かめたか</span>
+          <span class="check-note">渡したあとは返品できない。渡すまでに見つかった破損は譲り渡す側、渡したあとは譲り受ける側が事故届を提出する。</span>
+        </span></label>
+        <label class="check"><input type="checkbox"><span class="check-body">
+          <span class="check-main">書類と引き換えに受け渡したか</span>
+          <span class="swap">
+            <span class="sw uke"><span class="who">譲り受ける側が渡す</span>譲受確認書</span>
+            <span class="ar">⇄</span>
+            <span class="sw wata"><span class="who">譲り渡す側が渡す</span>麻薬・譲渡確認書</span>
+          </span>
+        </span></label>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="ph-h"><span class="no">3</span>渡したあと</div>
+      <div class="two">
+        <div class="side uke">
+          <div class="side-h">譲り受ける側</div>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main">帳簿の<b>受入</b>欄に記載したか</span>
+          </span></label>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main">譲渡確認書を保存したか（2年間）</span>
+          </span></label>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main">卸から購入した麻薬と区別して保管したか</span>
+            <span class="check-note">同じ保管庫の中で分ければよい。譲り受けた麻薬を他の薬局に譲れるのは、イ（在庫不足の補充）だけ。</span>
+          </span></label>
+        </div>
+        <div class="side wata">
+          <div class="side-h">譲り渡す側</div>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main">帳簿の<b>払出</b>欄に記載したか</span>
+            <span class="check-note">残りがあれば、譲った日が新しい起算日になる。同じ相手に残りを譲るときも同じ。</span>
+          </span></label>
+          <label class="check"><input type="checkbox"><span class="check-body">
+            <span class="check-main">譲受確認書を保存したか（2年間）</span>
+          </span></label>
+        </div>
+      </div>
+      <div class="biko"><span class="ttl">帳簿の備考（双方）</span>例）□□薬局へ譲渡／〇〇薬局から譲受：規則第9条の2第1項第1号のロ　製品番号 B5678　使用期限 2028.3.31</div>
+    </div>
+  </div>
+
+  <!-- できないこと -->
+  <div class="card" id="ng">
+    <div class="card-title">できないこと</div>
+    <div class="ng-list">
+      <div class="li">許可書にない薬局と譲渡する（同じ会社の店舗でも）</div>
+      <div class="li">貸し借りにする。譲り受けた麻薬を返す</div>
+      <div class="li">確認書を交換せずに受け渡す。書類を後から作る・渡す</div>
+      <div class="li">配送業者・卸に運んでもらう</div>
+      <div class="li">イで、麻薬処方箋を受ける前に譲る。不足分より多く譲る</div>
+      <div class="li">譲り渡す側が倍散を作って渡す。別の患者用の予製品を渡す</div>
+      <div class="li">ロで、90日たっていない在庫や、譲り受けた麻薬を譲る</div>
+      <div class="li">90日たった麻薬を2つの薬局に分けて譲る</div>
+      <div class="li">同じ相手にイとロを同時に譲る</div>
+      <div class="li">期限切れの麻薬を譲る。廃棄のために1か所に集める</div>
+    </div>
+  </div>
+
+  <div class="page-foot">詳しい解説は <a href="../ナレッジ/薬局間の麻薬の譲渡.html">薬局間の麻薬の譲渡</a>、帳簿の記入例は <a href="../ナレッジ/麻薬帳簿の書き方.html#joto">麻薬帳簿の書き方</a> を参照。薬局間で譲渡した分は年間届にも記載する（<a href="../ナレッジ/麻薬の年間届の書き方.html">麻薬の年間届の書き方</a>）。</div>
+
+</div>
+
+<script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

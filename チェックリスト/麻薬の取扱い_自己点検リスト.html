@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>麻薬の取扱い 自己点検リスト｜調剤報酬・薬歴まとめ</title>
+  <meta name="search-keywords" content="自己点検表,セルフチェック,保健所,立入検査,麻薬帳簿,麻薬譲渡証,麻薬保管庫,金庫,麻薬処方箋,麻薬施用者免許番号,調剤済麻薬廃棄届,麻薬廃棄届,麻薬事故届,年間届,コデイン,フェンタニル,オキシコンチン,確認書,慢性疼痛,小売業者間譲渡,90日,業務廃止,移転" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+    :root {
+      --text-xs:13px; --text-sm:15px; --text-md:16px; --text-lg:18px; --text-xl:22px;
+      --pad-card:22px; --gap-card:16px;
+      --blue:#1e5fa8; --ink:#222222;
+      --bg:#f3f4f6; --white:#ffffff;
+      --box-blue:#e4f0f8; --box-gray:#f2f2f2;
+      --border:#d1d5db; --border-dk:#9ca3af;
+      --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px;
+      --txt-2:#444444; --txt-3:#5e6470;
+      --row-done:#f0f6fc;
+    }
+    /* 日本語を文節の切れ目で改行する（対応していないブラウザでは今までどおり） */
+    h1, .card-title, .howto, .ck .q, .ck .a { word-break:auto-phrase; text-wrap:pretty; }
+    body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
+    /* 横に読む表なので本文幅の例外（大きな表と同じ扱い） */
+    .page { max-width:1080px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
+
+    .page-title-wrap { padding:6px 0; }
+    .page-title-wrap h1 { font-size:var(--text-xl); font-weight:900; letter-spacing:-0.01em; }
+    .page-title-wrap p { font-size:var(--text-sm); font-weight:500; color:var(--txt-2); margin-top:4px; }
+
+    .card { background:var(--white); border:var(--bw) solid var(--border); border-radius:var(--radius); padding:var(--pad-card); }
+    .card-title { font-size:var(--text-lg); font-weight:900; border-bottom:var(--bw-h) solid var(--border-dk); padding-bottom:8px; margin-bottom:0; display:flex; align-items:center; gap:11px; flex-wrap:wrap; }
+    .card-title::before { content:""; width:4px; height:1.05em; border-radius:2px; background:var(--blue); flex-shrink:0; }
+    .card-title .src { margin-left:auto; font-size:var(--text-xs); font-weight:700; }
+    .card-title .src a { color:var(--blue); text-decoration:none; border-bottom:1px solid var(--box-blue); }
+    .marker { background:linear-gradient(transparent 62%, #fff59d 62%); font-weight:700; }
+
+    /* 使う場面と使い方 */
+    .howto { display:flex; flex-direction:column; gap:10px; }
+    .howto .row { display:flex; gap:12px; font-size:var(--text-sm); line-height:1.7; }
+    .howto .k { flex-shrink:0; width:5.5em; font-weight:900; color:var(--blue); }
+    .toolbar { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+    .toolbar button { font:inherit; font-size:var(--text-sm); font-weight:700; color:var(--blue); background:var(--white); border:var(--bw-h) solid var(--blue); border-radius:var(--radius-sm); padding:6px 16px; cursor:pointer; }
+    .toolbar button:hover { background:var(--box-blue); }
+    .toolbar button[aria-pressed="true"] { background:var(--blue); color:#fff; }
+
+    /* 点検の表：No. → 点検項目 → ポイント → 確認 を左から右へ読む */
+    .ck-head, .ck { display:grid; grid-template-columns:44px minmax(0,1fr) minmax(0,1fr) 64px; }
+    .ck-head { font-size:var(--text-xs); font-weight:700; color:var(--txt-2); background:#f7f8fa; border-bottom:var(--bw-h) solid var(--border); margin-top:12px; }
+    .ck-head > span { padding:8px 12px 6px; }
+    .ck-head > span:first-child, .ck-head > span:last-child { text-align:center; padding-left:0; padding-right:0; }
+    .ck { border-bottom:var(--bw) solid var(--border); }
+    .ck:last-child { border-bottom:none; }
+    .ck > * { padding:13px 14px; }
+    .ck .no { text-align:center; padding-left:0; padding-right:0; font-size:var(--text-sm); font-weight:700; color:var(--txt-3); font-variant-numeric:tabular-nums; }
+    .ck .q { font-weight:700; line-height:1.7; cursor:pointer; padding-right:18px; }
+    .ck .a { font-size:var(--text-sm); line-height:1.75; color:var(--txt-2); border-left:var(--bw) solid var(--border); }
+    .ck .a p + p { margin-top:4px; }
+    .ck .box { display:flex; justify-content:center; align-items:flex-start; cursor:pointer; border-left:var(--bw) solid var(--border); }
+    .ck .box input { appearance:none; -webkit-appearance:none; width:24px; height:24px; border:2px solid var(--border-dk); border-radius:5px; margin-top:1px; cursor:pointer; position:relative; background:var(--white); }
+    .ck .box input:checked { background:var(--blue); border-color:var(--blue); }
+    .ck .box input:checked::after { content:""; position:absolute; left:7px; top:2px; width:6px; height:12px; border:solid #fff; border-width:0 2.5px 2.5px 0; transform:rotate(45deg); }
+    .ck:has(.box input:checked) { background:var(--row-done); }
+
+    /* ポイントを隠したとき：ポイント欄に「ポイントを見る」ボタンを出す */
+    .a-show { display:none; font:inherit; font-size:var(--text-xs); font-weight:700; color:var(--blue); background:var(--white); border:var(--bw-h) solid var(--blue); border-radius:var(--radius-sm); padding:3px 12px; cursor:pointer; }
+    .a-show:hover { background:var(--box-blue); }
+    .quiz .ck:not(.shown) .a-body { display:none; }
+    .quiz .ck:not(.shown) .a-show { display:inline-block; }
+
+    .rel { font-size:var(--text-sm); }
+    .rel + .rel { margin-top:4px; }
+    .ck .a a { color:var(--blue); font-weight:700; text-decoration:none; border-bottom:1px solid var(--box-blue); }
+    .ref-chip { display:inline-block; font-size:var(--text-xs); font-weight:700; color:var(--txt-2); background:var(--box-gray); border:var(--bw) solid var(--border); border-radius:4px; padding:0 7px; margin-right:7px; line-height:1.6; vertical-align:1px; }
+    .rel a { color:var(--blue); font-weight:700; text-decoration:none; border-bottom:1px solid var(--box-blue); }
+    .rel-card .card-title { margin-bottom:12px; }
+
+    @media (max-width:760px) {
+      .ck-head { display:none; }
+      .ck { grid-template-columns:28px minmax(0,1fr) 44px; grid-template-areas:"no q box" "no a box"; }
+      .ck > * { padding:0; }
+      .ck { padding:12px 0; }
+      .ck .no { grid-area:no; text-align:left; padding-top:1px; }
+      .ck .q { grid-area:q; }
+      .ck .a { grid-area:a; border-left:none; margin-top:6px; padding:8px 11px; background:var(--box-gray); border-radius:var(--radius-sm); }
+      .ck:has(.box input:checked) .a { background:#e6eef7; }
+      .quiz .ck:not(.shown) .a { background:none; padding:0; }
+      .ck .box { grid-area:box; border-left:none; justify-content:flex-end; }
+    }
+    @media (max-width:640px) {
+      body { font-size:14px; padding:14px 12px 40px; line-height:1.75; }
+      :root { --text-xs:11.5px; --text-sm:13.5px; --text-md:14px; --text-lg:16px; --text-xl:18px; --pad-card:14px; --gap-card:11px; }
+      .howto .row { flex-direction:column; gap:0; }
+    }
+    @media print {
+      .page-title-wrap { position:relative; }
+      @page { size:A4 portrait; margin:9mm 10mm; }
+      body { background:#fff; padding:0; font-size:12px; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .page { gap:7px; max-width:none; }
+      .card { border:0.5px solid #bbb; border-radius:4px; padding:7px 9px; break-inside:auto; }
+      .card-title { font-size:15px; padding-bottom:3px; }
+      .card-title .src, .toolbar, .a-show, .rel-card { display:none; }
+      .howto .row { font-size:11px; }
+      .ck-head > span { padding:4px 7px 3px; font-size:10.5px; }
+      .ck { break-inside:avoid; background:none !important; }
+      .ck > * { padding:5px 7px; }
+      .ck .no { font-size:11px; }
+      .ck .q { font-size:12.5px; line-height:1.5; }
+      .ck .a { font-size:11px; line-height:1.5; }
+      .ck .a-body { display:block !important; }
+      .ck .box input { width:16px; height:16px; border-width:1.5px; margin-top:2px; }
+      .ck .box input:checked::after { left:4px; top:1px; width:5px; height:9px; }
+      a { color:inherit; text-decoration:none; border:none; }
+    }
+    .quiz .ck:not(.shown) .a-body:empty + .a-show { display:none; } </style>
+</head>
+<body>
+  <script src="../assets/site-header.js" defer></script>
+<div class="page" id="sheet">
+
+  <div class="page-title-wrap">
+    <div class="sn-printqr-slot sn-printqr-float"></div>
+    <h1>麻薬の取扱い 自己点検リスト</h1>
+    <p>仕入れ・保管・処方箋・廃棄・帳簿・年間届・薬局間の譲渡・免許</p>
+  </div>
+
+  <div class="card">
+    <div class="howto">
+      <div class="row"><span class="k">使い方</span><span>各項目を確認し、満たしていれば右端に✓を付けてください。「ポイントを隠す」を押すとポイント欄が隠れるので、答えを見る前に自分で考えて確かめられます。</span></div>
+      <div class="row"><span class="k">使う場面</span><span>初めて麻薬を扱うとき、麻薬の管理を引き継ぐとき、店舗の管理を見直すときなど。</span></div>
+      <div class="row"><span class="k">範囲</span><span>下の関連ページ（薬局の麻薬管理・帳簿・年間届・薬局間の譲渡）の要点を確かめるためのもので、麻薬の取扱いの決まりをすべて載せたものではありません。細かい扱いは都県・保健所のやり方に従ってください。</span></div>
+    </div>
+    <div class="toolbar">
+      <button type="button" id="btn-quiz" aria-pressed="false">ポイントを隠す</button>
+      <button type="button" id="btn-clear">チェックを消す</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">仕入れと保管<span class="src"><a href="../ナレッジ/薬局の麻薬管理.html#shiire">解説を読む</a></span></div>
+    <div class="ck-head"><span>No.</span><span>点検項目</span><span>ポイント</span><span>確認</span></div>
+    <div class="ck-list">
+      <div class="ck"><span class="no"></span><label class="q">麻薬は、同じ都県内の麻薬卸売業者から購入している</label><div class="a"><div class="a-body"><p>卸への返品はできない。院外処方に切り替える診療所などから、手持ちの麻薬を譲り受けることもできない。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">納品のとき、譲渡証と現品の品名・数量・製品番号、証紙の封を確かめている</label><div class="a"><div class="a-body"><p>数量は開封して数えなくてよい。受け取ったあとに開封して不足・破損を見つけたら、薬局が事故届を提出する。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">麻薬譲渡証を2年間保存している</label><div class="a"><div class="a-body"><p>紛失したら卸から再交付を受ける。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">麻薬保管庫は鍵をかけた堅固な設備で、麻薬以外を入れていない</label><div class="a"><div class="a-body"><p>他の医薬品・現金・書類も入れない。<span class="marker">麻薬帳簿も入れない</span>。手提げ金庫・スチールロッカー・机の引き出しは保管庫にできない。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">出し入れのとき以外は施錠し、鍵を差したままにしていない</label><div class="a"><div class="a-body"></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">定期的に、帳簿の残高と現品を照合している</label><div class="a"><div class="a-body"></div></div><label class="box"><input type="checkbox" /></label></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">麻薬処方箋と交付<span class="src"><a href="../ナレッジ/薬局の麻薬管理.html#shohosen">解説を読む</a></span></div>
+    <div class="ck-head"><span>No.</span><span>点検項目</span><span>ポイント</span><span>確認</span></div>
+    <div class="ck-list">
+      <div class="ck"><span class="no"></span><label class="q">麻薬処方箋を受け付けたら、患者の住所・麻薬施用者の免許番号・記名押印又は署名を確認している</label><div class="a"><div class="a-body"><p>記載漏れが多い3つ。不備があれば、<span class="marker">処方医に問い合わせてから調剤する</span>。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">FAXなどで受け取った麻薬処方箋で調剤の準備を始めたときは、交付のときに原本を受け取り、同じ内容か確認している</label><div class="a"><div class="a-body"><p>患者が来なければ、調剤前の在庫に戻して使える（液剤などで戻せず廃棄するなら、事前に麻薬廃棄届）。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">患者・家族が受け取りに来られず、ほかの人に渡すときは、患者の依頼を受けた人かどうかを確認している</label><div class="a"><div class="a-body"><p>依頼を受けた看護師・ヘルパーなどに渡せる。書面や電話で確認する（書面の様式は決まっていない）。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">麻薬処方箋を3年間保存している</label><div class="a"><div class="a-body"><p>一般の処方箋と分けておくと、検査のときに探しやすい。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">慢性疼痛でフェンタニル貼付剤（慢性疼痛の適応がある製品）・オキシコンチンTR錠が処方されたときは、調剤の前に確認書を確かめている</label><div class="a"><div class="a-body"><p>がん疼痛での処方には確認書は不要。<br>確認書がないときの扱いは製品で違う。フェンタニル貼付剤は、処方医が講習を修了した医師だと確認できれば調剤できる。オキシコンチンTR錠は、処方医に問い合わせるのが原則。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">慢性疼痛の処方で、確認が取れないときの対応を説明できる</label><div class="a"><div class="a-body"><p>調剤しない。どちらの製品も、確認できずに調剤を断るのは調剤拒否の「正当な理由」になる。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">廃棄と事故<span class="src"><a href="../ナレッジ/薬局の麻薬管理.html#haiki">解説を読む</a></span></div>
+    <div class="ck-head"><span>No.</span><span>点検項目</span><span>ポイント</span><span>確認</span></div>
+    <div class="ck-list">
+      <div class="ck"><span class="no"></span><label class="q">患者から返却された麻薬と、期限切れ・調剤ミスの麻薬とで、廃棄の届が違うことを説明できる</label><div class="a"><div class="a-body"><p>返却された麻薬は<span class="marker">調剤済麻薬廃棄届（廃棄したあと30日以内）</span>。<br>期限切れ・変質・調剤ミス・予製品は<span class="marker">麻薬廃棄届（廃棄する前）</span>。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">患者・家族から返却された麻薬は、在庫に戻さず、薬局の他の職員の立会いで廃棄している</label><div class="a"><div class="a-body"><p>回収できない方法で廃棄する。30日以内の分は、まとめて1枚の調剤済麻薬廃棄届でよい。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">期限切れ・調剤ミスの麻薬は、麻薬廃棄届を提出してから、保健所職員などの立会いで廃棄している</label><div class="a"><div class="a-body"><p>調剤ミスで使えなくなった麻薬は「処方箋により調剤された麻薬」ではないので、調剤済麻薬廃棄届ではなく麻薬廃棄届になる。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">紛失・破損・所在不明などがあったら、速やかに麻薬事故届を提出している</label><div class="a"><div class="a-body"><p>盗難は警察にも届け、現場をそのままにしておく。帳簿の備考に事故と届出日を記載し、事故届の写しを保管する。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">散剤をこぼして一部しか回収できなかったときの手続きを説明できる</label><div class="a"><div class="a-body"><p>回収できなかった分は事故届。回収した分は汚れているので、麻薬廃棄届を提出して立会いで廃棄する。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">麻薬帳簿<span class="src"><a href="../ナレッジ/麻薬帳簿の書き方.html">解説を読む</a></span></div>
+    <div class="ck-head"><span>No.</span><span>点検項目</span><span>ポイント</span><span>確認</span></div>
+    <div class="ck-list">
+      <div class="ck"><span class="no"></span><label class="q">帳簿は品名・剤形・規格ごとに口座を分け、受け払いの都度記載している</label><div class="a"><div class="a-body"><p>鉛筆など、消えやすい筆記具は使わない。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">訂正は二本線で読めるように消し、脇に正しい数字を記載して訂正印を押している</label><div class="a"><div class="a-body"><p>修正液・修正テープは使わない。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">卸から購入したときは、譲渡証の日付で受け入れ、備考に卸の名称と製品番号を記載している</label><div class="a"><div class="a-body"><p>譲渡証の日付と納品日が違うときは、備考に納品日も記載する。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">患者・家族から返却された麻薬は、受入欄に（　）書きにし、残高に足していない</label><div class="a"><div class="a-body"><p>備考に、返却した患者名・廃棄日・調剤済麻薬廃棄届の提出日・立会者の署名。補助簿（麻薬廃棄簿）に記録している店舗は、帳簿に（　）書きしなくてよい。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">コデイン・ジヒドロコデイン・エチルモルヒネの帳簿の扱いを説明できる</label><div class="a"><div class="a-body"><p>処方箋による払出しと患者名は記載しなくてよい。卸からの受入・予製・廃棄・事故は他の麻薬と同じく記載する。年間届のために、毎年9月30日の残量を記入しておく。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">帳簿を、最終記載日から2年間保存している</label><div class="a"><div class="a-body"><p>麻薬の取扱いがなくても、帳簿は備えておく。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">年間届<span class="src"><a href="../ナレッジ/麻薬の年間届の書き方.html">解説を読む</a></span></div>
+    <div class="ck-head"><span>No.</span><span>点検項目</span><span>ポイント</span><span>確認</span></div>
+    <div class="ck-list">
+      <div class="ck"><span class="no"></span><label class="q">年間届を、毎年11月30日までに提出している</label><div class="a"><div class="a-body"><p>前年10月1日からその年の9月30日までの1年間が対象。麻薬を持っていなかった年も届ける。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">患者から返却された麻薬を、年間届の受入に入れていない</label><div class="a"><div class="a-body"><p>在庫に戻していないため。調剤済麻薬廃棄届で廃棄した分も、どの欄にも記載しない。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">薬局間で譲り受けた・譲り渡した分を、年間届の数量に含めている</label><div class="a"><div class="a-body"><p>薬局間の分も、譲受・譲渡の数量に含めて届け出る。書き方は都県の様式で違う。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">薬局間の譲渡（譲渡許可を受けている薬局）<span class="src"><a href="../ナレッジ/薬局間の麻薬の譲渡.html#yoten">解説を読む</a></span></div>
+    <div class="ck-head"><span>No.</span><span>点検項目</span><span>ポイント</span><span>確認</span></div>
+    <div class="ck-list">
+      <div class="ck"><span class="no"></span><label class="q">譲渡できるのは、許可書に載っている薬局の間だけだと説明できる</label><div class="a"><div class="a-body"><p>同じ会社の店舗でも、許可書に載っていない薬局とは譲渡できない。貸し借りや、譲渡した麻薬を後から戻すこともできない。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">薬局間での麻薬譲渡・譲受の要件（イ・ロ）を説明できる</label><div class="a"><div class="a-body"><p><span class="marker">イ　在庫不足の補充</span>：麻薬処方箋を受けたが在庫が足りないとき。不足分だけ。<br><span class="marker">ロ　90日たった在庫</span>：卸から購入した麻薬だけ。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">ロの「90日」をいつから数えるかを説明できる</label><div class="a"><div class="a-body"><p>卸からの納品日（譲渡証の日付ではない）か、最後に交付・譲渡した日を起算日（1日目）とし、91日目から譲渡できる。品名（販売名・規格）ごとに判断する。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">薬局間で譲り受けた麻薬は、ロでは他の薬局に譲れないことを説明できる</label><div class="a"><div class="a-body"><p>イで譲り受けた麻薬も、ロで譲り受けた麻薬も、90日動かなくてもロでは譲れない。譲れるのはイ（不足分だけ）。卸から購入した麻薬と区別して保管しておく。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">ロで一部を譲ったら、残りは譲った日から90日たつまでロで譲れないことを説明できる</label><div class="a"><div class="a-body"><p>同じ相手に分けて譲るときも同じ。同じ日に2つの薬局へ分けて譲ることもできない。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">譲渡・譲受をしたら、帳簿の備考に相手の薬局名・イかロか・製品番号を記載している</label><div class="a"><div class="a-body"><p>使用期限も記載することが望ましい。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">確認書と麻薬処方箋の写しは、受け渡しの場で麻薬と引き換えに交換している</label><div class="a"><div class="a-body"><p>後から作る・後から渡すのは不可。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">イで譲り渡したときは、受け取った麻薬処方箋の写しを2年間保存している</label><div class="a"><div class="a-body"><p>譲受確認書と一緒に保存する。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">譲受確認書・譲渡確認書を2年間保存している</label><div class="a"><div class="a-body"><p>譲り渡した側が譲受確認書を、譲り受けた側が譲渡確認書を保存する。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">麻薬小売業者間譲渡許可書を、許可の日から5年間保存している</label><div class="a"><div class="a-body"><p>有効期間が満了したものも含む。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">免許<span class="src"><a href="../ナレッジ/薬局の麻薬管理.html#menkyo">解説を読む</a></span></div>
+    <div class="ck-head"><span>No.</span><span>点検項目</span><span>ポイント</span><span>確認</span></div>
+    <div class="ck-list">
+      <div class="ck"><span class="no"></span><label class="q">麻薬小売業者免許の有効期間を把握している</label><div class="a"><div class="a-body"><p>免許の日から翌々年の12月31日まで。続けるなら、満了前に申請する。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+      <div class="ck"><span class="no"></span><label class="q">薬局の移転・開設者の変更のときの手続きを説明できる</label><div class="a"><div class="a-body"><p>記載事項の変更ではなく、いったん業務を廃止して新たに免許を取得する。廃止後<span class="marker">15日以内</span>に業務廃止届と麻薬所有届。残った麻薬は廃止後<span class="marker">50日以内</span>に譲り渡すか廃棄する。譲り渡したら15日以内に麻薬譲渡届。</p></div></div><label class="box"><input type="checkbox" /></label></div>
+    </div>
+  </div>
+
+  <div class="card rel-card">
+    <div class="card-title">関連ページ</div>
+    <div class="rel"><a href="../ナレッジ/薬局の麻薬管理.html">薬局の麻薬管理</a></div>
+    <div class="rel"><a href="../ナレッジ/麻薬帳簿の書き方.html">麻薬帳簿の書き方</a></div>
+    <div class="rel"><a href="../ナレッジ/麻薬の年間届の書き方.html">麻薬の年間届の書き方</a></div>
+    <div class="rel"><a href="../ナレッジ/薬局間の麻薬の譲渡.html">薬局間の麻薬の譲渡</a></div>
+    <div class="rel"><a href="../チェックリスト/薬局間の麻薬の譲渡_実務チェックリスト.html">薬局間の麻薬の譲渡 実務チェックリスト</a></div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var sheet = document.getElementById('sheet');
+  var rows = Array.prototype.slice.call(document.querySelectorAll('.ck'));
+
+  // 通し番号・チェック欄の id・項目文との結び付け・「答えを見る」ボタンを自動で付ける
+  rows.forEach(function (row, i) {
+    var id = 'ck-' + (i + 1);
+    row.querySelector('.no').textContent = i + 1;
+    row.querySelector('.box input').id = id;
+    row.querySelector('.q').setAttribute('for', id);
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'a-show';
+    btn.textContent = 'ポイントを見る';
+    btn.addEventListener('click', function () { row.classList.add('shown'); });
+    row.querySelector('.a').appendChild(btn);
+  });
+
+  var btnQuiz = document.getElementById('btn-quiz');
+  btnQuiz.addEventListener('click', function () {
+    var on = !sheet.classList.contains('quiz');
+    sheet.classList.toggle('quiz', on);
+    rows.forEach(function (r) { r.classList.remove('shown'); });
+    btnQuiz.setAttribute('aria-pressed', on ? 'true' : 'false');
+    btnQuiz.textContent = on ? 'ポイントをすべて表示する' : 'ポイントを隠す';
+  });
+
+  document.getElementById('btn-clear').addEventListener('click', function () {
+    rows.forEach(function (r) { r.querySelector('.box input').checked = false; });
+  });
+})();
+</script>
+<script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

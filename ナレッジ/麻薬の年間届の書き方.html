@@ -3,11 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex,nofollow,noarchive">
     <title>麻薬の年間届の書き方｜調剤報酬・薬歴まとめ</title>
-    <meta name="search-keywords" content="年間届,東京都,埼玉県,茨城県,古河,麻薬小売業者の届,11月30日,9月30日,10月1日,所有数量,譲受,譲渡,第10号様式,様式16,期始在庫数量,期末在庫数量,受入数量,払出数量,使用期限切れ,所有なし,検算,かっこ書き,訂正願,倍散,予製,コデイン,返却,廃棄,事故" />
+    <meta name="search-keywords" content="年間届,東京都,埼玉県,茨城県,古河,麻薬小売業者の届,11月30日,9月30日,10月1日,所有数量,譲受,譲渡,第10号様式,様式16,期始在庫数量,期末在庫数量,受入数量,払出数量,所有なし,検算,かっこ書き,訂正願,倍散,予製,コデイン,返却,廃棄,事故" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../../assets/fold.css" />
+    <link rel="stylesheet" href="../assets/fold.css" />
     <style>
       *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
       :root {
@@ -48,10 +47,6 @@
       .note a { color:var(--blue); }
       a { color:var(--blue); }
 
-      /* 下書きメモ（公開前に消す） */
-      .draft-memo { background:#fff8e1; border:1px solid #e5c200; border-radius:var(--radius-sm); padding:14px 18px; font-size:var(--text-sm); line-height:1.7; }
-      .draft-memo .ttl { font-weight:900; margin-bottom:4px; }
-      .draft-memo ul { margin-left:1.3em; }
 
       /* このページの要点 */
       .sum .card-title { margin-bottom:6px; }
@@ -159,8 +154,8 @@
         .pref th, .pref td { padding-top:5px; padding-bottom:5px; }
         table.ledger.sai td:first-child { min-width:9em; }
         table.ledger.sai td:last-child { min-width:10em; }
-        /* 原典と「麻薬管理のページ」はリンクが紙では使えないので出さない（QRから画面で見る） */
-        .sum .pt .go, .page-toc-wrap, .draft-memo, #genten, #kanren { display:none; }
+        /* 画面で押す部品は印刷しない（原典は assets/print.css が消す） */
+        .sum .pt .go, .page-toc-wrap { display:none; }
         a { color:inherit; text-decoration:none; }
       }
 
@@ -179,8 +174,8 @@
     </style>
   </head>
   <body>
-    <script src="../../assets/site-header.js" defer></script>
-    <script src="../../assets/page-toc.js" defer></script>
+    <script src="../assets/site-header.js" defer></script>
+    <script src="../assets/page-toc.js" defer></script>
     <div class="page">
 
       <div class="page-title-wrap">
@@ -188,17 +183,6 @@
         <p>麻薬小売業者の届（毎年11月30日まで）</p>
       </div>
 
-      <div class="draft-memo">
-        <div class="ttl">下書きメモ（公開前に消す）</div>
-        <ul>
-          <li>10/27 構成を見直した（方針：共通のルールを示し、細かいところは都県・保健所のやり方に従う）。記入例は国のマニュアルの型1つにし、都県で違うところは早見表に。埼玉県の表は畳み、茨城県の記入例カードは早見表に収めた。コデイン散の「秤量誤差・帳簿訂正」は、コデインは払出を帳簿に書かず逆算するので出てこない（照合係の指摘）→ 払出196.0に直し、秤量誤差の例は削った。埼玉県の「さいたま市など4市も県の保健所に出す」は根拠が見つからないので削った。</li>
-          <li>10/9 東京都（様式16）と埼玉県（第10号様式）で欄の作りが違うと分かり、記入例を都県別にした。</li>
-          <li>10/26 県のサイトが戻ったので茨城県の様式（麻薬年間届）を確認。受入・払出の2欄で、廃棄・事故は払出に含めて備考に数量（様式の注＊６）。東京型でも埼玉型でもないので記入例を足した（10/27 早見表に収めた）。様式ページに「古河保健所など5か所は報告方法が異なる。保健所からの通知を確認」とある。古河保健所の通知の中身はWebに出ておらず、年度ごとに変わっても確かめようがないので「保健所から届いた通知に従う」とだけ書くことに決定（10/26 本人）。薬局間の分のかっこ書きは様式に書かれていないので、国の質疑応答（問65）に合わせた。</li>
-          <li>薬局の麻薬管理.html から年間届のカードを切り出した（10/7）。締め切り（11/30）前の10月中の公開を想定。</li>
-          <li>10/26 茨城県の提出先・部数を様式ページ（0328n0740.html、2026-08-26更新）で確認：業務所を管轄する保健所に2部・郵送可（簡易書留）・電子申請可。</li>
-          <li>10/9 埼玉県の秤量誤差：作成要領（nenkantodokesakusei.pdf）に明文はない。様式の記入例でケタラールの「施用に伴う消耗0.7mL」を払出の「その他」に分けているので、それに合わせて「その他」0.5gにした。気になるなら公開前に県薬務課か保健所に確認。→10/27 秤量誤差の例ごと削除。</li>
-        </ul>
-      </div>
 
       <div class="page-toc-wrap"><div id="page-toc"></div></div>
 
@@ -212,8 +196,8 @@
           <div class="li">その年の9月30日の所有数量</div>
         </div>
         <div class="box-blue">
-          <span class="ttl">様式は都県ごとに違う</span>
-          届け出る中身は全国共通だが、欄の分け方や廃棄・事故の書き方は都県の様式で違う。<span class="marker">細かい書き方は、薬局のある都県の様式と、保健所から届く通知に従う</span>。このページでは国のマニュアルの型で記入例を1つ示し、都県で違うところは<a href="#chigai">早見表</a>にまとめた。
+          <span class="ttl">様式は都県ごとに異なる</span>
+          届け出る中身は全国共通だが、欄の分け方や廃棄・事故の書き方は都県の様式で異なる。<span class="marker">細かい書き方は、薬局のある都県の様式と、保健所から届く通知に従う</span>。このページでは国のマニュアルの型で記入例を1つ示し、都県で異なるところは<a href="#chigai">早見表</a>にまとめた。
         </div>
       </div>
 
@@ -222,16 +206,15 @@
         <div class="check">
           <div class="li"><b>前年10月1日の数量</b>は、去年の届の9月30日の数量と同じになる。</div>
           <div class="li"><span class="marker">薬局間で譲り受けた・譲り渡した分も、受入・払出の数量に含める</span>。イ（在庫不足の補充）・ロ（90日たった在庫）の区別を記載する欄はない（帳簿の備考には必要）。</div>
-          <div class="li"><span class="marker">患者から返却された麻薬は受入に入れない</span>（在庫に戻していないため）。調剤済麻薬廃棄届（患者から返却された麻薬を廃棄したあとの届）で廃棄した分も、どの欄にも記載しない。</div>
-          <div class="li"><b>期限切れでも、麻薬廃棄届を提出して廃棄するまでは在庫</b>。9月30日の所有数量に入れる。備考に「使用期限切れ」と記載しておくと分かりやすい。廃棄したら、廃棄した日が入る期間（10月1日〜翌年9月30日）の届に、麻薬廃棄届（廃棄する前の届）による廃棄として記載する。</div>
+          <div class="li"><span class="marker">患者から返却された麻薬は受入に含めない</span>（在庫に戻していないため）。調剤済麻薬廃棄届（患者から返却された麻薬を廃棄したあとの届）で廃棄した分も、どの欄にも記載しない。</div>
           <div class="li"><b>検算する</b>。前年10月1日＋受入−払出が9月30日の数量と合うかを確かめる。合わなければ、払出に含めていない廃棄・事故・帳簿訂正の数量で説明できるかを確認する（どれを払出に含めるかは都県の様式による）。</div>
           <div class="li">9月30日の数量は、帳簿（補助簿を含む）の数と<b>現品</b>が合っていることも確かめる。</div>
-          <div class="li">コデイン類は帳簿に払い出しを記載していないので、9月30日に数えた（量った）残量から逆算して払い出しの数量を算出する。</div>
+          <div class="li">コデイン類は帳簿に払い出しを記載していないので、9月30日に数えた（量った）残量から逆算して払い出しの数量を出す。</div>
         </div>
         <div class="sub-title">書き方の決まり</div>
         <div class="check">
-          <div class="li">品名は略さず、帳簿や包装の表記に合わせる。同じ成分でも規格・剤形が違えば別の行にする。予製した倍散も別の行にする。</div>
-          <div class="li">単位は、錠（T）・カプセル（Cap）・包・個（坐剤）・枚（貼付剤）・g・mL など。<b>備考に記載する数量も同じ単位にする</b>（単位が「枚」なのに備考は「10包」、などにしない）。</div>
+          <div class="li">品名は略さず、帳簿や包装の表記に合わせる。同じ成分でも規格・剤形が異なれば別の行にする。予製した倍散も別の行にする。</div>
+          <div class="li">単位は、錠（T）・カプセル（Cap）・包・個（坐剤）・枚（貼付剤）・g・mL など。<b>備考に記載する数量も同じ単位にする</b>。</div>
           <div class="li">秤量誤差などで帳簿を訂正した分は、備考に理由と数量を記載する。どの欄に含めるかが様式になければ、保健所に確認する。</div>
           <div class="li">写しを控えとして保管する。提出したあとに誤りに気づいたら、提出先の保健所に連絡する。</div>
         </div>
@@ -249,7 +232,7 @@
               <tr><td>オキシコドン徐放錠5mg「〇〇」</td><td>錠</td><td class="n">120</td><td class="n">400</td><td class="n">384</td><td class="n">135</td><td>1錠 所在不明（R8.3.2 事故届）</td></tr>
               <tr><td>オキシコドン徐放錠10mg「〇〇」</td><td>錠</td><td class="n">40</td><td class="n">100<br>(20)</td><td class="n">80<br>(10)</td><td class="n">60</td><td></td></tr>
               <tr><td>フェンタニル1日用テープ1mg「〇〇」</td><td>枚</td><td class="n">14</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>14枚 廃棄（R8.6.10 麻薬廃棄届）</td></tr>
-              <tr><td>フェンタニル3日用テープ2.1mg「〇〇」</td><td>枚</td><td class="n">5</td><td class="n">0</td><td class="n">0</td><td class="n">5</td><td>5枚 使用期限切れ（R8.4）</td></tr>
+              <tr><td>フェンタニル3日用テープ2.1mg「〇〇」</td><td>枚</td><td class="n">5</td><td class="n">0</td><td class="n">0</td><td class="n">5</td><td></td></tr>
               <tr><td>コデインリン酸塩水和物（原末）</td><td>g</td><td class="n">5.0</td><td class="n">25.0</td><td class="n">※20.0</td><td class="n">10.0</td><td>※10％散に予製</td></tr>
               <tr><td>コデインリン酸塩散10％</td><td>g</td><td class="n">12.0</td><td class="n">※200.0</td><td class="n">196.0</td><td class="n">16.0</td><td>※原末から予製</td></tr>
             </tbody>
@@ -257,10 +240,10 @@
         </div>
         <p class="lg-note">10mgのかっこ書きは、譲受100錠のうち20錠、譲渡80錠のうち10錠が薬局間の分という意味。コデイン散10％の譲渡196.0gは、9月30日に量った16.0gから逆算した数（12.0＋200.0−16.0）。</p>
         <div class="sub-title" style="margin-top:18px;">記入例の読み方</div>
-        <div class="check">
+        <div class="list">
           <div class="li"><b>譲受</b>は、卸からの購入と薬局間で譲り受けた分。<b>譲渡</b>は、処方箋で交付した分と薬局間で譲り渡した分。</div>
           <div class="li"><span class="marker">薬局間で譲受・譲渡した分は、合計に含めたうえで<b>かっこ書き</b>で添える</span>。かっこには薬局間の分の合計だけを記載する（国のマニュアル・質疑応答）。</div>
-          <div class="li"><b>廃棄（麻薬廃棄届）・事故は譲渡に入れず、備考に記載する</b>。この扱いは都県の様式で違う（<a href="#chigai">早見表</a>）。</div>
+          <div class="li"><b>廃棄（麻薬廃棄届）・事故は譲渡に含めず、備考に記載する</b>。この扱いは都県の様式で異なる（<a href="#chigai">早見表</a>）。</div>
           <div class="li">予製した倍散は、原末の「譲渡」に予製に使った量、倍散の「譲受」に作った量を入れ、※などで予製だと分かるようにする。</div>
         </div>
         <div class="box-blue">
@@ -280,14 +263,14 @@
         </div>
       </div>
 
-      <div class="card" id="chigai" data-toc-label="都県で違うところ">
-        <div class="card-title">都県の様式で違うところ</div>
+      <div class="card" id="chigai" data-toc-label="都県で異なるところ">
+        <div class="card-title">都県の様式で異なるところ</div>
         <div class="table-wrap">
           <table class="pref">
             <thead><tr><th class="rh" style="width:7.5em;"></th><th>東京都</th><th>埼玉県</th><th>茨城県</th></tr></thead>
             <tbody>
               <tr><td class="rh">様式</td><td>麻薬小売業者の届（様式16）。譲受・譲渡の2欄</td><td>年間届（第10号様式）。受入3欄・払出4欄に分ける</td><td>麻薬年間届。受入・払出の2欄</td></tr>
-              <tr><td class="rh">廃棄・事故の分</td><td>譲渡に入れず、<b>備考だけ</b>に記載する</td><td>払出の<b>専用の欄</b>（麻薬廃棄届による廃棄・事故届出）に記載し、備考に届出の区分と日付</td><td><b>払出に含め</b>、備考にその数量を記載する</td></tr>
+              <tr><td class="rh">廃棄・事故の分</td><td>譲渡に含めず、<b>備考だけ</b>に記載する</td><td>払出の<b>専用の欄</b>（麻薬廃棄届による廃棄・事故届出）に記載し、備考に届出の区分と日付</td><td><b>払出に含め</b>、備考にその数量を記載する</td></tr>
               <tr><td class="rh">薬局間の分</td><td>かっこ書きで添える</td><td>受入・払出の「その他」の欄に記載し、備考に相手の薬局名と日付</td><td>様式に指定はない。国の質疑応答に合わせてかっこ書きで添える</td></tr>
               <tr><td class="rh">所有なしの年</td><td>「所有なし」と記載する</td><td>表に斜線を引き「なし」と記載する</td><td>様式に指定はない</td></tr>
               <tr><td class="rh">提出先・部数</td><td>管轄の保健所に1通（10月1日から受け付け）</td><td>管轄の県の保健所（生活衛生・薬事担当）。紙なら1部</td><td>管轄の保健所に2部。郵送（簡易書留）もできる</td></tr>
@@ -296,8 +279,8 @@
           </table>
         </div>
         <div class="box-gray">
-          <span class="ttl">茨城県の古河保健所など5か所</span>
-          中央・日立・竜ケ崎・筑西・古河の5つの保健所は、県の様式ページとは別の報告方法を取っている。<span class="marker">保健所から届いた通知に従う</span>。手元に見当たらなければ、管轄の保健所（古河市なら古河保健所）に問い合わせる。
+          <span class="ttl">茨城県は保健所によって報告方法が異なる</span>
+          中央・日立・竜ケ崎・筑西・古河の5つの保健所は、県の様式ページとは別の方法で報告を求めている。<span class="marker">保健所から届いた通知に従う</span>。手元に見当たらなければ、管轄の保健所（古河市なら古河保健所）に問い合わせる。
         </div>
         <details class="fold-in" style="margin-top:14px;">
           <summary>埼玉県の様式での記入例</summary>
@@ -312,13 +295,13 @@
                   <tr><td>オキシコドン徐放錠5mg「〇〇」</td><td>T</td><td class="n">120</td><td class="n">400</td><td></td><td></td><td class="n">384</td><td></td><td class="n">1</td><td></td><td class="n">135</td><td>R8.3.2 事故届 1T</td></tr>
                   <tr><td>オキシコドン徐放錠10mg「〇〇」</td><td>T</td><td class="n">40</td><td class="n">80</td><td></td><td class="n">20</td><td class="n">70</td><td></td><td></td><td class="n">10</td><td class="n">60</td><td>R8.5.12 〇〇薬局から麻薬小売業者間譲渡 20T<br>R8.8.3 △△薬局へ麻薬小売業者間譲渡 10T</td></tr>
                   <tr><td>フェンタニル1日用テープ1mg「〇〇」</td><td>枚</td><td class="n">14</td><td></td><td></td><td></td><td></td><td class="n">14</td><td></td><td></td><td class="n">0</td><td>R8.6.10 廃棄届 14枚</td></tr>
-                  <tr><td>フェンタニル3日用テープ2.1mg「〇〇」</td><td>枚</td><td class="n">5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="n">5</td><td>5枚 使用期限切れ（R8.4）</td></tr>
+                  <tr><td>フェンタニル3日用テープ2.1mg「〇〇」</td><td>枚</td><td class="n">5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="n">5</td><td></td></tr>
                   <tr><td>コデインリン酸塩水和物（原末）</td><td>g</td><td class="n">5.0</td><td class="n">25.0</td><td></td><td></td><td class="n">20.0</td><td></td><td></td><td></td><td class="n">10.0</td><td>10％散の予製に20.0g</td></tr>
                   <tr><td>コデインリン酸塩散10％（予製）</td><td>g</td><td class="n">12.0</td><td></td><td></td><td class="n">200.0</td><td class="n">196.0</td><td></td><td></td><td></td><td class="n">16.0</td><td>原末から予製</td></tr>
                 </tbody>
               </table>
             </div>
-            <p class="lg-note">上の記入例と同じ1年間を埼玉県の様式で記入したもの。「患者から返却（再利用分）」は病院などが使う欄で、薬局は空けておく。予製に使った原末は払出の「調剤、施用、使用」、作った倍散は受入の「その他」に記載する（作成要領）。押印は不要、手書きなら消せるボールペンは使わない。</p>
+            <p class="lg-note">上の記入例と同じ1年間を埼玉県の様式で記入したもの。「患者から返却（再利用分）」は病院などが使う欄で、薬局は空けておく。予製に使った原末は払出の「調剤、施用、使用」、作った倍散は受入の「その他」に記載する（作成要領）。押印は不要。手書きのときは、消せるボールペンを使わない。</p>
           </div>
         </details>
       </div>
@@ -330,6 +313,8 @@
           <a href="麻薬帳簿の書き方.html">麻薬帳簿の書き方<span class="d">場面ごとの記入例</span></a>
           <a href="麻薬の年間届の書き方.html" class="cur">麻薬の年間届の書き方<span class="d">毎年11月30日まで</span></a>
           <a href="薬局間の麻薬の譲渡.html">薬局間の麻薬の譲渡<span class="d">麻薬小売業者間譲渡許可</span></a>
+          <a href="../チェックリスト/薬局間の麻薬の譲渡_実務チェックリスト.html">薬局間の麻薬の譲渡 実務チェックリスト<span class="d">受け渡しのときに印刷して使う（A4で2枚）</span></a>
+          <a href="../チェックリスト/麻薬の取扱い_自己点検リスト.html">麻薬の取扱い 自己点検リスト<span class="d">仕入れから譲渡・免許まで、要点を確かめる</span></a>
         </div>
       </div>
 
@@ -353,5 +338,6 @@
       </div>
 
     </div>
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   </body>
 </html>

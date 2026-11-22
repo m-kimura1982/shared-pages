@@ -3,11 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex,nofollow,noarchive">
     <title>麻薬帳簿の書き方｜調剤報酬・薬歴まとめ</title>
-    <meta name="search-keywords" content="麻薬帳簿,かっこ書き,括弧,補助簿,麻薬廃棄簿,廃棄簿,受入,払出,残高,備考,記入例,返却,返納,調剤済麻薬廃棄届,麻薬廃棄届,事故届,所在不明,秤量誤差,倍散,予製,帳簿訂正,訂正印,フリクション,製品番号,納品日,譲渡証,コデイン,慢,フェンタニル,麻薬廃棄簿,補助簿,薬局間譲渡" />
+    <meta name="search-keywords" content="麻薬帳簿,かっこ書き,括弧,補助簿,麻薬廃棄簿,廃棄簿,受入,払出,残高,備考,記入例,返却,返納,調剤済麻薬廃棄届,麻薬廃棄届,事故届,所在不明,秤量誤差,倍散,予製,帳簿訂正,訂正印,製品番号,納品日,譲渡証,コデイン,慢,フェンタニル,麻薬廃棄簿,補助簿,薬局間譲渡" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../../assets/fold.css" />
+    <link rel="stylesheet" href="../assets/fold.css" />
     <style>
       *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
       :root {
@@ -48,10 +47,6 @@
       .note a { color:var(--blue); }
       a { color:var(--blue); }
 
-      /* 下書きメモ（公開前に消す） */
-      .draft-memo { background:#fff8e1; border:1px solid #e5c200; border-radius:var(--radius-sm); padding:14px 18px; font-size:var(--text-sm); line-height:1.7; }
-      .draft-memo .ttl { font-weight:900; margin-bottom:4px; }
-      .draft-memo ul { margin-left:1.3em; }
 
       /* このページの要点 */
       .sum .card-title { margin-bottom:6px; }
@@ -146,8 +141,8 @@
         .card { border:0.5px solid #ccc; padding:9px 11px; margin-bottom:7px; break-inside:auto; }
         .card-title, .sub-title, .ledger-name { break-after:avoid; }
         .sum, .box-gray, .box-blue, table.ledger, tr { break-inside:avoid; }
-        /* 原典と「麻薬管理のページ」はリンクが紙では使えないので出さない（QRから画面で見る） */
-        .sum .pt .go, .page-toc-wrap, .draft-memo, #genten, #kanren { display:none; }
+        /* 画面で押す部品は印刷しない（原典は assets/print.css が消す） */
+        .sum .pt .go, .page-toc-wrap { display:none; }
         a { color:inherit; text-decoration:none; }
       }
 
@@ -170,24 +165,15 @@
     </style>
   </head>
   <body>
-    <script src="../../assets/site-header.js" defer></script>
-    <script src="../../assets/page-toc.js" defer></script>
+    <script src="../assets/site-header.js" defer></script>
+    <script src="../assets/page-toc.js" defer></script>
     <div class="page">
 
       <div class="page-title-wrap">
         <h1>麻薬帳簿の書き方</h1>
-        <p>場面ごとの記入例。廃棄や譲渡の手続きは別のページ</p>
+        <p>帳簿の書き方だけを扱う。廃棄や譲渡の手続きそのものは「薬局の麻薬管理」「薬局間の麻薬の譲渡」のページ</p>
       </div>
 
-      <div class="draft-memo">
-        <div class="ttl">下書きメモ（公開前に消す）</div>
-        <ul>
-          <li>11/12 題名の下の行を短くし（場面の列挙は目次と重なる）、薬局間の譲渡の注記を箇条書きに分けた。中身は変えていない。</li>
-          <li>10/27 構成見直し：本文の途中の都県の話を外した。コデイン1％以下の倍散の口座（東京都は不要・国や大阪府は設ける）は「保健所に確認」の1行に、薬局間の分の年間届での書き方（都県差）は年間届のページへのリンクだけにした。</li>
-          <li>10/9 返却の補助簿（麻薬廃棄簿・口座を設けない形）を返却のカードに足した。根拠：国のマニュアル「帳簿、若しくは補助簿」、東京都の手引 様式29・30。</li>
-          <li>薬局の麻薬管理.html から帳簿のカードを切り出し、場面ごとの記入例に組み直した（10/7）。</li>
-        </ul>
-      </div>
 
       <div class="page-toc-wrap"><div id="page-toc"></div></div>
 
@@ -196,17 +182,17 @@
         <div class="list">
           <div class="li"><b>品名・剤形・規格ごと</b>に口座（ページ）を分ける。原末から倍散を作ったら、倍散の口座を新しく作る。</div>
           <div class="li">金銭出納帳の形（受入・払出・残高・備考）が使いやすい。ルーズリーフでもよいが、ページ番号を付ける。</div>
-          <div class="li">消えない筆記具で記入する。<b>鉛筆・フリクションは不可</b>。</div>
+          <div class="li">消えない筆記具で記入する。<b>鉛筆など消えやすいものは不可</b>。</div>
           <div class="li">訂正は<b>二本線で読めるように消し</b>、脇に正しい数字を記載して訂正印を押す。修正液・修正テープは使わない。</div>
           <div class="li">受け払いの<b>都度</b>記載する。</div>
           <div class="li">パソコンで管理する場合は、定期的に印刷したものをまとめて帳簿として備える。</div>
           <div class="li">保存は<b>最終記載日から2年</b>。麻薬の取扱いがなくても帳簿は備えておく。</div>
         </div>
         <div class="box-gray">
-          <span class="ttl">立入検査で帳簿と照合されるもの</span>
-          麻薬譲渡証・在庫の現品・麻薬処方箋・年間届。廃棄と事故が帳簿に記載されているかも確認される。
+          <span class="ttl">帳簿と合っているか確かめるもの</span>
+          麻薬譲渡証・在庫の現品・麻薬処方箋・年間届。廃棄と事故は、帳簿に記載したかも確かめる。
         </div>
-        <p class="note">下の記入例で、グレーの文字の行はその前の記録（残高のつながりを確認するためのもの）。</p>
+        <p class="note">下の記入例のグレーの文字の行は、残高のつながりを示すための前の記録。</p>
       </div>
 
       <div class="card" id="kounyu" data-toc-label="卸から購入">
@@ -226,7 +212,7 @@
             </tbody>
           </table>
         </div>
-        <p class="lg-note">譲渡証の日付は通常は納品日と同じ。違うときは譲渡証の日付で受け入れ、備考に「10/2納品」のように納品日も記載する（薬局間の譲渡の「90日」は納品日から数えるため。<a href="薬局間の麻薬の譲渡.html#day90">90日の数え方</a>）。</p>
+        <p class="lg-note">譲渡証の日付は通常は納品日と同じ。異なるときは譲渡証の日付で受け入れ、備考に「10/2納品」のように納品日も記載する（薬局間の譲渡の「90日」は納品日から数えるため。<a href="薬局間の麻薬の譲渡.html#day90">90日の数え方</a>）。</p>
       </div>
 
       <div class="card" id="kofu" data-toc-label="調剤して交付">
@@ -252,7 +238,7 @@
         <div class="card-title">患者・家族から返却されたとき</div>
         <div class="kv">
           <span class="k">年月日</span><span>返却された日</span>
-          <span class="k">数量</span><span>受入欄に<b>（　）書き</b>。<span class="marker">残高に足さない</span></span>
+          <span class="k">数量</span><span>受入欄に<b>（　）書き</b>。<span class="marker">残高に加えない</span></span>
           <span class="k">備考</span><span>返却した患者名（複数なら患者ごとの数量）、廃棄日、調剤済麻薬廃棄届の提出日、立会者の署名</span>
         </div>
         <div class="ledger-name">オキシコドン徐放錠 5mg「〇〇」<span class="u">単位：錠</span></div>
@@ -267,9 +253,9 @@
           </table>
         </div>
         <p class="lg-note">返却された数量を（　）で記載し、<b>残高は92のまま</b>。備考の廃棄日・届出日・立会者は、廃棄や届出をしたあとで追記する。複数の患者分をまとめて1行にするときは、患者ごとの数量を備考に記載する。返却された麻薬は在庫に戻さず、すべて廃棄する（手続きは<a href="薬局の麻薬管理.html#haiki">廃棄</a>）。</p>
-        <p class="note">（　）のほか、色を変える・記号を付けるなどでもよい。在宅で使った麻薬注射剤が返却されたときは廃棄届は不要だが、帳簿（又は下の廃棄簿）に品名・数量・返却日・廃棄日・患者名を記載する。</p>
+        <p class="note">（　）のほか、色を変える・記号を付けるなどでもよい。在宅で使った麻薬注射剤が返却されたときは、帳簿（又は下の廃棄簿）に品名・数量・返却日・廃棄日・患者名を記載する（廃棄届は不要）。</p>
 
-        <div class="sub-title" id="haikibo" style="margin-top:22px;">返却が多い店舗は補助簿（麻薬廃棄簿）に</div>
+        <details class="fold-in" id="haikibo" style="margin-top:16px;"><summary>返却が多い店舗は補助簿（麻薬廃棄簿）を使う</summary><div class="fold-body">
         <p class="txt">返却された麻薬は、帳簿の代わりに<b>補助簿</b>に記録してもよい。返却が続くと、帳簿の（　）書きが品目ごとのページに散らばり、廃棄するときにどこに記載したか探しにくくなる。</p>
         <p class="txt"><span class="marker">品名に関係なく、返却を受けた順に1冊に記載していく形</span>にすると、<b>廃棄年月日が空いている行が、まだ廃棄していない返却品の一覧</b>になる。</p>
         <div class="ledger-name">麻薬廃棄簿<span class="u">口座を設けない形（品名ごとに分けない）</span></div>
@@ -285,12 +271,13 @@
           </table>
         </div>
         <p class="lg-note">最後の行は廃棄年月日が空いている＝<b>まだ廃棄していない</b>。廃棄したら、廃棄年月日・立会者・届出年月日を追記する。30日以内の廃棄はまとめて1枚の調剤済麻薬廃棄届にしてよい（上の3行は10/20に1枚で届出）。</p>
-        <div class="check" style="margin-top:10px;">
-          <div class="li"><b>補助簿に記載した返却は、帳簿に（　）書きしなくてよい</b>。どちらに記載するかは店舗で決めておく（同じ返却を両方に記載しない、記載漏れを防ぐ）。</div>
+        <div class="list" style="margin-top:10px;">
+          <div class="li"><b>補助簿に記載した返却は、帳簿に（　）書きしなくてよい</b>。どちらに記載するかは店舗で決めておく。</div>
           <div class="li">返却が多い店舗は補助簿、まれな店舗は帳簿の（　）書きのままでよい。処方が少ない品目は、返却の行がその品目の最後の記録になっていることが多く、探しやすい。</div>
           <div class="li">品目ごとにページを分ける形（口座を設ける形）の廃棄簿もある。</div>
-          <div class="li">補助簿は帳簿と一緒に保管し、立入検査で帳簿と合わせて提示できるようにしておく。</div>
+          <div class="li">補助簿は帳簿と一緒に保管する。</div>
         </div>
+        </div></details>
       </div>
 
       <div class="card" id="jiko" data-toc-label="事故">
@@ -330,7 +317,7 @@
             </tbody>
           </table>
         </div>
-        <p class="lg-note">麻薬廃棄届は<b>廃棄する前</b>に提出し、保健所職員などの立会いで廃棄する。調剤ミスで使えなくなった麻薬や、薬局で作った予製品も麻薬廃棄届で廃棄する（<a href="薬局の麻薬管理.html#haiki">廃棄</a>）。</p>
+        <p class="lg-note">麻薬廃棄届は<b>廃棄する前</b>に提出し、保健所職員などの立会いのもとで廃棄する。調剤ミスで使えなくなった麻薬や、薬局で作った予製品も麻薬廃棄届で廃棄する（<a href="薬局の麻薬管理.html#haiki">廃棄</a>）。</p>
       </div>
 
       <div class="card" id="joto" data-toc-label="薬局間の譲渡">
@@ -364,13 +351,13 @@
         </div>
         <div class="list" style="margin-top:10px;">
           <div class="li">イ・ロは「規則第9条の2第1項第1号のイ」のように、規則の号まで記載する。</div>
-          <div class="li">ロの行は、最後に払い出した10月20日から90日たった1月18日以降の譲渡（<a href="薬局間の麻薬の譲渡.html#day90">90日の数え方</a>）。</div>
+          <div class="li">ロの行は、最後に譲渡した10月20日を1日目として数え、91日目にあたる1月18日以降に譲渡したもの（<a href="薬局間の麻薬の譲渡.html#day90">90日の数え方</a>）。</div>
           <div class="li">イで譲り受けたのに患者が来なかったときは、備考にその旨を記載して自分の在庫にする。</div>
           <div class="li">薬局間の分は年間届にも記載する（<a href="麻薬の年間届の書き方.html#kinyurei">年間届の記入例</a>）。</div>
         </div>
         <div class="box-gray">
           <span class="ttl">薬局間譲渡用の補助簿</span>
-          帳簿とは別に、品名に関係なく薬局間で譲渡・譲受した麻薬を1冊にまとめた<b>補助簿</b>を作っておくと、立入検査などで迅速に対応できる（国の質疑応答で参考として示されている）。記載するのは、年月日・受入（譲受）・払出（譲渡）の数量・品名・相手の薬局名と、帳簿と同じ備考（イかロか・製品番号・使用期限）。
+          帳簿とは別に、品名に関係なく薬局間で譲渡・譲受した麻薬を1冊にまとめた<b>補助簿</b>を作っておくと、薬局間の受け払いをすぐに一覧できる（国の質疑応答で参考として示されている）。記載するのは、年月日・受入（譲受）・払出（譲渡）の数量・品名・相手の薬局名と、帳簿と同じ備考（イかロか・製品番号・使用期限）。
         </div>
       </div>
 
@@ -419,7 +406,7 @@
             </tbody>
           </table>
         </div>
-        <p class="lg-note">例は、原末0.5gから10％散5.0gを予製した場合。秤量誤差の訂正は、管理薬剤師が他の職員の立会いのもとで確認し、立会者が署名する。予製品を廃棄するときは「調剤済」ではないので、麻薬廃棄届（事前・立会い）になる。</p>
+        <p class="lg-note">例は、原末0.5gから10％散5.0gを予製した場合。秤量誤差の訂正は、管理薬剤師が他の職員の立会いのもとで確認し、立会者が署名する。予製品を廃棄するときは、麻薬廃棄届（事前・立会い）になる。</p>
       </div>
 
       <div class="card" id="codeine" data-toc-label="コデイン類">
@@ -427,7 +414,7 @@
         <div class="list">
           <div class="li">処方箋による<b>払出しと患者名は記載しなくてよい</b>。卸からの受入、予製、廃棄、事故は他の麻薬と同じく記載する。</div>
           <div class="li">年間届のために、<span class="marker">毎年9月30日の残量</span>を数えて（散剤は量って）記入しておく。</div>
-          <div class="li">1％以下の倍散に別の口座を設けるかどうかは都県で扱いが違うので、保健所に確認する。</div>
+          <div class="li">1％以下の倍散に別の口座を設けるかどうかは都県で扱いが異なるので、保健所に確認する。</div>
         </div>
         <div class="ledger-name">コデインリン酸塩錠 20mg<span class="u">単位：錠</span></div>
         <div class="table-wrap">
@@ -450,6 +437,8 @@
           <a href="麻薬帳簿の書き方.html" class="cur">麻薬帳簿の書き方<span class="d">場面ごとの記入例</span></a>
           <a href="麻薬の年間届の書き方.html">麻薬の年間届の書き方<span class="d">毎年11月30日まで</span></a>
           <a href="薬局間の麻薬の譲渡.html">薬局間の麻薬の譲渡<span class="d">麻薬小売業者間譲渡許可</span></a>
+          <a href="../チェックリスト/薬局間の麻薬の譲渡_実務チェックリスト.html">薬局間の麻薬の譲渡 実務チェックリスト<span class="d">受け渡しのときに印刷して使う（A4で2枚）</span></a>
+          <a href="../チェックリスト/麻薬の取扱い_自己点検リスト.html">麻薬の取扱い 自己点検リスト<span class="d">仕入れから譲渡・免許まで、要点を確かめる</span></a>
         </div>
       </div>
 
@@ -470,5 +459,14 @@
       </div>
 
     </div>
+    <script>
+      // 折りたたみは印刷のときだけ開く（紙で配っても補助簿の説明が出るように）
+      (function () {
+        var was = [];
+        addEventListener("beforeprint", function () { was = [].slice.call(document.querySelectorAll("details:not([open])")); was.forEach(function (d) { d.open = true; }); });
+        addEventListener("afterprint", function () { was.forEach(function (d) { d.open = false; }); });
+      })();
+    </script>
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   </body>
 </html>

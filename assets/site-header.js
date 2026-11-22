@@ -55,6 +55,10 @@
     'ナレッジ/高額療養費と薬局窓口対応.html': { category: 'knowledge', title: '高額療養費と薬局窓口対応' },
     'ナレッジ/高額療養費制度の見直し2026.html': { category: 'knowledge', title: '高額療養費制度の見直し（2026年8月）' },
     'ナレッジ/OTC医薬品の区分と販売ルール.html': { category: 'knowledge', title: 'OTC医薬品の区分と販売ルール' },
+    'ナレッジ/薬局の麻薬管理.html': { category: 'knowledge', title: '薬局の麻薬管理' },
+    'ナレッジ/麻薬帳簿の書き方.html': { category: 'knowledge', title: '麻薬帳簿の書き方' },
+    'ナレッジ/麻薬の年間届の書き方.html': { category: 'knowledge', title: '麻薬の年間届の書き方' },
+    'ナレッジ/薬局間の麻薬の譲渡.html': { category: 'knowledge', title: '薬局間の麻薬の譲渡' },
 
     // 薬歴（2026-07-20公開。サブディレクトリ yakureki/ 配下・パスキーで登録）
     'yakureki/薬歴の書き方_実例解説集.html': { category: 'yakureki', title: '薬歴の実例解説集' },
@@ -135,7 +139,9 @@
     'チェックリスト/OTC医薬品_区分ごとの販売チェックリスト.html': { category: 'checklist', title: 'OTC医薬品 区分ごとの販売チェックリスト' },
     // 自己点検リスト
     'チェックリスト/OTC医薬品の販売ルール_自己点検リスト.html': { category: 'checklist', title: 'OTC医薬品の販売ルール 自己点検リスト' },
+    'チェックリスト/麻薬の取扱い_自己点検リスト.html': { category: 'checklist', title: '麻薬の取扱い 自己点検リスト' },
     'チェックリスト/リフィル処方箋_実務チェックリスト.html': { category: 'checklist', title: 'リフィル処方箋 対応の流れ' },
+    'チェックリスト/薬局間の麻薬の譲渡_実務チェックリスト.html': { category: 'checklist', title: '薬局間の麻薬の譲渡 実務チェックリスト' },
 
     // 事務スタッフ向け（個別）
     '事務/事務スタッフ向け_2026調剤報酬改定ポイント整理.html': { category: 'jimu', title: '事務スタッフ向け 改定ポイント整理' },

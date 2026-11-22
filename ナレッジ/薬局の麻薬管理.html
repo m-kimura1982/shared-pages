@@ -3,11 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex,nofollow,noarchive">
     <title>薬局の麻薬管理｜調剤報酬・薬歴まとめ</title>
-    <meta name="search-keywords" content="麻薬帳簿,麻薬譲受証,麻薬譲渡証,譲受確認書,譲渡確認書,小売業者間譲渡,薬局間譲渡,90日,麻薬廃棄届,調剤済麻薬廃棄届,麻薬事故届,年間届,麻薬保管庫,金庫,麻薬小売業者免許,麻薬施用者免許番号,秤量誤差,倍散,予製,コデイン,慢性疼痛,確認書,フェンタニル,デュロテップ,フェントス,オキシコンチン,返納,返却,所在不明,紛失,破損,製品番号,移転,業務廃止,廃止,麻薬所有届,麻薬譲渡届,50日,仮店舗,開設者変更" />
+    <meta name="search-keywords" content="麻薬帳簿,麻薬譲受証,麻薬譲渡証,譲受確認書,譲渡確認書,小売業者間譲渡,薬局間譲渡,90日,麻薬廃棄届,調剤済麻薬廃棄届,麻薬事故届,年間届,麻薬保管庫,金庫,期限切れ,目印,区別保管,不動在庫,移動,麻薬小売業者免許,麻薬施用者免許番号,秤量誤差,倍散,予製,コデイン,慢性疼痛,確認書,フェンタニル,デュロテップ,フェントス,オキシコンチン,返納,返却,所在不明,紛失,破損,製品番号,移転,業務廃止,廃止,麻薬所有届,麻薬譲渡届,50日,仮店舗,開設者変更" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../../assets/fold.css" />
+    <link rel="stylesheet" href="../assets/fold.css" />
     <style>
       *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
       :root {
@@ -48,10 +47,6 @@
       .note a { color:var(--blue); }
       a { color:var(--blue); }
 
-      /* 下書きメモ（公開前に消す） */
-      .draft-memo { background:#fff8e1; border:1px solid #e5c200; border-radius:var(--radius-sm); padding:14px 18px; font-size:var(--text-sm); line-height:1.7; }
-      .draft-memo .ttl { font-weight:900; margin-bottom:4px; }
-      .draft-memo ul { margin-left:1.3em; }
 
       /* このページの要点 */
       .sum .card-title { margin-bottom:6px; }
@@ -154,49 +149,39 @@
         .card { border:0.5px solid #ccc; padding:9px 11px; margin-bottom:7px; break-inside:auto; }
         .card-title, .sub-title, .ledger-name { break-after:avoid; }
         .sum, .box-gray, .box-blue, table.ledger, tr { break-inside:avoid; }
-        /* 原典と「麻薬管理のページ」はリンクが紙では使えないので出さない（QRから画面で見る） */
-        .sum .pt:not(.other) .go, .page-toc-wrap, .draft-memo, #genten, #kanren { display:none; }
+        /* 画面で押す部品は印刷しない（原典は assets/print.css が消す） */
+        .sum .pt:not(.other) .go, .page-toc-wrap { display:none; }
         a { color:inherit; text-decoration:none; }
       }
     </style>
   </head>
   <body>
-    <script src="../../assets/site-header.js" defer></script>
-    <script src="../../assets/page-toc.js" defer></script>
+    <script src="../assets/site-header.js" defer></script>
+    <script src="../assets/page-toc.js" defer></script>
     <div class="page">
 
       <div class="page-title-wrap">
         <h1>薬局の麻薬管理</h1>
-        <p>全国共通のルール。細かい扱いは都県・保健所のやり方に従う</p>
+        <p>全国共通のルールをまとめた。細かい扱いは都県・保健所によって異なるので、管轄の保健所に確認する</p>
       </div>
 
-      <div class="draft-memo">
-        <div class="ttl">下書きメモ（公開前に消す）</div>
-        <ul>
-          <li>11/12 使い勝手・言葉・構成の見直し：「こんなときは」に麻薬処方箋の受付を足し、別のページへ行く行は行き先の名前を出した。カードを業務の流れ順に並べ替えた（仕入れ→保管→処方箋→慢性疼痛→廃棄→事故→免許）。慢性疼痛は表を中心に組み直し、番号の手順はオキシコンチンTR錠で確認書がないときだけにした。業務廃止の15日・50日は手順にし、書類の一覧に麻薬譲渡届の行を足した（根拠：東京都の手引 Ⅰ8）。原典の表をこのページの分だけに絞った。読者係の通読を受けて、「こんなときは」に移転・業務廃止の行を足し、慢性疼痛の行を製品で扱いが違うと分かる言い方にした。口語の動詞（持ってきて など）を言い換えた。制度の中身は変えていない。</li>
-          <li>10/27 構成見直し：本文の途中の都県の話を外した（東京都の保管庫2か所の鍵・管理責任者 → 「保健所に確認」の1行）。埼玉県の免許継続の期限（11/12）は公開時に過ぎるうえ根拠が見つからないので削除。根拠が見つからない「譲受証の新様式 R6.12.12」「平成28年4月から」「モルヒネ・コデインの非がん性疼痛」は削るか一般化した。慢性疼痛の「問い合わせなしで調剤してよい」はオキシコドン通知の注だけなので製品で書き分け、フェンタニルの「流通管理窓口やWebで確認」は通知に手段の記載がないので外した（照合係の指摘）。</li>
-          <li>出典の中心は厚労省「薬局における麻薬管理マニュアル」（平成23年）・東京都「麻薬取扱いの手引（薬局用）」（令和6年12月改訂）・大阪府「麻薬小売業者の手引き」・R3.7.5通知と質疑応答（R3.9.13）。<b>どちらの手引きも古い版</b>なので、新しい通知で変わった箇所は新しいほうに合わせた。</li>
-          <li>茨城県の譲渡の基準は「管轄の保健所に問い合わせる」のまま公開と決定（11/12）。電子処方箋で麻薬処方箋を受けたときの扱い：載せないことに決定（10/9）。麻薬処方箋も電子処方箋の対象だが、薬局での受付・保存に絞った公式の手引きは見当たらない</li>
-          <li>10/9 卸への印の登録は、東京都の手引（令和8年3月改訂）にも「事前に麻薬卸売業者に登録」とあり、今も必要と確認。スタンプ印を避ける旨も足した。</li>
-          <li>10/7 帳簿・年間届・薬局間の譲渡を別ページに切り出した。下の「麻薬管理のページ」でつなぐ。原典の表は全ページ分のまま（公開前に絞る）。</li>
-        </ul>
-      </div>
 
       <div class="card sum" id="yoten" data-toc="skip">
         <div class="card-title">こんなときは</div>
         <div class="rows">
           <a class="pt" href="#shiire"><span class="k">卸から麻薬が納品された</span><span class="v">譲渡証と現品の品名・数量・製品番号・封を確かめる。帳簿は譲渡証の日付で受け入れ、備考に卸の名称と製品番号を記載する。</span><span class="go">詳しく</span></a>
           <a class="pt" href="#shohosen"><span class="k">麻薬処方箋を受け付けた</span><span class="v"><span class="marker">患者の住所・麻薬施用者の免許番号</span>・記名押印又は署名を確かめる。不備があれば、処方医に問い合わせてから調剤する。</span><span class="go">詳しく</span></a>
-          <a class="pt" href="#mansei"><span class="k">慢性疼痛の処方が来た</span><span class="v">フェンタニル貼付剤・オキシコンチンTR錠は、調剤の前に確認書を確かめる。確認書がないときの扱いは製品で違う。</span><span class="go">詳しく</span></a>
-          <a class="pt" href="#haiki"><span class="k">患者・家族から返却された</span><span class="v">薬局の他の職員の立会いで廃棄し、<span class="marker">廃棄後30日以内に調剤済麻薬廃棄届</span>。帳簿は（　）書きにして残高に足さない。</span><span class="go">詳しく</span></a>
-          <a class="pt" href="#haiki"><span class="k">調剤ミス・期限切れの廃棄</span><span class="v">先に麻薬廃棄届を提出し、<span class="marker">保健所職員などの立会いで廃棄する</span>。</span><span class="go">詳しく</span></a>
-          <a class="pt" href="#jiko"><span class="k">紛失・破損・盗難</span><span class="v">速やかに麻薬事故届。盗難は警察にも届ける。帳簿の備考に事故と届出日を記載する。</span><span class="go">詳しく</span></a>
-          <a class="pt" href="#menkyo"><span class="k">移転・麻薬業務の廃止</span><span class="v">廃止後15日以内に業務廃止届と麻薬所有届。残った麻薬は<span class="marker">50日以内</span>に譲り渡すか廃棄する。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#mansei"><span class="k">慢性疼痛の処方が来た</span><span class="v">フェンタニル貼付剤・オキシコンチンTR錠は、<span class="marker">調剤の前に確認書を確かめる</span>。確認書がないときの扱いは製品で異なる。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#haiki"><span class="k">患者・家族から返却された</span><span class="v">薬局の他の職員の立会いのもとで廃棄し、<span class="marker">廃棄後30日以内に調剤済麻薬廃棄届</span>を提出する。帳簿は（　）書きにして残高に加えない。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#haiki"><span class="k">調剤ミス・期限切れの廃棄</span><span class="v">先に麻薬廃棄届を提出し、<span class="marker">保健所職員などの立会いのもとで廃棄する</span>。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#jiko"><span class="k">紛失・破損・盗難</span><span class="v">速やかに麻薬事故届を提出する。盗難は警察にも届ける。帳簿の備考に事故と届出日を記載する。</span><span class="go">詳しく</span></a>
+          <a class="pt" href="#menkyo"><span class="k">移転・麻薬業務の廃止</span><span class="v">廃止後15日以内に業務廃止届と麻薬所有届を提出する。残った麻薬は<span class="marker">50日以内</span>に譲り渡すか廃棄する。</span><span class="go">詳しく</span></a>
         </div>
         <div class="sum-sep">別のページ</div>
         <div class="rows">
-          <a class="pt other" href="麻薬帳簿の書き方.html"><span class="k">帳簿の書き方を確かめたい</span><span class="v">購入・交付・返却・廃棄・事故など、場面ごとの記入例がある。</span><span class="go">帳簿のページ</span></a>
-          <a class="pt other" href="薬局間の麻薬の譲渡.html"><span class="k">他の薬局と融通したい</span><span class="v">許可がなければ同じ会社の店舗どうしでも不可。許可を受けた薬局の間でも、譲渡できるのは在庫不足の補充と90日たった在庫に限られる。</span><span class="go">譲渡のページ</span></a>
+          <a class="pt other" href="麻薬帳簿の書き方.html"><span class="k">帳簿の書き方に迷った</span><span class="v">購入・交付・返却・廃棄・事故など、場面ごとの記入例を載せている。</span><span class="go">帳簿のページ</span></a>
+          <a class="pt other" href="../チェックリスト/薬局間の麻薬の譲渡_実務チェックリスト.html"><span class="k">他の薬局に譲り渡す・譲り受ける</span><span class="v">譲り渡す側・譲り受ける側が確認することを、手順の順に並べた。譲渡のときに印刷して使う（A4で2枚）。</span><span class="go">チェックリスト</span></a>
+          <a class="pt other" href="薬局間の麻薬の譲渡.html"><span class="k">薬局間の譲渡の決まりを確かめたい</span><span class="v">譲渡できるのは許可書に載っている薬局の間だけで、場面は在庫不足の補充と90日たった在庫の2つ。</span><span class="go">譲渡のページ</span></a>
           <a class="pt other" href="麻薬の年間届の書き方.html"><span class="k">年間届の時期になった</span><span class="v">9月30日時点の在庫と1年間の受け払いを、11月30日までに届ける。</span><span class="go">年間届のページ</span></a>
         </div>
         <p class="note">書類と期限をまとめて確認するときは<a href="#shorui">書類と期限の一覧</a>を参照。</p>
@@ -213,7 +198,7 @@
             <tbody>
               <tr class="grp"><td colspan="4">日常の業務</td></tr>
               <tr><td>卸から購入</td><td>麻薬譲受証を渡し、麻薬譲渡証を受け取る</td><td>受け取る前か同時</td><td>譲渡証 2年</td></tr>
-              <tr><td>調剤する</td><td>麻薬処方箋</td><td>—</td><td>3年</td></tr>
+              <tr><td>調剤する</td><td>麻薬処方箋</td><td>—</td><td>3年<span class="law">2027年5月20日以降に調剤済みとなったものは5年</span></td></tr>
               <tr><td>受け払い</td><td><a href="麻薬帳簿の書き方.html">麻薬帳簿</a></td><td>その都度記載</td><td>最終記載日から2年</td></tr>
               <tr><td>毎年</td><td><a href="麻薬の年間届の書き方.html">年間届（麻薬小売業者の届）</a></td><td>11月30日まで</td><td>控えを残す</td></tr>
               <tr class="grp"><td colspan="4">廃棄と事故</td></tr>
@@ -231,7 +216,7 @@
             </tbody>
           </table>
         </div>
-        <p class="note">提出先は都県によって違う（薬局間譲渡の許可は<a href="薬局間の麻薬の譲渡.html#pref">薬局間の麻薬の譲渡</a>の表を参照）。様式は各都県のページにある（<a href="#genten">原典</a>を参照）。</p>
+        <p class="note">提出先は都県によって異なる（薬局間譲渡の許可は<a href="薬局間の麻薬の譲渡.html#pref">薬局間の麻薬の譲渡</a>の表を参照）。様式は各都県のページにある（<a href="#genten">原典</a>を参照）。</p>
       </div>
 
       <!-- 仕入れ -->
@@ -267,8 +252,10 @@
           <div class="li">保管庫には<b>麻薬以外を入れない</b>。他の医薬品・現金・書類（麻薬帳簿を含む）も不可。</div>
           <div class="li">出し入れのとき以外は施錠し、鍵を差したままにしない。</div>
           <div class="li">定期的に帳簿の残高と現品を照合する。</div>
+          <div class="li">薬局間の譲渡で譲り受けた麻薬は、卸から購入した麻薬と<b>区別して保管</b>する（同じ保管庫の中で分ければよい。<a href="薬局間の麻薬の譲渡.html#tejun">薬局間の譲渡</a>）。</div>
+          <div class="li">返却されて廃棄を待つ麻薬や期限切れの麻薬は、誤って調剤に使わないよう、調剤に使う在庫と分けておく。分け方は薬局ごとに決めてよい。保管庫が小さく分けて置けないときは、袋に入れて「期限切れ」「返却分」と大きく記載するなど、目印をつける。</div>
         </div>
-        <p class="note">鍵の数など保管庫の細かい基準は都県で扱いが違うので、保健所に確認する。</p>
+        <p class="note">鍵の数など保管庫の細かい基準は都県で扱いが異なるので、保健所に確認する。</p>
       </div>
 
       <!-- 処方箋と交付 -->
@@ -291,7 +278,7 @@
           <div class="li">配送は、患者の了承を得て、書留郵便などで確実に届け、受け取ったことを確認する。</div>
           <div class="li">交付する麻薬は、証紙の封を開けたものでなければならない（未開封の箱のまま渡さない）。</div>
           <div class="li">保険の投与日数の上限は多くが30日。メサペイン、アブストラル、イーフェン、オキファスト注などは14日。</div>
-          <div class="li">麻薬処方箋は一般の処方箋と同じく<b>3年間保存</b>。一般の処方箋と分けておくと検査のときに探しやすい。</div>
+          <div class="li">麻薬処方箋の保存期間は一般の処方箋と同じ。いまは<b>3年間</b>で、2027年5月20日以降に調剤済みとなったものは<b>5年間</b>になる。一般の処方箋と分けておくと検査のときに探しやすい。</div>
         </div>
         <p class="txt" style="margin-top:10px;">交付するときは、患者以外が使わないこと、家族や知人に譲ると患者自身が法律違反になること、不要になったら薬局に返却することを伝える。</p>
       </div>
@@ -307,7 +294,7 @@
             <tbody>
               <tr><td class="rh">確認書があるとき</td><td>確認書と麻薬処方箋を照合して（医師名など）調剤する</td><td>確認書と麻薬処方箋を照合して（医師名など）調剤する。確認書の内容を説明し、<b>確認書を薬局で保管</b>する</td></tr>
               <tr><td class="rh">確認書がないとき</td><td>処方医が講習を<b>修了した医師だと確認できれば調剤できる</b></td><td><b>処方医に問い合わせる</b>のが原則（下の手順）</td></tr>
-              <tr><td class="rh">確認できないとき</td><td colspan="2">調剤しない。どちらの製品も、確認できずに調剤を断るのは調剤拒否の「正当な理由」になる</td></tr>
+              <tr><td class="rh">確認できないとき</td><td colspan="2">調剤しない。どちらの製品も、確認できないことは調剤を断る「正当な理由」になる</td></tr>
               <tr><td class="rh">帳簿の備考</td><td>患者名に<b>「慢」</b>などを添え、慢性疼痛での払い出しと分かるようにする（<a href="麻薬帳簿の書き方.html#mansei">記入例</a>）</td><td>通常どおり患者名を記載する</td></tr>
             </tbody>
           </table>
@@ -331,17 +318,17 @@
             <tbody>
               <tr><td class="rh">対象</td><td>患者・家族から返却された麻薬（施用中止・死亡など）。他の薬局や医療機関が交付したものも受け取れる</td><td>期限切れ、変質・破損、使う見込みのない在庫、<b>調剤ミス</b>、薬局で作った予製品</td></tr>
               <tr><td class="rh">届け出る時期</td><td>廃棄した<b>あと30日以内</b>（30日以内の分はまとめて1枚でよい）</td><td>廃棄する<b>前</b></td></tr>
-              <tr><td class="rh">廃棄する人</td><td>管理薬剤師などが、<b>薬局の他の職員の立会い</b>で行う</td><td><b>保健所職員などの立会い</b>で行う</td></tr>
-              <tr><td class="rh">方法</td><td>焼却・放流・分解・希釈・他の薬剤との混合など、回収できない方法</td><td>立ち会う職員の指示に従う</td></tr>
-              <tr><td class="rh">帳簿</td><td>受入欄に（　）書きにし、残高に足さない。備考に廃棄日・届出日・立会者の署名（<a href="麻薬帳簿の書き方.html#henkyaku">記入例</a>）</td><td>払出欄に記入。備考は立ち会った職員が記載する（<a href="麻薬帳簿の書き方.html#haiki">記入例</a>）</td></tr>
+              <tr><td class="rh">廃棄する人</td><td>管理薬剤師などが、<b>薬局の他の職員の立会い</b>のもとで行う</td><td><b>保健所職員などの立会い</b>のもとで行う</td></tr>
+              <tr><td class="rh">方法</td><td>焼却・放流・分解・希釈・他の薬剤との混合など、回収できない方法</td><td>日時・場所（薬局に来てもらうか、保健所に持ち込むか）は保健所の指示に従う</td></tr>
+              <tr><td class="rh">帳簿</td><td>受入欄に（　）書きにし、残高に加えない。備考に廃棄日・届出日・立会者の署名（<a href="麻薬帳簿の書き方.html#henkyaku">記入例</a>）</td><td>払出欄に記入。備考は立ち会った職員が記載する（<a href="麻薬帳簿の書き方.html#haiki">記入例</a>）</td></tr>
             </tbody>
           </table>
         </div>
         <div class="sub-title">迷いやすい場合</div>
         <div class="list">
-          <div class="li"><b>調剤ミスで使えなくなった麻薬</b>は「処方箋により調剤された麻薬」ではないので、<span class="marker">麻薬廃棄届（事前・立会い）</span>になる。</div>
+          <div class="li"><b>調剤ミスで使えなくなった麻薬</b>は、<span class="marker">麻薬廃棄届（事前・立会い）</span>で廃棄する。</div>
           <div class="li">在宅で使った<b>麻薬注射剤</b>が返却された場合、注射剤については調剤済麻薬廃棄届も麻薬廃棄届も不要。帳簿（または廃棄簿）に品名・数量・返却日・廃棄日・患者名を記載する。</div>
-          <div class="li">アンプルを割ってしまった場合は、残った液を<b>薬局の他の職員の立会いで</b>廃棄し、事故届にその経過を詳しく記載すれば、廃棄届は不要。</div>
+          <div class="li">アンプルを割ってしまった場合は、残った液を<b>薬局の他の職員の立会いのもとで</b>廃棄し、事故届にその経過を詳しく記載すれば、廃棄届は不要。</div>
           <div class="li">訪問看護師などが患者宅で預かった麻薬は、訪問看護ステーションなどに置かず、すぐに薬局か医療機関に返却してもらう。</div>
           <div class="li">介護施設で不要になった麻薬も、施設の職員は廃棄しない。家族・訪問看護師・薬局の薬剤師などを通じて薬局に戻し、薬局で廃棄する。</div>
         </div>
@@ -353,11 +340,11 @@
         <div class="list">
           <div class="li">紛失・盗難・破損・流出・所在不明などがあれば、<b>速やかに麻薬事故届</b>を提出する。</div>
           <div class="li">盗難は<b>警察にも</b>届け、現場をそのままにしておく。</div>
-          <div class="li">帳簿の備考に事故と届出日を書き、事故届の写しを保管する。</div>
+          <div class="li">帳簿の備考に事故と届出日を記載し、事故届の写しを保管する。</div>
         </div>
         <div class="box-gray">
           <span class="ttl">例）散剤をこぼした</span>
-          モルヒネ塩酸塩の原末5gを床にこぼし、4.5gしか回収できなかった場合、回収できなかった<b>0.5gは事故届</b>。回収した4.5gは汚れているので、<b>麻薬廃棄届を提出して立会いで廃棄</b>する。
+          モルヒネ塩酸塩の原末5gを床にこぼし、4.5gしか回収できなかった場合、回収できなかった<b>0.5gは事故届</b>。回収した4.5gは汚れているので、<b>麻薬廃棄届を提出して立会いのもとで廃棄</b>する。
         </div>
       </div>
 
@@ -369,7 +356,6 @@
           <div class="li">有効期間は<b>免許の日から翌々年の12月31日まで</b>（最長3年）。続けるなら満了前に新規と同じ申請をする。満了後に免許がないまま持っていると不法所持になりうる。</div>
           <div class="li">薬局の<b>移転・開設者の変更</b>（個人から法人など）は記載事項の変更ではなく、いったん業務を廃止して新たに免許を取得する。改築で一時的に仮店舗に移るときも同じ。</div>
         </div>
-        <p class="note">平成23年の厚労省マニュアルには「翌年の12月31日まで」とあるが、現在は翌々年まで。</p>
         <div class="sub-title">移転などで業務を廃止するときの流れ</div>
         <div class="steps">
           <div class="step"><span class="no">1</span><div><b class="h">業務廃止届と麻薬所有届を提出する</b>廃止後<b>15日以内</b>。</div></div>
@@ -385,6 +371,8 @@
           <a href="麻薬帳簿の書き方.html">麻薬帳簿の書き方<span class="d">場面ごとの記入例</span></a>
           <a href="麻薬の年間届の書き方.html">麻薬の年間届の書き方<span class="d">毎年11月30日まで</span></a>
           <a href="薬局間の麻薬の譲渡.html">薬局間の麻薬の譲渡<span class="d">麻薬小売業者間譲渡許可</span></a>
+          <a href="../チェックリスト/薬局間の麻薬の譲渡_実務チェックリスト.html">薬局間の麻薬の譲渡 実務チェックリスト<span class="d">受け渡しのときに印刷して使う（A4で2枚）</span></a>
+          <a href="../チェックリスト/麻薬の取扱い_自己点検リスト.html">麻薬の取扱い 自己点検リスト<span class="d">仕入れから譲渡・免許まで、要点を確かめる</span></a>
         </div>
       </div>
 
@@ -399,6 +387,7 @@
               <tr><td>麻薬取扱いの手引（薬局用）（東京都 令和8年3月改訂）<br><a href="https://www.hokeniryo.metro.tokyo.lg.jp/documents/d/hokeniryo/r8-3_mayakutoriatukaitebbikiyakkyoku-pdf" target="_blank" rel="noopener">PDF</a></td><td>免許の有効期間、仮店舗、業務廃止の届と期限（15日・50日）、診療所からの譲受不可、保管庫（重量金庫50kg）、廃棄・事故Q&amp;A（注射剤の返却、散剤をこぼした例）</td></tr>
               <tr><td>麻薬小売業者の手引き（大阪府）<br><a href="https://www.pref.osaka.lg.jp/documents/4073/r612-mayaku-kourigyou.pdf" target="_blank" rel="noopener">PDF</a></td><td>管理の責任（開設者自ら又は管理薬剤師）</td></tr>
               <tr><td>医療用麻薬適正使用ガイダンス（厚生労働省 令和6年）<br><a href="https://www.mhlw.go.jp/content/11120000/001245820.pdf" target="_blank" rel="noopener">PDF</a></td><td>リフィル不可、メール電送、配送、看護師等への交付、投与日数の上限、介護施設での回収</td></tr>
+              <tr><td>薬剤師法 第27条<br><a href="https://laws.e-gov.go.jp/law/335AC0000000146" target="_blank" rel="noopener">e-Gov法令検索</a></td><td>麻薬処方箋の保存期間（2025年の改正で、2027年5月20日以降に調剤済みとなったものは5年）</td></tr>
               <tr><td>麻薬及び向精神薬取締法施行規則の一部を改正する省令の制定について（薬生発0705第2号 令和3年7月5日）</td><td>麻薬小売業者間譲渡許可書の5年保存</td></tr>
               <tr><td>オキシコドン塩酸塩水和物徐放製剤の使用に当たっての留意事項について（令和2年10月29日 4課長通知）<br><a href="https://www.mhlw.go.jp/web/t_doc?dataId=00tc5411&amp;dataType=1&amp;pageNo=1" target="_blank" rel="noopener">厚生労働省 法令等データベース</a></td><td>確認書の流れ、薬局での保管、調剤拒否の正当な理由</td></tr>
               <tr><td>フェンタニルクエン酸塩経皮吸収型製剤の使用に当たっての留意事項について（平成26年6月20日 2課長通知）<br><a href="https://www.mhlw.go.jp/web/t_doc?dataId=00tc0191&amp;dataType=1&amp;pageNo=1" target="_blank" rel="noopener">厚生労働省 法令等データベース</a></td><td>フェンタニル貼付剤は、確認書がなくても処方医の講習修了を確認できれば調剤できること、どちらも確認できなければ調剤を拒む（正当な理由）</td></tr>
@@ -410,5 +399,6 @@
       </div>
 
     </div>
+    <script data-goatcounter="https://kimura-chozai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   </body>
 </html>
