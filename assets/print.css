@@ -40,3 +40,8 @@ details, details.fold { break-inside: avoid; }
 button, .no-print,
 .grp-chips, .hr-nav, .finder,
 .mk-scenes, .mk-tools, .mk-bar, .mk-fallback { display: none !important; }
+
+/* ⑥ 原典・出典は印刷しない（2026-11-23 本人：紙で読む人には要らない）
+   ページ最下部の原文参照バー（.ref-links）、原典カード（#genten）、出典のカード（.src-card）。
+   出典のカードを新しく作るときは class に src-card を足す。紙からはQRで画面のページを開ける。 */
+.ref-links, #genten, .src-card { display: none !important; }
