@@ -161,9 +161,6 @@
     .cmp-t td { padding-top:4px; padding-bottom:4px; }
     .cmp-t td.hg.diff { font-weight:900; color:var(--ink); }
     .cmp-t .none { color:var(--txt-3); }
-    .ctag { font-size:var(--text-xs); font-weight:700; border-radius:4px; padding:0 6px; margin-left:6px; }
-    .ctag.self  { background:#f3e8d0; color:#7a5718; }   /* クリーム */
-    .ctag.other { background:#e5e0f2; color:#4b3f80; }   /* 藤 */
     .cmp-f { display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:var(--text-xs); color:var(--txt-3); margin-top:6px; }
     .cmp-g .flag { margin-left:6px; }
     /* ほかの処方と比べる（構成生薬の表の下で、どの品目とも比べられる） */
@@ -215,7 +212,7 @@
     <div class="row-lab">症状から探す<span class="row-note">（ボタンにない症状は検索欄に入力）</span></div>
     <div class="chips" id="chips"></div>
     <div class="recent" id="recentWrap" hidden>
-      <div class="row-lab">最近開いた品目<span class="row-note">（押すとその品目へ戻る）</span></div>
+      <div class="row-lab">最近開いた品目</div>
       <div class="chips" id="recent"></div>
     </div>
     <div class="hit-count" id="hit"></div>
@@ -294,7 +291,8 @@ function linkNames(html, self){
   });
   return s.replace(/\u0001(\d+)\u0002/g, (m, i) => tags[i]);
 }
-/* 比べる表：両方に入る生薬 → この処方だけ → 相手だけ の順。量が違う行は量を太字にする */
+/* 比べる表：両方に入る生薬 → この処方だけ → 相手だけ の順。量が違う行は量を太字にする。
+   区切りの行に品目名を入れる（行ごとの「こちらだけ／相手だけ」の札だと、どちらの話か一度考える必要があったため） */
 function compare(self, other){
   const amt = (k, nm) => { const h = k.herbs.find(h => h[1] === nm); return h ? h[2] : null; };
   const all = [...self.herbs.map(h => h[1]), ...other.herbs.map(h => h[1]).filter(nm => !amt(self, nm))];
@@ -302,19 +300,22 @@ function compare(self, other){
   const kind = r => r.a == null ? 2 : r.b == null ? 1 : 0;
   rows.sort((x, y) => kind(x) - kind(y));
   const g = v => v == null ? '<span class="none">－</span>' : v.toFixed(1) + 'g';
-  const body = rows.map(r => {
-    const k = kind(r), diff = k === 0 && r.a !== r.b;
-    const tag = k === 1 ? '<span class="ctag self">こちらだけ</span>' : k === 2 ? '<span class="ctag other">相手だけ</span>' : '';
-    return `<tr class="c${k}"><td class="hn">${r.nm}${tag}</td><td class="hg${diff ? ' diff' : ''}">${g(r.a)}</td><td class="hg${diff ? ' diff' : ''}">${g(r.b)}</td></tr>`;
+  const LAB = ['両方に入る', `${self.name}だけ`, `${other.name}だけ`];
+  const body = [0, 1, 2].map(k => {
+    const rs = rows.filter(r => kind(r) === k);
+    if (!rs.length) return '';
+    return `<tr class="grp"><td colspan="3">${LAB[k]}（${rs.length}）</td></tr>` + rs.map(r => {
+      const diff = k === 0 && r.a !== r.b;
+      return `<tr class="c${k}"><td class="hn">${r.nm}</td><td class="hg${diff ? ' diff' : ''}">${g(r.a)}</td><td class="hg${diff ? ' diff' : ''}">${g(r.b)}</td></tr>`;
+    }).join('');
   }).join('');
-  const n = [0, 1, 2].map(k => rows.filter(r => kind(r) === k).length);
   return `<div class="cmp" data-to="${other.id}">
     <div class="cmp-h"><span>比べる相手：<b>${other.name}</b>（ツムラ ${other.no}）</span><button type="button" class="cmp-x">閉じる</button></div>
     <div class="cmp-g">${other.gist}${other.flags.filter(f => f.warn).map(f => `<span class="flag warn">${flagText(other, f)}</span>`).join('')}</div>
     <div class="table-wrap"><table class="herbs cmp-t">
       <thead><tr><th>生薬</th><th class="hg">${self.name}</th><th class="hg">${other.name}</th></tr></thead>
       <tbody>${body}</tbody></table></div>
-    <div class="cmp-f">共通 ${n[0]}・こちらだけ ${n[1]}・相手だけ ${n[2]}<button type="button" class="cmp-open" data-to="${other.id}">${other.name}を開く</button></div>
+    <div class="cmp-f"><button type="button" class="cmp-open" data-to="${other.id}">${other.name}を開く</button></div>
   </div>`;
 }
 
