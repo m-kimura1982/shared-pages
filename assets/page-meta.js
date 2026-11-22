@@ -123,7 +123,8 @@ window.__pageMeta = {
     "newUntil": "2026-09-01"
   },
   "加算まとめ/調剤基本料_2026改定.html": {
-    "lastUpdated": "2026-10-29"
+    "lastUpdated": "2026-10-29",
+    "newUntil": "2026-11-29"
   },
   "加算まとめ/退院時共同指導料.html": {
     "lastUpdated": "2026-10-28",
@@ -280,7 +281,8 @@ window.__pageMeta = {
     "lastUpdated": "2026-10-21"
   },
   "改定資料/調剤基本料フローチャート.html": {
-    "lastUpdated": "2026-10-29"
+    "lastUpdated": "2026-10-29",
+    "newUntil": "2026-11-29"
   },
   "改定資料/服用薬剤調整支援料２_資格取得ステップ.html": {
     "lastUpdated": "2026-03-23"

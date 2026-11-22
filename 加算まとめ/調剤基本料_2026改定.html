@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>調剤基本料｜算定項目まとめ</title>
-    <meta name="search-keywords" content="集中率,処方箋受付回数,同一グループ,特別調剤基本料,調剤基本料1,調剤基本料2,調剤基本料3,敷地内薬局,妥結率,医療モール,1,800回,600回,40万回,3万5千回,経過措置,政令指定都市,特別区,様式84,高齢者施設,都市部" />
+    <meta name="search-keywords" content="新規開局,新規指定,開局,判定時期,いつから,みなす,3か月,翌々月,集中率,処方箋受付回数,同一グループ,特別調剤基本料,調剤基本料1,調剤基本料2,調剤基本料3,敷地内薬局,妥結率,医療モール,1,800回,600回,40万回,3万5千回,経過措置,政令指定都市,特別区,様式84,高齢者施設,都市部" />
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
       rel="stylesheet"
@@ -379,6 +379,60 @@
 .card-title { position:relative; padding-left:15px; }
 .card-title::before { content:""; position:absolute; left:0; top:.38em; top:calc((1lh - 1.05em) / 2); width:4px; height:1.05em; border-radius:2px; background:var(--blue, #1e5fa8); }
 </style>
+<style>
+/* いつの実績で判定するか（2026-11 追加）。色は図解の淡色パレット */
+.jt-card {
+  --jt-minashi-bg:#f2f2f2; --jt-minashi-tx:#444444;   /* 調剤基本料１として扱う期間 */
+  --jt-kubun-bg:#dfe9f6;   --jt-kubun-tx:#2a5580;     /* 判定で決まった区分を算定する期間 */
+  --jt-jisseki-bg:#f3e8d0; --jt-jisseki-tx:#7a5718;   /* 判定に使う実績 */
+}
+.jt-note { font-size:var(--text-xs); color:#5e6470; }
+.jt-sp { display:none; }
+.jt-wrap { overflow-x:auto; }
+.jt-rule { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+.jt-rule th, .jt-rule td { border:var(--bw-h) solid var(--border); padding:8px 10px; text-align:left; vertical-align:top; line-height:1.6; }
+.jt-rule th { background:var(--box-gray); font-weight:900; white-space:nowrap; }
+.jt-rule td { font-weight:500; }
+.jt-rule td:first-child { font-weight:900; width:30%; }
+.jt-card { scroll-margin-top:90px; }
+.jt-dates td:first-child { width:auto; white-space:nowrap; }
+.jt-sub { display:block; font-size:var(--text-sm); color:#222222; margin-top:3px; font-weight:500; }
+.jt-bullets { display:flex; flex-direction:column; gap:6px; margin-top:12px; font-size:var(--text-sm); }
+.jt-bullet { display:flex; gap:6px; }
+.jt-bullet > span:first-child { flex-shrink:0; color:#999; }
+.jt-h3 { font-weight:900; display:flex; align-items:center; gap:9px; margin:22px 0 10px; }
+.jt-h3::before { content:""; width:9px; height:9px; border-radius:2px; background:var(--blue); flex-shrink:0; }
+.jt-point { display:flex; flex-direction:column; gap:6px; font-size:var(--text-sm); margin-bottom:12px; }
+.jt-tl-wrap { overflow-x:auto; margin-top:4px; padding-bottom:4px; }
+.jt-tl { display:grid; min-width:760px; grid-template-columns:9.5em repeat(16, minmax(32px,1fr)) minmax(72px,2fr); row-gap:4px; font-size:12.5px; line-height:1.35; }
+.jt-tl .yr { font-weight:900; color:#444444; padding:0 2px 2px; border-bottom:var(--bw-h) solid var(--border-dk); }
+.jt-tl .mo { text-align:center; font-weight:700; color:#444444; padding:3px 0 5px; border-bottom:var(--bw-h) solid var(--border); }
+.jt-tl .mo .kai { display:block; font-size:11px; color:var(--blue); font-weight:900; }
+.jt-tl .name, .jt-tl .lane { position:sticky; left:0; z-index:1; background:var(--white); grid-column:1; }
+.jt-tl .name { font-weight:900; font-size:13.5px; padding:6px 6px 0 0; line-height:1.45; }
+.jt-tl .lane { font-size:11.5px; color:#5e6470; padding:4px 6px 0 0; text-align:right; }
+.jt-tl .seg { border-radius:4px; padding:4px 6px; font-weight:700; display:flex; align-items:center; min-height:30px; overflow:hidden; }
+.jt-tl .seg.minashi { background:var(--jt-minashi-bg); color:var(--jt-minashi-tx); border:var(--bw-h) solid var(--border); }
+.jt-tl .seg.kubun { background:var(--jt-kubun-bg); color:var(--jt-kubun-tx); }
+.jt-tl .seg.kubun2 { background:var(--jt-kubun-bg); color:var(--jt-kubun-tx); border-left:3px solid var(--white); }
+.jt-tl .seg.tight { padding:4px 2px; justify-content:center; white-space:nowrap; font-size:11px; }
+.jt-tl .seg.jisseki { background:var(--jt-jisseki-bg); color:var(--jt-jisseki-tx); }
+.jt-tl .gap { grid-column:1 / -1; height:10px; border-bottom:var(--bw) dashed var(--border); margin-bottom:6px; }
+.jt-legend { display:flex; flex-wrap:wrap; gap:6px 16px; margin-top:10px; font-size:var(--text-xs); color:#444444; }
+.jt-legend span { display:inline-flex; align-items:center; gap:6px; }
+.jt-legend i { width:22px; height:12px; border-radius:3px; display:inline-block; }
+@media (max-width:640px) {
+  .jt-sp { display:inline; }
+  .jt-rule { font-size:12.5px; min-width:0; }
+  .jt-rule th, .jt-rule td { padding:6px 7px; }
+  .jt-dates { min-width:560px; }
+}
+@media print {
+  .jt-card { break-inside:auto; }
+  .jt-tl-wrap { overflow:visible; }
+  .jt-tl { min-width:0; font-size:10px; }
+}
+</style>
 </head>
   <body>
     <script src="../assets/site-header.js" defer></script>
@@ -421,6 +475,100 @@
           </table>
         </div>
         <p style="font-size:var(--text-sm); line-height:1.8; margin-top:10px;">上から順に当てはめる。ただし、医療資源の少ない地域の条件を満たして届け出た薬局は、ほかの条件にかかわらず調剤基本料１。判定の流れは <a href="../改定資料/調剤基本料フローチャート.html">調剤基本料 判定フローチャート</a> を参照。</p>
+      </div>
+
+      <!-- いつの実績で判定するか（新規開局を含む） -->
+      <div class="card jt-card" id="hantei-jiki">
+        <div class="card-title">いつの実績で判定するか</div>
+
+        <p class="jt-note" style="margin-bottom:6px;">表の「当年」は、６月からその区分の算定が始まる年。</p>
+        <div class="jt-wrap">
+          <table class="jt-rule">
+            <thead><tr><th>薬局</th><th>判定に使う実績</th><th>その区分を算定する期間</th></tr></thead>
+            <tbody>
+              <tr><td>前年５月より前から指定を受けている薬局</td><td>前年５月１日〜当年４月末日の１年間</td><td>当年６月１日〜翌年５月末日</td></tr>
+              <tr><td>前年５月１日〜当年１月31日に新規に指定された薬局</td><td>指定の翌月１日〜当年４月末日</td><td>当年６月１日〜翌年５月末日</td></tr>
+              <tr><td>当年２月１日以降に新規に指定された薬局</td><td>指定の翌月１日から３か月間</td><td>その３か月の最終月の翌々月１日〜翌年５月末日<span class="jt-sub">例）２月指定 → ３〜５月の実績 → ７月１日から</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="jt-bullets">
+          <div class="jt-bullet"><span>・</span><span>新規に指定された薬局は、実績で判定されるまで<span class="marker">調剤基本料１として扱う</span>。例外は次の３つ。
+            <span class="jt-sub">特別調剤基本料Ａの条件の特別な関係がある → 特別調剤基本料Ａ<br>特定の医療機関と不動産取引等の特別な関係がある → 調剤基本料３イまたは３ロ（グループの規模で決まる）<br>同一グループの合計が月40万回超 → 調剤基本料３ハ</span></span></div>
+          <div class="jt-bullet"><span>・</span><span>３か月や11か月の実績で判定するときは、その期間の受付回数の合計が「基準の回数 × 月数」を超えるかで判定する。例えば３か月なら、月1,800回の基準は5,400回になる。</span></div>
+          <div class="jt-bullet"><span>・</span><span>開設者の変更（個人から法人など）や改築で開設許可を取得し直し、指定の遡及が認められた場合は、新規の扱いにならず、それまでの実績と区分を引き継ぐ。ただし、特別な関係があれば特別調剤基本料Ａ、または調剤基本料３イ・ロになる。</span></div>
+        </div>
+
+        <div class="jt-h3">例）2026年２月・５月に開局した薬局と、既存の薬局</div>
+
+        <p style="font-size:var(--text-sm); margin-bottom:8px;">どちらも最初の判定は３か月の実績で、その区分は2027年５月末日まで。2027年６月からは既存の薬局と同じ年１回の判定になる。</p>
+
+        <p class="jt-note">各薬局の上の段がその時期に算定する区分、下の段がその判定に使う実績。<span class="jt-sp">図は横にスクロールできる。</span></p>
+        <div class="jt-tl-wrap">
+          <div class="jt-tl" role="img" aria-label="既存の薬局、2026年2月開局、2026年5月開局の3つの薬局の判定時期を月ごとに並べた図">
+            <div></div>
+            <div class="yr" style="grid-column:2 / 13;">2026年</div>
+            <div class="yr" style="grid-column:13 / 19;">2027年</div>
+            <div></div>
+            <div class="mo">2月</div><div class="mo">3月</div><div class="mo">4月</div><div class="mo">5月</div>
+            <div class="mo">6月<span class="kai">改定</span></div><div class="mo">7月</div><div class="mo">8月</div><div class="mo">9月</div>
+            <div class="mo">10月</div><div class="mo">11月</div><div class="mo">12月</div><div class="mo">1月</div>
+            <div class="mo">2月</div><div class="mo">3月</div><div class="mo">4月</div><div class="mo">5月</div>
+            <div class="mo">6月〜</div>
+
+            <div class="name">既存の薬局</div>
+            <div class="seg kubun" style="grid-column:2 / 6;">前の年度の区分</div>
+            <div class="seg kubun2" style="grid-column:6 / 18;">2025年５月〜2026年４月の実績で決まった区分</div>
+            <div class="seg kubun2" style="grid-column:18 / 19;">年１回の判定へ</div>
+            <div class="lane">判定に使う実績</div>
+            <div class="seg jisseki" style="grid-column:5 / 17;">2026年５月〜2027年４月（１年）</div>
+            <div class="gap"></div>
+
+            <div class="name">2026年２月開局</div>
+            <div class="seg minashi" style="grid-column:2 / 6;">調剤基本料１（45点）</div>
+            <div class="seg minashi tight" style="grid-column:6 / 7;">47点</div>
+            <div class="seg kubun" style="grid-column:7 / 18;">３か月の実績で決まった区分</div>
+            <div class="seg kubun2" style="grid-column:18 / 19;">年１回の判定へ</div>
+            <div class="lane">最初の判定</div>
+            <div class="seg jisseki" style="grid-column:3 / 6;">３〜５月</div>
+            <div class="lane">2027年６月〜の判定</div>
+            <div class="seg jisseki" style="grid-column:5 / 17;">2026年５月〜2027年４月（１年。既存と同じ）</div>
+            <div class="gap"></div>
+
+            <div class="name">2026年５月開局</div>
+            <div class="seg minashi tight" style="grid-column:5 / 6;">45点</div>
+            <div class="seg minashi" style="grid-column:6 / 10;">調剤基本料１（47点）</div>
+            <div class="seg kubun" style="grid-column:10 / 18;">３か月の実績で決まった区分</div>
+            <div class="seg kubun2" style="grid-column:18 / 19;">年１回の判定へ</div>
+            <div class="lane">最初の判定</div>
+            <div class="seg jisseki" style="grid-column:6 / 9;">６〜８月</div>
+            <div class="lane">2027年６月〜の判定</div>
+            <div class="seg jisseki" style="grid-column:6 / 17;">2026年６月〜2027年４月（11か月）</div>
+          </div>
+        </div>
+        <div class="jt-legend">
+          <span><i style="background:var(--jt-minashi-bg); border:var(--bw-h) solid var(--border);"></i>実績で判定される前の扱い</span>
+          <span><i style="background:var(--jt-kubun-bg);"></i>判定で決まった区分を算定する期間</span>
+          <span><i style="background:var(--jt-jisseki-bg);"></i>判定に使う実績</span>
+        </div>
+
+        <div class="jt-wrap" style="margin-top:14px;">
+          <table class="jt-rule jt-dates">
+            <thead><tr><th></th><th>実績で判定されるまで</th><th>最初の判定</th><th>2027年６月からの判定</th></tr></thead>
+            <tbody>
+              <tr><td>既存の薬局</td><td>—</td><td>2025年５月〜2026年４月の実績<br>→ 2026年６月１日から</td><td>2026年５月〜2027年４月の実績</td></tr>
+              <tr><td>2026年２月開局</td><td>2026年６月30日まで調剤基本料１</td><td>2026年３〜５月の実績<br>→ 2026年７月１日から</td><td>2026年５月〜2027年４月の実績</td></tr>
+              <tr><td>2026年５月開局</td><td>2026年９月30日まで調剤基本料１</td><td>2026年６〜８月の実績<br>→ 2026年10月１日から</td><td>2026年６月〜2027年４月の実績（11か月）</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="jt-bullets">
+          <div class="jt-bullet"><span>・</span><span>改定前の基準でも、新規指定の扱いは同じ仕組みだった。２月開局の薬局は、５月までは改定前の調剤基本料１（45点）、６月は改定後の調剤基本料１（47点）になる。</span></div>
+          <div class="jt-bullet"><span>・</span><span>門前薬局等立地依存減算は、令和８年５月31日に保険薬局の指定を受けていた薬局には当面かからない。２月・５月開局の薬局もこれに当たる。６月以降の開局の扱いは <a href="../改定資料/門前薬局等立地依存減算.html">門前薬局等立地依存減算</a> を参照。</span></div>
+          <div class="jt-bullet"><span>・</span><span>都市部の保険薬局の基準の経過措置（令和８年５月31日までに月1,800枚以下として届け出ている薬局）を、開局直後で実績がそろっていない薬局にどう当てはめるかは、施設基準・疑義解釈に定めがない。</span></div>
+        </div>
       </div>
 
       <!-- ② 調剤基本料２の算定基準見直し -->
@@ -525,27 +673,27 @@
           <span class="badge badge-blue">チェーン薬局</span>
         </div>
         <div style="margin-bottom:14px;">
-          同一グループの受付回数が<span class="em-blue">「月3万5千回超〜4万回以下」</span>の薬局について、調剤基本料３ イの適用対象（集中率の条件）が変更された。
+          改定前は、同一グループの受付回数が<span class="em-blue">月3万5千回超〜4万回以下</span>の段だけ、集中率の条件が95%超だった（4万回超〜40万回以下は85%超）。改定で、3万5千回超〜40万回以下の全体が集中率85%超にそろった。
         </div>
         <div class="tbl-wrap">
 <table>
             <thead>
               <tr>
                 <th>項目</th>
-                <th>変更前（現行）</th>
-                <th>変更後（改定）</th>
+                <th>改定前</th>
+                <th>改定後</th>
               </tr>
             </thead>
             <tbody>
               <tr class="row-general">
                 <td style="text-align:left; font-weight:900;">対象グループ規模</td>
-                <td style="font-weight:900;">月3万5千回超〜4万回以下</td>
-                <td style="font-weight:900;">月3万5千回超〜4万回以下（同じ）</td>
+                <td style="font-weight:900;">月3万5千回超〜4万回以下<br>月4万回超〜40万回以下</td>
+                <td style="font-weight:900;">月3万5千回超〜40万回以下</td>
               </tr>
               <tr class="row-highlight">
                 <td style="text-align:left; font-weight:900;">調剤基本料３ イ<br>適用となる集中率</td>
-                <td>集中率 95%超</td>
-                <td class="em-change">集中率 85%超<br><span style="font-size:var(--text-xs); font-weight:500;">※95%超から適用範囲を拡大</span></td>
+                <td>95%超（3万5千回超〜4万回以下）<br>85%超（4万回超〜40万回以下）</td>
+                <td class="em-change">85%超<br><span style="font-size:var(--text-xs); font-weight:500;">※3万5千回超〜4万回以下の段は95%超から引き下げ</span></td>
               </tr>
             </tbody>
           </table>
