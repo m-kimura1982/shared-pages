@@ -205,7 +205,7 @@
 
   <div class="search-wrap">
     <input id="q" class="search-input" type="search" placeholder="例）抑肝散　54　不眠　精神科" autocomplete="off" />
-    <div class="notice" id="maker" hidden>クラシエなど他社品は、番号も分量もツムラと違う。処方名で探し、分量は製品の添付文書で確かめる。</div>
+    <div class="notice" id="maker" hidden>クラシエなど他社品は、番号も分量もツムラと異なる。処方名で探し、分量は製品の添付文書で確かめる。</div>
     <div class="kz-bar" id="kzbar" hidden></div>
   </div>
   <div class="finder">
@@ -300,7 +300,7 @@ function compare(self, other){
   const kind = r => r.a == null ? 2 : r.b == null ? 1 : 0;
   rows.sort((x, y) => kind(x) - kind(y));
   const g = v => v == null ? '<span class="none">－</span>' : v.toFixed(1) + 'g';
-  const LAB = ['両方に入る', `${self.name}だけ`, `${other.name}だけ`];
+  const LAB = ['両方に含まれる', `${self.name}のみ`, `${other.name}のみ`];
   const body = [0, 1, 2].map(k => {
     const rs = rows.filter(r => kind(r) === k);
     if (!rs.length) return '';
@@ -328,7 +328,7 @@ const WATCH = [
   { by: k => k.herbs.some(h => h[1] === '附子末'), lab: '附子', t: 'のぼせ・動悸・舌のしびれ' },
   { by: k => k.herbs.some(h => ['大黄','芒硝','無水芒硝'].includes(h[1])), lab: '大黄・芒硝', t: '下痢・腹痛が続いていないか' },
   { by: k => k.herbs.some(h => h[1] === '山梔子'), lab: '山梔子', t: '腹痛・下痢・便秘・おなかの張りが続いていないか（多くは5年以上の服用で腸間膜静脈硬化症）' },
-  { by: k => /間質性肺炎/.test(own(k)), lab: '肺', t: 'せき・息切れ・発熱。出たらすぐ連絡してもらう（間質性肺炎）' },
+  { by: k => /間質性肺炎/.test(own(k)), lab: '肺', t: 'せき・息切れ・発熱などの症状があれば、すぐ連絡するよう伝える（間質性肺炎）' },
 ];
 /* 判定に使う注意書き。「似た処方の小柴胡湯で…の報告」の文は、その品目自体の副作用ではないので外す（柴陥湯） */
 const own = k => k.cautions.filter(c => !/似た処方|類似処方/.test(c)).join('');
@@ -348,7 +348,7 @@ const TERMS = [
 function termNote(k){
   const roles = k.how + k.herbs.map(h => h[3]).join('');
   const ns = TERMS.filter(([re]) => re.test(roles)).map(([, t]) => t);
-  return ns.length ? `<p class="maker-note">${ns.join('')}患者に伝えるときは言い方に気をつける。</p>` : '';
+  return ns.length ? `<p class="maker-note">${ns.join('')}患者に伝えるときは表現に注意する。</p>` : '';
 }
 
 /* 顆粒の1日量の印には1日の包数を添える（大建中湯は1包2.5gで1日15g＝6包。量だけだと1包の量と合わないように見えるため） */
@@ -375,7 +375,7 @@ function card(k){
       <div class="hits" hidden></div>
     </div></summary>
     <div class="fold-body">
-    <div class="flags" style="margin-top:0">${kz}${plain}<span class="flag">味：${k.taste}</span>${k.kanzo ? `<button type="button" class="kz-btn" data-id="${k.id}">甘草の合計に足す</button>` : ''}</div>
+    <div class="flags" style="margin-top:0">${kz}${plain}<span class="flag">味：${k.taste}</span>${k.kanzo ? `<button type="button" class="kz-btn" data-id="${k.id}">甘草の合計に加える</button>` : ''}</div>
     <div class="pick"><label for="pk-${k.id}">⇄ 構成生薬を比べる</label><input id="pk-${k.id}" class="pk-in" type="search" placeholder="漢方の名前か番号（例：抑肝散、54）" autocomplete="off" /><div class="pk-list" hidden></div></div>
 
     ${k.hito ? `<div class="hito"><span class="hito-l">使用目標</span>${k.hito}</div>` : ''}
@@ -389,7 +389,7 @@ function card(k){
     <div class="table-wrap"><table class="herbs">
       <thead><tr><th>生薬</th><th>この処方での役割</th><th class="hg">生薬量</th></tr></thead>
       <tbody>${herbs}</tbody></table></div>
-    <p class="maker-note">分量はツムラの製品。クラシエなど他社品は、同じ処方名でも分量や生薬が違うことがある。役割は添付文書に書かれていないため、漢方の一般的な解釈で、この処方の中で効かせている働きだけを載せた。</p>
+    <p class="maker-note">分量はツムラの製品。クラシエなど他社品は、同じ処方名でも分量や生薬が異なることがある。「この処方での役割」は、漢方の一般的な解釈に基づいて示したもの。</p>
     ${termNote(k)}
 
     <div class="sub-title">処方の組み立て</div>
@@ -463,7 +463,7 @@ function renderPick(inp){
   if (!inp.value.trim() && !ks.length) { box.hidden = true; return; }
   box.innerHTML = (head ? `<div class="pk-h">${head}</div>` : '')
     + (ks.length ? ks.slice(0, PKMAX).map((k, i) => `<button type="button" class="pk-opt${i ? '' : ' cur'}" data-to="${k.id}"><span class="no">ツムラ ${k.no}</span>${k.name}</button>`).join('')
-      + (ks.length > PKMAX ? `<div class="pk-none">ほかに${ks.length - PKMAX}品目。もう少し入れると絞れる</div>` : '')
+      + (ks.length > PKMAX ? `<div class="pk-none">ほかに${ks.length - PKMAX}品目。さらに入力すると絞り込める</div>` : '')
       : '<div class="pk-none">当てはまる品目がない</div>');
   box.hidden = false;
 }
@@ -509,15 +509,15 @@ function renderKz(){
   document.querySelectorAll('.kz-btn').forEach(b => {
     const on = kzSel.includes(b.dataset.id);
     b.classList.toggle('on', on);
-    b.textContent = on ? '合計から外す' : '甘草の合計に足す';
+    b.textContent = on ? '合計から除く' : '甘草の合計に加える';
   });
   kzBar.hidden = !kzSel.length;
   if (!kzSel.length) return;
   const ks = kzSel.map(id => KAMPO.find(k => k.id === id));
   const sum = ks.reduce((a, k) => a + k.kanzo, 0);
   kzBar.innerHTML = `甘草の合計 <span class="sum">${sum.toFixed(1)}g/日</span>
-    <span class="parts">（${ks.map(k => k.name + ' ' + k.kanzo.toFixed(1)).join('＋')}）</span><button type="button" id="kzclear">すべて外す</button><button type="button" id="kzmore">${kzMore ? '注意を閉じる' : '注意を開く'}</button>
-    <div class="line"${kzMore ? '' : ' hidden'}>合計量の公的な目安はない（添付文書にあるのは「含有生薬の重複に注意」と、甘草を含む製剤の併用注意）が、甘草が重なるほど、むくみ・血圧上昇・手足のだるさ（偽アルドステロン症）が出やすくなる。ほかに甘草やグリチルリチンを含む薬（市販薬も）がないかも確認する。</div>
+    <span class="parts">（${ks.map(k => k.name + ' ' + k.kanzo.toFixed(1)).join('＋')}）</span><button type="button" id="kzclear">すべて除く</button><button type="button" id="kzmore">${kzMore ? '注意を閉じる' : '注意を開く'}</button>
+    <div class="line"${kzMore ? '' : ' hidden'}>甘草が重なるほど、むくみ・血圧上昇・手足のだるさ（偽アルドステロン症）が出やすくなる。ほかに甘草やグリチルリチンを含む薬（市販薬も）がないかも確認する。合計量の公的な目安はない。</div>
     <div class="line"${kzMore ? '' : ' hidden'}>アルドステロン症などの禁忌があるのは、1品目で甘草を1日2.5g以上含むもの（昭和53年の厚生省通知の基準）：${KZHI}。</div>`;
   document.getElementById('kzclear').onclick = () => { kzSel.length = 0; renderKz(); };
   document.getElementById('kzmore').onclick = () => { kzMore = !kzMore; renderKz(); };
@@ -682,8 +682,8 @@ function apply(){
     const qTerms = sceneTerms.filter(t => terms.includes(t));
     const inGist = qTerms.some(t => norm(strip(k.gist)).includes(t));
     const html = !ok ? ''
-      : cautionOnly ? snipLine('注意事項', k.cautions.join(' '), qTerms) || '「注意事項」の中の言葉に当たった'
-      : herbOnly ? snipLine('生薬の役割', [k.how, ...k.herbs.map(h => h[1] + '：' + h[3])].join(' '), qTerms) || '生薬の役割の中の言葉に当たった'
+      : cautionOnly ? snipLine('注意事項', k.cautions.join(' '), qTerms) || '「注意事項」の中の言葉に一致した'
+      : herbOnly ? snipLine('生薬の役割', [k.how, ...k.herbs.map(h => h[1] + '：' + h[3])].join(' '), qTerms) || '生薬の役割の中の言葉に一致した'
       : hitIdx.length ? '当てはまる場面：' + markAll(hitIdx.map(i => k.scenes[i].t).join('／'), sceneTerms)
       : inGist ? ''
       : snipLine('効能・効果', k.kounou, qTerms) || snipLine('使用目標', k.hito, qTerms) || snipLine('生薬', k.herbs.map(h => h[1]).join('・'), qTerms)
@@ -700,7 +700,7 @@ function apply(){
   const searching = terms.length || cat >= 0;
   if (searching && shown.length === 1) document.getElementById(shown[0]).open = true;
   empty.hidden = shown.length > 0;
-  hit.textContent = searching ? (cat >= 0 ? `「${CATS[cat].label}」` : '') + `${KAMPO.length}品目中 ${shown.length - weakN}品目` + (weakN ? `（ほかに説明文だけに当たった${weakN}品目を後ろに表示）` : '') : `${KAMPO.length}品目（名前を押すと開く）`;
+  hit.textContent = searching ? (cat >= 0 ? `「${CATS[cat].label}」` : '') + `${KAMPO.length}品目中 ${shown.length - weakN}品目` + (weakN ? `（ほかに説明文だけに一致した${weakN}品目を後ろに表示）` : '') : `${KAMPO.length}品目（名前を押すと開く）`;
   [...chipsEl.children].forEach(b => b.classList.toggle('on', Number(b.dataset.i) === cat));
 }
 q.addEventListener('input', apply);
