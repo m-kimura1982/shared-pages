@@ -18,6 +18,10 @@
   --border:#d1d5db; --border-dk:#9ca3af;
   --radius:10px; --radius-sm:6px; --bw:0.5px; --bw-h:1px; --bw-a:3px; --bw-t:4px;
   --txt-2:#444444; --txt-3:#5e6470;
+  /* 区分の系統の色（図解の淡色パレット）。1つの意味＝どの系統の区分か */
+  --k-toku-bg:#fbe4e0; --k-toku-tx:#8c3a2e;   /* 特別調剤基本料Ａ・Ｂ */
+  --k-3-bg:#e5e0f2;    --k-3-tx:#4b3f80;      /* 調剤基本料３イ・ロ・ハ */
+  --k-2-bg:#f3e8d0;    --k-2-tx:#7a5718;      /* 調剤基本料２ */
 }
 body { font-family:"Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); font-size:var(--text-md); line-height:1.8; padding:32px 16px 60px; }
 .page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--gap-card); }
@@ -59,13 +63,28 @@ a.inline { color:var(--blue); font-weight:700; }
   font-size:15px; font-weight:900; display:flex; align-items:center; justify-content:center; margin-top:1px;
 }
 .q { font-weight:900; font-size:17px; line-height:1.55; }
+.q-sub .li { display:block; padding-left:1em; text-indent:-1em; }
+.q-sub .li2 { padding-left:2em; text-indent:-1em; }
+body { word-break:auto-phrase; }
+.q .em-change { white-space:nowrap; }
 .q-sub { display:block; font-size:var(--text-xs); font-weight:500; color:var(--txt-2); margin-top:5px; line-height:1.6; }
 .step .ybox { background:#f7f9fc; border-left:var(--bw-h) solid var(--border); padding:12px 14px; display:flex; flex-direction:column; gap:8px; justify-content:center; }
 .yes { display:inline-flex; align-self:flex-start; font-size:var(--text-xs); font-weight:900; color:var(--blue); border:var(--bw-h) solid var(--blue); border-radius:999px; padding:0 10px; background:var(--white); }
 .res {
   display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:2px 10px;
-  background:var(--white); border:var(--bw-h) solid var(--border); border-left:var(--bw-t) solid var(--blue); border-radius:var(--radius-sm); padding:8px 12px;
+  background:var(--white); border:var(--bw-h) solid var(--border); border-radius:var(--radius-sm); padding:8px 12px;
 }
+.res.k-toku { background:var(--k-toku-bg); border-color:var(--k-toku-bg); }
+.res.k-toku .name, .res.k-toku .pts { color:var(--k-toku-tx); }
+.res.k-3 { background:var(--k-3-bg); border-color:var(--k-3-bg); }
+.res.k-3 .name, .res.k-3 .pts { color:var(--k-3-tx); }
+.res.k-2 { background:var(--k-2-bg); border-color:var(--k-2-bg); }
+.res.k-2 .name, .res.k-2 .pts { color:var(--k-2-tx); }
+.kubun-strip .k-toku { background:var(--k-toku-bg); color:var(--k-toku-tx); }
+.kubun-strip .k-3 { background:var(--k-3-bg); color:var(--k-3-tx); }
+.kubun-strip .k-2 { background:var(--k-2-bg); color:var(--k-2-tx); }
+.kubun-strip .k-1 { background:var(--white); border:var(--bw-h) solid var(--border); }
+.kubun-strip .k-toku .k, .kubun-strip .k-3 .k, .kubun-strip .k-2 .k { color:inherit; }
 .res .if { grid-column:1 / -1; font-size:var(--text-xs); font-weight:700; color:var(--txt-2); line-height:1.5; }
 .res .name { font-weight:900; font-size:var(--text-md); line-height:1.4; }
 .res .name small { display:block; font-size:var(--text-xs); font-weight:500; color:var(--txt-2); margin-top:2px; }
@@ -92,7 +111,6 @@ a.inline { color:var(--blue); font-weight:700; }
 .step.full .ybox { border-left:0; border-top:var(--bw-h) solid var(--border); flex-direction:row; align-items:center; gap:12px; }
 .step.full .ybox .res { flex:1; }
 .ends { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-.ends .res { border-left-color:var(--blue); background:var(--box-blue); border-color:var(--box-blue); border-left:var(--bw-t) solid var(--blue); }
 
 .jiki { display:flex; gap:14px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
 .jiki p { font-size:var(--text-sm); }
@@ -150,13 +168,13 @@ a.inline { color:var(--blue); font-weight:700; }
   <div class="card flow-card">
     <div class="card-title">区分と点数<span class="qual">判定の流れで出てくる順</span></div>
     <div class="kubun-strip">
-      <div><span class="k">特別Ｂ</span><span class="p">3<small>点</small></span></div>
-      <div><span class="k">特別Ａ</span><span class="p">5<small>点</small></span></div>
-      <div><span class="k">３ロ</span><span class="p">20<small>点</small></span></div>
-      <div><span class="k">３イ</span><span class="p">25<small>点</small></span></div>
-      <div><span class="k">２</span><span class="p">30<small>点</small></span></div>
-      <div><span class="k">３ハ</span><span class="p">37<small>点</small></span></div>
-      <div><span class="k">１</span><span class="p">47<small>点</small></span></div>
+      <div class="k-toku"><span class="k">特別Ｂ</span><span class="p">3<small>点</small></span></div>
+      <div class="k-toku"><span class="k">特別Ａ</span><span class="p">5<small>点</small></span></div>
+      <div class="k-3"><span class="k">３ロ</span><span class="p">20<small>点</small></span></div>
+      <div class="k-3"><span class="k">３イ</span><span class="p">25<small>点</small></span></div>
+      <div class="k-2"><span class="k">２</span><span class="p">30<small>点</small></span></div>
+      <div class="k-3"><span class="k">３ハ</span><span class="p">37<small>点</small></span></div>
+      <div class="k-1"><span class="k">１</span><span class="p">47<small>点</small></span></div>
     </div>
 
     <div class="card-title" style="margin-top:22px;">判定の流れ<span class="qual">1 から順に「はい」か「いいえ」で進む</span></div>
@@ -171,17 +189,17 @@ a.inline { color:var(--blue); font-weight:700; }
         <div class="qbox"><span class="step-num">1</span><div class="q">調剤基本料の届出をしていない</div></div>
         <div class="ybox">
           <span class="yes">はい</span>
-          <div class="res"><span class="name">特別調剤基本料Ｂ<small>調剤基本料の加算は算定できない。薬学管理料も多くが算定できない</small></span><span class="pts">3<span class="u">点</span></span></div>
+          <div class="res k-toku"><span class="name">特別調剤基本料Ｂ<small>調剤基本料の加算は算定できない。薬学管理料も多くが算定できない</small></span><span class="pts">3<span class="u">点</span></span></div>
         </div>
       </div>
       <div class="no"><span class="pill">2 へ</span></div>
 
       <div class="step">
         <div class="qbox"><span class="step-num">2</span><div class="q">次のどちらかに当たる
-          <span class="q-sub">・保険医療機関と不動産取引等の特別な関係があり、処方箋集中率が50%超<br>　※令和８年３月４日以前から同じ建物に診療所があり、その診療所が引き続きあって、新たに特別な関係を持っていない場合は当たらない<br>・同じ敷地内にオンライン診療の受診施設を設けている（へき地を除く）</span></div></div>
+          <span class="q-sub"><span class="li">・保険医療機関と不動産取引等の特別な関係があり、処方箋集中率が50%超</span><span class="li li2">※令和８年３月４日以前から同じ建物に診療所があり、その診療所が引き続きあって、新たに特別な関係を持っていない場合は当たらない</span><span class="li">・同じ敷地内にオンライン診療の受診施設を設けている（へき地を除く）</span></span></div></div>
         <div class="ybox">
           <span class="yes">はい</span>
-          <div class="res"><span class="name">特別調剤基本料Ａ<small>地域支援・医薬品供給対応体制加算、バイオ後続品調剤体制加算、在宅薬学総合体制加算は100分の10</small></span><span class="pts">5<span class="u">点</span></span></div>
+          <div class="res k-toku"><span class="name">特別調剤基本料Ａ<small>地域支援・医薬品供給対応体制加算、バイオ後続品調剤体制加算、在宅薬学総合体制加算は100分の10</small></span><span class="pts">5<span class="u">点</span></span></div>
         </div>
       </div>
       <div class="no"><span class="pill">3 へ</span></div>
@@ -190,7 +208,7 @@ a.inline { color:var(--blue); font-weight:700; }
         <div class="qbox"><span class="step-num">3</span><div class="q">同一グループの処方箋受付回数の合計が<span class="em-change">月40万回超</span></div></div>
         <div class="ybox">
           <span class="yes">はい</span>
-          <div class="res"><span class="if">不動産取引等の特別な関係がある、または集中率85%超</span><span class="name">調剤基本料３ロ</span><span class="pts">20<span class="u">点</span></span></div>
+          <div class="res k-3"><span class="if">不動産取引等の特別な関係がある、または集中率85%超</span><span class="name">調剤基本料３ロ</span><span class="pts">20<span class="u">点</span></span></div>
           <div class="skip"><span class="if">どちらにも当たらない</span><span class="to">→ 4 は飛ばして 5 へ進む<small>5 に当たらなければ調剤基本料３ハ（37点）</small></span></div>
         </div>
       </div>
@@ -200,7 +218,7 @@ a.inline { color:var(--blue); font-weight:700; }
         <div class="qbox"><span class="step-num">4</span><div class="q">同一グループの処方箋受付回数の合計が<span class="em-change">月３万５千回超</span></div></div>
         <div class="ybox">
           <span class="yes">はい</span>
-          <div class="res"><span class="if">不動産取引等の特別な関係がある、または集中率85%超</span><span class="name">調剤基本料３イ</span><span class="pts">25<span class="u">点</span></span></div>
+          <div class="res k-3"><span class="if">不動産取引等の特別な関係がある、または集中率85%超</span><span class="name">調剤基本料３イ</span><span class="pts">25<span class="u">点</span></span></div>
           <div class="skip"><span class="if">どちらにも当たらない</span><span class="to">→ 5 へ進む</span></div>
         </div>
       </div>
@@ -221,13 +239,13 @@ a.inline { color:var(--blue); font-weight:700; }
         </div>
         <div class="ybox">
           <span class="yes">はい</span>
-          <div class="res"><span class="name">調剤基本料２</span><span class="pts">30<span class="u">点</span></span></div>
+          <div class="res k-2"><span class="name">調剤基本料２</span><span class="pts">30<span class="u">点</span></span></div>
         </div>
       </div>
       <div class="no"><span class="pill">どれにも当たらない</span></div>
 
       <div class="ends">
-        <div class="res"><span class="if">3 から 5 へ進んだ薬局（グループ月40万回超）</span><span class="name">調剤基本料３ハ</span><span class="pts">37<span class="u">点</span></span></div>
+        <div class="res k-3"><span class="if">3 から 5 へ進んだ薬局（グループ月40万回超）</span><span class="name">調剤基本料３ハ</span><span class="pts">37<span class="u">点</span></span></div>
         <div class="res"><span class="if">4 から 5 へ進んだ薬局、3・4 とも「いいえ」の薬局</span><span class="name">調剤基本料１</span><span class="pts">47<span class="u">点</span></span></div>
       </div>
     </div>
