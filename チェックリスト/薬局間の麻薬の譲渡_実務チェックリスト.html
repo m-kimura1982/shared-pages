@@ -109,6 +109,8 @@
     }
     @media print {
       .page-title-wrap { position:relative; }
+      /* QRと印刷日は最初のカードの上端に少しかかるので、白地で罫線を隠す（日付に線が重なって取り消し線に見えないように） */
+      .page-title-wrap .sn-printqr-float .sn-printqr { background:#fff; padding:0 0 1mm 2mm; }
       /* A4縦2枚。1枚目＝最初に確かめること・イ、2枚目＝ロ・できないこと。
          文字は小さくしない（チェック項目12.5px／補足11px／カード見出し15px） */
       @page { size:A4 portrait; margin:8mm 11mm; }
