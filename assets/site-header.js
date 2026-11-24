@@ -141,7 +141,7 @@
     'チェックリスト/OTC医薬品の販売ルール_自己点検リスト.html': { category: 'checklist', title: 'OTC医薬品の販売ルール 自己点検リスト' },
     'チェックリスト/麻薬の取扱い_自己点検リスト.html': { category: 'checklist', title: '麻薬の取扱い 自己点検リスト' },
     'チェックリスト/リフィル処方箋_実務チェックリスト.html': { category: 'checklist', title: 'リフィル処方箋 対応の流れ' },
-    'チェックリスト/薬局間の麻薬の譲渡_実務チェックリスト.html': { category: 'checklist', title: '薬局間の麻薬の譲渡 実務チェックリスト' },
+    'チェックリスト/薬局間の麻薬の譲渡_実務チェックリスト.html': { category: 'checklist', title: '薬局間の麻薬の譲渡 チェックリスト' },
 
     // 事務スタッフ向け（個別）
     '事務/事務スタッフ向け_2026調剤報酬改定ポイント整理.html': { category: 'jimu', title: '事務スタッフ向け 改定ポイント整理' },
