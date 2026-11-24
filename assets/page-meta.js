@@ -22,7 +22,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-11-08"
   },
   "checklists.html": {
-    "lastUpdated": "2026-11-23"
+    "lastUpdated": "2026-11-25"
   },
   "knowledge.html": {
     "lastUpdated": "2026-11-23"
@@ -375,7 +375,7 @@ window.__pageMeta = {
     "newUntil": "2026-06-17"
   },
   "チェックリスト/麻薬の取扱い_自己点検リスト.html": {
-    "lastUpdated": "2026-11-24",
+    "lastUpdated": "2026-11-25",
     "newUntil": "2026-11-30"
   },
   "チェックリスト/薬局間の麻薬の譲渡_実務チェックリスト.html": {
@@ -425,7 +425,7 @@ window.__pageMeta = {
     "lastUpdated": "2026-10-27",
     "newUntil": "2026-09-30"
   },
-  "ナレッジ/薬局間の麻薬の譲渡.html": {
+  "ナレッジ/麻薬帳簿の書き方.html": {
     "lastUpdated": "2026-11-25",
     "newUntil": "2026-11-30"
   },
@@ -440,12 +440,12 @@ window.__pageMeta = {
   "ナレッジ/OTC類似薬_処方箋と窓口対応.html": {
     "lastUpdated": "2026-11-22"
   },
-  "ナレッジ/麻薬帳簿の書き方.html": {
-    "lastUpdated": "2026-11-23",
+  "ナレッジ/薬局の麻薬管理.html": {
+    "lastUpdated": "2026-11-25",
     "newUntil": "2026-11-30"
   },
-  "ナレッジ/麻薬の年間届の書き方.html": {
-    "lastUpdated": "2026-11-23",
+  "ナレッジ/薬局間の麻薬の譲渡.html": {
+    "lastUpdated": "2026-11-25",
     "newUntil": "2026-11-30"
   },
   "ナレッジ/OTC類似薬_特別の料金の計算.html": {
@@ -454,7 +454,7 @@ window.__pageMeta = {
   "ナレッジ/OTC類似薬_対象の薬と料金がかからない場合.html": {
     "lastUpdated": "2026-11-22"
   },
-  "ナレッジ/薬局の麻薬管理.html": {
+  "ナレッジ/麻薬の年間届の書き方.html": {
     "lastUpdated": "2026-11-25",
     "newUntil": "2026-11-30"
   },
